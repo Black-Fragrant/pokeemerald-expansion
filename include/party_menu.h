@@ -30,6 +30,12 @@ extern u8 gBattlePartyCurrentOrder[PARTY_SIZE / 2];
 extern void (*gItemUseCB)(u8, TaskFunc);
 extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
 
+#define PARTY_MENU_STYLE_DEFAULT    0
+#define PARTY_MENU_STYLE_HGSS       1
+#define PARTY_MENU_STYLE_BW         2
+
+#define PARTY_MENU_STYLE            PARTY_MENU_STYLE_DEFAULT
+
 void AnimatePartySlot(u8 slot, u8 animNum);
 bool8 IsMultiBattle(void);
 u8 GetCursorSelectionMonId(void);

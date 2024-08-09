@@ -70,13 +70,15 @@ static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
     {
         BlitBitmapToPartyWindow_Equal, 
         {
+            #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
             //The below are the x, y, width, and height for each of the following info
-            33,  2, 40, 13, // Nickname
-             3, 25, 32,  8, // Level 85,  1, 32,  8,
-           100,  1,  8,  8, // Gender 79,  1,  8,  8, 
-            48, 25, 24,  8, // HP
-            63, 25, 24,  8, // Max HP
-            48, 18, 56,  3  // HP bar
+            40,  7, 40, 13, // Nickname
+             5, 25, 32,  8, // Level 85,  1, 32,  8,
+            98,  7,  8,  8, // Gender 79,  1,  8,  8, 
+            59, 27, 24,  8, // HP
+            74, 27, 24,  8, // Max HP
+            56, 26, 48,  3  // HP bar
+            #endif
         }, 
         33, 13, 64, 16      // Description text (e.g. NO USE)
     },//
@@ -722,10 +724,11 @@ static const u8 sSlotTilemap_WideEmpty[] = INCBIN_U8("graphics/party_menu/slot_w
 
 
  //Custom party menu
+#if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
 static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
-                                                 49, 33, 33, 33, 52, 53, 51, 51, 51, 51, 51, 51, 51, 54,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 52, 53, 51, 51, 51, 51, 51, 51, 54,
                                                  55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57};
 
 static const u8 sEqualMainSlotTileNums_Egg[] =  {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
@@ -739,6 +742,7 @@ static const u8 sEqualEmptySlotTileNums[] = {21, 22, 22, 22, 22, 22, 22, 22, 22,
                                              30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
                                              30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
                                              37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 39};
+#endif
 //
 // Palette offsets
 static const u8 sGenderPalOffsets[] = {11, 12};
