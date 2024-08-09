@@ -30,6 +30,14 @@ extern u8 gBattlePartyCurrentOrder[PARTY_SIZE / 2];
 extern void (*gItemUseCB)(u8, TaskFunc);
 extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
 
+/*
+**DS PARTY SCREEN**
+Below features are configs for the DS party screen.
+I did not create the DS party screen, the base comes from TheXaman: https://github.com/TheXaman/pokeemerald/tree/tx_ui_party_screen_ds_style_2
+While graphics + other touch ups come from the original FRLG/Em patch here: https://www.pokecommunity.com/threads/fr-em-pok%C3%A9mon-party-screen-modifications-base-hgss-and-bw-styles.414022/
+Huge credits to everyone involved!
+*/
+
 #define PARTY_MENU_STYLE_DEFAULT    0
 #define PARTY_MENU_STYLE_HGSS       1
 #define PARTY_MENU_STYLE_BW         2
