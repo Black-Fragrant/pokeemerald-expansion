@@ -34,7 +34,9 @@ extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
 #define PARTY_MENU_STYLE_HGSS       1
 #define PARTY_MENU_STYLE_BW         2
 
-#define PARTY_MENU_STYLE            PARTY_MENU_STYLE_HGSS
+#define PARTY_MENU_STYLE            PARTY_MENU_STYLE_DEFAULT                       
+#define PARTY_MENU_ALPHA            (PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW) // If TRUE, the columns have a transparent BG. 
+                                                                              // Only designed for the BW style, so looks ugly on other styles.
 
 void AnimatePartySlot(u8 slot, u8 animNum);
 bool8 IsMultiBattle(void);

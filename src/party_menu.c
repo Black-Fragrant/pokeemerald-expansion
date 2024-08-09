@@ -2378,6 +2378,11 @@ static void BlitBitmapToPartyWindow(u8 windowId, const u8 *b, u8 c, u8 x, u8 y, 
 
     if (pixels != NULL)
     {
+        #if PARTY_MENU_ALPHA == TRUE
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL);
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16, 8));
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+        #endif
         for (i = 0; i < height; i++)
         {
             for (j = 0; j < width; j++)

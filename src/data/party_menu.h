@@ -82,7 +82,15 @@ static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
             //The below are the x, y, width, and height for each of the following info
             40,  5, 40, 13, // Nickname
              5, 25, 32,  8, // Level 85,  1, 32,  8,
-            98,  7,  8,  8, // Gender 79,  1,  8,  8, 
+            98,  5,  8,  8, // Gender 79,  1,  8,  8, 
+            59, 25, 24,  8, // HP
+            74, 25, 24,  8, // Max HP
+            56, 22, 48,  3  // HP bar
+            #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW
+            //The below are the x, y, width, and height for each of the following info
+            40,  5, 40, 13, // Nickname
+             5, 25, 32,  8, // Level 85,  1, 32,  8,
+            98,  5,  8,  8, // Gender 79,  1,  8,  8, 
             59, 25, 24,  8, // HP
             74, 25, 24,  8, // Max HP
             56, 22, 48,  3  // HP bar
@@ -779,6 +787,30 @@ static const u8 sEqualEmptySlotTileNums[] = { 0,  0,  0,  0,  0,  0,  0,  0,  0,
                                               0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
                                               0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
                                               0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
+#elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/bw/bg.4bpp.lz");
+const u32 gPartyMenuBg_Pal[] = INCBIN_U32("graphics/party_menu/bw/bg.gbapal.lz");
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bw/bg.bin.lz");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/bw/pokeball.4bpp.lz");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.lz"); //unused
+const u32 gPartyMenuPokeball_Pal[] = INCBIN_U32("graphics/party_menu/bw/pokeball.gbapal.lz");
+static const u8 sEqualMainSlotTileNums[] =      {24, 25, 25, 25, 25, 48, 30, 30, 30, 30, 30, 30, 56, 26,
+                                                 32, 33, 33, 33, 49, 38, 38, 38, 38, 38, 38, 57, 33, 34,
+                                                 32, 33, 33, 49, 38, 51, 52, 53, 53, 53, 54, 39, 39, 55,
+                                                 32, 33, 49, 38, 38, 59, 60, 61, 61, 62, 47, 47, 47, 63,
+                                                 40, 50, 46, 46, 46, 46, 46, 46, 58, 41, 41, 41, 41, 42};
+
+static const u8 sEqualMainSlotTileNums_Egg[] =  {24, 25, 25, 25, 25, 48, 30, 30, 30, 30, 30, 30, 56, 26,
+                                                 32, 33, 33, 33, 49, 38, 38, 38, 38, 38, 38, 57, 33, 34,
+                                                 32, 33, 33, 49, 38, 38, 38, 38, 38, 38, 57, 33, 33, 34,
+                                                 32, 33, 49, 38, 38, 38, 38, 38, 38, 57, 33, 33, 33, 34,
+                                                 40, 50, 46, 46, 46, 46, 46, 46, 58, 41, 41, 41, 41, 42};
+
+static const u8 sEqualEmptySlotTileNums[] = {13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15,
+                                             21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
+                                             21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
+                                             21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
+                                             43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45};
 #endif
 //
 // Palette offsets
