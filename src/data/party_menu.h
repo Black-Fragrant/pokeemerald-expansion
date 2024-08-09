@@ -78,6 +78,14 @@ static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
             59, 27, 24,  8, // HP
             74, 27, 24,  8, // Max HP
             56, 26, 48,  3  // HP bar
+            #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_HGSS
+            //The below are the x, y, width, and height for each of the following info
+            40,  5, 40, 13, // Nickname
+             5, 25, 32,  8, // Level 85,  1, 32,  8,
+            98,  7,  8,  8, // Gender 79,  1,  8,  8, 
+            59, 25, 24,  8, // HP
+            74, 25, 24,  8, // Max HP
+            56, 22, 48,  3  // HP bar
             #endif
         }, 
         33, 13, 64, 16      // Description text (e.g. NO USE)
@@ -722,9 +730,14 @@ static const u8 sSlotTilemap_Wide[]      = INCBIN_U8("graphics/party_menu/slot_w
 static const u8 sSlotTilemap_WideNoHP[]  = INCBIN_U8("graphics/party_menu/slot_wide_no_hp.bin");
 static const u8 sSlotTilemap_WideEmpty[] = INCBIN_U8("graphics/party_menu/slot_wide_empty.bin");
 
-
  //Custom party menu
 #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/bg.4bpp.lz");
+const u32 gPartyMenuBg_Pal[] = INCBIN_U32("graphics/party_menu/bg.gbapal.lz");
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bg.bin.lz");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball.4bpp.lz");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.lz"); //unused
+const u32 gPartyMenuPokeball_Pal[] = INCBIN_U32("graphics/party_menu/pokeball.gbapal.lz");
 static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
@@ -742,6 +755,30 @@ static const u8 sEqualEmptySlotTileNums[] = {21, 22, 22, 22, 22, 22, 22, 22, 22,
                                              30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
                                              30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
                                              37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 39};
+#elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_HGSS
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/hgss/bg.4bpp.lz");
+const u32 gPartyMenuBg_Pal[] = INCBIN_U32("graphics/party_menu/hgss/bg.gbapal.lz");
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/hgss/bg.bin.lz");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/hgss/pokeball.4bpp.lz");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.lz"); //unused
+const u32 gPartyMenuPokeball_Pal[] = INCBIN_U32("graphics/party_menu/hgss/pokeball.gbapal.lz");
+static const u8 sEqualMainSlotTileNums[] =      {24, 25, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 34,
+                                                 32, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 44,
+                                                 40, 41, 41, 41, 41, 52, 53, 51, 51, 51, 51, 51, 51, 54,
+                                                 48, 49, 49, 49, 49, 60, 61, 59, 59, 59, 59, 59, 59, 62,
+                                                 56, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 58};
+
+static const u8 sEqualMainSlotTileNums_Egg[] =  {24, 25, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 34,
+                                                 32, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 44,
+                                                 40, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 42,
+                                                 48, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 50,
+                                                 56, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 58};
+
+static const u8 sEqualEmptySlotTileNums[] = { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+                                              0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+                                              0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+                                              0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+                                              0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
 #endif
 //
 // Palette offsets
