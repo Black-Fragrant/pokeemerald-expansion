@@ -949,9 +949,7 @@ static void LoadPartyMenuBoxes(u8 layout)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_RIGHT_COLUMN];
-        if (layout == PARTY_LAYOUT_SINGLE)  //Custom party menu
-            sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_EQUAL_COLUMN]; //
+        sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_EQUAL_COLUMN]; //
         sPartyMenuBoxes[i].spriteCoords = sPartyMenuSpriteCoords[layout][i];
         sPartyMenuBoxes[i].windowId = i;
         sPartyMenuBoxes[i].monSpriteId = SPRITE_NONE;
@@ -959,14 +957,6 @@ static void LoadPartyMenuBoxes(u8 layout)
         sPartyMenuBoxes[i].pokeballSpriteId = SPRITE_NONE;
         sPartyMenuBoxes[i].statusSpriteId = SPRITE_NONE;
     }
-    // The first party mon goes in the left column
-    if (layout != PARTY_LAYOUT_SINGLE) //Custom party menu
-        sPartyMenuBoxes[0].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
-
-    if (layout == PARTY_LAYOUT_MULTI_SHOWCASE)
-        sPartyMenuBoxes[3].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
-    else if (layout != PARTY_LAYOUT_SINGLE)
-        sPartyMenuBoxes[1].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
 }
 
 static void RenderPartyMenuBox(u8 slot)
@@ -1674,10 +1664,7 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
     s8 newSlotId = *slotPtr;
     u8 layout = gPartyMenu.layout;
 
-    if (layout == PARTY_LAYOUT_SINGLE)
-        UpdatePartySelectionSingleLayout(slotPtr, movementDir);
-    else
-        UpdatePartySelectionDoubleLayout(slotPtr, movementDir);
+    UpdatePartySelectionSingleLayout(slotPtr, movementDir);
 
     if (*slotPtr != newSlotId)
     {
@@ -1689,8 +1676,6 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
 
 static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
 {
-    if (gPartyMenu.layout != PARTY_LAYOUT_SINGLE) //Custom party menu
-    {
     // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
     switch (movementDir)
     {
@@ -1710,9 +1695,9 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
             else
                 *slotPtr = gPlayerPartyCount - 1;
         }
-        else
+        else if (*slotPtr-2 >= 0)
         {
-            (*slotPtr)--;
+            *slotPtr -= 2; //(*slotPtr)--;
         }
         break;
     case MENU_DIR_DOWN:
@@ -1729,96 +1714,32 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                 else
                     *slotPtr = PARTY_SIZE + 1;
             }
-            else
+            else if(*slotPtr+2 < gPlayerPartyCount)
             {
+                *slotPtr += 2;//(*slotPtr)++;
+            }else
                 (*slotPtr)++;
-            }
         }
         break;
     case MENU_DIR_RIGHT:
-        if (gPlayerPartyCount != 1 && *slotPtr == 0)
+        if (gPlayerPartyCount != 1 && *slotPtr%2 == 0)
         {
-            if (sPartyMenuInternal->lastSelectedSlot == 0)
-                *slotPtr = 1;
-            else
-                *slotPtr = sPartyMenuInternal->lastSelectedSlot;
+            if (*slotPtr+1 < gPlayerPartyCount)
+                (*slotPtr)++;
+            // else
+            //     *slotPtr = sPartyMenuInternal->lastSelectedSlot;
         }
         break;
     case MENU_DIR_LEFT:
         if (*slotPtr != 0 && *slotPtr != PARTY_SIZE && *slotPtr != PARTY_SIZE + 1)
         {
-            sPartyMenuInternal->lastSelectedSlot = *slotPtr;
-            *slotPtr = 0;
+            if (*slotPtr-1 >= 0 && *slotPtr%2 == 1)
+                (*slotPtr)--;
+            // sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+            // *slotPtr = 0;
         }
         break;
     }
-}
-    else //Custom party menu
-    {// PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
-        switch (movementDir)
-        {
-        case MENU_DIR_UP:
-            if (*slotPtr == 0)
-            {
-                *slotPtr = PARTY_SIZE + 1;
-            }
-            else if (*slotPtr == PARTY_SIZE)
-            {
-                *slotPtr = gPlayerPartyCount - 1;
-            }
-            else if (*slotPtr == PARTY_SIZE + 1)
-            {
-                if (sPartyMenuInternal->chooseHalf)
-                    *slotPtr = PARTY_SIZE;
-                else
-                    *slotPtr = gPlayerPartyCount - 1;
-            }
-            else if (*slotPtr-2 >= 0)
-            {
-                *slotPtr -= 2; //(*slotPtr)--;
-            }
-            break;
-        case MENU_DIR_DOWN:
-            if (*slotPtr == PARTY_SIZE + 1)
-            {
-                *slotPtr = 0;
-            }
-            else
-            {
-                if (*slotPtr == gPlayerPartyCount - 1)
-                {
-                    if (sPartyMenuInternal->chooseHalf)
-                        *slotPtr = PARTY_SIZE;
-                    else
-                        *slotPtr = PARTY_SIZE + 1;
-                }
-                else if(*slotPtr+2 < gPlayerPartyCount)
-                {
-                    *slotPtr += 2;//(*slotPtr)++;
-                }else
-                    (*slotPtr)++;
-            }
-            break;
-        case MENU_DIR_RIGHT:
-            if (gPlayerPartyCount != 1 && *slotPtr%2 == 0)
-            {
-                if (*slotPtr+1 < gPlayerPartyCount)
-                    (*slotPtr)++;
-                // else
-                //     *slotPtr = sPartyMenuInternal->lastSelectedSlot;
-            }
-            break;
-        case MENU_DIR_LEFT:
-            if (*slotPtr != 0 && *slotPtr != PARTY_SIZE && *slotPtr != PARTY_SIZE + 1)
-            {
-                if (*slotPtr-1 >= 0 && *slotPtr%2 == 1)
-                    (*slotPtr)--;
-                // sPartyMenuInternal->lastSelectedSlot = *slotPtr;
-                // *slotPtr = 0;
-            }
-            break;
-        }
-    }//
 }
 
 static void UpdatePartySelectionDoubleLayout(s8 *slotPtr, s8 movementDir)
@@ -2334,10 +2255,10 @@ static void CreateCancelConfirmWindows(bool8 chooseHalf)
             AddTextPrinterParameterized4(confirmWindowId, FONT_SMALL, mainOffset, 1, 0, 0, sFontColorTable[0], TEXT_SKIP_DRAW, gMenuText_Confirm);
             PutWindowTilemap(confirmWindowId);
             CopyWindowToVram(confirmWindowId, COPYWIN_GFX);
-            cancelWindowId = AddWindow(&sMultiCancelButtonWindowTemplate);
+            cancelWindowId = AddWindow(&sMultiCancelButtonWindowTemplate_equal);
             offset = 0;
         }
-        else if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE)
+        else if (gPartyMenu.layout != PARTY_MENU_TYPE_CHOOSE_HALF)
         {
             cancelWindowId = AddWindow(&sCancelButtonWindowTemplate_equal);
             offset = 3;
@@ -2554,7 +2475,9 @@ static void DisplayPartyPokemonNickname(struct Pokemon *mon, struct PartyMenuBox
 
 static void DisplayPartyPokemonLevelCheck(struct Pokemon *mon, struct PartyMenuBox *menuBox, u8 c)
 {
-    if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE && GetMonData(mon, MON_DATA_STATUS) == STATUS1_NONE)
+    if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE 
+    && GetMonData(mon, MON_DATA_STATUS) == STATUS1_NONE
+    && GetMonData(mon, MON_DATA_HP) > 0)
     {
         if (c != 0)
             menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[4] >> 3, (menuBox->infoRects->dimensions[5] >> 3), (menuBox->infoRects->dimensions[6] >> 3) + 8, (menuBox->infoRects->dimensions[7] >> 3) + 4, FALSE);
@@ -2712,7 +2635,16 @@ static void DisplayPartyPokemonDescriptionText(u8 stringID, struct PartyMenuBox 
         menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, (menuBox->infoRects->descTextTop >> 3)+1, width, height, TRUE);
     }
     if (c != 2)
+    {
+        #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
+        FillWindowPixelRect(menuBox->windowId, 0x05, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, menuBox->infoRects->descTextWidth, 7);
+        #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_HGSS
+        FillWindowPixelRect(menuBox->windowId, 0x04, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, menuBox->infoRects->descTextWidth, 7);
+        #else
+        FillWindowPixelRect(menuBox->windowId, 0x06, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, 32, 7);
+        #endif
         AddTextPrinterParameterized3(menuBox->windowId, FONT_NORMAL, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, sFontColorTable[0], 0, sDescriptionStringTable[stringID]);
+    }
 }
 
 static void PartyMenuRemoveWindow(u8 *ptr)
@@ -7516,7 +7448,9 @@ u8 GetPartyIdFromBattlePartyId(u8 battlePartyId)
         {
             j++;
             if ((gBattlePartyCurrentOrder[i] & 0xF) == battlePartyId)
+            {
                 return j;
+            }
         }
         else
         {
