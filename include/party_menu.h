@@ -42,10 +42,12 @@ Huge credits to everyone involved!
 #define PARTY_MENU_STYLE_HGSS       1
 #define PARTY_MENU_STYLE_BW         2
 
-#define PARTY_MENU_STYLE            PARTY_MENU_STYLE_DEFAULT                       
-#define PARTY_MENU_ALPHA            (PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW) // If TRUE, the columns have a transparent BG. 
-                                                                              // Only designed for the BW style, so looks ugly on other styles.
-
+#define PARTY_MENU_STYLE                   PARTY_MENU_STYLE_DEFAULT                       
+#define PARTY_MENU_ALPHA                   (PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW) // If TRUE, the columns have a transparent BG. 
+                                                                                     // Only designed for the BW style, so looks ugly on other styles.
+#define PARTY_MENU_HIGHLIGHT_ACTIVE_SINGLE FALSE // If TRUE, in single battles, changes the colour of the first party slot. Easier to see who is on the field, in my opinion.
+#define PARTY_MENU_HIGHLIGHT_ACTIVE_DOUBLE FALSE // If TRUE, in double battles, changes the colour of the first two party slots. Easier to see who is on the field, in my opinion.
+                                                 // This is not active in multi-battles, as it uses the colour that is usually used to represent our partner's pokemon.
 void AnimatePartySlot(u8 slot, u8 animNum);
 bool8 IsMultiBattle(void);
 u8 GetCursorSelectionMonId(void);

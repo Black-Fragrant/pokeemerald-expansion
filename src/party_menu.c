@@ -1319,6 +1319,16 @@ static u8 GetPartyBoxPaletteFlags(u8 slot, u8 animNum)
     }
     if (gPartyMenu.action == PARTY_ACTION_SOFTBOILED && slot == gPartyMenu.slotId )
         palFlags |= PARTY_PAL_TO_SOFTBOIL;
+    #if PARTY_MENU_HIGHLIGHT_ACTIVE_SINGLE == TRUE
+    if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE && slot == 0 && gMain.inBattle) // highlight in singles
+        palFlags |= PARTY_PAL_MULTI_ALT;
+    #endif // PARTY_MENU_HIGHLIGHT_ACTIVE_SINGLE == TRUE
+    #if PARTY_MENU_HIGHLIGHT_ACTIVE_DOUBLE == TRUE
+    if ((gPartyMenu.layout == PARTY_LAYOUT_DOUBLE && slot == 0)
+    ||  (gPartyMenu.layout == PARTY_LAYOUT_DOUBLE && slot == 1)) // highlight in doubles
+        palFlags |= PARTY_PAL_MULTI_ALT;
+    #endif // PARTY_MENU_HIGHLIGHT_ACTIVE_DOUBLE == TRUE
+
 
     return palFlags;
 }
