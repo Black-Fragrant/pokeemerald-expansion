@@ -35,6 +35,8 @@
 
 // Looking for configs for renaming mons and relearning moves? Those use the standard expansion configs
 // P_SUMMARY_SCREEN_RENAME and P_SUMMARY_SCREEN_MOVE_RELEARNER in include/config/pokemon.h
+// Same with showing dynamic types:
+// P_SHOW_DYNAMIC_TYPES
 
 /* Info for users
 
@@ -63,11 +65,8 @@ SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(14, 6));
 */
 
 /* ravetodo in future updates
-
-- hidden power
 - extended move desc window
 - ribbons
-
 */
 
 void ShowPokemonSummaryScreen_BW(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void));
