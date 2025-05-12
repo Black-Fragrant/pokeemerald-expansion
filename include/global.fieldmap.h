@@ -40,10 +40,13 @@ struct Tileset
     /*0x00*/ bool8 isCompressed;
     /*0x01*/ bool8 isSecondary;
     /*0x04*/ const u32 *tiles;
-    /*0x08*/ const u16 (*palettes)[16];
+    /*0x08*/ const u16 (*palettes)[16]; //Spring Palette
     /*0x0C*/ const u16 *metatiles;
     /*0x10*/ const u16 *metatileAttributes;
     /*0x14*/ TilesetCB callback;
+    /*0x08*/ const u16 (*palettes_summer)[16];
+    /*0x08*/ const u16 (*palettes_autumn)[16];
+    /*0x08*/ const u16 (*palettes_winter)[16];
 };
 
 struct MapLayout
