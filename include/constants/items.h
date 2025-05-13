@@ -813,6 +813,8 @@
 #define ITEM_TM93 674
 #define ITEM_TM94 675
 #define ITEM_TM95 676
+
+// Unused
 #define ITEM_TM96 677
 #define ITEM_TM97 678
 #define ITEM_TM98 679
@@ -825,6 +827,8 @@
 #define ITEM_HM04 685
 #define ITEM_HM05 686
 #define ITEM_HM06 687
+
+// Unused
 #define ITEM_HM07 688
 #define ITEM_HM08 689
 
