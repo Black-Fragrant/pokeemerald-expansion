@@ -3393,4 +3393,16 @@ extern const u32 gBattleIcons_Gfx2[];
 extern const u32 gBattleIcons_Pal1[];
 extern const u32 gBattleIcons_Pal2[];
 
+//Main Menu
+extern const u16 sMainMenuTextPal[];
+extern const u16 sMainMenuTextFemalePal[];
+extern const u16 gPalMainMenuBG[];
+extern const u16 gPalMainMenuNoSel[];
+extern const u16 gPalMainMenuSel[];
+extern const u32 gTilesMainMenuBG1[];
+extern const u32 gTilesMainMenuBG2[];
+extern const u32 gMapMainMenuBG2[];
+extern const u32 gMapMainMenuNewGame[];
+extern const u32 gMapMainMenuContinue[];
+
 #endif //GUARD_GRAPHICS_H
