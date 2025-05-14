@@ -208,7 +208,7 @@
 #define METATILE_General_BlueCaveIndent        0x1B0
 #define METATILE_General_BlueCaveOpen          0x1B1
 #define METATILE_General_CalmWater             0x170
-#define METATILE_General_CaveEntrance_Bottom   0x0A7
+#define METATILE_General_CaveEntrance_Bottom   0x1F0
 #define METATILE_General_CaveEntrance_Top      0x09F
 #define METATILE_General_Door                  0x021
 #define METATILE_General_Door_Contest          0x1DB
@@ -226,10 +226,10 @@
 #define METATILE_General_MuddySlope_Frame3     0x0EB
 #define METATILE_General_RedCaveIndent         0x1A0
 #define METATILE_General_RedCaveOpen           0x1A1
-#define METATILE_General_ReflectiveWater       0x0A1
+#define METATILE_General_ReflectiveWater       0x1F2
 #define METATILE_General_RockWall_GrassBase    0x1F6
 #define METATILE_General_RockWall_RockBase     0x1F5
-#define METATILE_General_RockWall_SandBase     0x091
+#define METATILE_General_RockWall_SandBase     0x1F4
 #define METATILE_General_RoughDeepWater        0x14F
 #define METATILE_General_RoughWater            0x14E
 #define METATILE_General_SandPit_Center        0x121
