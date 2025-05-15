@@ -6391,3 +6391,1907 @@ DirectSoundWaveData_sd90_classical_whistle::
 	.align 2
 DirectSoundWaveData_sd90_enhanced_delay_shaku::
 	.incbin "sound/direct_sound_samples/sd90_enhanced_delay_shaku.bin"
+
+@ -- Start BW/2 Instrument Samples --
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample001::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_001.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample002::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_002.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample003::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_003.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample004::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_004.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample005::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_005.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample006::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_006.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample007::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_007.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample008::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_008.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample009::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_009.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample010::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_010.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample011::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_011.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample012::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_012.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample013::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_013.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample014::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_014.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample015::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_015.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample016::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_016.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample017::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_017.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample018::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_018.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample019::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_019.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample020::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_020.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample021::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_021.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample022::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_022.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample023::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_023.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample024::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_024.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample025::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_025.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample026::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_026.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample027::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_027.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample028::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_028.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample029::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_029.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample030::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_030.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample031::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_031.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample032::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_032.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample033::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_033.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample034::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_034.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample035::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_035.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample036::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_036.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample037::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_037.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample038::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_038.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample039::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_039.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample040::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_040.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample041::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_041.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample042::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_042.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample043::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_043.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample044::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_044.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample045::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_045.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample046::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_046.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample047::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_047.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample048::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_048.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample049::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_049.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample050::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_050.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample051::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_051.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample052::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_052.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample053::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_053.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample054::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_054.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample055::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_055.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample056::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_056.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample057::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_057.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample058::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_058.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample059::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_059.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample060::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_060.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample061::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_061.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample062::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_062.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample063::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_063.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample064::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_064.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample065::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_065.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample066::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_066.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample067::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_067.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample068::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_068.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample069::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_069.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample070::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_070.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample071::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_071.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample072::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_072.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample073::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_073.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample074::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_074.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample075::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_075.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample076::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_076.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample077::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_077.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample078::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_078.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample079::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_079.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample080::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_080.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample081::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_081.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample082::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_082.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample083::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_083.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample084::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_084.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample085::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_085.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample086::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_086.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample087::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_087.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample088::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_088.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample089::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_089.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample090::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_090.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample091::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_091.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample092::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_092.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample093::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_093.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample094::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_094.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample095::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_095.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample096::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_096.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample097::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_097.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample098::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_098.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample099::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_099.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample100::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_100.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample101::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_101.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample102::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_102.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample103::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_103.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample104::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_104.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample105::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_105.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample106::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_106.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample107::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_107.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample108::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_108.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample109::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_109.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample110::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_110.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample111::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_111.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample112::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_112.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample113::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_113.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample114::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_114.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample115::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_115.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample116::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_116.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample117::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_117.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample118::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_118.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample119::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_119.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample120::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_120.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample121::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_121.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample122::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_122.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample123::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_123.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample124::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_124.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample125::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_125.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample126::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_126.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample127::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_127.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample128::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_128.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample129::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_129.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample130::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_130.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample131::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_131.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample132::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_132.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample133::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_133.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample134::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_134.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample135::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_135.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample136::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_136.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample137::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_137.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample138::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_138.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample139::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_139.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample140::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_140.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample141::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_141.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample142::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_142.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample143::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_143.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample144::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_144.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample145::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_145.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample146::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_146.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample147::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_147.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample148::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_148.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample149::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_149.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample150::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_150.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample151::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_151.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample152::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_152.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample153::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_153.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample154::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_154.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample155::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_155.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample156::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_156.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample157::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_157.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample158::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_158.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample159::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_159.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample160::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_160.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample161::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_161.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample162::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_162.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample163::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_163.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample164::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_164.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample165::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_165.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample166::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_166.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample167::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_167.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample168::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_168.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample169::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_169.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample170::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_170.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample171::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_171.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample172::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_172.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample173::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_173.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample174::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_174.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample175::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_175.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample176::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_176.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample177::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_177.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample178::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_178.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample179::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_179.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample180::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_180.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample181::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_181.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample182::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_182.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample183::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_183.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample184::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_184.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample185::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_185.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample186::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_186.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample187::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_187.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample188::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_188.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample189::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_189.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample190::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_190.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample191::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_191.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample192::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_192.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample193::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_193.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample194::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_194.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample195::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_195.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample196::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_196.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample197::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_197.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample198::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_198.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample199::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_199.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample200::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_200.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample201::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_201.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample202::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_202.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample203::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_203.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample204::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_204.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample205::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_205.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample206::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_206.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample207::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_207.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample208::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_208.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample209::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_209.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample210::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_210.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample211::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_211.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample212::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_212.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample213::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_213.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample214::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_214.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample215::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_215.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample216::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_216.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample217::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_217.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample218::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_218.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample219::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_219.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample220::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_220.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample221::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_221.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample222::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_222.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample223::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_223.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample224::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_224.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample225::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_225.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample226::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_226.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample227::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_227.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample228::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_228.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample229::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_229.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample230::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_230.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample231::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_231.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample232::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_232.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample233::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_233.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample234::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_234.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample235::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_235.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample236::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_236.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample237::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_237.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample238::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_238.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample239::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_239.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample240::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_240.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample241::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_241.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample242::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_242.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample243::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_243.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample244::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_244.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample245::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_245.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample246::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_246.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample247::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_247.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample248::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_248.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample249::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_249.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample250::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_250.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample251::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_251.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample252::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_252.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample253::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_253.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample254::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_254.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample255::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_255.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample256::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_256.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample257::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_257.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample258::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_258.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample259::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_259.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample260::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_260.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample261::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_261.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample262::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_262.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample263::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_263.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample264::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_264.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample265::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_265.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample266::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_266.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample267::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_267.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample268::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_268.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample269::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_269.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample270::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_270.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample271::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_271.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample272::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_272.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample273::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_273.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample274::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_274.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample275::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_275.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample276::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_276.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample277::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_277.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample278::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_278.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample279::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_279.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample280::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_280.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample281::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_281.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample282::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_282.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample283::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_283.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample284::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_284.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample285::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_285.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample286::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_286.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample287::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_287.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample288::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_288.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample289::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_289.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample290::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_290.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample291::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_291.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample292::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_292.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample293::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_293.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample294::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_294.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample295::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_295.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample296::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_296.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample297::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_297.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample298::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_298.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample299::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_299.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample300::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_300.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample301::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_301.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample302::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_302.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample303::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_303.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample304::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_304.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample305::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_305.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample306::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_306.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample307::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_307.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample308::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_308.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample309::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_309.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample310::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_310.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample311::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_311.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample312::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_312.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample313::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_313.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample314::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_314.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample315::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_315.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample316::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_316.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample317::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_317.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample318::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_318.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample319::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_319.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample320::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_320.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample321::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_321.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample322::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_322.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample323::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_323.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample324::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_324.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample325::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_325.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample326::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_326.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample327::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_327.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample328::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_328.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample329::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_329.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample330::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_330.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample331::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_331.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample332::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_332.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample333::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_333.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample334::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_334.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample335::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_335.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample336::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_336.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample337::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_337.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample338::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_338.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample339::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_339.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample340::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_340.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample341::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_341.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample342::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_342.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample343::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_343.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample344::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_344.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample345::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_345.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample346::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_346.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample347::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_347.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample348::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_348.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample349::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_349.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample350::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_350.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample351::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_351.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample352::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_352.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample353::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_353.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample354::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_354.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample355::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_355.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample356::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_356.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample357::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_357.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample358::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_358.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample359::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_359.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample360::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_360.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample361::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_361.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample362::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_362.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample363::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_363.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample364::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_364.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample365::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_365.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample366::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_366.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample367::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_367.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample368::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_368.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample369::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_369.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample370::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_370.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample371::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_371.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample372::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_372.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample373::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_373.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample374::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_374.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample375::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_375.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample376::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_376.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample377::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_377.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample378::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_378.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample379::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_379.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample380::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_380.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample381::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_381.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample382::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_382.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample383::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_383.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample384::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_384.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample385::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_385.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample386::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_386.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample387::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_387.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample388::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_388.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample389::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_389.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample390::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_390.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample391::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_391.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample392::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_392.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample393::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_393.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample394::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_394.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample395::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_395.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample396::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_396.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample397::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_397.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample398::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_398.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample399::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_399.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample400::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_400.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample401::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_401.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample402::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_402.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample403::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_403.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample404::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_404.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample405::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_405.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample406::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_406.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample407::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_407.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample408::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_408.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample409::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_409.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample410::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_410.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample411::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_411.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample412::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_412.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample413::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_413.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample414::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_414.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample415::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_415.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample416::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_416.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample417::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_417.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample418::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_418.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample419::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_419.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample420::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_420.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample421::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_421.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample422::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_422.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample423::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_423.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample424::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_424.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample425::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_425.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample426::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_426.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample427::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_427.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample428::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_428.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample429::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_429.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample430::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_430.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample431::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_431.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample432::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_432.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample433::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_433.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample434::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_434.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample435::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_435.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample436::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_436.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample437::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_437.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample438::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_438.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample439::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_439.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample440::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_440.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample441::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_441.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample442::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_442.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample443::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_443.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample444::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_444.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample445::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_445.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample446::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_446.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample447::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_447.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample448::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_448.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample449::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_449.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample450::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_450.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample451::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_451.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample452::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_452.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample453::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_453.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample454::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_454.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample455::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_455.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample456::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_456.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample457::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_457.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample458::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_458.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample459::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_459.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample460::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_460.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample461::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_461.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample462::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_462.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample463::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_463.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample464::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_464.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample465::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_465.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample466::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_466.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample467::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_467.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample468::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_468.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample469::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_469.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample470::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_470.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample471::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_471.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample472::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_472.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample473::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_473.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample474::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_474.bin"
+
+    .align 2
+DirectSoundWaveData_BWInstrumentSample475::
+    .incbin "sound/direct_sound_samples/bw/bw_instrument_sample_475.bin"
+
+@ -- End BW/2 Instrument Samples --
