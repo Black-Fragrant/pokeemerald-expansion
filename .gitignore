@@ -34,10 +34,16 @@ prefabs.json
 .vscode/
 *.a
 .fuse_hidden*
+.ccls-cache/*
+.ropeproject/
+/overworld/
+/icons/
 *.sna
 *.diff
 *.sym
 *.js
+agbcc/
+/*.zip
 /pokeemerald-*.png
 src/data/map_group_count.h
 tools/trainerproc/trainerproc
