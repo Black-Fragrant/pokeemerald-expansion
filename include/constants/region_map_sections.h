@@ -89,7 +89,7 @@
 #define MAPSEC_SKY_PILLAR                   0x55
 #define MAPSEC_SECRET_BASE                  0x56
 #define MAPSEC_DYNAMIC                      0x57
-#define MAPSEC_PALLET_TOWN                  0x58
+#define MAPSEC_NUVEMA_TOWN                  0x58
 #define MAPSEC_VIRIDIAN_CITY                0x59
 #define MAPSEC_PEWTER_CITY                  0x5A
 #define MAPSEC_CERULEAN_CITY                0x5B
@@ -220,7 +220,7 @@
 #define METLOC_IN_GAME_TRADE                0xFE
 #define METLOC_FATEFUL_ENCOUNTER            0xFF
 
-#define KANTO_MAPSEC_START  MAPSEC_PALLET_TOWN
+#define KANTO_MAPSEC_START  MAPSEC_VIRIDIAN_CITY
 #define KANTO_MAPSEC_END    MAPSEC_SPECIAL_AREA
 #define KANTO_MAPSEC_COUNT (KANTO_MAPSEC_END - KANTO_MAPSEC_START + 1)
 

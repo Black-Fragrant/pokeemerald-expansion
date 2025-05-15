@@ -706,8 +706,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_PALLET_TOWN",
-      "name": "PALLET TOWN",
+      "map_section": "MAPSEC_NUVEMA_TOWN",
+      "name": "Nuvema Town",
       "x": 0,
       "y": 0,
       "width": 1,
