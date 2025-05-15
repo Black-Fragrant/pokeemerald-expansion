@@ -210,7 +210,7 @@ static void ClearMainMenuWindowTilemap(const struct WindowTemplate *);
 static void Task_DisplayMainMenu(u8);
 static void Task_WaitForBatteryDryErrorWindow(u8);
 static void MainMenu_FormatSavegameText(void);
-static void HighlightSelectedMainMenuItem(u8, u8);
+static void HighlightSelectedMainMenuItem(u8, u8, s16);
 static void Task_HandleMainMenuInput(u8);
 static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
@@ -728,14 +728,12 @@ static void Task_DisplayMainMenu(u8 taskId)
                 LZ77UnCompVram(gMapMainMenuNewGame, (void *)(VRAM + 0xE800));
 			    PrintMainMenuItem(gText_MainMenuNewGame, 24, 16, 0);
 			    PrintMainMenuItem(gText_Options, 24, 40, 0);
-                MainMenu_FormatSavegameText();
                 break;
             case HAS_SAVED_GAME:
                 LZ77UnCompVram(gMapMainMenuContinue, (void *)(VRAM + 0xE800)); 
                 PrintMainMenuItem(gText_MainMenuContinue, 24, 8, 0);
 			    PrintMainMenuItem(gText_MainMenuNewGame, 24, 112, 0);
 			    PrintMainMenuItem(gText_Options, 24, 136, 0);
-                MainMenu_FormatSavegameText();
                 break;
         }
         PutWindowTilemap(0);
@@ -745,9 +743,7 @@ static void Task_DisplayMainMenu(u8 taskId)
 
 static void Task_HighlightSelectedMainMenuItem(u8 taskId)
 {
-    u8 CursorPos;
-    CursorPos = Menu_GetCursorPos();
-    HighlightSelectedMainMenuItem(gTasks[taskId].tMenuType, CursorPos);
+    HighlightSelectedMainMenuItem(gTasks[taskId].tMenuType, gTasks[taskId].tCurrItem, gTasks[taskId].tIsScrolled);
     gTasks[taskId].func = Task_HandleMainMenuInput;
 }
 
@@ -880,43 +876,37 @@ static void Task_HandleMainMenuBPressed(u8 taskId)
 
 #undef tArrowTaskIsScrolled
 
-static void HighlightSelectedMainMenuItem(u8 menuType, u8 cursorPos)
+static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 isScrolled)
 {
-    LoadPalette(gPalMainMenuNoSel, 16, 96);
+    SetGpuReg(REG_OFFSET_WIN0H, MENU_WIN_HCOORDS);
 
     switch (menuType)
     {
         case HAS_NO_SAVED_GAME:
         default:
-            switch (cursorPos)
+            switch (selectedMenuItem)
             {
                 case 0:
                 default:
-                    LoadPalette(gPalMainMenuSel, 16, 32);
+                    SetGpuReg(REG_OFFSET_WIN0V, MENU_WIN_VCOORDS(0));
                     break;
                 case 1:
-                    LoadPalette(gPalMainMenuSel, 32, 32);
+                    SetGpuReg(REG_OFFSET_WIN0V, MENU_WIN_VCOORDS(1));
                     break;
             }
             break;
         case HAS_SAVED_GAME:
-            switch (cursorPos)
+            switch (selectedMenuItem)
             {
                 case 0:
                 default:
-                    LoadPalette(gPalMainMenuSel, 16, 32);
-			        DestroyAllSprites();
-			        LoadOverWorld(1);
-			        LoadMonIcon(1);
+                    SetGpuReg(REG_OFFSET_WIN0V, MENU_WIN_VCOORDS(2));
                     break;
                 case 1:
-                    LoadPalette(gPalMainMenuSel, 32, 32);
-			        DestroyAllSprites();
-			        LoadOverWorld(0);
-			        LoadMonIcon(0);
+                    SetGpuReg(REG_OFFSET_WIN0V, MENU_WIN_VCOORDS(3));
                     break;
                 case 2:
-                    LoadPalette(gPalMainMenuSel, 48, 32);
+                    SetGpuReg(REG_OFFSET_WIN0V, MENU_WIN_VCOORDS(4));
                     break;
             }
             break;
@@ -1974,6 +1964,14 @@ static void PrintMainMenuItem(const u8 *string, u8 left, u8 top, u8 text_color)
 
 static void DrawMainMenuWindowBorder(const struct WindowTemplate *template, u16 baseTileNum)
 {
+    u16 r9 = 1 + baseTileNum;
+    u16 r10 = 2 + baseTileNum;
+    u16 sp18 = 3 + baseTileNum;
+    u16 spC = 5 + baseTileNum;
+    u16 sp10 = 6 + baseTileNum;
+    u16 sp14 = 7 + baseTileNum;
+    u16 r6 = 8 + baseTileNum;
+
     FillBgTilemapBufferRect(template->bg, 0x1B1, template->tilemapLeft - 1,               template->tilemapTop - 1, 1, 1, 14);
     FillBgTilemapBufferRect(template->bg, 0x1B2, template->tilemapLeft,                   template->tilemapTop - 1, template->width, template->height, 2);
     FillBgTilemapBufferRect(template->bg, 0x1B3, template->tilemapLeft + template->width, template->tilemapTop - 1, 1, 1, 14);
