@@ -94,6 +94,9 @@ DATA_SRC_SUBDIR = src/data
 DATA_ASM_SUBDIR = data
 SONG_SUBDIR = sound/songs
 MID_SUBDIR = sound/songs/midi
+SAMPLE_SUBDIR = sound/direct_sound_samples
+CRY_SUBDIR = sound/direct_sound_samples/cries
+PHONEME_SUBDIR = sound/direct_sound_samples/phonemes
 TEST_SUBDIR = test
 
 C_BUILDDIR = $(OBJ_DIR)/$(C_SUBDIR)
@@ -298,10 +301,12 @@ clean: tidy clean-tools clean-check-tools clean-generated clean-assets
 	@$(MAKE) clean -C libagbsyscall
 
 clean-assets:
+	rm -f $(SAMPLE_SUBDIR)/*.bin
+	rm -f $(CRY_SUBDIR)/*.bin
+	rm -f $(PHONEME_SUBDIR)/*.bin
 	rm -f $(MID_SUBDIR)/*.s
 	rm -f $(DATA_ASM_SUBDIR)/layouts/layouts.inc $(DATA_ASM_SUBDIR)/layouts/layouts_table.inc
 	rm -f $(DATA_ASM_SUBDIR)/maps/connections.inc $(DATA_ASM_SUBDIR)/maps/events.inc $(DATA_ASM_SUBDIR)/maps/groups.inc $(DATA_ASM_SUBDIR)/maps/headers.inc $(DATA_SRC_SUBDIR)/map_group_count.h
-	find sound -iname '*.bin' -exec rm {} +
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.rl' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
 	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' \) -exec rm {} +
 
