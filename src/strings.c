@@ -20,10 +20,10 @@ const u8 gText_ExpandedPlaceholder_Brendan[] = _("BRENDAN");
 const u8 gText_ExpandedPlaceholder_May[] = _("MAY");
 const u8 gText_EggNickname[] = _("EGG");
 const u8 gText_Pokemon[] = _("POKéMON");
-const u8 gText_Player[] = _("PLAYER");
-const u8 gText_Pokedex[] = _("Pokédex: ");
-const u8 gText_Time[] = _("Time: ");
-const u8 gText_Badges[] = _("Badges: ");
+const u8 gText_Player[] = _("PLAYER"); // Unused
+const u8 gText_Pokedex[] = _("POKéDEX"); // Unused
+const u8 gText_Time[] = _("TIME");
+const u8 gText_Badges[] = _("BADGES"); // Unused
 const u8 gText_AButton[] = _("A Button"); // Unused
 const u8 gText_BButton[] = _("B Button"); // Unused
 const u8 gText_RButton[] = _("R Button"); // Unused
@@ -1295,7 +1295,3 @@ const u8 gText_PM[] = _("PM");
 const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
 const u8 gText_Rename[] = _("RENAME");
 const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
-
-// Main Menu
-const u8 gText_Options[] = _("OPTIONS");
-const u8 gText_Team[] = _("Team:");

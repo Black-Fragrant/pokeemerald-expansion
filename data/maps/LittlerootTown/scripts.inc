@@ -251,7 +251,9 @@ LittlerootTown_EventScript_FatMan::
 	end
 
 LittlerootTown_EventScript_Boy::
+    load_speech_bubble 3
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	destroy_speech_bubble
 	end
 
 LittlerootTown_EventScript_Twin::
