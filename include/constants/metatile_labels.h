@@ -241,7 +241,7 @@
 #define METATILE_General_TallGrass_TreeUp      0x025
 #define METATILE_General_YellowCaveIndent      0x1A8
 #define METATILE_General_YellowCaveOpen        0x1A9
-#define METATILE_General_roughdeeowater        0x1E7
+#define METATILE_General_RoughDeepWater        0x1E7
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
