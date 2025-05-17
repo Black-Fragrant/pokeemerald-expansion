@@ -4420,6 +4420,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Nuvema_Town/border.bin",
       "blockdata_filepath": "data/layouts/Nuvema_Town/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE1_EAST",
+      "name": "Route1_East_Layout",
+      "width": 31,
+      "height": 61,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Nuvema",
+      "border_filepath": "data/layouts/Route1_East/border.bin",
+      "blockdata_filepath": "data/layouts/Route1_East/map.bin"
     }
   ]
 }
