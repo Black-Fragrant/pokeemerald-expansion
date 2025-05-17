@@ -1050,3 +1050,14 @@ const struct Tileset gTileset_UnionRoom =
     .palettes_autumn = NULL,
     .palettes_winter = NULL,
 };
+
+const struct Tileset gTileset_Nuvema =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Nuvema,
+    .palettes = gTilesetPalettes_Nuvema,
+    .metatiles = gMetatiles_Nuvema,
+    .metatileAttributes = gMetatileAttributes_Nuvema,
+    .callback = NULL,
+};

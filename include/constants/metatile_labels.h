@@ -230,6 +230,7 @@
 #define METATILE_General_RockWall_GrassBase    0x1F6
 #define METATILE_General_RockWall_RockBase     0x1F5
 #define METATILE_General_RockWall_SandBase     0x1F4
+#define METATILE_General_RoughDeepWater        0x1E7
 #define METATILE_General_SandPit_Center        0x121
 #define METATILE_General_SecretBase_TreeLeft   0x026
 #define METATILE_General_SecretBase_TreeRight  0x027
@@ -241,7 +242,6 @@
 #define METATILE_General_TallGrass_TreeUp      0x025
 #define METATILE_General_YellowCaveIndent      0x1A8
 #define METATILE_General_YellowCaveOpen        0x1A9
-#define METATILE_General_RoughDeepWater        0x1E7
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
