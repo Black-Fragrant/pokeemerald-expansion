@@ -1,6 +1,5 @@
 {
   "group_order": [
-    "gMapGroup_BWTownsAndRoutes",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -35,9 +34,6 @@
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
     "gMapGroup_IndoorRoute124"
-  ],
-  "gMapGroup_BWTownsAndRoutes": [
-    "Nuvema_Town"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

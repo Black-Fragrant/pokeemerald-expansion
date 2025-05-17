@@ -127,8 +127,8 @@
   ],
   "warp_events": [
     {
-      "x": 26,
-      "y": 11,
+      "x": 22,
+      "y": 17,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
       "dest_warp_id": "1"
