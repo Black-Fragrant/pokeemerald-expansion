@@ -1751,70 +1751,7 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
 {
     if (gPartyMenu.layout != PARTY_LAYOUT_SINGLE) //Custom party menu
     {
-    // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
-    switch (movementDir)
-    {
-    case MENU_DIR_UP:
-        if (*slotPtr == 0)
-        {
-            *slotPtr = PARTY_SIZE + 1;
-        }
-        else if (*slotPtr == PARTY_SIZE)
-        {
-            *slotPtr = gPlayerPartyCount - 1;
-        }
-        else if (*slotPtr == PARTY_SIZE + 1)
-        {
-            if (sPartyMenuInternal->chooseHalf)
-                *slotPtr = PARTY_SIZE;
-            else
-                *slotPtr = gPlayerPartyCount - 1;
-        }
-        else
-        {
-            (*slotPtr)--;
-        }
-        break;
-    case MENU_DIR_DOWN:
-        if (*slotPtr == PARTY_SIZE + 1)
-        {
-            *slotPtr = 0;
-        }
-        else
-        {
-            if (*slotPtr == gPlayerPartyCount - 1)
-            {
-                if (sPartyMenuInternal->chooseHalf)
-                    *slotPtr = PARTY_SIZE;
-                else
-                    *slotPtr = PARTY_SIZE + 1;
-            }
-            else
-            {
-                (*slotPtr)++;
-            }
-        }
-        break;
-    case MENU_DIR_RIGHT:
-        if (gPlayerPartyCount != 1 && *slotPtr == 0)
-        {
-            if (sPartyMenuInternal->lastSelectedSlot == 0)
-                *slotPtr = 1;
-            else
-                *slotPtr = sPartyMenuInternal->lastSelectedSlot;
-        }
-        break;
-    case MENU_DIR_LEFT:
-        if (*slotPtr != 0 && *slotPtr != PARTY_SIZE && *slotPtr != PARTY_SIZE + 1)
-        {
-            sPartyMenuInternal->lastSelectedSlot = *slotPtr;
-            *slotPtr = 0;
-        }
-        break;
-    }
-}
-    else //Custom party menu
-    {// PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
+        // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
         switch (movementDir)
         {
         case MENU_DIR_UP:
@@ -1833,9 +1770,9 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                 else
                     *slotPtr = gPlayerPartyCount - 1;
             }
-            else if (*slotPtr-2 >= 0)
+            else
             {
-                *slotPtr -= 2; //(*slotPtr)--;
+                (*slotPtr)--;
             }
             break;
         case MENU_DIR_DOWN:
@@ -1852,33 +1789,73 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                     else
                         *slotPtr = PARTY_SIZE + 1;
                 }
-                else if(*slotPtr+2 < gPlayerPartyCount)
+                else
                 {
-                    *slotPtr += 2;//(*slotPtr)++;
-                }else
                     (*slotPtr)++;
+                }
             }
             break;
         case MENU_DIR_RIGHT:
-            if (gPlayerPartyCount != 1 && *slotPtr%2 == 0)
+            if (gPlayerPartyCount != 1 && *slotPtr == 0)
             {
-                if (*slotPtr+1 < gPlayerPartyCount)
-                    (*slotPtr)++;
-                // else
-                //     *slotPtr = sPartyMenuInternal->lastSelectedSlot;
+                if (sPartyMenuInternal->lastSelectedSlot == 0)
+                    *slotPtr = 1;
+                else
+                    *slotPtr = sPartyMenuInternal->lastSelectedSlot;
             }
             break;
         case MENU_DIR_LEFT:
             if (*slotPtr != 0 && *slotPtr != PARTY_SIZE && *slotPtr != PARTY_SIZE + 1)
             {
-                if (*slotPtr-1 >= 0 && *slotPtr%2 == 1)
-                    (*slotPtr)--;
-                // sPartyMenuInternal->lastSelectedSlot = *slotPtr;
-                // *slotPtr = 0;
+                sPartyMenuInternal->lastSelectedSlot = *slotPtr;
+                *slotPtr = 0;
             }
             break;
         }
-    }//
+    }
+    else // Custom party menu
+    {
+        // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
+        switch (movementDir)
+        {
+        case MENU_DIR_UP:
+            if (*slotPtr == PARTY_SIZE + 1)
+                *slotPtr = gPlayerPartyCount - 1;
+            else if (*slotPtr == 0 || *slotPtr == 1)
+                *slotPtr = PARTY_SIZE + 1;
+            else
+                *slotPtr -= 2;
+            break;
+        case MENU_DIR_DOWN:
+            if (*slotPtr == PARTY_SIZE + 1)
+                *slotPtr = 0;
+            else if (*slotPtr + 2 < gPlayerPartyCount)
+                *slotPtr += 2;
+            else
+                *slotPtr = PARTY_SIZE + 1;
+            break;
+        case MENU_DIR_LEFT:
+            if (*slotPtr == 0)
+                *slotPtr = PARTY_SIZE + 1;
+            else if (*slotPtr == PARTY_SIZE + 1)
+                *slotPtr = gPlayerPartyCount - 1;
+            else if (*slotPtr > 0)
+            {
+                (*slotPtr)--;
+                if (*slotPtr >= gPlayerPartyCount)
+                    *slotPtr = PARTY_SIZE + 1;
+            }
+            break;
+        case MENU_DIR_RIGHT:
+            if (*slotPtr == PARTY_SIZE + 1)
+                *slotPtr = 0;
+            else if (*slotPtr + 1 < gPlayerPartyCount)
+                (*slotPtr)++;
+            else
+                *slotPtr = PARTY_SIZE + 1;
+            break;
+        }
+    }
 }
 
 static void UpdatePartySelectionDoubleLayout(s8 *slotPtr, s8 movementDir)
