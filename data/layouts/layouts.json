@@ -4417,7 +4417,7 @@
       "width": 29,
       "height": 34,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Nuvema",
       "border_filepath": "data/layouts/Nuvema_Town/border.bin",
       "blockdata_filepath": "data/layouts/Nuvema_Town/map.bin"
     },
