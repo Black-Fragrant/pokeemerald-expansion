@@ -41,15 +41,15 @@ Route120_OnLoad:
 	end
 
 Route120_EventScript_CloseAncientTomb::
-	setmetatile 7, 54, METATILE_General_RockWall_RockBase, TRUE
-	setmetatile 7, 55, METATILE_General_RockWall_SandBase, TRUE
+	// setmetatile 7, 54, METATILE_General_RockWall_RockBase, TRUE
+	// setmetatile 7, 55, METATILE_General_RockWall_SandBase, TRUE
 	return
 
 Route120_EventScript_SetBridgeClearMetatiles::
-	setmetatile 13, 15, METATILE_Fortree_WoodBridge1_Top, FALSE
-	setmetatile 12, 16, METATILE_Fortree_WoodBridge1_Bottom, FALSE
-	setmetatile 12, 17, METATILE_General_ReflectiveWater, FALSE
-	setmetatile 13, 17, METATILE_General_ReflectiveWater, FALSE
+	// setmetatile 13, 15, METATILE_Fortree_WoodBridge1_Top, FALSE
+	// setmetatile 12, 16, METATILE_Fortree_WoodBridge1_Bottom, FALSE
+	// setmetatile 12, 17, METATILE_General_ReflectiveWater, FALSE
+	// setmetatile 13, 17, METATILE_General_ReflectiveWater, FALSE
 	return
 
 Route120_EventScript_SetBridgeKecleonMovement::
@@ -230,10 +230,10 @@ Route120_EventScript_StevenGiveDeconScope::
 	delay 15
 	removeobject LOCALID_STEVEN
 	waitfieldeffect FLDEFF_NPCFLY_OUT
-	setmetatile 13, 15, METATILE_Fortree_WoodBridge1_Top, FALSE
-	setmetatile 12, 16, METATILE_Fortree_WoodBridge1_Bottom, FALSE
-	setmetatile 12, 17, METATILE_General_ReflectiveWater, FALSE
-	setmetatile 13, 17, METATILE_General_ReflectiveWater, FALSE
+	// setmetatile 13, 15, METATILE_Fortree_WoodBridge1_Top, FALSE
+	// setmetatile 12, 16, METATILE_Fortree_WoodBridge1_Bottom, FALSE
+	// setmetatile 12, 17, METATILE_General_ReflectiveWater, FALSE
+	// setmetatile 13, 17, METATILE_General_ReflectiveWater, FALSE
 	special DrawWholeMapView
 	release
 	end
