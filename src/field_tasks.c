@@ -867,28 +867,28 @@ enum {
 };
 #define tSlopeAnimTime(i) data[(i) * SLOPE_DATA_SIZE + SLOPE_DATA_START + SLOPE_TIME]
 
-static const u16 sMuddySlopeMetatiles[] = {
-    METATILE_General_MuddySlope_Frame0,
-    METATILE_General_MuddySlope_Frame3,
-    METATILE_General_MuddySlope_Frame2,
-    METATILE_General_MuddySlope_Frame1
-};
+// static const u16 sMuddySlopeMetatiles[] = {
+//     METATILE_General_MuddySlope_Frame0,
+//     METATILE_General_MuddySlope_Frame3,
+//     METATILE_General_MuddySlope_Frame2,
+//     METATILE_General_MuddySlope_Frame1
+// };
 
 #define SLOPE_ANIM_TIME 32
-#define SLOPE_ANIM_STEP_TIME (SLOPE_ANIM_TIME / (int)ARRAY_COUNT(sMuddySlopeMetatiles))
+// #define SLOPE_ANIM_STEP_TIME (SLOPE_ANIM_TIME / (int)ARRAY_COUNT(sMuddySlopeMetatiles))
 
-static void SetMuddySlopeMetatile(s16 *data, s16 x, s16 y)
-{
-    u16 metatileId;
-    if ((--data[SLOPE_TIME]) == 0)
-        metatileId = METATILE_General_MuddySlope_Frame0;
-    else
-        metatileId = sMuddySlopeMetatiles[data[SLOPE_TIME] / SLOPE_ANIM_STEP_TIME];
+// static void SetMuddySlopeMetatile(s16 *data, s16 x, s16 y)
+// {
+//     u16 metatileId;
+//     if ((--data[SLOPE_TIME]) == 0)
+//         metatileId = METATILE_General_MuddySlope_Frame0;
+//     else
+//         metatileId = sMuddySlopeMetatiles[data[SLOPE_TIME] / SLOPE_ANIM_STEP_TIME];
 
-    MapGridSetMetatileIdAt(x, y, metatileId);
-    CurrentMapDrawMetatileAt(x, y);
-    MapGridSetMetatileIdAt(x, y, METATILE_General_MuddySlope_Frame0);
-}
+//     MapGridSetMetatileIdAt(x, y, metatileId);
+//     CurrentMapDrawMetatileAt(x, y);
+//     MapGridSetMetatileIdAt(x, y, METATILE_General_MuddySlope_Frame0);
+// }
 
 static void Task_MuddySlope(u8 taskId)
 {
@@ -951,7 +951,7 @@ static void Task_MuddySlope(u8 taskId)
         {
             data[i + SLOPE_X] -= cameraOffsetX;
             data[i + SLOPE_Y] -= cameraOffsetY;
-            SetMuddySlopeMetatile(&data[i + SLOPE_TIME], data[i + SLOPE_X], data[i + SLOPE_Y]);
+            // SetMuddySlopeMetatile(&data[i + SLOPE_TIME], data[i + SLOPE_X], data[i + SLOPE_Y]);
         }
     }
 }

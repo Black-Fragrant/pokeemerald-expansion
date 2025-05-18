@@ -261,123 +261,123 @@ AbnormalWeather_EventScript_CleanupRoute118West::
 	return
 
 AbnormalWeather_EventScript_CleanupRoute105North::
-	setmetatile 10, 28, METATILE_General_CalmWater, FALSE
-	setmetatile 11, 28, METATILE_General_CalmWater, FALSE
-	setmetatile 9, 29, METATILE_General_CalmWater, FALSE
-	setmetatile 10, 29, METATILE_General_CalmWater, FALSE
-	setmetatile 11, 29, METATILE_General_CalmWater, FALSE
-	setmetatile 12, 29, METATILE_General_CalmWater, FALSE
-	setmetatile 9, 30, METATILE_General_CalmWater, FALSE
-	setmetatile 10, 30, METATILE_General_CalmWater, FALSE
-	setmetatile 11, 30, METATILE_General_CalmWater, FALSE
-	setmetatile 12, 30, METATILE_General_CalmWater, FALSE
-	setmetatile 10, 31, METATILE_General_CalmWater, FALSE
-	setmetatile 11, 31, METATILE_General_CalmWater, FALSE
+	// setmetatile 10, 28, METATILE_General_CalmWater, FALSE
+	// setmetatile 11, 28, METATILE_General_CalmWater, FALSE
+	// setmetatile 9, 29, METATILE_General_CalmWater, FALSE
+	// setmetatile 10, 29, METATILE_General_CalmWater, FALSE
+	// setmetatile 11, 29, METATILE_General_CalmWater, FALSE
+	// setmetatile 12, 29, METATILE_General_CalmWater, FALSE
+	// setmetatile 9, 30, METATILE_General_CalmWater, FALSE
+	// setmetatile 10, 30, METATILE_General_CalmWater, FALSE
+	// setmetatile 11, 30, METATILE_General_CalmWater, FALSE
+	// setmetatile 12, 30, METATILE_General_CalmWater, FALSE
+	// setmetatile 10, 31, METATILE_General_CalmWater, FALSE
+	// setmetatile 11, 31, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute105South::
-	setmetatile 20, 53, METATILE_General_CalmWater, FALSE
-	setmetatile 21, 53, METATILE_General_CalmWater, FALSE
-	setmetatile 19, 54, METATILE_General_CalmWater, FALSE
-	setmetatile 20, 54, METATILE_General_CalmWater, FALSE
-	setmetatile 21, 54, METATILE_General_CalmWater, FALSE
-	setmetatile 22, 54, METATILE_General_CalmWater, FALSE
-	setmetatile 19, 55, METATILE_General_CalmWater, FALSE
-	setmetatile 20, 55, METATILE_General_CalmWater, FALSE
-	setmetatile 21, 55, METATILE_General_CalmWater, FALSE
-	setmetatile 22, 55, METATILE_General_CalmWater, FALSE
-	setmetatile 20, 56, METATILE_General_CalmWater, FALSE
-	setmetatile 21, 56, METATILE_General_CalmWater, FALSE
+	// setmetatile 20, 53, METATILE_General_CalmWater, FALSE
+	// setmetatile 21, 53, METATILE_General_CalmWater, FALSE
+	// setmetatile 19, 54, METATILE_General_CalmWater, FALSE
+	// setmetatile 20, 54, METATILE_General_CalmWater, FALSE
+	// setmetatile 21, 54, METATILE_General_CalmWater, FALSE
+	// setmetatile 22, 54, METATILE_General_CalmWater, FALSE
+	// setmetatile 19, 55, METATILE_General_CalmWater, FALSE
+	// setmetatile 20, 55, METATILE_General_CalmWater, FALSE
+	// setmetatile 21, 55, METATILE_General_CalmWater, FALSE
+	// setmetatile 22, 55, METATILE_General_CalmWater, FALSE
+	// setmetatile 20, 56, METATILE_General_CalmWater, FALSE
+	// setmetatile 21, 56, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute125West::
-	setmetatile 8, 16, METATILE_General_CalmWater, FALSE
-	setmetatile 9, 16, METATILE_General_CalmWater, FALSE
-	setmetatile 7, 17, METATILE_General_CalmWater, FALSE
-	setmetatile 8, 17, METATILE_General_CalmWater, FALSE
-	setmetatile 9, 17, METATILE_General_CalmWater, FALSE
-	setmetatile 10, 17, METATILE_General_CalmWater, FALSE
-	setmetatile 7, 18, METATILE_General_CalmWater, FALSE
-	setmetatile 8, 18, METATILE_General_CalmWater, FALSE
-	setmetatile 9, 18, METATILE_General_CalmWater, FALSE
-	setmetatile 10, 18, METATILE_General_CalmWater, FALSE
-	setmetatile 8, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 9, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 8, 16, METATILE_General_CalmWater, FALSE
+	// setmetatile 9, 16, METATILE_General_CalmWater, FALSE
+	// setmetatile 7, 17, METATILE_General_CalmWater, FALSE
+	// setmetatile 8, 17, METATILE_General_CalmWater, FALSE
+	// setmetatile 9, 17, METATILE_General_CalmWater, FALSE
+	// setmetatile 10, 17, METATILE_General_CalmWater, FALSE
+	// setmetatile 7, 18, METATILE_General_CalmWater, FALSE
+	// setmetatile 8, 18, METATILE_General_CalmWater, FALSE
+	// setmetatile 9, 18, METATILE_General_CalmWater, FALSE
+	// setmetatile 10, 18, METATILE_General_CalmWater, FALSE
+	// setmetatile 8, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 9, 19, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute125East::
-	setmetatile 53, 18, METATILE_General_CalmWater, FALSE
-	setmetatile 54, 18, METATILE_General_CalmWater, FALSE
-	setmetatile 52, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 53, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 54, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 55, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 52, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 53, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 54, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 55, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 53, 21, METATILE_General_CalmWater, FALSE
-	setmetatile 54, 21, METATILE_General_CalmWater, FALSE
+	// setmetatile 53, 18, METATILE_General_CalmWater, FALSE
+	// setmetatile 54, 18, METATILE_General_CalmWater, FALSE
+	// setmetatile 52, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 53, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 54, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 55, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 52, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 53, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 54, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 55, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 53, 21, METATILE_General_CalmWater, FALSE
+	// setmetatile 54, 21, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute127North::
-	setmetatile 57, 9, METATILE_General_CalmWater, FALSE
-	setmetatile 58, 9, METATILE_General_CalmWater, FALSE
-	setmetatile 56, 10, METATILE_General_CalmWater, FALSE
-	setmetatile 57, 10, METATILE_General_CalmWater, FALSE
-	setmetatile 58, 10, METATILE_General_CalmWater, FALSE
-	setmetatile 59, 10, METATILE_General_CalmWater, FALSE
-	setmetatile 56, 11, METATILE_General_CalmWater, FALSE
-	setmetatile 57, 11, METATILE_General_CalmWater, FALSE
-	setmetatile 58, 11, METATILE_General_CalmWater, FALSE
-	setmetatile 59, 11, METATILE_General_CalmWater, FALSE
-	setmetatile 57, 12, METATILE_General_CalmWater, FALSE
-	setmetatile 58, 12, METATILE_General_CalmWater, FALSE
+	// setmetatile 57, 9, METATILE_General_CalmWater, FALSE
+	// setmetatile 58, 9, METATILE_General_CalmWater, FALSE
+	// setmetatile 56, 10, METATILE_General_CalmWater, FALSE
+	// setmetatile 57, 10, METATILE_General_CalmWater, FALSE
+	// setmetatile 58, 10, METATILE_General_CalmWater, FALSE
+	// setmetatile 59, 10, METATILE_General_CalmWater, FALSE
+	// setmetatile 56, 11, METATILE_General_CalmWater, FALSE
+	// setmetatile 57, 11, METATILE_General_CalmWater, FALSE
+	// setmetatile 58, 11, METATILE_General_CalmWater, FALSE
+	// setmetatile 59, 11, METATILE_General_CalmWater, FALSE
+	// setmetatile 57, 12, METATILE_General_CalmWater, FALSE
+	// setmetatile 58, 12, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute127South::
-	setmetatile 61, 30, METATILE_General_CalmWater, FALSE
-	setmetatile 62, 30, METATILE_General_CalmWater, FALSE
-	setmetatile 60, 31, METATILE_General_CalmWater, FALSE
-	setmetatile 61, 31, METATILE_General_CalmWater, FALSE
-	setmetatile 62, 31, METATILE_General_CalmWater, FALSE
-	setmetatile 63, 31, METATILE_General_CalmWater, FALSE
-	setmetatile 60, 32, METATILE_General_CalmWater, FALSE
-	setmetatile 61, 32, METATILE_General_CalmWater, FALSE
-	setmetatile 62, 32, METATILE_General_CalmWater, FALSE
-	setmetatile 63, 32, METATILE_General_CalmWater, FALSE
-	setmetatile 61, 33, METATILE_General_CalmWater, FALSE
-	setmetatile 62, 33, METATILE_General_CalmWater, FALSE
+	// setmetatile 61, 30, METATILE_General_CalmWater, FALSE
+	// setmetatile 62, 30, METATILE_General_CalmWater, FALSE
+	// setmetatile 60, 31, METATILE_General_CalmWater, FALSE
+	// setmetatile 61, 31, METATILE_General_CalmWater, FALSE
+	// setmetatile 62, 31, METATILE_General_CalmWater, FALSE
+	// setmetatile 63, 31, METATILE_General_CalmWater, FALSE
+	// setmetatile 60, 32, METATILE_General_CalmWater, FALSE
+	// setmetatile 61, 32, METATILE_General_CalmWater, FALSE
+	// setmetatile 62, 32, METATILE_General_CalmWater, FALSE
+	// setmetatile 63, 32, METATILE_General_CalmWater, FALSE
+	// setmetatile 61, 33, METATILE_General_CalmWater, FALSE
+	// setmetatile 62, 33, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute129West::
-	setmetatile 16, 14, METATILE_General_CalmWater, FALSE
-	setmetatile 17, 14, METATILE_General_CalmWater, FALSE
-	setmetatile 15, 15, METATILE_General_CalmWater, FALSE
-	setmetatile 16, 15, METATILE_General_CalmWater, FALSE
-	setmetatile 17, 15, METATILE_General_CalmWater, FALSE
-	setmetatile 18, 15, METATILE_General_CalmWater, FALSE
-	setmetatile 15, 16, METATILE_General_CalmWater, FALSE
-	setmetatile 16, 16, METATILE_General_CalmWater, FALSE
-	setmetatile 17, 16, METATILE_General_CalmWater, FALSE
-	setmetatile 18, 16, METATILE_General_CalmWater, FALSE
-	setmetatile 16, 17, METATILE_General_CalmWater, FALSE
-	setmetatile 17, 17, METATILE_General_CalmWater, FALSE
+	// setmetatile 16, 14, METATILE_General_CalmWater, FALSE
+	// setmetatile 17, 14, METATILE_General_CalmWater, FALSE
+	// setmetatile 15, 15, METATILE_General_CalmWater, FALSE
+	// setmetatile 16, 15, METATILE_General_CalmWater, FALSE
+	// setmetatile 17, 15, METATILE_General_CalmWater, FALSE
+	// setmetatile 18, 15, METATILE_General_CalmWater, FALSE
+	// setmetatile 15, 16, METATILE_General_CalmWater, FALSE
+	// setmetatile 16, 16, METATILE_General_CalmWater, FALSE
+	// setmetatile 17, 16, METATILE_General_CalmWater, FALSE
+	// setmetatile 18, 16, METATILE_General_CalmWater, FALSE
+	// setmetatile 16, 17, METATILE_General_CalmWater, FALSE
+	// setmetatile 17, 17, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_EventScript_CleanupRoute129East::
-	setmetatile 42, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 43, 19, METATILE_General_CalmWater, FALSE
-	setmetatile 41, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 42, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 43, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 44, 20, METATILE_General_CalmWater, FALSE
-	setmetatile 41, 21, METATILE_General_CalmWater, FALSE
-	setmetatile 42, 21, METATILE_General_CalmWater, FALSE
-	setmetatile 43, 21, METATILE_General_CalmWater, FALSE
-	setmetatile 44, 21, METATILE_General_CalmWater, FALSE
-	setmetatile 42, 22, METATILE_General_CalmWater, FALSE
-	setmetatile 43, 22, METATILE_General_CalmWater, FALSE
+	// setmetatile 42, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 43, 19, METATILE_General_CalmWater, FALSE
+	// setmetatile 41, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 42, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 43, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 44, 20, METATILE_General_CalmWater, FALSE
+	// setmetatile 41, 21, METATILE_General_CalmWater, FALSE
+	// setmetatile 42, 21, METATILE_General_CalmWater, FALSE
+	// setmetatile 43, 21, METATILE_General_CalmWater, FALSE
+	// setmetatile 44, 21, METATILE_General_CalmWater, FALSE
+	// setmetatile 42, 22, METATILE_General_CalmWater, FALSE
+	// setmetatile 43, 22, METATILE_General_CalmWater, FALSE
 	return
 
 AbnormalWeather_Underwater_SetupEscapeWarp::

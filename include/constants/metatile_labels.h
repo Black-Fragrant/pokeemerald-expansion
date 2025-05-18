@@ -218,7 +218,6 @@
 #define METATILE_General_TallGrass             0x005
 #define METATILE_General_TallGrass_TreeLeft    0x1C6
 #define METATILE_General_TallGrass_TreeRight   0x1C7
-#define METATILE_General_TallGrass_TreeUp      0x008
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1

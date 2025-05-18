@@ -4414,7 +4414,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN",
       "name": "Nuvema_Town_Layout",
-      "width": 29,
+      "width": 30,
       "height": 34,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Nuvema",
@@ -4424,7 +4424,7 @@
     {
       "id": "LAYOUT_ROUTE1_EAST",
       "name": "Route1_East_Layout",
-      "width": 35,
+      "width": 36,
       "height": 61,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Nuvema",
