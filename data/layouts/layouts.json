@@ -4424,7 +4424,7 @@
     {
       "id": "LAYOUT_ROUTE1_EAST",
       "name": "Route1_East_Layout",
-      "width": 31,
+      "width": 35,
       "height": 61,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Nuvema",
