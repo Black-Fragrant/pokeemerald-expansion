@@ -38,7 +38,8 @@
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "Nuvema_Town",
-    "Route1_East"
+    "Route1_East",
+    "Route1_West"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
