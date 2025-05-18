@@ -979,7 +979,7 @@ bool8 IsBikingDisallowedByPlayer(void)
     {
         PlayerGetDestCoords(&x, &y);
         tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
-        if (!IsRunningDisallowedByMetatile(tileBehavior))
+        if (!IsRunningDisallowedByMetatile(tileBehavior) || !MetatileBehavior_IsBikingDisallowed(tileBehavior))
             return FALSE;
     }
     return TRUE;

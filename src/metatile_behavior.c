@@ -1273,6 +1273,14 @@ bool8 MetatileBehavior_IsRunningDisallowed(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsBikingDisallowed(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_TALL_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS
