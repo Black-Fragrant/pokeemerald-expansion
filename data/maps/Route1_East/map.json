@@ -22,6 +22,11 @@
       "map": "MAP_ROUTE1_WEST",
       "offset": 33,
       "direction": "left"
+    },
+    {
+      "map": "MAP_ACCUMULA_TOWN",
+      "offset": -2,
+      "direction": "up"
     }
   ],
   "object_events": [
