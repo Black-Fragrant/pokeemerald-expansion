@@ -82,6 +82,12 @@ enum FollowerTransformTypes
 #define GROUND_EFFECT_FLAG_SHORT_GRASS           (1 << 17)
 #define GROUND_EFFECT_FLAG_HOT_SPRINGS           (1 << 18)
 #define GROUND_EFFECT_FLAG_SEAWEED               (1 << 19)
+#define GROUND_EFFECT_FLAG_TALL_DARK_GRASS_ON_SPAWN (1 << 20)
+#define GROUND_EFFECT_FLAG_TALL_DARK_GRASS_ON_MOVE  (1 << 21)
+#define GROUND_EFFECT_FLAG_LONG_DARK_GRASS_ON_SPAWN (1 << 22)
+#define GROUND_EFFECT_FLAG_LAND_IN_TALL_DARK_GRASS  (1 << 23)
+#define GROUND_EFFECT_FLAG_LONG_DARK_GRASS_ON_MOVE  (1 << 24)
+#define GROUND_EFFECT_FLAG_LAND_IN_LONG_DARK_GRASS  (1 << 25)
 
 // Sprite data for the CameraObject functions
 #define sCamera_FollowSpriteId data[0]
