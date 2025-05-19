@@ -76,6 +76,12 @@
 #define FLDEFF_TRACKS_SPOT               71
 #define FLDEFF_TRACKS_BUG                72
 #define FLDEFF_CAVE_DUST                 73
+#define FLDEFF_TALL_DARK_GRASS           74
+#define FLDEFF_JUMP_TALL_DARK_GRASS      75
+#define FLDEFF_SHAKING_TALL_DARK_GRASS   76
+#define FLDEFF_LONG_DARK_GRASS           76
+#define FLDEFF_JUMP_LONG_DARK_GRASS      77
+#define FLDEFF_SHAKING_LONG_DARK_GRASS   78
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1

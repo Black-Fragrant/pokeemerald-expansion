@@ -9810,7 +9810,7 @@ void GroundEffect_SpawnOnTallDarkGrass(struct ObjectEvent *objEvent, struct Spri
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = TRUE; // skip to end of anim
-    FieldEffectStart(FLDEFF_TALL_GRASS);
+    FieldEffectStart(FLDEFF_TALL_DARK_GRASS);
 }
 
 void GroundEffect_StepOnTallDarkGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -9823,7 +9823,7 @@ void GroundEffect_StepOnTallDarkGrass(struct ObjectEvent *objEvent, struct Sprit
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
-    FieldEffectStart(FLDEFF_TALL_GRASS);
+    FieldEffectStart(FLDEFF_TALL_DARK_GRASS);
 }
 
 void GroundEffect_SpawnOnLongDarkGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -9836,7 +9836,7 @@ void GroundEffect_SpawnOnLongDarkGrass(struct ObjectEvent *objEvent, struct Spri
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = TRUE; // skip to end of anim
-    FieldEffectStart(FLDEFF_LONG_GRASS);
+    FieldEffectStart(FLDEFF_LONG_DARK_GRASS);
 }
 
 void GroundEffect_StepOnLongDarkGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -9849,7 +9849,7 @@ void GroundEffect_StepOnLongDarkGrass(struct ObjectEvent *objEvent, struct Sprit
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
-    FieldEffectStart(FLDEFF_LONG_GRASS);
+    FieldEffectStart(FLDEFF_LONG_DARK_GRASS);
 }
 
 void GroundEffect_WaterReflection(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -10051,7 +10051,7 @@ void GroundEffect_JumpOnTallDarkGrass(struct ObjectEvent *objEvent, struct Sprit
     gFieldEffectArguments[1] = objEvent->currentCoords.y;
     gFieldEffectArguments[2] = objEvent->previousElevation;
     gFieldEffectArguments[3] = 2;
-    FieldEffectStart(FLDEFF_JUMP_TALL_GRASS);
+    FieldEffectStart(FLDEFF_JUMP_TALL_DARK_GRASS);
 
     spriteId = FindTallDarkGrassFieldEffectSpriteId(
         objEvent->localId,
@@ -10070,7 +10070,7 @@ void GroundEffect_JumpOnLongDarkGrass(struct ObjectEvent *objEvent, struct Sprit
     gFieldEffectArguments[1] = objEvent->currentCoords.y;
     gFieldEffectArguments[2] = objEvent->previousElevation;
     gFieldEffectArguments[3] = 2;
-    FieldEffectStart(FLDEFF_JUMP_LONG_GRASS);
+    FieldEffectStart(FLDEFF_JUMP_LONG_DARK_GRASS);
 }
 
 void GroundEffect_JumpOnShallowWater(struct ObjectEvent *objEvent, struct Sprite *sprite)

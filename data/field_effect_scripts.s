@@ -80,6 +80,12 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_TracksBug                 @ FLDEFF_TRACKS_BUG
 	.4byte gFieldEffectScript_TracksSpot                @ FLDEFF_TRACKS_SPOT
 	.4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
+	.4byte gFieldEffectScript_TallDarkGrass             @ FLDEFF_TALL_DARK_GRASS
+	.4byte gFieldEffectScript_JumpTallDarkGrass         @ FLDEFF_JUMP_TALL_DARK_GRASS
+	.4byte gFieldEffectScript_ShakingTallDarkGrass      @ FLDEFF_SHAKING_TALL_DARK_GRASS
+	.4byte gFieldEffectScript_LongDarkGrass             @ FLDEFF_LONG_DARK_GRASS
+	.4byte gFieldEffectScript_JumpLongDarkGrass         @ FLDEFF_JUMP_LONG_DARK_GRASS
+	.4byte gFieldEffectScript_ShakingLongDarkGrass      @ FLDEFF_SHAKING_LONG_DARK_GRASS
     
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -378,4 +384,28 @@ gFieldEffectScript_TracksSlither::
 
 gFieldEffectScript_CaveDust::
 	field_eff_loadfadedpal_callnative gSpritePalette_CaveDust FldEff_CaveDust
+	field_eff_end
+
+gFieldEffectScript_TallDarkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_TallGrass
+	field_eff_end
+
+gFieldEffectScript_JumpTallDarkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_JumpTallGrass
+	field_eff_end
+
+gFieldEffectScript_ShakingTallDarkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_ShakingGrass
+	field_eff_end
+
+gFieldEffectScript_LongDarkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_LongGrass
+	field_eff_end
+
+gFieldEffectScript_JumpLongDarkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_JumpLongGrass
+	field_eff_end
+
+gFieldEffectScript_ShakingLongDarkGrass::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_ShakingGrass2
 	field_eff_end

@@ -1356,3 +1356,39 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_CaveDust = {
 };
 
 const struct SpritePalette gSpritePalette_CaveDust = {gFieldEffectObjectPalette_CaveDust, FLDEFF_PAL_TAG_CAVE_DUST};
+
+
+static const struct SpriteFrameImage sPicTable_TallDarkGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 0), // Change to TallDarkGrass
+    overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 4),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_TallDarkGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1, // if dark grass have new pal, replace this too
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_TallGrass, // same here
+    .images = sPicTable_TallDarkGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateTallDarkGrassFieldEffect,
+};
+
+static const struct SpriteFrameImage sPicTable_LongDarkGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_LongGrass, 2, 2, 0), // Change to LongDarkGrass
+    overworld_frame(gFieldEffectObjectPic_LongGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_LongGrass, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_LongGrass, 2, 2, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_LongDarkGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1, // if dark grass have new pal, replace this too
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_LongGrass, // same here
+    .images = sPicTable_LongDarkGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateLongDarkGrassFieldEffect,
+};

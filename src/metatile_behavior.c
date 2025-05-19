@@ -1277,7 +1277,7 @@ bool8 MetatileBehavior_IsRunningDisallowed(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsBikingDisallowed(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_GRASS)
+    if (metatileBehavior == MB_LONG_GRASS)
         return TRUE;
     else
         return FALSE;
@@ -1399,7 +1399,7 @@ bool8 MetatileBehavior_IsQuestionnaire(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsLongGrass_Duplicate(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_DARK_GRASS)
+    if (metatileBehavior == MB_LONG_GRASS)
         return TRUE;
     else
         return FALSE;
@@ -1415,7 +1415,7 @@ bool8 MetatileBehavior_IsLongGrassSouthEdge(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsLongDarkGrass_Duplicate(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_DARK_GRASS)
+    if (metatileBehavior == MB_LONG_DARK_GRASS)
         return TRUE;
     else
         return FALSE;

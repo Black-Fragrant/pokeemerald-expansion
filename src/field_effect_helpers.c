@@ -560,7 +560,7 @@ void UpdateTallDarkGrassFieldEffect(struct Sprite *sprite)
      || !MetatileBehavior_IsTallDarkGrass(metatileBehavior)
      || (sprite->sObjectMoved && sprite->animEnded))
     {
-        FieldEffectStop(sprite, FLDEFF_TALL_GRASS);
+        FieldEffectStop(sprite, FLDEFF_TALL_DARK_GRASS);
     }
     else
     {
@@ -592,7 +592,7 @@ u32 FldEff_JumpDarkTallGrass(void)
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sJumpElevation = gFieldEffectArguments[2];
-        sprite->sJumpFldEff = FLDEFF_JUMP_TALL_GRASS;
+        sprite->sJumpFldEff = FLDEFF_JUMP_TALL_DARK_GRASS;
     }
     return 0;
 }
@@ -744,7 +744,7 @@ void UpdateLongDarkGrassFieldEffect(struct Sprite *sprite)
      || !MetatileBehavior_IsLongDarkGrass(metatileBehavior)
      || (sprite->sObjectMoved && sprite->animEnded))
     {
-        FieldEffectStop(sprite, FLDEFF_LONG_GRASS);
+        FieldEffectStop(sprite, FLDEFF_LONG_DARK_GRASS);
     }
     else
     {
@@ -771,7 +771,7 @@ u32 FldEff_JumpLongDarkGrass(void)
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sJumpElevation = gFieldEffectArguments[2];
-        sprite->sJumpFldEff = FLDEFF_JUMP_LONG_GRASS;
+        sprite->sJumpFldEff = FLDEFF_JUMP_LONG_DARK_GRASS;
     }
     return 0;
 }
