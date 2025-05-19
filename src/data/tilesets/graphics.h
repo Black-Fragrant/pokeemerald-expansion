@@ -1653,3 +1653,22 @@ const u16 gTilesetPalettes_Nuvema[][16] =
 };
 
 const u32 gTilesetTiles_Nuvema[] = INCBIN_U32("data/tilesets/secondary/nuvema/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Accumula[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/accumula/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Accumula[] = INCBIN_U32("data/tilesets/secondary/accumula/tiles.4bpp.lz");
