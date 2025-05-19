@@ -1,0 +1,27 @@
+mapscripts Nuvema_Town_MapScripts {}
+
+script Nuvema_Town_SignPost {
+	msgbox("Nuvema Town\n"
+			"The Start of Something Big!", MSGBOX_SIGN)
+	end
+}
+
+script Nuvema_Town_JuniperLabSign {
+	msgbox("Juniper Pokemon Lab", MSGBOX_SIGN)
+	end
+}
+
+script Nuvema_Town_PlayersHouseSign {
+	msgbox("{PLAYER}'s House", MSGBOX_SIGN)
+	end
+}
+
+script Nuvema_Town_BiancasHouseSign {
+	msgbox("Bianca's House", MSGBOX_SIGN)
+	end
+}
+
+script Nuvema_Town_CherensHouseSign {
+	msgbox("Cheren's House", MSGBOX_SIGN)
+	end
+}

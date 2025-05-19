@@ -1061,3 +1061,14 @@ const struct Tileset gTileset_Nuvema =
     .metatileAttributes = gMetatileAttributes_Nuvema,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Accumula =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Accumula,
+    .palettes = gTilesetPalettes_Accumula,
+    .metatiles = gMetatiles_Accumula,
+    .metatileAttributes = gMetatileAttributes_Accumula,
+    .callback = NULL,
+};

@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_Nuvema",
       "border_filepath": "data/layouts/Route1_West/border.bin",
       "blockdata_filepath": "data/layouts/Route1_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN",
+      "name": "Accumula_Town_Layout",
+      "width": 38,
+      "height": 35,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Accumula",
+      "border_filepath": "data/layouts/Accumula_Town/border.bin",
+      "blockdata_filepath": "data/layouts/Accumula_Town/map.bin"
     }
   ]
 }
