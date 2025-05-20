@@ -1162,3 +1162,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route1_West/scripts.inc"
 
 	.include "data/maps/Accumula_Town/scripts.inc"
+
+	.include "data/maps/Route2_South/scripts.inc"

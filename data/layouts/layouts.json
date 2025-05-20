@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_Accumula",
       "border_filepath": "data/layouts/Accumula_Town/border.bin",
       "blockdata_filepath": "data/layouts/Accumula_Town/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2_SOUTH",
+      "name": "Route2_South_Layout",
+      "width": 28,
+      "height": 32,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Accumula",
+      "border_filepath": "data/layouts/Route2_South/border.bin",
+      "blockdata_filepath": "data/layouts/Route2_South/map.bin"
     }
   ]
 }
