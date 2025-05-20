@@ -528,7 +528,7 @@
 #define P_FAMILY_GLASTRIER               FALSE
 #define P_FAMILY_SPECTRIER               FALSE
 #define P_FAMILY_CALYREX                 FALSE
-#define P_FAMILY_ENAMORUS                FALSE
+#define P_FAMILY_ENAMORUS                P_GEN_8_POKEMON
 
 #define P_FAMILY_SPRIGATITO              FALSE
 #define P_FAMILY_FUECOCO                 FALSE
@@ -580,7 +580,7 @@
 #define P_FAMILY_IRON_MOTH               FALSE
 #define P_FAMILY_IRON_THORNS             FALSE
 #define P_FAMILY_FRIGIBAX                P_GEN_9_POKEMON
-#define P_FAMILY_GIMMIGHOUL              FALSE
+#define P_FAMILY_GIMMIGHOUL              P_GEN_9_POKEMON
 #define P_FAMILY_WO_CHIEN                FALSE
 #define P_FAMILY_CHIEN_PAO               FALSE
 #define P_FAMILY_TING_LU                 FALSE
