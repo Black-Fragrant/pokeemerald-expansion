@@ -40,7 +40,8 @@
     "Nuvema_Town",
     "Route1_East",
     "Route1_West",
-    "Accumula_Town"
+    "Accumula_Town",
+    "Route2_South"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
