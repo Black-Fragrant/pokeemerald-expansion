@@ -4444,7 +4444,7 @@
     {
       "id": "LAYOUT_ACCUMULA_TOWN",
       "name": "Accumula_Town_Layout",
-      "width": 38,
+      "width": 42,
       "height": 35,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Accumula",
