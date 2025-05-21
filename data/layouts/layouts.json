@@ -4454,8 +4454,8 @@
     {
       "id": "LAYOUT_ROUTE2_SOUTH",
       "name": "Route2_South_Layout",
-      "width": 28,
-      "height": 32,
+      "width": 64,
+      "height": 66,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Accumula",
       "border_filepath": "data/layouts/Route2_South/border.bin",
