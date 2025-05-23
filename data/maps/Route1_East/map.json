@@ -20,12 +20,12 @@
     },
     {
       "map": "MAP_ROUTE1_WEST",
-      "offset": 33,
+      "offset": 31,
       "direction": "left"
     },
     {
       "map": "MAP_ACCUMULA_TOWN",
-      "offset": -2,
+      "offset": -6,
       "direction": "up"
     }
   ],
