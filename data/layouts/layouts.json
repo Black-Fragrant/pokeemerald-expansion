@@ -4425,7 +4425,7 @@
       "id": "LAYOUT_ROUTE1_EAST",
       "name": "Route1_East_Layout",
       "width": 36,
-      "height": 60,
+      "height": 62,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Nuvema",
       "border_filepath": "data/layouts/Route1_East/border.bin",
