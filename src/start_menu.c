@@ -50,6 +50,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/map_types.h"
 
 // Menu actions
 enum
@@ -1210,14 +1211,22 @@ void ShowThrobber(void)
 
 static u8 SaveSavingMessageCallback(void)
 {
+    struct ObjectEvent * playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+
     ShowThrobber();
     ShowSaveMessage(gText_SavingDontTurnOff, SaveDoSaveCallback);
+    SetPlayerAvatarSaving();
+    ObjectEventSetHeldMovement(playerObj, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
     return SAVE_IN_PROGRESS;
 }
 
 static u8 SaveDoSaveCallback(void)
 {
     u8 saveStatus;
+    struct ObjectEvent * playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+
+    ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByCurrentState());
+    ObjectEventForceSetHeldMovement(playerObj, GetFaceDirectionMovementAction(playerObj->facingDirection));
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
     PausePyramidChallenge();

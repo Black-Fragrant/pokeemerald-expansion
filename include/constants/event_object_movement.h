@@ -322,6 +322,8 @@
 
 #define ANIM_FIELD_MOVE 0
 
+#define ANIM_SAVING 0
+
 #define ANIM_STAY_STILL      0
 #define ANIM_REMOVE_OBSTACLE 1
 
