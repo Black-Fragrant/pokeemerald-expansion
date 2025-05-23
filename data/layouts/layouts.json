@@ -4445,7 +4445,7 @@
       "id": "LAYOUT_ACCUMULA_TOWN",
       "name": "Accumula_Town_Layout",
       "width": 42,
-      "height": 42,
+      "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Accumula",
       "border_filepath": "data/layouts/Accumula_Town/border.bin",
