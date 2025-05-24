@@ -17,7 +17,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 24,
+      "y": 40,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 24,
+      "y": 41,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN",
+      "dest_warp_id": "1"
+    }
   ],
   "coord_events": [
 

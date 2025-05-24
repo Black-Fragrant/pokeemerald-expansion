@@ -4454,7 +4454,7 @@
     {
       "id": "LAYOUT_ROUTE2",
       "name": "Route2_Layout",
-      "width": 64,
+      "width": 66,
       "height": 66,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Accumula",
