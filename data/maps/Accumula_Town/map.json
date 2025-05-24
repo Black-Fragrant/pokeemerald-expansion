@@ -2,7 +2,7 @@
   "id": "MAP_ACCUMULA_TOWN",
   "name": "Accumula_Town",
   "layout": "LAYOUT_ACCUMULA_TOWN",
-  "music": "MUS_BW12_025",
+  "music": "MUS_BW_ACCUMULA_TOWN",
   "region_map_section": "MAPSEC_ACCUMULA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

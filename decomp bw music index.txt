@@ -1,0 +1,177 @@
+001 - healing
+002 - level up
+003 - found item
+004 - captured pokemon
+005 - obtain badge
+006 - obtain tm
+007 - obtain berry
+008 - evolution starts
+009 - evolution
+
+013 - forget move
+014 - follow me
+015 - battle subway boss theme
+016 - team plasma appear
+
+021 - undella town summer
+022 - lacunosa town
+023 - bicycle
+024 - spotted scientist
+025 - spotted lass
+026 - spotted youngster
+027 - hall of fame register
+028 - dream yard
+029 - general cave
+030 - strange house
+031 - credit roll
+032 - route 19 theme
+033 - route 4 theme
+
+035 - route 6 theme
+036 - victory road theme
+
+041 - aspertia city
+042 - juniper laboratory
+043 - professor juniper theme
+
+045 - ???????????
+046 - surf
+047 - dragonspiral tower
+048 - cold storage
+049 - verbank city
+050 - victory against trainer
+051 - victory against wild pokemon
+052 - victory against gym leader
+053 - castelia city
+054 - floccesy town
+055 - hugh theme
+056 - hugh theme 2
+057 - ??????????? (dex check)
+058 - obtain important item
+059 - captured pokemon 2
+
+061 - victory against wild pokemon 2
+062 - receive a mission
+063 - Ns castle
+064 - tubeline bridge
+065 - skyarrow bridge
+066 - icirrus city
+067 - driftveil drawbridge
+068 - relic castle
+069 - route 10
+070 - marvelous bridge
+071 - straiton city
+072 - driftveil city
+073 - mistralton city
+
+077 - spotted ace trainer
+078 - pokemon league
+
+080 - farewell
+081 - passage tunnel
+
+085 - route 12 spring summer
+086 - undella town autumn winter
+087 - bianca theme BW2
+088 - black city
+089 - white forest
+090 - anville town
+091 - village bridge
+092 - battle subway
+
+094 - spotted parasol lady
+095 - spotted hiker
+096 - alder theme
+097 - spotted businessman
+098 - spotted cyclist
+099 - spotted gentleman
+100 - Ns theme
+101 - spotted pokefan
+102 - spotted psychic
+103 - spotted roughneck
+104 - spotted kids
+105 - pokemart
+106 - relic song
+107 - ???????????
+
+109 - abyssal ruins
+110 - spotted team plasma
+111 - victory against team plasma
+112 - Ns room
+113 - title screen Ns story
+114 - lostlorn forest
+
+116 - opelucid city black
+117 - opelucid city white
+118 - loading in nuvema
+119 - adventure together
+120 - trouble
+121 - team plasma plot
+
+124 - ghetsis ambitions
+
+127 - nuvema town
+
+130 - route 21 theme
+131 - route 23 theme
+
+134 - route 1 theme
+135 - nacrene city
+
+137 - ??????????? (musical?)
+
+140 - cheren theme
+141 - bianca theme
+
+144 - spotted team plasma
+145 - team plasma appears
+146 - colress theme
+147 - marine tube
+148 - cheren theme BW2
+
+150 - floccesy ranch
+151 - acuumula town
+152 - castelia sewer
+153 - obtain BP
+
+167 - humilau city
+168 - battle N
+169 - lentimas town
+
+171 - ???????????
+172 - reversal mountain
+173 - reversal mountain 2
+174 - loading into aspertia
+
+176 - pokewood battle
+177 - spotted harlequin
+178 - PWT victory
+179 - PWT final victory
+180 - team plasma frigate
+181 - zizonlin's theme
+
+186 - plasma frigate sortie
+187 - infiltrate plasma frigate
+188 - low HP
+189 - ???????????
+190 - black tower entrance
+191 - black tower
+192 - white hollow entrance
+193 - white hollow
+
+195 - castelia gym theme
+196 - driftveil gym theme
+197 - ???????????
+
+199 - low HP
+
+
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,7 @@
   "id": "MAP_NUVEMA_TOWN",
   "name": "Nuvema_Town",
   "layout": "LAYOUT_NUVEMA_TOWN",
-  "music": "MUS_BW12_001",
+  "music": "MUS_BW_NUVEMA_TOWN",
   "region_map_section": "MAPSEC_NUVEMA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
