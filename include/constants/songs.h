@@ -616,7 +616,7 @@
 #define MUS_BW_RELIC_CASTLE               677
 #define MUS_BW_ROUTE_10                   678
 #define MUS_BW_MARVELOUS_BRIDGE           679
-#define MUS_BW_STRAITON_CITY              680
+#define MUS_BW_STRIATON_CITY              680
 #define MUS_BW_DRIFTVEIL_CITY             681
 #define MUS_BW_MISTRALTON_CITY            682
 #define MUS_BW_VS_ZEKROM                  683

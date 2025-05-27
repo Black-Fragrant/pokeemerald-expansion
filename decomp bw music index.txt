@@ -60,7 +60,7 @@
 068 - relic castle
 069 - route 10
 070 - marvelous bridge
-071 - straiton city
+071 - striaton city
 072 - driftveil city
 073 - mistralton city
 
