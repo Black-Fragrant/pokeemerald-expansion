@@ -132,6 +132,7 @@ struct DisableStruct
     u8 unburdenActive:1;
     u8 neutralizingGas:1;
     u8 iceFaceActivationPrevention:1; // fixes hit escape move edge case
+    u8 unnerveActivated:1; // Unnerve and As One (Unnerve part) activate only once per switch in
     u8 padding:3;
 };
 
@@ -404,10 +405,10 @@ struct StatsArray
 
 struct BattleResources
 {
-    struct SecretBase* secretBase;
-    struct BattleScriptsStack* battleScriptsStack;
-    struct BattleCallbacksStack* battleCallbackStack;
-    struct StatsArray* beforeLvlUp;
+    struct SecretBase *secretBase;
+    struct BattleScriptsStack *battleScriptsStack;
+    struct BattleCallbacksStack *battleCallbackStack;
+    struct StatsArray *beforeLvlUp;
     struct AI_ThinkingStruct *ai;
     struct AiLogicData *aiData;
     struct AIPartyData *aiParty;
