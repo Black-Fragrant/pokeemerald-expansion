@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_STRIATON_CITY",
-      "offset": 9,
+      "offset": -6,
       "direction": "up"
     }
   ],
