@@ -97,11 +97,11 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 spot
     } WHEN {
         TURN { EXPECT_SWITCH(opponentLeft, 3); };
     } SCENE {
-        MESSAGE("{PKMN} TRAINER LEAF withdrew Linoone!");
-        MESSAGE("{PKMN} TRAINER LEAF sent out Gengar!");
+        MESSAGE(AI_TRAINER_NAME " withdrew Linoone!");
+        MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
         NONE_OF {
-            MESSAGE("{PKMN} TRAINER LEAF withdrew Zigzagoon!");
-            MESSAGE("{PKMN} TRAINER LEAF sent out Gengar!");
+            MESSAGE(AI_TRAINER_NAME " withdrew Zigzagoon!");
+            MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
         }
     }
 }
@@ -540,7 +540,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if mon would 
         ASSUME(GetMoveType(MOVE_THUNDERBOLT) == TYPE_ELECTRIC);
         ASSUME(GetMoveType(MOVE_EARTHQUAKE) == TYPE_GROUND);
 
-        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_ELECTRODE) { Moves(MOVE_THUNDERBOLT, MOVE_THUNDER_WAVE, MOVE_THUNDER_SHOCK); }
         OPPONENT(SPECIES_PELIPPER) { Moves(MOVE_EARTHQUAKE); };
         OPPONENT(SPECIES_RHYDON) { Moves(MOVE_EARTHQUAKE); Ability(ABILITY_ROCK_HEAD); }

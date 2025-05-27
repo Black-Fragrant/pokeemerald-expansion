@@ -79,7 +79,7 @@ static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
 
 // This is defined in here so the optimizer can't see its value when compiling
 // script.c.
-void * const gNullScriptPtr = NULL;
+void *const gNullScriptPtr = NULL;
 
 static const u8 sScriptConditionTable[6][3] =
 {
@@ -2541,10 +2541,7 @@ bool8 ScrCmd_setberrytree(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    if (berry == 0)
-        PlantBerryTree(treeId, berry, growthStage, FALSE);
-    else
-        PlantBerryTree(treeId, berry, growthStage, FALSE);
+    PlantBerryTree(treeId, berry, growthStage, FALSE);
     return FALSE;
 }
 
