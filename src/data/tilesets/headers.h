@@ -1072,3 +1072,14 @@ const struct Tileset gTileset_Accumula =
     .metatileAttributes = gMetatileAttributes_Accumula,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Striaton =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Striaton,
+    .palettes = gTilesetPalettes_Striaton,
+    .metatiles = gMetatiles_Striaton,
+    .metatileAttributes = gMetatileAttributes_Striaton,
+    .callback = NULL,
+};

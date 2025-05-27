@@ -41,7 +41,9 @@
     "Route1_East",
     "Route1_West",
     "Accumula_Town",
-    "Route2"
+    "Route2",
+    "StriatonCity",
+    "Striaton_City"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
