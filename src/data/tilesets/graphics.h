@@ -1672,3 +1672,22 @@ const u16 gTilesetPalettes_Accumula[][16] =
 };
 
 const u32 gTilesetTiles_Accumula[] = INCBIN_U32("data/tilesets/secondary/accumula/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Striaton[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/striaton/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Striaton[] = INCBIN_U32("data/tilesets/secondary/striaton/tiles.4bpp.lz");

@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_Accumula",
       "border_filepath": "data/layouts/Route2/border.bin",
       "blockdata_filepath": "data/layouts/Route2/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY",
+      "name": "Striaton_City_Layout",
+      "width": 80,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Striaton",
+      "border_filepath": "data/layouts/Striaton_City/border.bin",
+      "blockdata_filepath": "data/layouts/Striaton_City/map.bin"
     }
   ]
 }
