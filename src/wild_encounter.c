@@ -1115,12 +1115,19 @@ static void ApplyCleanseTagEncounterRateMod(u32 *encRate)
 
 bool8 TryDoDoubleWildBattle(void)
 {
+    s16 x, y;
+    PlayerGetDestCoords(&x, &y);
+    u8 metatileBehaviour = MapGridGetMetatileBehaviorAt(x, y);
+
     if (GetSafariZoneFlag()
       || (B_DOUBLE_WILD_REQUIRE_2_MONS == TRUE && GetMonsStateToDoubles() != PLAYER_HAS_TWO_USABLE_MONS))
         return FALSE;
     else if (B_FLAG_FORCE_DOUBLE_WILD != 0 && FlagGet(B_FLAG_FORCE_DOUBLE_WILD))
         return TRUE;
-    else if (B_DOUBLE_WILD_CHANCE != 0 && ((Random() % 100) + 1 <= B_DOUBLE_WILD_CHANCE))
+    // In Gen5 there is a chance of encountering two wild Pokémon at a time, in a Double Battle.
+    // True odds are unknown, need to change after BW is decompiled.
+    else if ((B_DOUBLE_WILD_CHANCE != 0 && ((Random() % 100) + 1 <= B_DOUBLE_WILD_CHANCE))
+         && (MetatileBehavior_IsDarkTallGrass(metatileBehaviour) || MetatileBehavior_IsDarkLongGrass(metatileBehaviour)))
         return TRUE;
     return FALSE;
 }

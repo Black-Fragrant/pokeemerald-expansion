@@ -201,6 +201,15 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
             MATCH_ON_MB(MB_TALL_GRASS, MB_LONG_GRASS),
         },
     },
+    [COND_MSG_DARK_GRASS] =
+    {
+        .text = sCondMsg20,
+        .emotion = FOLLOWER_EMOTION_MUSIC,
+        .conditions =
+        {
+            MATCH_ON_MB(MB_TALL_GRASS, MB_LONG_GRASS),
+        },
+    },
     [COND_MSG_FOOTPRINTS] =
     {
         .text = sCondMsg21,
