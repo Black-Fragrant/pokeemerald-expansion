@@ -531,7 +531,6 @@
     {
       "id": "MAPSEC_AQUA_HIDEOUT_OLD",
       "name": "{AQUA} HIDEOUT",
-      "name_clone": true,
       "x": 19,
       "y": 3,
       "width": 1,
@@ -699,7 +698,6 @@
     },
     {
       "id": "MAPSEC_DYNAMIC",
-      "name": "",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -796,7 +794,6 @@
     {
       "id": "MAPSEC_POKEMON_LEAUGE",
       "name": "Pokemon Leauge",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -813,7 +810,6 @@
     {
       "id": "MAPSEC_UNDELLA_TOWN",
       "name": "Undella Town",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -822,7 +818,6 @@
     {
       "id": "MAPSEC_BLACK_CITY",
       "name": "Black City",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -831,7 +826,6 @@
     {
       "id": "MAPSEC_WHITE_FOREST",
       "name": "White Forest",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -840,7 +834,6 @@
     {
       "id": "MAPSEC_ASPERITA_CITY",
       "name": "Asperita City",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -849,7 +842,6 @@
     {
       "id": "MAPSEC_FLOCCESY_TOWN",
       "name": "Floccesy Town",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -858,7 +850,6 @@
     {
       "id": "MAPSEC_VIBRANK_CITY",
       "name": "Vibrank City",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -867,7 +858,6 @@
     {
       "id": "MAPSEC_LENTIMAS_TOWN",
       "name": "Lentimas Town",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -876,7 +866,6 @@
     {
       "id": "MAPSEC_HUMILAU_CITY",
       "name": "Humilau City",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1101,7 +1090,6 @@
     {
       "id": "MAPSEC_MARVELOUS_BRIDGE",
       "name": "Marvelous Bridge",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1118,7 +1106,6 @@
     {
       "id": "MAPSEC_DREAMYARD",
       "name": "Dreamyard",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1151,7 +1138,6 @@
     {
       "id": "MAPSEC_DESERT_RESORT",
       "name": "Desert Resort",
-      "name_clone": true,
       "x": 0,
       "y": 0,
       "width": 1,
