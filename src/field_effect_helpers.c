@@ -557,7 +557,7 @@ void UpdateTallDarkGrassFieldEffect(struct Sprite *sprite)
     metatileBehavior = MapGridGetMetatileBehaviorAt(sprite->sX, sprite->sY);
 
     if (TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId)
-     || !MetatileBehavior_IsTallDarkGrass(metatileBehavior)
+     || !MetatileBehavior_IsDarkTallGrass(metatileBehavior)
      || (sprite->sObjectMoved && sprite->animEnded))
     {
         FieldEffectStop(sprite, FLDEFF_TALL_DARK_GRASS);
@@ -660,7 +660,7 @@ void UpdateLongGrassFieldEffect(struct Sprite *sprite)
     mapGroup = sprite->sMapGroup;
     metatileBehavior = MapGridGetMetatileBehaviorAt(sprite->sX, sprite->sY);
     if (TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId)
-     || !MetatileBehavior_IsLongDarkGrass(metatileBehavior)
+     || !MetatileBehavior_IsDarkLongGrass(metatileBehavior)
      || (sprite->sObjectMoved && sprite->animEnded))
     {
         FieldEffectStop(sprite, FLDEFF_LONG_GRASS);
@@ -741,7 +741,7 @@ void UpdateLongDarkGrassFieldEffect(struct Sprite *sprite)
     mapGroup = sprite->sMapGroup;
     metatileBehavior = MapGridGetMetatileBehaviorAt(sprite->sX, sprite->sY);
     if (TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId)
-     || !MetatileBehavior_IsLongDarkGrass(metatileBehavior)
+     || !MetatileBehavior_IsDarkLongGrass(metatileBehavior)
      || (sprite->sObjectMoved && sprite->animEnded))
     {
         FieldEffectStop(sprite, FLDEFF_LONG_DARK_GRASS);

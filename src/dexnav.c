@@ -747,9 +747,9 @@ static bool8 TryStartHiddenMonFieldEffect(u8 environment, u8 xSize, u8 ySize, bo
                     fldEffId = FLDEFF_SHAKING_LONG_GRASS;
                 else if (MetatileBehavior_IsSandOrDeepSand(metatileBehaviour))
                     fldEffId = FLDEFF_SAND_HOLE;
-                else if (MetatileBehavior_IsTallDarkGrass(metatileBehaviour))
+                else if (MetatileBehavior_IsDarkTallGrass(metatileBehaviour))
                     fldEffId = FLDEFF_SHAKING_GRASS;
-                else if (MetatileBehavior_IsLongDarkGrass(metatileBehaviour))
+                else if (MetatileBehavior_IsDarkLongGrass(metatileBehaviour))
                     fldEffId = FLDEFF_SHAKING_GRASS;
                 else
                     fldEffId = FLDEFF_CAVE_DUST;
@@ -764,9 +764,9 @@ static bool8 TryStartHiddenMonFieldEffect(u8 environment, u8 xSize, u8 ySize, bo
                     fldEffId = FLDEFF_SAND_HOLE;
                 else if (MetatileBehavior_IsMountain(metatileBehaviour)) //Rough Terrain
                     fldEffId = FLDEFF_CAVE_DUST;
-                else if (MetatileBehavior_IsTallDarkGrass(metatileBehaviour))
+                else if (MetatileBehavior_IsDarkTallGrass(metatileBehaviour))
                     fldEffId = FLDEFF_SHAKING_GRASS;
-                else if (MetatileBehavior_IsLongDarkGrass(metatileBehaviour))
+                else if (MetatileBehavior_IsDarkLongGrass(metatileBehaviour))
                     fldEffId = FLDEFF_SHAKING_GRASS;
                 else
                     fldEffId = FLDEFF_BERRY_TREE_GROWTH_SPARKLE; //default

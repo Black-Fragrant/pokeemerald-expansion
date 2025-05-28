@@ -9364,13 +9364,13 @@ static void GetGroundEffectFlags_TallGrassOnBeginStep(struct ObjectEvent *objEve
 
 static void GetGroundEffectFlags_TallDarkGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
 {
-    if (MetatileBehavior_IsTallDarkGrass(objEvent->currentMetatileBehavior))
+    if (MetatileBehavior_IsDarkTallGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_DARK_GRASS_ON_SPAWN;
 }
 
 static void GetGroundEffectFlags_TallDarkGrassOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
 {
-    if (MetatileBehavior_IsTallDarkGrass(objEvent->currentMetatileBehavior))
+    if (MetatileBehavior_IsDarkTallGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_DARK_GRASS_ON_MOVE;
 }
 
@@ -9388,13 +9388,13 @@ static void GetGroundEffectFlags_LongGrassOnBeginStep(struct ObjectEvent *objEve
 
 static void GetGroundEffectFlags_LongDarkGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
 {
-    if (MetatileBehavior_IsLongDarkGrass(objEvent->currentMetatileBehavior))
+    if (MetatileBehavior_IsDarkLongGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_LONG_DARK_GRASS_ON_SPAWN;
 }
 
 static void GetGroundEffectFlags_LongDarkGrassOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
 {
-    if (MetatileBehavior_IsLongDarkGrass(objEvent->currentMetatileBehavior))
+    if (MetatileBehavior_IsDarkLongGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_LONG_DARK_GRASS_ON_MOVE;
 }
 
@@ -9514,8 +9514,8 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
         MetatileBehavior_IsSurfableWaterOrUnderwater,
         MetatileBehavior_IsShallowFlowingWater,
         MetatileBehavior_IsATile,
-        MetatileBehavior_IsTallDarkGrass,
-        MetatileBehavior_IsLongDarkGrass,
+        MetatileBehavior_IsDarkTallGrass,
+        MetatileBehavior_IsDarkLongGrass,
     };
 
     static const u32 jumpLandingFlags[] = {
@@ -9620,10 +9620,10 @@ static void SetObjectEventSpriteOamTableForLongGrassLongDarkGrass(struct ObjectE
     if (objEvent->disableCoveringGroundEffects)
         return;
 
-    if (!MetatileBehavior_IsLongGrass(objEvent->currentMetatileBehavior) && !MetatileBehavior_IsLongDarkGrass(objEvent->currentMetatileBehavior))
+    if (!MetatileBehavior_IsLongGrass(objEvent->currentMetatileBehavior) && !MetatileBehavior_IsDarkLongGrass(objEvent->currentMetatileBehavior))
         return;
 
-    if (!MetatileBehavior_IsLongGrass(objEvent->previousMetatileBehavior) && !MetatileBehavior_IsLongDarkGrass(objEvent->previousMetatileBehavior))
+    if (!MetatileBehavior_IsLongGrass(objEvent->previousMetatileBehavior) && !MetatileBehavior_IsDarkLongGrass(objEvent->previousMetatileBehavior))
         return;
 
     sprite->subspriteTableNum = 4;

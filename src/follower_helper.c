@@ -356,7 +356,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .emotion = FOLLOWER_EMOTION_MUSIC,
         .conditions =
         {
-            MATCH_ON_MB(MB_TALL_DARK_GRASS, MB_LONG_DARK_GRASS),
+            MATCH_ON_MB(MB_DARK_TALL_GRASS, MB_DARK_LONG_GRASS),
         },
     },
 };

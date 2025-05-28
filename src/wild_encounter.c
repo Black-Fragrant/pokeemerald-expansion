@@ -1127,7 +1127,7 @@ bool8 TryDoDoubleWildBattle(void)
     // In Gen5 there is a chance of encountering two wild Pokémon at a time, in a Double Battle.
     // True odds are unknown, need to change after BW is decompiled.
     else if (B_DOUBLE_WILD_CHANCE != 0 && ((Random() % 100) + 1 <= B_DOUBLE_WILD_CHANCE)
-        && (MetatileBehavior_IsTallDarkGrass(metatileBehaviour) || MetatileBehavior_IsLongDarkGrass(metatileBehaviour))
+        && (MetatileBehavior_IsDarkTallGrass(metatileBehaviour) || MetatileBehavior_IsDarkLongGrass(metatileBehaviour))
         && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS)
         return TRUE;
     return FALSE;

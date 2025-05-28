@@ -623,9 +623,9 @@ u8 BattleSetup_GetEnvironmentId(void)
         return BATTLE_ENVIRONMENT_LONG_GRASS;
     if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
         return BATTLE_ENVIRONMENT_SAND;
-    if (MetatileBehavior_IsTallDarkGrass(tileBehavior)) // TODO: New battle environment
+    if (MetatileBehavior_IsDarkTallGrass(tileBehavior)) // TODO: New battle environment
         return BATTLE_ENVIRONMENT_GRASS;
-    if (MetatileBehavior_IsLongDarkGrass(tileBehavior)) // TODO: New battle environment
+    if (MetatileBehavior_IsDarkLongGrass(tileBehavior)) // TODO: New battle environment
         return BATTLE_ENVIRONMENT_LONG_GRASS;
 
     switch (gMapHeader.mapType)
