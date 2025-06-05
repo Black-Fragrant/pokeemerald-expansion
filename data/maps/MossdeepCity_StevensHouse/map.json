@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_STEVENS_HOUSE_STEVEN",
-      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 9,
       "y": 6,
       "elevation": 3,
@@ -43,7 +43,7 @@
       "flag": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 6,
       "y": 4,
       "elevation": 3,

@@ -278,8 +278,8 @@ static const u8 sPlayerAvatarGfxIds[][GENDER_COUNT] =
 
 static const u8 sFRLGAvatarGfxIds[GENDER_COUNT] =
 {
-    [MALE]   = OBJ_EVENT_GFX_RED,
-    [FEMALE] = OBJ_EVENT_GFX_LEAF
+    [MALE]   = OBJ_EVENT_GFX_SCOTT,
+    [FEMALE] = OBJ_EVENT_GFX_SCOTT
 };
 
 static const u8 sRSAvatarGfxIds[GENDER_COUNT] =

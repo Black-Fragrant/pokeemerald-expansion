@@ -31,7 +31,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 38,
       "y": 12,
       "elevation": 5,
@@ -44,7 +44,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 50,
       "y": 34,
       "elevation": 5,
@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 32,
       "y": 12,
       "elevation": 5,
@@ -70,7 +70,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 26,
       "y": 21,
       "elevation": 5,
@@ -83,7 +83,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 45,
       "y": 18,
       "elevation": 7,
@@ -109,7 +109,7 @@
       "flag": "FLAG_ITEM_MOSSDEEP_CITY_NET_BALL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 55,
       "y": 5,
       "elevation": 7,
@@ -122,7 +122,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 56,
       "y": 21,
       "elevation": 7,
@@ -135,7 +135,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 23,
       "y": 13,
       "elevation": 5,
@@ -149,7 +149,7 @@
     },
     {
       "local_id": "LOCALID_MOSSDEEP_GRUNT_1",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 44,
       "y": 23,
       "elevation": 5,
@@ -163,7 +163,7 @@
     },
     {
       "local_id": "LOCALID_MOSSDEEP_GRUNT_2",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 44,
       "y": 24,
       "elevation": 5,
@@ -177,7 +177,7 @@
     },
     {
       "local_id": "LOCALID_MOSSDEEP_GRUNT_3",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 44,
       "y": 25,
       "elevation": 5,
@@ -191,7 +191,7 @@
     },
     {
       "local_id": "LOCALID_MOSSDEEP_GRUNT_4",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 44,
       "y": 26,
       "elevation": 5,
@@ -205,7 +205,7 @@
     },
     {
       "local_id": "LOCALID_MOSSDEEP_MAXIE",
-      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 45,
       "y": 25,
       "elevation": 5,
@@ -218,7 +218,7 @@
       "flag": "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 19,
       "y": 25,
       "elevation": 3,
@@ -245,7 +245,7 @@
       "flag": "FLAG_HIDE_MOSSDEEP_CITY_SCOTT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 29,
       "elevation": 3,
