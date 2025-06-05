@@ -557,7 +557,7 @@ static void SetupRoomObjectEvents(void)
     u16 objGfx2;
 
     VarSet(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SCOTT);
-    VarSet(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_DUSCLOPS);
+    VarSet(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SCOTT);
     setObjGfx1 = TRUE;
     setObjGfx2 = FALSE;
     objGfx1 = 0;
@@ -578,9 +578,9 @@ static void SetupRoomObjectEvents(void)
     case PIKE_ROOM_STATUS:
         objGfx1 = OBJ_EVENT_GFX_SCOTT;
         if (sStatusMon == PIKE_STATUSMON_DUSCLOPS)
-            objGfx2 = OBJ_EVENT_GFX_DUSCLOPS;
+            objGfx2 = OBJ_EVENT_GFX_SCOTT;
         else
-            objGfx2 = OBJ_EVENT_GFX_KIRLIA;
+            objGfx2 = OBJ_EVENT_GFX_SCOTT;
         setObjGfx2 = TRUE;
         break;
     case PIKE_ROOM_HEAL_PART:
