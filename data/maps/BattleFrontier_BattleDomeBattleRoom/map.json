@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_DOME_ANNOUNCER",
-      "graphics_id": "OBJ_EVENT_GFX_REPORTER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 4,
       "elevation": 0,
@@ -30,7 +30,7 @@
     },
     {
       "local_id": "LOCALID_DOME_AUDIENCE_TWIN",
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 7,
       "y": 2,
       "elevation": 0,
@@ -43,7 +43,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 9,
       "y": 2,
       "elevation": 0,
@@ -56,7 +56,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 11,
       "y": 2,
       "elevation": 0,
@@ -69,7 +69,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 2,
       "elevation": 0,
@@ -83,7 +83,7 @@
     },
     {
       "local_id": "LOCALID_DOME_AUDIENCE_WALKING",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 4,
       "y": 2,
       "elevation": 0,
@@ -96,7 +96,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 1,
       "elevation": 0,
@@ -109,7 +109,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 8,
       "y": 1,
       "elevation": 0,
@@ -123,7 +123,7 @@
     },
     {
       "local_id": "LOCALID_DOME_REFEREE",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 0,
       "y": 4,
       "elevation": 0,
@@ -136,7 +136,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 12,
       "y": 1,
       "elevation": 0,
@@ -149,7 +149,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 13,
       "y": 2,
       "elevation": 0,
@@ -162,7 +162,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 10,
       "y": 2,
       "elevation": 0,
@@ -189,7 +189,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 14,
       "y": 2,
       "elevation": 0,

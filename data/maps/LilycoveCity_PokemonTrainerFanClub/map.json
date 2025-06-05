@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_LASS",
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 3,
       "y": 11,
       "elevation": 3,
@@ -30,7 +30,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_MAN",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 8,
       "y": 10,
       "elevation": 3,
@@ -44,7 +44,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_POKEFAN_M",
-      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 6,
       "y": 11,
       "elevation": 3,
@@ -58,7 +58,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_LITTLE_GIRL",
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 8,
       "elevation": 3,
@@ -72,7 +72,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_NINJA_BOY",
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 7,
       "y": 11,
       "elevation": 3,
@@ -86,7 +86,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_BOY",
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 1,
       "y": 9,
       "elevation": 3,
@@ -100,7 +100,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_WOMAN",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 3,
       "y": 10,
       "elevation": 3,
@@ -114,7 +114,7 @@
     },
     {
       "local_id": "LOCALID_TRAINER_FAN_CLUB_EXPERT_F",
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 10,
       "y": 10,
       "elevation": 3,
@@ -127,7 +127,7 @@
       "flag": "FLAG_HIDE_FANCLUB_OLD_LADY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 11,
       "y": 5,
       "elevation": 3,

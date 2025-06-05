@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_ROUTE112_CABLE_CAR_ATTENDANT",
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 6,
       "y": 6,
       "elevation": 3,

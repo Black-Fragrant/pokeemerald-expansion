@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_PYRAMID_TOP_ATTENDANT",
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 17,
       "y": 11,
       "elevation": 6,
@@ -30,7 +30,7 @@
     },
     {
       "local_id": "LOCALID_BRANDON",
-      "graphics_id": "OBJ_EVENT_GFX_BRANDON",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 17,
       "y": 7,
       "elevation": 0,

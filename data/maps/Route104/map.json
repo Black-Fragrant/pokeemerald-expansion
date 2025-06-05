@@ -31,7 +31,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 15,
       "y": 60,
       "elevation": 3,
@@ -44,7 +44,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 25,
       "y": 49,
       "elevation": 3,
@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 24,
       "elevation": 3,
@@ -70,7 +70,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 27,
       "y": 63,
       "elevation": 3,
@@ -83,7 +83,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 30,
       "y": 50,
       "elevation": 3,
@@ -96,7 +96,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 74,
       "elevation": 3,
@@ -124,7 +124,7 @@
     },
     {
       "local_id": "LOCALID_ROUTE104_BRINEY",
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 12,
       "y": 51,
       "elevation": 4,
@@ -137,7 +137,7 @@
       "flag": "FLAG_HIDE_ROUTE_104_MR_BRINEY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 29,
       "y": 8,
       "elevation": 3,
@@ -228,7 +228,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 37,
       "y": 8,
       "elevation": 3,
@@ -306,7 +306,7 @@
       "flag": "FLAG_ITEM_ROUTE_104_PP_UP"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 8,
       "y": 19,
       "elevation": 3,
@@ -319,7 +319,7 @@
       "flag": "FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 27,
       "y": 15,
       "elevation": 3,
@@ -332,7 +332,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 15,
       "elevation": 3,
@@ -345,7 +345,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 21,
       "y": 25,
       "elevation": 3,
@@ -358,7 +358,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 11,
       "y": 44,
       "elevation": 3,
@@ -384,7 +384,7 @@
       "flag": "FLAG_ITEM_ROUTE_104_POKE_BALL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 18,
       "y": 67,
       "elevation": 3,
@@ -436,7 +436,7 @@
       "flag": "FLAG_ITEM_ROUTE_104_POTION"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 26,
       "elevation": 3,
@@ -449,7 +449,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 15,
       "y": 59,
       "elevation": 3,

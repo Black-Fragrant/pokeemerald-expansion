@@ -2886,14 +2886,14 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     if (graphicsId >= OBJ_EVENT_GFX_VARS && graphicsId <= OBJ_EVENT_GFX_VAR_F)
         graphicsId = VarGetObjectEventGraphicsId(graphicsId - OBJ_EVENT_GFX_VARS);
 
-    if (graphicsId == OBJ_EVENT_GFX_BARD)
+    if (graphicsId == OBJ_EVENT_GFX_SCOTT)
         return gMauvilleOldManGraphicsInfoPointers[GetCurrentMauvilleOldMan()];
 
     if (graphicsId & OBJ_EVENT_MON)
         return SpeciesToGraphicsInfo(graphicsId & OBJ_EVENT_MON_SPECIES_MASK, graphicsId & OBJ_EVENT_MON_SHINY, graphicsId & OBJ_EVENT_MON_FEMALE);
 
     if (graphicsId >= NUM_OBJ_EVENT_GFX)
-        graphicsId = OBJ_EVENT_GFX_NINJA_BOY;
+        graphicsId = OBJ_EVENT_GFX_SCOTT;
 
     return gObjectEventGraphicsInfoPointers[graphicsId];
 }

@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_FALLARBOR_NURSE",
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 7,
       "y": 2,
       "elevation": 3,
@@ -29,7 +29,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 10,
       "y": 6,
       "elevation": 3,
@@ -42,7 +42,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 2,
       "y": 3,
       "elevation": 3,
@@ -56,7 +56,7 @@
     },
     {
       "local_id": "LOCALID_FALLARBOR_LANETTE",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 10,
       "y": 2,
       "elevation": 3,

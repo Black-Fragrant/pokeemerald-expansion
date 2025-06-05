@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 33,
       "y": 22,
       "elevation": 3,
@@ -28,7 +28,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 6,
       "y": 15,
       "elevation": 4,
@@ -41,7 +41,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 27,
       "y": 34,
       "elevation": 3,
@@ -55,7 +55,7 @@
     },
     {
       "local_id": "LOCALID_VICTORY_ROAD_ENTRANCE_WALLY",
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 12,
       "y": 25,
       "elevation": 4,
@@ -94,7 +94,7 @@
       "flag": "FLAG_ITEM_VICTORY_ROAD_1F_PP_UP"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 9,
       "elevation": 3,
@@ -107,7 +107,7 @@
       "flag": "FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 29,
       "y": 17,
       "elevation": 3,
@@ -120,7 +120,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 32,
       "y": 17,
       "elevation": 3,

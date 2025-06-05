@@ -101,7 +101,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_TOWER] =
     {
         .trainerId = TRAINER_ANABEL,
-        .objEventGfx = OBJ_EVENT_GFX_ANABEL,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = TRUE,
         .lostTexts = {
             COMPOUND_STRING("Okay, I understand…"), //Silver
@@ -117,7 +117,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_DOME] =
     {
         .trainerId = TRAINER_TUCKER,
-        .objEventGfx = OBJ_EVENT_GFX_TUCKER,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
             COMPOUND_STRING(
@@ -139,7 +139,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_PALACE] =
     {
         .trainerId = TRAINER_SPENSER,
-        .objEventGfx = OBJ_EVENT_GFX_SPENSER,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
             COMPOUND_STRING(
@@ -163,7 +163,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_ARENA] =
     {
         .trainerId = TRAINER_GRETA,
-        .objEventGfx = OBJ_EVENT_GFX_GRETA,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = TRUE,
         .lostTexts = {
             COMPOUND_STRING(
@@ -187,7 +187,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_FACTORY] =
     {
         .trainerId = TRAINER_NOLAND,
-        .objEventGfx = OBJ_EVENT_GFX_NOLAND,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
             COMPOUND_STRING(
@@ -209,7 +209,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_PIKE] =
     {
         .trainerId = TRAINER_LUCY,
-        .objEventGfx = OBJ_EVENT_GFX_LUCY,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = TRUE,
         .lostTexts = {
             COMPOUND_STRING("Urk…"), //Silver
@@ -225,7 +225,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     [FRONTIER_FACILITY_PYRAMID] =
     {
         .trainerId = TRAINER_BRANDON,
-        .objEventGfx = OBJ_EVENT_GFX_BRANDON,
+        .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
             COMPOUND_STRING(

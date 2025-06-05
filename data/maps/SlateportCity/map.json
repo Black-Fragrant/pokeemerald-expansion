@@ -32,7 +32,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_SLATEPORT_FAT_MAN",
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 21,
       "y": 11,
       "elevation": 3,
@@ -46,7 +46,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_MAN_1",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 34,
       "y": 29,
       "elevation": 3,
@@ -60,7 +60,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_RICH_BOY",
-      "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 13,
       "elevation": 3,
@@ -73,7 +73,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 26,
       "y": 29,
       "elevation": 3,
@@ -87,7 +87,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_1",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 27,
       "elevation": 3,
@@ -101,7 +101,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_COOK",
-      "graphics_id": "OBJ_EVENT_GFX_COOK",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 43,
       "elevation": 3,
@@ -115,7 +115,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_OLD_WOMAN",
-      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 20,
       "y": 37,
       "elevation": 3,
@@ -129,7 +129,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GIRL",
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 8,
       "y": 42,
       "elevation": 3,
@@ -143,7 +143,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_TY",
-      "graphics_id": "OBJ_EVENT_GFX_CAMERAMAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 29,
       "y": 13,
       "elevation": 3,
@@ -157,7 +157,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GABBY",
-      "graphics_id": "OBJ_EVENT_GFX_REPORTER_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 14,
       "elevation": 3,
@@ -171,7 +171,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_CAPT_STERN",
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 13,
       "elevation": 3,
@@ -184,7 +184,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 37,
       "y": 41,
       "elevation": 3,
@@ -197,7 +197,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 46,
       "elevation": 3,
@@ -210,7 +210,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 9,
       "y": 50,
       "elevation": 3,
@@ -223,7 +223,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 46,
       "elevation": 3,
@@ -236,7 +236,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 8,
       "y": 24,
       "elevation": 3,
@@ -249,7 +249,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 15,
       "y": 31,
       "elevation": 3,
@@ -263,7 +263,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_2",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 30,
       "y": 27,
       "elevation": 3,
@@ -277,7 +277,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_3",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 29,
       "y": 27,
       "elevation": 3,
@@ -290,7 +290,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 6,
       "y": 38,
       "elevation": 3,
@@ -303,7 +303,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 51,
       "elevation": 3,
@@ -316,7 +316,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 34,
       "y": 51,
       "elevation": 3,
@@ -329,7 +329,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 4,
       "y": 47,
       "elevation": 3,
@@ -342,7 +342,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 11,
       "y": 47,
       "elevation": 3,
@@ -356,7 +356,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_ENERGY_GURU",
-      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 5,
       "y": 47,
       "elevation": 3,
@@ -370,7 +370,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_4",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 22,
       "y": 27,
       "elevation": 3,
@@ -384,7 +384,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_5",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 23,
       "y": 27,
       "elevation": 3,
@@ -398,7 +398,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_6",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 24,
       "y": 27,
       "elevation": 3,
@@ -412,7 +412,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_7",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 21,
       "y": 26,
       "elevation": 3,
@@ -426,7 +426,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_8",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 20,
       "y": 26,
       "elevation": 3,
@@ -440,7 +440,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_9",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 26,
       "y": 27,
       "elevation": 3,
@@ -453,7 +453,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 27,
       "elevation": 3,
@@ -467,7 +467,7 @@
     },
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_11",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 25,
       "y": 27,
       "elevation": 3,
@@ -480,7 +480,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 11,
       "y": 37,
       "elevation": 3,

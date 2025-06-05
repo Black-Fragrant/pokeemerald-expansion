@@ -31,7 +31,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 22,
       "y": 34,
       "elevation": 3,
@@ -44,7 +44,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 19,
       "y": 13,
       "elevation": 3,
@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 25,
       "y": 37,
       "elevation": 3,
@@ -70,7 +70,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 21,
       "y": 46,
       "elevation": 3,
@@ -83,7 +83,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 12,
       "y": 45,
       "elevation": 3,
@@ -96,7 +96,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 26,
       "y": 23,
       "elevation": 3,
@@ -110,7 +110,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_LITTLE_BOY",
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 24,
       "y": 51,
       "elevation": 3,
@@ -124,7 +124,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_LITTLE_GIRL",
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 25,
       "y": 51,
       "elevation": 3,
@@ -138,7 +138,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_DEVON_EMPLOYEE",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 30,
       "y": 10,
       "elevation": 3,
@@ -152,7 +152,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_GRUNT",
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 13,
       "y": 21,
       "elevation": 3,
@@ -165,7 +165,7 @@
       "flag": "FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 13,
       "y": 34,
       "elevation": 3,
@@ -191,7 +191,7 @@
       "flag": "FLAG_ITEM_RUSTBORO_CITY_X_DEFEND"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 19,
       "y": 27,
       "elevation": 3,
@@ -219,7 +219,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_SCIENTIST",
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 11,
       "y": 15,
       "elevation": 0,
@@ -232,7 +232,7 @@
       "flag": "FLAG_HIDE_RUSTBORO_CITY_SCIENTIST"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 36,
       "elevation": 3,
