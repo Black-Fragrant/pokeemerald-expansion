@@ -503,28 +503,60 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
     {gObjectEventPal_QuintyPlumpReflection, OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
-    {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
-    {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
     {gObjectEventPal_CableCar,              OBJ_EVENT_PAL_TAG_CABLE_CAR},
     {gObjectEventPal_SSTidal,               OBJ_EVENT_PAL_TAG_SSTIDAL},
-    {gObjectEventPal_Kyogre,                OBJ_EVENT_PAL_TAG_KYOGRE},
-    {gObjectEventPal_KyogreReflection,      OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION},
-    {gObjectEventPal_Groudon,               OBJ_EVENT_PAL_TAG_GROUDON},
-    {gObjectEventPal_GroudonReflection,     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION},
     {gObjectEventPal_SubmarineShadow,       OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW},
-    {gObjectEventPal_Poochyena,             OBJ_EVENT_PAL_TAG_POOCHYENA},
-    {gObjectEventPal_RedLeaf,               OBJ_EVENT_PAL_TAG_RED_LEAF},
-    {gObjectEventPal_Deoxys,                OBJ_EVENT_PAL_TAG_DEOXYS},
     {gObjectEventPal_BirthIslandStone,      OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE},
-    {gObjectEventPal_HoOh,                  OBJ_EVENT_PAL_TAG_HO_OH},
-    {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
     {gObjectEventPal_CuttableTree,          OBJ_EVENT_PAL_TAG_CUTTABLE_TREE},
     {gObjectEventPal_PushableBoulder,       OBJ_EVENT_PAL_TAG_PUSHABLE_BOULDER},
+    {gObjectEventPal_Cheren,                OBJ_EVENT_PAL_TAG_CHEREN},
+    {gObjectEventPal_Boy1,                   OBJ_EVENT_PAL_TAG_BOY_1},
+    {gObjectEventPal_Girl1,                  OBJ_EVENT_PAL_TAG_GIRL_1},
+    {gObjectEventPal_Boy2,                  OBJ_EVENT_PAL_TAG_BOY_2},
+    {gObjectEventPal_Youngster,             OBJ_EVENT_PAL_TAG_YOUNGSTER},
+    {gObjectEventPal_SchoolBoy,             OBJ_EVENT_PAL_TAG_SCHOOL_BOY},
+    {gObjectEventPal_RichBoy,               OBJ_EVENT_PAL_TAG_RICH_BOY},
+    {gObjectEventPal_Girl2,                 OBJ_EVENT_PAL_TAG_GIRL_2},
+    {gObjectEventPal_Lass,                  OBJ_EVENT_PAL_TAG_LASS},
+    {gObjectEventPal_SchoolGirl,            OBJ_EVENT_PAL_TAG_SCHOOL_GIRL},
+    {gObjectEventPal_RichGirl,              OBJ_EVENT_PAL_TAG_RICH_GIRL},
+    {gObjectEventPal_BlueShirtGuy,          OBJ_EVENT_PAL_TAG_BLUE_SHIRT_GUY},
+    {gObjectEventPal_GreenShirtGuy,         OBJ_EVENT_PAL_TAG_GREEN_SHIRT_GUY},
+    {gObjectEventPal_CheerleaderMan,        OBJ_EVENT_PAL_TAG_CHEERLEADER_MAN},
+    {gObjectEventPal_Girl3,                 OBJ_EVENT_PAL_TAG_GIRL_3},
+    {gObjectEventPal_Beauty,                OBJ_EVENT_PAL_TAG_BEAUTY},
+    {gObjectEventPal_Teacher,               OBJ_EVENT_PAL_TAG_TEACHER},
+    {gObjectEventPal_PokefanMale,           OBJ_EVENT_PAL_TAG_POKEFAN_MALE},
+    {gObjectEventPal_BeardGuy,              OBJ_EVENT_PAL_TAG_BEARD_GUY},
+    {gObjectEventPal_PokefanFemale,         OBJ_EVENT_PAL_TAG_POKEFAN_FEMALE},
+    {gObjectEventPal_Housewife,             OBJ_EVENT_PAL_TAG_HOUSEWIFE},
+    {gObjectEventPal_Grandpa,               OBJ_EVENT_PAL_TAG_GRANDPA},
+    {gObjectEventPal_Grandma,               OBJ_EVENT_PAL_TAG_GRANDMA},
+    {gObjectEventPal_AceTrainerMale,        OBJ_EVENT_PAL_TAG_ACE_TRAINER_MALE},
+    {gObjectEventPal_AceTrainerFemale,      OBJ_EVENT_PAL_TAG_ACE_TRAINER_FEMALE},
+    {gObjectEventPal_VeteranMale,           OBJ_EVENT_PAL_TAG_VETERAN_MALE},
+    {gObjectEventPal_VeteranFemale,         OBJ_EVENT_PAL_TAG_VETERAN_FEMALE},
+    {gObjectEventPal_BreederMale,           OBJ_EVENT_PAL_TAG_BREEDER_MALE},
+    {gObjectEventPal_BreederFemale,         OBJ_EVENT_PAL_TAG_BREEDER_FEMALE},
+    {gObjectEventPal_Cowboy,                OBJ_EVENT_PAL_TAG_COWBOY},
+    {gObjectEventPal_Cowgirl,               OBJ_EVENT_PAL_TAG_COWGIRL},
+    {gObjectEventPal_BikerMale,             OBJ_EVENT_PAL_TAG_BIKER_MALE},
+    {gObjectEventPal_BikerFemale,           OBJ_EVENT_PAL_TAG_BIKER_FEMALE},
+    {gObjectEventPal_SwimmerMale,           OBJ_EVENT_PAL_TAG_SWIMMER_MALE},
+    {gObjectEventPal_SwimmerFemale,         OBJ_EVENT_PAL_TAG_SWIMMER_FEMALE},
+    {gObjectEventPal_Waiter,                OBJ_EVENT_PAL_TAG_WAITER},
+    {gObjectEventPal_Waitress,              OBJ_EVENT_PAL_TAG_WAITRESS},
+    {gObjectEventPal_Gentleman,             OBJ_EVENT_PAL_TAG_GENTLEMAN},
+    {gObjectEventPal_Lady,                  OBJ_EVENT_PAL_TAG_LADY},
+    {gObjectEventPal_KarateKing,            OBJ_EVENT_PAL_TAG_KARATE_KING},
+    {gObjectEventPal_BattleGirl,            OBJ_EVENT_PAL_TAG_BATTLE_GIRL},
+    {gObjectEventPal_BackpackerMale,        OBJ_EVENT_PAL_TAG_BACKPACKER_MALE},
+    {gObjectEventPal_BackpackerFemale,      OBJ_EVENT_PAL_TAG_BACKPACKER_FEMALE},
 #if OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_MasterBall,            OBJ_EVENT_PAL_TAG_BALL_MASTER},
     {gObjectEventPal_UltraBall,             OBJ_EVENT_PAL_TAG_BALL_ULTRA},
@@ -609,13 +641,6 @@ static const u16 sReflectionPaletteTags_Truck[] = {
     OBJ_EVENT_PAL_TAG_TRUCK,
 };
 
-static const u16 sReflectionPaletteTags_VigorothMover[] = {
-    OBJ_EVENT_PAL_TAG_VIGOROTH,
-    OBJ_EVENT_PAL_TAG_VIGOROTH,
-    OBJ_EVENT_PAL_TAG_VIGOROTH,
-    OBJ_EVENT_PAL_TAG_VIGOROTH,
-};
-
 static const u16 sReflectionPaletteTags_MovingBox[] = {
     OBJ_EVENT_PAL_TAG_MOVING_BOX,
     OBJ_EVENT_PAL_TAG_MOVING_BOX,
@@ -644,20 +669,6 @@ static const u16 sReflectionPaletteTags_SubmarineShadow[] = {
     OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW,
 };
 
-static const u16 sReflectionPaletteTags_Kyogre[] = {
-    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
-    OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION,
-};
-
-static const u16 sReflectionPaletteTags_Groudon[] = {
-    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
-    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
-    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
-    OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
-};
-
 static const u16 sReflectionPaletteTags_Npc3[] = { // Only used by the Route 120 bridge Kecleon
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
@@ -665,27 +676,16 @@ static const u16 sReflectionPaletteTags_Npc3[] = { // Only used by the Route 120
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
 };
 
-static const u16 sReflectionPaletteTags_RedLeaf[] = {
-    OBJ_EVENT_PAL_TAG_RED_LEAF,
-    OBJ_EVENT_PAL_TAG_RED_LEAF,
-    OBJ_EVENT_PAL_TAG_RED_LEAF,
-    OBJ_EVENT_PAL_TAG_RED_LEAF,
-};
-
 static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_BRENDAN,          sReflectionPaletteTags_Brendan},
     {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,     sReflectionPaletteTags_QuintyPlump},
     {OBJ_EVENT_PAL_TAG_TRUCK,            sReflectionPaletteTags_Truck},
-    {OBJ_EVENT_PAL_TAG_VIGOROTH,         sReflectionPaletteTags_VigorothMover},
     {OBJ_EVENT_PAL_TAG_MOVING_BOX,       sReflectionPaletteTags_MovingBox},
     {OBJ_EVENT_PAL_TAG_CABLE_CAR,        sReflectionPaletteTags_CableCar},
     {OBJ_EVENT_PAL_TAG_SSTIDAL,          sReflectionPaletteTags_SSTidal},
-    {OBJ_EVENT_PAL_TAG_KYOGRE,           sReflectionPaletteTags_Kyogre},
-    {OBJ_EVENT_PAL_TAG_GROUDON,          sReflectionPaletteTags_Groudon},
     {OBJ_EVENT_PAL_TAG_NPC_3,            sReflectionPaletteTags_Npc3},
     {OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW, sReflectionPaletteTags_SubmarineShadow},
-    {OBJ_EVENT_PAL_TAG_RED_LEAF,         sReflectionPaletteTags_RedLeaf},
     {OBJ_EVENT_PAL_TAG_NONE,             NULL},
 };
 
