@@ -9,60 +9,107 @@
 #define OBJ_EVENT_GFX_BRENDAN_SURFING              2
 #define OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE           3
 #define OBJ_EVENT_GFX_QUINTY_PLUMP                 4
-#define OBJ_EVENT_GFX_ITEM_BALL                   59
-#define OBJ_EVENT_GFX_BERRY_TREE                  60
-#define OBJ_EVENT_GFX_BERRY_TREE_EARLY_STAGES     61
-#define OBJ_EVENT_GFX_BERRY_TREE_LATE_STAGES      62
-#define OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE           63
-#define OBJ_EVENT_GFX_CUTTABLE_TREE               82
-#define OBJ_EVENT_GFX_BREAKABLE_ROCK              86
-#define OBJ_EVENT_GFX_PUSHABLE_BOULDER            87
-#define OBJ_EVENT_GFX_MR_BRINEYS_BOAT             88
-#define OBJ_EVENT_GFX_MAY_NORMAL                  89
-#define OBJ_EVENT_GFX_MAY_MACH_BIKE               90
-#define OBJ_EVENT_GFX_MAY_ACRO_BIKE               91
-#define OBJ_EVENT_GFX_MAY_SURFING                 92
-#define OBJ_EVENT_GFX_MAY_FIELD_MOVE              93
-#define OBJ_EVENT_GFX_TRUCK                       94
-#define OBJ_EVENT_GFX_BIRCHS_BAG                  97
-#define OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL       100
-#define OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE    101
-#define OBJ_EVENT_GFX_RIVAL_BRENDAN_ACRO_BIKE    102
-#define OBJ_EVENT_GFX_RIVAL_BRENDAN_SURFING      103
-#define OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE   104
-#define OBJ_EVENT_GFX_RIVAL_MAY_NORMAL           105
-#define OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE        106
-#define OBJ_EVENT_GFX_RIVAL_MAY_ACRO_BIKE        107
-#define OBJ_EVENT_GFX_RIVAL_MAY_SURFING          108
-#define OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE       109
-#define OBJ_EVENT_GFX_BRENDAN_UNDERWATER         111
-#define OBJ_EVENT_GFX_MAY_UNDERWATER             112
-#define OBJ_EVENT_GFX_MOVING_BOX                 113
-#define OBJ_EVENT_GFX_CABLE_CAR                  114
-#define OBJ_EVENT_GFX_BRENDAN_FISHING            137
-#define OBJ_EVENT_GFX_MAY_FISHING                138
-#define OBJ_EVENT_GFX_SS_TIDAL                   140
-#define OBJ_EVENT_GFX_SUBMARINE_SHADOW           141
-#define OBJ_EVENT_GFX_BRENDAN_WATERING           191
-#define OBJ_EVENT_GFX_MAY_WATERING               192
-#define OBJ_EVENT_GFX_BRENDAN_DECORATING         193
-#define OBJ_EVENT_GFX_MAY_DECORATING             194
-#define OBJ_EVENT_GFX_FOSSIL                     199
-#define OBJ_EVENT_GFX_KECLEON_BRIDGE_SHADOW      212
-#define OBJ_EVENT_GFX_LINK_BRENDAN               216
-#define OBJ_EVENT_GFX_LINK_MAY                   217
-#define OBJ_EVENT_GFX_SCOTT                      219
-#define OBJ_EVENT_GFX_TRICK_HOUSE_STATUE         224
-#define OBJ_EVENT_GFX_DEOXYS_TRIANGLE            233
-#define OBJ_EVENT_GFX_LINK_RS_BRENDAN            235
-#define OBJ_EVENT_GFX_LINK_RS_MAY                236
-#define OBJ_EVENT_GFX_POKE_BALL                  239
-#define OBJ_EVENT_GFX_OW_MON                     240
+#define OBJ_EVENT_GFX_ITEM_BALL                    5
+#define OBJ_EVENT_GFX_BERRY_TREE                   6
+#define OBJ_EVENT_GFX_BERRY_TREE_EARLY_STAGES      7
+#define OBJ_EVENT_GFX_BERRY_TREE_LATE_STAGES       8
+#define OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE            9
+#define OBJ_EVENT_GFX_CUTTABLE_TREE               10
+#define OBJ_EVENT_GFX_BREAKABLE_ROCK              11
+#define OBJ_EVENT_GFX_PUSHABLE_BOULDER            12
+#define OBJ_EVENT_GFX_MR_BRINEYS_BOAT             13
+#define OBJ_EVENT_GFX_MAY_NORMAL                  14
+#define OBJ_EVENT_GFX_MAY_MACH_BIKE               15
+#define OBJ_EVENT_GFX_MAY_ACRO_BIKE               16
+#define OBJ_EVENT_GFX_MAY_SURFING                 17
+#define OBJ_EVENT_GFX_MAY_FIELD_MOVE              18
+#define OBJ_EVENT_GFX_TRUCK                       19
+#define OBJ_EVENT_GFX_BIRCHS_BAG                  20
+#define OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL        21
+#define OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE     22
+#define OBJ_EVENT_GFX_RIVAL_BRENDAN_ACRO_BIKE     23
+#define OBJ_EVENT_GFX_RIVAL_BRENDAN_SURFING       24
+#define OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE    25
+#define OBJ_EVENT_GFX_RIVAL_MAY_NORMAL            26
+#define OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE         27
+#define OBJ_EVENT_GFX_RIVAL_MAY_ACRO_BIKE         28
+#define OBJ_EVENT_GFX_RIVAL_MAY_SURFING           29
+#define OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE        30
+#define OBJ_EVENT_GFX_BRENDAN_UNDERWATER          31
+#define OBJ_EVENT_GFX_MAY_UNDERWATER              32
+#define OBJ_EVENT_GFX_MOVING_BOX                  33
+#define OBJ_EVENT_GFX_CABLE_CAR                   34
+#define OBJ_EVENT_GFX_BRENDAN_FISHING             35
+#define OBJ_EVENT_GFX_MAY_FISHING                 36
+#define OBJ_EVENT_GFX_SS_TIDAL                    37
+#define OBJ_EVENT_GFX_SUBMARINE_SHADOW            38
+#define OBJ_EVENT_GFX_BRENDAN_WATERING            39
+#define OBJ_EVENT_GFX_MAY_WATERING                40
+#define OBJ_EVENT_GFX_BRENDAN_DECORATING          41
+#define OBJ_EVENT_GFX_MAY_DECORATING              42
+#define OBJ_EVENT_GFX_FOSSIL                      43
+#define OBJ_EVENT_GFX_KECLEON_BRIDGE_SHADOW       44
+#define OBJ_EVENT_GFX_LINK_BRENDAN                45
+#define OBJ_EVENT_GFX_LINK_MAY                    46
+#define OBJ_EVENT_GFX_SCOTT                       47
+#define OBJ_EVENT_GFX_TRICK_HOUSE_STATUE          48
+#define OBJ_EVENT_GFX_DEOXYS_TRIANGLE             49
+#define OBJ_EVENT_GFX_LINK_RS_BRENDAN             50
+#define OBJ_EVENT_GFX_LINK_RS_MAY                 51
+
+#define OBJ_EM_COUNT                              51
+
+#define OBJ_EVENT_GFX_CHEREN                 OBJ_EM_COUNT + 1
+#define OBJ_EVENT_GFX_BOY_1                  OBJ_EM_COUNT + 2
+#define OBJ_EVENT_GFX_GIRL_1                 OBJ_EM_COUNT + 3
+#define OBJ_EVENT_GFX_BOY_2                  OBJ_EM_COUNT + 4
+#define OBJ_EVENT_GFX_YOUNGSTER              OBJ_EM_COUNT + 5
+#define OBJ_EVENT_GFX_SCHOOL_BOY             OBJ_EM_COUNT + 6
+#define OBJ_EVENT_GFX_RICH_BOY               OBJ_EM_COUNT + 7
+#define OBJ_EVENT_GFX_GIRL_2                 OBJ_EM_COUNT + 8
+#define OBJ_EVENT_GFX_LASS                   OBJ_EM_COUNT + 9
+#define OBJ_EVENT_GFX_SCHOOL_GIRL            OBJ_EM_COUNT + 10
+#define OBJ_EVENT_GFX_RICH_GIRL              OBJ_EM_COUNT + 11
+#define OBJ_EVENT_GFX_BLUE_SHIRT_GUY         OBJ_EM_COUNT + 13
+#define OBJ_EVENT_GFX_GREEN_SHIRT_GUY        OBJ_EM_COUNT + 14
+#define OBJ_EVENT_GFX_CHEERLEADER_MAN        OBJ_EM_COUNT + 15
+#define OBJ_EVENT_GFX_GIRL_3                 OBJ_EM_COUNT + 16
+#define OBJ_EVENT_GFX_BEAUTY                 OBJ_EM_COUNT + 17
+#define OBJ_EVENT_GFX_TEACHER                OBJ_EM_COUNT + 18
+#define OBJ_EVENT_GFX_POKEFAN_MALE           OBJ_EM_COUNT + 19
+#define OBJ_EVENT_GFX_BEARD_GUY              OBJ_EM_COUNT + 20
+#define OBJ_EVENT_GFX_POKEFAN_FEMALE         OBJ_EM_COUNT + 21
+#define OBJ_EVENT_GFX_HOUSEWIFE              OBJ_EM_COUNT + 22
+#define OBJ_EVENT_GFX_GRANDPA                OBJ_EM_COUNT + 23
+#define OBJ_EVENT_GFX_GRANDMA                OBJ_EM_COUNT + 24
+#define OBJ_EVENT_GFX_ACE_TRAINER_MALE       OBJ_EM_COUNT + 25
+#define OBJ_EVENT_GFX_ACE_TRAINER_FEMALE     OBJ_EM_COUNT + 26
+#define OBJ_EVENT_GFX_VETERAN_MALE           OBJ_EM_COUNT + 27
+#define OBJ_EVENT_GFX_VETERAN_FEMALE         OBJ_EM_COUNT + 28
+#define OBJ_EVENT_GFX_BREEDER_MALE           OBJ_EM_COUNT + 29
+#define OBJ_EVENT_GFX_BREEDER_FEMALE         OBJ_EM_COUNT + 30
+#define OBJ_EVENT_GFX_COWBOY                 OBJ_EM_COUNT + 31
+#define OBJ_EVENT_GFX_COWGIRL                OBJ_EM_COUNT + 32
+#define OBJ_EVENT_GFX_BIKER_MALE             OBJ_EM_COUNT + 33
+#define OBJ_EVENT_GFX_BIKER_FEMALE           OBJ_EM_COUNT + 34
+#define OBJ_EVENT_GFX_SWIMMER_MALE           OBJ_EM_COUNT + 35
+#define OBJ_EVENT_GFX_SWIMMER_FEMALE         OBJ_EM_COUNT + 36
+#define OBJ_EVENT_GFX_WAITER                 OBJ_EM_COUNT + 37
+#define OBJ_EVENT_GFX_WAITRESS               OBJ_EM_COUNT + 38
+#define OBJ_EVENT_GFX_GENTLEMAN              OBJ_EM_COUNT + 39
+#define OBJ_EVENT_GFX_LADY                   OBJ_EM_COUNT + 40
+#define OBJ_EVENT_GFX_KARATE_KING            OBJ_EM_COUNT + 41
+#define OBJ_EVENT_GFX_BATTLE_GIRL            OBJ_EM_COUNT + 42
+#define OBJ_EVENT_GFX_BACKPACKER_MALE        OBJ_EM_COUNT + 43
+#define OBJ_EVENT_GFX_BACKPACKER_FEMALE      OBJ_EM_COUNT + 44
+
+#define OBJ_EVENT_GFX_POKE_BALL              OBJ_EM_COUNT + 45
+#define OBJ_EVENT_GFX_OW_MON                 OBJ_EM_COUNT + 46
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        241
+#define NUM_OBJ_EVENT_GFX                        OBJ_EVENT_GFX_OW_MON + 1
 
 
 // These are dynamic object gfx ids.
@@ -156,66 +203,98 @@
 #define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP            0x110B
 #define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION 0x110C
 #define OBJ_EVENT_PAL_TAG_TRUCK                   0x110D
-#define OBJ_EVENT_PAL_TAG_VIGOROTH                0x110E
-#define OBJ_EVENT_PAL_TAG_ZIGZAGOON               0x110F
 #define OBJ_EVENT_PAL_TAG_MAY                     0x1110
 #define OBJ_EVENT_PAL_TAG_MAY_REFLECTION          0x1111
 #define OBJ_EVENT_PAL_TAG_MOVING_BOX              0x1112
 #define OBJ_EVENT_PAL_TAG_CABLE_CAR               0x1113
 #define OBJ_EVENT_PAL_TAG_SSTIDAL                 0x1114
 #define OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER       0x1115
-#define OBJ_EVENT_PAL_TAG_KYOGRE                  0x1116
-#define OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION       0x1117
-#define OBJ_EVENT_PAL_TAG_GROUDON                 0x1118
-#define OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION      0x1119
 #define OBJ_EVENT_PAL_TAG_UNUSED                  0x111A
 #define OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW        0x111B
-#define OBJ_EVENT_PAL_TAG_POOCHYENA               0x111C
-#define OBJ_EVENT_PAL_TAG_RED_LEAF                0x111D
-#define OBJ_EVENT_PAL_TAG_DEOXYS                  0x111E
 #define OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE      0x111F
-#define OBJ_EVENT_PAL_TAG_HO_OH                   0x1120
-#define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
 #define OBJ_EVENT_PAL_TAG_DYNAMIC                 0x1124
 #define OBJ_EVENT_PAL_TAG_CUTTABLE_TREE           0x1125
 #define OBJ_EVENT_PAL_TAG_PUSHABLE_BOULDER        0x1126
+#define OBJ_EVENT_PAL_TAG_CHEREN                  0x1127
+#define OBJ_EVENT_PAL_TAG_BOY_1                   0x1128
+#define OBJ_EVENT_PAL_TAG_GIRL_1                  0x1129
+#define OBJ_EVENT_PAL_TAG_BOY_2                   0x112A
+#define OBJ_EVENT_PAL_TAG_YOUNGSTER               0x112B
+#define OBJ_EVENT_PAL_TAG_SCHOOL_BOY              0x112C
+#define OBJ_EVENT_PAL_TAG_RICH_BOY                0x112D
+#define OBJ_EVENT_PAL_TAG_GIRL_2                  0x112E
+#define OBJ_EVENT_PAL_TAG_LASS                    0x112F
+#define OBJ_EVENT_PAL_TAG_SCHOOL_GIRL             0x1130
+#define OBJ_EVENT_PAL_TAG_RICH_GIRL               0x1131
+#define OBJ_EVENT_PAL_TAG_BLUE_SHIRT_GUY          0x1132
+#define OBJ_EVENT_PAL_TAG_GREEN_SHIRT_GUY         0x1133
+#define OBJ_EVENT_PAL_TAG_CHEERLEADER_MAN         0x1134
+#define OBJ_EVENT_PAL_TAG_GIRL_3                  0x1135
+#define OBJ_EVENT_PAL_TAG_BEAUTY                  0x1136
+#define OBJ_EVENT_PAL_TAG_TEACHER                 0x1137
+#define OBJ_EVENT_PAL_TAG_POKEFAN_MALE            0x1138
+#define OBJ_EVENT_PAL_TAG_BEARD_GUY               0x1139
+#define OBJ_EVENT_PAL_TAG_POKEFAN_FEMALE          0x113A
+#define OBJ_EVENT_PAL_TAG_HOUSEWIFE               0x113B
+#define OBJ_EVENT_PAL_TAG_GRANDPA                 0x113C
+#define OBJ_EVENT_PAL_TAG_GRANDMA                 0x113D
+#define OBJ_EVENT_PAL_TAG_ACE_TRAINER_MALE        0x113E
+#define OBJ_EVENT_PAL_TAG_ACE_TRAINER_FEMALE      0x113F
+#define OBJ_EVENT_PAL_TAG_VETERAN_MALE            0x1140
+#define OBJ_EVENT_PAL_TAG_VETERAN_FEMALE          0x1141
+#define OBJ_EVENT_PAL_TAG_BREEDER_MALE            0x1142
+#define OBJ_EVENT_PAL_TAG_BREEDER_FEMALE          0x1143
+#define OBJ_EVENT_PAL_TAG_COWBOY                  0x1144
+#define OBJ_EVENT_PAL_TAG_COWGIRL                 0x1145
+#define OBJ_EVENT_PAL_TAG_BIKER_MALE              0x1146
+#define OBJ_EVENT_PAL_TAG_BIKER_FEMALE            0x1147
+#define OBJ_EVENT_PAL_TAG_SWIMMER_MALE            0x1148
+#define OBJ_EVENT_PAL_TAG_SWIMMER_FEMALE          0x1149
+#define OBJ_EVENT_PAL_TAG_WAITER                  0x114A
+#define OBJ_EVENT_PAL_TAG_WAITRESS                0x114B
+#define OBJ_EVENT_PAL_TAG_GENTLEMAN               0x114C
+#define OBJ_EVENT_PAL_TAG_LADY                    0x114D
+#define OBJ_EVENT_PAL_TAG_KARATE_KING             0x114E
+#define OBJ_EVENT_PAL_TAG_BATTLE_GIRL             0x114F
+#define OBJ_EVENT_PAL_TAG_BACKPACKER_MALE         0x1150
+#define OBJ_EVENT_PAL_TAG_BACKPACKER_FEMALE       0x1151
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
-#define OBJ_EVENT_PAL_TAG_BALL_MASTER             0x1150
-#define OBJ_EVENT_PAL_TAG_BALL_ULTRA              0x1151
-#define OBJ_EVENT_PAL_TAG_BALL_GREAT              0x1152
-#define OBJ_EVENT_PAL_TAG_BALL_SAFARI             0x1153
-#define OBJ_EVENT_PAL_TAG_BALL_NET                0x1154
-#define OBJ_EVENT_PAL_TAG_BALL_DIVE               0x1155
-#define OBJ_EVENT_PAL_TAG_BALL_NEST               0x1156
-#define OBJ_EVENT_PAL_TAG_BALL_REPEAT             0x1157
-#define OBJ_EVENT_PAL_TAG_BALL_TIMER              0x1158
-#define OBJ_EVENT_PAL_TAG_BALL_LUXURY             0x1159
-#define OBJ_EVENT_PAL_TAG_BALL_PREMIER            0x115A
+#define OBJ_EVENT_PAL_TAG_BALL_MASTER             0x1180
+#define OBJ_EVENT_PAL_TAG_BALL_ULTRA              0x1181
+#define OBJ_EVENT_PAL_TAG_BALL_GREAT              0x1182
+#define OBJ_EVENT_PAL_TAG_BALL_SAFARI             0x1183
+#define OBJ_EVENT_PAL_TAG_BALL_NET                0x1184
+#define OBJ_EVENT_PAL_TAG_BALL_DIVE               0x1185
+#define OBJ_EVENT_PAL_TAG_BALL_NEST               0x1186
+#define OBJ_EVENT_PAL_TAG_BALL_REPEAT             0x1187
+#define OBJ_EVENT_PAL_TAG_BALL_TIMER              0x1188
+#define OBJ_EVENT_PAL_TAG_BALL_LUXURY             0x1189
+#define OBJ_EVENT_PAL_TAG_BALL_PREMIER            0x118A
 // Gen IV/Sinnoh
-#define OBJ_EVENT_PAL_TAG_BALL_DUSK               0x115B
-#define OBJ_EVENT_PAL_TAG_BALL_HEAL               0x115C
-#define OBJ_EVENT_PAL_TAG_BALL_QUICK              0x115D
-#define OBJ_EVENT_PAL_TAG_BALL_CHERISH            0x115E
-#define OBJ_EVENT_PAL_TAG_BALL_PARK               0x115F
+#define OBJ_EVENT_PAL_TAG_BALL_DUSK               0x118B
+#define OBJ_EVENT_PAL_TAG_BALL_HEAL               0x118C
+#define OBJ_EVENT_PAL_TAG_BALL_QUICK              0x118D
+#define OBJ_EVENT_PAL_TAG_BALL_CHERISH            0x118E
+#define OBJ_EVENT_PAL_TAG_BALL_PARK               0x118F
 // Gen II/Johto Apricorns
-#define OBJ_EVENT_PAL_TAG_BALL_FAST               0x1160
-#define OBJ_EVENT_PAL_TAG_BALL_LEVEL              0x1161
-#define OBJ_EVENT_PAL_TAG_BALL_LURE               0x1162
-#define OBJ_EVENT_PAL_TAG_BALL_HEAVY              0x1163
-#define OBJ_EVENT_PAL_TAG_BALL_LOVE               0x1164
-#define OBJ_EVENT_PAL_TAG_BALL_FRIEND             0x1165
-#define OBJ_EVENT_PAL_TAG_BALL_MOON               0x1166
-#define OBJ_EVENT_PAL_TAG_BALL_SPORT              0x1167
+#define OBJ_EVENT_PAL_TAG_BALL_FAST               0x1190
+#define OBJ_EVENT_PAL_TAG_BALL_LEVEL              0x1191
+#define OBJ_EVENT_PAL_TAG_BALL_LURE               0x1192
+#define OBJ_EVENT_PAL_TAG_BALL_HEAVY              0x1193
+#define OBJ_EVENT_PAL_TAG_BALL_LOVE               0x1194
+#define OBJ_EVENT_PAL_TAG_BALL_FRIEND             0x1195
+#define OBJ_EVENT_PAL_TAG_BALL_MOON               0x1196
+#define OBJ_EVENT_PAL_TAG_BALL_SPORT              0x1197
 // Gen V
-#define OBJ_EVENT_PAL_TAG_BALL_DREAM              0x1168
+#define OBJ_EVENT_PAL_TAG_BALL_DREAM              0x1198
 // Gen VII
-#define OBJ_EVENT_PAL_TAG_BALL_BEAST              0x1169
+#define OBJ_EVENT_PAL_TAG_BALL_BEAST              0x1199
 // Gen VIII
-#define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
+#define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x119A
 #endif //OW_FOLLOWERS_POKEBALLS
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611

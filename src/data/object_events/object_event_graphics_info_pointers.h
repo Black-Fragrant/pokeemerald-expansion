@@ -49,6 +49,49 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Statue;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BirthIslandStone;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireBrendan;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireMay;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cheren;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Youngster;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolBoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichBoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lass;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlueShirtGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenShirtGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CheerleaderMan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl3;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Beauty;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Teacher;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BeardGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Housewife;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Grandpa;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Grandma;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AceTrainerMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AceTrainerFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VeteranMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VeteranFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BreederMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BreederFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cowboy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cowgirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BikerMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BikerFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SwimmerMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SwimmerFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Waiter;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Waitress;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gentleman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KarateKing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BattleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BackpackerMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BackpackerFemale;
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -107,6 +150,49 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_TRIANGLE] =          &gObjectEventGraphicsInfo_BirthIslandStone,
     [OBJ_EVENT_GFX_LINK_RS_BRENDAN] =          &gObjectEventGraphicsInfo_RubySapphireBrendan,
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
+    [OBJ_EVENT_GFX_CHEREN] =                   &gObjectEventGraphicsInfo_Cheren,
+    [OBJ_EVENT_GFX_BOY_1] =                    &gObjectEventGraphicsInfo_Boy1,
+    [OBJ_EVENT_GFX_GIRL_1] =                   &gObjectEventGraphicsInfo_Girl1,
+    [OBJ_EVENT_GFX_BOY_2] =                    &gObjectEventGraphicsInfo_Boy2,
+    [OBJ_EVENT_GFX_YOUNGSTER] =                &gObjectEventGraphicsInfo_Youngster,
+    [OBJ_EVENT_GFX_SCHOOL_BOY] =               &gObjectEventGraphicsInfo_SchoolBoy,
+    [OBJ_EVENT_GFX_RICH_BOY] =                 &gObjectEventGraphicsInfo_RichBoy,
+    [OBJ_EVENT_GFX_GIRL_2] =                   &gObjectEventGraphicsInfo_Girl2,
+    [OBJ_EVENT_GFX_LASS] =                     &gObjectEventGraphicsInfo_Lass,
+    [OBJ_EVENT_GFX_SCHOOL_GIRL] =              &gObjectEventGraphicsInfo_SchoolGirl,
+    [OBJ_EVENT_GFX_RICH_GIRL] =                &gObjectEventGraphicsInfo_RichGirl,
+    [OBJ_EVENT_GFX_BLUE_SHIRT_GUY] =           &gObjectEventGraphicsInfo_BlueShirtGuy,
+    [OBJ_EVENT_GFX_GREEN_SHIRT_GUY] =          &gObjectEventGraphicsInfo_GreenShirtGuy,
+    [OBJ_EVENT_GFX_CHEERLEADER_MAN] =          &gObjectEventGraphicsInfo_CheerleaderMan,
+    [OBJ_EVENT_GFX_GIRL_3] =                   &gObjectEventGraphicsInfo_Girl3,
+    [OBJ_EVENT_GFX_BEAUTY] =                   &gObjectEventGraphicsInfo_Beauty,
+    [OBJ_EVENT_GFX_TEACHER] =                  &gObjectEventGraphicsInfo_Teacher,
+    [OBJ_EVENT_GFX_POKEFAN_MALE] =             &gObjectEventGraphicsInfo_PokefanMale,
+    [OBJ_EVENT_GFX_BEARD_GUY] =                &gObjectEventGraphicsInfo_BeardGuy,
+    [OBJ_EVENT_GFX_POKEFAN_FEMALE] =           &gObjectEventGraphicsInfo_PokefanFemale,
+    [OBJ_EVENT_GFX_HOUSEWIFE] =                &gObjectEventGraphicsInfo_Housewife,
+    [OBJ_EVENT_GFX_GRANDPA] =                  &gObjectEventGraphicsInfo_Grandpa,
+    [OBJ_EVENT_GFX_GRANDMA] =                  &gObjectEventGraphicsInfo_Grandma,
+    [OBJ_EVENT_GFX_ACE_TRAINER_MALE] =         &gObjectEventGraphicsInfo_AceTrainerMale,
+    [OBJ_EVENT_GFX_ACE_TRAINER_FEMALE] =       &gObjectEventGraphicsInfo_AceTrainerFemale,
+    [OBJ_EVENT_GFX_VETERAN_MALE] =             &gObjectEventGraphicsInfo_VeteranMale,
+    [OBJ_EVENT_GFX_VETERAN_FEMALE] =           &gObjectEventGraphicsInfo_VeteranFemale,
+    [OBJ_EVENT_GFX_BREEDER_MALE] =             &gObjectEventGraphicsInfo_BreederMale,
+    [OBJ_EVENT_GFX_BREEDER_FEMALE] =           &gObjectEventGraphicsInfo_BreederFemale,
+    [OBJ_EVENT_GFX_COWBOY] =                   &gObjectEventGraphicsInfo_Cowboy,
+    [OBJ_EVENT_GFX_COWGIRL] =                  &gObjectEventGraphicsInfo_Cowgirl,
+    [OBJ_EVENT_GFX_BIKER_MALE] =               &gObjectEventGraphicsInfo_BikerMale,
+    [OBJ_EVENT_GFX_BIKER_FEMALE] =             &gObjectEventGraphicsInfo_BikerFemale,
+    [OBJ_EVENT_GFX_SWIMMER_MALE] =             &gObjectEventGraphicsInfo_SwimmerMale,
+    [OBJ_EVENT_GFX_SWIMMER_FEMALE] =           &gObjectEventGraphicsInfo_SwimmerFemale,
+    [OBJ_EVENT_GFX_WAITER] =                   &gObjectEventGraphicsInfo_Waiter,
+    [OBJ_EVENT_GFX_WAITRESS] =                 &gObjectEventGraphicsInfo_Waitress,
+    [OBJ_EVENT_GFX_GENTLEMAN] =                &gObjectEventGraphicsInfo_Gentleman,
+    [OBJ_EVENT_GFX_LADY] =                     &gObjectEventGraphicsInfo_Lady,
+    [OBJ_EVENT_GFX_KARATE_KING] =              &gObjectEventGraphicsInfo_KarateKing,
+    [OBJ_EVENT_GFX_BATTLE_GIRL] =              &gObjectEventGraphicsInfo_BattleGirl,
+    [OBJ_EVENT_GFX_BACKPACKER_MALE] =          &gObjectEventGraphicsInfo_BackpackerMale,
+    [OBJ_EVENT_GFX_BACKPACKER_FEMALE] =        &gObjectEventGraphicsInfo_BackpackerFemale,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
 };
