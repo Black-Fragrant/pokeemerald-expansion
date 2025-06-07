@@ -56,60 +56,67 @@
 #define OBJ_EVENT_GFX_DEOXYS_TRIANGLE             49
 #define OBJ_EVENT_GFX_LINK_RS_BRENDAN             50
 #define OBJ_EVENT_GFX_LINK_RS_MAY                 51
-
-#define OBJ_EM_COUNT                              51
-
-#define OBJ_EVENT_GFX_CHEREN                 OBJ_EM_COUNT + 1
-#define OBJ_EVENT_GFX_BOY_1                  OBJ_EM_COUNT + 2
-#define OBJ_EVENT_GFX_GIRL_1                 OBJ_EM_COUNT + 3
-#define OBJ_EVENT_GFX_BOY_2                  OBJ_EM_COUNT + 4
-#define OBJ_EVENT_GFX_YOUNGSTER              OBJ_EM_COUNT + 5
-#define OBJ_EVENT_GFX_SCHOOL_BOY             OBJ_EM_COUNT + 6
-#define OBJ_EVENT_GFX_RICH_BOY               OBJ_EM_COUNT + 7
-#define OBJ_EVENT_GFX_GIRL_2                 OBJ_EM_COUNT + 8
-#define OBJ_EVENT_GFX_LASS                   OBJ_EM_COUNT + 9
-#define OBJ_EVENT_GFX_SCHOOL_GIRL            OBJ_EM_COUNT + 10
-#define OBJ_EVENT_GFX_RICH_GIRL              OBJ_EM_COUNT + 11
-#define OBJ_EVENT_GFX_BLUE_SHIRT_GUY         OBJ_EM_COUNT + 13
-#define OBJ_EVENT_GFX_GREEN_SHIRT_GUY        OBJ_EM_COUNT + 14
-#define OBJ_EVENT_GFX_CHEERLEADER_MAN        OBJ_EM_COUNT + 15
-#define OBJ_EVENT_GFX_GIRL_3                 OBJ_EM_COUNT + 16
-#define OBJ_EVENT_GFX_BEAUTY                 OBJ_EM_COUNT + 17
-#define OBJ_EVENT_GFX_TEACHER                OBJ_EM_COUNT + 18
-#define OBJ_EVENT_GFX_POKEFAN_MALE           OBJ_EM_COUNT + 19
-#define OBJ_EVENT_GFX_BEARD_GUY              OBJ_EM_COUNT + 20
-#define OBJ_EVENT_GFX_POKEFAN_FEMALE         OBJ_EM_COUNT + 21
-#define OBJ_EVENT_GFX_HOUSEWIFE              OBJ_EM_COUNT + 22
-#define OBJ_EVENT_GFX_GRANDPA                OBJ_EM_COUNT + 23
-#define OBJ_EVENT_GFX_GRANDMA                OBJ_EM_COUNT + 24
-#define OBJ_EVENT_GFX_ACE_TRAINER_MALE       OBJ_EM_COUNT + 25
-#define OBJ_EVENT_GFX_ACE_TRAINER_FEMALE     OBJ_EM_COUNT + 26
-#define OBJ_EVENT_GFX_VETERAN_MALE           OBJ_EM_COUNT + 27
-#define OBJ_EVENT_GFX_VETERAN_FEMALE         OBJ_EM_COUNT + 28
-#define OBJ_EVENT_GFX_BREEDER_MALE           OBJ_EM_COUNT + 29
-#define OBJ_EVENT_GFX_BREEDER_FEMALE         OBJ_EM_COUNT + 30
-#define OBJ_EVENT_GFX_COWBOY                 OBJ_EM_COUNT + 31
-#define OBJ_EVENT_GFX_COWGIRL                OBJ_EM_COUNT + 32
-#define OBJ_EVENT_GFX_BIKER_MALE             OBJ_EM_COUNT + 33
-#define OBJ_EVENT_GFX_BIKER_FEMALE           OBJ_EM_COUNT + 34
-#define OBJ_EVENT_GFX_SWIMMER_MALE           OBJ_EM_COUNT + 35
-#define OBJ_EVENT_GFX_SWIMMER_FEMALE         OBJ_EM_COUNT + 36
-#define OBJ_EVENT_GFX_WAITER                 OBJ_EM_COUNT + 37
-#define OBJ_EVENT_GFX_WAITRESS               OBJ_EM_COUNT + 38
-#define OBJ_EVENT_GFX_GENTLEMAN              OBJ_EM_COUNT + 39
-#define OBJ_EVENT_GFX_LADY                   OBJ_EM_COUNT + 40
-#define OBJ_EVENT_GFX_KARATE_KING            OBJ_EM_COUNT + 41
-#define OBJ_EVENT_GFX_BATTLE_GIRL            OBJ_EM_COUNT + 42
-#define OBJ_EVENT_GFX_BACKPACKER_MALE        OBJ_EM_COUNT + 43
-#define OBJ_EVENT_GFX_BACKPACKER_FEMALE      OBJ_EM_COUNT + 44
-
-#define OBJ_EVENT_GFX_POKE_BALL              OBJ_EM_COUNT + 45
-#define OBJ_EVENT_GFX_OW_MON                 OBJ_EM_COUNT + 46
+#define OBJ_EVENT_GFX_CHEREN                      52
+#define OBJ_EVENT_GFX_BOY_1                       53
+#define OBJ_EVENT_GFX_GIRL_1                      54
+#define OBJ_EVENT_GFX_BOY_2                       55
+#define OBJ_EVENT_GFX_YOUNGSTER                   56
+#define OBJ_EVENT_GFX_SCHOOL_BOY                  57
+#define OBJ_EVENT_GFX_RICH_BOY                    58
+#define OBJ_EVENT_GFX_GIRL_2                      59
+#define OBJ_EVENT_GFX_LASS                        60
+#define OBJ_EVENT_GFX_SCHOOL_GIRL                 61
+#define OBJ_EVENT_GFX_RICH_GIRL                   62
+#define OBJ_EVENT_GFX_BLUE_SHIRT_GUY              64
+#define OBJ_EVENT_GFX_GREEN_SHIRT_GUY             65
+#define OBJ_EVENT_GFX_CHEERLEADER_MAN             66
+#define OBJ_EVENT_GFX_GIRL_3                      67
+#define OBJ_EVENT_GFX_BEAUTY                      68
+#define OBJ_EVENT_GFX_TEACHER                     69
+#define OBJ_EVENT_GFX_POKEFAN_MALE                70
+#define OBJ_EVENT_GFX_BEARD_GUY                   71
+#define OBJ_EVENT_GFX_POKEFAN_FEMALE              72
+#define OBJ_EVENT_GFX_HOUSEWIFE                   73
+#define OBJ_EVENT_GFX_GRANDPA                     74
+#define OBJ_EVENT_GFX_GRANDMA                     75
+#define OBJ_EVENT_GFX_ACE_TRAINER_MALE            76
+#define OBJ_EVENT_GFX_ACE_TRAINER_FEMALE          77
+#define OBJ_EVENT_GFX_VETERAN_MALE                78
+#define OBJ_EVENT_GFX_VETERAN_FEMALE              79
+#define OBJ_EVENT_GFX_BREEDER_MALE                80
+#define OBJ_EVENT_GFX_BREEDER_FEMALE              81
+#define OBJ_EVENT_GFX_COWBOY                      82
+#define OBJ_EVENT_GFX_COWGIRL                     83
+#define OBJ_EVENT_GFX_BIKER_MALE                  84
+#define OBJ_EVENT_GFX_BIKER_FEMALE                85
+#define OBJ_EVENT_GFX_SWIMMER_MALE                86
+#define OBJ_EVENT_GFX_SWIMMER_FEMALE              87
+#define OBJ_EVENT_GFX_WAITER                      88
+#define OBJ_EVENT_GFX_WAITRESS                    89
+#define OBJ_EVENT_GFX_GENTLEMAN                   90
+#define OBJ_EVENT_GFX_LADY                        91
+#define OBJ_EVENT_GFX_KARATE_KING                 92
+#define OBJ_EVENT_GFX_BATTLE_GIRL                 93
+#define OBJ_EVENT_GFX_BACKPACKER_MALE             94
+#define OBJ_EVENT_GFX_BACKPACKER_FEMALE           95
+#define OBJ_EVENT_GFX_DOCTOR                      96
+#define OBJ_EVENT_GFX_NURSE                       97
+#define OBJ_EVENT_GFX_BUSINESS_MAN                98
+#define OBJ_EVENT_GFX_OFFICE_LADY                 99
+#define OBJ_EVENT_GFX_PEIRRO                      100
+#define OBJ_EVENT_GFX_DANCER                      101
+#define OBJ_EVENT_GFX_GUITARIST                   102
+#define OBJ_EVENT_GFX_BASEBALL_PLAYER             103
+#define OBJ_EVENT_GFX_SOCCER_PLAYER               104
+#define OBJ_EVENT_GFX_FOOTBALL_PLAYER             105
+#define OBJ_EVENT_GFX_TENNIS_PLAYER               106
+#define OBJ_EVENT_GFX_POKE_BALL                   107
+#define OBJ_EVENT_GFX_OW_MON                      108
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        OBJ_EVENT_GFX_OW_MON + 1
+#define NUM_OBJ_EVENT_GFX                         109
 
 
 // These are dynamic object gfx ids.
@@ -260,6 +267,17 @@
 #define OBJ_EVENT_PAL_TAG_BATTLE_GIRL             0x114F
 #define OBJ_EVENT_PAL_TAG_BACKPACKER_MALE         0x1150
 #define OBJ_EVENT_PAL_TAG_BACKPACKER_FEMALE       0x1151
+#define OBJ_EVENT_PAL_TAG_DOCTOR                  0x1152
+#define OBJ_EVENT_PAL_TAG_NURSE                   0x1153
+#define OBJ_EVENT_PAL_TAG_BUSINESS_MAN            0x1154
+#define OBJ_EVENT_PAL_TAG_OFFICE_LADY             0x1155
+#define OBJ_EVENT_PAL_TAG_PEIRRO                  0x1156
+#define OBJ_EVENT_PAL_TAG_DANCER                  0x1157
+#define OBJ_EVENT_PAL_TAG_GUITARIST               0x1158
+#define OBJ_EVENT_PAL_TAG_BASEBALL_PLAYER         0x1159
+#define OBJ_EVENT_PAL_TAG_SOCCER_PLAYER           0x115A
+#define OBJ_EVENT_PAL_TAG_FOOTBALL_PLAYER         0x115B
+#define OBJ_EVENT_PAL_TAG_TENNIS_PLAYER           0x115C
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

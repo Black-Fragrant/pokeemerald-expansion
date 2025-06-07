@@ -40,20 +40,6 @@ const u16 gObjectEventPal_RubySapphireMay[] = INCBIN_U16("graphics/object_events
 const u16 gObjectEventPal_CuttableTree[] = INCBIN_U16("graphics/object_events/palettes/cuttable_tree.gbapal");
 const u16 gObjectEventPal_PushableBoulder[] = INCBIN_U16("graphics/object_events/palettes/pushable_boulder.gbapal");
 const u16 gUnusedObjectEventPalette[] = INCBIN_U16("graphics/object_events/palettes/unused_palette.gbapal");
-const u16 gObjectEventPal_Null16[16] = {};
-const u16 gObjectEventPal_Null17[16] = {};
-const u16 gObjectEventPal_Null18[16] = {};
-const u16 gObjectEventPal_Null19[16] = {};
-const u16 gObjectEventPal_Null20[16] = {};
-const u16 gObjectEventPal_Null21[16] = {};
-const u16 gObjectEventPal_Null22[16] = {};
-const u16 gObjectEventPal_Null23[16] = {};
-const u16 gObjectEventPal_Null24[16] = {};
-const u16 gObjectEventPal_Null25[16] = {};
-const u16 gObjectEventPal_Null26[16] = {};
-const u16 gObjectEventPal_Null27[16] = {};
-const u16 gObjectEventPal_Null28[16] = {};
-const u16 gObjectEventPal_Null29[16] = {};
 const u32 gObjectEventPic_MayMachBike[] = INCBIN_U32("graphics/object_events/pics/people/may/mach_bike.4bpp");
 const u32 gObjectEventPic_MayAcroBike[] = INCBIN_U32("graphics/object_events/pics/people/may/acro_bike.4bpp");
 const u32 gObjectEventPic_MaySurfing[] = INCBIN_U32("graphics/object_events/pics/people/may/surfing.4bpp");
@@ -394,3 +380,36 @@ const u16 gObjectEventPal_BackpackerMale[] = INCBIN_U16("graphics/object_events/
 
 const u32 gObjectEventPic_BackpackerFemale[] = INCBIN_U32("graphics/object_events/pics/people/backpacker_f.4bpp");
 const u16 gObjectEventPal_BackpackerFemale[] = INCBIN_U16("graphics/object_events/palettes/backpacker_f.gbapal");
+
+const u32 gObjectEventPic_Doctor[] = INCBIN_U32("graphics/object_events/pics/people/doctor.4bpp");
+const u16 gObjectEventPal_Doctor[] = INCBIN_U16("graphics/object_events/palettes/doctor.gbapal");
+
+const u32 gObjectEventPic_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/nurse.4bpp");
+const u16 gObjectEventPal_Nurse[] = INCBIN_U16("graphics/object_events/palettes/nurse.gbapal");
+
+const u32 gObjectEventPic_BusinessMan[] = INCBIN_U32("graphics/object_events/pics/people/business_man.4bpp");
+const u16 gObjectEventPal_BusinessMan[] = INCBIN_U16("graphics/object_events/palettes/business_man.gbapal");
+
+const u32 gObjectEventPic_OfficeLady[] = INCBIN_U32("graphics/object_events/pics/people/office_lady.4bpp");
+const u16 gObjectEventPal_OfficeLady[] = INCBIN_U16("graphics/object_events/palettes/office_lady.gbapal");
+
+const u32 gObjectEventPic_Pierro[] = INCBIN_U32("graphics/object_events/pics/people/pierro.4bpp");
+const u16 gObjectEventPal_Pierro[] = INCBIN_U16("graphics/object_events/palettes/pierro.gbapal");
+
+const u32 gObjectEventPic_Dancer[] = INCBIN_U32("graphics/object_events/pics/people/dancer.4bpp");
+const u16 gObjectEventPal_Dancer[] = INCBIN_U16("graphics/object_events/palettes/dancer.gbapal");
+
+const u32 gObjectEventPic_Guitarist[] = INCBIN_U32("graphics/object_events/pics/people/guitarist.4bpp");
+const u16 gObjectEventPal_Guitarist[] = INCBIN_U16("graphics/object_events/palettes/guitarist.gbapal");
+
+const u32 gObjectEventPic_BaseballPlayer[] = INCBIN_U32("graphics/object_events/pics/people/baseball_player.4bpp");
+const u16 gObjectEventPal_BaseballPlayer[] = INCBIN_U16("graphics/object_events/palettes/baseball_player.gbapal");
+
+const u32 gObjectEventPic_SoccerPlayer[] = INCBIN_U32("graphics/object_events/pics/people/soccer_player.4bpp");
+const u16 gObjectEventPal_SoccerPlayer[] = INCBIN_U16("graphics/object_events/palettes/soccer_player.gbapal");
+
+const u32 gObjectEventPic_FootballPlayer[] = INCBIN_U32("graphics/object_events/pics/people/football_player.4bpp");
+const u16 gObjectEventPal_FootballPlayer[] = INCBIN_U16("graphics/object_events/palettes/football_player.gbapal");
+
+const u32 gObjectEventPic_TennisPlayer[] = INCBIN_U32("graphics/object_events/pics/people/tennis_player.4bpp");
+const u16 gObjectEventPal_TennisPlayer[] = INCBIN_U16("graphics/object_events/palettes/tennis_player.gbapal");
