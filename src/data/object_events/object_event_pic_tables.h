@@ -445,11 +445,11 @@ static const struct SpriteFrameImage sPicTable_Cowgirl[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_BikerMale[] = {
-    overworld_ascending_frames(gObjectEventPic_BikerMale, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_BikerMale, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_BikerFemale[] = {
-    overworld_ascending_frames(gObjectEventPic_BikerFemale, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_BikerFemale, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_SwimmerMale[] = {
