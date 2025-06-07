@@ -92,6 +92,17 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KarateKing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BattleGirl;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BackpackerMale;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BackpackerFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Doctor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BusinessMan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OfficeLady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pierro;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Dancer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Guitarist;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BaseballPlayer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SoccerPlayer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FootballPlayer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TennisPlayer;
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -193,6 +204,17 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BATTLE_GIRL] =              &gObjectEventGraphicsInfo_BattleGirl,
     [OBJ_EVENT_GFX_BACKPACKER_MALE] =          &gObjectEventGraphicsInfo_BackpackerMale,
     [OBJ_EVENT_GFX_BACKPACKER_FEMALE] =        &gObjectEventGraphicsInfo_BackpackerFemale,
+    [OBJ_EVENT_GFX_DOCTOR] =                   &gObjectEventGraphicsInfo_Doctor,
+    [OBJ_EVENT_GFX_NURSE] =                    &gObjectEventGraphicsInfo_Nurse,
+    [OBJ_EVENT_GFX_BUSINESS_MAN] =             &gObjectEventGraphicsInfo_BusinessMan,
+    [OBJ_EVENT_GFX_OFFICE_LADY] =              &gObjectEventGraphicsInfo_OfficeLady,
+    [OBJ_EVENT_GFX_PEIRRO] =                   &gObjectEventGraphicsInfo_Pierro,
+    [OBJ_EVENT_GFX_DANCER] =                   &gObjectEventGraphicsInfo_Dancer,
+    [OBJ_EVENT_GFX_GUITARIST] =                &gObjectEventGraphicsInfo_Guitarist,
+    [OBJ_EVENT_GFX_BASEBALL_PLAYER] =          &gObjectEventGraphicsInfo_BaseballPlayer,
+    [OBJ_EVENT_GFX_SOCCER_PLAYER] =            &gObjectEventGraphicsInfo_SoccerPlayer,
+    [OBJ_EVENT_GFX_FOOTBALL_PLAYER] =          &gObjectEventGraphicsInfo_FootballPlayer,
+    [OBJ_EVENT_GFX_TENNIS_PLAYER] =            &gObjectEventGraphicsInfo_TennisPlayer,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
 };
