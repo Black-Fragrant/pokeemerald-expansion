@@ -110,14 +110,27 @@
 #define OBJ_EVENT_GFX_SOCCER_PLAYER               104
 #define OBJ_EVENT_GFX_FOOTBALL_PLAYER             105
 #define OBJ_EVENT_GFX_TENNIS_PLAYER               106
-#define OBJ_EVENT_GFX_POKE_BALL                   107
-#define OBJ_EVENT_GFX_OW_MON                      108
-#define OBJ_EVENT_GFX_LIGHT_SPRITE                109
+#define OBJ_EVENT_GFX_ROUGHNECK                   107
+#define OBJ_EVENT_GFX_MOTORCYCLIST                108
+#define OBJ_EVENT_GFX_FISHERMAN                   109
+#define OBJ_EVENT_GFX_HIKER                       110
+#define OBJ_EVENT_GFX_MAID                        111
+#define OBJ_EVENT_GFX_BAKER                       112
+#define OBJ_EVENT_GFX_PILOT_GREEN                 113
+#define OBJ_EVENT_GFX_JANITOR                     114
+#define OBJ_EVENT_GFX_MAILMAN                     115
+#define OBJ_EVENT_GFX_PILOT_BLUE                  116
+#define OBJ_EVENT_GFX_POLICE                      117
+#define OBJ_EVENT_GFX_SCIENTIST_MALE              118
+#define OBJ_EVENT_GFX_SCIENTIST_FEMALE            119
+#define OBJ_EVENT_GFX_POKE_BALL                   120
+#define OBJ_EVENT_GFX_OW_MON                      121
+#define OBJ_EVENT_GFX_LIGHT_SPRITE                122
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                         110
+#define NUM_OBJ_EVENT_GFX                         123
 
 
 // These are dynamic object gfx ids.
@@ -289,6 +302,19 @@
 #define OBJ_EVENT_PAL_TAG_SOCCER_PLAYER           0x115A
 #define OBJ_EVENT_PAL_TAG_FOOTBALL_PLAYER         0x115B
 #define OBJ_EVENT_PAL_TAG_TENNIS_PLAYER           0x115C
+#define OBJ_EVENT_PAL_TAG_ROUGHNECK               0x115D
+#define OBJ_EVENT_PAL_TAG_MOTORCYCLIST            0x115E
+#define OBJ_EVENT_PAL_TAG_FISHERMAN               0x115F
+#define OBJ_EVENT_PAL_TAG_HIKER                   0x1160
+#define OBJ_EVENT_PAL_TAG_MAID                    0x1161
+#define OBJ_EVENT_PAL_TAG_BAKER                   0x1162
+#define OBJ_EVENT_PAL_TAG_PILOT_GREEN             0x1163
+#define OBJ_EVENT_PAL_TAG_JANITOR                 0x1164
+#define OBJ_EVENT_PAL_TAG_MAILMAN                 0x1165
+#define OBJ_EVENT_PAL_TAG_PILOT_BLUE              0x1166
+#define OBJ_EVENT_PAL_TAG_POLICE                  0x1167
+#define OBJ_EVENT_PAL_TAG_SCIENTIST_MALE          0x1168
+#define OBJ_EVENT_PAL_TAG_SCIENTIST_FEMALE        0x1169
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
