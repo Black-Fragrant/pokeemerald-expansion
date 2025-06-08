@@ -103,6 +103,19 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BaseballPla
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SoccerPlayer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FootballPlayer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TennisPlayer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Roughneck;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Motorcyclist;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fisherman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hiker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maid;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Baker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PilotGreen;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Janitor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mailman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PilotBlue;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Police;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScientistMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScientistFemale;
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -216,6 +229,19 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SOCCER_PLAYER] =            &gObjectEventGraphicsInfo_SoccerPlayer,
     [OBJ_EVENT_GFX_FOOTBALL_PLAYER] =          &gObjectEventGraphicsInfo_FootballPlayer,
     [OBJ_EVENT_GFX_TENNIS_PLAYER] =            &gObjectEventGraphicsInfo_TennisPlayer,
+    [OBJ_EVENT_GFX_ROUGHNECK] =                &gObjectEventGraphicsInfo_Roughneck,
+    [OBJ_EVENT_GFX_MOTORCYCLIST] =             &gObjectEventGraphicsInfo_Motorcyclist,
+    [OBJ_EVENT_GFX_FISHERMAN] =                &gObjectEventGraphicsInfo_Fisherman,
+    [OBJ_EVENT_GFX_HIKER] =                    &gObjectEventGraphicsInfo_Hiker,
+    [OBJ_EVENT_GFX_MAID] =                     &gObjectEventGraphicsInfo_Maid,
+    [OBJ_EVENT_GFX_BAKER] =                    &gObjectEventGraphicsInfo_Baker,
+    [OBJ_EVENT_GFX_PILOT_GREEN] =              &gObjectEventGraphicsInfo_PilotGreen,
+    [OBJ_EVENT_GFX_JANITOR] =                  &gObjectEventGraphicsInfo_Janitor,
+    [OBJ_EVENT_GFX_MAILMAN] =                  &gObjectEventGraphicsInfo_Mailman,
+    [OBJ_EVENT_GFX_PILOT_BLUE] =               &gObjectEventGraphicsInfo_PilotBlue,
+    [OBJ_EVENT_GFX_POLICE] =                   &gObjectEventGraphicsInfo_Police,
+    [OBJ_EVENT_GFX_SCIENTIST_MALE] =           &gObjectEventGraphicsInfo_ScientistMale,
+    [OBJ_EVENT_GFX_SCIENTIST_FEMALE] =         &gObjectEventGraphicsInfo_ScientistFemale,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,

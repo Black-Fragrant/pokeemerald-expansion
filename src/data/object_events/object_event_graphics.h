@@ -419,3 +419,42 @@ const u16 gObjectEventPal_FootballPlayer[] = INCBIN_U16("graphics/object_events/
 
 const u32 gObjectEventPic_TennisPlayer[] = INCBIN_U32("graphics/object_events/pics/people/tennis_player.4bpp");
 const u16 gObjectEventPal_TennisPlayer[] = INCBIN_U16("graphics/object_events/palettes/tennis_player.gbapal");
+
+const u32 gObjectEventPic_Roughneck[] = INCBIN_U32("graphics/object_events/pics/people/roughneck.4bpp");
+const u16 gObjectEventPal_Roughneck[] = INCBIN_U16("graphics/object_events/palettes/roughneck.gbapal");
+
+const u32 gObjectEventPic_Motorcyclist[] = INCBIN_U32("graphics/object_events/pics/people/motorcyclist.4bpp");
+const u16 gObjectEventPal_Motorcyclist[] = INCBIN_U16("graphics/object_events/palettes/motorcyclist.gbapal");
+
+const u32 gObjectEventPic_Fisherman[] = INCBIN_U32("graphics/object_events/pics/people/fisherman.4bpp");
+const u16 gObjectEventPal_Fisherman[] = INCBIN_U16("graphics/object_events/palettes/fisherman.gbapal");
+
+const u32 gObjectEventPic_Hiker[] = INCBIN_U32("graphics/object_events/pics/people/hiker.4bpp");
+const u16 gObjectEventPal_Hiker[] = INCBIN_U16("graphics/object_events/palettes/hiker.gbapal");
+
+const u32 gObjectEventPic_Maid[] = INCBIN_U32("graphics/object_events/pics/people/maid.4bpp");
+const u16 gObjectEventPal_Maid[] = INCBIN_U16("graphics/object_events/palettes/maid.gbapal");
+
+const u32 gObjectEventPic_Baker[] = INCBIN_U32("graphics/object_events/pics/people/baker.4bpp");
+const u16 gObjectEventPal_Baker[] = INCBIN_U16("graphics/object_events/palettes/baker.gbapal");
+
+const u32 gObjectEventPic_PilotGreen[] = INCBIN_U32("graphics/object_events/pics/people/pilot_green.4bpp");
+const u16 gObjectEventPal_PilotGreen[] = INCBIN_U16("graphics/object_events/palettes/pilot_green.gbapal");
+
+const u32 gObjectEventPic_Janitor[] = INCBIN_U32("graphics/object_events/pics/people/janitor.4bpp");
+const u16 gObjectEventPal_Janitor[] = INCBIN_U16("graphics/object_events/palettes/janitor.gbapal");
+
+const u32 gObjectEventPic_Mailman[] = INCBIN_U32("graphics/object_events/pics/people/mailman.4bpp");
+const u16 gObjectEventPal_Mailman[] = INCBIN_U16("graphics/object_events/palettes/mailman.gbapal");
+
+const u32 gObjectEventPic_PilotBlue[] = INCBIN_U32("graphics/object_events/pics/people/pilot_blue.4bpp");
+const u16 gObjectEventPal_PilotBlue[] = INCBIN_U16("graphics/object_events/palettes/pilot_blue.gbapal");
+
+const u32 gObjectEventPic_Police[] = INCBIN_U32("graphics/object_events/pics/people/police.4bpp");
+const u16 gObjectEventPal_Police[] = INCBIN_U16("graphics/object_events/palettes/police.gbapal");
+
+const u32 gObjectEventPic_ScientistMale[] = INCBIN_U32("graphics/object_events/pics/people/scientist_m.4bpp");
+const u16 gObjectEventPal_ScientistMale[] = INCBIN_U16("graphics/object_events/palettes/scientist_m.gbapal");
+
+const u32 gObjectEventPic_ScientistFemale[] = INCBIN_U32("graphics/object_events/pics/people/scientist_f.4bpp");
+const u16 gObjectEventPal_ScientistFemale[] = INCBIN_U16("graphics/object_events/palettes/scientist_f.gbapal");
