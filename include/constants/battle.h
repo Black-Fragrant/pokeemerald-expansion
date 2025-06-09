@@ -561,8 +561,9 @@ enum MoveEffects
 #define ARENA_WIN_JUDGMENT_TITLE   21
 #define ARENA_WIN_JUDGMENT_TEXT    22
 
-// Flag for BattlePutTextOnWindow. Never set
-#define B_WIN_COPYTOVRAM (1 << 7)
+// Flags for BattlePutTextOnWindow.
+#define B_WIN_COPYTOVRAM (1 << 15)
+#define B_WIN_MOVE_PP    (1 << 14) // right-aligned with custom text color
 
 // Indicator for the party summary bar to display an empty slot.
 #define HP_EMPTY_SLOT 0xFFFF

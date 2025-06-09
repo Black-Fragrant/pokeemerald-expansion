@@ -2718,6 +2718,7 @@ void BtlController_HandlePrintString(u32 battler, bool32 updateTvData, bool32 ar
 
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
+    gSprites[gBattleCursorSpriteId].invisible = TRUE;
     stringId = (u16 *)(&gBattleResources->bufferA[battler][2]);
     BufferStringBattle(*stringId, battler);
 

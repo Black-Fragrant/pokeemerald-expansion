@@ -136,6 +136,10 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
             u16 species;
 
             LoadAndCreateEnemyShadowSprites();
+            gBattleCursorSpriteId = SPRITE_NONE;
+            TryLoadBattleCursor();
+            if (gBattleCursorSpriteId != SPRITE_NONE)
+                gSprites[gBattleCursorSpriteId].invisible = TRUE;
 
             opponentBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             species = GetMonData(&gEnemyParty[gBattlerPartyIndexes[opponentBattler]], MON_DATA_SPECIES);
@@ -149,6 +153,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
             }
 
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gBattlerInMenuId], 0);
+            gBattlerInMenuId = 0;
 
             if (gWirelessCommType != 0 && gReceivedRemoteLinkPlayers)
             {
@@ -237,7 +242,7 @@ static void CB2_ReshowBlankBattleScreenAfterMenu(void)
             gBattleScripting.reshowMainState--;
         break;
     case 10:
-        if (gBattleScripting.monCaught) 
+        if (gBattleScripting.monCaught)
             CreateCaughtMonSprite(); // displays the caught mon for the switch into party feature
         break;
     default:

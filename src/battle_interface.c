@@ -3290,3 +3290,178 @@ void CategoryIcons_LoadSpritesGfx(void)
     LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
     LoadSpritePalette(&gSpritePal_CategoryIcons);
 }
+
+// battle cursor
+
+#define TAG_BATTLE_CURSOR 0x6969
+
+static const  u8 sCursorGfx[] =  INCBIN_U8("graphics/battle_interface/cursor.4bpp");
+static const u16 sCursorPal[] = INCBIN_U16("graphics/battle_interface/cursor.gbapal");
+static const struct SpriteSheet   sCursorSpriteSheet   = { sCursorGfx, (32 * 96) / 2, TAG_BATTLE_CURSOR };
+static const struct SpritePalette sCursorSpritePalette = { sCursorPal, TAG_BATTLE_CURSOR };
+static const struct OamData sOamData_Cursor =
+{
+    // requires 8x8 for subsprites
+    .size = SPRITE_SIZE(8x8),
+    .shape = SPRITE_SHAPE(8x8),
+    .priority = 0,
+};
+static const union AnimCmd sAnimCmds_Cursor[] =
+{
+    ANIMCMD_FRAME( 0, 16),
+    ANIMCMD_FRAME(16, 16),
+    ANIMCMD_FRAME(32, 16),
+    ANIMCMD_JUMP(0)
+};
+static const union AnimCmd *const sAnims_Cursor[] = {sAnimCmds_Cursor};
+static void SpriteCB_BattleCursor(struct Sprite *sprite);
+static const struct SpriteTemplate sCursorSpriteTemplate =
+{
+    .tileTag = TAG_BATTLE_CURSOR,
+    .paletteTag = TAG_BATTLE_CURSOR,
+    .oam = &sOamData_Cursor,
+    .anims = sAnims_Cursor,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_BattleCursor,
+};
+static const struct Subsprite sActionCursorSubsprites[] = // BATTLE!, BAG, POKEMON, RUN
+{
+    {
+        .x = 0,
+        .y = 0,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 0
+    },
+    {
+        .x = 53,
+        .y = 0,
+        // .hFlip = TRUE,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 4,
+        .priority = 0
+    },
+    {
+        .x = 0,
+        .y = 12,
+        // .vFlip = TRUE,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 8,
+        .priority = 0
+    },
+    {
+        .x = 53,
+        .y = 12,
+        // .hFlip = TRUE,
+        // .vFlip = TRUE,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 12,
+        .priority = 0
+    },
+};
+static const struct Subsprite sMoveCursorSubsprites[] =
+{
+    {
+        .x = 0,
+        .y = 0,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 0
+    },
+    {
+        .x = 104,
+        .y = 0,
+        // .hFlip = TRUE,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 4,
+        .priority = 0
+    },
+    {
+        .x = 0,
+        .y = 12,
+        // .vFlip = TRUE,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 8,
+        .priority = 0
+    },
+    {
+        .x = 104,
+        .y = 12,
+        // .hFlip = TRUE,
+        // .vFlip = TRUE,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 12,
+        .priority = 0
+    },
+};
+static const struct SubspriteTable sCursorSubspritesTable[] =
+{
+    {ARRAY_COUNT(sActionCursorSubsprites), sActionCursorSubsprites},
+    {ARRAY_COUNT(sMoveCursorSubsprites),   sMoveCursorSubsprites},
+    {},
+};
+
+void TryLoadBattleCursor(void)
+{
+    if (gBattleCursorSpriteId != SPRITE_NONE)
+        return;
+
+    LoadSpriteSheet(&sCursorSpriteSheet);
+    LoadSpritePalette(&sCursorSpritePalette);
+    gBattleCursorSpriteId = CreateSprite(&sCursorSpriteTemplate, 0, 160, 0); // offscreen
+    if (gBattleCursorSpriteId == SPRITE_NONE)
+       return;
+
+    struct Sprite *sprite = &gSprites[gBattleCursorSpriteId];
+    sprite->centerToCornerVecX = 0;
+    sprite->centerToCornerVecX = 0;
+    StartSpriteAnim(sprite, 0);
+}
+
+static void TryDestroyBattleCursor(void)
+{
+    if (gBattleCursorSpriteId == SPRITE_NONE)
+        return;
+
+    DestroySprite(&gSprites[gBattleCursorSpriteId]);
+    FreeSpriteTilesByTag(TAG_BATTLE_CURSOR);
+    FreeSpritePaletteByTag(TAG_BATTLE_CURSOR);
+    gBattleCursorSpriteId = SPRITE_NONE;
+}
+
+static void SpriteCB_BattleCursor(struct Sprite *sprite)
+{
+    if (sprite->data[0] && gBattlerInMenuId != 0)
+    {
+        TryDestroyBattleCursor();
+        return;
+    }
+
+    SetSubspriteTables(sprite, &sCursorSubspritesTable[sprite->data[1]]);
+    u32 cursor, battler = sprite->data[2];
+    if (sprite->data[1]) // move
+    {
+        cursor = gMoveSelectionCursor[battler];
+        sprite->x = 5;
+        sprite->y = 110;
+        sprite->x2 = (cursor & 1) ? 112 : 0;
+        sprite->y2 = (cursor & 2) ? 23  : 0;
+    }
+    else
+    {
+        cursor = gActionSelectionCursor[battler];
+        sprite->x = 107;
+        sprite->y = 111;
+        sprite->x2 = (cursor & 1) ? ((8 * 8) + 2) : 0;
+        sprite->y2 = (cursor & 2) ?  (3 * 8)      : 0;
+    }
+}

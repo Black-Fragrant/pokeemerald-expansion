@@ -295,10 +295,6 @@ $(MISCGFXDIR)/japanese_hof.4bpp: %.4bpp: %.png
 $(MISCGFXDIR)/mirage_tower.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 73 -Wnum_tiles
 
-$(BATINTGFXDIR)/textbox.gbapal: $(BATINTGFXDIR)/textbox_0.gbapal \
-                                $(BATINTGFXDIR)/textbox_1.gbapal
-	@cat $^ >$@
-
 $(BTLANMSPRGFXDIR)/ice_cube.4bpp: $(BTLANMSPRGFXDIR)/ice_cube_0.4bpp \
                                   $(BTLANMSPRGFXDIR)/ice_cube_1.4bpp \
                                   $(BTLANMSPRGFXDIR)/ice_cube_2.4bpp \
@@ -341,6 +337,9 @@ $(UNUSEDGFXDIR)/color_frames.4bpp: %.4bpp: %.png
 
 $(BATINTGFXDIR)/unused_window2bar.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 5 -Wnum_tiles
+
+$(BATINTGFXDIR)/cursor.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
 
 $(JPCONTESTGFXDIR)/composite_1.4bpp: $(JPCONTESTGFXDIR)/frame_1.4bpp \
                                      $(JPCONTESTGFXDIR)/floor.4bpp \

@@ -157,7 +157,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
 {
     [B_WIN_MSG] = {
         .bg = 0,
-        .tilemapLeft = 2,
+        .tilemapLeft = 1,
         .tilemapTop = 15,
         .width = 26,
         .height = 4,
@@ -168,55 +168,55 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 35,
-        .width = 14,
+        .width = 12,
         .height = 4,
         .paletteNum = 0,
         .baseBlock = 0x01c0,
     },
     [B_WIN_ACTION_MENU] = {
         .bg = 0,
-        .tilemapLeft = 17,
+        .tilemapLeft = 31,
         .tilemapTop = 35,
-        .width = 12,
-        .height = 4,
+        .width = 1,
+        .height = 1,
         .paletteNum = 5,
         .baseBlock = 0x0190,
     },
     [B_WIN_MOVE_NAME_1] = {
         .bg = 0,
         .tilemapLeft = 2,
-        .tilemapTop = 55,
-        .width = 16,    //for z move names
-        .height = 2,
-        .paletteNum = 5,
+        .tilemapTop = 54,
+        .width = 12,
+        .height = 3,
+        .paletteNum = 12,
         .baseBlock = 0x0300,
     },
     [B_WIN_MOVE_NAME_2] = {
         .bg = 0,
-        .tilemapLeft = 11,
-        .tilemapTop = 55,
-        .width = 8,
-        .height = 2,
-        .paletteNum = 5,
-        .baseBlock = 0x0318,
+        .tilemapLeft = 16,
+        .tilemapTop = 54,
+        .width = 12,
+        .height = 3,
+        .paletteNum = 13,
+        .baseBlock = 0x0300 + ((12 * 3) * 1),
     },
     [B_WIN_MOVE_NAME_3] = {
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 57,
-        .width = 16,    //for z effect descriptions
-        .height = 2,
-        .paletteNum = 5,
-        .baseBlock = 0x0328,
+        .width = 12,
+        .height = 3,
+        .paletteNum = 14,
+        .baseBlock = 0x0300 + ((12 * 3) * 2),
     },
     [B_WIN_MOVE_NAME_4] = {
         .bg = 0,
-        .tilemapLeft = 11,
+        .tilemapLeft = 16,
         .tilemapTop = 57,
-        .width = 8,
-        .height = 2,
-        .paletteNum = 5,
-        .baseBlock = 0x0340,
+        .width = 12,
+        .height = 3,
+        .paletteNum = 15,
+        .baseBlock = 0x0300 + ((12 * 3) * 3),
     },
     [B_WIN_PP] = {
         .bg = 0,
@@ -378,7 +378,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .width = 18,
         .height = 6,
         .paletteNum = 5,
-        .baseBlock = 0x0350,
+        .baseBlock = 0x0300 + ((12 * 3) * 4),
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -736,8 +736,7 @@ void InitBattleBgsVideo(void)
 
 void LoadBattleMenuWindowGfx(void)
 {
-    LoadUserWindowBorderGfx(2, 0x12, BG_PLTT_ID(1));
-    LoadUserWindowBorderGfx(2, 0x22, BG_PLTT_ID(1));
+    LoadUserWindowBorderGfx(2, 80, BG_PLTT_ID(7));
     LoadCompressedPalette(gBattleWindowTextPalette, BG_PLTT_ID(5), PLTT_SIZE_4BPP);
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
@@ -863,6 +862,9 @@ void LoadBattleTextboxAndBackground(void)
     CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
     CopyBgTilemapBufferToVram(0);
     LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(12 + i), PLTT_SIZE_4BPP);
+
     LoadBattleMenuWindowGfx();
     if (B_TERRAIN_BG_CHANGE == TRUE)
         DrawTerrainTypeBattleBackground();

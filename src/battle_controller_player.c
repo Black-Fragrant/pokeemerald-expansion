@@ -46,6 +46,7 @@
 #include "menu.h"
 #include "pokemon_summary_screen.h"
 #include "type_icons.h"
+#include "text_window.h"
 
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
@@ -306,6 +307,7 @@ static void HandleInputChooseAction(u32 battler)
                 PlaySE(SE_SELECT);
                 ArrowsChangeColorLastBallCycle(FALSE);
                 TryHideLastUsedBall();
+                gSprites[gBattleCursorSpriteId].data[0] = TRUE;
                 BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_THROW_BALL, 0);
                 PlayerBufferExecCompleted(battler);
             }
@@ -416,6 +418,7 @@ static void HandleInputChooseAction(u32 battler)
     {
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
+        gSprites[gBattleCursorSpriteId].data[0] = TRUE;
         BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_THROW_BALL, 0);
         PlayerBufferExecCompleted(battler);
     }
@@ -450,6 +453,7 @@ void HandleInputChooseTarget(u32 battler)
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
         EndBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX);
         TryHideLastUsedBall();
+        gSprites[gBattleCursorSpriteId].data[0] = TRUE;
         HideGimmickTriggerSprite();
         PlayerBufferExecCompleted(battler);
     }
@@ -634,6 +638,7 @@ void HandleInputShowTargets(u32 battler)
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
         HideGimmickTriggerSprite();
         TryHideLastUsedBall();
+        gSprites[gBattleCursorSpriteId].data[0] = TRUE;
         PlayerBufferExecCompleted(battler);
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
@@ -861,10 +866,7 @@ void HandleInputChooseMove(u32 battler)
                 DestroySprite(&gSprites[gCategoryIconSpriteId]);
                 gCategoryIconSpriteId = 0xFF;
             }
-
-            FillWindowPixelBuffer(B_WIN_MOVE_DESCRIPTION, PIXEL_FILL(0));
-            ClearStdWindowAndFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
-            CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_GFX);
+            ClearStdWindowAndFrameToTransparent(B_WIN_MOVE_DESCRIPTION, TRUE);
             PlaySE(SE_SELECT);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
@@ -899,60 +901,10 @@ static void ReloadMoveNames(u32 battler)
         gBattleStruct->zmove.viewing = FALSE;
         MoveSelectionDestroyCursorAt(battler);
         MoveSelectionDisplayMoveNames(battler);
-        MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+        MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 77);
         MoveSelectionDisplayPpNumber(battler);
         MoveSelectionDisplayMoveType(battler);
     }
-}
-
-static u32 UNUSED HandleMoveInputUnused(u32 battler)
-{
-    u32 var = 0;
-
-    if (JOY_NEW(A_BUTTON))
-    {
-        PlaySE(SE_SELECT);
-        var = 1;
-    }
-    if (JOY_NEW(B_BUTTON))
-    {
-        PlaySE(SE_SELECT);
-        gBattle_BG0_X = 0;
-        gBattle_BG0_Y = DISPLAY_HEIGHT * 2;
-        var = 0xFF;
-    }
-    if (JOY_NEW(DPAD_LEFT) && gMoveSelectionCursor[battler] & 1)
-    {
-        MoveSelectionDestroyCursorAt(gMoveSelectionCursor[battler]);
-        gMoveSelectionCursor[battler] ^= 1;
-        PlaySE(SE_SELECT);
-        MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
-    }
-    if (JOY_NEW(DPAD_RIGHT) && !(gMoveSelectionCursor[battler] & 1)
-        && (gMoveSelectionCursor[battler] ^ 1) < gNumberOfMovesToChoose)
-    {
-        MoveSelectionDestroyCursorAt(gMoveSelectionCursor[battler]);
-        gMoveSelectionCursor[battler] ^= 1;
-        PlaySE(SE_SELECT);
-        MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
-    }
-    if (JOY_NEW(DPAD_UP) && gMoveSelectionCursor[battler] & 2)
-    {
-        MoveSelectionDestroyCursorAt(gMoveSelectionCursor[battler]);
-        gMoveSelectionCursor[battler] ^= 2;
-        PlaySE(SE_SELECT);
-        MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
-    }
-    if (JOY_NEW(DPAD_DOWN) && !(gMoveSelectionCursor[battler] & 2)
-        && (gMoveSelectionCursor[battler] ^ 2) < gNumberOfMovesToChoose)
-    {
-        MoveSelectionDestroyCursorAt(gMoveSelectionCursor[battler]);
-        gMoveSelectionCursor[battler] ^= 2;
-        PlaySE(SE_SELECT);
-        MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
-    }
-
-    return var;
 }
 
 void HandleMoveSwitching(u32 battler)
@@ -1654,34 +1606,57 @@ static void PlayerHandleYesNoInput(u32 battler)
     }
 }
 
+static const u16 sMoveBoxTypePalettes[] = INCBIN_U16("graphics/battle_interface/move_box_types.gbapal");
 static void MoveSelectionDisplayMoveNames(u32 battler)
 {
-    s32 i;
-    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     gNumberOfMovesToChoose = 0;
-
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
     {
-        MoveSelectionDestroyCursorAt(i);
+        struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+
         if (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
             StringCopy(gDisplayedStringBattle, GetMoveName(GetMaxMove(battler, moveInfo->moves[i])));
         else
             StringCopy(gDisplayedStringBattle, GetMoveName(moveInfo->moves[i]));
+
         // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
-        BattlePutTextOnWindow(gDisplayedStringBattle, i + B_WIN_MOVE_NAME_1);
-        if (moveInfo->moves[i] != MOVE_NONE)
-            gNumberOfMovesToChoose++;
+        BattlePutTextOnWindow(gDisplayedStringBattle, (i + B_WIN_MOVE_NAME_1) | B_WIN_COPYTOVRAM);
+
+        // check if we didn't want to display pp number
+        if (gBattleResources->bufferA[battler][2] != TRUE || moveInfo->moves[i] != MOVE_NONE)
+        {
+            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0)],     BG_PLTT_ID(12 + i),     PLTT_SIZE_4BPP);
+            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(1) + 3], BG_PLTT_ID(12 + i) + 9, PLTT_SIZEOF(2));
+            SetPpNumbersPaletteInMoveSelection(battler, i);
+            u8 *txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[i],
+                                                    STR_CONV_MODE_RIGHT_ALIGN, 2);
+            *(txtPtr)++ = CHAR_SLASH;
+            ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[i], STR_CONV_MODE_RIGHT_ALIGN, 2);
+
+            BattlePutTextOnWindow(gDisplayedStringBattle, (i + B_WIN_MOVE_NAME_1) | B_WIN_MOVE_PP | B_WIN_COPYTOVRAM);
+        }
+
+        u32 type = moveInfo->moves[i] == MOVE_NONE ? TYPE_MYSTERY : GetMoveType(moveInfo->moves[i]);
+        LoadPalette(&sMoveBoxTypePalettes[type * 3], BG_PLTT_ID(12 + i) + 3, PLTT_SIZEOF(3));
+
+        PutWindowTilemap(i + B_WIN_MOVE_NAME_1);
+        CopyWindowToVram(i + B_WIN_MOVE_NAME_1, COPYWIN_FULL);
+
+        gNumberOfMovesToChoose++;
     }
 }
 
 static void MoveSelectionDisplayPpString(u32 battler)
 {
+    /*
     StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
+    */
 }
 
 static void MoveSelectionDisplayPpNumber(u32 battler)
 {
+    /*
     u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo;
 
@@ -1690,15 +1665,18 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
 
     SetPpNumbersPaletteInMoveSelection(battler);
     moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
+    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle,
+                                        moveInfo->currentPp[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
     *(txtPtr)++ = CHAR_SLASH;
     ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
+    */
 }
 
 static void MoveSelectionDisplayMoveType(u32 battler)
 {
+    /*
     u8 *txtPtr, *end;
     u32 speciesId = gBattleMons[battler].species;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
@@ -1739,6 +1717,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
 
     PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+    */
 }
 
 static void TryMoveSelectionDisplayMoveDescription(u32 battler)
@@ -1764,8 +1743,8 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
     u8 cat_start[] = _("{CLEAR_TO 0x03}");
     u8 pwr_start[] = _("{CLEAR_TO 0x38}");
     u8 acc_start[] = _("{CLEAR_TO 0x6D}");
-    LoadMessageBoxAndBorderGfx();
-    DrawStdWindowFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
+    LoadUserWindowBorderGfx(B_WIN_MOVE_DESCRIPTION, DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(7));
+    DrawStdFrameWithCustomTileAndPalette(B_WIN_MOVE_DESCRIPTION, FALSE, DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(7));
     if (pwr < 2)
         StringCopy(pwr_num, gText_BattleSwitchWhich5);
     else
@@ -1796,42 +1775,50 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 {
+    /*
     u16 src[2];
     src[0] = baseTileNum + 1;
     src[1] = baseTileNum + 2;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
+    */
 }
 
 void MoveSelectionDestroyCursorAt(u8 cursorPosition)
 {
+    /*
     u16 src[2];
     src[0] = 0x1016;
     src[1] = 0x1016;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
+    */
 }
 
 void ActionSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 {
+    /*
     u16 src[2];
     src[0] = 1;
     src[1] = 2;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 7 * (cursorPosition & 1) + 16, 35 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
+    */
 }
 
 void ActionSelectionDestroyCursorAt(u8 cursorPosition)
 {
+    /*
     u16 src[2];
     src[0] = 0x1016;
     src[1] = 0x1016;
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 7 * (cursorPosition & 1) + 16, 35 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
+    */
 }
 
 void CB2_SetUpReshowBattleScreenAfterMenu(void)
@@ -2023,6 +2010,9 @@ static void HandleChooseActionAfterDma3(u32 battler)
                 BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_ACTION_PROMPT);
             }
         }
+        TryLoadBattleCursor();
+        gSprites[gBattleCursorSpriteId].data[2] = battler;
+        gSprites[gBattleCursorSpriteId].invisible = FALSE;
         gBattlerControllerFuncs[battler] = HandleInputChooseAction;
     }
 }
@@ -2039,6 +2029,7 @@ static void PlayerHandleChooseAction(u32 battler)
         ActionSelectionDestroyCursorAt(i);
 
     TryRestoreLastUsedBall();
+    gSprites[gBattleCursorSpriteId].data[1] = FALSE;
     ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
     PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
     BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo);
@@ -2141,6 +2132,7 @@ void PlayerHandleChooseMove(u32 battler)
         if (!(gBattleStruct->gimmick.usableGimmick[battler] == GIMMICK_Z_MOVE && !gBattleStruct->zmove.viable))
             CreateGimmickTriggerSprite(battler);
 
+        gSprites[gBattleCursorSpriteId].data[1] = TRUE;
         gBattlerControllerFuncs[battler] = HandleChooseMoveAfterDma3;
     }
 }
