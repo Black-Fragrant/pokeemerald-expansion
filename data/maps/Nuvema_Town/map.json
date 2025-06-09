@@ -26,6 +26,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_NUVEMA_TOWN_LITTLE_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 20,
       "y": 10,
@@ -39,6 +40,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NUVEMA_TOWN_BEAUTY",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 7,
       "y": 17,
@@ -52,6 +54,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NUVEMA_TOWN_FAT_MAN",
       "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER_MAN",
       "x": 17,
       "y": 26,
@@ -72,41 +75,41 @@
       "type": "sign",
       "x": 17,
       "y": 19,
-      "elevation": 3,
+      "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_SignPost"
+      "script": "Nuvema_Town_EventScript_SignPost"
     },
     {
       "type": "sign",
       "x": 7,
       "y": 8,
-      "elevation": 3,
+      "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_JuniperLabSign"
+      "script": "Nuvema_Town_EventScript_JuniperLabSign"
     },
     {
       "type": "sign",
       "x": 12,
       "y": 15,
-      "elevation": 3,
+      "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_PlayersHouseSign"
+      "script": "Nuvema_Town_EventScript_PlayersHouseSign"
     },
     {
       "type": "sign",
       "x": 6,
       "y": 23,
-      "elevation": 3,
+      "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_BiancasHouseSign"
+      "script": "Nuvema_Town_EventScript_BiancasHouseSign"
     },
     {
       "type": "sign",
       "x": 17,
       "y": 23,
-      "elevation": 3,
+      "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_CherensHouseSign"
+      "script": "Nuvema_Town_EventScript_CherensHouseSign"
     }
   ]
 }
