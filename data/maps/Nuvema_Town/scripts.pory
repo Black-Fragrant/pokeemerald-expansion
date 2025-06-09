@@ -1,27 +1,27 @@
 mapscripts Nuvema_Town_MapScripts {}
 
-script Nuvema_Town_SignPost {
+script Nuvema_Town_EventScript_SignPost {
 	msgbox("Nuvema Town\n"
 			"The Start of Something Big!", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_JuniperLabSign {
-	msgbox("Juniper Pokemon Lab", MSGBOX_SIGN)
+script Nuvema_Town_EventScript_JuniperLabSign {
+	msgbox("Juniper Pokémon Lab", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_PlayersHouseSign {
+script Nuvema_Town_EventScript_PlayersHouseSign {
 	msgbox("{PLAYER}'s House", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_BiancasHouseSign {
+script Nuvema_Town_EventScript_BiancasHouseSign {
 	msgbox("Bianca's House", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_CherensHouseSign {
+script Nuvema_Town_EventScript_CherensHouseSign {
 	msgbox("Cheren's House", MSGBOX_SIGN)
 	end
 }
@@ -34,22 +34,23 @@ script Nuvema_Town_EventScript_LittleGirl {
 	end
 }
 
+script Nuvema_Town_EventScript_Beauty {
+	lock
+	faceplayer
+	if (msgbox("Do you think travelling with Pokémon\n"
+			"changes people?", MSGBOX_YESNO) == YES) {
+		msgbox("Me too! Travelling and thinking about\n"
+				"many things can definitely make a\l"
+				"difference.", MSGBOX_NPC)
+	} else {
+		msgbox("You're right! It's fine to just enjoy\n"
+				"the journey without overthinking it.", MSGBOX_NPC)
+	}
+}
+
 script Nuvema_Town_EventScript_FatMan {
 	msgbox("The power of science is amazing!\p"
 			"Now you can use infrared to do all\n"
 			"sorts of things in the blink of eye!", MSGBOX_NPC)
 	end
-}
-
-script Nuvema_Town_EventScript_Beauty {
-	lock
-	faceplayer
-	if (msgbox("Do you think travelling with Pokemon\n"
-			"changes people?", MSGBOX_YESNO) == YES) {
-		msgbox("Me too! Travelling and thinking about many\n"
-				"things can definitely make a difference.", MSGBOX_NPC)
-	} else {
-		msgbox("You're right! It's fine to just enjoy the\n"
-				"journey without overthinking it.", MSGBOX_NPC)
-	}
 }
