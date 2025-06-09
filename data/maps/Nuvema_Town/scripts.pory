@@ -30,6 +30,26 @@ script Nuvema_Town_EventScript_LittleGirl {
 	msgbox("I've heard there are a lot of Pokémon\n"
 			"and many different people in the world.\p"
 			"When I hear stories about them,\n"
-			"I get very excited!$", MSGBOX_SIGN)
+			"I get very excited!", MSGBOX_NPC)
 	end
+}
+
+script Nuvema_Town_EventScript_FatMan {
+	msgbox("The power of science is amazing!\p"
+			"Now you can use infrared to do all\n"
+			"sorts of things in the blink of eye!", MSGBOX_NPC)
+	end
+}
+
+script Nuvema_Town_EventScript_Beauty {
+	lock
+	faceplayer
+	if (msgbox("Do you think travelling with Pokemon\n"
+			"changes people?", MSGBOX_YESNO) == YES) {
+		msgbox("Me too! Travelling and thinking about many\n"
+				"things can definitely make a difference.", MSGBOX_NPC)
+	} else {
+		msgbox("You're right! It's fine to just enjoy the\n"
+				"journey without overthinking it.", MSGBOX_NPC)
+	}
 }
