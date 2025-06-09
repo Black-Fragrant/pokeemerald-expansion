@@ -1744,7 +1744,7 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
     u8 pwr_start[] = _("{CLEAR_TO 0x38}");
     u8 acc_start[] = _("{CLEAR_TO 0x6D}");
     LoadUserWindowBorderGfx(B_WIN_MOVE_DESCRIPTION, DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(7));
-    DrawStdFrameWithCustomTileAndPalette(B_WIN_MOVE_DESCRIPTION, FALSE, DLG_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(7));
+    DrawStdFrameWithCustomTileAndPalette(B_WIN_MOVE_DESCRIPTION, FALSE, DLG_WINDOW_BASE_TILE_NUM, 7);
     if (pwr < 2)
         StringCopy(pwr_num, gText_BattleSwitchWhich5);
     else

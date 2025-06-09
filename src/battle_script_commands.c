@@ -16456,37 +16456,36 @@ void HandleBattleWindow(u8 xStart, u8 yStart, u8 xEnd, u8 yEnd, u8 flags)
             if (destY == yStart)
             {
                 if (destX == xStart)
-                    var = 0x7047;
+                    var = 0x7050;
                 else if (destX == xEnd)
-                    var = 0x7049;
+                    var = 0x7052;
                 else
-                    var = 0x7048;
+                    var = 0x7051;
             }
             else if (destY == yEnd)
             {
                 if (destX == xStart)
-                    var = 0x704D;
+                    var = 0x7056;
                 else if (destX == xEnd)
-                    var = 0x704E;
+                    var = 0x7058;
                 else
-                    var = 0x704F;
+                    var = 0x7057;
             }
             else
             {
                 if (destX == xStart)
-                    var = 0x704A;
+                    var = 0x7053;
                 else if (destX == xEnd)
-                    var = 0x704C;
+                    var = 0x7055;
                 else
-                    var = 0x704B;
+                    var = 0x7054;
             }
 
             if (flags & WINDOW_CLEAR)
                 var = 0;
 
             bgId = (flags & WINDOW_BG1) ? 1 : 0;
-            var += 9;
-            CopyToBgTilemapBufferRect_ChangePalette(bgId, &var, destX, destY, 1, 1, 0x11);
+            CopyToBgTilemapBufferRect_ChangePalette(bgId, &var, destX, destY, 1, 1, 7);
         }
     }
 }
@@ -16497,17 +16496,17 @@ void BattleCreateYesNoCursorAt(u8 cursorPosition)
     src[0] = 14;
     src[1] = 15;
 
-    CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
+    CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 5);
     CopyBgTilemapBufferToVram(0);
 }
 
 void BattleDestroyYesNoCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x104B;
-    src[1] = 0x104B;
+    src[0] = 0x101E;
+    src[1] = 0x101E;
 
-    CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
+    CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 5);
     CopyBgTilemapBufferToVram(0);
 }
 
