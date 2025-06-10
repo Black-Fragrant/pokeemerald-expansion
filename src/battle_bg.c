@@ -863,8 +863,10 @@ void LoadBattleTextboxAndBackground(void)
     CopyBgTilemapBufferToVram(0);
     LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
     for (u32 i = 0; i < MAX_MON_MOVES; i++)
-        LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(12 + i), PLTT_SIZE_4BPP);
-
+    {
+        LoadCompressedPalette(gBattleTextboxPalette,        BG_PLTT_ID(12 + i),      PLTT_SIZE_4BPP);
+        LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0) + 3], BG_PLTT_ID(12 + i) + 15, PLTT_SIZEOF(1));
+    }
     LoadBattleMenuWindowGfx();
     if (B_TERRAIN_BG_CHANGE == TRUE)
         DrawTerrainTypeBattleBackground();

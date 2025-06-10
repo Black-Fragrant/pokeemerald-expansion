@@ -1625,8 +1625,9 @@ static void MoveSelectionDisplayMoveNames(u32 battler)
         // check if we didn't want to display pp number
         if (gBattleResources->bufferA[battler][2] != TRUE || moveInfo->moves[i] != MOVE_NONE)
         {
-            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0)],     BG_PLTT_ID(12 + i),     PLTT_SIZE_4BPP);
-            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(1) + 3], BG_PLTT_ID(12 + i) + 9, PLTT_SIZEOF(2));
+            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0)],     BG_PLTT_ID(12 + i),      PLTT_SIZE_4BPP);
+            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(0) + 3], BG_PLTT_ID(12 + i) + 15, PLTT_SIZEOF(1));
+            LoadPalette(&gPlttBufferUnfaded[BG_PLTT_ID(1) + 3], BG_PLTT_ID(12 + i) +  9, PLTT_SIZEOF(2));
             SetPpNumbersPaletteInMoveSelection(battler, i);
             u8 *txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[i],
                                                     STR_CONV_MODE_RIGHT_ALIGN, 2);
@@ -1636,6 +1637,7 @@ static void MoveSelectionDisplayMoveNames(u32 battler)
             BattlePutTextOnWindow(gDisplayedStringBattle, (i + B_WIN_MOVE_NAME_1) | B_WIN_MOVE_PP | B_WIN_COPYTOVRAM);
         }
 
+        // load move typing
         u32 type = moveInfo->moves[i] == MOVE_NONE ? TYPE_MYSTERY : GetMoveType(moveInfo->moves[i]);
         LoadPalette(&sMoveBoxTypePalettes[type * 3], BG_PLTT_ID(12 + i) + 3, PLTT_SIZEOF(3));
 
