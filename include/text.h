@@ -23,6 +23,8 @@ enum {
     FONT_SHORT_NARROW,
     FONT_BW_SUMMARY_SCREEN,
     FONT_SHORT_NARROWER,
+    FONT_OUTLINED,
+    FONT_OUTLINED_NARROW,
 };
 
 // Return values for font functions
@@ -57,9 +59,9 @@ enum {
 
 struct TextPrinterSubStruct
 {
-    u8 fontId:4;  // 0x14
+    u8 fontId:5;  // 0x14
     bool8 hasPrintBeenSpedUp:1;
-    u8 unk:3;
+    u8 unk:2;
     u8 downArrowDelay:5;
     u8 downArrowYPosIdx:2;
     bool8 hasFontIdBeenSet:1;
@@ -104,7 +106,7 @@ struct FontInfo
     u16 (*fontFunction)(struct TextPrinter *x);
     u8 maxLetterWidth;
     u8 maxLetterHeight;
-    u8 letterSpacing;
+    s8 letterSpacing;
     u8 lineSpacing;
     u8 unk:4;
     u8 fgColor:4;
@@ -178,5 +180,7 @@ u32 GetGlyphWidth_Braille(u16 glyphId, bool32 isJapanese);
 u32 GetFontIdToFit(const u8 *string, u32 widestFontId, u32 letterSpacing, u32 widthPx);
 u8 *PrependFontIdToFit(u8 *start, u8 *end, u32 fontId, u32 width);
 u8 *WrapFontIdToFit(u8 *start, u8 *end, u32 fontId, u32 width);
+
+u32 GetOutlineFontIdToFit(const u8 *str, u32 widthPx);
 
 #endif // GUARD_TEXT_H
