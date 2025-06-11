@@ -1169,3 +1169,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route2/scripts.inc"
 
 	.include "data/maps/Striaton_City/scripts.inc"
+
+	.include "data/maps/NuvemaTown_PlayerHouse_1F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_PlayerHouse_2F/scripts.inc"
