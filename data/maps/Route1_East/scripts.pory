@@ -1,4 +1,1 @@
-raw `
-Route1_East_MapScripts::
-	.byte 0
-`
+mapscripts Route1_East_MapScripts{}

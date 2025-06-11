@@ -1,6 +1,6 @@
 {
   "id": "MAP_NUVEMA_TOWN",
-  "name": "Nuvema_Town",
+  "name": "NuvemaTown",
   "layout": "LAYOUT_NUVEMA_TOWN",
   "music": "MUS_BW_NUVEMA_TOWN",
   "region_map_section": "MAPSEC_NUVEMA_TOWN",
@@ -36,7 +36,7 @@
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Nuvema_Town_EventScript_LittleGirl",
+      "script": "NuvemaTown_EventScript_LittleGirl",
       "flag": "0"
     },
     {
@@ -50,7 +50,7 @@
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Nuvema_Town_EventScript_Beauty",
+      "script": "NuvemaTown_EventScript_Beauty",
       "flag": "0"
     },
     {
@@ -64,7 +64,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Nuvema_Town_EventScript_FatMan",
+      "script": "NuvemaTown_EventScript_FatMan",
       "flag": "0"
     }
   ],
@@ -85,7 +85,7 @@
       "y": 19,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_EventScript_SignPost"
+      "script": "NuvemaTown_EventScript_SignPost"
     },
     {
       "type": "sign",
@@ -93,7 +93,7 @@
       "y": 8,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_EventScript_JuniperLabSign"
+      "script": "NuvemaTown_EventScript_JuniperLabSign"
     },
     {
       "type": "sign",
@@ -101,7 +101,7 @@
       "y": 15,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_EventScript_PlayersHouseSign"
+      "script": "NuvemaTown_EventScript_PlayersHouseSign"
     },
     {
       "type": "sign",
@@ -109,7 +109,7 @@
       "y": 23,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_EventScript_BiancasHouseSign"
+      "script": "NuvemaTown_EventScript_BiancasHouseSign"
     },
     {
       "type": "sign",
@@ -117,7 +117,7 @@
       "y": 23,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Nuvema_Town_EventScript_CherensHouseSign"
+      "script": "NuvemaTown_EventScript_CherensHouseSign"
     }
   ]
 }

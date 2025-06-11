@@ -1,32 +1,32 @@
-mapscripts Nuvema_Town_MapScripts {}
+mapscripts NuvemaTown_MapScripts {}
 
-script Nuvema_Town_EventScript_SignPost {
+script NuvemaTown_EventScript_SignPost {
 	msgbox("Nuvema Town\n"
 			"The Start of Something Big!", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_EventScript_JuniperLabSign {
+script NuvemaTown_EventScript_JuniperLabSign {
 	msgbox("Juniper Pokémon Lab", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_EventScript_PlayersHouseSign {
+script NuvemaTown_EventScript_PlayersHouseSign {
 	msgbox("{PLAYER}'s House", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_EventScript_BiancasHouseSign {
+script NuvemaTown_EventScript_BiancasHouseSign {
 	msgbox("Bianca's House", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_EventScript_CherensHouseSign {
+script NuvemaTown_EventScript_CherensHouseSign {
 	msgbox("Cheren's House", MSGBOX_SIGN)
 	end
 }
 
-script Nuvema_Town_EventScript_LittleGirl {
+script NuvemaTown_EventScript_LittleGirl {
 	msgbox("I've heard there are a lot of Pokémon\n"
 			"and many different people in the world.\p"
 			"When I hear stories about them,\n"
@@ -34,7 +34,7 @@ script Nuvema_Town_EventScript_LittleGirl {
 	end
 }
 
-script Nuvema_Town_EventScript_Beauty {
+script NuvemaTown_EventScript_Beauty {
 	lock
 	faceplayer
 	if (msgbox("Do you think travelling with Pokémon\n"
@@ -48,7 +48,7 @@ script Nuvema_Town_EventScript_Beauty {
 	}
 }
 
-script Nuvema_Town_EventScript_FatMan {
+script NuvemaTown_EventScript_FatMan {
 	msgbox("The power of science is amazing!\p"
 			"Now you can use infrared to do all\n"
 			"sorts of things in the blink of eye!", MSGBOX_NPC)

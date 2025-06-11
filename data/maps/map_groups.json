@@ -1,6 +1,7 @@
 {
   "group_order": [
     "gMapGroup_BWTownsAndRoutes",
+    "gMapGroup_IndoorNuvema",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -34,16 +35,19 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124",
-    "gMapGroup_IndoorNuvema"
+    "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_BWTownsAndRoutes": [
-    "Nuvema_Town",
+    "NuvemaTown",
     "Route1_East",
     "Route1_West",
-    "Accumula_Town",
+    "AccumulaTown",
     "Route2",
-    "Striaton_City"
+    "StriatonCity"
+  ],
+  "gMapGroup_IndoorNuvema": [
+    "NuvemaTown_PlayerHouse_1F",
+    "NuvemaTown_PlayerHouse_2F"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -630,9 +634,5 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
-  ],
-  "gMapGroup_IndoorNuvema": [
-    "NuvemaTown_PlayerHouse_1F",
-    "NuvemaTown_PlayerHouse_2F"
   ]
 }

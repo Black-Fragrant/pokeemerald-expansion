@@ -1,4 +1,1 @@
-raw `
-StriatonCity_MapScripts::
-	.byte 0
-`
+mapscripts StriatonCity_MapScripts {}
