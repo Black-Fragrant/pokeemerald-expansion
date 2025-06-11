@@ -1158,17 +1158,17 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/dexnav.inc"
 
-	.include "data/maps/Nuvema_Town/scripts.inc"
+	.include "data/maps/NuvemaTown/scripts.inc"
 
 	.include "data/maps/Route1_East/scripts.inc"
 
 	.include "data/maps/Route1_West/scripts.inc"
 
-	.include "data/maps/Accumula_Town/scripts.inc"
+	.include "data/maps/AccumulaTown/scripts.inc"
 
 	.include "data/maps/Route2/scripts.inc"
 
-	.include "data/maps/Striaton_City/scripts.inc"
+	.include "data/maps/StriatonCity/scripts.inc"
 
 	.include "data/maps/NuvemaTown_PlayerHouse_1F/scripts.inc"
 

@@ -4413,13 +4413,13 @@
     },
     {
       "id": "LAYOUT_NUVEMA_TOWN",
-      "name": "Nuvema_Town_Layout",
+      "name": "NuvemaTown_Layout",
       "width": 32,
       "height": 34,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Nuvema",
-      "border_filepath": "data/layouts/Nuvema_Town/border.bin",
-      "blockdata_filepath": "data/layouts/Nuvema_Town/map.bin"
+      "border_filepath": "data/layouts/NuvemaTown/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE1_EAST",
@@ -4443,13 +4443,13 @@
     },
     {
       "id": "LAYOUT_ACCUMULA_TOWN",
-      "name": "Accumula_Town_Layout",
+      "name": "AccumulaTown_Layout",
       "width": 42,
       "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Accumula",
-      "border_filepath": "data/layouts/Accumula_Town/border.bin",
-      "blockdata_filepath": "data/layouts/Accumula_Town/map.bin"
+      "border_filepath": "data/layouts/AccumulaTown/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE2",
@@ -4463,13 +4463,13 @@
     },
     {
       "id": "LAYOUT_STRIATON_CITY",
-      "name": "Striaton_City_Layout",
+      "name": "StriatonCity_Layout",
       "width": 80,
       "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Striaton",
-      "border_filepath": "data/layouts/Striaton_City/border.bin",
-      "blockdata_filepath": "data/layouts/Striaton_City/map.bin"
+      "border_filepath": "data/layouts/StriatonCity/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity/map.bin"
     },
     {
       "id": "LAYOUT_NUVEMA_TOWN_PLAYER_HOUSE_1F",
