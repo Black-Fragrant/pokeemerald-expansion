@@ -34,7 +34,8 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124"
+    "gMapGroup_IndoorRoute124",
+    "gMapGroup_IndoorNuvema"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "Nuvema_Town",
@@ -629,5 +630,9 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
+  ],
+  "gMapGroup_IndoorNuvema": [
+    "NuvemaTown_PlayerHouse_1F",
+    "NuvemaTown_PlayerHouse_2F"
   ]
 }

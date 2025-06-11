@@ -1088,3 +1088,14 @@ const struct Tileset gTileset_Striaton =
     .metatileAttributes = gMetatileAttributes_Striaton,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_IndoorNuvema =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorNuvema,
+    .palettes = gTilesetPalettes_IndoorNuvema,
+    .metatiles = gMetatiles_IndoorNuvema,
+    .metatileAttributes = gMetatileAttributes_IndoorNuvema,
+    .callback = NULL,
+};
