@@ -203,6 +203,7 @@ enum
 static const u8 *GetHealthboxElementGfxPtr(u8);
 static u8 *AddTextPrinterAndCreateWindowOnHealthbox(const u8 *, u32, u32, u32, u32 *);
 static u8 *AddTextPrinterAndCreateWindowOnHealthboxToFit(const u8 *, u32, u32, u32, u32 *, u32);
+static u8 *AddTextPrinterAndCreateWindowOnHealthboxWithFont(const u8 *str, u32 x, u32 y, u32 bgColor, u32 *windowId, u32 fontId);
 
 static void RemoveWindowOnHealthbox(u32 windowId);
 static void UpdateHpTextInHealthboxInDoubles(u32 healthboxSpriteId, u32 maxOrCurrent, s16 currHp, s16 maxHp);
@@ -978,13 +979,13 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl, u8 gender)
             StringCopy(text, gText_HealthboxGender_Female);
             break;
         }
-        StringAppend(text, COMPOUND_STRING("{COLOR 9}{LV_2}{COLOR 1}"));
+        StringAppend(text, COMPOUND_STRING("{COLOR_HIGHLIGHT_SHADOW 3 0 9}{LV}{COLOR_HIGHLIGHT_SHADOW 3 0 1}"));
         objVram = ConvertIntToDecimalStringN(text + StringLength(text), lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
         xPos = 0;
         UpdateIndicatorVisibilityAndType(healthboxSpriteId, TRUE);
     }
 
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, xPos, 3, 0, &windowId);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxWithFont(text, xPos, 2, 0, &windowId, FONT_OUTLINED_NARROW);
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
 
     if (GetBattlerSide(battler) == B_SIDE_PLAYER)
@@ -1796,7 +1797,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     StringCopy(ptr, gText_HealthboxGender_None);
 
     u32 len = (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER) ? 64 : 55;
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxToFit(gDisplayedStringBattle, 0, 3, 0, &windowId, len);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxToFit(gDisplayedStringBattle, 0, 2, 0, &windowId, len);
 
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
 
@@ -2480,7 +2481,7 @@ static u8 *AddTextPrinterAndCreateWindowOnHealthbox(const u8 *str, u32 x, u32 y,
 
 static u8 *AddTextPrinterAndCreateWindowOnHealthboxToFit(const u8 *str, u32 x, u32 y, u32 bgColor, u32 *windowId, u32 width)
 {
-    u32 fontId = GetFontIdToFit(str, FONT_SMALL, 0, width);
+    u32 fontId = GetOutlineFontIdToFit(str, width);
     return AddTextPrinterAndCreateWindowOnHealthboxWithFont(str, x, y, bgColor, windowId, fontId);
 }
 
