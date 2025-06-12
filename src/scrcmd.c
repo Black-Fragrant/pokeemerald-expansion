@@ -49,6 +49,7 @@
 #include "shop.h"
 #include "slot_machine.h"
 #include "sound.h"
+#include "speech_bubble.h"
 #include "string_util.h"
 #include "text.h"
 #include "text_window.h"
@@ -122,6 +123,8 @@ bool8 ScrCmd_end(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1);
 
     FlagClear(FLAG_SAFE_FOLLOWER_MOVEMENT);
+    if (gIsSpeechBubbleActive)
+        DestroyTail();
     StopScript(ctx);
     return FALSE;
 }

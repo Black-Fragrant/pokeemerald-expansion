@@ -4,6 +4,7 @@ Std_MsgboxNPC:
 	message NULL
 	waitmessage
 	waitbuttonpress
+	destroy_speech_bubble
 	release
 	return
 

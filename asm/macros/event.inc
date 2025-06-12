@@ -1900,7 +1900,11 @@
 	@ 	load_speech_bubble x, y
 	.macro load_speech_bubble x:req, y=0xFF
 		.if \y == 0xFF
-			setvar VAR_0x8004, \x
+			.if \x == VAR_LAST_TALKED
+				copyvar VAR_0x8004, \x
+			.else
+				setvar VAR_0x8004, \x
+			.endif
 			callnative LoadTailAutoFromScript
 		.else
 			setvar VAR_0x8005, \x
@@ -2062,8 +2066,13 @@
 	NO  = 0
 
 	@ Buffers the given text and calls the relevant standard message script (see gStdScripts).
-	.macro msgbox text:req, type=MSGBOX_DEFAULT
+	.macro msgbox text:req, type=MSGBOX_DEFAULT, speech_bubble=FALSE, localId=VAR_LAST_TALKED
 	loadword 0, \text
+	.if \speech_bubble == TRUE
+		.if \localId
+			load_speech_bubble \localId
+		.endif
+	.endif
 	callstd \type
 	.endm
 
