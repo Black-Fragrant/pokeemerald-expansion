@@ -47,7 +47,11 @@
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",
-    "NuvemaTown_PlayerHouse_2F"
+    "NuvemaTown_PlayerHouse_2F",
+    "NuvemaTown_BiancasHouse_1F",
+    "NuvemaTown_BiancasHouse_2F",
+    "NuvemaTown_CherensHouse_1F",
+    "NuvemaTown_CherensHouse_2F"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
