@@ -1,1 +1,6 @@
 mapscripts AccumulaTown_MapScripts {}
+
+script AccumulaTown_EventScript_SignPost {
+	msgbox("Accumula Town\n"
+			"The Fast-Growing Town", MSGBOX_SIGN)
+}

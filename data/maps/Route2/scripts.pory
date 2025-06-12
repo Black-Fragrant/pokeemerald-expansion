@@ -1,1 +1,14 @@
 mapscripts Route2_MapScripts {}
+
+script Route2_EventScript_SignPost {
+	msgbox("Route 2", MSGBOX_SIGN)
+	end
+}
+
+script Route2_EventScript_TrainerTips {
+	msgbox("Trainer Tips!\p"
+			"Pokémon that participate in battle\n"
+			"receive Exp. Points.\p"
+			"Have your Pokémon battle often,\n"
+			"and make them stronger and stronger!", MSGBOX_SIGN)
+}
