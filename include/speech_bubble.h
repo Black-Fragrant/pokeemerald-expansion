@@ -8,6 +8,8 @@
 #define TEXTBOX_RIGHT_X 170 
 #define TEXTBOX_Y 120
 
+extern EWRAM_DATA bool8 gIsSpeechBubbleActive;
+
 struct Tail
 {
     const u32 *gfx;
