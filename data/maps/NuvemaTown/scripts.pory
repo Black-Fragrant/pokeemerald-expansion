@@ -38,7 +38,7 @@ script NuvemaTown_EventScript_Beauty {
 	lock
 	faceplayer
 	if (msgbox("Do you think travelling with Pokémon\n"
-			"changes people?", MSGBOX_YESNO, TRUE) == YES) {
+				"changes people?", MSGBOX_YESNO, TRUE) == YES) {
 		msgbox("Me too! Travelling and thinking about\n"
 				"many things can definitely make a\l"
 				"difference.", MSGBOX_NPC)
