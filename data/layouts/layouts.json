@@ -4484,8 +4484,8 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_PLAYER_HOUSE_2F",
       "name": "NuvemaTown_PlayerHouse_2F_Layout",
-      "width": 12,
-      "height": 12,
+      "width": 10,
+      "height": 29,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
       "border_filepath": "data/layouts/NuvemaTown_PlayerHouse_2F/border.bin",
