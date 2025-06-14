@@ -4474,7 +4474,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_PLAYER_HOUSE_1F",
       "name": "NuvemaTown_PlayerHouse_1F_Layout",
-      "width": 12,
+      "width": 14,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
@@ -4484,7 +4484,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_PLAYER_HOUSE_2F",
       "name": "NuvemaTown_PlayerHouse_2F_Layout",
-      "width": 10,
+      "width": 12,
       "height": 29,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
@@ -4494,7 +4494,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_BIANCAS_HOUSE_1F",
       "name": "NuvemaTown_BiancasHouse_1F_Layout",
-      "width": 12,
+      "width": 14,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
@@ -4504,7 +4504,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_BIANCAS_HOUSE_2F",
       "name": "NuvemaTown_BiancasHouse_2F_Layout",
-      "width": 10,
+      "width": 12,
       "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
@@ -4514,7 +4514,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_CHERENS_HOUSE_1F",
       "name": "NuvemaTown_CherensHouse_1F_Layout",
-      "width": 12,
+      "width": 14,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
@@ -4524,7 +4524,7 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_CHERENS_HOUSE_2F",
       "name": "NuvemaTown_CherensHouse_2F_Layout",
-      "width": 10,
+      "width": 12,
       "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
