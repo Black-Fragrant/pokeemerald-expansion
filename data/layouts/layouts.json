@@ -4534,8 +4534,8 @@
     {
       "id": "LAYOUT_NUVEMA_TOWN_PROFESSOR_JUNIPERS_LAB",
       "name": "NuvemaTown_ProfessorJunipersLab_Layout",
-      "width": 20,
-      "height": 12,
+      "width": 18,
+      "height": 13,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorNuvema",
       "border_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/border.bin",
