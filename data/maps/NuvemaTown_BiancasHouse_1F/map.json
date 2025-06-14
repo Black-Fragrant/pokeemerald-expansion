@@ -16,14 +16,14 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 5,
+      "x": 6,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_NUVEMA_TOWN",
       "dest_warp_id": "2"
     },
     {
-      "x": 9,
+      "x": 10,
       "y": 3,
       "elevation": 0,
       "dest_map": "MAP_NUVEMA_TOWN_BIANCAS_HOUSE_2F",
