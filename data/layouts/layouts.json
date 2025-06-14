@@ -4530,6 +4530,16 @@
       "secondary_tileset": "gTileset_IndoorNuvema",
       "border_filepath": "data/layouts/NuvemaTown_CherensHouse_2F/border.bin",
       "blockdata_filepath": "data/layouts/NuvemaTown_CherensHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_PROFESSOR_JUNIPERS_LAB",
+      "name": "NuvemaTown_ProfessorJunipersLab_Layout",
+      "width": 20,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/map.bin"
     }
   ]
 }
