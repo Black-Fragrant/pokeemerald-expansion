@@ -1181,3 +1181,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/NuvemaTown_CherensHouse_1F/scripts.inc"
 
 	.include "data/maps/NuvemaTown_CherensHouse_2F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_ProfessorJunipersLab/scripts.inc"
