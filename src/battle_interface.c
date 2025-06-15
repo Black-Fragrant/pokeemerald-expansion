@@ -200,6 +200,9 @@ enum
     HEALTHBOX_GFX_FRAME_END_BAR,
 };
 
+static ALIGNED(4) EWRAM_INIT u8 sMonNameWindowId = WINDOW_NONE;
+static ALIGNED(4) EWRAM_INIT u8 sAbilityNameWindowId = WINDOW_NONE;
+
 static const u8 *GetHealthboxElementGfxPtr(u8);
 static u8 *AddTextPrinterAndCreateWindowOnHealthbox(const u8 *, u32, u32, u32, u32 *);
 static u8 *AddTextPrinterAndCreateWindowOnHealthboxToFit(const u8 *, u32, u32, u32, u32 *, u32);
@@ -2501,14 +2504,15 @@ static void SafariTextIntoHealthboxObject(void *dest, u8 *windowTileData, u32 wi
 #define ABILITY_POP_UP_TAG 0xD720
 
 // for sprite
-#define tSlideSpeed     data[0]
-#define tState          data[1]
-#define tFrames         data[2]
-#define tAbilityId      data[3]
-#define tBattlerId      data[4]
-#define tIsMain         data[5]
+#define tState          data[0]
+#define tFrames         data[1]
+#define tAbilityId      data[2]
+#define tBattlerId      data[3]
+#define tIsMain         data[4]
+#define tTaskId         data[5] // this is some of the most cursed thing i've made
 
 // for task
+#define tMosaicVal      data[0]
 #define tSpriteId1      data[6]
 #define tSpriteId2      data[7]
 
@@ -2563,8 +2567,6 @@ static const s16 sAbilityPopUpCoordsSingles[MAX_BATTLERS_COUNT][2] =
 
 #define POPUP_WINDOW_WIDTH 10
 #define MAX_POPUP_STRING_WIDTH (9 * 8)
-static ALIGNED(4) EWRAM_INIT u8 sMonNameWindowId = WINDOW_NONE;
-static ALIGNED(4) EWRAM_INIT u8 sAbilityNameWindowId = WINDOW_NONE;
 
 #define PIXEL_COORDS_TO_OFFSET(x, y)(           \
     /*Add tiles by X*/                          \
@@ -2609,6 +2611,10 @@ static const u16 sOverwrittenPixelsTable[][2] =
     {PIXEL_COORDS_TO_OFFSET( 0, 86), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 87), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 88), 8},
+    {PIXEL_COORDS_TO_OFFSET( 0, 89), 8},
+    {PIXEL_COORDS_TO_OFFSET( 0, 90), 8},
+    {PIXEL_COORDS_TO_OFFSET( 0, 91), 8},
+    {PIXEL_COORDS_TO_OFFSET( 0, 92), 8},
 
     // fourth row
     {PIXEL_COORDS_TO_OFFSET( 0, 112), 8},
@@ -2660,25 +2666,27 @@ static void RestoreOverwrittenPixels(void)
 #undef GFX_TOTAL_CANVAS
 }
 
-static u8 *AddTextPrinterAndCreateWindowOnAbilityPopUp(const u8 *str, u32 x, u32 y, u32 bgColor, u32 color2, u32 color3, u32 *windowId)
+static u8 *AddTextPrinterAndCreateWindowOnAbilityPopUp(const u8 *str, u32 x, u32 y, u32 bgColor, u32 color2, u32 color3, u8 *windowId, u8 speed)
 {
-    struct WindowTemplate winTemplate = {0};
-    winTemplate.baseBlock = 0x0100; // evil shit
-    if (y != 0)
-        winTemplate.baseBlock += POPUP_WINDOW_WIDTH * 3;
+    if (*windowId == WINDOW_NONE)
+    {
+        struct WindowTemplate winTemplate = {0};
+        winTemplate.baseBlock = 0x0100; // evil shit
+        if (y != 2)
+            winTemplate.baseBlock += POPUP_WINDOW_WIDTH * 3;
 
-    winTemplate.width = POPUP_WINDOW_WIDTH;
-    winTemplate.height = 3;
+        winTemplate.width = POPUP_WINDOW_WIDTH;
+        winTemplate.height = 3;
+        *windowId = AddWindow(&winTemplate);
+    }
 
-    *windowId = AddWindow(&winTemplate);
     FillWindowPixelBuffer(*windowId, PIXEL_FILL(bgColor));
 
     if (str != NULL)
     {
         u8 color[3] = {0, color2, color3};
         u32 fontId = GetOutlineFontIdToFit(str, MAX_POPUP_STRING_WIDTH);
-        AddTextPrinterParameterized4(*windowId, fontId, x, y, 0, 0, color,
-                                     (color3 == 0) ? 0 : OPTIONS_TEXT_SPEED_FAST, str);
+        AddTextPrinterParameterized4(*windowId, fontId, x, y, 0, 0, color, speed, str);
     }
 
     return (u8 *)(GetWindowAttribute(*windowId, WINDOW_TILE_DATA));
@@ -2688,7 +2696,7 @@ static void TextIntoAbilityPopUp(void *spriteTileData, u8 *windowTileData, s32 w
 {
     if (windowWidth > 0)
     {
-        u32 bak = windowWidth;
+        bool32 restore = (!printNickname && windowWidth == 2);
         do
         {
             if (printNickname)
@@ -2699,35 +2707,18 @@ static void TextIntoAbilityPopUp(void *spriteTileData, u8 *windowTileData, s32 w
             else
             {
                 CpuCopy32(windowTileData + (POPUP_WINDOW_WIDTH << 5) + 2, spriteTileData + (8 << 5) + 2, TILE_SIZE_4BPP);
-                CpuCopy32(windowTileData + ((POPUP_WINDOW_WIDTH * 2) << 5), spriteTileData + ((8 * 2) << 5), 8);
+                CpuCopy32(windowTileData + ((POPUP_WINDOW_WIDTH * 2) << 5), spriteTileData + ((8 * 2) << 5), 20);
             }
             spriteTileData += TILE_SIZE_4BPP, windowTileData += TILE_SIZE_4BPP;
             windowWidth--;
         } while (windowWidth != 0);
 
-        if (!printNickname && bak == 2)
+        if (restore)
             RestoreOverwrittenPixels();
     }
 }
 
-static u32 PrintOnAbilityPopUp(u8 const *str, u8 *spriteTileData1, u8 *spriteTileData2, u32 x, u32 y, u32 bgColor, u32 color2, u32 color3)
-{
-    u32 windowId;
-    AddTextPrinterAndCreateWindowOnAbilityPopUp(str, x, y, bgColor, color2, color3, &windowId);
-    return windowId;
-}
-
-static void ClearAbilityName(u8 spriteId1, u8 spriteId2, u8 bgColor)
-{
-    u32 windowId = PrintOnAbilityPopUp(NULL,
-                        (void *)(OBJ_VRAM0) + (gSprites[spriteId1].oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP),
-                        (void *)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP),
-                        8, 5,
-                        bgColor, 0, 0);
-    RemoveWindow(windowId);
-}
-
-static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
+static void PrintBattlerOnAbilityPopUp(u8 battlerId)
 {
     u32 i = 0;
     u8 lastChar;
@@ -2754,21 +2745,13 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
     }
     *textPtr = EOS;
 
-    sMonNameWindowId = PrintOnAbilityPopUp(gStringVar1,
-                        (void *)(OBJ_VRAM0) + (gSprites[spriteId1].oam.tileNum * TILE_SIZE_4BPP),
-                        (void *)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * TILE_SIZE_4BPP),
-                        8, 2,
-                        0, 1, 2);
+    AddTextPrinterAndCreateWindowOnAbilityPopUp(gStringVar1, 8, 2, 0, 1, 2, &sMonNameWindowId, OPTIONS_TEXT_SPEED_FAST);
 }
 
-static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2, u8 bgColor)
+static void PrintAbilityOnAbilityPopUp(u32 ability, u8 bgColor, u8 speed)
 {
-    ClearAbilityName(spriteId1, spriteId2, bgColor);
-    sAbilityNameWindowId = PrintOnAbilityPopUp(gAbilitiesInfo[ability].name,
-                        (void *)(OBJ_VRAM0) + (gSprites[spriteId1].oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP),
-                        (void *)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP),
-                        8, 5,
-                        bgColor, 1, 2);
+    AddTextPrinterAndCreateWindowOnAbilityPopUp(COMPOUND_STRING("                              "), 0, 0, bgColor, 0, 0, &sAbilityNameWindowId, TEXT_SKIP_DRAW);
+    AddTextPrinterAndCreateWindowOnAbilityPopUp(gAbilitiesInfo[ability].name, 8, 6, bgColor, 1, 2, &sAbilityNameWindowId, speed);
 }
 
 static inline bool32 IsAnyAbilityPopUpActive(void)
@@ -2791,7 +2774,10 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
         return;
 
     if (gBattleScripting.abilityPopupOverwrite != 0)
+    {
         ability = gBattleScripting.abilityPopupOverwrite;
+        gBattleScripting.abilityPopupOverwrite = 0;
+    }
 
     if (gTestRunnerEnabled)
     {
@@ -2849,21 +2835,22 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
     gTasks[taskId].tSpriteId1 = spriteId1;
     gTasks[taskId].tSpriteId2 = spriteId2;
 
+    gSprites[spriteId1].tTaskId = taskId;
     gSprites[spriteId1].tIsMain = TRUE;
     gSprites[spriteId1].tBattlerId = battlerId;
     gSprites[spriteId1].tSpriteId1 = spriteId1;
     gSprites[spriteId1].tSpriteId2 = spriteId2;
     gSprites[spriteId1].tAbilityId = ability;
+
+    gSprites[spriteId2].tTaskId = taskId;
 }
 
 void UpdateAbilityPopup(u8 battlerId)
 {
-    u8 spriteId1 = gBattleStruct->abilityPopUpSpriteIds[battlerId][0];
-    u8 spriteId2 = gBattleStruct->abilityPopUpSpriteIds[battlerId][1];
-    u16 ability = (gBattleScripting.abilityPopupOverwrite != 0) ? gBattleScripting.abilityPopupOverwrite : gBattleMons[battlerId].ability;
+    u32 ability = (gBattleScripting.abilityPopupOverwrite != 0) ? gBattleScripting.abilityPopupOverwrite : gBattleMons[battlerId].ability;
     u32 battlerPosition = GetBattlerPosition(battlerId);
-
-    PrintAbilityOnAbilityPopUp(ability, spriteId1, spriteId2, (battlerPosition & BIT_SIDE) != B_SIDE_PLAYER ? 4 : 14);
+    u32 bgColor = (battlerPosition & BIT_SIDE) != B_SIDE_PLAYER ? 4 : 14;
+    PrintAbilityOnAbilityPopUp(ability, bgColor, TEXT_SKIP_DRAW);
 }
 
 #define FRAMES_TO_WAIT 45
@@ -2872,8 +2859,13 @@ enum {
     APU_STATE_SETUP = 0,
     APU_STATE_SLIDE,
     APU_STATE_PRINT,
-    APU_STATE_SHINE,
-    APU_STATE_WAIT,
+    // default behavior
+    APU_STATE_BEGIN_SHINE,
+    APU_STATE_WAIT_SHINE,
+    // update behavior
+    APU_STATE_BEGIN_MOSAIC,
+    APU_STATE_UPDATE_MOSAIC,
+    // end
     APU_STATE_REVERT,
     APU_STATE_IDLE,
     APU_STATE_END
@@ -2882,16 +2874,17 @@ enum {
 static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
 {
     s16 *data = sprite->data;
-    u32 battlerPosition = GetBattlerPosition(tBattlerId), bgColor;
+    u32 battlerPosition = GetBattlerPosition(tBattlerId), bgColor = (battlerPosition & BIT_SIDE) != B_SIDE_PLAYER ? 4 : 14;
     struct Sprite *sprite2 = &gSprites[tSpriteId2];
+    struct Task *task = &gTasks[tTaskId];
+    u8 *windowTileData, *spriteTileData;
 
     switch (sprite->tState)
     {
     case APU_STATE_SETUP:
     {
-        tSlideSpeed = 4; // must be multiplied by 2 btw
-        tFrames = FRAMES_TO_WAIT;
-      	sprite->invisible = FALSE;
+        tFrames = 4; // must be multiplied by 2 btw
+        sprite->invisible = FALSE;
 
         if (tIsMain)
         {
@@ -2899,17 +2892,15 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
             {
                 sprite->x2 = 16;
                 sprite2->x2 = 16;
-                bgColor = 4;
             }
             else
             {
                 sprite->x2 = -16;
                 sprite2->x2 = -16;
-                bgColor = 14;
             }
             PlaySE(SE_BALL_TRAY_ENTER); // we don't have the BW one smh
-            PrintBattlerOnAbilityPopUp(tBattlerId, tSpriteId1, tSpriteId2);
-            PrintAbilityOnAbilityPopUp(tAbilityId, tSpriteId1, tSpriteId2, bgColor);
+            PrintBattlerOnAbilityPopUp(tBattlerId);
+            PrintAbilityOnAbilityPopUp(tAbilityId, bgColor, OPTIONS_TEXT_SPEED_FAST);
         }
         sprite->tState++;
         break;
@@ -2920,26 +2911,33 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
         {
             if ((battlerPosition & BIT_SIDE) != B_SIDE_PLAYER)
             {
-                sprite->x2 -= tSlideSpeed;
-                sprite2->x2 -= tSlideSpeed;
+                sprite->x2 -= tFrames;
+                sprite2->x2 -= tFrames;
             }
             else
             {
-                sprite->x2 += tSlideSpeed;
-                sprite2->x2 += tSlideSpeed;
+                sprite->x2 += tFrames;
+                sprite2->x2 += tFrames;
             }
         }
         if (sprite->x2 == 0)
+        {
+            tFrames = FRAMES_TO_WAIT;
             tState++;
+        }
         break;
     }
     case APU_STATE_PRINT:
     {
         if (!IsTextPrinterActive(sAbilityNameWindowId) && !IsTextPrinterActive(sMonNameWindowId))
         {
-            tState++;
+            if (gBattleScripting.fixedPopup)
+                tState = APU_STATE_BEGIN_MOSAIC;
+            else
+                tState = APU_STATE_BEGIN_SHINE;
+
+            return;
         }
-        u8 *windowTileData, *spriteTileData;
 
         // name
         windowTileData = (u8 *)GetWindowAttribute(sMonNameWindowId, WINDOW_TILE_DATA);
@@ -2953,12 +2951,16 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
         windowTileData = (u8 *)GetWindowAttribute(sAbilityNameWindowId, WINDOW_TILE_DATA);
         spriteTileData = (void *)(OBJ_VRAM0) + (sprite->oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP);
         if (tIsMain)
+        {
             TextIntoAbilityPopUp(spriteTileData, windowTileData,            8, FALSE);
+        }
         else
+        {
             TextIntoAbilityPopUp(spriteTileData, windowTileData + (8 << 5), 2, FALSE);
+        }
         break;
     }
-    case APU_STATE_SHINE:
+    case APU_STATE_BEGIN_SHINE:
     {
         if (tIsMain)
         {
@@ -2968,18 +2970,69 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
         tState++;
         break;
     }
-    case APU_STATE_WAIT:
+    case APU_STATE_WAIT_SHINE:
     {
         if (!gPaletteFade.active)
-            tState++;
-
+            tState = APU_STATE_REVERT;
         break;
     }
+
+    case APU_STATE_BEGIN_MOSAIC:
+    {
+        task->tMosaicVal = 10;
+        sprite->oam.mosaic = TRUE;
+        if (tIsMain)
+            SetGpuReg(REG_OFFSET_MOSAIC, (task->tMosaicVal << 12) | (task->tMosaicVal << 8));
+        tState++;
+        break;
+    }
+    case APU_STATE_UPDATE_MOSAIC:
+    {
+        task->tMosaicVal--;
+        if (task->tMosaicVal < 0)
+        {
+            task->tMosaicVal = 0;
+        }
+        if (task->tMosaicVal == 5 && tIsMain)
+        {
+            u32 ability = (gBattleScripting.abilityPopupOverwrite != 0) ? gBattleScripting.abilityPopupOverwrite
+                                                                        : gBattleMons[tBattlerId].ability;
+            PrintAbilityOnAbilityPopUp(ability, bgColor, TEXT_SKIP_DRAW);
+            // copy once within main sprite since we're doing TEXT_SKIP_DRAW for updating
+            windowTileData = (u8 *)GetWindowAttribute(sAbilityNameWindowId, WINDOW_TILE_DATA);
+            spriteTileData = (void *)(OBJ_VRAM0) + (sprite->oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP);
+            TextIntoAbilityPopUp(spriteTileData, windowTileData,            8, FALSE);
+            spriteTileData = (void *)(OBJ_VRAM0) + (gSprites[tSpriteId2].oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP);
+            TextIntoAbilityPopUp(spriteTileData, windowTileData + (8 << 5), 2, FALSE);
+        }
+
+        if (tIsMain)
+        {
+            SetGpuReg(REG_OFFSET_MOSAIC, (task->tMosaicVal << 12) | (task->tMosaicVal << 8));
+        }
+
+        if (task->tMosaicVal == 0)
+        {
+            tState = APU_STATE_REVERT;
+        }
+        break;
+    }
+
     case APU_STATE_REVERT:
     {
-        if (tIsMain)
-            BeginNormalPaletteFade(1 << (sprite->oam.paletteNum + 16), 0, 16, 0, RGB_WHITE);
-
+        if (sprite->oam.mosaic)
+        {
+            sprite->oam.mosaic = FALSE;
+            if (tIsMain)
+                SetGpuReg(REG_OFFSET_MOSAIC, 0);
+        }
+        else
+        {
+            if (tIsMain)
+            {
+                BeginNormalPaletteFade(1 << (sprite->oam.paletteNum + 16), 0, 16, 0, RGB_WHITE);
+            }
+        }
         tState++;
         break;
     }
@@ -2991,7 +3044,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
         if (tFrames == 0)
             tState++;
 
-        if (!gBattleScripting.fixedPopup)
+        if (tFrames > 0)
             tFrames--;
 
         break;

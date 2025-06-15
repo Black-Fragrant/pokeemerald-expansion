@@ -7526,10 +7526,11 @@ BattleScript_AbilityPopUpTarget:
 BattleScript_AbilityPopUp:
 	.if B_ABILITY_POP_UP == TRUE
 	showabilitypopup BS_ABILITY_BATTLER
-	pause 40
+	pause 65
 	.endif
 	recordability BS_ABILITY_BATTLER
 	sethword sABILITY_OVERWRITE, 0
+	destroyabilitypopup
 	return
 
 BattleScript_AbilityPopUpScripting:
@@ -7539,13 +7540,9 @@ BattleScript_AbilityPopUpScripting:
 BattleScript_AbilityPopUpOverwriteThenNormal:
 	setbyte sFIXED_ABILITY_POPUP, TRUE
 	showabilitypopup BS_ABILITY_BATTLER
-	pause 60
-	sethword sABILITY_OVERWRITE, 0
-	updateabilitypopup BS_ABILITY_BATTLER
-	pause 20
+	pause 65 @ i hate how long it took to get to this value, and even then
 	recordability BS_ABILITY_BATTLER
 	destroyabilitypopup
-	pause 40
 	return
 
 BattleScript_SpeedBoostActivates::
@@ -7797,6 +7794,7 @@ BattleScript_IntimidateWontDecrease:
 	goto BattleScript_IntimidateEffect_WaitString
 
 BattleScript_IntimidateContrary:
+	copybyte sBATTLER, gBattlerTarget
 	call BattleScript_AbilityPopUpTarget
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_IntimidateContrary_WontIncrease
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
@@ -7856,6 +7854,7 @@ BattleScript_SupersweetSyrupWontDecrease:
 	goto BattleScript_SupersweetSyrupEffect_WaitString
 
 BattleScript_SupersweetSyrupContrary:
+	copybyte sBATTLER, gBattlerTarget
 	call BattleScript_AbilityPopUpTarget
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SupersweetSyrupContrary_WontIncrease
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
