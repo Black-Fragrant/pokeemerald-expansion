@@ -132,6 +132,9 @@ static const u16 sDoorNullPalette48[16] = {};
 static const u8 sDoorAnimTiles_TrainerHillRoofElevator[] = INCBIN_U8("graphics/door_anims/trainer_hill_roof_elevator.4bpp");
 static const u16 sDoorNullPalette49[16] = {};
 
+static const u16 sDoorAnimTiles_Nuvema[] = INCBIN_U8("graphics/door_anims/nuvema.4bpp");
+static const u16 sDoorAnimTiles_JuniperLab[] = INCBIN_U8("graphics/door_anims/juniper_lab.4bpp");
+
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
     {4, -1},
@@ -275,6 +278,8 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_BattleTent_Door,                              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleTentInterior, sDoorAnimPalettes_BattleTentInterior},
     {METATILE_TrainerHill_Door_Elevator_Lobby,              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillLobbyElevator, sDoorAnimPalettes_TrainerHillLobbyElevator},
     {METATILE_TrainerHill_Door_Elevator_Roof,               DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillRoofElevator, sDoorAnimPalettes_TrainerHillRoofElevator},
+    // {METATILE_Nuvema_Door_House,                            DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Nuvema, sDoorAnimPalettes_Littleroot},
+    // {METATILE_Nuvema_Door_JunipersLab,                      DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_JuniperLab, sDoorAnimPalettes_Littleroot},
     {},
 };
 
