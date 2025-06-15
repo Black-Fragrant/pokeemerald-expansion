@@ -1183,3 +1183,19 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/NuvemaTown_CherensHouse_2F/scripts.inc"
 
 	.include "data/maps/NuvemaTown_ProfessorJunipersLab/scripts.inc"
+
+	.include "data/maps/AccumulaTown_BottomLeftBuilding1F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopLeftBuilding2F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_PokeCenter/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopMiddleBuilding2F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_BottomLeftBuilding2F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopMiddleBuilding1F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopRightBuilding/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopLeftBuilding1F/scripts.inc"
