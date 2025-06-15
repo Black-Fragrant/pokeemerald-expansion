@@ -4540,6 +4540,86 @@
       "secondary_tileset": "gTileset_IndoorNuvema",
       "border_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/border.bin",
       "blockdata_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_BOTTOM_LEFT_BUILDING1F",
+      "name": "AccumulaTown_BottomLeftBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_LEFT_BUILDING2F",
+      "name": "AccumulaTown_TopLeftBuilding2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopLeftBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopLeftBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_POKE_CENTER",
+      "name": "AccumulaTown_PokeCenter_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_PokeCenter/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_PokeCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_BOTTOM_LEFT_BUILDING2F",
+      "name": "AccumulaTown_BottomLeftBuilding2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_RIGHT_BUILDING",
+      "name": "AccumulaTown_TopRightBuilding_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopRightBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopRightBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_MIDDLE_BUILDING1F",
+      "name": "AccumulaTown_TopMiddleBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_LEFT_BUILDING1F",
+      "name": "AccumulaTown_TopLeftBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopLeftBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopLeftBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_MIDDLE_BUILDING2F",
+      "name": "AccumulaTown_TopMiddleBuilding2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding2F/map.bin"
     }
   ]
 }
