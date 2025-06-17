@@ -2425,7 +2425,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cilan = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse, // Nurse has the "bowing" movement which Cilan also has
     .images = sPicTable_Cilan,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
