@@ -7526,11 +7526,10 @@ BattleScript_AbilityPopUpTarget:
 BattleScript_AbilityPopUp:
 	.if B_ABILITY_POP_UP == TRUE
 	showabilitypopup BS_ABILITY_BATTLER
-	pause 65
+	pause B_WAIT_TIME_LONG
 	.endif
 	recordability BS_ABILITY_BATTLER
 	sethword sABILITY_OVERWRITE, 0
-	destroyabilitypopup
 	return
 
 BattleScript_AbilityPopUpScripting:
@@ -7540,9 +7539,10 @@ BattleScript_AbilityPopUpScripting:
 BattleScript_AbilityPopUpOverwriteThenNormal:
 	setbyte sFIXED_ABILITY_POPUP, TRUE
 	showabilitypopup BS_ABILITY_BATTLER
-	pause 65 @ i hate how long it took to get to this value, and even then
+	updateabilitypopup BS_ABILITY_BATTLER
+	pause B_WAIT_TIME_LONG
 	recordability BS_ABILITY_BATTLER
-	destroyabilitypopup
+	destroyabilitypopup @ sets sFIXED_ABILITY_POPUP back to 0 automatically
 	return
 
 BattleScript_SpeedBoostActivates::
@@ -8361,8 +8361,8 @@ BattleScript_CursedBodyActivates::
 
 BattleScript_MummyActivates::
 .if B_ABILITY_POP_UP == TRUE
-	call BattleScript_AbilityPopUpTarget
 	setbyte sFIXED_ABILITY_POPUP, TRUE
+	call BattleScript_AbilityPopUpTarget
 	copybyte gBattlerAbility, gBattlerAttacker
 	copyhword sABILITY_OVERWRITE, gLastUsedAbility
 	call BattleScript_AbilityPopUpOverwriteThenNormal

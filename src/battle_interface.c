@@ -2510,11 +2510,12 @@ static void SafariTextIntoHealthboxObject(void *dest, u8 *windowTileData, u32 wi
 #define tBattlerId      data[3]
 #define tIsMain         data[4]
 #define tTaskId         data[5] // this is some of the most cursed thing i've made
+#define tSpriteId1      data[6]
+#define tSpriteId2      data[7]
 
 // for task
 #define tMosaicVal      data[0]
-#define tSpriteId1      data[6]
-#define tSpriteId2      data[7]
+#define tUpdateAbility  data[1]
 
 static const u8 ALIGNED(4) sAbilityPopUpGfx[] = INCBIN_U8("graphics/battle_interface/ability_pop_up.4bpp");
 static const u16 sAbilityPopUpPalette[] = INCBIN_U16("graphics/battle_interface/ability_pop_up.gbapal");
@@ -2832,8 +2833,6 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
     gBattleStruct->abilityPopUpSpriteIds[battlerId][1] = spriteId2;
 
     taskId = CreateTask(Task_FreeAbilityPopUpGfx, 5);
-    gTasks[taskId].tSpriteId1 = spriteId1;
-    gTasks[taskId].tSpriteId2 = spriteId2;
 
     gSprites[spriteId1].tTaskId = taskId;
     gSprites[spriteId1].tIsMain = TRUE;
@@ -2847,13 +2846,17 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
 
 void UpdateAbilityPopup(u8 battlerId)
 {
-    u32 ability = (gBattleScripting.abilityPopupOverwrite != 0) ? gBattleScripting.abilityPopupOverwrite : gBattleMons[battlerId].ability;
-    u32 battlerPosition = GetBattlerPosition(battlerId);
-    u32 bgColor = (battlerPosition & BIT_SIDE) != B_SIDE_PLAYER ? 4 : 14;
-    PrintAbilityOnAbilityPopUp(ability, bgColor, TEXT_SKIP_DRAW);
+    u32 spriteId1 = gBattleStruct->abilityPopUpSpriteIds[battlerId][0];
+    u32 spriteId2 = gBattleStruct->abilityPopUpSpriteIds[battlerId][1];
+    if (spriteId1 != SPRITE_NONE && spriteId2 != SPRITE_NONE)
+    {
+        u32 taskId1 = gSprites[spriteId1].tTaskId, taskId2 = gSprites[spriteId2].tTaskId;
+        gTasks[taskId1].tUpdateAbility = TRUE;
+        gTasks[taskId2].tUpdateAbility = TRUE;
+    }
 }
 
-#define FRAMES_TO_WAIT 45
+#define FRAMES_TO_WAIT 1 // this is so stupid, but it works better like this
 
 enum {
     APU_STATE_SETUP = 0,
@@ -2879,7 +2882,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     struct Task *task = &gTasks[tTaskId];
     u8 *windowTileData, *spriteTileData;
 
-    switch (sprite->tState)
+    switch (tState)
     {
     case APU_STATE_SETUP:
     {
@@ -2931,7 +2934,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     {
         if (!IsTextPrinterActive(sAbilityNameWindowId) && !IsTextPrinterActive(sMonNameWindowId))
         {
-            if (gBattleScripting.fixedPopup)
+            if (task->tUpdateAbility)
                 tState = APU_STATE_BEGIN_MOSAIC;
             else
                 tState = APU_STATE_BEGIN_SHINE;
@@ -3044,7 +3047,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
         if (tFrames == 0)
             tState++;
 
-        if (tFrames > 0)
+        if (!gBattleScripting.fixedPopup && tFrames > 0)
             tFrames--;
 
         break;
@@ -3053,7 +3056,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     {
         if (tIsMain)
         {
-            gBattleStruct->battlerState[sprite->tBattlerId].activeAbilityPopUps = FALSE;
+            gBattleStruct->battlerState[tBattlerId].activeAbilityPopUps = FALSE;
             RemoveWindow(sAbilityNameWindowId);
             sAbilityNameWindowId = WINDOW_NONE;
             RemoveWindow(sMonNameWindowId);
@@ -3076,9 +3079,7 @@ void DestroyAbilityPopUp(u8 battlerId)
 
 static void Task_FreeAbilityPopUpGfx(u8 taskId)
 {
-    if (!gSprites[gTasks[taskId].tSpriteId1].inUse
-        && !gSprites[gTasks[taskId].tSpriteId2].inUse
-        && !IsAnyAbilityPopUpActive())
+    if (!IsAnyAbilityPopUpActive())
     {
         FreeSpriteTilesByTag(ABILITY_POP_UP_TAG);
         FreeSpritePaletteByTag(ABILITY_POP_UP_TAG);
