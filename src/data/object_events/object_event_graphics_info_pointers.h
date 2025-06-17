@@ -116,6 +116,22 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PilotBlue;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Police;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScientistMale;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScientistFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ConciergeMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ConciergeFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MartClerk;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NurseJoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CustomerService1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CustomerService2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CustomerService3;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CustomerService4;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlackSuit;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ParasolLady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cilan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lenora;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Burgh;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elesa;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clay;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Skyla;
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -242,6 +258,22 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_POLICE] =                   &gObjectEventGraphicsInfo_Police,
     [OBJ_EVENT_GFX_SCIENTIST_MALE] =           &gObjectEventGraphicsInfo_ScientistMale,
     [OBJ_EVENT_GFX_SCIENTIST_FEMALE] =         &gObjectEventGraphicsInfo_ScientistFemale,
+    [OBJ_EVENT_GFX_CONCIERGE_MALE] =           &gObjectEventGraphicsInfo_ConciergeMale,
+    [OBJ_EVENT_GFX_CONCIERGE_FEMALE] =         &gObjectEventGraphicsInfo_ConciergeFemale,
+    [OBJ_EVENT_GFX_MART_CLERK] =               &gObjectEventGraphicsInfo_MartClerk,
+    [OBJ_EVENT_GFX_NURSE_JOY] =                &gObjectEventGraphicsInfo_NurseJoy,
+    [OBJ_EVENT_GFX_CUSTOMER_SERVICE_1] =       &gObjectEventGraphicsInfo_CustomerService1,
+    [OBJ_EVENT_GFX_CUSTOMER_SERVICE_2] =       &gObjectEventGraphicsInfo_CustomerService2,
+    [OBJ_EVENT_GFX_CUSTOMER_SERVICE_3] =       &gObjectEventGraphicsInfo_CustomerService3,
+    [OBJ_EVENT_GFX_CUSTOMER_SERVICE_4] =       &gObjectEventGraphicsInfo_CustomerService4,
+    [OBJ_EVENT_GFX_BLACK_SUIT] =               &gObjectEventGraphicsInfo_BlackSuit,
+    [OBJ_EVENT_GFX_PARASOL_LADY] =             &gObjectEventGraphicsInfo_ParasolLady,
+    [OBJ_EVENT_GFX_CILAN] =                    &gObjectEventGraphicsInfo_Cilan,
+    [OBJ_EVENT_GFX_LENORA] =                   &gObjectEventGraphicsInfo_Lenora,
+    [OBJ_EVENT_GFX_BURGH] =                    &gObjectEventGraphicsInfo_Burgh,
+    [OBJ_EVENT_GFX_ELESA] =                    &gObjectEventGraphicsInfo_Elesa,
+    [OBJ_EVENT_GFX_CLAY] =                     &gObjectEventGraphicsInfo_Clay,
+    [OBJ_EVENT_GFX_SKYLA] =                    &gObjectEventGraphicsInfo_Skyla,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,

@@ -901,7 +901,9 @@ static const union AnimCmd sAnim_BerryTreeStage4[] =
 static const union AnimCmd sAnim_NurseBow[] =
 {
     ANIMCMD_FRAME(0, 8),
-    ANIMCMD_FRAME(9, 32),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(10, 32),
+    ANIMCMD_FRAME(9, 8),
     ANIMCMD_FRAME(0, 8),
     ANIMCMD_END,
 };
@@ -1443,8 +1445,8 @@ static const union AnimCmd *const sAnimTable_Nurse[] = {
     [ANIM_STD_GO_FAST_EAST] = sAnim_GoFastEast,
     [ANIM_STD_GO_FASTER_SOUTH] = sAnim_GoFasterSouth,
     [ANIM_STD_GO_FASTER_NORTH] = sAnim_GoFasterNorth,
-    [ANIM_STD_GO_FASTER_WEST]  = sAnim_GoFasterWest,
-    [ANIM_STD_GO_FASTER_EAST]  = sAnim_GoFasterEast,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_GoFasterWest,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_GoFasterEast,
     [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_GoFastestSouth,
     [ANIM_STD_GO_FASTEST_NORTH] = sAnim_GoFastestNorth,
     [ANIM_STD_GO_FASTEST_WEST] = sAnim_GoFastestWest,

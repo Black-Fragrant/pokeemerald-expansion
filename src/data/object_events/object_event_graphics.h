@@ -458,3 +458,51 @@ const u16 gObjectEventPal_ScientistMale[] = INCBIN_U16("graphics/object_events/p
 
 const u32 gObjectEventPic_ScientistFemale[] = INCBIN_U32("graphics/object_events/pics/people/scientist_f.4bpp");
 const u16 gObjectEventPal_ScientistFemale[] = INCBIN_U16("graphics/object_events/palettes/scientist_f.gbapal");
+
+const u32 gObjectEventPic_ConciergeMale[] = INCBIN_U32("graphics/object_events/pics/people/concierge_m.4bpp");
+const u16 gObjectEventPal_ConciergeMale[] = INCBIN_U16("graphics/object_events/palettes/concierge_m.gbapal");
+
+const u32 gObjectEventPic_ConciergeFemale[] = INCBIN_U32("graphics/object_events/pics/people/concierge_f.4bpp");
+const u16 gObjectEventPal_ConciergeFemale[] = INCBIN_U16("graphics/object_events/palettes/concierge_f.gbapal");
+
+const u32 gObjectEventPic_MartClerk[] = INCBIN_U32("graphics/object_events/pics/people/mart_clerk.4bpp");
+const u16 gObjectEventPal_MartClerk[] = INCBIN_U16("graphics/object_events/palettes/mart_clerk.gbapal");
+
+const u32 gObjectEventPic_NurseJoy[] = INCBIN_U32("graphics/object_events/pics/people/nurse_joy.4bpp");
+const u16 gObjectEventPal_NurseJoy[] = INCBIN_U16("graphics/object_events/palettes/nurse_joy.gbapal");
+
+const u32 gObjectEventPic_CustomerService1[] = INCBIN_U32("graphics/object_events/pics/people/customer_service_1.4bpp");
+const u16 gObjectEventPal_CustomerService1[] = INCBIN_U16("graphics/object_events/palettes/customer_service_1.gbapal");
+
+const u32 gObjectEventPic_CustomerService2[] = INCBIN_U32("graphics/object_events/pics/people/customer_service_2.4bpp");
+const u16 gObjectEventPal_CustomerService2[] = INCBIN_U16("graphics/object_events/palettes/customer_service_2.gbapal");
+
+const u32 gObjectEventPic_CustomerService3[] = INCBIN_U32("graphics/object_events/pics/people/customer_service_3.4bpp");
+const u16 gObjectEventPal_CustomerService3[] = INCBIN_U16("graphics/object_events/palettes/customer_service_3.gbapal");
+
+const u32 gObjectEventPic_CustomerService4[] = INCBIN_U32("graphics/object_events/pics/people/customer_service_4.4bpp");
+const u16 gObjectEventPal_CustomerService4[] = INCBIN_U16("graphics/object_events/palettes/customer_service_4.gbapal");
+
+const u32 gObjectEventPic_BlackSuit[] = INCBIN_U32("graphics/object_events/pics/people/black_suit.4bpp");
+const u16 gObjectEventPal_BlackSuit[] = INCBIN_U16("graphics/object_events/palettes/black_suit.gbapal");
+
+const u32 gObjectEventPic_ParasolLady[] = INCBIN_U32("graphics/object_events/pics/people/parasol_lady.4bpp");
+const u16 gObjectEventPal_ParasolLady[] = INCBIN_U16("graphics/object_events/palettes/parasol_lady.gbapal");
+
+const u32 gObjectEventPic_Cilan[] = INCBIN_U32("graphics/object_events/pics/people/cilan.4bpp");
+const u16 gObjectEventPal_Cilan[] = INCBIN_U16("graphics/object_events/palettes/cilan.gbapal");
+
+const u32 gObjectEventPic_Lenora[] = INCBIN_U32("graphics/object_events/pics/people/lenora.4bpp");
+const u16 gObjectEventPal_Lenora[] = INCBIN_U16("graphics/object_events/palettes/lenora.gbapal");
+
+const u32 gObjectEventPic_Burgh[] = INCBIN_U32("graphics/object_events/pics/people/burgh.4bpp");
+const u16 gObjectEventPal_Burgh[] = INCBIN_U16("graphics/object_events/palettes/burgh.gbapal");
+
+const u32 gObjectEventPic_Elesa[] = INCBIN_U32("graphics/object_events/pics/people/elesa.4bpp");
+const u16 gObjectEventPal_Elesa[] = INCBIN_U16("graphics/object_events/palettes/elesa.gbapal");
+
+const u32 gObjectEventPic_Clay[] = INCBIN_U32("graphics/object_events/pics/people/clay.4bpp");
+const u16 gObjectEventPal_Clay[] = INCBIN_U16("graphics/object_events/palettes/clay.gbapal");
+
+const u32 gObjectEventPic_Skyla[] = INCBIN_U32("graphics/object_events/pics/people/skyla.4bpp");
+const u16 gObjectEventPal_Skyla[] = INCBIN_U16("graphics/object_events/palettes/skyla.gbapal");
