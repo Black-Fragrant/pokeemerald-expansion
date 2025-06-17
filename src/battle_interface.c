@@ -2864,20 +2864,20 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     {
     case APU_STATE_SETUP:
     {
-        tFrames = 4; // must be multiplied by 2 btw
+        tFrames = 12; // must be multiplied by 2 btw
         sprite->invisible = FALSE;
 
         if (tIsMain)
         {
             if ((battlerPosition & BIT_SIDE) != B_SIDE_PLAYER)
             {
-                sprite->x2 = 16;
-                sprite2->x2 = 16;
+                sprite->x2 = 24;
+                sprite2->x2 = 24;
             }
             else
             {
-                sprite->x2 = -16;
-                sprite2->x2 = -16;
+                sprite->x2 = -24;
+                sprite2->x2 = -24;
             }
             PlaySE(SE_BALL_TRAY_ENTER); // we don't have the BW one smh
             PrintBattlerOnAbilityPopUp(tBattlerId);
@@ -2919,6 +2919,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
 
             return;
         }
+        RunTextPrinters(); // the fact that this works better than making a new text speed is hilarious
 
         // name
         windowTileData = (u8 *)GetWindowAttribute(sMonNameWindowId, WINDOW_TILE_DATA);
@@ -2955,6 +2956,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     {
         if (!gPaletteFade.active)
             tState = APU_STATE_REVERT;
+
         break;
     }
 
@@ -2963,7 +2965,10 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
         task->tMosaicVal = 10;
         sprite->oam.mosaic = TRUE;
         if (tIsMain)
+        {
+            PlaySE(SE_SUCCESS);
             SetGpuReg(REG_OFFSET_MOSAIC, (task->tMosaicVal << 12) | (task->tMosaicVal << 8));
+        }
         tState++;
         break;
     }
@@ -2983,7 +2988,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
             windowTileData = (u8 *)GetWindowAttribute(sAbilityNameWindowId, WINDOW_TILE_DATA);
             spriteTileData = (void *)(OBJ_VRAM0) + (sprite->oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP);
             TextIntoAbilityPopUp(spriteTileData, windowTileData,            8, FALSE);
-            spriteTileData = (void *)(OBJ_VRAM0) + (gSprites[tSpriteId2].oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP);
+            spriteTileData = (void *)(OBJ_VRAM0) + (sprite2->oam.tileNum * TILE_SIZE_4BPP) + (8 * TILE_SIZE_4BPP);
             TextIntoAbilityPopUp(spriteTileData, windowTileData + (8 << 5), 2, FALSE);
         }
 
