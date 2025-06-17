@@ -2581,29 +2581,8 @@ static const s16 sAbilityPopUpCoordsSingles[MAX_BATTLERS_COUNT][2] =
 
 static const u16 sOverwrittenPixelsTable[][2] =
 {
-    // first row
-    {PIXEL_COORDS_TO_OFFSET( 0, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET( 8, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET(16, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET(24, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET(32, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET(40, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET(48, 16), 8},
-    {PIXEL_COORDS_TO_OFFSET(56, 16), 8},
-
-    // second row
-    {PIXEL_COORDS_TO_OFFSET( 0, 48), 8},
-    {PIXEL_COORDS_TO_OFFSET( 8, 48), 8},
-
-    // third row
     {PIXEL_COORDS_TO_OFFSET( 0, 80), 8},
     {PIXEL_COORDS_TO_OFFSET( 8, 80), 8},
-    {PIXEL_COORDS_TO_OFFSET(16, 80), 8},
-    {PIXEL_COORDS_TO_OFFSET(24, 80), 8},
-    {PIXEL_COORDS_TO_OFFSET(32, 80), 8},
-    {PIXEL_COORDS_TO_OFFSET(40, 80), 8},
-    {PIXEL_COORDS_TO_OFFSET(48, 80), 8},
-    {PIXEL_COORDS_TO_OFFSET(56, 80), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 81), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 82), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 83), 8},
@@ -2616,10 +2595,6 @@ static const u16 sOverwrittenPixelsTable[][2] =
     {PIXEL_COORDS_TO_OFFSET( 0, 90), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 91), 8},
     {PIXEL_COORDS_TO_OFFSET( 0, 92), 8},
-
-    // fourth row
-    {PIXEL_COORDS_TO_OFFSET( 0, 112), 8},
-    {PIXEL_COORDS_TO_OFFSET( 8, 112), 8},
 };
 
 static inline void CopyPixels(u8 *dest, const u8 *src, u32 pixelCount)
@@ -2648,7 +2623,7 @@ static inline void CopyPixels(u8 *dest, const u8 *src, u32 pixelCount)
     }
 }
 
-static void RestoreOverwrittenPixels(void)
+static UNUSED void RestoreOverwrittenPixels(void)
 {
 #define GFX_TOTAL_CANVAS (64 * 128)
     u8 *tiles = (void *)(OBJ_VRAM0) + (GetSpriteTileStartByTag(ABILITY_POP_UP_TAG) * TILE_SIZE_4BPP);
@@ -2697,7 +2672,12 @@ static void TextIntoAbilityPopUp(void *spriteTileData, u8 *windowTileData, s32 w
 {
     if (windowWidth > 0)
     {
-        bool32 restore = (!printNickname && windowWidth == 2);
+        if (windowWidth != 2 && !printNickname)
+        {
+            spriteTileData += TILE_SIZE_4BPP;
+            windowWidth--;
+        }
+
         do
         {
             if (printNickname)
@@ -2707,15 +2687,13 @@ static void TextIntoAbilityPopUp(void *spriteTileData, u8 *windowTileData, s32 w
             }
             else
             {
-                CpuCopy32(windowTileData + (POPUP_WINDOW_WIDTH << 5) + 2, spriteTileData + (8 << 5) + 2, TILE_SIZE_4BPP);
+
+                CpuCopy32(windowTileData + (POPUP_WINDOW_WIDTH << 5) + 4, spriteTileData + (8 << 5) + 4, 28);
                 CpuCopy32(windowTileData + ((POPUP_WINDOW_WIDTH * 2) << 5), spriteTileData + ((8 * 2) << 5), 20);
             }
             spriteTileData += TILE_SIZE_4BPP, windowTileData += TILE_SIZE_4BPP;
             windowWidth--;
         } while (windowWidth != 0);
-
-        if (restore)
-            RestoreOverwrittenPixels();
     }
 }
 
@@ -2752,7 +2730,7 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId)
 static void PrintAbilityOnAbilityPopUp(u32 ability, u8 bgColor, u8 speed)
 {
     AddTextPrinterAndCreateWindowOnAbilityPopUp(COMPOUND_STRING("                              "), 0, 0, bgColor, 0, 0, &sAbilityNameWindowId, TEXT_SKIP_DRAW);
-    AddTextPrinterAndCreateWindowOnAbilityPopUp(gAbilitiesInfo[ability].name, 8, 6, bgColor, 1, 2, &sAbilityNameWindowId, speed);
+    AddTextPrinterAndCreateWindowOnAbilityPopUp(gAbilitiesInfo[ability].name, 0, 6, bgColor, 1, 2, &sAbilityNameWindowId, speed);
 }
 
 static inline bool32 IsAnyAbilityPopUpActive(void)
