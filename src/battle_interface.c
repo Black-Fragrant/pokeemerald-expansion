@@ -982,7 +982,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl, u8 gender)
             StringCopy(text, gText_HealthboxGender_Female);
             break;
         }
-        StringAppend(text, COMPOUND_STRING("{COLOR_HIGHLIGHT_SHADOW 3 0 9}{LV}{COLOR_HIGHLIGHT_SHADOW 3 0 1}"));
+        StringAppend(text, COMPOUND_STRING("{COLOR_HIGHLIGHT_SHADOW 7 0 9}{LV}{COLOR_HIGHLIGHT_SHADOW 7 0 1}"));
         objVram = ConvertIntToDecimalStringN(text + StringLength(text), lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
         xPos = 0;
         UpdateIndicatorVisibilityAndType(healthboxSpriteId, TRUE);
