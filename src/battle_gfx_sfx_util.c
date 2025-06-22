@@ -46,7 +46,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =
 
 static const struct CompressedSpriteSheet sSpriteSheet_SinglesOpponentHealthbox =
 {
-    gHealthboxSinglesOpponentGfx, 0x1000, TAG_HEALTHBOX_OPPONENT1_TILE
+    gHealthboxSinglesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT1_TILE
 };
 
 static const struct CompressedSpriteSheet sSpriteSheets_DoublesPlayerHealthbox[2] =
