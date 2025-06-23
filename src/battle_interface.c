@@ -3638,9 +3638,9 @@ void TryLoadBattleCursor(void)
 
     LoadSpriteSheet(&sCursorSpriteSheet);
     LoadSpritePalette(&sCursorSpritePalette);
-    gBattleCursorSpriteId = CreateSprite(&sCursorSpriteTemplate, 0, 160, 0); // offscreen
+    gBattleCursorSpriteId = CreateSprite(&sCursorSpriteTemplate, 0, DISPLAY_HEIGHT, 0); // offscreen
     if (gBattleCursorSpriteId == SPRITE_NONE)
-       return;
+        return;
 
     struct Sprite *sprite = &gSprites[gBattleCursorSpriteId];
     sprite->centerToCornerVecX = 0;
