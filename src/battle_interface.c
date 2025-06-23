@@ -2530,7 +2530,7 @@ static const u16 sAbilityPopUpPalette[] = INCBIN_U16("graphics/battle_interface/
 
 static const struct SpriteSheet sSpriteSheet_AbilityPopUp =
 {
-    sAbilityPopUpGfx, 128 * 64 /2, ABILITY_POP_UP_TAG
+    sAbilityPopUpGfx, 128 * 128 /2, ABILITY_POP_UP_TAG
 };
 static const struct SpritePalette sSpritePalette_AbilityPopUp =
 {
@@ -2794,7 +2794,7 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
                                 coords[battlerPosition][1], 0);
         spriteId2 = CreateSprite(&sSpriteTemplate_AbilityPopUp,
                                 coords[battlerPosition][0] + ABILITY_POP_UP_POS_X_DIFF,
-                                coords[battlerPosition][1], 1); //Appears below
+                                coords[battlerPosition][1], 0);
     }
     else
     {
@@ -2803,17 +2803,14 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
                                 coords[battlerPosition][1], 0);
         spriteId2 = CreateSprite(&sSpriteTemplate_AbilityPopUp,
                                 coords[battlerPosition][0] + ABILITY_POP_UP_POS_X_DIFF,
-                                coords[battlerPosition][1], 1); //Appears below
+                                coords[battlerPosition][1], 0);
     }
     gSprites[spriteId1].invisible = TRUE;
     gSprites[spriteId2].invisible = TRUE;
 
     gSprites[spriteId2].oam.tileNum += 32; //Second half of pop up
-    if ((battlerPosition & BIT_SIDE) != B_SIDE_PLAYER)
-    {
-        gSprites[spriteId1].oam.tileNum += 64;
-        gSprites[spriteId2].oam.tileNum += 64;
-    }
+    gSprites[spriteId1].oam.tileNum += (battlerPosition * 64);
+    gSprites[spriteId2].oam.tileNum += (battlerPosition * 64);
 
     gBattleStruct->abilityPopUpSpriteIds[battlerId][0] = spriteId1;
     gBattleStruct->abilityPopUpSpriteIds[battlerId][1] = spriteId2;
