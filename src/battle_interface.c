@@ -2558,7 +2558,8 @@ static const struct SpriteTemplate sSpriteTemplate_AbilityPopUp =
 };
 
 #define ABILITY_POP_UP_POS_X_DIFF  64 // Hide second sprite underneath to gain proper letter spacing
-#define ABILITY_POP_UP_POS_X_SLIDE 68
+#define ABILITY_POP_UP_POS_X_SLIDE 24
+#define ABILITY_POP_UP_POS_X_SPEED 12
 
 static const s16 sAbilityPopUpCoordsDoubles[MAX_BATTLERS_COUNT][2] =
 {
@@ -2869,20 +2870,20 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     {
     case APU_STATE_SETUP:
     {
-        tFrames = 12; // must be multiplied by 2 btw
         sprite->invisible = FALSE;
-
+        tFrames = ((battlerPosition & BIT_SIDE) != B_SIDE_PLAYER) ? -ABILITY_POP_UP_POS_X_SPEED
+                                                                  : ABILITY_POP_UP_POS_X_SPEED;
         if (tIsMain)
         {
             if ((battlerPosition & BIT_SIDE) != B_SIDE_PLAYER)
             {
-                sprite->x2 = 24;
-                sprite2->x2 = 24;
+                sprite->x2 = ABILITY_POP_UP_POS_X_SLIDE;
+                sprite2->x2 = ABILITY_POP_UP_POS_X_SLIDE;
             }
             else
             {
-                sprite->x2 = -24;
-                sprite2->x2 = -24;
+                sprite->x2 = -ABILITY_POP_UP_POS_X_SLIDE;
+                sprite2->x2 = -ABILITY_POP_UP_POS_X_SLIDE;
             }
             PlaySE(SE_BALL_TRAY_ENTER); // we don't have the BW one smh
             PrintBattlerOnAbilityPopUp(tBattlerId);
@@ -2895,17 +2896,10 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
     {
         if (tIsMain)
         {
-            if ((battlerPosition & BIT_SIDE) != B_SIDE_PLAYER)
-            {
-                sprite->x2 -= tFrames;
-                sprite2->x2 -= tFrames;
-            }
-            else
-            {
-                sprite->x2 += tFrames;
-                sprite2->x2 += tFrames;
-            }
+            sprite->x2 += tFrames;
+            sprite2->x2 += tFrames;
         }
+
         if (sprite->x2 == 0)
         {
             tFrames = FRAMES_TO_WAIT;
