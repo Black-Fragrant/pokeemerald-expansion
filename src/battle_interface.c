@@ -3144,9 +3144,16 @@ static const u8 sMoveInfoWindowGfx[] = INCBIN_U8("graphics/battle_interface/move
 static const u8 sMoveInfoWindowGfx[] = INCBIN_U8("graphics/battle_interface/move_info_window_l.4bpp");
 #endif
 
+static const u16 sMoveInfoWindowPal[] = INCBIN_U16("graphics/battle_interface/move_info_window_l.gbapal");
+
 static const struct SpriteSheet sSpriteSheet_MoveInfoWindow =
 {
     sMoveInfoWindowGfx, sizeof(sMoveInfoWindowGfx), MOVE_INFO_WINDOW_TAG
+};
+
+static const struct SpritePalette sSpritePalette_MoveInfoWindow =
+{
+    sMoveInfoWindowPal, ABILITY_POP_UP_TAG
 };
 
 #define LAST_USED_BALL_X_F    14
@@ -3213,7 +3220,7 @@ void TryAddLastUsedBallItemSprites(void)
     }
 
     // window
-    LoadSpritePalette(&sSpritePalette_AbilityPopUp);
+    LoadSpritePalette(&sSpritePalette_MoveInfoWindow);
     if (GetSpriteTileStartByTag(LAST_BALL_WINDOW_TAG) == 0xFFFF)
         LoadSpriteSheet(&sSpriteSheet_LastUsedBallWindow);
 
@@ -3251,13 +3258,13 @@ void TryToAddMoveInfoWindow(void)
     if (!B_SHOW_MOVE_DESCRIPTION)
         return;
 
-    LoadSpritePalette(&sSpritePalette_AbilityPopUp);
+    LoadSpritePalette(&sSpritePalette_MoveInfoWindow);
     if (GetSpriteTileStartByTag(MOVE_INFO_WINDOW_TAG) == 0xFFFF)
         LoadSpriteSheet(&sSpriteSheet_MoveInfoWindow);
 
     if (gBattleStruct->moveInfoSpriteId == MAX_SPRITES)
     {
-        gBattleStruct->moveInfoSpriteId = CreateSprite(&sSpriteTemplate_MoveInfoWindow, LAST_BALL_WIN_X_0, LAST_USED_WIN_Y + 32, 6);
+        gBattleStruct->moveInfoSpriteId = CreateSprite(&sSpriteTemplate_MoveInfoWindow, LAST_BALL_WIN_X_0, LAST_USED_WIN_Y + 20, 6);
         gSprites[gBattleStruct->moveInfoSpriteId].sHide = FALSE;
     }
 }
@@ -3317,7 +3324,7 @@ static void SpriteCB_MoveInfoWin(struct Sprite *sprite)
     if (sprite->sHide)
     {
         if (sprite->x != LAST_BALL_WIN_X_0)
-            sprite->x--;
+            sprite->x = LAST_BALL_WIN_X_0;
 
         if (sprite->x == LAST_BALL_WIN_X_0)
             DestroyMoveInfoWinGfx(sprite);
@@ -3325,7 +3332,7 @@ static void SpriteCB_MoveInfoWin(struct Sprite *sprite)
     else
     {
         if (sprite->x != LAST_BALL_WIN_X_F)
-            sprite->x++;
+            sprite->x = LAST_BALL_WIN_X_F;
     }
 }
 
