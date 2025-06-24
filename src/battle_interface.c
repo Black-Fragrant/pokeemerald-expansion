@@ -80,9 +80,9 @@ enum
     HEALTHBOX_GFX_37,
     HEALTHBOX_GFX_38,
     HEALTHBOX_GFX_STATUS_FRB_BATTLER0,  //status frb
-    HEALTHBOX_GFX_146,
-    HEALTHBOX_GFX_147,
-    HEALTHBOX_GFX_148,
+    HEALTHBOX_GFX_140,
+    HEALTHBOX_GFX_141,
+    HEALTHBOX_GFX_142,
     HEALTHBOX_GFX_39, //misc [Black section]
     HEALTHBOX_GFX_40, //misc [Black section]
     HEALTHBOX_GFX_41, //misc [Black section]
@@ -118,7 +118,7 @@ enum
     HEALTHBOX_GFX_STATUS_BALL_FAINTED,
     HEALTHBOX_GFX_STATUS_BALL_STATUSED,
     HEALTHBOX_GFX_STATUS_BALL_CAUGHT,
-    HEALTHBOX_GFX_157,
+    HEALTHBOX_GFX_143,
     HEALTHBOX_GFX_STATUS_PSN_BATTLER1, //status2 "PSN"
     HEALTHBOX_GFX_74,
     HEALTHBOX_GFX_75,
@@ -135,8 +135,8 @@ enum
     HEALTHBOX_GFX_85,
     HEALTHBOX_GFX_86,
     HEALTHBOX_GFX_STATUS_FRB_BATTLER1, //status2 "FRB"
-    HEALTHBOX_GFX_149,
-    HEALTHBOX_GFX_150,
+    HEALTHBOX_GFX_145,
+    HEALTHBOX_GFX_146,
     HEALTHBOX_GFX_STATUS_PSN_BATTLER2, //status3 "PSN"
     HEALTHBOX_GFX_89,
     HEALTHBOX_GFX_90,
@@ -153,8 +153,8 @@ enum
     HEALTHBOX_GFX_100,
     HEALTHBOX_GFX_101,
     HEALTHBOX_GFX_STATUS_FRB_BATTLER2, //status3 "FRB"
-    HEALTHBOX_GFX_152,
-    HEALTHBOX_GFX_153,
+    HEALTHBOX_GFX_148,
+    HEALTHBOX_GFX_149,
     HEALTHBOX_GFX_STATUS_PSN_BATTLER3, //status4 "PSN"
     HEALTHBOX_GFX_103,
     HEALTHBOX_GFX_104,
@@ -171,32 +171,26 @@ enum
     HEALTHBOX_GFX_115,
     HEALTHBOX_GFX_116,
     HEALTHBOX_GFX_STATUS_FRB_BATTLER3, //status4 "FRB"
-    HEALTHBOX_GFX_155,
-    HEALTHBOX_GFX_156,
+    HEALTHBOX_GFX_151,
+    HEALTHBOX_GFX_152,
     HEALTHBOX_GFX_STATUS_PSN_BATTLER0_ALT,  //status psn
     HEALTHBOX_GFX_120,
     HEALTHBOX_GFX_121,
-    HEALTHBOX_GFX_122,
     HEALTHBOX_GFX_STATUS_PRZ_BATTLER0_ALT,  //status prz
+    HEALTHBOX_GFX_123,
     HEALTHBOX_GFX_124,
-    HEALTHBOX_GFX_125,
-    HEALTHBOX_GFX_126,
     HEALTHBOX_GFX_STATUS_SLP_BATTLER0_ALT,  //status slp
-    HEALTHBOX_GFX_128,
+    HEALTHBOX_GFX_126,
+    HEALTHBOX_GFX_127,
+    HEALTHBOX_GFX_STATUS_FRZ_BATTLER0_ALT,  //status frz
     HEALTHBOX_GFX_129,
     HEALTHBOX_GFX_130,
-    HEALTHBOX_GFX_STATUS_FRZ_BATTLER0_ALT,  //status frz
+    HEALTHBOX_GFX_STATUS_BRN_BATTLER0_ALT,  //status brn
     HEALTHBOX_GFX_132,
     HEALTHBOX_GFX_133,
-    HEALTHBOX_GFX_134,
-    HEALTHBOX_GFX_STATUS_BRN_BATTLER0_ALT,  //status brn
-    HEALTHBOX_GFX_136,
-    HEALTHBOX_GFX_137,
-    HEALTHBOX_GFX_138,
     HEALTHBOX_GFX_STATUS_FRB_BATTLER0_ALT,  //status frb
-    HEALTHBOX_GFX_140,
-    HEALTHBOX_GFX_141,
-    HEALTHBOX_GFX_142,
+    HEALTHBOX_GFX_135,
+    HEALTHBOX_GFX_136,
     HEALTHBOX_GFX_FRAME_END,
     HEALTHBOX_GFX_FRAME_END_BAR,
 };
@@ -817,7 +811,7 @@ static void SpriteCB_HealthBar(struct Sprite *sprite)
         sprite->y = gSprites[healthboxSpriteId].y;
         break;
     case BAR_SIDE_PLAYER_RIGHT:
-        sprite->x = gSprites[healthboxSpriteId].x + 16;
+        sprite->x = gSprites[healthboxSpriteId].x + 20;
         sprite->y = gSprites[healthboxSpriteId].y;
         break;
     case BAR_SIDE_OPPONENT:
@@ -934,13 +928,13 @@ void GetBattlerHealthboxCoords(u8 battler, s16 *x, s16 *y)
         switch (GetBattlerPosition(battler))
         {
         case B_POSITION_PLAYER_LEFT:
-            *x = 159, *y = 76;
+            *x = 152, *y = 76;
             break;
         case B_POSITION_PLAYER_RIGHT:
-            *x = 171, *y = 101;
+            *x = 152, *y = 101;
             break;
         case B_POSITION_OPPONENT_LEFT:
-            *x = 44, *y = 19;
+            *x = 32, *y = 19;
             break;
         case B_POSITION_OPPONENT_RIGHT:
             *x = 32, *y = 44;
@@ -1005,7 +999,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl, u8 gender)
         if (!WhichBattleCoords(battler))
             objVram += spriteTileNum + TILE_OFFSET_4BPP(67);
         else
-            objVram += spriteTileNum + TILE_OFFSET_4BPP(33);
+            objVram += spriteTileNum + TILE_OFFSET_4BPP(35);
     }
     else
     {
@@ -1886,7 +1880,7 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     {
         u32 count;
         const u8 *gfxPtr = NULL;
-        if (GetBattlerSide(battler) == B_SIDE_PLAYER && !IsDoubleBattle())
+        if (GetBattlerSide(battler) == B_SIDE_PLAYER)
         {
             statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_42);
             count = 4;
