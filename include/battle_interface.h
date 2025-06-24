@@ -131,5 +131,6 @@ void CategoryIcons_LoadSpritesGfx(void);
 void TryToAddMoveInfoWindow(void);
 void TryToHideMoveInfoWindow(void);
 void TryLoadBattleCursor(void);
+void TryDestroyBattleCursor(void);
 
 #endif // GUARD_BATTLE_INTERFACE_H

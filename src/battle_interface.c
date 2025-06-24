@@ -3640,7 +3640,7 @@ void TryLoadBattleCursor(void)
     StartSpriteAnim(sprite, 0);
 }
 
-static void TryDestroyBattleCursor(void)
+void TryDestroyBattleCursor(void)
 {
     if (gBattleCursorSpriteId == SPRITE_NONE)
         return;

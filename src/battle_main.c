@@ -5613,6 +5613,7 @@ static void HandleEndTurn_FinishBattle(void)
         {
             gBattleMons[i].species = SPECIES_NONE;
         }
+        TryDestroyBattleCursor();
         gBattleMainFunc = FreeResetData_ReturnToOvOrDoEvolutions;
         gCB2_AfterEvolution = BattleMainCB2;
     }
