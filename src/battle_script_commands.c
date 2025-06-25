@@ -9215,10 +9215,10 @@ static void Cmd_drawlvlupbox(void)
         // If the Pokémon getting exp is not in-battle then
         // slide out a banner with their name and icon on it.
         // Otherwise skip ahead.
-        if (IsMonGettingExpSentOut())
+        //if (IsMonGettingExpSentOut())
             gBattleScripting.drawlvlupboxState = 3;
-        else
-            gBattleScripting.drawlvlupboxState = 1;
+        //else
+        //    gBattleScripting.drawlvlupboxState = 1;
     }
 
     switch (gBattleScripting.drawlvlupboxState)
@@ -9243,7 +9243,7 @@ static void Cmd_drawlvlupbox(void)
         SetBgAttribute(1, BG_ATTR_PRIORITY, 0);
         ShowBg(0);
         ShowBg(1);
-        HandleBattleWindow(18, 7, 29, 19, WINDOW_BG1);
+        HandleBattleWindow(18, 1, 29, 13, WINDOW_BG1);
         gBattleScripting.drawlvlupboxState = 4;
         break;
     case 4:
@@ -9277,7 +9277,7 @@ static void Cmd_drawlvlupbox(void)
         {
             // Close level up box
             PlaySE(SE_SELECT);
-            HandleBattleWindow(18, 7, 29, 19, WINDOW_BG1 | WINDOW_CLEAR);
+            HandleBattleWindow(18, 1, 29, 13, WINDOW_BG1 | WINDOW_CLEAR);
             gBattleScripting.drawlvlupboxState++;
         }
         break;
