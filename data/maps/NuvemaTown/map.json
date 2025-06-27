@@ -66,6 +66,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NuvemaTown_EventScript_FatMan",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_JUNIPER",
+      "graphics_id": "OBJ_EVENT_GFX_LADY",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NUVEMA_JUNIPER"
     }
   ],
   "warp_events": [
