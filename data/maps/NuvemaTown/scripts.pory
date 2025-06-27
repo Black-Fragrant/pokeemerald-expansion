@@ -1,32 +1,80 @@
-mapscripts NuvemaTown_MapScripts {}
+mapscripts NuvemaTown_MapScripts 
+{
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	[
+		VAR_JUNIPER_PARCEL_DELIEVER, 0 : NuvemaTown_EventScript_HidePlayer
+	]
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_JUNIPER_PARCEL_DELIEVER, 0 : NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
+    ]
+}
 
-script NuvemaTown_EventScript_SignPost {
+script NuvemaTown_EventScript_HidePlayer
+{
+	hideobjectat(LOCALID_PLAYER, MAP_NUVEMA_TOWN)
+	playbgm(MUS_BW_SPAWN_NUVEMA_TOWN, 1)
+	end()
+}
+
+script NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
+{
+	lockall()
+	clearflag(FLAG_NUVEMA_JUNIPER)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, NuvemaTown_Movement_CameraSyncWithJuniper)
+	waitmovement(0)
+	applymovement(LOCALID_JUNIPER, NuvemaTown_Movement_JuniperComeToPlayerHouse)
+	applymovement(OBJ_EVENT_ID_CAMERA, NuvemaTown_Movement_CameraFollowsJuniperToPlayersHouse)
+	waitmovement(0)
+	applymovement(LOCALID_JUNIPER, Common_Movement_Delay32)
+	waitmovement(0)
+	applymovement(LOCALID_JUNIPER, NuvemaTown_Movement_JuniperLeavesPlayersHouse)
+	waitmovement(0)
+	applymovement(LOCALID_JUNIPER, Common_Movement_Delay32)
+	waitmovement(0)
+	special(RemoveCameraObject)
+	removeobject(LOCALID_JUNIPER)
+	setflag(FLAG_NUVEMA_JUNIPER)
+	setvar(VAR_JUNIPER_PARCEL_DELIEVER, 1)
+	releaseall()
+	warpsilent(MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 5, 8)
+	end()
+}
+
+script NuvemaTown_EventScript_SignPost
+{
 	msgbox("Nuvema Town\n"
 			"The Start of Something Big!", MSGBOX_SIGN)
 	end
 }
 
-script NuvemaTown_EventScript_JuniperLabSign {
+script NuvemaTown_EventScript_JuniperLabSign
+{
 	msgbox("Juniper Pokémon Lab", MSGBOX_SIGN)
 	end
 }
 
-script NuvemaTown_EventScript_PlayersHouseSign {
+script NuvemaTown_EventScript_PlayersHouseSign
+{
 	msgbox("{PLAYER}'s House", MSGBOX_SIGN)
 	end
 }
 
-script NuvemaTown_EventScript_BiancasHouseSign {
+script NuvemaTown_EventScript_BiancasHouseSign
+{
 	msgbox("Bianca's House", MSGBOX_SIGN)
 	end
 }
 
-script NuvemaTown_EventScript_CherensHouseSign {
+script NuvemaTown_EventScript_CherensHouseSign
+{
 	msgbox("Cheren's House", MSGBOX_SIGN)
 	end
 }
 
-script NuvemaTown_EventScript_LittleGirl {
+script NuvemaTown_EventScript_LittleGirl
+{
 	msgbox("I've heard there are a lot of Pokémon\n"
 			"and many different people in the world.\p"
 			"When I hear stories about them,\n"
@@ -34,23 +82,52 @@ script NuvemaTown_EventScript_LittleGirl {
 	end
 }
 
-script NuvemaTown_EventScript_Beauty {
+script NuvemaTown_EventScript_Beauty
+{
 	lock
 	faceplayer
 	if (msgbox("Do you think travelling with Pokémon\n"
-				"changes people?", MSGBOX_YESNO, TRUE) == YES) {
+				"changes people?", MSGBOX_YESNO, TRUE) == YES)
+	{
 		msgbox("Me too! Travelling and thinking about\n"
 				"many things can definitely make a\l"
 				"difference.", MSGBOX_NPC)
-	} else {
+	}
+	else
+	{
 		msgbox("You're right! It's fine to just enjoy\n"
 				"the journey without overthinking it.", MSGBOX_NPC)
 	}
 }
 
-script NuvemaTown_EventScript_FatMan {
+script NuvemaTown_EventScript_FatMan
+{
 	msgbox("The power of science is amazing!\p"
 			"Now you can use infrared to do all\n"
 			"sorts of things in the blink of eye!", MSGBOX_NPC, TRUE)
 	end
+}
+
+movement NuvemaTown_Movement_CameraSyncWithJuniper
+{
+	walk_down * 2
+}
+
+movement NuvemaTown_Movement_JuniperComeToPlayerHouse
+{
+	walk_down * 10
+	walk_right * 5
+	walk_up * 2	
+}
+
+movement NuvemaTown_Movement_CameraFollowsJuniperToPlayersHouse
+{
+	walk_down * 10
+	walk_right * 5
+	walk_up * 2	
+}
+
+movement NuvemaTown_Movement_JuniperLeavesPlayersHouse
+{
+	walk_down * 6
 }
