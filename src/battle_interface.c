@@ -3148,14 +3148,14 @@ static const struct SpritePalette sSpritePalette_MoveInfoWindow =
 
 #define LAST_USED_BALL_X_F    14
 #define LAST_USED_BALL_X_0    -14
-#define LAST_USED_BALL_Y      ((IsDoubleBattle()) ? 78 : 68)
-#define LAST_USED_BALL_Y_BNC  ((IsDoubleBattle()) ? 76 : 66)
+#define LAST_USED_BALL_Y      ((IsDoubleBattle()) ? 98 : 88)
+#define LAST_USED_BALL_Y_BNC  ((IsDoubleBattle()) ? 96 : 86)
 
 #define LAST_BALL_WIN_X_F       (LAST_USED_BALL_X_F - 0)
 #define LAST_BALL_WIN_X_0       (LAST_USED_BALL_X_0 - 0)
-#define LAST_USED_WIN_Y         (LAST_USED_BALL_Y - 8)
+#define LAST_USED_WIN_Y         (LAST_USED_BALL_Y - 6)
 
-#define sHide  data[0]
+#define sHide   data[0]
 #define sTimer  data[1]
 #define sMoving data[2]
 #define sBounce data[3] // 0 = Bounce down; 1 = Bounce up
@@ -3254,7 +3254,7 @@ void TryToAddMoveInfoWindow(void)
 
     if (gBattleStruct->moveInfoSpriteId == MAX_SPRITES)
     {
-        gBattleStruct->moveInfoSpriteId = CreateSprite(&sSpriteTemplate_MoveInfoWindow, LAST_BALL_WIN_X_0, LAST_USED_WIN_Y + 20, 6);
+        gBattleStruct->moveInfoSpriteId = CreateSprite(&sSpriteTemplate_MoveInfoWindow, LAST_BALL_WIN_X_0, LAST_USED_WIN_Y, 6);
         gSprites[gBattleStruct->moveInfoSpriteId].sHide = FALSE;
     }
 }
@@ -3277,7 +3277,7 @@ static void SpriteCB_LastUsedBallWin(struct Sprite *sprite)
     if (sprite->sHide)
     {
         if (sprite->x != LAST_BALL_WIN_X_0)
-            sprite->x--;
+            sprite->x = LAST_BALL_WIN_X_0;
 
         if (sprite->x == LAST_BALL_WIN_X_0)
             DestroyLastUsedBallWinGfx(sprite);
@@ -3285,7 +3285,7 @@ static void SpriteCB_LastUsedBallWin(struct Sprite *sprite)
     else
     {
         if (sprite->x != LAST_BALL_WIN_X_F)
-            sprite->x++;
+            sprite->x = LAST_BALL_WIN_X_F;
     }
 }
 
@@ -3297,7 +3297,7 @@ static void SpriteCB_LastUsedBall(struct Sprite *sprite)
             sprite->y++;
 
         if (sprite->x != LAST_USED_BALL_X_0)
-            sprite->x--;
+            sprite->x = LAST_USED_BALL_X_0;
 
         if (sprite->x == LAST_USED_BALL_X_0)
             DestroyLastUsedBallGfx(sprite);
@@ -3305,7 +3305,7 @@ static void SpriteCB_LastUsedBall(struct Sprite *sprite)
     else
     {
         if (sprite->x != LAST_USED_BALL_X_F)
-            sprite->x++;
+            sprite->x = LAST_USED_BALL_X_F;
     }
 }
 
