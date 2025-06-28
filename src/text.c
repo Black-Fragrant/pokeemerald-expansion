@@ -30,6 +30,7 @@ static u16 FontFunc_ShortNarrow(struct TextPrinter *);
 static u16 FontFunc_ShortNarrower(struct TextPrinter *);
 static u16 FontFunc_Outlined(struct TextPrinter *textPrinter);
 static u16 FontFunc_OutlinedNarrow(struct TextPrinter *textPrinter);
+static u16 FontFunc_HpNumber(struct TextPrinter *textPrinter);
 static void DecompressGlyph_Small(u16, bool32);
 static void DecompressGlyph_Normal(u16, bool32);
 static void DecompressGlyph_Short(u16, bool32);
@@ -42,6 +43,7 @@ static void DecompressGlyph_ShortNarrow(u16, bool32);
 static void DecompressGlyph_ShortNarrower(u16, bool32);
 static void DecompressGlyph_Outlined(u16, bool32);
 static void DecompressGlyph_OutlinedNarrow(u16, bool32);
+static void DecompressGlyph_HpNumber(u16, bool32);
 static u32 GetGlyphWidth_Small(u16, bool32);
 static u32 GetGlyphWidth_Normal(u16, bool32);
 static u32 GetGlyphWidth_Short(u16, bool32);
@@ -53,6 +55,7 @@ static u32 GetGlyphWidth_ShortNarrow(u16, bool32);
 static u32 GetGlyphWidth_ShortNarrower(u16, bool32);
 static u32 GetGlyphWidth_Outlined(u16, bool32);
 static u32 GetGlyphWidth_OutlinedNarrow(u16, bool32);
+static u32 GetGlyphWidth_HpNumber(u16, bool32);
 
 static EWRAM_DATA struct TextPrinter sTempTextPrinter = {0};
 static EWRAM_DATA struct TextPrinter sTextPrinters[WINDOWS_MAX] = {0};
@@ -116,6 +119,7 @@ static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
     { FONT_SHORT_NARROWER, GetGlyphWidth_ShortNarrower },
     { FONT_OUTLINED,       GetGlyphWidth_Outlined },
     { FONT_OUTLINED_NARROW, GetGlyphWidth_OutlinedNarrow },
+    { FONT_HP_NUMBER,      GetGlyphWidth_HpNumber },
 };
 
 struct
@@ -311,6 +315,17 @@ static const struct FontInfo sFontInfos[] =
         .maxLetterWidth = 11,
         .maxLetterHeight = 15,
         .letterSpacing = -1,
+        .lineSpacing = 0,
+        .fgColor = 2,
+        .bgColor = 1,
+        .shadowColor = 3,
+    },
+    [FONT_HP_NUMBER] =
+    {
+        .fontFunction = FontFunc_HpNumber,
+        .maxLetterWidth = 6,
+        .maxLetterHeight = 13,
+        .letterSpacing = 0,
         .lineSpacing = 0,
         .fgColor = 2,
         .bgColor = 1,
@@ -959,6 +974,18 @@ static u16 FontFunc_OutlinedNarrow(struct TextPrinter *textPrinter)
     return RenderText(textPrinter);
 }
 
+static u16 FontFunc_HpNumber(struct TextPrinter *textPrinter)
+{
+    struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
+
+    if (subStruct->hasFontIdBeenSet == FALSE)
+    {
+        subStruct->fontId = FONT_HP_NUMBER;
+        subStruct->hasFontIdBeenSet = TRUE;
+    }
+    return RenderText(textPrinter);
+}
+
 void TextPrinterInitDownArrowCounters(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
@@ -1360,6 +1387,9 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             break;
         case FONT_OUTLINED_NARROW:
             DecompressGlyph_OutlinedNarrow(currChar, textPrinter->japanese);
+            break;
+        case FONT_HP_NUMBER:
+            DecompressGlyph_HpNumber(currChar, textPrinter->japanese);
             break;
         }
 
@@ -2474,4 +2504,43 @@ u32 GetOutlineFontIdToFit(const u8 *str, u32 widthPx)
         return FONT_OUTLINED;
 
     return FONT_OUTLINED_NARROW;
+}
+
+static void DecompressGlyph_HpNumber(u16 glyphId, bool32 isJapanese)
+{
+    const u16 *glyphs;
+
+    glyphs = gFontHpNumberLatinGlyphs + TILE_OFFSET_4BPP(glyphId);
+    gCurGlyph.width = gFontHpNumberLatinGlyphWidths[glyphId];
+
+    if (gCurGlyph.width <= 8)
+    {
+        DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 16, gCurGlyph.gfxBufferBottom);
+    }
+    else
+    {
+        DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 8, gCurGlyph.gfxBufferTop + 8);
+
+        DecompressGlyphTile(glyphs + 16, gCurGlyph.gfxBufferBottom);
+        DecompressGlyphTile(glyphs + 16, gCurGlyph.gfxBufferBottom + 8);
+    }
+
+    gCurGlyph.height = 13;
+}
+
+static u32 GetGlyphWidth_HpNumber(u16 glyphId, bool32 isJapanese)
+{
+    if (isJapanese == TRUE)
+    {
+        return 8;
+    }
+    else
+    {
+        if (gFontOutlinedLatinGlyphWidths[glyphId])
+            return gFontOutlinedLatinGlyphWidths[glyphId];
+        else
+            return 1; // returns at least 1 pixel
+    }
 }

@@ -280,6 +280,9 @@ $(FONTGFXDIR)/outlined.latfont: $(FONTGFXDIR)/latin_outlined.png
 $(FONTGFXDIR)/outlined_narrow.latfont: $(FONTGFXDIR)/latin_outlined_narrow.png
 	$(GFX) $< $@
 
+$(FONTGFXDIR)/hp_number.latfont: $(FONTGFXDIR)/latin_hp_number.png
+	$(GFX) $< $@
+
 ### Miscellaneous ###
 
 $(TITLESCREENGFXDIR)/pokemon_logo.gbapal: %.gbapal: %.pal

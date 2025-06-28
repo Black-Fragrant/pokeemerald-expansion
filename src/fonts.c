@@ -930,3 +930,21 @@ ALIGNED(4) const u8 gFontOutlinedNarrowLatinGlyphWidths[] = {
     //[OCTOTHORPE] = 12,
     */
 };
+
+ALIGNED(4) const u16 gFontHpNumberLatinGlyphs[] = INCBIN_U16("graphics/fonts/hp_number.latfont");
+ALIGNED(4) const u8 gFontHpNumberLatinGlyphWidths[] = {
+    [CHAR_SPACE] = 3,
+    [CHAR_SPACER] = 5,
+    [CHAR_0] = 5,
+    [CHAR_1] = 5,
+    [CHAR_2] = 5,
+    [CHAR_3] = 5,
+    [CHAR_4] = 5,
+    [CHAR_5] = 5,
+    [CHAR_6] = 5,
+    [CHAR_7] = 5,
+    [CHAR_8] = 5,
+    [CHAR_9] = 5,
+    [CHAR_QUESTION_MARK] = 5, // for invalid numbers
+    [CHAR_SLASH] = 6,
+};

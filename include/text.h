@@ -25,6 +25,7 @@ enum {
     FONT_SHORT_NARROWER,
     FONT_OUTLINED,
     FONT_OUTLINED_NARROW,
+    FONT_HP_NUMBER,
 };
 
 // Return values for font functions

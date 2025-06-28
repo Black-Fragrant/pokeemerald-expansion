@@ -27,5 +27,7 @@ extern const u16 gFontOutlinedLatinGlyphs[];
 extern const u8 gFontOutlinedLatinGlyphWidths[];
 extern const u16 gFontOutlinedNarrowLatinGlyphs[];
 extern const u8 gFontOutlinedNarrowLatinGlyphWidths[];
+extern const u16 gFontHpNumberLatinGlyphs[];
+extern const u8 gFontHpNumberLatinGlyphWidths[];
 
 #endif // GUARD_FONTS_H

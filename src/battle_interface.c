@@ -210,7 +210,6 @@ static void UpdateStatusIconInHealthbox(u8);
 static void TextIntoHealthboxObject(void *, u8 *, s32);
 static void SafariTextIntoHealthboxObject(void *, u8 *, u32);
 static void HpTextIntoHealthboxObject(void *, u8 *, u32);
-static void FillHealthboxObject(void *, u32, u32);
 
 static void Task_HidePartyStatusSummary_BattleStart_1(u8);
 static void Task_HidePartyStatusSummary_BattleStart_2(u8);
@@ -1010,32 +1009,31 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl, u8 gender)
     RemoveWindowOnHealthbox(windowId);
 }
 
-static void PrintHpOnHealthbox(u32 spriteId, s16 currHp, s16 maxHp, u32 bgColor, u32 rightTile, u32 leftTile)
+static void PrintHpOnHealthbox(u32 spriteId, u16 currHp, u16 maxHp, u32 fontId, u32 rightTile, u32 leftTile)
 {
     u8 *windowTileData;
-    u32 windowId, tilesCount, x;
-    u8 text[28], *txtPtr;
+    u32 windowId;
+    u8 text[6];
     void *objVram = (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[spriteId].oam.tileNum);
+    u32 bgColor = fontId == FONT_HP_NUMBER ? 0 : 2;
 
-    // To fit 4 digit HP values we need to modify a bit the way hp is printed on Healthbox.
-    // 6 chars can fit on the right healthbox, the rest goes to the left one
-    txtPtr = ConvertIntToDecimalStringN(text, currHp, STR_CONV_MODE_RIGHT_ALIGN, 4);
-    *txtPtr++ = CHAR_SLASH;
-    txtPtr = ConvertIntToDecimalStringN(txtPtr, maxHp, STR_CONV_MODE_LEFT_ALIGN, 4);
-    // Print last 6 chars on the right window
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(txtPtr - 6, 0, 4, bgColor, &windowId);
-    HpTextIntoHealthboxObject(objVram + rightTile, windowTileData, 4);
+    ConvertIntToDecimalStringN(text, currHp, STR_CONV_MODE_RIGHT_ALIGN, 4);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxWithFont(text, 4, 4, bgColor, &windowId, fontId);
+    if (leftTile == TILE_OFFSET_4BPP(30))
+    {
+        HpTextIntoHealthboxObject(objVram + leftTile, windowTileData, 2);
+        HpTextIntoHealthboxObject(objVram + leftTile + TILE_OFFSET_4BPP(58), windowTileData + TILE_OFFSET_4BPP(2), 1);
+    }
+    else
+    {
+        HpTextIntoHealthboxObject(objVram + leftTile, windowTileData, 3);
+    }
     RemoveWindowOnHealthbox(windowId);
 
-    // Print the rest of the chars on the left window
-    txtPtr[-6] = EOS;
-    // if max hp is 3 digits print on block closer to the right window, if 4 digits print further from the right window
-    if (maxHp >= 1000)
-        x = 9, tilesCount = 3;
-    else
-        x = 6, tilesCount = 2, leftTile += 0x20;
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, x, 4, bgColor, &windowId);
-    HpTextIntoHealthboxObject(objVram + leftTile, windowTileData, tilesCount);
+    StringCopy(text, COMPOUND_STRING("/"));
+    ConvertIntToDecimalStringN(text + 1, maxHp, STR_CONV_MODE_LEFT_ALIGN, 4);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthboxWithFont(text, 0, 4, bgColor, &windowId, fontId);
+    HpTextIntoHealthboxObject(objVram + rightTile, windowTileData, 4);
     RemoveWindowOnHealthbox(windowId);
 }
 
@@ -1123,7 +1121,7 @@ void UpdateHpTextInHealthbox(u32 healthboxSpriteId, u32 maxOrCurrent, s16 currHp
     {
         if (GetBattlerSide(battler) == B_SIDE_PLAYER) // Player
         {
-            PrintHpOnHealthbox(healthboxSpriteId, currHp, maxHp, 2, 0xB00, 0x3A0);
+            PrintHpOnHealthbox(healthboxSpriteId, currHp, maxHp, FONT_SMALL, TILE_OFFSET_4BPP(89), TILE_OFFSET_4BPP(30));
         }
         else // Opponent
         {
@@ -1141,13 +1139,13 @@ static void UpdateHpTextInHealthboxInDoubles(u32 healthboxSpriteId, u32 maxOrCur
     {
         if (gBattleSpritesDataPtr->battlerData[gSprites[healthboxSpriteId].data[6]].hpNumbersNoBars) // don't print text if only bars are visible
         {
-            PrintHpOnHealthbox(barSpriteId, currHp, maxHp, 0, 0x80, 0x20);
+            PrintHpOnHealthbox(barSpriteId, currHp, maxHp, FONT_HP_NUMBER, TILE_OFFSET_4BPP(4), TILE_OFFSET_4BPP(1));
             // Clears the end of the healthbar gfx.
             CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_FRAME_END),
                           (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(52) + TILE_OFFSET_4BPP(gSprites[healthboxSpriteId].oam.tileNum),
                            TILE_SIZE_4BPP);
             // Erases HP bar leftover.
-            FillHealthboxObject((void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[barSpriteId].oam.tileNum), 0, 2);
+            CpuFill32(0, (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[barSpriteId].oam.tileNum), 2 * TILE_SIZE_4BPP);
         }
     }
     else // Opponent
@@ -1832,6 +1830,9 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
 
     battler = gSprites[healthboxSpriteId].hMain_Battler;
     healthBarSpriteId = gSprites[healthboxSpriteId].hMain_HealthBarSpriteId;
+    if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
+        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[healthBarSpriteId].oam.tileNum), 2 * TILE_SIZE_4BPP);
+
     if (GetBattlerSide(battler) == B_SIDE_PLAYER)
     {
         status = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_STATUS);
@@ -1900,9 +1901,6 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
                 CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder + i), TILE_SIZE_4BPP);
         }
 
-        if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[healthBarSpriteId].oam.tileNum), 2 * TILE_SIZE_4BPP);
-
         return;
     }
 
@@ -1912,16 +1910,6 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     LoadPalette(&sStatusIconColors[statusPalId], pltAdder, PLTT_SIZEOF(1));
     u32 size = (GetBattlerSide(battler) == B_SIDE_PLAYER  && !IsDoubleBattle()) ? 4 : 3;
     CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder), size * TILE_SIZE_4BPP);
-    /*
-    if (WhichBattleCoords(battler) == 1 || GetBattlerSide(battler) == B_SIDE_OPPONENT)
-    {
-        if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
-        {
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_0), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 32);
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_65), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 1) * TILE_SIZE_4BPP), 32);
-        }
-    }
-    */
 }
 
 static u8 GetStatusIconForBattlerId(u8 statusElementId, u8 battler)
@@ -2446,10 +2434,17 @@ static u8 *AddTextPrinterAndCreateWindowOnHealthboxWithFont(const u8 *str, u32 x
     winId = AddWindow(&winTemplate);
     FillWindowPixelBuffer(winId, PIXEL_FILL(bgColor));
 
-    color[0] = bgColor;
-    color[1] = 1;
-    color[2] = 3;
-
+    color[0] = 0;
+    if (fontId == FONT_HP_NUMBER)
+    {
+        color[1] = 5;
+        color[2] = 2;
+    }
+    else
+    {
+        color[1] = 1;
+        color[2] = 3;
+    }
     AddTextPrinterParameterized4(winId, fontId, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
 
     *windowId = winId;
@@ -2470,11 +2465,6 @@ static u8 *AddTextPrinterAndCreateWindowOnHealthboxToFit(const u8 *str, u32 x, u
 static void RemoveWindowOnHealthbox(u32 windowId)
 {
     RemoveWindow(windowId);
-}
-
-static void FillHealthboxObject(void *dest, u32 valMult, u32 numTiles)
-{
-    CpuFill32(0x11111111 * valMult, dest, numTiles * TILE_SIZE_4BPP);
 }
 
 static void HpTextIntoHealthboxObject(void *dest, u8 *windowTileData, u32 windowWidth)
