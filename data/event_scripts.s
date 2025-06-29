@@ -30,6 +30,7 @@
 #include "constants/field_tasks.h"
 #include "constants/field_weather.h"
 #include "constants/flags.h"
+#include "constants/follower_npc.h"
 #include "constants/frontier_util.h"
 #include "constants/game_stat.h"
 #include "constants/item.h"
@@ -45,9 +46,11 @@
 #include "constants/party_menu.h"
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
+#include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/script_menu.h"
 #include "constants/secret_bases.h"
+#include "constants/siirtc.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
 #include "constants/species.h"
@@ -760,12 +763,12 @@ Common_EventScript_PlayGymBadgeFanfare::
 	return
 
 Common_EventScript_OutOfCenterPartyHeal::
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	return
 
 EventScript_RegionMap::
@@ -1155,14 +1158,44 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/dexnav.inc"
 
-	.include "data/maps/Nuvema_Town/scripts.inc"
+	.include "data/maps/NuvemaTown/scripts.inc"
 
 	.include "data/maps/Route1_East/scripts.inc"
 
 	.include "data/maps/Route1_West/scripts.inc"
 
-	.include "data/maps/Accumula_Town/scripts.inc"
+	.include "data/maps/AccumulaTown/scripts.inc"
 
 	.include "data/maps/Route2/scripts.inc"
 
-	.include "data/maps/Striaton_City/scripts.inc"
+	.include "data/maps/StriatonCity/scripts.inc"
+
+	.include "data/maps/NuvemaTown_PlayerHouse_1F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_PlayerHouse_2F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_BiancasHouse_1F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_BiancasHouse_2F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_CherensHouse_1F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_CherensHouse_2F/scripts.inc"
+
+	.include "data/maps/NuvemaTown_ProfessorJunipersLab/scripts.inc"
+
+	.include "data/maps/AccumulaTown_BottomLeftBuilding1F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopLeftBuilding2F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_PokeCenter/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopMiddleBuilding2F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_BottomLeftBuilding2F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopMiddleBuilding1F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopRightBuilding/scripts.inc"
+
+	.include "data/maps/AccumulaTown_TopLeftBuilding1F/scripts.inc"

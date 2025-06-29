@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_PYRAMID_LOBBY_ATTENDANT",
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 7,
       "y": 12,
       "elevation": 4,
@@ -30,7 +30,7 @@
     },
     {
       "local_id": "LOCALID_PYRAMID_LOBBY_HINT_GIVER",
-      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 14,
       "y": 13,
       "elevation": 4,
@@ -43,7 +43,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 2,
       "y": 15,
       "elevation": 4,
@@ -56,7 +56,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 12,
       "y": 16,
       "elevation": 4,

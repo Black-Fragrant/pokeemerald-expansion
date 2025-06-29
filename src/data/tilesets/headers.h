@@ -1,3 +1,8 @@
+#include "fieldmap.h"
+
+// Whether a palette has a night version, located at ((x + 9) % 16).pal
+#define SWAP_PAL(x) ((x) < NUM_PALS_IN_PRIMARY ? 1 << (x) : 1 << ((x) - NUM_PALS_IN_PRIMARY))
+
 const struct Tileset gTileset_General =
 {
     .isCompressed = TRUE,
@@ -1081,5 +1086,27 @@ const struct Tileset gTileset_Striaton =
     .palettes = gTilesetPalettes_Striaton,
     .metatiles = gMetatiles_Striaton,
     .metatileAttributes = gMetatileAttributes_Striaton,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IndoorNuvema =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorNuvema,
+    .palettes = gTilesetPalettes_IndoorNuvema,
+    .metatiles = gMetatiles_IndoorNuvema,
+    .metatileAttributes = gMetatileAttributes_IndoorNuvema,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IndoorAccumula =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorAccumula,
+    .palettes = gTilesetPalettes_IndoorAccumula,
+    .metatiles = gMetatiles_IndoorAccumula,
+    .metatileAttributes = gMetatileAttributes_IndoorAccumula,
     .callback = NULL,
 };

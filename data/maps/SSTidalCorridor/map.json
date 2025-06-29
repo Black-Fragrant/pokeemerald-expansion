@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_SS_TIDAL_EXIT_SAILOR",
-      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 1,
       "y": 11,
       "elevation": 3,
@@ -29,7 +29,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 7,
       "elevation": 3,
@@ -42,7 +42,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 9,
       "y": 2,
       "elevation": 3,
@@ -55,7 +55,7 @@
       "flag": "FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WINGULL",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 7,
       "y": 2,
       "elevation": 3,

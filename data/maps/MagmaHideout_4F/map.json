@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_GROUDON",
-      "graphics_id": "OBJ_EVENT_GFX_GROUDON_FRONT",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 17,
       "elevation": 0,
@@ -30,7 +30,7 @@
     },
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_GRUNT_1",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 22,
       "elevation": 0,
@@ -44,7 +44,7 @@
     },
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_GRUNT_2",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 30,
       "y": 13,
       "elevation": 0,
@@ -58,7 +58,7 @@
     },
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_GRUNT_3",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 26,
       "y": 13,
       "elevation": 0,
@@ -72,7 +72,7 @@
     },
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_TABITHA",
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 22,
       "y": 4,
       "elevation": 0,
@@ -86,7 +86,7 @@
     },
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_MAXIE",
-      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 21,
       "elevation": 0,
@@ -100,7 +100,7 @@
     },
     {
       "local_id": "LOCALID_MAGMA_HIDEOUT_4F_GROUDON_SLEEPING",
-      "graphics_id": "OBJ_EVENT_GFX_GROUDON_ASLEEP",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 16,
       "y": 17,
       "elevation": 3,

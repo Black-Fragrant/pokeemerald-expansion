@@ -337,7 +337,7 @@ bool8 ObjectEventIsFarawayIslandMew(struct ObjectEvent *objectEvent)
     if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_FARAWAY_ISLAND_INTERIOR)
      && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_FARAWAY_ISLAND_INTERIOR))
     {
-        if (objectEvent->graphicsId == OBJ_EVENT_GFX_MEW)
+        if (objectEvent->graphicsId == OBJ_EVENT_GFX_SCOTT)
             return TRUE;
     }
 
@@ -392,7 +392,7 @@ void SetMewAboveGrass(void)
             gSprites[mew->spriteId].subpriority = 1;
 
         LoadSpritePalette(&gSpritePalette_GeneralFieldEffect1);
-        UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(gSpritePalette_GeneralFieldEffect1.tag));
+        UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(gSpritePalette_GeneralFieldEffect1.tag), FALSE);
 
         x = mew->currentCoords.x;
         y = mew->currentCoords.y;

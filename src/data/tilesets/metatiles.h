@@ -216,3 +216,9 @@ const u16 gMetatileAttributes_Accumula[] = INCBIN_U16("data/tilesets/secondary/a
 
 const u16 gMetatiles_Striaton[] = INCBIN_U16("data/tilesets/secondary/striaton/metatiles.bin");
 const u16 gMetatileAttributes_Striaton[] = INCBIN_U16("data/tilesets/secondary/striaton/metatile_attributes.bin");
+
+const u16 gMetatiles_IndoorNuvema[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/metatiles.bin");
+const u16 gMetatileAttributes_IndoorNuvema[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/metatile_attributes.bin");
+
+const u16 gMetatiles_IndoorAccumula[] = INCBIN_U16("data/tilesets/secondary/indoor_accumula/metatiles.bin");
+const u16 gMetatileAttributes_IndoorAccumula[] = INCBIN_U16("data/tilesets/secondary/indoor_accumula/metatile_attributes.bin");

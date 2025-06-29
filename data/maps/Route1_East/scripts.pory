@@ -1,0 +1,14 @@
+mapscripts Route1_East_MapScripts{}
+
+script Route1_East_EventScript_SignPost {
+	msgbox("Route 1", MSGBOX_SIGN)
+	end
+}
+
+script Route1_East_EventScript_TrainerTips {
+	msgbox("Trainer Tips!\p"
+			"Make an effort to talk to all the\n"
+			"people you meet during your journey!\p"
+			"Chances are they will have something\n"
+			"useful to tell you.", MSGBOX_SIGN)
+}

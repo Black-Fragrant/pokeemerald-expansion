@@ -14,35 +14,35 @@ struct LilycoveContestLadyValues
 static const struct LilycoveContestLadyValues sContestLadyValues[] =
 {
     [CONTEST_CATEGORY_COOL] = {
-        .monGfxId = OBJ_EVENT_GFX_ZIGZAGOON_1,
+        .monGfxId = OBJ_EVENT_GFX_SCOTT,
         .monSpecies = SPECIES_ZIGZAGOON,
         .monName = COMPOUND_STRING("HANDSOME"),
         .categoryName = COMPOUND_STRING("coolness"),
         .contestName = gText_CoolnessContest,
     },
     [CONTEST_CATEGORY_BEAUTY] = {
-        .monGfxId = OBJ_EVENT_GFX_SKITTY,
+        .monGfxId = OBJ_EVENT_GFX_SCOTT,
         .monSpecies = SPECIES_SKITTY,
         .monName = COMPOUND_STRING("VINNY"),
         .categoryName = COMPOUND_STRING("beauty"),
         .contestName = gText_BeautyContest,
     },
     [CONTEST_CATEGORY_CUTE] = {
-        .monGfxId = OBJ_EVENT_GFX_POOCHYENA,
+        .monGfxId = OBJ_EVENT_GFX_SCOTT,
         .monSpecies = SPECIES_POOCHYENA,
         .monName = COMPOUND_STRING("MOREME"),
         .categoryName = COMPOUND_STRING("cuteness"),
         .contestName = gText_CutenessContest,
     },
     [CONTEST_CATEGORY_SMART] = {
-        .monGfxId = OBJ_EVENT_GFX_KECLEON,
+        .monGfxId = OBJ_EVENT_GFX_SCOTT,
         .monSpecies = SPECIES_KECLEON,
         .monName = COMPOUND_STRING("IRONHARD"),
         .categoryName = COMPOUND_STRING("smartness"),
         .contestName = gText_SmartnessContest,
     },
     [CONTEST_CATEGORY_TOUGH] = {
-        .monGfxId = OBJ_EVENT_GFX_PIKACHU,
+        .monGfxId = OBJ_EVENT_GFX_SCOTT,
         .monSpecies = SPECIES_PIKACHU,
         .monName = COMPOUND_STRING("MUSCLE"),
         .categoryName = COMPOUND_STRING("toughness"),
@@ -52,9 +52,9 @@ static const struct LilycoveContestLadyValues sContestLadyValues[] =
 
 static const u16 sLilycoveLadyGfxId[] =
 {
-    OBJ_EVENT_GFX_WOMAN_4,
-    OBJ_EVENT_GFX_WOMAN_2,
-    OBJ_EVENT_GFX_GIRL_2
+    OBJ_EVENT_GFX_SCOTT,
+    OBJ_EVENT_GFX_SCOTT,
+    OBJ_EVENT_GFX_SCOTT
 };
 
 // Quiz Lady data

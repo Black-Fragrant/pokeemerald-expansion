@@ -26,7 +26,7 @@ struct Item
     u8 battleUsage;
     u8 flingPower;
     const u32 *iconPic;
-    const u32 *iconPalette;
+    const u16 *iconPalette;
 };
 
 struct BagPocket
@@ -84,6 +84,7 @@ u32 GetItemSecondaryId(u32 itemId);
 u32 GetItemFlingPower(u32 itemId);
 u32 GetItemStatus1Mask(u16 itemId);
 u32 GetItemStatus2Mask(u16 itemId);
+u32 GetItemSellPrice(u32 itemId);
 
 /* Expands to:
  * enum

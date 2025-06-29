@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_SOOTOPOLIS_EXPERT",
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 18,
       "elevation": 3,
@@ -30,7 +30,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_WOMAN_2",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 47,
       "y": 33,
       "elevation": 0,
@@ -44,7 +44,7 @@
     },
     {
       "local_id": "LOCALID_KIRI",
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 9,
       "y": 43,
       "elevation": 3,
@@ -58,7 +58,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_NINJA_BOY",
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 51,
       "y": 14,
       "elevation": 3,
@@ -72,7 +72,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_BOY_1",
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 43,
       "y": 26,
       "elevation": 3,
@@ -85,7 +85,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 26,
       "y": 4,
       "elevation": 3,
@@ -99,7 +99,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_STEVEN",
-      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 20,
       "y": 36,
       "elevation": 3,
@@ -113,7 +113,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_WOMAN_1",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 49,
       "y": 34,
       "elevation": 3,
@@ -127,7 +127,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_GROUDON",
-      "graphics_id": "OBJ_EVENT_GFX_GROUDON_SIDE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 44,
       "elevation": 0,
@@ -141,7 +141,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_KYOGRE",
-      "graphics_id": "OBJ_EVENT_GFX_KYOGRE_SIDE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 34,
       "y": 44,
       "elevation": 1,
@@ -155,7 +155,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_RAYQUAZA",
-      "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 41,
       "elevation": 1,
@@ -169,7 +169,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_MANIAC",
-      "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 17,
       "y": 44,
       "elevation": 3,
@@ -183,7 +183,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_GIRL",
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 14,
       "y": 42,
       "elevation": 3,
@@ -197,7 +197,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_BLACK_BELT",
-      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 17,
       "y": 40,
       "elevation": 3,
@@ -211,7 +211,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_BOY_2",
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 19,
       "y": 37,
       "elevation": 3,
@@ -225,7 +225,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_MAXIE",
-      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 29,
       "y": 33,
       "elevation": 3,
@@ -239,7 +239,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_ARCHIE",
-      "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 33,
       "elevation": 3,
@@ -253,7 +253,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_WALLACE",
-      "graphics_id": "OBJ_EVENT_GFX_WALLACE",
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 31,
       "y": 18,
       "elevation": 3,

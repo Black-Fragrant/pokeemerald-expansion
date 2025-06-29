@@ -4413,13 +4413,13 @@
     },
     {
       "id": "LAYOUT_NUVEMA_TOWN",
-      "name": "Nuvema_Town_Layout",
+      "name": "NuvemaTown_Layout",
       "width": 32,
       "height": 34,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Nuvema",
-      "border_filepath": "data/layouts/Nuvema_Town/border.bin",
-      "blockdata_filepath": "data/layouts/Nuvema_Town/map.bin"
+      "border_filepath": "data/layouts/NuvemaTown/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE1_EAST",
@@ -4443,13 +4443,13 @@
     },
     {
       "id": "LAYOUT_ACCUMULA_TOWN",
-      "name": "Accumula_Town_Layout",
+      "name": "AccumulaTown_Layout",
       "width": 42,
       "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Accumula",
-      "border_filepath": "data/layouts/Accumula_Town/border.bin",
-      "blockdata_filepath": "data/layouts/Accumula_Town/map.bin"
+      "border_filepath": "data/layouts/AccumulaTown/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE2",
@@ -4463,13 +4463,163 @@
     },
     {
       "id": "LAYOUT_STRIATON_CITY",
-      "name": "Striaton_City_Layout",
+      "name": "StriatonCity_Layout",
       "width": 80,
       "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Striaton",
-      "border_filepath": "data/layouts/Striaton_City/border.bin",
-      "blockdata_filepath": "data/layouts/Striaton_City/map.bin"
+      "border_filepath": "data/layouts/StriatonCity/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_PLAYER_HOUSE_1F",
+      "name": "NuvemaTown_PlayerHouse_1F_Layout",
+      "width": 14,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_PlayerHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_PlayerHouse_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_PLAYER_HOUSE_2F",
+      "name": "NuvemaTown_PlayerHouse_2F_Layout",
+      "width": 12,
+      "height": 29,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_PlayerHouse_2F/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_PlayerHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_BIANCAS_HOUSE_1F",
+      "name": "NuvemaTown_BiancasHouse_1F_Layout",
+      "width": 14,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_BiancasHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_BiancasHouse_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_BIANCAS_HOUSE_2F",
+      "name": "NuvemaTown_BiancasHouse_2F_Layout",
+      "width": 12,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_BiancasHouse_2F/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_BiancasHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_CHERENS_HOUSE_1F",
+      "name": "NuvemaTown_CherensHouse_1F_Layout",
+      "width": 14,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_CherensHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_CherensHouse_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_CHERENS_HOUSE_2F",
+      "name": "NuvemaTown_CherensHouse_2F_Layout",
+      "width": 12,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_CherensHouse_2F/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_CherensHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NUVEMA_TOWN_PROFESSOR_JUNIPERS_LAB",
+      "name": "NuvemaTown_ProfessorJunipersLab_Layout",
+      "width": 18,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNuvema",
+      "border_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/border.bin",
+      "blockdata_filepath": "data/layouts/NuvemaTown_ProfessorJunipersLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_BOTTOM_LEFT_BUILDING1F",
+      "name": "AccumulaTown_BottomLeftBuilding1F_Layout",
+      "width": 16,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_LEFT_BUILDING2F",
+      "name": "AccumulaTown_TopLeftBuilding2F_Layout",
+      "width": 15,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopLeftBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopLeftBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_POKE_CENTER",
+      "name": "AccumulaTown_PokeCenter_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_PokeCenter/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_PokeCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_BOTTOM_LEFT_BUILDING2F",
+      "name": "AccumulaTown_BottomLeftBuilding2F_Layout",
+      "width": 15,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_BottomLeftBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_RIGHT_BUILDING",
+      "name": "AccumulaTown_TopRightBuilding_Layout",
+      "width": 11,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopRightBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopRightBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_MIDDLE_BUILDING1F",
+      "name": "AccumulaTown_TopMiddleBuilding1F_Layout",
+      "width": 16,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_LEFT_BUILDING1F",
+      "name": "AccumulaTown_TopLeftBuilding1F_Layout",
+      "width": 16,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopLeftBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopLeftBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_TOP_MIDDLE_BUILDING2F",
+      "name": "AccumulaTown_TopMiddleBuilding2F_Layout",
+      "width": 15,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding2F/map.bin"
     }
   ]
 }
