@@ -16,11 +16,11 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 6,
-      "y": 10,
+      "x": 4,
+      "y": 11,
       "elevation": 0,
       "dest_map": "MAP_NUVEMA_TOWN",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],
