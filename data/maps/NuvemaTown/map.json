@@ -28,8 +28,8 @@
     {
       "local_id": "LOCALID_NUVEMA_TOWN_LITTLE_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
-      "x": 20,
-      "y": 10,
+      "x": 23,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -69,7 +69,7 @@
     },
     {
       "local_id": "LOCALID_JUNIPER",
-      "graphics_id": "OBJ_EVENT_GFX_LADY",
+      "graphics_id": "OBJ_EVENT_GFX_JUNIPER",
       "x": 9,
       "y": 7,
       "elevation": 0,

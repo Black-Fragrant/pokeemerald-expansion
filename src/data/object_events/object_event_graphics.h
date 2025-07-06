@@ -506,3 +506,37 @@ const u16 gObjectEventPal_Clay[] = INCBIN_U16("graphics/object_events/palettes/c
 
 const u32 gObjectEventPic_Skyla[] = INCBIN_U32("graphics/object_events/pics/people/skyla.4bpp");
 const u16 gObjectEventPal_Skyla[] = INCBIN_U16("graphics/object_events/palettes/skyla.gbapal");
+
+const u32 gObjectEventPic_Brycen[] = INCBIN_U32("graphics/object_events/pics/people/brycen.4bpp");
+const u16 gObjectEventPal_Brycen[] = INCBIN_U16("graphics/object_events/palettes/brycen.gbapal");
+
+const u32 gObjectEventPic_Drayden[] = INCBIN_U32("graphics/object_events/pics/people/drayden.4bpp");
+const u16 gObjectEventPal_Drayden[] = INCBIN_U16("graphics/object_events/palettes/drayden.gbapal");
+
+const u32 gObjectEventPic_Iris[] = INCBIN_U32("graphics/object_events/pics/people/iris.4bpp");
+const u16 gObjectEventPal_Iris[] = INCBIN_U16("graphics/object_events/palettes/iris.gbapal");
+
+const u32 gObjectEventPic_Shauntal[] = INCBIN_U32("graphics/object_events/pics/people/shauntal.4bpp");
+const u16 gObjectEventPal_Shauntal[] = INCBIN_U16("graphics/object_events/palettes/shauntal.gbapal");
+
+const u32 gObjectEventPic_Grimsley[] = INCBIN_U32("graphics/object_events/pics/people/grimsley.4bpp");
+const u16 gObjectEventPal_Grimsley[] = INCBIN_U16("graphics/object_events/palettes/grimsley.gbapal");
+
+const u32 gObjectEventPic_Caitlin[] = INCBIN_U32("graphics/object_events/pics/people/caitlin.4bpp");
+const u16 gObjectEventPal_Caitlin[] = INCBIN_U16("graphics/object_events/palettes/caitlin.gbapal");
+
+const u32 gObjectEventPic_Marshal[] = INCBIN_U32("graphics/object_events/pics/people/marshal.4bpp");
+const u16 gObjectEventPal_Marshal[] = INCBIN_U16("graphics/object_events/palettes/marshal.gbapal");
+
+const u32 gObjectEventPic_PlasmaGruntMale[] = INCBIN_U32("graphics/object_events/pics/people/plasma_grunt_male.4bpp");
+const u32 gObjectEventPic_PlasmaGruntFemale[] = INCBIN_U32("graphics/object_events/pics/people/plasma_grunt_female.4bpp");
+const u16 gObjectEventPal_PlasmaGrunts[] = INCBIN_U16("graphics/object_events/palettes/plasma_grunts.gbapal");
+
+const u32 gObjectEventPic_Bianca[] = INCBIN_U32("graphics/object_events/pics/people/bianca.4bpp");
+const u16 gObjectEventPal_Bianca[] = INCBIN_U16("graphics/object_events/palettes/bianca.gbapal");
+
+const u32 gObjectEventPic_Juniper[] = INCBIN_U32("graphics/object_events/pics/people/juniper.4bpp");
+const u16 gObjectEventPal_Juniper[] = INCBIN_U16("graphics/object_events/palettes/juniper.gbapal");
+
+const u32 gObjectEventPic_Gift[] = INCBIN_U32("graphics/object_events/pics/misc/gift.4bpp");
+const u16 gObjectEventPal_Gift[] = INCBIN_U16("graphics/object_events/palettes/gift.gbapal");
