@@ -139,14 +139,28 @@
 #define OBJ_EVENT_GFX_ELESA                       133
 #define OBJ_EVENT_GFX_CLAY                        134
 #define OBJ_EVENT_GFX_SKYLA                       135
-#define OBJ_EVENT_GFX_POKE_BALL                   136
-#define OBJ_EVENT_GFX_OW_MON                      137
-#define OBJ_EVENT_GFX_LIGHT_SPRITE                138
+#define OBJ_EVENT_GFX_BRYCEN                      136
+#define OBJ_EVENT_GFX_DRAYDEN                     137
+#define OBJ_EVENT_GFX_IRIS                        138
+#define OBJ_EVENT_GFX_SHAUNTAL                    139
+#define OBJ_EVENT_GFX_GRIMSLEY                    140
+#define OBJ_EVENT_GFX_CAITLIN                     141
+#define OBJ_EVENT_GFX_MARSHAL                     142
+#define OBJ_EVENT_GFX_ALDER                       143
+#define OBJ_EVENT_GFX_PLASMA_GRUNT_MALE           144
+#define OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE         145
+#define OBJ_EVENT_GFX_GHETSIS                     146
+#define OBJ_EVENT_GFX_BIANCA                      147
+#define OBJ_EVENT_GFX_JUNIPER                     148
+#define OBJ_EVENT_GFX_GIFT                        149
+#define OBJ_EVENT_GFX_POKE_BALL                   150
+#define OBJ_EVENT_GFX_OW_MON                      151
+#define OBJ_EVENT_GFX_LIGHT_SPRITE                152
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                         139
+#define NUM_OBJ_EVENT_GFX                         153
 
 
 // These are dynamic object gfx ids.
@@ -347,6 +361,19 @@
 #define OBJ_EVENT_PAL_TAG_ELESA                   0x1177
 #define OBJ_EVENT_PAL_TAG_CLAY                    0x1178
 #define OBJ_EVENT_PAL_TAG_SKYLA                   0x1179
+#define OBJ_EVENT_PAL_TAG_BRYCEN                  0x117A
+#define OBJ_EVENT_PAL_TAG_DRAYDEN                 0x117B
+#define OBJ_EVENT_PAL_TAG_IRIS                    0x117C
+#define OBJ_EVENT_PAL_TAG_SHAUNTAL                0x117D
+#define OBJ_EVENT_PAL_TAG_GRIMSLEY                0x117E
+#define OBJ_EVENT_PAL_TAG_CAITLIN                 0x117F
+#define OBJ_EVENT_PAL_TAG_MARSHAL                 0x1180
+#define OBJ_EVENT_PAL_TAG_ALDER                   0x1181
+#define OBJ_EVENT_PAL_TAG_PLASMA_GRUNTS           0x1182
+#define OBJ_EVENT_PAL_TAG_GHETSIS                 0x1183
+#define OBJ_EVENT_PAL_TAG_BIANCA                  0x1184
+#define OBJ_EVENT_PAL_TAG_JUNIPER                 0x1185
+#define OBJ_EVENT_PAL_TAG_GIFT                    0x1186
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

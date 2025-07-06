@@ -77,6 +77,10 @@ static const struct SpriteFrameImage sPicTable_BirchsBag[] = {
     obj_frame_tiles(gObjectEventPic_BirchsBag),
 };
 
+static const struct SpriteFrameImage sPicTable_Gift[] = {
+    obj_frame_tiles(gObjectEventPic_Gift),
+};
+
 static const struct SpriteFrameImage sPicTable_MayNormal[] = {
     overworld_ascending_frames(gObjectEventPic_MayNormalRunning, 2, 4),
 };
@@ -652,3 +656,48 @@ static const struct SpriteFrameImage sPicTable_Clay[] = {
 static const struct SpriteFrameImage sPicTable_Skyla[] = {
     overworld_ascending_frames(gObjectEventPic_Skyla, 2, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_Brycen[] = {
+    overworld_ascending_frames(gObjectEventPic_Brycen, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Drayden[] = {
+    overworld_ascending_frames(gObjectEventPic_Drayden, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Iris[] = {
+    overworld_ascending_frames(gObjectEventPic_Iris, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Shauntal[] = {
+    overworld_ascending_frames(gObjectEventPic_Shauntal, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Grimsley[] = {
+    overworld_ascending_frames(gObjectEventPic_Grimsley, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Caitlin[] = {
+    overworld_ascending_frames(gObjectEventPic_Caitlin, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Marshal[] = {
+    overworld_ascending_frames(gObjectEventPic_Marshal, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_PlasmaGruntMale[] = {
+    overworld_ascending_frames(gObjectEventPic_PlasmaGruntMale, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_PlasmaGruntFemale[] = {
+    overworld_ascending_frames(gObjectEventPic_PlasmaGruntFemale, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Bianca[] = {
+    overworld_ascending_frames(gObjectEventPic_Bianca, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Juniper[] = {
+    overworld_ascending_frames(gObjectEventPic_Juniper, 2, 4),
+};
+

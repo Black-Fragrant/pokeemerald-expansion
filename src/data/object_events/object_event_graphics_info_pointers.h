@@ -132,6 +132,18 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Burgh;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elesa;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clay;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Skyla;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Brycen;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Drayden;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Iris;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shauntal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Grimsley;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Caitlin;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Marshal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlasmaGruntMale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlasmaGruntFemale;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bianca;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juniper;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gift;
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -274,6 +286,18 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ELESA] =                    &gObjectEventGraphicsInfo_Elesa,
     [OBJ_EVENT_GFX_CLAY] =                     &gObjectEventGraphicsInfo_Clay,
     [OBJ_EVENT_GFX_SKYLA] =                    &gObjectEventGraphicsInfo_Skyla,
+    [OBJ_EVENT_GFX_BRYCEN] =                   &gObjectEventGraphicsInfo_Brycen,
+    [OBJ_EVENT_GFX_DRAYDEN] =                  &gObjectEventGraphicsInfo_Drayden,
+    [OBJ_EVENT_GFX_IRIS] =                     &gObjectEventGraphicsInfo_Iris,
+    [OBJ_EVENT_GFX_SHAUNTAL] =                 &gObjectEventGraphicsInfo_Shauntal,
+    [OBJ_EVENT_GFX_GRIMSLEY] =                 &gObjectEventGraphicsInfo_Grimsley,
+    [OBJ_EVENT_GFX_CAITLIN] =                  &gObjectEventGraphicsInfo_Caitlin,
+    [OBJ_EVENT_GFX_MARSHAL] =                  &gObjectEventGraphicsInfo_Marshal,
+    [OBJ_EVENT_GFX_PLASMA_GRUNT_MALE] =        &gObjectEventGraphicsInfo_PlasmaGruntMale,
+    [OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE] =      &gObjectEventGraphicsInfo_PlasmaGruntFemale,
+    [OBJ_EVENT_GFX_BIANCA] =                   &gObjectEventGraphicsInfo_Bianca,
+    [OBJ_EVENT_GFX_JUNIPER] =                  &gObjectEventGraphicsInfo_Juniper,
+    [OBJ_EVENT_GFX_GIFT] =                     &gObjectEventGraphicsInfo_Gift,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
