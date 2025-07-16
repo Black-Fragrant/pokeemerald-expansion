@@ -1,6 +1,8 @@
 #include "global.h"
 #include "malloc.h"
 #include "berry_powder.h"
+#include "fake_rtc.h"
+#include "follower_npc.h"
 #include "item.h"
 #include "load_save.h"
 #include "main.h"
@@ -9,6 +11,7 @@
 #include "pokemon_storage_system.h"
 #include "random.h"
 #include "save_location.h"
+#include "script_pokemon_util.h"
 #include "trainer_hill.h"
 #include "gba/flash_internal.h"
 #include "decoration_inventory.h"
@@ -40,11 +43,11 @@ EWRAM_DATA struct LoadedSaveData gLoadedSaveData = {0};
 EWRAM_DATA u32 gLastEncryptionKey = 0;
 
 // IWRAM common
-bool32 gFlashMemoryPresent;
-struct SaveBlock1 *gSaveBlock1Ptr;
-struct SaveBlock2 *gSaveBlock2Ptr;
+COMMON_DATA bool32 gFlashMemoryPresent = 0;
+COMMON_DATA struct SaveBlock1 *gSaveBlock1Ptr = NULL;
+COMMON_DATA struct SaveBlock2 *gSaveBlock2Ptr = NULL;
 IWRAM_INIT struct SaveBlock3 *gSaveBlock3Ptr = &gSaveblock3;
-struct PokemonStorage *gPokemonStoragePtr;
+COMMON_DATA struct PokemonStorage *gPokemonStoragePtr = NULL;
 
 // code
 void CheckForFlashMemory(void)
@@ -63,6 +66,7 @@ void CheckForFlashMemory(void)
 void ClearSav3(void)
 {
     CpuFill16(0, &gSaveblock3, sizeof(struct SaveBlock3));
+    FakeRtc_Reset();
 }
 
 void ClearSav2(void)
@@ -78,7 +82,7 @@ void ClearSav1(void)
 // Offset is the sum of the trainer id bytes
 void SetSaveBlocksPointers(u16 offset)
 {
-    struct SaveBlock1** sav1_LocalVar = &gSaveBlock1Ptr;
+    struct SaveBlock1 **sav1_LocalVar = &gSaveBlock1Ptr;
 
     offset = (offset + Random()) & (SAVEBLOCK_MOVE_RANGE - 4);
 
@@ -235,7 +239,7 @@ void LoadObjectEvents(void)
         // Try to restore saved inactive follower
         if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER &&
             !gObjectEvents[i].active &&
-            gObjectEvents[i].graphicsId >= OBJ_EVENT_GFX_MON_BASE)
+            gObjectEvents[i].graphicsId & OBJ_EVENT_MON)
             gObjectEvents[i].active = TRUE;
     }
 }

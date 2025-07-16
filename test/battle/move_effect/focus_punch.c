@@ -3,14 +3,14 @@
 
 ASSUMPTIONS
 {
-    ASSUME(gMovesInfo[MOVE_FOCUS_PUNCH].effect == EFFECT_FOCUS_PUNCH);
+    ASSUME(GetMoveEffect(MOVE_FOCUS_PUNCH) == EFFECT_FOCUS_PUNCH);
 }
 
 SINGLE_BATTLE_TEST("Focus Punch activates only if not damaged")
 {
     u32 move;
     bool32 activate;
-    PARAMETRIZE { move = MOVE_TACKLE; activate = FALSE; }
+    PARAMETRIZE { move = MOVE_SCRATCH; activate = FALSE; }
     PARAMETRIZE { move = MOVE_WATER_GUN; activate = FALSE; }
     PARAMETRIZE { move = MOVE_LEER; activate = TRUE; }
 
@@ -51,7 +51,7 @@ DOUBLE_BATTLE_TEST("Focus Punch activation is based on Speed")
     }
     SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, opponentRight);
-        MESSAGE("Foe Wynaut is tightening its focus!");
+        MESSAGE("The opposing Wynaut is tightening its focus!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, playerRight);
         MESSAGE("Wynaut is tightening its focus!");
@@ -60,9 +60,9 @@ DOUBLE_BATTLE_TEST("Focus Punch activation is based on Speed")
         MESSAGE("Wobbuffet is tightening its focus!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, opponentLeft);
-        MESSAGE("Foe Wobbuffet is tightening its focus!");
+        MESSAGE("The opposing Wobbuffet is tightening its focus!");
 
-        MESSAGE("Foe Wynaut used Focus Punch!");
+        MESSAGE("The opposing Wynaut used Focus Punch!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, opponentRight);
         HP_BAR(playerLeft);
 
@@ -71,7 +71,7 @@ DOUBLE_BATTLE_TEST("Focus Punch activation is based on Speed")
         HP_BAR(opponentLeft);
 
         MESSAGE("Wobbuffet lost its focus and couldn't move!");
-        MESSAGE("Foe Wobbuffet lost its focus and couldn't move!");
+        MESSAGE("The opposing Wobbuffet lost its focus and couldn't move!");
     }
 }
 
@@ -97,5 +97,19 @@ AI_SINGLE_BATTLE_TEST("AI will Incapacitate -> Substitute -> Focus Punch if able
         TURN { MOVE(player, MOVE_DISCHARGE); EXPECT_MOVE(opponent, MOVE_SPORE); }
         TURN { MOVE(player, MOVE_DISCHARGE); EXPECT_MOVE(opponent, MOVE_SUBSTITUTE); }
         TURN { MOVE(player, MOVE_DISCHARGE); EXPECT_MOVE(opponent, MOVE_FOCUS_PUNCH); }
+    }
+}
+
+AI_SINGLE_BATTLE_TEST("AI won't use status moves if the player's best attacking move is Focus Punch")
+{
+    PASSES_RANDOMLY(STATUS_MOVE_FOCUS_PUNCH_CHANCE, 100, RNG_AI_STATUS_FOCUS_PUNCH);
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_FOCUS_PUNCH) == EFFECT_FOCUS_PUNCH);
+        ASSUME(GetMoveCategory(MOVE_SWORDS_DANCE) == DAMAGE_CATEGORY_STATUS);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
+        PLAYER(SPECIES_SNORLAX) { Moves(MOVE_FOCUS_PUNCH, MOVE_TACKLE); }
+        OPPONENT(SPECIES_CLEFABLE) {  Moves(MOVE_PLAY_ROUGH, MOVE_SWORDS_DANCE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_FOCUS_PUNCH); EXPECT_MOVE(opponent, MOVE_PLAY_ROUGH); }
     }
 }

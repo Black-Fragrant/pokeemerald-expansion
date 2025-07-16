@@ -1,4 +1,4 @@
-# pokeemerald-expansion
+# About `pokeemerald-expansion`
 
 ## DS Party Screen (Expansion)
 This feature branch is a port of the DS party screen patch for Fire Red / Emerald.

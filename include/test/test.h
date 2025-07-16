@@ -15,6 +15,7 @@ enum TestResult
     TEST_RESULT_TIMEOUT,
     TEST_RESULT_CRASH,
     TEST_RESULT_TODO,
+    TEST_RESULT_KNOWN_FAIL,
 };
 
 struct TestRunner
@@ -83,7 +84,7 @@ s32 Test_MgbaPrintf(const char *fmt, ...);
 
 #define TEST(_name) \
     static void CAT(Test, __LINE__)(void); \
-    __attribute__((section(".tests"))) static const struct Test CAT(sTest, __LINE__) = \
+    __attribute__((section(".tests"), used)) static const struct Test CAT(sTest, __LINE__) = \
     { \
         .name = _name, \
         .filename = __FILE__, \
@@ -95,7 +96,7 @@ s32 Test_MgbaPrintf(const char *fmt, ...);
 
 #define ASSUMPTIONS \
     static void Assumptions(void); \
-    __attribute__((section(".tests"))) static const struct Test sAssumptions = \
+    __attribute__((section(".tests"), used, no_reorder)) static const struct Test sAssumptions = \
     { \
         .name = "ASSUMPTIONS: " __FILE__, \
         .filename = __FILE__, \
@@ -214,7 +215,7 @@ static inline struct Benchmark BenchmarkStop(void)
     } while (0)
 
 #define KNOWN_FAILING \
-    Test_ExpectedResult(TEST_RESULT_FAIL)
+    Test_ExpectedResult(TEST_RESULT_KNOWN_FAIL)
 
 #define KNOWN_LEAKING \
     Test_ExpectLeaks(TRUE)
