@@ -24,6 +24,7 @@ sound/programmable_wave_samples/*.bin
 sound/songs/*.bin
 sound/songs/midi/*.s
 tools/agbcc
+tools/poryscript
 *.map
 *.bat
 *.dump
