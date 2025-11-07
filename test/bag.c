@@ -25,7 +25,7 @@ TEST("TMs and HMs are sorted correctly in the bag")
      */
 
     RUN_OVERWORLD_SCRIPT(
-        additem ITEM_HM07;
+        additem ITEM_HM06; // BW doesn't have HM07
         additem ITEM_TM25;
         additem ITEM_TM14;
         additem ITEM_TM42;
@@ -44,7 +44,7 @@ TEST("TMs and HMs are sorted correctly in the bag")
     EXPECT_EQ(pocket->itemSlots[4].itemId, ITEM_TM42);
     EXPECT_EQ(pocket->itemSlots[5].itemId, ITEM_HM02);
     EXPECT_EQ(pocket->itemSlots[6].itemId, ITEM_HM05);
-    EXPECT_EQ(pocket->itemSlots[7].itemId, ITEM_HM07);
+    EXPECT_EQ(pocket->itemSlots[7].itemId, ITEM_HM06);
     EXPECT_EQ(pocket->itemSlots[8].itemId, ITEM_NONE);
 }
 
