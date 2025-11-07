@@ -1,6 +1,6 @@
 	.include "MPlayDef.s"
 
-	.equ	mus_pkmn_bw12_188_grp, voicegroup000
+	.equ	mus_pkmn_bw12_188_grp, voicegroup_dummy
 	.equ	mus_pkmn_bw12_188_pri, 0
 	.equ	mus_pkmn_bw12_188_rev, 0
 	.equ	mus_pkmn_bw12_188_mvl, 100
