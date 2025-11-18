@@ -2,6 +2,7 @@
   "group_order": [
     "gMapGroup_BWTownsAndRoutes",
     "gMapGroup_IndoorNuvema",
+    "gMapGroup_IndoorAccumula",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -35,8 +36,7 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124",
-    "gMapGroup_IndoorAccumula"
+    "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "NuvemaTown",
@@ -54,6 +54,16 @@
     "NuvemaTown_CherensHouse_1F",
     "NuvemaTown_CherensHouse_2F",
     "NuvemaTown_ProfessorJunipersLab"
+  ],
+  "gMapGroup_IndoorAccumula": [
+    "AccumulaTown_BottomLeftBuilding1F",
+    "AccumulaTown_BottomLeftBuilding2F",
+    "AccumulaTown_TopLeftBuilding1F",
+    "AccumulaTown_TopLeftBuilding2F",
+    "AccumulaTown_TopMiddleBuilding1F",
+    "AccumulaTown_TopMiddleBuilding2F",
+    "AccumulaTown_TopRightBuilding",
+    "AccumulaTown_PokeCenter"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -640,15 +650,5 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
-  ],
-  "gMapGroup_IndoorAccumula": [
-    "AccumulaTown_BottomLeftBuilding1F",
-    "AccumulaTown_BottomLeftBuilding2F",
-    "AccumulaTown_TopLeftBuilding1F",
-    "AccumulaTown_TopLeftBuilding2F",
-    "AccumulaTown_TopMiddleBuilding1F",
-    "AccumulaTown_TopMiddleBuilding2F",
-    "AccumulaTown_TopRightBuilding",
-    "AccumulaTown_PokeCenter"
   ]
 }
