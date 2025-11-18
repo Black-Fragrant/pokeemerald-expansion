@@ -27,6 +27,14 @@ jobs:
           sudo apt install -y binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
         # build-essential and git are already installed
 
+      - name: Install Poryscript
+        run: |
+          curl -L -o poryscript.zip https://github.com/huderlem/poryscript/releases/download/3.5.2/poryscript-linux.zip
+          unzip poryscript.zip -d poryscript
+          mkdir -p tools/poryscript
+          cp -r poryscript/poryscript-linux/* tools/poryscript/
+          chmod +x tools/poryscript/*
+
       - name: ROM
         env:
           COMPARE: 0
