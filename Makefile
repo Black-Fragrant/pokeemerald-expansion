@@ -1,7 +1,7 @@
 GAME_VERSION ?= EMERALD
 TITLE        ?= POKEMON EMER
 GAME_CODE    ?= BPEE
-BUILD_NAME   ?= black
+BUILD_NAME   ?= fireblack
 MAP_VERSION  ?= emerald
 
 ifeq (firered,$(MAKECMDGOALS))
