@@ -29,6 +29,14 @@ enum {
     FONT_SMALL_NARROWER,
     FONT_SHORT_NARROW,
     FONT_SHORT_NARROWER,
+    // start bwBattleUI
+    /* WARNING!
+     * These fonts barely fits the limit of fontId in struct TextPrinter.
+     * Be sure to update that field if you have extra custom fonts accordingly!
+     */
+    FONT_OUTLINED,
+    FONT_OUTLINED_NARROW,
+    // end bwBattleUI
 };
 
 #define FONT_MALE FONT_NORMAL
