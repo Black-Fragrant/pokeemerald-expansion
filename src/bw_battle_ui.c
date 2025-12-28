@@ -16,7 +16,7 @@
 #include "battle_z_move.h"
 #include "battle_interface.h"
 #include "bw_battle_ui.h"
-#include "constants/songs.h"
+#include "config/bw_battle_ui.h"
 
 // constants
 #ifndef TILE_TO_PIXELS

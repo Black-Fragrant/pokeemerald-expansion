@@ -26,7 +26,10 @@
 #include "trainer_tower.h"
 #include "window.h"
 #include "line_break.h"
-#include "bw_battle_ui.h" // bwBattleUI
+// start bwBattleUI
+#include "bw_battle_ui.h"
+#include "config/bw_battle_ui.h"
+// end bwBattleUI
 #include "constants/abilities.h"
 #include "constants/battle_dome.h"
 #include "constants/battle_string_ids.h"

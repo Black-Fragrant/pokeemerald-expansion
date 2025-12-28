@@ -32,7 +32,10 @@
 #include "util.h"
 #include "window.h"
 #include "line_break.h"
-#include "bw_battle_ui.h" // bwBattleUI
+// start bwBattleUI
+#include "bw_battle_ui.h"
+#include "config/bw_battle_ui.h"
+// end bwBattleUI
 #include "constants/battle_anim.h"
 #include "constants/battle_move_effects.h"
 #include "constants/battle_partner.h"
