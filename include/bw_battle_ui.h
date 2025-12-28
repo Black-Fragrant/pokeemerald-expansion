@@ -1,8 +1,6 @@
 #ifndef GUARD_BW_BATTLE_UI_H
 #define GUARD_BW_BATTLE_UI_H
 
-#include "config/bw_battle_ui.h"
-
 enum BWBattleUICursorMode
 {
     BUI_CURSOR_MODE_HIDDEN = 0,

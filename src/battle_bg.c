@@ -23,7 +23,10 @@
 #include "text_window.h"
 #include "trig.h"
 #include "window.h"
-#include "bw_battle_ui.h" // bwBattleUI
+// start bwBattleUI
+#include "bw_battle_ui.h"
+#include "config/bw_battle_ui.h"
+// end bwBattleUI
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
