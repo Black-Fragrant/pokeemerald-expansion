@@ -14,6 +14,7 @@
 #include "battle_controllers.h"
 #include "battle_gimmick.h"
 #include "battle_z_move.h"
+#include "battle_interface.h"
 #include "bw_battle_ui.h"
 #include "constants/songs.h"
 
@@ -63,164 +64,7 @@ static void BattleUI_DisplayMoveBoxGraphics(u32, u32);
 static void BattleUI_DisplayNormalMoveBox(u32, struct ChooseMoveStruct *);
 static void BattleUI_DisplayZMoveBox(u32, struct ChooseMoveStruct *);
 
-// const data
-static const u32 sBWBattleUI_TextboxTiles[] = INCBIN_U32("graphics/battle_interface/bw/textbox.4bpp.smol");
-static const u16 sBWBattleUI_TextboxPalette[] = INCBIN_U16("graphics/battle_interface/bw/textbox.gbapal");
-static const u32 sBWBattleUI_TextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox_swag.bin.smolTM");
-static const u32 sBWBattleUI_JustTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox_no_swag.bin.smolTM");
-
-static const u8 sBWBattleUI_MoveBoxGraphics[] = INCBIN_U8("graphics/battle_interface/bw/movebox.4bpp");
-static const u8 sBWBattleUI_MoveBoxGraphicsFlip[] = INCBIN_U8("graphics/battle_interface/bw/movebox_hflip.4bpp");
-static const u8 sBWBattleUI_MoveBoxGraphicsZ[] = INCBIN_U8("graphics/battle_interface/bw/movebox_z.4bpp");
-static const u16 sBWBattleUI_MoveBoxPalette[] = INCBIN_U16("graphics/battle_interface/bw/movebox.gbapal");
-static const u16 sBWBattleUI_MoveBoxTypePalettes[] = INCBIN_U16("graphics/battle_interface/bw/movebox_types.gbapal");
-
-static const struct CompressedSpriteSheet sBWBattleUI_CursorSheet =
-{
-    .data = (const u32[])INCBIN_U32("graphics/battle_interface/bw/cursor.4bpp.smol"),
-    .size = TOTAL_TILES_SIZE(48),
-    .tag = TAG_CURSOR
-};
-
-static const struct SpritePalette sBWBattleUI_CursorPalette =
-{
-    .data = (const u16[])INCBIN_U16("graphics/battle_interface/bw/cursor.gbapal"),
-    .tag = TAG_CURSOR
-};
-
-// BATTLE! / BAG / POKEMON / RUN
-static const struct Subsprite sBWBattleUI_ActionCursorSubsprite[] =
-{
-    {
-        .x = 0,
-        .y = 0,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 0,
-    },
-    {
-        .x = BUI_ACTION_CURSOR_MAX_X,
-        .y = 0,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 4,
-    },
-    {
-        .x = 0,
-        .y = BUI_ACTION_CURSOR_MAX_Y,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 8,
-    },
-    {
-        .x = BUI_ACTION_CURSOR_MAX_X,
-        .y = BUI_ACTION_CURSOR_MAX_Y,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 12,
-    },
-};
-
-static const struct Subsprite sBWBattleUI_MoveCursorSubsprite[] =
-{
-    {
-        .x = 0,
-        .y = 0,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 0,
-        .priority = 0
-    },
-    {
-        .x = BUI_MOVE_CURSOR_MAX_X,
-        .y = 0,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 4,
-        .priority = 0
-    },
-    {
-        .x = 0,
-        .y = BUI_MOVE_CURSOR_MAX_Y,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 8,
-        .priority = 0
-    },
-    {
-        .x = BUI_MOVE_CURSOR_MAX_X,
-        .y = BUI_MOVE_CURSOR_MAX_Y,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 12,
-        .priority = 0
-    },
-};
-
-static const struct Subsprite sBWBattleUI_ZMoveCursorSubsprite[] =
-{
-    {
-        .x = 0,
-        .y = 0,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 0,
-        .priority = 0
-    },
-    {
-        .x = BUI_Z_MOVE_CURSOR_MAX_X,
-        .y = 0,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 4,
-        .priority = 0
-    },
-    {
-        .x = 0,
-        .y = BUI_Z_MOVE_CURSOR_MAX_Y,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 8,
-        .priority = 0
-    },
-    {
-        .x = BUI_Z_MOVE_CURSOR_MAX_X,
-        .y = BUI_Z_MOVE_CURSOR_MAX_Y,
-        .shape = SPRITE_SHAPE(16x16),
-        .size = SPRITE_SIZE(16x16),
-        .tileOffset = 12,
-        .priority = 0
-    },
-};
-
-static const struct SubspriteTable sBWBattleUI_CursorSubspritesTable[] =
-{
-    { ARRAY_COUNT(sBWBattleUI_ActionCursorSubsprite), sBWBattleUI_ActionCursorSubsprite },
-    { ARRAY_COUNT(sBWBattleUI_MoveCursorSubsprite),   sBWBattleUI_MoveCursorSubsprite },
-    { ARRAY_COUNT(sBWBattleUI_ZMoveCursorSubsprite),  sBWBattleUI_ZMoveCursorSubsprite },
-    { }
-};
-
-static const struct SpriteTemplate sBWBattleUI_CursorTemplate =
-{
-    .tileTag = TAG_CURSOR,
-    .paletteTag = TAG_CURSOR,
-    .oam = &(struct OamData){
-        .shape = SPRITE_SHAPE(8x8),
-        .size = SPRITE_SIZE(8x8),
-    },
-    .anims = (const union AnimCmd *const[]){
-        [0] = (const union AnimCmd[]){
-            ANIMCMD_FRAME( 0, 16),
-            ANIMCMD_FRAME(16, 16),
-            ANIMCMD_FRAME(32, 16),
-            ANIMCMD_JUMP(0),
-        },
-    },
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCB_BattleUICursor,
-};
+#include "data/bw_battle_ui.h"
 
 // code
 const u32 *BattleUI_GetTextboxTiles(void)
@@ -359,6 +203,28 @@ void BattleUI_DisplayMoveBox(u32 battler)
     }
 
     CopyBgTilemapBufferToVram(0);
+}
+
+u32 BattleUI_LoadSpriteSheet(enum BWBattleUISpriteGraphicsType type, u32 tag)
+{
+    return LoadCompressedSpriteSheet(&(const struct CompressedSpriteSheet){
+        .data = sBWBattleUI_SpriteGraphics[type],
+        .size = GetDecompressedDataSize(sBWBattleUI_SpriteGraphics[type]),
+        .tag = tag
+    });
+}
+
+u32 BattleUI_LoadSpritePalette(enum BWBattleUISpritePaletteType type, u32 tag)
+{
+    return LoadSpritePalette(&(const struct SpritePalette){
+        .data = sBWBattleUI_SpritePalettes[type],
+        .tag = tag
+    });
+}
+
+u32 BattleUI_GetTrainerBackPicPaletteTag(u32 battler)
+{
+    return TAG_TRAINER_BACK_PIC_PAL + battler;
 }
 
 static void SpriteCB_BattleUICursor(struct Sprite *sprite)
