@@ -24,8 +24,6 @@
 #define PIXELS_TO_TILES(p) ((p) ? (p / 8) : 0)
 #endif
 
-#define TOTAL_TILES_SIZE(t) (t * TILE_SIZE_4BPP)
-
 #define BUI_CURSOR_CONVERT_FLAG     (15)
 #define sCursorMode                 data[0]
 #define sBattler                    data[1]
