@@ -29,6 +29,7 @@
 #include "item_icon.h"
 #include "item_use.h"
 #include "test_runner.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/battle_anim.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -1242,10 +1243,12 @@ u8 CreatePartyStatusSummarySprites(enum BattlerId battler, struct HpAndStatus *p
         bar_data0 = 5;
     }
 
-    LoadCompressedSpriteSheetUsingHeap(&sStatusSummaryBarSpriteSheet);
-    LoadSpriteSheet(&sStatusSummaryBallsSpriteSheet);
-    LoadSpritePalette(&sStatusSummaryBarSpritePal);
-    LoadSpritePalette(&sStatusSummaryBallsSpritePal);
+    // start bwBattleUI
+    BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_SUMMARY_BAR, TAG_STATUS_SUMMARY_BAR_TILE);
+    BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_SUMMARY_BALL, TAG_STATUS_SUMMARY_BALLS_TILE);
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_SUMMARY_BAR, TAG_STATUS_SUMMARY_BAR_PAL);
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_SUMMARY_BALL, TAG_STATUS_SUMMARY_BALLS_PAL);
+    // end bwBattleUI
 
     summaryBarSpriteId = CreateSprite(&sStatusSummaryBarSpriteTemplates[isOpponent], bar_X, bar_Y, 10);
     SetSubspriteTables(&gSprites[summaryBarSpriteId], sStatusSummaryBar_SubspriteTable_Enter);
@@ -1414,11 +1417,6 @@ u8 CreatePartyStatusSummarySprites(enum BattlerId battler, struct HpAndStatus *p
 
     gTasks[taskId].tIsBattleStart = isBattleStart;
 
-    if (isBattleStart)
-    {
-        gBattleSpritesDataPtr->animationData->field_9_x1C++;
-    }
-
     PlaySE12WithPanning(SE_BALL_TRAY_ENTER, 0);
     return taskId;
 }
@@ -1506,19 +1504,10 @@ static void Task_HidePartyStatusSummary_BattleStart_2(u8 taskId)
         for (i = 0; i < PARTY_SIZE; i++)
             ballIconSpriteIds[i] = gTasks[taskId].tBallIconSpriteId(i);
 
-        gBattleSpritesDataPtr->animationData->field_9_x1C--;
-        if (gBattleSpritesDataPtr->animationData->field_9_x1C == 0)
-        {
-            DestroySpriteAndFreeResources(&gSprites[summaryBarSpriteId]);
-            DestroySpriteAndFreeResources(&gSprites[ballIconSpriteIds[0]]);
-        }
-        else
-        {
-            FreeSpriteOamMatrix(&gSprites[summaryBarSpriteId]);
-            DestroySprite(&gSprites[summaryBarSpriteId]);
-            FreeSpriteOamMatrix(&gSprites[ballIconSpriteIds[0]]);
-            DestroySprite(&gSprites[ballIconSpriteIds[0]]);
-        }
+        // start bwBattleUI
+        DestroySpriteAndFreeResources(&gSprites[summaryBarSpriteId]);
+        DestroySpriteAndFreeResources(&gSprites[ballIconSpriteIds[0]]);
+        // end bwBattleUI
 
         for (i = 1; i < PARTY_SIZE; i++)
             DestroySprite(&gSprites[ballIconSpriteIds[i]]);
