@@ -64,7 +64,7 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
 static const struct CompressedSpriteSheet sBWBattleUI_CursorSheet =
 {
     .data = (const u32[])INCBIN_U32("graphics/battle_interface/bw/cursor.4bpp.smol"),
-    .size = TOTAL_TILES_SIZE(48),
+    .size = TILE_OFFSET_4BPP(48),
     .tag = TAG_CURSOR
 };
 
