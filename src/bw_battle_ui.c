@@ -225,6 +225,12 @@ u32 BattleUI_GetTrainerBackPicPaletteTag(u32 battler)
     return TAG_TRAINER_BACK_PIC_PAL + battler;
 }
 
+s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, u32 position, u32 coord)
+{
+    return sBWBattleUI_HealthboxCoords[index][position][coord];
+}
+
+// local
 static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 {
     enum BWBattleUICursorMode mode = BattleUI_GetCursorMode();

@@ -57,4 +57,9 @@ u32 BattleUI_LoadSpritePalette(enum BWBattleUISpritePaletteType, u32);
 
 u32 BattleUI_GetTrainerBackPicPaletteTag(u32);
 
+// req declarations
+enum BattleCoordTypes;
+
+s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes, u32, u32);
+
 #endif // GUARD_BW_BATTLE_UI_H
