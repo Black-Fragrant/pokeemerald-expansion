@@ -29,7 +29,10 @@
 #include "item_icon.h"
 #include "item_use.h"
 #include "test_runner.h"
-#include "bw_battle_ui.h" // bwBattleUI
+// start bwBattleUI
+#include "bw_battle_ui.h"
+#include "config/bw_battle_ui.h"
+// end bwBattleUI
 #include "constants/battle_anim.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -726,8 +729,8 @@ static void SpriteCB_HealthBar(struct Sprite *sprite)
 
     switch (sprite->hBar_Data6)
     {
-    case 0:
-        sprite->x = gSprites[healthboxSpriteId].x + 16;
+        case 0:
+        sprite->x = gSprites[healthboxSpriteId].x + 16 + (BW_BATTLE_UI_HEALTHBOX * 8); // bwBattleUI
         sprite->y = gSprites[healthboxSpriteId].y;
         break;
     case 1:
@@ -847,6 +850,16 @@ void GetBattlerHealthboxCoords(enum BattlerId battler, s16 *x, s16 *y)
 {
     enum BattlerPosition position = GetBattlerPosition(battler);
     enum BattleCoordTypes index = GetBattlerCoordsIndex(battler);
+
+    // start bwBattleUI
+    if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
+    {
+        *x = BattleUI_GetHealthboxCoords(index, position, 0);
+        *y = BattleUI_GetHealthboxCoords(index, position, 1);
+
+        return;
+    }
+    // end bwBattleUI
 
     *x = sBattlerHealthboxCoords[index][position][0];
     *y = sBattlerHealthboxCoords[index][position][1];

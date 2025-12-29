@@ -61,6 +61,22 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
         : gBattleInterface_BallDisplayPal,
 };
 
+static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
+{
+    [BATTLE_COORDS_SINGLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]   = { 152, 88 },
+        [B_POSITION_OPPONENT_LEFT] = { 32,  30 },
+    },
+    [BATTLE_COORDS_DOUBLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]    = { 159, 76 },
+        [B_POSITION_PLAYER_RIGHT]   = { 171, 101 },
+        [B_POSITION_OPPONENT_LEFT]  = { 44,  19 },
+        [B_POSITION_OPPONENT_RIGHT] = { 32,  44 },
+    },
+};
+
 static const struct CompressedSpriteSheet sBWBattleUI_CursorSheet =
 {
     .data = (const u32[])INCBIN_U32("graphics/battle_interface/bw/cursor.4bpp.smol"),
