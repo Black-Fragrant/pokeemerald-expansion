@@ -346,8 +346,8 @@
 #define METATILE_MossdeepGym_YellowArrow_Right  0x250
 
 // gTileset_Nuvema
-#define METATILE_Nuvema_House_Door        0x221
-#define METATILE_Nuvema_Lab_Door  0x24C
+#define METATILE_Nuvema_House_Door  0x221
+#define METATILE_Nuvema_Lab_Door    0x24C
 
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A

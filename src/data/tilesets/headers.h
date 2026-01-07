@@ -1110,3 +1110,14 @@ const struct Tileset gTileset_IndoorAccumula =
     .metatileAttributes = gMetatileAttributes_IndoorAccumula,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_PokeCenter =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PokeCenter,
+    .palettes = gTilesetPalettes_PokeCenter,
+    .metatiles = gMetatiles_PokeCenter,
+    .metatileAttributes = gMetatileAttributes_PokeCenter,
+    .callback = NULL,
+};
