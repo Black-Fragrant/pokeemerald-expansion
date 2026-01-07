@@ -190,20 +190,20 @@
     {
       "id": "HEAL_LOCATION_NUVEMA_TOWN",
       "map": "MAP_NUVEMA_TOWN",
-      "x": 3,
-      "y": 52
+      "x": 14,
+      "y": 16
     },
     {
       "id": "HEAL_LOCATION_ACCUMULA_TOWN",
       "map": "MAP_ACCUMULA_TOWN",
-      "x": 3,
-      "y": 52
+      "x": 34,
+      "y": 21
     },
     {
       "id": "HEAL_LOCATION_STRIATON_CITY",
       "map": "MAP_STRIATON_CITY",
-      "x": 3,
-      "y": 52
+      "x": 51,
+      "y": 14
     }
   ]
 }

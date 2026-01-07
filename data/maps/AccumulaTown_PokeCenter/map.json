@@ -9,12 +9,55 @@
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 6,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 5,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN_POKE_CENTER",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN_POKE_CENTER",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 9,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_ACCUMULA_TOWN_POKE_CENTER",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }
