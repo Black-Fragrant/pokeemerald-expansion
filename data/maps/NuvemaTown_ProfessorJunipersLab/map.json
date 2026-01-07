@@ -21,6 +21,20 @@
       "elevation": 0,
       "dest_map": "MAP_NUVEMA_TOWN",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 5,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_NUVEMA_TOWN",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 3,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_NUVEMA_TOWN",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],
