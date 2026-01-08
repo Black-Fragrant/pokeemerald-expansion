@@ -85,6 +85,29 @@ static void TilesetAnim_IndoorNuvema(u16);
 static void QueueAnimTiles_IndoorNuvema_Tank(u16);
 static void QueueAnimTiles_IndoorNuvema_Machine(u16);
 
+static void TilesetAnim_PokeCenter(u16);
+static void QueueAnimTiles_PokeCenter_Globe(u16);
+
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/0.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/1.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/2.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame3[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/3.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame4[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/4.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame5[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/5.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame6[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/6.4bpp");
+const u16 gQueueAnimTiles_PokeCenter_Globe_Frame7[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/7.4bpp");
+
+const u16 *const gQueueAnimTiles_PokeCenter_Globe[] = {
+    gQueueAnimTiles_PokeCenter_Globe_Frame0,
+    gQueueAnimTiles_PokeCenter_Globe_Frame1,
+    gQueueAnimTiles_PokeCenter_Globe_Frame2,
+    gQueueAnimTiles_PokeCenter_Globe_Frame3,
+    gQueueAnimTiles_PokeCenter_Globe_Frame4,
+    gQueueAnimTiles_PokeCenter_Globe_Frame5,
+    gQueueAnimTiles_PokeCenter_Globe_Frame6,
+    gQueueAnimTiles_PokeCenter_Globe_Frame7,
+};
+
 const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame0[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/0.4bpp");
 const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame1[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/1.4bpp");
 const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame2[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/2.4bpp");
@@ -734,6 +757,12 @@ void InitTilesetAnim_Building(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_Building;
 }
 
+static void TilesetAnim_PokeCenter(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_PokeCenter_Globe(timer / 16);
+}
+
 static void TilesetAnim_IndoorNuvema(u16 timer)
 {
     if (timer % 16 == 0)
@@ -764,6 +793,12 @@ static void TilesetAnim_Building(u16 timer)
 {
     if (timer % 8 == 0)
         QueueAnimTiles_Building_TVTurnedOn(timer / 8);
+}
+
+static void QueueAnimTiles_PokeCenter_Globe(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_PokeCenter_Globe);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_PokeCenter_Globe[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(808)), 8 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_IndoorNuvema_Tank(u16 timer)
@@ -991,6 +1026,13 @@ void InitTilesetAnim_BattleDome(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_BattleDome;
+}
+
+void InitTilesetAnim_PokeCenter(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_PokeCenter;
 }
 
 void InitTilesetAnim_IndoorNuvema(void)

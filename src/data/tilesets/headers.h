@@ -1125,5 +1125,8 @@ const struct Tileset gTileset_PokeCenter =
     .palettes = gTilesetPalettes_PokeCenter,
     .metatiles = gMetatiles_PokeCenter,
     .metatileAttributes = gMetatileAttributes_PokeCenter,
-    .callback = NULL,
+    .callback = InitTilesetAnim_PokeCenter,
+    .palettes_summer = NULL,
+    .palettes_autumn = NULL,
+    .palettes_winter = NULL,
 };
