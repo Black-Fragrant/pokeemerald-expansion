@@ -33,5 +33,6 @@ void InitTilesetAnim_BattleDome(void);
 void InitTilesetAnim_BattlePyramid(void);
 
 void InitTilesetAnim_Nuvema(void);
+void InitTilesetAnim_IndoorNuvema(void);
 
 #endif // GUARD_TILESET_ANIMS_H

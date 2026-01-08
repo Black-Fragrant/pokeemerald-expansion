@@ -81,6 +81,34 @@ static void QueueAnimTiles_EliteFour_WallLights(u16);
 static void TilesetAnim_Nuvema(u16);
 static void QueueAnimTiles_Nuvema_Windmill(u16);
 
+static void TilesetAnim_IndoorNuvema(u16);
+static void QueueAnimTiles_IndoorNuvema_Tank(u16);
+static void QueueAnimTiles_IndoorNuvema_Machine(u16);
+
+const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame0[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/0.4bpp");
+const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame1[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/1.4bpp");
+const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame2[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/2.4bpp");
+const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame3[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/3.4bpp");
+const u16 gQueueAnimTiles_IndoorNuvema_Tank_Frame4[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/tank/4.4bpp");
+
+const u16 *const gQueueAnimTiles_IndoorNuvema_Tank[] = {
+    gQueueAnimTiles_IndoorNuvema_Tank_Frame0,
+    gQueueAnimTiles_IndoorNuvema_Tank_Frame1,
+    gQueueAnimTiles_IndoorNuvema_Tank_Frame2,
+    gQueueAnimTiles_IndoorNuvema_Tank_Frame3,
+    gQueueAnimTiles_IndoorNuvema_Tank_Frame4,
+};
+
+const u16 gQueueAnimTiles_IndoorNuvema_Machine_Frame0[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/machine/0.4bpp");
+const u16 gQueueAnimTiles_IndoorNuvema_Machine_Frame1[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/machine/1.4bpp");
+const u16 gQueueAnimTiles_IndoorNuvema_Machine_Frame2[] = INCBIN_U16("data/tilesets/secondary/indoor_nuvema/anim/machine/2.4bpp");
+
+const u16 *const gQueueAnimTiles_IndoorNuvema_Machine[] = {
+    gQueueAnimTiles_IndoorNuvema_Machine_Frame0,
+    gQueueAnimTiles_IndoorNuvema_Machine_Frame1,
+    gQueueAnimTiles_IndoorNuvema_Machine_Frame2,
+};
+
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame0[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/0.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame1[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/1.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame2[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/2.4bpp");
@@ -706,6 +734,14 @@ void InitTilesetAnim_Building(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_Building;
 }
 
+static void TilesetAnim_IndoorNuvema(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_IndoorNuvema_Tank(timer / 16);
+    if (timer % 16 == 1)
+        QueueAnimTiles_IndoorNuvema_Machine(timer / 16);
+}
+
 static void TilesetAnim_Nuvema(u16 timer)
 {
     if (timer % 16 == 0)
@@ -728,6 +764,18 @@ static void TilesetAnim_Building(u16 timer)
 {
     if (timer % 8 == 0)
         QueueAnimTiles_Building_TVTurnedOn(timer / 8);
+}
+
+static void QueueAnimTiles_IndoorNuvema_Tank(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorNuvema_Tank);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorNuvema_Tank[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(918)), 6 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_IndoorNuvema_Machine(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorNuvema_Machine);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorNuvema_Machine[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(924)), 4 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
@@ -943,6 +991,13 @@ void InitTilesetAnim_BattleDome(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_BattleDome;
+}
+
+void InitTilesetAnim_IndoorNuvema(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_IndoorNuvema;
 }
 
 void InitTilesetAnim_Nuvema(void)
