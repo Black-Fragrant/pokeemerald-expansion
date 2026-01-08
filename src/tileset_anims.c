@@ -78,6 +78,21 @@ static void QueueAnimTiles_SootopolisGym_Waterfalls(u16);
 static void QueueAnimTiles_EliteFour_GroundLights(u16);
 static void QueueAnimTiles_EliteFour_WallLights(u16);
 
+static void TilesetAnim_Nuvema(u16);
+static void QueueAnimTiles_Nuvema_Windmill(u16);
+
+const u16 gQueueAnimTiles_Nuvema_Windmill_Frame0[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/0.4bpp");
+const u16 gQueueAnimTiles_Nuvema_Windmill_Frame1[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/1.4bpp");
+const u16 gQueueAnimTiles_Nuvema_Windmill_Frame2[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/2.4bpp");
+const u16 gQueueAnimTiles_Nuvema_Windmill_Frame3[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/3.4bpp");
+
+const u16 *const gQueueAnimTiles_Nuvema_Windmill[] = {
+    gQueueAnimTiles_Nuvema_Windmill_Frame0,
+    gQueueAnimTiles_Nuvema_Windmill_Frame1,
+    gQueueAnimTiles_Nuvema_Windmill_Frame2,
+    gQueueAnimTiles_Nuvema_Windmill_Frame3,
+};
+
 const u16 gTilesetAnims_General_New_Water_Frame0[] = INCBIN_U16("data/tilesets/primary/general/anim/new_water/0.4bpp");
 const u16 gTilesetAnims_General_New_Water_Frame1[] = INCBIN_U16("data/tilesets/primary/general/anim/new_water/1.4bpp");
 const u16 gTilesetAnims_General_New_Water_Frame2[] = INCBIN_U16("data/tilesets/primary/general/anim/new_water/2.4bpp");
@@ -691,6 +706,12 @@ void InitTilesetAnim_Building(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_Building;
 }
 
+static void TilesetAnim_Nuvema(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_Nuvema_Windmill(timer / 16);
+}
+
 static void TilesetAnim_General(u16 timer)
 {
     if (timer % 16 == 0)
@@ -707,6 +728,12 @@ static void TilesetAnim_Building(u16 timer)
 {
     if (timer % 8 == 0)
         QueueAnimTiles_Building_TVTurnedOn(timer / 8);
+}
+
+static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_General_New_Water(u16 timer)
@@ -916,6 +943,13 @@ void InitTilesetAnim_BattleDome(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_BattleDome;
+}
+
+void InitTilesetAnim_Nuvema(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_Nuvema;
 }
 
 static void TilesetAnim_Rustboro(u16 timer)

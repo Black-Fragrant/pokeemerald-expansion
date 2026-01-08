@@ -1064,7 +1064,10 @@ const struct Tileset gTileset_Nuvema =
     .palettes = gTilesetPalettes_Nuvema,
     .metatiles = gMetatiles_Nuvema,
     .metatileAttributes = gMetatileAttributes_Nuvema,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Nuvema,
+    .palettes_summer = NULL,
+    .palettes_autumn = NULL,
+    .palettes_winter = NULL,
 };
 
 const struct Tileset gTileset_Accumula =
