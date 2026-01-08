@@ -1100,7 +1100,10 @@ const struct Tileset gTileset_IndoorNuvema =
     .palettes = gTilesetPalettes_IndoorNuvema,
     .metatiles = gMetatiles_IndoorNuvema,
     .metatileAttributes = gMetatileAttributes_IndoorNuvema,
-    .callback = NULL,
+    .callback = InitTilesetAnim_IndoorNuvema,
+    .palettes_summer = NULL,
+    .palettes_autumn = NULL,
+    .palettes_winter = NULL,
 };
 
 const struct Tileset gTileset_IndoorAccumula =
