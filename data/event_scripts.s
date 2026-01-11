@@ -1204,3 +1204,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/AccumulaTown_TopRightBuilding/scripts.inc"
 
 	.include "data/maps/AccumulaTown_TopLeftBuilding1F/scripts.inc"
+
+	.include "data/maps/AccumulaTown_Gate/scripts.inc"
