@@ -1064,7 +1064,10 @@ const struct Tileset gTileset_Nuvema =
     .palettes = gTilesetPalettes_Nuvema,
     .metatiles = gMetatiles_Nuvema,
     .metatileAttributes = gMetatileAttributes_Nuvema,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Nuvema,
+    .palettes_summer = NULL,
+    .palettes_autumn = NULL,
+    .palettes_winter = NULL,
 };
 
 const struct Tileset gTileset_Accumula =
@@ -1097,7 +1100,10 @@ const struct Tileset gTileset_IndoorNuvema =
     .palettes = gTilesetPalettes_IndoorNuvema,
     .metatiles = gMetatiles_IndoorNuvema,
     .metatileAttributes = gMetatileAttributes_IndoorNuvema,
-    .callback = NULL,
+    .callback = InitTilesetAnim_IndoorNuvema,
+    .palettes_summer = NULL,
+    .palettes_autumn = NULL,
+    .palettes_winter = NULL,
 };
 
 const struct Tileset gTileset_IndoorAccumula =
@@ -1108,5 +1114,30 @@ const struct Tileset gTileset_IndoorAccumula =
     .palettes = gTilesetPalettes_IndoorAccumula,
     .metatiles = gMetatiles_IndoorAccumula,
     .metatileAttributes = gMetatileAttributes_IndoorAccumula,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PokeCenter =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PokeCenter,
+    .palettes = gTilesetPalettes_PokeCenter,
+    .metatiles = gMetatiles_PokeCenter,
+    .metatileAttributes = gMetatileAttributes_PokeCenter,
+    .callback = InitTilesetAnim_PokeCenter,
+    .palettes_summer = NULL,
+    .palettes_autumn = NULL,
+    .palettes_winter = NULL,
+};
+
+const struct Tileset gTileset_Gate =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Gate,
+    .palettes = gTilesetPalettes_Gate,
+    .metatiles = gMetatiles_Gate,
+    .metatileAttributes = gMetatileAttributes_Gate,
     .callback = NULL,
 };

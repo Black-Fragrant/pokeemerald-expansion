@@ -63,7 +63,8 @@
     "AccumulaTown_TopMiddleBuilding1F",
     "AccumulaTown_TopMiddleBuilding2F",
     "AccumulaTown_TopRightBuilding",
-    "AccumulaTown_PokeCenter"
+    "AccumulaTown_PokeCenter",
+    "AccumulaTown_Gate"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
