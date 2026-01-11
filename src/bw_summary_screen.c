@@ -2191,30 +2191,15 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
         break;
     case 2:
-        if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->handleDeoxys == TRUE)
-        {
-            sum->nature = GetNature(mon);
-            sum->mintNature = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
-            sum->currentHP = GetMonData(mon, MON_DATA_HP);
-            sum->maxHP = GetMonData(mon, MON_DATA_MAX_HP);
-            sum->atk = GetMonData(mon, MON_DATA_ATK);
-            sum->def = GetMonData(mon, MON_DATA_DEF);
-            sum->spatk = GetMonData(mon, MON_DATA_SPATK);
-            sum->spdef = GetMonData(mon, MON_DATA_SPDEF);
-            sum->speed = GetMonData(mon, MON_DATA_SPEED);
-        }
-        else
-        {
-            sum->nature = GetNature(mon);
-            sum->mintNature = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
-            sum->currentHP = GetMonData(mon, MON_DATA_HP);
-            sum->maxHP = GetMonData(mon, MON_DATA_MAX_HP);
-            sum->atk = GetMonData(mon, MON_DATA_ATK2);
-            sum->def = GetMonData(mon, MON_DATA_DEF2);
-            sum->spatk = GetMonData(mon, MON_DATA_SPATK2);
-            sum->spdef = GetMonData(mon, MON_DATA_SPDEF2);
-            sum->speed = GetMonData(mon, MON_DATA_SPEED2);
-        }
+        sum->nature = GetNature(mon);
+        sum->mintNature = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
+        sum->currentHP = GetMonData(mon, MON_DATA_HP);
+        sum->maxHP = GetMonData(mon, MON_DATA_MAX_HP);
+        sum->atk = GetMonData(mon, MON_DATA_ATK);
+        sum->def = GetMonData(mon, MON_DATA_DEF);
+        sum->spatk = GetMonData(mon, MON_DATA_SPATK);
+        sum->spdef = GetMonData(mon, MON_DATA_SPDEF);
+        sum->speed = GetMonData(mon, MON_DATA_SPEED);
         break;
     case 3:
         GetMonData(mon, MON_DATA_OT_NAME, sum->OTName);
@@ -2247,7 +2232,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);        
         sum->teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
         sum->isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
-        sMonSummaryScreen->relearnableMovesNum = P_SUMMARY_SCREEN_MOVE_RELEARNER ? GetNumberOfLevelUpMoves(mon) : 0;
+        sMonSummaryScreen->relearnableMovesNum = P_SUMMARY_SCREEN_MOVE_RELEARNER ? HasRelearnerLevelUpMoves(mon) : 0;
         return TRUE;
     }
     sMonSummaryScreen->switchCounter++;
@@ -5496,6 +5481,8 @@ static inline bool32 ShouldShowRename(void)
 
 static void ShowCancelOrRenamePrompt(void)
 {
+    const u8* gText_Rename = COMPOUND_STRING("Rename");
+
     const u8 *promptText = ShouldShowRename() ? gText_Rename : gText_Cancel2;
 
     int stringXPos = GetStringRightAlignXOffset(FONT_NORMAL, promptText, 62);
