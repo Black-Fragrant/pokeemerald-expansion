@@ -74,9 +74,9 @@ SINGLE_BATTLE_TEST("Rayquaza can Mega Evolve knowing Dragon Ascent")
 SINGLE_BATTLE_TEST("Mega Evolution doesn't affect turn order (Gen6)")
 {
     GIVEN {
-        WITH_CONFIG(GEN_CONFIG_MEGA_EVO_TURN_ORDER, GEN_6);
+        WITH_CONFIG(CONFIG_MEGA_EVO_TURN_ORDER, GEN_6);
         PLAYER(SPECIES_GARDEVOIR) { Item(ITEM_GARDEVOIRITE); }
-        OPPONENT(SPECIES_WOBBUFFET) {}
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
@@ -90,9 +90,9 @@ SINGLE_BATTLE_TEST("Mega Evolution doesn't affect turn order (Gen6)")
 SINGLE_BATTLE_TEST("Mega Evolution affects turn order (Gen7+)")
 {
     GIVEN {
-        WITH_CONFIG(GEN_CONFIG_MEGA_EVO_TURN_ORDER, GEN_7);
-        PLAYER(SPECIES_GARDEVOIR) { Item(ITEM_GARDEVOIRITE);}
-        OPPONENT(SPECIES_WOBBUFFET) {}
+        WITH_CONFIG(CONFIG_MEGA_EVO_TURN_ORDER, GEN_7);
+        PLAYER(SPECIES_GARDEVOIR) { Item(ITEM_GARDEVOIRITE); }
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
@@ -106,7 +106,7 @@ SINGLE_BATTLE_TEST("Mega Evolution affects turn order (Gen7+)")
 SINGLE_BATTLE_TEST("Abilities replaced by Mega Evolution do not affect turn order")
 {
     GIVEN {
-        WITH_CONFIG(GEN_CONFIG_MEGA_EVO_TURN_ORDER, GEN_7);
+        WITH_CONFIG(CONFIG_MEGA_EVO_TURN_ORDER, GEN_7);
         ASSUME(GetSpeciesAbility(SPECIES_SABLEYE_MEGA, 0) != ABILITY_STALL
             && GetSpeciesAbility(SPECIES_SABLEYE_MEGA, 1) != ABILITY_STALL);
         PLAYER(SPECIES_SABLEYE) { Item(ITEM_SABLENITE); Ability(ABILITY_STALL); Speed(105); }

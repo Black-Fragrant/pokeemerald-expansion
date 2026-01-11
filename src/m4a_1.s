@@ -157,6 +157,7 @@ lt_PCM_DMA_BUF_SIZE:      .word PCM_DMA_BUF_SIZE
 	.align	2
 	.syntax divided
 
+	/* .section .iwram.code, "ax", %progbits */
 	thumb_func_start SoundMainRAM
 SoundMainRAM:
 	/* load Reverb level and check if we need to apply it */
