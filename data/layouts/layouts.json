@@ -4620,6 +4620,16 @@
       "secondary_tileset": "gTileset_IndoorAccumula",
       "border_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding2F/border.bin",
       "blockdata_filepath": "data/layouts/AccumulaTown_TopMiddleBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ACCUMULA_TOWN_GATE",
+      "name": "AccumulaTown_Gate_Layout",
+      "width": 42,
+      "height": 41,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/AccumulaTown_Gate/border.bin",
+      "blockdata_filepath": "data/layouts/AccumulaTown_Gate/map.bin"
     }
   ]
 }
