@@ -25,15 +25,15 @@
       "x": 24,
       "y": 40,
       "elevation": 0,
-      "dest_map": "MAP_ACCUMULA_TOWN",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ACCUMULA_TOWN_GATE",
+      "dest_warp_id": "1"
     },
     {
       "x": 24,
       "y": 41,
       "elevation": 0,
-      "dest_map": "MAP_ACCUMULA_TOWN",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_ACCUMULA_TOWN_GATE",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [],
