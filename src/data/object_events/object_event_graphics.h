@@ -641,3 +641,12 @@ const u16 gObjectEventPal_Sage6[] = INCBIN_U16("graphics/object_events/palettes/
 
 const u32 gObjectEventPic_ShadowTriad[] = INCBIN_U32("graphics/object_events/pics/people/shadow_triad.4bpp");
 const u16 gObjectEventPal_ShadowTriad[] = INCBIN_U16("graphics/object_events/palettes/shadow_triad.gbapal");
+
+const u32 gObjectEventPic_GateF[] = INCBIN_U32("graphics/object_events/pics/people/gate_f.4bpp");
+const u16 gObjectEventPal_GateF[] = INCBIN_U16("graphics/object_events/palettes/gate_f.gbapal");
+
+const u32 gObjectEventPic_GateM[] = INCBIN_U32("graphics/object_events/pics/people/gate_m.4bpp");
+const u16 gObjectEventPal_GateM[] = INCBIN_U16("graphics/object_events/palettes/gate_m.gbapal");
+
+const u32 gObjectEventPic_Patratow[] = INCBIN_U32("graphics/object_events/pics/people/patratow.4bpp");
+const u16 gObjectEventPal_Patratow[] = INCBIN_U16("graphics/object_events/palettes/patratow.gbapal");

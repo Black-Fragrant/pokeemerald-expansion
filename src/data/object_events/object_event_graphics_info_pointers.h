@@ -177,6 +177,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage4;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage5;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage6;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ShadowTriad;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GateF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GateM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Patratow;
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -365,6 +368,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SAGE5] =                    &gObjectEventGraphicsInfo_Sage5,
     [OBJ_EVENT_GFX_SAGE6] =                    &gObjectEventGraphicsInfo_Sage6,
     [OBJ_EVENT_GFX_SHADOW_TRIAD] =             &gObjectEventGraphicsInfo_ShadowTriad,
+    [OBJ_EVENT_GFX_GATE_F] =                   &gObjectEventGraphicsInfo_GateF,
+    [OBJ_EVENT_GFX_GATE_M] =                   &gObjectEventGraphicsInfo_GateM,
+    [OBJ_EVENT_GFX_PATRATOW] =                 &gObjectEventGraphicsInfo_Patratow,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
