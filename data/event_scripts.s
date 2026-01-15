@@ -1207,3 +1207,21 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/AccumulaTown_TopLeftBuilding1F/scripts.inc"
 
 	.include "data/maps/AccumulaTown_Gate/scripts.inc"
+
+	.include "data/maps/StriatonCity_BottomLeftBuilding1F/scripts.inc"
+
+	.include "data/maps/StriatonCity_PokeCenter/scripts.inc"
+
+	.include "data/maps/StriatonCity_BottomRightBuilding2F/scripts.inc"
+
+	.include "data/maps/StriatonCity_TrainerSchool/scripts.inc"
+
+	.include "data/maps/StriatonCity_TopRightBuilding2F/scripts.inc"
+
+	.include "data/maps/StriatonCity_Gym/scripts.inc"
+
+	.include "data/maps/StriatonCity_BottomLeftBuilding2F/scripts.inc"
+
+	.include "data/maps/StriatonCity_BottomRightBuilding1F/scripts.inc"
+
+	.include "data/maps/StriatonCity_TopRightBuilding1F/scripts.inc"
