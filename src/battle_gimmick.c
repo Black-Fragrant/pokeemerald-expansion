@@ -68,7 +68,7 @@ bool32 ShouldTrainerBattlerUseGimmick(u32 battler, enum Gimmick gimmick)
     // There are no trainer party settings in battles, but the AI needs to know which gimmick to use.
     if (TESTING)
     {
-        return gimmick == TestRunner_Battle_GetChosenGimmick(battler, gBattlerPartyIndexes[battler]);
+        return gimmick == TestRunner_Battle_GetChosenGimmick(GetBattleTrainer(battler), gBattlerPartyIndexes[battler]);
     }
     // The player can bypass these checks because they can choose through the controller.
     else if (IsOnPlayerSide(battler)
@@ -380,7 +380,8 @@ static const s8 sIndicatorPositions[][2] =
 
 void CreateIndicatorSprite(u32 battler)
 {
-    u32 position, spriteId;
+    enum BattlerPosition position;
+    u32 spriteId;
     s16 xHealthbox = 0, x = 0, y = 0;
 
     position = GetBattlerPosition(battler);
