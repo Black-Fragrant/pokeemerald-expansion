@@ -2774,6 +2774,8 @@ static void FreeFinishedTextPrinters(void)
 void DeactivateSingleTextPrinter(u32 id, enum TextPrinterType type)
 {
     struct TextPrinter *currentPrinter = sFirstTextPrinter;
+    bool32 foundPrinter = FALSE;
+    //  This loop cannot exit early because a single window/sprite group can have multiple printers attached to it
     while (currentPrinter != NULL)
     {
         switch (type)
@@ -2783,6 +2785,7 @@ void DeactivateSingleTextPrinter(u32 id, enum TextPrinterType type)
             {
                 currentPrinter->isInUse = FALSE;
                 currentPrinter = NULL;
+                foundPrinter = TRUE;
             }
             else
             {
@@ -2790,10 +2793,11 @@ void DeactivateSingleTextPrinter(u32 id, enum TextPrinterType type)
             }
             break;
         case SPRITE_TEXT_PRINTER:
-            if (currentPrinter->printerTemplate.type == SPRITE_TEXT_PRINTER && currentPrinter->printerTemplate.spriteId == id)
+            if (currentPrinter->printerTemplate.type == SPRITE_TEXT_PRINTER && currentPrinter->printerTemplate.firstSprite == id)
             {
                 currentPrinter->isInUse = FALSE;
                 currentPrinter = NULL;
+                foundPrinter = TRUE;
             }
             else
             {
@@ -2803,5 +2807,6 @@ void DeactivateSingleTextPrinter(u32 id, enum TextPrinterType type)
         }
     }
 
-    FreeFinishedTextPrinters();
+    if (foundPrinter)
+        FreeFinishedTextPrinters();
 }
