@@ -766,11 +766,11 @@ static const struct SpriteFrameImage sPicTable_KeyboardPlayer[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_KindergartenerFemale[] = {
-    overworld_ascending_frames(gObjectEventPic_KindergartenerFemale, 2, 2),
+    overworld_ascending_frames(gObjectEventPic_KindergartenerFemale, 2, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_KindergartenerMale[] = {
-    overworld_ascending_frames(gObjectEventPic_KindergartenerMale, 2, 2),
+    overworld_ascending_frames(gObjectEventPic_KindergartenerMale, 2, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Looker[] = {
