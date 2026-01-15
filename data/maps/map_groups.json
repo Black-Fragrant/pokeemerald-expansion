@@ -3,6 +3,7 @@
     "gMapGroup_BWTownsAndRoutes",
     "gMapGroup_IndoorNuvema",
     "gMapGroup_IndoorAccumula",
+    "gMapGroup_IndoorStriaton",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -65,6 +66,17 @@
     "AccumulaTown_TopRightBuilding",
     "AccumulaTown_PokeCenter",
     "AccumulaTown_Gate"
+  ],
+  "gMapGroup_IndoorStriaton": [
+    "StriatonCity_BottomLeftBuilding1F",
+    "StriatonCity_BottomLeftBuilding2F",
+    "StriatonCity_TopRightBuilding1F",
+    "StriatonCity_TopRightBuilding2F",
+    "StriatonCity_BottomRightBuilding1F",
+    "StriatonCity_BottomRightBuilding2F",
+    "StriatonCity_TrainerSchool",
+    "StriatonCity_PokeCenter",
+    "StriatonCity_Gym"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

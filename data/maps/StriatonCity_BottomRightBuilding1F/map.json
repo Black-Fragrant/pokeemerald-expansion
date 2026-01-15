@@ -1,0 +1,20 @@
+{
+  "id": "MAP_STRIATON_CITY_BOTTOM_RIGHT_BUILDING1F",
+  "name": "StriatonCity_BottomRightBuilding1F",
+  "layout": "LAYOUT_STRIATON_CITY_BOTTOM_RIGHT_BUILDING1F",
+  "music": "MUS_BW_STRIATON_CITY",
+  "region_map_section": "MAPSEC_STRIATON_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
+}

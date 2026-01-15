@@ -4630,6 +4630,96 @@
       "secondary_tileset": "gTileset_Gate",
       "border_filepath": "data/layouts/AccumulaTown_Gate/border.bin",
       "blockdata_filepath": "data/layouts/AccumulaTown_Gate/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_BOTTOM_LEFT_BUILDING1F",
+      "name": "StriatonCity_BottomLeftBuilding1F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_BottomLeftBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_BottomLeftBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_BOTTOM_RIGHT_BUILDING2F",
+      "name": "StriatonCity_BottomRightBuilding2F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_BottomRightBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_BottomRightBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_BOTTOM_LEFT_BUILDING2F",
+      "name": "StriatonCity_BottomLeftBuilding2F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_BottomLeftBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_BottomLeftBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_BOTTOM_RIGHT_BUILDING1F",
+      "name": "StriatonCity_BottomRightBuilding1F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_BottomRightBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_BottomRightBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_GYM",
+      "name": "StriatonCity_Gym_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_TRAINER_SCHOOL",
+      "name": "StriatonCity_TrainerSchool_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_TrainerSchool/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_TrainerSchool/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_POKE_CENTER",
+      "name": "StriatonCity_PokeCenter_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokeCenter",
+      "border_filepath": "data/layouts/StriatonCity_PokeCenter/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_PokeCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_TOP_RIGHT_BUILDING1F",
+      "name": "StriatonCity_TopRightBuilding1F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_TopRightBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_TopRightBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRIATON_CITY_TOP_RIGHT_BUILDING2F",
+      "name": "StriatonCity_TopRightBuilding2F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/StriatonCity_TopRightBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/StriatonCity_TopRightBuilding2F/map.bin"
     }
   ]
 }
