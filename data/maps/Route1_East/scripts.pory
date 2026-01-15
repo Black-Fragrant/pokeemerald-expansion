@@ -12,3 +12,47 @@ script Route1_East_EventScript_TrainerTips {
 			"Chances are they will have something\n"
 			"useful to tell you.", MSGBOX_SIGN)
 }
+
+script Route1_East_EventScript_GreenShirtGuy
+{
+	msgbox("Wild Pokémon are hiding in the tall grass.\n"
+			"What does this mean for you?\p"
+			"It means when you want to battle\n"
+			"or capture wild Pokémon,\l"
+			"you should go walk in the tall grass.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route1_East_EventScript_Girl
+{   
+	lock
+	faceplayer
+	goto_if_set (FLAG_RECEIVED_POTION_ROUTE1_EAST Route1_East_EventScript_Girl_AlreadyGivenPotion)
+	msgbox("Is your Pokémon's HP all right?\p"
+			"When your Pokémon's HP decreases while\n"
+			"you're on the road, it can be\l"
+			"a big problem, so I'll give you this.\p"
+			"Put it in your Bag's Medicine Case.", MSGBOX_DEFAULT)
+	giveitem(ITEM_POTION, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Route1_East_EventScript_BagIsFull)
+	goto (Route1_East_EventScript_Girl_AlreadyGivenPotion)
+	end
+}
+
+script Route1_East_EventScript_Girl_AlreadyGivenPotion
+{
+	msgbox("When your Pokémon's HP decreases,\n"
+			"they no longer have the energy to fight.\p"
+			"So, don't push your Pokémon too hard,\n"
+			"and let them rest often.", MSGBOX_DEFAULT)
+	setflag (FLAG_RECEIVED_POTION_ROUTE1_EAST)
+	release
+	end
+}
+
+script Route1_East_EventScript_BagIsFull
+{
+	msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release
+	end
+}

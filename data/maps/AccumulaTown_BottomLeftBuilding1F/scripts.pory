@@ -1,1 +1,27 @@
 mapscripts AccumulaTown_BottomLeftBuilding1F_MapScripts {}
+
+script AccumulaTown_BottomLeftBuilding1F_EventScript_Kid
+{
+    msgbox("Oh! Your Pokémon!\n"
+       "You're so lucky. I envy you.\l"
+       "I want to be a Trainer, too!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_BottomLeftBuilding1F_EventScript_Girl
+{
+    msgbox("Trainer, how many Poke Balls do\n"
+       "you have?\p"
+       "If you think you don't have enough,\n"
+       "it's a good idea to buy some\l"
+       "at a shop in a Pokémon Center!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_BottomLeftBuilding1F_EventScript_Mother
+{
+    msgbox("It is important to train your Pokémon\n"
+       "in battle, but when their HP goes down,\l"
+       "take them to a Pokémon Center.", MSGBOX_NPC, TRUE)
+	end
+}

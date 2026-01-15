@@ -282,10 +282,10 @@ $(OBJEVENTGFXDIR)/people/scientist_m.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/scientist_f.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/conceirge_male.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/concierge_male.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/conceirge_female.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/concierge_female.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/mart_clerk.4bpp: %.4bpp: %.png

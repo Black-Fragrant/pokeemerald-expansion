@@ -19,7 +19,78 @@
       "direction": "down"
     }
   ],
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_ACCUMULA_GIRL_LEFT",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "x": 11,
+      "y": 30,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_Girl_Left",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_GIRL_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "x": 36,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_Girl_Right",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_CHEERLEADER_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER_MAN",
+      "x": 36,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_CheerleaderMan",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_GRANDMA",
+      "graphics_id": "OBJ_EVENT_GFX_GRANDMA",
+      "x": 17,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_Grandma",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_GRANDPA",
+      "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
+      "x": 21,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_Grandpa",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 7,
