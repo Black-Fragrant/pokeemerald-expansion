@@ -177,6 +177,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage4;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage5;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sage6;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ShadowTriad;
+
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
@@ -332,6 +333,38 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BIANCA] =                   &gObjectEventGraphicsInfo_Bianca,
     [OBJ_EVENT_GFX_JUNIPER] =                  &gObjectEventGraphicsInfo_Juniper,
     [OBJ_EVENT_GFX_GIFT] =                     &gObjectEventGraphicsInfo_Gift,
+    [OBJ_EVENT_GFX_ACCORDION_PLAYER] =         &gObjectEventGraphicsInfo_AccordionPlayer,
+    [OBJ_EVENT_GFX_ALDER] =                    &gObjectEventGraphicsInfo_Alder,
+    [OBJ_EVENT_GFX_ANTHEA] =                   &gObjectEventGraphicsInfo_Anthea,
+    [OBJ_EVENT_GFX_BASKETBALL_PLAYER] =        &gObjectEventGraphicsInfo_BasketballPlayer,
+    [OBJ_EVENT_GFX_CHILI] =                    &gObjectEventGraphicsInfo_Chili,
+    [OBJ_EVENT_GFX_CONCORDIA] =                &gObjectEventGraphicsInfo_Concordia,
+    [OBJ_EVENT_GFX_CRESS] =                    &gObjectEventGraphicsInfo_Cress,
+    [OBJ_EVENT_GFX_CYNTHIA] =                  &gObjectEventGraphicsInfo_Cynthia,
+    [OBJ_EVENT_GFX_EMMET] =                    &gObjectEventGraphicsInfo_Emmet,
+    [OBJ_EVENT_GFX_FLUTE_PLAYER] =             &gObjectEventGraphicsInfo_FlutePlayer,
+    [OBJ_EVENT_GFX_GHETSIS] =                  &gObjectEventGraphicsInfo_Ghetsis,
+    [OBJ_EVENT_GFX_GYM_RECEPTIONIST] =         &gObjectEventGraphicsInfo_GymReceptionist,
+    [OBJ_EVENT_GFX_HARMONICA_PLAYER] =         &gObjectEventGraphicsInfo_HarmonicaPlayer,
+    [OBJ_EVENT_GFX_INGO] =                     &gObjectEventGraphicsInfo_Ingo,
+    [OBJ_EVENT_GFX_KEYBOARD_PLAYER] =          &gObjectEventGraphicsInfo_KeyboardPlayer,
+    [OBJ_EVENT_GFX_KINDERGARTENER_FEMALE] =    &gObjectEventGraphicsInfo_KindergartenerFemale,
+    [OBJ_EVENT_GFX_KINDERGARTENER_MALE] =      &gObjectEventGraphicsInfo_KindergartenerMale,
+    [OBJ_EVENT_GFX_LOOKER] =                   &gObjectEventGraphicsInfo_Looker,
+    [OBJ_EVENT_GFX_MINE_WORKER] =              &gObjectEventGraphicsInfo_MineWorker,
+    [OBJ_EVENT_GFX_MOTHER] =                   &gObjectEventGraphicsInfo_Mother,
+    [OBJ_EVENT_GFX_N] =                        &gObjectEventGraphicsInfo_N,
+    [OBJ_EVENT_GFX_PAPA_JUNIPER] =             &gObjectEventGraphicsInfo_PapaJuniper,
+    [OBJ_EVENT_GFX_PIPA_PLAYER] =              &gObjectEventGraphicsInfo_PipaPlayer,
+    [OBJ_EVENT_GFX_PSYCHIC_FEMALE] =           &gObjectEventGraphicsInfo_PsychicFemale,
+    [OBJ_EVENT_GFX_PSYCHIC_MALE] =             &gObjectEventGraphicsInfo_PsychicMale,
+    [OBJ_EVENT_GFX_SAGE1] =                    &gObjectEventGraphicsInfo_Sage1,
+    [OBJ_EVENT_GFX_SAGE2] =                    &gObjectEventGraphicsInfo_Sage2,
+    [OBJ_EVENT_GFX_SAGE3] =                    &gObjectEventGraphicsInfo_Sage3,
+    [OBJ_EVENT_GFX_SAGE4] =                    &gObjectEventGraphicsInfo_Sage4,
+    [OBJ_EVENT_GFX_SAGE5] =                    &gObjectEventGraphicsInfo_Sage5,
+    [OBJ_EVENT_GFX_SAGE6] =                    &gObjectEventGraphicsInfo_Sage6,
+    [OBJ_EVENT_GFX_SHADOW_TRIAD] =             &gObjectEventGraphicsInfo_ShadowTriad,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,

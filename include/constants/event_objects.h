@@ -169,7 +169,7 @@
 #define OBJ_EVENT_GFX_KINDERGARTENER_FEMALE       163
 #define OBJ_EVENT_GFX_KINDERGARTENER_MALE         164
 #define OBJ_EVENT_GFX_LOOKER                      165
-#define OBJ_EVENT_GFX_MINEWORKER                  166
+#define OBJ_EVENT_GFX_MINE_WORKER                 166
 #define OBJ_EVENT_GFX_MOTHER                      167
 #define OBJ_EVENT_GFX_N                           168
 #define OBJ_EVENT_GFX_PAPA_JUNIPER                169
