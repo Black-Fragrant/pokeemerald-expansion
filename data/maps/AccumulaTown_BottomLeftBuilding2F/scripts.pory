@@ -1,1 +1,21 @@
 mapscripts AccumulaTown_BottomLeftBuilding2F_MapScripts {}
+
+script AccumulaTown_BottomLeftBuilding2F_EventScript_Guy
+{
+    msgbox("We've just gotten married. Men and women\n"
+       "are so different, aren't they?\p"
+       "But I don't see much difference between\n"
+       "male and female Pokémon...", MSGBOX_NPC, TRUE)
+
+	end
+}
+
+script AccumulaTown_BottomLeftBuilding2F_EventScript_Girl
+{
+    msgbox("Someone said that because there are\n"
+       "different ideas, disputes will arise...\p"
+       "Someone else said that because there are\n"
+       "different ideas, the world will expand...\p"
+       "I guess they're both right.", MSGBOX_NPC, TRUE)
+	end
+}

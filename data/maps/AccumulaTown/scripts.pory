@@ -4,3 +4,48 @@ script AccumulaTown_EventScript_SignPost {
 	msgbox("Accumula Town\n"
 			"The Fast-Growing Town", MSGBOX_SIGN)
 }
+
+script AccumulaTown_EventScript_Girl_Left
+{
+	msgbox("What's this?\p"
+			"You and your Pokémon\n"
+			"somehow resemble each other!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_Girl_Right
+{
+	msgbox("Some Wild Pokémon jump out of the\n"
+			"tall grass and attack...\p"
+			"But you can make friends with those\n"
+			"Pokémon if you reach out to them!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_CheerleaderMan
+{
+	msgbox("Beautiful scenery and relaxing sounds...\p"
+			"Oh, man. I sure do loooove this place.\n"
+			"Sure makes me feel happy.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_Grandma
+{
+	msgbox("Pokémon do everything in\n"
+			"their power for people.\p"
+			"People treat these Pokémon\n"
+			"with love and affection.\p"
+			"That's what I think our\n"
+			"mutual relationship is.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_Grandpa
+{
+	msgbox("Let me give you the benefit of\n"
+			"my experience.\p"
+			"You listening? The number of Pokémon\n"
+			"you can take with you at one time is six!", MSGBOX_NPC, TRUE)
+	end
+}
