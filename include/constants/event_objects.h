@@ -153,15 +153,45 @@
 #define OBJ_EVENT_GFX_BIANCA                      147
 #define OBJ_EVENT_GFX_JUNIPER                     148
 #define OBJ_EVENT_GFX_GIFT                        149
-#define OBJ_EVENT_GFX_POKE_BALL                   150
-#define OBJ_EVENT_GFX_OW_MON                      151
-#define OBJ_EVENT_GFX_LIGHT_SPRITE                152
-#define OBJ_EVENT_GFX_APRICORN_TREE               153
+#define OBJ_EVENT_GFX_ACCORDION_PLAYER            150
+#define OBJ_EVENT_GFX_ANTHEA                      151
+#define OBJ_EVENT_GFX_BASKETBALL_PLAYER           152
+#define OBJ_EVENT_GFX_CHILI                       153
+#define OBJ_EVENT_GFX_CONCORDIA                   154
+#define OBJ_EVENT_GFX_CRESS                       155
+#define OBJ_EVENT_GFX_CYNTHIA                     156
+#define OBJ_EVENT_GFX_EMMET                       157
+#define OBJ_EVENT_GFX_FLUTE_PLAYER                158
+#define OBJ_EVENT_GFX_GYM_RECEPTIONIST            159
+#define OBJ_EVENT_GFX_HARMONICA_PLAYER            160
+#define OBJ_EVENT_GFX_INGO                        161
+#define OBJ_EVENT_GFX_KEYBOARD_PLAYER             162
+#define OBJ_EVENT_GFX_KINDERGARTENER_FEMALE       163
+#define OBJ_EVENT_GFX_KINDERGARTENER_MALE         164
+#define OBJ_EVENT_GFX_LOOKER                      165
+#define OBJ_EVENT_GFX_MINEWORKER                  166
+#define OBJ_EVENT_GFX_MOTHER                      167
+#define OBJ_EVENT_GFX_N                           168
+#define OBJ_EVENT_GFX_PAPA_JUNIPER                169
+#define OBJ_EVENT_GFX_PIPA_PLAYER                 170
+#define OBJ_EVENT_GFX_PSYCHIC_FEMALE              171
+#define OBJ_EVENT_GFX_PSYCHIC_MALE                172
+#define OBJ_EVENT_GFX_SAGE1                       173
+#define OBJ_EVENT_GFX_SAGE2                       174
+#define OBJ_EVENT_GFX_SAGE3                       175
+#define OBJ_EVENT_GFX_SAGE4                       176
+#define OBJ_EVENT_GFX_SAGE5                       177
+#define OBJ_EVENT_GFX_SAGE6                       178
+#define OBJ_EVENT_GFX_SHADOW_TRIAD                179
+#define OBJ_EVENT_GFX_POKE_BALL                   180
+#define OBJ_EVENT_GFX_OW_MON                      181
+#define OBJ_EVENT_GFX_LIGHT_SPRITE                182
+#define OBJ_EVENT_GFX_APRICORN_TREE               183
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                         154
+#define NUM_OBJ_EVENT_GFX                         184
 
 
 // These are dynamic object gfx ids.
@@ -378,6 +408,36 @@
 #define OBJ_EVENT_PAL_TAG_BIANCA                  0x1184
 #define OBJ_EVENT_PAL_TAG_JUNIPER                 0x1185
 #define OBJ_EVENT_PAL_TAG_GIFT                    0x1186
+#define OBJ_EVENT_PAL_TAG_ACCORDION_PLAYER        0x1187
+#define OBJ_EVENT_PAL_TAG_ANTHEA                  0x1188
+#define OBJ_EVENT_PAL_TAG_BASKETBALL_PLAYER       0x1189
+#define OBJ_EVENT_PAL_TAG_CHILI                   0x118A
+#define OBJ_EVENT_PAL_TAG_CONCORDIA               0x118B
+#define OBJ_EVENT_PAL_TAG_CRESS                   0x118C
+#define OBJ_EVENT_PAL_TAG_CYNTHIA                 0x118D
+#define OBJ_EVENT_PAL_TAG_EMMET                   0x118E
+#define OBJ_EVENT_PAL_TAG_FLUTE_PLAYER            0x118F
+#define OBJ_EVENT_PAL_TAG_GYM_RECEPTIONIST        0x1190
+#define OBJ_EVENT_PAL_TAG_HARMONICA_PLAYER        0x1191
+#define OBJ_EVENT_PAL_TAG_INGO                    0x1192
+#define OBJ_EVENT_PAL_TAG_KEYBOARD_PLAYER         0x1193
+#define OBJ_EVENT_PAL_TAG_KINDERGARTENER_FEMALE   0x1194
+#define OBJ_EVENT_PAL_TAG_KINDERGARTENER_MALE     0x1195
+#define OBJ_EVENT_PAL_TAG_LOOKER                  0x1196
+#define OBJ_EVENT_PAL_TAG_MINE_WORKER             0x1197
+#define OBJ_EVENT_PAL_TAG_MOTHER                  0x1198
+#define OBJ_EVENT_PAL_TAG_N                       0x1199
+#define OBJ_EVENT_PAL_TAG_PAPA_JUNIPER            0x119A
+#define OBJ_EVENT_PAL_TAG_PIPA_PLAYER             0x119B
+#define OBJ_EVENT_PAL_TAG_PSYCHIC_FEMALE          0x119C
+#define OBJ_EVENT_PAL_TAG_PSYCHIC_MALE            0x119D
+#define OBJ_EVENT_PAL_TAG_SAGE1                   0x119E
+#define OBJ_EVENT_PAL_TAG_SAGE2                   0x119F
+#define OBJ_EVENT_PAL_TAG_SAGE3                   0x11A0
+#define OBJ_EVENT_PAL_TAG_SAGE4                   0x11A1
+#define OBJ_EVENT_PAL_TAG_SAGE5                   0x11A2
+#define OBJ_EVENT_PAL_TAG_SAGE6                   0x11A3
+#define OBJ_EVENT_PAL_TAG_SHADOW_TRIAD            0x11A4
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
