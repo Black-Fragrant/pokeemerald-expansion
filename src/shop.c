@@ -391,7 +391,7 @@ static void SetShopItemsForSale(const u16 *items)
     }
 
     if (items == NULL)
-        sMartInfo.itemList = sShopInventories[badgeCount];
+        sMartInfo.itemList = gShopInventories[badgeCount];
     else
         sMartInfo.itemList = items;
 
