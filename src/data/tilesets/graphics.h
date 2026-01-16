@@ -1767,3 +1767,22 @@ const u16 gTilesetPalettes_Gate[][16] =
 };
 
 const u32 gTilesetTiles_Gate[] = INCBIN_U32("data/tilesets/secondary/gate/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_IndoorStriaton[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_striaton/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_IndoorStriaton[] = INCBIN_U32("data/tilesets/secondary/indoor_striaton/tiles.4bpp.lz");
