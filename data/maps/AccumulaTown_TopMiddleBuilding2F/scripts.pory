@@ -1,1 +1,19 @@
 mapscripts AccumulaTown_TopMiddleBuilding2F_MapScripts {}
+
+script AccumulaTown_TopMiddleBuilding2F_EventScript_Guy
+{
+msgbox("Wow, you have that great Bag that can\n"
+       "store anything!\p"
+       "Why don't you buy a lot of Potions\n"
+       "and put them in your Bag?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_TopMiddleBuilding2F_EventScript_Girl
+{
+msgbox("Weak Pokémon, strong Pokémon,\n"
+       "Cool Pokémon, cute Pokémon...\p"
+       "Many Pokémon look forward\n"
+       "to meeting you!", MSGBOX_NPC, TRUE)
+	end
+}

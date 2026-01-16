@@ -1,1 +1,52 @@
 mapscripts AccumulaTown_PokeCenter_MapScripts {}
+
+script AccumulaTown_PokeCenter_EventScript_Girl
+{
+    msgbox("Be sure to save what's happened up\n"
+       "to this point before you forget.\l"
+       "Then you can take a break.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Clerk1
+{
+    lock
+    faceplayer
+    message("Hello.\p"
+        "Welcome!\n"
+        "May I help you?")
+    waitmessage
+    pokemart(Mart1)
+    msgbox("Please come again!", MSGBOX_DEFAULT)
+    release
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Clerk2
+{
+    lock
+    faceplayer
+    message("Hello.\p"
+        "Welcome!\n"
+        "May I help you?")
+    waitmessage
+    pokemart(Mart2)
+    msgbox("Please come again!", MSGBOX_DEFAULT)
+    release
+	end
+}
+
+raw `
+
+.align 2
+Mart1::
+    .2byte ITEM_ORANGE_MAIL
+    .2byte ITEM_GLITTER_MAIL
+    .2byte ITEM_FAB_MAIL
+	pokemartlistend
+
+.align 2
+Mart2::
+    .2byte ITEM_POKE_BALL
+    .2byte ITEM_POTION
+	pokemartlistend
