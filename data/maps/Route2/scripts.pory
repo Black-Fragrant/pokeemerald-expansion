@@ -1,11 +1,13 @@
 mapscripts Route2_MapScripts {}
 
-script Route2_EventScript_SignPost {
+script Route2_EventScript_SignPost
+{
 	msgbox("Route 2", MSGBOX_SIGN)
 	end
 }
 
-script Route2_EventScript_TrainerTips {
+script Route2_EventScript_TrainerTips
+{
 	msgbox("Trainer Tips!\p"
 			"Pokémon that participate in battle\n"
 			"receive Exp. Points.\p"

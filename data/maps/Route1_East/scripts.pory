@@ -1,11 +1,13 @@
-mapscripts Route1_East_MapScripts{}
+mapscripts Route1_East_MapScripts {}
 
-script Route1_East_EventScript_SignPost {
+script Route1_East_EventScript_SignPost
+{
 	msgbox("Route 1", MSGBOX_SIGN)
 	end
 }
 
-script Route1_East_EventScript_TrainerTips {
+script Route1_East_EventScript_TrainerTips
+{
 	msgbox("Trainer Tips!\p"
 			"Make an effort to talk to all the\n"
 			"people you meet during your journey!\p"
@@ -24,10 +26,10 @@ script Route1_East_EventScript_GreenShirtGuy
 }
 
 script Route1_East_EventScript_Girl
-{   
+{
 	lock
 	faceplayer
-	goto_if_set (FLAG_RECEIVED_POTION_ROUTE1_EAST Route1_East_EventScript_Girl_AlreadyGivenPotion)
+	goto_if_set(FLAG_RECEIVED_POTION_ROUTE1_EAST, Route1_East_EventScript_Girl_AlreadyGivenPotion)
 	msgbox("Is your Pokémon's HP all right?\p"
 			"When your Pokémon's HP decreases while\n"
 			"you're on the road, it can be\l"
@@ -35,7 +37,7 @@ script Route1_East_EventScript_Girl
 			"Put it in your Bag's Medicine Case.", MSGBOX_DEFAULT)
 	giveitem(ITEM_POTION, 1)
 	goto_if_eq (VAR_RESULT, FALSE, Route1_East_EventScript_BagIsFull)
-	goto (Route1_East_EventScript_Girl_AlreadyGivenPotion)
+	goto(Route1_East_EventScript_Girl_AlreadyGivenPotion)
 	end
 }
 
