@@ -644,3 +644,6 @@ const u16 gObjectEventPal_GateM[] = INCBIN_U16("graphics/object_events/palettes/
 
 const u32 gObjectEventPic_Patratow[] = INCBIN_U32("graphics/object_events/pics/people/patratow.4bpp");
 const u16 gObjectEventPal_Patratow[] = INCBIN_U16("graphics/object_events/palettes/patratow.gbapal");
+
+const u32 gObjectEventPic_Minccinoow[] = INCBIN_U32("graphics/object_events/pics/people/minccinoow.4bpp");
+const u16 gObjectEventPal_Minccinoow[] = INCBIN_U16("graphics/object_events/palettes/minccinoow.gbapal");

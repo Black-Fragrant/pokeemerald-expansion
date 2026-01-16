@@ -836,3 +836,7 @@ static const struct SpriteFrameImage sPicTable_GateM[] = {
 static const struct SpriteFrameImage sPicTable_Patratow[] = {
     overworld_ascending_frames(gObjectEventPic_Patratow, 2, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_Minccinoow[] = {
+    overworld_ascending_frames(gObjectEventPic_Minccinoow, 2, 4),
+};
