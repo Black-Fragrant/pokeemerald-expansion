@@ -1,6 +1,7 @@
-mapscripts Route1_West_MapScripts{}
+mapscripts Route1_West_MapScripts {}
 
-script Route1_West_EventScript_SignPost {
+script Route1_West_EventScript_SignPost
+{
 	msgbox("Route 1", MSGBOX_SIGN)
 	end
 }

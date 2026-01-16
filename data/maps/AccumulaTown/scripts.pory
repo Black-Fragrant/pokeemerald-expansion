@@ -1,6 +1,7 @@
 mapscripts AccumulaTown_MapScripts {}
 
-script AccumulaTown_EventScript_SignPost {
+script AccumulaTown_EventScript_SignPost
+{
 	msgbox("Accumula Town\n"
 			"The Fast-Growing Town", MSGBOX_SIGN)
 }
@@ -16,7 +17,7 @@ script AccumulaTown_EventScript_Girl_Left
 script AccumulaTown_EventScript_Girl_Right
 {
 	msgbox("Some Wild Pokémon jump out of the\n"
-			"tall grass and attack...\p"
+			"tall grass and attack…\p"
 			"But you can make friends with those\n"
 			"Pokémon if you reach out to them!", MSGBOX_NPC, TRUE)
 	end
@@ -24,7 +25,7 @@ script AccumulaTown_EventScript_Girl_Right
 
 script AccumulaTown_EventScript_CheerleaderMan
 {
-	msgbox("Beautiful scenery and relaxing sounds...\p"
+	msgbox("Beautiful scenery and relaxing sounds…\p"
 			"Oh, man. I sure do loooove this place.\n"
 			"Sure makes me feel happy.", MSGBOX_NPC, TRUE)
 	end

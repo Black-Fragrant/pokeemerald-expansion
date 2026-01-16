@@ -1,17 +1,20 @@
 mapscripts StriatonCity_MapScripts {}
 
-script StriatonCity_EventScript_SignPost {
+script StriatonCity_EventScript_SignPost
+{
 	msgbox("Striaton City\n"
 			"Three Stand Together as One!", MSGBOX_SIGN)
 }
 
-script StriatonCity_EventScript_StriatonCityGymSign {
-    msgbox("Striaton City Pokémon Gym\n"
-            "Leader: ---\p"
-            "Triple Trouble!", MSGBOX_SIGN)
+script StriatonCity_EventScript_StriatonCityGymSign
+{
+	msgbox("Striaton City Pokémon Gym\n"
+			"Leader: ---\p"
+			"Triple Trouble!", MSGBOX_SIGN)
 }
 
-script StriatonCity_EventScript_TrainersSchoolSign {
-    msgbox("Trainers' School\n"
-            "Brush up on Pokémon knowledge!", MSGBOX_SIGN)
+script StriatonCity_EventScript_TrainersSchoolSign
+{
+	msgbox("Trainers' School\n"
+			"Brush up on Pokémon knowledge!", MSGBOX_SIGN)
 }

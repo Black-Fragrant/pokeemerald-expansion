@@ -2,11 +2,11 @@ mapscripts AccumulaTown_TopLeftBuilding2F_MapScripts {}
 
 script AccumulaTown_TopLeftBuilding2F_EventScript_Patrat
 {   
-    lock
-    faceplayer
-    waitse
-	playmoncry (SPECIES_PATRAT, CRY_MODE_NORMAL)
-    msgbox("Skree skree!", MSGBOX_DEFAULT)
+	lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
+	msgbox("Skree skree!", MSGBOX_DEFAULT)
 	waitmoncry
 	release
 	end
@@ -16,9 +16,9 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Guy
 {
 	lock
 	faceplayer
-	goto_if_set (FLAG_RECEIVED_POKEBALL_ACCUMULA AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball)
+	goto_if_set(FLAG_RECEIVED_POKEBALL_ACCUMULA, AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball)
 	msgbox("This is a Poké Ball I got in the past.\n" 
-            "I'm going to give it to you.", MSGBOX_DEFAULT)
+			"I'm going to give it to you.", MSGBOX_DEFAULT)
 	giveitem(ITEM_POKE_BALL, 1)
 	goto_if_eq (VAR_RESULT, FALSE, AccumulaTown_TopLeftBuilding2F_EventScript_BagIsFull)
 	goto (AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball)
@@ -27,28 +27,28 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Guy
 
 script AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball
 {
-msgbox("You can't catch a Pokémon\n"
-        "if you don't have a Poké Ball!\p"
-        "There are many types of Poké Balls,\n"
-        "so use the best one for the job.", MSGBOX_DEFAULT)
-	setflag (FLAG_RECEIVED_POKEBALL_ACCUMULA)
+	msgbox("You can't catch a Pokémon\n"
+			"if you don't have a Poké Ball!\p"
+			"There are many types of Poké Balls,\n"
+			"so use the best one for the job.", MSGBOX_DEFAULT)
+	setflag(FLAG_RECEIVED_POKEBALL_ACCUMULA)
 	release
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_EventScript_BagIsFull
 {
-	msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
 	release
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_EventScript_Girl
 {
-    lock
-    faceplayer
+	lock
+	faceplayer
 	msgbox("Hi, hi!\n"
-            "Let's play Pokémon rock-paper-scissors!", MSGBOX_YESNO)
+	        "Let's play Pokémon rock-paper-scissors!", MSGBOX_YESNO)
 	goto_if_eq (VAR_RESULT, YES, AccumulaTown_TopLeftBuilding2F_RPS_Game)
 	goto_if_eq (VAR_RESULT, NO, AccumulaTown_TopLeftBuilding2F_No_Game)
 	end
@@ -57,81 +57,81 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Girl
 script AccumulaTown_TopLeftBuilding2F_No_Game
 {
 	msgbox("Oh, that's no fun!", MSGBOX_DEFAULT)
-    release
+	release
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Game
 {
 	message("Here goes!\n"
-            "Pokémon Rock-Paper-Scissors...")
-    multichoice(25, 5, MULTI_POKEMON_RPS, 1)
-    closemessage
-    if (var(VAR_RESULT) == 0) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Fire)}
-    elif (var(VAR_RESULT) == 1) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Grass)}
-    elif (var(VAR_RESULT) == 2) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Water)}
+			"Pokémon Rock-Paper-Scissors…")
+	multichoice(25, 5, MULTI_POKEMON_RPS, 1)
+	closemessage
+	if (var(VAR_RESULT) == 0) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Fire)}
+	elif (var(VAR_RESULT) == 1) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Grass)}
+	elif (var(VAR_RESULT) == 2) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Water)}
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Fire
 {
-    random(1)
-    if (var(VAR_RESULT) == 0) { 
-        msgbox("Water          Fire", MSGBOX_DEFAULT)
-        closemessage
-        msgbox("Your Pokémon is Fire type,\n"
-        "and mine is Water type...\p"
-        "Fire type is weak against Water type...\n"
-        "so I win!", MSGBOX_DEFAULT)}
-    elif (var(VAR_RESULT) == 1) { 
-        msgbox("Grass          Fire", MSGBOX_DEFAULT)
-        closemessage
-        msgbox("Your Pokémon is Fire type,\n"
-        "and mine is Grass type...\p"
-        "Grass type is weak against Grass type...\n"
-        "so I lose.", MSGBOX_DEFAULT)}
-    release
-    end
+	random(1)
+	if (var(VAR_RESULT) == 0) { 
+		msgbox("Water          Fire", MSGBOX_DEFAULT)
+		closemessage
+		msgbox("Your Pokémon is Fire type,\n"
+		"and mine is Water type…\p"
+		"Fire type is weak against Water type…\n"
+		"so I win!", MSGBOX_DEFAULT)}
+	elif (var(VAR_RESULT) == 1) { 
+		msgbox("Grass          Fire", MSGBOX_DEFAULT)
+		closemessage
+		msgbox("Your Pokémon is Fire type,\n"
+		"and mine is Grass type…\p"
+		"Grass type is weak against Grass type…\n"
+		"so I lose.", MSGBOX_DEFAULT)}
+	release
+	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Grass
 {
-    random(1)
-    if (var(VAR_RESULT) == 0) { 
-        msgbox("Fire          Grass", MSGBOX_DEFAULT)
-        closemessage
-        msgbox("Your Pokémon is Grass type,\n"
-        "and mine is Fire type...\p"
-        "Grass type is weak against Fire type...\n"
-        "so I win!", MSGBOX_DEFAULT)}
-    elif (var(VAR_RESULT) == 1) { 
-        msgbox("Water          Grass", MSGBOX_DEFAULT)
-        closemessage
-        msgbox("Your Pokémon is Grass type,\n"
-        "and mine is Water type...\p"
-        "Grass type is weak against Water type...\n"
-        "so I lose.", MSGBOX_DEFAULT)}
-    release
-    end
+	random(1)
+	if (var(VAR_RESULT) == 0) { 
+		msgbox("Fire          Grass", MSGBOX_DEFAULT)
+		closemessage
+		msgbox("Your Pokémon is Grass type,\n"
+				"and mine is Fire type…\p"
+				"Grass type is weak against Fire type…\n"
+				"so I win!", MSGBOX_DEFAULT)}
+	elif (var(VAR_RESULT) == 1) { 
+		msgbox("Water          Grass", MSGBOX_DEFAULT)
+		closemessage
+		msgbox("Your Pokémon is Grass type,\n"
+			"and mine is Water type…\p"
+			"Grass type is weak against Water type…\n"
+			"so I lose.", MSGBOX_DEFAULT)}
+	release
+	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Water
 {
-    random(1)
-    if (var(VAR_RESULT) == 0) { 
-        msgbox("Grass          Water", MSGBOX_DEFAULT)
-        closemessage
-        msgbox("Your Pokémon is Water type,\n"
-        "and mine is Grass type...\p"
-        "Water type is weak against Grass type...\n"
-        "so I win!", MSGBOX_DEFAULT)}
-    elif (var(VAR_RESULT) == 1) { 
-        msgbox("Fire           Water", MSGBOX_DEFAULT)
-        closemessage
-        msgbox("Your Pokémon is Water type,\n"
-        "and mine is Fire type...\p"
-        "Water type is weak against Fire type...\n"
-        "so I lose.", MSGBOX_DEFAULT)}
-    release
-    end
+	random(1)
+	if (var(VAR_RESULT) == 0) { 
+		msgbox("Grass          Water", MSGBOX_DEFAULT)
+		closemessage
+		msgbox("Your Pokémon is Water type,\n"
+				"and mine is Grass type…\p"
+				"Water type is weak against Grass type…\n"
+				"so I win!", MSGBOX_DEFAULT)}
+	elif (var(VAR_RESULT) == 1) { 
+		msgbox("Fire           Water", MSGBOX_DEFAULT)
+		closemessage
+		msgbox("Your Pokémon is Water type,\n"
+		"and mine is Fire type…\p"
+		"Water type is weak against Fire type…\n"
+		"so I lose.", MSGBOX_DEFAULT)}
+	release
+	end
 }
