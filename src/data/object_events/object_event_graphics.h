@@ -464,12 +464,6 @@ const u16 gObjectEventPal_ScientistMale[] = INCBIN_U16("graphics/object_events/p
 const u32 gObjectEventPic_ScientistFemale[] = INCBIN_U32("graphics/object_events/pics/people/scientist_f.4bpp");
 const u16 gObjectEventPal_ScientistFemale[] = INCBIN_U16("graphics/object_events/palettes/scientist_f.gbapal");
 
-const u32 gObjectEventPic_ConciergeMale[] = INCBIN_U32("graphics/object_events/pics/people/concierge_m.4bpp");
-const u16 gObjectEventPal_ConciergeMale[] = INCBIN_U16("graphics/object_events/palettes/concierge_m.gbapal");
-
-const u32 gObjectEventPic_ConciergeFemale[] = INCBIN_U32("graphics/object_events/pics/people/concierge_f.4bpp");
-const u16 gObjectEventPal_ConciergeFemale[] = INCBIN_U16("graphics/object_events/palettes/concierge_f.gbapal");
-
 const u32 gObjectEventPic_MartClerk[] = INCBIN_U32("graphics/object_events/pics/people/mart_clerk.4bpp");
 const u16 gObjectEventPal_MartClerk[] = INCBIN_U16("graphics/object_events/palettes/mart_clerk.gbapal");
 
