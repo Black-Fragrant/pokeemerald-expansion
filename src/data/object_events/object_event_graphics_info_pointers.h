@@ -117,8 +117,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PilotBlue;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Police;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScientistMale;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScientistFemale;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ConciergeMale;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ConciergeFemale;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MartClerk;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NurseJoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CustomerService1;
@@ -308,8 +306,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_POLICE] =                   &gObjectEventGraphicsInfo_Police,
     [OBJ_EVENT_GFX_SCIENTIST_MALE] =           &gObjectEventGraphicsInfo_ScientistMale,
     [OBJ_EVENT_GFX_SCIENTIST_FEMALE] =         &gObjectEventGraphicsInfo_ScientistFemale,
-    [OBJ_EVENT_GFX_CONCIERGE_MALE] =           &gObjectEventGraphicsInfo_ConciergeMale,
-    [OBJ_EVENT_GFX_CONCIERGE_FEMALE] =         &gObjectEventGraphicsInfo_ConciergeFemale,
     [OBJ_EVENT_GFX_MART_CLERK] =               &gObjectEventGraphicsInfo_MartClerk,
     [OBJ_EVENT_GFX_NURSE_JOY] =                &gObjectEventGraphicsInfo_NurseJoy,
     [OBJ_EVENT_GFX_CUSTOMER_SERVICE_1] =       &gObjectEventGraphicsInfo_CustomerService1,
