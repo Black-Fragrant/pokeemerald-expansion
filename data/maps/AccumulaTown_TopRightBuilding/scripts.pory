@@ -2,31 +2,31 @@ mapscripts AccumulaTown_TopRightBuilding_MapScripts {}
 
 script AccumulaTown_TopRightBuilding_EventScript_Guy
 {
-    msgbox("My! Heart!\n"
-       "As long as my heart beats!\l"
-       "I will keep! On! Drumming!!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_ACCUMULA_TRB_GUY, moves(face_down))
-    waitmovement(0)
-    delay(10)
+	msgbox("My! Heart!\n"
+			"As long as my heart beats!\l"
+			"I will keep! On! Drumming!!", MSGBOX_NPC, TRUE)
+	applymovement(LOCALID_ACCUMULA_TRB_GUY, moves(face_down))
+	waitmovement(0)
+	delay(10)
 	end
 }
 
 script AccumulaTown_TopRightBuilding_EventScript_Girl
 {
-    msgbox("Hee hee! Please listen to my music.", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_ACCUMULA_TRB_GIRL, moves(face_up))
-    waitmovement(0)
-    delay(10)
+	msgbox("Hee hee! Please listen to my music.", MSGBOX_NPC, TRUE)
+	applymovement(LOCALID_ACCUMULA_TRB_GIRL, moves(face_up))
+	waitmovement(0)
+	delay(10)
 	end
 }
 
 script AccumulaTown_TopRightBuilding_EventScript_Minccino
 {
-    lock
-    faceplayer
-    waitse
+	lock
+	faceplayer
+	waitse
 	playmoncry (SPECIES_MINCCINO, CRY_MODE_NORMAL)
-    msgbox("Chip kwip!", MSGBOX_NPC, TRUE)
+	msgbox("Chip kwip!", MSGBOX_NPC, TRUE)
 	waitmoncry
 	release
 	end
