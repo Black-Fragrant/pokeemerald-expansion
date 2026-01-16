@@ -5,7 +5,6 @@ script AccumulaTown_TopLeftBuilding1F_EventScript_Guy
 msgbox("Pokémon will be strong if you train them,\n"
        "even if they're weak now.\p"
        "Love is what's important!", MSGBOX_NPC, TRUE)
-
 	end
 }
 
@@ -15,7 +14,6 @@ msgbox("When a hero leads the world, a Pokémon\n"
        "is going to come and help the hero...\p"
        "Everybody in the Unova region\n"
        "knows that legend!", MSGBOX_NPC, TRUE)
-
 	end
 }
 
@@ -24,6 +22,5 @@ script AccumulaTown_TopLeftBuilding1F_EventScript_Woman
 msgbox("If you get strong, you can move forward.\n"
        "If you move forward, you'll be stronger.\p"
        "That's the cool thing about a journey!", MSGBOX_NPC, TRUE)
-
 	end
 }
