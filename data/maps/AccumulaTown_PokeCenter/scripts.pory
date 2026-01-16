@@ -30,7 +30,7 @@ script AccumulaTown_PokeCenter_EventScript_Clerk2
 			"Welcome!\n"
 			"May I help you?")
 	waitmessage
-	pokemart(AccumulaTown_Mart_Items)
+	pokemart(0)
 	msgbox("Please come again!", MSGBOX_DEFAULT)
 	release
 	end
@@ -40,9 +40,4 @@ mart AccumulaTown_Mart_Mails {
 	ITEM_ORANGE_MAIL
 	ITEM_GLITTER_MAIL
 	ITEM_FAB_MAIL
-}
-
-mart AccumulaTown_Mart_Items {
-	ITEM_POKE_BALL
-	ITEM_POTION
 }
