@@ -3,15 +3,15 @@ mapscripts AccumulaTown_Gate_MapScripts {}
 script AccumulaTown_Gate_EventScript_Concierge
 {
 	msgbox("Good afternoon, Trainer!\p"
-            "This is a gate for travelers!\n"
-            "Please check the electric bulletin board!", MSGBOX_NPC, TRUE)
+			"This is a gate for travelers!\n"
+			"Please check the electric bulletin board!", MSGBOX_NPC, TRUE)
 	end
 }
 
 script AccumulaTown_Gate_EventScript_Girl
 {
 	msgbox("Watching the information changing on the \n"
-            "electric bulletin board...\l"
-            "It makes me happy. I find it so soothing!", MSGBOX_NPC, TRUE)
+			"electric bulletin board…\l"
+			"It makes me happy. I find it so soothing!", MSGBOX_NPC, TRUE)
 	end
 }

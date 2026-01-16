@@ -2,16 +2,15 @@ mapscripts AccumulaTown_TopMiddleBuilding1F_MapScripts {}
 
 script AccumulaTown_TopMiddleBuilding1F_EventScript_Woman
 {
-msgbox("On Route 2, many Trainers train their\n"
-       "Pokémon by having them battle!", MSGBOX_NPC, TRUE)
+	msgbox("On Route 2, many Trainers train their\n"
+			"Pokémon by having them battle!", MSGBOX_NPC, TRUE)
 	end
 }
 
 script AccumulaTown_TopMiddleBuilding1F_EventScript_Girl
 {
-msgbox("Guess what I know!\p"
-       "I know! Pokémon can remember\n"
-       "up to four moves at a time! Hee hee!", MSGBOX_NPC, TRUE)
+	msgbox("Guess what I know!\p"
+			"I know! Pokémon can remember\n"
+			"up to four moves at a time! Hee hee!", MSGBOX_NPC, TRUE)
 	end
 }
-
