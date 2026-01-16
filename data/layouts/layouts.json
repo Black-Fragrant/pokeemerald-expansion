@@ -4634,8 +4634,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_BOTTOM_LEFT_BUILDING1F",
       "name": "StriatonCity_BottomLeftBuilding1F_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 16,
+      "height": 14,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAccumula",
       "border_filepath": "data/layouts/StriatonCity_BottomLeftBuilding1F/border.bin",
@@ -4644,8 +4644,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_BOTTOM_RIGHT_BUILDING2F",
       "name": "StriatonCity_BottomRightBuilding2F_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 15,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAccumula",
       "border_filepath": "data/layouts/StriatonCity_BottomRightBuilding2F/border.bin",
@@ -4654,8 +4654,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_BOTTOM_LEFT_BUILDING2F",
       "name": "StriatonCity_BottomLeftBuilding2F_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 15,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAccumula",
       "border_filepath": "data/layouts/StriatonCity_BottomLeftBuilding2F/border.bin",
@@ -4664,8 +4664,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_BOTTOM_RIGHT_BUILDING1F",
       "name": "StriatonCity_BottomRightBuilding1F_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 16,
+      "height": 14,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAccumula",
       "border_filepath": "data/layouts/StriatonCity_BottomRightBuilding1F/border.bin",
@@ -4684,10 +4684,10 @@
     {
       "id": "LAYOUT_STRIATON_CITY_TRAINER_SCHOOL",
       "name": "StriatonCity_TrainerSchool_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 15,
+      "height": 20,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_IndoorAccumula",
+      "secondary_tileset": "gTileset_IndoorStriaton",
       "border_filepath": "data/layouts/StriatonCity_TrainerSchool/border.bin",
       "blockdata_filepath": "data/layouts/StriatonCity_TrainerSchool/map.bin"
     },
@@ -4704,8 +4704,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_TOP_RIGHT_BUILDING1F",
       "name": "StriatonCity_TopRightBuilding1F_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 16,
+      "height": 14,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAccumula",
       "border_filepath": "data/layouts/StriatonCity_TopRightBuilding1F/border.bin",

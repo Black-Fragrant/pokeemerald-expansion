@@ -228,3 +228,6 @@ const u16 gMetatileAttributes_PokeCenter[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_Gate[] = INCBIN_U16("data/tilesets/secondary/gate/metatiles.bin");
 const u16 gMetatileAttributes_Gate[] = INCBIN_U16("data/tilesets/secondary/gate/metatile_attributes.bin");
+
+const u16 gMetatiles_IndoorStriaton[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/metatiles.bin");
+const u16 gMetatileAttributes_IndoorStriaton[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/metatile_attributes.bin");
