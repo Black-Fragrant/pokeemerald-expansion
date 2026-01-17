@@ -465,6 +465,9 @@ $(OBJEVENTGFXDIR)/people/patratow.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/minccinoow.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/cottoneeow.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
 
 
 $(OBJEVENTGFXDIR)/misc/ball_poke.4bpp: %.4bpp: %.png

@@ -4694,8 +4694,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_POKE_CENTER",
       "name": "StriatonCity_PokeCenter_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 13,
+      "height": 20,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PokeCenter",
       "border_filepath": "data/layouts/StriatonCity_PokeCenter/border.bin",
@@ -4714,10 +4714,10 @@
     {
       "id": "LAYOUT_STRIATON_CITY_TOP_RIGHT_BUILDING2F",
       "name": "StriatonCity_TopRightBuilding2F_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 16,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_IndoorAccumula",
+      "secondary_tileset": "gTileset_IndoorStriaton",
       "border_filepath": "data/layouts/StriatonCity_TopRightBuilding2F/border.bin",
       "blockdata_filepath": "data/layouts/StriatonCity_TopRightBuilding2F/map.bin"
     }
