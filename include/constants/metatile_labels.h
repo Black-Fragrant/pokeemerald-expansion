@@ -112,8 +112,8 @@
 #define METATILE_BrendansMaysHouse_MovingBox_Open    0x270
 
 // gTileset_Building
-#define METATILE_Building_PC_Off  0x290
-#define METATILE_Building_PC_On   0x298
+#define METATILE_Building_PC_Off  0x1FE
+#define METATILE_Building_PC_On   0x1FF
 #define METATILE_Building_TV_Off  0x002
 #define METATILE_Building_TV_On   0x003
 
