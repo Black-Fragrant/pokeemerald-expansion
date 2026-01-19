@@ -212,6 +212,13 @@
       "elevation": 0,
       "dest_map": "MAP_STRIATON_CITY_POKE_CENTER",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 58,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_STRIATON_CITY_GYM",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

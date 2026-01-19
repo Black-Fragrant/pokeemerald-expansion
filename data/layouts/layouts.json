@@ -4674,8 +4674,8 @@
     {
       "id": "LAYOUT_STRIATON_CITY_GYM",
       "name": "StriatonCity_Gym_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 25,
+      "height": 42,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_StriatonGym",
       "border_filepath": "data/layouts/StriatonCity_Gym/border.bin",
