@@ -1805,3 +1805,22 @@ const u16 gTilesetPalettes_StriatonGym[][16] =
 };
 
 const u32 gTilesetTiles_StriatonGym[] = INCBIN_U32("data/tilesets/secondary/striaton_gym/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_DreamYard[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dream_yard/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_DreamYard[] = INCBIN_U32("data/tilesets/secondary/dream_yard/tiles.4bpp.lz");

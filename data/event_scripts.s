@@ -1225,3 +1225,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/StriatonCity_BottomRightBuilding1F/scripts.inc"
 
 	.include "data/maps/StriatonCity_TopRightBuilding1F/scripts.inc"
+
+	.include "data/maps/Dream_Yard/scripts.inc"
+
+	.include "data/maps/DreamYard_B1F/scripts.inc"

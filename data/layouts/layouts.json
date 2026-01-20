@@ -4720,6 +4720,26 @@
       "secondary_tileset": "gTileset_IndoorStriaton",
       "border_filepath": "data/layouts/StriatonCity_TopRightBuilding2F/border.bin",
       "blockdata_filepath": "data/layouts/StriatonCity_TopRightBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_DREAM_YARD",
+      "name": "Dream_Yard_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_DreamYard",
+      "border_filepath": "data/layouts/Dream_Yard/border.bin",
+      "blockdata_filepath": "data/layouts/Dream_Yard/map.bin"
+    },
+    {
+      "id": "LAYOUT_DREAM_YARD_B1F",
+      "name": "DreamYard_B1F_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_DreamYard",
+      "border_filepath": "data/layouts/DreamYard_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/DreamYard_B1F/map.bin"
     }
   ]
 }
