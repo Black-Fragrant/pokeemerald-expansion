@@ -1163,3 +1163,14 @@ const struct Tileset gTileset_StriatonGym =
     .metatileAttributes = gMetatileAttributes_StriatonGym,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_DreamYard =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DreamYard,
+    .palettes = gTilesetPalettes_DreamYard,
+    .metatiles = gMetatiles_DreamYard,
+    .metatileAttributes = gMetatileAttributes_DreamYard,
+    .callback = NULL,
+};
