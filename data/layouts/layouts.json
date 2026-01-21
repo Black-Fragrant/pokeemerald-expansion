@@ -4734,8 +4734,8 @@
     {
       "id": "LAYOUT_DREAM_YARD_B1F",
       "name": "DreamYard_B1F_Layout",
-      "width": 80,
-      "height": 80,
+      "width": 27,
+      "height": 29,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_DreamYardBasement",
       "border_filepath": "data/layouts/DreamYard_B1F/border.bin",
