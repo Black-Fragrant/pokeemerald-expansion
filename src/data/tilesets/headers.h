@@ -1174,3 +1174,14 @@ const struct Tileset gTileset_DreamYard =
     .metatileAttributes = gMetatileAttributes_DreamYard,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_DreamYardBasement =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DreamYardBasement,
+    .palettes = gTilesetPalettes_DreamYardBasement,
+    .metatiles = gMetatiles_DreamYardBasement,
+    .metatileAttributes = gMetatileAttributes_DreamYardBasement,
+    .callback = NULL,
+};

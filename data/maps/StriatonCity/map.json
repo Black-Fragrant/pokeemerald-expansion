@@ -219,6 +219,34 @@
       "elevation": 0,
       "dest_map": "MAP_STRIATON_CITY_GYM",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 75,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_DREAM_YARD",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 75,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_DREAM_YARD",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 75,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_DREAM_YARD",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 75,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_DREAM_YARD",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [],
