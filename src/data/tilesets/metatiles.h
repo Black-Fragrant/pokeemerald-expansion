@@ -237,3 +237,6 @@ const u16 gMetatileAttributes_StriatonGym[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_DreamYard[] = INCBIN_U16("data/tilesets/secondary/dream_yard/metatiles.bin");
 const u16 gMetatileAttributes_DreamYard[] = INCBIN_U16("data/tilesets/secondary/dream_yard/metatile_attributes.bin");
+
+const u16 gMetatiles_DreamYardBasement[] = INCBIN_U16("data/tilesets/secondary/dream_yard_basement/metatiles.bin");
+const u16 gMetatileAttributes_DreamYardBasement[] = INCBIN_U16("data/tilesets/secondary/dream_yard_basement/metatile_attributes.bin");

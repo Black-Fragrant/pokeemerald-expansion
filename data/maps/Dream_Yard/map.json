@@ -14,7 +14,36 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 2,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_STRIATON_CITY",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 2,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_STRIATON_CITY",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 2,
+      "y": 26,
+      "elevation": 0,
+      "dest_map": "MAP_STRIATON_CITY",
+      "dest_warp_id": "8"
+    },
+    {
+      "x": 2,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_STRIATON_CITY",
+      "dest_warp_id": "9"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

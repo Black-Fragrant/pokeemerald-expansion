@@ -4737,7 +4737,7 @@
       "width": 80,
       "height": 80,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_DreamYard",
+      "secondary_tileset": "gTileset_DreamYardBasement",
       "border_filepath": "data/layouts/DreamYard_B1F/border.bin",
       "blockdata_filepath": "data/layouts/DreamYard_B1F/map.bin"
     }
