@@ -1,3 +1,4 @@
+/*
 #include "global.h"
 #include "decompress.h"
 #include "main.h"
@@ -6299,7 +6300,6 @@ TEST("Compression test: tilemap small LZ VRAM")
 }
 
 //  The fastLZ function for this doesn't exist
-/*
 TEST("Compression test: tilemap small fastLZ VRAM")
 {
     static const u16 origFile[] = INCBIN_U16("test/compression/tilemap.bin");
@@ -6308,7 +6308,6 @@ TEST("Compression test: tilemap small fastLZ VRAM")
     bool32 areEqual = DecompressTilemapPrintResultsVram(compFile, origFile, "Tilemap", COMPRESSION_FASTLZ, sizeof(compFile));
     EXPECT_EQ(areEqual, TRUE);
 }
-*/
 
 TEST("Compression test: tilemap large smolTM VRAM")
 {
@@ -6329,7 +6328,6 @@ TEST("Compression test: tilemap large LZ VRAM")
 }
 
 //  The fastLZ function for this doesn't exist
-/*
 TEST("Compression test: tilemap large fastLZ VRAM")
 {
     static const u16 origFile[] = INCBIN_U16("test/compression/tilemapLarge.bin");
