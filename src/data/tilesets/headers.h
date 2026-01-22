@@ -1185,3 +1185,14 @@ const struct Tileset gTileset_DreamYardBasement =
     .metatileAttributes = gMetatileAttributes_DreamYardBasement,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Route3 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route3,
+    .palettes = gTilesetPalettes_Route3,
+    .metatiles = gMetatiles_Route3,
+    .metatileAttributes = gMetatileAttributes_Route3,
+    .callback = NULL,
+};
