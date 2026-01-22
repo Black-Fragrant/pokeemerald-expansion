@@ -4734,12 +4734,32 @@
     {
       "id": "LAYOUT_DREAM_YARD_B1F",
       "name": "DreamYard_B1F_Layout",
-      "width": 80,
-      "height": 80,
+      "width": 27,
+      "height": 29,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_DreamYardBasement",
       "border_filepath": "data/layouts/DreamYard_B1F/border.bin",
       "blockdata_filepath": "data/layouts/DreamYard_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3_NORTH",
+      "name": "Route3_North_Layout",
+      "width": 98,
+      "height": 33,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Route3",
+      "border_filepath": "data/layouts/Route3_North/border.bin",
+      "blockdata_filepath": "data/layouts/Route3_North/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3_SOUTH",
+      "name": "Route3_South_Layout",
+      "width": 70,
+      "height": 33,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Route3",
+      "border_filepath": "data/layouts/Route3_South/border.bin",
+      "blockdata_filepath": "data/layouts/Route3_South/map.bin"
     }
   ]
 }

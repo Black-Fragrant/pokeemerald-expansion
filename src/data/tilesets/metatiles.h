@@ -240,3 +240,6 @@ const u16 gMetatileAttributes_DreamYard[] = INCBIN_U16("data/tilesets/secondary/
 
 const u16 gMetatiles_DreamYardBasement[] = INCBIN_U16("data/tilesets/secondary/dream_yard_basement/metatiles.bin");
 const u16 gMetatileAttributes_DreamYardBasement[] = INCBIN_U16("data/tilesets/secondary/dream_yard_basement/metatile_attributes.bin");
+
+const u16 gMetatiles_Route3[] = INCBIN_U16("data/tilesets/secondary/route_3/metatiles.bin");
+const u16 gMetatileAttributes_Route3[] = INCBIN_U16("data/tilesets/secondary/route_3/metatile_attributes.bin");
