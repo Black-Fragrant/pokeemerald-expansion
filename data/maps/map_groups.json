@@ -46,7 +46,9 @@
     "Route1_West",
     "AccumulaTown",
     "Route2",
-    "StriatonCity"
+    "StriatonCity",
+    "Route3_North",
+    "Route3_South"
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",
