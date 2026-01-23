@@ -5,6 +5,7 @@
     "gMapGroup_IndoorAccumula",
     "gMapGroup_IndoorStriaton",
     "gMapGroup_DreamYard",
+    "gMapGroup_IndoorRoute3",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -84,6 +85,10 @@
   "gMapGroup_DreamYard": [
     "Dream_Yard",
     "DreamYard_B1F"
+  ],
+  "gMapGroup_IndoorRoute3": [
+    "Route3_Kindergarten",
+    "Route3_Daycare"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

@@ -1233,3 +1233,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route3_North/scripts.inc"
 
 	.include "data/maps/Route3_South/scripts.inc"
+
+	.include "data/maps/Route3_Kindergarten/scripts.inc"
+
+	.include "data/maps/Route3_Daycare/scripts.inc"

@@ -4760,6 +4760,26 @@
       "secondary_tileset": "gTileset_Route3",
       "border_filepath": "data/layouts/Route3_South/border.bin",
       "blockdata_filepath": "data/layouts/Route3_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3_KINDERGARTEN",
+      "name": "Route3_Kindergarten_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorRoute3",
+      "border_filepath": "data/layouts/Route3_Kindergarten/border.bin",
+      "blockdata_filepath": "data/layouts/Route3_Kindergarten/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3_DAYCARE",
+      "name": "Route3_Daycare_Layout",
+      "width": 13,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorRoute3",
+      "border_filepath": "data/layouts/Route3_Daycare/border.bin",
+      "blockdata_filepath": "data/layouts/Route3_Daycare/map.bin"
     }
   ]
 }
