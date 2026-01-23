@@ -88,6 +88,9 @@ static void QueueAnimTiles_IndoorNuvema_Machine(u16);
 static void TilesetAnim_PokeCenter(u16);
 static void QueueAnimTiles_PokeCenter_Globe(u16);
 
+static void TilesetAnim_IndoorStriaton(u16);
+static void QueueAnimTiles_IndoorStriaton_Machine(u16);
+
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/0.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/1.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/2.4bpp");
@@ -132,6 +135,25 @@ const u16 *const gQueueAnimTiles_IndoorNuvema_Machine[] = {
     gQueueAnimTiles_IndoorNuvema_Machine_Frame2,
 };
 
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame0[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/0.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame1[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/1.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame2[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/2.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame3[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/3.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame4[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/4.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame5[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/5.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame6[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/6.4bpp");
+const u16 gQueueAnimTiles_IndoorStriaton_Machine_Frame7[] = INCBIN_U16("data/tilesets/secondary/indoor_striaton/anim/machine/7.4bpp");
+
+const u16 *const gQueueAnimTiles_IndoorStriaton_Machine[] = {
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame0,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame1,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame2,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame3,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame4,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame5,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame6,
+    gQueueAnimTiles_IndoorStriaton_Machine_Frame7,
+};
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame0[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/0.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame1[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/1.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame2[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/2.4bpp");
@@ -550,9 +572,17 @@ const u16 *const gTilesetAnims_Slateport_Balloons[] = {
 const u16 gTilesetAnims_Building_TvTurnedOn_Frame0[] = INCBIN_U16("data/tilesets/primary/building/anim/tv_turned_on/0.4bpp");
 const u16 gTilesetAnims_Building_TvTurnedOn_Frame1[] = INCBIN_U16("data/tilesets/primary/building/anim/tv_turned_on/1.4bpp");
 
+const u16 gTilesetAnims_Building_Tv_Frame0[] = INCBIN_U16("data/tilesets/primary/building/anim/tv/0.4bpp");
+const u16 gTilesetAnims_Building_Tv_Frame1[] = INCBIN_U16("data/tilesets/primary/building/anim/tv/1.4bpp");
+
 const u16 *const gTilesetAnims_Building_TvTurnedOn[] = {
     gTilesetAnims_Building_TvTurnedOn_Frame0,
     gTilesetAnims_Building_TvTurnedOn_Frame1
+};
+
+const u16 *const gTilesetAnims_Building_Tv[] = {
+    gTilesetAnims_Building_Tv_Frame0,
+    gTilesetAnims_Building_Tv_Frame1
 };
 
 const u16 gTilesetAnims_SootopolisGym_SideWaterfall_Frame0[] = INCBIN_U16("data/tilesets/secondary/sootopolis_gym/anim/side_waterfall/0.4bpp");
@@ -771,6 +801,12 @@ static void TilesetAnim_IndoorNuvema(u16 timer)
         QueueAnimTiles_IndoorNuvema_Machine(timer / 16);
 }
 
+static void TilesetAnim_IndoorStriaton(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_IndoorStriaton_Machine(timer / 16);
+}
+
 static void TilesetAnim_Nuvema(u16 timer)
 {
     if (timer % 16 == 0)
@@ -789,10 +825,18 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Flower(timer / 16);
 }
 
+static void QueueAnimTiles_Building_Tv(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Building_Tv);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Building_Tv[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(198)), 7 * TILE_SIZE_4BPP);
+}
+
 static void TilesetAnim_Building(u16 timer)
 {
     if (timer % 8 == 0)
         QueueAnimTiles_Building_TVTurnedOn(timer / 8);
+    if (timer % 2 == 1)
+        QueueAnimTiles_Building_Tv(timer / 2);
 }
 
 static void QueueAnimTiles_PokeCenter_Globe(u16 timer)
@@ -811,6 +855,12 @@ static void QueueAnimTiles_IndoorNuvema_Machine(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorNuvema_Machine);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorNuvema_Machine[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(924)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_IndoorStriaton_Machine(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorStriaton_Machine);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorStriaton_Machine[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(746)), 4 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
@@ -1047,6 +1097,13 @@ void InitTilesetAnim_Nuvema(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_Nuvema;
+}
+
+void InitTilesetAnim_IndoorStriaton(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_IndoorStriaton;
 }
 
 static void TilesetAnim_Rustboro(u16 timer)
