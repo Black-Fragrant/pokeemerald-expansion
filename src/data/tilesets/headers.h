@@ -1150,7 +1150,7 @@ const struct Tileset gTileset_IndoorStriaton =
     .palettes = gTilesetPalettes_IndoorStriaton,
     .metatiles = gMetatiles_IndoorStriaton,
     .metatileAttributes = gMetatileAttributes_IndoorStriaton,
-    .callback = NULL,
+    .callback = InitTilesetAnim_IndoorStriaton,
 };
 
 const struct Tileset gTileset_StriatonGym =

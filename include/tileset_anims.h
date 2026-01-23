@@ -35,5 +35,6 @@ void InitTilesetAnim_BattlePyramid(void);
 void InitTilesetAnim_Nuvema(void);
 void InitTilesetAnim_IndoorNuvema(void);
 void InitTilesetAnim_PokeCenter(void);
+void InitTilesetAnim_IndoorStriaton(void);
 
 #endif // GUARD_TILESET_ANIMS_H
