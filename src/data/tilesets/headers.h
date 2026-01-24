@@ -1207,3 +1207,14 @@ const struct Tileset gTileset_IndoorRoute3 =
     .metatileAttributes = gMetatileAttributes_IndoorRoute3,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CaveBW =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CaveBW,
+    .palettes = gTilesetPalettes_CaveBW,
+    .metatiles = gMetatiles_CaveBW,
+    .metatileAttributes = gMetatileAttributes_CaveBW,
+    .callback = NULL,
+};
