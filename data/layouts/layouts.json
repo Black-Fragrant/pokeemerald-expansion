@@ -4794,8 +4794,8 @@
     {
       "id": "LAYOUT_WELLSPRING_CAVE_B1F",
       "name": "WellspringCave_B1F_Layout",
-      "width": 60,
-      "height": 60,
+      "width": 34,
+      "height": 66,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CaveBW",
       "border_filepath": "data/layouts/WellspringCave_B1F/border.bin",
