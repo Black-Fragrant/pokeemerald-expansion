@@ -4780,6 +4780,26 @@
       "secondary_tileset": "gTileset_IndoorRoute3",
       "border_filepath": "data/layouts/Route3_Daycare/border.bin",
       "blockdata_filepath": "data/layouts/Route3_Daycare/map.bin"
+    },
+    {
+      "id": "LAYOUT_WELLSPRING_CAVE_1F",
+      "name": "WellspringCave_1F_Layout",
+      "width": 34,
+      "height": 34,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CaveBW",
+      "border_filepath": "data/layouts/WellspringCave_1F/border.bin",
+      "blockdata_filepath": "data/layouts/WellspringCave_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_WELLSPRING_CAVE_B1F",
+      "name": "WellspringCave_B1F_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CaveBW",
+      "border_filepath": "data/layouts/WellspringCave_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/WellspringCave_B1F/map.bin"
     }
   ]
 }

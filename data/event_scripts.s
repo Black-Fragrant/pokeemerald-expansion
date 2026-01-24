@@ -1237,3 +1237,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route3_Kindergarten/scripts.inc"
 
 	.include "data/maps/Route3_Daycare/scripts.inc"
+
+	.include "data/maps/WellspringCave_1F/scripts.inc"
+
+	.include "data/maps/WellspringCave_B1F/scripts.inc"

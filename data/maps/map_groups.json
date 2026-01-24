@@ -39,7 +39,8 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124"
+    "gMapGroup_IndoorRoute124",
+    "gMapGroup_WellspringCave"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "NuvemaTown",
@@ -675,5 +676,9 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
+  ],
+  "gMapGroup_WellspringCave": [
+    "WellspringCave_1F",
+    "WellspringCave_B1F"
   ]
 }
