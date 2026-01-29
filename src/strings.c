@@ -21,8 +21,8 @@ const u8 gText_ExpandedPlaceholder_May[] = _("MAY");
 const u8 gText_EggNickname[] = _("EGG");
 const u8 gText_Pokemon[] = _("POKéMON");
 const u8 gText_Player[] = _("PLAYER");
-const u8 gText_Pokedex[] = _("Pokédex: ");
-const u8 gText_Time[] = _("Time: ");
+const u8 gText_Pokedex[] = _("Pokédex");
+const u8 gText_Time[] = _("Time");
 const u8 gText_Badges[] = _("Badges: ");
 const u8 gText_AButton[] = _("A Button"); // Unused
 const u8 gText_BButton[] = _("B Button"); // Unused
@@ -1195,3 +1195,13 @@ const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
 const u8 gText_ExpShareOn[] = _("The Exp. Share has been turned on.{PAUSE_UNTIL_PRESS}");
 const u8 gText_ExpShareOff[] = _("The Exp. Share has been turned off.{PAUSE_UNTIL_PRESS}");
+const u8 gText_BasePointsResetToZero[] = _("{STR_VAR_1}'s base points\nwere all reset to zero!{PAUSE_UNTIL_PRESS}");
+const u8 gText_AM[] = _("AM");
+const u8 gText_PM[] = _("PM");
+const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
+const u8 gText_Rename[] = _("RENAME");
+const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
+
+// Main Menu
+const u8 gText_Options[] = _("OPTIONS");
+const u8 gText_Team[] = _("Team:");

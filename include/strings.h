@@ -1352,6 +1352,8 @@ extern const u8 gText_Level[];
 extern const u8 gText_IDNumber[];
 extern const u8 gText_Name[];
 extern const u8 gText_Time[];
+extern const u8 gText_Badges[];
+extern const u8 gText_Pokedex[];
 
 // daycare
 extern const u8 gText_MaleSymbol4[];
@@ -2179,5 +2181,9 @@ extern const u8 MoveRelearner_Text_EggMoveLWR[];
 extern const u8 MoveRelearner_Text_TMMoveLWR[];
 extern const u8 MoveRelearner_Text_TutorMoveLWR[];
 extern const u8 MoveRelearner_Text_MoveLWR[];
+
+// Main Menu
+extern const u8 gText_Options[];
+extern const u8 gText_Team[];
 
 #endif // GUARD_STRINGS_H
