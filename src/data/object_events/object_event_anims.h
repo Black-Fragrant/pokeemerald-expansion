@@ -908,6 +908,116 @@ static const union AnimCmd sAnim_NurseBow[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_CherenTapShoes[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 24),
+    ANIMCMD_FRAME(10, 24),
+    ANIMCMD_FRAME(9, 24),
+    ANIMCMD_FRAME(10, 24),
+    ANIMCMD_FRAME(9, 24),
+    ANIMCMD_FRAME(10, 24),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_BiancaTipHat[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 16),
+    ANIMCMD_FRAME(10, 16),
+    ANIMCMD_FRAME(11, 16),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_AlderHairShake[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_GhetsisRaiseHand[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(10, 16),
+    ANIMCMD_FRAME(11, 32),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_NShakeHead[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(11, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(11, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_NSummon[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(12, 8),
+    ANIMCMD_FRAME(13, 8),
+    ANIMCMD_FRAME(14, 40),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_NRaiseArms[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(15, 8),
+    ANIMCMD_FRAME(16, 8),
+    ANIMCMD_FRAME(17, 8),
+    ANIMCMD_FRAME(18, 32),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_ShadowTriadTeleportIn[] =
+{
+    ANIMCMD_FRAME(11, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_ShadowTriadTeleportOut[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(11, 8),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_RockBreak[] =
 {
     ANIMCMD_FRAME(0, 8),
@@ -1452,6 +1562,15 @@ static const union AnimCmd *const sAnimTable_Nurse[] = {
     [ANIM_STD_GO_FASTEST_WEST] = sAnim_GoFastestWest,
     [ANIM_STD_GO_FASTEST_EAST] = sAnim_GoFastestEast,
     [ANIM_NURSE_BOW] = sAnim_NurseBow,
+    [ANIM_CHEREN_TAP_SHOES] = sAnim_CherenTapShoes,
+    [ANIM_BIANCA_TIP_HAT] = sAnim_BiancaTipHat,
+    [ANIM_ALDER_HAIR_SHAKE] = sAnim_AlderHairShake,
+    [ANIM_GHETSIS_RAISE_HAND] = sAnim_GhetsisRaiseHand,
+    [ANIM_N_SHAKE_HEAD] = sAnim_NShakeHead,
+    [ANIM_N_SUMMON] = sAnim_NSummon,
+    [ANIM_N_RAISE_ARMS] = sAnim_NRaiseArms,
+    [ANIM_SHADOW_TRIAD_TELEPORT_IN] = sAnim_ShadowTriadTeleportIn,
+    [ANIM_SHADOW_TRIAD_TELEPORT_OUT] = sAnim_ShadowTriadTeleportOut,
 };
 
 static const union AnimCmd *const sAnimTable_FieldMove[] = {

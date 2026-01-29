@@ -929,7 +929,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cheren = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_Cheren,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -2639,7 +2639,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bianca = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_Bianca,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -2715,7 +2715,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Alder = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_Alder,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -2905,7 +2905,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ghetsis = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_Ghetsis,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -3095,7 +3095,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_N = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_N,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -3304,7 +3304,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ShadowTriad = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_ShadowTriad,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

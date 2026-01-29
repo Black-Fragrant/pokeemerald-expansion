@@ -293,6 +293,16 @@ u8 MovementAction_WalkFastDiagonalUpRight_Step0(struct ObjectEvent *, struct Spr
 u8 MovementAction_WalkFastDiagonalDownLeft_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonalDownRight_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonal_Step1(struct ObjectEvent *, struct Sprite *);
+//new movements
+u8 MovementAction_CherenTapShoes_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_BiancaTipHat_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_AlderHairShake_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_GhetsisRaiseHand_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_NShakeHead_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_NSummon_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_NRaiseArms_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_ShadowTriadTeleportIn_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_ShadowTriadTeleportOut_Step0(struct ObjectEvent *, struct Sprite *);
 
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
@@ -474,6 +484,16 @@ u8 (*const gMovementActionFuncs_WalkFastDiagonalUpLeft[])(struct ObjectEvent *, 
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpRight[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalDownLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalDownRight[])(struct ObjectEvent *, struct Sprite *);
+//new movements
+u8 (*const gMovementActionFuncs_CherenTapShoes[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_BiancaTipHat[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_AlderHairShake[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_GhetsisRaiseHand[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_NShakeHead[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_NSummon[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_NRaiseArms[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_ShadowTriadTeleportIn[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_ShadowTriadTeleportOut[])(struct ObjectEvent *, struct Sprite *);
 
 
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
@@ -656,6 +676,16 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_UP_RIGHT] = gMovementActionFuncs_WalkFastDiagonalUpRight,
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_LEFT] = gMovementActionFuncs_WalkFastDiagonalDownLeft,
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_RIGHT] = gMovementActionFuncs_WalkFastDiagonalDownRight,
+    //new movements
+    [MOVEMENT_ACTION_CHEREN_TAP_SHOES] = gMovementActionFuncs_CherenTapShoes,
+    [MOVEMENT_ACTION_BIANCA_TIP_HAT] = gMovementActionFuncs_BiancaTipHat,
+    [MOVEMENT_ACTION_ALDER_HAIR_SHAKE] = gMovementActionFuncs_AlderHairShake,
+    [MOVEMENT_ACTION_GHETSIS_RAISE_HAND] = gMovementActionFuncs_GhetsisRaiseHand,
+    [MOVEMENT_ACTION_N_SHAKE_HEAD] = gMovementActionFuncs_NShakeHead,
+    [MOVEMENT_ACTION_N_SUMMON] = gMovementActionFuncs_NSummon,
+    [MOVEMENT_ACTION_N_RAISE_ARMS] = gMovementActionFuncs_NRaiseArms,
+    [MOVEMENT_ACTION_SHADOW_TRIAD_TELEPORT_IN] = gMovementActionFuncs_ShadowTriadTeleportIn,
+    [MOVEMENT_ACTION_SHADOW_TRIAD_TELEPORT_OUT] = gMovementActionFuncs_ShadowTriadTeleportOut,
 
 };
 
@@ -1719,3 +1749,56 @@ u8 (*const gMovementActionFuncs_WalkFastDiagonalDownRight[])(struct ObjectEvent 
     MovementAction_PauseSpriteAnim,
 };
 
+u8 (*const gMovementActionFuncs_CherenTapShoes[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_CherenTapShoes_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_BiancaTipHat[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_BiancaTipHat_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_AlderHairShake[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_AlderHairShake_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_GhetsisRaiseHand[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_GhetsisRaiseHand_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_NShakeHead[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_NShakeHead_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_NSummon[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_NSummon_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_NRaiseArms[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_NRaiseArms_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_ShadowTriadTeleportIn[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShadowTriadTeleportIn_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_ShadowTriadTeleportOut[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShadowTriadTeleportOut_Step0,
+    MovementAction_WaitSpriteAnim,
+    MovementAction_PauseSpriteAnim,
+};

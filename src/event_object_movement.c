@@ -8589,6 +8589,60 @@ bool8 MovementAction_NurseJoyBowDown_Step0(struct ObjectEvent *objectEvent, stru
     return FALSE;
 }
 
+bool8 MovementAction_CherenTapShoes_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_CHEREN_TAP_SHOES);
+    return FALSE;
+}
+
+bool8 MovementAction_BiancaTipHat_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_BIANCA_TIP_HAT);
+    return FALSE;
+}
+
+bool8 MovementAction_AlderHairShake_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_ALDER_HAIR_SHAKE);
+    return FALSE;
+}
+
+bool8 MovementAction_GhetsisRaiseHand_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_GHETSIS_RAISE_HAND);
+    return FALSE;
+}
+
+bool8 MovementAction_NShakeHead_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_N_SHAKE_HEAD);
+    return FALSE;
+}
+
+bool8 MovementAction_NSummon_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_N_SUMMON);
+    return FALSE;
+}
+
+bool8 MovementAction_NRaiseArms_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_N_RAISE_ARMS);
+    return FALSE;
+}
+
+bool8 MovementAction_ShadowTriadTeleportIn_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_SHADOW_TRIAD_TELEPORT_IN);
+    return FALSE;
+}
+
+bool8 MovementAction_ShadowTriadTeleportOut_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_SHADOW_TRIAD_TELEPORT_OUT);
+    return FALSE;
+}
+
 bool8 MovementAction_EnableJumpLandingGroundEffect_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     objectEvent->disableJumpLandingGroundEffect = FALSE;

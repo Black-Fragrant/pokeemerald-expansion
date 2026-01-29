@@ -1,1 +1,9 @@
 mapscripts NuvemaTown_PlayerHouse_2F_MapScripts {}
+
+script NuvemaTown_PlayerHouse_2F_Testing
+{
+	applymovement(LOCALID_TESTING_DUMMY, moves(shadow_triad_teleport_out, set_invisible, delay_16, set_visible, shadow_triad_teleport_in))
+	waitmovement(0)
+	delay(10)
+	end
+}
