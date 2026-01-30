@@ -603,7 +603,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_PlasmaGrunts,          OBJ_EVENT_PAL_TAG_PLASMA_GRUNTS},
     {gObjectEventPal_Bianca,                OBJ_EVENT_PAL_TAG_BIANCA},
     {gObjectEventPal_Juniper,               OBJ_EVENT_PAL_TAG_JUNIPER},
-    {gObjectEventPal_Gift,                  OBJ_EVENT_PAL_TAG_GIFT},
     {gObjectEventPal_AccordionPlayer,       OBJ_EVENT_PAL_TAG_ACCORDION_PLAYER},
     {gObjectEventPal_Alder,                 OBJ_EVENT_PAL_TAG_ALDER},
     {gObjectEventPal_Anthea,                OBJ_EVENT_PAL_TAG_ANTHEA},
@@ -641,7 +640,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Patratow,              OBJ_EVENT_PAL_TAG_PATRATOW},
     {gObjectEventPal_Minccinoow,            OBJ_EVENT_PAL_TAG_MINCCINOOW},
     {gObjectEventPal_Cottoneeow,            OBJ_EVENT_PAL_TAG_COTTONEEOW},
-
+    {gObjectEventPal_Petililow,             OBJ_EVENT_PAL_TAG_PETILILOW},
+    {gObjectEventPal_Munnaow,               OBJ_EVENT_PAL_TAG_MUNNAOW},
+    {gObjectEventPal_Musharnaow,            OBJ_EVENT_PAL_TAG_MUSHARNAOW},
+    {gObjectEventPal_FlagPole,              OBJ_EVENT_PAL_TAG_FLAG_POLE},
+    {gObjectEventPal_GiftBox,               OBJ_EVENT_PAL_TAG_GIFT_BOX},
 
 
 

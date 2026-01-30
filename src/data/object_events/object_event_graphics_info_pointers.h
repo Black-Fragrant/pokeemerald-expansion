@@ -142,7 +142,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlasmaGrunt
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlasmaGruntFemale;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bianca;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juniper;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gift;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AccordionPlayer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Alder;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Anthea;
@@ -180,6 +179,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GateM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Patratow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Minccinoow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cottoneeow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Petililow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Munnaow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Musharnaow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlagPole;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GiftBox;
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -333,7 +337,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE] =      &gObjectEventGraphicsInfo_PlasmaGruntFemale,
     [OBJ_EVENT_GFX_BIANCA] =                   &gObjectEventGraphicsInfo_Bianca,
     [OBJ_EVENT_GFX_JUNIPER] =                  &gObjectEventGraphicsInfo_Juniper,
-    [OBJ_EVENT_GFX_GIFT] =                     &gObjectEventGraphicsInfo_Gift,
     [OBJ_EVENT_GFX_ACCORDION_PLAYER] =         &gObjectEventGraphicsInfo_AccordionPlayer,
     [OBJ_EVENT_GFX_ALDER] =                    &gObjectEventGraphicsInfo_Alder,
     [OBJ_EVENT_GFX_ANTHEA] =                   &gObjectEventGraphicsInfo_Anthea,
@@ -371,6 +374,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_PATRATOW] =                 &gObjectEventGraphicsInfo_Patratow,
     [OBJ_EVENT_GFX_MINCCINOOW] =               &gObjectEventGraphicsInfo_Minccinoow,
     [OBJ_EVENT_GFX_COTTONEEOW] =               &gObjectEventGraphicsInfo_Cottoneeow,
+    [OBJ_EVENT_GFX_PETILILOW] =                &gObjectEventGraphicsInfo_Petililow,
+    [OBJ_EVENT_GFX_MUNNAOW] =                  &gObjectEventGraphicsInfo_Munnaow,
+    [OBJ_EVENT_GFX_MUSHARNAOW] =               &gObjectEventGraphicsInfo_Musharnaow,
+    [OBJ_EVENT_GFX_FLAG_POLE] =                &gObjectEventGraphicsInfo_FlagPole,
+    [OBJ_EVENT_GFX_GIFT_BOX] =                 &gObjectEventGraphicsInfo_GiftBox,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,

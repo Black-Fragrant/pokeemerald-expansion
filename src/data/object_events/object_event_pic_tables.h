@@ -77,10 +77,6 @@ static const struct SpriteFrameImage sPicTable_BirchsBag[] = {
     obj_frame_tiles(gObjectEventPic_BirchsBag),
 };
 
-static const struct SpriteFrameImage sPicTable_Gift[] = {
-    obj_frame_tiles(gObjectEventPic_Gift),
-};
-
 static const struct SpriteFrameImage sPicTable_MayNormal[] = {
     overworld_ascending_frames(gObjectEventPic_MayNormalRunning, 2, 4),
 };
@@ -844,3 +840,24 @@ static const struct SpriteFrameImage sPicTable_Minccinoow[] = {
 static const struct SpriteFrameImage sPicTable_Cottoneeow[] = {
     overworld_ascending_frames(gObjectEventPic_Cottoneeow, 2, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_Petililow[] = {
+    overworld_ascending_frames(gObjectEventPic_Petililow, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Munnaow[] = {
+    overworld_ascending_frames(gObjectEventPic_Munnaow, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Musharnaow[] = {
+    overworld_ascending_frames(gObjectEventPic_Musharnaow, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_FlagPole[] = {
+    overworld_ascending_frames(gObjectEventPic_FlagPole, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GiftBox[] = {
+    overworld_ascending_frames(gObjectEventPic_GiftBox, 4, 4),
+};
+
