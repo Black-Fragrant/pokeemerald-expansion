@@ -537,9 +537,6 @@ const u16 gObjectEventPal_Bianca[] = INCBIN_U16("graphics/object_events/palettes
 const u32 gObjectEventPic_Juniper[] = INCBIN_U32("graphics/object_events/pics/people/juniper.4bpp");
 const u16 gObjectEventPal_Juniper[] = INCBIN_U16("graphics/object_events/palettes/juniper.gbapal");
 
-const u32 gObjectEventPic_Gift[] = INCBIN_U32("graphics/object_events/pics/misc/gift.4bpp");
-const u16 gObjectEventPal_Gift[] = INCBIN_U16("graphics/object_events/palettes/gift.gbapal");
-
 const u32 gObjectEventPic_AccordionPlayer[] = INCBIN_U32("graphics/object_events/pics/people/accordion_player.4bpp");
 const u16 gObjectEventPal_AccordionPlayer[] = INCBIN_U16("graphics/object_events/palettes/accordion_player.gbapal");
 
@@ -650,3 +647,18 @@ const u16 gObjectEventPal_Minccinoow[] = INCBIN_U16("graphics/object_events/pale
 
 const u32 gObjectEventPic_Cottoneeow[] = INCBIN_U32("graphics/object_events/pics/people/cottoneeow.4bpp");
 const u16 gObjectEventPal_Cottoneeow[] = INCBIN_U16("graphics/object_events/palettes/cottoneeow.gbapal");
+
+const u32 gObjectEventPic_Petililow[] = INCBIN_U32("graphics/object_events/pics/people/petililow.4bpp");
+const u16 gObjectEventPal_Petililow[] = INCBIN_U16("graphics/object_events/palettes/petililow.gbapal");
+
+const u32 gObjectEventPic_Munnaow[] = INCBIN_U32("graphics/object_events/pics/people/munnaow.4bpp");
+const u16 gObjectEventPal_Munnaow[] = INCBIN_U16("graphics/object_events/palettes/munnaow.gbapal");
+
+const u32 gObjectEventPic_Musharnaow[] = INCBIN_U32("graphics/object_events/pics/people/musharnaow.4bpp");
+const u16 gObjectEventPal_Musharnaow[] = INCBIN_U16("graphics/object_events/palettes/musharnaow.gbapal");
+
+const u32 gObjectEventPic_FlagPole[] = INCBIN_U32("graphics/object_events/pics/people/flag_pole.4bpp");
+const u16 gObjectEventPal_FlagPole[] = INCBIN_U16("graphics/object_events/palettes/flag_pole.gbapal");
+
+const u32 gObjectEventPic_GiftBox[] = INCBIN_U32("graphics/object_events/pics/people/gift_box.4bpp");
+const u16 gObjectEventPal_GiftBox[] = INCBIN_U16("graphics/object_events/palettes/gift_box.gbapal");
