@@ -26,6 +26,7 @@
 #include "trainer_tower.h"
 #include "window.h"
 #include "line_break.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/abilities.h"
 #include "constants/battle_dome.h"
 #include "constants/battle_string_ids.h"
@@ -3870,6 +3871,18 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     bool32 copyToVram;
     struct TextPrinterTemplate printerTemplate;
     u8 speed;
+
+    // start bwBattleUI
+    if (BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX
+     && (windowId == B_WIN_ACTION_MENU
+         || windowId == B_WIN_PP
+         || windowId == B_WIN_PP_REMAINING
+         || windowId == B_WIN_SWITCH_PROMPT
+         || windowId == B_WIN_MOVE_TYPE))
+    {
+        return;
+    }
+    // end bwBattleUI
 
     if (windowId & B_WIN_COPYTOVRAM)
     {
