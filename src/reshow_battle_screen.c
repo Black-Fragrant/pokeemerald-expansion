@@ -11,6 +11,7 @@
 #include "battle_controllers.h"
 #include "link.h"
 #include "sprite.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/trainers.h"
 #include "battle_interface.h"
 #include "battle_anim.h"
@@ -151,6 +152,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
                 SetBattlerShadowSpriteCallback(opponentBattler, species);
             }
 
+            BattleUI_CreateCursorSprite(gBattlerInMenuId); // bwBattleUI
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gBattlerInMenuId], 0);
 
             if (gWirelessCommType != 0 && gReceivedRemoteLinkPlayers)

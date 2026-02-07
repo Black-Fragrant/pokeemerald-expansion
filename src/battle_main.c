@@ -64,6 +64,7 @@
 #include "util.h"
 #include "wild_encounter.h"
 #include "window.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/abilities.h"
 #include "constants/battle_ai.h"
 #include "constants/battle_move_effects.h"
@@ -2244,7 +2245,7 @@ void CB2_InitEndLinkBattle(void)
         gBattle_BG3_Y = 0;
 
         InitBattleBgsVideo();
-        LoadPalette(gBattleTextboxPalette, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+        LoadPalette(BattleUI_GetTextboxPalette(), BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP); // bwBattleUI
         LoadBattleMenuWindowGfx();
         ResetSpriteData();
         ResetTasks();
