@@ -42,24 +42,24 @@ const u32 *BattleUI_GetTextboxTiles(void);
 const u16 *BattleUI_GetTextboxPalette(void);
 const u32 *BattleUI_GetTextboxTilemap(void);
 
-void BattleUI_CreateCursorSprite(u32);
+void BattleUI_CreateCursorSprite(enum BattlerId);
 void BattleUI_DestroyCursorSprite(void);
 u32 BattleUI_GetCursorSpriteId(void);
 void BattleUI_SetCursorSpriteId(u32);
 void BattleUI_SetCursorMode(enum BWBattleUICursorMode);
 enum BWBattleUICursorMode BattleUI_GetCursorMode(void);
 
-void BattleUI_DisplayMoveBox(u32);
+void BattleUI_DisplayMoveBox(enum BattlerId);
 const u8 *BattleUI_GetTypeEffectivenessSymbol(enum BattlerId, enum Move); // needs to be defined in src/battle_controller_player.c
 
 u32 BattleUI_LoadSpriteSheet(enum BWBattleUISpriteGraphicsType, u32);
 u32 BattleUI_LoadSpritePalette(enum BWBattleUISpritePaletteType, u32);
 
-u32 BattleUI_GetTrainerBackPicPaletteTag(u32);
+u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId);
 
 // req declarations
 enum BattleCoordTypes;
 
-s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes, u32, u32);
+s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes, enum BattlerPosition, u32);
 
 #endif // GUARD_BW_BATTLE_UI_H

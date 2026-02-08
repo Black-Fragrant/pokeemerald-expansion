@@ -55,12 +55,12 @@ static EWRAM_INIT struct {
 // declarations
 static void SpriteCB_BattleUICursor(struct Sprite *);
 
-static void BattleUI_SetCursorBattler(u32);
+static void BattleUI_SetCursorBattler(enum BattlerId);
 static u32 BattleUI_GetCursorBattler(void);
 
-static void BattleUI_DisplayMoveBoxGraphics(u32, u32);
-static void BattleUI_DisplayNormalMoveBox(u32, struct ChooseMoveStruct *);
-static void BattleUI_DisplayZMoveBox(u32, struct ChooseMoveStruct *);
+static void BattleUI_DisplayMoveBoxGraphics(enum BattlerId, u32);
+static void BattleUI_DisplayNormalMoveBox(enum BattlerId, struct ChooseMoveStruct *);
+static void BattleUI_DisplayZMoveBox(enum BattlerId, struct ChooseMoveStruct *);
 
 #include "data/bw_battle_ui.h"
 
@@ -108,7 +108,7 @@ const u32 *BattleUI_GetTextboxTilemap(void)
     }
 }
 
-void BattleUI_CreateCursorSprite(u32 battler)
+void BattleUI_CreateCursorSprite(enum BattlerId battler)
 {
     u32 spriteId = BattleUI_GetCursorSpriteId();
 
@@ -181,7 +181,7 @@ enum BWBattleUICursorMode BattleUI_GetCursorMode(void)
     return (gSprites[BattleUI_GetCursorSpriteId()].sCursorMode & 0xFF);
 }
 
-void BattleUI_DisplayMoveBox(u32 battler)
+void BattleUI_DisplayMoveBox(enum BattlerId battler)
 {
     CopyToBgTilemapBuffer(0, BattleUI_GetTextboxTilemap(), 0, 0);
 
@@ -220,12 +220,12 @@ u32 BattleUI_LoadSpritePalette(enum BWBattleUISpritePaletteType type, u32 tag)
     });
 }
 
-u32 BattleUI_GetTrainerBackPicPaletteTag(u32 battler)
+u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId battler)
 {
     return TAG_TRAINER_BACK_PIC_PAL + battler;
 }
 
-s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, u32 position, u32 coord)
+s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
 {
     return sBWBattleUI_HealthboxCoords[index][position][coord];
 }
@@ -235,7 +235,7 @@ static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 {
     enum BWBattleUICursorMode mode = BattleUI_GetCursorMode();
     bool32 hasSubsprite = (sprite->sCursorMode >> BUI_CURSOR_CONVERT_FLAG);
-    u32 battler = BattleUI_GetCursorBattler();
+    enum BattlerId battler = BattleUI_GetCursorBattler();
     u32 cursor = 0;
 
     switch (mode)
@@ -278,7 +278,7 @@ static void SpriteCB_BattleUICursor(struct Sprite *sprite)
     }
 }
 
-static void BattleUI_SetCursorBattler(u32 battler)
+static void BattleUI_SetCursorBattler(enum BattlerId battler)
 {
     gSprites[BattleUI_GetCursorSpriteId()].sBattler = battler;
 }
@@ -288,7 +288,7 @@ static u32 BattleUI_GetCursorBattler(void)
     return gSprites[BattleUI_GetCursorSpriteId()].sBattler;
 }
 
-static void BattleUI_DisplayMoveBoxGraphics(u32 battler, u32 windowId)
+static void BattleUI_DisplayMoveBoxGraphics(enum BattlerId battler, u32 windowId)
 {
     if (windowId == B_WIN_MOVE_NAME_1 && IsGimmickSelected(battler, GIMMICK_Z_MOVE))
     {
@@ -313,7 +313,7 @@ static void BattleUI_DisplayMoveBoxGraphics(u32 battler, u32 windowId)
         TILE_TO_PIXELS(12), TILE_TO_PIXELS(3));
 }
 
-static void BattleUI_DisplayNormalMoveBox(u32 battler, struct ChooseMoveStruct *moveInfo)
+static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseMoveStruct *moveInfo)
 {
     bool32 hasDynamax = (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX);
 
@@ -381,7 +381,7 @@ static void BattleUI_DisplayNormalMoveBox(u32 battler, struct ChooseMoveStruct *
     CopyWindowRectToVram(B_WIN_MOVE_NAME_1, COPYWIN_GFX, 1, 0, 12, 3);
 }
 
-static void BattleUI_DisplayZMoveBox(u32 battler, struct ChooseMoveStruct *moveInfo)
+static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveStruct *moveInfo)
 {
     u32 windowId = B_WIN_MOVE_NAME_1;
     u32 move = moveInfo->moves[gMoveSelectionCursor[battler]];
