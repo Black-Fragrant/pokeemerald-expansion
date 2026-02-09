@@ -91,6 +91,9 @@ static void QueueAnimTiles_PokeCenter_Globe(u16);
 static void TilesetAnim_IndoorStriaton(u16);
 static void QueueAnimTiles_IndoorStriaton_Machine(u16);
 
+static void TilesetAnim_Striaton(u16);
+static void QueueAnimTiles_Striaton_Flag(u16);
+
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/0.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/1.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/2.4bpp");
@@ -154,6 +157,27 @@ const u16 *const gQueueAnimTiles_IndoorStriaton_Machine[] = {
     gQueueAnimTiles_IndoorStriaton_Machine_Frame6,
     gQueueAnimTiles_IndoorStriaton_Machine_Frame7,
 };
+
+const u16 gQueueAnimTiles_Striaton_Flag_Frame0[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/0.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame1[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/1.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame2[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/2.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame3[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/3.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame4[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/4.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame5[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/5.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame6[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/6.4bpp");
+const u16 gQueueAnimTiles_Striaton_Flag_Frame7[] = INCBIN_U16("data/tilesets/secondary/striaton/anim/flag/7.4bpp");
+
+const u16 *const gQueueAnimTiles_Striaton_Flag[] = {
+    gQueueAnimTiles_Striaton_Flag_Frame0,
+    gQueueAnimTiles_Striaton_Flag_Frame1,
+    gQueueAnimTiles_Striaton_Flag_Frame2,
+    gQueueAnimTiles_Striaton_Flag_Frame3,
+    gQueueAnimTiles_Striaton_Flag_Frame4,
+    gQueueAnimTiles_Striaton_Flag_Frame5,
+    gQueueAnimTiles_Striaton_Flag_Frame6,
+    gQueueAnimTiles_Striaton_Flag_Frame7,
+};
+
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame0[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/0.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame1[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/1.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame2[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/2.4bpp");
@@ -807,6 +831,12 @@ static void TilesetAnim_IndoorStriaton(u16 timer)
         QueueAnimTiles_IndoorStriaton_Machine(timer / 16);
 }
 
+static void TilesetAnim_Striaton(u16 timer)
+{
+    if (timer % 8 == 0)
+        QueueAnimTiles_Striaton_Flag(timer / 8);
+}
+
 static void TilesetAnim_Nuvema(u16 timer)
 {
     if (timer % 16 == 0)
@@ -861,6 +891,12 @@ static void QueueAnimTiles_IndoorStriaton_Machine(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorStriaton_Machine);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorStriaton_Machine[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(746)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Striaton_Flag(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Striaton_Flag);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_Striaton_Flag[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(794)), 2 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
@@ -1106,6 +1142,13 @@ void InitTilesetAnim_IndoorStriaton(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_IndoorStriaton;
 }
 
+void InitTilesetAnim_Striaton(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_Striaton;
+}
+
 static void TilesetAnim_Rustboro(u16 timer)
 {
     if (timer % 8 == 0)
@@ -1217,8 +1260,8 @@ static void TilesetAnim_Cave(u16 timer)
 
 static void TilesetAnim_BattleFrontierOutsideWest(u16 timer)
 {
-    if (timer % 8 == 0)
-        QueueAnimTiles_BattleFrontierOutsideWest_Flag(timer / 8);
+    if (timer % 2 == 0)
+        QueueAnimTiles_BattleFrontierOutsideWest_Flag(timer / 2);
 }
 
 static void TilesetAnim_BattleFrontierOutsideEast(u16 timer)
