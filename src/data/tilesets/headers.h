@@ -1089,7 +1089,7 @@ const struct Tileset gTileset_Striaton =
     .palettes = gTilesetPalettes_Striaton,
     .metatiles = gMetatiles_Striaton,
     .metatileAttributes = gMetatileAttributes_Striaton,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Striaton,
 };
 
 const struct Tileset gTileset_IndoorNuvema =
