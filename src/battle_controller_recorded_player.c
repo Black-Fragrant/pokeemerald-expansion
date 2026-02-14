@@ -278,7 +278,7 @@ static void RecordedPlayerHandleDrawTrainerPic(u32 battler)
     // Sets Multibattle test player sprites to not be Hiker
     if (IsMultibattleTest())
     {
-        trainerPicId = TRAINER_PIC_BACK_BRENDAN;
+        trainerPicId = TRAINER_PIC_BACK_HILBERT;
         if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
             xPos = 32;
         else
@@ -290,12 +290,12 @@ static void RecordedPlayerHandleDrawTrainerPic(u32 battler)
         if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
         {
             if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-                trainerPicId = GetBattlerLinkPlayerGender(battler) + TRAINER_PIC_BACK_BRENDAN;
+                trainerPicId = GetBattlerLinkPlayerGender(battler) + TRAINER_PIC_BACK_HILBERT;
             else
-                trainerPicId = gLinkPlayers[gRecordedBattleMultiplayerId].gender + TRAINER_PIC_BACK_BRENDAN;
+                trainerPicId = gLinkPlayers[gRecordedBattleMultiplayerId].gender + TRAINER_PIC_BACK_HILBERT;
         }
         else
-            trainerPicId = gLinkPlayers[0].gender + TRAINER_PIC_BACK_BRENDAN;
+            trainerPicId = gLinkPlayers[0].gender + TRAINER_PIC_BACK_HILBERT;
 
         if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         {
@@ -403,9 +403,9 @@ static void RecordedPlayerHandleIntroTrainerBallThrow(u32 battler)
     const u16 *trainerPal;
 
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
-        trainerPicId = gLinkPlayers[GetBattlerMultiplayerId(battler)].gender + TRAINER_PIC_BACK_BRENDAN;
+        trainerPicId = gLinkPlayers[GetBattlerMultiplayerId(battler)].gender + TRAINER_PIC_BACK_HILBERT;
     else
-        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_PIC_BACK_BRENDAN;
+        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_PIC_BACK_HILBERT;
 
     trainerPal = gTrainerBacksprites[trainerPicId].palette.data;
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Intro_TryShinyAnimShowHealthbox);
