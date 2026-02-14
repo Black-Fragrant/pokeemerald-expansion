@@ -289,8 +289,18 @@ const u8 gTrainerBackPic_RubySapphireMay[] = INCBIN_U8("graphics/trainers/back_p
 const u8 gTrainerBackPic_Wally[] = INCBIN_U8("graphics/trainers/back_pics/wally.4bpp");
 const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steven.4bpp");
 
+const u8 gTrainerBackPic_Hilbert[] = INCBIN_U8("graphics/trainers/back_pics/hilbert.4bpp");
+const u8 gTrainerBackPic_Hilda[] = INCBIN_U8("graphics/trainers/back_pics/hilda.4bpp");
+const u8 gTrainerBackPic_Juniper[] = INCBIN_U8("graphics/trainers/back_pics/juniper.4bpp");
+const u8 gTrainerBackPic_Cheren[] = INCBIN_U8("graphics/trainers/back_pics/cheren.4bpp");
+
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
+
+const u16 gTrainerPalette_Hilbert[] = INCBIN_U16("graphics/trainers/palettes/hilbert.gbapal");
+const u16 gTrainerPalette_Hilda[] = INCBIN_U16("graphics/trainers/palettes/hilda.gbapal");
+const u16 gTrainerPalette_Juniper[] = INCBIN_U16("graphics/trainers/palettes/juniper.gbapal");
+const u16 gTrainerPalette_Cheren[] = INCBIN_U16("graphics/trainers/palettes/cheren.gbapal");
 
 // The first two parameters invoke a front pic and palette by
 // calling a "TRAINER_PIC" constant (e.g. TRAINER_PIC_FRONT_HIKER), and
@@ -468,12 +478,16 @@ static const union AnimCmd *const sBackAnims_Kanto[] =
 
 const struct TrainerBacksprite gTrainerBacksprites[] =
 {
-    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_BRENDAN, 4, gTrainerBackPic_Brendan, gTrainerPalette_Brendan, sBackAnims_Hoenn),
-    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_MAY, 4, gTrainerBackPic_May, gTrainerPalette_May, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_HILBERT, 5, gTrainerBackPic_Hilbert, gTrainerPalette_Hilbert, sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_HILDA, 5, gTrainerBackPic_Hilda, gTrainerPalette_Hilda, sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_RED, 5, gTrainerBackPic_Red, gTrainerBackPicPalette_Red, sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_LEAF, 5, gTrainerBackPic_Leaf, gTrainerBackPicPalette_Leaf, sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_RUBY_SAPPHIRE_BRENDAN, 4, gTrainerBackPic_RubySapphireBrendan, gTrainerPalette_RubySapphireBrendan, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_RUBY_SAPPHIRE_MAY, 4, gTrainerBackPic_RubySapphireMay, gTrainerPalette_RubySapphireMay, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_JUNIPER, 5, gTrainerBackPic_Juniper, gTrainerPalette_Juniper, sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_CHEREN, 5, gTrainerBackPic_Cheren, gTrainerPalette_Cheren, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_BRENDAN, 4, gTrainerBackPic_Brendan, gTrainerPalette_Brendan, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_MAY, 4, gTrainerBackPic_May, gTrainerPalette_May, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_WALLY, 4, gTrainerBackPic_Wally, gTrainerPalette_Wally, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_PIC_BACK_STEVEN, 4, gTrainerBackPic_Steven, gTrainerPalette_Steven, sBackAnims_Hoenn),
 };

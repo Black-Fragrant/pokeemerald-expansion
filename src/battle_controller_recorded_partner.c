@@ -202,7 +202,7 @@ static enum TrainerPicID RecordedPartnerGetTrainerBackPicId(enum DifficultyLevel
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
         trainerPicId = gBattlePartners[difficulty][gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerBackPic;
     else
-        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_PIC_BACK_BRENDAN;
+        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_PIC_BACK_HILBERT;
 
     return trainerPicId;
 }
@@ -216,7 +216,7 @@ static void RecordedPartnerHandleDrawTrainerPic(u32 battler)
     s16 xPos, yPos;
     enum TrainerPicID trainerPicId;
 
-    trainerPicId = TRAINER_PIC_BACK_STEVEN;
+    trainerPicId = TRAINER_PIC_BACK_CHEREN;
     xPos = 90;
     yPos = (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80;
 
