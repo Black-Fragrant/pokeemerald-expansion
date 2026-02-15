@@ -46,11 +46,11 @@
 #define FLAG_NUVEMA_JUNIPER                  0x20
 #define FLAG_RECEIVED_POTION_ROUTE1_EAST     0x21
 #define FLAG_RECEIVED_POKEBALL_ACCUMULA      0x22
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
+#define FLAG_CHOSE_SNIVY                     0x23
+#define FLAG_CHOSE_TEPIG                     0x24
+#define FLAG_CHOSE_OSHAWOTT                  0x25
+#define FLAG_NUVEMA_PH2F_BIANCA              0x26
+#define FLAG_NUVEMA_PH2F_CHEREN              0x27
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
