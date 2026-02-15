@@ -410,8 +410,8 @@ static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite)
 {
     if (sprite->sAnimate == TRUE)
     {
-        // Alternate between hidden and shown every 16th frame
-        if (++sprite->sTimer & 16)
+        // Alternate between hidden and shown every 64th frame
+        if (++sprite->sTimer & 64)
             sprite->invisible = FALSE;
         else
             sprite->invisible = TRUE;
@@ -840,7 +840,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
         }
         
         // Update horizontal scroll for top 32 pixels
-        if (gTasks[taskId].tCounter & 1)
+        if ((gTasks[taskId].tCounter & 3) == 0)
             gTasks[taskId].tBg0Scroll++;
         UpdateBg0HorizontalScroll(gTasks[taskId].tBg0Scroll);
         
