@@ -30,11 +30,12 @@ enum {
 };
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 128
-#define VERSION_BANNER_LEFT_X 68
-#define VERSION_BANNER_RIGHT_X 132
+#define VERSION_BANNER_LEFT_X 74
+#define VERSION_BANNER_RIGHT_X 138
 #define VERSION_BANNER_Y 24
 #define VERSION_BANNER_Y_GOAL 88
-#define START_BANNER_X 80
+#define START_BANNER_X 105
+#define COPYRIGHT_BANNER_X 80
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
@@ -748,8 +749,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_BG1_ON
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
-        CreatePressStartBanner(START_BANNER_X, 132);
-        CreateCopyrightBanner(START_BANNER_X, 156);
+        CreatePressStartBanner(START_BANNER_X, 120);
+        CreateCopyrightBanner(COPYRIGHT_BANNER_X, 156);
         gTasks[taskId].tBg1Y = 0;
         gTasks[taskId].func = Task_TitleScreenPhase3;
     }
@@ -846,28 +847,75 @@ static void CB2_GoToBerryFixScreen(void)
     }
 }
 
+struct FadeColors
+{
+    u16 color1;
+    u16 color2;
+    u8 colorIndex;
+};
+
+#ifndef RHH_EXPANSION
+#define RGB2GBA(r, g, b) (((r >> 3) & 31) | (((g >> 3) & 31) << 5) | (((b >> 3) & 31) << 10))
+#endif
+
+static const struct FadeColors sFadeColors[] = {
+/*
+    {
+        .color1 = RGB2GBA(, , ),
+        .color2 = RGB2GBA(, , ),
+        .colorIndex = 
+    }
+*/
+    {
+        .color1 = RGB2GBA(84, 137, 149),
+        .color2 = RGB2GBA(131, 213, 230),
+        .colorIndex = 2
+    },
+    {
+        .color1 = RGB2GBA(82, 82, 82),
+        .color2 = RGB2GBA(247, 181, 16),
+        .colorIndex = 15
+    }
+};
+
 static void UpdateLegendaryMarkingColor(u8 frameNum)
 {
-    if ((frameNum % 4) == 0) // Update every 4 frames
+    if ((frameNum % 4) == 0) // Change color every 4th frame
     {
-        // intensity oscillates between 0.0 and 1.0
-        s32 intensity = Cos(frameNum, Q_8_8(0.5)) + Q_8_8(0.5); // 0–1 in Q8.8
+        s32 intensity = (((Cos(frameNum, 128) + 128) * 10) / 250);
+        s32 r;
+        s32 g;
+        s32 b;
+        u16 color;
+        u32 i;
 
-        // Convert to integer 0–256 range for interpolation
-        u32 t = Q_8_8_TO_INT(intensity * 256);
+        for (i = 0; i < ARRAY_COUNT(sFadeColors); i++)
+        {
+            if (intensity == 0)
+            {
+                color = sFadeColors[i].color2;
+            }
+            else
+            {
+                if (GET_R(sFadeColors[i].color1) <= GET_R(sFadeColors[i].color2))
+                    r = (GET_R(sFadeColors[i].color2) - (((GET_R(sFadeColors[i].color2) - GET_R(sFadeColors[i].color1)) * intensity) / 10));
+                else
+                    r = (GET_R(sFadeColors[i].color2) + (((GET_R(sFadeColors[i].color1) - GET_R(sFadeColors[i].color2)) * intensity) / 10));
 
-        // Dull color (565656 → RGB 10,10,10)
-        const u32 r0 = 10, g0 = 10, b0 = 10;
+                if (GET_G(sFadeColors[i].color1) <= GET_G(sFadeColors[i].color2))
+                    g = (GET_G(sFadeColors[i].color2) - (((GET_G(sFadeColors[i].color2) - GET_G(sFadeColors[i].color1)) * intensity) / 10));
+                else
+                    g = (GET_G(sFadeColors[i].color2) + (((GET_G(sFadeColors[i].color1) - GET_G(sFadeColors[i].color2)) * intensity) / 10));
 
-        // Bright color (F0B413 → RGB 30,22,2)
-        const u32 r1 = 30, g1 = 22, b1 = 2;
+                if (GET_B(sFadeColors[i].color1) <= GET_B(sFadeColors[i].color2))
+                    b = (GET_B(sFadeColors[i].color2) - (((GET_B(sFadeColors[i].color2) - GET_B(sFadeColors[i].color1)) * intensity) / 10));
+                else
+                    b = (GET_B(sFadeColors[i].color2) + (((GET_B(sFadeColors[i].color1) - GET_B(sFadeColors[i].color2)) * intensity) / 10));
 
-        // Linear interpolation: channel = r0 + (r1 - r0) * t / 256
-        u32 r = r0 + (((r1 - r0) * t) >> 8);
-        u32 g = g0 + (((g1 - g0) * t) >> 8);
-        u32 b = b0 + (((b1 - b0) * t) >> 8);
-
-        u16 color = RGB(r, g, b);
-        LoadPalette(&color, BG_PLTT_ID(14) + 15, sizeof(color));
+                color = RGB(r, g, b);
+            }
+            
+            LoadPalette(&color, BG_PLTT_ID(14) + sFadeColors[i].colorIndex, sizeof(color));
+        }
     }
 }
