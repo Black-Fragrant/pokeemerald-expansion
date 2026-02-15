@@ -66,6 +66,12 @@ static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_scre
 static const u32 sTitleScreenLogoShineGfx[] = INCBIN_U32("graphics/title_screen/logo_shine.4bpp.smol");
 static const u32 sTitleScreenCloudsGfx[] = INCBIN_U32("graphics/title_screen/clouds.4bpp.smol");
 
+static const struct ScanlineEffectParams sScanlineParams_Bg0Scroll =
+{
+    .dmaDest = &REG_BG0HOFS,
+    .dmaControl = SCANLINE_EFFECT_DMACNT_16BIT,
+    .initState = 1
+};
 
 
 // Used to blend "Emerald Version" as it passes over over the Pokémon banner.
@@ -359,6 +365,7 @@ static const struct CompressedSpriteSheet sPokemonLogoShineSpriteSheet[] =
 #define tPointless  data[2] // Incremented but never used to do anything.
 #define tBg2Y       data[3]
 #define tBg1Y       data[4]
+#define tBg0Scroll  data[7]
 
 // Sprite data for sVersionBannerLeftSpriteTemplate / sVersionBannerRightSpriteTemplate
 #define sAlphaBlendIdx data[0]
@@ -560,6 +567,25 @@ static void VBlankCB(void)
     SetGpuReg(REG_OFFSET_BG1VOFS, gBattle_BG1_Y);
 }
 
+static void UpdateBg0HorizontalScroll(s16 scrollOffset)
+{
+    u32 i;
+    
+    // Set horizontal offset for top 32 scanlines (these will scroll)
+    for (i = 0; i < 32; i++)
+    {
+        gScanlineEffectRegBuffers[0][i] = scrollOffset;
+        gScanlineEffectRegBuffers[1][i] = scrollOffset;
+    }
+    
+    // Set horizontal offset to 0 for remaining scanlines (these stay fixed)
+    for (i = 32; i < DISPLAY_HEIGHT; i++)
+    {
+        gScanlineEffectRegBuffers[0][i] = 0;
+        gScanlineEffectRegBuffers[1][i] = 0;
+    }
+}
+
 void CB2_InitTitleScreen(void)
 {
     switch (gMain.state)
@@ -658,7 +684,14 @@ void CB2_InitTitleScreen(void)
         if (!UpdatePaletteFade())
         {
             StartPokemonLogoShine(SHINE_MODE_SINGLE_NO_BG_COLOR);
-            ScanlineEffect_InitWave(0, DISPLAY_HEIGHT, 4, 4, 0, SCANLINE_EFFECT_REG_BG1HOFS, TRUE);
+            
+            // Initialize BG0 horizontal scroll for top 32 pixels
+            ScanlineEffect_Stop();
+            ScanlineEffect_Clear();
+            CpuFastFill16(0, gScanlineEffectRegBuffers, sizeof(gScanlineEffectRegBuffers));
+            UpdateBg0HorizontalScroll(0);
+            ScanlineEffect_SetParams(sScanlineParams_Bg0Scroll);
+            
             SetMainCallback2(MainCB2);
         }
         break;
@@ -805,6 +838,12 @@ static void Task_TitleScreenPhase3(u8 taskId)
             gBattle_BG1_Y = gTasks[taskId].tBg1Y / 2;
             gBattle_BG1_X = 0;
         }
+        
+        // Update horizontal scroll for top 32 pixels
+        if (gTasks[taskId].tCounter & 1)
+            gTasks[taskId].tBg0Scroll++;
+        UpdateBg0HorizontalScroll(gTasks[taskId].tBg0Scroll);
+        
         UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
