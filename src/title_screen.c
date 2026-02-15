@@ -34,7 +34,7 @@ enum {
 #define VERSION_BANNER_RIGHT_X 138
 #define VERSION_BANNER_Y 24
 #define VERSION_BANNER_Y_GOAL 88
-#define START_BANNER_X 105
+#define START_BANNER_X 80 // 105 for centered under pokemon and version logos
 #define COPYRIGHT_BANNER_X 80
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
@@ -749,7 +749,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_BG1_ON
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
-        CreatePressStartBanner(START_BANNER_X, 120);
+        CreatePressStartBanner(START_BANNER_X, 132); // 120 for more grouped with pokemon logo and version
         CreateCopyrightBanner(COPYRIGHT_BANNER_X, 156);
         gTasks[taskId].tBg1Y = 0;
         gTasks[taskId].func = Task_TitleScreenPhase3;
@@ -866,11 +866,12 @@ static const struct FadeColors sFadeColors[] = {
         .colorIndex = 
     }
 */
-    {
-        .color1 = RGB2GBA(84, 137, 149),
-        .color2 = RGB2GBA(131, 213, 230),
-        .colorIndex = 2
-    },
+// uncomment the below to have the eye glow.
+    // {
+    //     .color1 = RGB2GBA(84, 137, 149),
+    //     .color2 = RGB2GBA(131, 213, 230),
+    //     .colorIndex = 2
+    // },
     {
         .color1 = RGB2GBA(82, 82, 82),
         .color2 = RGB2GBA(247, 181, 16),
