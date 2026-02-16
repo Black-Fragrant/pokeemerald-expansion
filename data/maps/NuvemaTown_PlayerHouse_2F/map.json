@@ -40,7 +40,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NuvemaTown_PH2F_EventScript_Gift_Box",
-      "flag": "0"
+      "flag": "FLAG_NUVEMA_PH2F_GIFT"
     },
     {
       "local_id": "LOCALID_NUVEMA_PH2F_CHEREN",

@@ -14,7 +14,7 @@ script NuvemaTown_EventScript_HidePlayer
 {
 	hideobjectat(LOCALID_PLAYER, MAP_NUVEMA_TOWN)
 	playbgm(MUS_BW_SPAWN_NUVEMA_TOWN, 1)
-	return
+	end()
 }
 
 script NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
@@ -22,23 +22,47 @@ script NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
 	lockall()
 	clearflag(FLAG_NUVEMA_JUNIPER)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, NuvemaTown_Movement_CameraSyncWithJuniper)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down, walk_down ))
 	waitmovement(0)
-	applymovement(LOCALID_JUNIPER, NuvemaTown_Movement_JuniperComeToPlayerHouse)
-	applymovement(OBJ_EVENT_ID_CAMERA, NuvemaTown_Movement_CameraFollowsJuniperToPlayersHouse)
-	waitmovement(0)
-	applymovement(LOCALID_JUNIPER, Common_Movement_Delay32)
-	waitmovement(0)
-	applymovement(LOCALID_JUNIPER, NuvemaTown_Movement_JuniperLeavesPlayersHouse)
-	waitmovement(0)
-	applymovement(LOCALID_JUNIPER, Common_Movement_Delay32)
+	applymovement(LOCALID_JUNIPER, moves( walk_down * 10, walk_right * 5, walk_up ))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down * 10, walk_right * 5, walk_up ))
 	waitmovement(0)
 	special(RemoveCameraObject)
+    delay (20)
+	playse(SE_DOOR)
+	setdooropen(14, 15)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_JUNIPER, moves( walk_up ))
+	waitmovement(0)
+	playse(SE_EXIT)
+	applymovement(LOCALID_JUNIPER, moves( set_invisible, face_down ))
+	waitmovement(0)
+	waitse()
+    delay (10)
+	setdoorclosed(14, 15)
+	delay(160)
+	playse(SE_DOOR)
+	setdooropen(14, 15)
+	waitse()
+    delay (10)
+	playse(SE_EXIT)
+	applymovement(LOCALID_JUNIPER, moves( set_visible ))
+	waitmovement(0)
+	waitse()
+	applymovement(LOCALID_JUNIPER, moves( walk_down ))
+	waitmovement(0)
+    delay (10)
+	setdoorclosed(14, 15)
+    delay (20)
+	applymovement(LOCALID_JUNIPER, moves( walk_down * 6 ))
+	waitmovement(0)
+    delay (20)
 	removeobject(LOCALID_JUNIPER)
 	setflag(FLAG_NUVEMA_JUNIPER)
 	setvar(VAR_JUNIPER_PARCEL_DELIEVER, 1)
-	releaseall()
 	warpsilent(MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 5, 8)
+	waitstate()
 	end()
 }
 
@@ -106,28 +130,4 @@ script NuvemaTown_EventScript_FatMan
 			"Now you can use infrared to do all\n"
 			"sorts of things in the blink of eye!", MSGBOX_NPC, TRUE)
 	end
-}
-
-movement NuvemaTown_Movement_CameraSyncWithJuniper
-{
-	walk_down * 2
-}
-
-movement NuvemaTown_Movement_JuniperComeToPlayerHouse
-{
-	walk_down * 10
-	walk_right * 5
-	walk_up * 2	
-}
-
-movement NuvemaTown_Movement_CameraFollowsJuniperToPlayersHouse
-{
-	walk_down * 10
-	walk_right * 5
-	walk_up * 2	
-}
-
-movement NuvemaTown_Movement_JuniperLeavesPlayersHouse
-{
-	walk_down * 6
 }

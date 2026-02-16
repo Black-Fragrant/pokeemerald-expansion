@@ -4,13 +4,13 @@
 #include "constants/battle_partner.h"
 
 #define TRAINER_NONE                          0
-#define TRAINER_SAWYER_1                      1
-#define TRAINER_GRUNT_AQUA_HIDEOUT_1          2
-#define TRAINER_GRUNT_AQUA_HIDEOUT_2          3
-#define TRAINER_GRUNT_AQUA_HIDEOUT_3          4
-#define TRAINER_GRUNT_AQUA_HIDEOUT_4          5
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_1       6
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
+#define TRAINER_DUMMY                         1
+#define TRAINER_BIANCA_NUVEMA_TOWN_1          2
+#define TRAINER_BIANCA_NUVEMA_TOWN_2          3
+#define TRAINER_BIANCA_NUVEMA_TOWN_3          4
+#define TRAINER_CHEREN_NUVEMA_TOWN_1          5
+#define TRAINER_CHEREN_NUVEMA_TOWN_2          6
+#define TRAINER_CHEREN_NUVEMA_TOWN_3          7
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_PETALBURG_WOODS        10
