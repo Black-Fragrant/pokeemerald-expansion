@@ -1,37 +1,126 @@
 mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
     {
-		MAP_SCRIPT_ON_TRANSITION
-	[
-		VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_PositionPlayers
-	]
-    	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
-	[
-        VAR_NUVEMA_PICK_STARTER, 0 : NuvemaTown_PH2F_EventScript_HideBianca
-		VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_TurnPlayer
-	]
-	    MAP_SCRIPT_ON_FRAME_TABLE
+        MAP_SCRIPT_ON_LOAD : NuvemaTown_PlayerHouse_On_Load
+        MAP_SCRIPT_ON_TRANSITION : NuvemaTown_PlayerHouse_On_Transition
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_TurnPlayer
+    ]
+        MAP_SCRIPT_ON_FRAME_TABLE
     [
         VAR_NUVEMA_PICK_STARTER, 0 : NuvemaTown_PH2F_EventScript_Loading
+        VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_BiancaBattle
     ]
     }
 
+script NuvemaTown_PlayerHouse_On_Load
+{
+	call_if_set(FLAG_NUVEMA_PH2F_IS_MESSY, NuvemaTown_PlayerHouse_Messy_Room)
+	end()
+}
+
+script NuvemaTown_PlayerHouse_Messy_Room
+{
+	setmetatile (1, 3, 0x019, TRUE)
+	setmetatile (2, 3, 0x238, TRUE)
+	setmetatile (3, 3, 0x239, TRUE)
+	setmetatile (4, 3, 0x23A, TRUE)
+	setmetatile (5, 3, 0x228, TRUE)
+	setmetatile (6, 3, 0x229, TRUE)
+	setmetatile (7, 3, 0x22A, TRUE)
+	setmetatile (1, 4, 0x233, TRUE)
+	setmetatile (2, 4, 0x240, TRUE)
+	setmetatile (3, 4, 0x241, TRUE)
+	setmetatile (4, 4, 0x242, TRUE)
+	setmetatile (5, 4, 0x230, TRUE)
+	setmetatile (6, 4, 0x231, TRUE)
+	setmetatile (7, 4, 0x232, FALSE)
+	setmetatile (1, 5, 0x23B, TRUE)
+	setmetatile (2, 5, 0x23D, TRUE)
+	setmetatile (3, 5, 0x249, TRUE)
+	setmetatile (4, 5, 0x24A, TRUE)
+	setmetatile (5, 5, 0x001, FALSE)
+	setmetatile (6, 5, 0x260, FALSE)
+	setmetatile (7, 5, 0x262, FALSE)
+	setmetatile (10, 5, 0x08D, TRUE)
+	setmetatile (1, 6, 0x23C, TRUE)
+	setmetatile (2, 6, 0x234, TRUE)
+	setmetatile (3, 6, 0x260, FALSE)
+	setmetatile (4, 6, 0x260, FALSE)
+	setmetatile (5, 6, 0x261, FALSE)
+	setmetatile (6, 6, 0x001, FALSE)
+	setmetatile (7, 6, 0x001, FALSE)
+	setmetatile (8, 6, 0x263, FALSE)
+	setmetatile (9, 6, 0x226, TRUE)
+	setmetatile (10, 6, 0x227, TRUE)
+	setmetatile (1, 7, 0x248, TRUE)
+	setmetatile (2, 7, 0x25E, FALSE)
+	setmetatile (3, 7, 0x001, FALSE)
+	setmetatile (4, 7, 0x243, FALSE)
+	setmetatile (5, 7, 0x244, FALSE)
+	setmetatile (6, 7, 0x245, FALSE)
+	setmetatile (7, 7, 0x246, FALSE)
+	setmetatile (8, 7, 0x262, FALSE)
+	setmetatile (9, 7, 0x22E, FALSE)
+	setmetatile (10, 7, 0x22F, FALSE)
+	setmetatile (2, 8, 0x235, FALSE)
+	setmetatile (3, 8, 0x247, FALSE)
+	setmetatile (4, 8, 0x24B, FALSE)
+	setmetatile (5, 8, 0x24C, FALSE)
+	setmetatile (6, 8, 0x24D, FALSE)
+	setmetatile (7, 8, 0x24E, FALSE)
+	setmetatile (8, 8, 0x24F, FALSE)
+	setmetatile (9, 8, 0x264, FALSE)
+	setmetatile (10, 8, 0x001, FALSE)
+	setmetatile (1, 9, 0x250, TRUE)
+	setmetatile (2, 9, 0x251, FALSE)
+	setmetatile (3, 9, 0x252, FALSE)
+	setmetatile (4, 9, 0x253, FALSE)
+	setmetatile (5, 9, 0x254, FALSE)
+	setmetatile (6, 9, 0x255, FALSE)
+	setmetatile (7, 9, 0x256, FALSE)
+	setmetatile (8, 9, 0x257, FALSE)
+	setmetatile (9, 9, 0x236, TRUE)
+	setmetatile (10, 9, 0x237, TRUE)
+	setmetatile (1, 10, 0x258, TRUE)
+	setmetatile (2, 10, 0x259, TRUE)
+	setmetatile (3, 10, 0x25A, TRUE)
+	setmetatile (4, 10, 0x25B, TRUE)
+	setmetatile (5, 10, 0x25C, FALSE)
+	setmetatile (6, 10, 0x25D, FALSE)
+	setmetatile (7, 10, 0x265, FALSE)
+	setmetatile (8, 10, 0x264, FALSE)
+	setmetatile (9, 10, 0x23E, TRUE)
+	setmetatile (10, 10, 0x23F, TRUE)
+	return()
+}
+
+script NuvemaTown_PlayerHouse_On_Transition
+{
+switch(var(VAR_NUVEMA_PICK_STARTER))
+    { 
+    case 0: goto(NuvemaTown_PH2F_EventScript_HideBianca)
+    case 2: goto(NuvemaTown_PH2F_EventScript_PositionPlayers)
+    }
+}
+
 script NuvemaTown_PH2F_EventScript_HideBianca
 {
-	removeobject (LOCALID_NUVEMA_PH2F_BIANCA)
-	return
+	setflag (FLAG_NUVEMA_PH2F_BIANCA)
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_TurnPlayer
 {
 	turnobject (LOCALID_PLAYER, DIR_EAST)
-	return
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_PositionPlayers
 {
 	setobjectxyperm (LOCALID_NUVEMA_PH2F_CHEREN, 5, 6)
 	setobjectxyperm (LOCALID_NUVEMA_PH2F_BIANCA, 6, 8)
-	return
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Loading
@@ -140,21 +229,32 @@ script NuvemaTown_PH2F_EventScript_Cheren_Waiting
 		"and open the gift box already?\p"
 		"I'm sure the Pokémon are just as\n"
 		"excited to meet us!", MSGBOX_NPC, TRUE)
-	end
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Bianca_Waiting
 {
 	msgbox("Ooh!\n"
 		"What kind of Pokémon could they be?", MSGBOX_NPC, TRUE)
-	end
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Wii_Console
 {
+	lock()
+	goto_if_set(FLAG_NUVEMA_PH2F_IS_MESSY, NuvemaTown_PH2F_EventScript_Wii_Console_Messy)
 	msgbox("It's a Wii console!\n"
        "It has a Wii Remote!", MSGBOX_SIGN)
-	end
+	release()
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_Wii_Console_Messy
+{
+	msgbox("It's a Wii console!\p"
+       "It's not even scratched!", MSGBOX_SIGN)
+	release()
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Computer
@@ -164,8 +264,8 @@ script NuvemaTown_PH2F_EventScript_Computer
 		"Pokémon live alongside Pokémon in\n"
 		"this world.\p"
 		"The people who battle with Pokémon\n"
-		"are called Pokémon Trainers.", MSGBOX_SIGN)
-	end
+		"are called Pokémon Trainers.", MSGBOX_SIGN) //this should be transparent
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Try_To_Leave
@@ -379,5 +479,328 @@ script NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy
 	delay(20)
 	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
 	waitstate
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_BiancaBattle
+{
+	lockall()
+	playbgm(MUS_BW_ADVENTURE_TOGETHER, TRUE)
+	setvar(VAR_NUVEMA_PICK_STARTER, 3)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Bianca: Everyone has chosen a Pokémon!\n"
+       "... So that's that!\p"
+       "Hey, I know!\n"
+       "Let's have a Pokémon battle!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	msgbox("Cheren: Honestly, Bianca...\p"
+		"Even though they're still weak Pokémon,\n"
+		"you shouldn't have Pokémon battles\l"
+		"inside a house.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	msgbox("Bianca: Don't be a worrywart!\n"
+		"These little ones are weak, like you said.\p"
+		"We have to let them battle so they'll get\n"
+		"stronger. It's settled, {PLAYER}!\l"
+		"Get ready for a Pokémon battle!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	setflag(FLAG_NO_WHITEOUT)
+	call_if_set(FLAG_CHOSE_SNIVY, NuvemaTown_PH2F_EventScript_BiancaBattle_Oshawott)
+	call_if_set(FLAG_CHOSE_TEPIG, NuvemaTown_PH2F_EventScript_BiancaBattle_Snivy)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, NuvemaTown_PH2F_EventScript_BiancaBattle_Tepig)
+	goto(NuvemaTown_PH2F_EventScript_CherenBattle)
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_BiancaBattle_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_1, text("The Pokémon on both sides\ndid their best!"))
+	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
+		{
+		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Won)
+		}
+	else
+		{
+		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Lost)
+		}
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_BiancaBattle_Snivy
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_2, text("The Pokémon on both sides\ndid their best!"))
+	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
+		{
+		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Won)
+		}
+	else
+		{
+		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Lost)
+		}
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_BiancaBattle_Tepig
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_3, text("The Pokémon on both sides\ndid their best!"))
+	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
+		{
+		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Won)
+		}
+	else
+		{
+		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Lost)
+		}
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_BiancaBattle_Won
+{
+	fadescreen(FADE_TO_WHITE)
+	setflag(FLAG_NUVEMA_PH2F_GIFT)
+	removeobject(LOCALID_NUVEMA_PH2F_BOX)
+	call(NuvemaTown_PlayerHouse_Messy_Room)
+	special(DrawWholeMapView)
+	fadescreen(FADE_FROM_WHITE)
+	msgbox("Bianca: Wow...\p"
+			"{PLAYER}, you're gonna be\n"
+			"an awesome Trainer someday, I can tell!\p"
+			"No doubt!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_BiancaBattle_Lost
+{
+	fadescreen(FADE_TO_WHITE)
+	setflag(FLAG_NUVEMA_PH2F_GIFT)
+	removeobject(LOCALID_NUVEMA_PH2F_BOX)
+	call(NuvemaTown_PlayerHouse_Messy_Room)
+	special(DrawWholeMapView)
+	fadescreen(FADE_FROM_WHITE)
+	msgbox("Bianca: Wha...?\p"
+		"I got so absorbed in having my Pokémon\n"
+		"use moves, I won before even realizing...", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_CherenBattle
+{
+	delay(20)
+	setflag(FLAG_NUVEMA_PH2F_IS_MESSY)
+	msgbox("Cheren: Uh...\n"
+		"...\p"
+		"Bianca, would you take a look around?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_right, delay_16, walk_in_place_up, delay_16, walk_in_place_down))
+	waitmovement(0)
+	delay(20)
+	msgbox("Bianca: Wh-whoa!\n"
+			"What happened?!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Wow! Pokémon are amaaaaazing!!\n"
+			"So little, but so strong!\p"
+			"I'm so glad that I get to have a Pokémon!\p"
+			"...Oh.\n"
+			"Um, sorry about your room, {PLAYER}.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_down, walk_down, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: You... are completely hopeless.\p"
+			"Here!\n"
+			"I'll restore your Pokémon for you.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(20)
+	playse(SE_USE_ITEM)
+	msgbox("Cheren healed Bianca's Pokémon!") //this should be transparent
+	waitse()
+	closemessage
+	delay(20)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("{PLAYER}'s Pokémon needs\n"
+			"to be fixed up, too.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+		delay(20)
+	playse(SE_USE_ITEM)
+	special(HealPlayerParty)
+	msgbox("Cheren healed {PLAYER}'s Pokémon!") //this should be transparent
+	waitse()
+	closemessage
+	delay(20)
+	playse(SE_PIN)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_up, walk_up, walk_left, walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_up))
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
+	delay(20)
+	msgbox("Bianca: Hey, Cheren!\n"
+			"How about you battle, too?\p"
+			"With all you know, I'm sure you can\n"
+			"battle without turning the room into\l"
+			"a disaster area like I did!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(20)
+	msgbox("Cheren: I believe you're right!\p"
+			"It'll be no problem for me to keep\n"
+			"the room from getting any messier.\p"
+			"Besides, it's not fair if you two are the\n"
+			"only ones who get to have fun battling!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_right, walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(20)
+	call_if_set(FLAG_CHOSE_SNIVY, NuvemaTown_PH2F_EventScript_CherenBattle_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, NuvemaTown_PH2F_EventScript_CherenBattle_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, NuvemaTown_PH2F_EventScript_CherenBattle_Snivy)
+	goto(NuvemaTown_PH2F_EventScript_Finished_Battles)
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_CherenBattle_Tepig
+{
+	msgbox("It's decided. You'll be my opponent...\n"
+			"in our first Pokémon battle!\p"
+			"Let's see what you can do, Tepig!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_1, text("Ah! So that's a Pokémon battle!"))
+	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
+		{
+		call(NuvemaTown_PH2F_EventScript_CherenBattle_Won)
+		}
+	else
+		{
+		call(NuvemaTown_PH2F_EventScript_CherenBattle_Lost)
+		}
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_CherenBattle_Oshawott
+{
+	msgbox("It's decided. You'll be my opponent...\n"
+			"in our first Pokémon battle!\p"
+			"Let's see what you can do, Oshawott!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_2, text("Ah! So that's a Pokémon battle!"))
+	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
+		{
+		call(NuvemaTown_PH2F_EventScript_CherenBattle_Won)
+		}
+	else
+		{
+		call(NuvemaTown_PH2F_EventScript_CherenBattle_Lost)
+		}
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_CherenBattle_Snivy
+{
+	msgbox("It's decided. You'll be my opponent...\n"
+			"in our first Pokémon battle!\p"
+			"Let's see what you can do, Snivy!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_3, text("Ah! So that's a Pokémon battle!"))
+	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
+		{
+		call(NuvemaTown_PH2F_EventScript_CherenBattle_Won)
+		}
+	else
+		{
+		call(NuvemaTown_PH2F_EventScript_CherenBattle_Lost)
+		}
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_CherenBattle_Won
+{
+	msgbox("Cheren: I made a strange blunder\n"
+		"in my first battle, but\l"
+		"this feeling I have...\l"
+		"... I'm finally a Trainer.\p"
+		"But first, we'd better go apologize to\n"
+		"your mother about this messed-up room.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_CherenBattle_Lost
+{
+	msgbox("Cheren: This feeling...\n"
+			"Finally, I'm a Trainer.\p"
+			"On top of that, we'd better go apologize\n"
+			"to your mother about this room.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_Finished_Battles
+{
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_right, walk_right, walk_up, walk_up, walk_up, walk_up, face_right))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NUVEMA_PH2F_CHEREN)
+	waitse()
+	setflag(FLAG_NUVEMA_PH2F_CHEREN)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Bianca: Oh!\n"
+			"I'd better come, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_right, walk_right, walk_right, walk_up, walk_up, face_right))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NUVEMA_PH2F_BIANCA)
+	waitse()
+	setflag(FLAG_NUVEMA_PH2F_BIANCA)
+	fadedefaultbgm()
+	clearflag(FLAG_NO_WHITEOUT)
+	delay(20)
+	releaseall()
 	end()
 }

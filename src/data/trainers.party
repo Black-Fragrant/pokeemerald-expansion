@@ -81,100 +81,108 @@ Gender: Male
 Music: Male
 Battle Type: Singles
 
-=== TRAINER_SAWYER_1 ===
-Name: SAWYER
-Class: Hiker
+=== TRAINER_DUMMY ===
+Name: DUMMY
+Class: PKMN Trainer 1
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Battle Type: Singles
 AI: Basic Trainer
 
-Geodude
-Level: 21
+Pikachu
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_BIANCA_NUVEMA_TOWN_1 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 32
+Oshawott
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_BIANCA_NUVEMA_TOWN_2 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 31
+Snivy
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Leer
 
-Carvanha
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_BIANCA_NUVEMA_TOWN_3 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 32
+Tepig
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_CHEREN_NUVEMA_TOWN_1 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Aqua
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Carvanha
-Level: 32
+Tepig
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_CHEREN_NUVEMA_TOWN_2 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Aqua
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 36
+Oshawott
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_CHEREN_NUVEMA_TOWN_3 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Aqua
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Carvanha
-Level: 36
+Snivy
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Leer
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
 Name: GRUNT
