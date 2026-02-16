@@ -274,8 +274,7 @@ script NuvemaTown_PH2F_EventScript_Try_To_Leave
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_in_place_up))
 	waitmovement(0)
 	msgbox("Aren't you going to check\n"
-       "out the gift box? Where are you going?", MSGBOX_NPC)
-	closemessage
+       "out the gift box? Where are you going?", MSGBOX_SIGN)
 	delay(10)
 	applymovement(LOCALID_PLAYER, moves(walk_down))
 	waitmovement(0)
@@ -292,7 +291,7 @@ script NuvemaTown_PH2F_EventScript_Gift_Box
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
 	waitmovement(0)
-	msgbox("{PLAYER} opened the gift box!", MSGBOX_DEFAULT)
+	msgbox("{PLAYER} opened the gift box!", MSGBOX_DEFAULT)  //this should be transparent
 	closemessage
 	goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
 }
@@ -800,6 +799,7 @@ script NuvemaTown_PH2F_EventScript_Finished_Battles
 	setflag(FLAG_NUVEMA_PH2F_BIANCA)
 	fadedefaultbgm()
 	clearflag(FLAG_NO_WHITEOUT)
+	special(HealPlayerParty)
 	delay(20)
 	releaseall()
 	end()

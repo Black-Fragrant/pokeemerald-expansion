@@ -146,7 +146,7 @@ Pic: Cheren
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
 Tepig
 Level: 5
@@ -161,7 +161,7 @@ Pic: Cheren
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
 Oshawott
 Level: 5
@@ -176,7 +176,7 @@ Pic: Cheren
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
 Snivy
 Level: 5
