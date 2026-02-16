@@ -1,8 +1,13 @@
 mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
     {
+		MAP_SCRIPT_ON_TRANSITION
+	[
+		VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_PositionPlayers
+	]
     	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	[
-		VAR_NUVEMA_PICK_STARTER, 0 : NuvemaTown_PH2F_EventScript_HideBianca
+        VAR_NUVEMA_PICK_STARTER, 0 : NuvemaTown_PH2F_EventScript_HideBianca
+		VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_TurnPlayer
 	]
 	    MAP_SCRIPT_ON_FRAME_TABLE
     [
@@ -13,7 +18,20 @@ mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
 script NuvemaTown_PH2F_EventScript_HideBianca
 {
 	removeobject (LOCALID_NUVEMA_PH2F_BIANCA)
-	end()
+	return
+}
+
+script NuvemaTown_PH2F_EventScript_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_EAST)
+	return
+}
+
+script NuvemaTown_PH2F_EventScript_PositionPlayers
+{
+	setobjectxyperm (LOCALID_NUVEMA_PH2F_CHEREN, 5, 6)
+	setobjectxyperm (LOCALID_NUVEMA_PH2F_BIANCA, 6, 8)
+	return
 }
 
 script NuvemaTown_PH2F_EventScript_Loading
@@ -42,10 +60,11 @@ script NuvemaTown_PH2F_EventScript_Loading
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast, walk_diag_northeast))
 	waitmovement(0)
+	special(RemoveCameraObject)
 	playse(SE_EXIT)
 	addobject (LOCALID_NUVEMA_PH2F_BIANCA)
-	clearflag (FLAG_NUVEMA_PH2F_BIANCA)
 	waitse()
+	clearflag (FLAG_NUVEMA_PH2F_BIANCA)
 	playbgm(MUS_BW_ADVENTURE_TOGETHER, TRUE)
 	applymovement (LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
 	waitmovement(0)
@@ -70,12 +89,13 @@ script NuvemaTown_PH2F_EventScript_Loading
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
+	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest, walk_diag_southwest))
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_down, walk_left, walk_left, walk_left, walk_down))
 	waitmovement(0)
+	special(RemoveCameraObject)
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_left))
 	waitmovement(0)
-	special(RemoveCameraObject)
 	delay(10)
 	msgbox("I know. Sorry, {PLAYER}.\n"
        "Sorry, Cheren.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
@@ -162,5 +182,202 @@ script NuvemaTown_PH2F_EventScript_Try_To_Leave
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
 	waitmovement(0)
 	releaseall()
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_Gift_Box
+{
+	lockall()
+	setvar(VAR_NUVEMA_PICK_STARTER, 2)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
+	waitmovement(0)
+	msgbox("{PLAYER} opened the gift box!", MSGBOX_DEFAULT)
+	closemessage
+	goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
+}
+
+script NuvemaTown_PH2F_EventScript_Choose_Starter
+{
+	message("Choose a Pokémon.")
+	multichoice(25, 5, MULTI_BW_STARTER, 1)
+	closemessage
+	if (var(VAR_RESULT) == 0) {goto (NuvemaTown_PH2F_EventScript_Chose_Snivy)}
+	elif (var(VAR_RESULT) == 1) {goto (NuvemaTown_PH2F_EventScript_Chose_Tepig)}
+	elif (var(VAR_RESULT) == 2) {goto (NuvemaTown_PH2F_EventScript_Chose_Oshawott)}
+}
+
+script NuvemaTown_PH2F_EventScript_Chose_Snivy
+{
+	if (msgbox("Do you want to choose\n"
+				"the Grass Type Pokémon Snivy?", MSGBOX_YESNO) == YES)
+	{
+		givemon(SPECIES_SNIVY, 5, ITEM_NONE)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("{PLAYER} chose\n"
+			"Snivy!")
+			delay(80)
+			closemessage
+			setflag(FLAG_CHOSE_SNIVY)
+		}
+		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("Snivvy was sent to the PC!")
+			delay(80)
+			closemessage
+			setflag(FLAG_CHOSE_SNIVY)
+		}
+		else
+		{
+			msgbox("Your Pokémon Storage is full...")
+			closemessage
+			setflag(FLAG_CHOSE_SNIVY)
+		}
+		setflag (FLAG_SYS_POKEMON_GET)
+		goto (NuvemaTown_PH2F_EventScript_Finish_Choosing)
+	}
+	else
+	{
+		goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
+	}
+}
+
+script NuvemaTown_PH2F_EventScript_Chose_Tepig
+{
+	if (msgbox("Do you want to choose\n"
+				"the Fire Type Pokémon Tepig?", MSGBOX_YESNO) == YES)
+	{
+		givemon(SPECIES_TEPIG, 5, ITEM_NONE)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("{PLAYER} chose\n"
+			"Tepig!")
+			delay(80)
+			closemessage
+			setflag(FLAG_CHOSE_TEPIG)
+		}
+		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("Tepig was sent to the PC!")
+			delay(80)
+			closemessage
+			setflag(FLAG_CHOSE_TEPIG)
+		}
+		else
+		{
+			msgbox("Your Pokémon Storage is full...")
+			closemessage
+			setflag(FLAG_CHOSE_TEPIG)
+		}
+		setflag (FLAG_SYS_POKEMON_GET)
+		goto (NuvemaTown_PH2F_EventScript_Finish_Choosing)
+	}
+	else
+	{
+		goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
+	}
+}
+
+script NuvemaTown_PH2F_EventScript_Chose_Oshawott
+{
+	if (msgbox("Do you want to choose\n"
+				"the Water Type Pokémon Oshawott?", MSGBOX_YESNO) == YES)
+	{
+		givemon(SPECIES_OSHAWOTT, 5, ITEM_NONE)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("{PLAYER} chose\n"
+			"Oshawott!")
+			delay(80)
+			closemessage
+			setflag(FLAG_CHOSE_OSHAWOTT)
+		}
+		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("Oshawott was sent to the PC!")
+			delay(80)
+			closemessage
+			setflag(FLAG_CHOSE_OSHAWOTT)
+		}
+		else
+		{
+			msgbox("Your Pokémon Storage is full...")
+			closemessage
+			setflag(FLAG_CHOSE_OSHAWOTT)
+		}
+		setflag (FLAG_SYS_POKEMON_GET)
+		goto (NuvemaTown_PH2F_EventScript_Finish_Choosing)
+	}
+	else
+	{
+		goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
+	}
+}
+
+script NuvemaTown_PH2F_EventScript_Finish_Choosing
+{
+	fadenewbgm (MUS_BW_ADVENTURE_TOGETHER)
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_down, walk_in_place_right))
+	waitmovement(0)
+	delay (10)
+	msgbox("Bianca: OK, I'll take this Pokémon!\n"
+       		"Cheren, that one's yours!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay (10)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_down, walk_in_place_left))
+	waitmovement(0)
+	delay (10)
+	goto_if_set(FLAG_CHOSE_SNIVY, NuvemaTown_PH2F_EventScript_Cheren_Says_Tepig)
+	goto_if_set(FLAG_CHOSE_TEPIG, NuvemaTown_PH2F_EventScript_Cheren_Says_Oshawott)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy)
+}
+
+script NuvemaTown_PH2F_EventScript_Cheren_Says_Tepig
+{
+	msgbox("Cheren: Hey, how come you get to pick\n"
+		"out my Pokémon?\p"
+		"Oh, never mind. I wanted Tepig\n"
+		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(20)
+	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
+	waitstate
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_Cheren_Says_Oshawott
+{
+	msgbox("Cheren: Hey, how come you get to pick\n"
+		"out my Pokémon?\p"
+		"Oh, never mind. I wanted Oshawott\n"
+		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(20)
+	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
+	waitstate
+	end()
+}
+
+script NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy
+{
+	msgbox("Cheren: Hey, how come you get to pick\n"
+		"out my Pokémon?\p"
+		"Oh, never mind. I wanted Snivy\n"
+		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(20)
+	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
+	waitstate
 	end()
 }
