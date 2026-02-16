@@ -14,7 +14,7 @@ script NuvemaTown_EventScript_HidePlayer
 {
 	hideobjectat(LOCALID_PLAYER, MAP_NUVEMA_TOWN)
 	playbgm(MUS_BW_SPAWN_NUVEMA_TOWN, 1)
-	end()
+	return
 }
 
 script NuvemaTown_EventScript_JuniperDerlieversParcelCutscene

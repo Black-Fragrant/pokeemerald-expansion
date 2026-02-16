@@ -124,6 +124,7 @@
 #define MULTI_TAG_MATCH_TYPE               113
 #define MULTI_BERRY_PLOT                   114
 #define MULTI_POKEMON_RPS                  115
+#define MULTI_BW_STARTER                   116
 
 
 // Lilycove SS Tidal Multichoice Selections
