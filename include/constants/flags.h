@@ -56,11 +56,11 @@
 #define FLAG_NUVEMA_PH2F_GIFT                0x2A
 #define FLAG_NUVEMA_PH1F_LOOKER              0x2B
 #define FLAG_NUVEMA_PH1F_CHEREN_BIANCA       0x2C
-#define FLAG_NUVEMA_CHEREN                   0x2D // Unused Flag
-#define FLAG_NUVEMA_BIANCA                   0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_NUVEMA_CHEREN_LAB               0x2D
+#define FLAG_NUVEMA_BIANCA_CUTSCENE          0x2E
+#define FLAG_TEMPORARY_DISAPPEARING          0x2F
+#define FLAG_NUVEMA_BH1F_BIANCA              0x30
+#define FLAG_NUVEMA_BIANCA_LAB               0x31
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag

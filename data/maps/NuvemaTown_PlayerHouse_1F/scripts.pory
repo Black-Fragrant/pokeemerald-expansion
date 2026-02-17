@@ -178,8 +178,8 @@ script NuvemaTown_PH1F_EventScript_XT_After_Giving_XT
     destroy_speech_bubble()
     closemessage
     fadedefaultbgm()
-    clearflag(FLAG_NUVEMA_CHEREN)
-    clearflag(FLAG_NUVEMA_BIANCA)
+    clearflag(FLAG_NUVEMA_CHEREN_LAB)
+    clearflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
     delay(20)
 	releaseall()
 	end()
