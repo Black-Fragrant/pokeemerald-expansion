@@ -1,7 +1,7 @@
 mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
     {
-        MAP_SCRIPT_ON_LOAD : NuvemaTown_PlayerHouse_On_Load
-        MAP_SCRIPT_ON_TRANSITION : NuvemaTown_PlayerHouse_On_Transition
+        MAP_SCRIPT_ON_LOAD : NuvemaTown_PH2F_On_Load
+        MAP_SCRIPT_ON_TRANSITION : NuvemaTown_PH2F_On_Transition
         MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
     [
         VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_TurnPlayer
@@ -13,7 +13,7 @@ mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
     ]
     }
 
-script NuvemaTown_PlayerHouse_On_Load
+script NuvemaTown_PH2F_On_Load
 {
 	call_if_set(FLAG_NUVEMA_PH2F_IS_MESSY, NuvemaTown_PlayerHouse_Messy_Room)
 	end()
@@ -95,7 +95,7 @@ script NuvemaTown_PlayerHouse_Messy_Room
 	return()
 }
 
-script NuvemaTown_PlayerHouse_On_Transition
+script NuvemaTown_PH2F_On_Transition
 {
 switch(var(VAR_NUVEMA_PICK_STARTER))
     { 
@@ -317,7 +317,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Snivy
 			playbgm(MUS_BW_CAUGHT, TRUE)
 			msgbox("{PLAYER} chose\n"
 			"Snivy!")
-			delay(80)
+			delay(100)
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
@@ -325,7 +325,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Snivy
 		{
 			playbgm(MUS_BW_CAUGHT, TRUE)
 			msgbox("Snivvy was sent to the PC!")
-			delay(80)
+			delay(100)
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
@@ -355,7 +355,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Tepig
 			playbgm(MUS_BW_CAUGHT, TRUE)
 			msgbox("{PLAYER} chose\n"
 			"Tepig!")
-			delay(80)
+			delay(100)
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
@@ -363,7 +363,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Tepig
 		{
 			playbgm(MUS_BW_CAUGHT, TRUE)
 			msgbox("Tepig was sent to the PC!")
-			delay(80)
+			delay(100)
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
@@ -393,7 +393,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 			playbgm(MUS_BW_CAUGHT, TRUE)
 			msgbox("{PLAYER} chose\n"
 			"Oshawott!")
-			delay(80)
+			delay(100)
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
@@ -401,7 +401,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 		{
 			playbgm(MUS_BW_CAUGHT, TRUE)
 			msgbox("Oshawott was sent to the PC!")
-			delay(80)
+			delay(100)
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
@@ -798,6 +798,7 @@ script NuvemaTown_PH2F_EventScript_Finished_Battles
 	waitse()
 	setflag(FLAG_NUVEMA_PH2F_BIANCA)
 	fadedefaultbgm()
+	setflag(FLAG_NUVEMA_PH1F_LOOKER)
 	clearflag(FLAG_NO_WHITEOUT)
 	special(HealPlayerParty)
 	delay(20)

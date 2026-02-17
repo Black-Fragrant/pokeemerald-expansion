@@ -1,1 +1,179 @@
-mapscripts NuvemaTown_PlayerHouse_1F_MapScripts {}
+mapscripts NuvemaTown_PlayerHouse_1F_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NuvemaTown_PH1F_On_Transition
+    MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NUVEMA_PICK_STARTER, 3 : NuvemaTown_PH1F_EventScript_Apologize
+    ]
+}
+
+script NuvemaTown_PH1F_On_Transition
+{
+    call_if_ge (VAR_NUVEMA_PICK_STARTER, 4, NuvemaTown_PH1F_PositionMother)
+	end()
+}
+
+script NuvemaTown_PH1F_PositionMother
+{
+    setobjectmovementtype (LOCALID_NUVEMA_PH1F_MOTHER, MOVEMENT_TYPE_FACE_UP)
+    return()
+}
+
+script NuvemaTown_PH1F_EventScript_Apologize
+{
+    lockall()
+    setvar(VAR_NUVEMA_PICK_STARTER, 4) 
+    delay(10)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3 ))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    msgbox("Cheren: I'm very sorry about\n"
+          "all the trouble, ma'am.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Well, um...\n"
+           "We can clean up...", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+    msgbox("Mom: Cleaning up?\n"
+            "No worries. I'll take care of it later.\p"
+            "Shouldn't you be on your way to\n"
+            "meet Professor Juniper?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Cheren: Yes, thank you!\n"
+            "Please excuse us.\p"
+            "Come on.\n"
+            "Let's go thank Professor Juniper.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NUVEMA_PH1F_CHEREN, moves(walk_left, walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Cheren: I'll be waiting in front of\n"
+            "the Pokémon Research Lab.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+	playse(SE_PIN)
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+    msgbox("Bianca: Oh! Wait!\n"
+            "I've gotta go home first.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Thanks for having us over!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+	applymovement(LOCALID_NUVEMA_PH1F_CHEREN, moves(walk_right))
+	waitmovement(0)
+	applymovement(LOCALID_NUVEMA_PH1F_CHEREN, moves(walk_down * 3, walk_right * 2, walk_down))
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_down * 4, walk_right * 2, walk_in_place_down))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NUVEMA_PH1F_CHEREN)
+	waitse()
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_down))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NUVEMA_PH1F_BIANCA)
+	waitse()
+	delay(20)
+    setflag(FLAG_NUVEMA_PH1F_CHEREN_BIANCA)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3 ))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, moves(walk_left * 2, walk_up * 3, walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+    msgbox("Mom: My, my, {PLAYER}.\p"
+            "Pokémon battles are so lively,\n"
+            "aren't they?\p"
+            "I could hear the Pokémon's\n"
+            "cries clear down here!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("Mom: Hm. That sure reminded me of\n"
+            "my first Pokémon battle!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Mom: Oh, and you know? After a battle,\n"
+            "you need to rest your Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+    destroy_speech_bubble()
+    closemessage
+	fadescreen(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	fadescreen(FADE_FROM_BLACK)
+    msgbox("Mom: Your Pokémon is looking great!\p"
+            "Now, if you're going out,\n"
+            "don't forget your 'cross-transceiver'!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+    destroy_speech_bubble()
+    closemessage
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} received the Xtransceiver!")
+    delay(120)
+	additem (ITEM_MACH_BIKE)
+    call_if_eq (VAR_RESULT, FALSE, NuvemaTown_PH1F_EventScript_BagIsFull)
+    closemessage
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+    msgbox("Mom: You're going to thank the\n"
+            "professor too, right?\l"
+            "Better get going, honey!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+    destroy_speech_bubble()
+    closemessage
+    fadedefaultbgm()
+    clearflag(FLAG_NUVEMA_CHEREN)
+    clearflag(FLAG_NUVEMA_BIANCA)
+    delay(20)
+	releaseall()
+	end()
+}
+
+script NuvemaTown_PH1F_EventScript_BagIsFull
+{
+    msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+    return()
+}
+
+script NuvemaTown_PH1F_EventScript_Mother
+{
+	msgbox("Mom: You're going to thank the\n"
+            "professor too, right?\l"
+            "Better get going, honey!", MSGBOX_NPC, TRUE)
+	end()
+}
