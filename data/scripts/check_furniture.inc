@@ -25,3 +25,15 @@ EventScript_ShopShelf::
 EventScript_Blueprint::
 	msgbox Text_Blueprint, MSGBOX_SIGN
 	end
+
+EventScript_KitchenShelf::
+	msgbox Text_KitchenShelf, MSGBOX_SIGN
+	end
+	
+EventScript_TripleDrawer::
+	msgbox Text_TripleDrawer, MSGBOX_SIGN
+	end
+	
+EventScript_BookCase::
+	msgbox Text_BookCase, MSGBOX_SIGN
+	end

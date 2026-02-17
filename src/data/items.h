@@ -14710,38 +14710,38 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_SilphScope,
     },
 
-    [ITEM_TRI_PASS] =
+    [ITEM_XTRANSCEIVER_BLUE] =
     {
-        .name = ITEM_NAME("Tri-Pass"),
-        .pluralName = ITEM_PLURAL_NAME("Tri-Passes"),
+        .name = ITEM_NAME("Xtransceiver"),
+        .pluralName = ITEM_PLURAL_NAME("Xtransceivers"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A pass for ferries\n"
-            "between One, Two,\n"
-            "and Three Island."),
+            "A transciver with\n"
+            "a camera function.\n"
+            "It allows calls."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_TriPass,
-        .iconPalette = gItemIconPalette_TriPass,
+        .iconPic = gItemIcon_Xtransceiver_Blue,
+        .iconPalette = gItemIconPalette_Xtransceiver_Blue,
     },
 
-    [ITEM_RAINBOW_PASS] =
+    [ITEM_XTRANSCEIVER_RED] =
     {
-        .name = ITEM_NAME("Rainbow Pass"),
-        .pluralName = ITEM_PLURAL_NAME("Rainbow Passes"),
+        .name = ITEM_NAME("Xtransceiver"),
+        .pluralName = ITEM_PLURAL_NAME("Xtransceivers"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "For ferries serving\n"
-            "Vermilion and the\n"
-            "Sevii Islands."),
+            "A transciver with\n"
+            "a camera function.\n"
+            "It allows calls."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_RainbowPass,
-        .iconPalette = gItemIconPalette_RainbowPass,
+        .iconPic = gItemIcon_Xtransceiver_Red,
+        .iconPalette = gItemIconPalette_Xtransceiver_Red,
     },
 
     [ITEM_TEA] =

@@ -1,1 +1,12 @@
 mapscripts NuvemaTown_CherensHouse_2F_MapScripts {}
+
+script NuvemaTown_EventScript_CH2F_PC
+{
+	msgbox("{PLAYER} checked the PC screen.\p" 
+            "Adventure Rule No. 1\n"
+            "The Start Button opens the menu!\p"
+            "Adventure Rule No. 2\n"
+            "Record your progress with Save.\p"
+            "There's nothing else on here...", MSGBOX_SIGN) //this should be transparent
+	end
+}

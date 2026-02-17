@@ -1,1 +1,26 @@
 mapscripts NuvemaTown_CherensHouse_1F_MapScripts {}
+
+script NuvemaTown_EventScript_CH1F_Housewife
+{
+    msgbox("Cheren's Mom: That Cheren.\n"
+            "I'm sure he's at the laboratory.\p"
+            "He's so... How should I put it?\n"
+            "Diligent or, better, conscientious.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NuvemaTown_EventScript_CH1F_BeardGuy
+{
+    msgbox("Cheren's Dad: Hey, {PLAYER}!\p"
+            "I heard it from the professor!\n"
+            "So, you're getting a Pokémon, eh?\p"
+            "Oh, you've already got it!\n"
+            "Hm, that sure is a cute Pokémon.\p"
+            "And you're all finally\n"
+            "starting your journeys as Trainers?\p"
+            "Well, let me read you a passage from\n"
+            "a book called 'Adventure Rules.'\p"
+            "'The Start Button is vitally important\n"
+            "for Trainers.' Never forget that.", MSGBOX_NPC, TRUE)
+	end
+}
