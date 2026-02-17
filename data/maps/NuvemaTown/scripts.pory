@@ -14,14 +14,16 @@ mapscripts NuvemaTown_MapScripts
 
 script NuvemaTown_On_Transition
 {
-    call_if_eq (VAR_NUVEMA_PICK_STARTER, 0, NuvemaTown_Hide_CherenBianca)
+    call_if_eq (VAR_NUVEMA_PICK_STARTER, 0, NuvemaTown_EventScript_Hide_CherenBianca)
 	end()
 }
 
-script NuvemaTown_Hide_CherenBianca
+script NuvemaTown_EventScript_Hide_CherenBianca
 {
-	setflag(FLAG_NUVEMA_CHEREN)
-	setflag(FLAG_NUVEMA_BIANCA)
+	setflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
+	setflag(FLAG_NUVEMA_CHEREN_LAB)
+	setflag(FLAG_NUVEMA_BIANCA_LAB)
+	setflag(FLAG_TEMPORARY_DISAPPEARING)
 	return()
 }
 
@@ -150,22 +152,142 @@ script NuvemaTown_EventScript_FatMan
 script NuvemaTown_EventScript_BiancaWalksDown
 {
 	lockall()
-	applymovement(LOCALID_NUVEMA_BIANCA, moves( walk_down * 6 ))
+	applymovement(LOCALID_NUVEMA_BIANCA_CUTSCENE, moves( walk_down * 6 ))
 	waitmovement(0)
-	removeobject(LOCALID_NUVEMA_BIANCA)
-	setflag(FLAG_NUVEMA_BIANCA)
+	removeobject(LOCALID_NUVEMA_BIANCA_CUTSCENE)
+	setflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
 	setvar(VAR_NUVEMA_PICK_STARTER, 5)
 	delay(20)
 	releaseall()
 	end()
 }
 
-script NuvemaTown_EventScript_Cheren
+script NuvemaTown_EventScript_Cheren_Lab
+{
+	lock()
+	goto_if_unset(FLAG_NUVEMA_BH1F_BIANCA, NuvemaTown_EventScript_Cheren_Lab_Before_Bianca)
+	msgbox("Cheren: OK!"
+			"Let's go meet the professor.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_LAB)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_NUVEMA_CHEREN_LAB, moves( walk_in_place_up ))
+	waitmovement(0)
+	delay(10)
+	playse(SE_DOOR)
+	setdooropen(9, 6)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_NUVEMA_CHEREN_LAB, moves( walk_up ))
+	applymovement(LOCALID_NUVEMA_BIANCA_LAB, moves( walk_right ))
+	waitmovement(0)
+    delay (10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_NUVEMA_CHEREN_LAB)
+	setflag(FLAG_NUVEMA_CHEREN_LAB)
+	delay(20)
+	applymovement(LOCALID_NUVEMA_BIANCA_LAB, moves( walk_up ))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_NUVEMA_BIANCA_LAB)
+	setflag(FLAG_NUVEMA_BIANCA_LAB)
+	delay(20)
+	applymovement(LOCALID_PLAYER, moves( walk_up * 2 ))
+	waitmovement(0)
+	warp(MAP_NUVEMA_TOWN_PROFESSOR_JUNIPERS_LAB, WARP_ID_NUVEMA_JUNIPERLAB_DOOR_MIDDLE)
+	waitstate()
+	end()
+}
+
+script NuvemaTown_EventScript_Cheren_Lab_Before_Bianca
 {
 	msgbox("Cheren: I'm sorry, but could you\n"
 			"go to Bianca's house?\p"
 			"I'll bet she's spacing out\n"
 			"like she usually does.\p"
 			"She's totally flighty.", MSGBOX_NPC, TRUE)
+	release()
+	end()
+}
+
+script NuvemaTown_EventScript_Try_To_Leave
+{
+	lockall()
+	addobject(LOCAL_ID_NUVEMA_CHEREN_PREVENT)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 18, NuvemaTown_EventScript_TTL_Pos1)
+	call_if_eq (VAR_TEMP_0, 19, NuvemaTown_EventScript_TTL_Pos2)
+	call_if_eq (VAR_TEMP_0, 20, NuvemaTown_EventScript_TTL_Pos3)
+	call_if_eq (VAR_TEMP_0, 21, NuvemaTown_EventScript_TTL_Pos4)
+	call_if_eq (VAR_TEMP_0, 22, NuvemaTown_EventScript_TTL_Pos5)
+	call_if_eq (VAR_TEMP_0, 23, NuvemaTown_EventScript_TTL_Pos6)
+	applymovement(LOCAL_ID_NUVEMA_CHEREN_PREVENT, moves( walk_fast_right * 6 ))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves( walk_down, walk_in_place_left ))
+	waitmovement(0)
+    msgbox("Cheren: {PLAYER}!\p"
+			"I understand the feeling.\n"
+			"I want to go somewhere with\l"
+			"my Pokémon too, but first\l"
+			"we have to go thank Professor Juniper.\p"
+			"Come on. The lab is this way!", MSGBOX_DEFAULT, TRUE, LOCAL_ID_NUVEMA_CHEREN_PREVENT)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCAL_ID_NUVEMA_CHEREN_PREVENT, moves( walk_fast_left * 7, face_down ))
+	waitmovement(0)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 20, 1)
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 20, 1)
+	removeobject(LOCAL_ID_NUVEMA_CHEREN_PREVENT)
+	delay(20)
+	releaseall()
+	end()
+}
+
+script NuvemaTown_EventScript_TTL_Pos1
+{
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 10, 8)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 10, 8)
+	return()
+}
+
+script NuvemaTown_EventScript_TTL_Pos2
+{
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 11, 8)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 11, 8)
+	return()
+}
+
+script NuvemaTown_EventScript_TTL_Pos3
+{
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 12, 8)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 12, 8)
+	return()
+}
+
+script NuvemaTown_EventScript_TTL_Pos4
+{
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 13, 8)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 13, 8)
+	return()
+}
+
+script NuvemaTown_EventScript_TTL_Pos5
+{
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 14, 8)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 14, 8)
+	return()
+}
+
+script NuvemaTown_EventScript_TTL_Pos6
+{
+	setobjectxyperm (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 15, 8)
+	setobjectxy (LOCAL_ID_NUVEMA_CHEREN_PREVENT, 15, 8)
+	return()
+}
+
+script NuvemaTown_EventScript_Bianca_Lab
+{
+	msgbox("Bianca: ... That's a secret, OK?", MSGBOX_NPC, TRUE)
 	end()
 }

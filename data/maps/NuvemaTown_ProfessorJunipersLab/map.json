@@ -16,6 +16,7 @@
   "object_events": [],
   "warp_events": [
     {
+      "warp_id": "WARP_ID_NUVEMA_JUNIPERLAB_DOOR_MIDDLE",
       "x": 4,
       "y": 11,
       "elevation": 0,

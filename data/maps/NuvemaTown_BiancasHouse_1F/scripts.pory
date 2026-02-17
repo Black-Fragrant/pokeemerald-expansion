@@ -1,1 +1,108 @@
-mapscripts NuvemaTown_BiancasHouse_1F_MapScripts {}
+mapscripts NuvemaTown_BiancasHouse_1F_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NuvemaTown_BH1F_On_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_BIANCA_FIGHTS_PARENTS, 0 : NuvemaTown_EventScript_BH1F_Bianca_Fights_Parents
+    ]
+}
+
+script NuvemaTown_BH1F_On_Transition
+{
+    call_if_eq (VAR_BIANCA_FIGHTS_PARENTS, 1, NuvemaTown_BH1F_PositionBiancaDad)
+	end()
+}
+
+script NuvemaTown_BH1F_PositionBiancaDad
+{
+    setobjectmovementtype (LOCALID_NUVEMA_BH1F_POKEFAN_M, MOVEMENT_TYPE_FACE_DOWN)
+    return()
+}
+
+script NuvemaTown_EventScript_BH1F_Bianca_Fights_Parents
+{
+    lockall()
+    setvar(VAR_BIANCA_FIGHTS_PARENTS, 1)
+    applymovement(LOCALID_PLAYER, moves( walk_up ))
+    waitmovement(0)
+	special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up * 2))
+    waitmovement(0)
+	special(RemoveCameraObject)
+    applymovement(LOCALID_NUVEMA_BH1F_POKEFAN_M, moves( walk_left, walk_in_place_left))
+    waitmovement(0)
+    delay(10)
+    playse(SE_BANG)
+    msgbox("No, no, a thousand times no!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BH1F_POKEFAN_M)
+    destroy_speech_bubble()
+    closemessage
+    waitse()
+    delay(10)
+    msgbox("Bianca: But, I'm...\p"
+            "I'm a good Trainer who got\n"
+            "a Pokémon and everything!\l"
+            "I can totally go on an adventure!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BH1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves( walk_down * 2 ))
+    waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves( bianca_tip_hat ))
+    waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Oh...\n"
+            "It's OK.\p"
+            "... It's fine!\p"
+            "I'll be waiting for you in front\n"
+            "of the lab, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BH1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	delay(20)
+	applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves( walk_down, walk_right ))
+	waitmovement(0)
+	special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down ))
+    applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves( walk_down ))
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves( face_down ))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down ))
+    applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves( walk_down ))
+    waitmovement(0)
+	special(RemoveCameraObject)
+    applymovement(LOCALID_NUVEMA_BH1F_BIANCA, moves( walk_left, walk_in_place_down ))
+    waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NUVEMA_BH1F_BIANCA)
+    setflag(FLAG_NUVEMA_BH1F_BIANCA)
+    clearflag(FLAG_NUVEMA_BIANCA_LAB)
+	waitse()
+	delay(20)
+    releaseall()
+    end()
+}
+
+script NuvemaTown_EventScript_BH1F_MOTHER
+{
+    msgbox("Bianca's Mom: Don't mind my husband,\n"
+            "dear. He's just being overprotective.\p"
+            "All children go on adventures\n"
+            "with Pokémon.\p"
+            "It's part of growing up.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NuvemaTown_EventScript_BH1F_FATHER
+{
+    msgbox("Bianca's Dad: What nonsense is this?\p"
+            "How could my daughter, who knows\n"
+            "nothing about the world,\l"
+            "be going on a journey with Pokémon?", MSGBOX_NPC, TRUE)
+	end()
+}
+    
