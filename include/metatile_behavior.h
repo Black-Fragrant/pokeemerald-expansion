@@ -168,4 +168,8 @@ bool8 MetatileBehavior_IsSidewaysStairsRightSideAny(u8 metatileBehavior);
 bool8 MetatileBehavior_IsSidewaysStairsLeftSideAny(u8 metatileBehavior);
 bool8 MetatileBehavior_IsRockClimbable(u8 metatileBehavior);
 
+bool8 MetatileBehavior_IsKitchenShelf(u8 metatileBehavior);
+bool8 MetatileBehavior_IsTripleDrawer(u8 metatileBehavior);
+bool8 MetatileBehavior_IsBookCase(u8 metatileBehavior);
+
 #endif // GUARD_METATILE_BEHAVIOR_H

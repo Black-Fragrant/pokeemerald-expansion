@@ -8,6 +8,7 @@ mapscripts NuvemaTown_MapScripts
 	MAP_SCRIPT_ON_FRAME_TABLE
     [
         VAR_JUNIPER_PARCEL_DELIEVER, 0 : NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
+        VAR_NUVEMA_PICK_STARTER, 4 : NuvemaTown_EventScript_BiancaWalksDown
     ]
 }
 
@@ -144,4 +145,27 @@ script NuvemaTown_EventScript_FatMan
 			"Now you can use infrared to do all\n"
 			"sorts of things in the blink of eye!", MSGBOX_NPC, TRUE)
 	end
+}
+
+script NuvemaTown_EventScript_BiancaWalksDown
+{
+	lockall()
+	applymovement(LOCALID_NUVEMA_BIANCA, moves( walk_down * 6 ))
+	waitmovement(0)
+	removeobject(LOCALID_NUVEMA_BIANCA)
+	setflag(FLAG_NUVEMA_BIANCA)
+	setvar(VAR_NUVEMA_PICK_STARTER, 5)
+	delay(20)
+	releaseall()
+	end()
+}
+
+script NuvemaTown_EventScript_Cheren
+{
+	msgbox("Cheren: I'm sorry, but could you\n"
+			"go to Bianca's house?\p"
+			"I'll bet she's spacing out\n"
+			"like she usually does.\p"
+			"She's totally flighty.", MSGBOX_NPC, TRUE)
+	end()
 }

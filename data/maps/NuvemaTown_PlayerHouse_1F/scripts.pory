@@ -147,9 +147,30 @@ script NuvemaTown_PH1F_EventScript_Apologize
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} received the Xtransceiver!")
     delay(120)
-	additem (ITEM_MACH_BIKE)
+    checkplayergender()
+    goto_if_eq(VAR_RESULT, MALE, NuvemaTown_PH1F_EventScript_XT_Blue)
+    goto_if_eq(VAR_RESULT, FEMALE, NuvemaTown_PH1F_EventScript_XT_Red)
+    end()
+}
+
+script NuvemaTown_PH1F_EventScript_XT_Blue
+{
+	additem (ITEM_XTRANSCEIVER_BLUE)
     call_if_eq (VAR_RESULT, FALSE, NuvemaTown_PH1F_EventScript_BagIsFull)
     closemessage
+    goto(NuvemaTown_PH1F_EventScript_XT_After_Giving_XT)   
+}
+
+script NuvemaTown_PH1F_EventScript_XT_Red
+{
+	additem (ITEM_XTRANSCEIVER_RED)
+    call_if_eq (VAR_RESULT, FALSE, NuvemaTown_PH1F_EventScript_BagIsFull)
+    closemessage
+    goto(NuvemaTown_PH1F_EventScript_XT_After_Giving_XT)   
+}
+
+script NuvemaTown_PH1F_EventScript_XT_After_Giving_XT
+{
     playbgm(MUS_BW_FOLLOW_ME, TRUE)
     msgbox("Mom: You're going to thank the\n"
             "professor too, right?\l"

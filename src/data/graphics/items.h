@@ -1834,6 +1834,12 @@ const u16 gItemIconPalette_Ruby[] = INCBIN_U16("graphics/items/icon_palettes/rub
 
 const u16 gItemIconPalette_Sapphire[] = INCBIN_U16("graphics/items/icon_palettes/sapphire.gbapal");
 
+const u32 gItemIcon_Xtransceiver_Blue[] = INCBIN_U32("graphics/items/icons/x_transceiver_blue.4bpp.smol");
+const u16 gItemIconPalette_Xtransceiver_Blue[] = INCBIN_U16("graphics/items/icon_palettes/x_transceiver_blue.gbapal");
+
+const u32 gItemIcon_Xtransceiver_Red[] = INCBIN_U32("graphics/items/icons/x_transceiver_red.4bpp.smol");
+const u16 gItemIconPalette_Xtransceiver_Red[] = INCBIN_U16("graphics/items/icon_palettes/x_transceiver_red.gbapal");
+
 const u32 gItemIcon_AbilityShield[] = INCBIN_U32("graphics/items/icons/ability_shield.4bpp.smol");
 const u16 gItemIconPalette_AbilityShield[] = INCBIN_U16("graphics/items/icon_palettes/ability_shield.gbapal");
 

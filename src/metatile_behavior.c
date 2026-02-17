@@ -1341,6 +1341,30 @@ bool8 MetatileBehavior_IsTrashCan(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsKitchenShelf(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_KITCHEN_SHELF)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsTripleDrawer(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_TRIPLE_DRAWER)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsBookCase(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_BOOK_CASE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsShopShelf(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_SHOP_SHELF)
