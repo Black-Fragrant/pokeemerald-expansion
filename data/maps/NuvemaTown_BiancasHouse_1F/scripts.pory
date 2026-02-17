@@ -33,7 +33,7 @@ script NuvemaTown_EventScript_BH1F_Bianca_Fights_Parents
     waitmovement(0)
     delay(10)
     playse(SE_BANG)
-    msgbox("No, no, a thousand times no!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BH1F_POKEFAN_M)
+    msgbox("No, no, a thousand times no!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BH1F_POKEFAN_M) //this should be jagged
     destroy_speech_bubble()
     closemessage
     waitse()
