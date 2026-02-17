@@ -166,6 +166,9 @@ script NuvemaTown_EventScript_Cheren_Lab
 {
 	lock()
 	goto_if_unset(FLAG_NUVEMA_BH1F_BIANCA, NuvemaTown_EventScript_Cheren_Lab_Before_Bianca)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 9, NuvemaTown_EventScript_CLBB_Pos1)
+	call_if_eq (VAR_TEMP_0, 10, NuvemaTown_EventScript_CLBB_Pos2)
 	msgbox("Cheren: OK!"
 			"Let's go meet the professor.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_LAB)
 	destroy_speech_bubble()
@@ -188,15 +191,47 @@ script NuvemaTown_EventScript_Cheren_Lab
 	delay(20)
 	applymovement(LOCALID_NUVEMA_BIANCA_LAB, moves( walk_up ))
 	waitmovement(0)
+    delay (10)
 	playse(SE_EXIT)
 	removeobject(LOCALID_NUVEMA_BIANCA_LAB)
 	setflag(FLAG_NUVEMA_BIANCA_LAB)
 	delay(20)
-	applymovement(LOCALID_PLAYER, moves( walk_up * 2 ))
-	waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 9, NuvemaTown_EventScript_CLBB_Pos3)
+	call_if_eq (VAR_TEMP_0, 10, NuvemaTown_EventScript_CLBB_Pos4)
 	warp(MAP_NUVEMA_TOWN_PROFESSOR_JUNIPERS_LAB, WARP_ID_NUVEMA_JUNIPERLAB_DOOR_MIDDLE)
 	waitstate()
 	end()
+}
+
+script NuvemaTown_EventScript_CLBB_Pos1
+{
+	applymovement(LOCALID_NUVEMA_CHEREN_LAB, moves( face_down ))
+	applymovement(LOCALID_NUVEMA_BIANCA_LAB, moves( face_down ))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_CLBB_Pos2
+{
+	applymovement(LOCALID_NUVEMA_CHEREN_LAB, moves( face_right ))
+	applymovement(LOCALID_NUVEMA_BIANCA_LAB, moves( face_right ))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_CLBB_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves( walk_up * 2 ))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_CLBB_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves( walk_left, walk_up ))
+	waitmovement(0)
+	return()
 }
 
 script NuvemaTown_EventScript_Cheren_Lab_Before_Bianca
