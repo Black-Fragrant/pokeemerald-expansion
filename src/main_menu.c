@@ -266,7 +266,6 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
-static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
 static void PrintLocation(void);
 static void PrintTeam(void);
 static void DestroyAllSprites(void);
@@ -347,7 +346,7 @@ static const struct WindowTemplate sWindowTemplates_MainMenu[] =
         .height = 20,
         .paletteNum = 15,
         .baseBlock = 1
-    }, 
+    },
     [ACTION_INVALID] =
     {
         .bg = 0,
@@ -729,8 +728,9 @@ static void Task_DisplayMainMenu(u8 taskId)
 			    PrintMainMenuItem(gText_Options, 24, 40, 0);
                 break;
             case HAS_SAVED_GAME:
-                LZ77UnCompVram(gMapMainMenuContinue, (void *)(VRAM + 0xE800)); 
+                LZ77UnCompVram(gMapMainMenuContinue, (void *)(VRAM + 0xE800));
                 PrintMainMenuItem(gText_MainMenuContinue, 24, 8, 0);
+                MainMenu_FormatSavegameText();
 			    PrintMainMenuItem(gText_MainMenuNewGame, 24, 112, 0);
 			    PrintMainMenuItem(gText_Options, 24, 136, 0);
                 break;
@@ -1971,14 +1971,6 @@ static void PrintMainMenuItem(const u8 *string, u8 left, u8 top, u8 text_color)
 
 static void DrawMainMenuWindowBorder(const struct WindowTemplate *template, u16 baseTileNum)
 {
-    u16 r9 = 1 + baseTileNum;
-    u16 r10 = 2 + baseTileNum;
-    u16 sp18 = 3 + baseTileNum;
-    u16 spC = 5 + baseTileNum;
-    u16 sp10 = 6 + baseTileNum;
-    u16 sp14 = 7 + baseTileNum;
-    u16 r6 = 8 + baseTileNum;
-
     FillBgTilemapBufferRect(template->bg, 0x1B1, template->tilemapLeft - 1,               template->tilemapTop - 1, 1, 1, 14);
     FillBgTilemapBufferRect(template->bg, 0x1B2, template->tilemapLeft,                   template->tilemapTop - 1, template->width, template->height, 2);
     FillBgTilemapBufferRect(template->bg, 0x1B3, template->tilemapLeft + template->width, template->tilemapTop - 1, 1, 1, 14);
