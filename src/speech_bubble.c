@@ -91,6 +91,7 @@ void LoadTailFromObjectEventId(u32 id)
 void DestroyTail(void)
 {
     gIsSpeechBubbleActive = FALSE;
+    FreeSpriteOamMatrix(&gSprites[sID]);
     DestroySprite(&gSprites[sID]);
     FreeSpritePaletteByTag(TAG_SPEECH_BUBBLE_TAIL);
     FreeSpriteTilesByTag(TAG_SPEECH_BUBBLE_TAIL);
