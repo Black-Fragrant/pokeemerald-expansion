@@ -742,9 +742,7 @@ static void Task_DisplayMainMenu(u8 taskId)
 
 static void Task_HighlightSelectedMainMenuItem(u8 taskId)
 {
-    u8 CursorPos;
-    CursorPos = Menu_GetCursorPos();
-    HighlightSelectedMainMenuItem(gTasks[taskId].tMenuType, CursorPos);
+    HighlightSelectedMainMenuItem(gTasks[taskId].tMenuType, gTasks[taskId].tCurrItem);
     gTasks[taskId].func = Task_HandleMainMenuInput;
 }
 
