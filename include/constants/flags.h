@@ -61,13 +61,13 @@
 #define FLAG_TEMPORARY_DISAPPEARING          0x2F
 #define FLAG_NUVEMA_BH1F_BIANCA              0x30
 #define FLAG_NUVEMA_BIANCA_LAB               0x31
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
+#define FLAG_NUVEMA_PJL_JUNIPER              0x32
+#define FLAG_NUVEMA_PJL_PAPA_JUNIPER         0x33
+#define FLAG_NUVEMA_PJL_CHEREN_BIANCA        0x34
+#define FLAG_NUVEMA_MOTHER_LAB               0x35
+#define FLAG_NUVEMA_CB_WAIT_AT_ROUTE_1       0x36
+#define FLAG_ROUTE1_EAST_CB_BOTTOM           0x37
+#define FLAG_ROUTE1_EAST_JUNIPER_CT          0x38
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag

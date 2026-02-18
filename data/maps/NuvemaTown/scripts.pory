@@ -9,6 +9,7 @@ mapscripts NuvemaTown_MapScripts
     [
         VAR_JUNIPER_PARCEL_DELIEVER, 0 : NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
         VAR_NUVEMA_PICK_STARTER, 4 : NuvemaTown_EventScript_BiancaWalksDown
+        VAR_NUVEMA_PICK_STARTER, 6 : NuvemaTown_EventScript_MotherGivesTownMap
     ]
 }
 
@@ -24,6 +25,9 @@ script NuvemaTown_EventScript_Hide_CherenBianca
 	setflag(FLAG_NUVEMA_CHEREN_LAB)
 	setflag(FLAG_NUVEMA_BIANCA_LAB)
 	setflag(FLAG_TEMPORARY_DISAPPEARING)
+	setflag(FLAG_NUVEMA_MOTHER_LAB)
+	setflag(FLAG_NUVEMA_CB_WAIT_AT_ROUTE_1)
+	setflag(FLAG_ROUTE1_EAST_CB_BOTTOM)
 	return()
 }
 
@@ -169,7 +173,7 @@ script NuvemaTown_EventScript_Cheren_Lab
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 9, NuvemaTown_EventScript_CLBB_Pos1)
 	call_if_eq (VAR_TEMP_0, 10, NuvemaTown_EventScript_CLBB_Pos2)
-	msgbox("Cheren: OK!"
+	msgbox("Cheren: OK!\n"
 			"Let's go meet the professor.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_LAB)
 	destroy_speech_bubble()
 	closemessage
@@ -195,6 +199,7 @@ script NuvemaTown_EventScript_Cheren_Lab
 	playse(SE_EXIT)
 	removeobject(LOCALID_NUVEMA_BIANCA_LAB)
 	setflag(FLAG_NUVEMA_BIANCA_LAB)
+	setflag(FLAG_NUVEMA_PJL_PAPA_JUNIPER)
 	delay(20)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 9, NuvemaTown_EventScript_CLBB_Pos3)
@@ -267,7 +272,7 @@ script NuvemaTown_EventScript_Try_To_Leave
 			"we have to go thank Professor Juniper.\p"
 			"Come on. The lab is this way!", MSGBOX_DEFAULT, TRUE, LOCAL_ID_NUVEMA_CHEREN_PREVENT)
 	destroy_speech_bubble()
-	closemessage
+	closemessage()
 	delay(10)
 	applymovement(LOCAL_ID_NUVEMA_CHEREN_PREVENT, moves( walk_fast_left * 7, face_down ))
 	waitmovement(0)
@@ -325,4 +330,256 @@ script NuvemaTown_EventScript_Bianca_Lab
 {
 	msgbox("Bianca: ... That's a secret, OK?", MSGBOX_NPC, TRUE)
 	end()
+}
+
+script NuvemaTown_EventScript_MotherGivesTownMap
+{
+	lockall()
+	setvar(VAR_NUVEMA_PICK_STARTER, 7)
+	setflag(FLAG_NUVEMA_PJL_CHEREN_BIANCA)
+	delay(10)
+	playse(SE_DOOR)
+	setdooropen(9, 6)
+	waitse()
+    delay (10)
+	addobject(LOCALID_NUVEMA_BIANCA_LEAVING_LAB)
+	playse(SE_WALL_HIT)
+	waitse()
+	delay(10)
+	msgbox("Bianca: Heeey!\n"
+		"{PLAYER}, wait up!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BIANCA_LEAVING_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves( walk_down ))
+	applymovement(LOCALID_NUVEMA_BIANCA_LEAVING_LAB, moves( walk_down ))
+	waitmovement(0)
+	addobject(LOCALID_NUVEMA_CHEREN_LEAVING_LAB)
+	applymovement(LOCALID_NUVEMA_BIANCA_LEAVING_LAB, moves( walk_right, walk_down ))
+	applymovement(LOCALID_NUVEMA_CHEREN_LEAVING_LAB, moves( walk_down, walk_left , walk_down ))
+	waitmovement(0)
+	setdoorclosed(9, 6)
+	delay(20)
+	msgbox("Mom: Oh, there you are! And...?\n"
+			"What did the professor have to say?\p"
+			"She asked you to complete the Pokédex?!\n"
+			"I can't believe it!\p"
+			"Well, actually, I can.\n"
+			"I already knew she was going to ask.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_up ))
+	waitmovement(0)
+	msgbox("Mom: That's why I brought you three of\n"
+			"these Town Maps. Take them with you!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
+	destroy_speech_bubble()
+	closemessage()
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the Town Map!")
+    delay(120)
+	additem (ITEM_TOWN_MAP)
+    call_if_eq (VAR_RESULT, FALSE, NuvemaTown_EventScript_BagIsFull)
+    closemessage
+    fadedefaultbgm()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_left, walk_in_place_up ))
+	waitmovement(0)
+	delay(10)
+	msgbox("Mom: Here you are, Cheren.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_CHEREN_LEAVING_LAB, moves( walk_in_place_down ))
+	waitmovement(0)
+	msgbox("Cheren: I'll take good care of it.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_LEAVING_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_right, walk_right, walk_in_place_up ))
+	waitmovement(0)
+	delay(10)
+	msgbox("Mom: And one for you, too, Bianca.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_BIANCA_LEAVING_LAB, moves( walk_in_place_down ))
+	waitmovement(0)
+	msgbox("Bianca: Th-thank you so much!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BIANCA_LEAVING_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	msgbox("Mom: As for your room, {PLAYER}--\n"
+			"or what's left of it...\p"
+			"No need for any of you to worry.\n"
+			"I'll take care of tidying up.\p"
+			"OK, {PLAYER}?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_left, walk_in_place_up ))
+	waitmovement(0)
+		delay(10)
+	msgbox("Mom: Ah, Pokémon. They are so cute,\n"
+			"but they have enough power to destroy\l"
+			"a bedroom! They are really something.\p"
+			"With Pokémon like that at your side,\n"
+			"you'll be safe wherever you go!\p"
+			"I'll let your parents know!\p"
+			"I hope that, in addition to Pokémon,\n"
+			"you'll find lots and lots of places\l"
+			"you like in the Unova region--\l"
+			"and become wonderful adults!\p"
+			"Have a great trip!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(20)
+	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_down * 6 ))
+	waitmovement(0)
+	removeobject(LOCALID_NUVEMA_MOTHER_LAB)
+	setflag(FLAG_NUVEMA_MOTHER_LAB)
+	delay(10)
+	applymovement(LOCALID_NUVEMA_CHEREN_LEAVING_LAB, moves( walk_in_place_right ))
+	waitmovement(0)
+	applymovement(LOCALID_NUVEMA_BIANCA_LEAVING_LAB, moves( walk_in_place_left ))
+	applymovement(LOCALID_PLAYER, moves( walk_in_place_left ))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: If I use the Town Map,\n"
+			"I'll always know where I am...\l"
+			"That's certainly helpful.\p"
+			"Shall we head to Route 1?\n"
+			"The professor's waiting.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_LEAVING_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_BIANCA_LEAVING_LAB, moves( walk_in_place_left ))
+	waitmovement(0)
+	delay(10)
+	msgbox("Bianca: Let's go, let's go!\n"
+			"Nate, hurry and come too, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BIANCA_LEAVING_LAB)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_BIANCA_LEAVING_LAB, moves( walk_right * 8 ))
+	applymovement(LOCALID_NUVEMA_CHEREN_LEAVING_LAB, moves( walk_up, walk_right * 9 ))
+	waitmovement(0)
+	removeobject(LOCALID_NUVEMA_BIANCA_LEAVING_LAB)
+	removeobject(LOCALID_NUVEMA_CHEREN_LEAVING_LAB)
+	clearflag(FLAG_NUVEMA_CB_WAIT_AT_ROUTE_1)
+	delay(20)
+    releaseall()
+	end()
+}
+
+script NuvemaTown_EventScript_BagIsFull
+{
+    msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+    return()
+}
+
+script NuvemaTown_EventScript_OffToRoute1
+{
+	lock()
+	setvar(VAR_NUVEMA_PICK_STARTER, 8)
+	playse(SE_PIN)
+	applymovement(LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playbgm(MUS_BW_ADVENTURE_TOGETHER, TRUE)
+	applymovement(LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Bianca: {PLAYER}...\n"
+    	   "It's this way!", MSGBOX_DEFAULT)
+	closemessage()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 18, NuvemaTown_EventScript_OTR1_Pos1)
+	call_if_eq (VAR_TEMP_0, 19, NuvemaTown_EventScript_OTR1_Pos2)
+	call_if_eq (VAR_TEMP_0, 20, NuvemaTown_EventScript_OTR1_Pos3)
+	call_if_eq (VAR_TEMP_0, 21, NuvemaTown_EventScript_OTR1_Pos4)
+	call_if_eq (VAR_TEMP_0, 22, NuvemaTown_EventScript_OTR1_Pos5)
+	call_if_eq (VAR_TEMP_0, 23, NuvemaTown_EventScript_OTR1_Pos6)
+	delay(10)
+	applymovement(LOCALID_NUVEMA_CHEREN_WAIT_AT_ROUTE_1, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Cheren: Bianca says if we're starting a\n"
+			"journey together, she wants us all to\l"
+			"take our first step at the same time.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_WAIT_AT_ROUTE_1)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1, moves(walk_down, walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Bianca: Hey, {PLAYER}!\p"
+			"Let's all take our first step\n"
+			"on Route 1 together!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_CHEREN_WAIT_AT_ROUTE_1, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Cheren: OK, here we go!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_CHEREN_WAIT_AT_ROUTE_1)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1, moves(walk_up))
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	msgbox("One, two!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1)
+	destroy_speech_bubble()
+	closemessage()
+	applymovement(LOCALID_NUVEMA_BIANCA_WAIT_AT_ROUTE_1, moves(walk_up * 4))
+	applymovement(LOCALID_NUVEMA_CHEREN_WAIT_AT_ROUTE_1, moves(walk_up * 4))
+	applymovement(LOCALID_PLAYER, moves(walk_up * 4))
+	waitmovement(0)
+	setflag(FLAG_NUVEMA_CB_WAIT_AT_ROUTE_1)
+	clearflag(FLAG_ROUTE1_EAST_CB_BOTTOM)
+	warp(MAP_ROUTE1_EAST, 20, 58)
+	waitstate()
+	release()
+	end()
+}
+
+script NuvemaTown_EventScript_OTR1_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_right * 2, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_OTR1_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_right, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_OTR1_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_OTR1_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_OTR1_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left * 2, walk_up))
+	waitmovement(0)
+	return()
+}
+script NuvemaTown_EventScript_OTR1_Pos6
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left * 3, walk_up))
+	waitmovement(0)
+	return()
 }

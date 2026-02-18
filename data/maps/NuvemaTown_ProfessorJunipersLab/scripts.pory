@@ -1,1 +1,265 @@
-mapscripts NuvemaTown_ProfessorJunipersLab_MapScripts {}
+mapscripts NuvemaTown_ProfessorJunipersLab_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NUVEMA_PICK_STARTER, 5 : NuvemaTown_EventScript_JPL_JuniperGivesDex
+    ]
+}
+
+script NuvemaTown_EventScript_JPL_JuniperGivesDex
+{
+    lockall()
+    playbgm(MUS_BW_JUNIPER, TRUE)
+    setvar(VAR_NUVEMA_PICK_STARTER, 6)
+    applymovement(LOCALID_PLAYER, moves( walk_up * 2 ))
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( walk_up * 2 ))
+    applymovement(LOCALID_NUVEMA_PJL_CHEREN, moves( walk_up * 2 ))
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves( walk_up ))
+    waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up ))
+    waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Hi there!\n"
+            "I've been waiting for you young people!\p"
+            "Let me introduce myself again.\n"
+            "My name is...", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Cheren: Professor Juniper?\n"
+            "We know your name.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_CHEREN)
+    destroy_speech_bubble()
+    closemessage()
+    delay(10)
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    waitmovement(0)
+    msgbox("Professor Juniper: Come, come, Cheren!\n"
+            "This is not a time to take things lightly.\p"
+            "Today is a day to remember always, so\n"
+            "it's best to behave with some formality.\p"
+            "That being so, once again, my name is\n"
+            "Professor Juniper, and I am researching\l"
+            "when and how the creatures called\l"
+            "Pokémon came into existence.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_left, walk_in_place_down, delay_16, walk_right * 2, walk_in_place_down, delay_16, walk_left , walk_in_place_down ))
+    waitmovement(0)
+    bufferpartymonnick(STR_VAR_1, 0)
+    bufferleadmonspeciesname (STR_VAR_2)
+    msgbox("Professor Juniper: Oh, that's unusual!\n"
+            "You've already had a Pokémon battle!\p"
+            "So maybe that's why...\p"
+            "It feels as though your Pokémon have\n"
+            "already begun to trust you!\p"
+            "By the way, you can always change the\n"
+            "nickname of your Pokémon now...\p"
+            "{STR_VAR_1} seems like a\n"
+            "perfect name for your {STR_VAR_2}!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    waitmovement(0)
+    delay(10)
+    msgbox("Professor Juniper: As for why I gave all\n"
+            "of you Pokémon...", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Cheren: It's for the Pokédex, right?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(emote_question_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( walk_in_place_right ))
+    waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Pokédex?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Professor Juniper: I am astonished.\n"
+            "Nice work, Cheren!\p"
+            "You have already studied Pokémon\n"
+            "extensively, haven't you?\p"
+            "Still, let me explain everything from the\n"
+            "beginning, for everyone's sake.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( face_up ))
+    waitmovement(0)
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_slow_up , delay_4, face_left, delay_4, face_down ))
+    waitmovement(0)
+	if (msgbox("Professor Juniper: The Pokédex is a\n"
+                "high-tech device that automatically\l"
+                "records the Pokémon you encounter!\p"
+                "So, I want you three to visit many\n"
+                "places and meet all of the Pokémon\l"
+                "in the Unova region!\p"
+                "This is my request.\p"
+                "{PLAYER}!\n"
+                "Cheren! Bianca!\p"
+                "You'll go on an adventure to\n"
+                "complete the Pokédex, will you not?", MSGBOX_YESNO, TRUE, LOCALID_NUVEMA_PJL_JUNIPER) == YES)
+	{
+		goto(NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue)
+	}
+	else
+	{
+		goto(NuvemaTown_EventScript_JPL_JuniperRefusesDex)
+	}
+	end()
+}
+
+script NuvemaTown_EventScript_JPL_JuniperRefusesDex
+{
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    waitmovement(0)
+    delay(10)
+    if (msgbox("Professor Juniper: Here is what I need\n"
+            "from you!\p"
+            "What I want to hear are the courageous\n"
+            "words of people who will blaze new\l"
+            "paths around the world!\p"
+            "I want you three to travel to many\n"
+            "distant places and meet all of the\l"
+            "Pokémon in the Unova region!", MSGBOX_YESNO, TRUE, LOCALID_NUVEMA_PJL_JUNIPER) == YES)
+	{
+		goto(NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue)
+	}
+	else
+	{
+		goto(NuvemaTown_EventScript_JPL_JuniperRefusesDex)
+	}
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue
+{
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Bianca: OK!\p"
+            "I mean... Yes, professor!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Cheren: Thank you very much.\p"
+            "Because of you, I can become a Pokémon\n"
+            "Trainer, exactly as I've always wished.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    waitmovement(0)
+    delay(10)
+    msgbox("Professor Juniper: All of you, thanks!\p"
+            "You have given me the best\n"
+            "possible answer!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the Pokédex!", MSGBOX_DEFAULT) //this should be transparent
+    setflag(FLAG_SYS_POKEDEX_GET)
+    delay(120)
+    closemessage
+    playbgm(MUS_BW_JUNIPER, TRUE)
+    msgbox("Professor Juniper: Next, I need to teach\n"
+            "you how to meet Pokémon.\p"
+            "Please meet me at Route 1, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_down ))
+    waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down ))
+	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_down ))
+    waitmovement(0)
+	special(RemoveCameraObject)
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( face_right, lock_facing_direction, walk_left, unlock_facing_direction ))
+    applymovement(LOCALID_PLAYER, moves( face_right, lock_facing_direction, walk_left, unlock_facing_direction ))
+    waitmovement(0)
+    delay(20)
+	applymovement(LOCALID_NUVEMA_PJL_CHEREN, moves( delay_16, face_down ))
+	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( delay_16, face_down ))
+	applymovement(LOCALID_PLAYER, moves( delay_16, face_down ))
+	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_down * 4 ))
+    waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NUVEMA_PJL_JUNIPER)
+    setflag(FLAG_NUVEMA_PJL_JUNIPER)
+	waitse()
+    fadedefaultbgm()
+	delay(20)
+    msgbox("Bianca: S-since the professor asked us,\n"
+            "it's OK to go on an adventure, right?\p"
+            "I can explore and maybe find out what\n"
+            "I want to do in life. I think I'd like that.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Cheren: Of course.\p"
+            "We can travel however we want\n"
+            "while we complete the Pokédex.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    clearflag(FLAG_NUVEMA_MOTHER_LAB)
+	delay(20)
+    releaseall()
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_Cheren
+{
+    msgbox("Cheren: Finally, I can become\n"
+            "a Pokémon Trainer.\p"
+            "I'll have real battles with other\n"
+            "Trainers and get stronger. Wait and see!", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_Bianca
+{
+    lock()
+    bufferpartymonnick(STR_VAR_1, 0)
+    msgbox("Bianca: For some reason,\n"
+            "my heart is pounding, {PLAYER}.\p"
+            "What are you and {STR_VAR_1} going to do?", MSGBOX_NPC, TRUE)
+    release()
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_Picture
+{
+	msgbox("Who is this with Professor Juniper?\n"
+           "There's a smiling man in the picture.", MSGBOX_SIGN)
+	end
+}
+
+script NuvemaTown_EventScript_JPL_Books
+{
+	msgbox("There are lots of books\n"
+           "about Pokémon!", MSGBOX_SIGN)
+	end
+}
+
+script NuvemaTown_EventScript_JPL_Laptop
+{
+    msgbox("There are lots of materials and\n"
+           "research reports about Pokémon!", MSGBOX_SIGN)
+	end
+}
