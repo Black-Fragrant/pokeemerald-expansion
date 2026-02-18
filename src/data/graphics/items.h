@@ -1704,8 +1704,8 @@ const u16 gItemIconPalette_SuperRod[] = INCBIN_U16("graphics/items/icon_palettes
 const u32 gItemIcon_DowsingMachine[] = INCBIN_U32("graphics/items/icons/dowsing_machine.4bpp.smol");
 const u16 gItemIconPalette_DowsingMachine[] = INCBIN_U16("graphics/items/icon_palettes/dowsing_machine.gbapal");
 
-const u32 gItemIcon_TownMap[] = INCBIN_U32("graphics/items/icons/town_map.4bpp.smol");
-const u16 gItemIconPalette_TownMap[] = INCBIN_U16("graphics/items/icon_palettes/town_map.gbapal");
+const u32 gItemIcon_TownMap[] = INCBIN_U32("graphics/items/icons/town_map_bw.4bpp.smol");
+const u16 gItemIconPalette_TownMap[] = INCBIN_U16("graphics/items/icon_palettes/town_map_bw.gbapal");
 
 const u32 gItemIcon_VsSeeker[] = INCBIN_U32("graphics/items/icons/vs_seeker.4bpp.smol");
 const u16 gItemIconPalette_VsSeeker[] = INCBIN_U16("graphics/items/icon_palettes/vs_seeker.gbapal");

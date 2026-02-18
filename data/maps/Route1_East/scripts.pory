@@ -1,4 +1,216 @@
-mapscripts Route1_East_MapScripts {}
+mapscripts Route1_East_MapScripts
+{
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_NUVEMA_PICK_STARTER, 8 : Route1_East_EventScript_TurnPlayer
+    ]
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NUVEMA_PICK_STARTER, 8 : Route1_East_EventScript_CatchingTutorial
+    ]
+}
+
+script Route1_East_EventScript_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_NORTH)
+	end()
+}
+
+script Route1_East_EventScript_CatchingTutorial
+{
+	lockall()
+	setvar(VAR_NUVEMA_PICK_STARTER, 9)
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Bianca: Oh! I wonder what will happen!\n"
+			"Isn't this so exciting?!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Cheren: It sure is!\n"
+			"C'mon, the professor's waiting.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM, moves(walk_up * 6))
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_up * 6))
+	applymovement(LOCALID_PLAYER, moves(walk_up * 6))
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up ))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+	msgbox("Cheren: Professor Juniper, I'm sorry\n"
+			"to have kept you waiting.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	msgbox("Professor Juniper: Now that everyone's\n"
+			"here, I'll explain.\p"
+			"The Pokédex's pages update automatically\n"
+			"whenever you meet a Pokémon!\p"
+			"Moreover, it's set up so that\n"
+			"you obtain even more information\l"
+			"when you catch a Pokémon!\p"
+			"To make this clear, I'm going to\n"
+			"demonstrate how to catch a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_JUNIPER_CT)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM, moves(walk_up))
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_up))
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	applymovement(LOCALID_ROUTE1_EAST_JUNIPER_CT, moves(walk_up * 3))
+	waitmovement(0)
+	delay(10)
+	special(SavePlayerParty)
+	special(LoadWallyZigzagoon)
+	special(StartWallyTutorialBattle)
+	waitstate
+	special(LoadPlayerParty)
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_JUNIPER_CT, moves(walk_down * 2))
+	waitmovement(0)
+	delay(10)
+	msgbox("Professor Juniper: Did you see that,\n"
+			"just now?\p"
+			"Here's how it goes, step by step.\n"
+			"First, reduce the Pokémon's HP!\p"
+			"Pokémon that still have all of\n"
+			"their energy are difficult to catch.\p"
+			"If you can, use your Pokémon's moves to\n"
+			"make the Pokémon you want to catch\l"
+			"fall asleep. Or paralyze it!\p"
+			"And to wrap this up in the best way,\n"
+			"I have a gift for you--some Poké Balls!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_JUNIPER_CT)
+	destroy_speech_bubble()
+	closemessage()
+    giveitem (ITEM_POKE_BALL, 10)
+    call_if_eq (VAR_RESULT, FALSE, Route1_East_EventScript_BagIsFull_Continue)
+    closemessage
+	msgbox("Professor Juniper: Poké Balls are used\n"
+			"for catching Pokémon and for carrying\l"
+			"the Pokémon you catch!\p"
+			"I'm going on ahead.\n"
+			"I'll be waiting for you in Accumula Town!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_JUNIPER_CT)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_JUNIPER_CT, moves(walk_up * 7))
+	waitmovement(0)
+	removeobject(LOCALID_ROUTE1_EAST_JUNIPER_CT)
+	setflag(FLAG_ROUTE1_EAST_JUNIPER_CT)
+	delay(10)
+	msgbox("Cheren: She forgot to say that Pokémon\n"
+			"jump out at you in the tall grass.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("I'm heading to Accumula Town, too.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Bianca: I think I'll go, too.\p"
+			"I'm looking forward to the next town\n"
+			"so I can go shopping for Poké Balls!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	msgbox("Bianca: Wait a minute!\p"
+			"Hey, listen!\n"
+			"{PLAYER}, Cheren,\l"
+			"I thought of something fun!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Cheren: But we need to get going!\n"
+			"I'd imagine the professor's waiting, too.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	msgbox("Bianca: Would you just listen a sec?\n"
+			"Seriously!\p"
+			"Why don't we see who can catch\n"
+			"the most Pokémon?\p"
+			"The person carrying the most Pokémon,\n"
+			"including the one received from\l"
+			"Professor Juniper, is the winner!",MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Cheren: Huh.\n"
+			"Actually, that sounds interesting.\p"
+			"It will fill up Pokédex pages, so I'm\n"
+			"sure it will please the professor, too.\p"
+			"OK, then. Until we reach Accumula Town,\n"
+			"take care of healing your Pokémon\l"
+			"at your own house.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	call_if_set(FLAG_CHOSE_SNIVY, Route1_East_EventScript_BiancaSaysOshawott)
+	call_if_set(FLAG_CHOSE_TEPIG, Route1_East_EventScript_BiancaSaysSnivy)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, Route1_East_EventScript_BiancaSaysTepig)
+	msgbox("Bianca: Me and {STR_VAR_1}\n"
+			"will do the best for sure!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_BOTTOM)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( delay_16, walk_slow_down ))
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM, moves( walk_up * 7 ))
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM, moves( walk_up * 7 ))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	removeobject(LOCALID_ROUTE1_EAST_BIANCA_BOTTOM)
+	removeobject(LOCALID_ROUTE1_EAST_CHEREN_BOTTOM)
+	setflag(FLAG_ROUTE1_EAST_CB_BOTTOM)
+	delay(20)
+	releaseall()
+	end()
+}
+
+script Route1_East_EventScript_BagIsFull_Continue
+{
+    msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+    return()
+}
+
+script Route1_East_EventScript_BiancaSaysOshawott
+{
+	bufferspeciesname(STR_VAR_1, SPECIES_OSHAWOTT)
+    return()
+}
+
+script Route1_East_EventScript_BiancaSaysSnivy
+{
+	bufferspeciesname(STR_VAR_1, SPECIES_SNIVY)
+    return()
+}
+
+script Route1_East_EventScript_BiancaSaysTepig
+{
+	bufferspeciesname(STR_VAR_1, SPECIES_TEPIG)
+    return()
+}
 
 script Route1_East_EventScript_SignPost
 {

@@ -193,8 +193,42 @@ script NuvemaTown_PH1F_EventScript_BagIsFull
 
 script NuvemaTown_PH1F_EventScript_Mother
 {
+    lock()
+    goto_if_ge( VAR_NUVEMA_PICK_STARTER, 7, NuvemaTown_PH1F_EventScript_Mother_Healing)
 	msgbox("Mom: You're going to thank the\n"
             "professor too, right?\l"
             "Better get going, honey!", MSGBOX_NPC, TRUE)
+    release()
+	end()
+}
+
+script NuvemaTown_PH1F_EventScript_Mother_Healing
+{
+    goto_if_set(FLAG_TEMP_11, NuvemaTown_PH1F_EventScript_Mother_FinishHealing)
+    msgbox("Mom: Phew! I'm taking a little break\n"
+            "from cleaning up.\p"
+            "You and your Pokémon should take\n"
+            "a break, too.\p"
+            "Good Trainers don't push their\n"
+            "Pokémon too hard.", MSGBOX_NPC, TRUE)
+    setflag(FLAG_TEMP_11)
+	fadescreen(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    fadedefaultbgm()
+	fadescreen(FADE_FROM_BLACK)
+    msgbox("Mom: You and your Pokémon should all be\n"
+            "filled with energy again!\l"
+            "Now, you can go anywhere!", MSGBOX_NPC, TRUE)
+    release()
+	end()
+}
+
+script NuvemaTown_PH1F_EventScript_Mother_FinishHealing
+{
+    msgbox("Mom: I wonder where you'll go next\n"
+           "and what kind of Pokémon you'll meet.", MSGBOX_NPC, TRUE)
+    release()
 	end()
 }
