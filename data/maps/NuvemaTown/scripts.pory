@@ -381,7 +381,7 @@ script NuvemaTown_EventScript_MotherGivesTownMap
 	additem (ITEM_TOWN_MAP)
     call_if_eq (VAR_RESULT, FALSE, NuvemaTown_EventScript_BagIsFull)
     closemessage
-    fadedefaultbgm()
+    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
 	delay(10)
 	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_left, walk_in_place_up ))
 	waitmovement(0)
@@ -419,7 +419,7 @@ script NuvemaTown_EventScript_MotherGivesTownMap
 	delay(10)
 	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_left, walk_in_place_up ))
 	waitmovement(0)
-		delay(10)
+	delay(10)
 	msgbox("Mom: Ah, Pokémon. They are so cute,\n"
 			"but they have enough power to destroy\l"
 			"a bedroom! They are really something.\p"

@@ -797,7 +797,7 @@ script NuvemaTown_PH2F_EventScript_Finished_Battles
 	removeobject (LOCALID_NUVEMA_PH2F_BIANCA)
 	waitse()
 	setflag(FLAG_NUVEMA_PH2F_BIANCA)
-	fadedefaultbgm()
+    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
 	setflag(FLAG_NUVEMA_PH1F_LOOKER)
 	clearflag(FLAG_NO_WHITEOUT)
 	special(HealPlayerParty)

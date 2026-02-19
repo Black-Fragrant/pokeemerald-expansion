@@ -177,7 +177,7 @@ script NuvemaTown_PH1F_EventScript_XT_After_Giving_XT
             "Better get going, honey!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
     destroy_speech_bubble()
     closemessage
-    fadedefaultbgm()
+    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
     clearflag(FLAG_NUVEMA_CHEREN_LAB)
     clearflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
     delay(20)
@@ -216,7 +216,7 @@ script NuvemaTown_PH1F_EventScript_Mother_Healing
     playbgm(MUS_BW_HEAL, TRUE)
 	special(HealPlayerParty)
     delay(140)
-    fadedefaultbgm()
+    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
 	fadescreen(FADE_FROM_BLACK)
     msgbox("Mom: You and your Pokémon should all be\n"
             "filled with energy again!\l"
