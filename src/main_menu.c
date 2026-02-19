@@ -928,11 +928,30 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 cursorPos)
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
+// BG1 template for the Birch scene. The original main menu set up BG1 with
+// charBase 0 / mapBase 7, and the Birch scene inherited that configuration.
+// The BW main menu changed BG1 to mapBase 29 and added BG2, so we need to
+// explicitly restore BG1 for the Birch scene transition.
+static const struct BgTemplate sBirchBg1Template = {
+    .bg = 1,
+    .charBaseIndex = 0,
+    .mapBaseIndex = 7,
+    .screenSize = 0,
+    .paletteMode = 0,
+    .priority = 3,
+    .baseTile = 0
+};
+
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgFromTemplate(&sBirchBgTemplate);
+    InitBgFromTemplate(&sBirchBg1Template);
+    // Disable BG2 left over from the BW main menu
+    SetGpuReg(REG_OFFSET_BG2CNT, 0);
+    SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG2VOFS, 0);
     SetGpuReg(REG_OFFSET_WIN0H, 0);
     SetGpuReg(REG_OFFSET_WIN0V, 0);
     SetGpuReg(REG_OFFSET_WININ, 0);
@@ -940,6 +959,9 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     SetGpuReg(REG_OFFSET_BLDCNT, 0);
     SetGpuReg(REG_OFFSET_BLDALPHA, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
+    // Clear stale palettes from the BW main menu
+    DmaClear16(3, PLTT, PLTT_SIZE);
+    ResetPaletteFade();
 
     DecompressDataWithHeaderVram(sBirchSpeechShadowGfx, (void *)VRAM);
     DecompressDataWithHeaderVram(sBirchSpeechBgMap, (void *)(BG_SCREEN_ADDR(7)));
