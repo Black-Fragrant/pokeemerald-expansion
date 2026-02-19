@@ -1,6 +1,10 @@
 #ifndef GUARD_METATILE_LABELS_H
 #define GUARD_METATILE_LABELS_H
 
+// gTileset_Accumula
+#define METATILE_Accumula_House_1  0x279
+#define METATILE_Accumula_House_2  0x2B5
+
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x21B
 
