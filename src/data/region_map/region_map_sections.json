@@ -491,7 +491,7 @@
     {
       "id": "MAPSEC_ABANDONED_SHIP",
       "name": "ABANDONED SHIP",
-      "x": 6,
+      "x": 21,
       "y": 14,
       "width": 1,
       "height": 1
@@ -1416,7 +1416,7 @@
       "height": 1
     },
     {
-      "id": "MAPSEC_FLOCCESY_RANCG",
+      "id": "MAPSEC_FLOCCESY_RANCH",
       "name": "Floccesy Ranch",
       "x": 0,
       "y": 0,
