@@ -945,13 +945,14 @@ static const struct BgTemplate sBirchBg1Template = {
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    // Reset the BG software state. The BW main menu registered BG0/BG1/BG2
+    // via InitBgsFromTemplates, and their visibility bits persist in the
+    // internal bgVisibilityAndMode field. Without this reset, ShowBg() would
+    // re-enable BG2 in DISPCNT via SyncBgVisibilityAndMode().
+    ResetBgsAndClearDma3BusyFlags(0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgFromTemplate(&sBirchBgTemplate);
     InitBgFromTemplate(&sBirchBg1Template);
-    // Disable BG2 left over from the BW main menu
-    SetGpuReg(REG_OFFSET_BG2CNT, 0);
-    SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-    SetGpuReg(REG_OFFSET_BG2VOFS, 0);
     SetGpuReg(REG_OFFSET_WIN0H, 0);
     SetGpuReg(REG_OFFSET_WIN0V, 0);
     SetGpuReg(REG_OFFSET_WININ, 0);
@@ -959,8 +960,14 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     SetGpuReg(REG_OFFSET_BLDCNT, 0);
     SetGpuReg(REG_OFFSET_BLDALPHA, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
-    // Clear stale palettes from the BW main menu
-    DmaClear16(3, PLTT, PLTT_SIZE);
+    // Clear stale palette data from the BW main menu.
+    // ResetPaletteFade only resets the fade control struct, not the buffers.
+    // The VBlank callback (TransferPlttBuffer) continuously copies
+    // gPlttBufferFaded to hardware PLTT, so we must clear both software
+    // buffers — otherwise stale BW menu palettes in slots 2-3 and 15
+    // become visible as the fade-from-black progresses.
+    CpuFill16(0, gPlttBufferUnfaded, PLTT_SIZE);
+    CpuFill16(0, gPlttBufferFaded, PLTT_SIZE);
     ResetPaletteFade();
 
     DecompressDataWithHeaderVram(sBirchSpeechShadowGfx, (void *)VRAM);
