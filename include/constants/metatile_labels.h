@@ -1,10 +1,6 @@
 #ifndef GUARD_METATILE_LABELS_H
 #define GUARD_METATILE_LABELS_H
 
-// gTileset_Accumula
-#define METATILE_Accumula_House_1  0x279
-#define METATILE_Accumula_House_2  0x2B5
-
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x21B
 
@@ -352,6 +348,14 @@
 // gTileset_Nuvema
 #define METATILE_Nuvema_House_Door  0x221
 #define METATILE_Nuvema_Lab_Door    0x24C
+
+// gTileset_Accumula
+#define METATILE_Accumula_House_1  0x279
+#define METATILE_Accumula_House_2  0x2B5
+
+// gTileset_Straiton
+#define METATILE_Straiton_House_1  0x315
+#define METATILE_Straiton_House_2  0x35D
 
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
