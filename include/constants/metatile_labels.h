@@ -1,6 +1,10 @@
 #ifndef GUARD_METATILE_LABELS_H
 #define GUARD_METATILE_LABELS_H
 
+// gTileset_Accumula
+#define METATILE_Accumula_House_1  0x279
+#define METATILE_Accumula_House_2  0x2B5
+
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x21B
 
@@ -207,7 +211,8 @@
 // gTileset_General
 #define METATILE_General_CaveEntrance_Top      0x09F
 #define METATILE_General_Door                  0x021
-#define METATILE_General_Door_PokeCenter       0x061
+#define METATILE_General_Door_PokeCenter       0x021
+#define METATILE_General_Door_PokemonCenter    0x0AB
 #define METATILE_General_Door_PokeMart         0x041
 #define METATILE_General_Grass                 0x023
 #define METATILE_General_Grass_TreeUp          0x00E
@@ -348,14 +353,6 @@
 // gTileset_Nuvema
 #define METATILE_Nuvema_House_Door  0x221
 #define METATILE_Nuvema_Lab_Door    0x24C
-
-// gTileset_Accumula
-#define METATILE_Accumula_House_1  0x279
-#define METATILE_Accumula_House_2  0x2B5
-
-// gTileset_Straiton
-#define METATILE_Straiton_House_1  0x315
-#define METATILE_Straiton_House_2  0x35D
 
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
@@ -773,5 +770,7 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up     0x20D
 #define METATILE_RSMossdeepGym_Switch_Down     0x239
 #define METATILE_RSMossdeepGym_Switch_Up       0x238
+#define METATILE_Straiton_House_1              0x315
+#define METATILE_Straiton_House_2              0x35D
 
 #endif // GUARD_METATILE_LABELS_H

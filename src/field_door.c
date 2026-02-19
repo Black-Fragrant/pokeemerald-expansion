@@ -92,6 +92,7 @@ static const u8 sDoorAnimTiles_AccumulaHouse_1[] = INCBIN_U8("graphics/door_anim
 static const u8 sDoorAnimTiles_AccumulaHouse_2[] = INCBIN_U8("graphics/door_anims/accumula_house_2.4bpp");
 static const u8 sDoorAnimTiles_StraitonHouse_1[] = INCBIN_U8("graphics/door_anims/straiton_house_1.4bpp");
 static const u8 sDoorAnimTiles_StraitonHouse_2[] = INCBIN_U8("graphics/door_anims/straiton_house_2.4bpp");
+static const u8 sDoorAnimTiles_PokemonCenter[] = INCBIN_U8("graphics/door_anims/poke_center.4bpp");
 
 #define CLOSED_DOOR_TILES_OFFSET 0xFFFF
 
@@ -204,6 +205,7 @@ static const u8 sDoorAnimPalettes_AccumulaHouse_1[] = {10, 10, 10, 10, 10, 10, 1
 static const u8 sDoorAnimPalettes_AccumulaHouse_2[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_StraitonHouse_1[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_StraitonHouse_2[] = {10, 10, 10, 10, 10, 10, 10, 10};
+static const u8 sDoorAnimPalettes_PokemonCenter[] = {10, 10, 10, 10, 10, 10, 10, 10};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -265,6 +267,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_Accumula_House_2,                             DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_AccumulaHouse_2, sDoorAnimPalettes_AccumulaHouse_2},
     {METATILE_Straiton_House_1,                             DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_StraitonHouse_1, sDoorAnimPalettes_StraitonHouse_1},
     {METATILE_Straiton_House_2,                             DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_StraitonHouse_2, sDoorAnimPalettes_StraitonHouse_2},
+    {METATILE_General_Door_PokemonCenter,                   DOOR_SOUND_SLIDING, DOOR_SIZE_1x1, sDoorAnimTiles_PokemonCenter, sDoorAnimPalettes_PokemonCenter},
     {},
 };
 
