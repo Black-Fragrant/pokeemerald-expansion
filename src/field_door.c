@@ -93,6 +93,8 @@ static const u8 sDoorAnimTiles_AccumulaHouse_2[] = INCBIN_U8("graphics/door_anim
 static const u8 sDoorAnimTiles_StraitonHouse_1[] = INCBIN_U8("graphics/door_anims/straiton_house_1.4bpp");
 static const u8 sDoorAnimTiles_StraitonHouse_2[] = INCBIN_U8("graphics/door_anims/straiton_house_2.4bpp");
 static const u8 sDoorAnimTiles_PokemonCenter[] = INCBIN_U8("graphics/door_anims/poke_center.4bpp");
+static const u8 sDoorAnimTiles_Route3_House_1[] = INCBIN_U8("graphics/door_anims/route_3_door_1.4bpp");
+static const u8 sDoorAnimTiles_Route3_House_2[] = INCBIN_U8("graphics/door_anims/route_3_door_2.4bpp");
 
 #define CLOSED_DOOR_TILES_OFFSET 0xFFFF
 
@@ -206,6 +208,8 @@ static const u8 sDoorAnimPalettes_AccumulaHouse_2[] = {10, 10, 10, 10, 10, 10, 1
 static const u8 sDoorAnimPalettes_StraitonHouse_1[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_StraitonHouse_2[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_PokemonCenter[] = {10, 10, 10, 10, 10, 10, 10, 10};
+static const u8 sDoorAnimPalettes_Route3_1[] = {11, 11, 11, 11, 11, 11, 11, 11};
+static const u8 sDoorAnimPalettes_Route3_2[] = {9, 9, 9, 9, 9, 9, 9, 9};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -268,6 +272,8 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_Straiton_House_1,                             DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_StraitonHouse_1, sDoorAnimPalettes_StraitonHouse_1},
     {METATILE_Straiton_House_2,                             DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_StraitonHouse_2, sDoorAnimPalettes_StraitonHouse_2},
     {METATILE_General_Door_PokemonCenter,                   DOOR_SOUND_SLIDING, DOOR_SIZE_1x1, sDoorAnimTiles_PokemonCenter, sDoorAnimPalettes_PokemonCenter},
+    {METATILE_Route3_House_1,                               DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_Route3_House_1, sDoorAnimPalettes_Route3_1},
+    {METATILE_Route3_House_2,                               DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_Route3_House_2, sDoorAnimPalettes_Route3_2},
     {},
 };
 

@@ -354,6 +354,14 @@
 #define METATILE_Nuvema_House_Door  0x221
 #define METATILE_Nuvema_Lab_Door    0x24C
 
+//gTileset_Straiton
+#define METATILE_Straiton_House_1              0x315
+#define METATILE_Straiton_House_2              0x35D
+
+//gTileset_Route3
+#define METATILE_Route3_House_1              0x28C
+#define METATILE_Route3_House_2              0x265
+
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
 #define METATILE_Pacifidlog_FloatingLogs_HorizontalLeft        0x250
@@ -770,7 +778,5 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up     0x20D
 #define METATILE_RSMossdeepGym_Switch_Down     0x239
 #define METATILE_RSMossdeepGym_Switch_Up       0x238
-#define METATILE_Straiton_House_1              0x315
-#define METATILE_Straiton_House_2              0x35D
 
 #endif // GUARD_METATILE_LABELS_H
