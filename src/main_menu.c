@@ -969,6 +969,13 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     CpuFill16(0, gPlttBufferUnfaded, PLTT_SIZE);
     CpuFill16(0, gPlttBufferFaded, PLTT_SIZE);
     ResetPaletteFade();
+    // Clear stale VRAM from the BW main menu. The Birch scene only writes
+    // shadow tiles to charBase 0 and its tilemap to mapBase 7 — the BW menu's
+    // tile data at charBase 1 (0x4000) and tilemaps at mapBase 29-31
+    // (0xE800-0xFFFF) remain, causing visible artifacts during the fade-in
+    // since BG0 (charBase 3, mapBase 30) renders that leftover data.
+    DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
+    DmaClear32(3, OAM, OAM_SIZE);
 
     DecompressDataWithHeaderVram(sBirchSpeechShadowGfx, (void *)VRAM);
     DecompressDataWithHeaderVram(sBirchSpeechBgMap, (void *)(BG_SCREEN_ADDR(7)));
