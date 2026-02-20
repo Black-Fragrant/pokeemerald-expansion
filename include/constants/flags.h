@@ -69,10 +69,10 @@
 #define FLAG_ROUTE1_EAST_CB_BOTTOM           0x37
 #define FLAG_ROUTE1_EAST_JUNIPER_CT          0x38
 #define FLAG_ROUTE1_EAST_CB_TOP              0x39
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
+#define FLAG_ACCUMULA_JUNIPER_POKECENTER     0x3A
+#define FLAG_ACCUMULA_PC_JUNIPER             0x3B
+#define FLAG_NUVEMA_PJL_PATRAT               0x3C
+#define FLAG_ACCUMULA_PC_HEALED_ONCE         0x3D
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag

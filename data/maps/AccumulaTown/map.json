@@ -89,6 +89,62 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Grandpa",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_PGM_GATE",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 8,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_PGF_GATE",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 8,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_CHEREN_LOOKAROUND",
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 19,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_Cheren_LookAround",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_JUNIPER_POKECENTER",
+      "graphics_id": "OBJ_EVENT_GFX_JUNIPER",
+      "x": 34,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AccumulaTown_EventScript_Juniper_Pokecenter",
+      "flag": "FLAG_ACCUMULA_JUNIPER_POKECENTER"
     }
   ],
   "warp_events": [
@@ -142,7 +198,26 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING",
+      "var_value": "0",
+      "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING",
+      "var_value": "0",
+      "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate_Trigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

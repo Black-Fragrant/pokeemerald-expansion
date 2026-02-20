@@ -50,3 +50,142 @@ script AccumulaTown_EventScript_Grandpa
 			"you can take with you at one time is six!", MSGBOX_NPC, TRUE)
 	end
 }
+
+script AccumulaTown_EventScript_Juniper_Pokecenter
+{
+	lock()
+	faceplayer()
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	msgbox("Professor Juniper: Ah, {PLAYER}!\n"
+			"There you are!\p"
+			"Traveling with your Pokémon is truly one\n"
+			"of the joys of being a Trainer!\p"
+			"Please follow me.\p"
+			"I'd like to show you the most important\n"
+			"place for a Trainer to know!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_JUNIPER_POKECENTER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_JUNIPER_POKECENTER, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(34,20)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_JUNIPER_POKECENTER, moves(walk_up))
+	waitmovement(0)
+	delay(10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_ACCUMULA_JUNIPER_POKECENTER)
+	setflag(FLAG_ACCUMULA_JUNIPER_POKECENTER)
+	waitse()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 33, AccumulaTown_EventScript_JP_Pos1)
+	call_if_eq (VAR_TEMP_0, 34, AccumulaTown_EventScript_JP_Pos2)
+	call_if_eq (VAR_TEMP_0, 35, AccumulaTown_EventScript_JP_Pos3)
+	warp(MAP_ACCUMULA_TOWN_POKE_CENTER, WARP_ID_ACCUMULA_TOWN_POKE_CENTER_MIDDLE)
+	waitstate()
+	end()
+}
+
+script AccumulaTown_EventScript_JP_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_JP_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_JP_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left, walk_up))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_Cheren_LookAround
+{
+	msgbox("Cheren: Wasn't that the professor\n"
+			"waiting in front of the Pokémon Center?\p"
+			"I know about the Pokémon Center\n"
+			"already. Anyway, I want to battle soon!\p"
+			"Real battles are the best way to become\n"
+			"stronger, you know!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_PlasmaGrunt_Gate
+{
+	msgbox("Please excuse me...\n"
+			"We are still preparing.\p"
+			"If you could continue to be patient...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_PlasmaGrunt_Gate_Trigger
+{
+	lock()
+	playse(SE_PIN)
+	applymovement(LOCALID_ACCUMULA_PGF_GATE, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 11, AccumulaTown_EventScript_PGG_Top)
+	call_if_eq (VAR_TEMP_1, 14, AccumulaTown_EventScript_PGG_Bottom)
+	applymovement(LOCALID_PLAYER, moves(face_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Please excuse me...\n"
+			"We are still preparing.\p"
+			"If you could continue to be patient...", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_PGF_GATE)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_PGF_GATE, moves(walk_slow_right))
+	applymovement(LOCALID_PLAYER, moves(lock_facing_direction, walk_slow_right, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 11, AccumulaTown_EventScript_PGG_Top2)
+	call_if_eq (VAR_TEMP_1, 14, AccumulaTown_EventScript_PGG_Bottom2)
+	delay(20)
+	release()
+	end()
+}
+
+script AccumulaTown_EventScript_PGG_Top
+{
+	applymovement(LOCALID_ACCUMULA_PGF_GATE, moves(walk_fast_left, walk_fast_up * 2, walk_in_place_fast_right))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_PGG_Bottom
+{
+	applymovement(LOCALID_ACCUMULA_PGF_GATE, moves(walk_fast_left, walk_fast_down , walk_in_place_fast_right))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_PGG_Top2
+{
+	applymovement(LOCALID_ACCUMULA_PGF_GATE, moves(walk_fast_left, walk_fast_down * 2, walk_fast_right))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_PGG_Bottom2
+{
+	applymovement(LOCALID_ACCUMULA_PGF_GATE, moves(walk_fast_left, walk_fast_up , walk_fast_right))
+	waitmovement(0)
+	return()
+}
+

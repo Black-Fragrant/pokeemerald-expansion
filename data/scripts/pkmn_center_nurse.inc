@@ -10,6 +10,8 @@ Common_EventScript_PkmnCenterNurse::
 	end
 
 EventScript_PkmnCenterNurse_Goodbye::
+	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
 	message gText_WeHopeToSeeYouAgain
 	return
 
@@ -46,12 +48,14 @@ EventScript_PkmnCenterNurse_TakeAndHealPkmn::
 	applymovement VAR_0x800B, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	special HealPlayerParty
+	setflag FLAG_ACCUMULA_PC_HEALED_ONCE
 	callnative UpdateFollowingPokemon
 	return
 
 EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
 	specialvar VAR_RESULT, PlayerNotAtTrainerHillEntrance
 	goto_if_eq VAR_RESULT, 0, EventScript_PkmnCenterNurse_ReturnPkmn
+	goto EventScript_PkmnCenterNurse_ReturnPkmn
 	specialvar VAR_RESULT, BufferUnionRoomPlayerName
 	copyvar VAR_0x8008, VAR_RESULT
 	goto_if_eq VAR_0x8008, 0, EventScript_PkmnCenterNurse_ReturnPkmn
