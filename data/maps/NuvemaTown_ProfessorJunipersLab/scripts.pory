@@ -263,3 +263,25 @@ script NuvemaTown_EventScript_JPL_Laptop
            "research reports about Pokémon!", MSGBOX_SIGN)
 	end
 }
+
+script NuvemaTown_EventScript_JPL_Patrat
+{   
+	lock
+	faceplayer
+	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
+	msgbox("Skree skree!", MSGBOX_DEFAULT)
+	waitmoncry
+	release
+	end
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER
+{   
+	lock
+	faceplayer
+	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
+	msgbox("Skree skree!", MSGBOX_DEFAULT)
+	waitmoncry
+	release
+	end
+}

@@ -1,4 +1,274 @@
-mapscripts AccumulaTown_PokeCenter_MapScripts {}
+mapscripts AccumulaTown_PokeCenter_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : AccumulaTown_PokeCenter_On_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_ACCUMULA_PC_TUTORIAL, 0 : AccumulaTown_PokeCenter_EventScript_Tutorial
+    ]
+}
+
+script AccumulaTown_PokeCenter_On_Transition
+{
+    call_if_eq (VAR_ACCUMULA_PC_TUTORIAL, 2, AccumulaTown_PokeCenter_PositionBianca)
+	end()
+}
+
+script AccumulaTown_PokeCenter_PositionBianca
+{
+	setobjectxyperm (LOCALID_ACCUMULA_POKECEN_BIANCA, 8, 15)
+    setobjectmovementtype (LOCALID_ACCUMULA_POKECEN_BIANCA, MOVEMENT_TYPE_FACE_RIGHT)
+    return()
+}
+
+script AccumulaTown_PokeCenter_EventScript_Tutorial 
+{
+	lockall()
+	setvar(VAR_ACCUMULA_PC_TUTORIAL, 1)
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)	
+	msgbox("Professor Juniper: This is a\n"
+			"Pokémon Center!\p"
+			"Don't you feel better as soon as you\n"
+			"step through the door?\p"
+			"OK, let's start your tour!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_up * 5, walk_left, walk_in_place_right))
+	applymovement(LOCALID_PLAYER, moves(walk_up * 6))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(walk_in_place_left))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(walk_left, walk_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Bianca: Ooh, wait for me!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_BIANCA)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Professor Juniper: A Pokémon Center is a\n"
+				"truly incredible place!\p"
+				"Do you know why?\n"
+				"Because your Pokémon can be healed!\l"
+				"And, what's more, it's absolutely free!\p"
+				"A Pokémon Center is a Trainer's\n"
+				"best friend!\p"
+				"Here, {PLAYER}, give it a try.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	playbgm(MUS_BW_POKEMON_CENTER, TRUE)
+	delay(20)
+	releaseall()
+	end()
+}
+
+script AccumulaTown_PokeCenter_EventScript_Tutorial_Trigger
+{
+	lockall()
+	playse(SE_PIN)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Professor Juniper: Hey, {PLAYER}.\n"
+			"Where are you off to?\p"
+			"Humor me and talk to the lady at the\n"
+			"counter. Let her take your Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	releaseall()
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Nurse
+{
+	setvar(VAR_0x800B, LOCALID_ACCUMULA_POKECEN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	goto_if_eq (VAR_ACCUMULA_PC_TUTORIAL, 1, AccumulaTown_PokeCenter_EventScript_Tutorial_Continue)
+	release
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Tutorial_NoContinue
+{
+	release
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Tutorial_Continue
+{
+	goto_if_unset(FLAG_ACCUMULA_PC_HEALED_ONCE, AccumulaTown_PokeCenter_EventScript_Tutorial_NoContinue)
+	setvar(VAR_ACCUMULA_PC_TUTORIAL, 2)
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)	
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_in_place_right))
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Professor Juniper: OK. Now that your\n"
+			"Pokémon have rested, I'll show you how\n"
+			"to use the PC at a Pokémon Center.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_left * 3, walk_in_place_right))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_left * 3, walk_in_place_up))
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(delay_16, walk_left * 3, walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Professor Juniper: This is the PC.\n"
+			"It's free for any Trainer to use.\p"
+			"You can store Pokémon in your PC Boxes\n"
+			"or select Pokémon stored in your\l"
+			"PC Boxes to take along with you.\p"
+			"In addition, if you catch a new Pokémon\n"
+			"while you have six Pokémon traveling\l"
+			"with you, the Pokémon you just caught is\l"
+			"sent automatically to the PC network!\p"
+			"Surprising, isn't it? Amazing, even.\n"
+			"Here's something else that's cool.\p"
+			"If you select my PC, I'll evaluate the\n"
+			"progress you've made on your Pokédex!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(face_right))
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(face_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Bianca: Professor...\n"
+			"It says ''Someone's PC''\n"
+			"on the screen. Who is Someone?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_BIANCA)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(face_left))
+	waitmovement(0)
+	msgbox("Professor Juniper: Very good, Bianca.\n"
+			"That's a great observation!\p"
+			"Good question, and I'd like to say more,\n"
+			"but for now, just ignore that and\l"
+			"go ahead and use the PC.\p"
+			"''Someone'' is the person who made the\n"
+			"Pokémon Storage System.\p"
+			"...Someone I'm sure you'll meet someday!\n"
+			"OK, let's move on!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_down, walk_right * 2))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_down, walk_right * 2))
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_right * 3))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(walk_down, walk_right * 4, walk_down * 2))
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_down * 3))
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_right, walk_down * 5, walk_in_place_up))
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down ))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+	msgbox("Professor Juniper: Now, this is the\n"
+			"Poké Mart.\p"
+			"This is the place to buy useful items and\n"
+			"sell the ones you don't need anymore!\p"
+			"The gentleman over there will\n"
+			"help you with a smile!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Professor Juniper: So, let's\n"
+			"wrap this up.\p"
+			"I've given you the basics of being\n"
+			"a Trainer!\p"
+			"I'm going to head back to Nuvema Town.\p"
+			"One final thing...\p"
+			"When you get to Striaton City, go and\n"
+			"meet an inventor named Fennel.\p"
+			"She's a friend of mine from long ago, and\n"
+			"I'm sure she'll help you on your way!\p"
+			"Best of luck! I hope that your journeys\n"
+			"prove to be the adventure of a lifetime!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_left * 2, walk_in_place_down))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	setflag(FLAG_ACCUMULA_PC_JUNIPER)
+	clearflag(FLAG_NUVEMA_PJL_JUNIPER)
+	clearflag(FLAG_NUVEMA_PJL_PATRAT)
+	waitse()
+	playbgm(MUS_BW_POKEMON_CENTER, TRUE)
+	delay(20)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up ))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(walk_in_place_down))
+	waitmovement(0)
+	goto(AccumulaTown_PokeCenter_EventScript_Bianca_Shopping)
+	end
+}
+
+
+
+script AccumulaTown_PokeCenter_EventScript_Juniper
+{
+	msgbox("Professor Juniper: You should be talking\n"
+			"to the lady at the counter, not me...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Bianca
+{
+	lock
+	faceplayer
+	goto_if_eq (VAR_ACCUMULA_PC_TUTORIAL, 2, AccumulaTown_PokeCenter_EventScript_Bianca_Shopping)
+	msgbox("Bianca: All you need to do is\n"
+			"give her your Pokémon, {PLAYER}.", MSGBOX_NPC, TRUE)
+	release
+	end
+}
+
+script AccumulaTown_PokeCenter_EventScript_Bianca_Shopping
+{
+	msgbox("Bianca: Ooh! What should I buy?\p"
+			"Potions and Poké Balls are definitely\n"
+			"important. Umm... thinking...", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_BIANCA)
+	destroy_speech_bubble()
+	closemessage()
+	applymovement(LOCALID_ACCUMULA_POKECEN_BIANCA, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	release
+	end
+}
 
 script AccumulaTown_PokeCenter_EventScript_Girl
 {
@@ -40,4 +310,11 @@ mart AccumulaTown_Mart_Mails {
 	ITEM_ORANGE_MAIL
 	ITEM_GLITTER_MAIL
 	ITEM_FAB_MAIL
+}
+
+script AccumulaTown_PokeCenter_EventScript_WifiAssistant
+{
+	msgbox("Sorry, we're getting things ready.\n"
+			"Please come back later.", MSGBOX_NPC, TRUE)
+	end
 }
