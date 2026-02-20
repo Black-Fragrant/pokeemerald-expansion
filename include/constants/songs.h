@@ -633,9 +633,9 @@
 #define MUS_BW_ROUTE_12_SPRING_SUMMER     694
 #define MUS_BW_UNDELLA_TOWN_AUTUMN_WINTER 695
 #define MUS_BW2_BIANCA                    696
-#define MUS_BW_088                        697 // black city
-#define MUS_BW_BLACK_CITY                 698 // white forest
-#define MUS_BW_WHITE_FOREST               699 // anville town
+#define MUS_BW_BLACK_CITY                 697 // black city
+#define MUS_BW_WHITE_FOREST               698 // white forest
+#define MUS_BW_ANVILLE_TOWN               699 // anville town
 #define MUS_BW_VILLAGE_BRIDGE             700
 #define MUS_BW_BATTLE_SUBWAY              701
 #define MUS_BW_VS_GYM_LEADER_WINNING_1    702
@@ -652,7 +652,7 @@
 #define MUS_BW_SPOTTED_KID                713
 #define MUS_BW_POKEMART                   714
 #define MUS_BW_RELIC_SONG                 715
-#define MUS_BW_107                        716
+#define MUS_BW_DRAGONSPIRAL_TOWER_TOP     716
 #define MUS_BW_VS_IN_DANGER               717
 #define MUS_BW_ABYSSAL_RUINS              718
 #define MUS_BW_SPOTTED_PLASMA             719

@@ -270,3 +270,199 @@ script Route1_East_EventScript_BagIsFull
 	release
 	end
 }
+
+script Route1_East_EventScript_Cheren_Top
+{
+	msgbox("Cheren: {PLAYER}, are you going to\n"
+		"compare yourself with Bianca?\p"
+		"Both Bianca and I have two Pokémon\n"
+		"with us.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route1_East_EventScript_Bianca_Top
+{
+	lock()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 20, NuvemaTown_EventScript_BT_Pos1)
+	call_if_eq (VAR_TEMP_0, 21, NuvemaTown_EventScript_BT_Pos2)
+	call_if_eq (VAR_TEMP_0, 23, NuvemaTown_EventScript_BT_Pos4)
+	call_if_eq (VAR_TEMP_0, 24, NuvemaTown_EventScript_BT_Pos5)
+	call_if_eq (VAR_TEMP_0, 25, NuvemaTown_EventScript_BT_Pos6)
+	delay(10)
+	if (msgbox("Bianca: How about it, {PLAYER}?\n"
+	"Do you want to compare which one\l"
+	"of us has the most Pokémon with them?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP) == YES)
+	{
+		goto(Route1_East_EventScript_Bianca_Top_Compare)
+	}
+	else
+	{
+		goto(Route1_East_EventScript_Bianca_Top_Notyet)
+	}
+	end()
+}
+
+script Route1_East_EventScript_Bianca_Top_Notyet
+{
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	msgbox("Bianca: Hmm...\n"
+			"Guess I'll be waiting here, then.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP)
+	destroy_speech_bubble()
+	closemessage()
+    delay(10)
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	waitmovement(0)
+	delay(10)
+	release()
+	end
+}
+
+script Route1_East_EventScript_Bianca_Top_Compare
+{
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_TOP, moves(walk_up * 3, walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	getpartysize
+	call_if_eq (VAR_RESULT, 1, Route1_East_EventScript_BT_OnePokemon)
+	call_if_eq (VAR_RESULT, 2, Route1_East_EventScript_BT_TwoPokemon)
+	call_if_eq (VAR_RESULT, 3, Route1_East_EventScript_BT_ThreePokemon)
+	call_if_eq (VAR_RESULT, 4, Route1_East_EventScript_BT_FourPokemon)
+	call_if_eq (VAR_RESULT, 5, Route1_East_EventScript_BT_FivePokemon)
+	call_if_eq (VAR_RESULT, 6, Route1_East_EventScript_BT_SixPokemon)
+	delay(10)
+	msgbox("Cheren: Incidentally, if you check your\n"
+			"Pokedex, you'll see how many Pokémon\l"
+			"you've found and how many\l"
+			"you've caught.\p"
+			"I'm off to Accumula Town!\n"
+			"The professor is waiting.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_TOP)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_POKENAV_CALL)
+	msgbox("The Xtransceiver is ringing.\n"
+	"Player picked up the Xtransceiver.", MSGBOX_DEFAULT) //this should be transparent
+	waitse()
+	closemessage()
+	playse(SE_POKENAV_HANG_UP)
+	waitse()
+	msgbox("Cheren: Well, I'm going on ahead.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_TOP)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE1_EAST_CHEREN_TOP, moves(walk_up * 5))
+	applymovement(LOCALID_ROUTE1_EAST_BIANCA_TOP, moves(walk_up * 5))
+	waitmovement(0)
+	delay(20)
+	setvar(VAR_NUVEMA_PICK_STARTER, 10)
+	removeobject(LOCALID_ROUTE1_EAST_CHEREN_TOP)
+	removeobject(LOCALID_ROUTE1_EAST_BIANCA_TOP)
+	setflag(FLAG_ROUTE1_EAST_CB_TOP)
+	release()
+	end()
+}
+
+script Route1_East_EventScript_BT_OnePokemon
+{
+	getpartysize
+	setvar(VAR_ROUTE1_POKEMON_COUNT, 1)
+	msgbox("Bianca: What? What? What?\n"
+			"You only have {STR_VAR_1}?!\p"
+			"If you don't catch any Pokémon, won't\n"
+			"{STR_VAR_1} get lonely?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP)
+	destroy_speech_bubble()
+	closemessage()
+	return()
+}
+
+script Route1_East_EventScript_BT_TwoPokemon
+{
+	getpartysize
+	setvar(VAR_ROUTE1_POKEMON_COUNT, 2)
+	msgbox("Bianca: Seems the number of Pokémon\n"
+			"{PLAYER} has is...\p"
+			"Two!\n"
+			"We all have the same number, then!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP)
+	destroy_speech_bubble()
+	closemessage()
+	return()
+}
+
+script Route1_East_EventScript_BT_ThreePokemon
+{
+	setvar(VAR_ROUTE1_POKEMON_COUNT, 3)
+	goto (Route1_East_EventScript_BT_CompareWin)
+}
+
+script Route1_East_EventScript_BT_FourPokemon
+{
+	setvar(VAR_ROUTE1_POKEMON_COUNT, 4)
+	goto (Route1_East_EventScript_BT_CompareWin)
+}
+
+script Route1_East_EventScript_BT_FivePokemon
+{
+	setvar(VAR_ROUTE1_POKEMON_COUNT, 5)
+	goto (Route1_East_EventScript_BT_CompareWin)
+}
+
+script Route1_East_EventScript_BT_SixPokemon
+{
+	setvar(VAR_ROUTE1_POKEMON_COUNT, 6)
+	goto (Route1_East_EventScript_BT_CompareWin)
+}
+
+script Route1_East_EventScript_BT_CompareWin
+{
+	getpartysize
+	buffernumberstring (STR_VAR_2, VAR_RESULT)
+	msgbox("Bianca: Wow, {STR_VAR_2}?! That's awesome!\p"
+			"Are you excited to have that many\n"
+			"Pokémon with you?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP)
+	destroy_speech_bubble()
+	closemessage()
+	return()
+}
+
+script NuvemaTown_EventScript_BT_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 2, walk_in_place_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_BT_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 1, walk_in_place_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_BT_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 1, walk_in_place_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_BT_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2, walk_in_place_up))
+	waitmovement(0)
+	return()
+}
+
+script NuvemaTown_EventScript_BT_Pos6
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 3, walk_in_place_up))
+	waitmovement(0)
+	return()
+}
+
+

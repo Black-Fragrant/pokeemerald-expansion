@@ -4327,9 +4327,9 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
 	X(MUS_BW_ROUTE_12_SPRING_SUMMER) \
 	X(MUS_BW_UNDELLA_TOWN_AUTUMN_WINTER) \
 	X(MUS_BW2_BIANCA)               \
-	X(MUS_BW_088)                   \
 	X(MUS_BW_BLACK_CITY)            \
 	X(MUS_BW_WHITE_FOREST)          \
+	X(MUS_BW_ANVILLE_TOWN)          \
 	X(MUS_BW_VILLAGE_BRIDGE)        \
 	X(MUS_BW_BATTLE_SUBWAY)         \
 	X(MUS_BW_VS_GYM_LEADER_WINNING_1) \
@@ -4346,7 +4346,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
 	X(MUS_BW_SPOTTED_KID)           \
 	X(MUS_BW_POKEMART)              \
 	X(MUS_BW_RELIC_SONG)            \
-	X(MUS_BW_107)                   \
+	X(MUS_BW_DRAGONSPIRAL_TOWER_TOP)                   \
 	X(MUS_BW_VS_IN_DANGER)          \
 	X(MUS_BW_ABYSSAL_RUINS)         \
 	X(MUS_BW_SPOTTED_PLASMA)        \
