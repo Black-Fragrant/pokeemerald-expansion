@@ -99,10 +99,93 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_ROUTE1_EAST_CB_BOTTOM"
+    },
+    {
+      "local_id": "LOCALID_ROUTE1_EAST_CHEREN_TOP",
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 24,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route1_East_EventScript_Cheren_Top",
+      "flag": "FLAG_ROUTE1_EAST_CB_TOP"
+    },
+    {
+      "local_id": "LOCALID_ROUTE1_EAST_BIANCA_TOP",
+      "graphics_id": "OBJ_EVENT_GFX_BIANCA",
+      "x": 22,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ROUTE1_EAST_CB_TOP"
     }
   ],
   "warp_events": [],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NUVEMA_PICK_STARTER",
+      "var_value": "9",
+      "script": "Route1_East_EventScript_Bianca_Top"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NUVEMA_PICK_STARTER",
+      "var_value": "9",
+      "script": "Route1_East_EventScript_Bianca_Top"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NUVEMA_PICK_STARTER",
+      "var_value": "9",
+      "script": "Route1_East_EventScript_Bianca_Top"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NUVEMA_PICK_STARTER",
+      "var_value": "9",
+      "script": "Route1_East_EventScript_Bianca_Top"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NUVEMA_PICK_STARTER",
+      "var_value": "9",
+      "script": "Route1_East_EventScript_Bianca_Top"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_NUVEMA_PICK_STARTER",
+      "var_value": "9",
+      "script": "Route1_East_EventScript_Bianca_Top"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
