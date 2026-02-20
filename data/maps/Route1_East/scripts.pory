@@ -294,10 +294,14 @@ script Route1_East_EventScript_Bianca_Top
 	"Do you want to compare which one\l"
 	"of us has the most Pokémon with them?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP) == YES)
 	{
+		destroy_speech_bubble()
+		closemessage
 		goto(Route1_East_EventScript_Bianca_Top_Compare)
 	}
 	else
 	{
+		destroy_speech_bubble()
+		closemessage
 		goto(Route1_East_EventScript_Bianca_Top_Notyet)
 	}
 	end()
@@ -305,9 +309,6 @@ script Route1_East_EventScript_Bianca_Top
 
 script Route1_East_EventScript_Bianca_Top_Notyet
 {
-    destroy_speech_bubble()
-    closemessage
-    delay(10)
 	msgbox("Bianca: Hmm...\n"
 			"Guess I'll be waiting here, then.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_BIANCA_TOP)
 	destroy_speech_bubble()
@@ -322,9 +323,6 @@ script Route1_East_EventScript_Bianca_Top_Notyet
 
 script Route1_East_EventScript_Bianca_Top_Compare
 {
-    destroy_speech_bubble()
-    closemessage
-	delay(10)
 	applymovement(LOCALID_ROUTE1_EAST_CHEREN_TOP, moves(walk_up * 3, walk_in_place_left))
 	waitmovement(0)
 	delay(10)
@@ -337,7 +335,7 @@ script Route1_East_EventScript_Bianca_Top_Compare
 	call_if_eq (VAR_RESULT, 6, Route1_East_EventScript_BT_SixPokemon)
 	delay(10)
 	msgbox("Cheren: Incidentally, if you check your\n"
-			"Pokedex, you'll see how many Pokémon\l"
+			"Pokédex, you'll see how many Pokémon\l"
 			"you've found and how many\l"
 			"you've caught.\p"
 			"I'm off to Accumula Town!\n"
@@ -346,8 +344,8 @@ script Route1_East_EventScript_Bianca_Top_Compare
 	closemessage()
 	delay(10)
 	playse(SE_POKENAV_CALL)
-	msgbox("The Xtransceiver is ringing.\n"
-	"Player picked up the Xtransceiver.", MSGBOX_DEFAULT) //this should be transparent
+	msgbox("The Xtransceiver is ringing.\p"
+			"Player picked up the Xtransceiver.", MSGBOX_DEFAULT) //this should be transparent
 	waitse()
 	closemessage()
 	playse(SE_POKENAV_HANG_UP)
@@ -370,7 +368,7 @@ script Route1_East_EventScript_Bianca_Top_Compare
 
 script Route1_East_EventScript_BT_OnePokemon
 {
-	getpartysize
+	bufferleadmonspeciesname (STR_VAR_1)
 	setvar(VAR_ROUTE1_POKEMON_COUNT, 1)
 	msgbox("Bianca: What? What? What?\n"
 			"You only have {STR_VAR_1}?!\p"
@@ -383,7 +381,6 @@ script Route1_East_EventScript_BT_OnePokemon
 
 script Route1_East_EventScript_BT_TwoPokemon
 {
-	getpartysize
 	setvar(VAR_ROUTE1_POKEMON_COUNT, 2)
 	msgbox("Bianca: Seems the number of Pokémon\n"
 			"{PLAYER} has is...\p"

@@ -104,13 +104,13 @@
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
 #define VAR_BIANCA_FIGHTS_PARENTS                        0x4055
 #define VAR_ROUTE1_POKEMON_COUNT                         0x4056
-#define VAR_PETALBURG_CITY_STATE                         0x4057
-#define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_MAUVILLE_CITY_STATE                          0x4059 // Unused Var
-#define VAR_RUSTBORO_CITY_STATE                          0x405A
+#define VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING              0x4057
+#define VAR_ACCUMULA_PC_TUTORIAL                         0x4058
+#define VAR_UNUSED_4059                                  0x4059 // Unused Var
+#define VAR_UNUSED_405A                                  0x405A
 #define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
-#define VAR_MOSSDEEP_CITY_STATE                          0x405D
+#define VAR_UNUSED_405D                                  0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
 #define VAR_ROUTE101_STATE                               0x4060
