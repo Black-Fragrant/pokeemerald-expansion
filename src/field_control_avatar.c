@@ -5,6 +5,7 @@
 #include "daycare.h"
 #include "debug.h"
 #include "dexnav.h"
+#include "phenomenon.h"
 #include "faraway_island.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -626,6 +627,8 @@ static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileB
         return TRUE;
     if (OnStep_DexNavSearch())
         return TRUE;
+    if (OnStep_Phenomenon())
+        return TRUE;
     return FALSE;
 }
 
@@ -836,6 +839,7 @@ static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
     {
         sWildEncounterImmunitySteps = 0;
         sPrevMetatileBehavior = metatileBehavior;
+        ClearPhenomenon();
         return TRUE;
     }
 

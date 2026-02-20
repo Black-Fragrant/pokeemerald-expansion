@@ -8,6 +8,7 @@
 #include "cable_club.h"
 #include "clock.h"
 #include "dexnav.h"
+#include "phenomenon.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -845,6 +846,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
     ResetDexNavSearch();
+    ClearPhenomenon();
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
@@ -909,6 +911,7 @@ static void LoadMapFromWarp(bool32 a1)
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
     ResetDexNavSearch();
+    ClearPhenomenon();
     // reset hours override on every warp
     sHoursOverride = 0;
     ResetCyclingRoadChallengeData();
