@@ -97,7 +97,8 @@ script NuvemaTown_PlayerHouse_Messy_Room
 
 script NuvemaTown_PH2F_On_Transition
 {
-switch(var(VAR_NUVEMA_PICK_STARTER))
+	setrespawn(HEAL_LOCATION_NUVEMA_TOWN)
+	switch(var(VAR_NUVEMA_PICK_STARTER))
     { 
     case 0: goto(NuvemaTown_PH2F_EventScript_HideBianca)
     case 2: goto(NuvemaTown_PH2F_EventScript_PositionPlayers)
