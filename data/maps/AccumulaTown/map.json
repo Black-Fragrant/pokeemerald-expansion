@@ -32,7 +32,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Girl_Left",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_RESIDENTS"
     },
     {
       "local_id": "LOCALID_ACCUMULA_GIRL_RIGHT",
@@ -46,7 +46,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Girl_Right",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_RESIDENTS"
     },
     {
       "local_id": "LOCALID_ACCUMULA_CHEERLEADER_MAN",
@@ -60,7 +60,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_CheerleaderMan",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_RESIDENTS"
     },
     {
       "local_id": "LOCALID_ACCUMULA_GRANDMA",
@@ -74,7 +74,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Grandma",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_RESIDENTS"
     },
     {
       "local_id": "LOCALID_ACCUMULA_GRANDPA",
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Grandpa",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_RESIDENTS"
     },
     {
       "local_id": "LOCALID_ACCUMULA_PGM_GATE",
@@ -102,7 +102,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_PGF_GATE"
     },
     {
       "local_id": "LOCALID_ACCUMULA_PGF_GATE",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_PGF_GATE"
     },
     {
       "local_id": "LOCALID_ACCUMULA_CHEREN_LOOKAROUND",
@@ -124,13 +124,13 @@
       "x": 19,
       "y": 17,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Cheren_LookAround",
-      "flag": "0"
+      "flag": "FLAG_ACCUMULA_CHEREN_SQUARE"
     },
     {
       "local_id": "LOCALID_ACCUMULA_JUNIPER_POKECENTER",
@@ -145,6 +145,202 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "AccumulaTown_EventScript_Juniper_Pokecenter",
       "flag": "FLAG_ACCUMULA_JUNIPER_POKECENTER"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_GRUNT3",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 18,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_GRUNT1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 18,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_GRUNT2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 18,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_FLAG_POLE_TOP",
+      "graphics_id": "OBJ_EVENT_GFX_FLAG_POLE",
+      "x": 18,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_FLAG_POLE_BOTTOM",
+      "graphics_id": "OBJ_EVENT_GFX_FLAG_POLE",
+      "x": 18,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_GHETSIS",
+      "graphics_id": "OBJ_EVENT_GFX_GHETSIS",
+      "x": 16,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY",
+      "graphics_id": "OBJ_EVENT_GFX_GREEN_SHIRT_GUY",
+      "x": 30,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_POKEFAN_M",
+      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_MALE",
+      "x": 30,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_CHEERLEADER_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER_MAN",
+      "x": 22,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_N",
+      "graphics_id": "OBJ_EVENT_GFX_N",
+      "x": 22,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_N"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_BLUE_SHIRT_GUY",
+      "graphics_id": "OBJ_EVENT_GFX_BLUE_SHIRT_GUY",
+      "x": 23,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_HOUSEWIFE",
+      "graphics_id": "OBJ_EVENT_GFX_HOUSEWIFE",
+      "x": 24,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_POKEFAN_F",
+      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_FEMALE",
+      "x": 23,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
+    },
+    {
+      "local_id": "LOCALID_ACCUMULA_TPP_LADY",
+      "graphics_id": "OBJ_EVENT_GFX_LADY",
+      "x": 24,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ACCUMULA_TEAM_PLASMA"
     }
   ],
   "warp_events": [
@@ -216,6 +412,105 @@
       "var": "VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING",
       "var_value": "0",
       "script": "AccumulaTown_EventScript_PlasmaGrunt_Gate_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_ACCUMULA_TEAM_PLASMA_PREACH",
+      "var_value": "2",
+      "script": "AccumulaTown_EventScript_TPP_Trigger"
     }
   ],
   "bg_events": [

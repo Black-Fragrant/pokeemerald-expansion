@@ -4624,7 +4624,7 @@
     {
       "id": "LAYOUT_ACCUMULA_TOWN_GATE",
       "name": "AccumulaTown_Gate_Layout",
-      "width": 18,
+      "width": 17,
       "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Gate",

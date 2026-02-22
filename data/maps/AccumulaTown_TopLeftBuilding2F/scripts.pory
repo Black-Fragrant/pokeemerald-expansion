@@ -76,7 +76,7 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Fire
 {
 	random(1)
 	if (var(VAR_RESULT) == 0) { 
-		msgbox("Water          Fire", MSGBOX_DEFAULT)
+		msgbox("Water          Fire", MSGBOX_DEFAULT) //this should be small
 		closemessage
 		msgbox("Your Pokémon is Fire type,\n"
 		"and mine is Water type…\p"
@@ -97,7 +97,7 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Grass
 {
 	random(1)
 	if (var(VAR_RESULT) == 0) { 
-		msgbox("Fire          Grass", MSGBOX_DEFAULT)
+		msgbox("Fire          Grass", MSGBOX_DEFAULT) //this should be small
 		closemessage
 		msgbox("Your Pokémon is Grass type,\n"
 				"and mine is Fire type…\p"
@@ -118,7 +118,7 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Water
 {
 	random(1)
 	if (var(VAR_RESULT) == 0) { 
-		msgbox("Grass          Water", MSGBOX_DEFAULT)
+		msgbox("Grass          Water", MSGBOX_DEFAULT) //this should be small
 		closemessage
 		msgbox("Your Pokémon is Water type,\n"
 				"and mine is Grass type…\p"

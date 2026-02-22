@@ -11,7 +11,7 @@
 #define TRAINER_CHEREN_NUVEMA_TOWN_1          5
 #define TRAINER_CHEREN_NUVEMA_TOWN_2          6
 #define TRAINER_CHEREN_NUVEMA_TOWN_3          7
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
+#define TRAINER_N_ACCUMULA_TOWN               8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_PETALBURG_WOODS        10
 #define TRAINER_MARCEL                       11
