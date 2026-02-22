@@ -123,7 +123,7 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial_Continue
 	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
 	waitmovement(0)
 	msgbox("Professor Juniper: OK. Now that your\n"
-			"Pokémon have rested, I'll show you how\n"
+			"Pokémon have rested, I'll show you how\l"
 			"to use the PC at a Pokémon Center.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
 	destroy_speech_bubble()
 	closemessage()
@@ -220,6 +220,10 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial_Continue
 	setflag(FLAG_ACCUMULA_PC_JUNIPER)
 	clearflag(FLAG_NUVEMA_PJL_JUNIPER)
 	clearflag(FLAG_NUVEMA_PJL_PATRAT)
+	clearflag(FLAG_ACCUMULA_N)
+	clearflag(FLAG_ACCUMULA_TEAM_PLASMA)
+	setflag(FLAG_ACCUMULA_RESIDENTS)
+	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 1)
 	waitse()
 	playbgm(MUS_BW_POKEMON_CENTER, TRUE)
 	delay(20)

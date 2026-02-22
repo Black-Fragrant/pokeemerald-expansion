@@ -106,7 +106,7 @@
 #define VAR_ROUTE1_POKEMON_COUNT                         0x4056
 #define VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING              0x4057
 #define VAR_ACCUMULA_PC_TUTORIAL                         0x4058
-#define VAR_UNUSED_4059                                  0x4059 // Unused Var
+#define VAR_ACCUMULA_TEAM_PLASMA_PREACH                  0x4059
 #define VAR_UNUSED_405A                                  0x405A
 #define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var

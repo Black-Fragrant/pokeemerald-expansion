@@ -275,13 +275,340 @@ script NuvemaTown_EventScript_JPL_Patrat
 	end
 }
 
-script NuvemaTown_EventScript_JPL_JUNIPER
+script NuvemaTown_EventScript_JPL_Juniper
 {   
 	lock
 	faceplayer
-	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
-	msgbox("Skree skree!", MSGBOX_DEFAULT)
-	waitmoncry
-	release
-	end
+	msgbox("Professor Juniper: Why, hello\n"
+            "{PLAYER}! How have you been lately?\p"
+            "How is the Pokédex coming along?\n"
+            "Can I see it?", MSGBOX_YESNO, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+	goto_if_eq (VAR_RESULT, YES, NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating)
+    destroy_speech_bubble()
+    closemessage
+	msgbox("This Pokédex is full of memories from\n"
+            "your journey. It's a treasure you\l"
+            "can cherish for your entire life.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end()
 }
+
+script NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating
+{
+    destroy_speech_bubble()
+    closemessage
+	setvar(VAR_0x8004, 0)
+	specialvar(VAR_RESULT, ScriptGetPokedexInfo)
+	copyvar(VAR_0x8008, VAR_0x8005)
+	copyvar(VAR_0x8009, VAR_0x8006)
+	copyvar(VAR_0x800A, VAR_RESULT)
+	buffernumberstring(STR_VAR_1, VAR_0x8008)  //Num Hoenn seen
+	buffernumberstring(STR_VAR_2, VAR_0x8009)  //Num Hoenn caught
+	msgbox("Let me see...", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    playbgm(MUS_BW_DEX_RATING, TRUE)
+	msgbox("Oh, you've seen {STR_VAR_1} Pokémon in the\n"
+            "Unova region!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    delay(130)
+    destroy_speech_bubble()
+    closemessage
+    playbgm(MUS_BW_JUNIPER_LAB, TRUE)
+    goto_if_ge (VAR_0x8008, 152, NuvemaTown_EventScript_JPL_JUNIPER_Seen_152_156)
+    goto_if_ge (VAR_0x8008, 145, NuvemaTown_EventScript_JPL_JUNIPER_Seen_145_151)
+    goto_if_ge (VAR_0x8008, 135, NuvemaTown_EventScript_JPL_JUNIPER_Seen_135_144)
+    goto_if_ge (VAR_0x8008, 115, NuvemaTown_EventScript_JPL_JUNIPER_Seen_115_134)
+    goto_if_ge (VAR_0x8008, 90, NuvemaTown_EventScript_JPL_JUNIPER_Seen_90_114)
+    goto_if_ge (VAR_0x8008, 60, NuvemaTown_EventScript_JPL_JUNIPER_Seen_60_89)
+    goto_if_ge (VAR_0x8008, 40, NuvemaTown_EventScript_JPL_JUNIPER_Seen_40_59)
+    goto_if_ge (VAR_0x8008, 25, NuvemaTown_EventScript_JPL_JUNIPER_Seen_25_39)
+    goto_if_ge (VAR_0x8008, 15, NuvemaTown_EventScript_JPL_JUNIPER_Seen_15_24)
+    goto_if_ge (VAR_0x8008, 0, NuvemaTown_EventScript_JPL_JUNIPER_Seen_0_14)
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_152_156
+{
+    msgbox("Amazing! Truly amazing! You've met all of\n"
+            "the Pokémon in the Unova region!\l"
+            "Congratulations!\p"
+            "Now here's your next challenge: see how\n"
+            "many of those Pokémon you can catch!\l"
+            "I'll keep evaluating for you!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_HIDDEN_POWER, NuvemaTown_EventScript_JPL_TM_HiddenPower)
+    call_if_unset(FLAG_TM_PROTECT, NuvemaTown_EventScript_JPL_TM_Protect)
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_145_151
+{
+    msgbox("What a wonderful Pokédex! A little \n"
+            "more work, and it'll be complete!\p"
+            "I'm really glad I asked you to do this!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_HIDDEN_POWER, NuvemaTown_EventScript_JPL_TM_HiddenPower)
+    call_if_unset(FLAG_TM_PROTECT, NuvemaTown_EventScript_JPL_TM_Protect)
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_135_144
+{
+    msgbox("That is an excellent Pokédex!\n"
+            "Just a little more and it will be full!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_HIDDEN_POWER, NuvemaTown_EventScript_JPL_TM_HiddenPower)
+    call_if_unset(FLAG_TM_PROTECT, NuvemaTown_EventScript_JPL_TM_Protect)
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_115_134
+{
+    msgbox("Over 100 Pokémon...\p"
+            "It's so much fun looking over all\n"
+            "their different characteristics!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_HIDDEN_POWER, NuvemaTown_EventScript_JPL_TM_HiddenPower)
+    call_if_unset(FLAG_TM_PROTECT, NuvemaTown_EventScript_JPL_TM_Protect)
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_90_114
+{
+    msgbox("Wow, it's getting really full!\p"
+            "I'm sure looking over your Pokédex will\n"
+            "bring back memories of your journey.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_PROTECT, NuvemaTown_EventScript_JPL_TM_Protect)
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_60_89
+{
+    msgbox("Trainers have a lot of different Pokémon.\p"
+            "So battling them is a great way\n"
+            "to fill up your Pokédex, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_PROTECT, NuvemaTown_EventScript_JPL_TM_Protect)
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_40_59
+{
+    msgbox("Some Pokémon are only found in\n"
+            "certain caves!\p"
+            "You might want to go back and search\n"
+            "caves you've already passed through.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_25_39
+{
+    msgbox("Some Pokémon are hard to find,\n"
+            "but don't give up!\p"
+            "Keep checking the tall grass.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    call_if_unset(FLAG_TM_FALSE_SWIPE, NuvemaTown_EventScript_JPL_TM_FalseSwipe)
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_15_24
+{
+    msgbox("It seems a little more like a Pokédex now!\n"
+            "You're getting off to a good start!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Seen_0_14
+{
+    msgbox("If you want to meet more Pokémon, you\n"
+            "should try walking through tall grass!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue)
+}
+
+script NuvemaTown_EventScript_JPL_TM_HiddenPower
+{
+    msgbox("It seems like you are meeting Pokémon at\n"
+            "a good clip!\p"
+            "Here! This is a gift to thank you for all\n"
+            "your hard work!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    giveitem(ITEM_TM_HIDDEN_POWER, 1)
+    setflag(FLAG_TM_HIDDEN_POWER)
+    closemessage
+    return()
+}
+
+script NuvemaTown_EventScript_JPL_TM_Protect
+{
+    msgbox("It seems like you are meeting Pokémon at\n"
+            "a good clip!\p"
+            "Here! This is a gift to thank you for all\n"
+            "your hard work!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    giveitem(ITEM_TM_PROTECT, 1)
+    setflag(FLAG_TM_PROTECT)
+    closemessage
+    return()
+}
+
+script NuvemaTown_EventScript_JPL_TM_FalseSwipe
+{
+    msgbox("It seems like you are meeting Pokémon at\n"
+            "a good clip!\p"
+            "Here! This is a gift to thank you for all\n"
+            "your hard work!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    giveitem(ITEM_TM_FALSE_SWIPE, 1)
+    setflag(FLAG_TM_FALSE_SWIPE)
+    closemessage
+    return()
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue
+ {
+	msgbox("And you've caught {STR_VAR_2} Pokémon in\n"
+            "the Unova region!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_ge (VAR_0x8009, 155, NuvemaTown_EventScript_JPL_JUNIPER_Caught_155_156)
+    goto_if_ge (VAR_0x8009, 145, NuvemaTown_EventScript_JPL_JUNIPER_Caught_145_154)
+    goto_if_ge (VAR_0x8009, 135, NuvemaTown_EventScript_JPL_JUNIPER_Caught_135_144)
+    goto_if_ge (VAR_0x8009, 120, NuvemaTown_EventScript_JPL_JUNIPER_Caught_120_134)
+    goto_if_ge (VAR_0x8009, 105, NuvemaTown_EventScript_JPL_JUNIPER_Caught_105_119)
+    goto_if_ge (VAR_0x8009, 90, NuvemaTown_EventScript_JPL_JUNIPER_Caught_90_104)
+    goto_if_ge (VAR_0x8009, 70, NuvemaTown_EventScript_JPL_JUNIPER_Caught_70_89)
+    goto_if_ge (VAR_0x8009, 50, NuvemaTown_EventScript_JPL_JUNIPER_Caught_50_69)
+    goto_if_ge (VAR_0x8009, 30, NuvemaTown_EventScript_JPL_JUNIPER_Caught_30_49)
+    goto_if_ge (VAR_0x8009, 0, NuvemaTown_EventScript_JPL_JUNIPER_Caught_0_29)
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2
+{
+	msgbox("Keep up the good work!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_155_156
+{
+    msgbox("Amazing! Absolutely amazing!\p"
+            "You've caught every Pokémon in\n"
+            "the Unova region! Congratulations!!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_145_154
+{
+    msgbox("Amazing! Absolutely amazing!\p"
+            "You've caught every Pokémon in\n"
+            "the Unova region! Congratulations!!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_135_144
+{
+    msgbox("This is a very thorough Pokédex.\n"
+            "It will help my research, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_120_134
+{
+    msgbox("This is a very thorough Pokédex.\n"
+            "It will help my research, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_105_119
+{
+    msgbox("When you've met this many Pokémon,\n"
+            "do you have trouble picking which ones\l"
+            "to travel with?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_90_104
+{
+    msgbox("Trading Pokémon with friends also counts\n"
+            "as catching them!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_70_89
+{
+    msgbox("Evolving Pokémon is another important way\n"
+            "to fill up your Pokédex.\p"
+            "It's not just about catching them!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_50_69
+{
+    msgbox("If you read the Pokédex descriptions,\n"
+            "you can learn a lot of unexpected facts\l"
+            "about Pokémon! It's fun!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_30_49
+{
+    msgbox("Are you trying out different kinds of\n"
+            "Poké Balls for your captures?\p"
+            "They come in lots of varieties, so be sure\n"
+            "to use the right one at the right time!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
+script NuvemaTown_EventScript_JPL_JUNIPER_Caught_0_29
+{
+    msgbox("Little by little, more detailed\n"
+            "information is being entered\l"
+            "into the Pokédex! Do your best!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    goto(NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating_Continue2)
+}
+
