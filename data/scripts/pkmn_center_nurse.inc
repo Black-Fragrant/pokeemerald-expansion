@@ -133,5 +133,5 @@ Movement_PkmnCenterNurse_Bow:
 	step_end
 
 Movement_PkmnCenterNurse_Turn:
-	walk_in_place_faster_left
+	walk_in_place_faster_up
 	step_end
