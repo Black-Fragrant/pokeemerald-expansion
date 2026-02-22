@@ -190,18 +190,19 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Leer
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_N_ACCUMULA_TOWN ===
+Name: N
+Class: PKMN Trainer 2
+Pic: N
 Gender: Male
-Music: Aqua
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Blue
 
-Zubat
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Purrloin
+Level: 7
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_GABRIELLE_1 ===
 Name: GABRIELLE

@@ -141,7 +141,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
 	fadescreen(FADE_FROM_BLACK)
     msgbox("Mom: Your Pokémon is looking great!\p"
             "Now, if you're going out,\n"
-            "don't forget your 'cross-transceiver'!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
+            "don't forget your ''cross-transceiver''!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
     destroy_speech_bubble()
     closemessage
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)

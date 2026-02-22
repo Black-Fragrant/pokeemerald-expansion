@@ -29,6 +29,8 @@ script NuvemaTown_EventScript_Hide_CherenBianca
 	setflag(FLAG_NUVEMA_CB_WAIT_AT_ROUTE_1)
 	setflag(FLAG_ROUTE1_EAST_CB_BOTTOM)
 	setflag(FLAG_NUVEMA_PJL_PATRAT)
+	setflag(FLAG_ACCUMULA_TEAM_PLASMA)
+	setflag(FLAG_ACCUMULA_N)
 	return()
 }
 
