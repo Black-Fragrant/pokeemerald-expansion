@@ -11,8 +11,8 @@ static const struct HealLocation sHealLocations[NUM_HEAL_LOCATIONS - 1] = {
 ## endfor
 };
 
-#define DEFAULT_POKEMON_CENTER_X 7
-#define DEFAULT_POKEMON_CENTER_Y 4
+#define DEFAULT_POKEMON_CENTER_X 6
+#define DEFAULT_POKEMON_CENTER_Y 12
 
 static const u16 sWhiteoutRespawnHealCenterMapIdxs[][4] = {
 ## for heal_location in heal_locations
