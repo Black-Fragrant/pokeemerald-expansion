@@ -31,7 +31,7 @@
     {
       "local_id": "LOCALID_ACCUMULA_GATE_CONCIERGE",
       "graphics_id": "OBJ_EVENT_GFX_GATE_F",
-      "x": 14,
+      "x": 13,
       "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -73,28 +73,28 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 15,
+      "x": 14,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_ACCUMULA_TOWN",
       "dest_warp_id": "1"
     },
     {
-      "x": 15,
+      "x": 14,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_ACCUMULA_TOWN",
       "dest_warp_id": "1"
     },
     {
-      "x": 15,
+      "x": 14,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_ACCUMULA_TOWN",
       "dest_warp_id": "0"
     },
     {
-      "x": 15,
+      "x": 14,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_ACCUMULA_TOWN",
