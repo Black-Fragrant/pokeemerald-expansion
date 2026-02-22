@@ -1,1 +1,10 @@
-mapscripts StriatonCity_PokeCenter_MapScripts {}
+mapscripts StriatonCity_PokeCenter_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : StriatonCity_PokeCenter_On_Transition
+}
+
+script StriatonCity_PokeCenter_On_Transition
+{
+	setrespawn(HEAL_LOCATION_STRIATON_CITY)
+    end()
+}
