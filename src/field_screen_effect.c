@@ -60,7 +60,7 @@ static void UpdateStairsMovement(s16, s16, s16*, s16*, s16*);
 static void Task_StairWarp(u8);
 static void ForceStairsMovement(u32, s16*, s16*);
 
-static const u8 sText_PlayerScurriedToCenter[] = _("{PLAYER} scurried to\na Pokémon Center, protecting \nthe exhausted and fainted\Pokémon from further harm…\p");
+static const u8 sText_PlayerScurriedToCenter[] = _("{PLAYER} scurried to\na Pokémon Center, protecting \nthe exhausted and fainted\pPokémon from further harm…\p");
 static const u8 sText_PlayerScurriedBackHome[] = _("{PLAYER} scurried back\nhome, protecting the exhausted\nand fainted Pokémon \nfrom further harm…\p");
 static const u8 sText_PlayerRegroupCenter[] = _("{PLAYER} scurried to a Pokémon Center,\nto regroup and reconsider the battle\nstrategy…\p");
 static const u8 sText_PlayerRegroupHome[] = _("{PLAYER} scurried back home, to regroup\nand reconsider the battle strategy…\p");
