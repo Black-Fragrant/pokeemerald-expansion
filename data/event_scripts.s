@@ -621,7 +621,7 @@ EventScript_AfterWhiteOutHealMsg::
 
 EventScript_AfterWhiteOutMomHeal::
 	lockall
-	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_NUVEMA_PH1F_MOTHER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	call Common_EventScript_OutOfCenterPartyHeal
@@ -938,46 +938,41 @@ gText_PlayerWhitedOut::
 	.string "POKéMON!\p{PLAYER} whited out!$"
 
 gText_FirstShouldRestoreMonsHealth::
-	.string "First, you should restore your\n"
-	.string "POKéMON to full health.$"
+	.string "First, let's restore your Pokémon\n"
+	.string "to full health.$"
 
 gText_MonsHealedShouldBuyPotions::
-	.string "Your POKéMON have been healed\n"
-	.string "to perfect health.\p"
-	.string "If your POKéMON's energy, HP,\n"
-	.string "is down, please come see us.\p"
-	.string "If you're planning to go far in the\n"
-	.string "field, you should buy some POTIONS\l"
-	.string "at the POKéMON MART.\p"
-	.string "We hope you excel!$"
+	.string "Please visit a Pokémon Center when your\n"
+	.string "Pokémon's HP goes down.\p"
+	.string "If you're planning to travel any\n"
+	.string "distance, you should stack up on\l"
+	.string "Potions at a Poké Mart.\p"
+	.string "Good luck, Trainer!$"
 
 gText_MonsHealed::
-	.string "Your POKéMON have been healed\n"
+	.string "Your Pokémon have been healed\n"
 	.string "to perfect health.\p"
 	.string "We hope you excel!$"
 
 gText_HadQuiteAnExperienceTakeRest::
 	.string "MOM: {PLAYER}!\n"
-	.string "Welcome home.\p"
-	.string "It sounds like you had quite\n"
-	.string "an experience.\p"
-	.string "Maybe you should take a quick\n"
-	.string "rest.$"
+	.string "Welcome home!\p"
+	.string "Sounds like you've been through a lot!\n"
+	.string "You should rest a little bit!$"
 
 gText_MomExplainHPGetPotions::
-	.string "MOM: Oh, good! You and your\n"
-	.string "POKéMON are looking great.\p"
-	.string "I just heard from PROF. BIRCH.\p"
-	.string "He said that POKéMON's energy is\n"
-	.string "measured in HP.\p"
-	.string "If your POKéMON lose their HP,\n"
-	.string "you can restore them at any\l"
-	.string "POKéMON CENTER.\p"
-	.string "If you're going to travel far away,\n"
-	.string "the smart TRAINER stocks up on\l"
-	.string "POTIONS at the POKéMON MART.\p"
-	.string "Make me proud, honey!\p"
-	.string "Take care!$"
+	.string "MOM: Oh, my!\n"
+	.string "You and your Pokémon look full of bounce!\p"
+	.string "This is a little advice from your\n"
+	.string "mother but...\p"
+	.string "When a Pokémon's energy--um, I mean,\n"
+	.string "HP--runs out, hurry to a Pokémon\l"
+	.string "center and get it restored.\p"
+	.string "It's also a good idea to buy Potions,\n"
+	.string "at a Pokémon Mart for times when you're\l"
+	.string "adventuring far from civilization.\p"
+	.string "Please be careful!\n"
+	.string "Have a good trip!$"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"

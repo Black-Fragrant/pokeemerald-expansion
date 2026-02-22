@@ -9,6 +9,7 @@ mapscripts NuvemaTown_PlayerHouse_1F_MapScripts
 
 script NuvemaTown_PH1F_On_Transition
 {
+	setrespawn(HEAL_LOCATION_NUVEMA_TOWN)
     call_if_ge (VAR_NUVEMA_PICK_STARTER, 4, NuvemaTown_PH1F_PositionMother)
 	end()
 }
