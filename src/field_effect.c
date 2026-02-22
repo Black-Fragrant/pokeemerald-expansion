@@ -434,36 +434,55 @@ static const struct SpriteFrameImage sPicTable_HofMonitorSmall[] =
 */
 static const struct Subsprite sSubsprites_PokecenterMonitor[] =
 {
+    // Top row (40 px wide)
     {
         .x = -12,
-        .y =  -8,
+        .y = -8,
         .shape = SPRITE_SHAPE(16x8),
         .size = SPRITE_SIZE(16x8),
         .tileOffset = 0,
         .priority = 2
     },
     {
-        .x =  4,
+        .x = 4,
         .y = -8,
-        .shape = SPRITE_SHAPE(8x8),
-        .size = SPRITE_SIZE(8x8),
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
         .tileOffset = 2,
         .priority = 2
     },
     {
+        .x = 20,
+        .y = -8,
+        .shape = SPRITE_SHAPE(8x8),
+        .size = SPRITE_SIZE(8x8),
+        .tileOffset = 4,
+        .priority = 2
+    },
+
+    // Bottom row
+    {
         .x = -12,
-        .y =   0,
+        .y = 0,
         .shape = SPRITE_SHAPE(16x8),
         .size = SPRITE_SIZE(16x8),
-        .tileOffset = 3,
+        .tileOffset = 5,
         .priority = 2
     },
     {
         .x = 4,
         .y = 0,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 7,
+        .priority = 2
+    },
+    {
+        .x = 20,
+        .y = 0,
         .shape = SPRITE_SHAPE(8x8),
         .size = SPRITE_SIZE(8x8),
-        .tileOffset = 5,
+        .tileOffset = 9,
         .priority = 2
     }
 };
@@ -616,10 +635,10 @@ static const struct Coords16 sPokeballCoordOffsets[PARTY_SIZE] =
 {
     {.x = 0, .y = 0},
     {.x = 6, .y = 0},
-    {.x = 0, .y = 4},
-    {.x = 6, .y = 4},
-    {.x = 0, .y = 8},
-    {.x = 6, .y = 8}
+    {.x = 12, .y = 0},
+    {.x = 18, .y = 0},
+    {.x = 24, .y = 0},
+    {.x = 30, .y = 0}
 };
 
 static const u8 sPokeballGlowReds[]   = {16, 12, 8, 0};
@@ -1050,10 +1069,10 @@ bool8 FldEff_PokecenterHeal(void)
     nPokemon = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3) ? CalculatePlayerPartyCount() : CountPartyNonEggMons();
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
     task->tNumMons = nPokemon;
-    task->tFirstBallX = 93;
-    task->tFirstBallY = 36;
-    task->tMonitorX = 124;
-    task->tMonitorY = 24;
+    task->tFirstBallX = 105;
+    task->tFirstBallY = 27;
+    task->tMonitorX = 112;
+    task->tMonitorY = 10;
     return FALSE;
 }
 
