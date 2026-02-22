@@ -207,7 +207,7 @@ static const u8 sDoorAnimPalettes_AccumulaHouse_1[] = {10, 10, 10, 10, 10, 10, 1
 static const u8 sDoorAnimPalettes_AccumulaHouse_2[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_StraitonHouse_1[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_StraitonHouse_2[] = {10, 10, 10, 10, 10, 10, 10, 10};
-static const u8 sDoorAnimPalettes_PokemonCenter[] = {10, 10, 10, 10, 10, 10, 10, 10};
+static const u8 sDoorAnimPalettes_PokemonCenter[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_Route3_1[] = {11, 11, 11, 11, 11, 11, 11, 11};
 static const u8 sDoorAnimPalettes_Route3_2[] = {9, 9, 9, 9, 9, 9, 9, 9};
 
