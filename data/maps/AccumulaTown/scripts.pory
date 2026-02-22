@@ -1,4 +1,450 @@
-mapscripts AccumulaTown_MapScripts {}
+mapscripts AccumulaTown_MapScripts
+{
+    MAP_SCRIPT_ON_TRANSITION : AccumulaTown_On_Transition
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_ACCUMULA_TEAM_PLASMA_PREACH, 3 : AccumulaTown_EventScript_TurnPlayer
+    ]
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_ACCUMULA_TEAM_PLASMA_PREACH, 1 : AccumulaTown_EventScript_NPCTellEvents
+		VAR_ACCUMULA_TEAM_PLASMA_PREACH, 3 : AccumulaTown_EventScript_N_Battle
+    ]
+}
+
+script AccumulaTown_On_Transition
+{
+    call_if_eq (VAR_ACCUMULA_PC_TUTORIAL, 2, AccumulaTown_EventScript_PositionCheren)
+	call_if_eq (VAR_ACCUMULA_TEAM_PLASMA_PREACH, 2, AccumulaTown_EventScript_PositionNPCs)
+	call_if_eq (VAR_ACCUMULA_TEAM_PLASMA_PREACH, 3, AccumulaTown_EventScript_PositionCherenAndN)
+	end()
+}
+
+script AccumulaTown_EventScript_PositionCheren
+{
+	setobjectxyperm(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, 22, 22)
+    setobjectmovementtype (LOCALID_ACCUMULA_CHEREN_LOOKAROUND, MOVEMENT_TYPE_FACE_LEFT)
+    return()
+}
+
+script AccumulaTown_EventScript_PositionNPCs
+{
+	setobjectxyperm(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, 22, 20)
+	setobjectxyperm(LOCALID_ACCUMULA_TPP_POKEFAN_M, 22, 21)
+    return()
+}
+
+script AccumulaTown_EventScript_TurnPlayer
+{
+    turnobject(LOCALID_PLAYER, DIR_WEST)
+    end()
+}
+
+script AccumulaTown_EventScript_PositionCherenAndN
+{
+	setobjectxyperm(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, 22, 22)
+    setobjectmovementtype (LOCALID_ACCUMULA_CHEREN_LOOKAROUND, MOVEMENT_TYPE_FACE_RIGHT)
+    setobjectmovementtype (LOCALID_ACCUMULA_N, MOVEMENT_TYPE_FACE_DOWN)
+    return()
+}
+
+script AccumulaTown_EventScript_NPCTellEvents
+{
+	lockall()
+	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 2)
+	delay(10)
+	applymovement (LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Sounds like something's going\n"
+			"on in the plaza!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY)
+	destroy_speech_bubble()
+	closemessage()
+	applymovement (LOCALID_ACCUMULA_TPP_POKEFAN_M, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Well, let's have a little look-see.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_POKEFAN_M)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement (LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, moves(walk_left * 4))
+	applymovement (LOCALID_ACCUMULA_TPP_POKEFAN_M, moves(walk_left * 4))
+	waitmovement(0)
+	setobjectxyperm(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, 22, 20)
+	setobjectxyperm(LOCALID_ACCUMULA_TPP_POKEFAN_M, 22, 21)
+	setobjectxy(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, 22, 20)
+	setobjectxy(LOCALID_ACCUMULA_TPP_POKEFAN_M, 22, 21)
+	delay(20)
+	releaseall()
+	end()
+}
+
+script AccumulaTown_EventScript_TPP_Trigger
+{
+	lock()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	goto_if_eq (VAR_TEMP_0, 24, AccumulaTown_EventScript_TPPT_PosLeft)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_right))
+	waitmovement(0)
+	msgbox("Cheren: {PLAYER}, come here a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_left))
+	waitmovement(0)
+	call_if_eq (VAR_TEMP_0, 25, AccumulaTown_EventScript_TPPT_Top1)
+	call_if_eq (VAR_TEMP_0, 26, AccumulaTown_EventScript_TPPT_Top2)
+	call_if_eq (VAR_TEMP_0, 27, AccumulaTown_EventScript_TPPT_Top3)
+	call_if_eq (VAR_TEMP_0, 28, AccumulaTown_EventScript_TPPT_Top4)
+	call_if_eq (VAR_TEMP_0, 29, AccumulaTown_EventScript_TPPT_Top5)
+	call_if_eq (VAR_TEMP_0, 30, AccumulaTown_EventScript_TPPT_Top6)
+	delay(10)
+	goto(AccumulaTown_EventScript_TPP_Trigger_Continue)
+	end()
+}
+
+script AccumulaTown_EventScript_TPPT_PosLeft
+{
+	
+	call_if_eq (VAR_TEMP_1, 21, AccumulaTown_EventScript_TPPT_Left1)
+	call_if_eq (VAR_TEMP_1, 22, AccumulaTown_EventScript_TPPT_Left2)
+	call_if_eq (VAR_TEMP_1, 23, AccumulaTown_EventScript_TPPT_Left3)
+	call_if_eq (VAR_TEMP_1, 24, AccumulaTown_EventScript_TPPT_Left4)
+	call_if_eq (VAR_TEMP_1, 25, AccumulaTown_EventScript_TPPT_Left5)
+	delay(10)
+	goto(AccumulaTown_EventScript_TPP_Trigger_Continue)
+	end()
+}
+
+script AccumulaTown_EventScript_TPPT_Left1
+{	
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Cheren: {PLAYER}, come here a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_down, walk_left))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Left2
+{	
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Cheren: {PLAYER}, come here a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves( walk_left))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Left3
+{	
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Cheren: {PLAYER}, come here a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves( walk_up, walk_left))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Left4
+{	
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Cheren: {PLAYER}, come here a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_left))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Left5
+{	
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Cheren: {PLAYER}, come here a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_up * 3, walk_left))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Top1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 2))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Top2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 3))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Top3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 4))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Top4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 5))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Top5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 6))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPPT_Top6
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 7))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPP_Trigger_Continue
+{
+	playbgm(MUS_BW_PLOT_PLASMA, TRUE)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT2, moves( walk_right, face_down, lock_facing_direction, walk_up, unlock_facing_direction))
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves( walk_slow_right * 4))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT2, moves( walk_down, face_right, lock_facing_direction, walk_left, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+	msgbox("My name is Ghetsis.\p"
+			"I am here representing Team Plasma.\p"
+			"Today, ladies and gentlemen, I would like\n"
+			"to talk to you about Pokémon liberation.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GHETSIS)
+	destroy_speech_bubble()
+	closemessage()
+	call(AccumulaTown_EventScript_TPP_Move_Crowd)
+	msgbox("Huh?        What?", MSGBOX_DEFAULT) //this should be small
+	closemessage()
+	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_up * 2, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Ghetsis: I'm sure most of you believe\n"
+			"that we humans and Pokémon are partners\l"
+			"that have come to live together because\l"
+			"we want and need each other.\p"
+			"However...\n"
+			"Is that really the truth?\p"
+			"Have you ever considered that perhaps\n"
+			"we humans...\l"
+			"only assume that this is the truth?", MSGBOX_DEFAULT)
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_down * 2, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Pokémon are subject to the selfish\n"
+			"commands of Trainers...\p"
+			"They get pushed around when they are\n"
+			"our ''partners'' at work...\p"
+			"Can anyone say with confidence that\n"
+			"there is no truth in what I'm saying?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GHETSIS)
+	destroy_speech_bubble()
+	closemessage()
+	call(AccumulaTown_EventScript_TPP_Move_Crowd)
+	msgbox("Yikes!        No way\n"
+			"I don't know...", MSGBOX_DEFAULT) //this should be small
+	closemessage()
+	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_down * 2, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Ghetsis: Now, ladies and gentlemen,\n"
+			"Pokémon are different from humans.\p"
+			"They are living beings that contain\n"
+			"unknown potential.\p"
+			"They are living beings from whom we\n"
+			"humans have much to learn.\p"
+			"Tell me, what is our responsibility toward\n"
+			"these wonderful beings called Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GHETSIS)
+	destroy_speech_bubble()
+	closemessage()
+	call(AccumulaTown_EventScript_TPP_Move_Crowd)
+	msgbox("What could it be?\n"
+			"Liberation?", MSGBOX_DEFAULT) //this should be small
+	closemessage()
+	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_up * 2, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Ghetsis: That's right!\n"
+			"We must liberate the Pokémon!\p"
+			"Then, and only then, will humans\n"
+			"and Pokémon truly be equals.\p"
+			"Everyone, I end my words here today by\n"
+			"imploring you to consider the relationship\l"
+			"between people and Pokémon...\l"
+			"and the correct way to proceed.\p"
+			"We sincerely appreciate your attention.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GHETSIS)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT1, moves(walk_up))
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT3, moves(walk_down))
+	waitmovement(0)
+	delay(20)
+	removeobject(LOCALID_ACCUMULA_TPP_FLAG_POLE_TOP)
+	removeobject(LOCALID_ACCUMULA_TPP_FLAG_POLE_BOTTOM)
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT1, moves(walk_down, walk_in_place_up))
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT3, moves(walk_up, walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT2, moves(walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT1, moves(lock_facing_direction, walk_left, unlock_facing_direction))
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT3, moves(lock_facing_direction, walk_right, unlock_facing_direction))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT2, moves(walk_up * 2))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_left * 2, walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT2, moves(walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT1, moves(walk_down, walk_in_place_up))
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT3, moves(walk_up, walk_in_place_up))
+	waitmovement(0)
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT2, moves(walk_up * 6, walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT1, moves(walk_up * 7, walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_GRUNT3, moves(walk_up * 7, walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_up * 7, walk_in_place_left))
+	waitmovement(0)
+	removeobject(LOCALID_ACCUMULA_TPP_GRUNT1)
+	removeobject(LOCALID_ACCUMULA_TPP_GRUNT2)
+	removeobject(LOCALID_ACCUMULA_TPP_GRUNT3)
+	removeobject(LOCALID_ACCUMULA_TPP_GHETSIS)
+	delay(20)
+	call(AccumulaTown_EventScript_TPP_Move_Crowd)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(face_up))
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	applymovement(LOCALID_ACCUMULA_N, moves(face_right))
+	waitmovement(0)
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_F, moves(face_left, delay_8, face_right, delay_8, face_left, delay_8, face_up))
+	waitmovement(0)
+	msgbox("Woman: About that speech...\n"
+			"What do you think we should do?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_POKEFAN_F)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, moves(face_up))
+	waitmovement(0)
+	msgbox("Younger Man: Liberate Pokémon?\n"
+			"That's not even possible!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	setflag(FLAG_ACCUMULA_TEAM_PLASMA)
+	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 3)
+	fadescreenspeed(FADE_TO_BLACK, 8)
+	call(AccumulaTown_EventScript_TPP_Move_Crowd3)
+	warpsilent(MAP_ACCUMULA_TOWN, 23, 22)
+	waitstate()
+	release()
+	end()
+}
+
+script AccumulaTown_EventScript_TPP_Move_Crowd
+{
+	applymovement(LOCALID_ACCUMULA_TPP_HOUSEWIFE, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_CHEERLEADER_MAN, moves(walk_in_place_up))
+	applymovement(LOCALID_ACCUMULA_TPP_BLUE_SHIRT_GUY, moves(walk_in_place_up))
+	applymovement(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, moves(walk_in_place_down))
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_F, moves(walk_in_place_right))
+	applymovement(LOCALID_ACCUMULA_TPP_LADY, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_M, moves(walk_in_place_up))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPP_Move_Crowd2
+{
+	applymovement(LOCALID_ACCUMULA_TPP_HOUSEWIFE, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_CHEERLEADER_MAN, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_BLUE_SHIRT_GUY, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_F, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_LADY, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_M, moves(walk_in_place_left))
+	waitmovement(0)
+	return()
+}
+
+script AccumulaTown_EventScript_TPP_Move_Crowd3
+{
+	applymovement(LOCALID_ACCUMULA_TPP_HOUSEWIFE, moves(walk_up * 4))
+	applymovement(LOCALID_ACCUMULA_TPP_CHEERLEADER_MAN, moves(walk_in_place_left))
+	applymovement(LOCALID_ACCUMULA_TPP_BLUE_SHIRT_GUY, moves(walk_right * 4))
+	applymovement(LOCALID_ACCUMULA_TPP_GREEN_SHIRT_GUY, moves(walk_right * 4))
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_F, moves(walk_diag_northwest, walk_left * 3))
+	applymovement(LOCALID_ACCUMULA_TPP_LADY, moves(walk_right * 2))
+	applymovement(LOCALID_ACCUMULA_TPP_POKEFAN_M, moves(walk_diag_northwest, walk_left * 3))
+	waitmovement(0)
+	return()
+}
 
 script AccumulaTown_EventScript_SignPost
 {
@@ -189,3 +635,113 @@ script AccumulaTown_EventScript_PGG_Bottom2
 	return()
 }
 
+script AccumulaTown_EventScript_N_Battle
+{
+	lockall()
+	applymovement(LOCALID_ACCUMULA_N, moves(walk_right, walk_down * 2))
+	waitmovement(0)
+	playbgm(MUS_BW_N, TRUE)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+	msgbox("???: Your Pokémon...\p"
+		"Just now, it was saying...", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N) //this should be fast
+	destroy_speech_bubble()
+	closemessage()
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Cheren: Slow down. You talk too fast.\p"
+			"And what's this about Pokémon... talking?\n"
+			"That's an odd thing to say.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	msgbox("???: Yes, they're talking.\p"
+			"Oh.\n"
+			"Then, you two can't hear it, either...\l"
+			"How sad.\p"
+			"My name is N.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N) //this should be fast
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	msgbox("Cheren: My name is Cheren,\n"
+			"and this is {PLAYER}.\p"
+			"We were asked to complete the Pokédex,\n"
+			"and we just left on our journey.\p"
+			"My main goal is to become the\n"
+			"Champion, though.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	msgbox("N: The Pokédex, eh?\p"
+			"So... You're going to confine many, many\n"
+			"Pokémon in Poké Balls for that, then.\p"
+			"I'm a Trainer, too,\n"
+			"but I can't help wondering...\p"
+			"Are Pokémon really happy that way?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	special(SpawnCameraObject)
+	applymovement(LOCALID_ACCUMULA_N, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	msgbox("Well, {PLAYER}, is it?\n"
+			"Let me hear your Pokémon's voice again!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N)
+	destroy_speech_bubble()
+	closemessage()
+	clearflag(FLAG_ACCUMULA_TEAM_PLASMA)
+	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 2)
+	trainerbattle_no_intro (TRAINER_N_ACCUMULA_TOWN, text("I never expected to hear\nPokémon say such things..."))
+	playbgm(MUS_BW_N, TRUE)
+	setflag(FLAG_ACCUMULA_TEAM_PLASMA)
+	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 4)
+	msgbox("N: As long as Pokémon are confined\n"
+			"in Poké Balls...\p"
+			"Pokémon will never become\n"
+			"perfect beings.\p"
+			"I have to change the world for\n"
+			"Pokémon, because they're my friends.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_N, moves(walk_up * 6))
+	waitmovement(0)
+	removeobject(LOCALID_ACCUMULA_N)
+	setflag(FLAG_ACCUMULA_N)
+	delay(20)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Cheren: Huh... Strange guy.\p"
+		"But I'm not going to worry about it.\p"
+		"Trainers and Pokémon help\n"
+		"each other out!\p"
+		"Listen, I'm going on ahead.\p"
+		"I want to battle the Gym Leader\n"
+		"in the next town--Striaton City.\p"
+		"Aim to battle Gym Leader after\n"
+		"Gym Leader. The best way for a Trainer\l"
+		"to become stronger is to challenge\l"
+		"the Gym Leaders in each area.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_up * 7))
+	waitmovement(0)
+	removeobject(LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
+	setflag(FLAG_ACCUMULA_CHEREN_SQUARE)
+	playbgm(MUS_BW_ACCUMULA_TOWN, TRUE)
+	removeobject(LOCALID_ACCUMULA_PGM_GATE)
+	removeobject(LOCALID_ACCUMULA_PGF_GATE)
+	setflag(FLAG_ACCUMULA_PGF_GATE)
+	setvar(VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING, 1)
+	clearflag(FLAG_ACCUMULA_RESIDENTS)
+	delay(20)
+	releaseall()
+	end()
+}
