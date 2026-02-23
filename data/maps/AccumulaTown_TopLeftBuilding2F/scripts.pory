@@ -5,7 +5,7 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Patrat
 	lock
 	faceplayer
 	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
-	msgbox("Skree skree!", MSGBOX_DEFAULT)
+	msgbox("Skree skree!", MSGBOX_NPC, TRUE)
 	waitmoncry
 	release
 	end
@@ -17,7 +17,9 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Guy
 	faceplayer
 	goto_if_set(FLAG_RECEIVED_POKEBALL_ACCUMULA, AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball)
 	msgbox("This is a Poké Ball I got in the past.\n" 
-			"I'm going to give it to you.", MSGBOX_DEFAULT)
+			"I'm going to give it to you.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_MAN)
+	destroy_speech_bubble()
+	closemessage
 	giveitem(ITEM_POKE_BALL, 1)
 	goto_if_eq (VAR_RESULT, FALSE, AccumulaTown_TopLeftBuilding2F_EventScript_BagIsFull)
 	goto (AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball)
@@ -29,7 +31,9 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball
 	msgbox("You can't catch a Pokémon\n"
 			"if you don't have a Poké Ball!\p"
 			"There are many types of Poké Balls,\n"
-			"so use the best one for the job.", MSGBOX_DEFAULT)
+			"so use the best one for the job.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_MAN)
+	destroy_speech_bubble()
+	closemessage
 	setflag(FLAG_RECEIVED_POKEBALL_ACCUMULA)
 	release
 	end
@@ -47,25 +51,30 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Girl
 	lock
 	faceplayer
 	msgbox("Hi, hi!\n"
-	        "Let's play Pokémon rock-paper-scissors!", MSGBOX_YESNO)
+	        "Let's play Pokémon rock-paper-scissors!", MSGBOX_YESNO, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)
 	goto_if_eq (VAR_RESULT, YES, AccumulaTown_TopLeftBuilding2F_RPS_Game)
 	goto_if_eq (VAR_RESULT, NO, AccumulaTown_TopLeftBuilding2F_No_Game)
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_No_Game
-{
-	msgbox("Oh, that's no fun!", MSGBOX_DEFAULT)
+{	
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Oh, that's no fun!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)
+	destroy_speech_bubble()
+	closemessage
 	release
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Game
-{
-	message("Here goes!\n"
-			"Pokémon Rock-Paper-Scissors…")
-	multichoice(25, 5, MULTI_POKEMON_RPS, 1)
+{	
+	destroy_speech_bubble()
 	closemessage
+	msgbox("Here goes!\n"
+			"Pokémon Rock-Paper-Scissors…", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)
+	multichoice(25, 5, MULTI_POKEMON_RPS, 1)
 	if (var(VAR_RESULT) == 0) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Fire)}
 	elif (var(VAR_RESULT) == 1) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Grass)}
 	elif (var(VAR_RESULT) == 2) {goto (AccumulaTown_TopLeftBuilding2F_RPS_Water)}
@@ -73,7 +82,9 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Game
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Fire
-{
+{	
+	destroy_speech_bubble()
+	closemessage
 	random(1)
 	if (var(VAR_RESULT) == 0) { 
 		msgbox("Water          Fire", MSGBOX_DEFAULT) //this should be small
@@ -81,20 +92,24 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Fire
 		msgbox("Your Pokémon is Fire type,\n"
 		"and mine is Water type…\p"
 		"Fire type is weak against Water type…\n"
-		"so I win!", MSGBOX_DEFAULT)}
+		"so I win!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)}
 	elif (var(VAR_RESULT) == 1) { 
 		msgbox("Grass          Fire", MSGBOX_DEFAULT)
 		closemessage
 		msgbox("Your Pokémon is Fire type,\n"
 		"and mine is Grass type…\p"
 		"Grass type is weak against Grass type…\n"
-		"so I lose.", MSGBOX_DEFAULT)}
+		"so I lose.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)}
+	destroy_speech_bubble()
+	closemessage
 	release
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Grass
 {
+	destroy_speech_bubble()
+	closemessage
 	random(1)
 	if (var(VAR_RESULT) == 0) { 
 		msgbox("Fire          Grass", MSGBOX_DEFAULT) //this should be small
@@ -102,20 +117,24 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Grass
 		msgbox("Your Pokémon is Grass type,\n"
 				"and mine is Fire type…\p"
 				"Grass type is weak against Fire type…\n"
-				"so I win!", MSGBOX_DEFAULT)}
+				"so I win!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)}
 	elif (var(VAR_RESULT) == 1) { 
 		msgbox("Water          Grass", MSGBOX_DEFAULT)
 		closemessage
 		msgbox("Your Pokémon is Grass type,\n"
 			"and mine is Water type…\p"
 			"Grass type is weak against Water type…\n"
-			"so I lose.", MSGBOX_DEFAULT)}
+			"so I lose.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)}
+	destroy_speech_bubble()
+	closemessage
 	release
 	end
 }
 
 script AccumulaTown_TopLeftBuilding2F_RPS_Water
 {
+	destroy_speech_bubble()
+	closemessage
 	random(1)
 	if (var(VAR_RESULT) == 0) { 
 		msgbox("Grass          Water", MSGBOX_DEFAULT) //this should be small
@@ -123,14 +142,16 @@ script AccumulaTown_TopLeftBuilding2F_RPS_Water
 		msgbox("Your Pokémon is Water type,\n"
 				"and mine is Grass type…\p"
 				"Water type is weak against Grass type…\n"
-				"so I win!", MSGBOX_DEFAULT)}
+				"so I win!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)}
 	elif (var(VAR_RESULT) == 1) { 
 		msgbox("Fire           Water", MSGBOX_DEFAULT)
 		closemessage
 		msgbox("Your Pokémon is Water type,\n"
 		"and mine is Fire type…\p"
 		"Water type is weak against Fire type…\n"
-		"so I lose.", MSGBOX_DEFAULT)}
+		"so I lose.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TLB2F_GIRL)}
+	destroy_speech_bubble()
+	closemessage
 	release
 	end
 }

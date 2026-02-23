@@ -1,1 +1,53 @@
 mapscripts StriatonCity_BottomRightBuilding1F_MapScripts {}
+
+script StriatonCity_BRB1F_EventScript_Grandma
+{
+	msgbox("My husband and I are compatible...\n"
+       "because he cannot beat me in battle!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BRB1F_EventScript_Grandpa
+{
+	msgbox("The beginning of my relationship with\n"
+       "my wife was our Pokémon battles.\p"
+       "I could not defeat her, even\n"
+       "though I tried many times!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BRB1F_EventScript_CheerleaderMan
+{
+	lock()
+	faceplayer()
+	goto_if_set(FLAG_STRIATON_BRB1F_GREAT_BALL, StriatonCity_BRB1F_EventScript_CheerleaderMan_Received)
+	msgbox("Oh! Trainer!\n"
+       "Do you have enough Poké Balls?\p"
+       "Don't be shy.\n"
+       "Take this with you!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_BRB1F_CHEERLEADER)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_GREAT_BALL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_BRB1F_EventScript_BagIsFull)
+	goto (StriatonCity_BRB1F_EventScript_CheerleaderMan_Received)
+	end
+}
+
+script StriatonCity_BRB1F_EventScript_CheerleaderMan_Received
+{
+	msgbox("You cannot have too many Poké Balls!\p"
+       "My advice is that when you use a better\n"
+       "Poké Ball, it's easier to catch Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_BRB1F_CHEERLEADER)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_STRIATON_BRB1F_GREAT_BALL)
+	release()
+	end()
+}
+
+script StriatonCity_BRB1F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}

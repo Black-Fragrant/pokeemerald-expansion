@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_BRB1F_CHEERLEADER",
       "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER_MAN",
       "x": 11,
       "y": 9,
@@ -24,10 +25,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BRB1F_EventScript_CheerleaderMan",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BRB1F_GRANDMA",
       "graphics_id": "OBJ_EVENT_GFX_GRANDMA",
       "x": 3,
       "y": 5,
@@ -37,10 +39,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BRB1F_EventScript_Grandma",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BRB1F_GRANDPA",
       "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
       "x": 4,
       "y": 5,
@@ -50,7 +53,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BRB1F_EventScript_Grandpa",
       "flag": "0"
     }
   ],

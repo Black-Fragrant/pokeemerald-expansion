@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_TS_ACE_TRAINER_M",
       "graphics_id": "OBJ_EVENT_GFX_ACE_TRAINER_MALE",
       "x": 4,
       "y": 8,
@@ -24,10 +25,11 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TS_EventScript_AceTrainerM",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TS_GENTLEMAN",
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
       "x": 5,
       "y": 15,
@@ -37,10 +39,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TS_EventScript_Gentleman",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TS_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 9,
       "y": 11,
@@ -50,10 +53,11 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TS_EventScript_Girl",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TS_YOUNGSTER",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 11,
       "y": 10,
@@ -63,15 +67,30 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TS_EventScript_Youngster",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TS_BOY",
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_BOY",
       "x": 10,
       "y": 7,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "StriatonCity_TS_EventScript_Boy",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_STRIATON_TS_CHEREN",
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 8,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",

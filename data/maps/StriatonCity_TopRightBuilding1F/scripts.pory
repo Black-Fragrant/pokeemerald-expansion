@@ -1,1 +1,25 @@
 mapscripts StriatonCity_TopRightBuilding1F_MapScripts {}
+
+script StriatonCity_TRB1F_EventScript_Girl
+{
+	msgbox("Some evolve and some don't...\p"
+            "Pokémon really are\n"
+			"mysterious creatures.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_TRB1F_EventScript_Boy
+{
+	msgbox("She may not look like it,\n"
+           "but Fennel is a great scientist!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_TRB1F_EventScript_CheerleaderMan
+{
+	msgbox("After a battle, to my surprise,\n"
+            "my Pokémon evolved and\l"
+            "changed its appearance!", MSGBOX_NPC, TRUE)
+	end
+}
+

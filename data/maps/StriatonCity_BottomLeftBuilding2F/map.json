@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_BLB2F_GREEN_SHIRT_GUY",
       "graphics_id": "OBJ_EVENT_GFX_GREEN_SHIRT_GUY",
       "x": 11,
       "y": 7,
@@ -24,10 +25,11 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BLB2F_EventScript_GreenShirtGuy",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BLB2F_BREEDER_F",
       "graphics_id": "OBJ_EVENT_GFX_BREEDER_FEMALE",
       "x": 4,
       "y": 9,
@@ -37,10 +39,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BLB2F_EventScript_BreederF",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BLB2F_PATRAT",
       "graphics_id": "OBJ_EVENT_GFX_PATRATOW",
       "x": 8,
       "y": 10,
@@ -50,10 +53,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BLB2F_EventScript_Patrat",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BLB2F_COTTONEE",
       "graphics_id": "OBJ_EVENT_GFX_COTTONEEOW",
       "x": 3,
       "y": 9,
@@ -63,7 +67,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_BLB2F_EventScript_Cottonee",
       "flag": "0"
     }
   ],

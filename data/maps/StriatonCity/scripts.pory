@@ -18,3 +18,143 @@ script StriatonCity_EventScript_TrainersSchoolSign
 	msgbox("Trainers' School\n"
 			"Brush up on Pokémon knowledge!", MSGBOX_SIGN)
 }
+
+script StriatonCity_EventScript_DreamyardSign
+{
+	msgbox("Dreamyard ahead.\n"
+			"A place for novice Trainers.", MSGBOX_SIGN)
+}
+
+script StriatonCity_EventScript_Beauty_Left
+{
+	msgbox("Do you know how Technical Machines work?\p"
+			"A TM can instantly teach a move to a\n"
+			"Pokémon. You can use it over and over\l"
+			"with different Pokémon. How cool is that?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Roughneck_Left
+{
+	msgbox("The Striaton City Gym Leader.\p"
+			"No matter how often I challenge him,\n"
+			"he always uses Pokémon\l"
+			"that I don't like...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Grandpa
+{
+	msgbox("At the site of an old factory,\n"
+			"at a place we call the Dreamyard,\l"
+			"there's an unusual Pokémon\l"
+			"that can make dreams appear!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Girl
+{
+	msgbox("Er... Um...\p"
+			"Grass-type Pokémon are\n"
+			"weak against Fire-type moves.\l"
+			"I know more stuff!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Youngster
+{
+	msgbox("If a Pokémon type and a move type are\n"
+			"the same, the move's power will increase!\l"
+			"The Gym Leader told me!", MSGBOX_NPC, TRUE)
+	end
+	}
+
+script StriatonCity_EventScript_Breeder_F
+{
+	msgbox("I too studied at the Trainers' School\n"
+    		"when I was a beginner.", MSGBOX_NPC, TRUE)
+	end
+	}
+
+script StriatonCity_EventScript_Gym_Receptionist
+{
+	msgbox("Are you looking for the Gym Leader?\p"
+			"He is not here.\n"
+			"He could be in the Trainer's School.\p"
+			"If you want to challenge him,\n"
+			"please go find him.\p"
+			"The Trainer's School is not far from\n"
+			"this Gym.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Beauty_Right
+{
+	msgbox("Some Trainers train themselves and\n"
+			"their Pokémon in the Dreamyard.\p"
+			"You might think about going there...\n"
+			"Could be you'll find something...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Roughneck_Right
+{
+	lock()
+	faceplayer()
+	goto_if_set(FLAG_STRIATON_DUSK_BALL, StriatonCity_EventScript_Roughneck_Right_Received)
+	msgbox("Pokémon can be found in dark places, too.\n"
+			"That's when a Dusk Ball can do the trick!\l"
+			"Here's one for you.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_ROUGHNECK_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_DUSK_BALL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_EventScript_BagIsFull)
+	goto (StriatonCity_EventScript_Roughneck_Right_Received)
+	end
+}
+
+script StriatonCity_EventScript_Roughneck_Right_Received
+{
+	msgbox("A Dusk Ball works well at night\n"
+			"or in a cave.\p"
+			"Plus, its name is excellent!\n"
+			"The Dusk Ball. Dusk!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_ROUGHNECK_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_STRIATON_DUSK_BALL)
+	release()
+	end()
+}
+
+script StriatonCity_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script StriatonCity_EventScript_Fisherman
+{
+	lock()
+	faceplayer()
+	goto_if_set(FLAG_STRIATON_BIG_PEARL, StriatonCity_EventScript_Fisherman_Received)
+	msgbox("I'm so glad you came.\n"
+    	   "I'd like to give you this!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_FISHERMAN)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_BIG_PEARL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_EventScript_BagIsFull)
+	goto (StriatonCity_EventScript_Fisherman_Received)
+	end
+}
+
+script StriatonCity_EventScript_Fisherman_Received
+{
+	msgbox("To live quietly and do a lot of fishing...\n"
+    	   "I truly live my ideal existence!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_FISHERMAN)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_STRIATON_BIG_PEARL)
+	release()
+	end()
+}

@@ -1,1 +1,23 @@
 mapscripts StriatonCity_BottomRightBuilding2F_MapScripts {}
+
+script StriatonCity_BRB2F_EventScript_Gentleman
+{
+	msgbox("Do your Pokémon have nicknames?\p"
+       "When we give a Pokémon a nickname,\n"
+       "we grow attached to it. Don't you agree?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BRB2F_EventScript_Guy
+{
+	msgbox("I went abroad to have Pokémon battles!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BRB2F_EventScript_Teacher
+{
+	msgbox("Hi, traveling Trainer!\p"
+       "Your family must be talking about you\n"
+       "right now!", MSGBOX_NPC, TRUE)
+	end
+}
