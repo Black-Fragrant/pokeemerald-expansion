@@ -5809,7 +5809,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PKMN_TRAINER_2:
             return MUS_BW_VS_N;
         default:
-            return MUS_VS_TRAINER;
+            return MUS_BW_VS_TRAINER_1;
         }
     }
     else

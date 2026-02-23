@@ -290,6 +290,18 @@ const u16 gTrainerPalette_CherenFront[] = INCBIN_U16("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_NFront[] = INCBIN_U32("graphics/trainers/front_pics/N.4bpp.smol");
 const u16 gTrainerPalette_NFront[] = INCBIN_U16("graphics/trainers/front_pics/N.gbapal");
 
+const u32 gTrainerFrontPic_HilbertFront[] = INCBIN_U32("graphics/trainers/front_pics/hilbert.4bpp.smol");
+const u16 gTrainerPalette_HilbertFront[] = INCBIN_U16("graphics/trainers/front_pics/hilbert.gbapal");
+
+const u32 gTrainerFrontPic_HildaFront[] = INCBIN_U32("graphics/trainers/front_pics/hilda.4bpp.smol");
+const u16 gTrainerPalette_HildaFront[] = INCBIN_U16("graphics/trainers/front_pics/hilda.gbapal");
+
+const u32 gTrainerFrontPic_YoungsterBW[] = INCBIN_U32("graphics/trainers/front_pics/youngster_bw.4bpp.smol");
+const u16 gTrainerPalette_YoungsterBW[] = INCBIN_U16("graphics/trainers/front_pics/youngster_bw.gbapal");
+
+const u32 gTrainerFrontPic_LassBW[] = INCBIN_U32("graphics/trainers/front_pics/lass_bw.4bpp.smol");
+const u16 gTrainerPalette_LassBW[] = INCBIN_U16("graphics/trainers/front_pics/lass_bw.gbapal");
+
 
 
 
@@ -405,8 +417,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_SAILOR, gTrainerFrontPic_Sailor, gTrainerPalette_Sailor),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_MAGMA_ADMIN, gTrainerFrontPic_MagmaAdmin, gTrainerPalette_MagmaAdmin),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_WALLY, gTrainerFrontPic_Wally, gTrainerPalette_Wally),
-    TRAINER_SPRITE(TRAINER_PIC_FRONT_BRENDAN, gTrainerFrontPic_Brendan, gTrainerPalette_Brendan),
-    TRAINER_SPRITE(TRAINER_PIC_FRONT_MAY, gTrainerFrontPic_May, gTrainerPalette_May),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_BRENDAN, gTrainerFrontPic_HilbertFront, gTrainerPalette_HilbertFront),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_MAY, gTrainerFrontPic_HildaFront, gTrainerPalette_HildaFront),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_BUG_CATCHER, gTrainerFrontPic_BugCatcher, gTrainerPalette_BugCatcher),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_POKEMON_RANGER_M, gTrainerFrontPic_PokemonRangerM, gTrainerPalette_PokemonRangerM),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_POKEMON_RANGER_F, gTrainerFrontPic_PokemonRangerF, gTrainerPalette_PokemonRangerF),
@@ -430,6 +442,10 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_BIANCA, gTrainerFrontPic_Bianca, gTrainerPalette_Bianca),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_CHEREN, gTrainerFrontPic_CherenFront, gTrainerPalette_CherenFront),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_N, gTrainerFrontPic_NFront, gTrainerPalette_NFront),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_HILBERT, gTrainerFrontPic_HilbertFront, gTrainerPalette_HilbertFront),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_HILDA, gTrainerFrontPic_HildaFront, gTrainerPalette_HildaFront),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_YOUNGSTER_BW, gTrainerFrontPic_YoungsterBW, gTrainerPalette_YoungsterBW),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_LASS_BW, gTrainerFrontPic_LassBW, gTrainerPalette_LassBW),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

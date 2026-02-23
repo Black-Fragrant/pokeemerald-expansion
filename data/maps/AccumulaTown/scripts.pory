@@ -739,6 +739,7 @@ script AccumulaTown_EventScript_N_Battle
 	removeobject(LOCALID_ACCUMULA_PGM_GATE)
 	removeobject(LOCALID_ACCUMULA_PGF_GATE)
 	setflag(FLAG_ACCUMULA_PGF_GATE)
+	setflag(FLAG_ACCUMULA_PC_BIANCA)
 	setvar(VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING, 1)
 	clearflag(FLAG_ACCUMULA_RESIDENTS)
 	delay(20)
