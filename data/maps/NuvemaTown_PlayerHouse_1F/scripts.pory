@@ -133,7 +133,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     msgbox("Mom: Oh, and you know? After a battle,\n"
             "you need to rest your Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
     destroy_speech_bubble()
-    closemessage
+    closemessage()
 	fadescreen(FADE_TO_BLACK)
     playbgm(MUS_BW_HEAL, TRUE)
 	special(HealPlayerParty)
@@ -144,10 +144,11 @@ script NuvemaTown_PH1F_EventScript_Apologize
             "Now, if you're going out,\n"
             "don't forget your ''cross-transceiver''!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
     destroy_speech_bubble()
-    closemessage
+    closemessage()
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} received the Xtransceiver!")
     delay(120)
+    closemessage()
     checkplayergender()
     goto_if_eq(VAR_RESULT, MALE, NuvemaTown_PH1F_EventScript_XT_Blue)
     goto_if_eq(VAR_RESULT, FEMALE, NuvemaTown_PH1F_EventScript_XT_Red)

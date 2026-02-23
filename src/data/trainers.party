@@ -204,115 +204,97 @@ Purrloin
 Level: 7
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
-=== TRAINER_GABRIELLE_1 ===
-Name: GABRIELLE
-Class: Pkmn Breeder
-Pic: Pokemon Breeder F
+=== TRAINER_YOUNGSTER_ROUTE_2_1 ===
+Name: Jimmy
+Class: Youngster
+Pic: Youngster BW
+Gender: Male
+Music: Youngster
+Battle Type: Singles
+AI: Check Bad Move
+
+Patrat
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LASS_ROUTE_2 ===
+Name: Mali
+Class: Lass
+Pic: Lass BW
 Gender: Female
-Music: Female
+Music: Lass
 Battle Type: Singles
 AI: Check Bad Move
 
-Skitty
-Level: 26
+Purrloin
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Poochyena
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Zigzagoon
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Lotad
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Seedot
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Taillow
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_PETALBURG_WOODS ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_YOUNGSTER_ROUTE_2_2 ===
+Name: Jimmy
+Class: Youngster
+Pic: Youngster BW
 Gender: Male
-Music: Aqua
+Music: Youngster
 Battle Type: Singles
 AI: Check Bad Move
 
-Poochyena
-Level: 9
+Lillipup
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_MARCEL ===
-Name: MARCEL
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Manectric
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Shiftry
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_ALBERTO ===
-Name: ALBERTO
-Class: Bird Keeper
-Pic: Bird Keeper
-Gender: Male
-Music: Cool
-Battle Type: Singles
-AI: Check Bad Move
-
-Pelipper
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Xatu
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_ED ===
-Name: ED
-Class: Collector
-Pic: Collector
-Gender: Male
-Music: Suspicious
-Battle Type: Singles
-AI: Check Bad Move
-
-Zangoose
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Seviper
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
+=== TRAINER_BIANCA_ROUTE_2_1 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
 Gender: Female
-Music: Aqua
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Green
 
-Carvanha
-Level: 36
+Lillipup
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Oshawott
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BIANCA_ROUTE_2_2 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Green
+
+Lillipup
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Snivy
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BIANCA_ROUTE_2_3 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Green
+
+Lillipup
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Tepig
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DECLAN ===
@@ -1452,7 +1434,7 @@ Makuhita
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_EDGAR ===
+=== TRAINER_DUMMYGAR ===
 Name: EDGAR
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -4113,7 +4095,7 @@ Beautifly
 Level: 38
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_EDWARD ===
+=== TRAINER_DUMMYWARD ===
 Name: EDWARD
 Class: Psychic
 Pic: Psychic M
@@ -6204,7 +6186,7 @@ Mightyena
 Level: 36
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_EDDIE ===
+=== TRAINER_DUMMYDIE ===
 Name: EDDIE
 Class: Youngster
 Pic: Youngster
@@ -7406,7 +7388,7 @@ Xatu
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWARDO ===
+=== TRAINER_DUMMYWARDO ===
 Name: EDWARDO
 Class: Bird Keeper
 Pic: Bird Keeper
@@ -8968,7 +8950,7 @@ Machop
 Level: 12
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_EDMOND ===
+=== TRAINER_DUMMYMOND ===
 Name: EDMOND
 Class: Sailor
 Pic: Sailor
@@ -9343,7 +9325,7 @@ Hariyama
 Level: 33
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
-=== TRAINER_EDWIN_1 ===
+=== TRAINER_DUMMYWIN_1 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9398,7 +9380,7 @@ Golbat
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_EDWIN_2 ===
+=== TRAINER_DUMMYWIN_2 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9415,7 +9397,7 @@ Nuzleaf
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWIN_3 ===
+=== TRAINER_DUMMYWIN_3 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9432,7 +9414,7 @@ Nuzleaf
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWIN_4 ===
+=== TRAINER_DUMMYWIN_4 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9449,7 +9431,7 @@ Nuzleaf
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWIN_5 ===
+=== TRAINER_DUMMYWIN_5 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector

@@ -1742,7 +1742,7 @@ TVSpotTheCuties_Text_Intro::
 	.string "SPOT THE CUTIES!\n"
 	.string "POKéMON IN RIBBONS!\p"
 	.string "Hello, my sweet viewers!\p"
-	.string "I just know you'll agree, but a POKéMON\n"
+	.string "I just know you'll agree, but a Pokémon\n"
 	.string "wearing RIBBONS is simply divine!\p"
 	.string "Today, I want to share with you\n"
 	.string "a lovely POKéMON I spotted while\l"

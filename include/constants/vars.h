@@ -107,7 +107,7 @@
 #define VAR_ACCUMULA_GRUNT_PREVENTS_LEAVING              0x4057
 #define VAR_ACCUMULA_PC_TUTORIAL                         0x4058
 #define VAR_ACCUMULA_TEAM_PLASMA_PREACH                  0x4059
-#define VAR_UNUSED_405A                                  0x405A
+#define VAR_ROUTE2_MOTHER_GIVES_SHOES                    0x405A
 #define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
 #define VAR_UNUSED_405D                                  0x405D

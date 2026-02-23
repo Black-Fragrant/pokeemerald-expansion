@@ -113,6 +113,10 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_FRONT_BIANCA,
     TRAINER_PIC_FRONT_CHEREN,
     TRAINER_PIC_FRONT_N,
+    TRAINER_PIC_FRONT_HILBERT,
+    TRAINER_PIC_FRONT_HILDA,
+    TRAINER_PIC_FRONT_YOUNGSTER_BW,
+    TRAINER_PIC_FRONT_LASS_BW,
     TRAINER_PIC_FRONT_COUNT,
     TRAINER_PIC_BACK_BRENDAN = TRAINER_PIC_FRONT_COUNT, // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
     TRAINER_PIC_BACK_MAY,
@@ -451,6 +455,8 @@ enum TrainerClassID
 #define TRAINER_ENCOUNTER_MUSIC_HIKER       11 // Used for Hikers, Ruin Maniacs, Kindlers, and Fishermen
 #define TRAINER_ENCOUNTER_MUSIC_INTERVIEWER 12
 #define TRAINER_ENCOUNTER_MUSIC_RICH        13 // Used for Rich Boys and Gentlemen
+#define TRAINER_ENCOUNTER_MUSIC_YOUNGSTER   14
+#define TRAINER_ENCOUNTER_MUSIC_LASS        15
 
 #define TRAINER_GENDER_MALE   0
 #define TRAINER_GENDER_FEMALE 1

@@ -1,5 +1,126 @@
 mapscripts Route2_MapScripts {}
 
+
+script Route2_EventScript_MotherGivesRunningShoes
+{
+	lock()
+	playse(SE_POKENAV_CALL)
+	msgbox("The Xtransceiver is ringing.\p"
+			"Player picked up the Xtransceiver.", MSGBOX_DEFAULT) //this should be transparent
+	waitse()
+	closemessage()
+	playse(SE_POKENAV_HANG_UP)
+	waitse()
+	delay(10)
+	playse(SE_EXIT)
+	addobject (LOCALID_ROUTE2_MOTHER)
+	waitse()
+	playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 40, Route2_EventScript_MotherGivesRunningShoesPos1)
+	call_if_eq (VAR_TEMP_1, 41, Route2_EventScript_MotherGivesRunningShoesPos2)
+	call_if_eq (VAR_TEMP_1, 42, Route2_EventScript_MotherGivesRunningShoesPos3)
+	msgbox("Mom: {PLAYER}?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_MOTHER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("I finally caught up with you...\p"
+			"And look how far you've come already!\p"
+			"Professor Juniper said that you were\n"
+			"probably headed for Striaton City by now.\p"
+			"I have another present for you.\n"
+			"{PLAYER}! Try these on!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_MOTHER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_left))
+	waitmovement(0)
+	delay(10)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} received a pair of Running Shoes!") //this should be transparent
+	setflag(FLAG_SYS_B_DASH)
+    delay(120)
+	playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	msgbox("When you're wearing the Running Shoes,\n"
+			"you can go anywhere in a flash!\p"
+			"Let me read you the instructions...\p"
+			"''Hold the B Button to run faster than\n"
+			"normal. Put on the Running Shoes and\l"
+			"tear around to your heart's content!''\p"
+			"That's what it says.\p"
+			"I bought these a long time ago\n"
+			"and stashed them away somewhere.\p"
+			"I found them when I was cleaning up.\n"
+			"Guess it's good to clean occasionally!\p"
+			"{PLAYER}, you understand that\n"
+			"you're never really alone, right?\p"
+			"You're with Pokémon, you have friends,\n"
+			"and you're always in my thoughts.\p"
+			"That's all right, then. Enjoy your trip!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_MOTHER)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 40, Route2_EventScript_MotherGivesRunningShoesPos4)
+	call_if_eq (VAR_TEMP_1, 41, Route2_EventScript_MotherGivesRunningShoesPos5)
+	call_if_eq (VAR_TEMP_1, 42, Route2_EventScript_MotherGivesRunningShoesPos6)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_ROUTE2_MOTHER)
+	waitse()
+	playbgm(MUS_BW_ROUTE_1, TRUE)
+	clearflag(FLAG_NUVEMA_PH2F_IS_MESSY)
+	setvar(VAR_ROUTE2_MOTHER_GIVES_SHOES, 1)
+	delay(20)
+	release()
+	end()
+}
+
+script Route2_EventScript_MotherGivesRunningShoesPos1
+{
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_left, walk_up, walk_left * 3))
+	waitmovement(0)
+	return()
+}
+
+script Route2_EventScript_MotherGivesRunningShoesPos2
+{
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_left * 4))
+	waitmovement(0)
+	return()
+}
+
+script Route2_EventScript_MotherGivesRunningShoesPos3
+{
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_left, walk_down, walk_left * 3))
+	waitmovement(0)
+	return()
+}
+
+script Route2_EventScript_MotherGivesRunningShoesPos4
+{
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_down, walk_right * 5))
+	waitmovement(0)
+	return()
+}
+
+script Route2_EventScript_MotherGivesRunningShoesPos5
+{
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_right * 5))
+	waitmovement(0)
+	return()
+}
+
+script Route2_EventScript_MotherGivesRunningShoesPos6
+{
+	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_up, walk_right * 5))
+	waitmovement(0)
+	return()
+}
+
 script Route2_EventScript_SignPost
 {
 	msgbox("Route 2", MSGBOX_SIGN)
@@ -13,4 +134,89 @@ script Route2_EventScript_TrainerTips
 			"receive Exp. Points.\p"
 			"Have your Pokémon battle often,\n"
 			"and make them stronger and stronger!", MSGBOX_SIGN)
+}
+
+script Route2_EventScript_LassBottom
+{
+	msgbox("Battles between Pokémon Trainers\n"
+     		"are serious affairs you can't run from!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route2_EventScript_YoungsterMiddle
+{
+	msgbox("When your Pokémon don't have\n"
+			"enough energy to fight...\l"
+			"Just walk on the road!\p"
+			"Pokémon only appear in the tall grass!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route2_EventScript_Battle_Youngster1
+{
+	trainerbattle_single(TRAINER_YOUNGSTER_ROUTE_2_1,
+	text("A Trainer catches another Trainer's eye.\n"
+    	    "That is the start of a Pokémon battle!"),
+	text("What?!\n"
+       	    "You are too strong!"))
+	msgbox("I'll go into the tall grass and\n"
+			"have battles with wild Pokémon!\p"
+			"But, before that, I have to visit\n"
+			"the Pokémon Center to heal up my team.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route2_EventScript_BoyOverLedge
+{
+	lock()
+	faceplayer()
+	goto_if_set(FLAG_TEMP_13, Route2_EventScript_BoyOverLedge_PostJump)
+	msgbox("Hey, you!\p"
+			"I'm gonna do something amazing!\n"
+			"Wanna watch?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
+	goto_if_eq(VAR_RESULT, TRUE, Route2_EventScript_BoyOverLedge_Jump)
+	destroy_speech_bubble()
+	closemessage
+	msgbox("No need to be shy!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
+	destroy_speech_bubble()
+	closemessage
+	release()
+	end()
+}
+
+script Route2_EventScript_BoyOverLedge_Jump
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("OK! Wait one second!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(face_down))
+	waitmovement(0)
+	msgbox("Wooo!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
+	destroy_speech_bubble()
+	closemessage
+	playse(SE_LEDGE)
+	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(jump_2_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, face_down))
+	waitmovement(0)
+	waitse()
+	delay(30)
+	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(face_up))
+	waitmovement(0)
+	goto(Route2_EventScript_BoyOverLedge_PostJump)
+	end()
+}
+
+script Route2_EventScript_BoyOverLedge_PostJump
+{
+	msgbox("Hey! Were you watching?\p"
+			"You can take a shortcut by\n"
+			"jumping off ledges! Amazing, eh?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_TEMP_13)
+	setobjectxyperm(LOCALID_ROUTE2_BOY_OVER_LEDGE, 19, 37)
+	release()
+	end()
 }
