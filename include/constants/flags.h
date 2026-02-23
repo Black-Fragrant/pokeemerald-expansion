@@ -84,10 +84,10 @@
 #define FLAG_ACCUMULA_PC_BIANCA              0x46
 #define FLAG_ROUTE2_ITEM_RARE_CANDY          0x47
 #define FLAG_ROUTE2_ITEM_POTION              0x48
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
+#define FLAG_ROUTE2_ITEM_GREAT_BALL          0x49
+#define FLAG_ROUTE2_ITEM_SUPER_POTION        0x4A
+#define FLAG_ROUTE2_ITEM_POKE_BALL           0x4B
+#define FLAG_ROUTE2_ITEM_POTION_2            0x4C
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
 #define FLAG_UNUSED_0x04F    0x4F // Unused Flag

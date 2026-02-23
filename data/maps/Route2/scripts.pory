@@ -166,6 +166,32 @@ script Route2_EventScript_Battle_Youngster1
 	end()
 }
 
+script Route2_EventScript_Battle_Lass
+{
+	trainerbattle_single(TRAINER_LASS_ROUTE_2,
+	text("I really love Pokémon battles!\p"
+    	    "'Cause my cute Pokémon will do its best\n"
+			"in a really cute way!"),
+	text("Even though it lost,\n"
+       		"my Pokémon is still cute!"))
+	msgbox("I'll make my cute Pokémon even stronger\n"
+       		"by having battles with lots of Trainers!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route2_EventScript_Battle_Youngster2
+{
+	trainerbattle_single(TRAINER_YOUNGSTER_ROUTE_2_2,
+	text("Lillipup, Lillipup!\n"
+       		"My Lillipup! Go!"),
+	text("Your Pokémon uses those\n"
+       		"kinds of moves?!"))
+	msgbox("Different Trainers use\n"
+			"different kinds of Pokémon!\l"
+			"That's fun to see, isn't it?", MSGBOX_NPC, TRUE)
+	end()
+}
+
 script Route2_EventScript_BoyOverLedge
 {
 	lock()
@@ -219,4 +245,118 @@ script Route2_EventScript_BoyOverLedge_PostJump
 	setobjectxyperm(LOCALID_ROUTE2_BOY_OVER_LEDGE, 19, 37)
 	release()
 	end()
+}
+
+script Route2_EventScript_BiancaBattle
+{
+	lock()
+	msgbox("Bianca: Ohhhh! Hi, {PLAYER}!", MSGBOX_DEFAULT)
+	closemessage
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playbgm(MUS_BW_BIANCA, TRUE)
+	addobject(LOCALID_ROUTE2_BIANCA)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 48, Route2_EventScript_BB_Pos1)
+	call_if_eq (VAR_TEMP_0, 49, Route2_EventScript_BB_Pos2)
+	call_if_eq (VAR_TEMP_0, 50, Route2_EventScript_BB_Pos3)
+	call_if_eq (VAR_TEMP_0, 51, Route2_EventScript_BB_Pos4)
+	call_if_eq (VAR_TEMP_0, 52, Route2_EventScript_BB_Pos5)
+	call_if_eq (VAR_TEMP_0, 53, Route2_EventScript_BB_Pos6)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_right * 7))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_right, walk_up * 3))
+	waitmovement(0)
+	delay(10)
+	msgbox("Bianca: Hey, listen!\n"
+			"Let's have a Pokémon battle!\p"
+			"Pleeeease? The Pokémon I caught\n"
+			"have become a little stronger!\p"
+			"Ready or not, here I come!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	call_if_set(FLAG_CHOSE_SNIVY, Route2_EventScript_BiancaBattle_Oshawott)
+	call_if_set(FLAG_CHOSE_TEPIG, Route2_EventScript_BiancaBattle_Snivy)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, Route2_EventScript_BiancaBattle_Tepig)
+	delay(10)
+	setvar(VAR_ROUTE2_MOTHER_GIVES_SHOES, 2)
+	msgbox("Bianca: Woo-hoo!\p"
+			"You are a tough cookie, {PLAYER}.\p"
+			"I'm gonna work hard on training my\n"
+			"Pokémon so we won't lose anymore!\l"
+			"OK, bye-bye!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_down * 3))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_left * 8))
+	waitmovement(0)
+	removeobject(LOCALID_ROUTE2_BIANCA)
+	delay(20)
+	playbgm(MUS_BW_ROUTE_1, TRUE)
+	release()
+	end()
+}
+
+script Route2_EventScript_BB_Pos1
+{
+	setobjectxy(LOCALID_ROUTE2_BIANCA, 40, 10)
+	return()
+}
+
+script Route2_EventScript_BB_Pos2
+{
+	setobjectxy(LOCALID_ROUTE2_BIANCA, 41, 10)
+	return()
+}
+
+script Route2_EventScript_BB_Pos3
+{
+	setobjectxy(LOCALID_ROUTE2_BIANCA, 42, 10)
+	return()
+}
+
+script Route2_EventScript_BB_Pos4
+{
+	setobjectxy(LOCALID_ROUTE2_BIANCA, 43, 10)
+	return()
+}
+
+script Route2_EventScript_BB_Pos5
+{
+	setobjectxy(LOCALID_ROUTE2_BIANCA, 44, 10)
+	return()
+}
+
+script Route2_EventScript_BB_Pos6
+{
+	setobjectxy(LOCALID_ROUTE2_BIANCA, 45, 10)
+	return()
+}
+
+script Route2_EventScript_BiancaBattle_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_1, text("Aww...\nI couldn't win..."))
+	return()
+}
+
+script Route2_EventScript_BiancaBattle_Snivy
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_2, text("Aww...\nI couldn't win..."))
+	return()
+}
+
+script Route2_EventScript_BiancaBattle_Tepig
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_3, text("Aww...\nI couldn't win..."))
+	return()
 }
