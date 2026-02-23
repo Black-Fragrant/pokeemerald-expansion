@@ -1,1 +1,145 @@
 mapscripts StriatonCity_TrainerSchool_MapScripts {}
+
+script StriatonCity_TS_EventScript_AceTrainerM
+{
+	msgbox("Some moves can only be taught with TMs.\p"
+       "TMs can be used over and over, so you\n"
+       "might want to use them a lot.\p"
+       "If you don't like the move you taught,\n"
+       "you can always use a different TM.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_TS_EventScript_Boy
+{
+	lock
+	faceplayer
+	goto_if_set(FLAG_STRIATON_TS_FULL_HEAL, StriatonCity_TS_EventScript_Boy_Quiz_Received)
+	msgbox("Would you like to take a quiz about\n"
+	        "status conditions?", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TS_BOY)
+	goto_if_eq (VAR_RESULT, YES, StriatonCity_TS_EventScript_Boy_Quiz)
+	goto_if_eq (VAR_RESULT, NO, StriatonCity_TS_EventScript_Boy_No_Quiz)
+	end
+}
+
+script StriatonCity_TS_EventScript_Boy_No_Quiz
+{	
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Come talk to me if you want\n"
+	        "to take a quiz.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_BOY)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script StriatonCity_TS_EventScript_Boy_Quiz
+{	
+	destroy_speech_bubble()
+	closemessage
+	msgbox("So here is the question:\p"
+            "Which of the following items\n"
+			"cures poison?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_BOY)
+	multichoice(25, 5, MULTI_TRAINER_SCHOOL_QUIZ, 1)
+	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TS_EventScript_Boy_Quiz2)}
+	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TS_EventScript_Boy_Quiz_Wrong)}
+	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TS_EventScript_Boy_Quiz_Wrong)}
+	end
+}
+
+script StriatonCity_TS_EventScript_Boy_Quiz2
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Ding ding ding!\p"
+       "Right answer!\n"
+       "Now for the next question.\p"
+       "The item that cures paralysis is\n"
+       "Paralyze Heal, but...\p"
+       "Which of the following items\n"
+       "wakes up a sleeping Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_BOY)
+	multichoice(25, 5, MULTI_TRAINER_SCHOOL_QUIZ, 1)
+	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TS_EventScript_Boy_Quiz_Wrong)}
+	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TS_EventScript_Boy_Quiz_Wrong)}
+	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TS_EventScript_Boy_QuizWon)}
+    end
+}
+
+script StriatonCity_TS_EventScript_Boy_QuizWon
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Ding ding ding! We have a winner!\n"
+       "Fantastic answer!\p"
+       "Since you know so much about status\n"
+       "conditions, I'll give you this!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_BOY)
+	destroy_speech_bubble()
+	closemessage
+    giveitem(ITEM_FULL_HEAL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_TS_EventScript_BagIsFull)
+	goto (StriatonCity_TS_EventScript_Boy_Quiz_Received)
+	end
+}
+
+script StriatonCity_TS_EventScript_Boy_Quiz_Wrong
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Buzzzzz!\p"
+       "Too bad... That's incorrect.\n"
+       "Please try again sometime!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_BOY)
+	destroy_speech_bubble()
+	closemessage
+    release
+    end
+}
+
+script StriatonCity_TS_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script StriatonCity_TS_EventScript_Boy_Quiz_Received
+{
+	msgbox("Full Heal does exactly what the name\n"
+       "suggests--it heals all status conditions!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_BOY)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_STRIATON_TS_FULL_HEAL)
+	release()
+	end()
+}
+
+script StriatonCity_TS_EventScript_Youngster
+{
+	msgbox("There is a technique that lets you\n"
+       "cancel evolution!\p"
+       "I'll read the book about it to you.\n"
+       "Are you ready?\p"
+       "''You can surprise a Pokémon and stop\n"
+       "its evolution by pressing the B Button\l"
+       "when a Pokémon is evolving.''", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_TS_EventScript_Girl
+{
+	msgbox("Pokémon have mysterious powers\n"
+       "called Abilities.\p"
+       "Abilities have a variety of effects,\n"
+       "and many of those effects are activated\l"
+       "when Pokémon are in battle!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_TS_EventScript_Gentleman
+{
+	msgbox("This Trainers' School exists to meet the\n"
+       "demands of Trainers who want to know\l"
+       "more about Pokémon because they\l"
+       "love them!", MSGBOX_NPC, TRUE)
+	end
+}

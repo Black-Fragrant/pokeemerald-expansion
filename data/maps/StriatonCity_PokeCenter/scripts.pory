@@ -8,3 +8,74 @@ script StriatonCity_PokeCenter_On_Transition
 	setrespawn(HEAL_LOCATION_STRIATON_CITY)
     end()
 }
+
+script StriatonCity_PokeCenter_EventScript_Nurse
+{
+	setvar(VAR_0x800B, LOCALID_STRIATON_POKECEN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
+script StriatonCity_PokeCenter_EventScript_WifiAssistant
+{
+	msgbox("Sorry, we're getting things ready.\n"
+			"Please come back later.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_PokeCenter_EventScript_Clerk1
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(StriatonCity_Mart_Items)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script StriatonCity_PokeCenter_EventScript_Clerk2
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(0)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart StriatonCity_Mart_Items {
+	ITEM_HEAL_BALL
+    ITEM_MECH_MAIL
+    ITEM_DREAM_MAIL
+    ITEM_WOOD_MAIL
+}
+
+script StriatonCity_PokeCenter_EventScript_BeardGuy
+{
+	msgbox("Have you been catching Pokémon?\p"
+            "When you have more Pokémon,\n"
+            "you're less likely to lose in battles,\l"
+            "and it's more fun to look at\l"
+            "your Pokédex and PC Box!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_PokeCenter_EventScript_BlueShirtGuy
+{
+	msgbox("I've just learned that the more\n"
+            "Gym Badges you win, the more items\l"
+            "you can buy at a shop!", MSGBOX_NPC, TRUE)
+	end
+}
+

@@ -26,6 +26,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_BREEDER_F",
       "graphics_id": "OBJ_EVENT_GFX_BREEDER_FEMALE",
       "x": 53,
       "y": 18,
@@ -35,10 +36,11 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Breeder_F",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_YOUNGSTER",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 47,
       "y": 20,
@@ -48,10 +50,11 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Youngster",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BEAUTY_RIGHT",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 62,
       "y": 11,
@@ -61,10 +64,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Beauty_Right",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_ROUGHNECK_RIGHT",
       "graphics_id": "OBJ_EVENT_GFX_ROUGHNECK",
       "x": 65,
       "y": 28,
@@ -74,7 +78,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Roughneck_Right",
       "flag": "0"
     },
     {
@@ -82,15 +86,16 @@
       "x": 44,
       "y": 32,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_X_SPEED",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_STRIATON_ITEM_X_SPEED"
     },
     {
+      "local_id": "LOCALID_STRIATON_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 40,
       "y": 26,
@@ -100,10 +105,11 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Girl",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GRANDPA",
       "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
       "x": 42,
       "y": 21,
@@ -113,10 +119,11 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Grandpa",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_ROUGHNECK_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_ROUGHNECK",
       "x": 42,
       "y": 15,
@@ -126,7 +133,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Roughneck_Left",
       "flag": "0"
     },
     {
@@ -134,15 +141,16 @@
       "x": 18,
       "y": 32,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_GREAT_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_STRIATON_ITEM_GREAT_BALL"
     },
     {
+      "local_id": "LOCALID_STRIATON_GRANDPA_GATE",
       "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
       "x": 23,
       "y": 11,
@@ -156,6 +164,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_FISHERMAN",
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
       "x": 10,
       "y": 9,
@@ -165,10 +174,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Fisherman",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_BEAUTY_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 17,
       "y": 16,
@@ -178,7 +188,21 @@
       "movement_range_y": 5,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_EventScript_Beauty_Left",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_STRIATON_GYM_RECEPTIONIST",
+      "graphics_id": "OBJ_EVENT_GFX_GYM_RECEPTIONIST",
+      "x": 58,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "StriatonCity_EventScript_Gym_Receptionist",
       "flag": "0"
     }
   ],
@@ -254,7 +278,35 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -287,6 +339,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "StriatonCity_EventScript_TrainersSchoolSign"
+    },
+    {
+      "type": "sign",
+      "x": 71,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "StriatonCity_EventScript_DreamyardSign"
     }
   ]
 }

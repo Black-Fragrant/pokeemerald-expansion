@@ -125,6 +125,7 @@
 #define MULTI_BERRY_PLOT                   114
 #define MULTI_POKEMON_RPS                  115
 #define MULTI_BW_STARTER                   116
+#define MULTI_TRAINER_SCHOOL_QUIZ          117
 
 
 // Lilycove SS Tidal Multichoice Selections

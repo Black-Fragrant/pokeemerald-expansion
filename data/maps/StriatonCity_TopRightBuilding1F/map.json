@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_TRB1F_CHEERLEADER",
       "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER_MAN",
       "x": 11,
       "y": 9,
@@ -24,10 +25,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TRB1F_EventScript_CheerleaderMan",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TRB1F_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
       "x": 4,
       "y": 7,
@@ -37,10 +39,11 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TRB1F_EventScript_Girl",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TRB1F_BOY",
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_BOY",
       "x": 5,
       "y": 4,
@@ -50,7 +53,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TRB1F_EventScript_Boy",
       "flag": "0"
     }
   ],

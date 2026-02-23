@@ -88,9 +88,9 @@
 #define FLAG_ROUTE2_ITEM_SUPER_POTION        0x4A
 #define FLAG_ROUTE2_ITEM_POKE_BALL           0x4B
 #define FLAG_ROUTE2_ITEM_POTION_2            0x4C
-#define FLAG_UNUSED_0x04D    0x4D // Unused Flag
-#define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+#define FLAG_UNUSED_0x04D                    0x4D // Unused Flag
+#define FLAG_UNUSED_0x04E                    0x4E // Unused Flag
+#define FLAG_UNUSED_0x04F                    0x4F // Unused Flag
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -656,12 +656,12 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+#define FLAG_UNUSED_0x264  0x264
+#define FLAG_UNUSED_0x265  0x265
+#define FLAG_UNUSED_0x266  0x266
+#define FLAG_UNUSED_0x267  0x267
+#define FLAG_UNUSED_0x268  0x268
+#define FLAG_UNUSED_0x269  0x269
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
@@ -778,14 +778,14 @@
 
 #define FLAG_UNUSED_0x2D9                                           0x2D9 // Unused Flag
 
-#define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
-#define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
-#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1                    0x2DC
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP              0x2DD
-#define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_SIBLING          0x2E0
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE             0x2E1
+#define FLAG_STRIATON_ITEM_GREAT_BALL                               0x2DA
+#define FLAG_STRIATON_ITEM_X_SPEED                                  0x2DB
+#define FLAG_STRIATON_DUSK_BALL                                     0x2DC
+#define FLAG_STRIATON_BIG_PEARL                                     0x2DD
+#define FLAG_STRIATON_BRB1F_GREAT_BALL                              0x2DE
+#define FLAG_STRIATON_TS_FULL_HEAL                                  0x2DF
+#define FLAG_UNUSED_0xXXX                                           0x2E0
+#define FLAG_UNUSED_0xXX1                                           0x2E1
 #define FLAG_HIDE_ROUTE_104_MR_BRINEY                               0x2E2
 #define FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY                           0x2E3
 #define FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN                            0x2E4

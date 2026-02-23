@@ -792,6 +792,13 @@ static const struct MenuAction MultichoiceList_BWStarter[] =
     {COMPOUND_STRING("Oshawott")},
 };
 
+static const struct MenuAction MultichoiceList_TrainerSchoolQuiz[] =
+{
+    {COMPOUND_STRING("Antidote")},
+    {COMPOUND_STRING("Paralyze Heal")},
+    {COMPOUND_STRING("Awakening")},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -922,6 +929,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_POKEMON_RPS]                = MULTICHOICE(MultichoiceList_PokemonRPS),
     [MULTI_BW_STARTER]                 = MULTICHOICE(MultichoiceList_BWStarter),
+    [MULTI_TRAINER_SCHOOL_QUIZ]        = MULTICHOICE(MultichoiceList_TrainerSchoolQuiz),
 };
 
 const u8 *const gStdStrings[] =

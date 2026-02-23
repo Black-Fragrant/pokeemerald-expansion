@@ -1,1 +1,43 @@
 mapscripts StriatonCity_BottomLeftBuilding2F_MapScripts {}
+
+script StriatonCity_BLB2F_EventScript_Patrat
+{   
+	lock
+	faceplayer
+	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
+	msgbox("Skree skree!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script StriatonCity_BLB2F_EventScript_Cottonee
+{   
+	lock
+	faceplayer
+	playmoncry(SPECIES_COTTONEE, CRY_MODE_NORMAL)
+	msgbox("Fwee-oosh!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script StriatonCity_BLB2F_EventScript_GreenShirtGuy
+{
+	msgbox("I've trained only Fire-type Pokémon,\n"
+            "'cause they're my favorites!\p"
+            "But they had no chance in a battle\n"
+            "against Water-type Pokémon...\p"
+            "Sigh... Maybe I should try to train\n"
+            "Pokémon of other types.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BLB2F_EventScript_BreederF
+{
+	msgbox("It is quite hard to train six Pokémon at\n"
+            "once, so I've heard some Trainers focus\l"
+            "on training three Pokémon at a time.", MSGBOX_NPC, TRUE)
+	end
+}
+

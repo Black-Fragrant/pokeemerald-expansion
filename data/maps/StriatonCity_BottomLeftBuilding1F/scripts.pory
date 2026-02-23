@@ -1,1 +1,27 @@
 mapscripts StriatonCity_BottomLeftBuilding1F_MapScripts {}
+
+script StriatonCity_BLB1F_EventScript_GreenShirtGuy
+{
+	msgbox("The GTS! It links the world from the\n"
+            "second floor of a Pokémon Center!\p"
+            "The full name of the GTS is the\n"
+            "Global Trade Station!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BLB1F_EventScript_Housewife
+{
+	msgbox("You can tell how strong Trainers are\n"
+            "by the number of Gym Badges they have!\p"
+            "If you're a Trainer, you should challenge\n"
+            "Gym Leaders and collect a lot of Badges!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_BLB1F_EventScript_Boy
+{
+	msgbox("Lately, I have a favorite model.\p"
+            "Her name is Elesa, and her Pokémon\n"
+            "are strong, too!", MSGBOX_NPC, TRUE)
+	end
+}
