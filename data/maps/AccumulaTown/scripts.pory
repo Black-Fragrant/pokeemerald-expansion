@@ -697,7 +697,6 @@ script AccumulaTown_EventScript_N_Battle
 	clearflag(FLAG_ACCUMULA_TEAM_PLASMA)
 	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 2)
 	trainerbattle_no_intro (TRAINER_N_ACCUMULA_TOWN, text("I never expected to hear\nPokémon say such things..."))
-	playbgm(MUS_BW_N, TRUE)
 	setflag(FLAG_ACCUMULA_TEAM_PLASMA)
 	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 4)
 	msgbox("N: As long as Pokémon are confined\n"
