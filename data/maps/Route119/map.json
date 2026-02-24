@@ -232,7 +232,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_119_RIVAL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -323,7 +323,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route119_EventScript_BridgeAquaGrunt1",
-      "flag": "FLAG_HIDE_ROUTE_119_TEAM_AQUA"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
@@ -336,7 +336,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route119_EventScript_BridgeAquaGrunt2",
-      "flag": "FLAG_HIDE_ROUTE_119_TEAM_AQUA"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "local_id": "LOCALID_ROUTE119_RIVAL_ON_BIKE",
@@ -350,7 +350,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
@@ -480,7 +480,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route119_EventScript_Kecleon1",
-      "flag": "FLAG_HIDE_ROUTE_119_KECLEON_1"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
@@ -493,7 +493,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route119_EventScript_Kecleon2",
-      "flag": "FLAG_HIDE_ROUTE_119_KECLEON_2"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
@@ -585,7 +585,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_119_SCOTT"
+      "flag": "FLAG_UNUSED_0xXXX"
     }
   ],
   "warp_events": [

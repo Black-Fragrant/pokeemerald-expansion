@@ -48,14 +48,14 @@ Route109_EventScript_DoSailToDewford::
 	applymovement LOCALID_PLAYER, Route109_Movement_PlayerExitBoat
 	waitmovement 0
 	addobject LOCALID_DEWFORD_BOAT
-	clearflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
+	clearflag FLAG_UNUSED_0xXXX
 	setobjectxyperm LOCALID_DEWFORD_BRINEY, 12, 8
 	addobject LOCALID_DEWFORD_BRINEY
 	setobjectsubpriority LOCALID_DEWFORD_BRINEY, MAP_DEWFORD_TOWN, 0
 	applymovement LOCALID_DEWFORD_BRINEY, Route109_Movement_BrineyExitBoat
 	waitmovement 0
-	clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
-	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
+	clearflag FLAG_UNUSED_0xXXX
+	setflag FLAG_UNUSED_0xXXX
 	hideobjectat LOCALID_ROUTE109_BOAT, MAP_ROUTE109
 	msgbox DewfordTown_Text_BrineyLandedInDewford, MSGBOX_DEFAULT
 	closemessage

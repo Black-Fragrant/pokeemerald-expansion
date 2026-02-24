@@ -37,7 +37,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "local_id": "LOCALID_ROUTE109_BRINEY",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route109_EventScript_MrBriney",
-      "flag": "FLAG_HIDE_ROUTE_109_MR_BRINEY"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",

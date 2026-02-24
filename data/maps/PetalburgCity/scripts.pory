@@ -69,7 +69,7 @@ PetalburgCity_EventScript_WalkToWallyHouse::
 	applymovement LOCALID_PETALBURG_WALLYS_DAD, PetalburgCity_Movement_WalkInsideHouseWallysDad
 	applymovement LOCALID_PLAYER, PetalburgCity_Movement_WalkInsideHousePlayer
 	waitmovement 0
-	setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
+	setflag FLAG_UNUSED_0xXXX
 	hideobjectat LOCALID_PLAYER, MAP_PETALBURG_CITY
 	closedoor VAR_0x8004, VAR_0x8005
 	waitdooranim

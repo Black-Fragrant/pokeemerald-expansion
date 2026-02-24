@@ -76,10 +76,10 @@ Route111_EventScript_EndCheckSetSandstorm::
 	return
 
 Route111_EventScript_SetWinstratesNotDefeated::
-	clearflag FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
-	setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
-	setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
-	setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+	clearflag FLAG_UNUSED_0xXXX
+	setflag FLAG_UNUSED_0xXXX
+	setflag FLAG_UNUSED_0xXXX
+	setflag FLAG_UNUSED_0xXXX
 	cleartrainerflag TRAINER_VICTOR
 	cleartrainerflag TRAINER_VICTORIA
 	cleartrainerflag TRAINER_VIVI
@@ -124,7 +124,7 @@ Route111_EventScript_MirageTowerDisappear::
 	special StartMirageTowerFossilFallAndSink
 	waitstate
 	setvar VAR_MIRAGE_TOWER_STATE, 2
-	clearflag FLAG_HIDE_DESERT_UNDERPASS_FOSSIL
+	clearflag FLAG_UNUSED_0xXXX
 	goto_if_set FLAG_CHOSE_CLAW_FOSSIL, Route111_EventScript_RootFossilDisappeared
 	msgbox Route111_Text_ClawFossilDisappeared, MSGBOX_DEFAULT
 	releaseall
