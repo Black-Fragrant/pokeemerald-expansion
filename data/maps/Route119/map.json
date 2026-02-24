@@ -245,7 +245,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_SUPER_REPEL",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_SUPER_REPEL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -258,7 +258,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_ZINC",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_ZINC"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -271,7 +271,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_ELIXIR",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_ELIXIR_1"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -284,7 +284,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_LEAF_STONE",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_LEAF_STONE"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -297,7 +297,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_RARE_CANDY"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -310,7 +310,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_HYPER_POTION",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_HYPER_POTION_1"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
@@ -441,7 +441,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_HYPER_POTION",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_HYPER_POTION_2"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
@@ -558,7 +558,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_NUGGET",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_NUGGET"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -571,7 +571,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_ELIXIR",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_119_ELIXIR_2"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "local_id": "LOCALID_ROUTE119_SCOTT",
