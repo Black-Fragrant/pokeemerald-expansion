@@ -95,7 +95,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_TM_EARTHQUAKE",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_SEAFLOOR_CAVERN_ROOM_9_TM_EARTHQUAKE"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "local_id": "LOCALID_SEAFLOOR_CAVERN_KYOGRE_SLEEPING",
