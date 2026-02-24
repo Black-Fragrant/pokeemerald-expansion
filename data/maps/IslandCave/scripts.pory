@@ -35,7 +35,7 @@ IslandCave_OnTransition:
 	end
 
 IslandCave_EventScript_ShowRegice::
-	clearflag FLAG_HIDE_REGICE
+	clearflag FLAG_UNUSED_0xXXX
 	return
 
 IslandCave_EventScript_OpenRegiEntrance::

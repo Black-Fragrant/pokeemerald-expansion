@@ -96,7 +96,7 @@ MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	removeobject LOCALID_MOSSDEEP_GRUNT_4
 	delay 30
 	setvar VAR_ROUTE121_STATE, 2
-	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+	setflag FLAG_UNUSED_0xXXX
 	releaseall
 	end
 

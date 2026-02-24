@@ -227,7 +227,7 @@ LilycoveCity_ContestLobby_EventScript_TryShowContestReporter::
 	end
 
 LilycoveCity_ContestLobby_EventScript_ShowContestReporter::
-	clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
+	clearflag FLAG_UNUSED_0xXXX
 	return
 
 LilycoveCity_ContestLobby_EventScript_DontShowContestReporter::
@@ -300,11 +300,11 @@ BattleFrontier_BattleTowerLobby_EventScript_ShowOrHideReporter::
 	setvar VAR_0x8005, TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE
 	special InterviewBefore
 	goto_if_eq VAR_RESULT, TRUE, BattleFrontier_BattleTowerLobby_EventScript_HideReporter
-	clearflag FLAG_HIDE_BATTLE_TOWER_REPORTER
+	clearflag FLAG_UNUSED_0xXXX
 	return
 
 BattleFrontier_BattleTowerLobby_EventScript_HideReporter::
-	setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
+	setflag FLAG_UNUSED_0xXXX
 	return
 
 @ Unused
