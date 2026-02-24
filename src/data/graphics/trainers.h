@@ -302,6 +302,27 @@ const u16 gTrainerPalette_YoungsterBW[] = INCBIN_U16("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_LassBW[] = INCBIN_U32("graphics/trainers/front_pics/lass_bw.4bpp.smol");
 const u16 gTrainerPalette_LassBW[] = INCBIN_U16("graphics/trainers/front_pics/lass_bw.gbapal");
 
+const u32 gTrainerFrontPic_Waiter[] = INCBIN_U32("graphics/trainers/front_pics/waiter.4bpp.smol");
+const u16 gTrainerPalette_Waiter[] = INCBIN_U16("graphics/trainers/front_pics/waiter.gbapal");
+
+const u32 gTrainerFrontPic_Waitress[] = INCBIN_U32("graphics/trainers/front_pics/waitress.4bpp.smol");
+const u16 gTrainerPalette_Waitress[] = INCBIN_U16("graphics/trainers/front_pics/waitress.gbapal");
+
+const u32 gTrainerFrontPic_Cilan[] = INCBIN_U32("graphics/trainers/front_pics/cilan.4bpp.smol");
+const u16 gTrainerPalette_Cilan[] = INCBIN_U16("graphics/trainers/front_pics/cilan.gbapal");
+
+const u32 gTrainerFrontPic_Chili[] = INCBIN_U32("graphics/trainers/front_pics/chili.4bpp.smol");
+const u16 gTrainerPalette_Chili[] = INCBIN_U16("graphics/trainers/front_pics/chili.gbapal");
+
+const u32 gTrainerFrontPic_Cress[] = INCBIN_U32("graphics/trainers/front_pics/cress.4bpp.smol");
+const u16 gTrainerPalette_Cress[] = INCBIN_U16("graphics/trainers/front_pics/cress.gbapal");
+
+const u32 gTrainerFrontPic_PlasmaGruntM[] = INCBIN_U32("graphics/trainers/front_pics/plasma_grunt_m.4bpp.smol");
+const u16 gTrainerPalette_PlasmaGruntM[] = INCBIN_U16("graphics/trainers/front_pics/plasma_grunt_m.gbapal");
+
+const u32 gTrainerFrontPic_PlasmaGruntF[] = INCBIN_U32("graphics/trainers/front_pics/plasma_grunt_f.4bpp.smol");
+const u16 gTrainerPalette_PlasmaGruntF[] = INCBIN_U16("graphics/trainers/front_pics/plasma_grunt_f.gbapal");
+
 
 
 
@@ -446,6 +467,13 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_HILDA, gTrainerFrontPic_HildaFront, gTrainerPalette_HildaFront),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_YOUNGSTER_BW, gTrainerFrontPic_YoungsterBW, gTrainerPalette_YoungsterBW),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_LASS_BW, gTrainerFrontPic_LassBW, gTrainerPalette_LassBW),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_WAITER, gTrainerFrontPic_Waiter, gTrainerPalette_Waiter),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_WAITRESS, gTrainerFrontPic_Waitress, gTrainerPalette_Waitress),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_CILAN, gTrainerFrontPic_Cilan, gTrainerPalette_Cilan),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_CHILI, gTrainerFrontPic_Chili, gTrainerPalette_Chili),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_CRESS, gTrainerFrontPic_Cress, gTrainerPalette_Cress),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_PLASMA_GRUNT_M, gTrainerFrontPic_PlasmaGruntM, gTrainerPalette_PlasmaGruntM),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_PLASMA_GRUNT_F, gTrainerFrontPic_PlasmaGruntF, gTrainerPalette_PlasmaGruntF),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
