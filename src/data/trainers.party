@@ -203,6 +203,8 @@ Mugshot: Blue
 Purrloin
 Level: 7
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Scratch
+- Growl
 
 === TRAINER_YOUNGSTER_ROUTE_2_1 ===
 Name: Jimmy
@@ -256,10 +258,16 @@ Mugshot: Green
 Lillipup
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Tackle
+- Odor Sleuth
 
 Oshawott
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
+- Water Gun
 
 === TRAINER_BIANCA_ROUTE_2_2 ===
 Name: Bianca
@@ -274,10 +282,16 @@ Mugshot: Green
 Lillipup
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Tackle
+- Odor Sleuth
 
 Snivy
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Leer
+- Vine Whip
 
 === TRAINER_BIANCA_ROUTE_2_3 ===
 Name: Bianca
@@ -292,189 +306,262 @@ Mugshot: Green
 Lillipup
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Tackle
+- Odor Sleuth
 
 Tepig
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
+- Ember
 
-=== TRAINER_DECLAN ===
-Name: DECLAN
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_CHEREN_TRAINER_SCHOOL_1 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Swimmer
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Purple
 
-Gyarados
-Level: 34
+Tepig @ Oran Berry
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
+- Ember
 
-=== TRAINER_GRUNT_RUSTURF_TUNNEL ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Purrloin
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Scratch
+- Growl
+- Assist
+
+=== TRAINER_CHEREN_TRAINER_SCHOOL_2 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Aqua
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Purple
+
+Oshawott @ Oran Berry
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
+- Water Gun
+
+Purrloin
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Scratch
+- Growl
+- Assist
+
+=== TRAINER_CHEREN_TRAINER_SCHOOL_3 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Purple
+
+Snivy @ Oran Berry
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Leer
+- Vine Whip
+
+Purrloin
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Scratch
+- Growl
+- Assist
+
+=== TRAINER_WAITER_STRIATON_GYM ===
+Name: Maxwell
+Class: Waiter
+Pic: Waiter
+Gender: Male
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
-Poochyena
+Lillipup
 Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_WEATHER_INST_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_WAITRESS_STRIATON_GYM ===
+Name: Tia
+Class: Waitress
+Pic: Waitress
+Gender: Female
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
 
-Zubat
-Level: 27
+Patrat
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Poochyena
-Level: 27
+Purrloin
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_WEATHER_INST_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_CHILI_STRIATON_GYM ===
+Name: Chili
+Class: Leader
+Pic: Chili
 Gender: Male
-Music: Aqua
+Music: Male
+Items: Potion
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Yellow
 
-Poochyena
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lillipup
+Level: 12
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bite
+- Work Up
+- Odor Sleuth
+- Helping Hand
 
-Carvanha
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_WEATHER_INST_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Poochyena
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Zubat
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MUSEUM_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MUSEUM_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Zubat
+Pansear
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Incinerate
+- Work Up
+- Lick
+- Fury Swipes
 
-Carvanha
+=== TRAINER_CRESS_STRIATON_GYM ===
+Name: Cress
+Class: Leader
+Pic: Cress
+Gender: Male
+Music: Male
+Items: Potion
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Yellow
+
+Lillipup
+Level: 12
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bite
+- Work Up
+- Odor Sleuth
+- Helping Hand
+
+Panpour
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Water Gun
+- Work Up
+- Lick
+- Fury Swipes
 
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
+=== TRAINER_CILAN_STRIATON_GYM ===
+Name: Cilan
+Class: Leader
+Pic: Cilan
 Gender: Male
-Music: Magma
+Music: Male
+Items: Potion
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Yellow
+
+Lillipup
+Level: 12
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bite
+- Work Up
+- Odor Sleuth
+- Helping Hand
+
+Pansage
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Vine Whip
+- Work Up
+- Lick
+- Fury Swipes
+
+=== TRAINER_LASS_DREAMYARD ===
+Name: Eri
+Class: Lass
+Pic: Lass BW
+Gender: Female
+Music: Lass
 Battle Type: Singles
 AI: Check Bad Move
 
-Numel
-Level: 32
+Purrloin
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_MT_PYRE_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Purrloin
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_YOUNGSTER_DREAMYARD ===
+Name: Joey
+Class: Youngster
+Pic: Youngster BW
+Gender: Male
+Music: Youngster
+Battle Type: Singles
+AI: Check Bad Move
+
+Patrat
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Patrat
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lillipup
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_DREAMYARD ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
 Gender: Male
 Music: Aqua
 Battle Type: Singles
 AI: Check Bad Move
 
-Zubat
-Level: 32
+Patrat
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_MT_PYRE_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MT_PYRE_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Poochyena
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_WEATHER_INST_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
+=== TRAINER_GRUNT_F_DREAMYARD ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt F
 Gender: Female
 Music: Aqua
 Battle Type: Singles
 AI: Check Bad Move
 
-Carvanha
-Level: 28
+Purrloin
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_5 ===
