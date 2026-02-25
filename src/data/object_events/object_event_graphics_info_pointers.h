@@ -184,6 +184,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Munnaow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Musharnaow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlagPole;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GiftBox;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cone;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldBall;
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -379,6 +381,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MUSHARNAOW] =               &gObjectEventGraphicsInfo_Musharnaow,
     [OBJ_EVENT_GFX_FLAG_POLE] =                &gObjectEventGraphicsInfo_FlagPole,
     [OBJ_EVENT_GFX_GIFT_BOX] =                 &gObjectEventGraphicsInfo_GiftBox,
+    [OBJ_EVENT_GFX_CONE] =                     &gObjectEventGraphicsInfo_Cone,
+    [OBJ_EVENT_GFX_GOLD_BALL] =                &gObjectEventGraphicsInfo_GoldBall,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,

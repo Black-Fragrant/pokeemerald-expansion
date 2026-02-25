@@ -3469,7 +3469,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GiftBox = {
     .width = 32,
     .height = 32,
     .paletteSlot = PALSLOT_NPC_1,
-    .shadowSize = SHADOW_SIZE_M,
+    .shadowSize = SHADOW_SIZE_NONE,
     .inanimate = TRUE,
     .compressed = FALSE,
     .tracks = TRACKS_NONE,
@@ -3479,3 +3479,38 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GiftBox = {
     .images = sPicTable_GiftBox,
 };
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cone = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_CONE,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 256,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_1,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_NONE,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_Inanimate,
+    .images = sPicTable_Cone,
+};
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldBall = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_GOLD_BALL,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 256,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_1,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_NONE,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_Inanimate,
+    .images = sPicTable_GoldBall,
+};

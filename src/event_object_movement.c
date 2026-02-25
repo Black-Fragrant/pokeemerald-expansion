@@ -645,6 +645,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Musharnaow,            OBJ_EVENT_PAL_TAG_MUSHARNAOW},
     {gObjectEventPal_FlagPole,              OBJ_EVENT_PAL_TAG_FLAG_POLE},
     {gObjectEventPal_GiftBox,               OBJ_EVENT_PAL_TAG_GIFT_BOX},
+    {gObjectEventPal_Cone,                  OBJ_EVENT_PAL_TAG_CONE},
+    {gObjectEventPal_GoldBall,              OBJ_EVENT_PAL_TAG_GOLD_BALL},
 
 
 
