@@ -394,7 +394,7 @@ Name: Maxwell
 Class: Waiter
 Pic: Waiter
 Gender: Male
-Music: Male
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -407,7 +407,7 @@ Name: Tia
 Class: Waitress
 Pic: Waitress
 Gender: Female
-Music: Male
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -440,7 +440,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pansear
 Level: 14
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Incinerate
 - Work Up
 - Lick
@@ -467,7 +467,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Panpour
 Level: 14
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Water Gun
 - Work Up
 - Lick
@@ -494,7 +494,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pansage
 Level: 14
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Vine Whip
 - Work Up
 - Lick
@@ -543,7 +543,7 @@ Name: Grunt
 Class: Team Plasma
 Pic: Plasma Grunt M
 Gender: Male
-Music: Aqua
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -556,7 +556,7 @@ Name: Grunt
 Class: Team Plasma
 Pic: Plasma Grunt F
 Gender: Female
-Music: Aqua
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 

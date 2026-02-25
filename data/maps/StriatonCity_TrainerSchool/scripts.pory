@@ -143,3 +143,178 @@ script StriatonCity_TS_EventScript_Gentleman
        "love them!", MSGBOX_NPC, TRUE)
 	end
 }
+
+script StriatonCity_TS_EventScript_Cheren
+{
+	lock()
+	goto_if_set(FLAG_STRIATON_TS_CHEREN_BATTLE_WON, StriatonCity_TS_EventScript_Cheren_BerryReceived)
+	goto_if_set(FLAG_STRIATON_TS_CHEREN_TALKED_AT_LEAST_ONCE, StriatonCity_TS_EventScript_Cheren_AskAgain)
+	msgbox("Cheren: When a Pokémon is poisoned,\n"
+			"its HP decreases while it is battling.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	destroy_speech_bubble()
+	closemessage()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 7, StriatonCity_TS_EventScript_Cheren_Pos1)
+	call_if_eq (VAR_TEMP_0, 8, StriatonCity_TS_EventScript_Cheren_Pos2)
+	call_if_eq (VAR_TEMP_0, 9, StriatonCity_TS_EventScript_Cheren_Pos3)
+	delay(10)
+	msgbox("Hey, {PLAYER}.\p"
+    	    "Have you come looking for\n"
+			"the Gym Leader?", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	call_if_eq(VAR_RESULT, TRUE, StriatonCity_TS_EventScript_Cheren_LFGL_Yes)
+	call_if_eq(VAR_RESULT, FALSE, StriatonCity_TS_EventScript_Cheren_LFGL_No)
+	destroy_speech_bubble()
+	closemessage()
+	msgbox("By the way, {PLAYER}, will you have a\n"
+			"battle with me?\p"
+			"I want to test how important items are\n"
+			"in battles.", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	goto_if_eq(VAR_RESULT, TRUE, StriatonCity_TS_EventScript_Cheren_Battle)
+	destroy_speech_bubble()
+	closemessage()
+	msgbox("Really? I really want to try out my\n"
+			"items, so I'll just wait here until you\l"
+			"decide you're ready.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	destroy_speech_bubble()
+	closemessage()
+	setflag(FLAG_STRIATON_TS_CHEREN_TALKED_AT_LEAST_ONCE)
+	release()
+	end()
+}
+
+script StriatonCity_TS_EventScript_Cheren_LFGL_Yes
+{
+	destroy_speech_bubble()
+	closemessage()
+	msgbox("He was here talking about Pokémon\n"
+        "types until just a few moments ago...\p"
+        "Maybe you walked right past him?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_LFGL_No
+{
+	destroy_speech_bubble()
+	closemessage()
+	msgbox("Nothing improves your skill as a Trainer\n"
+			"like real battles.\p"
+			"That's why challenging Gym Leaders is\n"
+			"great practice.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_AskAgain
+{
+	faceplayer()
+	msgbox("Cheren: {PLAYER}, will you have a\n"
+			"battle with me?\p"
+			"I want to test how important items are\n"
+			"in battles.", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	goto_if_eq(VAR_RESULT, TRUE, StriatonCity_TS_EventScript_Cheren_Battle)
+	destroy_speech_bubble()
+	closemessage()
+	msgbox("Really? I really want to try out my\n"
+			"items, so I'll just wait here until you\l"
+			"decide you're ready.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	destroy_speech_bubble()
+	closemessage()
+	setflag(FLAG_STRIATON_TS_CHEREN_TALKED_AT_LEAST_ONCE)
+	release()
+	end()
+}
+
+script StriatonCity_TS_EventScript_Cheren_Battle
+{
+	destroy_speech_bubble()
+	closemessage()
+	msgbox("Cheren: Well, let's see how effective\n"
+        "my items are...\p"
+        "Or maybe I should test how well I can\n"
+        "battle without items...?\p"
+        "Anyway, this is an indoor match, so let's\n"
+        "battle without getting too rough!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	call_if_set(FLAG_CHOSE_SNIVY, StriatonCity_TS_CherenBattle_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, StriatonCity_TS_CherenBattle_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_TS_CherenBattle_Snivy)
+	delay(10)
+	setflag(FLAG_STRIATON_TS_CHEREN_BATTLE_WON)
+	msgbox("Cheren: So learning to use items well is\n"
+			"definitely important, then.\p"
+			"Oh, here. {PLAYER}, I'll give you\n"
+			"these Berries.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	destroy_speech_bubble()
+	closemessage()
+	giveitem(ITEM_ORAN_BERRY, 3)
+	call_if_eq (VAR_RESULT, FALSE, StriatonCity_TS_EventScript_BagIsFull2)
+	goto (StriatonCity_TS_EventScript_Cheren_BerryReceived)
+}
+
+script StriatonCity_TS_EventScript_Cheren_BerryReceived
+{
+	faceplayer()
+	msgbox("Cheren: If you give a Pokémon this kind\n"
+			"of Berry to hold, it will eat it to heal up\l"
+			"when its HP goes down in battle.\p"
+			"But if you give Pokémon man-made items\n"
+			"like Potions to hold, they can't\l"
+			"use them.\p"
+			"Well, good luck, then.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
+	destroy_speech_bubble()
+	closemessage()
+	delay(10)
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_up))
+	waitmovement(0)
+	setflag(FLAG_STRIATON_GYM_RECEPTIONIST)
+	clearflag(FLAG_STRIATON_CILAN)
+	delay(10)
+	release()
+	end()
+}
+
+script StriatonCity_TS_CherenBattle_Tepig
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_1, text("I see!\pLosing to you means\nthat I still have a lot to learn."))
+	return()
+}
+
+script StriatonCity_TS_CherenBattle_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_2, text("I see!\pLosing to you means\nthat I still have a lot to learn."))
+	return()
+}
+
+script StriatonCity_TS_CherenBattle_Snivy
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_3, text("I see!\pLosing to you means\nthat I still have a lot to learn."))
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_Pos1
+{
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_Pos2
+{
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_down))
+	waitmovement(0)
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_Pos3
+{
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_right))
+	waitmovement(0)
+	return()
+}
+script StriatonCity_TS_EventScript_BagIsFull2
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	return()
+}
+

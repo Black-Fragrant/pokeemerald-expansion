@@ -1,1 +1,255 @@
 mapscripts Dream_Yard_MapScripts {}
+
+script Dreamyard_EventScript_Battle_Lass
+{
+	trainerbattle_single(TRAINER_LASS_DREAMYARD,
+	text("We!\n"
+    	    "We are training here!\p"
+    	    "Now let's train\n"
+			"Pokémon together!"),
+	text("Great!\n"
+       		"You have a talent as a Trainer!"))
+	msgbox("I want to win against Gym Leaders,\n"
+       		"but I want to win against you, too!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Dreamyard_EventScript_Battle_Youngster
+{
+	trainerbattle_single(TRAINER_YOUNGSTER_DREAMYARD,
+	text("My goal is to outperform Gym Leaders!\n"
+    	    "Can you win against me?!"),
+	text("My Pokémon fought well,\n"
+       		"didn't they?"))
+	msgbox("I have my goal!\n"
+       		"My Pokémon are there for me!\l"
+       		"That's why I can keep trying!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Dreamyard_EventScript_Girl_GiveMonkey
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_DREAMYARD_RECEIVED_MONKEY, Dreamyard_EventScript_Girl_ObtainedMonkey)
+    goto_if_set(FLAG_DREAMYARD_REJECTED_MONKEY, Dreamyard_EventScript_Girl_GiveMonkey2)
+    msgbox("Hey! Hey, you!\n"
+            "What was the first Pokémon you received?\p"
+            "...\n"
+            "...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GIRL)
+    destroy_speech_bubble()
+    closemessage()
+	goto_if_set(FLAG_CHOSE_SNIVY, Dreamyard_EventScript_Girl_GivePanpour)
+	goto_if_set(FLAG_CHOSE_TEPIG, Dreamyard_EventScript_Girl_GivePansage)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, Dreamyard_EventScript_Girl_GivePansear)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GiveMonkey2
+{
+	goto_if_set(FLAG_CHOSE_SNIVY, Dreamyard_EventScript_Girl_GivePanpour2)
+	goto_if_set(FLAG_CHOSE_TEPIG, Dreamyard_EventScript_Girl_GivePansage2)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, Dreamyard_EventScript_Girl_GivePansear2)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePanpour
+{
+    msgbox("Snivy! Really?\n"
+            "Then Panpour could be a big help!\p"
+            "Your Snivy does not do well against\n"
+            "Fire-type Pokémon!\p"
+            "Say, do you want this Panpour of mine?", MSGBOX_YESNO, TRUE, LOCALID_DREAMYARD_GIRL)
+	goto_if_eq(VAR_RESULT, FALSE, Dreamyard_EventScript_Girl_RejectMonkey)
+    destroy_speech_bubble()
+    closemessage()
+    goto(Dreamyard_EventScript_Girl_GivePanpour3)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePanpour2
+{
+    msgbox("Your Snivy does not do well against\n"
+            "Fire-type Pokémon!\p"
+            "Say, do you want this Panpour of mine?", MSGBOX_YESNO, TRUE, LOCALID_DREAMYARD_GIRL)
+	goto_if_eq(VAR_RESULT, FALSE, Dreamyard_EventScript_Girl_RejectMonkey)
+    destroy_speech_bubble()
+    closemessage()
+    goto(Dreamyard_EventScript_Girl_GivePanpour3)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePanpour3
+{
+    msgbox("OK. Here you go!\p"
+            "It can use Water-type moves, so that\n"
+            "makes it great against Fire types!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GIRL)
+    destroy_speech_bubble()
+    closemessage()
+    givemon(SPECIES_PANPOUR, 10, ITEM_NONE)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("{PLAYER} received Panpour!") //this should be transparent
+			delay(100)
+			closemessage
+            setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
+		}
+		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("Panpour was sent to the PC!") //this should be transparent
+			delay(100)
+			closemessage
+            setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
+		}
+		else
+		{
+			msgbox("Your Pokémon Storage is full...")
+			closemessage
+		}
+    goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePansage
+{
+    msgbox("Tepig! Really?\n"
+            "Then Pansage could be a big help!\p"
+            "Your Tepig does not do well against\n"
+            "Water-type Pokémon!\p"
+            "Say, do you want this Pansage of mine?", MSGBOX_YESNO, TRUE, LOCALID_DREAMYARD_GIRL)
+	goto_if_eq(VAR_RESULT, FALSE, Dreamyard_EventScript_Girl_RejectMonkey)
+    destroy_speech_bubble()
+    closemessage()
+    goto(Dreamyard_EventScript_Girl_GivePansage3)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePansage2
+{
+    msgbox("Your Tepig does not do well against\n"
+            "Water-type Pokémon!\p"
+            "Say, do you want this Pansage of mine?", MSGBOX_YESNO, TRUE, LOCALID_DREAMYARD_GIRL)
+	goto_if_eq(VAR_RESULT, FALSE, Dreamyard_EventScript_Girl_RejectMonkey)
+    destroy_speech_bubble()
+    closemessage()
+    goto(Dreamyard_EventScript_Girl_GivePansage3)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePansage3
+{
+    msgbox("OK. Here you go!\p"
+            "It can use Grass-type moves, so that\n"
+            "makes it great against Water types!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GIRL)
+    destroy_speech_bubble()
+    closemessage()
+    givemon(SPECIES_PANSAGE, 10, ITEM_NONE)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("{PLAYER} received Pansage!") //this should be transparent
+			delay(100)
+			closemessage
+            setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
+		}
+		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("Pansage was sent to the PC!") //this should be transparent
+			delay(100)
+			closemessage
+            setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
+		}
+		else
+		{
+			msgbox("Your Pokémon Storage is full...")
+			closemessage
+		}
+    goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePansear
+{
+    msgbox("Oshawott! Really?\n"
+            "Then Pansear could be a big help!\p"
+            "Your Oshawott does not do well against\n"
+            "Grass-type Pokémon!\p"
+            "Say, do you want this Pansear of mine?", MSGBOX_YESNO, TRUE, LOCALID_DREAMYARD_GIRL)
+	goto_if_eq(VAR_RESULT, FALSE, Dreamyard_EventScript_Girl_RejectMonkey)
+    destroy_speech_bubble()
+    closemessage()
+    goto(Dreamyard_EventScript_Girl_GivePansear3)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePansear2
+{
+    msgbox("Your Oshawott does not do well against\n"
+            "Grass-type Pokémon!\p"
+            "Say, do you want this Pansear of mine?", MSGBOX_YESNO, TRUE, LOCALID_DREAMYARD_GIRL)
+	goto_if_eq(VAR_RESULT, FALSE, Dreamyard_EventScript_Girl_RejectMonkey)
+    destroy_speech_bubble()
+    closemessage()
+    goto(Dreamyard_EventScript_Girl_GivePansear3)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_GivePansear3
+{
+    msgbox("OK. Here you go!\p"
+            "It can use Fire-type moves, so that\n"
+            "makes it great against Grass types!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GIRL)
+    destroy_speech_bubble()
+    closemessage()
+    givemon(SPECIES_PANSEAR, 10, ITEM_NONE)
+		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("{PLAYER} received Pansear!") //this should be transparent
+			delay(100)
+			closemessage
+            setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
+		}
+		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
+		{
+			playbgm(MUS_BW_CAUGHT, TRUE)
+			msgbox("Pansear was sent to the PC!") //this should be transparent
+			delay(100)
+			closemessage
+            setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
+		}
+		else
+		{
+			msgbox("Your Pokémon Storage is full...")
+			closemessage
+		}
+    goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
+    end()
+}
+
+script Dreamyard_EventScript_Girl_ObtainedMonkey
+{
+    msgbox("If you have many types of Pokémon,\n"
+            "something will work out, no matter\l"
+            "what kind of Pokémon you have to face.", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GIRL)
+    destroy_speech_bubble()
+    closemessage()
+    release()
+    end()
+}
+
+script Dreamyard_EventScript_Girl_RejectMonkey
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("My, my. If you want it, come back and\n"
+            "talk to me again, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_DREAMYARD_REJECTED_MONKEY)
+    release()
+    end()
+}
