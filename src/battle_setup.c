@@ -1524,6 +1524,12 @@ void PlayTrainerEncounterMusic(void)
         case TRAINER_ENCOUNTER_MUSIC_LASS:
             music = MUS_BW_SPOTTED_LASS;
             break;
+        case TRAINER_ENCOUNTER_MUSIC_CLERK:
+            music = MUS_BW_SPOTTED_BUSINESSMAN;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_PLASMA:
+            music = MUS_BW_SPOTTED_PLASMA;
+            break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;
         }

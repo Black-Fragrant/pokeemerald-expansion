@@ -158,3 +158,88 @@ script StriatonCity_EventScript_Fisherman_Received
 	release()
 	end()
 }
+
+script StriatonCity_EventScript_Cilan
+{
+	lock
+	faceplayer()
+	msgbox("Yes? Yes, I am a Gym Leader\n"
+			"of this town.\l"
+			"You are...?\p"
+			"Right. You want to challenge the Gym.\p"
+			"In that case...\n"
+			"What was the first Pokémon you chose?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
+	destroy_speech_bubble()
+	closemessage()
+	call_if_set(FLAG_CHOSE_SNIVY, StriatonCity_EventScript_Cilan_Snivy)
+	call_if_set(FLAG_CHOSE_TEPIG, StriatonCity_EventScript_Cilan_Tepig)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_EventScript_Cilan_Oshawott)
+	destroy_speech_bubble()
+	closemessage()
+	goto_if_set(FLAG_DREAMYARD_RECEIVED_MONKEY, StriatonCity_EventScript_Cilan_Remind)
+	msgbox("I think you need to prepare to face\n"
+        "that type.\p"
+        "I'll be waiting for you inside.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
+	destroy_speech_bubble()
+	closemessage()
+	goto(StriatonCity_EventScript_Cilan_Walkaway)
+	end()
+}
+
+script StriatonCity_EventScript_Cilan_Remind
+{
+	msgbox("I think you need to prepare to face\n"
+        "that type.\p"
+        "For example, try training your Pokémon\n"
+        "in the Dreamyard.\p"
+        "Please excuse me now.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
+	destroy_speech_bubble()
+	closemessage()
+	goto(StriatonCity_EventScript_Cilan_Walkaway)
+	end()
+}
+
+script StriatonCity_EventScript_Cilan_Walkaway
+{
+	delay(10)
+	applymovement(LOCALID_STRIATON_CILAN, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(20)
+	playse(SE_DOOR)
+	setdooropen(58,13)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_STRIATON_CILAN, moves(walk_up))
+	waitmovement(0)
+	delay(10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_STRIATON_CILAN)
+	setflag(FLAG_STRIATON_CILAN)
+	waitse()
+	delay(10)
+	setdoorclosed(58,13)
+	delay(20)
+	release()
+	end()
+}
+
+script StriatonCity_EventScript_Cilan_Snivy
+{
+	msgbox("Snivy... I see. It's weak against\n"
+    	    "Fire-type Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
+	return()
+}
+
+script StriatonCity_EventScript_Cilan_Tepig
+{
+	msgbox("Tepig... I see. It's weak against\n"
+    	    "Water-type Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
+	return()
+}
+
+script StriatonCity_EventScript_Cilan_Oshawott
+{
+	msgbox("Oshawott... I see. It's weak against\n"
+    	    "Grass-type Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
+	return()
+}
