@@ -861,3 +861,11 @@ static const struct SpriteFrameImage sPicTable_GiftBox[] = {
     overworld_ascending_frames(gObjectEventPic_GiftBox, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Cone[] = {
+    overworld_ascending_frames(gObjectEventPic_Cone, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldBall[] = {
+    overworld_ascending_frames(gObjectEventPic_GoldBall, 2, 4),
+};
+

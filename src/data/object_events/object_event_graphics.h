@@ -662,3 +662,10 @@ const u16 gObjectEventPal_FlagPole[] = INCBIN_U16("graphics/object_events/palett
 
 const u32 gObjectEventPic_GiftBox[] = INCBIN_U32("graphics/object_events/pics/people/gift_box.4bpp");
 const u16 gObjectEventPal_GiftBox[] = INCBIN_U16("graphics/object_events/palettes/gift_box.gbapal");
+
+const u32 gObjectEventPic_Cone[] = INCBIN_U32("graphics/object_events/pics/people/cone.4bpp");
+const u16 gObjectEventPal_Cone[] = INCBIN_U16("graphics/object_events/palettes/cone.gbapal");
+
+const u32 gObjectEventPic_GoldBall[] = INCBIN_U32("graphics/object_events/pics/people/gold_ball.4bpp");
+const u16 gObjectEventPal_GoldBall[] = INCBIN_U16("graphics/object_events/palettes/gold_ball.gbapal");
+
