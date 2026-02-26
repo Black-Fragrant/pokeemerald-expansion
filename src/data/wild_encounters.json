@@ -11958,6 +11958,105 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_DREAM_YARD",
+          "base_label": "gDream_Yard",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_PATRAT"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_PATRAT"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_PURRLOIN"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_PURRLOIN"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_PURRLOIN"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_PURRLOIN"
+              },
+              {
+                "min_level": 8,
+                "max_level": 8,
+                "species": "SPECIES_MUNNA"
+              },
+              {
+                "min_level": 8,
+                "max_level": 8,
+                "species": "SPECIES_MUNNA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 10,
+                "species": "SPECIES_MUNNA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 10,
+                "species": "SPECIES_MUNNA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 10,
+                "species": "SPECIES_MUNNA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 10,
+                "species": "SPECIES_MUNNA"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 11,
+                "max_level": 11,
+                "species": "SPECIES_MUSHARNA"
+              },
+              {
+                "min_level": 11,
+                "max_level": 11,
+                "species": "SPECIES_MUSHARNA"
+              }
+            ]
+          }
         }
       ]
     },
