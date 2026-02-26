@@ -100,7 +100,7 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	setflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX
-	setvar VAR_SOOTOPOLIS_CITY_STATE, 6
+	setvar VAR_METEOR_FALLS_STATE, 6
 	clearflag FLAG_UNUSED_0xXXX
 	setvar VAR_0x8008, 8
 	call Common_EventScript_SetGymTrainers

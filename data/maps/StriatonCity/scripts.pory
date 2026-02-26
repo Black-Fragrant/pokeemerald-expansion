@@ -243,3 +243,91 @@ script StriatonCity_EventScript_Cilan_Oshawott
     	    "Grass-type Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
 	return()
 }
+
+script StriatonCity_EventScript_Grandpa_Gate
+{
+	msgbox("You don't seem to have any Gym Badges,\n"
+       "so I can't let you by.\p"
+       "With your lack of training, you'll have\n"
+       "a hard job making any progress.\p"
+       "Let me give you some friendly advice.\p"
+       "Challenge a Gym Leader in this town,\n"
+       "and test your ability!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_EventScript_Gate_Trigger
+{
+	lock()
+	playse(SE_PIN)
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 20, StriatonCity_EventScript_Gate_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_0, 21, StriatonCity_EventScript_Gate_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_0, 22, StriatonCity_EventScript_Gate_Trigger_Pos3)
+	applymovement(LOCALID_PLAYER, moves(face_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("You don't seem to have any Gym Badges,\n"
+       "so I can't let you by.\p"
+       "With your lack of training, you'll have\n"
+       "a hard job making any progress.\p"
+       "Here's some friendly advice.\n"
+       "Challenge a Gym Leader in this town,\l"
+       "and test your ability!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GRANDPA_GATE)
+	destroy_speech_bubble()
+	closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 20, StriatonCity_EventScript_Gate_Trigger_Pos4)
+	call_if_eq (VAR_TEMP_0, 21, StriatonCity_EventScript_Gate_Trigger_Pos5)
+	call_if_eq (VAR_TEMP_0, 22, StriatonCity_EventScript_Gate_Trigger_Pos6)
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	waitmovement(0)
+	release()
+	end
+}
+
+script StriatonCity_EventScript_Gate_Trigger_Pos1
+{
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(walk_slow_left * 2, walk_in_place_slow_left))
+	waitmovement(0)
+	return
+}
+
+script StriatonCity_EventScript_Gate_Trigger_Pos2
+{
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(walk_slow_left, walk_in_place_slow_left))
+	waitmovement(0)
+	return
+}
+
+script StriatonCity_EventScript_Gate_Trigger_Pos3
+{
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(walk_in_place_slow_left))
+	waitmovement(0)
+	return
+}
+
+script StriatonCity_EventScript_Gate_Trigger_Pos4
+{
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(walk_slow_right * 2, face_down))
+	waitmovement(0)
+	return
+}
+
+script StriatonCity_EventScript_Gate_Trigger_Pos5
+{
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(walk_slow_right, face_down))
+	waitmovement(0)
+	return
+}
+
+script StriatonCity_EventScript_Gate_Trigger_Pos6
+{
+	applymovement(LOCALID_STRIATON_GRANDPA_GATE, moves(, face_down))
+	waitmovement(0)
+	return
+}

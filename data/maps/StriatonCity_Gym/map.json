@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_GYM__GYMRECEPTIONIST",
       "graphics_id": "OBJ_EVENT_GFX_GYM_RECEPTIONIST",
       "x": 15,
       "y": 38,
@@ -24,10 +25,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_Gym_EventScript_GymReceptionist",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GYM_WAITRESS_BOTTOM",
       "graphics_id": "OBJ_EVENT_GFX_WAITRESS",
       "x": 8,
       "y": 39,
@@ -37,10 +39,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_Gym_EventScript_Waitress_Bottom",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GYM_WAITER",
       "graphics_id": "OBJ_EVENT_GFX_WAITER",
       "x": 9,
       "y": 29,
@@ -54,6 +57,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GYM_WAITRESS_TOP",
       "graphics_id": "OBJ_EVENT_GFX_WAITRESS",
       "x": 15,
       "y": 20,
@@ -67,6 +71,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GYM_CILAN",
       "graphics_id": "OBJ_EVENT_GFX_CILAN",
       "x": 12,
       "y": 4,
@@ -80,6 +85,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GYM_CHILI",
       "graphics_id": "OBJ_EVENT_GFX_CHILI",
       "x": 10,
       "y": 3,
@@ -93,6 +99,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_GYM_CRESS",
       "graphics_id": "OBJ_EVENT_GFX_CRESS",
       "x": 14,
       "y": 3,
@@ -115,6 +122,88 @@
       "dest_warp_id": "05"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    }
+  ],
   "bg_events": []
 }

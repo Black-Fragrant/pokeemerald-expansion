@@ -1,1 +1,65 @@
-mapscripts StriatonCity_Gym_MapScripts {}
+mapscripts StriatonCity_Gym_MapScripts {
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_STRIATON_GYM_STATE, 0 : StriatonCity_Gym_EventScript_ReceptionistGivesWater
+    ]
+}
+
+script StriatonCity_Gym_EventScript_ReceptionistGivesWater
+{
+    lockall()
+    setvar(VAR_STRIATON_GYM_STATE, 1)
+	applymovement(LOCALID_STRIATON_GYM__GYMRECEPTIONIST, moves(walk_in_place_left))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_STRIATON_GYM__GYMRECEPTIONIST, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_STRIATON_GYM__GYMRECEPTIONIST, moves(walk_left * 3, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Hello! I'm Clyde. I'm the guide for\n"
+        "Trainers challenging a Pokémon Gym.\p"
+        "We appreciate your challenging the Gym.\n"
+        "Take this to commemorate the occasion.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM__GYMRECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_FRESH_WATER, 1)
+	call_if_eq (VAR_RESULT, FALSE, StriatonCity_Gym_EventScript_BagIsFull)
+    closemessage
+    delay(10)
+	applymovement(LOCALID_STRIATON_GYM__GYMRECEPTIONIST, moves(walk_right * 3, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    releaseall()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	return()
+}
+
+script StriatonCity_Gym_EventScript_GymReceptionist
+{
+	msgbox("One basic element of Pokémon battles is\n"
+       "the relationship between types.\p"
+       "If you choose Pokémon with effective\n"
+       "types and effective moves,\l"
+       "victory is just a step away!\p"
+       "In this Gym, you proceed by\n"
+       "stepping on the switch with\l"
+       "the type that is effective against the\l"
+       "Pokémon type shown on the curtain.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script StriatonCity_Gym_EventScript_Waitress_Bottom
+{
+	msgbox("Welcome!\p"
+       "We are very proud of our menu,\n"
+       "which we adjust to suit each Trainer!", MSGBOX_NPC, TRUE)
+	end
+}
