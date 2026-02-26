@@ -108,20 +108,20 @@
 #define VAR_ACCUMULA_PC_TUTORIAL                         0x4058
 #define VAR_ACCUMULA_TEAM_PLASMA_PREACH                  0x4059
 #define VAR_ROUTE2_MOTHER_GIVES_SHOES                    0x405A
-#define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
-#define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
+#define VAR_STRIATON_TRY_LEAVING                         0x405B
+#define VAR_STRIATON_GYM_STATE                           0x405C
 #define VAR_UNUSED_405D                                  0x405D
-#define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
-#define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
-#define VAR_ROUTE101_STATE                               0x4060
-#define VAR_ROUTE102_STATE                               0x4061 // Unused Var
-#define VAR_ROUTE103_STATE                               0x4062 // Unused Var
-#define VAR_ROUTE104_STATE                               0x4063
-#define VAR_ROUTE105_STATE                               0x4064 // Unused Var
-#define VAR_ROUTE106_STATE                               0x4065 // Unused Var
-#define VAR_ROUTE107_STATE                               0x4066 // Unused Var
-#define VAR_ROUTE108_STATE                               0x4067 // Unused Var
-#define VAR_ROUTE109_STATE                               0x4068 // Unused Var
+#define VAR_UNUSED_405E                                  0x405E
+#define VAR_UNUSED_405F                                  0x405F // Unused Var
+#define VAR_UNUSED_4060                                  0x4060
+#define VAR_UNUSED_4061                                  0x4061 // Unused Var
+#define VAR_UNUSED_4062                                  0x4062 // Unused Var
+#define VAR_UNUSED_4063                                  0x4063
+#define VAR_UNUSED_4064                                  0x4064 // Unused Var
+#define VAR_UNUSED_4065                                  0x4065 // Unused Var
+#define VAR_UNUSED_4066                                  0x4066 // Unused Var
+#define VAR_UNUSED_4067                                  0x4067 // Unused Var
+#define VAR_UNUSED_4068                                  0x4068 // Unused Var
 #define VAR_ROUTE110_STATE                               0x4069
 #define VAR_ROUTE111_STATE                               0x406A // Unused Var
 #define VAR_ROUTE112_STATE                               0x406B // Unused Var

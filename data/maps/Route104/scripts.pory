@@ -50,7 +50,7 @@ Route104_EventScript_RivalTrigger::
 	lockall
 	setflag FLAG_UNUSED_0xXXX
 	setvar VAR_ROUTE121_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_METEOR_FALLS_STATE, 2
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 10
