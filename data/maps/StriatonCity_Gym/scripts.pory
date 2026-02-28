@@ -1,8 +1,116 @@
-mapscripts StriatonCity_Gym_MapScripts {
+mapscripts StriatonCity_Gym_MapScripts 
+{
+        MAP_SCRIPT_ON_LOAD : StriatonCity_Gym_On_Load
+        MAP_SCRIPT_ON_TRANSITION : StriatonCity_Gym_On_Transition
         MAP_SCRIPT_ON_FRAME_TABLE
     [
         VAR_STRIATON_GYM_STATE, 0 : StriatonCity_Gym_EventScript_ReceptionistGivesWater
     ]
+}
+
+script StriatonCity_Gym_On_Load
+{
+	call_if_ge(VAR_STRIATON_GYM_STATE, 2, StriatonCity_Gym_EventScript_FireCurtainOpen)
+	call_if_ge(VAR_STRIATON_GYM_STATE, 3, StriatonCity_Gym_EventScript_WaterCurtainOpen)
+	call_if_ge(VAR_STRIATON_GYM_STATE, 4, StriatonCity_Gym_EventScript_GrassCurtainOpen)
+	end()
+
+}
+
+script StriatonCity_Gym_EventScript_FireCurtainOpen
+{
+	setmetatile (9, 31, 0x2B4, TRUE)
+	setmetatile (10, 31, 0x2B5, FALSE)
+	setmetatile (11, 31, 0x2B5, FALSE)
+	setmetatile (12, 31, 0x2B5, FALSE)
+	setmetatile (13, 31, 0x2B5, FALSE)
+	setmetatile (14, 31, 0x2B5, FALSE)
+	setmetatile (15, 31, 0x2B6, TRUE)
+	setmetatile (9, 32, 0x2BC, TRUE)
+	setmetatile (10, 32, 0x2C9, FALSE)
+	setmetatile (11, 32, 0x2C9, FALSE)
+	setmetatile (12, 32, 0x2C9, FALSE)
+	setmetatile (13, 32, 0x2C9, FALSE)
+	setmetatile (14, 32, 0x2C9, FALSE)
+	setmetatile (15, 32, 0x2BE, TRUE)
+	return()
+}
+
+script StriatonCity_Gym_EventScript_WaterCurtainOpen
+{
+	setmetatile (9, 22, 0x294, TRUE)
+	setmetatile (10, 22, 0x295, FALSE)
+	setmetatile (11, 22, 0x295, FALSE)
+	setmetatile (12, 22, 0x295, FALSE)
+	setmetatile (13, 22, 0x295, FALSE)
+	setmetatile (14, 22, 0x295, FALSE)
+	setmetatile (15, 22, 0x296, TRUE)
+	setmetatile (9, 23, 0x29C, TRUE)
+	setmetatile (10, 23, 0x28C, FALSE)
+	setmetatile (11, 23, 0x28C, FALSE)
+	setmetatile (12, 23, 0x28C, FALSE)
+	setmetatile (13, 23, 0x28C, FALSE)
+	setmetatile (14, 23, 0x28C, FALSE)
+	setmetatile (15, 23, 0x29E, TRUE)
+	return()
+}
+
+script StriatonCity_Gym_EventScript_GrassCurtainOpen
+{
+	setmetatile (9, 13, 0x27C, TRUE)
+	setmetatile (10, 13, 0x27D, FALSE)
+	setmetatile (11, 13, 0x27D, FALSE)
+	setmetatile (12, 13, 0x27D, FALSE)
+	setmetatile (13, 13, 0x27D, FALSE)
+	setmetatile (14, 13, 0x27D, FALSE)
+	setmetatile (15, 13, 0x27E, TRUE)
+	setmetatile (9, 14, 0x284, TRUE)
+	setmetatile (10, 14, 0x254, FALSE)
+	setmetatile (11, 14, 0x254, FALSE)
+	setmetatile (12, 14, 0x254, FALSE)
+	setmetatile (13, 14, 0x254, FALSE)
+	setmetatile (14, 14, 0x254, FALSE)
+	setmetatile (15, 14, 0x286, TRUE)
+	return()
+}
+
+script StriatonCity_Gym_On_Transition
+{
+	call_if_ge(VAR_STRIATON_GYM_STATE, 5, StriatonCity_Gym_EventScript_PositionLeaders)
+	call_if_ge(VAR_STRIATON_GYM_STATE, 6, StriatonCity_Gym_EventScript_PositionLeaders_Case3)
+	end()
+}
+
+script StriatonCity_Gym_EventScript_PositionLeaders
+{
+	goto_if_set(FLAG_CHOSE_SNIVY, StriatonCity_Gym_EventScript_PositionLeaders_Case1)
+	goto_if_set(FLAG_CHOSE_TEPIG, StriatonCity_Gym_EventScript_PositionLeaders_Case2)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_Gym_EventScript_PositionLeaders_Case3)
+    end()
+}
+
+script StriatonCity_Gym_EventScript_PositionLeaders_Case1
+{
+	setobjectxyperm (LOCALID_STRIATON_GYM_CRESS, 14, 3)
+	setobjectxyperm (LOCALID_STRIATON_GYM_CHILI, 12, 4)
+	setobjectxyperm (LOCALID_STRIATON_GYM_CILAN, 10, 3)
+    return()
+}
+
+script StriatonCity_Gym_EventScript_PositionLeaders_Case2
+{
+	setobjectxyperm (LOCALID_STRIATON_GYM_CRESS, 12, 4)
+	setobjectxyperm (LOCALID_STRIATON_GYM_CHILI, 10, 3)
+	setobjectxyperm (LOCALID_STRIATON_GYM_CILAN, 14, 3)
+    return()
+}
+
+script StriatonCity_Gym_EventScript_PositionLeaders_Case3
+{
+	setobjectxyperm (LOCALID_STRIATON_GYM_CRESS, 14, 3)
+	setobjectxyperm (LOCALID_STRIATON_GYM_CHILI, 10, 3)
+	setobjectxyperm (LOCALID_STRIATON_GYM_CILAN, 12, 4)
+    return()
 }
 
 script StriatonCity_Gym_EventScript_ReceptionistGivesWater
@@ -63,3 +171,574 @@ script StriatonCity_Gym_EventScript_Waitress_Bottom
        "which we adjust to suit each Trainer!", MSGBOX_NPC, TRUE)
 	end
 }
+
+script StriatonCity_Gym_EventScript_Battle_Waiter
+{
+	trainerbattle_single(TRAINER_WAITER_STRIATON_GYM,
+	text("Welcome to Striaton Gym!\p"
+    	    "Care for a taste of battle?\n"
+    	    "I'll serve up the first course!"),
+	text("That was one of our\n"
+       	    "most popular dishes.\l"
+       	    "Did you enjoy the battle?"))
+	msgbox("I think it is all right to move ahead\n"
+       "with Pokémon you've trained well, even\l"
+       "without thinking about type matchups.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script StriatonCity_Gym_EventScript_Battle_Waitress
+{
+	trainerbattle_single(TRAINER_WAITRESS_STRIATON_GYM,
+	text("The specialty of Striaton Gym--\n"
+       "the full-course 'Trainer de luxe!'\l"
+       "I'm your second course."),
+	text("Yow! You're a Trainer\n"
+       	    "with a lot of pepper!"))
+	msgbox("The specialty of Striaton Gym--\n"
+       "the full-course 'Trainer de luxe!'\l"
+       "To complete your repast--a Gym Leader.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Fire
+{
+    lock()
+    delay(10)
+    playse(SE_PIN)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 10, StriatonCity_Gym_EventScript_Trigger_Fire_Left)
+	call_if_eq (VAR_TEMP_0, 12, StriatonCity_Gym_EventScript_Trigger_Fire_Middle)
+	call_if_eq (VAR_TEMP_0, 14, StriatonCity_Gym_EventScript_Trigger_Fire_Right)
+	special(DrawWholeMapView)
+    waitse
+    delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 10, StriatonCity_Gym_EventScript_Trigger_Wrong)
+	call_if_eq (VAR_TEMP_0, 12, StriatonCity_Gym_EventScript_Trigger_Wrong)
+	call_if_eq (VAR_TEMP_0, 14, StriatonCity_Gym_EventScript_Trigger_Fire_Correct)
+	setmetatile (10, 34, 0x2CB, FALSE)
+	setmetatile (12, 34, 0x2CC, FALSE)
+	setmetatile (14, 34, 0x2CD, FALSE)
+	special(DrawWholeMapView)
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Fire_Left
+{
+	setmetatile (10, 34, 0x2FD, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Fire_Middle
+{
+	setmetatile (12, 34, 0x2FE, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Fire_Right
+{
+	setmetatile (14, 34, 0x2FF, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Wrong
+{
+    playse(SE_FAILURE)
+    delay(10)
+    waitse
+    return()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Fire_Correct
+{
+    playse(SE_SUCCESS)
+    call(StriatonCity_Gym_EventScript_FireCurtainOpen)
+	special(DrawWholeMapView)
+    delay(10)
+    waitse
+    setvar(VAR_STRIATON_GYM_STATE, 2)
+    return()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Water
+{
+    lock()
+    delay(10)
+    playse(SE_PIN)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 10, StriatonCity_Gym_EventScript_Trigger_Water_Left)
+	call_if_eq (VAR_TEMP_0, 12, StriatonCity_Gym_EventScript_Trigger_Water_Middle)
+	call_if_eq (VAR_TEMP_0, 14, StriatonCity_Gym_EventScript_Trigger_Water_Right)
+	special(DrawWholeMapView)
+    waitse
+    delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 10, StriatonCity_Gym_EventScript_Trigger_Water_Correct)
+	call_if_eq (VAR_TEMP_0, 12, StriatonCity_Gym_EventScript_Trigger_Wrong)
+	call_if_eq (VAR_TEMP_0, 14, StriatonCity_Gym_EventScript_Trigger_Wrong)
+	setmetatile (10, 25, 0x2A5, FALSE)
+	setmetatile (12, 25, 0x2A6, FALSE)
+	setmetatile (14, 25, 0x2A7, FALSE)
+	special(DrawWholeMapView)
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Water_Left
+{
+	setmetatile (10, 25, 0x305, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Water_Middle
+{
+	setmetatile (12, 25, 0x306, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Water_Right
+{
+	setmetatile (14, 25, 0x307, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Water_Correct
+{
+    playse(SE_SUCCESS)
+    call(StriatonCity_Gym_EventScript_WaterCurtainOpen)
+	special(DrawWholeMapView)
+    delay(10)
+    waitse
+    setvar(VAR_STRIATON_GYM_STATE, 3)
+    return()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Grass
+{
+    lock()
+    delay(10)
+    playse(SE_PIN)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 10, StriatonCity_Gym_EventScript_Trigger_Grass_Left)
+	call_if_eq (VAR_TEMP_0, 12, StriatonCity_Gym_EventScript_Trigger_Grass_Middle)
+	call_if_eq (VAR_TEMP_0, 14, StriatonCity_Gym_EventScript_Trigger_Grass_Right)
+	special(DrawWholeMapView)
+    waitse
+    delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 10, StriatonCity_Gym_EventScript_Trigger_Wrong)
+	call_if_eq (VAR_TEMP_0, 12, StriatonCity_Gym_EventScript_Trigger_Grass_Correct)
+	call_if_eq (VAR_TEMP_0, 14, StriatonCity_Gym_EventScript_Trigger_Wrong)
+	setmetatile (10, 16, 0x26A, FALSE)
+	setmetatile (12, 16, 0x26B, FALSE)
+	setmetatile (14, 16, 0x26C, FALSE)
+	special(DrawWholeMapView)
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Grass_Left
+{
+	setmetatile (10, 16, 0x30D, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Grass_Middle
+{
+	setmetatile (12, 16, 0x30E, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Grass_Right
+{
+	setmetatile (14, 16, 0x30F, FALSE)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_Grass_Correct
+{
+    playse(SE_SUCCESS)
+    call(StriatonCity_Gym_EventScript_GrassCurtainOpen)
+	special(DrawWholeMapView)
+    delay(10)
+    waitse
+    setvar(VAR_STRIATON_GYM_STATE, 4)
+    return()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_GymLeader
+{
+	lock()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 11, StriatonCity_Gym_EventScript_Trigger_GymLeader_Left)
+	call_if_eq (VAR_TEMP_0, 13, StriatonCity_Gym_EventScript_Trigger_GymLeader_Right)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	msgbox("Welcome to the Striaton City\n"
+       "Pokémon Gym.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+	destroy_speech_bubble()
+	closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(nurse_joy_bow))
+    waitmovement(0)
+    delay(10)
+    addobject(LOCALID_STRIATON_GYM_CHILI)
+    applymovement(LOCALID_STRIATON_GYM_CHILI,moves(walk_left * 2, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    waitmovement(0)
+    clearflag(FLAG_STRIATON_GYM_CHILI)
+    delay(10)
+    msgbox("I'm Chili! I light things up with\n"
+        "Fire-type Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    addobject(LOCALID_STRIATON_GYM_CRESS)
+    applymovement(LOCALID_STRIATON_GYM_CRESS,moves(walk_right * 2, face_up, face_left, face_down, face_right, face_up, face_left, face_down, face_right, face_up, face_left, face_down))
+    waitmovement(0)
+    clearflag(FLAG_STRIATON_GYM_CRESS)
+    delay(10)
+    msgbox("I'm a Water-type specialist,\n"
+        "and my name is Cress.\l"
+        "Pleased to make your acquaintance.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(face_left, delay_8, face_up, delay_8, face_right, delay_8, face_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("And my name is Cilan.\n"
+        "I like Grass-type Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CRESS,moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    applymovement(LOCALID_STRIATON_GYM_CHILI,moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(face_left, delay_8, face_up, delay_8, face_right, delay_8, face_down, delay_8, face_left, delay_8, face_up, delay_8, face_right, delay_8, face_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("Cilan: Um, you see...\p"
+        "As for why the three of us, um,\n"
+        "are all here is, well, er...", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Chili: Oh, enough! Listen up!\p"
+        "The three of us will\n"
+        "decide whom you'll battle!\p"
+        "It'll be based on the type of\n"
+        "the first Pokémon you chose!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	goto_if_set(FLAG_CHOSE_SNIVY, StriatonCity_Gym_EventScript_ChiliMoveFront)
+	goto_if_set(FLAG_CHOSE_TEPIG, StriatonCity_Gym_EventScript_CressMoveFront)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_Gym_EventScript_CilanMoveFront)
+    end()
+}
+
+script StriatonCity_Gym_EventScript_ChiliMoveFront
+{
+    msgbox("Cress: That is indeed the case.\p"
+       "And the partner you first chose was\n"
+       "Grass type, it seems.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CRESS,moves(lock_facing_direction, walk_up, unlock_facing_direction))
+    applymovement(LOCALID_STRIATON_GYM_CHILI,moves(walk_right * 2, walk_in_place_down))
+    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(walk_up, walk_left * 2, walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("Ta-da! The Fire-type scorcher Chili--\n"
+        "that's me-- will be your opponent!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    setvar(VAR_STRIATON_GYM_STATE, 5)
+    call(StriatonCity_Gym_EventScript_PositionLeaders_Case1)
+    release
+    end()
+}
+
+script StriatonCity_Gym_EventScript_CressMoveFront
+{
+    msgbox("Cress: That is indeed the case.\p"
+       "And the partner you first chose was\n"
+       "Fire type, it seems.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CRESS,moves(walk_left * 2, walk_in_place_down))
+    applymovement(LOCALID_STRIATON_GYM_CHILI,moves(lock_facing_direction, walk_up, unlock_facing_direction))
+    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(walk_up, walk_right * 2, walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("That is correct!\p"
+       "It shall be I and my esteemed Water\n"
+       "types that you must face in battle!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    setvar(VAR_STRIATON_GYM_STATE, 5)
+    call(StriatonCity_Gym_EventScript_PositionLeaders_Case2)
+    release
+    end()
+}
+
+script StriatonCity_Gym_EventScript_CilanMoveFront
+{
+    msgbox("Cress: That is indeed the case.\p"
+       "And the partner you first chose was\n"
+       "Water type, it seems.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CRESS,moves(lock_facing_direction, walk_up, unlock_facing_direction))
+    applymovement(LOCALID_STRIATON_GYM_CHILI,moves(lock_facing_direction, walk_up, unlock_facing_direction))
+    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("Nothing personal... No hard feelings...\n"
+        "Me and my Grass-type Pokémon will... um...\l"
+        "We're gonna battle, come what may.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    setvar(VAR_STRIATON_GYM_STATE, 5)
+    call(StriatonCity_Gym_EventScript_PositionLeaders_Case3)
+    release
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Trigger_GymLeader_Left
+{
+    applymovement(LOCALID_PLAYER, moves(walk_left, face_up))
+    waitmovement(0)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Trigger_GymLeader_Right
+{
+    applymovement(LOCALID_PLAYER, moves(walk_right, face_up))
+    waitmovement(0)
+    return
+}
+
+script StriatonCity_Gym_EventScript_Battle_Cilan
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_BADGE01_GET, StriatonCity_Gym_EventScript_Cilan_AcquiredBadge)
+    goto_if_set(FLAG_CHOSE_SNIVY, StriatonCity_Gym_EventScript_Cilan_NoBattle)
+    goto_if_set(FLAG_CHOSE_TEPIG, StriatonCity_Gym_EventScript_Cilan_NoBattle)
+    msgbox("So, um, if you're OK with me, I'll, um,\n"
+        "put everything I've got into being, er,\n"
+        "you know, your opponent.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_CILAN_STRIATON_GYM, text("Er...\nIs it over now?"))
+        msgbox("...What a surprise.\n"
+        "You... are very strong.\p"
+        "Seems like not even\n"
+        "Chili or Cress could best you...", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    message("{PLAYER} received\n"
+        "the Trio Badge from Cilan!") //this should be transparent
+	playfanfare(MUS_OBTAIN_BADGE)
+    waitmessage
+	waitfanfare
+	setflag(FLAG_BADGE01_GET)
+    settrainerflag(TRAINER_WAITER_STRIATON_GYM)
+    settrainerflag(TRAINER_WAITRESS_STRIATON_GYM)
+    closemessage
+    delay(10)
+    setvar(VAR_STRIATON_GYM_STATE, 6)
+    goto(StriatonCity_Gym_EventScript_BadgeObtained)
+}
+
+script StriatonCity_Gym_EventScript_Cilan_NoBattle
+{
+    msgbox("...Uh hm. I always seem to lose\n"
+        "the timing of... of the dance.\p"
+        "Like that. True enough, I did\n"
+        "want to... want to have a\l"
+        "Pokémon battle with you.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Cilan_AcquiredBadge
+{
+    msgbox("In the Unova region, we are\n"
+        "still novice Gym Leaders.\p"
+        "Which means the other Gym Leaders\n"
+        "are much stronger than we are.\p"
+        "We'll need to\n"
+        "work hard and improve.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Battle_Chili
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_BADGE01_GET, StriatonCity_Gym_EventScript_Chili_AcquiredBadge)
+    goto_if_set(FLAG_CHOSE_TEPIG, StriatonCity_Gym_EventScript_Chili_NoBattle)
+    goto_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_Gym_EventScript_Chili_NoBattle)
+    msgbox("Yeeeeoow!\p"
+        "Time to play with FIRE!!\n"
+        "I'm the strongest of us brothers!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_CHILI_STRIATON_GYM, text("You got me.\p I am... burned... out..."))
+        msgbox("Well, it's the Pokémon League's rule.\n"
+        "Take this Gym Badge!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+    message("{PLAYER} received\n"
+        "the Trio Badge from Chili!") //this should be transparent
+	playfanfare(MUS_OBTAIN_BADGE)
+    waitmessage
+	waitfanfare
+	setflag(FLAG_BADGE01_GET)
+    settrainerflag(TRAINER_WAITER_STRIATON_GYM)
+    settrainerflag(TRAINER_WAITRESS_STRIATON_GYM)
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CHILI, moves(walk_up, walk_left * 2, walk_in_place_down))
+    applymovement(LOCALID_STRIATON_GYM_CILAN, moves(walk_down, walk_right * 2, walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    setvar(VAR_STRIATON_GYM_STATE, 6)
+    goto(StriatonCity_Gym_EventScript_BadgeObtained)
+}
+
+script StriatonCity_Gym_EventScript_Chili_NoBattle
+{
+    msgbox("Aww, man!\n"
+        "I was all fired up, too!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Chili_AcquiredBadge
+{
+    msgbox("I can't believe TMs can\n"
+        "be used over and over!\p"
+        "If you wanted, you could use\n"
+        "one to teach all your Pokémon\l"
+        "the same move!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
+    destroy_speech_bubble()
+    closemessage
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Battle_Cress
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_BADGE01_GET, StriatonCity_Gym_EventScript_Cress_AcquiredBadge)
+    goto_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_Gym_EventScript_Cress_NoBattle)
+    goto_if_set(FLAG_CHOSE_SNIVY, StriatonCity_Gym_EventScript_Cress_NoBattle)
+    msgbox("What incredible luck for you--you get to\n"
+        "battle the best among the three of us.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_CRESS_STRIATON_GYM, text("Lose? Me?\n I don't believe this."))
+        msgbox("Why, you're quite remarkable.\p"
+        "It's the Pokémon League's rule, so--\n"
+        "please take this Badge.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    message("{PLAYER} received\n"
+        "the Trio Badge from Cress!") //this should be transparent
+	playfanfare(MUS_OBTAIN_BADGE)
+    waitmessage
+	waitfanfare
+	setflag(FLAG_BADGE01_GET)
+    settrainerflag(TRAINER_WAITER_STRIATON_GYM)
+    settrainerflag(TRAINER_WAITRESS_STRIATON_GYM)
+    closemessage
+    delay(10)
+    applymovement(LOCALID_STRIATON_GYM_CRESS, moves(walk_up, walk_right * 2, walk_in_place_down))
+    applymovement(LOCALID_STRIATON_GYM_CILAN, moves(walk_down, walk_left * 2, walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    setvar(VAR_STRIATON_GYM_STATE, 6)
+    goto(StriatonCity_Gym_EventScript_BadgeObtained)
+}
+
+script StriatonCity_Gym_EventScript_Cress_NoBattle
+{
+    msgbox("How exceedingly lucky for you\n"
+        "that you do not have to face me.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_Cress_AcquiredBadge
+{
+    msgbox("If there were 18 siblings in\n"
+        "the Striaton City Gym...\p"
+        "There cuold be a specialist for\n"
+        "each type of Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
+    destroy_speech_bubble()
+    closemessage
+    release()
+    end()
+}
+
+script StriatonCity_Gym_EventScript_BadgeObtained
+{
+    call(StriatonCity_Gym_EventScript_PositionLeaders_Case3)
+    msgbox("Gym Badges are proof\n"
+        "of a Trainer's abilities.\p"
+        "If you have one Badge, Pokémon, including\n"
+        "traded Pokémon up to Lv. 20,\l"
+        "will obey you without question.\p"
+        "We also want you to have this.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_WORK_UP)
+	call_if_eq (VAR_RESULT, FALSE, StriatonCity_Gym_EventScript_BagIsFull)
+    closemessage
+    msgbox("TM83 contains Work Up.\p"
+        "If you use Work Up, the Pokémon's\n"
+        "Attack and Sp. Attack go up!\p"
+        "By the way, TMs can be used\n"
+        "as many times as you want.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
+    destroy_speech_bubble()
+    closemessage
+    setvar(VAR_STRIATON_FENNEL_STATE, 1)
+    clearflag(FLAG_STRIATON_FENNEL)
+    release()
+    end()
+}
+

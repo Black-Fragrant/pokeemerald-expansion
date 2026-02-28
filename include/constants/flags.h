@@ -784,10 +784,10 @@
 #define FLAG_DREAMYARD_REJECTED_MONKEY                              0x2DF
 #define FLAG_DREAMYARD_RECEIVED_MONKEY                              0x2E0
 #define FLAG_DREAMYARD_ITEM_X_DEFEND                                0x2E1
-#define FLAG_UNUSED_0x2E2                                           0x2E2
-#define FLAG_UNUSED_0x2E3                                           0x2E3
-#define FLAG_UNUSED_0x2E4                                           0x2E4
-#define FLAG_UNUSED_0x2E5                                           0x2E5
+#define FLAG_STRIATON_GYM_CHILI                                     0x2E2
+#define FLAG_STRIATON_GYM_CRESS                                     0x2E3
+#define FLAG_STRIATON_FENNEL                                        0x2E4
+#define FLAG_STRIATON_TRB1F_FENNEL                                  0x2E5
 #define FLAG_UNUSED_0x2E6                                           0x2E6
 #define FLAG_UNUSED_0x2E7                                           0x2E7
 #define FLAG_UNUSED_0x2E8                                           0x2E8

@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_STRIATON_TRB2F_FENNEL",
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_FEMALE",
       "x": 11,
       "y": 9,
@@ -24,10 +25,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TRB2F_EventScript_Fennel",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_STRIATON_TRB2F_SCHOOLGIRL",
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_GIRL",
       "x": 4,
       "y": 8,
@@ -37,12 +39,13 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "StriatonCity_TRB2F_EventScript_SchoolGirl",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
+      "warp_id": "WARP_ID_STRIATON_CITY_TRB2F",
       "x": 11,
       "y": 3,
       "elevation": 0,

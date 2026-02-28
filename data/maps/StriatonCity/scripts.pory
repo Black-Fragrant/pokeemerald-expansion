@@ -1,4 +1,50 @@
-mapscripts StriatonCity_MapScripts {}
+mapscripts StriatonCity_MapScripts 
+{
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_STRIATON_FENNEL_STATE, 1 : StriatonCity_EventScript_FennelOutsideGym
+    ]
+}
+
+script StriatonCity_EventScript_FennelOutsideGym
+{
+	lockall()
+    setvar(VAR_STRIATON_FENNEL_STATE, 2)
+	applymovement(LOCALID_STRIATON_FENNEL, moves(walk_in_place_up))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_STRIATON_FENNEL, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_STRIATON_FENNEL, moves(walk_right, walk_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Hey there!\n"
+			"I'm Fennel.\p"
+			"Professor Juniper asked me\n"
+			"to give you something.\l"
+			"Please, follow me!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_FENNEL)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_STRIATON_FENNEL, moves(walk_down * 6, walk_right))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_down * 7, walk_in_place_right))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject(LOCALID_STRIATON_FENNEL)
+	setflag(FLAG_STRIATON_FENNEL)
+	clearflag(FLAG_STRIATON_TRB1F_FENNEL)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_right))
+	waitmovement(0)
+	delay(10)
+	warp(MAP_STRIATON_CITY_TOP_RIGHT_BUILDING1F, WARP_ID_STRIATON_CITY_TRB1F_ENTRANCE)
+	waitstate()
+	end()
+}
 
 script StriatonCity_EventScript_SignPost
 {
@@ -176,7 +222,7 @@ script StriatonCity_EventScript_Cilan
 	call_if_set(FLAG_CHOSE_OSHAWOTT, StriatonCity_EventScript_Cilan_Oshawott)
 	destroy_speech_bubble()
 	closemessage()
-	goto_if_set(FLAG_DREAMYARD_RECEIVED_MONKEY, StriatonCity_EventScript_Cilan_Remind)
+	goto_if_unset(FLAG_DREAMYARD_RECEIVED_MONKEY, StriatonCity_EventScript_Cilan_Remind)
 	msgbox("I think you need to prepare to face\n"
         "that type.\p"
         "I'll be waiting for you inside.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_CILAN)
@@ -246,6 +292,9 @@ script StriatonCity_EventScript_Cilan_Oshawott
 
 script StriatonCity_EventScript_Grandpa_Gate
 {
+	lock
+	faceplayer
+	goto_if_ge(VAR_STRIATON_FENNEL_STATE, 1, StriatonCity_EventScript_Grandpa_Gate_2)
 	msgbox("You don't seem to have any Gym Badges,\n"
        "so I can't let you by.\p"
        "With your lack of training, you'll have\n"
@@ -253,6 +302,15 @@ script StriatonCity_EventScript_Grandpa_Gate
        "Let me give you some friendly advice.\p"
        "Challenge a Gym Leader in this town,\n"
        "and test your ability!", MSGBOX_NPC, TRUE)
+	release()
+	end
+}
+
+script StriatonCity_EventScript_Grandpa_Gate_2
+{
+	msgbox("The scientist Fennel was looking for you\n"
+       "a little while ago!", MSGBOX_NPC, TRUE)
+	release()
 	end
 }
 
@@ -271,6 +329,7 @@ script StriatonCity_EventScript_Gate_Trigger
 	applymovement(LOCALID_PLAYER, moves(face_right))
 	waitmovement(0)
 	delay(10)
+	goto_if_ge(VAR_STRIATON_FENNEL_STATE, 1, StriatonCity_EventScript_Gate_Trigger_2)
 	msgbox("You don't seem to have any Gym Badges,\n"
        "so I can't let you by.\p"
        "With your lack of training, you'll have\n"
@@ -278,6 +337,22 @@ script StriatonCity_EventScript_Gate_Trigger
        "Here's some friendly advice.\n"
        "Challenge a Gym Leader in this town,\l"
        "and test your ability!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GRANDPA_GATE)
+	destroy_speech_bubble()
+	closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 20, StriatonCity_EventScript_Gate_Trigger_Pos4)
+	call_if_eq (VAR_TEMP_0, 21, StriatonCity_EventScript_Gate_Trigger_Pos5)
+	call_if_eq (VAR_TEMP_0, 22, StriatonCity_EventScript_Gate_Trigger_Pos6)
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	waitmovement(0)
+	release()
+	end
+}
+
+script StriatonCity_EventScript_Gate_Trigger_2
+{
+	msgbox("The scientist Fennel was looking for you\n"
+       "a little while ago!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GRANDPA_GATE)
 	destroy_speech_bubble()
 	closemessage
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)

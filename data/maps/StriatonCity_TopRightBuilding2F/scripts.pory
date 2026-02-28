@@ -1,1 +1,131 @@
-mapscripts StriatonCity_TopRightBuilding2F_MapScripts {}
+mapscripts StriatonCity_TopRightBuilding2F_MapScripts 
+{
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_STRIATON_FENNEL_STATE, 3 : StriatonCity_TRB2F_EventScript_FennelGivesHM01
+    ]
+}
+
+script StriatonCity_TRB2F_EventScript_FennelGivesHM01
+{
+	lockall()
+    setvar(VAR_STRIATON_FENNEL_STATE, 4)
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 5))
+	waitmovement(0)
+	delay(10)
+    msgbox("So like I said, I'm Fennel, and as you can\n"
+            "see, I'm a scientist.\p"
+            "In fact, the subject I'm researching\n"
+            "is Trainers!\p"
+            "Professor Juniper is my friend\n"
+            "from college.\p"
+            "She asked me to help you guys.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    msgbox("So!\p"
+            "I'll give you something to help you.\n"
+            "This is a Hidden Machine for you!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	giveitem(ITEM_HM_CUT, 1)
+	call_if_eq (VAR_RESULT, FALSE, StriatonCity_TRB2F_EventScript_BagIsFull)
+    msgbox("There are some moves that a Pokémon can\n"
+            "use even when it is not fighting!\p"
+            "With this Hidden Machine, you can teach\n"
+            "your Pokémon a move called Cut.\l"
+            "It can cut down a small tree.\p"
+            "And you can use the Hidden Machine as\n"
+            "many times as you want, like a TM.\l"
+            "Isn't that great?\p"
+            "But it's difficult to make a Pokémon\n"
+            "forget a hidden move once it learns it.\p"
+            "And I'd like to ask you a favor, too!\p"
+            "There is a place called the Dreamyard\n"
+            "on the outskirts of Striaton City.\p"
+            "I'd like some of the Dream Mist that a\n"
+            "Pokémon there called Munna gives off.\p"
+            "With that, I'll be able to use\n"
+            "Game Sync to collect save files of\l"
+            "various Trainers!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    releaseall()
+    end()
+}
+
+script StriatonCity_TRB2F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	return()
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_SYS_PC_LANETTE, StriatonCity_TRB2F_EventScript_SchoolGirl_2)
+	msgbox("Are you a Trainer?\p"
+            "Do you use the PC at Pokémon Centers?\p"
+            "I am Amanita. I maintain the Box system.\n"
+            "Do you know about the Battle Box?", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+	goto_if_eq(VAR_RESULT, FALSE, StriatonCity_TRB2F_EventScript_SchoolGirl_No)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Impressive!\p"
+            "If there's a Pokémon you often use in\n"
+            "your battles, you can register it in the\l"
+            "Battle Box!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_SYS_PC_LANETTE)
+    release
+	end
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl_No
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Amanita: Let me give you a quick how to!\p"
+            "If there's a Pokémon you often use in\n"
+            "your battles, you can register it in the\l"
+            "Battle Box!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_SYS_PC_LANETTE)
+    release
+	end
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl_2
+{
+    msgbox("Please do use the Battle Box.\p"
+            "You can register Pokémon in the PC\n"
+            "over there, too!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel
+{   
+	msgbox("Did Juniper ask you to complete\n"
+            "the Pokédex?\p"
+            "It is a challenge to update the Pokédex\n"
+            "regularly, isn't it?\p"
+            "Oops! I got distracted! Please bring me\n"
+            "some of the Dream Mist that Munna\l"
+            "gives off in the Dreamyard!", MSGBOX_NPC, TRUE)
+	end
+}
+

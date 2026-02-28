@@ -124,5 +124,9 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_ACCUMULA_TEAM_PLASMA
 	setflag FLAG_ACCUMULA_N
 	setflag FLAG_STRIATON_CILAN
+	setflag FLAG_STRIATON_GYM_CHILI
+	setflag FLAG_STRIATON_GYM_CRESS
+	setflag FLAG_STRIATON_FENNEL
+	setflag FLAG_STRIATON_TRB1F_FENNEL
 	call EventScript_ResetAllBerries
 	end
