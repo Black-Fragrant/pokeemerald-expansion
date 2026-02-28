@@ -232,5 +232,22 @@
       "script": "StriatonCity_Gym_EventScript_Trigger_GymLeader"
     }
   ],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 37,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "StriatonCity_Gym_EventScript_GymSign"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 37,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "StriatonCity_Gym_EventScript_GymSign"
+    }
+  ]
 }
