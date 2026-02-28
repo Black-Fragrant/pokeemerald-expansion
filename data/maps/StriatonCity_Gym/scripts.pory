@@ -152,6 +152,8 @@ script StriatonCity_Gym_EventScript_BagIsFull
 
 script StriatonCity_Gym_EventScript_GymReceptionist
 {
+    lock
+    goto_if_set(FLAG_BADGE01_GET, StriatonCity_Gym_EventScript_GymReceptionist_AfterBadge)
 	msgbox("One basic element of Pokémon battles is\n"
        "the relationship between types.\p"
        "If you choose Pokémon with effective\n"
@@ -161,6 +163,32 @@ script StriatonCity_Gym_EventScript_GymReceptionist
        "stepping on the switch with\l"
        "the type that is effective against the\l"
        "Pokémon type shown on the curtain.", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script StriatonCity_Gym_EventScript_GymSign
+{
+    goto(StriatonCity_Gym_EventScript_GymSign_AfterBadge)
+	msgbox("Striaton Pokémon Gym\p"
+			"Gym Leaders: Cress, Chili, and Cilan", MSGBOX_SIGN)
+	end
+}
+
+script StriatonCity_Gym_EventScript_GymSign_AfterBadge
+{
+	msgbox("Striaton Pokémon Gym\p"
+			"Gym Leaders: Cress, Chili, and Cilan\n"
+			"Certified Trainers: {PLAYER}", MSGBOX_SIGN)
+	end
+}
+
+script StriatonCity_Gym_EventScript_GymReceptionist_AfterBadge
+{
+    msgbox("I hope you'll always remember the\n"
+            "incredible moment when you received\l"
+            "this Gym Badge.", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
@@ -738,6 +766,7 @@ script StriatonCity_Gym_EventScript_BadgeObtained
     closemessage
     setvar(VAR_STRIATON_FENNEL_STATE, 1)
     clearflag(FLAG_STRIATON_FENNEL)
+    setflag(FLAG_STRIATON_TS_CHEREN)
     release()
     end()
 }
