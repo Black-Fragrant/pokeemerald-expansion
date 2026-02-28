@@ -372,8 +372,8 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_CYCLIST] = { _("Cyclist"), 1 },
     [TRAINER_CLASS_POKE_KID] = { _("Poké Kid"), 1 },
     [TRAINER_CLASS_VETERAN] = { _("Veteran"), 1 },
-    [TRAINER_CLASS_WAITER] = { _("Waiter"), 1 },
-    [TRAINER_CLASS_WAITRESS] = { _("Waitress"), 1 },
+    [TRAINER_CLASS_WAITER] = { _("Waiter"), 10 },
+    [TRAINER_CLASS_WAITRESS] = { _("Waitress"), 10 },
     [TRAINER_CLASS_WORKER] = { _("Worker"), 1 },
     [TRAINER_CLASS_BACKERS] = { _("Backers"), 1 },
     [TRAINER_CLASS_BAKER] = { _("Baker"), 1 },
@@ -5364,7 +5364,7 @@ static void HandleEndTurn_BattleWon(void)
         gBattlescriptCurrInstr = BattleScript_FrontierTrainerBattleWon;
 
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
-            PlayBGM(MUS_VICTORY_GYM_LEADER);
+            PlayBGM(MUS_BW_GYM_LEADER);
         else
             PlayBGM(MUS_VICTORY_TRAINER);
     }
@@ -5388,7 +5388,7 @@ static void HandleEndTurn_BattleWon(void)
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
         case TRAINER_CLASS_LEADER:
-            PlayBGM(MUS_VICTORY_GYM_LEADER);
+            PlayBGM(MUS_BW_GYM_LEADER);
             break;
         default:
             PlayBGM(MUS_BW_VICTORY_TRAINER);

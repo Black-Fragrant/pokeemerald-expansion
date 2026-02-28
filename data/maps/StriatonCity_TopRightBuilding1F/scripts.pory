@@ -1,4 +1,62 @@
-mapscripts StriatonCity_TopRightBuilding1F_MapScripts {}
+mapscripts StriatonCity_TopRightBuilding1F_MapScripts 
+{
+        MAP_SCRIPT_ON_TRANSITION : StriatonCity_TRB1F_On_Transition
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_STRIATON_FENNEL_STATE, 2 : StriatonCity_TRB1F_EventScript_FennelWalkUp
+    ]
+}
+
+script StriatonCity_TRB1F_EventScript_FennelWalkUp
+{
+	lockall()
+    setvar(VAR_STRIATON_FENNEL_STATE, 3)
+	delay(10)
+	applymovement(LOCALID_STRIATON_TRB1F_FENNEL, moves(walk_up * 5, walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_up * 5))
+	waitmovement(0)
+	delay(10)
+	msgbox("You're going to meet all of the\n"
+            "Pokémon in the Unova region. Am I right?\p"
+            "Oh, the stairs are right here!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB1F_FENNEL)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_STRIATON_TRB1F_FENNEL, moves(walk_up * 3, walk_right, walk_in_place_left))
+	applymovement(LOCALID_PLAYER, moves(walk_up * 4, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("My room is upstairs here.\n"
+			"Come on, go upstairs!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB1F_FENNEL)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_STRIATON_TRB1F_FENNEL, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject(LOCALID_STRIATON_TRB1F_FENNEL)
+	setflag(FLAG_STRIATON_TRB1F_FENNEL)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_right))
+	waitmovement(0)
+	delay(20)
+	warp(MAP_STRIATON_CITY_TOP_RIGHT_BUILDING2F, WARP_ID_STRIATON_CITY_TRB2F)
+	waitstate()
+	end()
+}
+
+script StriatonCity_TRB1F_On_Transition
+{
+	call_if_eq(VAR_STRIATON_FENNEL_STATE, 0, StriatonCity_TRB1F_EventScript_PositionBoy)
+	end
+}
+
+script StriatonCity_TRB1F_EventScript_PositionBoy
+{
+	setobjectxyperm (LOCALID_STRIATON_TRB1F_BOY, 8, 3)
+	return()
+}
 
 script StriatonCity_TRB1F_EventScript_Girl
 {
@@ -10,8 +68,22 @@ script StriatonCity_TRB1F_EventScript_Girl
 
 script StriatonCity_TRB1F_EventScript_Boy
 {
+	lock()
+	faceplayer
+	goto_if_eq(VAR_STRIATON_FENNEL_STATE, 0, StriatonCity_TRB1F_EventScript_Boy_2)
 	msgbox("She may not look like it,\n"
            "but Fennel is a great scientist!", MSGBOX_NPC, TRUE)
+	release
+	end
+}
+
+script StriatonCity_TRB1F_EventScript_Boy_2
+{
+	msgbox("You can't go upstairs now!\p"
+			"'Cause Fennel said she was testing\n"
+			"something, and she had a scary look\l"
+           "on her face!", MSGBOX_NPC, TRUE)
+	release
 	end
 }
 

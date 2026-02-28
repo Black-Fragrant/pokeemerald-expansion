@@ -108,6 +108,7 @@ script Dreamyard_EventScript_Girl_GivePanpour3
 			msgbox("Your Pokémon Storage is full...")
 			closemessage
 		}
+	playbgm(MUS_BW_DREAM_YARD, TRUE)
     goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
     end()
 }
@@ -167,6 +168,7 @@ script Dreamyard_EventScript_Girl_GivePansage3
 			msgbox("Your Pokémon Storage is full...")
 			closemessage
 		}
+	playbgm(MUS_BW_DREAM_YARD, TRUE)
     goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
     end()
 }
@@ -226,6 +228,7 @@ script Dreamyard_EventScript_Girl_GivePansear3
 			msgbox("Your Pokémon Storage is full...")
 			closemessage
 		}
+	playbgm(MUS_BW_DREAM_YARD, TRUE)
     goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
     end()
 }

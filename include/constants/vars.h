@@ -110,7 +110,7 @@
 #define VAR_ROUTE2_MOTHER_GIVES_SHOES                    0x405A
 #define VAR_STRIATON_TRY_LEAVING                         0x405B
 #define VAR_STRIATON_GYM_STATE                           0x405C
-#define VAR_UNUSED_405D                                  0x405D
+#define VAR_STRIATON_FENNEL_STATE                        0x405D
 #define VAR_UNUSED_405E                                  0x405E
 #define VAR_UNUSED_405F                                  0x405F // Unused Var
 #define VAR_UNUSED_4060                                  0x4060
