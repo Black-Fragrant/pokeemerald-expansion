@@ -5808,6 +5808,8 @@ u16 GetBattleBGM(void)
             return MUS_BW_VS_CHEREN_BIANCA;
         case TRAINER_CLASS_PKMN_TRAINER_2:
             return MUS_BW_VS_N;
+        case TRAINER_CLASS_TEAM_PLASMA:
+            return MUS_BW_VS_PLASMA_GRUNT_1;
         default:
             return MUS_BW_VS_TRAINER_1;
         }

@@ -5390,6 +5390,9 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_LEADER:
             PlayBGM(MUS_BW_GYM_LEADER);
             break;
+        case TRAINER_CLASS_TEAM_PLASMA:
+            PlayBGM(MUS_BW_VICTORY_PLASMA);
+            break;
         default:
             PlayBGM(MUS_BW_VICTORY_TRAINER);
             break;

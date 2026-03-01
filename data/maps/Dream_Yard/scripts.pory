@@ -1,4 +1,33 @@
-mapscripts Dream_Yard_MapScripts {}
+mapscripts Dream_Yard_MapScripts 
+{
+        MAP_SCRIPT_ON_TRANSITION : Dream_Yard_On_Transition
+}
+
+script Dream_Yard_On_Transition
+{
+	call_if_eq(VAR_DREAMYARD_STATE, 1, Dreamyard_EventScript_PositionBianca)
+	call_if_eq(VAR_DREAMYARD_STATE, 2, Dreamyard_EventScript_PositionBianca_2)
+	call_if_eq(VAR_DREAMYARD_STATE, 3, Dreamyard_EventScript_PositionBianca_3)
+	end()
+}
+
+script Dreamyard_EventScript_PositionBianca
+{
+	setobjectxyperm (LOCALID_DREAMYARD_BIANCA, 17, 20)
+    return()
+}
+
+script Dreamyard_EventScript_PositionBianca_2
+{
+	setobjectxyperm (LOCALID_DREAMYARD_BIANCA, 18, 20)
+    return()
+}
+
+script Dreamyard_EventScript_PositionBianca_3
+{
+	setobjectxyperm (LOCALID_DREAMYARD_BIANCA_HIDDEN, 21, 10)
+    return()
+}
 
 script Dreamyard_EventScript_Battle_Lass
 {
@@ -255,4 +284,533 @@ script Dreamyard_EventScript_Girl_RejectMonkey
     setflag(FLAG_DREAMYARD_REJECTED_MONKEY)
     release()
     end()
+}
+
+script Dreamyard_EventScript_Bianca
+{
+    lock
+    goto_if_eq(VAR_DREAMYARD_STATE, 3, Dreamyard_EventScript_Bianca_Finish)
+    goto_if_eq(VAR_DREAMYARD_STATE, 2, Dreamyard_EventScript_Bianca_Continue)
+	msgbox("Bianca: I'm just really, really wondering\n"
+       "how showing dreams works...", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script Dreamyard_EventScript_Bianca_Continue
+{
+	msgbox("Bianca: Hey!\p"
+        "Did you hear a sound coming\n"
+        "from the other side of that wall?\p"
+        "Come on! Let's go see!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script Dreamyard_EventScript_Bianca_Finish
+{
+	msgbox("Bianca: {PLAYER}, why don't you\n"
+        "go to Fennel's house?\p"
+        "Me? Well, I'm going to go look\n"
+        "for the Pokémon we saw just now.", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script Dreamyard_EventScript_Trigger_Bianca
+{
+    lock
+    clearflag(FLAG_DREAMYARD_BIANCA)
+    addobject(LOCALID_DREAMYARD_BIANCA)
+    delay(10)
+	playbgm(MUS_BW_BIANCA, TRUE)
+    applymovement(LOCALID_PLAYER, moves(face_left, delay_16 * 4, walk_down, face_left))
+    applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_right * 7))
+    waitmovement(0)
+    delay(20)
+    msgbox("Hi, {PLAYER}! Are you looking\n"
+            "for the mysterious Pokémon, too?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_PLAYER, moves(delay_16 * 4, face_up))
+    applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_up, walk_right, walk_up * 4, walk_in_place_right, delay_16, , walk_in_place_left, delay_16, , walk_in_place_right))
+    waitmovement(0)
+    delay(10)
+	playbgm(MUS_BW_DREAM_YARD, TRUE)
+    delay(10)
+    setvar(VAR_DREAMYARD_STATE, 1)
+	setobjectxyperm (LOCALID_DREAMYARD_BIANCA, 17, 20)
+    release
+    end
+}
+
+script Dreamyard_EventScript_Trigger_MunnaCry
+{
+    lock
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	waitmoncry
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_in_place_up))
+    waitmovement(0)
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_DREAMYARD_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 20, Dreamyard_EventScript_Trigger_MunnaCry_Pos1)
+	call_if_eq (VAR_TEMP_1, 21, Dreamyard_EventScript_Trigger_MunnaCry_Pos2)
+	call_if_eq (VAR_TEMP_1, 22, Dreamyard_EventScript_Trigger_MunnaCry_Pos3)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Hey!\p"
+        "Did you hear a sound coming\n"
+        "from the other side of that wall?\p"
+        "Come on! Let's go see!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    setvar(VAR_DREAMYARD_STATE, 2)
+	setobjectxyperm (LOCALID_DREAMYARD_BIANCA, 18, 20)
+    release
+    end
+}
+
+script Dreamyard_EventScript_Trigger_MunnaCry_Pos1
+{
+	applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_right))
+	waitmovement(0)
+    return
+}
+
+script Dreamyard_EventScript_Trigger_MunnaCry_Pos2
+{
+	applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_down, walk_right))
+	waitmovement(0)
+    return
+}
+
+script Dreamyard_EventScript_Trigger_MunnaCry_Pos3
+{
+	applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_down * 2, walk_right))
+	waitmovement(0)
+    return
+}
+
+script Dreamyard_EventScript_Trigger_TeamPlasma
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 20, Dreamyard_EventScript_Trigger_TeamPlasma_Pos1)
+	call_if_eq (VAR_TEMP_0, 22, Dreamyard_EventScript_Trigger_TeamPlasma_Pos3)
+    addobject(LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_up * 4, walk_left, walk_up))
+	waitmovement(0)
+    delay(10)
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	msgbox("Muuuun...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_MUNNA)
+    destroy_speech_bubble()
+    closemessage
+	waitmoncry
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_MUNNA, moves(walk_up * 3))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca, Oh! Wait!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_up * 3))
+    applymovement(LOCALID_PLAYER, moves(walk_up * 3))
+	waitmovement(0)
+    delay(10)
+    playbgm(MUS_BW_APPEARS_PLASMA_2, TRUE)
+    addobject(LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    addobject(LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_right * 2, walk_down))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_right * 2, walk_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("???: We found you, Munna!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_right * 2, walk_down, walk_in_place_right))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_right * 3, walk_down, walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("???: Come on! Come on!\n"
+        "Make some Dream Mist!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	msgbox("Munna: ...Mu!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_MUNNA)
+    destroy_speech_bubble()
+    closemessage
+	waitmoncry
+    applymovement(LOCALID_DREAMYARD_MUNNA, moves(walk_in_place_right, delay_16, walk_in_place_left, delay_16, walk_in_place_right))
+	waitmovement(0)
+    msgbox("Bianca: Huh?\p"
+       "Who are you?!\p"
+       "What are you doing?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_down))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("???: Are you talking about us?\n"
+       "We're Team Plasma.\p"
+       "We battle day and night to liberate\n"
+       "Pokémon from foolish humans.", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Team Plasma: What are we doing?\p"
+       "The Pokémon Munna and Musharna\n"
+       "emit a mysterious vapor called Dream\l"
+       "Mist, which shows people's dreams.\p"
+       "We're going to use that to make people\n"
+       "want to release their Pokémon...\p"
+       "We'll show them dreams\n"
+       "to manipulate their hearts.", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(face_right, lock_facing_direction, walk_slow_left, delay_8, walk_fast_right, unlock_facing_direction, walk_in_place_fast_right))
+	waitmovement(0)
+    playse(SE_NOT_EFFECTIVE)
+    waitse
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	msgbox("Munna: Mu... Naa...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_MUNNA)
+    destroy_speech_bubble()
+    closemessage
+	waitmoncry
+    delay(10)
+    msgbox("Team Plasma: Come on!\n"
+       "Spit out that Dream Mist!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Bianca: You're kicking a Pokémon\n"
+       "to make it give off Dream Mist?\p"
+       "That's mean! Why?\n"
+       "You're Trainers too, right?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_down))
+	waitmovement(0)
+    msgbox("Team Plasma: That's right.\p"
+       "We're Pokémon Trainers too, but\n"
+       "we're fighting for a different reason.\p"
+       "Unlike you two, we're fighting for\n"
+       "the freedom of Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Team Plasma: And setting Pokémon free\n"
+       "means that we win Pokémon battles and\l"
+       "take Pokémon by force!\p"
+       "So, on that note, we are going to rescue\n"
+       "your Pokémon from you!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_down, walk_right, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Whaaat!\n"
+       "Don't hurt {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	trainerbattle_no_intro (TRAINER_GRUNT_M_DREAMYARD, text("Plasmaaaa!\nAhh, our beautiful dream..."))
+    delay(10)
+    msgbox("Team Plasma: Were you not taking them\n"
+       "seriously because they're kids?\p"
+       "Well, whatever, I'm next!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(delay_16, face_right, lock_facing_direction, walk_left, unlock_facing_direction))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_down, walk_left, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+	trainerbattle_no_intro (TRAINER_GRUNT_F_DREAMYARD, text("Plasmaaaa!\nThis is a nightmare!"))
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_down))
+	waitmovement(0)
+    msgbox("Team Plasma: ...I can't\n"
+       "believe we lost!\p"
+       "But we have to\n"
+       "obtain the Dream Mist!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_up, walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(face_right, lock_facing_direction, walk_slow_left, delay_8, walk_fast_right, unlock_facing_direction, walk_in_place_fast_right))
+	waitmovement(0)
+    playse(SE_NOT_EFFECTIVE)
+    waitse
+    delay(10)
+    msgbox("Come on!\n"
+       "Make with the Dream Mist!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Bianca: Knowck it off!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	fadescreen(FADE_TO_WHITE)
+	playbgm(MUS_BW_PLOT_PLASMA, TRUE)
+	fadescreen(FADE_FROM_WHITE)
+    addobject(LOCALID_DREAMYARD_GHETSIS_LEFT)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_fast_left))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_fast_left))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    msgbox("Ghetsis: What are you two doing\n"
+       "goofing off?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GHETSIS_LEFT)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    addobject(LOCALID_DREAMYARD_GHETSIS_RIGHT)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_fast_right))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_fast_right))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(emote_question_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    msgbox("Ghetsis: We, Team Plasma,\n"
+       "shall separate Pokémon\l"
+       "from foolish people!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GHETSIS_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    removeobject(LOCALID_DREAMYARD_GHETSIS_LEFT)
+    removeobject(LOCALID_DREAMYARD_GHETSIS_RIGHT)
+    addobject(LOCALID_DREAMYARD_GHETSIS_TOP)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_fast_up))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_fast_up))
+	waitmovement(0)
+	delay(10)
+    msgbox("Ghetsis: If you cannot\n"
+       "fulfill your duties...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_GHETSIS_TOP)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_left))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_down, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Team Plasma: T-this isn't...\p"
+       "Ghetsis when he is gathering followers...\n"
+       "Or Ghetsis when he is trying\l"
+       "to control people by tricking them\l"
+       "with speeches!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Team Plasma: Yeah...\p"
+       "This is Ghetsis when a plan has failed,\n"
+       "and he is about to issue punishment...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Team Plasma: At any rate, let's hurry\n"
+       "and say we're sorry so he forgives us!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_fast_right, walk_fast_down * 7))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_fast_right * 2, walk_fast_down * 7))
+	waitmovement(0)
+    removeobject(LOCALID_DREAMYARD_PLASMA_GRUNT_F)
+    removeobject(LOCALID_DREAMYARD_PLASMA_GRUNT_M)
+    delay(10)
+	fadescreen(FADE_TO_WHITE)
+	playbgm(MUS_BW_DREAM_YARD, TRUE)
+    removeobject(LOCALID_DREAMYARD_GHETSIS_TOP)
+	fadescreen(FADE_FROM_WHITE)
+    addobject(LOCALID_DREAMYARD_MUSHARNA)
+    applymovement(LOCALID_DREAMYARD_MUSHARNA, moves(walk_slow_right * 2, walk_slow_down * 2, walk_slow_right * 2))
+	waitmovement(0)
+    delay(10)
+	playmoncry(SPECIES_MUSHARNA, CRY_MODE_NORMAL)
+	msgbox("???: Shaaar!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_MUSHARNA)
+    destroy_speech_bubble()
+    closemessage
+	waitmoncry
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_right))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca: ...What was that just now?\p"
+       "That person called Ghetsis\n"
+       "appeared all over the place, and\l"
+       "it wasn't real, right?!\p"
+       "...Could it have been a dream?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_up))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("And that Pokémon...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Oh!", MSGBOX_DEFAULT)
+    closemessage
+    addobject(LOCALID_DREAMYARD_FENNEL)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+    applymovement(LOCALID_DREAMYARD_FENNEL, moves(walk_up * 4))
+	waitmovement(0)
+    delay(10)
+    msgbox("Fennel: I couldn't wait, so I came over!\p"
+       "...Is that Musharna?!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_up))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+	playmoncry(SPECIES_MUSHARNA, CRY_MODE_NORMAL)
+	msgbox("Musharna: Musha?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_MUSHARNA)
+    destroy_speech_bubble()
+    closemessage
+	waitmoncry
+    delay(10)
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	msgbox("Munna: Munii!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_MUNNA)
+    destroy_speech_bubble()
+    closemessage
+	waitmoncry
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_MUNNA, moves(walk_left))
+    applymovement(LOCALID_DREAMYARD_MUSHARNA, moves(walk_left))
+	waitmovement(0)
+    addobject(LOCALID_DREAMYARD_DREAM_MIST)
+    applymovement(LOCALID_DREAMYARD_MUSHARNA, moves(walk_up * 2, walk_left * 2))
+    applymovement(LOCALID_DREAMYARD_MUNNA, moves(walk_up * 2, walk_left * 3))
+	waitmovement(0)
+    removeobject(LOCALID_DREAMYARD_MUNNA)
+    removeobject(LOCALID_DREAMYARD_MUSHARNA)
+    setflag(FLAG_DREAMYARD_MUNNA)
+    setflag(FLAG_DREAMYARD_BIANCA)
+    clearflag(FLAG_DREAMYARD_BIANCA_2)
+    removeobject(LOCALID_DREAMYARD_BIANCA)
+    setvar(VAR_DREAMYARD_STATE, 3)
+    msgbox("Fennel: Did something happen?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Oh, Fennel.\p"
+       "Well, you see, Munna was here...\n"
+       "But Team Plasma and Munna...\p"
+       "And Musharna came...\n"
+       "And it showed us something like a dream?\l"
+       "And then, Team Plasma...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Fennel: I think I followed that...\p"
+       "See, Musharna evolves from Munna.\n"
+       "So, seeing Munna in trouble, it\l"
+       "used its power-making dreams\l"
+       "into reality-to save Munna.\p"
+       "Which means... wait a second!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_FENNEL, moves(walk_right, walk_up * 4, walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_up))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_DREAMYARD_FENNEL, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_DREAMYARD_FENNEL, moves(jump_in_place_left))
+	waitmovement(0)
+    waitse
+    playse(SE_LEDGE)
+	applymovement(LOCALID_DREAMYARD_FENNEL, moves(jump_in_place_left))
+	waitmovement(0)
+    waitse
+    delay(10)
+    msgbox("Fennel: Is this Dream Mist?!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    removeobject(LOCALID_DREAMYARD_DREAM_MIST)
+	applymovement(LOCALID_DREAMYARD_FENNEL, moves(walk_left, walk_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Fennel: With this,\n"
+       "I can complete my research!\l"
+       "You two come to my house later, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_FENNEL, moves(walk_fast_right, walk_fast_down * 7))
+	waitmovement(0)
+    removeobject(LOCALID_DREAMYARD_FENNEL)
+    delay(10)
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_right))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+    msgbox("Bianca: Phew. How random was that?\p"
+        "{PLAYER}, why don't you go\n"
+        "to Fennel's house?\p"
+        "Me? Well, I'm going to go look\n"
+        "for the Pokémon we saw just now.", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+	setobjectxyperm (LOCALID_DREAMYARD_BIANCA_HIDDEN, 20, 9)
+    delay(10)
+    release
+    end
+}
+
+script Dreamyard_EventScript_Trigger_TeamPlasma_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, face_up))
+	waitmovement(0)
+    return
+}
+
+script Dreamyard_EventScript_Trigger_TeamPlasma_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left, face_up))
+	waitmovement(0)
+    return
 }
