@@ -128,5 +128,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_STRIATON_GYM_CRESS
 	setflag FLAG_STRIATON_FENNEL
 	setflag FLAG_STRIATON_TRB1F_FENNEL
+	setflag FLAG_DREAMYARD_BIANCA
+	setflag FLAG_DREAMYARD_BIANCA_2
 	call EventScript_ResetAllBerries
 	end

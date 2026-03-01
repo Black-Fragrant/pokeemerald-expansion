@@ -111,7 +111,7 @@
 #define VAR_STRIATON_TRY_LEAVING                         0x405B
 #define VAR_STRIATON_GYM_STATE                           0x405C
 #define VAR_STRIATON_FENNEL_STATE                        0x405D
-#define VAR_UNUSED_405E                                  0x405E
+#define VAR_DREAMYARD_STATE                              0x405E
 #define VAR_UNUSED_405F                                  0x405F // Unused Var
 #define VAR_UNUSED_4060                                  0x4060
 #define VAR_UNUSED_4061                                  0x4061 // Unused Var
