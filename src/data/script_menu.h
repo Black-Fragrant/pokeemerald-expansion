@@ -799,6 +799,22 @@ static const struct MenuAction MultichoiceList_TrainerSchoolQuiz[] =
     {COMPOUND_STRING("Awakening")},
 };
 
+static const struct MenuAction MultichoiceList_FennelLaptop[] =
+{
+    {COMPOUND_STRING("Game Sync")},
+    {COMPOUND_STRING("Pokémon Dreams")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+
+static const struct MenuAction MultichoiceList_AmanitaQuestion[] =
+{
+    {COMPOUND_STRING("Battle Box")},
+    {COMPOUND_STRING("Pal Pad")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -930,6 +946,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_POKEMON_RPS]                = MULTICHOICE(MultichoiceList_PokemonRPS),
     [MULTI_BW_STARTER]                 = MULTICHOICE(MultichoiceList_BWStarter),
     [MULTI_TRAINER_SCHOOL_QUIZ]        = MULTICHOICE(MultichoiceList_TrainerSchoolQuiz),
+    [MULTI_FENNEL_LAPTOP]              = MULTICHOICE(MultichoiceList_FennelLaptop),
+    [MULTI_AMANITA_QUESTION]           = MULTICHOICE(MultichoiceList_AmanitaQuestion),
 };
 
 const u8 *const gStdStrings[] =

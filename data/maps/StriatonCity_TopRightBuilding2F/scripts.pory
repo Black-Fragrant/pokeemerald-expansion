@@ -72,12 +72,24 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl
 {
     lock
     faceplayer
-    goto_if_set(FLAG_SYS_PC_LANETTE, StriatonCity_TRB2F_EventScript_SchoolGirl_2)
+    goto_if_unset(FLAG_STRIATON_OBTAINED_C_GEAR, StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC)
+	msgbox("Amanita: Is there something you'd like\n"
+            "to ask me?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+	multichoice(25, 5, MULTI_FENNEL_LAPTOP, 0)
+	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox)}
+	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad)}
+	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)}
+	goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC
+{
+    goto_if_set(FLAG_SYS_PC_LANETTE, StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_2)
 	msgbox("Are you a Trainer?\p"
             "Do you use the PC at Pokémon Centers?\p"
             "I am Amanita. I maintain the Box system.\n"
             "Do you know about the Battle Box?", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
-	goto_if_eq(VAR_RESULT, FALSE, StriatonCity_TRB2F_EventScript_SchoolGirl_No)
+	goto_if_eq(VAR_RESULT, FALSE, StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_No)
     destroy_speech_bubble()
     closemessage
     msgbox("Impressive!\p"
@@ -91,7 +103,7 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl
 	end
 }
 
-script StriatonCity_TRB2F_EventScript_SchoolGirl_No
+script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_No
 {
     destroy_speech_bubble()
     closemessage
@@ -106,7 +118,7 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_No
 	end
 }
 
-script StriatonCity_TRB2F_EventScript_SchoolGirl_2
+script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_2
 {
     msgbox("Please do use the Battle Box.\p"
             "You can register Pokémon in the PC\n"
@@ -117,8 +129,58 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_2
 	end
 }
 
+script StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("In the Battle Box, you can register up\n"
+       "to six Pokémon that you often use\l"
+       "in battles.\p"
+       "When you battle using Infrared\n"
+       "Connection, you can choose to battle\l"
+       "with either your party Pokémon or with\l"
+       "the Pokémon in the Battle Box!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("In order to register your friend\n"
+       "in your Pal Pad...\p"
+       "You can either input your friend's code\n"
+       "directly by using your Pal Pad...\p"
+       "Or you can use the IR Connection\n"
+       "feature of the C-Gear.\p"
+       "Then, you can register your friend!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl_Release
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Catch a lot of Pokémon\n"
+            "and use the Box a lot!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
 script StriatonCity_TRB2F_EventScript_Fennel
 {   
+    lock
+    faceplayer
+    goto_if_set(FLAG_STRIATON_OBTAINED_C_GEAR, StriatonCity_TRB2F_EventScript_Fennel_HasCGear)
+    goto_if_eq(VAR_DREAMYARD_STATE, 3, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear)
 	msgbox("Did Juniper ask you to complete\n"
             "the Pokédex?\p"
             "It is a challenge to update the Pokédex\n"
@@ -126,14 +188,340 @@ script StriatonCity_TRB2F_EventScript_Fennel
             "Oops! I got distracted! Please bring me\n"
             "some of the Dream Mist that Munna\l"
             "gives off in the Dreamyard!", MSGBOX_NPC, TRUE)
+    release
 	end
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_HasCGear
+{
+	msgbox("Game Sync is fascinating, I think.\n"
+            "Do you think so, too?\p"
+            "If you get interested, please send your\n"
+            "save file.\p"
+            "I've summed up the details in the PC\n"
+            "at the back.\l"
+            "So, please check it, if you'd like!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear
+{
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 8, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos1)
+	call_if_eq (VAR_TEMP_1, 9, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos2)
+	call_if_eq (VAR_TEMP_1, 10, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos3)
+    msgbox("Ta-da!\p"
+            "Thanks to you, I got some Dream Mist,\n"
+            "and now I can collect save files of\l"
+            "various Trainers!\l"
+            "Thank you very much!\p"
+            "As a token of my appreciation,\n"
+            "I will give you this C-Gear to use!\p"
+            "The C-Gear is a device related to\n"
+            "communications, such as\l"
+            "Infrared Connection or\l"
+            "Nintendo Wi-Fi Connection.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 8, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos4)
+	call_if_eq (VAR_TEMP_1, 9, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos5)
+	call_if_eq (VAR_TEMP_1, 10, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos6)
+	delay(10)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the C-Gear!") //this should be transparent
+    setflag(FLAG_STRIATON_OBTAINED_C_GEAR)
+    delay(120)
+    playbgm (MUS_BW_STRIATON_CITY, TRUE)
+    msgbox("If you want to turn on the C-Gear, touch\n"
+            "the Power symbol at the bottom right of\l"
+            "the screen.\p"
+            "Then, after turning on the power, if you\n"
+            "touch the ''?'' icon at the bottom right\l"
+            "of the screen, you can read about\l"
+            "the C-Gear.\p"
+            "About Game Sync...\p"
+            "I'd like to explain a little more about the\n"
+            "system to collect Trainers' save files.\p"
+            "Do you have time to learn more?", MSGBOX_YESNO, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+	goto_if_eq (VAR_RESULT, NO, StriatonCity_TRB2F_EventScript_Fennel_NoTime)
+    destroy_speech_bubble()
+    closemessage
+    goto(StriatonCity_TRB2F_EventScript_Fennel_YesTime)
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_NoTime
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("I am sorry!\p"
+            "I am so happy, so I will explain about it!\p"
+            "Because, thanks to you, we can do a\n"
+            "great thing!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    goto(StriatonCity_TRB2F_EventScript_Fennel_YesTime)
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_YesTime
+{
+    msgbox( "Now Game Sync can retrieve memories\n"
+            "of sleeping Pokémon using Dream Mist!\p"
+            "That's right! We can collect save files of\n"
+            "Trainers from all over the world!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 8, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos1)
+	call_if_eq (VAR_TEMP_1, 9, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos2)
+	call_if_eq (VAR_TEMP_1, 10, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos3)
+    msgbox("What's more, we learned that if you use\n"
+            "Game Sync to make a Pokémon sleep,\n"
+            "it will have dreams.\p"
+            "Then, when you wake up that Pokémon,\n"
+            "its dream becomes the reality in a\l"
+            "space called Entralink in the middle of\l"
+            "the Unova region.\p"
+            "Isn't Game Sync interesting?\n"
+            "If you like, please send your save file.\p"
+            "I've slummed up the details in the PC, so\n"
+            "please check it if you get a chance!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_FENNEL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 8, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos7)
+	call_if_eq (VAR_TEMP_1, 9, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos8)
+	call_if_eq (VAR_TEMP_1, 10, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos9)
+	applymovement(LOCALID_PLAYER, moves(face_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Oh, Trainer! Thank you very\n"
+            "much for helping Fennel!\p"
+            "This is from me. Please take it.\n"
+            "Don't be shy.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the Pal Pad!") //this should be transparent
+    delay(120)
+    playbgm (MUS_BW_STRIATON_CITY, TRUE)
+    delay(10)
+    msgbox("You can register your friends in your\n"
+            "Pal Pad.\p"
+            "After you register, you can link with\n"
+            "those friends over Nintendo Wi-Fi\l"
+            "Connection to do all kinds of fun things!\p"
+            "You can trade Pokémon, challenge\n"
+            "your friends to a battle, and so on.\p"
+            "Let me give you a quick how-to on\n"
+            "registering your friends.\p"
+            "You can either input your friend's code\n"
+            "directly by using your Pal Pad...\p"
+            "Or you can use the IR Connection\n"
+            "feature of the C-Gear.\p"
+            "Then, you can register your friend!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 8, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos10)
+	call_if_eq (VAR_TEMP_1, 9, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos11)
+	call_if_eq (VAR_TEMP_1, 10, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos12)
+    setvar(VAR_STRIATON_TRY_LEAVING, 1)
+    delay(20)
+    release
+    end
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos1
+{
+    playse(SE_LEDGE)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(jump_in_place_up))
+	waitmovement(0)
+    waitse
+    playse(SE_LEDGE)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(jump_in_place_up))
+	waitmovement(0)
+    waitse
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos2
+{
+    playse(SE_LEDGE)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(jump_in_place_left))
+	waitmovement(0)
+    waitse
+    playse(SE_LEDGE)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(jump_in_place_left))
+	waitmovement(0)
+    waitse
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos3
+{
+    playse(SE_LEDGE)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(jump_in_place_down))
+	waitmovement(0)
+    waitse
+    playse(SE_LEDGE)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(jump_in_place_down))
+	waitmovement(0)
+    waitse
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos4
+{
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_left * 4, walk_up * 2, walk_in_place_up))
+	waitmovement(0)
+    delay(30)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_up, walk_down * 2, walk_right * 4, walk_in_place_up))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos5
+{
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_up * 2, walk_left * 4, walk_in_place_up))
+	waitmovement(0)
+    delay(30)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_up, walk_right * 4, walk_down * 2, walk_in_place_left))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos6
+{
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_up * 2, walk_left * 4, walk_in_place_up))
+	waitmovement(0)
+    delay(30)
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_up, walk_right * 4, walk_down * 2, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos7
+{
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_down, walk_right * 6, walk_up, walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos8
+{
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_down, walk_right * 5, walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos9
+{
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_down * 2, walk_right * 6, walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos10
+{
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_down, walk_left * 6, walk_up, face_down))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos11
+{
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_right * 5, walk_up, face_down))
+	waitmovement(0)
+    return
+}
+
+script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos12
+{
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_left * 6, walk_up * 2, face_down))
+	waitmovement(0)
+    return
 }
 
 script StriatonCity_TRB2F_EventScript_Laptop
 {
+    lock
+	goto_if_set(FLAG_STRIATON_OBTAINED_C_GEAR, StriatonCity_TRB2F_EventScript_Laptop_2)
 	msgbox("The monitor of the PC does not\n"
 			"show anything...", MSGBOX_SIGN) //this should be transparent
+    release
 	end
+}
+
+script StriatonCity_TRB2F_EventScript_Laptop_2
+{
+	msgbox("Fennel's Memo", MSGBOX_DEFAULT)
+    goto(StriatonCity_TRB2F_EventScript_Laptop_3)
+}
+
+script StriatonCity_TRB2F_EventScript_Laptop_3
+{
+	msgbox("Read which topic?", MSGBOX_DEFAULT) //this should be transparent
+	multichoice(25, 5, MULTI_FENNEL_LAPTOP, 0)
+	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TRB2F_EventScript_Laptop_GameSync)}
+	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TRB2F_EventScript_Laptop_PokemonDreams)}
+	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TRB2F_EventScript_Laptop_Release)}
+	goto (StriatonCity_TRB2F_EventScript_Laptop_Release)
+}
+
+script StriatonCity_TRB2F_EventScript_Laptop_GameSync
+{
+    msgbox("Game Sync is a system to collect save\n"
+       "files from Trainers all over the world\l"
+       "through Nintendo Wi-Fi Connection\l"
+       "by making Pokémon sleep and retrieving\l"
+       "their dreams.\p"
+       "Touch the Online button on the C-Gear\n"
+       "screen, and a button called\l"
+       "Game Sync appears.\p"
+       "Choose a Pokémon to send to sleep, then\n"
+       "you can send your save file through\l"
+       "Nintendo Wi-Fi Connection.\p"
+       "You should be able to make more Pokémon\n"
+       "sleep as a result of the research.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TRB2F_EventScript_Laptop_3)
+}
+
+script StriatonCity_TRB2F_EventScript_Laptop_PokemonDreams
+{
+    msgbox("Pokémon Dreams...\p"
+       "If you use Game Sync to make a\n"
+       "Pokémon sleep, it will have dreams.\p"
+       "When you wake up the Pokémon with\n"
+       "Game Sync, its dream becomes\l"
+       "the reality in a space called Entralink\l"
+       "in the middle of the Unova region...", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TRB2F_EventScript_Laptop_3)
+}
+
+script StriatonCity_TRB2F_EventScript_Laptop_Release
+{
+    closemessage
+    release
+    end
 }
 
 script StriatonCity_TRB2F_EventScript_BookCase1

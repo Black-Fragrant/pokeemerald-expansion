@@ -126,6 +126,9 @@
 #define MULTI_POKEMON_RPS                  115
 #define MULTI_BW_STARTER                   116
 #define MULTI_TRAINER_SCHOOL_QUIZ          117
+#define MULTI_FENNEL_LAPTOP                118
+#define MULTI_AMANITA_QUESTION             119
+
 
 
 // Lilycove SS Tidal Multichoice Selections

@@ -298,6 +298,7 @@ script StriatonCity_EventScript_Grandpa_Gate
 {
 	lock
 	faceplayer
+	goto_if_set(FLAG_STRIATON_OBTAINED_C_GEAR, StriatonCity_EventScript_Grandpa_Gate_3)
 	goto_if_ge(VAR_STRIATON_FENNEL_STATE, 1, StriatonCity_EventScript_Grandpa_Gate_2)
 	msgbox("You don't seem to have any Gym Badges,\n"
        "so I can't let you by.\p"
@@ -314,6 +315,16 @@ script StriatonCity_EventScript_Grandpa_Gate_2
 {
 	msgbox("The scientist Fennel was looking for you\n"
        "a little while ago!", MSGBOX_NPC, TRUE)
+	release()
+	end
+}
+
+script StriatonCity_EventScript_Grandpa_Gate_3
+{
+	msgbox("Wow!\n"
+       "It's a shiny Gym Badge!\p"
+       "Getting that Badge proved you have skill\n"
+       "enough to handle whatever comes next!", MSGBOX_NPC, TRUE)
 	release()
 	end
 }
