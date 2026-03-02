@@ -212,7 +212,7 @@
       "y": 25,
       "elevation": 0,
       "item": "ITEM_ZINC",
-      "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_ZINC"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -220,7 +220,7 @@
       "y": 7,
       "elevation": 3,
       "item": "ITEM_RARE_CANDY",
-      "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_RARE_CANDY"
+      "flag": "FLAG_UNUSED_0xXXX"
     }
   ]
 }
