@@ -630,7 +630,7 @@ static void ShufflePlayerIndices(u32 *data)
 
 static void ReceiveOldManData(OldMan *records, size_t recordSize, u8 multiplayerId)
 {
-    enum GameVersion version;
+    u8 version;
     u16 language;
     OldMan *oldMan;
     u32 mixIndices[MAX_LINK_PLAYERS];
@@ -643,7 +643,7 @@ static void ReceiveOldManData(OldMan *records, size_t recordSize, u8 multiplayer
     if (Link_AnyPartnersPlayingRubyOrSapphire())
         SanitizeReceivedRubyOldMan(oldMan, version, language);
     else
-        SanitizeReceivedEmeraldOldMan(oldMan, language);
+        SanitizeReceivedEmeraldOldMan(oldMan, version, language);
 
     memcpy(sOldManSave, (void *)records + recordSize * mixIndices[multiplayerId], sizeof(OldMan));
     ResetMauvilleOldManFlag();
@@ -787,8 +787,7 @@ static void ReceiveDaycareMailData(struct RecordMixingDaycareMail *records, size
     anyRS = Link_AnyPartnersPlayingRubyOrSapphire();
     for (i = 0; i < GetLinkPlayerCount(); i++)
     {
-        enum Language language;
-        enum GameVersion version;
+        u32 language, version;
 
         mixMail = (void *)records + i * recordSize;
         language = gLinkPlayers[i].language;
@@ -796,7 +795,7 @@ static void ReceiveDaycareMailData(struct RecordMixingDaycareMail *records, size
 
         for (j = 0; j < mixMail->numDaycareMons; j++)
         {
-            enum Language otNameLanguage, nicknameLanguage;
+            u16 otNameLanguage, nicknameLanguage;
             struct DaycareMail *daycareMail = &mixMail->mail[j];
 
             if (daycareMail->message.itemId == ITEM_NONE)

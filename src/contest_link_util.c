@@ -33,9 +33,8 @@ static void Task_LinkContest_CalculateTurnOrderEm(u8);
 void Task_LinkContest_StartCommunicationEm(u8 taskId)
 {
     int gameCleared;
-    enum ContestCategories category = gTasks[taskId].tCategory;
 
-    switch (category)
+    switch (gTasks[taskId].tCategory)
     {
     case CONTEST_CATEGORY_COOL:
         gHighestRibbonRank = GetMonData(&gPlayerParty[gContestMonPartyIndex], MON_DATA_COOL_RIBBON);

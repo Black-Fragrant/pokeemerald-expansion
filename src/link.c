@@ -734,7 +734,7 @@ u8 GetLinkPlayerCount(void)
     return EXTRACT_PLAYER_COUNT(gLinkStatus);
 }
 
-static int AreAnyLinkPlayersUsingVersions(enum GameVersion version1, enum GameVersion version2)
+static int AreAnyLinkPlayersUsingVersions(u32 version1, u32 version2)
 {
     int i;
     u8 nPlayers;
@@ -765,13 +765,23 @@ static bool32 UNUSED IsFullLinkGroupWithNoRS(void)
 
 bool32 Link_AnyPartnersPlayingRubyOrSapphire(void)
 {
-    return (AreAnyLinkPlayersUsingVersions(VERSION_RUBY, VERSION_SAPPHIRE) >= 0);
+    if (AreAnyLinkPlayersUsingVersions(VERSION_RUBY, VERSION_SAPPHIRE) >= 0)
+    {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 bool32 Link_AnyPartnersPlayingFRLG_JP(void)
 {
-    int i = AreAnyLinkPlayersUsingVersions(VERSION_FIRE_RED, VERSION_LEAF_GREEN);
-    return (i >= 0 && gLinkPlayers[i].language == LANGUAGE_JAPANESE);
+    int i;
+
+    i = AreAnyLinkPlayersUsingVersions(VERSION_FIRE_RED, VERSION_LEAF_GREEN);
+    if (i >= 0 && gLinkPlayers[i].language == LANGUAGE_JAPANESE)
+    {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void OpenLinkTimed(void)

@@ -492,10 +492,9 @@ static void SetCurrentSecretBase(void)
 
 static void AdjustSecretPowerSpritePixelOffsets(void)
 {
-    enum Direction direction = gFieldEffectArguments[1];
     if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
     {
-        switch (direction)
+        switch (gFieldEffectArguments[1])
         {
         case DIR_SOUTH:
             gFieldEffectArguments[5] = 16;
@@ -512,14 +511,12 @@ static void AdjustSecretPowerSpritePixelOffsets(void)
         case DIR_EAST:
             gFieldEffectArguments[5] = 24;
             gFieldEffectArguments[6] = 24;
-            break;
-        default:
             break;
         }
     }
     else
     {
-        switch (direction)
+        switch (gFieldEffectArguments[1])
         {
         case DIR_SOUTH:
             gFieldEffectArguments[5] = 8;
@@ -536,8 +533,6 @@ static void AdjustSecretPowerSpritePixelOffsets(void)
         case DIR_EAST:
             gFieldEffectArguments[5] = 24;
             gFieldEffectArguments[6] = 24;
-            break;
-        default:
             break;
         }
     }
@@ -934,7 +929,7 @@ static void Task_ShatterSecretBaseBreakableDoor(u8 taskId)
 
 void ShatterSecretBaseBreakableDoor(s16 x, s16 y)
 {
-    enum Direction dir = GetPlayerFacingDirection();
+    u8 dir = GetPlayerFacingDirection();
 
     if (dir == DIR_SOUTH)
     {
@@ -1071,8 +1066,6 @@ bool8 FldEff_SandPillar(void)
                      gSprites[gPlayerAvatar.spriteId].oam.y + 16,
                      148);
 
-        break;
-    default:
         break;
     }
 
