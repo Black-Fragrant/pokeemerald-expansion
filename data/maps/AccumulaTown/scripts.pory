@@ -499,8 +499,8 @@ script AccumulaTown_EventScript_Grandpa
 
 script AccumulaTown_EventScript_Juniper_Pokecenter
 {
-	lock()
-	faceplayer()
+	lock
+	faceplayer
     playbgm(MUS_BW_FOLLOW_ME, TRUE)
 	msgbox("Professor Juniper: Ah, {PLAYER}!\n"
 			"There you are!\p"

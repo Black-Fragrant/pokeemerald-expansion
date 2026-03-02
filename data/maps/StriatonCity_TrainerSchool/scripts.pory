@@ -247,6 +247,8 @@ script StriatonCity_TS_EventScript_Cheren_Battle
 			"these Berries.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TS_CHEREN)
 	destroy_speech_bubble()
 	closemessage()
+	setflag(FLAG_STRIATON_GYM_RECEPTIONIST)
+	clearflag(FLAG_STRIATON_CILAN)
 	giveitem(ITEM_ORAN_BERRY, 3)
 	call_if_eq (VAR_RESULT, FALSE, StriatonCity_TS_EventScript_BagIsFull2)
 	goto (StriatonCity_TS_EventScript_Cheren_BerryReceived)
@@ -254,7 +256,10 @@ script StriatonCity_TS_EventScript_Cheren_Battle
 
 script StriatonCity_TS_EventScript_Cheren_BerryReceived
 {
-	faceplayer()
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 7, StriatonCity_TS_EventScript_Cheren_Pos1)
+	call_if_eq (VAR_TEMP_0, 8, StriatonCity_TS_EventScript_Cheren_Pos2)
+	call_if_eq (VAR_TEMP_0, 9, StriatonCity_TS_EventScript_Cheren_Pos3)
 	msgbox("Cheren: If you give a Pokémon this kind\n"
 			"of Berry to hold, it will eat it to heal up\l"
 			"when its HP goes down in battle.\p"
@@ -267,8 +272,6 @@ script StriatonCity_TS_EventScript_Cheren_BerryReceived
 	delay(10)
 	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_up))
 	waitmovement(0)
-	setflag(FLAG_STRIATON_GYM_RECEPTIONIST)
-	clearflag(FLAG_STRIATON_CILAN)
 	delay(10)
 	release()
 	end()

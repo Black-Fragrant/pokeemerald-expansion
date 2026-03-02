@@ -252,8 +252,8 @@ script AccumulaTown_PokeCenter_EventScript_Juniper
 
 script AccumulaTown_PokeCenter_EventScript_Bianca
 {
-	lock
-	faceplayer
+	lock()
+	faceplayer()
 	goto_if_eq (VAR_ACCUMULA_PC_TUTORIAL, 2, AccumulaTown_PokeCenter_EventScript_Bianca_Shopping)
 	msgbox("Bianca: All you need to do is\n"
 			"give her your Pokémon, {PLAYER}.", MSGBOX_NPC, TRUE)
