@@ -806,7 +806,6 @@ static const struct MenuAction MultichoiceList_FennelLaptop[] =
     {COMPOUND_STRING("Cancel")},
 };
 
-
 static const struct MenuAction MultichoiceList_AmanitaQuestion[] =
 {
     {COMPOUND_STRING("Battle Box")},
@@ -814,6 +813,15 @@ static const struct MenuAction MultichoiceList_AmanitaQuestion[] =
     {COMPOUND_STRING("Cancel")},
 };
 
+static const struct MenuAction MultichoiceList_TrainerSchoolBlackBoard[] =
+{
+    {COMPOUND_STRING("Poison")},
+    {COMPOUND_STRING("Paralysis")},
+    {COMPOUND_STRING("Sleep")},
+    {COMPOUND_STRING("Burn")},
+    {COMPOUND_STRING("Frozen")},
+    {COMPOUND_STRING("Cancel")},
+};
 
 static const struct MenuAction MultichoiceList_Exit[] =
 {
@@ -948,6 +956,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TRAINER_SCHOOL_QUIZ]        = MULTICHOICE(MultichoiceList_TrainerSchoolQuiz),
     [MULTI_FENNEL_LAPTOP]              = MULTICHOICE(MultichoiceList_FennelLaptop),
     [MULTI_AMANITA_QUESTION]           = MULTICHOICE(MultichoiceList_AmanitaQuestion),
+    [MULTI_TRAINERSCHOOL_BLACKBOARD]   = MULTICHOICE(MultichoiceList_TrainerSchoolBlackBoard),
 };
 
 const u8 *const gStdStrings[] =

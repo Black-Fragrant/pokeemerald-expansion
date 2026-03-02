@@ -144,6 +144,82 @@ script StriatonCity_TS_EventScript_Gentleman
 	end
 }
 
+script StriatonCity_TS_EventScript_Blackboard
+{
+	lock
+	msgbox("The blackboard explains Pokémon\n"
+			"status changes in battle.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TS_EventScript_Blackboard_2)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_2
+{
+	msgbox("What do you want to read about?", MSGBOX_DEFAULT) //this should be transparent
+	multichoice(25, 1, MULTI_TRAINERSCHOOL_BLACKBOARD, 0)
+	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TS_EventScript_Blackboard_Poison)}
+	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TS_EventScript_Blackboard_Paralysis)}
+	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TS_EventScript_Blackboard_Sleep)}
+	elif (var(VAR_RESULT) == 3) {goto (StriatonCity_TS_EventScript_Blackboard_Burn)}
+	elif (var(VAR_RESULT) == 4) {goto (StriatonCity_TS_EventScript_Blackboard_Frozen)}
+	elif (var(VAR_RESULT) == 5) {goto (StriatonCity_TS_EventScript_Blackboard_Release)}
+	goto (StriatonCity_TS_EventScript_Blackboard_Release)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_Poison
+{
+    msgbox("If poisoned, a Pokémon steadily loses HP\n"
+       "when battling.\p"
+       "The poison lingers after the battle.\n"
+       "To cure it, use an Antidote.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TS_EventScript_Blackboard_2)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_Paralysis
+{
+    msgbox("Paralysis reduces the Speed stat\n"
+       "and may prevent movement.\p"
+       "It remains after battle, so use a Paralyze Heal.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TS_EventScript_Blackboard_2)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_Sleep
+{
+    msgbox("If a Pokémon falls asleep, it will be\n"
+       "unable to attack.\p"
+       "The Pokémon may wake up on its own,\n"
+       "but if a battle ends while it is\l"
+       "sleeping it will stay asleep.\p"
+       "Wake it up using an Awakening.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TS_EventScript_Blackboard_2)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_Burn
+{
+    msgbox("A burn reduces the Attack stat and\n"
+       "steadily reduces the victim's HP.\p"
+       "A burn lingers after battle.\n"
+       "Cure a burn using a Burn Heal.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TS_EventScript_Blackboard_2)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_Frozen
+{
+    msgbox("If a Pokémon is frozen, it becomes\n"
+       "completely helpless.\p"
+       "The Pokémon may thaw out on its own,\n"
+       "but if a battle ends while it is\l"
+       "frozen, it will stay frozen.\p"
+       "Thaw it out using an Ice Heal.", MSGBOX_DEFAULT) //this should be transparent
+    goto(StriatonCity_TS_EventScript_Blackboard_2)
+}
+
+script StriatonCity_TS_EventScript_Blackboard_Release
+{
+    closemessage
+    release
+    end
+}
+
 script StriatonCity_TS_EventScript_Cheren
 {
 	lock()

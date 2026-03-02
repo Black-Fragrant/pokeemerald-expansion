@@ -128,6 +128,7 @@
 #define MULTI_TRAINER_SCHOOL_QUIZ          117
 #define MULTI_FENNEL_LAPTOP                118
 #define MULTI_AMANITA_QUESTION             119
+#define MULTI_TRAINERSCHOOL_BLACKBOARD     120
 
 
 

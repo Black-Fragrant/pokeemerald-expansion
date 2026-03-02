@@ -449,7 +449,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos10
 
 script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos11
 {
-	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_right * 5, walk_up, face_down))
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(walk_left * 5, walk_up, face_down))
 	waitmovement(0)
     return
 }
@@ -473,7 +473,7 @@ script StriatonCity_TRB2F_EventScript_Laptop
 
 script StriatonCity_TRB2F_EventScript_Laptop_2
 {
-	msgbox("Fennel's Memo", MSGBOX_DEFAULT)
+	msgbox("Fennel's Memo", MSGBOX_DEFAULT) //this should be transparent
     goto(StriatonCity_TRB2F_EventScript_Laptop_3)
 }
 
