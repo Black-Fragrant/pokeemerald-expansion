@@ -828,7 +828,7 @@
       "y": 1,
       "elevation": 3,
       "item": "ITEM_RARE_CANDY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_RARE_CANDY_1"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -836,7 +836,7 @@
       "y": 11,
       "elevation": 3,
       "item": "ITEM_REVIVE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_REVIVE"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -844,7 +844,7 @@
       "y": 86,
       "elevation": 3,
       "item": "ITEM_RARE_CANDY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_RARE_CANDY_2"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -852,7 +852,7 @@
       "y": 42,
       "elevation": 3,
       "item": "ITEM_ZINC",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_ZINC"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "secret_base",

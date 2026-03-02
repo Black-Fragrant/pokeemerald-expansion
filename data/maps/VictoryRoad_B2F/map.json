@@ -144,7 +144,7 @@
       "y": 5,
       "elevation": 3,
       "item": "ITEM_ELIXIR",
-      "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_ELIXIR"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -152,7 +152,7 @@
       "y": 1,
       "elevation": 3,
       "item": "ITEM_MAX_REPEL",
-      "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_MAX_REPEL"
+      "flag": "FLAG_UNUSED_0xXXX"
     }
   ]
 }

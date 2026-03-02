@@ -592,7 +592,7 @@
       "y": 6,
       "elevation": 3,
       "item": "ITEM_SUPER_POTION",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_SUPER_POTION"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -600,7 +600,7 @@
       "y": 9,
       "elevation": 3,
       "item": "ITEM_POKE_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_POKE_BALL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -608,7 +608,7 @@
       "y": 55,
       "elevation": 3,
       "item": "ITEM_POTION",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_POTION"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -616,7 +616,7 @@
       "y": 72,
       "elevation": 3,
       "item": "ITEM_ANTIDOTE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_ANTIDOTE"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -624,7 +624,7 @@
       "y": 64,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_HEART_SCALE"
+      "flag": "FLAG_UNUSED_0xXXX"
     }
   ]
 }

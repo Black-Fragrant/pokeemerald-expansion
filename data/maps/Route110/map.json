@@ -731,7 +731,7 @@
       "y": 39,
       "elevation": 3,
       "item": "ITEM_REVIVE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_110_REVIVE"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -739,7 +739,7 @@
       "y": 45,
       "elevation": 3,
       "item": "ITEM_GREAT_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_110_GREAT_BALL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -747,7 +747,7 @@
       "y": 35,
       "elevation": 3,
       "item": "ITEM_POKE_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_110_POKE_BALL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -755,7 +755,7 @@
       "y": 67,
       "elevation": 3,
       "item": "ITEM_FULL_HEAL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_110_FULL_HEAL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "sign",

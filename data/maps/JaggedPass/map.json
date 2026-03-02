@@ -233,7 +233,7 @@
       "y": 10,
       "elevation": 3,
       "item": "ITEM_FULL_HEAL",
-      "flag": "FLAG_HIDDEN_ITEM_JAGGED_PASS_FULL_HEAL"
+      "flag": "FLAG_UNUSED_0xXXX"
     },
     {
       "type": "hidden_item",
@@ -241,7 +241,7 @@
       "y": 29,
       "elevation": 3,
       "item": "ITEM_GREAT_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_JAGGED_PASS_GREAT_BALL"
+      "flag": "FLAG_UNUSED_0xXXX"
     }
   ]
 }
