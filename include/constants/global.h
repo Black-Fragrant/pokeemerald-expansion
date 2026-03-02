@@ -34,17 +34,21 @@
 // In Gen 4 only, migrated Pokémon with Diamond, Pearl, or Platinum's ID show as "----------".
 // Gen 5 and up read Diamond, Pearl, or Platinum's ID as "Sinnoh".
 // In Gen 4 and up, migrated Pokémon with HeartGold or SoulSilver's ID show the otherwise unused "Johto" string.
-#define VERSION_SAPPHIRE 1
-#define VERSION_RUBY 2
-#define VERSION_EMERALD 3
-#define VERSION_FIRE_RED 4
-#define VERSION_LEAF_GREEN 5
-#define VERSION_HEART_GOLD 7
-#define VERSION_SOUL_SILVER 8
-#define VERSION_DIAMOND 10
-#define VERSION_PEARL 11
-#define VERSION_PLATINUM 12
-#define VERSION_GAMECUBE 15
+enum __attribute__((packed)) GameVersion
+{
+    VERSION_SAPPHIRE = 1,
+    VERSION_RUBY = 2,
+    VERSION_EMERALD = 3,
+    VERSION_FIRE_RED = 4,
+    VERSION_LEAF_GREEN = 5,
+    VERSION_HEART_GOLD = 7,
+    VERSION_SOUL_SILVER = 8,
+    VERSION_DIAMOND = 10,
+    VERSION_PEARL = 11,
+    VERSION_PLATINUM = 12,
+    VERSION_GAMECUBE = 15,
+    NUM_VERSIONS = VERSION_GAMECUBE,
+};
 
 #define NUM_VERSIONS 15
 
@@ -175,16 +179,19 @@
 #define OPTIONS_BATTLE_STYLE_SHIFT 0
 #define OPTIONS_BATTLE_STYLE_SET 1
 
-#define DIR_NONE        0
-#define DIR_SOUTH       1
-#define DIR_NORTH       2
-#define DIR_WEST        3
-#define DIR_EAST        4
-#define DIR_SOUTHWEST   5
-#define DIR_SOUTHEAST   6
-#define DIR_NORTHWEST   7
-#define DIR_NORTHEAST   8
-#define CARDINAL_DIRECTION_COUNT DIR_SOUTHWEST
+enum __attribute__((packed)) Direction
+{
+    DIR_NONE,
+    DIR_SOUTH,
+    DIR_NORTH,
+    DIR_WEST,
+    DIR_EAST,
+    CARDINAL_DIRECTION_COUNT,
+    DIR_SOUTHWEST = CARDINAL_DIRECTION_COUNT,
+    DIR_SOUTHEAST,
+    DIR_NORTHWEST,
+    DIR_NORTHEAST,
+};
 
 #define AXIS_X     0
 #define AXIS_Y     1
