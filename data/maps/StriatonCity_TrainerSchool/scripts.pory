@@ -155,7 +155,7 @@ script StriatonCity_TS_EventScript_Blackboard
 script StriatonCity_TS_EventScript_Blackboard_2
 {
 	msgbox("What do you want to read about?", MSGBOX_DEFAULT) //this should be transparent
-	multichoice(25, 1, MULTI_TRAINERSCHOOL_BLACKBOARD, 0)
+	multichoice(25, 0, MULTI_TRAINERSCHOOL_BLACKBOARD, 0)
 	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TS_EventScript_Blackboard_Poison)}
 	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TS_EventScript_Blackboard_Paralysis)}
 	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TS_EventScript_Blackboard_Sleep)}

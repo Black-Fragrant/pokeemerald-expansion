@@ -1202,3 +1202,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/WellspringCave_1F/scripts.inc"
 
 	.include "data/maps/WellspringCave_B1F/scripts.inc"
+
+	.include "data/maps/NacreneCity/scripts.inc"

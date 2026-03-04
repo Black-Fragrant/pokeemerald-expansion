@@ -4800,6 +4800,16 @@
       "secondary_tileset": "gTileset_CaveBW",
       "border_filepath": "data/layouts/WellspringCave_B1F/border.bin",
       "blockdata_filepath": "data/layouts/WellspringCave_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY",
+      "name": "NacreneCity_Layout",
+      "width": 90,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NacreneCity",
+      "border_filepath": "data/layouts/NacreneCity/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity/map.bin"
     }
   ]
 }
