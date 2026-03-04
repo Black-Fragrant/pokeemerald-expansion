@@ -1218,3 +1218,14 @@ const struct Tileset gTileset_CaveBW =
     .metatileAttributes = gMetatileAttributes_CaveBW,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NacreneCity =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NacreneCity,
+    .palettes = gTilesetPalettes_NacreneCity,
+    .metatiles = gMetatiles_NacreneCity,
+    .metatileAttributes = gMetatileAttributes_NacreneCity,
+    .callback = NULL,
+};
