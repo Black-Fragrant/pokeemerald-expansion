@@ -4804,8 +4804,8 @@
     {
       "id": "LAYOUT_NACRENE_CITY",
       "name": "NacreneCity_Layout",
-      "width": 90,
-      "height": 60,
+      "width": 72,
+      "height": 36,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_NacreneCity",
       "border_filepath": "data/layouts/NacreneCity/border.bin",
