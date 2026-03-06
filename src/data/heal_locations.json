@@ -212,6 +212,12 @@
       "y": 14,
       "respawn_map": "MAP_STRIATON_CITY_POKE_CENTER",
       "respawn_npc": "LOCALID_STRIATON_POKECEN_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_NACRENE_CITY",
+      "map": "MAP_NACRENE_CITY",
+      "x": 29,
+      "y": 25
     }
   ]
 }

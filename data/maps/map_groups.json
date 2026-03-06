@@ -51,7 +51,9 @@
     "StriatonCity",
     "Route3_North",
     "Route3_South",
-    "NacreneCity"
+    "NacreneCity",
+    "PinwheelForest_Outside_North",
+    "PinwheelForest_Outside_South"
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",

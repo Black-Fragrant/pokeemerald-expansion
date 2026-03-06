@@ -4810,6 +4810,26 @@
       "secondary_tileset": "gTileset_NacreneCity",
       "border_filepath": "data/layouts/NacreneCity/border.bin",
       "blockdata_filepath": "data/layouts/NacreneCity/map.bin"
+    },
+    {
+      "id": "LAYOUT_PINWHEEL_FOREST_OUTSIDE_NORTH",
+      "name": "PinwheelForest_Outside_North_Layout",
+      "width": 32,
+      "height": 32,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NacreneCity",
+      "border_filepath": "data/layouts/PinwheelForest_Outside_North/border.bin",
+      "blockdata_filepath": "data/layouts/PinwheelForest_Outside_North/map.bin"
+    },
+    {
+      "id": "LAYOUT_PINWHEEL_FOREST_OUTSIDE_SOUTH",
+      "name": "PinwheelForest_Outside_South_Layout",
+      "width": 64,
+      "height": 34,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NacreneCity",
+      "border_filepath": "data/layouts/PinwheelForest_Outside_South/border.bin",
+      "blockdata_filepath": "data/layouts/PinwheelForest_Outside_South/map.bin"
     }
   ]
 }

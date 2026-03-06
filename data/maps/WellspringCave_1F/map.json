@@ -14,7 +14,22 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 30,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE3_NORTH",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 27,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_WELLSPRING_CAVE_B1F",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

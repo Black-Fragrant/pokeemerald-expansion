@@ -1204,3 +1204,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/WellspringCave_B1F/scripts.inc"
 
 	.include "data/maps/NacreneCity/scripts.inc"
+
+	.include "data/maps/PinwheelForest_Outside_North/scripts.inc"
+
+	.include "data/maps/PinwheelForest_Outside_South/scripts.inc"
