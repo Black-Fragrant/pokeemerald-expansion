@@ -323,6 +323,30 @@ const u16 gTrainerPalette_PlasmaGruntM[] = INCBIN_U16("graphics/trainers/front_p
 const u32 gTrainerFrontPic_PlasmaGruntF[] = INCBIN_U32("graphics/trainers/front_pics/plasma_grunt_f.4bpp.smol");
 const u16 gTrainerPalette_PlasmaGruntF[] = INCBIN_U16("graphics/trainers/front_pics/plasma_grunt_f.gbapal");
 
+const u32 gTrainerFrontPic_Teacher[] = INCBIN_U32("graphics/trainers/front_pics/teacher.4bpp.smol");
+const u16 gTrainerPalette_Teacher[] = INCBIN_U16("graphics/trainers/front_pics/teacher.gbapal");
+
+const u32 gTrainerFrontPic_KindergatenerM[] = INCBIN_U32("graphics/trainers/front_pics/kindergartener_m.4bpp.smol");
+const u16 gTrainerPalette_KindergatenerM[] = INCBIN_U16("graphics/trainers/front_pics/kindergartener_m.gbapal");
+
+const u32 gTrainerFrontPic_KindergatenerF[] = INCBIN_U32("graphics/trainers/front_pics/kindergartener_f.4bpp.smol");
+const u16 gTrainerPalette_KindergatenerF[] = INCBIN_U16("graphics/trainers/front_pics/kindergartener_f.gbapal");
+
+const u32 gTrainerFrontPic_TwinsBW[] = INCBIN_U32("graphics/trainers/front_pics/twins_bw.4bpp.smol");
+const u16 gTrainerPalette_TwinsBW[] = INCBIN_U16("graphics/trainers/front_pics/twins_bw.gbapal");
+
+const u32 gTrainerFrontPic_Schoolboy[] = INCBIN_U32("graphics/trainers/front_pics/schoolboy.4bpp.smol");
+const u16 gTrainerPalette_Schoolboy[] = INCBIN_U16("graphics/trainers/front_pics/schoolboy.gbapal");
+
+const u32 gTrainerFrontPic_Schoolgirl[] = INCBIN_U32("graphics/trainers/front_pics/schoolgirl.4bpp.smol");
+const u16 gTrainerPalette_Schoolgirl[] = INCBIN_U16("graphics/trainers/front_pics/schoolgirl.gbapal");
+
+const u32 gTrainerFrontPic_BreederM[] = INCBIN_U32("graphics/trainers/front_pics/breeder_m.4bpp.smol");
+const u16 gTrainerPalette_BreederM[] = INCBIN_U16("graphics/trainers/front_pics/breeder_m.gbapal");
+
+const u32 gTrainerFrontPic_BreederF[] = INCBIN_U32("graphics/trainers/front_pics/breeder_f.4bpp.smol");
+const u16 gTrainerPalette_BreederF[] = INCBIN_U16("graphics/trainers/front_pics/breeder_f.gbapal");
+
 
 
 
@@ -474,6 +498,14 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_CRESS, gTrainerFrontPic_Cress, gTrainerPalette_Cress),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_PLASMA_GRUNT_M, gTrainerFrontPic_PlasmaGruntM, gTrainerPalette_PlasmaGruntM),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_PLASMA_GRUNT_F, gTrainerFrontPic_PlasmaGruntF, gTrainerPalette_PlasmaGruntF),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_NURSERY_AIDE, gTrainerFrontPic_Teacher, gTrainerPalette_Teacher),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_PRESCHOOLER_M, gTrainerFrontPic_KindergatenerM, gTrainerPalette_KindergatenerM),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_PRESCHOOLER_F, gTrainerFrontPic_KindergatenerF, gTrainerPalette_KindergatenerF),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_TWINS_BW, gTrainerFrontPic_TwinsBW, gTrainerPalette_TwinsBW),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SCHOOLBOY, gTrainerFrontPic_Schoolboy, gTrainerPalette_Schoolboy),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SCHOOLGIRL, gTrainerFrontPic_Schoolgirl, gTrainerPalette_Schoolgirl),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_BREEDER_M, gTrainerFrontPic_BreederM, gTrainerPalette_BreederM),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_BREEDER_F, gTrainerFrontPic_BreederF, gTrainerPalette_BreederF),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

@@ -40,7 +40,7 @@ Objects listed in `regularTrainersOnLand` or `regularTrainersInWater` are consid
 
 | Sequence   | Trainer ID       |
 | ---------- | ---------------- |
-| 1st Battle | `TRAINER_ROSE_1` |
+| 1st Battle | `TRAINER_DUMMY` |
 | 2nd Battle | `TRAINER_ROSE_2` |
 | 3rd Battle | `TRAINER_ROSE_3` |
 | 4th Battle | `TRAINER_ROSE_4` |
@@ -66,7 +66,7 @@ If a Trainer is intended to have less than five unique rematch parties, the extr
 
 ```c
 // This Trainer only has two teams.
-    [REMATCH_ROSE] = REMATCH(TRAINER_ROSE_1, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, MAP_ROUTE118),
+    [REMATCH_ROSE] = REMATCH(TRAINER_DUMMY, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, MAP_ROUTE118),
 ```
 
 WARNING: Rematch IDs should be placed BEFORE `REMATCH_WALLY_VR`. Trainers below that are treated as "special Trainers" that are not triggered by the Vs. Seeker.
@@ -77,7 +77,7 @@ The trainer's object needs to have a script that begins with a method to signify
 #### `trainerbattle`
 ```
 Route103_EventScript_Daisy::
-    trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
+    trainerbattle_single TRAINER_DUMMY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
     msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
     end
 ```

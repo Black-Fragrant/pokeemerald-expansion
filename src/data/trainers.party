@@ -564,223 +564,236 @@ Purrloin
 Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_5 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
+=== TRAINER_NURSERY_AIDE_ROUTE_3_1 ===
+Name: Autumn
+Class: Nursery Aide
+Pic: Nursery Aide
 Gender: Female
-Music: Aqua
+Music: Woman
 Battle Type: Singles
 AI: Check Bad Move
 
-Carvanha
-Level: 32
+Lillipup
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_6 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Zubat
-Level: 32
+Munna
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_FREDRICK ===
-Name: FREDRICK
-Class: Expert
-Pic: Expert M
+=== TRAINER_PRESCHOOLER_M_ROUTE_3_1 ===
+Name: Doyle
+Class: Preschooler
+Pic: Preschooler M
 Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Basic Trainer
-
-Makuhita
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Machoke
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MATT ===
-Name: MATT
-Class: Aqua Admin
-Pic: Aqua Admin M
-Gender: Male
-Music: Aqua
-Items: Super Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Mightyena
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Golbat
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-=== TRAINER_ZANDER ===
-Name: ZANDER
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
+Music: Kid
 Battle Type: Singles
 AI: Check Bad Move
 
-Hariyama
-Level: 31
+Panpour
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHELLY_WEATHER_INSTITUTE ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
+=== TRAINER_PRESCHOOLER_F_ROUTE_3 ===
+Name: Wendy
+Class: Preschooler
+Pic: Preschooler F
 Gender: Female
-Music: Aqua
-Battle Type: Singles
-AI: Basic Trainer
-
-Carvanha
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Mightyena
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-=== TRAINER_SHELLY_SEAFLOOR_CAVERN ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
-Gender: Female
-Music: Aqua
-Battle Type: Singles
-AI: Basic Trainer
-
-Sharpedo
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Mightyena
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_ARCHIE ===
-Name: ARCHIE
-Class: Aqua Leader
-Pic: Aqua Leader Archie
-Gender: Male
-Music: Aqua
-Items: Super Potion / Super Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Mightyena
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Crobat
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Sharpedo
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_LEAH ===
-Name: LEAH
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
+Music: Kid
 Battle Type: Singles
 AI: Check Bad Move
 
-Spoink
-Level: 31
+Pansear
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DAISY ===
-Name: DAISY
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_PRESCHOOLER_M_ROUTE_3_2 ===
+Name: Tully
+Class: Preschooler
+Pic: Preschooler M
+Gender: Male
+Music: Kid
 Battle Type: Singles
 AI: Check Bad Move
 
-Shroomish
+Pansage
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_TWINS_ROUTE_3 ===
+Name: Kumi & Ami
+Class: Twins
+Pic: Twins BW
+Gender: Female
+Music: Kid
+Battle Type: Doubles
+AI: Check Bad Move
+
+Purrloin
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Purrloin
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BREEDER_F_ROUTE_3 ===
+Name: Adelaide
+Class: Pkmn Breeder
+Pic: Breeder F
+Gender: Female
+Music: Woman
+Battle Type: Singles
+AI: Basic Trainer
+
+Patrat
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pidove
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lillipup
+Level: 9
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_CHEREN_ROUTE_3_1 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Purple
+
+Tepig @ Oran Berry
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Odor Sleuth
+- Tail Whip
+- Ember
+- Defense Curl
 
-Roselia
-Level: 14
+Purrloin
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Growl
+- Assist
+- Sand-Attack
 
-=== TRAINER_ROSE_1 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_FELIX ===
-Name: FELIX
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_CHEREN_ROUTE_3_2 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
+Mugshot: Purple
 
-Medicham
-Level: 43
+Oshawott @ Oran Berry
+Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Psychic
+- Focus Energy
+- Tail Whip
+- Water Gun
+- Water Sport
 
-Claydol
-Level: 43
+Purrloin
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Skill Swap
-- Earthquake
+- Fury Swipes
+- Growl
+- Assist
+- Sand-Attack
 
-=== TRAINER_VIOLET ===
-Name: VIOLET
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_CHEREN_ROUTE_3_3 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Purple
+
+Snivy @ Oran Berry
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growth
+- Leer
+- Vine Whip
+- Wrap
+
+Purrloin
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Growl
+- Assist
+- Sand-Attack
+
+=== TRAINER_SCHOOLBOY_ROUTE_3_1 ===
+Name: Al
+Class: School Kid
+Pic: Schoolboy
+Gender: Male
+Music: Youngster
 Battle Type: Singles
 AI: Check Bad Move
 
-Roselia
-Level: 26
+Blitzle
+Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Gloom
-Level: 26
+=== TRAINER_SCHOOLGIRL_ROUTE_3_1 ===
+Name: Marsha
+Class: School Kid
+Pic: Schoolgirl
+Gender: Female
+Music: Lass
+Battle Type: Singles
+AI: Check Bad Move
+
+Woobat
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SCHOOLGIRL_ROUTE_3_2 ===
+Name: Gina
+Class: School Kid
+Pic: Schoolgirl
+Gender: Female
+Music: Lass
+Battle Type: Singles
+AI: Check Bad Move
+
+Patrat
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Purrloin
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SCHOOLBOY_ROUTE_3_2 ===
+Name: Edgar
+Class: School Kid
+Pic: Schoolboy
+Gender: Male
+Music: Youngster
+Battle Type: Singles
+AI: Check Bad Move
+
+Pidove
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Roggenrola
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ROSE_2 ===
