@@ -1,1 +1,12 @@
 mapscripts Route3_Daycare_MapScripts {}
+
+script Route3_DayCare_EventScript_Roughneck
+{
+	msgbox("When I picked up the Pokémon\n"
+       "I left in the Day Care,\l"
+       "it had learned different moves\l"
+       "than it knew when I left it there!\p"
+       "Pokémon can only learn four moves,\n"
+       "so you have to be careful!", MSGBOX_NPC, TRUE)
+	end
+}

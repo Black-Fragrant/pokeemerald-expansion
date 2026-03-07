@@ -61,7 +61,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_North_EventScript_Boy_TopRight",
       "flag": "0"
     },
     {
@@ -74,7 +74,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_North_EventScript_Teacher_InFrontOfKindergarten",
       "flag": "0"
     },
     {
@@ -85,9 +85,9 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "Route3_North_EventScript_Battle_Teacher",
       "flag": "0"
     },
     {
@@ -100,7 +100,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_North_EventScript_Battle_PreschoolerMale_TalkingRight",
       "flag": "0"
     },
     {
@@ -113,7 +113,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_North_EventScript_Battle_PreschoolerFemale_TalkingLeft",
       "flag": "0"
     },
     {
@@ -124,12 +124,13 @@
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Route3_North_EventScript_Battle_PreschoolerMale_Slide",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE3N_TWIN_RIGHT",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 71,
       "y": 21,
@@ -139,10 +140,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_North_EventScript_Battle_Twins",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE3N_TWIN_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 70,
       "y": 21,
@@ -152,7 +154,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_North_EventScript_Twin_Left",
       "flag": "0"
     },
     {
@@ -174,6 +176,19 @@
       "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 55,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -205,7 +220,53 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 71,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NOT_ENOUGH_POKEMON",
+      "var_value": "0",
+      "script": "Route3_North_EventScript_Trigger_NotEnoughPokemon"
+    },
+    {
+      "type": "trigger",
+      "x": 71,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NOT_ENOUGH_POKEMON",
+      "var_value": "0",
+      "script": "Route3_North_EventScript_Trigger_NotEnoughPokemon"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -213,7 +274,7 @@
       "y": 15,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Route3_North_EventScript_SignPost_DayCare"
     },
     {
       "type": "sign",
@@ -221,7 +282,7 @@
       "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Route3_North_EventScript_SignPost"
     },
     {
       "type": "sign",

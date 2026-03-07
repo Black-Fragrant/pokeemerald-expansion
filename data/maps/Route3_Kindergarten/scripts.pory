@@ -1,1 +1,100 @@
 mapscripts Route3_Kindergarten_MapScripts {}
+
+script Route3_Kindergarten_EventScript_Teacher_Right
+{
+    lock
+    faceplayer
+    msgbox("Are you familiar with Double Battles?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE3_DC_TEACHER_RIGHT)
+	goto_if_eq(VAR_RESULT, FALSE, Route3_Kindergarten_EventScript_Teacher_Right_Explain)
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("You do have a Gym Badge, after all.\p"
+       "You're well aware that Double Battles\n"
+       "are Pokémon battles where each side\l"
+       "use two Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3_DC_TEACHER_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+    release
+	end
+}
+
+script Route3_Kindergarten_EventScript_Teacher_Right_Explain
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Oh, I do love explaining how things work.\p"
+       "Now, a Double Battle is a Pokémon battle\n"
+       "with two Pokémon on each side.\p"
+       "Choosing two that combine well is vital.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3_DC_TEACHER_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+    release
+	end
+}
+
+script Route3_Kindergarten_EventScript_Preschooler_Circling_TopLeft
+{
+	msgbox("Rrrraaaaar!\p"
+			"I'll run! You gonna chase me?\n"
+			"You run! Am I gonna chase you?\p"
+			"Change your perspective--\n"
+			"and the reality changes.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_Kindergarten_EventScript_Preschooler_Circling_BottomRight
+{
+	msgbox("Yeah! Yeah!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_Kindergarten_EventScript_Preschooler_Left
+{
+	msgbox("Seriously. Guys are all just little boys.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_Kindergarten_EventScript_Housewife
+{
+	msgbox("I happen to be the daughter of the\n"
+       "couple running the Pokémon Day Care\l"
+       "next door!\p"
+       "I know, it's sweet, isn't it?\p"
+       "Parents and daughter all bringing up\n"
+       "youngsters for a living.\p"
+       "Helping Pokémon and people grow up\n"
+       "healthy is a wonderful thing!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_Kindergarten_EventScript_Teacher_Middle
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_TEMP_11, Route3_Kindergarten_EventScript_Teacher_Middle_Healed)
+    msgbox("Um-hmm.\n"
+       "Your Pokémon...\p"
+       "They don't seem to be healthy.\n"
+       "Let them rest here a little bit!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3_DC_TEACHER_LEFT)
+    destroy_speech_bubble()
+    closemessage()
+	fadescreen(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    playbgm(MUS_BW_ROUTE_2, TRUE)
+	fadescreen(FADE_FROM_BLACK)
+    setflag(FLAG_TEMP_11)
+    delay(10)
+    release 
+    end
+}
+
+script Route3_Kindergarten_EventScript_Teacher_Middle_Healed
+{
+    msgbox("Your Pokémon are really energetic!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3_DC_TEACHER_LEFT)
+    destroy_speech_bubble()
+    closemessage()
+    release 
+    end
+}

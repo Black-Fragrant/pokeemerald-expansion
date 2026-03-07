@@ -1,1 +1,229 @@
 mapscripts Route3_North_MapScripts {}
+
+script Route3_North_EventScript_SignPost
+{
+	msgbox("Route 3", MSGBOX_SIGN)
+	end
+}
+
+script Route3_North_EventScript_SignPost_DayCare
+{
+	msgbox("Pokémon Day Care"
+            "We Take Care of Your Precious Pokémon", MSGBOX_SIGN)
+	end
+}
+
+script Route3_North_EventScript_Boy_TopRight
+{
+	msgbox("Sometimes they let\n"
+			"us play with Pokémon!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_North_EventScript_SignPost_TrainerTips
+{
+	msgbox("Trainer Tips!\p"
+       "The Pokémon placed in the upper\n"
+       "left of the Pokémon list is important!\p"
+       "The Pokémon set there is the first\n"
+       "out when a Pokémon battle starts!", MSGBOX_SIGN)
+	end
+}
+
+script Route3_North_EventScript_Teacher_InFrontOfKindergarten
+{
+	msgbox("Pokémon battling is very popular\n"
+			"at this Day Care.\p"
+			"If you go in the playground, you'll\n"
+			"be pestered into battling.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_North_EventScript_Battle_Teacher
+{
+	trainerbattle_single(TRAINER_NURSERY_AIDE_ROUTE_3_1,
+	text("I feel invincible because I am surrounded\n"
+    	    "by the smiles of children and Pokémon!"),
+	text("Wow! Great, great!\n"
+        "You are very strong!"))
+	msgbox("Speak while making eye contact, and\n"
+			"express your feelings to each other...\l"
+			"It' the same for people and Pokémon.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_North_EventScript_Battle_PreschoolerMale_TalkingRight
+{
+	trainerbattle_single(TRAINER_PRESCHOOLER_M_ROUTE_3_1,
+    text("Hey! Trainer!\n"
+            "Have a battle with me!"),
+    text("Oops. I have no healthy Pokémon\n"
+        "left to fight..."))
+    msgbox("Argh! You went all out against a kid!\n"
+            "...Actually, that's a good thing. Thanks!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_North_EventScript_Battle_PreschoolerFemale_TalkingLeft
+{
+	trainerbattle_single(TRAINER_PRESCHOOLER_F_ROUTE_3,
+	text("Trainer!\n"
+    	    "I wanna play with you."),
+	text("Trainer!\n"
+        "You too strong!"))
+	msgbox("When I get big, I wanna be\n"
+			"a strong, cool Trainer, too!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_North_EventScript_Battle_PreschoolerMale_Slide
+{
+	trainerbattle_single(TRAINER_PRESCHOOLER_F_ROUTE_3,
+	text("Take this!\n"
+    	    "Hyper Beam!"),
+	text("Whoops..."))
+	msgbox("Hyper Beam?\n"
+			"Oh, my Pokémon can't really use it yet.\p"
+			"I don't know very much about Pokémon,\n"
+			"so I just want to use really cool moves.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_North_EventScript_Battle_Twins
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_TWINS_ROUTE_3, Route3_North_EventScript_TwinsDefeated)
+	getpartysize
+	goto_if_eq (VAR_RESULT, 1, Route3_North_EventScript_Battle_Twins_NotEnoughPokemon)
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+    playbgm(MUS_BW_SPOTTED_KID, TRUE)
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(face_right))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(face_right))
+	waitmovement(0)
+    msgbox("We're going to combine our strength\n"
+       "and do our best, so please watch!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Umm...\n"
+       "One plus one is two, right?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_LEFT)
+	destroy_speech_bubble()
+	closemessage
+    trainerbattle_no_intro(TRAINER_TWINS_ROUTE_3, text("Kumi: Come on, Pokémon!\nGet up! Go!\pAmy: Oh, no! Our Pokémon\nburned out..."))
+    playbgm(MUS_BW_ROUTE_2, TRUE)
+    setvar(VAR_ROUTE3_NOT_ENOUGH_POKEMON, 1)
+    release
+    end 
+}
+
+script Route3_North_EventScript_TwinsDefeated
+{
+    msgbox("Maybe I could have won if I had used\n"
+       "a Potion or something at some point?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+    release 
+    end 
+}
+
+script Route3_North_EventScript_Twin_Left
+{
+	msgbox("It's hard to win in a Double Battle if\n"
+       "one Pokémon faints.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_North_EventScript_Battle_Twins_NotEnoughPokemon
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    msgbox("You only have one Pokémon?\n"
+       "And you call yourself a Trainer?\p"
+       "Well, it's too dangerous for\n"
+       "you to go any further!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_right))
+    waitmovement(0)
+    release
+    end
+}
+
+script Route3_North_EventScript_Trigger_NotEnoughPokemon
+{
+    lock
+	getpartysize
+	goto_if_eq (VAR_RESULT, 1, Route3_North_EventScript_Trigger_OnePokemon)
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+    playbgm(MUS_BW_SPOTTED_KID, TRUE)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 22, Route3_North_EventScript_TwinR_FaceDown)
+	call_if_eq (VAR_TEMP_1, 23, Route3_North_EventScript_TwinR_WalkDown)
+    delay(10)
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    msgbox("We're going to combine our strength\n"
+       "and do our best, so please watch!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Umm...\n"
+       "One plus one is two, right?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_LEFT)
+	destroy_speech_bubble()
+	closemessage
+    trainerbattle_no_intro(TRAINER_TWINS_ROUTE_3, text("Kumi: Come on, Pokémon!\nGet up! Go!\pAmy: Oh, no! Our Pokémon\nburned out..."))
+    playbgm(MUS_BW_ROUTE_2, TRUE)
+    setvar(VAR_ROUTE3_NOT_ENOUGH_POKEMON, 1)
+    release
+    end 
+}
+
+script Route3_North_EventScript_TwinR_FaceDown
+{
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(face_down))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(face_down))
+	waitmovement(0)
+    return
+}
+
+script Route3_North_EventScript_TwinR_WalkDown
+{
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(walk_down))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(walk_down))
+	waitmovement(0)
+    return
+}
+
+script Route3_North_EventScript_Trigger_OnePokemon
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(walk_in_place_down))
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    msgbox("You only have one Pokémon?\n"
+       "And you call yourself a Trainer?\p"
+       "Well, it's too dangerous for\n"
+       "you to go any further!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
+	destroy_speech_bubble()
+	closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_right))
+    waitmovement(0)
+    release
+    end
+}
+
