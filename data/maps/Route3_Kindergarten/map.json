@@ -20,11 +20,11 @@
       "y": 5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
-      "movement_range_x": 4,
-      "movement_range_y": 4,
+      "movement_range_x": 3,
+      "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_Kindergarten_EventScript_Preschooler_Circling_TopLeft",
       "flag": "0"
     },
     {
@@ -33,14 +33,15 @@
       "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
-      "movement_range_x": 4,
-      "movement_range_y": 4,
+      "movement_range_x": 3,
+      "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_Kindergarten_EventScript_Preschooler_Circling_BottomRight",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE3_DC_TEACHER_RIGHT",
       "graphics_id": "OBJ_EVENT_GFX_TEACHER",
       "x": 10,
       "y": 10,
@@ -50,10 +51,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_Kindergarten_EventScript_Teacher_Right",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE3_DC_TEACHER_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_TEACHER",
       "x": 5,
       "y": 9,
@@ -63,7 +65,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_Kindergarten_EventScript_Teacher_Middle",
       "flag": "0"
     },
     {
@@ -76,7 +78,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_Kindergarten_EventScript_Preschooler_Left",
       "flag": "0"
     },
     {
@@ -89,7 +91,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route3_Kindergarten_EventScript_Housewife",
       "flag": "0"
     }
   ],
