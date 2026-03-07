@@ -78,7 +78,7 @@ script Route3_North_EventScript_Battle_PreschoolerFemale_TalkingLeft
 
 script Route3_North_EventScript_Battle_PreschoolerMale_Slide
 {
-	trainerbattle_single(TRAINER_PRESCHOOLER_F_ROUTE_3,
+	trainerbattle_single(TRAINER_PRESCHOOLER_M_ROUTE_3_2,
 	text("Take this!\n"
     	    "Hyper Beam!"),
 	text("Whoops..."))
