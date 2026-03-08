@@ -796,7 +796,7 @@
 #define FLAG_DREAMYARD_ITEM_POKE_BALL                               0x2EB
 #define FLAG_DREAMYARD_ITEM_PARALYZE_HEAL                           0x2EC
 #define FLAG_STRIATON_OBTAINED_C_GEAR                               0x2ED
-#define FLAG_UNUSED_0x2EE                                           0x2EE
+#define FLAG_ROUTE3N_BIANCA                                         0x2EE
 #define FLAG_UNUSED_0x2EF                                           0x2EF
 #define FLAG_UNUSED_0x2F0                                           0x2F0
 #define FLAG_UNUSED_0x2F1                                           0x2F1

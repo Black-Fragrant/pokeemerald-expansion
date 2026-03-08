@@ -184,6 +184,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE3N_CHEREN_BATTLE",
       "graphics_id": "OBJ_EVENT_GFX_CHEREN",
       "x": 55,
       "y": 22,
@@ -194,7 +195,63 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_ROUTE3N_PGM_1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 55,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_ROUTE3N_PGM_2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 55,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_ROUTE3N_BIANCA",
+      "graphics_id": "OBJ_EVENT_GFX_BIANCA",
+      "x": 56,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route3_North_EventScript_Bianca",
+      "flag": "FLAG_ROUTE3N_BIANCA"
+    },
+    {
+      "local_id": "LOCALID_ROUTE3N_GIRL_WITH_BIANCA",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "x": 56,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route3_North_EventScript_Girl_WithBianca",
+      "flag": "FLAG_ROUTE3N_BIANCA"
     }
   ],
   "warp_events": [
@@ -244,27 +301,54 @@
       "x": 47,
       "y": 21,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route3_North_EventScript_Trigger_CherenBattle"
     },
     {
       "type": "trigger",
       "x": 47,
       "y": 22,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route3_North_EventScript_Trigger_CherenBattle"
     },
     {
       "type": "trigger",
       "x": 47,
       "y": 23,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Route3_North_EventScript_Trigger_CherenBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 45,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "Route3_North_EventScript_Trigger_TryLeaving"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "Route3_North_EventScript_Trigger_TryLeaving"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "Route3_North_EventScript_Trigger_TryLeaving"
     }
   ],
   "bg_events": [
@@ -290,7 +374,7 @@
       "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Route3_North_EventScript_SignPost_TrainerTips"
     }
   ]
 }

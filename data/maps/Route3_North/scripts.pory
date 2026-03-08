@@ -1,4 +1,22 @@
-mapscripts Route3_North_MapScripts {}
+mapscripts Route3_North_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : Route3_North_On_Transition
+}
+
+script Route3_North_On_Transition
+{
+    call_if_eq (VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1,  Route3_North_EventScript_PositionBiancaAndGirl)
+	end()
+}
+
+script Route3_North_EventScript_PositionBiancaAndGirl
+{
+	setobjectxyperm(LOCALID_ROUTE3N_BIANCA, 50, 21)
+	setobjectxyperm(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, 50, 22)
+	setobjectmovementtype(LOCALID_ROUTE3N_BIANCA, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectmovementtype(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, MOVEMENT_TYPE_FACE_UP)
+	return
+}
 
 script Route3_North_EventScript_SignPost
 {
@@ -225,5 +243,287 @@ script Route3_North_EventScript_Trigger_OnePokemon
     waitmovement(0)
     release
     end
+}
+
+script Route3_North_EventScript_Trigger_CherenBattle
+{
+	lock
+	playbgm(MUS_BW_CHEREN, TRUE)
+	delay(10)
+	addobject(LOCALID_ROUTE3N_CHEREN_BATTLE)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_left * 6))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(face_right))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	msgbox("Cheren: {PLAYER}, stop!\p"
+       "We both have a Trio Badge,\n"
+       "so let's see which of us is stronger!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 21, Route3_North_EventScript_Trigger_CherenBattle_Pos1)
+	call_if_eq (VAR_TEMP_1, 23, Route3_North_EventScript_Trigger_CherenBattle_Pos2)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_left))
+	waitmovement(0)
+	delay(10)
+	call_if_set(FLAG_CHOSE_SNIVY, Route3_North_EventScript_Trigger_CherenBattle_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, Route3_North_EventScript_Trigger_CherenBattle_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, Route3_North_EventScript_Trigger_CherenBattle_Snivy)
+	playbgm(MUS_BW_ROUTE_2, TRUE)
+	delay(10)
+	msgbox("Cheren: I see.\n"
+       "So that's how you battle.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	msgbox("???: Out of the way!", MSGBOX_DEFAULT)
+	closemessage
+	playbgm(MUS_BW_GHETSIS_AMBITIONS, TRUE)
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_question_mark))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(emote_question_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	addobject(LOCALID_ROUTE3N_PGM_1)
+	addobject(LOCALID_ROUTE3N_PGM_2)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(delay_16 * 2, face_up, lock_facing_direction, walk_down, unlock_facing_direction))
+	applymovement(LOCALID_PLAYER, moves(delay_16, delay_8, face_down, lock_facing_direction, walk_up * 2, unlock_facing_direction))
+	applymovement(LOCALID_ROUTE3N_PGM_1, moves(walk_fast_left * 17))
+	applymovement(LOCALID_ROUTE3N_PGM_2, moves(walk_fast_left * 17))
+	waitmovement(0)
+	removeobject(LOCALID_ROUTE3N_PGM_1)
+	removeobject(LOCALID_ROUTE3N_PGM_2)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_up, walk_in_place_left))
+	applymovement(LOCALID_PLAYER, moves(walk_down, walk_right, walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: What was that about?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Bianca?\n"
+       "Why are you running?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	clearflag(FLAG_ROUTE3N_BIANCA)
+	addobject(LOCALID_ROUTE3N_BIANCA)
+	addobject(LOCALID_ROUTE3N_GIRL_WITH_BIANCA)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_left * 6))
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(delay_16, walk_left * 6))
+	waitmovement(0)
+	setobjectxyperm(LOCALID_ROUTE3N_BIANCA, 50, 21)
+	setobjectxyperm(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, 50, 22)
+	delay(10)
+	msgbox("Bianca: Hey!\n"
+       "Where were those people headed?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_left))
+	waitmovement(0)
+	msgbox("Cheren: That way, but...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_right))
+	waitmovement(0)
+	msgbox("Why are you running now?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_in_place_fast_left * 2))
+	waitmovement(0)
+	msgbox("Bianca: Oh, seriously!\n"
+       "They run so fast!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Little Girl: Miss... Oh...\n"
+       "My Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_GIRL_WITH_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("Bianca: It'll be OK.\n"
+       "It'll be OK. Don't cry.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_fast_right * 2))
+	waitmovement(0)
+	msgbox("Cheren: Bianca, really, why\n"
+       "were you running?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(face_left))
+	waitmovement(0)
+	msgbox("Bianca: You have to hear this!\p"
+       "Those people stole this girl's Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	msgbox("Cheren: You should have\n"
+       "spoken up sooner!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+	msgbox("{PLAYER}, we're going to get\n"
+       "that Pokémon back.\p"
+       "Bianca! Please stay by the girl's side.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(delay_16, walk_in_place_left))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_fast_left * 8))
+	waitmovement(0)
+	delay(20)
+	playbgm(MUS_BW_ROUTE_2, TRUE)
+	setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1)
+	removeobject(LOCALID_ROUTE3N_CHEREN_BATTLE)
+	setflag(FLAG_DREAMYARD_BIANCA_2)
+	setobjectmovementtype(LOCALID_ROUTE3N_BIANCA, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectmovementtype(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, MOVEMENT_TYPE_FACE_UP)
+	delay(10)
+	release
+	end
+}
+
+script Route3_North_EventScript_Trigger_CherenBattle_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down, walk_in_place_right))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_CherenBattle_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_in_place_right))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_CherenBattle_Tepig
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_1, text("Why do you keep beating me?\pWe have the same number\n of Gym Badges.\pWe should be equals\nin strength..."))
+	return()
+}
+
+script Route3_North_EventScript_Trigger_CherenBattle_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_2, text("Why do you keep beating me?\pWe have the same number\n of Gym Badges.\pWe should be equals\nin strength..."))
+	return()
+}
+
+script Route3_North_EventScript_Trigger_CherenBattle_Snivy
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_3, text("Why do you keep beating me?\pWe have the same number\n of Gym Badges.\pWe should be equals\nin strength..."))
+	return()
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving
+{
+	lock
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(face_left))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 45, Route3_North_EventScript_Trigger_TryLeaving_Pos1)
+	call_if_eq (VAR_TEMP_0, 46, Route3_North_EventScript_Trigger_TryLeaving_Pos2)
+	call_if_eq (VAR_TEMP_0, 47, Route3_North_EventScript_Trigger_TryLeaving_Pos3)
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+	msgbox("Bianca: Please, {PLAYER}.\p"
+       "Team Plasma took that Pokémon.\n"
+       "Get it back!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_up))
+	waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 45, Route3_North_EventScript_Trigger_TryLeaving_Pos4)
+	call_if_eq (VAR_TEMP_0, 46, Route3_North_EventScript_Trigger_TryLeaving_Pos5)
+	call_if_eq (VAR_TEMP_0, 47, Route3_North_EventScript_Trigger_TryLeaving_Pos6)
+	delay(10)
+	release
+	end
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving_Pos1
+{
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_left * 5, walk_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving_Pos2
+{
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_left * 4, walk_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving_Pos3
+{
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_left * 3, walk_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving_Pos4
+{
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_right * 5, walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving_Pos5
+{
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_right * 4, walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_TryLeaving_Pos6
+{
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_right * 3, walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Bianca
+{
+	msgbox("Bianca: Please, {PLAYER}.\p"
+       "Team Plasma took that Pokémon.\n"
+       "Get it back!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route3_North_EventScript_Girl_WithBianca
+{
+	msgbox("Little Girl: Oh, why do they\n"
+       "take people's Pokémon?", MSGBOX_NPC, TRUE)
+	end
 }
 
