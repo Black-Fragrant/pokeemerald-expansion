@@ -113,7 +113,7 @@
 #define VAR_STRIATON_FENNEL_STATE                        0x405D
 #define VAR_DREAMYARD_STATE                              0x405E
 #define VAR_ROUTE3_NOT_ENOUGH_POKEMON                    0x405F
-#define VAR_UNUSED_4060                                  0x4060
+#define VAR_ROUTE3_NORTH_CHEREN_BATTLE                   0x4060
 #define VAR_UNUSED_4061                                  0x4061 // Unused Var
 #define VAR_UNUSED_4062                                  0x4062 // Unused Var
 #define VAR_UNUSED_4063                                  0x4063

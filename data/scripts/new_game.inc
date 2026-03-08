@@ -130,5 +130,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_STRIATON_TRB1F_FENNEL
 	setflag FLAG_DREAMYARD_BIANCA
 	setflag FLAG_DREAMYARD_BIANCA_2
+	setflag FLAG_ROUTE3N_BIANCA
 	call EventScript_ResetAllBerries
 	end
