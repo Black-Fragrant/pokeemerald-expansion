@@ -280,6 +280,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route3_North_EventScript_CherenByCave",
       "flag": "FLAG_ROUTE3N_CHEREN_BY_CAVE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_BOY",
+      "x": 48,
+      "y": 31,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -377,6 +390,51 @@
       "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
       "var_value": "1",
       "script": "Route3_North_EventScript_Trigger_TryLeaving"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "3",
+      "script": "Route3_North_EventScript_Trigger_ThankingYou"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "3",
+      "script": "Route3_North_EventScript_Trigger_ThankingYou"
+    },
+    {
+      "type": "trigger",
+      "x": 45,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "3",
+      "script": "Route3_North_EventScript_Trigger_ThankingYou"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "3",
+      "script": "Route3_North_EventScript_Trigger_ThankingYou"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "3",
+      "script": "Route3_North_EventScript_Trigger_ThankingYou"
     }
   ],
   "bg_events": [

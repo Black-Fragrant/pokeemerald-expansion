@@ -6,6 +6,7 @@ mapscripts Route3_North_MapScripts
 script Route3_North_On_Transition
 {
     call_if_eq (VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1,  Route3_North_EventScript_PositionBiancaAndGirl)
+    call_if_eq (VAR_ROUTE3_NORTH_CHEREN_BATTLE, 3,  Route3_North_EventScript_PositionBiancaAndGirl_Continue)
 	end()
 }
 
@@ -13,8 +14,17 @@ script Route3_North_EventScript_PositionBiancaAndGirl
 {
 	setobjectxyperm(LOCALID_ROUTE3N_BIANCA, 50, 21)
 	setobjectxyperm(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, 50, 22)
-	setobjectmovementtype(LOCALID_ROUTE3N_BIANCA, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectmovementtype(LOCALID_ROUTE3N_BIANCA, MOVEMENT_TYPE_FACE_LEFT)
 	setobjectmovementtype(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, MOVEMENT_TYPE_FACE_UP)
+	return
+}
+
+script Route3_North_EventScript_PositionBiancaAndGirl_Continue
+{
+	setobjectxyperm(LOCALID_ROUTE3N_BIANCA, 45, 24)
+	setobjectxyperm(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, 47, 24)
+	setobjectmovementtype(LOCALID_ROUTE3N_BIANCA, MOVEMENT_TYPE_FACE_RIGHT)
+	setobjectmovementtype(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, MOVEMENT_TYPE_FACE_LEFT)
 	return
 }
 
@@ -625,5 +635,10 @@ script Route3_North_EventScript_CherenGoInCave
 	waitse()
 	delay(20)
 	release
+	end
+}
+
+script Route3_North_EventScript_Trigger_ThankingYou
+{
 	end
 }
