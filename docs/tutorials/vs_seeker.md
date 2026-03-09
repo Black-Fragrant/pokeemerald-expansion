@@ -41,9 +41,9 @@ Objects listed in `regularTrainersOnLand` or `regularTrainersInWater` are consid
 | Sequence   | Trainer ID       |
 | ---------- | ---------------- |
 | 1st Battle | `TRAINER_DUMMY` |
-| 2nd Battle | `TRAINER_ROSE_2` |
-| 3rd Battle | `TRAINER_ROSE_3` |
-| 4th Battle | `TRAINER_ROSE_4` |
+| 2nd Battle | `TRAINER_DUMMY` |
+| 3rd Battle | `TRAINER_DUMMY` |
+| 4th Battle | `TRAINER_DUMMY` |
 | 5th Battle | `TRAINER_ROSE_5` |
 
 The game determines which version of the Trainer you'll fight next by following these rules:
@@ -66,7 +66,7 @@ If a Trainer is intended to have less than five unique rematch parties, the extr
 
 ```c
 // This Trainer only has two teams.
-    [REMATCH_ROSE] = REMATCH(TRAINER_DUMMY, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, MAP_ROUTE118),
+    [REMATCH_ROSE] = REMATCH(TRAINER_DUMMY, TRAINER_DUMMY, TRAINER_DUMMY, TRAINER_DUMMY, TRAINER_DUMMY, MAP_ROUTE118),
 ```
 
 WARNING: Rematch IDs should be placed BEFORE `REMATCH_WALLY_VR`. Trainers below that are treated as "special Trainers" that are not triggered by the Vs. Seeker.

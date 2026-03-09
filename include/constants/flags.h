@@ -545,8 +545,8 @@
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4
 #define FLAG_HIDDEN_ITEM_STRIATON_BALM_MUSHROOM              (FLAG_HIDDEN_ITEMS_START + 0x00)
 #define FLAG_HIDDEN_ITEM_STRIATON_ZINC                       (FLAG_HIDDEN_ITEMS_START + 0x01)
-#define FLAG_UNUSED_0x1F6                                    (FLAG_HIDDEN_ITEMS_START + 0x02)
-#define FLAG_UNUSED_0x1F7                                    (FLAG_HIDDEN_ITEMS_START + 0x03)
+#define FLAG_HIDDEN_ITEM_ROUTE3N_ULTRA_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x02)
+#define FLAG_HIDDEN_ITEM_WELLSPRINGCAVE1F_FULL_HEAL          (FLAG_HIDDEN_ITEMS_START + 0x03)
 #define FLAG_UNUSED_0x1F8                                    (FLAG_HIDDEN_ITEMS_START + 0x04)
 #define FLAG_UNUSED_0x1F9                                    (FLAG_HIDDEN_ITEMS_START + 0x05)
 #define FLAG_UNUSED_0x1FA                                    (FLAG_HIDDEN_ITEMS_START + 0x06)
@@ -797,14 +797,14 @@
 #define FLAG_DREAMYARD_ITEM_PARALYZE_HEAL                           0x2EC
 #define FLAG_STRIATON_OBTAINED_C_GEAR                               0x2ED
 #define FLAG_ROUTE3N_BIANCA                                         0x2EE
-#define FLAG_UNUSED_0x2EF                                           0x2EF
-#define FLAG_UNUSED_0x2F0                                           0x2F0
-#define FLAG_UNUSED_0x2F1                                           0x2F1
-#define FLAG_UNUSED_0x2F2                                           0x2F2
-#define FLAG_UNUSED_0x2F3                                           0x2F3
-#define FLAG_UNUSED_0x2F4                                           0x2F4
-#define FLAG_UNUSED_0x2F5                                           0x2F5
-#define FLAG_UNUSED_0x2F6                                           0x2F6
+#define FLAG_ROUTE3N_ITEM_SUPER_POTION                              0x2EF
+#define FLAG_ROUTE3N_ITEM_ORAN_BERRY                                0x2F0
+#define FLAG_ROUTE3N_ITEM_REPEL                                     0x2F1
+#define FLAG_ROUTE3N_CHEREN_BY_CAVE                                 0x2F2
+#define FLAG_ROUTE3N_CHEREN_BY_CAVE_TALKED_ONCE                     0x2F3
+#define FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS                           0x2F4
+#define FLAG_WELLSPRINGCAVE_CHEREN                                  0x2F5
+#define FLAG_WELLSPRINGCAVE_ITEM_TM_THIEF                           0x2F6
 #define FLAG_UNUSED_0x2F7                                           0x2F7
 #define FLAG_UNUSED_0x2F8                                           0x2F8
 #define FLAG_UNUSED_0x2F9                                           0x2F9

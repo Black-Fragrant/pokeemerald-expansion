@@ -2,7 +2,7 @@
   "id": "MAP_WELLSPRING_CAVE_1F",
   "name": "WellspringCave_1F",
   "layout": "LAYOUT_WELLSPRING_CAVE_1F",
-  "music": "MUS_DUMMY",
+  "music": "MUS_BW_GENERAL_CAVE",
   "region_map_section": "MAPSEC_WELLSPRING_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +13,91 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_WELLSPRINGCAVE1F_CHEREN",
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 25,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_WELLSPRINGCAVE_CHEREN"
+    },
+    {
+      "local_id": "LOCALID_WELLSPRINGCAVE1F_PGM_1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 23,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_WELLSPRINGCAVE1F_PGM_2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 23,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GOLD_BALL",
+      "x": 28,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_THIEF",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_WELLSPRINGCAVE_ITEM_TM_THIEF"
+    },
+    {
+      "local_id": "LOCALID_WELLSPRINGCAVE1F_PGM_3",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 17,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_WELLSPRINGCAVE1F_PGM_4",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 17,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS"
+    }
+  ],
   "warp_events": [
     {
       "x": 30,
@@ -30,6 +114,52 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "WellspringCave_1F_EventScript_Trigger_Multibattle"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "WellspringCave_1F_EventScript_Trigger_Multibattle"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "WellspringCave_1F_EventScript_Trigger_Multibattle"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_ROUTE3_NORTH_CHEREN_BATTLE",
+      "var_value": "1",
+      "script": "WellspringCave_1F_EventScript_Trigger_Multibattle"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 24,
+      "y": 13,
+      "elevation": 0,
+      "item": "ITEM_FULL_HEAL",
+      "flag": "FLAG_HIDDEN_ITEM_WELLSPRINGCAVE1F_FULL_HEAL"
+    }
+  ]
 }

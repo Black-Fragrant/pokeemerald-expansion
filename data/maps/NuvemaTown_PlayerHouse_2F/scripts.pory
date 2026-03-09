@@ -102,6 +102,7 @@ script NuvemaTown_PH2F_On_Transition
     case 0: goto(NuvemaTown_PH2F_EventScript_HideBianca)
     case 2: goto(NuvemaTown_PH2F_EventScript_PositionPlayers)
     }
+	end
 }
 
 script NuvemaTown_PH2F_EventScript_HideBianca
