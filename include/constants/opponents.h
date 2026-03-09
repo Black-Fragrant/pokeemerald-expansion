@@ -43,9 +43,9 @@
 #define TRAINER_SCHOOLGIRL_ROUTE_3_1         37
 #define TRAINER_SCHOOLGIRL_ROUTE_3_2         38
 #define TRAINER_SCHOOLBOY_ROUTE_3_2          39
-#define TRAINER_ROSE_2                       40
-#define TRAINER_ROSE_3                       41
-#define TRAINER_ROSE_4                       42
+#define TRAINER_GRUNT_WELLSPRINGCAVE_1F_1    40
+#define TRAINER_GRUNT_WELLSPRINGCAVE_1F_2    41
+#define TRAINER_GRUNT_WELLSPRINGCAVE_1F_3    42
 #define TRAINER_ROSE_5                       43
 #define TRAINER_DUSTY_1                      44
 #define TRAINER_CHIP                         45

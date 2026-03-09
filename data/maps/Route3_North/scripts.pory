@@ -527,3 +527,103 @@ script Route3_North_EventScript_Girl_WithBianca
 	end
 }
 
+script Route3_North_EventScript_Battle_Breeder_F
+{
+	trainerbattle_single(TRAINER_BREEDER_F_ROUTE_3,
+	text("Your Pokémon look quite good!\p"
+       "Would you show me how\n"
+       "you've been training them?"),
+	text("Oh, I see!\n"
+       "You've trained them by\l"
+       "traveling together!"),
+	Route3_North_EventScript_Battle_Breeder_F_GivesBerry)
+	goto(Route3_North_EventScript_Battle_Breeder_F_GivesBerry)
+	end()
+}
+
+script Route3_North_EventScript_Battle_Breeder_F_GivesBerry
+{
+	goto_if_set(FLAG_ROUTE3N_ITEM_ORAN_BERRY, Route3_North_EventScript_Breeder_F_Received)
+	msgbox("Please, let your precious Pokémon\n"
+       "have this.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BREEDER_F)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_ORAN_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Route3_North_EventScript_BagIsFull)
+	goto (Route3_North_EventScript_Breeder_F_Received)
+	end
+}
+
+script Route3_North_EventScript_Breeder_F_Received
+{
+	msgbox("I guess when Pokémon and Trainers\n"
+       "spend that much time together,\l"
+       "they naturally understand each other!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BREEDER_F)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_ROUTE3N_ITEM_ORAN_BERRY)
+	release()
+	end()
+}
+
+script Route3_North_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script Route3_North_EventScript_CherenByCave
+{
+	lock
+	faceplayer
+	goto_if_set(FLAG_ROUTE3N_CHEREN_BY_CAVE_TALKED_ONCE, Route3_North_EventScript_CherenByCave_Continue)
+	msgbox("Cheren: They ran inside here!\p"
+       "{PLAYER}, your Pokémon's HP is fine,\n"
+       "and you're ready to go, right?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE3N_CHEREN_BY_CAVE)
+	goto_if_eq(VAR_RESULT, TRUE, Route3_North_EventScript_CherenGoInCave)
+	goto(Route3_North_EventScript_CherenByCave_No)
+}
+
+script Route3_North_EventScript_CherenByCave_Continue
+{
+	msgbox("Cheren: {PLAYER}, your Pokémon's HP\n"
+       " is fine, and you're ready to go, right?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE3N_CHEREN_BY_CAVE)
+	goto_if_eq(VAR_RESULT, TRUE, Route3_North_EventScript_CherenGoInCave)
+	goto(Route3_North_EventScript_CherenByCave_No)
+}
+
+script Route3_North_EventScript_CherenByCave_No
+{
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_ROUTE3N_CHEREN_BY_CAVE_TALKED_ONCE)
+	msgbox("I could never forgive myself if we were\n"
+       "to lose to the kinds of thugs who would\l"
+       "take people's Pokémon!\p"
+       "I'll wait here. Hurry and get ready!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BY_CAVE)
+	destroy_speech_bubble()
+	closemessage
+	release 
+	end 
+}
+
+script Route3_North_EventScript_CherenGoInCave
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Then let's go.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BY_CAVE)
+	destroy_speech_bubble()
+	closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BY_CAVE, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_ROUTE3N_CHEREN_BY_CAVE)
+	setflag(FLAG_ROUTE3N_CHEREN_BY_CAVE)
+	waitse()
+	delay(20)
+	release
+	end
+}

@@ -1,1 +1,300 @@
-mapscripts WellspringCave_1F_MapScripts {}
+mapscripts WellspringCave_1F_MapScripts 
+{
+        MAP_SCRIPT_ON_TRANSITION : WellspringCave_1F_On_Transition
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_ROUTE3_NORTH_CHEREN_BATTLE, 2 : WellspringCave_1F_EventScript_TurnPlayer
+    ]
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_ROUTE3_NORTH_CHEREN_BATTLE, 2 : WellspringCave_1F_EventScript_CherenWrapsUp
+    ]
+}
+
+script WellspringCave_1F_On_Transition
+{
+	call_if_eq(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1, WellspringCave_1F_EventScript_PlayMusic)
+	call_if_eq(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 2, WellspringCave_1F_EventScript_PositionCheren)
+    end
+}
+
+script WellspringCave_1F_EventScript_PlayMusic
+{
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+    return
+}
+
+script WellspringCave_1F_EventScript_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_EAST)
+	end()
+}
+
+script WellspringCave_1F_EventScript_PositionCheren
+{
+	setobjectmovementtype(LOCALID_WELLSPRINGCAVE1F_CHEREN, MOVEMENT_TYPE_FACE_RIGHT)
+    return
+}
+
+script WellspringCave_1F_EventScript_CherenWrapsUp
+{
+    lockall
+    msgbox("Cheren: Trainers bring out their\n"
+       "Pokémon's strength.\p"
+       "Pokémon believe in their\n"
+       "Trainers and respond to that.\p"
+       "I don't understand what about\n"
+       "that makes Pokémon suffer!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    waitmovement(0)
+    msgbox("OK, {PLAYER},\n"
+       "I'll return the Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_right * 5))
+    waitmovement(0)
+    delay(10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_WELLSPRINGCAVE1F_CHEREN)
+	setflag(FLAG_WELLSPRINGCAVE_CHEREN)
+    setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 3)
+	waitse()
+	delay(20)
+	releaseall
+	end
+}
+
+script WellspringCave_1F_EventScript_Trigger_Multibattle
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 5, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos1)
+	call_if_eq (VAR_TEMP_1, 6, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos1)
+	call_if_eq (VAR_TEMP_1, 7, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos2)
+	call_if_eq (VAR_TEMP_1, 8, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos2)
+    msgbox("Cheren: {PLAYER}!\p"
+       "This bothersome bunch doesn't\n"
+       "really listen to reason.", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_left))
+    waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 5, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos3)
+	call_if_eq (VAR_TEMP_1, 6, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos4)
+	call_if_eq (VAR_TEMP_1, 8, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos5)
+    applymovement(LOCALID_PLAYER, moves(walk_left * 1))
+    waitmovement(0)
+    delay(10)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(walk_right))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_2, moves(walk_right))
+    waitmovement(0)
+    msgbox("Team Plasma: That child cannot use\n"
+       "a Pokémon to its full potential.\p"
+       "Doesn't that make the Pokémon sad?\p"
+       "It's the same for all your Pokémon,\n"
+       "so hand them over to us now!\p"
+       "Better yet...\n"
+       "We'll just take them!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_1)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    trainerbattle_no_intro(TRAINER_GRUNT_WELLSPRINGCAVE_1F_1, text("Whoa, whoa, come on now!\nI'm shocked to lose\lagainst a little kid!"))
+    delay(10)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(walk_in_place_right))
+    waitmovement(0)
+    msgbox("Team Plasma: Wha...? How could we lose\n"
+       "when we have right on our side?!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_1)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Cheren: Not bad, {PLAYER}.\n"
+       "OK, go return the Pokémon to that girl.", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    playse(SE_BANG)
+    msgbox("You don't need to return it!", MSGBOX_DEFAULT) //this should be jagged
+    closemessage
+    waitse()
+    delay(10)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(face_left, delay_16 * 4, walk_up * 2, walk_right, walk_in_place_down))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_2, moves(face_left, delay_16 * 4, walk_up * 3, walk_in_place_down))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_3, moves(walk_right * 7))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_4, moves(walk_right * 7))
+    waitmovement(0)
+    msgbox("Team Plasma: How troublesome.\p"
+       "Not only do you fail to understand, but\n"
+       "you actually got in our way, to boot.", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_3)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Team Plasma: There's two of you\n"
+       "and two of us.\p"
+       "We'll show you our combined power\n"
+       "and teach you that we are right!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_4)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Cheren: So, there were more of them...\p"
+       "Still, why are Pokémon robbers\n"
+       "acting so self-righteous?", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    waitmovement(0)
+    msgbox("{PLAYER}!\p"
+       "We've been friends our whole lives.\n"
+       "We've got each other's back when it\l"
+       "counts. Let's show them how it's done!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    goto(WellspringCave_1F_EventScript_ChooseParty)
+}
+
+script WellspringCave_1F_EventScript_ChooseParty
+{
+	special(SavePlayerParty)
+	fadescreen(FADE_TO_BLACK)
+	special(ChooseHalfPartyForBattle)
+	waitstate
+	goto_if_ne(VAR_RESULT, 0, WellspringCave_1F_EventScript_DoMultibattle)
+	special(LoadPlayerParty)
+	goto(WellspringCave_1F_EventScript_ChooseParty)
+}
+
+script WellspringCave_1F_EventScript_DoMultibattle
+{
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_left))
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    waitmovement(0)
+	goto_if_set(FLAG_CHOSE_SNIVY, WellspringCave_1F_EventScript_DoMultibattle_Tepig)
+	goto_if_set(FLAG_CHOSE_TEPIG, WellspringCave_1F_EventScript_DoMultibattle_Oshawott)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, WellspringCave_1F_EventScript_DoMultibattle_Snivy)
+    end
+}
+
+script WellspringCave_1F_EventScript_DoMultibattle_Tepig
+{
+    multi_2_vs_2(TRAINER_GRUNT_WELLSPRINGCAVE_1F_2, text("Plasmaaaa!\n...What? Did we lose?"),
+    TRAINER_GRUNT_WELLSPRINGCAVE_1F_3, text("I cannot believe that Team\nPlasma lost to such kids!"), PARTNER_CHEREN_WELLSPRINGCAVE_TEPIG)
+	goto_if_eq(VAR_RESULT, 1, WellspringCave_1F_EventScript_FinishedMultibattle)
+	fadescreen(FADE_TO_BLACK)
+	special(SetCB2WhiteOut)
+	waitstate
+    end
+}
+
+script WellspringCave_1F_EventScript_DoMultibattle_Oshawott
+{
+    multi_2_vs_2(TRAINER_GRUNT_WELLSPRINGCAVE_1F_2, text("Plasmaaaa!\n...What? Did we lose?"),
+    TRAINER_GRUNT_WELLSPRINGCAVE_1F_3, text("I cannot believe that Team\nPlasma lost to such kids!"), PARTNER_CHEREN_WELLSPRINGCAVE_OSHAWOTT)
+	goto_if_eq(VAR_RESULT, 1, WellspringCave_1F_EventScript_FinishedMultibattle)
+	fadescreen(FADE_TO_BLACK)
+	special(SetCB2WhiteOut)
+	waitstate
+    end
+}
+
+script WellspringCave_1F_EventScript_DoMultibattle_Snivy
+{
+    multi_2_vs_2(TRAINER_GRUNT_WELLSPRINGCAVE_1F_2, text("Plasmaaaa!\n...What? Did we lose?"),
+    TRAINER_GRUNT_WELLSPRINGCAVE_1F_3, text("I cannot believe that Team\nPlasma lost to such kids!"), PARTNER_CHEREN_WELLSPRINGCAVE_SNIVY)
+	goto_if_eq(VAR_RESULT, 1, WellspringCave_1F_EventScript_FinishedMultibattle)
+	fadescreen(FADE_TO_BLACK)
+	special(SetCB2WhiteOut)
+	waitstate
+    end
+}
+
+script WellspringCave_1F_EventScript_FinishedMultibattle
+{
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_3, moves(walk_in_place_right))
+    waitmovement(0)
+    msgbox("Team Plasma: In order to liberate\n"
+       "Pokémon from foolish people,\l"
+       "we will take their Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_3)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Cheren: Whatever...\n"
+       "What a waste of time.\p"
+       "Come on, what reason could possibly\n"
+       "justify stealing Pokémon from people?", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Team Plasma: Pokémon Trainers\n"
+       "like you are making Pokémon suffer...", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_4)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Cheren: What do you mean, Trainers are\n"
+       "making Pokémon suffer?\l"
+       "I don't get that at all!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(walk_down))
+    waitmovement(0)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_up))
+    waitmovement(0)
+    delay(10)
+    msgbox("Team Plasma: We'll give you back\n"
+       "the Pokémon...\p"
+       "But be aware of how this Pokémon\n"
+       "suffers from being used by people.\p"
+       "Team Plasma: Someday, open your eyes\n"
+       "to your own complicity.", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_1)
+    destroy_speech_bubble()
+    closemessage
+    setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 2)
+    setflag(FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS)
+    warpsilent(MAP_WELLSPRING_CAVE_1F, 25, 7)
+    waitstate
+    end
+}
+
+script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos1
+{
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos2
+{
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos3
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+    waitmovement(0)
+    return
+}
+
+script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos4
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down * 1))
+    waitmovement(0)
+    return
+}
+
+script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos5
+{
+    applymovement(LOCALID_PLAYER, moves(walk_up * 1))
+    waitmovement(0)
+    return
+}
+

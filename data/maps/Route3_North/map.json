@@ -162,26 +162,26 @@
       "x": 45,
       "y": 17,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_SUPER_POTION",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ROUTE3N_ITEM_SUPER_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
       "x": 27,
       "y": 16,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_REPEL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ROUTE3N_ITEM_REPEL"
     },
     {
       "local_id": "LOCALID_ROUTE3N_CHEREN_BATTLE",
@@ -252,6 +252,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route3_North_EventScript_Girl_WithBianca",
       "flag": "FLAG_ROUTE3N_BIANCA"
+    },
+    {
+      "local_id": "LOCALID_ROUTE3N_BREEDER_F",
+      "graphics_id": "OBJ_EVENT_GFX_BREEDER_FEMALE",
+      "x": 28,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Route3_North_EventScript_Battle_Breeder_F",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ROUTE3N_CHEREN_BY_CAVE",
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 8,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route3_North_EventScript_CherenByCave",
+      "flag": "FLAG_ROUTE3N_CHEREN_BY_CAVE"
     }
   ],
   "warp_events": [
@@ -375,6 +403,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route3_North_EventScript_SignPost_TrainerTips"
+    },
+    {
+      "type": "hidden_item",
+      "x": 55,
+      "y": 17,
+      "elevation": 0,
+      "item": "ITEM_ULTRA_BALL",
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE3N_ULTRA_BALL"
     }
   ]
 }
