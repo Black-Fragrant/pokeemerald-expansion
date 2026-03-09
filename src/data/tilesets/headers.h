@@ -1216,7 +1216,7 @@ const struct Tileset gTileset_CaveBW =
     .palettes = gTilesetPalettes_CaveBW,
     .metatiles = gMetatiles_CaveBW,
     .metatileAttributes = gMetatileAttributes_CaveBW,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CaveBW,
 };
 
 const struct Tileset gTileset_NacreneCity =

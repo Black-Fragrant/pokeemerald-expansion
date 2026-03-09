@@ -94,6 +94,10 @@ static void QueueAnimTiles_IndoorStriaton_Machine(u16);
 static void TilesetAnim_Striaton(u16);
 static void QueueAnimTiles_Striaton_Flag(u16);
 
+static void TilesetAnim_CaveBW(u16);
+static void QueueAnimTiles_CaveBW_Drop(u16);
+static void QueueAnimTiles_CaveBW_WaterEdge(u16);
+
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/0.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/1.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/2.4bpp");
@@ -176,6 +180,42 @@ const u16 *const gQueueAnimTiles_Striaton_Flag[] = {
     gQueueAnimTiles_Striaton_Flag_Frame5,
     gQueueAnimTiles_Striaton_Flag_Frame6,
     gQueueAnimTiles_Striaton_Flag_Frame7,
+};
+
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame0[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/0.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame1[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/1.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame2[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/2.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame3[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/3.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame4[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/4.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame5[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/5.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame6[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/6.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame7[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/7.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame8[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/8.4bpp");
+const u16 gQueueAnimTiles_CaveBW_Drop_Frame9[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/drop/9.4bpp");
+
+const u16 *const gQueueAnimTiles_CaveBW_Drop[] = {
+    gQueueAnimTiles_CaveBW_Drop_Frame0,
+    gQueueAnimTiles_CaveBW_Drop_Frame1,
+    gQueueAnimTiles_CaveBW_Drop_Frame2,
+    gQueueAnimTiles_CaveBW_Drop_Frame3,
+    gQueueAnimTiles_CaveBW_Drop_Frame4,
+    gQueueAnimTiles_CaveBW_Drop_Frame5,
+    gQueueAnimTiles_CaveBW_Drop_Frame6,
+    gQueueAnimTiles_CaveBW_Drop_Frame7,
+    gQueueAnimTiles_CaveBW_Drop_Frame8,
+    gQueueAnimTiles_CaveBW_Drop_Frame9,
+};
+
+const u16 gQueueAnimTiles_CaveBW_WaterEdge_Frame0[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/water_edge/0.4bpp");
+const u16 gQueueAnimTiles_CaveBW_WaterEdge_Frame1[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/water_edge/1.4bpp");
+const u16 gQueueAnimTiles_CaveBW_WaterEdge_Frame2[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/water_edge/2.4bpp");
+const u16 gQueueAnimTiles_CaveBW_WaterEdge_Frame3[] = INCBIN_U16("data/tilesets/secondary/cave_bw/anim/water_edge/3.4bpp");
+
+const u16 *const gQueueAnimTiles_CaveBW_WaterEdge[] = {
+    gQueueAnimTiles_CaveBW_WaterEdge_Frame0,
+    gQueueAnimTiles_CaveBW_WaterEdge_Frame1,
+    gQueueAnimTiles_CaveBW_WaterEdge_Frame2,
+    gQueueAnimTiles_CaveBW_WaterEdge_Frame3,
 };
 
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame0[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/0.4bpp");
@@ -837,6 +877,14 @@ static void TilesetAnim_Striaton(u16 timer)
         QueueAnimTiles_Striaton_Flag(timer / 8);
 }
 
+static void TilesetAnim_CaveBW(u16 timer)
+{
+    if (timer % 4 == 0)
+        QueueAnimTiles_CaveBW_Drop(timer / 4);
+    if (timer % 16 == 1)
+        QueueAnimTiles_CaveBW_WaterEdge(timer / 16);
+}
+
 static void TilesetAnim_Nuvema(u16 timer)
 {
     if (timer % 16 == 0)
@@ -897,6 +945,18 @@ static void QueueAnimTiles_Striaton_Flag(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Striaton_Flag);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Striaton_Flag[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(794)), 2 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_CaveBW_Drop(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_CaveBW_Drop);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_CaveBW_Drop[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(752)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_CaveBW_WaterEdge(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_CaveBW_WaterEdge);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_CaveBW_WaterEdge[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(672)), 16 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
@@ -1147,6 +1207,13 @@ void InitTilesetAnim_Striaton(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_Striaton;
+}
+
+void InitTilesetAnim_CaveBW(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_CaveBW;
 }
 
 static void TilesetAnim_Rustboro(u16 timer)
