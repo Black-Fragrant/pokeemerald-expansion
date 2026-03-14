@@ -102,6 +102,8 @@ script NuvemaTown_PH1F_EventScript_Apologize
 	waitse()
 	delay(20)
     setflag(FLAG_NUVEMA_PH1F_CHEREN_BIANCA)
+    clearflag(FLAG_NUVEMA_CHEREN_LAB)
+    clearflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3 ))
 	waitmovement(0)
@@ -180,8 +182,6 @@ script NuvemaTown_PH1F_EventScript_XT_After_Giving_XT
     destroy_speech_bubble()
     closemessage
     playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
-    clearflag(FLAG_NUVEMA_CHEREN_LAB)
-    clearflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
     delay(20)
 	releaseall()
 	end()
