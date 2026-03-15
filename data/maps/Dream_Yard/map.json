@@ -5,7 +5,7 @@
   "music": "MUS_BW_DREAM_YARD",
   "region_map_section": "MAPSEC_DREAMYARD",
   "requires_flash": false,
-  "weather": "WEATHER_SHADE",
+  "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -256,7 +256,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
     },
     {
       "local_id": "LOCALID_DREAMYARD_FENNEL",
