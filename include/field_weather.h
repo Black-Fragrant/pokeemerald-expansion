@@ -13,10 +13,12 @@ enum {
     GFXTAG_SANDSTORM,
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
+    GFXTAG_PEDAL,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
-    PALTAG_WEATHER_2
+    PALTAG_WEATHER_2,
+    PALTAG_WEATHER_PEDAL,
 };
 
 #define NUM_WEATHER_COLOR_MAPS 19
@@ -224,6 +226,11 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+
+void Pedal_InitVars(void);
+void Pedal_Main(void);
+void Pedal_InitAll(void);
+bool8 Pedal_Finish(void);
 
 u8 GetSavedWeather(void);
 void SetSavedWeather(u32 weather);
