@@ -119,9 +119,9 @@ script StriatonCity_TS_EventScript_Youngster
        "cancel evolution!\p"
        "I'll read the book about it to you.\n"
        "Are you ready?\p"
-       "''You can surprise a Pokémon and stop\n"
+       "“You can surprise a Pokémon and stop\n"
        "its evolution by pressing the B Button\l"
-       "when a Pokémon is evolving.''", MSGBOX_NPC, TRUE)
+       "when a Pokémon is evolving.”", MSGBOX_NPC, TRUE)
 	end
 }
 

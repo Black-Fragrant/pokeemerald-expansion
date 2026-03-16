@@ -72,18 +72,6 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl
 {
     lock
     faceplayer
-    goto_if_unset(FLAG_STRIATON_OBTAINED_C_GEAR, StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC)
-	msgbox("Amanita: Is there something you'd like\n"
-            "to ask me?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
-	multichoice(25, 5, MULTI_FENNEL_LAPTOP, 0)
-	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox)}
-	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad)}
-	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)}
-	goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)
-}
-
-script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC
-{
     goto_if_set(FLAG_SYS_PC_LANETTE, StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_2)
 	msgbox("Are you a Trainer?\p"
             "Do you use the PC at Pokémon Centers?\p"
@@ -120,6 +108,7 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_No
 
 script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_2
 {
+    goto_if_set(FLAG_STRIATON_OBTAINED_C_GEAR, StriatonCity_TRB2F_EventScript_SchoolGirl_Multichoice)
     msgbox("Please do use the Battle Box.\p"
             "You can register Pokémon in the PC\n"
             "over there, too!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
@@ -127,6 +116,17 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_ExplainPC_2
     closemessage
     release
 	end
+}
+
+script StriatonCity_TRB2F_EventScript_SchoolGirl_Multichoice
+{
+	msgbox("Amanita: Is there something you'd like\n"
+            "to ask me?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+	multichoice(25, 5, MULTI_FENNEL_LAPTOP, 0)
+	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox)}
+	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad)}
+	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)}
+	goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)
 }
 
 script StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox
@@ -239,7 +239,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear
             "the Power symbol at the bottom right of\l"
             "the screen.\p"
             "Then, after turning on the power, if you\n"
-            "touch the ''?'' icon at the bottom right\l"
+            "touch the “?” icon at the bottom right\l"
             "of the screen, you can read about\l"
             "the C-Gear.\p"
             "About Game Sync...\p"
@@ -528,7 +528,7 @@ script StriatonCity_TRB2F_EventScript_BookCase1
 {
 	msgbox("C-Gear Help\p"
 			"If you have trouble using it, touch\n"
-			"the ''?'' icon on the screen!", MSGBOX_SIGN) //this should be transparent
+			"the “?” icon on the screen!", MSGBOX_SIGN) //this should be transparent
 	end
 }
 
