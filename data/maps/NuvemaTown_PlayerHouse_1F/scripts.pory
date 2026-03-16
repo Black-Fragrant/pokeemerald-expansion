@@ -148,7 +148,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     destroy_speech_bubble()
     closemessage()
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} received the Xtransceiver!")
+    msgbox("{PLAYER} oboatined the Xtransceiver!")
     delay(120)
     closemessage()
     checkplayergender()

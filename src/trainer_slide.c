@@ -60,6 +60,59 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
 {
     [DIFFICULTY_NORMAL] =
     {
+        [TRAINER_BIANCA_NUVEMA_TOWN_1] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("Eek! Ouch!\pI won't let you get away\nwith that!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_BIANCA_NUVEMA_TOWN_2] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("Eek! Ouch!\pI won't let you get away\nwith that!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_BIANCA_NUVEMA_TOWN_3] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("Eek! Ouch!\pI won't let you get away\nwith that!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_NUVEMA_TOWN_1] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("I've finally become a\nTrainer...\pEverything starts from here!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_NUVEMA_TOWN_2] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("I've finally become a\nTrainer...\pEverything starts from here!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_NUVEMA_TOWN_3] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("I've finally become a\nTrainer...\pEverything starts from here!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_N_ACCUMULA_TOWN] = 
+       {[TRAINER_SLIDE_LAST_HALF_HP] = COMPOUND_STRING("More! Let me hear the\nvoice of your Pokémon!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_BIANCA_ROUTE_2_1] = 
+       {[TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("B-both my Pokémon and\nI are going to give it\lour all!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("OK! This little one\nis up next!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_LOW_HP] = COMPOUND_STRING("Uh-oh...\nAm I in trouble?!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_BIANCA_ROUTE_2_2] = 
+       {[TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("B-both my Pokémon and\nI are going to give it\lour all!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("OK! This little one\nis up next!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_LOW_HP] = COMPOUND_STRING("Uh-oh...\nAm I in trouble?!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_BIANCA_ROUTE_2_3] = 
+       {[TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("B-both my Pokémon and\nI are going to give it\lour all!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("OK! This little one\nis up next!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_LOW_HP] = COMPOUND_STRING("Uh-oh...\nAm I in trouble?!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_TRAINER_SCHOOL_1] = 
+       {[TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Moves that never miss and\nmoves that can attack first…\pThere sure are a lot of\ndifferent moves.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("It's important to choose\nwhich item your Pokémon\lholds...{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_TRAINER_SCHOOL_2] = 
+       {[TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Moves that never miss and\nmoves that can attack first…\pThere sure are a lot of\ndifferent moves.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("It's important to choose\nwhich item your Pokémon\lholds...{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_TRAINER_SCHOOL_3] = 
+       {[TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Moves that never miss and\nmoves that can attack first…\pThere sure are a lot of\ndifferent moves.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("It's important to choose\nwhich item your Pokémon\lholds...{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHILI_STRIATON_GYM] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("As if that would work on my Pokémon!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("It's not over yet!\nOne more left!\pThis is where I\ngive it my all!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CRESS_STRIATON_GYM] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("I see...\nThat might be a good attack.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("I'll put all my hopes\non my last Pokémon!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CILAN_STRIATON_GYM] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("Ah! My Pokémon!{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Huh? Could it be?\pCould I have only\none Pokémon left?{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_ROUTE_3_1] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("Ugh! You choose a good\nmove, as usual.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("With my knowledge,\nI can bring out the strength\lof my Pokémon!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_ROUTE_3_2] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("Ugh! You choose a good\nmove, as usual.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("With my knowledge,\nI can bring out the strength\lof my Pokémon!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_CHEREN_ROUTE_3_3] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("Ugh! You choose a good\nmove, as usual.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("With my knowledge,\nI can bring out the strength\lof my Pokémon!{PAUSE_UNTIL_PRESS}"),},
     },
 };
 
