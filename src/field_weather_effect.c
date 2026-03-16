@@ -30,6 +30,8 @@ const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
 
+const u8 gWeatherPedalTiles[] = INCBIN_U8("graphics/weather/pedal.4bpp");
+
 //------------------------------------------------------------------------------
 // WEATHER_SUNNY_CLOUDS
 //------------------------------------------------------------------------------
@@ -2616,6 +2618,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_DOWNPOUR:           return WEATHER_DOWNPOUR;
     case WEATHER_UNDERWATER_BUBBLES: return WEATHER_UNDERWATER_BUBBLES;
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
+    case WEATHER_PEDAL:              return WEATHER_PEDAL;
     case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
     default:                         return WEATHER_NONE;
@@ -2635,3 +2638,260 @@ static void UpdateRainCounter(u8 newWeather, u8 oldWeather)
      && (newWeather == WEATHER_RAIN || newWeather == WEATHER_RAIN_THUNDERSTORM))
         IncrementGameStat(GAME_STAT_GOT_RAINED_ON);
 }
+
+
+//------------------------------------------------------------------------------
+// WEATHER_PEDAL
+//------------------------------------------------------------------------------
+
+// Pedal sprite data fields
+#define tPosX   data[0]
+#define tPosY   data[1]
+#define tSpeedX data[2]
+#define tSpeedY data[3]
+#define tSize   data[4]
+
+static void LoadPedalSpriteSheet(void);
+static void UpdatePedalSprite(struct Sprite *sprite);
+static bool8 CreatePedalSprite(void);
+static void DestroyPedalSprites(void);
+
+static const struct OamData sPedalOamData =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(16x16),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(16x16),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 2,
+    .affineParam = 0,
+};
+
+const u16 gWeatherPedalPalette[] = INCBIN_U16("graphics/weather/pedal.gbapal");
+
+static const struct SpritePalette sPedalSpritePalette =
+{
+    .data = gWeatherPedalPalette,
+    .tag = PALTAG_WEATHER_PEDAL,
+};
+
+static const union AnimCmd sPedalAnimBig[] =
+{
+    ANIMCMD_FRAME(0, 8),   // big frame 0 (tiles 0–3)
+    ANIMCMD_FRAME(4, 8),   // big frame 1 (tiles 4–7)
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sPedalAnimMedium[] =
+{
+    ANIMCMD_FRAME(8, 8),   // medium frame 0 (tiles 8–11)
+    ANIMCMD_FRAME(12, 8),  // medium frame 1 (tiles 12–15)
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sPedalAnimSmall[] =
+{
+    ANIMCMD_FRAME(16, 8),  // small frame 0 (tiles 16–19)
+    ANIMCMD_FRAME(20, 8),  // small frame 1 (tiles 20–23)
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sPedalAnimCmds[] =
+{
+    sPedalAnimBig,     // 0
+    sPedalAnimMedium,  // 1
+    sPedalAnimSmall,   // 2
+};
+
+static const struct SpriteSheet sPedalSpriteSheet =
+{
+    .data = gWeatherPedalTiles,
+    .size = sizeof(gWeatherPedalTiles),
+    .tag = GFXTAG_PEDAL,
+};
+
+static const struct SpriteTemplate sPedalSpriteTemplate =
+{
+    .tileTag = GFXTAG_PEDAL,
+    .paletteTag = PALTAG_WEATHER_PEDAL,
+    .oam = &sPedalOamData,
+    .anims = sPedalAnimCmds,
+    .callback = UpdatePedalSprite,
+};
+
+static const s16 sPedalSpeedBig[2]    = { 0x14, 0x3 }; // fast drift
+static const s16 sPedalSpeedMedium[2] = { 0x10, 0x2 }; // medium drift
+static const s16 sPedalSpeedSmall[2]  = { 0xA,  0x1 }; // slow drift
+
+static void UpdatePedalSprite(struct Sprite *sprite)
+{
+    sprite->invisible = FALSE;
+
+    // Move using fixed-point values
+    sprite->tPosX += sprite->tSpeedX;
+    sprite->tPosY += sprite->tSpeedY;
+
+    sprite->x = sprite->tPosX >> 4;
+    sprite->y = sprite->tPosY >> 4;
+
+    // If off-screen, respawn
+    if (sprite->x > DISPLAY_WIDTH + 16 || sprite->y > DISPLAY_HEIGHT + 16)
+    {
+        // Respawn off-screen left
+        sprite->tPosX = (-16) << 4;
+        sprite->tPosY = (Random() % (DISPLAY_HEIGHT + 32) - 16) << 4;
+
+        // Randomize size
+        u8 size = Random() % 3; // 0=big, 1=medium, 2=small
+        sprite->tSize = size;
+
+        switch (size)
+        {
+        case 0:
+            sprite->tSpeedX = sPedalSpeedBig[0];
+            sprite->tSpeedY = sPedalSpeedBig[1];
+            StartSpriteAnim(sprite, 0);
+            break;
+
+        case 1:
+            sprite->tSpeedX = sPedalSpeedMedium[0];
+            sprite->tSpeedY = sPedalSpeedMedium[1];
+            StartSpriteAnim(sprite, 1);
+            break;
+
+        case 2:
+            sprite->tSpeedX = sPedalSpeedSmall[0];
+            sprite->tSpeedY = sPedalSpeedSmall[1];
+            StartSpriteAnim(sprite, 2);
+            break;
+        }
+    }
+}
+
+static bool8 CreatePedalSprite(void)
+{
+    if (gWeatherPtr->rainSpriteCount == MAX_RAIN_SPRITES)
+        return FALSE;
+
+    u8 i = gWeatherPtr->rainSpriteCount;
+    u8 spriteId = CreateSpriteAtEnd(
+        &sPedalSpriteTemplate,
+        -16,
+        Random() % (DISPLAY_HEIGHT + 32) - 16,
+        78
+    );
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *s = &gSprites[spriteId];
+
+        s->tPosX = (Random() % (DISPLAY_WIDTH + 32) - 16) << 4;
+        s->tPosY = (Random() % (DISPLAY_HEIGHT + 32) - 16) << 4;
+
+        // Random size
+        u8 size = Random() % 3;
+        s->tSize = size;
+
+        switch (size)
+        {
+        case 0:
+            s->tSpeedX = sPedalSpeedBig[0];
+            s->tSpeedY = sPedalSpeedBig[1];
+            StartSpriteAnim(s, 0);
+            break;
+
+        case 1:
+            s->tSpeedX = sPedalSpeedMedium[0];
+            s->tSpeedY = sPedalSpeedMedium[1];
+            StartSpriteAnim(s, 1);
+            break;
+
+        case 2:
+            s->tSpeedX = sPedalSpeedSmall[0];
+            s->tSpeedY = sPedalSpeedSmall[1];
+            StartSpriteAnim(s, 2);
+            break;
+        }
+
+        s->invisible = FALSE;   // ⭐ MUST be inside the block
+
+        gWeatherPtr->sprites.s1.rainSprites[i] = s;
+    }
+    else
+    {
+        gWeatherPtr->sprites.s1.rainSprites[i] = NULL;
+    }
+
+    gWeatherPtr->rainSpriteCount++;
+    return TRUE;
+}
+
+static void LoadPedalSpriteSheet(void)
+{
+    LoadSpriteSheet(&sPedalSpriteSheet);
+    LoadSpritePalette(&sPedalSpritePalette);
+}
+
+void Pedal_InitVars(void)
+{
+    gWeatherPtr->curRainSpriteIndex = 0;
+    gWeatherPtr->initStep = 0;
+    gWeatherPtr->weatherGfxLoaded = FALSE;
+    gWeatherPtr->rainSpriteCount = 0;
+    Weather_SetBlendCoeffs(8, BASE_SHADOW_INTENSITY);
+    gWeatherPtr->noShadows = FALSE; // optional, matches rain
+}
+
+void Pedal_Main(void)
+{
+    switch (gWeatherPtr->initStep)
+    {
+    case 0:
+        LoadPedalSpriteSheet();
+        gWeatherPtr->initStep++;
+        break;
+
+    case 1:
+        if (!CreatePedalSprite())
+            gWeatherPtr->initStep++;
+        break;
+
+    case 2:
+        gWeatherPtr->weatherGfxLoaded = TRUE;
+        gWeatherPtr->initStep++;
+        break;
+    }
+}
+
+void Pedal_InitAll(void)
+{
+    Pedal_InitVars();
+    while (!gWeatherPtr->weatherGfxLoaded)
+        Pedal_Main();
+}
+
+bool8 Pedal_Finish(void)
+{
+    DestroyPedalSprites();
+    return FALSE;
+}
+
+static void DestroyPedalSprites(void)
+{
+    for (u16 i = 0; i < gWeatherPtr->rainSpriteCount; i++)
+    {
+        if (gWeatherPtr->sprites.s1.rainSprites[i])
+            DestroySprite(gWeatherPtr->sprites.s1.rainSprites[i]);
+    }
+
+    gWeatherPtr->rainSpriteCount = 0;
+    FreeSpriteTilesByTag(GFXTAG_PEDAL);
+    FreeSpritePaletteByTag(PALTAG_WEATHER_PEDAL);
+}
+
