@@ -10606,7 +10606,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 4,
         .frontPic = gMonFrontPic_Beartic,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
+        .frontPicYOffset = 0,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 10),
             ANIMCMD_FRAME(0, 20),
@@ -10616,14 +10616,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_SHAKE,
         .backPic = gMonBackPic_Beartic,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 5,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
         .palette = gMonPalette_Beartic,
         .shinyPalette = gMonShinyPalette_Beartic,
         .iconSprite = gMonIcon_Beartic,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 13, SHADOW_SIZE_L)
+        SHADOW(3, 13, SHADOW_SIZE_L)
         FOOTPRINT(Beartic)
         OVERWORLD(
             sPicTable_Beartic,
@@ -10689,14 +10689,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 3,
         .backPic = gMonBackPic_Cryogonal,
         .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 4,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_H_VIBRATE,
         .palette = gMonPalette_Cryogonal,
         .shinyPalette = gMonShinyPalette_Cryogonal,
         .iconSprite = gMonIcon_Cryogonal,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 14, SHADOW_SIZE_M)
+        SHADOW(0, 17, SHADOW_SIZE_M)
         FOOTPRINT(Cryogonal)
         OVERWORLD(
             sPicTable_Cryogonal,
@@ -10749,7 +10749,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Shelmet,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 14,
+        .frontPicYOffset = 15,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 15),
             ANIMCMD_FRAME(1, 15),
@@ -10760,14 +10760,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_TWIST,
         .backPic = gMonBackPic_Shelmet,
         .backPicSize = MON_COORDS_SIZE(64, 32),
-        .backPicYOffset = 19,
+        .backPicYOffset = 11,
         .backAnimId = BACK_ANIM_V_SHAKE,
         .palette = gMonPalette_Shelmet,
         .shinyPalette = gMonShinyPalette_Shelmet,
         .iconSprite = gMonIcon_Shelmet,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, -1, SHADOW_SIZE_S)
+        SHADOW(2, -1, SHADOW_SIZE_S)
         FOOTPRINT(Shelmet)
         OVERWORLD(
             sPicTable_Shelmet,
@@ -10835,7 +10835,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconSprite = gMonIcon_Accelgor,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-14, 8, SHADOW_SIZE_S)
+        SHADOW(-3, 7, SHADOW_SIZE_S)
         FOOTPRINT(Accelgor)
         OVERWORLD(
             sPicTable_Accelgor,
@@ -10889,7 +10889,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Stunfisk,
         .frontPicSize = MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = 14,
+        .frontPicYOffset = 10,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 40),
             ANIMCMD_FRAME(0, 20),
@@ -10897,14 +10897,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Stunfisk,
         .backPicSize = MON_COORDS_SIZE(64, 24),
-        .backPicYOffset = 22,
+        .backPicYOffset = 7,
         .backAnimId = BACK_ANIM_H_STRETCH,
         .palette = gMonPalette_Stunfisk,
         .shinyPalette = gMonShinyPalette_Stunfisk,
         .iconSprite = gMonIcon_Stunfisk,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, -1, SHADOW_SIZE_M)
+        SHADOW(-2, 3, SHADOW_SIZE_M)
         FOOTPRINT(Stunfisk)
         OVERWORLD(
             sPicTable_Stunfisk,
@@ -10959,19 +10959,19 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_StunfiskGalar,
         .frontPicSize = MON_COORDS_SIZE(48, 40),
-        .frontPicYOffset = 14,
+        .frontPicYOffset = 10,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_StunfiskGalar,
         .backPicSize = MON_COORDS_SIZE(64, 24),
-        .backPicYOffset = 23,
+        .backPicYOffset = 7,
         //.backAnimId = BACK_ANIM_NONE,
         .palette = gMonPalette_StunfiskGalar,
         .shinyPalette = gMonShinyPalette_StunfiskGalar,
         .iconSprite = gMonIcon_StunfiskGalar,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(0, -1, SHADOW_SIZE_M)
+        SHADOW(-2, 3, SHADOW_SIZE_M)
         FOOTPRINT(Stunfisk)
         OVERWORLD(
             sPicTable_StunfiskGalar,
@@ -11028,7 +11028,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Mienfoo,
         .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = 11,
+        .frontPicYOffset = 5,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 20),
             ANIMCMD_FRAME(0, 20),
@@ -11036,14 +11036,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_VIBRATE,
         .backPic = gMonBackPic_Mienfoo,
         .backPicSize = MON_COORDS_SIZE(56, 40),
-        .backPicYOffset = 14,
+        .backPicYOffset = 5,
         .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
         .palette = gMonPalette_Mienfoo,
         .shinyPalette = gMonShinyPalette_Mienfoo,
         .iconSprite = gMonIcon_Mienfoo,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 2, SHADOW_SIZE_S)
+        SHADOW(1, 8, SHADOW_SIZE_S)
         FOOTPRINT(Mienfoo)
         OVERWORLD(
             sPicTable_Mienfoo,
@@ -11096,7 +11096,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Mienshao,
         .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 4,
+        .frontPicYOffset = 0,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 15),
             ANIMCMD_FRAME(1, 15),
@@ -11109,14 +11109,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Mienshao,
         .backPicSize = MON_COORDS_SIZE(56, 56),
-        .backPicYOffset = 7,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_V_STRETCH,
         .palette = gMonPalette_Mienshao,
         .shinyPalette = gMonShinyPalette_Mienshao,
         .iconSprite = gMonIcon_Mienshao,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 8, SHADOW_SIZE_M)
+        SHADOW(3, 11, SHADOW_SIZE_M)
         FOOTPRINT(Mienshao)
         OVERWORLD(
             sPicTable_Mienshao,
@@ -11170,7 +11170,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 1,
         .frontPic = gMonFrontPic_Druddigon,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 4,
+        .frontPicYOffset = 0,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 22),
             ANIMCMD_FRAME(1, 22),
@@ -11183,14 +11183,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL_SLOW,
         .backPic = gMonBackPic_Druddigon,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 8,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_V_SHAKE_LOW,
         .palette = gMonPalette_Druddigon,
         .shinyPalette = gMonShinyPalette_Druddigon,
         .iconSprite = gMonIcon_Druddigon,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 9, SHADOW_SIZE_M)
+        SHADOW(3, 12, SHADOW_SIZE_M)
         FOOTPRINT(Druddigon)
         OVERWORLD(
             sPicTable_Druddigon,
@@ -11246,7 +11246,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Golett,
         .frontPicSize = MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = 7,
+        .frontPicYOffset = 4,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 20),
             ANIMCMD_FRAME(1, 44),
@@ -11255,14 +11255,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SHAKE,
         .backPic = gMonBackPic_Golett,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 8,
+        .backPicYOffset = 5,
         .backAnimId = BACK_ANIM_H_SLIDE,
         .palette = gMonPalette_Golett,
         .shinyPalette = gMonShinyPalette_Golett,
         .iconSprite = gMonIcon_Golett,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 7, SHADOW_SIZE_M)
+        SHADOW(1, 10, SHADOW_SIZE_M)
         FOOTPRINT(Golett)
         OVERWORLD(
             sPicTable_Golett,
@@ -11324,14 +11324,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SHAKE_TWICE,
         .backPic = gMonBackPic_Golurk,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 7,
+        .backPicYOffset = 0,
         .backAnimId = BACK_ANIM_V_SHAKE,
         .palette = gMonPalette_Golurk,
         .shinyPalette = gMonShinyPalette_Golurk,
         .iconSprite = gMonIcon_Golurk,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 14, SHADOW_SIZE_L)
+        SHADOW(-1, 12, SHADOW_SIZE_L)
         FOOTPRINT(Golurk)
         OVERWORLD(
             sPicTable_Golurk,
@@ -11446,7 +11446,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Pawniard,
         .frontPicSize = MON_COORDS_SIZE(56, 48),
-        .frontPicYOffset = 10,
+        .frontPicYOffset = 13,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 5),
             ANIMCMD_FRAME(0, 5),
@@ -11460,14 +11460,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_VIBRATE,
         .backPic = gMonBackPic_Pawniard,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 10,
+        .backPicYOffset = 6,
         .backAnimId = BACK_ANIM_H_SLIDE,
         .palette = gMonPalette_Pawniard,
         .shinyPalette = gMonShinyPalette_Pawniard,
         .iconSprite = gMonIcon_Pawniard,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(4, 4, SHADOW_SIZE_S)
+        SHADOW(-1, 0, SHADOW_SIZE_S)
         FOOTPRINT(Pawniard)
         OVERWORLD(
             sPicTable_Pawniard,
@@ -11529,14 +11529,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_STRETCH,
         .backPic = gMonBackPic_Bisharp,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         .palette = gMonPalette_Bisharp,
         .shinyPalette = gMonShinyPalette_Bisharp,
         .iconSprite = gMonIcon_Bisharp,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 14, SHADOW_SIZE_M)
+        SHADOW(0, 11, SHADOW_SIZE_M)
         FOOTPRINT(Bisharp)
         OVERWORLD(
             sPicTable_Bisharp,
@@ -11666,14 +11666,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE_SLOW,
         .backPic = gMonBackPic_Bouffalant,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 7,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_V_SHAKE_LOW,
         .palette = gMonPalette_Bouffalant,
         .shinyPalette = gMonShinyPalette_Bouffalant,
         .iconSprite = gMonIcon_Bouffalant,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(8, 7, SHADOW_SIZE_M)
+        SHADOW(7, 8, SHADOW_SIZE_M)
         FOOTPRINT(Bouffalant)
         OVERWORLD(
             sPicTable_Bouffalant,
@@ -11727,7 +11727,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Rufflet,
         .frontPicSize = MON_COORDS_SIZE(32, 48),
-        .frontPicYOffset = 10,
+        .frontPicYOffset = 13,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 5),
             ANIMCMD_FRAME(1, 10),
@@ -11738,14 +11738,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_STRETCH,
         .backPic = gMonBackPic_Rufflet,
         .backPicSize = MON_COORDS_SIZE(48, 56),
-        .backPicYOffset = 9,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
         .palette = gMonPalette_Rufflet,
         .shinyPalette = gMonShinyPalette_Rufflet,
         .iconSprite = gMonIcon_Rufflet,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 2, SHADOW_SIZE_S)
+        SHADOW(-1, 1, SHADOW_SIZE_S)
         FOOTPRINT(Rufflet)
         OVERWORLD(
             sPicTable_Rufflet,
@@ -11809,14 +11809,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 6,
         .backPic = gMonBackPic_Braviary,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 10,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
         .palette = gMonPalette_Braviary,
         .shinyPalette = gMonShinyPalette_Braviary,
         .iconSprite = gMonIcon_Braviary,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 16, SHADOW_SIZE_M)
+        SHADOW(-3, 19, SHADOW_SIZE_M)
         FOOTPRINT(Braviary)
         OVERWORLD(
             sPicTable_Braviary,
@@ -11937,7 +11937,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Vullaby,
         .frontPicSize = MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = 5,
+        .frontPicYOffset = 10,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 20),
             ANIMCMD_FRAME(1, 10),
@@ -11946,14 +11946,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Vullaby,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 14,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
         .palette = gMonPalette_Vullaby,
         .shinyPalette = gMonShinyPalette_Vullaby,
         .iconSprite = gMonIcon_Vullaby,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 9, SHADOW_SIZE_M)
+        SHADOW(1, 3, SHADOW_SIZE_M)
         FOOTPRINT(Vullaby)
         OVERWORLD(
             sPicTable_Vullaby,
@@ -12016,14 +12016,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_STRETCH,
         .backPic = gMonBackPic_Mandibuzz,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 10,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_JOLT_RIGHT,
         .palette = gMonPalette_Mandibuzz,
         .shinyPalette = gMonShinyPalette_Mandibuzz,
         .iconSprite = gMonIcon_Mandibuzz,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 12, SHADOW_SIZE_M)
+        SHADOW(-2, 12, SHADOW_SIZE_M)
         FOOTPRINT(Mandibuzz)
         OVERWORLD(
             sPicTable_Mandibuzz,
@@ -12076,7 +12076,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Heatmor,
         .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 6,
+        .frontPicYOffset = 3,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 40),
             ANIMCMD_FRAME(0, 5),
@@ -12084,14 +12084,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_SHAKE,
         .backPic = gMonBackPic_Heatmor,
         .backPicSize = MON_COORDS_SIZE(64, 24),
-        .backPicYOffset = 21,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
         .palette = gMonPalette_Heatmor,
         .shinyPalette = gMonShinyPalette_Heatmor,
         .iconSprite = gMonIcon_Heatmor,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(5, 7, SHADOW_SIZE_L)
+        SHADOW(5, 10, SHADOW_SIZE_L)
         FOOTPRINT(Heatmor)
         OVERWORLD(
             sPicTable_Heatmor,
@@ -12145,7 +12145,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Durant,
         .frontPicSize = MON_COORDS_SIZE(48, 32),
-        .frontPicYOffset = 17,
+        .frontPicYOffset = 14,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 2),
             ANIMCMD_FRAME(1, 2),
@@ -12168,14 +12168,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_RAPID_H_HOPS,
         .backPic = gMonBackPic_Durant,
         .backPicSize = MON_COORDS_SIZE(64, 32),
-        .backPicYOffset = 17,
+        .backPicYOffset = 13,
         .backAnimId = BACK_ANIM_H_VIBRATE,
         .palette = gMonPalette_Durant,
         .shinyPalette = gMonShinyPalette_Durant,
         .iconSprite = gMonIcon_Durant,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(0, -3, SHADOW_SIZE_L)
+        SHADOW(0, -1, SHADOW_SIZE_L)
         FOOTPRINT(Durant)
         OVERWORLD(
             sPicTable_Durant,
@@ -12229,7 +12229,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Deino,
         .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = 10,
+        .frontPicYOffset = 11,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 20),
             ANIMCMD_FRAME(1, 10),
@@ -12238,14 +12238,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Deino,
         .backPicSize = MON_COORDS_SIZE(48, 48),
-        .backPicYOffset = 14,
+        .backPicYOffset = 4,
         .backAnimId = BACK_ANIM_H_SLIDE,
         .palette = gMonPalette_Deino,
         .shinyPalette = gMonShinyPalette_Deino,
         .iconSprite = gMonIcon_Deino,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 3, SHADOW_SIZE_S)
+        SHADOW(1, 2, SHADOW_SIZE_S)
         FOOTPRINT(Deino)
         OVERWORLD(
             sPicTable_Deino,
@@ -12306,14 +12306,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_STRETCH,
         .backPic = gMonBackPic_Zweilous,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 9,
+        .backPicYOffset = 4,
         .backAnimId = BACK_ANIM_H_SHAKE,
         .palette = gMonPalette_Zweilous,
         .shinyPalette = gMonShinyPalette_Zweilous,
         .iconSprite = gMonIcon_Zweilous,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 6, SHADOW_SIZE_L)
+        SHADOW(0, 7, SHADOW_SIZE_L)
         FOOTPRINT(Zweilous)
         OVERWORLD(
             sPicTable_Zweilous,
@@ -12377,17 +12377,17 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             ANIMCMD_FRAME(0, 15),
         ),
         .frontAnimId = ANIM_RISING_WOBBLE,
-        .enemyMonElevation = 3,
+        .enemyMonElevation = 4,
         .backPic = gMonBackPic_Hydreigon,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 11,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         .palette = gMonPalette_Hydreigon,
         .shinyPalette = gMonShinyPalette_Hydreigon,
         .iconSprite = gMonIcon_Hydreigon,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 16, SHADOW_SIZE_M)
+        SHADOW(2, 17, SHADOW_SIZE_M)
         FOOTPRINT(Hydreigon)
         OVERWORLD(
             sPicTable_Hydreigon,
@@ -12440,7 +12440,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Larvesta,
         .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = 13,
+        .frontPicYOffset = 12,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 5),
             ANIMCMD_FRAME(1, 5),
@@ -12457,14 +12457,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_GLOW_ORANGE,
         .backPic = gMonBackPic_Larvesta,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 12,
+        .backPicYOffset = 4,
         .backAnimId = BACK_ANIM_H_SLIDE,
         .palette = gMonPalette_Larvesta,
         .shinyPalette = gMonShinyPalette_Larvesta,
         .iconSprite = gMonIcon_Larvesta,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 0, SHADOW_SIZE_S)
+        SHADOW(-1, 2, SHADOW_SIZE_S)
         FOOTPRINT(Larvesta)
         OVERWORLD(
             sPicTable_Larvesta,
@@ -12530,14 +12530,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 6,
         .backPic = gMonBackPic_Volcarona,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
         .palette = gMonPalette_Volcarona,
         .shinyPalette = gMonShinyPalette_Volcarona,
         .iconSprite = gMonIcon_Volcarona,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 14, SHADOW_SIZE_M)
+        SHADOW(-8, 16, SHADOW_SIZE_M)
         FOOTPRINT(Volcarona)
         OVERWORLD(
             sPicTable_Volcarona,
@@ -12599,14 +12599,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_STRETCH,
         .backPic = gMonBackPic_Cobalion,
         .backPicSize = MON_COORDS_SIZE(48, 64),
-        .backPicYOffset = 6,
+        .backPicYOffset = 0,
         .backAnimId = BACK_ANIM_V_STRETCH,
         .palette = gMonPalette_Cobalion,
         .shinyPalette = gMonShinyPalette_Cobalion,
         .iconSprite = gMonIcon_Cobalion,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 14, SHADOW_SIZE_M)
+        SHADOW(2, 12, SHADOW_SIZE_M)
         FOOTPRINT(Cobalion)
         OVERWORLD(
             sPicTable_Cobalion,
@@ -12661,7 +12661,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 4,
         .frontPic = gMonFrontPic_Terrakion,
         .frontPicSize = MON_COORDS_SIZE(64, 56),
-        .frontPicYOffset = 5,
+        .frontPicYOffset = 2,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 15),
             ANIMCMD_FRAME(1, 20),
@@ -12674,14 +12674,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SHAKE_TWICE,
         .backPic = gMonBackPic_Terrakion,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 8,
+        .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_V_SHAKE_LOW,
         .palette = gMonPalette_Terrakion,
         .shinyPalette = gMonShinyPalette_Terrakion,
         .iconSprite = gMonIcon_Terrakion,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(3, 6, SHADOW_SIZE_L)
+        SHADOW(1, 9, SHADOW_SIZE_L)
         FOOTPRINT(Terrakion)
         OVERWORLD(
             sPicTable_Terrakion,
@@ -12736,7 +12736,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 4,
         .frontPic = gMonFrontPic_Virizion,
         .frontPicSize = MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = 2,
+        .frontPicYOffset = 1,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 15),
             ANIMCMD_FRAME(0, 20),
@@ -12744,7 +12744,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_GROW_VIBRATE,
         .backPic = gMonBackPic_Virizion,
         .backPicSize = MON_COORDS_SIZE(64, 56),
-        .backPicYOffset = 8,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_H_SHAKE,
         .palette = gMonPalette_Virizion,
         .shinyPalette = gMonShinyPalette_Virizion,
@@ -12806,7 +12806,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_TornadusIncarnate,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
+        .frontPicYOffset = 4,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 2),
             ANIMCMD_FRAME(0, 2),
@@ -12835,14 +12835,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 7,
         .backPic = gMonBackPic_TornadusIncarnate,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_V_SHAKE,
         .palette = gMonPalette_TornadusIncarnate,
         .shinyPalette = gMonShinyPalette_TornadusIncarnate,
         .iconSprite = gMonIcon_TornadusIncarnate,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 17, SHADOW_SIZE_M)
+        SHADOW(11, 16, SHADOW_SIZE_M)
         FOOTPRINT(Tornadus)
         OVERWORLD(
             sPicTable_TornadusIncarnate,
@@ -12972,7 +12972,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_ThundurusIncarnate,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
+        .frontPicYOffset = 4,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 2),
             ANIMCMD_FRAME(0, 2),
@@ -13001,14 +13001,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 7,
         .backPic = gMonBackPic_ThundurusIncarnate,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_V_SHAKE,
         .palette = gMonPalette_ThundurusIncarnate,
         .shinyPalette = gMonShinyPalette_ThundurusIncarnate,
         .iconSprite = gMonIcon_ThundurusIncarnate,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 17, SHADOW_SIZE_M)
+        SHADOW(11, 16, SHADOW_SIZE_M)
         FOOTPRINT(Thundurus)
         OVERWORLD(
             sPicTable_ThundurusIncarnate,
@@ -13150,7 +13150,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 8,
         .frontPic = gMonFrontPic_Reshiram,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
+        .frontPicYOffset = 0,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 40),
             ANIMCMD_FRAME(0, 5),
@@ -13158,7 +13158,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SHAKE,
         .backPic = gMonBackPic_Reshiram,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 7,
+        .backPicYOffset = 0,
         .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
         .palette = gMonPalette_Reshiram,
         .shinyPalette = gMonShinyPalette_Reshiram,
@@ -13229,14 +13229,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SHAKE,
         .backPic = gMonBackPic_Zekrom,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        .backPicYOffset = 0,
         .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
         .palette = gMonPalette_Zekrom,
         .shinyPalette = gMonShinyPalette_Zekrom,
         .iconSprite = gMonIcon_Zekrom,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 14, SHADOW_SIZE_L)
+        SHADOW(-1, 12, SHADOW_SIZE_L)
         FOOTPRINT(Zekrom)
         OVERWORLD(
             sPicTable_Zekrom,
@@ -13292,7 +13292,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_LandorusIncarnate,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
+        .frontPicYOffset = 4,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 2),
             ANIMCMD_FRAME(0, 2),
@@ -13321,14 +13321,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 7,
         .backPic = gMonBackPic_LandorusIncarnate,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_V_SHAKE,
         .palette = gMonPalette_LandorusIncarnate,
         .shinyPalette = gMonShinyPalette_LandorusIncarnate,
         .iconSprite = gMonIcon_LandorusIncarnate,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(2, 17, SHADOW_SIZE_M)
+        SHADOW(11, 16, SHADOW_SIZE_M)
         FOOTPRINT(Landorus)
         OVERWORLD(
             sPicTable_LandorusIncarnate,
@@ -13461,7 +13461,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Kyurem,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 6,
+        .frontPicYOffset = 1,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 10),
             ANIMCMD_FRAME(0, 20),
@@ -13471,14 +13471,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Kyurem,
         .backPicSize = MON_COORDS_SIZE(64, 40),
-        .backPicYOffset = 12,
+        .backPicYOffset = 4,
         .backAnimId = BACK_ANIM_V_SHAKE_LOW,
         .palette = gMonPalette_Kyurem,
         .shinyPalette = gMonShinyPalette_Kyurem,
         .iconSprite = gMonIcon_Kyurem,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 8, SHADOW_SIZE_L)
+        SHADOW(2, 11, SHADOW_SIZE_L)
         FOOTPRINT(Kyurem)
         OVERWORLD(
             sPicTable_Kyurem,
@@ -13681,7 +13681,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_KeldeoOrdinary,
         .frontPicSize = MON_COORDS_SIZE(56, 56),
-        .frontPicYOffset = 5,
+        .frontPicYOffset = 1,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 32),
             ANIMCMD_FRAME(0, 20),
@@ -13689,14 +13689,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_KeldeoOrdinary,
         .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 4,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_JOLT_RIGHT,
         .palette = gMonPalette_KeldeoOrdinary,
         .shinyPalette = gMonShinyPalette_KeldeoOrdinary,
         .iconSprite = gMonIcon_KeldeoOrdinary,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-2, 8, SHADOW_SIZE_M)
+        SHADOW(0, 12, SHADOW_SIZE_M)
         FOOTPRINT(Keldeo)
         OVERWORLD(
             sPicTable_KeldeoOrdinary,
@@ -13753,7 +13753,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_KeldeoResolute,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 2,
+        .frontPicYOffset = 1,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 1),
             ANIMCMD_FRAME(1, 36),
@@ -13762,7 +13762,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_V_JUMPS_H_JUMPS,
         .backPic = gMonBackPic_KeldeoResolute,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        .backPicYOffset = 1,
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         .palette = gMonPalette_KeldeoResolute,
         .shinyPalette = gMonShinyPalette_KeldeoResolute,
@@ -13823,7 +13823,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_MeloettaAria,
         .frontPicSize = MON_COORDS_SIZE(32, 48),
-        .frontPicYOffset = 9,
+        .frontPicYOffset = 19,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 15),
             ANIMCMD_FRAME(1, 45),
@@ -13837,14 +13837,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 8,
         .backPic = gMonBackPic_MeloettaAria,
         .backPicSize = MON_COORDS_SIZE(48, 56),
-        .backPicYOffset = 7,
+        .backPicYOffset = 3,
         .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
         .palette = gMonPalette_MeloettaAria,
         .shinyPalette = gMonShinyPalette_MeloettaAria,
         .iconSprite = gMonIcon_MeloettaAria,
         .iconPalIndex = 4,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 10, SHADOW_SIZE_S)
+        SHADOW(-1, 3, SHADOW_SIZE_S)
         FOOTPRINT(Meloetta)
         OVERWORLD(
             sPicTable_MeloettaAria,
@@ -13904,7 +13904,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_MeloettaPirouette,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 2,
+        .frontPicYOffset = 19,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(1, 15),
             ANIMCMD_FRAME(0, 15),
@@ -13917,14 +13917,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .enemyMonElevation = 5,
         .backPic = gMonBackPic_MeloettaPirouette,
         .backPicSize = MON_COORDS_SIZE(56, 64),
-        .backPicYOffset = 4,
+        .backPicYOffset = 3,
         .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
         .palette = gMonPalette_MeloettaPirouette,
         .shinyPalette = gMonShinyPalette_MeloettaPirouette,
         .iconSprite = gMonIcon_MeloettaPirouette,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 16, SHADOW_SIZE_S)
+        SHADOW(-1, 3, SHADOW_SIZE_S)
         FOOTPRINT(Meloetta)
         OVERWORLD(
             sPicTable_MeloettaPirouette,
@@ -13985,14 +13985,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_VIBRATE,                                              \
         .backPic = gMonBackPic_Genesect,                                            \
         .backPicSize = MON_COORDS_SIZE(64, 48),                                     \
-        .backPicYOffset = 8,                                                        \
+        .backPicYOffset = 1,                                                        \
         .backAnimId = BACK_ANIM_CIRCLE_COUNTERCLOCKWISE,                            \
         .palette = gMonPalette_##form,                                              \
         .shinyPalette = gMonShinyPalette_##form,                                    \
         .iconSprite = gMonIcon_Genesect,                                            \
         .iconPalIndex = 2,                                                          \
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,                                     \
-        SHADOW(5, 13, SHADOW_SIZE_L)                                                \
+        SHADOW(4, 12, SHADOW_SIZE_L)                                                \
         FOOTPRINT(Genesect)                                                         \
         OVERWORLD(                                                                  \
             sPicTable_Genesect,                                                     \
