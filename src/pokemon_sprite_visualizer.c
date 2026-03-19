@@ -1253,7 +1253,7 @@ void CB2_Pokemon_Sprite_Visualizer(void)
             AllocateMonSpritesGfx();
 
             LoadPalette(sBgColor, BG_PLTT_ID(0), 2);
-            LoadMonIconPalette(SPECIES_BULBASAUR);
+            LoadMonIconPalette(SPECIES_SNIVY);
 
             SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
             ShowBg(0);
@@ -1267,7 +1267,7 @@ void CB2_Pokemon_Sprite_Visualizer(void)
             data = AllocZeroed(sizeof(struct PokemonSpriteVisualizer));
             SetStructPtr(taskId, data);
 
-            data->currentmonId = SPECIES_BULBASAUR;
+            data->currentmonId = SPECIES_SNIVY;
             species = SanitizeSpeciesId(data->currentmonId);
 
             //Print instructions
