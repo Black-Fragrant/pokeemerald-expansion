@@ -25,6 +25,7 @@ void InitFieldMessageBox(void)
 }
 
 #define tState data[0]
+#define tWindowId data[1]
 
 static void Task_DrawFieldMessage(u8 taskId)
 {
@@ -57,6 +58,24 @@ static void Task_DrawFieldMessage(u8 taskId)
     }
 }
 
+static void Task_DrawMiniFieldMessage(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+
+    switch (task->tState)
+    {
+        case 0:
+            LoadMessageBoxAndBorderGfx();
+            DrawMiniDialogueFrame(task->tWindowId, TRUE);
+            task->tState++;
+            break;
+        case 1:
+            RunTextPrinters();
+            if (!IsTextPrinterActiveOnWindow(task->tWindowId))
+                DestroyTask(taskId);            
+    }
+}
+
 #undef tState
 
 static void CreateTask_DrawFieldMessage(void)
@@ -79,6 +98,31 @@ bool8 ShowFieldMessage(const u8 *str)
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_NORMAL;
     return TRUE;
 }
+
+bool8 ShowMiniFieldMessage(const u8 *str, u8 x, u8 y)
+{
+    u8 taskId;
+    u8 width;
+    u8 windowId;
+    
+    StringExpandPlaceholders(gStringVar1, str);
+    width = (((GetStringWidth(FONT_SMALL, gStringVar1, -1) + 9) / 8) + 1);
+    windowId = AddMiniWindow(x, y, width);
+    if (windowId != WINDOW_NONE)
+    {
+        taskId = CreateTask(Task_DrawMiniFieldMessage, 0x50);
+        gTasks[taskId].tWindowId = windowId;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar1, 8, 4, GetPlayerTextSpeed(), NULL);
+    }
+    return TRUE;
+}
+
+//static void DestroyTask_DrawMiniFieldMessage(void)
+//{
+//    u8 taskId = FindTaskIdByFunc(Task_DrawMiniFieldMessage);
+//    if (taskId != TASK_NONE)
+//        DestroyTask(taskId);
+//}
 
 static void Task_HidePokenavMessageWhenDone(u8 taskId)
 {

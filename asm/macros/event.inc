@@ -1697,32 +1697,28 @@
 	.byte \color
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro loadhelp text:req
-	.byte SCR_OP_LOADHELP
+	.macro minimsg text:req, x:req, y:req
+	.byte SCR_OP_MINIMESSAGE
 	.4byte \text
+	.byte \x
+	.byte \y
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro unloadhelp
-	.byte SCR_OP_UNLOADHELP
+	.macro closeminimessage x:req
+	.byte SCR_OP_CLOSEMINIMESSAGE
+	.byte \x
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro signmsg
-	.byte SCR_OP_SIGNMSG
+	.macro closefirstminimessage
+	.byte SCR_OP_CLOSEFIRSTMINIMESSAGE
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro normalmsg
-	.byte SCR_OP_NORMALMSG
+	.macro closelastminimessage
+	.byte SCR_OP_CLOSELASTMINIMESSAGE
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro comparehiddenvar a:req, value:req
-	.byte SCR_OP_COMPAREHIDDENVAR
-	.byte \a
-	.4byte \value
+	.macro closeallminimessages
+	.byte SCR_OP_CLOSEALLMINIMESSAGES
 	.endm
 
 	@ Sets the modernFatefulEncounter bit for the Pokemon in the specified slot of the player's party.
