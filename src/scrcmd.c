@@ -1706,6 +1706,44 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_minimsg(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+    u8 x = ScriptReadByte(ctx);
+    u8 y = ScriptReadByte(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    ShowMiniFieldMessage(msg, x, y);
+    return FALSE;
+}
+
+bool8 ScrCmd_closeminimessage(struct ScriptContext *ctx)
+{
+    u8 windowId = GetMiniWindowId(ScriptReadByte(ctx));
+
+    RemoveMiniWindow(windowId);
+    return FALSE;
+}
+
+bool8 ScrCmd_closefirstminimessage(struct ScriptContext *ctx)
+{
+    RemoveMiniWindow(GetFirstMiniWindowId());
+    return FALSE;
+}
+
+bool8 ScrCmd_closelastminimessage(struct ScriptContext *ctx)
+{
+    RemoveMiniWindow(GetLastMiniWindowId());
+    return FALSE;
+}
+
+bool8 ScrCmd_closeallminimessages(struct ScriptContext *ctx)
+{
+    RemoveAllMiniWindows();
+    return FALSE;
+}
+
 bool8 ScrCmd_pokenavcall(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
