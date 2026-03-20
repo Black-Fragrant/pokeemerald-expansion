@@ -113,6 +113,20 @@
       "elevation": 0,
       "dest_map": "MAP_NACRENE_CITY_GATE",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 16,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_NACRENE_CITY",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 36,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_NACRENE_CITY",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [
