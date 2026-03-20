@@ -1,1 +1,145 @@
 mapscripts Route3_South_MapScripts {}
+
+script Route3_South_EventScript_Battle_Schoolboy_1
+{
+	trainerbattle_single(TRAINER_SCHOOLBOY_ROUTE_3_1,
+	text("Now I get to show off everything\n"
+    	    "I learned in the Trainers' School!"),
+	text("Argh..."))
+	msgbox("I was so overwhelmed by your greatness\n"
+       "that I forgot everything I learned!\l"
+       "I need to keep my wits during a battle.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_South_EventScript_Trigger_Cheren
+{
+    lock
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+    delay(20)
+	playbgm(MUS_BW_CHEREN, TRUE)
+	delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 50, Route3_South_EventScript_Trigger_Cheren_Pos1)
+	call_if_eq (VAR_TEMP_0, 51, Route3_South_EventScript_Trigger_Cheren_Pos2)
+	call_if_eq (VAR_TEMP_0, 52, Route3_South_EventScript_Trigger_Cheren_Pos3)
+	delay(10)
+    msgbox("{PLAYER}, stop!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("That dark tall grass over there...\p"
+       "Every now and again, two Pokémon\n"
+       "will pop out at the same time.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 50, Route3_South_EventScript_Trigger_Cheren_Pos4)
+	call_if_eq (VAR_TEMP_0, 51, Route3_South_EventScript_Trigger_Cheren_Pos4)
+	call_if_eq (VAR_TEMP_0, 52, Route3_South_EventScript_Trigger_Cheren_Pos5)
+	delay(10)
+    msgbox("In other words, you have to be\n"
+       "careful in the darker grass.\p"
+       "I'm heading on to Nacrene City.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_down * 6))
+	waitmovement(0)
+	playbgm(MUS_BW_ROUTE_2, TRUE)
+    delay(10)
+    removeobject(LOCALID_ROUTE3S_CHEREN)
+    setvar(VAR_ROUTE3_SOUTH_CHEREN_EXPLAIN, 1)
+    setflag(FLAG_ROUTE3S_CHEREN)
+    delay(10)
+    release
+    end
+}
+
+script Route3_South_EventScript_Trigger_Cheren_Pos1
+{
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_left * 2, walk_down, walk_left * 2))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script Route3_South_EventScript_Trigger_Cheren_Pos2
+{
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_left * 3))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script Route3_South_EventScript_Trigger_Cheren_Pos3
+{
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_left * 3, walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route3_South_EventScript_Trigger_Cheren_Pos4
+{
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+    return
+}
+
+script Route3_South_EventScript_Trigger_Cheren_Pos5
+{
+	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_in_place_up))
+	waitmovement(0)
+    return
+}
+
+script Route3_South_EventScript_Battle_Schoolgirl_1
+{
+	trainerbattle_single(TRAINER_SCHOOLGIRL_ROUTE_3_1,
+	text("Even if Pokémon have not been fully\n"
+       "trained, they can show their potential\l"
+       "depending on their Trainer's style."),
+	text("Oh, that's really frustrating!"))
+	msgbox("I feel sorry for Pokémon when they lose\n"
+       "because their Trainer lacks skill...\l"
+       "A Trainer has a huge responsibility.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_South_EventScript_Battle_Schoolgirl_2
+{
+	trainerbattle_single(TRAINER_SCHOOLGIRL_ROUTE_3_2,
+	text("It's best to use what you have learned\n"
+       "in order to master it!"),
+	text("What can you learn by losing?\n"
+       "I feel like there's a\l"
+       "“Eureka!” here for me."))
+	msgbox("I'm mastering the lesson in three\n"
+       "dimensions by experiencing it like this!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route3_South_EventScript_Battle_Schoolboy_2
+{
+	trainerbattle_single(TRAINER_SCHOOLBOY_ROUTE_3_2,
+	text("I was just thinking\n"
+       "about a new battle strategy!"),
+	text("A new battle strategy\n"
+       "only works if you\l"
+       "stick with it..."))
+	msgbox("I know all kinds of things! Like if you\n"
+       "walk through the swaying tall grass,\l"
+       "you might find a cool Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+

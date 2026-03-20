@@ -114,8 +114,8 @@
 #define VAR_DREAMYARD_STATE                              0x405E
 #define VAR_ROUTE3_NOT_ENOUGH_POKEMON                    0x405F
 #define VAR_ROUTE3_NORTH_CHEREN_BATTLE                   0x4060
-#define VAR_UNUSED_4061                                  0x4061 // Unused Var
-#define VAR_UNUSED_4062                                  0x4062 // Unused Var
+#define VAR_ROUTE3_SOUTH_CHEREN_EXPLAIN                  0x4061
+#define VAR_UNUSED_4062                                  0x4062
 #define VAR_UNUSED_4063                                  0x4063
 #define VAR_UNUSED_4064                                  0x4064 // Unused Var
 #define VAR_UNUSED_4065                                  0x4065 // Unused Var

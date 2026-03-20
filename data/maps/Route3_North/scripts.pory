@@ -583,6 +583,13 @@ script Route3_North_EventScript_BagIsFull
 	end()
 }
 
+script Route3_North_EventScript_BagIsFull2
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	closemessage
+	return
+}
+
 script Route3_North_EventScript_CherenByCave
 {
 	lock
@@ -640,5 +647,101 @@ script Route3_North_EventScript_CherenGoInCave
 
 script Route3_North_EventScript_Trigger_ThankingYou
 {
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 45, Route3_North_EventScript_Trigger_ThankingYou_Pos1)
+	call_if_eq (VAR_TEMP_0, 46, Route3_North_EventScript_Trigger_ThankingYou_Pos2)
+	call_if_eq (VAR_TEMP_0, 47, Route3_North_EventScript_Trigger_ThankingYou_Pos3)
+	call_if_eq (VAR_TEMP_0, 48, Route3_North_EventScript_Trigger_ThankingYou_RightSide)
+	delay(10)
+	msgbox("{PLAYER}, thank you so much!\n"
+       "The two of you got her Pokémon back!\p"
+       "I'm so lucky to have friends like you two!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	msgbox("Thank you, mister! Please\n"
+       "take these as a thank-you present.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_GIRL_WITH_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(walk_left, walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	giveitem(ITEM_HEAL_BALL, 3)
+	call_if_eq (VAR_RESULT, FALSE, Route3_North_EventScript_BagIsFull2)
+	msgbox("Ooh! Those are Heal Balls!\p"
+       "They completely heal the captured\n"
+       "Pokémon on the spot! How sweet of you!\p"
+       "I'm going to see this girl on her way,\n"
+       "so see you later, {PLAYER}. Bye-bye!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_up * 2, walk_right * 2, walk_down))
+	waitmovement(0)
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(walk_right, walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_up, walk_right * 7))
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(delay_4, walk_up * 2, walk_right * 7))
+	waitmovement(0)
+	removeobject(LOCALID_ROUTE3N_BIANCA)
+	removeobject(LOCALID_ROUTE3N_GIRL_WITH_BIANCA)
+	setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 4)
+	setflag(FLAG_ROUTE3N_BIANCA)
+	delay(20)
+	release
 	end
 }
+
+script Route3_North_EventScript_Trigger_ThankingYou_RightSide
+{
+	goto_if_eq (VAR_TEMP_1, 21, Route3_North_EventScript_Trigger_ThankingYou_Pos4)
+	goto_if_eq (VAR_TEMP_1, 22, Route3_North_EventScript_Trigger_ThankingYou_Pos5)
+	return
+}
+
+script Route3_North_EventScript_Trigger_ThankingYou_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_ThankingYou_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves( walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_ThankingYou_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_ThankingYou_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2, walk_down * 2))
+	waitmovement(0)
+	return
+}
+
+script Route3_North_EventScript_Trigger_ThankingYou_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2, walk_down))
+	waitmovement(0)
+	return
+}
+

@@ -1,0 +1,139 @@
+mapscripts NacreneCity_Gate_MapScripts {}
+
+script NacreneCity_Gate_EventScript_Receptionist
+{
+	msgbox("Hello, Trainer!\n"
+   "I think Potions are important for a trip!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Gate_EventScript_Lass
+{
+	msgbox("I should have bought more Poké Balls!\p"
+   "A Pokémon I wanted to catch\n"
+   "just came out, and I missed it!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Gate_EventScript_Girl
+{
+	lock
+    faceplayer
+    msgbox("Hi! I have some questions for you!\p"
+   "If you want to play, which do you prefer:\n"
+   "outside or at home?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+	multichoice(25, 5, MULTI_NCG_QUESTIONS_1, 1)
+	if (var(VAR_RESULT) == 0) {goto (NacreneCity_Gate_EventScript_Girl_Outside)}
+	elif (var(VAR_RESULT) == 1) {goto (NacreneCity_Gate_EventScript_Girl_AtHome)}
+	elif (var(VAR_RESULT) == 2) {goto (NacreneCity_Gate_EventScript_Girl_Neither)}
+	end
+}
+
+script NacreneCity_Gate_EventScript_Girl_Outside
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("I see, I see!\p"
+   "Then, which one are you interested in:\n"
+   "the thing everybody knows\l"
+   "or the thing nobody knows?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+	multichoice(20, 0, MULTI_NCG_QUESTIONS_2, 1)
+	if (var(VAR_RESULT) == 0) {goto (NacreneCity_Gate_EventScript_Girl_Active)}
+	elif (var(VAR_RESULT) == 1) {goto (NacreneCity_Gate_EventScript_Girl_Curious)}
+	elif (var(VAR_RESULT) == 2) {goto (NacreneCity_Gate_EventScript_Girl_CommonSense)}
+	end
+}
+
+script NacreneCity_Gate_EventScript_Girl_Active
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Oh, really?\p"
+   "I'd say you are quite active!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NacreneCity_Gate_EventScript_Girl_Curious
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Oh, really?\p"
+   "I'd say you are very curious!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NacreneCity_Gate_EventScript_Girl_CommonSense
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Oh, really?\p"
+   "In my view, you are a person with\n"
+   "common sense!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NacreneCity_Gate_EventScript_Girl_AtHome
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("I see, I see!\p"
+   "Then, which one are you interested in:\n"
+   "the thing everybody knows\l"
+   "or the thing nobody knows?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+	multichoice(20, 0, MULTI_NCG_QUESTIONS_2, 1)
+	if (var(VAR_RESULT) == 0) {goto (NacreneCity_Gate_EventScript_Girl_Composed)}
+	elif (var(VAR_RESULT) == 1) {goto (NacreneCity_Gate_EventScript_Girl_Relaxed)}
+	elif (var(VAR_RESULT) == 2) {goto (NacreneCity_Gate_EventScript_Girl_CommonSense)}
+	end
+}
+
+script NacreneCity_Gate_EventScript_Girl_Composed
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Oh, really?\p"
+   "I'd say you are quite composed!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NacreneCity_Gate_EventScript_Girl_Relaxed
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("Oh, really?\p"
+   "I'd say you are quite relaxed!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NacreneCity_Gate_EventScript_Girl_Neither
+{
+	destroy_speech_bubble()
+	closemessage
+    msgbox("I see, I see!\p"
+   "Then, which one are you interested in:\n"
+   "the thing everybody knows\l"
+   "or the thing nobody knows?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENECITY_GATE_GIRL)
+	multichoice(20, 0, MULTI_NCG_QUESTIONS_2, 1)
+	if (var(VAR_RESULT) == 0) {goto (NacreneCity_Gate_EventScript_Girl_CommonSense)}
+	elif (var(VAR_RESULT) == 1) {goto (NacreneCity_Gate_EventScript_Girl_CommonSense)}
+	elif (var(VAR_RESULT) == 2) {goto (NacreneCity_Gate_EventScript_Girl_CommonSense)}
+	end
+}
+
+
+

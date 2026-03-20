@@ -129,6 +129,8 @@
 #define MULTI_FENNEL_LAPTOP                118
 #define MULTI_AMANITA_QUESTION             119
 #define MULTI_TRAINERSCHOOL_BLACKBOARD     120
+#define MULTI_NCG_QUESTIONS_1              121
+#define MULTI_NCG_QUESTIONS_2              122
 
 
 
