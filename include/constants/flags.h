@@ -805,10 +805,10 @@
 #define FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS                           0x2F4
 #define FLAG_WELLSPRINGCAVE_CHEREN                                  0x2F5
 #define FLAG_WELLSPRINGCAVE_ITEM_TM_THIEF                           0x2F6
-#define FLAG_UNUSED_0x2F7                                           0x2F7
-#define FLAG_UNUSED_0x2F8                                           0x2F8
-#define FLAG_UNUSED_0x2F9                                           0x2F9
-#define FLAG_UNUSED_0x2FA                                           0x2FA
+#define FLAG_ROUTE3S_ITEM_ANTIDOTE                                  0x2F7
+#define FLAG_ROUTE3S_ITEM_GREAT_BALL                                0x2F8
+#define FLAG_ROUTE3S_ITEM_AWAKENING                                 0x2F9
+#define FLAG_ROUTE3S_CHEREN                                         0x2FA
 #define FLAG_UNUSED_0x2FB                                           0x2FB
 #define FLAG_UNUSED_0x2FC                                           0x2FC
 #define FLAG_UNUSED_0x2FD                                           0x2FD

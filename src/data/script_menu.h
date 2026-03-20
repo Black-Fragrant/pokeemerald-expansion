@@ -823,6 +823,20 @@ static const struct MenuAction MultichoiceList_TrainerSchoolBlackBoard[] =
     {COMPOUND_STRING("Cancel")},
 };
 
+static const struct MenuAction MultichoiceList_NacreneCityGateQuestions1[] =
+{
+    {COMPOUND_STRING("Outside")},
+    {COMPOUND_STRING("At Home")},
+    {COMPOUND_STRING("Neither")},
+};
+
+static const struct MenuAction MultichoiceList_NacreneCityGateQuestions2[] =
+{
+    {COMPOUND_STRING("The thing everybody knows")},
+    {COMPOUND_STRING("The thing nobody knows")},
+    {COMPOUND_STRING("Neither")},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -957,6 +971,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FENNEL_LAPTOP]              = MULTICHOICE(MultichoiceList_FennelLaptop),
     [MULTI_AMANITA_QUESTION]           = MULTICHOICE(MultichoiceList_AmanitaQuestion),
     [MULTI_TRAINERSCHOOL_BLACKBOARD]   = MULTICHOICE(MultichoiceList_TrainerSchoolBlackBoard),
+    [MULTI_NCG_QUESTIONS_1]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions1),
+    [MULTI_NCG_QUESTIONS_2]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions2),
 };
 
 const u8 *const gStdStrings[] =
