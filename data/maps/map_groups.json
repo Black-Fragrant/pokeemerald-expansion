@@ -7,6 +7,7 @@
     "gMapGroup_DreamYard",
     "gMapGroup_IndoorRoute3",
     "gMapGroup_WellspringCave",
+    "gMapGroup_IndoorNacrene",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -40,8 +41,7 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124",
-    "gMapGroup_IndoorNacrene"
+    "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "NuvemaTown",
@@ -98,6 +98,15 @@
   "gMapGroup_WellspringCave": [
     "WellspringCave_1F",
     "WellspringCave_B1F"
+  ],
+  "gMapGroup_IndoorNacrene": [
+    "NacreneCity_Gate",
+    "NacreneCity_TopRightBuilding",
+    "NacreneCity_BottomLeftBuilding",
+    "NacreneCity_BottomMiddleBuilding",
+    "NacreneCity_BottomRightBuilding",
+    "NacreneCity_DesignerShop",
+    "NacreneCity_PokeCenter"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -684,8 +693,5 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
-  ],
-  "gMapGroup_IndoorNacrene": [
-    "NacreneCity_Gate"
   ]
 }

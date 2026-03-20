@@ -1229,3 +1229,14 @@ const struct Tileset gTileset_NacreneCity =
     .metatileAttributes = gMetatileAttributes_NacreneCity,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_IndoorNacrene =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorNacrene,
+    .palettes = gTilesetPalettes_IndoorNacrene,
+    .metatiles = gMetatiles_IndoorNacrene,
+    .metatileAttributes = gMetatileAttributes_IndoorNacrene,
+    .callback = NULL,
+};

@@ -1210,3 +1210,15 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/PinwheelForest_Outside_South/scripts.inc"
 
 	.include "data/maps/NacreneCity_Gate/scripts.inc"
+
+	.include "data/maps/NacreneCity_TopRightBuilding/scripts.inc"
+
+	.include "data/maps/NacreneCity_PokeCenter/scripts.inc"
+
+	.include "data/maps/NacreneCity_BottomMiddleBuilding/scripts.inc"
+
+	.include "data/maps/NacreneCity_BottomRightBuilding/scripts.inc"
+
+	.include "data/maps/NacreneCity_DesignerShop/scripts.inc"
+
+	.include "data/maps/NacreneCity_BottomLeftBuilding/scripts.inc"

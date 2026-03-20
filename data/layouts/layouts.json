@@ -4840,6 +4840,66 @@
       "secondary_tileset": "gTileset_Gate",
       "border_filepath": "data/layouts/NacreneCity_Gate/border.bin",
       "blockdata_filepath": "data/layouts/NacreneCity_Gate/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_TOP_RIGHT_BUILDING",
+      "name": "NacreneCity_TopRightBuilding_Layout",
+      "width": 72,
+      "height": 36,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNacrene",
+      "border_filepath": "data/layouts/NacreneCity_TopRightBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_TopRightBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_POKE_CENTER",
+      "name": "NacreneCity_PokeCenter_Layout",
+      "width": 13,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokeCenter",
+      "border_filepath": "data/layouts/NacreneCity_PokeCenter/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_PokeCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_DESIGNER_SHOP",
+      "name": "NacreneCity_DesignerShop_Layout",
+      "width": 72,
+      "height": 36,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNacrene",
+      "border_filepath": "data/layouts/NacreneCity_DesignerShop/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_DesignerShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_BOTTOM_RIGHT_BUILDING",
+      "name": "NacreneCity_BottomRightBuilding_Layout",
+      "width": 72,
+      "height": 36,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNacrene",
+      "border_filepath": "data/layouts/NacreneCity_BottomRightBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_BottomRightBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_BOTTOM_MIDDLE_BUILDING",
+      "name": "NacreneCity_BottomMiddleBuilding_Layout",
+      "width": 72,
+      "height": 36,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNacrene",
+      "border_filepath": "data/layouts/NacreneCity_BottomMiddleBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_BottomMiddleBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_BOTTOM_LEFT_BUILDING",
+      "name": "NacreneCity_BottomLeftBuilding_Layout",
+      "width": 72,
+      "height": 36,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNacrene",
+      "border_filepath": "data/layouts/NacreneCity_BottomLeftBuilding/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_BottomLeftBuilding/map.bin"
     }
   ]
 }
