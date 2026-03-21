@@ -277,8 +277,11 @@ script AccumulaTown_EventScript_TPP_Trigger_Continue
 	destroy_speech_bubble()
 	closemessage()
 	call(AccumulaTown_EventScript_TPP_Move_Crowd)
-	msgbox("Huh?        What?", MSGBOX_DEFAULT) //this should be small
-	closemessage()
+	minimsg("Huh?", 12, 7)
+	delay(20)
+	minimsg("What?", 15, 12)
+	delay(60)
+	closeallminimessages
 	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
 	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_up * 2, walk_in_place_right))
 	waitmovement(0)
@@ -306,9 +309,13 @@ script AccumulaTown_EventScript_TPP_Trigger_Continue
 	destroy_speech_bubble()
 	closemessage()
 	call(AccumulaTown_EventScript_TPP_Move_Crowd)
-	msgbox("Yikes!        No way\n"
-			"I don't know...", MSGBOX_DEFAULT) //this should be small
-	closemessage()
+	minimsg("Yikes!", 12, 7)
+	delay(20)
+	minimsg("I don't know...", 15, 12)
+	delay(40)
+	minimsg("No way", 18, 4)
+	delay(60)
+	closeallminimessages
 	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
 	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_down * 2, walk_in_place_right))
 	waitmovement(0)
@@ -324,9 +331,11 @@ script AccumulaTown_EventScript_TPP_Trigger_Continue
 	destroy_speech_bubble()
 	closemessage()
 	call(AccumulaTown_EventScript_TPP_Move_Crowd)
-	msgbox("What could it be?\n"
-			"Liberation?", MSGBOX_DEFAULT) //this should be small
-	closemessage()
+	minimsg("What could it be?", 12, 7)
+	delay(40)
+	minimsg("Liberation?", 15, 12)
+	delay(60)
+	closeallminimessages
 	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
 	applymovement(LOCALID_ACCUMULA_TPP_GHETSIS, moves(walk_slow_up * 2, walk_in_place_right))
 	waitmovement(0)
@@ -336,8 +345,8 @@ script AccumulaTown_EventScript_TPP_Trigger_Continue
 			"Then, and only then, will humans\n"
 			"and Pokémon truly be equals.\p"
 			"Everyone, I end my words here today by\n"
-			"imploring you to consider the relationship\l"
-			"between people and Pokémon...\l"
+			"imploring you to consider the relation-\l"
+			"ship between people and Pokémon...\l"
 			"and the correct way to proceed.\p"
 			"We sincerely appreciate your attention.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_TPP_GHETSIS)
 	destroy_speech_bubble()
