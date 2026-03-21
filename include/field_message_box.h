@@ -10,6 +10,7 @@ enum
 };
 
 bool8 ShowFieldMessage(const u8 *str);
+bool8 ShowMiniFieldMessage(const u8 *message, u8 x, u8 y);
 bool8 ShowPokenavFieldMessage(const u8 *str);
 bool8 ShowFieldMessageFromBuffer(void);
 bool8 ShowFieldAutoScrollMessage(const u8 *str);
