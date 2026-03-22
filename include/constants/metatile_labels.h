@@ -5,9 +5,6 @@
 #define METATILE_Accumula_House_1  0x279
 #define METATILE_Accumula_House_2  0x2B5
 
-// gTileset_Nacrene
-#define METATILE_Nacrene_House_1               0x2CB
-
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x21B
 
@@ -771,6 +768,7 @@
 #define METATILE_Underwater_RockWall     0x21E
 
 // Other
+#define METATILE_Nacrene_House_1               0x2CB
 #define METATILE_RSMossdeepGym_RedArrow_Down   0x205
 #define METATILE_RSMossdeepGym_RedArrow_Left   0x20C
 #define METATILE_RSMossdeepGym_RedArrow_Right  0x204
