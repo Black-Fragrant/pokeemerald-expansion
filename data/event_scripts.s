@@ -1222,3 +1222,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/NacreneCity_DesignerShop/scripts.inc"
 
 	.include "data/maps/NacreneCity_BottomLeftBuilding/scripts.inc"
+
+	.include "data/maps/NacreneCity_Cafe/scripts.inc"

@@ -4900,6 +4900,16 @@
       "secondary_tileset": "gTileset_IndoorNacrene",
       "border_filepath": "data/layouts/NacreneCity_BottomLeftBuilding/border.bin",
       "blockdata_filepath": "data/layouts/NacreneCity_BottomLeftBuilding/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_CAFE",
+      "name": "NacreneCity_Cafe_Layout",
+      "width": 13,
+      "height": 19,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorNacrene",
+      "border_filepath": "data/layouts/NacreneCity_Cafe/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_Cafe/map.bin"
     }
   ]
 }
