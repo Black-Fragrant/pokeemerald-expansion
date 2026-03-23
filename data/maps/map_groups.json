@@ -106,7 +106,8 @@
     "NacreneCity_BottomMiddleBuilding",
     "NacreneCity_BottomRightBuilding",
     "NacreneCity_DesignerShop",
-    "NacreneCity_PokeCenter"
+    "NacreneCity_PokeCenter",
+    "NacreneCity_Cafe"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

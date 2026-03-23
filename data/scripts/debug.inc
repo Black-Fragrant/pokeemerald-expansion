@@ -140,7 +140,7 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	warpsilent MAP_NUVEMA_TOWN, 14, 16
+	warpsilent MAP_NACRENE_CITY, 29, 25
 	release
 	end
 

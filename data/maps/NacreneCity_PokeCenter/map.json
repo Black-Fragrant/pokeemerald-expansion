@@ -14,7 +14,29 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_NACRENE_CITY",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 6,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_NACRENE_CITY",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 7,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_NACRENE_CITY",
+      "dest_warp_id": "7"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }
