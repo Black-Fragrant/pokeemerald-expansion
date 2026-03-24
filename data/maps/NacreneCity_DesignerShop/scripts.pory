@@ -1,1 +1,12 @@
 mapscripts NacreneCity_DesignerShop_MapScripts {}
+
+script NacreneCity_DS_EventScript_Loblolly
+{
+	msgbox("My name is Loblolly.\n"
+       "I'm a designer of Décor items.\p"
+       "But I'm stuck now... I just can't come\n"
+       "up with a good design.\p"
+       "I've been thinking about Décor\n"
+       "so great that it will appear in a dream...", MSGBOX_NPC, TRUE)
+	end
+}
