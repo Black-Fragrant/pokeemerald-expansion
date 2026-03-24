@@ -21,6 +21,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_NACRENE_ACCORDION_PLAYER",
       "graphics_id": "OBJ_EVENT_GFX_ACCORDION_PLAYER",
       "x": 21,
       "y": 9,
@@ -30,7 +31,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NacreneCity_EventScript_AccordionPlayer",
       "flag": "0"
     },
     {
@@ -43,7 +44,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NacreneCity_EventScript_BlueShirtGuy_Left",
       "flag": "0"
     },
     {
@@ -56,7 +57,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NacreneCity_EventScript_Housewife_Left",
       "flag": "0"
     },
     {
@@ -69,7 +70,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NacreneCity_EventScript_Backpacker_Left",
       "flag": "0"
     },
     {
@@ -82,12 +83,13 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NacreneCity_EventScript_Beauty_Right",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NACRENE_CHEREN",
       "graphics_id": "OBJ_EVENT_GFX_CHEREN",
-      "x": 55,
+      "x": 57,
       "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -96,7 +98,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_NACRENE_CHEREN"
     }
   ],
   "warp_events": [
@@ -195,57 +197,39 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 57,
+      "x": 59,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_NACRENE_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "NacreneCity_EventScript_Trigger_Cheren"
     },
     {
       "type": "trigger",
-      "x": 57,
+      "x": 59,
       "y": 27,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_NACRENE_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "NacreneCity_EventScript_Trigger_Cheren"
     },
     {
       "type": "trigger",
-      "x": 57,
+      "x": 59,
       "y": 28,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_NACRENE_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "NacreneCity_EventScript_Trigger_Cheren"
     },
     {
       "type": "trigger",
-      "x": 57,
+      "x": 59,
       "y": 29,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_NACRENE_STATE",
       "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 57,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 57,
-      "y": 31,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "script": "NacreneCity_EventScript_Trigger_Cheren"
     }
   ],
   "bg_events": [
@@ -255,15 +239,23 @@
       "y": 25,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NacreneCity_EventScript_SignPost_BottomRight"
     },
     {
       "type": "sign",
       "x": 33,
       "y": 9,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NacreneCity_EventScript_SignPost_Gym"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NacreneCity_EventScript_SignPost_Cafe"
     }
   ]
 }

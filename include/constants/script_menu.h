@@ -131,6 +131,7 @@
 #define MULTI_TRAINERSCHOOL_BLACKBOARD     120
 #define MULTI_NCG_QUESTIONS_1              121
 #define MULTI_NCG_QUESTIONS_2              122
+#define MULTI_NACRENE_STARTERS             123
 
 
 

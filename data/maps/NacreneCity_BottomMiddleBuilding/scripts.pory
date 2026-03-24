@@ -1,1 +1,50 @@
 mapscripts NacreneCity_BottomMiddleBuilding_MapScripts {}
+
+script NacreneCity_BMB_EventScript_BlackBelt_Left
+{
+	msgbox("Just now, I traded a Pokémon holding an\n"
+       "item! So, it's like the item is a present!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_BMB_EventScript_BlackBelt_Right
+{
+	msgbox("DS Wireless Communications is great!\p"
+       "We can trade Pokémon with people\n"
+       "who are far away!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_BMB_EventScript_Youngster
+{
+	msgbox("Dire Hit? In Unova, it's called Dire Hit.\n"
+       "Huh? No difference?\p"
+       "...Anyway, in a battle, it's very powerful\n"
+       "when a move is a critical hit!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_BMB_EventScript_Clerk
+{
+	lock
+	faceplayer
+	message("I started a shop in this warehouse!\p"
+       "Welcome!\n"
+       "May I help you?")
+	waitmessage
+	pokemart(NacreneCity_BMB_Items)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart NacreneCity_BMB_Items {
+	ITEM_X_SPEED
+	ITEM_X_ATTACK
+	ITEM_X_DEFEND
+    ITEM_GUARD_SPEC
+    ITEM_DIRE_HIT
+    ITEM_X_ACCURACY
+    ITEM_X_SPECIAL
+    ITEM_X_SP_DEF
+}

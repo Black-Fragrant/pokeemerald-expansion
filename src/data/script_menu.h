@@ -837,6 +837,14 @@ static const struct MenuAction MultichoiceList_NacreneCityGateQuestions2[] =
     {COMPOUND_STRING("Neither")},
 };
 
+static const struct MenuAction MultichoiceList_NacreneCityStarters[] =
+{
+    {COMPOUND_STRING("Snivy")},
+    {COMPOUND_STRING("Oshawott")},
+    {COMPOUND_STRING("Tepig")},
+    {COMPOUND_STRING("Quit")},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -973,6 +981,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TRAINERSCHOOL_BLACKBOARD]   = MULTICHOICE(MultichoiceList_TrainerSchoolBlackBoard),
     [MULTI_NCG_QUESTIONS_1]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions1),
     [MULTI_NCG_QUESTIONS_2]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions2),
+    [MULTI_NACRENE_STARTERS]           = MULTICHOICE(MultichoiceList_NacreneCityStarters),
 };
 
 const u8 *const gStdStrings[] =

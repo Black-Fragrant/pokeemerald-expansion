@@ -1,1 +1,32 @@
 mapscripts NacreneCity_TopRightBuilding_MapScripts {}
+
+script NacreneCity_TRB_EventScript_Guitarist
+{
+	lock
+	msgbox("I play the guitar and have\n"
+       "Pokémon battles every day.\p"
+       "I keep doing that 'cause I enjoy it!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_ACCORDION_PLAYER)
+    destroy_speech_bubble()
+    closemessage
+	end
+}
+
+script NacreneCity_TRB_EventScript_GreenShirtGuy
+{
+	msgbox("I am a poet...\n"
+       "I write poems.\p"
+       "Everyday, I stretch my imagination and\n"
+       "devote myself to my creative activity.\p"
+       "People dream when sleeping, but if a\n"
+       "Pokémon dreams...\p"
+       "I cannot even imagine how it is...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_TRB_EventScript_Boy
+{
+	msgbox("Even the same kind of Pokémon can have\n"
+       "different natures!", MSGBOX_NPC, TRUE)
+	end
+}
+

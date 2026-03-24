@@ -1,1 +1,154 @@
 mapscripts NacreneCity_BottomLeftBuilding_MapScripts {}
+
+script NacreneCity_BLB_EventScript_BlueShirtGuy
+{
+	msgbox("Burgh is an artist, and also the\n"
+       "Gym Leader in Castelia City.\l"
+       "We want to be like him!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_BLB_EventScript_Beauty
+{
+	msgbox("Burgh used this warehouse until\n"
+       "two years ago!\p"
+       "When Burgh gets artist's block,\n"
+       "he comes back here to Nacrene City!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_BLB_EventScript_AceTrainerFemale
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_NACRENE_STARTER_HELD_ITEMS_BLB, NacreneCity_BLB_EventScript_Multi_Received)
+	msgbox("That thing you have is a Pokédex,\n"
+       "isn't it?\p"
+       "Wow! Coooooool! You collect Pokémon!\n"
+       "OK! I'll help you.\p"
+       "Which Pokémon did you choose at the\n"
+       "beginning of your journey?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+	multichoice(22, 3, MULTI_NACRENE_STARTERS, 1)
+	if (var(VAR_RESULT) == 0) {goto (NacreneCity_BLB_EventScript_Multi_Snivy)}
+	elif (var(VAR_RESULT) == 1) {goto (NacreneCity_BLB_EventScript_Multi_Oshawott)}
+	elif (var(VAR_RESULT) == 2) {goto (NacreneCity_BLB_EventScript_Multi_Tepig)}
+    goto(NacreneCity_BLB_EventScript_Multi_Quit)
+}
+
+script NacreneCity_BLB_EventScript_Multi_Quit
+{ 
+    destroy_speech_bubble()
+    closemessage
+    msgbox("If you want to tell me, please speak\n"
+       "to me!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NacreneCity_BLB_EventScript_Multi
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Then, what was the Pokémon you chose\n"
+       "at the beginning of your journey?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+	multichoice(22, 3, MULTI_NACRENE_STARTERS, 1)
+	if (var(VAR_RESULT) == 0) {goto (NacreneCity_BLB_EventScript_Multi_Snivy)}
+	elif (var(VAR_RESULT) == 1) {goto (NacreneCity_BLB_EventScript_Multi_Oshawott)}
+	elif (var(VAR_RESULT) == 2) {goto (NacreneCity_BLB_EventScript_Multi_Tepig)}
+    goto(NacreneCity_BLB_EventScript_Multi_Quit)
+}
+
+script NacreneCity_BLB_EventScript_Multi_Snivy
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Do you have Snivy?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+	goto_if_eq(VAR_RESULT, TRUE, NacreneCity_BLB_EventScript_MiracleSeed)
+	goto(NacreneCity_BLB_EventScript_Multi)
+}
+
+script NacreneCity_BLB_EventScript_Multi_Oshawott
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Do you have Oshawott?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+	goto_if_eq(VAR_RESULT, TRUE, NacreneCity_BLB_EventScript_MysticWater)
+	goto(NacreneCity_BLB_EventScript_Multi)
+}
+
+script NacreneCity_BLB_EventScript_Multi_Tepig
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Do you have Tepig?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+	goto_if_eq(VAR_RESULT, TRUE, NacreneCity_BLB_EventScript_Charcoal)
+	goto(NacreneCity_BLB_EventScript_Multi)
+}
+
+script NacreneCity_BLB_EventScript_MiracleSeed
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("You have Snivy!\n"
+       "Then I will give you this!\p"
+       "When you let your Pokémon hold it, it can\n"
+       "raise the power of Grass-type moves!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_MIRACLE_SEED, 1)
+	goto_if_eq (VAR_RESULT, FALSE, NacreneCity_BLB_EventScript_BagIsFull)
+	goto (NacreneCity_BLB_EventScript_Multi_Received)
+}
+
+script NacreneCity_BLB_EventScript_MysticWater
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("You have Oshawott!\n"
+       "Then I will give you this!\p"
+       "When you let your Pokémon hold it, it can\n"
+       "raise the power of Water-type moves!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_MYSTIC_WATER, 1)
+	goto_if_eq (VAR_RESULT, FALSE, NacreneCity_BLB_EventScript_BagIsFull)
+	goto (NacreneCity_BLB_EventScript_Multi_Received)
+}
+
+script NacreneCity_BLB_EventScript_Charcoal
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("You have Tepig!\n"
+       "Then I will give you this!\p"
+       "When you let your Pokémon hold it, it can\n"
+       "raise the power of Fire-type moves!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_CHARCOAL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, NacreneCity_BLB_EventScript_BagIsFull)
+	goto (NacreneCity_BLB_EventScript_Multi_Received)
+}
+
+script NacreneCity_BLB_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script NacreneCity_BLB_EventScript_Multi_Received
+{
+    setflag(FLAG_NACRENE_STARTER_HELD_ITEMS_BLB)
+    msgbox("A lot of items have effects when Pokémon\n"
+       "hold them, so try to find them!\p"
+       "Well, work hard to fill up your Pokédex!\n"
+       "Good luck!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+

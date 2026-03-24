@@ -809,8 +809,8 @@
 #define FLAG_ROUTE3S_ITEM_GREAT_BALL                                0x2F8
 #define FLAG_ROUTE3S_ITEM_AWAKENING                                 0x2F9
 #define FLAG_ROUTE3S_CHEREN                                         0x2FA
-#define FLAG_UNUSED_0x2FB                                           0x2FB
-#define FLAG_UNUSED_0x2FC                                           0x2FC
+#define FLAG_NACRENE_CHEREN                                         0x2FB
+#define FLAG_NACRENE_STARTER_HELD_ITEMS_BLB                         0x2FC
 #define FLAG_UNUSED_0x2FD                                           0x2FD
 #define FLAG_UNUSED_0x2FE                                           0x2FE
 #define FLAG_UNUSED_0x2FF                                           0x2FF

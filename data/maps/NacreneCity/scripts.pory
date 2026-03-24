@@ -1,1 +1,162 @@
 mapscripts NacreneCity_MapScripts {}
+
+script NacreneCity_EventScript_SignPost_BottomRight
+{
+	msgbox("Nacrene City\n"
+        "A Pearl of a Place", MSGBOX_SIGN)
+	end
+}
+
+script NacreneCity_EventScript_SignPost_Gym
+{
+	msgbox("Nacrene City Pokémon Gym\n"
+       "Leader: Lenora\l"
+       "An Archeologist with Backbone", MSGBOX_SIGN)
+	end
+}
+
+script NacreneCity_EventScript_SignPost_Cafe
+{
+	msgbox("Café Warehouse\n"
+       "Try our delicious Wednesday specials!", MSGBOX_SIGN)
+	end
+}
+
+script NacreneCity_EventScript_Trigger_Cheren
+{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_NACRENE_CHEREN, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 26, NacreneCity_EventScript_Trigger_Cheren_Pos1)
+	call_if_eq (VAR_TEMP_1, 27, NacreneCity_EventScript_Trigger_Cheren_Pos2)
+	call_if_eq (VAR_TEMP_1, 28, NacreneCity_EventScript_Trigger_Cheren_Pos3)
+	call_if_eq (VAR_TEMP_1, 29, NacreneCity_EventScript_Trigger_Cheren_Pos4)
+	delay(10)
+	msgbox("Come with me a sec.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_left * 23))
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_left * 24, delay_16, face_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("If you go straight from here,\n"
+       "there's a Pokémon Center.\p"
+       "And...\n"
+       "Use these if you want.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_right))
+	waitmovement(0)
+	giveitem(ITEM_CHESTO_BERRY, 3)
+	call_if_eq (VAR_RESULT, FALSE, NacreneCity_EventScript_BagIsFull)
+	msgbox("Give your Pokémon a\n"
+       "Chesto Berry to hold. Then, if it ever\l"
+       "falls asleep, it will wake up immediately.\p"
+       "Oh, and another piece of advice--\p"
+       "Nacrene City's Gym Leader uses\n"
+       "Normal types.\p"
+       "If you have a Fighting-type Pokémon,\n"
+       "it might give you a big advantage.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    playbgm(MUS_BW_NACRENE_CITY, TRUE)
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_left * 8))
+	waitmovement(0)
+	removeobject(LOCALID_NACRENE_CHEREN)
+	setflag(FLAG_NACRENE_CHEREN)
+	setvar(VAR_NACRENE_STATE, 1)
+	delay(20)
+	release
+	end
+}
+
+script NacreneCity_EventScript_Trigger_Cheren_Pos1
+{
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_up, walk_right))
+	waitmovement(0)
+	return
+}
+
+script NacreneCity_EventScript_Trigger_Cheren_Pos2
+{
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_right))
+	waitmovement(0)
+	return
+}
+
+script NacreneCity_EventScript_Trigger_Cheren_Pos3
+{
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_down, walk_right))
+	waitmovement(0)
+	return
+}
+
+script NacreneCity_EventScript_Trigger_Cheren_Pos4
+{
+	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_down * 2, walk_right))
+	waitmovement(0)
+	return
+}
+
+script NacreneCity_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	closemessage
+	return
+}
+
+script NacreneCity_EventScript_Beauty_Right
+{
+	msgbox("These old textile factories\n"
+       "and storehouses were abandoned.\p"
+       "But enterprising young people\n"
+       "started using them as studios.\p"
+       "That could be called the beginning of\n"
+       "Nacrene City, the city of art.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_EventScript_AccordionPlayer
+{
+	lock
+	msgbox("How do you like the sound of accordions?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_ACCORDION_PLAYER)
+    destroy_speech_bubble()
+    closemessage
+	end
+}
+
+script NacreneCity_EventScript_BlueShirtGuy_Left
+{
+	msgbox("That warehouse...\n"
+       "They're selling something good inside.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_EventScript_Housewife_Left
+{
+	msgbox("Even though it's just an old warehouse,\n"
+       "it's become so popular...\p"
+       "It makes me take a second look at\n"
+       "what I think things are worth.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_EventScript_Backpacker_Left
+{
+	msgbox("Nacrene City is a highly fashionable\n"
+       "and admired locale!\p"
+       "Contrariwise, if you happen to be a bit\n"
+       "ordinary, here that's cool in its own way.", MSGBOX_NPC, TRUE)
+	end
+}
+
+
+
