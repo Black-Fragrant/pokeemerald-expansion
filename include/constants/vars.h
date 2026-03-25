@@ -99,7 +99,7 @@
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
-#define VAR_JUNIPER_PARCEL_DELIEVER                      0x4052
+#define VAR_JUNIPER_PARCEL_DELIEVER                      0x4052 // the first var used in fire black
 #define VAR_NUVEMA_PICK_STARTER                          0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
 #define VAR_BIANCA_FIGHTS_PARENTS                        0x4055
@@ -116,7 +116,7 @@
 #define VAR_ROUTE3_NORTH_CHEREN_BATTLE                   0x4060
 #define VAR_ROUTE3_SOUTH_CHEREN_EXPLAIN                  0x4061
 #define VAR_NACRENE_STATE                                0x4062
-#define VAR_UNUSED_4063                                  0x4063
+#define VAR_DAY_OF_WEEK                                  0x4063
 #define VAR_UNUSED_4064                                  0x4064 // Unused Var
 #define VAR_UNUSED_4065                                  0x4065 // Unused Var
 #define VAR_UNUSED_4066                                  0x4066 // Unused Var

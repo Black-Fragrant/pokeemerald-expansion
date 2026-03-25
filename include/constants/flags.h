@@ -811,7 +811,7 @@
 #define FLAG_ROUTE3S_CHEREN                                         0x2FA
 #define FLAG_NACRENE_CHEREN                                         0x2FB
 #define FLAG_NACRENE_STARTER_HELD_ITEMS_BLB                         0x2FC
-#define FLAG_UNUSED_0x2FD                                           0x2FD
+#define FLAG_NACRENE_TRADED_PETILIL                                 0x2FD
 #define FLAG_UNUSED_0x2FE                                           0x2FE
 #define FLAG_UNUSED_0x2FF                                           0x2FF
 #define FLAG_UNUSED_0x300                                           0x300
@@ -1572,7 +1572,7 @@
 #define FLAG_UNUSED_0x920                           (DAILY_FLAGS_START + 0x0)  // Unused Flag
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_UNUSED_0x923                           (DAILY_FLAGS_START + 0x3)  // Unused Flag
+#define FLAG_DAILY_NACRENE_CAFE_SODA_POP            (DAILY_FLAGS_START + 0x3)
 #define FLAG_UNUSED_0x924                           (DAILY_FLAGS_START + 0x4)  // Unused Flag
 #define FLAG_UNUSED_0x925                           (DAILY_FLAGS_START + 0x5)  // Unused Flag
 #define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag

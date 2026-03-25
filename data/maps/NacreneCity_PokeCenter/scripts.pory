@@ -1,1 +1,85 @@
 mapscripts NacreneCity_PokeCenter_MapScripts {}
+
+script NacreneCity_PokeCenter_EventScript_Nurse
+{
+	setvar(VAR_0x800B, LOCALID_STRIATON_POKECEN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
+script NacreneCity_PokeCenter_EventScript_WifiAssistant
+{
+	msgbox("Sorry, we're getting things ready.\n"
+			"Please come back later.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_PokeCenter_EventScript_Clerk1
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(StriatonCity_Mart_Items)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script NacreneCity_PokeCenter_EventScript_Clerk2
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(0)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart NacreneCity_Mart_Items {
+	ITEM_HEAL_BALL
+	ITEM_NET_BALL
+	ITEM_DREAM_MAIL
+	ITEM_RETRO_MAIL
+	ITEM_FAB_MAIL
+}
+
+script NacreneCity_PokeCenter_EventScript_Boy
+{
+	msgbox("When you choose “HELP”\n"
+       "at the PC at a Pokémon Center,\l"
+       "you can learn many things. It's so cool!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_PokeCenter_EventScript_Girl
+{
+	msgbox("Hi, Trainer! Do you know a Pokémon\n"
+       "called Audino?\p"
+       "It's a Pokémon that I sometimes find\n"
+       "when I'm walking.\p"
+       "It jumps out of rustling grass.\n"
+       "I can get a lot of Exp. Points.\p"
+       "It's kind of a friendly Pokémon, isn't it?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_PokeCenter_EventScript_Backpacker
+{
+	msgbox("I heard that the Fossils in the museum\n"
+       "were found in Twist Mountain.\p"
+       "Then, a person called Clay apparently\n"
+       "donated them to the museum.", MSGBOX_NPC, TRUE)
+	end
+}
+
+

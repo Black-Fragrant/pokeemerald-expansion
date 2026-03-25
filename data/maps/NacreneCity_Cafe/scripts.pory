@@ -1,1 +1,105 @@
 mapscripts NacreneCity_Cafe_MapScripts {}
+
+script NacreneCity_Cafe_EventScript_BeardGuy
+{
+	msgbox("As far as I'm concerned, it doesn't\n"
+       "matter that the café is in a rural area\l"
+       "that nobody knows.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Cafe_EventScript_Cheerleader
+{
+	msgbox("Do you know about the Battle Box?\p"
+       "I heard it is a useful function you can\n"
+       "use at the Pokémon Center.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Cafe_EventScript_BlueShirtGuy
+{
+	msgbox("The Striaton City Gym Leaders are a\n"
+       "great triplet combo!\p"
+       "The Grass-type Pokémon user, Cilan,\n"
+       "chooses great tea leaves.\p"
+       "The Water-type Pokémon user, Cress,\n"
+       "prepares the best water.\p"
+       "The Fire-type Pokémon user, Chili,\n"
+       "pours hot water at the right heat.\p"
+       "No wonder their tea is the best!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Cafe_EventScript_AceTrainer_F
+{
+	msgbox("Yes, I know!\p"
+       "If you have a Wonder Launcher, energy\n"
+       "will be charged, and you can use\l"
+       "various items.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Cafe_EventScript_AceTrainer_M
+{
+	msgbox("When you battle with a friend using\n"
+       "wireless communications, you can use\l"
+       "items using a Wonder Launcher!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Cafe_EventScript_Teacher
+{
+	msgbox("This café has a special on Wednesdays!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Cafe_EventScript_Waitress
+{
+    lock 
+    faceplayer 
+    callnative(DebugMenu_CalculateTime)
+    goto_if_ne(VAR_DAY_OF_WEEK, 3, NacreneCity_Cafe_EventScript_Waitress_NotWednesday)
+	dotimebasedevents
+	goto_if_set(FLAG_DAILY_NACRENE_CAFE_SODA_POP, NacreneCity_Cafe_EventScript_Waitress_ReceivedSodaToday)
+    msgbox("Welcome to Café Warehouse,\n"
+       "a stylish café in a rural area!\p"
+       "Our café has a special on Wednesdays!\n"
+       "Here, have a Soda Pop!\p"
+       "Enjoy the taste of our specialty!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CAFE_WAITRESS)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_SODA_POP, 1)
+	goto_if_eq (VAR_RESULT, FALSE, NacreneCity_Cafe_EventScript_BagIsFull)
+    closemessage
+    setflag(FLAG_DAILY_NACRENE_CAFE_SODA_POP)
+    release 
+    end 
+}
+
+script NacreneCity_Cafe_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script NacreneCity_Cafe_EventScript_Waitress_ReceivedSodaToday
+{
+    msgbox("Enjoy the taste of our specialty!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CAFE_WAITRESS)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script NacreneCity_Cafe_EventScript_Waitress_NotWednesday
+{
+    msgbox("Welcome to Café Warehouse,\n"
+       "a stylish café in a rural area!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CAFE_WAITRESS)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+

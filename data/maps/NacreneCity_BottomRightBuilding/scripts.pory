@@ -1,1 +1,140 @@
 mapscripts NacreneCity_BottomRightBuilding_MapScripts {}
+
+script NacreneCity_BRB_EventScript_Boy
+{
+	msgbox("Pokémon you get through trades\n"
+       "grow up fast. But be careful!\p"
+       "If a traded Pokémon grows up too much,\n"
+       "it won't listen to you.\p"
+       "But if you have a lot of Badges, you'll\n"
+       "be OK.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_BRB_EventScript_Cottonee
+{
+	lock
+	faceplayer
+	playmoncry(SPECIES_COTTONEE, CRY_MODE_NORMAL)
+	msgbox("Fwish fwish!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script NacreneCity_BRB_EventScript_Girl
+{
+	lock
+	faceplayer
+    bufferleadmonspeciesname(STR_VAR_1)
+	msgbox("Oh my, what a lovely Trainer!\n"
+       "What kind of Pokémon do you have?\p"
+       "Oh, your {STR_VAR_1}...", MSGBOX_NPC, TRUE, LOCALID_NACRENE_BRB_GIRL)
+    destroy_speech_bubble()
+    closemessage
+	specialvar(VAR_RESULT, GetLeadMonFriendshipScore)
+	goto_if_ge(VAR_RESULT, 100, NacreneCity_BRB_EventScript_Girl_100_255)
+	goto_if_ge(VAR_RESULT, 50, NacreneCity_BRB_EventScript_Girl_50_100)
+    msgbox("Hmmm...\n"
+       "It may still take some time.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script NacreneCity_BRB_EventScript_Girl_100_255
+{   
+    msgbox("It's very friendly toward you!\n"
+       "It must be happy with you.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script NacreneCity_BRB_EventScript_Girl_50_100
+{   
+    msgbox("It's a little bit friendly to you...\n"
+       "Something like that.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script NacreneCity_BRB_EventScript_Trader
+{
+    lock 
+    faceplayer 
+	goto_if_set(FLAG_NACRENE_TRADED_PETILIL, NacreneCity_BRB_EventScript_Trader_TradeCompleted)
+	setvar(VAR_0x8008, INGAME_TRADE_PETILIL)
+	copyvar(VAR_0x8004, VAR_0x8008)
+	specialvar(VAR_RESULT, GetInGameTradeSpeciesInfo)
+	copyvar(VAR_0x8009, VAR_RESULT)
+        msgbox("Hi! Do you have a Pokémon called\n"
+       "Cottonee?\p"
+       "Would you like to trade your Cottonee\n"
+       "for my Petilil?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, NacreneCity_BRB_EventScript_Trader_Declined)
+	special(ChoosePartyMon)
+	waitstate
+	copyvar(VAR_0x800A, VAR_0x8004)
+	goto_if_eq(VAR_0x8004, PARTY_NOTHING_CHOSEN, NacreneCity_BRB_EventScript_Trader_Declined2)
+	copyvar(VAR_0x8005, VAR_0x800A)
+	specialvar(VAR_RESULT, GetTradeSpecies)
+	copyvar(VAR_0x800B, VAR_RESULT)
+	goto_if_ne(VAR_RESULT, VAR_0x8009, NacreneCity_BRB_EventScript_Trader_NotRequestedMon)
+	copyvar(VAR_0x8004, VAR_0x8008)
+	copyvar(VAR_0x8005, VAR_0x800A)
+    msgbox("Wow. Thanks!\n"
+       "Then, let's trade!", MSGBOX_DEFAULT)
+	special(CreateInGameTradePokemon)
+	special(DoInGameTradeScene)
+	waitstate
+	msgbox("Yay! Please take good care of\n"
+       "my Petilil!\p"
+       "I will take good care of your Cottonee!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_TRADER)
+    destroy_speech_bubble()
+    closemessage
+	setflag(FLAG_NACRENE_TRADED_PETILIL)
+	release
+	end
+}
+
+script NacreneCity_BRB_EventScript_Trader_Declined
+{
+    destroy_speech_bubble()
+    closemessage
+    goto(NacreneCity_BRB_EventScript_Trader_Declined2)
+}
+
+script NacreneCity_BRB_EventScript_Trader_Declined2
+{
+        msgbox("It's OK if you don't want to...\p"
+       "But if you change your mind, let's\n"
+       "trade Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_TRADER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script NacreneCity_BRB_EventScript_Trader_NotRequestedMon
+{
+    msgbox("I'd like to trade for a Cottonee...", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_TRADER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script NacreneCity_BRB_EventScript_Trader_TradeCompleted
+{
+    msgbox("Thanks to our Pokémon, you and I\n"
+       "became friends!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_TRADER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}

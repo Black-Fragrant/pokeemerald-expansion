@@ -1772,11 +1772,18 @@ void DebugMenu_CalculateTime(struct ScriptContext *ctx)
         StringExpandPlaceholders(gStringVar1, gDayNameStringsTable[rtc->dayOfWeek]);
         ConvertIntToDecimalStringN(gStringVar2, rtc->hour, STR_CONV_MODE_LEFT_ALIGN, 3);
         ConvertIntToDecimalStringN(gStringVar3, rtc->minute, STR_CONV_MODE_LEADING_ZEROS, 2);
+
+        // Store weekday into your var (fake RTC version)
+        VarSet(VAR_DAY_OF_WEEK, rtc->dayOfWeek);
     }
     else
     {
         u32 day = ((gLocalTime.days - 1) + 6) % 7 ;
         RtcCalcLocalTime();
+
+        // Store weekday into your var (real RTC version)
+        VarSet(VAR_DAY_OF_WEEK, day);
+
         StringExpandPlaceholders(gStringVar1, gDayNameStringsTable[day]);
         ConvertIntToDecimalStringN(gStringVar2, gLocalTime.hours, STR_CONV_MODE_LEFT_ALIGN, 3);
         ConvertIntToDecimalStringN(gStringVar3, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
