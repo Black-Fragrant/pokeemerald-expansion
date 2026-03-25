@@ -2071,9 +2071,10 @@ static const struct BattleWindowText sTextOnWindowsInfo_KantoTutorial[] =
         .letterSpacing = 0,
         .lineSpacing = 1,
         .speed = 1,
-        .fgColor = 2,
-        .bgColor = 1,
-        .shadowColor = 3,
+        .color.foreground = 2,
+        .color.background = 1,
+        .color.accent = 1,
+        .color.shadow = 3,
     },
 };
 
