@@ -42,6 +42,14 @@ enum BattleUISpriteTags
     TAG_CURSOR = 0x9999,
 };
 
+enum BattleUITextColors
+{
+    BUI_TXTCLR_MOVE_BOX,
+    BUI_TXTCLR_HEALTHBOX,
+
+    NUM_BUI_TXTCLRS
+};
+
 // structs
 
 // EWRAM
@@ -340,10 +348,10 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
         u32 x = (windowId == B_WIN_MOVE_NAME_1) * 8;
         u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, TILE_TO_PIXELS(9));
 
-        AddTextPrinterParameterized4(windowId, fontId,
+        AddTextPrinterParameterized6(windowId, fontId,
             x, 4,
             0, 0,
-            (const u8[]){ 0, 13, 15 },
+            sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX],
             TEXT_SKIP_DRAW, gDisplayedStringBattle);
 
         // pp
@@ -357,10 +365,13 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
             u32 state = GetCurrentPpToMaxPpState(moveInfo->currentPp[i], moveInfo->maxPp[i]);
             x += GetStringRightAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(12));
 
-            AddTextPrinterParameterized4(windowId, FONT_SMALL,
+            union TextColor clr = sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX];
+            clr.foreground = state + 1;
+
+            AddTextPrinterParameterized6(windowId, FONT_SMALL,
                 x, 4,
                 0, 0,
-                (const u8[]){ 0, state + 1, 15 },
+                clr,
                 TEXT_SKIP_DRAW, gDisplayedStringBattle);
         }
 
@@ -422,10 +433,10 @@ static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveSt
     }
 
     u32 x = GetStringCenterAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(28));
-    AddTextPrinterParameterized4(windowId, FONT_SMALL,
+    AddTextPrinterParameterized6(windowId, FONT_SMALL,
         x, 6,
         0, 0,
-        (const u8[]){ 0, 13, 15 },
+        sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX],
         TEXT_SKIP_DRAW, gDisplayedStringBattle);
 
     // description
@@ -545,10 +556,10 @@ static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveSt
 
     u32 tile = showMovePp ? 14 : 28;
     x = GetStringCenterAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(tile));
-    AddTextPrinterParameterized4(windowId, FONT_SMALL,
+    AddTextPrinterParameterized6(windowId, FONT_SMALL,
         x, TILE_TO_PIXELS(3) + 2,
         0, 0,
-        (const u8[]){ 0, 13, 15 },
+        sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX],
         TEXT_SKIP_DRAW, gDisplayedStringBattle);
 
     if (showMovePp)
@@ -559,10 +570,11 @@ static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveSt
         ConvertIntToDecimalStringN(txtPtr, 1, STR_CONV_MODE_RIGHT_ALIGN, 1);
 
         x = TILE_TO_PIXELS(14) + GetStringCenterAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(14));
-        AddTextPrinterParameterized4(windowId, FONT_SMALL,
+
+        AddTextPrinterParameterized6(windowId, FONT_SMALL,
             x, TILE_TO_PIXELS(3) + 2,
             0, 0,
-            (const u8[]){ 0, 13, 15 },
+            sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX],
             TEXT_SKIP_DRAW, gDisplayedStringBattle);
     }
 

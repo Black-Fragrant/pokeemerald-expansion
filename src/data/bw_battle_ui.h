@@ -223,3 +223,17 @@ static const struct SpriteTemplate sBWBattleUI_CursorTemplate =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_BattleUICursor,
 };
+
+static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =
+{
+    [BUI_TXTCLR_MOVE_BOX] =
+    {
+        .foreground = 13,
+        .shadow = 15,
+    },
+    [BUI_TXTCLR_HEALTHBOX] =
+    {
+        .foreground = 1,
+        .shadow = 3,
+    },
+};
