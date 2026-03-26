@@ -835,239 +835,221 @@ Patrat
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ROSE_5 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
+=== TRAINER_NURSE_PF_OUTSIDE ===
+Name: Shery
+Class: Nurse
+Pic: Nurse
 Gender: Female
-Music: Female
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
-Breloom
-Level: 34
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Munna
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Gloom
-Level: 34
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+=== TRAINER_PRESCHOOLER_F_PF_OUTSIDE ===
+Name: Juliet
+Class: Preschooler
+Pic: Preschooler F
+Gender: Female
+Music: Kid
+Battle Type: Singles
+AI: Check Bad Move
 
-Roselia
-Level: 34
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Cottonee
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUSTY_1 ===
+Petilil
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_PRESCHOOLER_M_PF_OUTSIDE ===
+Name: Homer
+Class: Preschooler
+Pic: Preschooler M
+Gender: Male
+Music: Kid
+Battle Type: Singles
+AI: Check Bad Move
+
+Roggenrola
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_YOUNGSTER_PF_OUTSIDE_1 ===
+Name: Keita
+Class: Youngster
+Pic: Youngster BW
+Gender: Male
+Music: Youngster
+Battle Type: Singles
+AI: Check Bad Move
+
+Tympole
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Tympole
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Tympole
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_YOUNGSTER_PF_OUTSIDE_2 ===
+Name: Zachary
+Class: Youngster
+Pic: Youngster BW
+Gender: Male
+Music: Youngster
+Battle Type: Singles
+AI: Check Bad Move
+
+Venipede
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lillipup
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BLACKBELT_PF_OUTSIDE ===
 Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
+Class: Black Belt
+Pic: Black Belt BW
 Gender: Male
-Music: Hiker
+Music: Cruel
 Battle Type: Singles
 AI: Check Bad Move
 
-Sandslash
-Level: 23
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Timburr
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CHIP ===
-Name: CHIP
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
+=== TRAINER_BATTLEGIRL_PF_OUTSIDE ===
+Name: Lee 
+Class: Battle Girl
+Pic: Battle Girl
+Gender: Female
+Music: Cruel
 Battle Type: Singles
 AI: Check Bad Move
 
-Baltoy
-Level: 27
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Psybeam
-- Self Destruct
-- Sandstorm
-- Ancient Power
+Timburr
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sandshrew
-Level: 27
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-Sandslash
-Level: 27
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_FOSTER ===
-Name: FOSTER
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_N_NACRENE_CITY ===
+Name: N
+Class: PKMN Trainer 2
+Pic: N
 Gender: Male
-Music: Hiker
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Blue
+
+Pidove
+Level: 13
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Gust
+- Quick Attack
+- Leer
+- Growl
+
+Timburr
+Level: 13
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Low Kick
+- Focus Energy
+- Bide
+- Leer
+
+Tympole
+Level: 13
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Supersonic
+- Bubble Beam
+- Growl
+- Round
+
+=== TRAINER_SCHOOLBOY_NACRENE_GYM ===
+Name: Carter
+Class: School Kid
+Pic: Schoolboy
+Gender: Male
+Music: Youngster
 Battle Type: Singles
 AI: Check Bad Move
 
-Sandshrew
-Level: 25
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-Sandslash
-Level: 25
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_DUSTY_2 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Sandslash
-Level: 27
-IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_DUSTY_3 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Sandslash
-Level: 30
-IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_DUSTY_4 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Sandslash
-Level: 33
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_DUSTY_5 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Sandslash
-Level: 36
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_GABBY_AND_TY_1 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
-Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
-
-Magnemite
+Patrat
 Level: 17
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Whismur
+=== TRAINER_SCIENTIST_F_NACRENE_GYM ===
+Name: Satomi
+Class: Scientist
+Pic: Scientist F
+Gender: Female
+Music: Scientist
+Battle Type: Singles
+AI: Check Bad Move
+
+Herdier
 Level: 17
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GABBY_AND_TY_2 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
-Gender: Male
-Music: Interviewer
-Battle Type: Doubles
+=== TRAINER_SCHOOLGIRL_NACRENE_GYM ===
+Name: Lydia
+Class: School Kid
+Pic: Schoolgirl
+Gender: Female
+Music: Lass
+Battle Type: Singles
 AI: Check Bad Move
 
-Magnemite
-Level: 27
+Lillipup
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lillipup
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lillipup
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LENORA_NACRENE_GYM ===
+Name: Lenora
+Pic: Lenora
+Gender: Female
+Music: Male
+Items: Super Potion
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Yellow
+
+Herdier
+Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Take Down
+- Bite
+- Retaliate
+- Leer
 
-Loudred
-Level: 27
+Watchog
+Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Leer
+- Crunch
+- Retaliate
+- Hypnosis
 
-=== TRAINER_GABBY_AND_TY_3 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
-Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
-
-Magneton
-Level: 30
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Loudred
-Level: 30
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_GABBY_AND_TY_4 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
-Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
-
-Magneton
-Level: 33
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
-Loudred
-Level: 33
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
-=== TRAINER_GABBY_AND_TY_5 ===
+=== TRAINER_DUMMY5 ===
 Name: GABBY & TY
 Class: Interviewer
 Pic: Interviewer
@@ -1084,7 +1066,7 @@ Loudred
 Level: 36
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
-=== TRAINER_GABBY_AND_TY_6 ===
+=== TRAINER_DUMMY6 ===
 Name: GABBY & TY
 Class: Interviewer
 Pic: Interviewer

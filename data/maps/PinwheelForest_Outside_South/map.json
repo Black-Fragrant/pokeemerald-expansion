@@ -19,8 +19,125 @@
       "direction": "up"
     }
   ],
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 20,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "PinwheelForest_OS_EventScript_Battle_Youngster_1",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 23,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ANTIDOTE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_OS_ITEM_ANTIDOTE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 9,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SUPER_POTION",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_OS_ITEM_SUPER_POTION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 28,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PinwheelForest_OS_EventScript_Battle_Youngster_2",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KARATE_KING",
+      "x": 47,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
+      "movement_range_x": 4,
+      "movement_range_y": 3,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "PinwheelForest_OS_EventScript_Battle_Black_Belt",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
+      "x": 53,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 6,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "PinwheelForest_OS_EventScript_Battle_Battle_Girl",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 28,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NET_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_OS_ITEM_NET_BALL"
+    }
+  ],
   "warp_events": [],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 14,
+      "y": 11,
+      "elevation": 0,
+      "item": "ITEM_TINY_MUSHROOM",
+      "flag": "FLAG_HIDDEN_ITEM_PFOS_TINY_MUSHROOM"
+    },
+    {
+      "type": "hidden_item",
+      "x": 21,
+      "y": 27,
+      "elevation": 0,
+      "item": "ITEM_ANTIDOTE",
+      "flag": "FLAG_HIDDEN_ITEM_PFOS_ANTIDOTE"
+    },
+    {
+      "type": "hidden_item",
+      "x": 52,
+      "y": 8,
+      "elevation": 0,
+      "item": "ITEM_ETHER",
+      "flag": "FLAG_HIDDEN_ITEM_PFOS_ETHER"
+    }
+  ]
 }
