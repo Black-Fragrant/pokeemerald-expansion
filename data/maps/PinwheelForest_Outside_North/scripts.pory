@@ -1,1 +1,124 @@
 mapscripts PinwheelForest_Outside_North_MapScripts {}
+
+script PinwheelForest_ON_EventScript_SignPost
+{
+	msgbox("Pinwheel Forest\n"
+        "Did you remember to pack an Antidote?", MSGBOX_SIGN)
+	end
+}
+
+script PinwheelForest_ON_EventScript_Lass
+{
+	msgbox("If you go straight, it doesn't take long.\n"
+       "But if you go the wrong way, it's a maze.\p"
+       "Is Pinwheel Forest a\n"
+       "path or a maze for you?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script PinwheelForest_ON_EventScript_BattleGirl
+{
+	lock
+    faceplayer
+    goto_if_set(FLAG_PINWHEEL_FOREST_RECEIVED_ROCK_SMASH, PinwheelForest_ON_EventScript_BattleGirl_received)
+    msgbox("Yo! Traveling Trainer!\n"
+       "Are your Pokémon getting stronger?\p"
+       "Here! This might come in handy!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_TM_ROCK_SMASH, 1)
+	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_ON_EventScript_BagIsFull)
+    goto(PinwheelForest_ON_EventScript_BattleGirl_received)
+}
+
+script PinwheelForest_ON_EventScript_BattleGirl_received
+{
+    msgbox("Rock Smash is a move that sometimes\n"
+       "reduces your foe's Defense stat.\p"
+       "It is super effective against Normal-type\n"
+       "Pokémon, which Gym Leader Lenora likes!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_PINWHEEL_FOREST_RECEIVED_ROCK_SMASH)
+	release()
+	end()
+}
+
+script PinwheelForest_ON_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script PinwheelForest_ON_EventScript_Battle_Nurse
+{
+	trainerbattle_single(TRAINER_NURSE_PF_OUTSIDE,
+	text("Are you going deeper into Pinwheel\n"
+       "Forest? Or to the Challenge Rock?\p"
+       "Either way, unless you are tough,\n"
+       "you'll be just rooted to the spot!"),
+	text("Oh, my...\n"
+       "You are very tough!"),
+	PinwheelForest_ON_EventScript_Nurse)
+	goto(PinwheelForest_ON_EventScript_Nurse)
+	end()
+}
+
+script PinwheelForest_ON_EventScript_Nurse
+{
+    msgbox("Tough Trainer!\n"
+       "I will make your Pokémon healthy.", MSGBOX_DEFAULT, TRUE, LOCALID_PFON_NURSE)
+    destroy_speech_bubble()
+    closemessage
+	fadescreen(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    playbgm(MUS_BW_ROUTE_2, TRUE)
+	fadescreen(FADE_FROM_BLACK)
+     msgbox("Around Pinwheel Forest, many Pokémon\n"
+       "use moves to inflict problems such as\l"
+       "poison and paralysis.\l"
+       "If anything happens, let me know!", MSGBOX_DEFAULT, TRUE, LOCALID_PFON_NURSE)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script PinwheelForest_ON_EventScript_Battle_Preschooler_F
+{
+	trainerbattle_single(TRAINER_PRESCHOOLER_F_PF_OUTSIDE,
+	text("Hi, hi! Trainer!\p"
+       "Please show me what kinds of Pokémon\n"
+       "you are training!"),
+	text("Great, great! I didn't know\n"
+       "that way to raise Pokémon!"))
+	msgbox("When you let a Pokémon evolve, it will be\n"
+       "stronger, but if you don't let it evolve,\l"
+       "it will learn moves quicker.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_ON_EventScript_Battle_Preschooler_M
+{
+	trainerbattle_single(TRAINER_PRESCHOOLER_M_PF_OUTSIDE,
+	text("Hi, hi! Trainer!\p"
+       "I will let you see\n"
+       "what kind of Pokémon I have!"),
+	text("Did you see my Pokémon?\n"
+       "It's sturdy and great,\l"
+       "isn't it?"))
+	msgbox("Pokémon with the Sturdy Ability\n"
+       "cannot be knocked out with one hit!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+
+
+
+
+
+
+

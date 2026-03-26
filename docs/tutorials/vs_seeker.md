@@ -44,7 +44,7 @@ Objects listed in `regularTrainersOnLand` or `regularTrainersInWater` are consid
 | 2nd Battle | `TRAINER_DUMMY` |
 | 3rd Battle | `TRAINER_DUMMY` |
 | 4th Battle | `TRAINER_DUMMY` |
-| 5th Battle | `TRAINER_ROSE_5` |
+| 5th Battle | `TRAINER_DUMMY` |
 
 The game determines which version of the Trainer you'll fight next by following these rules:
 

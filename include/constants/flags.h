@@ -547,12 +547,12 @@
 #define FLAG_HIDDEN_ITEM_STRIATON_ZINC                       (FLAG_HIDDEN_ITEMS_START + 0x01)
 #define FLAG_HIDDEN_ITEM_ROUTE3N_ULTRA_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x02)
 #define FLAG_HIDDEN_ITEM_WELLSPRINGCAVE1F_FULL_HEAL          (FLAG_HIDDEN_ITEMS_START + 0x03)
-#define FLAG_UNUSED_0x1F8                                    (FLAG_HIDDEN_ITEMS_START + 0x04)
-#define FLAG_UNUSED_0x1F9                                    (FLAG_HIDDEN_ITEMS_START + 0x05)
-#define FLAG_UNUSED_0x1FA                                    (FLAG_HIDDEN_ITEMS_START + 0x06)
-#define FLAG_UNUSED_0x1FB                                    (FLAG_HIDDEN_ITEMS_START + 0x07)
-#define FLAG_UNUSED_0x1FC                                    (FLAG_HIDDEN_ITEMS_START + 0x08)
-#define FLAG_UNUSED_0x1FD                                    (FLAG_HIDDEN_ITEMS_START + 0x09)
+#define FLAG_HIDDEN_ITEM_NACRENE_ULTRA_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x04)
+#define FLAG_HIDDEN_ITEM_NACRENE_REVIVE                      (FLAG_HIDDEN_ITEMS_START + 0x05)
+#define FLAG_HIDDEN_ITEM_PFON_SUPER_POTION                   (FLAG_HIDDEN_ITEMS_START + 0x06)
+#define FLAG_HIDDEN_ITEM_PFOS_TINY_MUSHROOM                  (FLAG_HIDDEN_ITEMS_START + 0x07)
+#define FLAG_HIDDEN_ITEM_PFOS_ANTIDOTE                       (FLAG_HIDDEN_ITEMS_START + 0x08)
+#define FLAG_HIDDEN_ITEM_PFOS_ETHER                          (FLAG_HIDDEN_ITEMS_START + 0x09)
 #define FLAG_UNUSED_0x1FE                                    (FLAG_HIDDEN_ITEMS_START + 0x0A)
 #define FLAG_UNUSED_0x1FF                                    (FLAG_HIDDEN_ITEMS_START + 0x0B)
 #define FLAG_UNUSED_0x200                                    (FLAG_HIDDEN_ITEMS_START + 0x0C)
@@ -812,12 +812,12 @@
 #define FLAG_NACRENE_CHEREN                                         0x2FB
 #define FLAG_NACRENE_STARTER_HELD_ITEMS_BLB                         0x2FC
 #define FLAG_NACRENE_TRADED_PETILIL                                 0x2FD
-#define FLAG_UNUSED_0x2FE                                           0x2FE
-#define FLAG_UNUSED_0x2FF                                           0x2FF
-#define FLAG_UNUSED_0x300                                           0x300
-#define FLAG_UNUSED_0x301                                           0x301
-#define FLAG_UNUSED_0x302                                           0x302
-#define FLAG_UNUSED_0x303                                           0x303
+#define FLAG_PINWHEEL_FOREST_RECEIVED_ROCK_SMASH                    0x2FE
+#define FLAG_PINWHEEL_FOREST_ON_ITEM_ETHER                          0x2FF
+#define FLAG_PINWHEEL_FOREST_ON_ITEM_GREAT_BALL                     0x300
+#define FLAG_PINWHEEL_FOREST_OS_ITEM_ANTIDOTE                       0x301
+#define FLAG_PINWHEEL_FOREST_OS_ITEM_SUPER_POTION                   0x302
+#define FLAG_PINWHEEL_FOREST_OS_ITEM_NET_BALL                       0x303
 #define FLAG_UNUSED_0x304                                           0x304
 #define FLAG_UNUSED_0x305                                           0x305
 #define FLAG_UNUSED_0x306                                           0x306

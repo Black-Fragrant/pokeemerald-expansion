@@ -1,1 +1,66 @@
 mapscripts PinwheelForest_Outside_South_MapScripts {}
+
+script PinwheelForest_OS_EventScript_Battle_Youngster_1
+{
+	trainerbattle_single(TRAINER_YOUNGSTER_PF_OUTSIDE_1,
+	text("OK! I'm brave and I'm bold!\n"
+       "Let's get right to the battle!"),
+	text("Pfft...\n"
+       "My bold bravery is\l"
+       "vanishing into the air..."))
+	msgbox("I will tell you 'cause you're strong!\p"
+       "Only one piece of the Challenge Rock\n"
+       "will be chipped off each day!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_OS_EventScript_Battle_Youngster_2
+{
+	trainerbattle_single(TRAINER_YOUNGSTER_PF_OUTSIDE_2,
+	text("These are special Pokémon\n"
+       "I just caught!"),
+	text("I just caught them\n"
+       "and have not raised them yet!"))
+	msgbox("OK! I will catch some different Pokémon\n"
+       "in Pinwheel Forest and have more friends!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_OS_EventScript_Battle_Black_Belt
+{
+	trainerbattle_single(TRAINER_BLACKBELT_PF_OUTSIDE,
+	text("I trained and trained like a madman,\n"
+       "and my Pokémon trained even more!"),
+	text("Yeah! Yeah!\n"
+       "Even though I lost,\l"
+       "I'm energetic!"))
+	msgbox("My Fighting-type Pokémon!\n"
+       "I train it to smash the Challenge Rock!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_OS_EventScript_Battle_Battle_Girl
+{
+	trainerbattle_single(TRAINER_BATTLEGIRL_PF_OUTSIDE,
+	text("I test the Challenge Rock\n"
+       "with my fist every day!\p"
+       "It is important to make steady progress,\n"
+       "little by little."),
+	text("I still have not\n"
+       "tried hard enough!"))
+	msgbox("I test the Challenge Rock every day\n"
+       "with my Pokémon!\p"
+       "Why don't you check out\n"
+       "the Challenge Rock\l"
+       "with a Fighting-type Pokémon?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+
+
+
+
+
+
+
+

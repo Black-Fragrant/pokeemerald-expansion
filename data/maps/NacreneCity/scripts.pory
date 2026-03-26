@@ -159,4 +159,100 @@ script NacreneCity_EventScript_Backpacker_Left
 }
 
 
+script NacreneCity_EventScript_Trigger_N
+{
+	lock
+	playse(SE_EXIT)
+	addobject (LOCALID_NACRENE_N)
+	waitse()
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playbgm(MUS_BW_N, TRUE)
+	applymovement(LOCALID_NACRENE_N, moves(delay_16, walk_slow_down * 2))
+	applymovement(LOCALID_PLAYER, moves(lock_facing_direction, walk_slow_down * 3, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+	msgbox("The ideals of Pokémon inside Poké Balls.\p"
+       "The truths of how Trainers should be.\p"
+       "And a future where Pokémon\n"
+       "have become perfect...\p"
+       "Do you feel the same?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_N)
+	goto_if_eq(VAR_RESULT, FALSE, NacreneCity_EventScript_Trigger_N_No)
+    destroy_speech_bubble()
+    closemessage
+	msgbox("N: That so?\p"
+       "I think my friends and I should test you\n"
+       "to see if you can see this future, too.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_N)
+    destroy_speech_bubble()
+    closemessage
+	goto(NacreneCity_EventScript_Trigger_N_Battle)
+}
+
+script NacreneCity_EventScript_Trigger_N_No
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("N: Huh. I expected more from you.\n"
+       "Now pay attention.\p"
+       "My friends and I will test you\n"
+       "to see if you can see this future, too.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_N)
+    destroy_speech_bubble()
+    closemessage
+	goto(NacreneCity_EventScript_Trigger_N_Battle)
+}
+
+script NacreneCity_EventScript_Trigger_N_Battle
+{
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
+	trainerbattle_no_intro (TRAINER_N_NACRENE_CITY, text("I cannot see the future yet...\n"
+       "The world is still to be determined..."))
+	msgbox("N: Right now, my friends aren't strong\n"
+       "enough to save all Pokémon.\p"
+       "Maybe I can't solve the equation\n"
+       "that will change the world.\p"
+       "So, I need power... Power enough\n"
+       "to make anyone agree with me.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_N)
+    destroy_speech_bubble()
+    closemessage
+	setvar(VAR_NACRENE_STATE, 2)
+	delay(10)
+	special(SpawnCameraObject)
+	applymovement(LOCALID_PLAYER, moves(delay_16, walk_in_place_left))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 3, walk_slow_down * 2))
+	applymovement(LOCALID_NACRENE_N, moves(walk_left * 2, walk_down * 5, walk_left, walk_slow_left))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+	msgbox("Now I know what power I need. Zekrom!\p"
+       "The legendary Pokémon that, along with\n"
+       "the hero, created the Unova region.\p"
+       "It's my turn to become that hero--\n"
+       "and you and I will be friends!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_N)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NACRENE_N, moves(walk_left * 5))
+	waitmovement(0)
+	removeobject(LOCALID_NACRENE_N)
+	delay(20)
+	playbgm(MUS_BW_NACRENE_CITY, TRUE)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(20)
+	release
+	end
+}
+
+
+
+
+
+
 

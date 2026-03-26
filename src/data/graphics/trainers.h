@@ -347,6 +347,25 @@ const u16 gTrainerPalette_BreederM[] = INCBIN_U16("graphics/trainers/front_pics/
 const u32 gTrainerFrontPic_BreederF[] = INCBIN_U32("graphics/trainers/front_pics/breeder_f.4bpp.smol");
 const u16 gTrainerPalette_BreederF[] = INCBIN_U16("graphics/trainers/front_pics/breeder_f.gbapal");
 
+const u32 gTrainerFrontPic_BlackBeltBW[] = INCBIN_U32("graphics/trainers/front_pics/black_belt_bw.4bpp.smol");
+const u16 gTrainerPalette_BlackBeltBW[] = INCBIN_U16("graphics/trainers/front_pics/black_belt_bw.gbapal");
+
+const u32 gTrainerFrontPic_BattleGirlBW[] = INCBIN_U32("graphics/trainers/front_pics/battle_girl_bw.4bpp.smol");
+const u16 gTrainerPalette_BattleGirlBW[] = INCBIN_U16("graphics/trainers/front_pics/battle_girl_bw.gbapal");
+
+const u32 gTrainerFrontPic_Nurse[] = INCBIN_U32("graphics/trainers/front_pics/nurse.4bpp.smol");
+const u16 gTrainerPalette_Nurse[] = INCBIN_U16("graphics/trainers/front_pics/nurse.gbapal");
+
+const u32 gTrainerFrontPic_ScientistM[] = INCBIN_U32("graphics/trainers/front_pics/scientist_m.4bpp.smol");
+const u16 gTrainerPalette_ScientistM[] = INCBIN_U16("graphics/trainers/front_pics/scientist_m.gbapal");
+
+const u32 gTrainerFrontPic_ScientistF[] = INCBIN_U32("graphics/trainers/front_pics/scientist_f.4bpp.smol");
+const u16 gTrainerPalette_ScientistF[] = INCBIN_U16("graphics/trainers/front_pics/scientist_f.gbapal");
+
+const u32 gTrainerFrontPic_Lenora[] = INCBIN_U32("graphics/trainers/front_pics/lenora.4bpp.smol");
+const u16 gTrainerPalette_Lenora[] = INCBIN_U16("graphics/trainers/front_pics/lenora.gbapal");
+
+
 
 
 
@@ -506,6 +525,12 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_SCHOOLGIRL, gTrainerFrontPic_Schoolgirl, gTrainerPalette_Schoolgirl),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_BREEDER_M, gTrainerFrontPic_BreederM, gTrainerPalette_BreederM),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_BREEDER_F, gTrainerFrontPic_BreederF, gTrainerPalette_BreederF),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_BLACK_BELT_BW, gTrainerFrontPic_BlackBeltBW, gTrainerPalette_BlackBeltBW),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_BATTLE_GIRL_BW, gTrainerFrontPic_BattleGirlBW, gTrainerPalette_BattleGirlBW),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_NURSE, gTrainerFrontPic_Nurse, gTrainerPalette_Nurse),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SCIENTIST_M, gTrainerFrontPic_ScientistM, gTrainerPalette_ScientistM),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SCIENTIST_F, gTrainerFrontPic_ScientistF, gTrainerPalette_ScientistF),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_LENORA, gTrainerFrontPic_Lenora, gTrainerPalette_Lenora),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
