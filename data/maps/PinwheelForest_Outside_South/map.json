@@ -138,6 +138,38 @@
       "elevation": 0,
       "item": "ITEM_ETHER",
       "flag": "FLAG_HIDDEN_ITEM_PFOS_ETHER"
+    },
+    {
+      "type": "sign",
+      "x": 48,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_OS_EventScript_Challenge_Rock"
+    },
+    {
+      "type": "sign",
+      "x": 49,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_OS_EventScript_Challenge_Rock"
+    },
+    {
+      "type": "sign",
+      "x": 48,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_OS_EventScript_Challenge_Rock"
+    },
+    {
+      "type": "sign",
+      "x": 49,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_OS_EventScript_Challenge_Rock"
     }
   ]
 }

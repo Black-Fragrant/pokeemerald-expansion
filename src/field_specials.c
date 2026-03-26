@@ -1323,6 +1323,36 @@ void IsGrassTypeInParty(void)
     gSpecialVar_Result = FALSE;
 }
 
+void IsFightingTypeInParty(void)
+{
+    u8 i;
+    u16 species;
+    struct Pokemon *pokemon;
+
+    // Default: no Fighting-type found
+    gSpecialVar_Result = FALSE;
+    gSpecialVar_0x8004 = 0xFFFF; // or 0 if you prefer
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        pokemon = &gPlayerParty[i];
+
+        if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES)
+         && !GetMonData(pokemon, MON_DATA_IS_EGG))
+        {
+            species = GetMonData(pokemon, MON_DATA_SPECIES);
+
+            if (GetSpeciesType(species, 0) == TYPE_FIGHTING
+             || GetSpeciesType(species, 1) == TYPE_FIGHTING)
+            {
+                gSpecialVar_Result = TRUE;
+                gSpecialVar_0x8004 = i; // store party index
+                return;
+            }
+        }
+    }
+}
+
 void SpawnCameraObject(void)
 {
     u8 obj = SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_SCOTT,
