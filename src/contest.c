@@ -3696,7 +3696,7 @@ static void FillContestantWindowBgs(void)
 {
     int i;
 
-    for(i = 0; i < CONTESTANT_COUNT; i++)
+    for (i = 0; i < CONTESTANT_COUNT; i++)
         ContestBG_FillBoxWithTile(0, 0, 0x16, 2 + i * 5, 8, 2, 0x11);
 }
 
@@ -4245,12 +4245,12 @@ static void SpriteCB_EndBlinkContestantBox(struct Sprite *sprite)
 
 static void UNUSED ContestDebugTogglePointTotal(void)
 {
-    if(eContestDebugMode == CONTEST_DEBUG_MODE_PRINT_POINT_TOTAL)
+    if (eContestDebugMode == CONTEST_DEBUG_MODE_PRINT_POINT_TOTAL)
         eContestDebugMode = CONTEST_DEBUG_MODE_OFF;
     else
         eContestDebugMode = CONTEST_DEBUG_MODE_PRINT_POINT_TOTAL;
 
-    if(eContestDebugMode == CONTEST_DEBUG_MODE_OFF)
+    if (eContestDebugMode == CONTEST_DEBUG_MODE_OFF)
     {
         DrawContestantWindowText();
         SwapMoveDescAndContestTilemaps();
@@ -5394,12 +5394,12 @@ static void CreateInvisibleBattleTargetSprite(void)
 
 static void SetBattleTargetSpritePosition(void)
 {
-    struct Sprite *sprite = &gSprites[gBattlerSpriteIds[B_POSITION_OPPONENT_RIGHT]];
+    struct Sprite *sprite = &gSprites[gBattlerSpriteIds[B_BATTLER_3]];
 
     sprite->x2 = 0;
     sprite->y2 = 0;
-    sprite->x = GetBattlerSpriteCoord(B_POSITION_OPPONENT_RIGHT, BATTLER_COORD_X);
-    sprite->y = GetBattlerSpriteCoord(B_POSITION_OPPONENT_RIGHT, BATTLER_COORD_Y);
+    sprite->x = GetBattlerSpriteCoord(B_BATTLER_3, BATTLER_COORD_X);
+    sprite->y = GetBattlerSpriteCoord(B_BATTLER_3, BATTLER_COORD_Y);
     sprite->invisible = TRUE;
 }
 
@@ -5408,7 +5408,7 @@ static void SetMoveTargetPosition(enum Move move)
     switch (GetBattlerMoveTargetType(gBattlerAttacker, move))
     {
     case TARGET_USER:
-        gBattlerTarget = B_POSITION_PLAYER_RIGHT;
+        gBattlerTarget = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
         break;
     case TARGET_OPPONENT:
     case TARGET_SELECTED:
@@ -5418,7 +5418,7 @@ static void SetMoveTargetPosition(enum Move move)
     case TARGET_FOES_AND_ALLY:
     case TARGET_USER_AND_ALLY:
     default:
-        gBattlerTarget = B_POSITION_OPPONENT_RIGHT;
+        gBattlerTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
         break;
     }
 }
@@ -5535,8 +5535,8 @@ void ResetContestLinkResults(void)
     s32 i;
     s32 j;
 
-    for(i = 0; i < CONTEST_CATEGORIES_COUNT; i++)
-        for(j = 0; j < CONTESTANT_COUNT; j++)
+    for (i = 0; i < CONTEST_CATEGORIES_COUNT; i++)
+        for (j = 0; j < CONTESTANT_COUNT; j++)
             gSaveBlock2Ptr->contestLinkResults[i][j] = 0;
 }
 
@@ -5568,7 +5568,7 @@ bool8 SaveContestWinner(u8 rank)
         gSaveBlock1Ptr->contestWinners[id].trainerId = gContestMons[i].otId;
         StringCopyN(gSaveBlock1Ptr->contestWinners[id].monName, gContestMons[i].nickname, VANILLA_POKEMON_NAME_LENGTH);
         StringCopy(gSaveBlock1Ptr->contestWinners[id].trainerName, gContestMons[i].trainerName);
-        if(gLinkContestFlags & LINK_CONTEST_FLAG_IS_LINK)
+        if (gLinkContestFlags & LINK_CONTEST_FLAG_IS_LINK)
             gSaveBlock1Ptr->contestWinners[id].contestRank = CONTEST_RANK_LINK;
         else
             gSaveBlock1Ptr->contestWinners[id].contestRank = gSpecialVar_ContestRank;

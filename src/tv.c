@@ -1534,26 +1534,28 @@ void TryPutSmartShopperOnAir(void)
 void PutNameRaterShowOnTheAir(void)
 {
     TVShow *show;
+    struct BoxPokemon *boxmon;
 
     InterviewBefore_NameRater();
     if (gSpecialVar_Result != 1)
     {
-        GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
+        boxmon = GetSelectedBoxMonFromPcOrParty();
+        GetBoxMonData(boxmon, MON_DATA_NICKNAME, gStringVar1);
         if (StringLength(gSaveBlock2Ptr->playerName) > 1 && StringLength(gStringVar1) > 1)
         {
             show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
             show->nameRaterShow.kind = TVSHOW_NAME_RATER_SHOW;
             show->nameRaterShow.active = TRUE;
-            show->nameRaterShow.species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+            show->nameRaterShow.species = GetBoxMonData(boxmon, MON_DATA_SPECIES);
             show->nameRaterShow.random = Random() % 3;
             show->nameRaterShow.random2 = Random() % 2;
             show->nameRaterShow.randomSpecies = GetRandomDifferentSpeciesSeenByPlayer(show->nameRaterShow.species);
             StringCopy(show->nameRaterShow.trainerName, gSaveBlock2Ptr->playerName);
-            GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME10, show->nameRaterShow.pokemonName);
+            GetBoxMonData(boxmon, MON_DATA_NICKNAME10, show->nameRaterShow.pokemonName);
             StripExtCtrlCodes(show->nameRaterShow.pokemonName);
             StorePlayerIdInNormalShow(show);
             show->nameRaterShow.language = gGameLanguage;
-            show->nameRaterShow.pokemonNameLanguage = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LANGUAGE);
+            show->nameRaterShow.pokemonNameLanguage = GetBoxMonData(boxmon, MON_DATA_LANGUAGE);
         }
     }
 }
@@ -1848,7 +1850,7 @@ void TryPutTodaysRivalTrainerOnAir(void)
         if (IsNationalPokedexEnabled())
             show->rivalTrainer.dexCount = GetNationalPokedexCount(FLAG_GET_CAUGHT);
         else
-            show->rivalTrainer.dexCount = GetHoennPokedexCount(FLAG_GET_CAUGHT);
+            show->rivalTrainer.dexCount = GetRegionalPokedexCount(FLAG_GET_CAUGHT);
         show->rivalTrainer.location = gMapHeader.regionMapSectionId;
         show->rivalTrainer.mapLayoutId = gMapHeader.mapLayoutId;
         show->rivalTrainer.nSilverSymbols = 0;
@@ -3262,7 +3264,7 @@ bool8 IsTVShowAlreadyInQueue(void)
 
 bool8 TryPutNameRaterShowOnTheAir(void)
 {
-    GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
+    GetBoxMonData(GetSelectedBoxMonFromPcOrParty(), MON_DATA_NICKNAME, gStringVar1);
 
     // Nickname wasnt changed
     if (!StringCompare(gStringVar3, gStringVar1))
@@ -3272,61 +3274,31 @@ bool8 TryPutNameRaterShowOnTheAir(void)
     return TRUE;
 }
 
-void ChangePokemonNickname(void)
-{
-    void ChangePokemonNickname_CB(void);
-
-    GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar3);
-    GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar2);
-    DoNamingScreen(NAMING_SCREEN_NICKNAME, gStringVar2, GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES), GetMonGender(&gPlayerParty[gSpecialVar_0x8004]), GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_PERSONALITY), ChangePokemonNickname_CB);
-}
-
-void ChangePokemonNickname_CB(void)
-{
-    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar2);
-    CB2_ReturnToFieldContinueScriptPlayMapMusic();
-}
-
-void ChangeBoxPokemonNickname(void)
-{
-    struct BoxPokemon *boxMon;
-
-    boxMon = GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos);
-    GetBoxMonData(boxMon, MON_DATA_NICKNAME, gStringVar3);
-    GetBoxMonData(boxMon, MON_DATA_NICKNAME, gStringVar2);
-    DoNamingScreen(NAMING_SCREEN_NICKNAME, gStringVar2, GetBoxMonData(boxMon, MON_DATA_SPECIES), GetBoxMonGender(boxMon), GetBoxMonData(boxMon, MON_DATA_PERSONALITY), ChangeBoxPokemonNickname_CB);
-}
-
 static void ChangeBoxPokemonNickname_CB(void)
 {
-    SetBoxMonNickAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, gStringVar2);
+    SetBoxMonData(GetSelectedBoxMonFromPcOrParty(), MON_DATA_NICKNAME, gStringVar2);
     CB2_ReturnToFieldContinueScriptPlayMapMusic();
+}
+
+void ChangePokemonNickname(void)
+{
+    ChangePokemonNicknameWithCallback(ChangeBoxPokemonNickname_CB);
 }
 
 void BufferMonNickname(void)
 {
-    if(gSpecialVar_MonBoxId == 0xFF)
-        GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
-    else
-        GetBoxMonNickAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, gStringVar1);
-    StringGet_Nickname(gStringVar1);
+    struct BoxPokemon *boxmon = GetSelectedBoxMonFromPcOrParty();
+    GetBoxMonData(boxmon, MON_DATA_NICKNAME, gStringVar1);
+    //StringGet_Nickname(gStringVar1);
 }
 
 void IsMonOTIDNotPlayers(void)
 {
-    if(gSpecialVar_MonBoxId == 0xFF){
-        if (GetPlayerIDAsU32() == GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_OT_ID))
-            gSpecialVar_Result = FALSE;
-        else
-            gSpecialVar_Result = TRUE;
-    }
-    else{
-        if (GetPlayerIDAsU32() == GetBoxMonDataAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, MON_DATA_OT_ID))
-            gSpecialVar_Result = FALSE;
-        else
-            gSpecialVar_Result = TRUE;
-    }
-
+    struct BoxPokemon *boxmon = GetSelectedBoxMonFromPcOrParty();
+    if (GetPlayerIDAsU32() == GetBoxMonData(boxmon, MON_DATA_OT_ID))
+        gSpecialVar_Result = FALSE;
+    else
+        gSpecialVar_Result = TRUE;
 }
 
 static u8 GetTVGroupByShowId(u8 kind)
@@ -4066,7 +4038,7 @@ static void TranslateJapaneseEmeraldShows(TVShow *shows)
 
     for (curShow = shows; curShow < shows + LAST_TVSHOW_IDX; curShow++)
     {
-        switch(curShow->common.kind)
+        switch (curShow->common.kind)
         {
         case TVSHOW_FAN_CLUB_LETTER:
             curShow->fanclubLetter.language = GetStringLanguage(curShow->fanclubLetter.playerName);
@@ -4379,7 +4351,7 @@ static void DoTVShowBravoTrainerBattleTower(void)
     show = &gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004];
     gSpecialVar_Result = FALSE;
     state = sTVShowState;
-    switch(state)
+    switch (state)
     {
     case BRAVOTOWER_STATE_INTRO:
         TVShowConvertInternationalString(gStringVar1, show->bravoTrainerTower.playerName, show->bravoTrainerTower.playerLanguage);
@@ -4474,7 +4446,7 @@ static void DoTVShowTodaysSmartShopper(void)
     show = &gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004];
     gSpecialVar_Result = FALSE;
     state = sTVShowState;
-    switch(state)
+    switch (state)
     {
     case SMARTSHOPPER_STATE_INTRO:
         TVShowConvertInternationalString(gStringVar1, show->smartshopperShow.playerName, show->smartshopperShow.language);
