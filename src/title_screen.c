@@ -588,6 +588,11 @@ static void UpdateBg0HorizontalScroll(s16 scrollOffset)
 
 void CB2_InitTitleScreen(void)
 {
+    if (IS_FRLG)
+    {
+        CB2_InitTitleScreenFrlg();
+        return;
+    }
     switch (gMain.state)
     {
     default:

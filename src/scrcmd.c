@@ -32,6 +32,7 @@
 #include "item.h"
 #include "lilycove_lady.h"
 #include "main.h"
+#include "map_preview_screen.h"
 #include "menu.h"
 #include "money.h"
 #include "move.h"
@@ -2564,7 +2565,7 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    if(species2 == SPECIES_NONE)
+    if (species2 == SPECIES_NONE)
     {
         CreateScriptedWildMon(species, level, item);
         sIsScriptedWildDouble = FALSE;
@@ -3297,6 +3298,9 @@ bool8 ScrCmd_fwdtime(struct ScriptContext *ctx)
 
 bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
 {
+    if (!OW_USE_FAKE_RTC)
+        return FALSE;
+
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
 
     u32 weekdayTarget = ScriptReadWord(ctx);
@@ -3356,5 +3360,37 @@ bool8 ScrCmd_setstartingstatus(struct ScriptContext *ctx)
 
     SetStartingStatus(status);
 
+    return FALSE;
+}
+
+bool8 ScrCmd_textcolor(struct ScriptContext * ctx)
+{
+    // gSpecialVar_PrevTextColor = gSpecialVar_TextColor;
+    u16 UNUSED gSpecialVar_TextColor = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_setworldmapflag(struct ScriptContext * ctx)
+{
+    u16 value = ScriptReadHalfword(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+    MapPreview_SetFlag(value);
+    return FALSE;
+}
+
+bool8 ScrCmd_getbraillestringwidth(struct ScriptContext * ctx)
+{
+    u8 *msg = (u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    if (msg == NULL)
+        msg = (u8 *)ctx->data[0];
+
+    gSpecialVar_0x8004 = GetStringWidth(FONT_BRAILLE, msg, -1);
     return FALSE;
 }
