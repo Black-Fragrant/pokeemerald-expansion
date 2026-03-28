@@ -128,7 +128,7 @@
       "flag": "FLAG_TEMPORARY_DISAPPEARING"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
       "x": -5,
       "y": 26,
       "elevation": 0,
