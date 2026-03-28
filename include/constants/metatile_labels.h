@@ -416,12 +416,12 @@
 // gTileset_MossdeepGym
 #define METATILE_MossdeepGym_YellowArrow_Right  0x250
 
+// gTileset_MtEmber
+#define METATILE_MtEmber_CaveEntrance  0x346
+
 // gTileset_Nuvema
 #define METATILE_Nuvema_House_Door  0x221
 #define METATILE_Nuvema_Lab_Door    0x24C
-
-// gTileset_MtEmber
-#define METATILE_MtEmber_CaveEntrance  0x346
 
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
@@ -490,10 +490,6 @@
 #define METATILE_PokemonCenter_Floor_Plain_Alt           0x2E4
 #define METATILE_PokemonCenter_Floor_ShadowTop           0x21E
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
-
-// gTileset_Route3
-#define METATILE_Route3_House_1  0x28C
-#define METATILE_Route3_House_2  0x265
 
 // gTileset_PokemonCenterFrlg
 #define METATILE_PokemonCenterFrlg_CableClubDoor                         0x2DE
@@ -568,6 +564,10 @@
 #define METATILE_PokemonMansion_Wall_EndCap_Basement                     0x2B0
 #define METATILE_PokemonMansion_Wall_EndPost_Bottom                      0x2AD
 #define METATILE_PokemonMansion_Wall_EndPost_Mid                         0x2A5
+
+// gTileset_Route3
+#define METATILE_Route3_House_1  0x28C
+#define METATILE_Route3_House_2  0x265
 
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F
@@ -1048,16 +1048,6 @@
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
 
 // Other
-#define METATILE_Nacrene_House_1               0x2CB
-#define METATILE_RSMossdeepGym_RedArrow_Down   0x205
-#define METATILE_RSMossdeepGym_RedArrow_Left   0x20C
-#define METATILE_RSMossdeepGym_RedArrow_Right  0x204
-#define METATILE_RSMossdeepGym_RedArrow_Up     0x20D
-#define METATILE_RSMossdeepGym_Switch_Down     0x239
-#define METATILE_RSMossdeepGym_Switch_Up       0x238
-#define METATILE_Straiton_House_1              0x315
-#define METATILE_Straiton_House_2              0x35D
-
 #define METATILE_GeneralFrlg_CalmWater               0x12B
 #define METATILE_GeneralFrlg_Door                    0x03D
 #define METATILE_GeneralFrlg_Plain_Grass             0x00D
@@ -1070,6 +1060,7 @@
 #define METATILE_GeneralFrlg_WideTreeTopLeft_Mowed   0x00E
 #define METATILE_GeneralFrlg_WideTreeTopRight_Grass  0x00C
 #define METATILE_GeneralFrlg_WideTreeTopRight_Mowed  0x00F
+#define METATILE_Nacrene_House_1                     0x2CB
 #define METATILE_RSCave_CrackedFloor                 0x22F
 #define METATILE_RSCave_CrackedFloor_Hole            0x206
 #define METATILE_RSMossdeepGym_RedArrow_Down         0x205
@@ -1078,5 +1069,7 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up           0x20D
 #define METATILE_RSMossdeepGym_Switch_Down           0x239
 #define METATILE_RSMossdeepGym_Switch_Up             0x238
+#define METATILE_Straiton_House_1                    0x315
+#define METATILE_Straiton_House_2                    0x35D
 
 #endif // GUARD_METATILE_LABELS_H
