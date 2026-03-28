@@ -109,7 +109,7 @@ gFieldEffectScript_TallGrass::
 	field_eff_end
 
 gFieldEffectScript_Ripple::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_Ripple
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect2, FldEff_Ripple
 	field_eff_end
 
 gFieldEffectScript_FieldMoveShowMon::
