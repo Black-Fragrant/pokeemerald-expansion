@@ -56,6 +56,51 @@ script PinwheelForest_OS_EventScript_Battle_Battle_Girl
 	end()
 }
 
+script PinwheelForest_OS_EventScript_Challenge_Rock
+{
+       lock
+	special(IsFightingTypeInParty)
+	goto_if_eq(VAR_RESULT, FALSE, PinwheelForest_OS_EventScript_Challenge_Rock_NoFightingTypes)
+	dotimebasedevents
+	goto_if_set(FLAG_DAILY_PFOS_CHALLENGE_ROCK, PinwheelForest_OS_EventScript_Challenge_Rock_NoFightingTypes)
+       bufferpartymonnick(STR_VAR_1, VAR_0x8004)
+       msgbox("It's a Challenge Rock.\p"
+       "Would you like to have {STR_VAR_1}\n"
+       "smash the rock?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, FALSE, PinwheelForest_OS_EventScript_Challenge_Rock_No)
+       msgbox("{STR_VAR_1} tried to smash the\n"
+       "Challenge Rock.\p"
+       "A piece of the rock broke away!", MSGBOX_DEFAULT)
+       giveitem(ITEM_STAR_PIECE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_OS_EventScript_BagIsFull)
+       setflag(FLAG_DAILY_PFOS_CHALLENGE_ROCK)
+       closemessage
+       release
+       end 
+}
+
+script PinwheelForest_OS_EventScript_Challenge_Rock_NoFightingTypes
+{
+       msgbox("It's a Challenge Rock.", MSGBOX_DEFAULT)
+       closemessage
+       release 
+       end 
+}
+
+script PinwheelForest_OS_EventScript_Challenge_Rock_No
+{
+       closemessage
+       release 
+       end 
+}
+
+script PinwheelForest_OS_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
 
 
 
