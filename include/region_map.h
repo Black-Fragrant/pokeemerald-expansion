@@ -6,6 +6,15 @@
 // Exported type declarations
 #define MAP_NAME_LENGTH 16
 
+enum RegionMapType
+{
+    REGION_MAP_HOENN,
+    REGION_MAP_KANTO,
+    REGION_MAP_SEVII123,
+    REGION_MAP_SEVII45,
+    REGION_MAP_SEVII67
+};
+
 enum
 {
     MAP_INPUT_NONE,
@@ -24,6 +33,17 @@ enum {
     MAPSECTYPE_CITY_CANTFLY,
     MAPSECTYPE_BATTLE_FRONTIER,
     NUM_MAPSEC_TYPES
+};
+
+struct RegionMapInfo
+{
+    const u32 *dexMapTilemap;
+    const u32 *dexMapGfx;
+    const u16 *dexMapPalette;
+    const u32 *regionMapTilemap;
+    const u32 *regionMapGfx;
+    const u16 *regionMapPalette;
+    u16 dexMapPaletteSize;
 };
 
 struct RegionMap {
@@ -103,7 +123,7 @@ void FreeRegionMapIconResources(void);
 mapsec_u16_t GetRegionMapSecIdAt(u16 x, u16 y);
 void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag);
 void CreateRegionMapCursor(u16 tileTag, u16 paletteTag);
-bool32 IsEventIslandMapSecId(mapsec_u8_t mapSecId);
+bool32 IsEventIslandMapSecId(mapsec_u16_t mapSecId);
 u8 *GetMapName(u8 *dest, mapsec_u16_t regionMapId, u16 padLength);
 u8 *GetMapNameGeneric(u8 *dest, mapsec_u16_t mapSecId);
 u8 *GetMapNameHandleAquaHideout(u8 *dest, mapsec_u16_t mapSecId);
@@ -115,11 +135,13 @@ bool8 IsRegionMapZoomed(void);
 void TrySetPlayerIconBlink(void);
 void BlendRegionMap(u16 color, u32 coeff);
 void SetRegionMapDataForZoom(void);
+enum RegionMapType GetRegionMapType(u32 mapSecId);
 
 //Pokenav Fly funcs
 u32 FilterFlyDestination(struct RegionMap* regionMap);
 void SetFlyDestination(struct RegionMap* regionMap);
 
 extern const struct RegionMapLocation gRegionMapEntries[];
+extern const struct RegionMapInfo gRegionMapInfos[];
 
 #endif //GUARD_REGION_MAP_H
