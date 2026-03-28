@@ -25,6 +25,7 @@
 #include "config/follower_npc.h"
 #include "config/general.h"
 #include "config/item.h"
+#include "config/map_preview_screen.h"
 #include "config/overworld.h"
 #include "config/pokemon.h"
 #include "config/summary_screen.h"
@@ -62,7 +63,18 @@ enum Language
     NUM_LANGUAGES = LANGUAGE_SPANISH,
 };
 
-#define GAME_VERSION (VERSION_EMERALD)
+#ifdef FIRERED
+    #define GAME_VERSION (VERSION_FIRE_RED)
+    #define IS_FRLG 1
+#else
+    #ifdef LEAFGREEN
+    #define GAME_VERSION (VERSION_LEAF_GREEN)
+    #define IS_FRLG 1
+    #else
+    #define GAME_VERSION (VERSION_EMERALD)
+    #define IS_FRLG 0
+    #endif
+#endif
 #define GAME_LANGUAGE (LANGUAGE_ENGLISH)
 
 // party sizes
@@ -92,7 +104,6 @@ enum Language
 #define MAX_REMATCH_ENTRIES  80 // only REMATCH_TABLE_ENTRIES (78) are used
 #define NUM_CONTEST_WINNERS 13
 #define UNION_ROOM_KB_ROW_COUNT 10
-#define GIFT_RIBBONS_COUNT 11
 #define SAVED_TRENDS_COUNT 5
 #define PYRAMID_BAG_ITEMS_COUNT 10
 #define MAX_REGISTERED_ITEMS 4

@@ -660,13 +660,13 @@ void BattleTv_SetDataBasedOnAnimation(u8 animationId)
 
 void TryPutLinkBattleTvShowOnAir(void)
 {
-    u16 playerBestSpecies = 0, opponentBestSpecies = 0;
+    enum Species playerBestSpecies = 0, opponentBestSpecies = 0;
     s16 playerBestSum = 0, opponentBestSum = SHRT_MAX;
     u8 playerBestMonId = 0, opponentBestMonId = 0;
     struct BattleTvMovePoints *movePoints = NULL;
     u8 countPlayer = 0, countOpponent = 0;
     s16 sum = 0;
-    u16 species = SPECIES_NONE;
+    enum Species species = SPECIES_NONE;
     enum Move move = MOVE_NONE;
     s32 i, j;
     int zero = 0, one = 1; //needed for matching
@@ -823,12 +823,16 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
             if (GetMoveReflectDamage_DamageCategories(move) == 1u << DAMAGE_CATEGORY_SPECIAL) // Mirror Coat
                 baseFromEffect++;
             break;
+        case EFFECT_RECOIL:
+            if (GetMoveRecoil(move) > 0)
+                baseFromEffect++;
+            break;
         default:
             break;
         }
 
         // Non-volatile statuses
-        switch(GetMoveNonVolatileStatus(arg2))
+        switch (GetMoveNonVolatileStatus(arg2))
         {
         case MOVE_EFFECT_SLEEP:
             baseFromEffect++;
@@ -849,9 +853,6 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
 
         // Guaranteed hit but without negative priority
         if (GetMoveAccuracy(move) == 0 && GetMovePriority(move) >= 0)
-            baseFromEffect++;
-        // User recoil damage
-        if (GetMoveRecoil(move) > 0)
             baseFromEffect++;
         // // Explosion moves get 0 points in vanilla, so we deduct here from EFFECT_HIT's score of 1
         if (IsExplosionMove(move) && baseFromEffect > 0)
@@ -1306,7 +1307,7 @@ static void TrySetBattleSeminarShow(void)
     {
         if (i != gMoveSelectionCursor[gBattlerAttacker] && dmgByMove[i] > dmgByMove[gMoveSelectionCursor[gBattlerAttacker]])
         {
-            u16 opponentSpecies, playerSpecies;
+            enum Species opponentSpecies, playerSpecies;
             s32 bestMoveId;
 
             if (gMoveSelectionCursor[gBattlerAttacker] != 0)
@@ -1394,7 +1395,7 @@ void BattleTv_ClearExplosionFaintCause(void)
     }
 }
 
-u8 GetBattlerMoveSlotId(u8 battler, enum Move move)
+u8 GetBattlerMoveSlotId(enum BattlerId battler, enum Move move)
 {
     s32 i;
     struct Pokemon *mon = GetBattlerMon(battler);
