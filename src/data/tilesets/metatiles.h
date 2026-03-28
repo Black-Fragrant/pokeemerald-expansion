@@ -255,3 +255,6 @@ const u16 gMetatileAttributes_NacreneCity[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_IndoorNacrene[] = INCBIN_U16("data/tilesets/secondary/indoor_nacrene/metatiles.bin");
 const u16 gMetatileAttributes_IndoorNacrene[] = INCBIN_U16("data/tilesets/secondary/indoor_nacrene/metatile_attributes.bin");
+
+const u16 gMetatiles_Museum[] = INCBIN_U16("data/tilesets/secondary/museum/metatiles.bin");
+const u16 gMetatileAttributes_Museum[] = INCBIN_U16("data/tilesets/secondary/museum/metatile_attributes.bin");
