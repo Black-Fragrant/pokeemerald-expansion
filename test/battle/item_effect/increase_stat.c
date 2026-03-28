@@ -263,7 +263,7 @@ SINGLE_BATTLE_TEST("Max Mushrooms raises battler's Speed stat", s16 damage)
 SINGLE_BATTLE_TEST("Using X items in battle raises Friendship", s16 damage)
 {
     u32 startingFriendship;
-    u8 mapsec_u16_t = GetCurrentRegionMapSectionId() + 1;
+    u16 mapsec_u16_t = GetCurrentRegionMapSectionId() + 1;
 
     PARAMETRIZE { startingFriendship = 0; }
     PARAMETRIZE { startingFriendship = X_ITEM_MAX_FRIENDSHIP; }
@@ -286,7 +286,7 @@ SINGLE_BATTLE_TEST("Using X items in battle raises Friendship", s16 damage)
 SINGLE_BATTLE_TEST("Using X items in battle where Pokemon was met raises Friendship with a bonus", s16 damage)
 {
     u32 startingFriendship;
-    u8 mapsec_u16_t = GetCurrentRegionMapSectionId();
+    u16 mapsec_u16_t = GetCurrentRegionMapSectionId();
 
     PARAMETRIZE { startingFriendship = 0; }
     PARAMETRIZE { startingFriendship = X_ITEM_MAX_FRIENDSHIP; }
