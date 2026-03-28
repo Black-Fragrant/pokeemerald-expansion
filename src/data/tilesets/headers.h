@@ -1240,3 +1240,14 @@ const struct Tileset gTileset_IndoorNacrene =
     .metatileAttributes = gMetatileAttributes_IndoorNacrene,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Museum =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Museum,
+    .palettes = gTilesetPalettes_Museum,
+    .metatiles = gMetatiles_Museum,
+    .metatileAttributes = gMetatileAttributes_Museum,
+    .callback = NULL,
+};

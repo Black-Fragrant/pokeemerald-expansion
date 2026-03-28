@@ -12430,7 +12430,7 @@
           "map": "MAP_ROUTE3_SOUTH",
           "base_label": "gRoute3_South",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 20,
             "mons": [
               {
                 "min_level": 8,
@@ -12614,7 +12614,7 @@
           "map": "MAP_PINWHEEL_FOREST_OUTSIDE_NORTH",
           "base_label": "gPinwheelForest_Outside_North",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 20,
             "mons": [
               {
                 "min_level": 12,
@@ -12713,7 +12713,7 @@
           "map": "MAP_PINWHEEL_FOREST_OUTSIDE_SOUTH",
           "base_label": "gPinwheelForest_Outside_South",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 20,
             "mons": [
               {
                 "min_level": 12,
