@@ -852,7 +852,7 @@
 #define FLAG_HIDE_MAUVILLE_CITY_WALLY                               0x324
 #define FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE                        0x325
 #define FLAG_HIDE_DEOXYS                                            0x326
-#define FLAG_UNUSED_0x327                                           0x327
+#define FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY                       0x327
 #define FLAG_UNUSED_0x328                                           0x328
 #define FLAG_UNUSED_0x329                                           0x329
 #define FLAG_UNUSED_0x32A                                           0x32A
