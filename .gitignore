@@ -20,14 +20,9 @@
 *.latfont
 *.hwjpnfont
 *.fwjpnfont
-sound/direct_sound_samples/*.bin
-sound/direct_sound_samples/cries/*.bin
-sound/direct_sound_samples/phonemes/*.bin
-sound/programmable_wave_samples/*.bin
-sound/songs/*.bin
+sound/**/*.bin
 sound/songs/midi/*.s
 tools/agbcc
-tools/poryscript
 *.map
 *.bat
 *.dump
