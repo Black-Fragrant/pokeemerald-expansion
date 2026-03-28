@@ -47,14 +47,6 @@ jobs:
             tools/wav2agb/wav2agb
           key: tools-${{ runner.os }}-${{ hashFiles('tools/*/Makefile', 'tools/**/*.c', 'tools/**/*.cpp', 'tools/**/*.h') }}
 
-      - name: Install Poryscript
-        run: |
-          curl -L -o poryscript.zip https://github.com/huderlem/poryscript/releases/download/3.5.2/poryscript-linux.zip
-          unzip poryscript.zip -d poryscript
-          mkdir -p tools/poryscript
-          cp -r poryscript/poryscript-linux/* tools/poryscript/
-          chmod +x tools/poryscript/*
-
       - name: ROM (Emerald)
         env:
           GAME_VERSION: EMERALD
