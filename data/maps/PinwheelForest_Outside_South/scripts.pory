@@ -61,6 +61,7 @@ script PinwheelForest_OS_EventScript_Challenge_Rock
        lock
 	special(IsFightingTypeInParty)
 	goto_if_eq(VAR_RESULT, FALSE, PinwheelForest_OS_EventScript_Challenge_Rock_NoFightingTypes)
+       callnative(RtcCalcLocalTime)
 	dotimebasedevents
 	goto_if_set(FLAG_DAILY_PFOS_CHALLENGE_ROCK, PinwheelForest_OS_EventScript_Challenge_Rock_NoFightingTypes)
        bufferpartymonnick(STR_VAR_1, VAR_0x8004)

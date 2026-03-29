@@ -8,6 +8,7 @@
     "gMapGroup_IndoorRoute3",
     "gMapGroup_WellspringCave",
     "gMapGroup_IndoorNacrene",
+    "gMapGroup_PinwheelForest",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -150,6 +151,9 @@
     "NacreneCity_PokeCenter",
     "NacreneCity_Cafe",
     "NacreneCity_Museum"
+  ],
+  "gMapGroup_PinwheelForest": [
+    "PinwheelForest_Inside"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

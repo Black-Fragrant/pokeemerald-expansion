@@ -1956,3 +1956,14 @@ const struct Tileset gTileset_HallOfFame =
 };
 
 #endif // IS_FRLG
+
+const struct Tileset gTileset_PinwheelForest =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PinwheelForest,
+    .palettes = gTilesetPalettes_PinwheelForest,
+    .metatiles = gMetatiles_PinwheelForest,
+    .metatileAttributes = gMetatileAttributes_PinwheelForest,
+    .callback = NULL,
+};
