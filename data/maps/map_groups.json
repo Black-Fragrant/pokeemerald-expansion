@@ -153,7 +153,8 @@
     "NacreneCity_Museum"
   ],
   "gMapGroup_PinwheelForest": [
-    "PinwheelForest_Inside"
+    "PinwheelForest_Inside",
+    "PinwheelForest_Inside_Extended"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
