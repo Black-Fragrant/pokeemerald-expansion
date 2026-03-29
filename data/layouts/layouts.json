@@ -9402,6 +9402,16 @@
       "secondary_tileset": "gTileset_PinwheelForest",
       "border_filepath": "data/layouts/PinwheelForest_Inside/border.bin",
       "blockdata_filepath": "data/layouts/PinwheelForest_Inside/map.bin"
+    },
+    {
+      "id": "LAYOUT_PINWHEEL_FOREST_INSIDE_EXTENDED",
+      "name": "PinwheelForest_Inside_Extended_Layout",
+      "width": 36,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_PinwheelForest",
+      "border_filepath": "data/layouts/PinwheelForest_Inside_Extended/border.bin",
+      "blockdata_filepath": "data/layouts/PinwheelForest_Inside_Extended/map.bin"
     }
   ]
 }
