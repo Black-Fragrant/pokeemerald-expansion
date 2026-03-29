@@ -9392,6 +9392,16 @@
       "secondary_tileset": "gTileset_NacreneMuseum",
       "border_filepath": "data/layouts/NacreneCity_Museum/border.bin",
       "blockdata_filepath": "data/layouts/NacreneCity_Museum/map.bin"
+    },
+    {
+      "id": "LAYOUT_PINWHEEL_FOREST_INSIDE",
+      "name": "PinwheelForest_Inside_Layout",
+      "width": 92,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_PinwheelForest",
+      "border_filepath": "data/layouts/PinwheelForest_Inside/border.bin",
+      "blockdata_filepath": "data/layouts/PinwheelForest_Inside/map.bin"
     }
   ]
 }
