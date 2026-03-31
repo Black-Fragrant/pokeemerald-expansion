@@ -11,12 +11,14 @@ enum BattleCoordTypes
     BATTLE_COORDS_COUNT,
 };
 
-enum
+// start bwBattleUI
+enum BattleHealthboxHpTextElements
 {
     HP_CURRENT,
     HP_MAX,
     HP_BOTH
 };
+// end bwBattleUI
 
 enum
 {
@@ -94,7 +96,8 @@ enum
 #define TAG_MISC_INDICATOR_PAL          0xD779 // Alpha, Omega, and Dynamax indicators use the same palette as each of them only uses 4 different colors.
 #define TAG_TERA_INDICATOR_PAL          0xD77A
 
-enum
+// start bwBattleUI
+enum BattleHealthboxElements
 {
     HEALTHBOX_ALL,
     HEALTHBOX_CURRENT_HP,
@@ -107,8 +110,11 @@ enum
     HEALTHBOX_UNUSED_8,
     HEALTHBOX_STATUS_ICON,
     HEALTHBOX_SAFARI_ALL_TEXT,
-    HEALTHBOX_SAFARI_BALLS_TEXT
+    HEALTHBOX_SAFARI_BALLS_TEXT,
+
+    NUM_HEALTHBOX_ELEMENTS
 };
+// end bwBattleUI
 
 enum BattleCoordTypes GetBattlerCoordsIndex(enum BattlerId battler);
 u8 CreateBattlerHealthboxSprites(enum BattlerId battler);
