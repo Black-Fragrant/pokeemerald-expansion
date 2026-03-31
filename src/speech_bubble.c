@@ -99,13 +99,13 @@ void DestroyTail(void)
 
 void LoadTailFromScript(void)
 {
-    s16 x = (s16)(VarGet(gSpecialVar_0x8005));
-    s16 y = (s16)(VarGet(gSpecialVar_0x8006));
+    s16 x = (s16)(VarGet(gSpecialVar_0x8007));
+    s16 y = (s16)(VarGet(gSpecialVar_0x8008));
     LoadTail(x, y);
 }
 
 // gSpecialVar_0x8004 is the object event id
 void LoadTailAutoFromScript(void)
 {
-    LoadTailFromObjectEventId(VarGet(gSpecialVar_0x8004));
+    LoadTailFromObjectEventId(VarGet(gSpecialVar_0x800A));
 }
