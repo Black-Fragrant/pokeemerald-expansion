@@ -1939,14 +1939,14 @@
 	.macro load_speech_bubble x:req, y=0xFF
 		.if \y == 0xFF
 			.if \x == VAR_LAST_TALKED
-				copyvar VAR_0x8004, \x
+				copyvar VAR_0x800A, \x
 			.else
-				setvar VAR_0x8004, \x
+				setvar VAR_0x800A, \x
 			.endif
 			callnative LoadTailAutoFromScript
 		.else
-			setvar VAR_0x8005, \x
-			setvar VAR_0x8006, \y
+			setvar VAR_0x8007, \x
+			setvar VAR_0x8008, \y
 			callnative LoadTailFromScript
 		.endif
 	.endm
@@ -2684,18 +2684,21 @@
 	.macro ingame_trade tradeId:req wantTradeMsg:req, declineTradeJump:req, wrongMonJump:req, beforeTradeAnimMsg:req, tradeCompleteMsg:req
 	setvar VAR_0x8005, \tradeId
 	specialvar VAR_0x8009, GetInGameTradeSpeciesInfo
-	msgbox \wantTradeMsg, MSGBOX_YESNO
+	msgbox \wantTradeMsg, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED
+	destroy_speech_bubble
 	goto_if_eq VAR_RESULT, NO, \declineTradeJump
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, \declineTradeJump
 	specialvar VAR_0x800B, GetTradeSpecies
 	goto_if_ne VAR_0x800B, VAR_0x8009, \wrongMonJump
-	msgbox \beforeTradeAnimMsg, MSGBOX_DEFAULT
+	msgbox \beforeTradeAnimMsg, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED
+	destroy_speech_bubble
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
 	waitstate
-	msgbox \tradeCompleteMsg, MSGBOX_DEFAULT
+	msgbox \tradeCompleteMsg, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED
+	destroy_speech_bubble
 	.endm
 
 	.macro move_tutor moveId:req, wantTeachingMsg:req, monSelectMsg:req, declinedJmp:req, taughtJmp:req, flagId=0
