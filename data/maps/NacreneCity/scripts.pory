@@ -130,6 +130,7 @@ script NacreneCity_EventScript_AccordionPlayer
 	msgbox("How do you like the sound of accordions?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_ACCORDION_PLAYER)
     destroy_speech_bubble()
     closemessage
+	release
 	end
 }
 
