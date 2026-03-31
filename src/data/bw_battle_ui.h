@@ -236,4 +236,9 @@ static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =
         .foreground = 1,
         .shadow = 3,
     },
+    [BUI_TXTCLR_HBOX_NAME] =
+    {
+        .foreground = 1,
+        .shadow = 2,
+    },
 };

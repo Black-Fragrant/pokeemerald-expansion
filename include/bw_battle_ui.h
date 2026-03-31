@@ -59,7 +59,9 @@ u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId);
 
 // req declarations
 enum BattleCoordTypes;
+enum BattleHealthboxElements;
 
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes, enum BattlerPosition, u32);
+void BattleUI_UpdateHealthbox(u8, struct Pokemon *, enum BattleHealthboxElements);
 
 #endif // GUARD_BW_BATTLE_UI_H
