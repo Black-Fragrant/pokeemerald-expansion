@@ -76,7 +76,10 @@ script NacreneCity_BRB_EventScript_Trader
                 NacreneCity_BRB_EventScript_Trader_Declined2, 
                 NacreneCity_BRB_EventScript_Trader_NotRequestedMon,
                 text("Wow. Thanks!\n"
-                    "Then, let's trade!"))
+                    "Then, let's trade!"),
+                text("Yay! Please take good care of\n"
+                    "my Petilil!\p"
+                    "I will take good care of your Cottonee!"))
 	setflag(FLAG_NACRENE_TRADED_PETILIL)
 	release
 	end
