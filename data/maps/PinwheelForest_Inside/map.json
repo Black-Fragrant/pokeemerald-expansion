@@ -5,7 +5,7 @@
   "music": "MUS_BW_DREAM_YARD",
   "region_map_section": "MAPSEC_PINWHEEL_FOREST",
   "requires_flash": false,
-  "weather": "WEATHER_SHADE",
+  "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -19,8 +19,170 @@
       "direction": "right"
     }
   ],
-  "object_events": [],
-  "warp_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 78,
+      "y": 59,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_1",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 78,
+      "y": 60,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_2",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 78,
+      "y": 61,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_3",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 78,
+      "y": 62,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_4",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 78,
+      "y": 63,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_5",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 78,
+      "y": 64,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_6",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 77,
+      "y": 61,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 77,
+      "y": 62,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 85,
+      "y": 60,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_OUTSIDE_NORTH",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 85,
+      "y": 61,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_OUTSIDE_NORTH",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 85,
+      "y": 62,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_OUTSIDE_NORTH",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 85,
+      "y": 63,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_OUTSIDE_NORTH",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 72,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 73,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 74,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 75,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "7"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

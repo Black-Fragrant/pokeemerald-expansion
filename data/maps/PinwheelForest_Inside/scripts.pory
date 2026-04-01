@@ -1,1 +1,65 @@
 mapscripts PinwheelForest_Inside_MapScripts {}
+
+script PinwheelForest_Inside_EventScript_TPG_Blocking_1
+{
+    lock
+    msgbox("In order to eliminate the old-fashioned\n"
+           "ways of looking at things...", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script PinwheelForest_Inside_EventScript_TPG_Blocking_2
+{
+    lock
+    msgbox("We will steal Pokémon!\n"
+           "You'll never play together again!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script PinwheelForest_Inside_EventScript_TPG_Blocking_3
+{
+    lock
+    msgbox("If their Pokémon are liberated,\n"
+           "Trainers will no longer be Trainers!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script PinwheelForest_Inside_EventScript_TPG_Blocking_4
+{
+    lock
+    msgbox("We are in the right!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script PinwheelForest_Inside_EventScript_TPG_Blocking_5
+{
+    lock
+    msgbox("Everyone else is wrong!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script PinwheelForest_Inside_EventScript_TPG_Blocking_6
+{
+    lock
+    msgbox("If you don't think the same way we think,\n"
+           "we'll use all our power to eliminate you!", MSGBOX_DEFAULT, TRUE)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
