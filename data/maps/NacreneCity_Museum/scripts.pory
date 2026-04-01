@@ -1,1 +1,239 @@
-mapscripts NacreneCity_Museum_MapScripts {}
+mapscripts NacreneCity_Museum_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NacreneCity_Museum_Transition
+}
+
+script NacreneCity_Museum_Transition
+{
+    call_if_ge (VAR_NACRENE_STATE, 3, NacreneCity_Museum_EventScript_PositionScientist)
+    end()
+}
+
+script NacreneCity_Museum_EventScript_PositionScientist
+{
+	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 11, 4)
+    setobjectmovementtype (LOCALID_NACRENE_MUSEUM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+    return()
+}
+
+script NacreneCity_Museum_Trigger_Tour
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 9, NacreneCity_Museum_Trigger_Tour_Left)
+	call_if_eq (VAR_TEMP_0, 11, NacreneCity_Museum_Trigger_Tour_Right)
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Wow! Whenever I look at this skeleton,\n"
+           "I'm... fascinated.", MSGBOX_DEFAULT, TRUE,LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_in_place_down))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Welcome! I'm Hawes, the\n"
+           "assistant director.\p"
+           "Since you were kind enough to visit,\n"
+           "I'll give you a tour of the museum.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(20)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_up, walk_left, walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("This skeleton is of a Dragon-type\n"
+           "Pokémon.\p"
+           "There's a theory that it had an accident\n"
+           "while it was flying around the world, and\l"
+           "so it became a Fossil.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_left * 4, walk_up * 6, walk_left))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_left * 5, walk_up * 5, walk_left))
+	waitmovement(0)
+    delay(10)
+     msgbox("This rock is amazing! It's a meteorite!\p"
+           "It contains some kind of energy\n"
+           "from space.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_up * 2, walk_right, walk_in_place_up))
+	applymovement(LOCALID_PLAYER, moves(delay_4, walk_up * 3))
+	waitmovement(0)
+    delay(10)
+    msgbox("Oh, this? It's an ordinary old stone.\p"
+           "It was found near the desert, but other\n"
+           "than the fact that it's cold, it doesn't\l"
+           "seem to have any value...\p"
+           "We only display it because it's rather\n"
+           "pretty to look at.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_PLAYER, moves(delay_4, walk_right * 6, walk_up * 7))
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_right * 5, walk_up * 9, walk_right, walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("The Pokémon Gym is just beyond here.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_in_place_down))
+	waitmovement(0)
+    msgbox("At the end of the Gym, a very strong\n"
+           "and kind Gym Leader is waiting.\p"
+           "By the way, the Gym Leader Lenora\n"
+           "happens to be my wife!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    setvar(VAR_NACRENE_STATE, 3)
+	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 11, 4)
+    setobjectmovementtype (LOCALID_NACRENE_MUSEUM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+    delay(10)
+    release
+    end
+}
+
+script NacreneCity_Museum_Trigger_Tour_Left
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right))
+	waitmovement(0)
+    return
+}
+
+script NacreneCity_Museum_Trigger_Tour_Right
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left))
+	waitmovement(0)
+    return
+}
+
+script NacreneCity_Museum_EventScript_Scientist
+{
+	msgbox("At the end of the Gym, a very strong\n"
+           "and kind Gym Leader is waiting.\p"
+           "By the way, the Gym Leader Lenora\n"
+           "happens to be my wife!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_SchoolGirl
+{
+	msgbox("The Gym Leader here studies Fossils and\n"
+           "ancient artifacts.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_Grandpa
+{
+	msgbox("Perhaps there is a Pokémon that came\n"
+           "from space along with this meteorite.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_GreenShirtGuy
+{
+	msgbox("Rare Pokémon from around the world...\n"
+           "Museums are packed with adventure!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_TopLeft
+{
+	msgbox("You can get to the Pokémon Gym by going\n"
+           "to the back of the museum!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_BottomLeft
+{
+	msgbox("Welcome to the Nacrene Museum!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_Right
+{
+	msgbox("I am researching Pokémon Fossils here.\p"
+           "If you have a Fossil, bring it to me!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script AccumulaTown_EventScript_SignPost_Dragonite
+{
+	msgbox("This is a skeletal specimen from a\n"
+           "Pokémon that flew around the world.", MSGBOX_SIGN)
+}
+
+script AccumulaTown_EventScript_SignPost_Armaldo
+{
+	msgbox("It's a Fossil of a Pokémon that was\n"
+           "protected by a very hard shell.", MSGBOX_SIGN)
+}
+
+script AccumulaTown_EventScript_SignPost_Meteorite
+{
+	msgbox("A meteor that has a space virus\n"
+           "attached to it.", MSGBOX_SIGN)
+}
+
+script AccumulaTown_EventScript_SignPost_WhiteStone
+{
+	msgbox("An ancient round stone that was buried\n"
+           "in the desert.", MSGBOX_SIGN)
+}
+
+script AccumulaTown_EventScript_SignPost_Tablets
+{
+	msgbox("A plate with an unknown script carved\n"
+           "into it.", MSGBOX_SIGN)
+}
+
+script AccumulaTown_EventScript_SignPost_Mask
+{
+	msgbox("A mask that ancient people used to wear\n"
+           "at festivals.", MSGBOX_SIGN)
+}
+
+script AccumulaTown_EventScript_SignPost_Bones
+{
+	msgbox("Bones that were once carried as weapons\n"
+           "by a certain kind of Pokémon.", MSGBOX_SIGN)
+}
+
+

@@ -13,7 +13,100 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GATE_F",
+      "x": 7,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Receptionist_BottomLeft",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GATE_F",
+      "x": 7,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Receptionist_TopLeft",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GATE_F",
+      "x": 13,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Receptionist_Right",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_SCIENTIST",
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_MALE",
+      "x": 10,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Scientist",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GREEN_SHIRT_GUY",
+      "x": 16,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_GreenShirtGuy",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_GIRL",
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_SchoolGirl",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
+      "x": 1,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Grandpa",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 9,
@@ -58,6 +151,91 @@
       "dest_warp_id": "4"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "2",
+      "script": "NacreneCity_Museum_Trigger_Tour"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "2",
+      "script": "NacreneCity_Museum_Trigger_Tour"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "2",
+      "script": "NacreneCity_Museum_Trigger_Tour"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_Dragonite"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_WhiteStone"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_Tablets"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_Meteorite"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_Mask"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_Armaldo"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "AccumulaTown_EventScript_SignPost_Bones"
+    }
+  ]
 }
