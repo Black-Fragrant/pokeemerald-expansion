@@ -1967,3 +1967,14 @@ const struct Tileset gTileset_PinwheelForest =
     .metatileAttributes = gMetatileAttributes_PinwheelForest,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NacreneGym =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NacreneGym,
+    .palettes = gTilesetPalettes_NacreneGym,
+    .metatiles = gMetatiles_NacreneGym,
+    .metatileAttributes = gMetatileAttributes_NacreneGym,
+    .callback = NULL,
+};

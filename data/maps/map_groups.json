@@ -150,7 +150,9 @@
     "NacreneCity_DesignerShop",
     "NacreneCity_PokeCenter",
     "NacreneCity_Cafe",
-    "NacreneCity_Museum"
+    "NacreneCity_Museum",
+    "NacreneCity_Gym",
+    "NacreneCity_Gym_LenoraRoom"
   ],
   "gMapGroup_PinwheelForest": [
     "PinwheelForest_Inside",
