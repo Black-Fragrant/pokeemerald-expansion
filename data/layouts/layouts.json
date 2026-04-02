@@ -9412,6 +9412,26 @@
       "secondary_tileset": "gTileset_PinwheelForest",
       "border_filepath": "data/layouts/PinwheelForest_Inside_Extended/border.bin",
       "blockdata_filepath": "data/layouts/PinwheelForest_Inside_Extended/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_GYM",
+      "name": "NacreneCity_Gym_Layout",
+      "width": 17,
+      "height": 29,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_NacreneGym",
+      "border_filepath": "data/layouts/NacreneCity_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_Gym/map.bin"
+    },
+    {
+      "id": "LAYOUT_NACRENE_CITY_GYM_LENORA_ROOM",
+      "name": "NacreneCity_Gym_LenoraRoom_Layout",
+      "width": 72,
+      "height": 36,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_NacreneGym",
+      "border_filepath": "data/layouts/NacreneCity_Gym_LenoraRoom/border.bin",
+      "blockdata_filepath": "data/layouts/NacreneCity_Gym_LenoraRoom/map.bin"
     }
   ]
 }
