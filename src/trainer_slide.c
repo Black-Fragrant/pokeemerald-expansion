@@ -113,6 +113,9 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
         [TRAINER_CHEREN_ROUTE_3_3] = 
        {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("Ugh! You choose a good\nmove, as usual.{PAUSE_UNTIL_PRESS}"),
         [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("With my knowledge,\nI can bring out the strength\lof my Pokémon!{PAUSE_UNTIL_PRESS}"),},
+        [TRAINER_LENORA_NACRENE_GYM] = 
+       {[TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE] = COMPOUND_STRING("Now, with that move,\nI'm beginning to see what kind\lof Trainer you are.{PAUSE_UNTIL_PRESS}"),
+        [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("No matter how grim the situation,\nI'll use my research skills to\lfind a winning strategy!{PAUSE_UNTIL_PRESS}"),},
     },
 };
 
