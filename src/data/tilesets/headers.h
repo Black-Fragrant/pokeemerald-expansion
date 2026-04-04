@@ -1965,7 +1965,7 @@ const struct Tileset gTileset_PinwheelForest =
     .palettes = gTilesetPalettes_PinwheelForest,
     .metatiles = gMetatiles_PinwheelForest,
     .metatileAttributes = gMetatileAttributes_PinwheelForest,
-    .callback = NULL,
+    .callback = InitTilesetAnim_PinwheelForest,
 };
 
 const struct Tileset gTileset_NacreneGym =
@@ -1976,5 +1976,5 @@ const struct Tileset gTileset_NacreneGym =
     .palettes = gTilesetPalettes_NacreneGym,
     .metatiles = gMetatiles_NacreneGym,
     .metatileAttributes = gMetatileAttributes_NacreneGym,
-    .callback = NULL,
+    .callback = InitTilesetAnim_NacreneGym,
 };

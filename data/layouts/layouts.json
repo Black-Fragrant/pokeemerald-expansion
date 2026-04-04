@@ -9426,8 +9426,8 @@
     {
       "id": "LAYOUT_NACRENE_CITY_GYM_LENORA_ROOM",
       "name": "NacreneCity_Gym_LenoraRoom_Layout",
-      "width": 72,
-      "height": 36,
+      "width": 11,
+      "height": 19,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_NacreneGym",
       "border_filepath": "data/layouts/NacreneCity_Gym_LenoraRoom/border.bin",

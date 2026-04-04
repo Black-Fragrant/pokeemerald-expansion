@@ -133,22 +133,22 @@
       "x": 9,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_NACRENE_CITY_MUSEUM",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_NACRENE_CITY_GYM",
+      "dest_warp_id": "0"
     },
     {
       "x": 10,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_NACRENE_CITY_MUSEUM",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_NACRENE_CITY_GYM",
+      "dest_warp_id": "0"
     },
     {
       "x": 11,
       "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_NACRENE_CITY_MUSEUM",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_NACRENE_CITY_GYM",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
