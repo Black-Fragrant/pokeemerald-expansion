@@ -1,1 +1,121 @@
 mapscripts NacreneCity_Gym_LenoraRoom_MapScripts {}
+
+script NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_BADGE02_GET, NacreneCity_Gym_LenoraRoom_EventScript_Lenora_AcquiredBadge)
+    msgbox("Welcome!\p"
+           "The director of the Nacrene Museum\n"
+           "and the Nacrene Gym's Leader\l"
+           "is me! Lenora!\p"
+           "Well then, challenger,\n"
+           "I'm going to research\l"
+           "how you battle with the\l"
+           "Pokémon you've so lovingly raised!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_LENORA_NACRENE_GYM, text("My theory about you was correct.\p"
+           "You're more than just talented...\n"
+           "you're motivated! I salute you!"))
+        msgbox("Your fighting style is so enchanting.\n"
+           "It is charming.\p"
+           "You are a Pokémon Trainer\n"
+           "worthy of receiving this Basic Badge!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
+    destroy_speech_bubble()
+    closemessage
+    message("{PLAYER} received\n"
+        "the Basic Badge from Lenora!") //this should be transparent
+	playfanfare(MUS_OBTAIN_BADGE)
+    waitmessage
+	waitfanfare
+	setflag(FLAG_BADGE02_GET)
+    settrainerflag(TRAINER_SCHOOLBOY_NACRENE_GYM)
+    settrainerflag(TRAINER_SCIENTIST_F_NACRENE_GYM)
+    settrainerflag(TRAINER_SCHOOLGIRL_NACRENE_GYM)
+    closemessage
+    delay(10)
+    msgbox("If you have two Badges, traded\n"
+           "Pokémon up to Lv. 30 will obey you.\p"
+           "Here, I also want you to have this TM.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_RETALIATE)
+	call_if_eq (VAR_RESULT, FALSE, NacreneCity_Gym_LenoraRoom_EventScript_BagIsFull)
+    closemessage
+    msgbox("Retaliate does a lot more damage if an\n"
+           "ally fainted the turn before you use it!\p"
+           "If you master the timing, you can defeat\n"
+           "even strong opponents.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
+    destroy_speech_bubble()
+    closemessage
+    setvar(VAR_NACRENE_STATE, 5)
+    msgbox("Deeear!", MSGBOX_DEFAULT)
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_GYM_LR_LENORA, moves(walk_in_place_down))
+	waitmovement(0)
+    playbgm(MUS_BW_TROUBLE, TRUE)
+    addobject(LOCALID_NACRENE_GYM_LR_SCIENTIST)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 11, NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora_Pos1)
+	applymovement(LOCALID_NACRENE_GYM_LR_SCIENTIST, moves(walk_fast_up * 5))
+	waitmovement(0)
+    delay(10)
+    msgbox("Hawes: Dear! Come quickly!\p"
+           "Team Plasma is threatening to steal\n"
+           "some bones!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_GYM_LR_LENORA, moves(walk_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Lenora: What? What's going on?!\p"
+           "{PLAYER}!\n"
+           "You come, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_GYM_LR_SCIENTIST, moves(lock_facing_direction, walk_right, unlock_facing_direction))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_GYM_LR_SCIENTIST, moves(walk_in_place_left))
+	applymovement(LOCALID_NACRENE_GYM_LR_LENORA, moves(walk_fast_down * 7))
+	waitmovement(0)
+    removeobject(LOCALID_NACRENE_GYM_LR_LENORA)
+    setflag(FLAG_NACRENE_GYM_LENORA)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_GYM_LR_SCIENTIST, moves(walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_GYM_LR_SCIENTIST, moves(walk_fast_left, walk_fast_down * 6))
+	waitmovement(0)
+    removeobject(LOCALID_NACRENE_GYM_LR_SCIENTIST)
+    playbgm(MUS_BW_GYM, TRUE)
+    delay(20)
+    release()
+    end()
+}
+
+script NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_right))
+	waitmovement(0)
+    return()
+}
+
+script NacreneCity_Gym_LenoraRoom_EventScript_Lenora_AcquiredBadge
+{
+    release
+    end
+}
+
+script NacreneCity_Gym_LenoraRoom_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	return()
+}

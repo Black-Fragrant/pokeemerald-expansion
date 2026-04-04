@@ -827,7 +827,7 @@
 #define FLAG_NACRENE_GYM_SCIENTIST_CLIMB_DOWN                       0x30B
 #define FLAG_NACRENE_GYM_SCHOOLGIRL_CLIMB_DOWN                      0x30C
 #define FLAG_NACRENE_GYM_FOUND_ALL_BOOKS                            0x30D
-#define FLAG_UNUSED_0x30E                                           0x30E
+#define FLAG_NACRENE_GYM_LENORA                                     0x30E
 #define FLAG_UNUSED_0x30F                                           0x30F
 #define FLAG_UNUSED_0x310                                           0x310
 #define FLAG_UNUSED_0x311                                           0x311
