@@ -218,7 +218,9 @@
       "id": "HEAL_LOCATION_NACRENE_CITY",
       "map": "MAP_NACRENE_CITY",
       "x": 29,
-      "y": 25
+      "y": 25,
+      "respawn_map": "MAP_NACRENE_CITY_POKE_CENTER",
+      "respawn_npc": "LOCALID_NACRENE_POKECEN_NURSE"
     },
     {
       "id": "HEAL_LOCATION_PALLET_TOWN",
