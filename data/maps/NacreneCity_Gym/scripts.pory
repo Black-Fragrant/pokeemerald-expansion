@@ -1,0 +1,1020 @@
+mapscripts NacreneCity_Gym_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD : NacreneCity_Gym_On_Load
+    MAP_SCRIPT_ON_TRANSITION : NacreneCity_Gym_Transition
+    MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NACRENE_STATE, 3 : NacreneCity_Gym_EventScript_ReceptionistGivesWater
+    ]
+}
+
+script NacreneCity_Gym_On_Load
+{
+	call_if_set(FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_HiddenStairCase)
+	end()
+}
+
+script NacreneCity_Gym_EventScript_HiddenStairCase
+{
+    setmetatile (9, 12, 0x323, FALSE)
+    setmetatile (10, 9, 0x200, FALSE)
+    setmetatile (11, 9, 0x200, FALSE)
+    setmetatile (12, 9, 0x2A3, FALSE)
+    setmetatile (13, 9, 0x2A4, FALSE)
+    setmetatile (14, 9, 0x2A5, FALSE)
+    setmetatile (15, 9, 0x2A2, FALSE)
+    setmetatile (10, 10, 0x200, FALSE)
+    setmetatile (11, 10, 0x200, FALSE)
+    setmetatile (12, 10, 0x2AB, TRUE)
+    setmetatile (13, 10, 0x2AC, TRUE)
+    setmetatile (14, 10, 0x2AD, TRUE)
+    setmetatile (15, 10, 0x2AA, TRUE)
+    setmetatile (10, 11, 0x31C, TRUE)
+    setmetatile (11, 11, 0x31D, TRUE)
+    setmetatile (12, 11, 0x258, TRUE)
+    setmetatile (13, 11, 0x259, TRUE)
+    setmetatile (14, 11, 0x25E, TRUE)
+    setmetatile (15, 11, 0x25F, TRUE)
+    setmetatile (10, 12, 0x324, TRUE)
+    setmetatile (11, 12, 0x325, TRUE)
+    setmetatile (12, 12, 0x277, FALSE)
+    setmetatile (13, 12, 0x261, TRUE)
+    setmetatile (14, 12, 0x266, TRUE)
+    setmetatile (15, 12, 0x267, TRUE)
+
+}
+
+script NacreneCity_Gym_Transition
+{
+    goto_if_set (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_PositionSchoolgirlAndScientist_2)
+    call_if_set (FLAG_NACRENE_GYM_FOUND_1ST_BOOK, NacreneCity_Gym_EventScript_PositionSchoolgirl_1)
+    call_if_set (FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_HINT, NacreneCity_Gym_EventScript_PositionSchoolgirl_2)
+    call_if_set (FLAG_NACRENE_GYM_FOUND_2ND_BOOK, NacreneCity_Gym_EventScript_PositionSchoolgirlAndScientist)
+    call_if_set (FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_ANOTHER_HINT, NacreneCity_Gym_EventScript_PositionSchoolgirl_2)
+    call_if_set (FLAG_NACRENE_GYM_SCIENTIST_CLIMB_DOWN, NacreneCity_Gym_EventScript_PositionScientist_1)
+    call_if_set (FLAG_NACRENE_GYM_FOUND_3RD_BOOK, NacreneCity_Gym_EventScript_PositionSchoolgirl_1)
+    call_if_set (FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT, NacreneCity_Gym_EventScript_PositionSchoolgirl_2)
+    call_if_set (FLAG_NACRENE_GYM_FOUND_4TH_BOOK, NacreneCity_Gym_EventScript_PositionSchoolgirl_2)
+    call_if_set (FLAG_NACRENE_GYM_SCHOOLGIRL_CLIMB_DOWN, NacreneCity_Gym_EventScript_PositionSchoolgirl_3)
+    end()
+}
+
+script NacreneCity_Gym_EventScript_PositionSchoolgirl_1
+{
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
+    return()
+}
+
+script NacreneCity_Gym_EventScript_PositionSchoolgirl_2
+{
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    return()
+}
+
+script NacreneCity_Gym_EventScript_PositionSchoolgirlAndScientist
+{
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+    return()
+}
+
+script NacreneCity_Gym_EventScript_PositionScientist_1
+{
+    setobjectxyperm(LOCALID_NACRENE_GYM_SCIENTIST, 6, 8)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+    return()
+}
+
+script NacreneCity_Gym_EventScript_PositionSchoolgirl_3
+{
+    setobjectxyperm(LOCALID_NACRENE_GYM_SCHOOLGIRL, 13, 14)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_LEFT)
+    return()
+}
+
+script NacreneCity_Gym_EventScript_PositionSchoolgirlAndScientist_2
+{
+    setobjectxyperm(LOCALID_NACRENE_GYM_SCIENTIST, 6, 8)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+    setobjectxyperm(LOCALID_NACRENE_GYM_SCHOOLGIRL, 13, 14)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_LEFT)
+    end()
+}
+
+script NacreneCity_Gym_EventScript_ReceptionistGivesWater
+{
+    lockall
+    setvar(VAR_NACRENE_STATE, 4)
+	playse(SE_PIN)
+	applymovement(LOCALID_NACRENE_GYM_GYMRECEPTIONIST, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_NACRENE_GYM_GYMRECEPTIONIST, moves(walk_left * 2, walk_down * 2))
+	waitmovement(0)
+	delay(10)
+    msgbox("A Pokémon Gym where a Leader waits for\n"
+           "a challenger at the back of a museum...\l"
+           "It has a great atmosphere, doesn't it?\p"
+           "So... I will give this to you!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_GYMRECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage()
+	giveitem(ITEM_FRESH_WATER, 1)
+	call_if_eq (VAR_RESULT, FALSE, NacreneCity_Gym_EventScript_BagIsFull)
+    closemessage
+    msgbox("All Trainers in this Gym use\n"
+           "Normal-type Pokémon.\p"
+           "This is just between you and me...\p"
+           "Normal-type Pokémon are weak against\n"
+           "Fighting-type Pokémon.\p"
+           "Around here, Fighting-type Pokémon\n"
+           "show up around Pinwheel Forest.\p"
+           "Now, I will explain about the Gym itself!\p"
+           "In this Pokémon Gym, if you answer\n"
+           "questions hidden in books,\l"
+           "you can move forward.\p"
+           "For your information, the first book is\n"
+           "“Nice to Meet You, Pokémon.”\p"
+           "If you don't know where the book is,\n"
+           "please ask anyone!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_GYMRECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage()
+    delay(10)
+	applymovement(LOCALID_NACRENE_GYM_GYMRECEPTIONIST, moves(walk_up * 2, walk_right * 2, walk_in_place_down))
+	waitmovement(0)
+    delay(20)
+    releaseall
+    end
+}
+
+script NacreneCity_Gym_EventScript_Receptionist
+{
+    lock
+	msgbox("All Trainers in this Gym use\n"
+           "Normal-type Pokémon.\p"
+           "This is just between you and me...\p"
+           "Normal-type Pokémon are weak against\n"
+           "Fighting-type Pokémon.\p"
+           "Around here, Fighting-type Pokémon\n"
+           "show up around Pinwheel Forest.\p"
+           "Now, I will explain about the Gym itself!\p"
+           "In this Pokémon Gym, if you answer\n"
+           "questions hidden in books,\l"
+           "you can move forward.\p"
+           "For your information, the first book is\n"
+           "“Nice to Meet You, Pokémon.”\p"
+           "If you don't know where the book is,\n"
+           "please ask anyone!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Gym_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	return()
+}
+
+script NacreneCity_Gym_EventScript_GymSign
+{
+    goto_if_set(FLAG_BADGE02_GET, NacreneCity_Gym_EventScript_GymSign_AfterBadge)
+	msgbox("Nacrene Pokémon Gym\p"
+			"Gym Leader: Lenora\n"
+			"Certified Trainers:", MSGBOX_SIGN)
+	end
+}
+
+script NacreneCity_Gym_EventScript_GymSign_AfterBadge
+{
+	msgbox("Nacrene Pokémon Gym\p"
+			"Gym Leader: Lenora\n"
+			"Certified Trainers: {PLAYER}", MSGBOX_SIGN)
+	end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolboy
+{
+	trainerbattle_single(TRAINER_SCHOOLBOY_NACRENE_GYM,
+	text("I hang around Nacrene Gym all the time.\n"
+           "People call me a bookworm.\p"
+           "I'll warn you now... I am strong because\n"
+           "I spend the entire day either\l"
+           "reading books or training Pokémon."),
+	text("I may be a bookworm,\n"
+           "but I am not a bug Pokémon."))
+	msgbox("My first recommendation is a book called\n"
+           "“Nice to Meet You, Pokémon.”\p"
+           "The bookshelves for children's books\n"
+           "are close to the entrance.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NacreneCity_Gym_EventScript_Book_NoRead
+{
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_NotTheBook
+{
+    msgbox("...\p"
+           "This is not the book you're looking for.", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_AdventureOnRoute3
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “Children's Book.”\p"
+           "“Adventure on Route3”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    checkplayergender
+    goto_if_eq (VAR_RESULT, FEMALE, NacreneCity_Gym_EventScript_Book_AdventureOnRoute3_Female)
+    msgbox("It's a story about a boy with Pokémon\n"
+           "embarking on a great adventure.\p"
+           "Two boys and a girl are having\n"
+           "adventures together.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_AdventureOnRoute3_Female
+{
+    msgbox("It's a story about a girl with Pokémon\n"
+           "embarking on a great adventure.\p"
+           "Two girls and a boy are having\n"
+           "adventures together.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_SweetsForPokemon
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “Children's Books.”\p"
+           "“Sweets for Pokémon”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes delicious sweets made by\n"
+           "heating Berries in a pot.\p"
+           "There are sweets called “Poffins”\n"
+           "made from Berries in the faraway\l"
+           "Sinnoh region, and Pokémon love them!", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_3RD_BOOK, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_4TH_BOOK, NacreneCity_Gym_EventScript_Book_FourthMemo)
+    goto(NacreneCity_Gym_EventScript_Book_FourthMemo_Cont)
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_FourthMemo
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    setflag(FLAG_NACRENE_GYM_FOUND_4TH_BOOK)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    goto(NacreneCity_Gym_EventScript_Book_FourthMemo_Cont)
+}
+
+script NacreneCity_Gym_EventScript_Book_FourthMemo_Cont
+{
+    msgbox("There is a memo on the cover...\p"
+           "“Did you manage to get here\n"
+           "without being tricked by the questions?\p"
+           "Now, this is the last question!\p"
+           "Q: From this bookshelf...\n"
+           "Move two backward, move one to the left,\l"
+           "Move two forward, move one to the right,\l"
+           "and move one backward...\l"
+           "Now, where is it?\p"
+           "The hint is...\n"
+           "Find it by yourself!”", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_ConnectTheDotsToDrawPokemon
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “Children's Books.”\p"
+           "“Connect the Dots to Draw Pokémon”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It's a connect-the-dots book with\n"
+           "lots of Pokémon pictures.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_NiceToMeetYouPokemon
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “Children's Books.”\p"
+           "“Nice to Meet You, Pokémon!”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It's a fairy tale about a little boy\n"
+           "who met a Pokémon for\l"
+           "the first time in his life.\p"
+           "He is with a small brown Pokémon.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_1ST_BOOK, NacreneCity_Gym_EventScript_Book_FirstMemo)
+    goto(NacreneCity_Gym_EventScript_Book_FirstMemo_Cont)
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_FirstMemo
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    setflag(FLAG_NACRENE_GYM_FOUND_1ST_BOOK)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_down))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
+    goto(NacreneCity_Gym_EventScript_Book_FirstMemo_Cont)
+}
+
+script NacreneCity_Gym_EventScript_Book_FirstMemo_Cont
+{
+    msgbox("There is a memo between the pages...\p"
+           "“Pokémon Trainers!\n"
+           "I am the Gym Leader, Lenora!\p"
+           "I hid four memos in this Library.\n"
+           "Each of them has a question.\p"
+           "Can you solve the questions and\n"
+           "come find me?\p"
+           "Now this is the first question!\p"
+           "Q: What is the first Pokémon you met\n"
+           "in this Gym?\p"
+           "The hint is...\n"
+           "on a bookshelf in the middle row!\p"
+           "Now, try to find it!”", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TheBiologyOfSnivy
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “Pokémon.”\p"
+           "“The Biology of Snivy”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes the biology of Snivy.\p"
+           "If they expose their tails to the sun by\n"
+           "basking in a sunny place, they are\n"
+           "in the middle of photosynthesis.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TheBiologyOfOshawott
+{
+    msgbox("This is the bookshelf\n"
+           "for “Pokémon.”\p"
+           "“The Biology of Oshawott”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes the biology of Oshawott.\p"
+           "The scalchop on its belly is very hard\n"
+           "and grows from its bellybutton.\p"
+           "Oshawott use it as a tool.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TheBiologyOfTepig
+{
+    msgbox("This is the bookshelf\n"
+           "for “Pokémon.”\p"
+           "“The Biology of Tepig”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes the biology of Tepig.\p"
+           "Flame burns inside its body, and\n"
+           "it gives off flame from its nostrils.\p"
+           "When it's not well, it can give off\n"
+           "only smoke.", MSGBOX_DEFAULT)
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NoRead)
+    goto(NacreneCity_Gym_EventScript_Book_LastMemo)
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_LastMemo
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    setflag(FLAG_NACRENE_GYM_FOUND_ALL_BOOKS)
+    msgbox("There is a memo between the pages!\p"
+           "“You've managed to get here. Well done!\p"
+           "You seem to have wisdom as well as\n"
+           "strength! I look forward to our battle!\p"
+           "Gym Leader Lenora”", MSGBOX_DEFAULT)
+	playse(SE_DOOR)
+    msgbox("Click!", MSGBOX_DEFAULT)
+	waitse()
+    msgbox("There is a switch\n"
+           "under the book!", MSGBOX_DEFAULT)
+    closemessage()
+    call(NacreneCity_Gym_EventScript_HiddenStairCase)
+	special(DrawWholeMapView)
+    msgbox("Wow!\n"
+           "A hidden staircase!", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TheBiologyOfPatrat
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “Pokémon.”\p"
+           "“The Biology of Patrat”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes the biology of Patrat.\p"
+           "They communicate with each other by\n"
+           "movement of their tails. A Patrat raises\l"
+           "its tail when it sees an enemy.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_1ST_BOOK, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_2ND_BOOK, NacreneCity_Gym_EventScript_Book_SecondMemo)
+    goto(NacreneCity_Gym_EventScript_Book_SecondMemo_Cont)
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_SecondMemo
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    setflag(FLAG_NACRENE_GYM_FOUND_2ND_BOOK)
+    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, moves(face_down))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_down))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
+    goto(NacreneCity_Gym_EventScript_Book_SecondMemo_Cont)
+}
+
+script NacreneCity_Gym_EventScript_Book_SecondMemo_Cont
+{
+    msgbox("There is a memo on the back cover...\p"
+           "“As I thought, that question was easy.\n"
+           "Well, this is the second question!\p"
+           "Q: Flame burns inside its body, and it\n"
+           "gives off smoke from its head while\l"
+           "it runs...\l"
+           "What is this book?\p"
+           "The hint is...\n"
+           "Somebody may be reading.”", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolgirl
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_NACRENE_GYM_SCHOOLGIRL_CLIMB_DOWN, NacreneCity_Gym_EventScript_Battle_Schoolgirl_End)
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_4TH_BOOK, NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo)
+    goto_if_set(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_6)
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_3RD_BOOK, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_5)
+    goto_if_set(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_ANOTHER_HINT, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_4)
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_2ND_BOOK, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_3)
+    goto_if_set(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_HINT, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_2)
+    goto_if_unset(FLAG_NACRENE_GYM_FOUND_1ST_BOOK, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle)
+    msgbox("Hello, Trainer!\p"
+           "You've found a memo already, and you're\n"
+           "looking for a book about Pokémon?\p"
+           "Teehee! In fact, I am also reading a\n"
+           "book about Pokémon. It's about Tepig.\p"
+           "I wonder if the first Pokémon you met\n"
+           "in this Gym was Tepig?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+	goto_if_eq (VAR_RESULT, YES, NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont)
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Tee hee! OK!\p"
+           "What was the Pokémon you battled\n"
+           "at the entrance of the Gym?\p"
+           "There's a hint on the bookshelf\n"
+           "to the left!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_HINT)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Tee hee! What a pity!\p"
+           "The first Pokémon you met in this Gym\n"
+           "was not Tepig!\p"
+           "Try to remember the Pokémon you battled\n"
+           "at the entrance of the Gym.\p"
+           "There's a hint on the bookshelf\n"
+           "to the left!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_HINT)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle
+{
+     msgbox("Oh?\n"
+           "Are you looking for a book?\p"
+           "...I think “Nice to Meet You, Pokémon”\n"
+           "is on a shelf near the entrance.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_2
+{
+     msgbox("What was the Pokémon you battled\n"
+           "at the entrance of the Gym?\p"
+           "There's a hint on the bookshelf\n"
+           "to the left!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_3
+{
+    msgbox("You found the second memo, and you're\n"
+           "looking for a book?\p"
+           "...What does the memo say?\p"
+           "“Flame burns inside its body, and it\n"
+           "gives off smoke from its head\l"
+           "while it runs.”\p"
+           "I'm reading a book about Tepig, but\n"
+           "is this book the correct answer?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+	goto_if_eq (VAR_RESULT, YES, NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont_2)
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Wow! Great! That's correct!\p"
+           "The book that I am reading says:\p"
+           "“It gives off flame from its nostrils.\n"
+           "When it's not well, it can give off\l"
+           "only smoke.”\p"
+           "That's slightly different from “it gives\n"
+           "off smoke from its head while it runs.”\p"
+           "...The answer to this memo may not be\n"
+           "a living thing. Tee hee!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_ANOTHER_HINT)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont_2
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Tee hee! What a pity!\n"
+           "This book about Tepig says:\p"
+           "“It gives off flame from its nostrils.\n"
+           "When it's not well, it can give off\l"
+           "only smoke.”\p"
+           "That's slightly different from “it gives\n"
+           "off smoke from its head while it runs.”\p"
+           "...The answer to this memo may not be\n"
+           "a living thing. Tee hee!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_ANOTHER_HINT)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_4
+{
+     msgbox("“Flame burns inside its body, and it\n"
+           "gives off smoke from its head while\l"
+           "it runs.”\p"
+           "Did you figure it out?\p"
+           "...The answer to this memo may not be\n"
+           "a living thing. Tee hee!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_5
+{
+    msgbox("Have you already found the third memo?\n"
+           "Pretty good!\p"
+           "...So, what does the memo say?\p"
+           "“If you heat it up in a pot,\n"
+           "it'll be delicious. What is this?”\p"
+           "The book I am reading is about Tepig...\p"
+           "But you don't think this book\n"
+           "about Tepig is the answer, do you?!", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+	goto_if_eq (VAR_RESULT, YES, NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont_3)
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Of course you don't!\p"
+           "...It reminds me. In the past, I've seen\n"
+           "sweets made by heating up berries.\p"
+           "Now, what were they called?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont_3
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Oh, I know you're just kidding!\p"
+           "...It reminds me. In the past, I've seen\n"
+           "sweets made by heating up berries.\p"
+           "Now, what were they called?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_6
+{
+     msgbox("In the past, I've seen sweets made by\n"
+           "heating up Berries.\p"
+           "Now, what were they called?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo
+{
+    msgbox("...I'm wondering, did you see the last\n"
+           "memo and come to me?\p"
+           "OK. I'll give you the last question!\p"
+           "“Can you challenge the Gym Leader\n"
+           "if you win against me?”", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+	goto_if_eq (VAR_RESULT, YES, NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo_Cont)
+    destroy_speech_bubble()
+    closemessage()
+     msgbox("Hmmmmm...\n"
+           "What a pity!\p"
+           "I will tell you the answer\n"
+           "if you win against me!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_GYMRECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage()
+    goto(NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo_TheRealBattle)
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo_Cont
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Tee hee! That is correct!\n"
+           "Well, here we go, Trainer!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    goto(NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo_TheRealBattle)
+}
+
+script NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo_TheRealBattle
+{
+    trainerbattle_no_intro(TRAINER_SCHOOLGIRL_NACRENE_GYM, text("Oh, wow!\n"
+           "I lost, but thanks for a great battle!"))
+    msgbox("You'll meet the Gym Leader soon.\n"
+           "This is the last book.\p"
+           "Now! Read the last book!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    delay(10)
+    applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_right))
+    waitmovement(0)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_down * 2, walk_right, walk_in_place_left))
+    waitmovement(0)
+    setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_CLIMB_DOWN)
+    setobjectxyperm(LOCALID_NACRENE_GYM_SCHOOLGIRL, 13, 14)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_LEFT)
+    delay(20)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolgirl_End
+{
+    msgbox("You'll meet the Gym Leader soon.\n"
+           "This is the last book.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Scientist
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_NACRENE_GYM_SCIENTIST_CLIMB_DOWN, NacreneCity_Gym_EventScript_Scientist_NoBattle_2)
+    goto_if_unset(FLAG_NACRENE_GYM_FOUND_2ND_BOOK, NacreneCity_Gym_EventScript_Scientist_NoBattle)
+    msgbox("...Hmhm. I see.\p"
+           "Oh! Did you find the memo and come here\n"
+           "to look for this book?\p"
+           "What does the memo say?\p"
+           "“Flame burns inside its body, and it gives\n"
+           "off smoke from its head while it runs.”\p"
+           "I'm reading a book called\n"
+           "“The Structure of a Locomotive.”\p"
+           "Is this book the correct answer?", MSGBOX_YESNO, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
+	goto_if_eq(VAR_RESULT, NO, NacreneCity_Gym_EventScript_Battle_Scientist_Cont)
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Oh! That is correct!\p"
+           "“Flame burns inside its body, and it gives\n"
+           "off smoke from its head while it runs.”\p"
+           "That's exactly how a locomotive looks!\n"
+           "Well, I'll let you read this book.\p"
+           "But, before that...\p"
+           "It would be great for my research\n"
+           "if we had a Pokémon battle.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage()
+    goto(NacreneCity_Gym_EventScript_Battle_Scientist_Cont_2)
+}
+
+script NacreneCity_Gym_EventScript_Scientist_NoBattle
+{
+     msgbox("...Hmhm. I see.\p"
+           "Oh! The book I am reading now is called\n"
+           "“The Structure of a Locomotive.”\p"
+           "If you'd like to read this book,\n"
+           "please let me know.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage()
+    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Scientist_Cont
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Hmm...\n"
+           "What a pity!\p"
+           "“Flame burns inside its body, and it gives\n"
+           "off smoke from its head while it runs.”\p"
+           "That's exactly how a locomotive looks!\p"
+           "...Well, as a special treat, I'll let you\n"
+           "read this book.\p"
+           "But, before that...\p"
+           "It would be great for my research\n"
+           "if we had a Pokémon battle.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage()
+    goto(NacreneCity_Gym_EventScript_Battle_Scientist_Cont_2)
+}
+
+script NacreneCity_Gym_EventScript_Battle_Scientist_Cont_2
+{
+    trainerbattle_no_intro(TRAINER_SCIENTIST_F_NACRENE_GYM, text("I've never known anyone so powerful.\n"
+           "My head is empty compared to yours!"))
+    msgbox("Return a book to a shelf after reading...\n"
+           "This is a rule when you read a book.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage()
+    delay(10)
+    applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_right))
+    waitmovement(0)
+    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, moves(walk_down * 2, walk_right, walk_in_place_left))
+    waitmovement(0)
+    setflag(FLAG_NACRENE_GYM_SCIENTIST_CLIMB_DOWN)
+    setobjectxyperm(LOCALID_NACRENE_GYM_SCIENTIST, 6, 8)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+    delay(20)
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Scientist_NoBattle_2
+{
+     msgbox("Return a book to a shelf after reading...\n"
+           "This is a rule when you read a book.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_PotionsAreGreat
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “General Studies.”\p"
+           "“Potions Are Great!”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes the structure and\n"
+           "correct use of Potions.\p"
+           "It also offers tips for applying Potions\n"
+           "to mischievous Pokémon.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TechniquesForPokemonBattles
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “General Studies.”\p"
+           "“Techniques for Pokémon Battles”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes the best timing\n"
+           "to switch Pokémon in battle.\p"
+           "You should switch out your Pokémon\n"
+           "before you think it's in danger!", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TheSystemOfAPokemonCenter
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “General Studies.”\p"
+           "“The System of a Pokémon Center”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("It describes how a\n"
+           "Pokémon Center works.\p"
+           "It also describes a typical day of a\n"
+           "woman who works there.", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_NotTheBook)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_TheStructureOfALocomotive
+{
+    lock
+    msgbox("This is the bookshelf\n"
+           "for “General Studies.”\p"
+           "“The Structure of a Locomotive”\n"
+           "Do you want to read this book?", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, NacreneCity_Gym_EventScript_Book_NoRead)
+    msgbox("This is a book about a locomotive.\p"
+           "Flame burns inside its body, and it gives\n"
+           "off smoke from its head while it runs\l"
+           "by using steam power!", MSGBOX_DEFAULT)
+    goto_if_unset (FLAG_NACRENE_GYM_FOUND_3RD_BOOK, NacreneCity_Gym_EventScript_Book_ThirdMemo)
+    goto(NacreneCity_Gym_EventScript_Book_ThirdMemo_Cont)
+    end
+}
+
+script NacreneCity_Gym_EventScript_Book_ThirdMemo
+{
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    setflag(FLAG_NACRENE_GYM_FOUND_3RD_BOOK)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_down))
+    waitmovement(0)
+    setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
+    goto(NacreneCity_Gym_EventScript_Book_ThirdMemo_Cont)
+}
+
+script NacreneCity_Gym_EventScript_Book_ThirdMemo_Cont
+{
+    msgbox("There is a memo on the back cover...\p"
+           "“It's impressive you found this place!\p"
+           "That's what I'd expect from a\n"
+           "challenger like you!\p"
+           "Well, this is the third question!\p"
+           "Q: If you heat it up in a pot, it'll be\n"
+           "delicious. What is this?\p"
+           "The hint is on a bookshelf closer to\n"
+           "the entrance than here!”", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_HiddenStairCase_Text
+{
+    msgbox("Wow!\n"
+           "A hidden staircase!", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Breeze
+{
+    msgbox("A gentle breeze...\p"
+           "Where is it coming from?", MSGBOX_DEFAULT)
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_HiddenStairCase_Left
+{
+    lock
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_HiddenStairCase_Text)
+    goto(NacreneCity_Gym_EventScript_Book_TheBiologyOfOshawott)
+}
+
+script NacreneCity_Gym_EventScript_HiddenStairCase_Middle
+{
+    lock
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_TheBiologyOfOshawott)
+    goto(NacreneCity_Gym_EventScript_Book_TheBiologyOfTepig)
+}
+
+script NacreneCity_Gym_EventScript_HiddenStairCase_Right
+{
+    lock
+    goto_if_set(FLAG_NACRENE_GYM_FOUND_ALL_BOOKS, NacreneCity_Gym_EventScript_Book_TheBiologyOfTepig)
+    goto(NacreneCity_Gym_EventScript_Breeze)
+}
+

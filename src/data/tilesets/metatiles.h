@@ -462,3 +462,6 @@ const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_PinwheelForest[] = INCBIN_U16("data/tilesets/secondary/pinwheel_forest/metatiles.bin");
 const u16 gMetatileAttributes_PinwheelForest[] = INCBIN_U16("data/tilesets/secondary/pinwheel_forest/metatile_attributes.bin");
+
+const u16 gMetatiles_NacreneGym[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/metatiles.bin");
+const u16 gMetatileAttributes_NacreneGym[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/metatile_attributes.bin");

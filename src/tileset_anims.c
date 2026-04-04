@@ -218,6 +218,28 @@ const u16 *const gQueueAnimTiles_CaveBW_WaterEdge[] = {
     gQueueAnimTiles_CaveBW_WaterEdge_Frame3,
 };
 
+const u16 gQueueAnimTiles_PinwheelForest_Light_Frame0[] = INCBIN_U16("data/tilesets/secondary/pinwheel_forest/anim/light/0.4bpp");
+const u16 gQueueAnimTiles_PinwheelForest_Light_Frame1[] = INCBIN_U16("data/tilesets/secondary/pinwheel_forest/anim/light/1.4bpp");
+const u16 gQueueAnimTiles_PinwheelForest_Light_Frame2[] = INCBIN_U16("data/tilesets/secondary/pinwheel_forest/anim/light/2.4bpp");
+const u16 gQueueAnimTiles_PinwheelForest_Light_Frame3[] = INCBIN_U16("data/tilesets/secondary/pinwheel_forest/anim/light/3.4bpp");
+
+const u16 *const gQueueAnimTiles_PinwheelForest_Light[] = {
+    gQueueAnimTiles_PinwheelForest_Light_Frame0,
+    gQueueAnimTiles_PinwheelForest_Light_Frame1,
+    gQueueAnimTiles_PinwheelForest_Light_Frame2,
+    gQueueAnimTiles_PinwheelForest_Light_Frame3,
+};
+
+const u16 gQueueAnimTiles_NacreneGym_Torch_Frame0[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/anim/torch/0.4bpp");
+const u16 gQueueAnimTiles_NacreneGym_Torch_Frame1[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/anim/torch/1.4bpp");
+const u16 gQueueAnimTiles_NacreneGym_Torch_Frame2[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/anim/torch/2.4bpp");
+
+const u16 *const gQueueAnimTiles_NacreneGym_Torch[] = {
+    gQueueAnimTiles_NacreneGym_Torch_Frame0,
+    gQueueAnimTiles_NacreneGym_Torch_Frame1,
+    gQueueAnimTiles_NacreneGym_Torch_Frame2,
+};
+
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame0[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/0.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame1[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/1.4bpp");
 const u16 gQueueAnimTiles_Nuvema_Windmill_Frame2[] = INCBIN_U16("data/tilesets/secondary/nuvema/anim/windmill/2.4bpp");
@@ -885,6 +907,30 @@ static void TilesetAnim_CaveBW(u16 timer)
         QueueAnimTiles_CaveBW_WaterEdge(timer / 16);
 }
 
+static void QueueAnimTiles_PinwheelForest_Light(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_PinwheelForest_Light);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_PinwheelForest_Light[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(629)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NacreneGym_Torch(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NacreneGym_Torch);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NacreneGym_Torch[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(880)), 6 * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_PinwheelForest(u16 timer)
+{
+    if (timer % 64 == 0)
+        QueueAnimTiles_PinwheelForest_Light(timer / 64);
+}
+
+static void TilesetAnim_NacreneGym(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_NacreneGym_Torch(timer / 16);
+}
+
 static void TilesetAnim_Nuvema(u16 timer)
 {
     if (timer % 16 == 0)
@@ -1214,6 +1260,20 @@ void InitTilesetAnim_CaveBW(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_CaveBW;
+}
+
+void InitTilesetAnim_PinwheelForest(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_PinwheelForest;
+}
+
+void InitTilesetAnim_NacreneGym(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_NacreneGym;
 }
 
 static void TilesetAnim_Rustboro(u16 timer)
