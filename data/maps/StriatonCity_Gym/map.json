@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_STRIATON_GYM__GYMRECEPTIONIST",
+      "local_id": "LOCALID_STRIATON_GYM_GYMRECEPTIONIST",
       "graphics_id": "OBJ_EVENT_GFX_GYM_RECEPTIONIST",
       "x": 15,
       "y": 38,
