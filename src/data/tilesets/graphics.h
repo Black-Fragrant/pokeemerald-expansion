@@ -3390,3 +3390,22 @@ const u16 gTilesetPalettes_PinwheelForest[][16] =
 };
 
 const u32 gTilesetTiles_PinwheelForest[] = INCBIN_U32("data/tilesets/secondary/pinwheel_forest/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_NacreneGym[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/nacrene_gym/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_NacreneGym[] = INCBIN_U32("data/tilesets/secondary/nacrene_gym/tiles.4bpp.lz");

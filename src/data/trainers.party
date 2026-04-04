@@ -995,6 +995,7 @@ Class: Scientist
 Pic: Scientist F
 Gender: Female
 Music: Scientist
+Items: X Defense
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -1025,6 +1026,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LENORA_NACRENE_GYM ===
 Name: Lenora
+Class: Leader
 Pic: Lenora
 Gender: Female
 Music: Male
