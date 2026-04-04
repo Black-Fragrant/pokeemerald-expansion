@@ -47,5 +47,7 @@ void InitTilesetAnim_PokeCenter(void);
 void InitTilesetAnim_Striaton(void);
 void InitTilesetAnim_IndoorStriaton(void);
 void InitTilesetAnim_CaveBW(void);
+void InitTilesetAnim_PinwheelForest(void);
+void InitTilesetAnim_NacreneGym(void);
 
 #endif // GUARD_TILESET_ANIMS_H
