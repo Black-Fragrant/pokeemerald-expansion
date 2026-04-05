@@ -169,6 +169,7 @@ script StriatonCity_Gym_EventScript_GymReceptionist
 
 script StriatonCity_Gym_EventScript_GymSign
 {
+    goto_if_ge(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1, StriatonCity_Gym_EventScript_GymSign_AfterBadge_2)
     goto_if_set(FLAG_BADGE01_GET, StriatonCity_Gym_EventScript_GymSign_AfterBadge)
 	msgbox("Striaton Pokémon Gym\p"
 			"Gym Leaders: Cress, Chili, and Cilan\n"
@@ -181,6 +182,17 @@ script StriatonCity_Gym_EventScript_GymSign_AfterBadge
 	msgbox("Striaton Pokémon Gym\p"
 			"Gym Leaders: Cress, Chili, and Cilan\n"
 			"Certified Trainers: {PLAYER}", MSGBOX_SIGN)
+	end
+}
+
+script StriatonCity_Gym_EventScript_GymSign_AfterBadge_2
+{
+	msgbox("Striaton Pokémon Gym\p"
+			"Gym Leaders: Cress, Chili, and Cilan\n"
+			"Certified Trainers:\l"
+			"{PLAYER}\l"
+			"Cheren\l"
+			"Bianca", MSGBOX_SIGN)
 	end
 }
 

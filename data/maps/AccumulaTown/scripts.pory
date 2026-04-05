@@ -743,7 +743,8 @@ script AccumulaTown_EventScript_N_Battle
 	waitmovement(0)
 	removeobject(LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
 	setflag(FLAG_ACCUMULA_CHEREN_SQUARE)
-	playbgm(MUS_BW_ACCUMULA_TOWN, TRUE)
+	fadedefaultbgm
+	savebgm(MUS_BW_ACCUMULA_TOWN)
 	removeobject(LOCALID_ACCUMULA_PGM_GATE)
 	removeobject(LOCALID_ACCUMULA_PGF_GATE)
 	setflag(FLAG_ACCUMULA_PGF_GATE)

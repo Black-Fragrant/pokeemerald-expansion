@@ -1,18 +1,51 @@
 mapscripts NacreneCity_Museum_MapScripts 
 {
+    MAP_SCRIPT_ON_LOAD : NacreneCity_Museum_On_Load
     MAP_SCRIPT_ON_TRANSITION : NacreneCity_Museum_Transition
+}
+
+script NacreneCity_Museum_On_Load
+{
+	call_if_eq(VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_StolenDragoniteSkull)
+	end()
 }
 
 script NacreneCity_Museum_Transition
 {
     call_if_ge (VAR_NACRENE_STATE, 3, NacreneCity_Museum_EventScript_PositionScientist)
+	call_if_ge (VAR_NACRENE_STATE, 5, NacreneCity_Museum_EventScript_PlayMusic)
+	call_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_PositionScientist_2)
     end()
+}
+
+script NacreneCity_Museum_EventScript_StolenDragoniteSkull
+{
+    setmetatile (9, 16, 0x2EE, TRUE)
+    setmetatile (10, 16, 0x2EF, TRUE)
+    setmetatile (9, 17, 0x2F6, TRUE)
+    setmetatile (10, 17, 0x2F7, TRUE)
+    return
 }
 
 script NacreneCity_Museum_EventScript_PositionScientist
 {
 	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 11, 4)
     setobjectmovementtype (LOCALID_NACRENE_MUSEUM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+    return()
+}
+
+script NacreneCity_Museum_EventScript_PlayMusic
+{
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 11, 12)
+    setobjectmovementtype (LOCALID_NACRENE_MUSEUM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+    return
+}
+
+script NacreneCity_Museum_EventScript_PositionScientist_2
+{
+	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 10, 20)
+    setobjectmovementtype (LOCALID_NACRENE_MUSEUM_SCIENTIST, MOVEMENT_TYPE_FACE_UP)
     return()
 }
 
@@ -146,51 +179,137 @@ script NacreneCity_Museum_Trigger_Tour_Right
 
 script NacreneCity_Museum_EventScript_Scientist
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Scientist_2)
 	msgbox("At the end of the Gym, a very strong\n"
            "and kind Gym Leader is waiting.\p"
            "By the way, the Gym Leader Lenora\n"
            "happens to be my wife!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_Scientist_2
+{
+    lock
+	msgbox("Hawes: Lenora loves that skull...", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
 script NacreneCity_Museum_EventScript_SchoolGirl
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_SchoolGirl_3)
+	goto_if_eq (VAR_NACRENE_STATE, 5, NacreneCity_Museum_EventScript_SchoolGirl_2)
 	msgbox("The Gym Leader here studies Fossils and\n"
            "ancient artifacts.", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_SchoolGirl_2
+{
+	msgbox("Those thugs over there...\p"
+           "What are they trying to do?", MSGBOX_NPC, TRUE) //this is not canon
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_SchoolGirl_3
+{
+	msgbox("Those thugs sure were bold...\p"
+           "It's almost as if they believe they are\n"
+           "doing the right thing.", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
 script NacreneCity_Museum_EventScript_Grandpa
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Grandpa_2)
 	msgbox("Perhaps there is a Pokémon that came\n"
            "from space along with this meteorite.", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_Grandpa_2
+{
+	msgbox("What in the world could Team Plasma\n"
+           "be thinking?!", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
 script NacreneCity_Museum_EventScript_GreenShirtGuy
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_GreenShirtGuy_2)
 	msgbox("Rare Pokémon from around the world...\n"
            "Museums are packed with adventure!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_GreenShirtGuy_2
+{
+	msgbox("My oh my oh my!", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
 script NacreneCity_Museum_EventScript_Receptionist_TopLeft
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_TopLeft_2)
 	msgbox("You can get to the Pokémon Gym by going\n"
            "to the back of the museum!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_TopLeft_2
+{
+	msgbox("What do they plan to accomplish by\n"
+           "stealing the Dragon Skull?", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
 script NacreneCity_Museum_EventScript_Receptionist_BottomLeft
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2)
 	msgbox("Welcome to the Nacrene Museum!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2
+{
+	msgbox("Those robbers... What in the world is\n"
+           "Team Plasma?", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
 script NacreneCity_Museum_EventScript_Receptionist_Right
 {
+    lock
+	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_Right_2)
 	msgbox("I am researching Pokémon Fossils here.\p"
            "If you have a Fossil, bring it to me!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_Right_2
+{
+	msgbox("I-I'm sorry. I'm afraid you'll have\n"
+           "to come back later.", MSGBOX_NPC, TRUE)
+    release
 	end
 }
 
@@ -234,6 +353,126 @@ script AccumulaTown_EventScript_SignPost_Bones
 {
 	msgbox("Bones that were once carried as weapons\n"
            "by a certain kind of Pokémon.", MSGBOX_SIGN)
+}
+
+script NacreneCity_Museum_Trigger_Heist
+{
+    lock
+    msgbox("Lenora: Now, you wait!\n"
+           "Enough fooling around!", MSGBOX_DEFAULT)
+    closemessage
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 9, NacreneCity_Museum_Trigger_Heist_Left)
+	call_if_eq (VAR_TEMP_0, 10, NacreneCity_Museum_Trigger_Heist_Middle)
+	call_if_eq (VAR_TEMP_0, 11, NacreneCity_Museum_Trigger_Heist_Right)
+	delay(10)
+    msgbox("Team Plasma: So you've come, Gym Leader.\p"
+           "We, Team Plasma, claim this museum's\n"
+           "Dragon Skull in the name of\l"
+           "Pokémon liberation!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_PG3)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 5))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Team Plasma: To show you we're serious,\n"
+           "we'll steal it right before your eyes!", MSGBOX_DEFAULT)
+    closemessage
+	applymovement(LOCALID_NACRENE_MUSEUM_PG3, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_MUSEUM_PG4, moves(walk_in_place_slow_down))
+	waitmovement(0)
+    msgbox("Team Plasma: Well, then, here's\n"
+           "our smoke screen!", MSGBOX_DEFAULT)
+    closemessage
+	minimsg("Plasmaaaa!", 3, 3)
+	delay(40)
+	minimsg("Plasmaaaa!", 18, 9)
+	delay(60)
+	closeallminimessages
+	applymovement(LOCALID_NACRENE_MUSEUM_PG1, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_MUSEUM_PG5, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_MUSEUM_PG2, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_MUSEUM_PG6, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	delay(20)
+	fadescreen(FADE_TO_BLACK)
+	playse(SE_FLEE)
+	waitse()
+    removeobject(LOCALID_NACRENE_MUSEUM_PG1)
+    removeobject(LOCALID_NACRENE_MUSEUM_PG2)
+    removeobject(LOCALID_NACRENE_MUSEUM_PG3)
+    removeobject(LOCALID_NACRENE_MUSEUM_PG4)
+    removeobject(LOCALID_NACRENE_MUSEUM_PG5)
+    removeobject(LOCALID_NACRENE_MUSEUM_PG6)
+	fadescreen(FADE_FROM_BLACK)
+    call(NacreneCity_Museum_EventScript_StolenDragoniteSkull)
+	special(DrawWholeMapView)
+    setvar(VAR_NACRENE_STATE, 6)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 5))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_NACRENE_MUSEUM_LENORA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_NACRENE_MUSEUM_LENORA, moves(walk_slow_down * 2))
+	waitmovement(0)
+    delay(10)
+    msgbox("Lenora: What's going on?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_MUSEUM_LENORA, moves(walk_fast_left * 5, walk_fast_down * 4))
+	waitmovement(0)
+    removeobject(LOCALID_NACRENE_MUSEUM_LENORA)
+    setflag(FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS)
+	delay(20)
+	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_in_place_left, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Hawes: Oh! Oh! We have to go after them!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_MUSEUM_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+    release
+    end
+}
+
+script NacreneCity_Museum_Trigger_Heist_Left
+{
+	applymovement(LOCALID_PLAYER, moves(walk_fast_down * 3))
+	waitmovement(0)
+    return
+}
+
+script NacreneCity_Museum_Trigger_Heist_Middle
+{
+	applymovement(LOCALID_PLAYER, moves(walk_fast_left, walk_fast_down * 3))
+	waitmovement(0)
+    return
+}
+
+script NacreneCity_Museum_Trigger_Heist_Right
+{
+	applymovement(LOCALID_PLAYER, moves(walk_fast_left * 2, walk_fast_down * 3))
+	waitmovement(0)
+    return
 }
 
 

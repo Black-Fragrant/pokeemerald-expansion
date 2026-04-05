@@ -234,7 +234,8 @@ script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear
     msgbox("{PLAYER} obtained the C-Gear!") //this should be transparent
     setflag(FLAG_STRIATON_OBTAINED_C_GEAR)
     delay(120)
-    playbgm (MUS_BW_STRIATON_CITY, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_STRIATON_CITY)
     msgbox("If you want to turn on the C-Gear, touch\n"
             "the Power symbol at the bottom right of\l"
             "the screen.\p"
@@ -312,7 +313,8 @@ script StriatonCity_TRB2F_EventScript_Fennel_YesTime
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} obtained the Pal Pad!") //this should be transparent
     delay(120)
-    playbgm (MUS_BW_STRIATON_CITY, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_STRIATON_CITY)
     delay(10)
     msgbox("You can register your friends in your\n"
             "Pal Pad.\p"

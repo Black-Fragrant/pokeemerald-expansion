@@ -69,7 +69,8 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial
 				"Here, {PLAYER}, give it a try.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
 	destroy_speech_bubble()
 	closemessage()
-	playbgm(MUS_BW_POKEMON_CENTER, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_POKEMON_CENTER)
 	delay(20)
 	releaseall()
 	end()
@@ -232,7 +233,8 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial_Continue
 	setflag(FLAG_ACCUMULA_RESIDENTS)
 	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 1)
 	waitse()
-	playbgm(MUS_BW_POKEMON_CENTER, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_POKEMON_CENTER)
 	delay(20)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up ))

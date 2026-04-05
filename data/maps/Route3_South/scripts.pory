@@ -52,7 +52,8 @@ script Route3_South_EventScript_Trigger_Cheren
 	applymovement(LOCALID_PLAYER, moves(face_down))
 	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_down * 6))
 	waitmovement(0)
-	playbgm(MUS_BW_ROUTE_2, TRUE)
+    fadedefaultbgm
+	savebgm(MUS_BW_ROUTE_2)
     delay(10)
     removeobject(LOCALID_ROUTE3S_CHEREN)
     setvar(VAR_ROUTE3_SOUTH_CHEREN_EXPLAIN, 1)

@@ -43,7 +43,7 @@ script Route2_EventScript_MotherGivesRunningShoes
     msgbox("{PLAYER} received a pair of Running Shoes!") //this should be transparent
 	setflag(FLAG_SYS_B_DASH)
     delay(120)
-	playbgm(MUS_BW_FOLLOW_ME, TRUE)
+	fadenewbgm(MUS_BW_FOLLOW_ME)
 	msgbox("When you're wearing the Running Shoes,\n"
 			"you can go anywhere in a flash!\p"
 			"Let me read you the instructions...\p"
@@ -71,7 +71,8 @@ script Route2_EventScript_MotherGivesRunningShoes
 	playse(SE_EXIT)
 	removeobject (LOCALID_ROUTE2_MOTHER)
 	waitse()
-	playbgm(MUS_BW_ROUTE_1, TRUE)
+	fadedefaultbgm
+	savebgm(MUS_BW_ROUTE_1)
 	clearflag(FLAG_NUVEMA_PH2F_IS_MESSY)
 	setvar(VAR_ROUTE2_MOTHER_GIVES_SHOES, 1)
 	delay(20)
@@ -301,8 +302,9 @@ script Route2_EventScript_BiancaBattle
 	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_left * 8))
 	waitmovement(0)
 	removeobject(LOCALID_ROUTE2_BIANCA)
+	fadedefaultbgm
+	savebgm(MUS_BW_ROUTE_1)
 	delay(20)
-	playbgm(MUS_BW_ROUTE_1, TRUE)
 	release()
 	end()
 }
