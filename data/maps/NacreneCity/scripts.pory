@@ -67,7 +67,8 @@ script NacreneCity_EventScript_Trigger_Cheren
     destroy_speech_bubble()
     closemessage
 	delay(10)
-    playbgm(MUS_BW_NACRENE_CITY, TRUE)
+    fadedefaultbgm
+	savebgm(MUS_BW_NACRENE_CITY)
 	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_left * 8))
 	waitmovement(0)
 	removeobject(LOCALID_NACRENE_CHEREN)
@@ -241,7 +242,8 @@ script NacreneCity_EventScript_Trigger_N_Battle
 	waitmovement(0)
 	removeobject(LOCALID_NACRENE_N)
 	delay(20)
-	playbgm(MUS_BW_NACRENE_CITY, TRUE)
+    fadedefaultbgm
+	savebgm(MUS_BW_NACRENE_CITY)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
 	waitmovement(0)

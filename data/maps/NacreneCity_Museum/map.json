@@ -105,6 +105,104 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NacreneCity_Museum_EventScript_Grandpa",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_LENORA",
+      "graphics_id": "OBJ_EVENT_GFX_LENORA",
+      "x": 10,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_PG3",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 9,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_PG4",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 11,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_PG1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 7,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_PG2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 8,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_PG5",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 12,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_NACRENE_MUSEUM_PG6",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 13,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
     }
   ],
   "warp_events": [
@@ -178,6 +276,33 @@
       "var": "VAR_NACRENE_STATE",
       "var_value": "2",
       "script": "NacreneCity_Museum_Trigger_Tour"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "5",
+      "script": "NacreneCity_Museum_Trigger_Heist"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "5",
+      "script": "NacreneCity_Museum_Trigger_Heist"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "5",
+      "script": "NacreneCity_Museum_Trigger_Heist"
     }
   ],
   "bg_events": [

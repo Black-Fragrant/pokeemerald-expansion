@@ -1,15 +1,27 @@
 mapscripts NuvemaTown_ProfessorJunipersLab_MapScripts 
 {
+    MAP_SCRIPT_ON_TRANSITION : NuvemaTown_ProfessorJunipersLab_On_Transition
 	MAP_SCRIPT_ON_FRAME_TABLE
     [
         VAR_NUVEMA_PICK_STARTER, 5 : NuvemaTown_EventScript_JPL_JuniperGivesDex
     ]
 }
 
+script NuvemaTown_ProfessorJunipersLab_On_Transition
+{
+	call_if_eq(VAR_NUVEMA_PICK_STARTER, 5, NuvemaTown_EventScript_JPL_PlayMusic)
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_PlayMusic
+{
+    savebgm(MUS_BW_JUNIPER)
+    return
+}
+
 script NuvemaTown_EventScript_JPL_JuniperGivesDex
 {
     lockall()
-    playbgm(MUS_BW_JUNIPER, TRUE)
     setvar(VAR_NUVEMA_PICK_STARTER, 6)
     applymovement(LOCALID_PLAYER, moves( walk_up * 2 ))
     applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( walk_up * 2 ))
@@ -175,7 +187,8 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue
     setflag(FLAG_SYS_POKEDEX_GET)
     delay(120)
     closemessage
-    playbgm(MUS_BW_JUNIPER, TRUE)
+    fadenewbgm(MUS_BW_JUNIPER)
+    savebgm(MUS_BW_JUNIPER)
     msgbox("Professor Juniper: Next, I need to teach\n"
             "you how to meet Pokémon.\p"
             "Please meet me at Route 1, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
@@ -203,7 +216,8 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue
 	removeobject (LOCALID_NUVEMA_PJL_JUNIPER)
     setflag(FLAG_NUVEMA_PJL_JUNIPER)
 	waitse()
-    playbgm (MUS_BW_JUNIPER_LAB, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_JUNIPER_LAB)
 	delay(20)
     msgbox("Bianca: S-since the professor asked us,\n"
             "it's OK to go on an adventure, right?\p"
@@ -314,7 +328,8 @@ script NuvemaTown_EventScript_JPL_JUNIPER_PokedexRating
     delay(130)
     destroy_speech_bubble()
     closemessage
-    playbgm(MUS_BW_JUNIPER_LAB, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_JUNIPER_LAB)
     goto_if_ge (VAR_0x8008, 152, NuvemaTown_EventScript_JPL_JUNIPER_Seen_152_156)
     goto_if_ge (VAR_0x8008, 145, NuvemaTown_EventScript_JPL_JUNIPER_Seen_145_151)
     goto_if_ge (VAR_0x8008, 135, NuvemaTown_EventScript_JPL_JUNIPER_Seen_135_144)

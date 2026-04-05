@@ -118,17 +118,17 @@ script Dreamyard_EventScript_Girl_GivePanpour3
     givemon(SPECIES_PANPOUR, 10, ITEM_NONE)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} received Panpour!") //this should be transparent
-			delay(100)
+			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
 		}
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("Panpour was sent to the PC!") //this should be transparent
-			delay(100)
+			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
 		}
@@ -137,7 +137,6 @@ script Dreamyard_EventScript_Girl_GivePanpour3
 			msgbox("Your Pokémon Storage is full...")
 			closemessage
 		}
-	playbgm(MUS_BW_DREAM_YARD, TRUE)
     goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
     end()
 }
@@ -178,17 +177,17 @@ script Dreamyard_EventScript_Girl_GivePansage3
     givemon(SPECIES_PANSAGE, 10, ITEM_NONE)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} received Pansage!") //this should be transparent
-			delay(100)
+			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
 		}
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("Pansage was sent to the PC!") //this should be transparent
-			delay(100)
+			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
 		}
@@ -197,7 +196,6 @@ script Dreamyard_EventScript_Girl_GivePansage3
 			msgbox("Your Pokémon Storage is full...")
 			closemessage
 		}
-	playbgm(MUS_BW_DREAM_YARD, TRUE)
     goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
     end()
 }
@@ -238,17 +236,17 @@ script Dreamyard_EventScript_Girl_GivePansear3
     givemon(SPECIES_PANSEAR, 10, ITEM_NONE)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} received Pansear!") //this should be transparent
-			delay(100)
+			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
 		}
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("Pansear was sent to the PC!") //this should be transparent
-			delay(100)
+			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
 		}
@@ -257,7 +255,6 @@ script Dreamyard_EventScript_Girl_GivePansear3
 			msgbox("Your Pokémon Storage is full...")
 			closemessage
 		}
-	playbgm(MUS_BW_DREAM_YARD, TRUE)
     goto(Dreamyard_EventScript_Girl_ObtainedMonkey)
     end()
 }
@@ -337,7 +334,8 @@ script Dreamyard_EventScript_Trigger_Bianca
     applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_up, walk_right, walk_up * 4, walk_in_place_right, delay_16, , walk_in_place_left, delay_16, , walk_in_place_right))
     waitmovement(0)
     delay(10)
-	playbgm(MUS_BW_DREAM_YARD, TRUE)
+    fadedefaultbgm()
+    savebgm(MUS_BW_DREAM_YARD)
     delay(10)
     setvar(VAR_DREAMYARD_STATE, 1)
 	setobjectxyperm (LOCALID_DREAMYARD_BIANCA, 17, 20)
@@ -646,7 +644,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     removeobject(LOCALID_DREAMYARD_PLASMA_GRUNT_M)
     delay(10)
 	fadescreen(FADE_TO_WHITE)
-	playbgm(MUS_BW_DREAM_YARD, TRUE)
+	fadedefaultbgm()
+    savebgm(MUS_BW_DREAM_YARD)
     removeobject(LOCALID_DREAMYARD_GHETSIS_TOP)
 	fadescreen(FADE_FROM_WHITE)
     addobject(LOCALID_DREAMYARD_MUSHARNA)

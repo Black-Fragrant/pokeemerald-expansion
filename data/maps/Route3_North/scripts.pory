@@ -130,6 +130,7 @@ script Route3_North_EventScript_Battle_Twins
 	waitmovement(0)
 	waitse()
     playbgm(MUS_BW_SPOTTED_KID, TRUE)
+	savebgm(MUS_BW_ROUTE_2)
 	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(face_right))
 	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(face_right))
 	waitmovement(0)
@@ -142,7 +143,6 @@ script Route3_North_EventScript_Battle_Twins
 	destroy_speech_bubble()
 	closemessage
     trainerbattle_no_intro(TRAINER_TWINS_ROUTE_3, text("Kumi: Come on, Pokémon!\nGet up! Go!\pAmy: Oh, no! Our Pokémon\nburned out..."))
-    playbgm(MUS_BW_ROUTE_2, TRUE)
     setvar(VAR_ROUTE3_NOT_ENOUGH_POKEMON, 1)
     release
     end 
@@ -195,6 +195,7 @@ script Route3_North_EventScript_Trigger_NotEnoughPokemon
 	waitmovement(0)
 	waitse()
     playbgm(MUS_BW_SPOTTED_KID, TRUE)
+	savebgm(MUS_BW_ROUTE_2)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_1, 22, Route3_North_EventScript_TwinR_FaceDown)
 	call_if_eq (VAR_TEMP_1, 23, Route3_North_EventScript_TwinR_WalkDown)
@@ -210,7 +211,6 @@ script Route3_North_EventScript_Trigger_NotEnoughPokemon
 	destroy_speech_bubble()
 	closemessage
     trainerbattle_no_intro(TRAINER_TWINS_ROUTE_3, text("Kumi: Come on, Pokémon!\nGet up! Go!\pAmy: Oh, no! Our Pokémon\nburned out..."))
-    playbgm(MUS_BW_ROUTE_2, TRUE)
     setvar(VAR_ROUTE3_NOT_ENOUGH_POKEMON, 1)
     release
     end 
@@ -284,7 +284,8 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	call_if_set(FLAG_CHOSE_SNIVY, Route3_North_EventScript_Trigger_CherenBattle_Tepig)
 	call_if_set(FLAG_CHOSE_TEPIG, Route3_North_EventScript_Trigger_CherenBattle_Oshawott)
 	call_if_set(FLAG_CHOSE_OSHAWOTT, Route3_North_EventScript_Trigger_CherenBattle_Snivy)
-	playbgm(MUS_BW_ROUTE_2, TRUE)
+	fadedefaultbgm
+	savebgm(MUS_BW_ROUTE_2)
 	delay(10)
 	msgbox("Cheren: I see.\n"
        "So that's how you battle.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
@@ -402,7 +403,8 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_fast_left * 8))
 	waitmovement(0)
 	delay(20)
-	playbgm(MUS_BW_ROUTE_2, TRUE)
+	fadedefaultbgm
+	savebgm(MUS_BW_ROUTE_2)
 	setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1)
 	removeobject(LOCALID_ROUTE3N_CHEREN_BATTLE)
 	setflag(FLAG_DREAMYARD_BIANCA_2)

@@ -150,6 +150,7 @@ script NacreneCity_Gym_EventScript_ReceptionistGivesWater
 script NacreneCity_Gym_EventScript_Receptionist
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 5, NacreneCity_Gym_EventScript_Receptionist_2)
 	msgbox("All Trainers in this Gym use\n"
            "Normal-type Pokémon.\p"
            "This is just between you and me...\p"
@@ -165,6 +166,17 @@ script NacreneCity_Gym_EventScript_Receptionist
            "“Nice to Meet You, Pokémon.”\p"
            "If you don't know where the book is,\n"
            "please ask anyone!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Gym_EventScript_Receptionist_2
+{
+    	msgbox("Did you hear it? Strange people came\n"
+           "charging through the museum...\p"
+           "Oh! The Gym Badge!! Congratulations!\p"
+           "So, the museum!\n"
+           "Oh, no. What shall we do?!", MSGBOX_NPC, TRUE)
     release
 	end
 }
@@ -188,7 +200,10 @@ script NacreneCity_Gym_EventScript_GymSign_AfterBadge
 {
 	msgbox("Nacrene Pokémon Gym\p"
 			"Gym Leader: Lenora\n"
-			"Certified Trainers: {PLAYER}", MSGBOX_SIGN)
+			"Certified Trainers:\l"
+			"{PLAYER}\l"
+			"Cheren\l"
+			"Bianca", MSGBOX_SIGN)
 	end
 }
 
@@ -509,6 +524,7 @@ script NacreneCity_Gym_EventScript_Battle_Schoolgirl
 {
     lock
     faceplayer
+    goto_if_set(FLAG_BADGE02_GET, NacreneCity_Gym_EventScript_Battle_Schoolgirl_AfterBadge)
     goto_if_set(FLAG_NACRENE_GYM_SCHOOLGIRL_CLIMB_DOWN, NacreneCity_Gym_EventScript_Battle_Schoolgirl_End)
     goto_if_set(FLAG_NACRENE_GYM_FOUND_4TH_BOOK, NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo)
     goto_if_set(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT, NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_6)
@@ -733,7 +749,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo
      msgbox("Hmmmmm...\n"
            "What a pity!\p"
            "I will tell you the answer\n"
-           "if you win against me!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_GYMRECEPTIONIST)
+           "if you win against me!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage()
     goto(NacreneCity_Gym_EventScript_Schoolgirl_SawLastMemo_TheRealBattle)
@@ -776,6 +792,17 @@ script NacreneCity_Gym_EventScript_Battle_Schoolgirl_End
 {
     msgbox("You'll meet the Gym Leader soon.\n"
            "This is the last book.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
+    destroy_speech_bubble()
+    closemessage()
+    release
+    end
+}
+
+script NacreneCity_Gym_EventScript_Battle_Schoolgirl_AfterBadge
+{
+    msgbox("Going through a maze in the\n"
+           "library and defeating the Gym Leader!\p"
+           "You... must be a very studious Trainer.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage()
     release

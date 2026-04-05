@@ -15,22 +15,19 @@ mapscripts NuvemaTown_MapScripts
 
 script NuvemaTown_On_Transition
 {
-    call_if_eq (VAR_NUVEMA_PICK_STARTER, 0, NuvemaTown_EventScript_Hide_CherenBianca)
+    call_if_eq (VAR_NUVEMA_PICK_STARTER, 0, NuvemaTown_EventScript_PlayMusic)
 	end()
 }
 
-script NuvemaTown_EventScript_Hide_CherenBianca
+script NuvemaTown_EventScript_PlayMusic
 {
-	setflag(FLAG_NUVEMA_BIANCA_CUTSCENE)
-	setflag(FLAG_NUVEMA_CHEREN_LAB)
-	setflag(FLAG_NUVEMA_BIANCA_LAB)
+	savebgm(MUS_BW_SPAWN_NUVEMA_TOWN)
 	return()
 }
 
 script NuvemaTown_EventScript_HidePlayer
 {
 	hideobjectat(LOCALID_PLAYER, MAP_NUVEMA_TOWN)
-	playbgm(MUS_BW_SPAWN_NUVEMA_TOWN, 1)
 	end()
 }
 
@@ -377,7 +374,8 @@ script NuvemaTown_EventScript_MotherGivesTownMap
 	additem (ITEM_TOWN_MAP)
     call_if_eq (VAR_RESULT, FALSE, NuvemaTown_EventScript_BagIsFull)
     closemessage
-    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
+	fadedefaultbgm
+	savebgm(MUS_BW_NUVEMA_TOWN)
 	delay(10)
 	applymovement(LOCALID_NUVEMA_MOTHER_LAB, moves( walk_left, walk_in_place_up ))
 	waitmovement(0)

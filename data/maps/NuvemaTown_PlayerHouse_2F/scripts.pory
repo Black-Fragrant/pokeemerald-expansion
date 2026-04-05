@@ -97,31 +97,35 @@ script NuvemaTown_PlayerHouse_Messy_Room
 
 script NuvemaTown_PH2F_On_Transition
 {
-	switch(var(VAR_NUVEMA_PICK_STARTER))
-    { 
-    case 0: goto(NuvemaTown_PH2F_EventScript_HideBianca)
-    case 2: goto(NuvemaTown_PH2F_EventScript_PositionPlayers)
-    }
+	call_if_eq(VAR_NUVEMA_PICK_STARTER, 0, NuvemaTown_PH2F_EventScript_HideBianca)
+	call_if_eq(VAR_NUVEMA_PICK_STARTER, 2, NuvemaTown_PH2F_EventScript_PositionPlayers)
+	call_if_eq(VAR_NUVEMA_PICK_STARTER, 2, NuvemaTown_PH2F_EventScript_PlayMusic)
 	end
 }
 
 script NuvemaTown_PH2F_EventScript_HideBianca
 {
 	setflag (FLAG_NUVEMA_PH2F_BIANCA)
-	end()
+	return()
 }
 
 script NuvemaTown_PH2F_EventScript_TurnPlayer
 {
 	turnobject (LOCALID_PLAYER, DIR_EAST)
-	end()
+	return()
+}
+
+script NuvemaTown_PH2F_EventScript_PlayMusic
+{
+    savebgm(MUS_BW_ADVENTURE_TOGETHER)
+    return()
 }
 
 script NuvemaTown_PH2F_EventScript_PositionPlayers
 {
 	setobjectxyperm (LOCALID_NUVEMA_PH2F_CHEREN, 5, 6)
 	setobjectxyperm (LOCALID_NUVEMA_PH2F_BIANCA, 6, 8)
-	end()
+    return()
 }
 
 script NuvemaTown_PH2F_EventScript_Loading
@@ -315,18 +319,18 @@ script NuvemaTown_PH2F_EventScript_Chose_Snivy
 		givemon(SPECIES_SNIVY, 5, ITEM_NONE)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} chose\n"
 			"Snivy!")
-			delay(100)
+			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("Snivvy was sent to the PC!")
-			delay(100)
+			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
@@ -353,18 +357,18 @@ script NuvemaTown_PH2F_EventScript_Chose_Tepig
 		givemon(SPECIES_TEPIG, 5, ITEM_NONE)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} chose\n"
 			"Tepig!")
-			delay(100)
+			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("Tepig was sent to the PC!")
-			delay(100)
+			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
@@ -391,18 +395,18 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 		givemon(SPECIES_OSHAWOTT, 5, ITEM_NONE)
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} chose\n"
 			"Oshawott!")
-			delay(100)
+			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
-			playbgm(MUS_BW_CAUGHT, TRUE)
+			playfanfare(MUS_EVOLVED)
 			msgbox("Oshawott was sent to the PC!")
-			delay(100)
+			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
@@ -424,6 +428,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 script NuvemaTown_PH2F_EventScript_Finish_Choosing
 {
 	fadenewbgm (MUS_BW_ADVENTURE_TOGETHER)
+	savebgm(MUS_BW_ADVENTURE_TOGETHER)
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_down, walk_in_place_right))
 	waitmovement(0)
 	delay (10)
@@ -485,7 +490,6 @@ script NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy
 script NuvemaTown_PH2F_EventScript_BiancaBattle
 {
 	lockall()
-	playbgm(MUS_BW_ADVENTURE_TOGETHER, TRUE)
 	setvar(VAR_NUVEMA_PICK_STARTER, 3)
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_left))
 	waitmovement(0)
@@ -798,7 +802,8 @@ script NuvemaTown_PH2F_EventScript_Finished_Battles
 	removeobject (LOCALID_NUVEMA_PH2F_BIANCA)
 	waitse()
 	setflag(FLAG_NUVEMA_PH2F_BIANCA)
-    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
+	fadedefaultbgm
+	savebgm(MUS_BW_NUVEMA_TOWN)
 	setflag(FLAG_NUVEMA_PH1F_LOOKER)
 	clearflag(FLAG_NO_WHITEOUT)
 	special(HealPlayerParty)

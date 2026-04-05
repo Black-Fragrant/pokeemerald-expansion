@@ -137,10 +137,9 @@ script NuvemaTown_PH1F_EventScript_Apologize
     destroy_speech_bubble()
     closemessage()
 	fadescreen(FADE_TO_BLACK)
-    playbgm(MUS_BW_HEAL, TRUE)
+	playfanfare(MUS_HEAL)
 	special(HealPlayerParty)
-    delay(140)
-    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+    waitfanfare
 	fadescreen(FADE_FROM_BLACK)
     msgbox("Mom: Your Pokémon is looking great!\p"
             "Now, if you're going out,\n"
@@ -175,13 +174,14 @@ script NuvemaTown_PH1F_EventScript_XT_Red
 
 script NuvemaTown_PH1F_EventScript_XT_After_Giving_XT
 {
-    playbgm(MUS_BW_FOLLOW_ME, TRUE)
+    fadenewbgm(MUS_BW_FOLLOW_ME)
     msgbox("Mom: You're going to thank the\n"
             "professor too, right?\l"
             "Better get going, honey!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_MOTHER)
     destroy_speech_bubble()
     closemessage
-    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_NUVEMA_TOWN)
     delay(20)
 	releaseall()
 	end()
@@ -215,10 +215,11 @@ script NuvemaTown_PH1F_EventScript_Mother_Healing
             "Pokémon too hard.", MSGBOX_NPC, TRUE)
     setflag(FLAG_TEMP_11)
 	fadescreen(FADE_TO_BLACK)
-    playbgm(MUS_BW_HEAL, TRUE)
+    playfanfare(MUS_HEAL)
 	special(HealPlayerParty)
-    delay(140)
-    playbgm (MUS_BW_NUVEMA_TOWN, TRUE)
+    waitfanfare
+    fadedefaultbgm
+    savebgm(MUS_BW_NUVEMA_TOWN)
 	fadescreen(FADE_FROM_BLACK)
     msgbox("Mom: You and your Pokémon should all be\n"
             "filled with energy again!\l"
