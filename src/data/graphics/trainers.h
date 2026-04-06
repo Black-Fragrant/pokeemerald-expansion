@@ -365,6 +365,31 @@ const u16 gTrainerPalette_ScientistF[] = INCBIN_U16("graphics/trainers/front_pic
 const u32 gTrainerFrontPic_Lenora[] = INCBIN_U32("graphics/trainers/front_pics/lenora.4bpp.smol");
 const u16 gTrainerPalette_Lenora[] = INCBIN_U16("graphics/trainers/front_pics/lenora.gbapal");
 
+const u32 gTrainerFrontPic_RangerM[] = INCBIN_U32("graphics/trainers/front_pics/ranger_m.4bpp.smol");
+const u16 gTrainerPalette_RangerM[] = INCBIN_U16("graphics/trainers/front_pics/ranger_m.gbapal");
+
+const u32 gTrainerFrontPic_RangerF[] = INCBIN_U32("graphics/trainers/front_pics/ranger_f.4bpp.smol");
+const u16 gTrainerPalette_RangerF[] = INCBIN_U16("graphics/trainers/front_pics/ranger_f.gbapal");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const u32 gTrainerFrontPic_YoungsterFrlg[] = INCBIN_U32("graphics/trainers/front_pics/youngster_frlg.4bpp.smol");
 const u16 gTrainerPalette_YoungsterFrlg[] = INCBIN_U16("graphics/trainers/palettes/youngster_frlg.gbapal");
 
@@ -714,6 +739,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_SCIENTIST_M, gTrainerFrontPic_ScientistM, gTrainerPalette_ScientistM),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_SCIENTIST_F, gTrainerFrontPic_ScientistF, gTrainerPalette_ScientistF),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_LENORA, gTrainerFrontPic_Lenora, gTrainerPalette_Lenora),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_RANGER_M, gTrainerFrontPic_RangerM, gTrainerPalette_RangerM),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_RANGER_F, gTrainerFrontPic_RangerF, gTrainerPalette_RangerF),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_YOUNGSTER_FRLG, gTrainerFrontPic_YoungsterFrlg, gTrainerPalette_YoungsterFrlg),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_BUG_CATCHER_FRLG, gTrainerFrontPic_BugCatcherFrlg, gTrainerPalette_BugCatcherFrlg),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_LASS_FRLG, gTrainerFrontPic_LassFrlg, gTrainerPalette_LassFrlg),
