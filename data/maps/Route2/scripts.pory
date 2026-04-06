@@ -197,7 +197,7 @@ script Route2_EventScript_BoyOverLedge
 {
 	lock()
 	faceplayer()
-	goto_if_set(FLAG_TEMP_13, Route2_EventScript_BoyOverLedge_PostJump)
+	goto_if_set(FLAG_TEMP_13, Route2_EventScript_BoyOverLedge_PostJump_2)
 	msgbox("Hey, you!\p"
 			"I'm gonna do something amazing!\n"
 			"Wanna watch?", MSGBOX_YESNO, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
@@ -223,11 +223,14 @@ script Route2_EventScript_BoyOverLedge_Jump
 	msgbox("Wooo!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
 	destroy_speech_bubble()
 	closemessage
+	special(SpawnCameraObject)
 	playse(SE_LEDGE)
-	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(jump_2_down))
 	applymovement(LOCALID_PLAYER, moves(delay_8, face_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down * 2))
+	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(jump_2_down, walk_down))
 	waitmovement(0)
 	waitse()
+	special(RemoveCameraObject)
 	delay(30)
 	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(face_up))
 	waitmovement(0)
@@ -243,7 +246,23 @@ script Route2_EventScript_BoyOverLedge_PostJump
 	destroy_speech_bubble()
 	closemessage
 	setflag(FLAG_TEMP_13)
-	setobjectxyperm(LOCALID_ROUTE2_BOY_OVER_LEDGE, 19, 37)
+	setobjectxyperm(LOCALID_ROUTE2_BOY_OVER_LEDGE, 19, 38)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(20)
+	release()
+	end()
+}
+
+script Route2_EventScript_BoyOverLedge_PostJump_2
+{
+	msgbox("Hey! Were you watching?\p"
+			"You can take a shortcut by\n"
+			"jumping off ledges! Amazing, eh?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
+	destroy_speech_bubble()
+	closemessage
 	release()
 	end()
 }

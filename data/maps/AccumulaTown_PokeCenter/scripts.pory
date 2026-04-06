@@ -162,7 +162,7 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial_Continue
 	waitmovement(0)
 	delay(10)
 	msgbox("Bianca: Professor...\n"
-			"It says “Someone's PC”\n"
+			"It says “Someone's PC”\l"
 			"on the screen. Who is Someone?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_BIANCA)
 	destroy_speech_bubble()
 	closemessage()
