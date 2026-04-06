@@ -36,7 +36,7 @@ script Route3_North_EventScript_SignPost
 
 script Route3_North_EventScript_SignPost_DayCare
 {
-	msgbox("Pokémon Day Care"
+	msgbox("Pokémon Day Care\n"
             "We Take Care of Your Precious Pokémon", MSGBOX_SIGN)
 	end
 }
