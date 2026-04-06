@@ -1051,224 +1051,204 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Retaliate
 - Hypnosis
 
-=== TRAINER_DUMMY5 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
-Gender: Male
-Music: Interviewer
+=== TRAINER_TWINS_PF_INSIDE ===
+Name: Mayo&Maya
+Class: Twins
+Pic: Twins BW
+Gender: Female
+Music: Kid
 Battle Type: Doubles
 AI: Check Bad Move
 
-Magneton
-Level: 36
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-
-Loudred
-Level: 36
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-
-=== TRAINER_DUMMY6 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
-Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
-
-Magneton
-Level: 39
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Sonic Boom
-- Thunder Wave
-- Metal Sound
-- Thunderbolt
-
-Exploud
-Level: 39
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Astonish
-- Stomp
-- Supersonic
-- Hyper Voice
-
-=== TRAINER_LOLA_1 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_AUSTINA ===
-Name: AUSTINA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 26
+Sewaddle
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GWEN ===
-Name: GWEN
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 26
+Sewaddle
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_LOLA_2 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Marill
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_LOLA_3 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-Marill
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-=== TRAINER_LOLA_4 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 32
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Marill
-Level: 32
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-=== TRAINER_LOLA_5 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Azumarill
-Level: 35
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Azumarill
-Level: 35
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-=== TRAINER_RICKY_1 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_SCHOOLBOY_PF_INSIDE ===
+Name: Sammy
+Class: School Kid
+Pic: Schoolboy
 Gender: Male
-Music: Girl
+Music: Youngster
 Battle Type: Singles
 AI: Check Bad Move
 
-Zigzagoon
-Level: 13
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Headbutt
-- Tail Whip
-- Surf
-
-=== TRAINER_SIMON ===
-Name: SIMON
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Azurill
-Level: 12
+Munna
+Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Marill
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_CHARLIE ===
-Name: CHARLIE
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
+=== TRAINER_LASS_PF_INSIDE ===
+Name: Eva
+Class: Lass
+Pic: Lass BW
+Gender: Female
+Music: Lass
 Battle Type: Singles
 AI: Check Bad Move
 
-Marill
-Level: 26
+Woobat
+Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RICKY_2 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
+Woobat
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Woobat
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SCHOOLGIRL_PF_INSIDE ===
+Name: Millie
+Class: School Kid
+Pic: Schoolgirl
+Gender: Female
+Music: Lass
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+Pidove
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RICKY_3 ===
+Purrloin
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_PF_INSIDE_1 ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Sandile
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_F_PF_INSIDE ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt F
+Gender: Female
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Purrloin
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RANGER_M_PF_INSIDE_1 ===
+Name: Forrest
+Class: Ranger
+Pic: Ranger M
+Gender: Male
+Music: Ranger
+Battle Type: Singles
+AI: Check Bad Move
+
+Herdier
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_YOUNGSTER_PF_INSIDE ===
+Name: Jimmy
+Class: Youngster
+Pic: Youngster BW
+Gender: Male
+Music: Youngster
+Battle Type: Singles
+AI: Check Bad Move
+
+Venipede
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Timburr
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RANGER_F_PF_INSIDE_1 ===
+Name: Audra
+Class: Ranger
+Pic: Ranger F
+Gender: Female
+Music: Ranger
+Battle Type: Singles
+AI: Check Bad Move
+
+Pansage
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RANGER_F_PF_INSIDE_2 ===
+Name: Irene
+Class: Ranger
+Pic: Ranger F
+Gender: Female
+Music: Ranger
+Battle Type: Singles
+AI: Check Bad Move
+
+Panpour
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_PF_INSIDE_2 ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Patrat
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RANGER_M_PF_INSIDE_2 ===
+Name: Miguel
+Class: Ranger
+Pic: Ranger M
+Gender: Male
+Music: Ranger
+Battle Type: Singles
+AI: Check Bad Move
+
+Pansear
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_PF_INSIDE_3 ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Patrat
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Patrat
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Sandile
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_DUMMY18 ===
 Name: RICKY
 Class: Tuber M
 Pic: Tuber M
@@ -1285,7 +1265,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 - Tail Whip
 - Surf
 
-=== TRAINER_RICKY_4 ===
+=== TRAINER_DUMMY19 ===
 Name: RICKY
 Class: Tuber M
 Pic: Tuber M
@@ -1302,7 +1282,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Tail Whip
 - Surf
 
-=== TRAINER_RICKY_5 ===
+=== TRAINER_DUMMY20 ===
 Name: RICKY
 Class: Tuber M
 Pic: Tuber M
@@ -1319,7 +1299,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Tail Whip
 - Surf
 
-=== TRAINER_RANDALL ===
+=== TRAINER_DUMMY21 ===
 Name: RANDALL
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1336,7 +1316,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Agility
 - Wing Attack
 
-=== TRAINER_PARKER ===
+=== TRAINER_DUMMY22 ===
 Name: PARKER
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1353,7 +1333,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dizzy Punch
 - Focus Punch
 
-=== TRAINER_GEORGE ===
+=== TRAINER_DUMMY23 ===
 Name: GEORGE
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1370,7 +1350,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Counter
 - Shadow Ball
 
-=== TRAINER_BERKE ===
+=== TRAINER_DUMMY24 ===
 Name: BERKE
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1386,7 +1366,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Focus Energy
 - Slash
 
-=== TRAINER_BRAXTON ===
+=== TRAINER_DUMMY25 ===
 Name: BRAXTON
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1404,39 +1384,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Wing Attack
 - Endeavor
 
-Trapinch
-Level: 28
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Bite
-- Dig
-- Feint Attack
-- Sand Tomb
-
-Wailmer
-Level: 28
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Rollout
-- Whirlpool
-- Astonish
-- Water Pulse
-
-Magneton
-Level: 28
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Thunderbolt
-- Supersonic
-- Thunder Wave
-- Sonic Boom
-
-Shiftry
-Level: 28
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Giga Drain
-- Feint Attack
-- Double Team
-- Swagger
-
-=== TRAINER_VINCENT ===
+=== TRAINER_DUMMY26 ===
 Name: VINCENT
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1447,14 +1395,6 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Sableye
-Level: 44
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Medicham
-Level: 44
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Sharpedo
 Level: 44
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
