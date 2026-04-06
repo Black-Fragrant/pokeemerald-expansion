@@ -14064,8 +14064,8 @@ const struct ItemInfo gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_Itemfinder,
-        .iconPic = gItemIcon_DowsingMachine,
-        .iconPalette = gItemIconPalette_DowsingMachine,
+        .iconPic = gItemIcon_DowsingMachine_BW,
+        .iconPalette = gItemIconPalette_DowsingMachine_BW,
     },
 
     [ITEM_TOWN_MAP] =
@@ -14745,21 +14745,21 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Xtransceiver_Red,
     },
 
-    [ITEM_TEA] =
+    [ITEM_DRAGON_SKULL] =
     {
-        .name = ITEM_NAME("Tea"),
-        .pluralName = ITEM_PLURAL_NAME("Tea"),
+        .name = ITEM_NAME("Dragon Skull"),
+        .pluralName = ITEM_PLURAL_NAME("Dragon Skulls"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A thirst-quenching\n"
-            "tea prepared by an\n"
-            "old lady."),
+            "A Skull of a Pokémon\n"
+            "that flew around\n"
+            "the world."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_Tea,
-        .iconPalette = gItemIconPalette_Tea,
+        .iconPic = gItemIcon_DragonSkull,
+        .iconPalette = gItemIconPalette_DragonSkull,
     },
 
     [ITEM_RUBY] =

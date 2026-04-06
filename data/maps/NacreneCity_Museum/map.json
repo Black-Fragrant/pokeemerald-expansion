@@ -203,6 +203,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 13,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Cheren",
+      "flag": "FLAG_NACRENE_MUSEUM_CHEREN_BIANCA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BIANCA",
+      "x": 4,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_Museum_EventScript_Bianca",
+      "flag": "FLAG_NACRENE_MUSEUM_CHEREN_BIANCA"
     }
   ],
   "warp_events": [

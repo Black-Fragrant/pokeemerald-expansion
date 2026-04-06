@@ -1667,6 +1667,10 @@ extern const u32 gItemIcon_Xtransceiver_Blue[];
 extern const u16 gItemIconPalette_Xtransceiver_Blue[];
 extern const u32 gItemIcon_Xtransceiver_Red[];
 extern const u16 gItemIconPalette_Xtransceiver_Red[];
+extern const u32 gItemIcon_DowsingMachine_BW[];
+extern const u16 gItemIconPalette_DowsingMachine_BW[];
+extern const u32 gItemIcon_DragonSkull[];
+extern const u16 gItemIconPalette_DragonSkull[];
 
 // GEN IX ITEMS
 extern const u32 gItemIcon_AbilityShield[];

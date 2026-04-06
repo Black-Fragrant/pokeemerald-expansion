@@ -1,4 +1,223 @@
-mapscripts NacreneCity_MapScripts {}
+mapscripts NacreneCity_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NacreneCity_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NACRENE_STATE, 6 : NacreneCity_EventScript_Lenora_Meets_Burgh
+    ]
+}
+
+script NacreneCity_Transition
+{
+	call_if_ge (VAR_NACRENE_STATE, 7, NacreneCity_EventScript_PositionLenora)
+    end()
+}
+
+script NacreneCity_EventScript_PositionLenora
+{
+	setobjectxyperm(LOCALID_NACRENE_LENORA, 57, 27)
+    setobjectmovementtype (LOCALID_NACRENE_LENORA, MOVEMENT_TYPE_LOOK_AROUND)
+	return()
+}
+
+script NacreneCity_EventScript_Lenora_Meets_Burgh
+{
+	lockall
+	setvar(VAR_NACRENE_STATE, 7)
+	applymovement(LOCALID_NACRENE_LENORA, moves(delay_16 * 4, face_left))
+	applymovement(LOCALID_PLAYER, moves(walk_down * 6))
+	waitmovement(0)
+	delay(20)
+	applymovement(LOCALID_NACRENE_LENORA, moves(face_right, delay_16, face_left))
+	waitmovement(0)
+	delay(20)
+	addobject(LOCALID_NACRENE_BURGH)
+	applymovement(LOCALID_NACRENE_BURGH, moves(walk_right * 6))
+	waitmovement(0)
+    msgbox("???: Good day, Lenora.\n"
+           "Find any good Fossils lately?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Lenora: This is a surprise visit! Are you\n"
+           "suffering from artist's block again?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("{PLAYER}!\p"
+           "This is Burgh.\n"
+           "He may not look like it, but he's\l"
+           "Castelia City's Gym Leader!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Burgh: ...Eh?\n"
+           "Just looking for a change of pace.\p"
+           "Seems hectic or something around here.\n"
+           "What's up?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Lenora: What's up?!\p"
+           "Someone just walked away with an exhibit,\n"
+           "that's what's up!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	addobject(LOCALID_NACRENE_BIANCA_TOP)
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_left * 7))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bianca: Oh, hi, {PLAYER}!\n"
+           "What's everybody doing here?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BIANCA_TOP)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	addobject(LOCALID_NACRENE_CHEREN_TOP)
+	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(walk_left * 7))
+	waitmovement(0)
+	delay(10)
+    msgbox("Cheren: {PLAYER}, is there\n"
+           "some kind of problem?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CHEREN_TOP)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_in_place_down))
+	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(delay_4, walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("Lenora: And these two are...?\p"
+           "Your friends?\p"
+           "...\n"
+           "...\p"
+           "Bianca and Cheren...\n"
+           "Oh, I see. They're Trainers.\p"
+           "OK, then. Let's split up and search.\n"
+           "I'll head this way.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_right, walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+    msgbox("Everyone!\p"
+           "Cheren and Bianca,\n"
+           "I want you to stay here at the museum.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_left))
+	waitmovement(0)
+    msgbox("Burgh and {PLAYER},\n"
+           "you two search Pinwheel Forest!\p"
+           "Got it?\n"
+           "Burgh, you show the way!\p"
+           "I'm counting on you, everyone!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_LENORA, moves(walk_fast_right * 7))
+	waitmovement(0)
+	setobjectxy(LOCALID_NACRENE_LENORA, 57, 27)
+	setobjectxyperm(LOCALID_NACRENE_LENORA, 57, 27)
+    setobjectmovementtype (LOCALID_NACRENE_LENORA, MOVEMENT_TYPE_LOOK_AROUND)
+	delay(10)
+    msgbox("Burgh: Uh-huh.\n"
+           "You are... {PLAYER}, is it?\p"
+           "Are you raring to round up\n"
+           "our robbers?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(delay_16 * 2, walk_in_place_left))
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(delay_16 * 2, walk_in_place_left))
+	applymovement(LOCALID_PLAYER, moves(delay_16 * 2, walk_in_place_left))
+	applymovement(LOCALID_NACRENE_BURGH, moves(walk_left * 6))
+	waitmovement(0)
+	removeobject(LOCALID_NACRENE_BURGH)
+	delay(20)
+	playse(SE_PIN)
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bianca: Oh! Oh, {PLAYER}!\n"
+           "Take this with you!\p"
+           "Fennel gave me this Dowsing Machine\n"
+           "to give you.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BIANCA_TOP)
+    destroy_speech_bubble()
+    closemessage
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the Dowsing Machine!")
+    delay(120)
+	additem (ITEM_DOWSING_MACHINE)
+    call_if_eq (VAR_RESULT, FALSE, NacreneCity_EventScript_BagIsFull)
+    closemessage
+	fadedefaultbgm
+	savebgm(MUS_BW_NACRENE_CITY)
+	delay(10)
+    msgbox("Now, what did she tell me? Um...\p"
+           "You can use the Dowsing Machine\n"
+           "to find places where items are hidden.\l"
+           "So you can find stuff you can't even see!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BIANCA_TOP)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(walk_in_place_up, delay_16, walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: For now, all we need to do is\n"
+           "protect the museum, right?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CHEREN_TOP)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(walk_left, walk_up * 6))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NACRENE_CHEREN_TOP)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bianca: Hey, wait for me!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BIANCA_TOP)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PLAYER, moves(delay_16 * 2, walk_in_place_up))
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_up, walk_left, walk_up * 6))
+	waitmovement(0)
+	delay(20)
+	playse(SE_EXIT)
+	removeobject (LOCALID_NACRENE_BIANCA_TOP)
+	waitse()
+	clearflag(FLAG_NACRENE_MUSEUM_CHEREN_BIANCA)
+	clearflag(FLAG_PINWHEEL_FOREST_ON_BURGH)
+	delay(20)
+	release
+	end
+}
 
 script NacreneCity_EventScript_SignPost_BottomRight
 {
@@ -112,6 +331,16 @@ script NacreneCity_EventScript_BagIsFull
 	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
 	closemessage
 	return
+}
+
+script NacreneCity_EventScript_Lenora
+{
+	msgbox("Lenora: It doesn't look like there are\n"
+           "any members of Team Plasma over here...\l"
+           "I think I'd better stay here, though.\p"
+           "Please head to Pinwheel Forest\n"
+           "and search very carefully!", MSGBOX_NPC, TRUE)
+	end
 }
 
 script NacreneCity_EventScript_Beauty_Right
