@@ -136,6 +136,9 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_DREAMYARD_BIANCA_2
 	setflag FLAG_ROUTE3N_BIANCA
 	setflag FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS
+	setflag FLAG_NACRENE_LENORA
+	setflag FLAG_NACRENE_MUSEUM_CHEREN_BIANCA
+	setflag FLAG_PINWHEEL_FOREST_ON_BURGH
 	call EventScript_ResetAllBerries
 	end
 

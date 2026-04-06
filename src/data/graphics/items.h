@@ -1977,6 +1977,12 @@ const u16 gItemIconPalette_Xtransceiver_Blue[] = INCBIN_U16("graphics/items/icon
 const u32 gItemIcon_Xtransceiver_Red[] = INCBIN_U32("graphics/items/icons/x_transceiver_red.4bpp.smol");
 const u16 gItemIconPalette_Xtransceiver_Red[] = INCBIN_U16("graphics/items/icon_palettes/x_transceiver_red.gbapal");
 
+const u32 gItemIcon_DowsingMachine_BW[] = INCBIN_U32("graphics/items/icons/dowsing_machine_bw.4bpp.smol");
+const u16 gItemIconPalette_DowsingMachine_BW[] = INCBIN_U16("graphics/items/icon_palettes/dowsing_machine_bw.gbapal");
+
+const u32 gItemIcon_DragonSkull[] = INCBIN_U32("graphics/items/icons/dragon_skull.4bpp.smol");
+const u16 gItemIconPalette_DragonSkull[] = INCBIN_U16("graphics/items/icon_palettes/dragon_skull.gbapal");
+
 const u32 gItemIcon_AbilityShield[] = INCBIN_U32("graphics/items/icons/ability_shield.4bpp.smol");
 const u16 gItemIconPalette_AbilityShield[] = INCBIN_U16("graphics/items/icon_palettes/ability_shield.gbapal");
 

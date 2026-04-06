@@ -829,9 +829,9 @@
 #define FLAG_NACRENE_GYM_FOUND_ALL_BOOKS                            0x30D
 #define FLAG_NACRENE_GYM_LENORA                                     0x30E
 #define FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS                     0x30F
-#define FLAG_UNUSED_0x310                                           0x310
-#define FLAG_UNUSED_0x311                                           0x311
-#define FLAG_UNUSED_0x312                                           0x312
+#define FLAG_NACRENE_LENORA                                         0x310
+#define FLAG_NACRENE_MUSEUM_CHEREN_BIANCA                           0x311
+#define FLAG_PINWHEEL_FOREST_ON_BURGH                               0x312
 #define FLAG_UNUSED_0x313                                           0x313
 #define FLAG_UNUSED_0x314                                           0x314
 #define FLAG_UNUSED_0x315                                           0x315

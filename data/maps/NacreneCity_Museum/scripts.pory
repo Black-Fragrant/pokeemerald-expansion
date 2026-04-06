@@ -6,7 +6,7 @@ mapscripts NacreneCity_Museum_MapScripts
 
 script NacreneCity_Museum_On_Load
 {
-	call_if_eq(VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_StolenDragoniteSkull)
+	call_if_ge(VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_StolenDragoniteSkull)
 	end()
 }
 
@@ -180,7 +180,7 @@ script NacreneCity_Museum_Trigger_Tour_Right
 script NacreneCity_Museum_EventScript_Scientist
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Scientist_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Scientist_2)
 	msgbox("At the end of the Gym, a very strong\n"
            "and kind Gym Leader is waiting.\p"
            "By the way, the Gym Leader Lenora\n"
@@ -200,8 +200,8 @@ script NacreneCity_Museum_EventScript_Scientist_2
 script NacreneCity_Museum_EventScript_SchoolGirl
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_SchoolGirl_3)
-	goto_if_eq (VAR_NACRENE_STATE, 5, NacreneCity_Museum_EventScript_SchoolGirl_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_SchoolGirl_3)
+	goto_if_ge (VAR_NACRENE_STATE, 5, NacreneCity_Museum_EventScript_SchoolGirl_2)
 	msgbox("The Gym Leader here studies Fossils and\n"
            "ancient artifacts.", MSGBOX_NPC, TRUE)
     release
@@ -228,7 +228,7 @@ script NacreneCity_Museum_EventScript_SchoolGirl_3
 script NacreneCity_Museum_EventScript_Grandpa
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Grandpa_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Grandpa_2)
 	msgbox("Perhaps there is a Pokémon that came\n"
            "from space along with this meteorite.", MSGBOX_NPC, TRUE)
     release
@@ -246,7 +246,7 @@ script NacreneCity_Museum_EventScript_Grandpa_2
 script NacreneCity_Museum_EventScript_GreenShirtGuy
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_GreenShirtGuy_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_GreenShirtGuy_2)
 	msgbox("Rare Pokémon from around the world...\n"
            "Museums are packed with adventure!", MSGBOX_NPC, TRUE)
     release
@@ -263,7 +263,7 @@ script NacreneCity_Museum_EventScript_GreenShirtGuy_2
 script NacreneCity_Museum_EventScript_Receptionist_TopLeft
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_TopLeft_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_TopLeft_2)
 	msgbox("You can get to the Pokémon Gym by going\n"
            "to the back of the museum!", MSGBOX_NPC, TRUE)
     release
@@ -281,7 +281,7 @@ script NacreneCity_Museum_EventScript_Receptionist_TopLeft_2
 script NacreneCity_Museum_EventScript_Receptionist_BottomLeft
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2)
 	msgbox("Welcome to the Nacrene Museum!", MSGBOX_NPC, TRUE)
     release
 	end
@@ -298,7 +298,7 @@ script NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2
 script NacreneCity_Museum_EventScript_Receptionist_Right
 {
     lock
-	goto_if_eq (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_Right_2)
+	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_Right_2)
 	msgbox("I am researching Pokémon Fossils here.\p"
            "If you have a Fossil, bring it to me!", MSGBOX_NPC, TRUE)
     release
@@ -310,6 +310,20 @@ script NacreneCity_Museum_EventScript_Receptionist_Right_2
 	msgbox("I-I'm sorry. I'm afraid you'll have\n"
            "to come back later.", MSGBOX_NPC, TRUE)
     release
+	end
+}
+
+script NacreneCity_Museum_EventScript_Bianca
+{
+	msgbox("Bianca: I won't forgive those thieves!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_Museum_EventScript_Cheren
+{
+	msgbox("Cheren: So I can't battle the Gym Leader\n"
+           "because of Team Plasma, huh...\p"
+           "What a bother.", MSGBOX_NPC, TRUE)
 	end
 }
 
@@ -442,6 +456,7 @@ script NacreneCity_Museum_Trigger_Heist
 	waitmovement(0)
     removeobject(LOCALID_NACRENE_MUSEUM_LENORA)
     setflag(FLAG_NACRENE_MUSEUM_TEAM_PLASMSA_GRUNTS)
+	clearflag(FLAG_NACRENE_LENORA)
 	delay(20)
 	applymovement(LOCALID_NACRENE_MUSEUM_SCIENTIST, moves(walk_in_place_left, walk_in_place_down))
 	waitmovement(0)
