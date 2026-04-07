@@ -47,4 +47,7 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width);
 bool16 ScriptMenu_CreatePCMultichoice(void);
 void ScriptMenu_DisplayPCStartupPrompt(void);
 
+bool8 ScriptMenu_ShowLargeItemPic(u16 picId, u8 x, u8 y);
+bool8 ScriptMenu_HideLargeItemPic(void);
+
 #endif //GUARD_SCRIPT_MENU_H

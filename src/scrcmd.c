@@ -2064,6 +2064,31 @@ bool8 ScrCmd_hidemonpic(struct ScriptContext *ctx)
     return TRUE;
 }
 
+// ======================================================
+// Show Large Item Picture Functions
+// ======================================================
+
+bool8 ScrCmd_showlargeitempic(struct ScriptContext *ctx)
+{
+    u16 picId = VarGet(ScriptReadHalfword(ctx));
+    u8 x = ScriptReadByte(ctx);
+    u8 y = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    ScriptMenu_ShowLargeItemPic(picId, x, y);
+    return FALSE;
+}
+
+bool8 ScrCmd_hidelargeitempic(struct ScriptContext *ctx)
+{
+    ScriptMenu_HideLargeItemPic();
+    return FALSE;
+}
+
+// ======================================================
+// Show Large Item Picture Functions End
+// ======================================================
+
 bool8 ScrCmd_showcontestpainting(struct ScriptContext *ctx)
 {
     u8 contestWinnerId = ScriptReadByte(ctx);

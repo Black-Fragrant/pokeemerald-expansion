@@ -310,9 +310,12 @@ script StriatonCity_TRB2F_EventScript_Fennel_YesTime
             "Don't be shy.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage
+	showlargeitempic(3, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} obtained the Pal Pad!") //this should be transparent
     delay(120)
+	hidelargeitempic
+    closemessage
     fadedefaultbgm
     savebgm(MUS_BW_STRIATON_CITY)
     delay(10)

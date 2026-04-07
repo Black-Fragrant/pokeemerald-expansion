@@ -2192,3 +2192,36 @@ const u16 gBattleIcons_Pal2[] = INCBIN_U16("graphics/types/battle_icons2.gbapal"
 
 const u16 gGhostPalette[] = INCBIN_U16("graphics/pokemon/ghost/front.gbapal");
 const u32 gGhostFrontPic[] = INCBIN_U32("graphics/pokemon/ghost/front.4bpp.smol");
+
+const u32 gLargeItemPic_XtransceiverBlue[]   = INCBIN_U32("graphics/large_item/xtransceiver_blue.4bpp.lz");
+const u32 gLargeItemPic_XtransceiverRed[]    = INCBIN_U32("graphics/large_item/xtransceiver_red.4bpp.lz");
+const u32 gLargeItemPic_TownMap[]            = INCBIN_U32("graphics/large_item/town_map.4bpp.lz");
+const u32 gLargeItemPic_PalPad[]             = INCBIN_U32("graphics/large_item/pal_pad.4bpp.lz");
+const u32 gLargeItemPic_DowsingMachine[]     = INCBIN_U32("graphics/large_item/dowsing_machine.4bpp.lz");
+const u32 gLargeItemPic_DragonSkull[]        = INCBIN_U32("graphics/large_item/dragon_skull.4bpp.lz");
+const u32 gLargeItemPic_LibertyPass[]        = INCBIN_U32("graphics/large_item/liberty_pass.4bpp.lz");
+const u32 gLargeItemPic_Bicycle[]            = INCBIN_U32("graphics/large_item/bicycle.4bpp.lz");
+const u32 gLargeItemPic_VsRecorder[]         = INCBIN_U32("graphics/large_item/vs_recorder.4bpp.lz");
+const u32 gLargeItemPic_PropCase[]           = INCBIN_U32("graphics/large_item/prop_case.4bpp.lz");
+const u32 gLargeItemPic_LightStone[]         = INCBIN_U32("graphics/large_item/light_stone.4bpp.lz");
+const u32 gLargeItemPic_DarkStone[]          = INCBIN_U32("graphics/large_item/dark_stone.4bpp.lz");
+const u32 gLargeItemPic_SuperRod[]           = INCBIN_U32("graphics/large_item/super_rod.4bpp.lz");
+const u32 gLargeItemPic_Gram[]               = INCBIN_U32("graphics/large_item/gram.4bpp.lz");
+const u32 gLargeItemPic_Gracidea[]           = INCBIN_U32("graphics/large_item/gracidea.4bpp.lz");
+
+const u16 gLargeItemPicPalette_XtransceiverBlue[]   = INCBIN_U16("graphics/large_item/xtransceiver_blue.gbapal");
+const u16 gLargeItemPicPalette_XtransceiverRed[]    = INCBIN_U16("graphics/large_item/xtransceiver_red.gbapal");
+const u16 gLargeItemPicPalette_TownMap[]            = INCBIN_U16("graphics/large_item/town_map.gbapal");
+const u16 gLargeItemPicPalette_PalPad[]             = INCBIN_U16("graphics/large_item/pal_pad.gbapal");
+const u16 gLargeItemPicPalette_DowsingMachine[]     = INCBIN_U16("graphics/large_item/dowsing_machine.gbapal");
+const u16 gLargeItemPicPalette_DragonSkull[]        = INCBIN_U16("graphics/large_item/dragon_skull.gbapal");
+const u16 gLargeItemPicPalette_LibertyPass[]        = INCBIN_U16("graphics/large_item/liberty_pass.gbapal");
+const u16 gLargeItemPicPalette_Bicycle[]            = INCBIN_U16("graphics/large_item/bicycle.gbapal");
+const u16 gLargeItemPicPalette_VsRecorder[]         = INCBIN_U16("graphics/large_item/vs_recorder.gbapal");
+const u16 gLargeItemPicPalette_PropCase[]           = INCBIN_U16("graphics/large_item/prop_case.gbapal");
+const u16 gLargeItemPicPalette_LightStone[]         = INCBIN_U16("graphics/large_item/light_stone.gbapal");
+const u16 gLargeItemPicPalette_DarkStone[]          = INCBIN_U16("graphics/large_item/dark_stone.gbapal");
+const u16 gLargeItemPicPalette_SuperRod[]           = INCBIN_U16("graphics/large_item/super_rod.gbapal");
+const u16 gLargeItemPicPalette_Gram[]               = INCBIN_U16("graphics/large_item/gram.gbapal");
+const u16 gLargeItemPicPalette_Gracidea[]           = INCBIN_U16("graphics/large_item/gracidea.gbapal");
+

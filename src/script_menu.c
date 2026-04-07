@@ -22,6 +22,9 @@
 #include "constants/script_menu.h"
 #include "constants/seagallop.h"
 #include "constants/songs.h"
+#include "decompress.h"
+#include "graphics.h"
+#include "large_item_pic.h"
 
 #include "data/script_menu.h"
 
@@ -1000,6 +1003,76 @@ bool8 (*ScriptMenu_HidePokemonPic(void))(void)
     gTasks[taskId].tState++;
     return IsPicboxClosed;
 }
+
+// ======================================================
+// Show Large Item Picture Functions
+// ======================================================
+
+u8 CreateLargeItemSprite_PicBox(u16 picId, s16 x, s16 y, u8 priority)
+{
+    LoadCompressedSpriteSheet(&gLargeItemPicSpriteSheets[picId]);
+    LoadSpritePalette(&gLargeItemPicSpritePalettes[picId]);
+
+    return CreateSprite(&gLargeItemPicTemplate[picId], x, y, priority);
+}
+
+static void Task_LargeItemPicWindow(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+
+    switch (task->data[0])
+    {
+    case 0: // waiting
+        break;
+
+    case 1: // begin closing
+        ClearStdWindowAndFrame(task->data[1], TRUE);
+        RemoveWindow(task->data[1]);
+        task->data[0]++;
+        break;
+
+    case 2: // destroy sprite + free resources
+        FreeSpriteTilesByTag(task->data[2]);     // tileTag
+        FreeSpritePaletteByTag(task->data[2]);   // paletteTag
+        DestroySprite(&gSprites[task->data[3]]); // spriteId
+        DestroyTask(taskId);
+        break;
+    }
+}
+
+bool8 ScriptMenu_ShowLargeItemPic(u16 picId, u8 x, u8 y)
+{
+    u8 spriteId;
+    u8 taskId;
+
+    spriteId = CreateLargeItemSprite_PicBox(picId, x * 8 + 40, y * 8 + 40, 0);
+
+    taskId = CreateTask(Task_LargeItemPicWindow, 0x50);
+    gTasks[taskId].data[0] = 0;          // state
+    gTasks[taskId].data[1] = CreateWindowFromRect(x, y, 8, 8);
+    gTasks[taskId].data[2] = 5000 + picId; // tileTag/paletteTag
+    gTasks[taskId].data[3] = spriteId;   // spriteId
+
+    SetStandardWindowBorderStyle(gTasks[taskId].data[1], TRUE);
+    ScheduleBgCopyTilemapToVram(0);
+
+    return TRUE;
+}
+
+bool8 ScriptMenu_HideLargeItemPic(void)
+{
+    u8 taskId = FindTaskIdByFunc(Task_LargeItemPicWindow);
+
+    if (taskId == TASK_NONE)
+        return FALSE;
+
+    gTasks[taskId].data[0] = 1; // move to closing state
+    return TRUE;
+}
+
+// ======================================================
+// Show Large Item Picture Functions End
+// ======================================================
 
 static bool8 IsPicboxClosed(void)
 {

@@ -368,11 +368,13 @@ script NuvemaTown_EventScript_MotherGivesTownMap
 			"these Town Maps. Take them with you!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_MOTHER_LAB)
 	destroy_speech_bubble()
 	closemessage()
+	showlargeitempic(2, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} obtained the Town Map!")
     delay(120)
 	additem (ITEM_TOWN_MAP)
     call_if_eq (VAR_RESULT, FALSE, NuvemaTown_EventScript_BagIsFull)
+	hidelargeitempic
     closemessage
 	fadedefaultbgm
 	savebgm(MUS_BW_NUVEMA_TOWN)

@@ -990,6 +990,19 @@
 	.byte SCR_OP_HIDEMONPIC
 	.endm
 
+
+	.macro showlargeitempic pic:req, x:req, y:req
+		.byte SCR_OP_SHOWLARGEITEMPIC
+		.2byte \pic
+		.byte \x
+		.byte \y
+	.endm
+
+	.macro hidelargeitempic
+		.byte SCR_OP_HIDELARGEITEMPIC
+	.endm
+
+
 	@ Draws an image of the winner of the contest. winnerId is any CONTEST_WINNER_* constant.
 	.macro showcontestpainting winnerId:req
 	.byte SCR_OP_SHOWCONTESTPAINTING
