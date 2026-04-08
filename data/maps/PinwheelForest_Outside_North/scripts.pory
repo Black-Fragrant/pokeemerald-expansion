@@ -115,7 +115,28 @@ script PinwheelForest_ON_EventScript_Battle_Preschooler_M
 	end()
 }
 
-
+script PinwheelForest_ON_Trigger_Burgh
+{
+       lock
+       applymovement(LOCALID_PFON_BURGH, moves(face_right))
+       waitmovement(0)
+       msgbox("Burgh: This leads to Pinwheel Forest.\p"
+           "If they manage to scuttle off into the\n"
+           "forest, we might have trouble.", MSGBOX_DEFAULT, TRUE, LOCALID_PFON_BURGH)
+       destroy_speech_bubble()
+       closemessage
+       delay(10)
+       applymovement(LOCALID_PFON_BURGH, moves(walk_left * 2, walk_down * 5, walk_left * 4))
+       waitmovement(0)
+       removeobject(LOCALID_PFON_BURGH)
+       setflag(FLAG_PINWHEEL_FOREST_ON_BURGH)
+       setflag(FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS)
+       clearflag(FLAG_PINWHEEL_FOREST_I_BURGH_ENTRANCE)
+       setvar(VAR_NACRENE_STATE, 8)
+       delay(20)
+       release
+       end()
+       }
 
 
 

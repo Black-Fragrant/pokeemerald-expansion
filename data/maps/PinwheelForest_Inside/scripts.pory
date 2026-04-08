@@ -1,4 +1,35 @@
-mapscripts PinwheelForest_Inside_MapScripts {}
+mapscripts PinwheelForest_Inside_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : PinwheelForest_Inside_On_Transition
+}
+
+script PinwheelForest_Inside_On_Transition
+{
+	call_if_ge (VAR_NACRENE_STATE, 8, PinwheelForest_Inside_EventScript_PlayMusic)
+    end()
+}
+
+script PinwheelForest_Inside_EventScript_PlayMusic
+{
+	goto_if_ge (VAR_NACRENE_STATE, 10, PinwheelForest_Inside_EventScript_PlayMusic_Intercept)
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+    return
+}
+
+script PinwheelForest_Inside_EventScript_PlayMusic_Intercept
+{
+    return
+}
+
+script PinwheelForest_Inside_SignPost_TrainerTips_Bottom
+{
+	msgbox("Trainer Tips!\p"
+           "A forest is likely to contain many\n"
+           "well-hidden items!\p"
+           "They may be hard to find,\n"
+           "so look carefully!", MSGBOX_SIGN)
+	end
+}
 
 script PinwheelForest_Inside_EventScript_TPG_Blocking_1
 {
@@ -63,3 +94,1021 @@ script PinwheelForest_Inside_EventScript_TPG_Blocking_6
     release
 	end
 }
+
+script PinwheelForest_Inside_Trigger_Entrance_Burgh
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 71, PinwheelForest_ITEB_Pos1)
+	call_if_eq (VAR_TEMP_0, 72, PinwheelForest_ITEB_Pos2)
+	call_if_eq (VAR_TEMP_0, 74, PinwheelForest_ITEB_Pos3)
+	call_if_eq (VAR_TEMP_0, 75, PinwheelForest_ITEB_Pos4)
+	call_if_eq (VAR_TEMP_0, 76, PinwheelForest_ITEB_Pos5)
+    delay(10)
+    msgbox("Burgh: Well, you see...\p"
+           "There are two ways out of\n"
+           "Pinwheel Forest--\p"
+           "the road that goes straight and the\n"
+           "path that winds through the woods.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_in_place_up))
+    waitmovement(0)
+    delay(10)
+    msgbox("I will take the straight road after them!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(face_down))
+    waitmovement(0)
+    msgbox("If they're not there,\n"
+           "I'll block the exit.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_in_place_left))
+    waitmovement(0)
+    delay(10)
+    msgbox("Would you please take the other way\n"
+           "and check whether Team Plasma\l"
+           "is hiding in there somewhere?\p"
+           "You'll run into a lot of Trainers,\n"
+           "but it's basically a single path,\l"
+           "so I'm sure you won't get lost.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(face_down))
+    waitmovement(0)
+    msgbox("Come on!\n"
+           "Let's do this for Lenora's sake!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_up * 5))
+    waitmovement(0)
+    removeobject(LOCALID_PFI_BURGH_ENTRANCE)
+    setflag(FLAG_PINWHEEL_FOREST_I_BURGH_ENTRANCE)
+    setvar(VAR_NACRENE_STATE, 9)
+    delay(20)
+    release
+    end
+}
+
+script PinwheelForest_ITEB_Pos1
+{
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_left * 2, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITEB_Pos2
+{
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_left, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITEB_Pos3
+{
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_right, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITEB_Pos4
+{
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_right * 2, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITEB_Pos5
+{
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_right * 3, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_Inside_Trigger_Exit_Burgh
+{
+    lock
+	playse(SE_PIN)
+	applymovement(LOCALID_PFI_BURGH_EXIT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 71, PinwheelForest_ITExB_Pos1)
+	call_if_eq (VAR_TEMP_0, 72, PinwheelForest_ITExB_Pos2)
+	call_if_eq (VAR_TEMP_0, 73, PinwheelForest_ITExB_Pos3)
+	call_if_eq (VAR_TEMP_0, 75, PinwheelForest_ITExB_Pos4)
+	call_if_eq (VAR_TEMP_0, 76, PinwheelForest_ITExB_Pos5)
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("Burgh: Mm-hmm?\p"
+           "Team Plasma hasn't come\n"
+           "in this direction...\p"
+           "The forest's bug Pokémon are quiet, too.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_EXIT)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_down))
+    waitmovement(0)
+    delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 71, PinwheelForest_ITExB_Pos6)
+	call_if_eq (VAR_TEMP_0, 72, PinwheelForest_ITExB_Pos7)
+	call_if_eq (VAR_TEMP_0, 73, PinwheelForest_ITExB_Pos8)
+	call_if_eq (VAR_TEMP_0, 75, PinwheelForest_ITExB_Pos9)
+	call_if_eq (VAR_TEMP_0, 76, PinwheelForest_ITExB_Pos10)
+    delay(10)
+    release
+    end
+}
+
+script PinwheelForest_ITExB_Pos1
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left * 3))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos2
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left * 2))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos3
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos4
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos5
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right * 2))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos6
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right * 3, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos7
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right * 2, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos8
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos9
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITExB_Pos10
+{
+    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left * 2, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Schoolboy
+{
+	trainerbattle_single(TRAINER_SCHOOLBOY_PF_INSIDE,
+	text("Why do Pokémon and people\n"
+           "stay together...?\l"
+           "That's the theme of my research."),
+	text("A ray of light shone in...\n"
+           "I feel a little like that."))
+	msgbox("Why do Pokémon and people\n"
+           "stay together...?\p"
+           "I think we stick together\n"
+           "because we are different.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Lass
+{
+	trainerbattle_single(TRAINER_LASS_PF_INSIDE,
+	text("Look, look! This is a Gym Badge\n"
+           "from Striaton City!\p"
+           "Oh, you have it, too!\n"
+           "Then let's have a Pokémon battle\l"
+           "to see who is stronger!"),
+	text("Impressive! A battle with a\n"
+           "Gym Badge holder is different!"))
+	msgbox("You know, there's a pedestal at the\n"
+           "entrance of each Pokémon Gym.\p"
+           "If you get that Gym's Badge,\n"
+           "your name will be carved there.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NacreneCity_EventScript_Scientist_F_Bridge
+{
+	msgbox("Have you heard of phytoncides?\p"
+           "I don't really understand, but I heard\n"
+           "that the reason forests make you\l"
+           "feel good is phytoncides!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_EventScript_BlueShirtGuy_Bridge
+{
+	msgbox("I run every day!\n"
+           "My goal is to be the marathon champion\l"
+           "of the Unova region!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Schoolgirl
+{
+	trainerbattle_single(TRAINER_SCHOOLGIRL_PF_INSIDE,
+	text("If I apply what I just learned\n"
+           "to the battle, I think I can win!"),
+	text("I've even won against my teacher, though..."))
+	msgbox("Knowing something and being\n"
+           "able to do it seem pretty similar,\l"
+           "but they can be very different.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NacreneCity_EventScript_Hiker_Top
+{
+	msgbox("The trees cut on this forest road are\n"
+           "sent from Driftveil City to the world.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NacreneCity_EventScript_Grandpa_Blocking
+{
+	msgbox("Hmm... I can feel it...\n"
+           "The presence of fierce Pokémon.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Twins_Right
+{
+	trainerbattle_double(TRAINER_TWINS_PF_INSIDE,
+	text("One-two, one-two! Keep time with\n"
+           "each other, and one-two punch!"),
+	text("Mayo: Two of us keeping time together...\n"
+           "Ahhhhhhhhhhhhhhhhh!!\p"
+           "May: Two of us keeping time together...\n"
+           "Ahhhhhhhhhhhhhhhhh!!"),
+	text("You've got only one Pokémon,\n"
+           "so we cannot fight."))
+	msgbox("It would be even greater if we knew\n"
+           "what two Pokémon will do.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Twins_Left
+{
+	trainerbattle_double(TRAINER_TWINS_PF_INSIDE,
+	text("We discuss what to do\n"
+           "before a battle."),
+	text("Mayo: Two of us keeping time together...\n"
+           "Ahhhhhhhhhhhhhhhhh!!\p"
+           "May: Two of us keeping time together...\n"
+           "Ahhhhhhhhhhhhhhhhh!!"),
+	text("If you want to have a battle with us,\n"
+           "you need two Pokémon."))
+	msgbox("What I've heard is it's good to use\n"
+           "Earthquake when your ally is floating!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_Inside_Trigger_TPGM_Battle_1
+{
+    lock
+	playse(SE_PIN)
+	applymovement(LOCALID_PFI_TPGM_B1, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    playbgm(MUS_BW_SPOTTED_PLASMA, TRUE)
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 59, PinwheelForest_ITTB1_Pos1)
+	call_if_eq (VAR_TEMP_0, 61, PinwheelForest_ITTB1_Pos2)
+	call_if_eq (VAR_TEMP_0, 62, PinwheelForest_ITTB1_Pos3)
+    delay(10)
+    msgbox("Team Plasma: You stubborn brat!\p"
+           "When I'm through with you,\n"
+           "you won't be able to chase us anymore!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B1)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_M_PF_INSIDE_1, text("Come on!\nYou're just a kid--a kid on an ego trip!"))
+    setvar(VAR_PINWHEEL_FOREST_STATE, 1)
+    goto(PinwheelForest_Inside_EventScript_TPGM_1_Cont)
+}
+
+script PinwheelForest_Inside_EventScript_TPGM_1
+{
+    lock
+    faceplayer
+    goto(PinwheelForest_Inside_EventScript_TPGM_1_Cont)
+}
+
+script PinwheelForest_Inside_EventScript_TPGM_1_Cont
+{
+    msgbox("Team Plasma: Too bad!\n"
+           "I haven't got anything!\p"
+           "If you want to get it back,\n"
+           "you're just gonna have\l"
+           "to look for my associates!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B1)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script PinwheelForest_ITTB1_Pos1
+{
+	applymovement(LOCALID_PFI_TPGM_B1, moves(walk_left, face_up))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB1_Pos2
+{
+	applymovement(LOCALID_PFI_TPGM_B1, moves(walk_right, face_up))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB1_Pos3
+{
+	applymovement(LOCALID_PFI_TPGM_B1, moves(walk_right * 2, face_up))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_Inside_Trigger_TPGF_Battle_2
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 55, PinwheelForest_ITTB2_CameraDown)
+	call_if_eq (VAR_TEMP_1, 56, PinwheelForest_ITTB2_CameraDown)
+	call_if_eq (VAR_TEMP_1, 64, PinwheelForest_ITTB2_CameraUp)
+	call_if_eq (VAR_TEMP_1, 65, PinwheelForest_ITTB2_CameraUp)
+	playse(SE_PIN)
+	applymovement(LOCALID_PFI_TPGF_B2, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    playbgm(MUS_BW_SPOTTED_PLASMA, TRUE)
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+	call_if_eq (VAR_TEMP_1, 55, PinwheelForest_ITTB2_Pos1)
+	call_if_eq (VAR_TEMP_1, 56, PinwheelForest_ITTB2_Pos2)
+	call_if_eq (VAR_TEMP_1, 57, PinwheelForest_ITTB2_Pos3)
+	call_if_eq (VAR_TEMP_1, 58, PinwheelForest_ITTB2_Pos4)
+	call_if_eq (VAR_TEMP_1, 59, PinwheelForest_ITTB2_Pos5)
+	call_if_eq (VAR_TEMP_1, 61, PinwheelForest_ITTB2_Pos6)
+	call_if_eq (VAR_TEMP_1, 62, PinwheelForest_ITTB2_Pos7)
+	call_if_eq (VAR_TEMP_1, 63, PinwheelForest_ITTB2_Pos8)
+	call_if_eq (VAR_TEMP_1, 64, PinwheelForest_ITTB2_Pos9)
+	call_if_eq (VAR_TEMP_1, 65, PinwheelForest_ITTB2_Pos10)
+    delay(10)
+    msgbox("Team Plasma: My, my.\n"
+           "Could you be looking for something?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGF_B2)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_F_PF_INSIDE, text("My hunch is you're sabotaging us\nbecause you're flat-out jealous\lof our cool outfits."))
+    setvar(VAR_PINWHEEL_FOREST_STATE, 2)
+    goto(PinwheelForest_Inside_EventScript_TPGF_2_Cont)
+}
+
+script PinwheelForest_Inside_EventScript_TPGF_2
+{
+    lock
+    faceplayer
+    goto(PinwheelForest_Inside_EventScript_TPGF_2_Cont)
+}
+
+script PinwheelForest_Inside_EventScript_TPGF_2_Cont
+{
+    msgbox("Team Plasma: Sorry!\n"
+           "I'm empty handed.\p"
+           "Do I look like the kind of girl\n"
+           "to carry a heavy load?\p"
+           "Better try somewhere else!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGF_B2)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script PinwheelForest_ITTB2_CameraDown
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script PinwheelForest_ITTB2_CameraUp
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos1
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 5, face_right))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos2
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 4, face_right))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos3
+{
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 3, face_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos4
+{
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 2, face_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos5
+{
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 1, face_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos6
+{
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 1, face_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos7
+{
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 2, face_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos8
+{
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 3, face_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos9
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 4, face_right))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script PinwheelForest_ITTB2_Pos10
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 5, face_right))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script PinwheelForest_Inside_MossRock
+{
+	msgbox("The surface is covered with moss.\n"
+           "Touching it feels good somehow.", MSGBOX_SIGN)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Ranger_M_1
+{
+	trainerbattle_single(TRAINER_RANGER_M_PF_INSIDE_1,
+	text("I patrol Pinwheel Forest every day!\n"
+           "A battle here is a piece of cake!"),
+	text("What a huge mistake to lose\n"
+           "a battle in Pinwheel Forest!"),
+	PinwheelForest_Inside_EventScript_Ranger_M_GivesChestoBerry)
+	goto(PinwheelForest_Inside_EventScript_Ranger_M_GivesChestoBerry)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_M_GivesChestoBerry
+{
+	goto_if_set(FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY, PinwheelForest_Inside_EventScript_Ranger_M_ChestoReceived)
+	msgbox("A Ranger always has one of these.\n"
+           "I'll give it to you!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_M_CHESTO)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_CHESTO_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto (PinwheelForest_Inside_EventScript_Ranger_M_ChestoReceived)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_M_ChestoReceived
+{
+	msgbox("The forest is alive...\p"
+           "Something changes every day,\n"
+           "so it's fun to patrol!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_M_CHESTO)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY)
+	release()
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_BagIsFull2
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	return()
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Youngster
+{
+	trainerbattle_single(TRAINER_YOUNGSTER_PF_INSIDE,
+	text("My Pokémon's strong points!\n"
+           "You'll see them if you fight!"),
+	text("Hey! Did you see\n"
+           "my Pokémon's strong points?!"))
+	msgbox("My Pokémon's strong points?\p"
+           "Hmmm...\p"
+           "I don't know 'cause there are too many!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Ranger_F_1
+{
+	trainerbattle_single(TRAINER_RANGER_F_PF_INSIDE_1,
+	text("Get great powers drawn from nature\n"
+           "without opposing it.\l"
+           "That is the strength of Rangers!"),
+	text("You and your Pokémon\nmake a great team!"),
+	PinwheelForest_Inside_EventScript_Ranger_F_GivesChestoBerry)
+	goto(PinwheelForest_Inside_EventScript_Ranger_F_GivesChestoBerry)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_F_GivesChestoBerry
+{
+	goto_if_set(FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY_2, PinwheelForest_Inside_EventScript_Ranger_F_ChestoReceived)
+	msgbox("This is one of the powers\n"
+           "I got from nature.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_F_CHESTO)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_CHESTO_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto (PinwheelForest_Inside_EventScript_Ranger_F_ChestoReceived)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_F_ChestoReceived
+{
+	msgbox("Even the things you can't do alone,\n"
+           "if you're with someone else...\p"
+           "That's right. We always\n"
+           "have Pokémon around us.\l"
+           "Isn't that great?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_F_CHESTO)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY_2)
+	release()
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Ranger_F_2
+{
+	trainerbattle_single(TRAINER_RANGER_F_PF_INSIDE_2,
+	text("Come on! Let's take\n"
+           "a deep breath.\p"
+           "Inhale, exhale.\n"
+           "Inhale, exhale.\p"
+           "All right! Next,\n"
+           "let our Pokémon fight!"),
+	text("In this situation...\n"
+           "All that comes out is a sigh..."),
+	PinwheelForest_Inside_EventScript_Ranger_F_GivesPechaBerry)
+	goto(PinwheelForest_Inside_EventScript_Ranger_F_GivesPechaBerry)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_F_GivesPechaBerry
+{
+	goto_if_set(FLAG_PINWHEEL_FOREST_I_ITEM_PECHA_BERRY, PinwheelForest_Inside_EventScript_Ranger_F_PechaReceived)
+	msgbox("Well, a sigh and this lovely gift for you!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_F_PECHA)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_PECHA_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto (PinwheelForest_Inside_EventScript_Ranger_F_PechaReceived)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_F_PechaReceived
+{
+	msgbox("Different Pokémon can be found\n"
+           "in different places.\p"
+           "Does that mean there is\n"
+           "a perfect place for everyone?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_F_PECHA)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_PINWHEEL_FOREST_I_ITEM_PECHA_BERRY)
+	release()
+	end()
+}
+
+script PinwheelForest_Inside_Trigger_TPGM_Battle_3
+{
+    lock
+	playse(SE_PIN)
+	applymovement(LOCALID_PFI_TPGM_B3, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    playbgm(MUS_BW_SPOTTED_PLASMA, TRUE)
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 37, PinwheelForest_ITTB3_Pos1)
+	call_if_eq (VAR_TEMP_1, 39, PinwheelForest_ITTB3_Pos2)
+    delay(10)
+    msgbox("Team Plasma: So you made it this far!\p"
+           "I'll hold you here so my friends\n"
+           "can get away!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B3)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_M_PF_INSIDE_2, text("Our rules and your rules\nare different!"))
+    setvar(VAR_PINWHEEL_FOREST_STATE, 3)
+    goto(PinwheelForest_Inside_EventScript_TPGM_3_Cont)
+}
+
+script PinwheelForest_Inside_EventScript_TPGM_3
+{
+    lock
+    faceplayer
+    goto(PinwheelForest_Inside_EventScript_TPGM_3_Cont)
+}
+
+script PinwheelForest_Inside_EventScript_TPGM_3_Cont
+{
+    msgbox("Team Plasma: Yep! I'm here to buy time!\p"
+           "And if you don't step lively,\n"
+           "we're going to get away!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B3)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script PinwheelForest_ITTB3_Pos1
+{
+	applymovement(LOCALID_PFI_TPGM_B3, moves(walk_up, face_left))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB3_Pos2
+{
+	applymovement(LOCALID_PFI_TPGM_B3, moves(walk_down, face_left))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_Inside_EventScript_Battle_Ranger_M_2
+{
+	trainerbattle_single(TRAINER_RANGER_M_PF_INSIDE_2,
+	text("Blend into the wilderness\n"
+           "and talk to Pokémon with your heart.\l"
+           "That is a Ranger!"),
+	text("Did you feel my wildness?"),
+	PinwheelForest_Inside_EventScript_Ranger_M_GivesPechaBerry)
+	goto(PinwheelForest_Inside_EventScript_Ranger_M_GivesPechaBerry)
+	end()
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_M_GivesPechaBerry
+{
+	goto_if_set(FLAG_PINWHEEL_FOREST_I_ITEM_PECHA_BERRY_2, PinwheelForest_Inside_EventScript_Ranger_M_PechaReceived)
+	msgbox("I'm sure you can fully\n"
+           "utilize this.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_M_PECHA)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_PECHA_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto (PinwheelForest_Inside_EventScript_Ranger_M_PechaReceived)
+	end
+}
+
+script PinwheelForest_Inside_EventScript_Ranger_M_PechaReceived
+{
+	msgbox("If you blend into the wilderness too well,\n"
+           "you won't be noticed by Pokémon,\l"
+           "let alone by people.\l"
+           "That is a problem...", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_RANGER_M_PECHA)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_PINWHEEL_FOREST_I_ITEM_PECHA_BERRY_2)
+	release()
+	end()
+}
+
+script PinwheelForest_Inside_Trigger_TPGM_Battle_4
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 42, PinwheelForest_ITTB4_Pos1)
+	call_if_eq (VAR_TEMP_0, 44, PinwheelForest_ITTB4_Pos2)
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_PFI_TPGM_B4, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    playbgm(MUS_BW_SPOTTED_PLASMA, TRUE)
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+    msgbox("Team Plasma: A pursuer?\p"
+           "Uh, ha ha. A kid like you--\n"
+           "beat some of us?!\p"
+           "That can't be helped, but...\n"
+           "I'll take you on now!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B4)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PFI_TPGM_B4, moves(walk_fast_down))
+	waitmovement(0)
+	delay(10)
+    trainerbattle_no_intro(TRAINER_GRUNT_M_PF_INSIDE_3, text("Plasmaaaa! If this keeps up,\nwe won't save the Pokémon!"))
+    setvar(VAR_PINWHEEL_FOREST_STATE, 4)
+    msgbox("Team Plasma: Fine.\n"
+           "Take your stupid skull!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B4)
+    destroy_speech_bubble()
+    closemessage
+	showlargeitempic(5, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the Dragon Skull!")
+    delay(120)
+    fadenewbgm(MUS_BW_APPEARS_PLASMA_2)
+	hidelargeitempic
+    closemessage
+	applymovement(LOCALID_PFI_TPGM_B4, moves(lock_facing_direction, walk_slow_up, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+    msgbox("Team Plasma: So the dream our king had--\n"
+           "the dream we had--won't come true...", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B4)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	playbgm(MUS_BW_PLOT_PLASMA, TRUE)
+    addobject(LOCALID_PFI_SAGE)
+	applymovement(LOCALID_PFI_SAGE, moves(walk_up * 5, walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(face_left, lock_facing_direction, walk_right, unlock_facing_direction))
+	applymovement(LOCALID_PFI_SAGE, moves(delay_4, walk_up * 2, walk_left, walk_up, walk_in_place_right))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_left, face_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Gorm: How are you holding up,\n"
+           "fellow subject of our king?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_SAGE)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PFI_TPGM_B4, moves(face_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Team Plasma: Gorm of the Seven Sages!\p"
+           "I'm mortified that this skull, which we\n"
+           "went to so much trouble to obtain,\l"
+           "was stolen from us so easily.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_TPGM_B4)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Gorm: It's not important.\p"
+           "We can afford to abandon\n"
+           "the Dragon Skull.\p"
+           "According to the results of our\n"
+           "research, this is not the legendary\l"
+           "Pokémon for which Team Plasma is looking.\l"
+           "It is completely unrelated.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_SAGE)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_PFI_SAGE, moves(walk_right, face_down))
+	applymovement(LOCALID_PFI_TPGM_B4, moves(walk_right, face_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("But we will not allow anyone to disrupt\n"
+           "our plan and get away with it.\p"
+           "We will fix it so you never interfere\n"
+           "with us again.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_SAGE)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    addobject(LOCALID_PFI_BURGH_HIDDEN)
+	applymovement(LOCALID_PFI_BURGH_HIDDEN, moves(walk_up * 5, walk_right, walk_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Burgh: Oh, sweet!\p"
+           "The bug Pokémon were getting\n"
+           "all worked up, so here I come,\l"
+           "and what do I spy with my little eye?\p"
+           "This important-looking guy!\p"
+           "Are you here to help your friends,\n"
+           "whom I defeated?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    addobject(LOCALID_PFI_LENORA_HIDDEN)
+	applymovement(LOCALID_PFI_LENORA_HIDDEN, moves(walk_fast_up * 5, walk_left, walk_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Lenora: {PLAYER}!\n"
+           "Burgh!\p"
+           "The others didn't have anything...\p"
+           "And who are you supposed to be?\p"
+           "Is this guy the big boss?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_LENORA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Gorm: I am one of the Seven Sages\n"
+           "of Team Plasma.\p"
+           "Ghetsis, another of the Seven Sages,\n"
+           "will liberate Pokémon with words alone!\p"
+           "The remainder of the Seven Sages have\n"
+           "ordered their compatriots to take\l"
+           "Pokémon with full force!\p"
+           "But the odds are a little against us now.\p"
+           "To you, the Bug Pokémon user Burgh and\n"
+           "the Normal Pokémon user Lenora, I say...\p"
+           "Know your enemies, know yourself,\n"
+           "and you need not fear the result\l"
+           "of a hundred battles...\l"
+           "This time, we shall retreat quietly.\p"
+           "To secure the liberation of Pokémon,\n"
+           "we will steal Pokémon from Trainers!\p"
+           "Even though you are Gym Leaders,\n"
+           "we will not tolerate any further\l"
+           "obstruction from you.\p"
+           "In any case, we will settle this someday.\p"
+           "I hope you are looking forward\n"
+           "to that time as much as I...", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_SAGE)
+    destroy_speech_bubble()
+    closemessage
+    delay(20)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_PFI_TPGM_B4)
+    removeobject(LOCALID_PFI_SAGE)
+    setobjectxy(LOCALID_PFI_BURGH_HIDDEN, 44, 16)
+    setobjectxy(LOCALID_PFI_LENORA_HIDDEN, 42, 16)
+    fadedefaultbgm
+    savebgm(MUS_BW_DREAM_YARD)
+    setvar(VAR_NACRENE_STATE, 10)
+    setflag(FLAG_PINWHEEL_FOREST_I_HEIST_CREW)
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+	applymovement(LOCALID_PFI_LENORA_HIDDEN, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Lenora: They're a speedy bunch.\p"
+           "What are you planning to do, Burgh?\n"
+           "Are you going to chase them?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_LENORA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PFI_BURGH_HIDDEN, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Burgh: Hmmm...\p"
+           "We got back the stolen skull,\n"
+           "and if we corner them, there's\l"
+           "no telling what they might do.\p"
+           "I think I'll be heading back, Lenora...", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PFI_BURGH_HIDDEN, moves(walk_left, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Well, now. Well...\n"
+           "I'll be waiting for your challenge at\l"
+           "Castelia City's Pokémon Gym.\p"
+           "Yes, indeed.\n"
+           "I'm certainly looking forward to it!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PFI_BURGH_HIDDEN, moves(walk_right * 9))
+	waitmovement(0)
+    removeobject(LOCALID_PFI_BURGH_HIDDEN)
+    delay(20)
+	applymovement(LOCALID_PFI_LENORA_HIDDEN, moves(walk_right, walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Lenora: {PLAYER}!\p"
+           "You're holding the Dragon Skull you\n"
+           "worked so hard to get back, right?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_LENORA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} gave the\n"
+           "Dragon Skull to Lenora!")
+    delay(120)
+    fadedefaultbgm
+    savebgm(MUS_BW_DREAM_YARD)
+    closemessage
+    msgbox("Lenora: {PLAYER}, thank you so much.\p"
+           "With a kind Trainer like you\n"
+           "taking care of them, the Pokémon\l"
+           "with you must be happy.\p"
+           "Here is a token of my gratitude.\n"
+           "Please use it carefully!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_LENORA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_MOON_STONE, 1)
+	call_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull2)
+    msgbox("Lenora: This is a Moon Stone!\p"
+           "Some Pokémon evolve when you\n"
+           "use this item on them.\p"
+           "Now, I must take the Dragon Skull\n"
+           "back to the museum!\p"
+           "See you! Take care of yourself!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_LENORA_HIDDEN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_PLAYER, moves(delay_16, face_right))
+	applymovement(LOCALID_PFI_LENORA_HIDDEN, moves(walk_right * 9))
+	waitmovement(0)
+    removeobject(LOCALID_PFI_LENORA_HIDDEN)
+    setflag(FLAG_NACRENE_LENORA)
+    setflag(FLAG_NACRENE_MUSEUM_CHEREN_BIANCA)
+    clearflag(FLAG_NACRENE_GYM_LENORA)
+    delay(20)
+    release
+    end
+}
+
+
+script PinwheelForest_ITTB4_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right))
+	waitmovement(0)
+    return
+}
+
+script PinwheelForest_ITTB4_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left))
+	waitmovement(0)
+    return
+}
+

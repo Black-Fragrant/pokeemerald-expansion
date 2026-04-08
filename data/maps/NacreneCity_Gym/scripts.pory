@@ -150,6 +150,7 @@ script NacreneCity_Gym_EventScript_ReceptionistGivesWater
 script NacreneCity_Gym_EventScript_Receptionist
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Gym_EventScript_Receptionist_3)
 	goto_if_ge (VAR_NACRENE_STATE, 5, NacreneCity_Gym_EventScript_Receptionist_2)
 	msgbox("All Trainers in this Gym use\n"
            "Normal-type Pokémon.\p"
@@ -177,6 +178,15 @@ script NacreneCity_Gym_EventScript_Receptionist_2
            "Oh! The Gym Badge!! Congratulations!\p"
            "So, the museum!\n"
            "Oh, no. What shall we do?!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
+script NacreneCity_Gym_EventScript_Receptionist_3
+{
+    	msgbox("I love to compare the expressions when\n"
+           "a Trainer comes here for the first time\l"
+           "and when a Trainer wins the Gym Badge.", MSGBOX_NPC, TRUE)
     release
 	end
 }

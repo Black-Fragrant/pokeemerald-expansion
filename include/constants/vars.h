@@ -119,7 +119,7 @@
 #define VAR_ROUTE3_SOUTH_CHEREN_EXPLAIN                  0x4061
 #define VAR_NACRENE_STATE                                0x4062
 #define VAR_DAY_OF_WEEK                                  0x4063
-#define VAR_UNUSED_4064                                  0x4064 // Unused Var
+#define VAR_PINWHEEL_FOREST_STATE                        0x4064
 #define VAR_UNUSED_4065                                  0x4065 // Unused Var
 #define VAR_UNUSED_4066                                  0x4066 // Unused Var
 #define VAR_UNUSED_4067                                  0x4067 // Unused Var

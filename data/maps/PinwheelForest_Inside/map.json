@@ -31,7 +31,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_1",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
@@ -44,7 +44,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_2",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
@@ -57,7 +57,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_3",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
@@ -70,7 +70,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_4",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
@@ -83,7 +83,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_5",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
@@ -96,7 +96,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PinwheelForest_Inside_EventScript_TPG_Blocking_6",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
@@ -109,7 +109,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
@@ -122,7 +122,412 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
+      "flag": "FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_PFI_BURGH_ENTRANCE",
+      "graphics_id": "OBJ_EVENT_GFX_BURGH",
+      "x": 73,
+      "y": 55,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PINWHEEL_FOREST_I_BURGH_ENTRANCE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_BOY",
+      "x": 76,
+      "y": 46,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Schoolboy",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 74,
+      "y": 42,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Lass",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_TWINS_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "x": 65,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Twins_Right",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_TWINS_LEFT",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "x": 64,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Twins_Left",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLUE_SHIRT_GUY",
+      "x": 76,
+      "y": 33,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 8,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_EventScript_BlueShirtGuy_Bridge",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_FEMALE",
+      "x": 71,
+      "y": 35,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_EventScript_Scientist_F_Bridge",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_GIRL",
+      "x": 71,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Schoolgirl",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 75,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_EventScript_Hiker_Top",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_BURGH_EXIT",
+      "graphics_id": "OBJ_EVENT_GFX_BURGH",
+      "x": 74,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PINWHEEL_FOREST_I_HEIST_CREW"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
+      "x": 87,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NacreneCity_EventScript_Grandpa_Blocking",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_TPGM_B1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 60,
+      "y": 60,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPGM_1",
+      "flag": "FLAG_PINWHEEL_FOREST_I_HEIST_CREW"
+    },
+    {
+      "local_id": "LOCALID_PFI_RANGER_M_CHESTO",
+      "graphics_id": "OBJ_EVENT_GFX_COWBOY",
+      "x": 42,
+      "y": 55,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Ranger_M_1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_TPGF_B2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 45,
+      "y": 60,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPGF_2",
+      "flag": "FLAG_PINWHEEL_FOREST_I_HEIST_CREW"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 43,
+      "y": 67,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_BIG_ROOT",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_I_ITEM_BIG_ROOT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 35,
+      "y": 56,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SUPER_POTION",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_I_ITEM_SUPER_POTION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 24,
+      "y": 59,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Youngster",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 17,
+      "y": 52,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ANTIDOTE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_I_ITEM_ANTIDOTE"
+    },
+    {
+      "local_id": "LOCALID_PFI_RANGER_F_CHESTO",
+      "graphics_id": "OBJ_EVENT_GFX_COWGIRL",
+      "x": 21,
+      "y": 52,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_BURIED",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BURIED",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Ranger_F_1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_RANGER_F_PECHA",
+      "graphics_id": "OBJ_EVENT_GFX_COWGIRL",
+      "x": 12,
+      "y": 34,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_BURIED",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BURIED",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Ranger_F_2",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_TPGM_B3",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 21,
+      "y": 38,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PinwheelForest_Inside_EventScript_TPGM_3",
+      "flag": "FLAG_PINWHEEL_FOREST_I_HEIST_CREW"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 37,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_PARALYZE_HEAL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_I_ITEM_PARALYZE_HEAL"
+    },
+    {
+      "local_id": "LOCALID_PFI_RANGER_M_PECHA",
+      "graphics_id": "OBJ_EVENT_GFX_COWBOY",
+      "x": 43,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_BURIED",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BURIED",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "PinwheelForest_Inside_EventScript_Battle_Ranger_M_2",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GOLD_BALL",
+      "x": 50,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_GRASS_KNOT",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_I_ITEM_TM_GRASS_KNOT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 50,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_PFI_TPGM_B4",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 43,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PINWHEEL_FOREST_I_HEIST_CREW"
+    },
+    {
+      "local_id": "LOCALID_PFI_SAGE",
+      "graphics_id": "OBJ_EVENT_GFX_SAGE4",
+      "x": 43,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_PFI_BURGH_HIDDEN",
+      "graphics_id": "OBJ_EVENT_GFX_BURGH",
+      "x": 43,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_PFI_LENORA_HIDDEN",
+      "graphics_id": "OBJ_EVENT_GFX_LENORA",
+      "x": 43,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 63,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_MIRACLE_SEED",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_PINWHEEL_FOREST_I_ITEM_MIRACLE_SEED"
     }
   ],
   "warp_events": [
@@ -183,6 +588,385 @@
       "dest_warp_id": "7"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 71,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "8",
+      "script": "PinwheelForest_Inside_Trigger_Entrance_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 72,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "8",
+      "script": "PinwheelForest_Inside_Trigger_Entrance_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 73,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "8",
+      "script": "PinwheelForest_Inside_Trigger_Entrance_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 74,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "8",
+      "script": "PinwheelForest_Inside_Trigger_Entrance_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 75,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "8",
+      "script": "PinwheelForest_Inside_Trigger_Entrance_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 76,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "8",
+      "script": "PinwheelForest_Inside_Trigger_Entrance_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 71,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "9",
+      "script": "PinwheelForest_Inside_Trigger_Exit_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 72,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "9",
+      "script": "PinwheelForest_Inside_Trigger_Exit_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 73,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "9",
+      "script": "PinwheelForest_Inside_Trigger_Exit_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 74,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "9",
+      "script": "PinwheelForest_Inside_Trigger_Exit_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 75,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "9",
+      "script": "PinwheelForest_Inside_Trigger_Exit_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 76,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NACRENE_STATE",
+      "var_value": "9",
+      "script": "PinwheelForest_Inside_Trigger_Exit_Burgh"
+    },
+    {
+      "type": "trigger",
+      "x": 59,
+      "y": 59,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "0",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_1"
+    },
+    {
+      "type": "trigger",
+      "x": 60,
+      "y": 59,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "0",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_1"
+    },
+    {
+      "type": "trigger",
+      "x": 61,
+      "y": 59,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "0",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_1"
+    },
+    {
+      "type": "trigger",
+      "x": 62,
+      "y": 59,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "0",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_1"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 55,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 56,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 57,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 58,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 59,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 60,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 61,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 62,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 63,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 64,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 65,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "1",
+      "script": "PinwheelForest_Inside_Trigger_TPGF_Battle_2"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 37,
+      "elevation": 4,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "2",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_3"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 38,
+      "elevation": 4,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "2",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_3"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 39,
+      "elevation": 4,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "2",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_3"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "3",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_4"
+    },
+    {
+      "type": "trigger",
+      "x": 43,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "3",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_4"
+    },
+    {
+      "type": "trigger",
+      "x": 44,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_PINWHEEL_FOREST_STATE",
+      "var_value": "3",
+      "script": "PinwheelForest_Inside_Trigger_TPGM_Battle_4"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 67,
+      "y": 53,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "PinwheelForest_Inside_SignPost_TrainerTips_Bottom"
+    },
+    {
+      "type": "sign",
+      "x": 49,
+      "y": 52,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "sign",
+      "x": 49,
+      "y": 53,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "sign",
+      "x": 49,
+      "y": 54,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "sign",
+      "x": 50,
+      "y": 54,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "sign",
+      "x": 51,
+      "y": 52,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "sign",
+      "x": 51,
+      "y": 53,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "sign",
+      "x": 51,
+      "y": 54,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PinwheelForest_Inside_MossRock"
+    },
+    {
+      "type": "hidden_item",
+      "x": 35,
+      "y": 66,
+      "elevation": 0,
+      "item": "ITEM_TINY_MUSHROOM",
+      "flag": "FLAG_HIDDEN_ITEM_PFI_TINY_MUSHROOM_1"
+    },
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 42,
+      "elevation": 0,
+      "item": "ITEM_TINY_MUSHROOM",
+      "flag": "FLAG_HIDDEN_ITEM_PFI_TINY_MUSHROOM_2"
+    }
+  ]
 }
