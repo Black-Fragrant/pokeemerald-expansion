@@ -139,6 +139,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_NACRENE_LENORA
 	setflag FLAG_NACRENE_MUSEUM_CHEREN_BIANCA
 	setflag FLAG_PINWHEEL_FOREST_ON_BURGH
+	setflag FLAG_PINWHEEL_FOREST_I_BURGH_ENTRANCE
 	call EventScript_ResetAllBerries
 	end
 

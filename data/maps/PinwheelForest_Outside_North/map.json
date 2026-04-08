@@ -118,11 +118,12 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_PFON_BURGH",
       "graphics_id": "OBJ_EVENT_GFX_BURGH",
       "x": 14,
       "y": 6,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -169,7 +170,7 @@
       "elevation": 0,
       "var": "VAR_NACRENE_STATE",
       "var_value": "7",
-      "script": "NULL"
+      "script": "PinwheelForest_ON_Trigger_Burgh"
     },
     {
       "type": "trigger",
@@ -178,7 +179,7 @@
       "elevation": 0,
       "var": "VAR_NACRENE_STATE",
       "var_value": "7",
-      "script": "NULL"
+      "script": "PinwheelForest_ON_Trigger_Burgh"
     },
     {
       "type": "trigger",
@@ -187,7 +188,7 @@
       "elevation": 0,
       "var": "VAR_NACRENE_STATE",
       "var_value": "7",
-      "script": "NULL"
+      "script": "PinwheelForest_ON_Trigger_Burgh"
     }
   ],
   "bg_events": [

@@ -1,16 +1,17 @@
 mapscripts NacreneCity_Museum_MapScripts 
 {
     MAP_SCRIPT_ON_LOAD : NacreneCity_Museum_On_Load
-    MAP_SCRIPT_ON_TRANSITION : NacreneCity_Museum_Transition
+    MAP_SCRIPT_ON_TRANSITION : NacreneCity_Museum_On_Transition
 }
 
 script NacreneCity_Museum_On_Load
 {
+	goto_if_ge(VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_StolenDragoniteSkull_Intercept)
 	call_if_ge(VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_StolenDragoniteSkull)
 	end()
 }
 
-script NacreneCity_Museum_Transition
+script NacreneCity_Museum_On_Transition
 {
     call_if_ge (VAR_NACRENE_STATE, 3, NacreneCity_Museum_EventScript_PositionScientist)
 	call_if_ge (VAR_NACRENE_STATE, 5, NacreneCity_Museum_EventScript_PlayMusic)
@@ -27,6 +28,11 @@ script NacreneCity_Museum_EventScript_StolenDragoniteSkull
     return
 }
 
+script NacreneCity_Museum_EventScript_StolenDragoniteSkull_Intercept
+{
+	end()
+}
+
 script NacreneCity_Museum_EventScript_PositionScientist
 {
 	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 11, 4)
@@ -36,10 +42,16 @@ script NacreneCity_Museum_EventScript_PositionScientist
 
 script NacreneCity_Museum_EventScript_PlayMusic
 {
-    savebgm(MUS_BW_APPEARS_PLASMA_2)
 	setobjectxyperm(LOCALID_NACRENE_MUSEUM_SCIENTIST, 11, 12)
     setobjectmovementtype (LOCALID_NACRENE_MUSEUM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_PlayMusic_Interject)
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
     return
+}
+
+script NacreneCity_Museum_EventScript_PlayMusic_Interject
+{
+	return
 }
 
 script NacreneCity_Museum_EventScript_PositionScientist_2
@@ -180,6 +192,7 @@ script NacreneCity_Museum_Trigger_Tour_Right
 script NacreneCity_Museum_EventScript_Scientist
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_Scientist_3)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Scientist_2)
 	msgbox("At the end of the Gym, a very strong\n"
            "and kind Gym Leader is waiting.\p"
@@ -197,11 +210,29 @@ script NacreneCity_Museum_EventScript_Scientist_2
 	end
 }
 
+script NacreneCity_Museum_EventScript_Scientist_3
+{
+    lock
+	msgbox("Skeletal specimens are so mysterious...\p"
+           "From the outside, you can't see their\n"
+           "functional, efficient design.\p"
+           "It's almost as if it is an embodiment of\n"
+           "their former essence... So fascinating!", MSGBOX_NPC, TRUE)
+    release
+	end
+}
+
 script NacreneCity_Museum_EventScript_SchoolGirl
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_SchoolGirl_1)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_SchoolGirl_3)
 	goto_if_ge (VAR_NACRENE_STATE, 5, NacreneCity_Museum_EventScript_SchoolGirl_2)
+	goto (NacreneCity_Museum_EventScript_SchoolGirl_1)
+}
+
+script NacreneCity_Museum_EventScript_SchoolGirl_1
+{
 	msgbox("The Gym Leader here studies Fossils and\n"
            "ancient artifacts.", MSGBOX_NPC, TRUE)
     release
@@ -228,7 +259,13 @@ script NacreneCity_Museum_EventScript_SchoolGirl_3
 script NacreneCity_Museum_EventScript_Grandpa
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_Grandpa_1)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Grandpa_2)
+	goto (NacreneCity_Museum_EventScript_Grandpa_1)
+}
+
+script NacreneCity_Museum_EventScript_Grandpa_1
+{
 	msgbox("Perhaps there is a Pokémon that came\n"
            "from space along with this meteorite.", MSGBOX_NPC, TRUE)
     release
@@ -246,7 +283,13 @@ script NacreneCity_Museum_EventScript_Grandpa_2
 script NacreneCity_Museum_EventScript_GreenShirtGuy
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_GreenShirtGuy_1)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_GreenShirtGuy_2)
+	goto (NacreneCity_Museum_EventScript_GreenShirtGuy_1)
+}
+
+script NacreneCity_Museum_EventScript_GreenShirtGuy_1
+{
 	msgbox("Rare Pokémon from around the world...\n"
            "Museums are packed with adventure!", MSGBOX_NPC, TRUE)
     release
@@ -263,7 +306,13 @@ script NacreneCity_Museum_EventScript_GreenShirtGuy_2
 script NacreneCity_Museum_EventScript_Receptionist_TopLeft
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_Receptionist_TopLeft_1)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_TopLeft_2)
+	goto (NacreneCity_Museum_EventScript_Receptionist_TopLeft_1)
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_TopLeft_1
+{
 	msgbox("You can get to the Pokémon Gym by going\n"
            "to the back of the museum!", MSGBOX_NPC, TRUE)
     release
@@ -281,7 +330,13 @@ script NacreneCity_Museum_EventScript_Receptionist_TopLeft_2
 script NacreneCity_Museum_EventScript_Receptionist_BottomLeft
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_Receptionist_BottomLeft_1)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2)
+	goto (NacreneCity_Museum_EventScript_Receptionist_BottomLeft_1)
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_BottomLeft_1
+{
 	msgbox("Welcome to the Nacrene Museum!", MSGBOX_NPC, TRUE)
     release
 	end
@@ -298,7 +353,13 @@ script NacreneCity_Museum_EventScript_Receptionist_BottomLeft_2
 script NacreneCity_Museum_EventScript_Receptionist_Right
 {
     lock
+	goto_if_ge (VAR_NACRENE_STATE, 10, NacreneCity_Museum_EventScript_Receptionist_Right_1)
 	goto_if_ge (VAR_NACRENE_STATE, 6, NacreneCity_Museum_EventScript_Receptionist_Right_2)
+	goto (NacreneCity_Museum_EventScript_Receptionist_Right_1)
+}
+
+script NacreneCity_Museum_EventScript_Receptionist_Right_1
+{
 	msgbox("I am researching Pokémon Fossils here.\p"
            "If you have a Fossil, bring it to me!", MSGBOX_NPC, TRUE)
     release

@@ -560,8 +560,8 @@
 #define FLAG_HIDDEN_ITEM_PFOS_TINY_MUSHROOM                  (FLAG_HIDDEN_ITEMS_START + 0x07)
 #define FLAG_HIDDEN_ITEM_PFOS_ANTIDOTE                       (FLAG_HIDDEN_ITEMS_START + 0x08)
 #define FLAG_HIDDEN_ITEM_PFOS_ETHER                          (FLAG_HIDDEN_ITEMS_START + 0x09)
-#define FLAG_UNUSED_0x1FE                                    (FLAG_HIDDEN_ITEMS_START + 0x0A)
-#define FLAG_UNUSED_0x1FF                                    (FLAG_HIDDEN_ITEMS_START + 0x0B)
+#define FLAG_HIDDEN_ITEM_PFI_TINY_MUSHROOM_1                 (FLAG_HIDDEN_ITEMS_START + 0x0A)
+#define FLAG_HIDDEN_ITEM_PFI_TINY_MUSHROOM_2                 (FLAG_HIDDEN_ITEMS_START + 0x0B)
 #define FLAG_UNUSED_0x200                                    (FLAG_HIDDEN_ITEMS_START + 0x0C)
 #define FLAG_UNUSED_0x201                                    (FLAG_HIDDEN_ITEMS_START + 0x0D)
 #define FLAG_UNUSED_0x202                                    (FLAG_HIDDEN_ITEMS_START + 0x0E)
@@ -832,19 +832,19 @@
 #define FLAG_NACRENE_LENORA                                         0x310
 #define FLAG_NACRENE_MUSEUM_CHEREN_BIANCA                           0x311
 #define FLAG_PINWHEEL_FOREST_ON_BURGH                               0x312
-#define FLAG_UNUSED_0x313                                           0x313
-#define FLAG_UNUSED_0x314                                           0x314
-#define FLAG_UNUSED_0x315                                           0x315
-#define FLAG_UNUSED_0x316                                           0x316
-#define FLAG_UNUSED_0x317                                           0x317
-#define FLAG_UNUSED_0x318                                           0x318
-#define FLAG_UNUSED_0x319                                           0x319
-#define FLAG_UNUSED_0x31A                                           0x31A
-#define FLAG_UNUSED_0x31B                                           0x31B
-#define FLAG_UNUSED_0x31C                                           0x31C
-#define FLAG_UNUSED_0x31D                                           0x31D
-#define FLAG_UNUSED_0x31E                                           0x31E
-#define FLAG_UNUSED_0x31F                                           0x31F
+#define FLAG_PINWHEEL_FOREST_I_BLOCKING_GRUNTS                      0x313
+#define FLAG_PINWHEEL_FOREST_I_BURGH_ENTRANCE                       0x314
+#define FLAG_PINWHEEL_FOREST_I_ITEM_BIG_ROOT                        0x315
+#define FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY                    0x316
+#define FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY_2                  0x317
+#define FLAG_PINWHEEL_FOREST_I_ITEM_SUPER_POTION                    0x318
+#define FLAG_PINWHEEL_FOREST_I_ITEM_ANTIDOTE                        0x319
+#define FLAG_PINWHEEL_FOREST_I_ITEM_PECHA_BERRY                     0x31A
+#define FLAG_PINWHEEL_FOREST_I_ITEM_PECHA_BERRY_2                   0x31B
+#define FLAG_PINWHEEL_FOREST_I_ITEM_PARALYZE_HEAL                   0x31C
+#define FLAG_PINWHEEL_FOREST_I_ITEM_TM_GRASS_KNOT                   0x31D
+#define FLAG_PINWHEEL_FOREST_I_ITEM_MIRACLE_SEED                    0x31E
+#define FLAG_PINWHEEL_FOREST_I_HEIST_CREW                           0x31F
 #define FLAG_UNUSED_0x320                                           0x320
 #define FLAG_UNUSED_0x321                                           0x321
 #define FLAG_UNUSED_0x322                                           0x322

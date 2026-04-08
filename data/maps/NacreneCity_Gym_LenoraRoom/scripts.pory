@@ -112,6 +112,16 @@ script NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora_Pos1
 
 script NacreneCity_Gym_LenoraRoom_EventScript_Lenora_AcquiredBadge
 {
+    msgbox("Some problems you can't solve even if you\n"
+           "think about them your whole life.\p"
+           "Some problems have different answers\n"
+           "depending on the person.\p"
+           "Still, the reason I can't keep my\n"
+           "curiosity down is this:\l"
+           "I want to figure out the truth, but I\l"
+           "also have a desire for adventure!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
+    destroy_speech_bubble()
+    closemessage
     release
     end
 }
