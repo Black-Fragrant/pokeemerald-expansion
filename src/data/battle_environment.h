@@ -84,6 +84,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(TallGrass),
         .background = ENVIRONMENT_BACKGROUND(TallGrass),
         .palette = gBattleEnvironmentPalette_TallGrass,
+        .paletteDawn = gBattleEnvironmentPalette_TallGrassDawn,
+        .paletteEvening = gBattleEnvironmentPalette_TallGrassEvening,
+        .paletteNight = gBattleEnvironmentPalette_TallGrassNight,
         .battleIntroSlide = BattleIntroSlide1,
     },
 
@@ -104,6 +107,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(LongGrass),
         .background = ENVIRONMENT_BACKGROUND(LongGrass),
         .palette = gBattleEnvironmentPalette_LongGrass,
+        .paletteDawn = gBattleEnvironmentPalette_LongGrassDawn,
+        .paletteEvening = gBattleEnvironmentPalette_LongGrassEvening,
+        .paletteNight = gBattleEnvironmentPalette_LongGrassNight,
         .battleIntroSlide = BattleIntroSlide1,
     },
 
@@ -118,6 +124,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(Sand),
         .background = ENVIRONMENT_BACKGROUND(Sand),
         .palette = gBattleEnvironmentPalette_Sand,
+        .paletteDawn = gBattleEnvironmentPalette_SandDawn,
+        .paletteEvening = gBattleEnvironmentPalette_SandEvening,
+        .paletteNight = gBattleEnvironmentPalette_SandNight,
         .battleIntroSlide = BattleIntroSlide2,
     },
 
@@ -146,6 +155,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(Water),
         .background = ENVIRONMENT_BACKGROUND(Water),
         .palette = gBattleEnvironmentPalette_Water,
+        .paletteDawn = gBattleEnvironmentPalette_WaterDawn,
+        .paletteEvening = gBattleEnvironmentPalette_WaterEvening,
+        .paletteNight = gBattleEnvironmentPalette_WaterNight,
         .battleIntroSlide = BattleIntroSlide2,
     },
 
@@ -160,6 +172,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(PondWater),
         .background = ENVIRONMENT_BACKGROUND(PondWater),
         .palette = gBattleEnvironmentPalette_PondWater,
+        .paletteDawn = gBattleEnvironmentPalette_PondDawn,
+        .paletteEvening = gBattleEnvironmentPalette_PondEvening,
+        .paletteNight = gBattleEnvironmentPalette_PondNight,
         .battleIntroSlide = BattleIntroSlide1,
     },
 
@@ -186,6 +201,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(Rock),
         .background = ENVIRONMENT_BACKGROUND(Rock),
         .palette = gBattleEnvironmentPalette_Rock,
+        .paletteDawn = gBattleEnvironmentPalette_RockDawn,
+        .paletteEvening = gBattleEnvironmentPalette_RockEvening,
+        .paletteNight = gBattleEnvironmentPalette_RockNight,
         .battleIntroSlide = BattleIntroSlide1,
     },
 

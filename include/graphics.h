@@ -220,16 +220,31 @@ extern const u32 gBattleEnvironmentTilemap_TallGrass[];
 extern const u32 gBattleEnvironmentAnimTiles_TallGrass[];
 extern const u32 gBattleEnvironmentAnimTilemap_TallGrass[];
 extern const u16 gBattleEnvironmentPalette_TallGrass[];
+
+extern const u16 gBattleEnvironmentPalette_TallGrassDawn[];
+extern const u16 gBattleEnvironmentPalette_TallGrassEvening[];
+extern const u16 gBattleEnvironmentPalette_TallGrassNight[];
+
 extern const u32 gBattleEnvironmentTiles_LongGrass[];
 extern const u32 gBattleEnvironmentTilemap_LongGrass[];
 extern const u32 gBattleEnvironmentAnimTiles_LongGrass[];
 extern const u32 gBattleEnvironmentAnimTilemap_LongGrass[];
 extern const u16 gBattleEnvironmentPalette_LongGrass[];
+
+extern const u16 gBattleEnvironmentPalette_LongGrassDawn[];
+extern const u16 gBattleEnvironmentPalette_LongGrassEvening[];
+extern const u16 gBattleEnvironmentPalette_LongGrassNight[];
+
 extern const u32 gBattleEnvironmentTiles_Sand[];
 extern const u32 gBattleEnvironmentTilemap_Sand[];
 extern const u32 gBattleEnvironmentAnimTiles_Sand[];
 extern const u32 gBattleEnvironmentAnimTilemap_Sand[];
 extern const u16 gBattleEnvironmentPalette_Sand[];
+
+extern const u16 gBattleEnvironmentPalette_SandDawn[];
+extern const u16 gBattleEnvironmentPalette_SandEvening[];
+extern const u16 gBattleEnvironmentPalette_SandNight[];
+
 extern const u32 gBattleEnvironmentTiles_Underwater[];
 extern const u32 gBattleEnvironmentTilemap_Underwater[];
 extern const u32 gBattleEnvironmentAnimTiles_Underwater[];
@@ -240,16 +255,31 @@ extern const u32 gBattleEnvironmentTilemap_Water[];
 extern const u32 gBattleEnvironmentAnimTiles_Water[];
 extern const u32 gBattleEnvironmentAnimTilemap_Water[];
 extern const u16 gBattleEnvironmentPalette_Water[];
+
+extern const u16 gBattleEnvironmentPalette_WaterDawn[];
+extern const u16 gBattleEnvironmentPalette_WaterEvening[];
+extern const u16 gBattleEnvironmentPalette_WaterNight[];
+
 extern const u32 gBattleEnvironmentTiles_PondWater[];
 extern const u32 gBattleEnvironmentTilemap_PondWater[];
 extern const u32 gBattleEnvironmentAnimTiles_PondWater[];
 extern const u32 gBattleEnvironmentAnimTilemap_PondWater[];
 extern const u16 gBattleEnvironmentPalette_PondWater[];
+
+extern const u16 gBattleEnvironmentPalette_PondDawn[];
+extern const u16 gBattleEnvironmentPalette_PondEvening[];
+extern const u16 gBattleEnvironmentPalette_PondNight[];
+
 extern const u32 gBattleEnvironmentTiles_Rock[];
 extern const u32 gBattleEnvironmentTilemap_Rock[];
 extern const u32 gBattleEnvironmentAnimTiles_Rock[];
 extern const u32 gBattleEnvironmentAnimTilemap_Rock[];
 extern const u16 gBattleEnvironmentPalette_Rock[];
+
+extern const u16 gBattleEnvironmentPalette_RockDawn[];
+extern const u16 gBattleEnvironmentPalette_RockEvening[];
+extern const u16 gBattleEnvironmentPalette_RockNight[];
+
 extern const u32 gBattleEnvironmentTiles_Cave[];
 extern const u32 gBattleEnvironmentTilemap_Cave[];
 extern const u32 gBattleEnvironmentAnimTiles_Cave[];
