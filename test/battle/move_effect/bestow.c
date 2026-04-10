@@ -48,15 +48,15 @@ SINGLE_BATTLE_TEST("Bestow fails if the target already has a held item")
 SINGLE_BATTLE_TEST("Bestow fails if the user is holding Mail")
 {
     GIVEN {
-        ASSUME(ItemIsMail(ITEM_ORANGE_MAIL));
-        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_ORANGE_MAIL); }
+        ASSUME(ItemIsMail(ITEM_BRIDGE_MAIL_D));
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_BRIDGE_MAIL_D); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
         MESSAGE("But it failed!");
     } THEN {
-        EXPECT(player->item == ITEM_ORANGE_MAIL);
+        EXPECT(player->item == ITEM_BRIDGE_MAIL_D);
         EXPECT(opponent->item == ITEM_NONE);
     }
 }

@@ -57,9 +57,13 @@ script NacreneCity_PokeCenter_EventScript_Clerk2
 mart NacreneCity_Mart_Items {
 	ITEM_HEAL_BALL
 	ITEM_NET_BALL
-	ITEM_DREAM_MAIL
-	ITEM_RETRO_MAIL
-	ITEM_FAB_MAIL
+	ITEM_GREET_MAIL
+	ITEM_FAVORED_MAIL
+	ITEM_RSVP_MAIL
+	ITEM_THANKS_MAIL
+	ITEM_INQUIRY_MAIL
+	ITEM_LIKE_MAIL
+	ITEM_REPLY_MAIL
 }
 
 script NacreneCity_PokeCenter_EventScript_Boy

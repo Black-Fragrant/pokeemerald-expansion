@@ -320,9 +320,13 @@ script AccumulaTown_PokeCenter_EventScript_Clerk2
 }
 
 mart AccumulaTown_Mart_Items {
-	ITEM_ORANGE_MAIL
-	ITEM_GLITTER_MAIL
-	ITEM_FAB_MAIL
+	ITEM_GREET_MAIL
+	ITEM_FAVORED_MAIL
+	ITEM_RSVP_MAIL
+	ITEM_THANKS_MAIL
+	ITEM_INQUIRY_MAIL
+	ITEM_LIKE_MAIL
+	ITEM_REPLY_MAIL
 }
 
 script AccumulaTown_PokeCenter_EventScript_WifiAssistant

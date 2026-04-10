@@ -3891,214 +3891,220 @@ const struct ItemInfo gItemsInfo[] =
 
 // Mail
 
-    [ITEM_ORANGE_MAIL] =
+    [ITEM_BRIDGE_MAIL_D] =
     {
-        .name = ITEM_NAME("Orange Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Orange Mail"),
+        .name = ITEM_NAME("Bridge Mail D"),
+        .pluralName = ITEM_PLURAL_NAME("Bridge Mail D"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Zigzagoon-print\n"
+            "A red drawbridge\n"
             "Mail to be held by\n"
             "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_ORANGE_MAIL),
-        .iconPic = gItemIcon_OrangeMail,
-        .iconPalette = gItemIconPalette_OrangeMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_BRIDGE_MAIL_D),
+        .iconPic = gItemIcon_BridgeMailD,
+        .iconPalette = gItemIconPalette_BridgeMailD,
     },
 
-    [ITEM_HARBOR_MAIL] =
+    [ITEM_BRIDGE_MAIL_M] =
     {
-        .name = ITEM_NAME("Harbor Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Harbor Mail"),
+        .name = ITEM_NAME("Bridge Mail M"),
+        .pluralName = ITEM_PLURAL_NAME("Bridge Mail M"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Wingull-print\n"
+            "An arched bridge\n"
             "Mail to be held by\n"
             "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_HARBOR_MAIL),
-        .iconPic = gItemIcon_HarborMail,
-        .iconPalette = gItemIconPalette_HarborMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_BRIDGE_MAIL_M),
+        .iconPic = gItemIcon_BridgeMailM,
+        .iconPalette = gItemIconPalette_BridgeMailM,
     },
 
-    [ITEM_GLITTER_MAIL] =
+    [ITEM_BRIDGE_MAIL_S] =
     {
-        .name = ITEM_NAME("Glitter Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Glitter Mail"),
+        .name = ITEM_NAME("Bridge Mail S"),
+        .pluralName = ITEM_PLURAL_NAME("Bridge Mail S"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Pikachu-print\n"
+            "A sky-piercing\n"
+            "bridge Mail to be\n"
+            "held by a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MAIL,
+        .type = ITEM_USE_MAIL,
+        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_BRIDGE_MAIL_S),
+        .iconPic = gItemIcon_BridgeMailS,
+        .iconPalette = gItemIconPalette_BridgeMailS,
+    },
+
+    [ITEM_BRIDGE_MAIL_T] =
+    {
+        .name = ITEM_NAME("Bridge Mail T"),
+        .pluralName = ITEM_PLURAL_NAME("Bridge Mail T"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A steel suspension\n"
+            "bridge Mail to be\n"
+            "held by a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MAIL,
+        .type = ITEM_USE_MAIL,
+        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_BRIDGE_MAIL_T),
+        .iconPic = gItemIcon_BridgeMailT,
+        .iconPalette = gItemIconPalette_BridgeMailT,
+    },
+
+    [ITEM_BRIDGE_MAIL_V] =
+    {
+        .name = ITEM_NAME("Bridge Mail V"),
+        .pluralName = ITEM_PLURAL_NAME("Bridge Mail V"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A brick bridge\n"
             "Mail to be held by\n"
             "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_GLITTER_MAIL),
-        .iconPic = gItemIcon_GlitterMail,
-        .iconPalette = gItemIconPalette_GlitterMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_BRIDGE_MAIL_V),
+        .iconPic = gItemIcon_BridgeMailV,
+        .iconPalette = gItemIconPalette_BridgeMailV,
     },
 
-    [ITEM_MECH_MAIL] =
+    [ITEM_FAVORED_MAIL] =
     {
-        .name = ITEM_NAME("Mech Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Mech Mail"),
+        .name = ITEM_NAME("Favored Mail"),
+        .pluralName = ITEM_PLURAL_NAME("Favored Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Magnemite-print\n"
-            "Mail to be held by\n"
-            "a Pokémon."),
+            "A Mail designed for\n"
+            "favorite things,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_MECH_MAIL),
-        .iconPic = gItemIcon_MechMail,
-        .iconPalette = gItemIconPalette_MechMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_FAVORED_MAIL),
+        .iconPic = gItemIcon_FavoredMail,
+        .iconPalette = gItemIconPalette_FavoredMail,
     },
 
-    [ITEM_WOOD_MAIL] =
+    [ITEM_GREET_MAIL] =
     {
-        .name = ITEM_NAME("Wood Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Wood Mail"),
+        .name = ITEM_NAME("Greet Mail"),
+        .pluralName = ITEM_PLURAL_NAME("Greet Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Slakoth-print\n"
-            "Mail to be held by\n"
-            "a Pokémon."),
+            "A Mail designed for\n"
+            "intro greetings,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_WOOD_MAIL),
-        .iconPic = gItemIcon_WoodMail,
-        .iconPalette = gItemIconPalette_WoodMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_GREET_MAIL),
+        .iconPic = gItemIcon_GreetMail,
+        .iconPalette = gItemIconPalette_GreetMail,
     },
 
-    [ITEM_WAVE_MAIL] =
+    [ITEM_INQUIRY_MAIL] =
     {
-        .name = ITEM_NAME("Wave Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Wave Mail"),
+        .name = ITEM_NAME("Inquiry Mail"),
+        .pluralName = ITEM_PLURAL_NAME("Inquiry Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Wailmer-print\n"
-            "Mail to be held by\n"
-            "a Pokémon."),
+            "A Mail designed for\n"
+            "writing questions,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_WAVE_MAIL),
-        .iconPic = gItemIcon_WaveMail,
-        .iconPalette = gItemIconPalette_WaveMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_INQUIRY_MAIL),
+        .iconPic = gItemIcon_InquiryMail,
+        .iconPalette = gItemIconPalette_InquiryMail,
     },
 
-    [ITEM_BEAD_MAIL] =
+    [ITEM_LIKE_MAIL] =
     {
-        .name = ITEM_NAME("Bead Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Bead Mail"),
-        .price = 50,
-        .description = sBeadMailDesc,
-        .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_MAIL,
-        .type = ITEM_USE_MAIL,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_BEAD_MAIL),
-        .iconPic = gItemIcon_BeadMail,
-        .iconPalette = gItemIconPalette_BeadMail,
-    },
-
-    [ITEM_SHADOW_MAIL] =
-    {
-        .name = ITEM_NAME("Shadow Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Shadow Mail"),
+        .name = ITEM_NAME("Like Mail"),
+        .pluralName = ITEM_PLURAL_NAME("Like Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Duskull-print\n"
-            "Mail to be held by\n"
-            "a Pokémon."),
+            "A Mail designed for\n"
+            "recommendations,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_SHADOW_MAIL),
-        .iconPic = gItemIcon_ShadowMail,
-        .iconPalette = gItemIconPalette_ShadowMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_LIKE_MAIL),
+        .iconPic = gItemIcon_LikeMail,
+        .iconPalette = gItemIconPalette_LikeMail,
     },
 
-    [ITEM_TROPIC_MAIL] =
+    [ITEM_REPLY_MAIL] =
     {
-        .name = ITEM_NAME("Tropic Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Tropic Mail"),
+        .name = ITEM_NAME("Reply Mail"),
+        .pluralName = ITEM_PLURAL_NAME("Reply Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A Bellossom-print\n"
-            "Mail to be held by\n"
-            "a Pokémon."),
+            "A Mail designed for\n"
+            "writing a reply,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_TROPIC_MAIL),
-        .iconPic = gItemIcon_TropicMail,
-        .iconPalette = gItemIconPalette_TropicMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_REPLY_MAIL),
+        .iconPic = gItemIcon_ReplyMail,
+        .iconPalette = gItemIconPalette_ReplyMail,
     },
 
-    [ITEM_DREAM_MAIL] =
+    [ITEM_RSVP_MAIL] =
     {
-        .name = ITEM_NAME("Dream Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Dream Mail"),
-        .price = 50,
-        .description = sBeadMailDesc,
-        .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_MAIL,
-        .type = ITEM_USE_MAIL,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_DREAM_MAIL),
-        .iconPic = gItemIcon_DreamMail,
-        .iconPalette = gItemIconPalette_DreamMail,
-    },
-
-    [ITEM_FAB_MAIL] =
-    {
-        .name = ITEM_NAME("Fab Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Fab Mail"),
+        .name = ITEM_NAME("RSVP Mail"),
+        .pluralName = ITEM_PLURAL_NAME("RSVP Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "A gorgeous-print\n"
-            "Mail to be held\n"
-            "by a Pokémon."),
+            "A Mail designed for\n"
+            "invitations,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_FAB_MAIL),
-        .iconPic = gItemIcon_FabMail,
-        .iconPalette = gItemIconPalette_FabMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_RSVP_MAIL),
+        .iconPic = gItemIcon_RSVPMail,
+        .iconPalette = gItemIconPalette_RSVPMail,
     },
 
-    [ITEM_RETRO_MAIL] =
+    [ITEM_THANKS_MAIL] =
     {
-        .name = ITEM_NAME("Retro Mail"),
-        .pluralName = ITEM_PLURAL_NAME("Retro Mail"),
+        .name = ITEM_NAME("Thanks Mail"),
+        .pluralName = ITEM_PLURAL_NAME("Thanks Mail"),
         .price = 50,
         .description = COMPOUND_STRING(
-            "Mail featuring the\n"
-            "drawings of three\n"
-            "Pokémon."),
+            "A Mail designed for\n"
+            "a thank-you note,\n"
+            "held by a Pokémon."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
         .type = ITEM_USE_MAIL,
         .fieldUseFunc = ItemUseOutOfBattle_Mail,
-        .secondaryId = ITEM_TO_MAIL(ITEM_RETRO_MAIL),
-        .iconPic = gItemIcon_RetroMail,
-        .iconPalette = gItemIconPalette_RetroMail,
+        .secondaryId = ITEM_TO_MAIL(ITEM_THANKS_MAIL),
+        .iconPic = gItemIcon_ThanksMail,
+        .iconPalette = gItemIconPalette_ThanksMail,
     },
 
 // Evolution Items

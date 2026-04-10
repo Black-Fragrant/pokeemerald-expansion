@@ -284,9 +284,9 @@ static const u16 sQuizLadyQuestion16[QUIZ_QUESTION_LEN] =
 
 static const struct LilycoveQuizLadyQuestions sQuizLadyQuestions[] =
 {
-    {.question = sQuizLadyQuestion1,  .answer = EC_WORD_POKEDEX,    .prize = ITEM_GLITTER_MAIL},
-    {.question = sQuizLadyQuestion2,  .answer = EC_WORD_DARK,       .prize = ITEM_BEAD_MAIL},
-    {.question = sQuizLadyQuestion3,  .answer = EC_WORD_LEVEL,      .prize = ITEM_TROPIC_MAIL},
+    {.question = sQuizLadyQuestion1,  .answer = EC_WORD_POKEDEX,    .prize = ITEM_BRIDGE_MAIL_S},
+    {.question = sQuizLadyQuestion2,  .answer = EC_WORD_DARK,       .prize = ITEM_GREET_MAIL},
+    {.question = sQuizLadyQuestion3,  .answer = EC_WORD_LEVEL,      .prize = ITEM_LIKE_MAIL},
     {.question = sQuizLadyQuestion4,  .answer = EC_WORD_FLOWERS,    .prize = ITEM_MAX_ETHER},
     {.question = sQuizLadyQuestion5,  .answer = EC_WORD_EGG,        .prize = ITEM_MAX_ETHER},
     {.question = sQuizLadyQuestion6,  .answer = EC_WORD_OWN_TEMPO,  .prize = ITEM_MAX_ETHER},

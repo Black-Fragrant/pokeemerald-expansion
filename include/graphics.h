@@ -728,6 +728,31 @@ extern const u32 gItemIcon_FabMail[];
 extern const u16 gItemIconPalette_FabMail[];
 extern const u32 gItemIcon_RetroMail[];
 extern const u16 gItemIconPalette_RetroMail[];
+// BW Mail
+extern const u32 gItemIcon_BridgeMailD[];
+extern const u16 gItemIconPalette_BridgeMailD[];
+extern const u32 gItemIcon_BridgeMailM[];
+extern const u16 gItemIconPalette_BridgeMailM[];
+extern const u32 gItemIcon_BridgeMailS[];
+extern const u16 gItemIconPalette_BridgeMailS[];
+extern const u32 gItemIcon_BridgeMailT[];
+extern const u16 gItemIconPalette_BridgeMailT[];
+extern const u32 gItemIcon_BridgeMailV[];
+extern const u16 gItemIconPalette_BridgeMailV[];
+extern const u32 gItemIcon_FavoredMail[];
+extern const u16 gItemIconPalette_FavoredMail[];
+extern const u32 gItemIcon_GreetMail[];
+extern const u16 gItemIconPalette_GreetMail[];
+extern const u32 gItemIcon_InquiryMail[];
+extern const u16 gItemIconPalette_InquiryMail[];
+extern const u32 gItemIcon_LikeMail[];
+extern const u16 gItemIconPalette_LikeMail[];
+extern const u32 gItemIcon_ReplyMail[];
+extern const u16 gItemIconPalette_ReplyMail[];
+extern const u32 gItemIcon_RSVPMail[];
+extern const u16 gItemIconPalette_RSVPMail[];
+extern const u32 gItemIcon_ThanksMail[];
+extern const u16 gItemIconPalette_ThanksMail[];
 // Evolution Items
 extern const u32 gItemIcon_FireStone[];
 extern const u16 gItemIconPalette_FireStone[];
@@ -3473,6 +3498,54 @@ extern const u32 gMailTiles_Fab[];
 extern const u32 gMailTilemap_Fab[];
 extern const u32 gMailTiles_Retro[];
 extern const u32 gMailTilemap_Retro[];
+
+extern const u16 gMailPalette_Bridge_D[];
+extern const u32 gMailTiles_Bridge_D[];
+extern const u32 gMailTilemap_Bridge_D[];
+
+extern const u16 gMailPalette_Bridge_M[];
+extern const u32 gMailTiles_Bridge_M[];
+extern const u32 gMailTilemap_Bridge_M[];
+
+extern const u16 gMailPalette_Bridge_S[];
+extern const u32 gMailTiles_Bridge_S[];
+extern const u32 gMailTilemap_Bridge_S[];
+
+extern const u16 gMailPalette_Bridge_T[];
+extern const u32 gMailTiles_Bridge_T[];
+extern const u32 gMailTilemap_Bridge_T[];
+
+extern const u16 gMailPalette_Bridge_V[];
+extern const u32 gMailTiles_Bridge_V[];
+extern const u32 gMailTilemap_Bridge_V[];
+
+extern const u16 gMailPalette_Favored[];
+extern const u32 gMailTiles_Favored[];
+extern const u32 gMailTilemap_Favored[];
+
+extern const u16 gMailPalette_Greet[];
+extern const u32 gMailTiles_Greet[];
+extern const u32 gMailTilemap_Greet[];
+
+extern const u16 gMailPalette_Inquiry[];
+extern const u32 gMailTiles_Inquiry[];
+extern const u32 gMailTilemap_Inquiry[];
+
+extern const u16 gMailPalette_Like[];
+extern const u32 gMailTiles_Like[];
+extern const u32 gMailTilemap_Like[];
+
+extern const u16 gMailPalette_Reply[];
+extern const u32 gMailTiles_Reply[];
+extern const u32 gMailTilemap_Reply[];
+
+extern const u16 gMailPalette_RSVP[];
+extern const u32 gMailTiles_RSVP[];
+extern const u32 gMailTilemap_RSVP[];
+
+extern const u16 gMailPalette_Thanks[];
+extern const u32 gMailTiles_Thanks[];
+extern const u32 gMailTilemap_Thanks[];
 
 extern const u8 gMonMarkingsMenu_Gfx[];
 extern const u16 gMonMarkingsMenu_Pal[];
