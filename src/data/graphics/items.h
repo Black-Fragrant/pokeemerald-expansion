@@ -507,6 +507,44 @@ const u16 gItemIconPalette_FabMail[] = INCBIN_U16("graphics/items/icon_palettes/
 const u32 gItemIcon_RetroMail[] = INCBIN_U32("graphics/items/icons/retro_mail.4bpp.smol");
 const u16 gItemIconPalette_RetroMail[] = INCBIN_U16("graphics/items/icon_palettes/retro_mail.gbapal");
 
+// BW Mail
+
+const u32 gItemIcon_BridgeMailD[] = INCBIN_U32("graphics/items/icons/bridge_mail_d.4bpp.smol");
+const u16 gItemIconPalette_BridgeMailD[] = INCBIN_U16("graphics/items/icon_palettes/bridge_mail_d.gbapal");
+
+const u32 gItemIcon_BridgeMailM[] = INCBIN_U32("graphics/items/icons/bridge_mail_m.4bpp.smol");
+const u16 gItemIconPalette_BridgeMailM[] = INCBIN_U16("graphics/items/icon_palettes/bridge_mail_m.gbapal");
+
+const u32 gItemIcon_BridgeMailS[] = INCBIN_U32("graphics/items/icons/bridge_mail_s.4bpp.smol");
+const u16 gItemIconPalette_BridgeMailS[] = INCBIN_U16("graphics/items/icon_palettes/bridge_mail_s.gbapal");
+
+const u32 gItemIcon_BridgeMailT[] = INCBIN_U32("graphics/items/icons/bridge_mail_t.4bpp.smol");
+const u16 gItemIconPalette_BridgeMailT[] = INCBIN_U16("graphics/items/icon_palettes/bridge_mail_t.gbapal");
+
+const u32 gItemIcon_BridgeMailV[] = INCBIN_U32("graphics/items/icons/bridge_mail_v.4bpp.smol");
+const u16 gItemIconPalette_BridgeMailV[] = INCBIN_U16("graphics/items/icon_palettes/bridge_mail_v.gbapal");
+
+const u32 gItemIcon_FavoredMail[] = INCBIN_U32("graphics/items/icons/favored_mail.4bpp.smol");
+const u16 gItemIconPalette_FavoredMail[] = INCBIN_U16("graphics/items/icon_palettes/favored_mail.gbapal");
+
+const u32 gItemIcon_GreetMail[] = INCBIN_U32("graphics/items/icons/greet_mail.4bpp.smol");
+const u16 gItemIconPalette_GreetMail[] = INCBIN_U16("graphics/items/icon_palettes/greet_mail.gbapal");
+
+const u32 gItemIcon_InquiryMail[] = INCBIN_U32("graphics/items/icons/inquiry_mail.4bpp.smol");
+const u16 gItemIconPalette_InquiryMail[] = INCBIN_U16("graphics/items/icon_palettes/inquiry_mail.gbapal");
+
+const u32 gItemIcon_LikeMail[] = INCBIN_U32("graphics/items/icons/like_mail.4bpp.smol");
+const u16 gItemIconPalette_LikeMail[] = INCBIN_U16("graphics/items/icon_palettes/like_mail.gbapal");
+
+const u32 gItemIcon_ReplyMail[] = INCBIN_U32("graphics/items/icons/reply_mail.4bpp.smol");
+const u16 gItemIconPalette_ReplyMail[] = INCBIN_U16("graphics/items/icon_palettes/reply_mail.gbapal");
+
+const u32 gItemIcon_RSVPMail[] = INCBIN_U32("graphics/items/icons/rsvp_mail.4bpp.smol");
+const u16 gItemIconPalette_RSVPMail[] = INCBIN_U16("graphics/items/icon_palettes/rsvp_mail.gbapal");
+
+const u32 gItemIcon_ThanksMail[] = INCBIN_U32("graphics/items/icons/thanks_mail.4bpp.smol");
+const u16 gItemIconPalette_ThanksMail[] = INCBIN_U16("graphics/items/icon_palettes/thanks_mail.gbapal");
+
 // Evolution Items
 
 const u32 gItemIcon_FireStone[] = INCBIN_U32("graphics/items/icons/fire_stone.4bpp.smol");

@@ -3,18 +3,18 @@
 
 #include "main.h"
 
-#define IS_ITEM_MAIL(itemId) ((itemId == ITEM_ORANGE_MAIL           \
-                              || itemId == ITEM_HARBOR_MAIL         \
-                              || itemId == ITEM_GLITTER_MAIL        \
-                              || itemId == ITEM_MECH_MAIL           \
-                              || itemId == ITEM_WOOD_MAIL           \
-                              || itemId == ITEM_WAVE_MAIL           \
-                              || itemId == ITEM_BEAD_MAIL           \
-                              || itemId == ITEM_SHADOW_MAIL         \
-                              || itemId == ITEM_TROPIC_MAIL         \
-                              || itemId == ITEM_DREAM_MAIL          \
-                              || itemId == ITEM_FAB_MAIL            \
-                              || itemId == ITEM_RETRO_MAIL))
+#define IS_ITEM_MAIL(itemId) ((itemId == ITEM_BRIDGE_MAIL_D           \
+                              || itemId == ITEM_BRIDGE_MAIL_M         \
+                              || itemId == ITEM_BRIDGE_MAIL_S        \
+                              || itemId == ITEM_BRIDGE_MAIL_T           \
+                              || itemId == ITEM_BRIDGE_MAIL_V           \
+                              || itemId == ITEM_FAVORED_MAIL           \
+                              || itemId == ITEM_GREET_MAIL           \
+                              || itemId == ITEM_INQUIRY_MAIL         \
+                              || itemId == ITEM_LIKE_MAIL         \
+                              || itemId == ITEM_REPLY_MAIL          \
+                              || itemId == ITEM_RSVP_MAIL            \
+                              || itemId == ITEM_THANKS_MAIL))
 
 // mail.h
 void ReadMail(struct Mail *mail, MainCallback exitCallback, bool8 hasText);

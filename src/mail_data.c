@@ -192,18 +192,18 @@ bool8 ItemIsMail(enum Item itemId)
 {
     switch (itemId)
     {
-    case ITEM_ORANGE_MAIL:
-    case ITEM_HARBOR_MAIL:
-    case ITEM_GLITTER_MAIL:
-    case ITEM_MECH_MAIL:
-    case ITEM_WOOD_MAIL:
-    case ITEM_WAVE_MAIL:
-    case ITEM_BEAD_MAIL:
-    case ITEM_SHADOW_MAIL:
-    case ITEM_TROPIC_MAIL:
-    case ITEM_DREAM_MAIL:
-    case ITEM_FAB_MAIL:
-    case ITEM_RETRO_MAIL:
+    case ITEM_BRIDGE_MAIL_D:
+    case ITEM_BRIDGE_MAIL_M:
+    case ITEM_BRIDGE_MAIL_S:
+    case ITEM_BRIDGE_MAIL_T:
+    case ITEM_BRIDGE_MAIL_V:
+    case ITEM_FAVORED_MAIL:
+    case ITEM_GREET_MAIL:
+    case ITEM_INQUIRY_MAIL:
+    case ITEM_LIKE_MAIL:
+    case ITEM_REPLY_MAIL:
+    case ITEM_RSVP_MAIL:
+    case ITEM_THANKS_MAIL:
         return TRUE;
     default:
         return FALSE;

@@ -83,9 +83,9 @@ AI_DOUBLE_BATTLE_TEST("AI skips Trick/Bestow with unexchangeable items")
     enum Move move = MOVE_NONE;
     enum Item atkItem = ITEM_NONE, targetItem = ITEM_NONE;
 
-    PARAMETRIZE { move = MOVE_TRICK;  atkItem = ITEM_ORANGE_MAIL; targetItem = ITEM_NONE; }
-    PARAMETRIZE { move = MOVE_TRICK;  atkItem = ITEM_ORAN_BERRY;  targetItem = ITEM_ORANGE_MAIL; }
-    PARAMETRIZE { move = MOVE_BESTOW; atkItem = ITEM_ORANGE_MAIL; targetItem = ITEM_NONE; }
+    PARAMETRIZE { move = MOVE_TRICK;  atkItem = ITEM_BRIDGE_MAIL_D; targetItem = ITEM_NONE; }
+    PARAMETRIZE { move = MOVE_TRICK;  atkItem = ITEM_ORAN_BERRY;  targetItem = ITEM_BRIDGE_MAIL_D; }
+    PARAMETRIZE { move = MOVE_BESTOW; atkItem = ITEM_BRIDGE_MAIL_D; targetItem = ITEM_NONE; }
 
     GIVEN {
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);

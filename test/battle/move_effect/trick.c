@@ -60,9 +60,9 @@ SINGLE_BATTLE_TEST("Trick fails if either item is Mail")
 {
     enum Item atkItem = ITEM_NONE, defItem = ITEM_NONE;
 
-    ASSUME(ItemIsMail(ITEM_ORANGE_MAIL));
-    PARAMETRIZE { atkItem = ITEM_ORANGE_MAIL; defItem = ITEM_NONE; }
-    PARAMETRIZE { atkItem = ITEM_ORAN_BERRY;  defItem = ITEM_ORANGE_MAIL; }
+    ASSUME(ItemIsMail(ITEM_BRIDGE_MAIL_D));
+    PARAMETRIZE { atkItem = ITEM_BRIDGE_MAIL_D; defItem = ITEM_NONE; }
+    PARAMETRIZE { atkItem = ITEM_ORAN_BERRY;  defItem = ITEM_BRIDGE_MAIL_D; }
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Item(atkItem); }
