@@ -246,6 +246,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Building),
         .palette = gBattleEnvironmentPalette_Plain,
+        .paletteDawn = gBattleEnvironmentPalette_PlainDawn,
+        .paletteEvening = gBattleEnvironmentPalette_PlainEvening,
+        .paletteNight = gBattleEnvironmentPalette_PlainNight,
         .battleIntroSlide = PLAIN_BATTLE_INTRO_SLIDE,
     },
 
