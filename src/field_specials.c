@@ -5803,3 +5803,8 @@ bool8 CheckAddCoins(void)
     else
         return TRUE;
 }
+
+void SetMsgboxShoutFlag(void)
+{
+    gMsgIsShout = TRUE;
+}

@@ -18,6 +18,13 @@ Std_MsgboxSign:
 	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	return
 
+Std_MsgboxShout:
+    special SetMsgboxShoutFlag
+	message NULL
+	waitmessage
+	waitbuttonpress
+	return
+
 Std_MsgboxDefault:
 	message NULL
 	waitmessage

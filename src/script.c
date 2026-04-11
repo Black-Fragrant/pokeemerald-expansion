@@ -35,6 +35,7 @@ static struct ScriptContext sImmediateScriptContext;
 static bool8 sLockFieldControls;
 EWRAM_DATA u8 gMsgIsSignPost = FALSE;
 EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
+EWRAM_DATA u8 gMsgIsShout = FALSE;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
