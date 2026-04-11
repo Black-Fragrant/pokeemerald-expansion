@@ -3,6 +3,7 @@
 
 // overworld
 extern const u8 gSignpostWindow_Gfx[];
+extern const u8 gShoutWindow_Gfx[];
 extern const u8 gMessageBox_Gfx[];
 extern const u16 gMessageBox_Pal[];
 

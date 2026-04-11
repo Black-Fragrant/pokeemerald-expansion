@@ -197,10 +197,12 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setvar VAR_ROUTE3_NOT_ENOUGH_POKEMON 0
-	warpsilent MAP_ROUTE3_NORTH, 72, 22
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_SHOUT
 	release
 	end
+
+Debug_EventScript_Script_1_text::
+	.string "Hello!$"
 
 Debug_EventScript_Script_2::
 	lock

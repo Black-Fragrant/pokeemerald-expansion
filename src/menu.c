@@ -54,6 +54,7 @@ struct Menu
 
 static void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_DrawSignFrame(u8, u8, u8, u8, u8, u8);
+static void WindowFunc_DrawShoutFrame(u8 windowId, u8 copyToVram);
 static inline void *GetWindowFunc_DialogueFrame(void);
 static void WindowFunc_DrawDialogueFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_ClearStdWindowAndFrame(u8, u8, u8, u8, u8, u8);
@@ -249,9 +250,50 @@ static void WindowFunc_DrawSignFrame(u8 bg, u8 left, u8 top, u8 width, u8 height
     FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(BG_TILE_H_FLIP(1)), left + 26, top + 4, 1, 1);
 }
 
+static void WindowFunc_DrawShoutFrame(u8 windowId, u8 copyToVram)
+{
+    // 1. Load shout tileset + palette
+    LoadShoutBoxGfx(windowId,
+                    DLG_WINDOW_BASE_TILE_NUM,
+                    BG_PLTT_ID(DLG_WINDOW_PALETTE_NUM));
+
+    // 2. Get window attributes
+    u8 bg     = GetWindowAttribute(windowId, WINDOW_BG);
+    u8 left   = GetWindowAttribute(windowId, WINDOW_TILEMAP_LEFT);
+    u8 top    = GetWindowAttribute(windowId, WINDOW_TILEMAP_TOP);
+
+    // 3. Draw your custom tilemap
+    FillMenuTilemapBufferRect(bg, 0, left - 2, top - 1,  1, 1);
+    FillMenuTilemapBufferRect(bg, 1, left - 1, top - 1,  1, 1);
+    FillMenuTilemapBufferRect(bg, 2, left - 2, top,      1, 4);
+    FillMenuTilemapBufferRect(bg, 3, left - 1, top,      1, 4);
+    FillMenuTilemapBufferRect(bg, 4, left,     top - 1, 26, 1);
+
+    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(0), left - 2,  top + 4,  1, 1);
+    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(1), left - 1,  top + 4,  1, 1);
+
+    FillMenuTilemapBufferRect(bg, BG_TILE_H_FLIP(0), left + 27, top - 1,  1, 1);
+    FillMenuTilemapBufferRect(bg, BG_TILE_H_FLIP(1), left + 26, top - 1,  1, 1);
+    FillMenuTilemapBufferRect(bg, BG_TILE_H_FLIP(2), left + 27, top,      1, 4);
+    FillMenuTilemapBufferRect(bg, BG_TILE_H_FLIP(3), left + 26, top,      1, 4);
+
+    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(4), left,      top + 4, 26, 1);
+    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(BG_TILE_H_FLIP(0)), left + 27, top + 4, 1, 1);
+    FillMenuTilemapBufferRect(bg, BG_TILE_V_FLIP(BG_TILE_H_FLIP(1)), left + 26, top + 4, 1, 1);
+
+    // 4. Copy to VRAM if needed
+    if (copyToVram)
+        CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
 static inline void *GetWindowFunc_DialogueFrame(void)
 {
-    return (gMsgIsSignPost ? WindowFunc_DrawSignFrame : WindowFunc_DrawDialogueFrame);
+    if (gMsgIsShout)
+        return WindowFunc_DrawShoutFrame;
+    else if (gMsgIsSignPost)
+        return WindowFunc_DrawSignFrame;
+    else
+        return WindowFunc_DrawDialogueFrame;
 }
 
 void DrawDialogueFrame(u8 windowId, bool8 copyToVram)

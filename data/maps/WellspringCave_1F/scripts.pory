@@ -121,7 +121,7 @@ script WellspringCave_1F_EventScript_Trigger_Multibattle
     closemessage
     delay(10)
     playse(SE_BANG)
-    msgbox("You don't need to return it!", MSGBOX_DEFAULT) //this should be jagged
+    msgbox("You don't need to return it!", MSGBOX_SHOUT)
     closemessage
     waitse()
     delay(10)
