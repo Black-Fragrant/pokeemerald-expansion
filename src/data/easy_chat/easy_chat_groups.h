@@ -171,11 +171,11 @@ const struct EasyChatGroup gEasyChatGroups[EC_NUM_GROUPS] = {
         .numWords = ARRAY_COUNT(gEasyChatGroup_TrendySaying),
         .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_TrendySaying),
     },
-    [EC_GROUP_POKEMON_NATIONAL] =
-    {
-        .name = COMPOUND_STRING("POKéMON2"),
-        .wordData = {.valueList = gEasyChatGroup_Pokemon2},
-        .numWords = ARRAY_COUNT(gEasyChatGroup_Pokemon2),
-        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Pokemon2),
-    },
+    // [EC_GROUP_POKEMON_NATIONAL] =
+    // {
+    //     .name = COMPOUND_STRING("POKéMON2"),
+    //     .wordData = {.valueList = gEasyChatGroup_Pokemon2},
+    //     .numWords = ARRAY_COUNT(gEasyChatGroup_Pokemon2),
+    //     .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Pokemon2),
+    // },
 };
