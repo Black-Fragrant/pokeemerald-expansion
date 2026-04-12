@@ -25,6 +25,7 @@
 #include "decompress.h"
 #include "graphics.h"
 #include "large_item_pic.h"
+#include "gpu_regs.h"
 
 #include "data/script_menu.h"
 
@@ -1016,25 +1017,50 @@ u8 CreateLargeItemSprite_PicBox(u16 picId, s16 x, s16 y, u8 priority)
     return CreateSprite(&gLargeItemPicTemplate[picId], x, y, priority);
 }
 
+static void ReapplyLargeItemPicBlending(void)
+{
+    SetGpuReg(REG_OFFSET_BLDCNT,
+              BLDCNT_TGT1_OBJ
+            | BLDCNT_TGT2_BG0
+            | BLDCNT_TGT2_BG1
+            | BLDCNT_TGT2_BG2
+            | BLDCNT_TGT2_BG3
+            | BLDCNT_TGT2_BD
+            | BLDCNT_EFFECT_BLEND);
+
+    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(10, 6));
+}
+
 static void Task_LargeItemPicWindow(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
     switch (task->data[0])
     {
-    case 0: // waiting
+    case 0:
+        ReapplyLargeItemPicBlending();
         break;
 
     case 1: // begin closing
-        ClearStdWindowAndFrame(task->data[1], TRUE);
-        RemoveWindow(task->data[1]);
+        // No window anymore, just advance state
         task->data[0]++;
         break;
 
-    case 2: // destroy sprite + free resources
+    case 2: // destroy sprites + free resources
+        // Free item sprite tiles/palette
         FreeSpriteTilesByTag(task->data[2]);     // tileTag
         FreeSpritePaletteByTag(task->data[2]);   // paletteTag
-        DestroySprite(&gSprites[task->data[3]]); // spriteId
+
+        // Destroy item sprite
+        DestroySprite(&gSprites[task->data[3]]); // item spriteId
+
+        // ⭐ Free BG sprite tiles/palette (tag 4999)
+        FreeSpriteTilesByTag(4999);
+        FreeSpritePaletteByTag(4999);
+
+        // Destroy BG sprite
+        DestroySprite(&gSprites[task->data[4]]); // bg spriteId
+
         DestroyTask(taskId);
         break;
     }
@@ -1043,18 +1069,30 @@ static void Task_LargeItemPicWindow(u8 taskId)
 bool8 ScriptMenu_ShowLargeItemPic(u16 picId, u8 x, u8 y)
 {
     u8 spriteId;
+    u8 bgSpriteId;
     u8 taskId;
-
+    // -----------------------------------------
+    // 1. Load background sprite graphics
+    // -----------------------------------------
+    LoadCompressedSpriteSheet(&gLargeItemPicBgSpriteSheet);
+    LoadSpritePalette(&gLargeItemPicBgSpritePalette);
+    // -----------------------------------------
+    // 2. Create background sprite (80x80)
+    // Priority 3 = behind item sprite
+    // -----------------------------------------
+    bgSpriteId = CreateSprite(
+        &gLargeItemPicBgSpriteTemplate,
+        x * 8 + 40,
+        y * 8 + 40,
+        1
+    );
     spriteId = CreateLargeItemSprite_PicBox(picId, x * 8 + 40, y * 8 + 40, 0);
 
     taskId = CreateTask(Task_LargeItemPicWindow, 0x50);
     gTasks[taskId].data[0] = 0;          // state
-    gTasks[taskId].data[1] = CreateWindowFromRect(x, y, 8, 8);
     gTasks[taskId].data[2] = 5000 + picId; // tileTag/paletteTag
-    gTasks[taskId].data[3] = spriteId;   // spriteId
-
-    SetStandardWindowBorderStyle(gTasks[taskId].data[1], TRUE);
-    ScheduleBgCopyTilemapToVram(0);
+    gTasks[taskId].data[3] = spriteId;       // item spriteId
+    gTasks[taskId].data[4] = bgSpriteId;     // ⭐ background spriteId
 
     return TRUE;
 }

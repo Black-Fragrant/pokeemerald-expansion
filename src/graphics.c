@@ -2226,3 +2226,5 @@ const u16 gLargeItemPicPalette_SuperRod[]           = INCBIN_U16("graphics/large
 const u16 gLargeItemPicPalette_Gram[]               = INCBIN_U16("graphics/large_item/gram.gbapal");
 const u16 gLargeItemPicPalette_Gracidea[]           = INCBIN_U16("graphics/large_item/gracidea.gbapal");
 
+const u32 gLargeItemPicBgTiles[]           = INCBIN_U32("graphics/large_item/bg.4bpp.lz");
+const u16 gLargeItemPicBgPal[]           = INCBIN_U16("graphics/large_item/bg.gbapal");

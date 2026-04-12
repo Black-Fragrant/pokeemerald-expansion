@@ -203,3 +203,50 @@ const struct SpriteTemplate gLargeItemPicTemplate[] =
     },
 };
 
+// ===============================
+// Large Item Pic Background Sprite
+// ===============================
+
+// 80x80 = 10 tiles wide × 10 tiles tall = 100 tiles
+// 100 tiles × 32 bytes = 0x1400 bytes
+const struct CompressedSpriteSheet gLargeItemPicBgSpriteSheet =
+{
+    gLargeItemPicBgTiles,   // your 80x80 tileset
+    0x800,                 // size in bytes (uncompressed)
+    4999                    // unique tag (not in 5000–5014 range)
+};
+
+const struct SpritePalette gLargeItemPicBgSpritePalette =
+{
+    gLargeItemPicBgPal,
+    4999,   // same tag as your tileset
+};
+
+static const struct OamData sLargeItemPicBg_OamData =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_BLEND,   // semi-transparent
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .size = SPRITE_SIZE(64x64),
+    .priority = 1,                 // behind item sprite
+};
+
+static const struct SpriteFrameImage sLargeItemPicBg_Image[] =
+{
+    { gLargeItemPicBgTiles, 0x800 }, 
+};
+
+const struct SpriteTemplate gLargeItemPicBgSpriteTemplate =
+{
+    .tileTag = 4999,
+    .paletteTag = 4999,
+    .oam = &sLargeItemPicBg_OamData,
+    .anims = gDummySpriteAnimTable,
+    .images = sLargeItemPicBg_Image,   // ⭐ now valid again
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
