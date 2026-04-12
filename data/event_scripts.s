@@ -1809,3 +1809,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/NacreneCity_Gym/scripts.inc"
 
 	.include "data/maps/NacreneCity_Gym_LenoraRoom/scripts.inc"
+
+	.include "data/maps/SkyArrowBridge_SouthGate/scripts.inc"

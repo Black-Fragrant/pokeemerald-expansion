@@ -465,3 +465,6 @@ const u16 gMetatileAttributes_PinwheelForest[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_NacreneGym[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/metatiles.bin");
 const u16 gMetatileAttributes_NacreneGym[] = INCBIN_U16("data/tilesets/secondary/nacrene_gym/metatile_attributes.bin");
+
+const u16 gMetatiles_SkyArrowBridge[] = INCBIN_U16("data/tilesets/secondary/sky_arrow_bridge/metatiles.bin");
+const u16 gMetatileAttributes_SkyArrowBridge[] = INCBIN_U16("data/tilesets/secondary/sky_arrow_bridge/metatile_attributes.bin");
