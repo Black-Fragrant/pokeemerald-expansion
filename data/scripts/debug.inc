@@ -197,12 +197,9 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_SHOUT
-	release
+	warp MAP_ROUTE1_EAST, 20, 37
+	waitstate
 	end
-
-Debug_EventScript_Script_1_text::
-	.string "Hello!$"
 
 Debug_EventScript_Script_2::
 	lock
