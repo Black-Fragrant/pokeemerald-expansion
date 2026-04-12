@@ -1978,3 +1978,14 @@ const struct Tileset gTileset_NacreneGym =
     .metatileAttributes = gMetatileAttributes_NacreneGym,
     .callback = InitTilesetAnim_NacreneGym,
 };
+
+const struct Tileset gTileset_SkyArrowBridge =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SkyArrowBridge,
+    .palettes = gTilesetPalettes_SkyArrowBridge,
+    .metatiles = gMetatiles_SkyArrowBridge,
+    .metatileAttributes = gMetatileAttributes_SkyArrowBridge,
+    .callback = NULL,
+};
