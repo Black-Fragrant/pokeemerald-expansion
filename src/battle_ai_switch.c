@@ -2535,7 +2535,6 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int lastId, enum BattlerI
     gBattleStruct->battlerState[battler].notOnField = savedNotOnField;
     FreeRestoreAiLogicData(savedAiLogicData);
     FreeRestoreBattleMons(savedBattleMons);
-    SetBattlerAiData(battler, gAiLogicData);
 
     // GetSwitchinCandidate returns either the *last* party mon that met a threshold (without AI_FLAG_RANDOMIZE_SWITCHIN), or a random one that met a threshold
     // If we aren't using AI_FLAG_RANDOMIZE_SWITCHIN there are cases where we don't want the *last* mon, we want the *best* mon
