@@ -750,11 +750,11 @@ static const u8 sSlotTilemap_WideEmpty[] = INCBIN_U8("graphics/party_menu/slot_w
 
  //Custom party menu
 #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
-const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/bg.4bpp.lz");
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/bg.4bpp.smol");
 const u16 gPartyMenuBg_Pal[] = INCBIN_U16("graphics/party_menu/bg.gbapal");
-const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bg.bin.lz");
-const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball.4bpp.lz");
-const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.lz"); //unused
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bg.bin.smol");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball.4bpp.smol");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.smol"); //unused
 const u16 gPartyMenuPokeball_Pal[] = INCBIN_U16("graphics/party_menu/pokeball.gbapal");
 static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
@@ -774,11 +774,11 @@ static const u8 sEqualEmptySlotTileNums[] = {21, 22, 22, 22, 22, 22, 22, 22, 22,
                                              30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
                                              37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 39};
 #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_HGSS
-const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/hgss/bg.4bpp.lz");
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/hgss/bg.4bpp.smol");
 const u16 gPartyMenuBg_Pal[] = INCBIN_U16("graphics/party_menu/hgss/bg.gbapal");
-const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/hgss/bg.bin.lz");
-const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/hgss/pokeball.4bpp.lz");
-const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.lz"); //unused
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/hgss/bg.bin.smol");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/hgss/pokeball.4bpp.smol");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.smol"); //unused
 const u16 gPartyMenuPokeball_Pal[] = INCBIN_U16("graphics/party_menu/hgss/pokeball.gbapal");
 static const u8 sEqualMainSlotTileNums[] =      {24, 25, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 34,
                                                  32, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 44,
@@ -798,11 +798,11 @@ static const u8 sEqualEmptySlotTileNums[] = { 0,  0,  0,  0,  0,  0,  0,  0,  0,
                                               0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
                                               0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
 #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW
-const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/bw/bg.4bpp.lz");
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/bw/bg.4bpp.smol");
 const u16 gPartyMenuBg_Pal[] = INCBIN_U16("graphics/party_menu/bw/bg.gbapal");
-const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bw/bg.bin.lz");
-const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/bw/pokeball.4bpp.lz");
-const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.lz"); //unused
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bw/bg.bin.smol");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/bw/pokeball.4bpp.smol");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.smol"); //unused
 const u16 gPartyMenuPokeball_Pal[] = INCBIN_U16("graphics/party_menu/bw/pokeball.gbapal");
 static const u8 sEqualMainSlotTileNums[] =      {24, 25, 25, 25, 25, 48, 30, 30, 30, 30, 30, 30, 56, 26,
                                                  32, 33, 33, 33, 49, 38, 38, 38, 38, 38, 38, 57, 33, 34,
