@@ -9,6 +9,7 @@
     "gMapGroup_WellspringCave",
     "gMapGroup_IndoorNacrene",
     "gMapGroup_PinwheelForest",
+    "gMapGroup_IndoorSkyArrowBridge",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -158,6 +159,9 @@
   "gMapGroup_PinwheelForest": [
     "PinwheelForest_Inside",
     "PinwheelForest_Inside_Extended"
+  ],
+  "gMapGroup_IndoorSkyArrowBridge": [
+    "SkyArrowBridge_Gate"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

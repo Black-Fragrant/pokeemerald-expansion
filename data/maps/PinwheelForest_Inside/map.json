@@ -563,29 +563,29 @@
       "x": 72,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_SKY_ARROW_BRIDGE_SOUTH_GATE",
+      "dest_warp_id": "0"
     },
     {
       "x": 73,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
-      "dest_warp_id": "5"
+      "dest_map": "MAP_SKY_ARROW_BRIDGE_SOUTH_GATE",
+      "dest_warp_id": "1"
     },
     {
       "x": 74,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
-      "dest_warp_id": "6"
+      "dest_map": "MAP_SKY_ARROW_BRIDGE_SOUTH_GATE",
+      "dest_warp_id": "2"
     },
     {
       "x": 75,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
-      "dest_warp_id": "7"
+      "dest_map": "MAP_SKY_ARROW_BRIDGE_SOUTH_GATE",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [

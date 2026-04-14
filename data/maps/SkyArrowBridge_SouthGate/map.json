@@ -3,7 +3,7 @@
   "name": "SkyArrowBridge_SouthGate",
   "layout": "LAYOUT_SKY_ARROW_BRIDGE_SOUTH_GATE",
   "music": "MUS_BW_ROUTE_2",
-  "region_map_section": "MAPSEC_SKYARROW_BRIDGE",
+  "region_map_section": "MAPSEC_PINWHEEL_FOREST",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -13,8 +13,78 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 11,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 16,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 13,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 14,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 15,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_PINWHEEL_FOREST_INSIDE",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 19,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SKY_ARROW_BRIDGE_GATE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 19,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_SKY_ARROW_BRIDGE_GATE",
+      "dest_warp_id": "2"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }
