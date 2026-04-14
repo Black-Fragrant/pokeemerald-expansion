@@ -70,7 +70,7 @@ static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
     {
         BlitBitmapToPartyWindow_Equal, 
         {
-            #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
+            #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT || PARTY_MENU_STYLE == PARTY_MENU_STYLE_FRLG
             //The below are the x, y, width, and height for each of the following info
             40,  7, 40, 13, // Nickname
              5, 25, 32,  8, // Level 85,  1, 32,  8,
@@ -756,6 +756,30 @@ const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/bg.bin.smol")
 const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball.4bpp.smol");
 const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.smol"); //unused
 const u16 gPartyMenuPokeball_Pal[] = INCBIN_U16("graphics/party_menu/pokeball.gbapal");
+static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 52, 53, 51, 51, 51, 51, 51, 51, 54,
+                                                 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57};
+
+static const u8 sEqualMainSlotTileNums_Egg[] =  {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57};
+
+static const u8 sEqualEmptySlotTileNums[] = {21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
+                                             30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
+                                             30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
+                                             30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
+                                             37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 39};
+#elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_FRLG
+const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/party_menu/frlg/bg.4bpp.smol");
+const u16 gPartyMenuBg_Pal[] = INCBIN_U16("graphics/party_menu/frlg/bg.gbapal");
+const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/party_menu/frlg/bg.bin.smol");
+const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/party_menu/frlg/pokeball.4bpp.smol");
+const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/party_menu/pokeball_small.4bpp.smol"); //unused
+const u16 gPartyMenuPokeball_Pal[] = INCBIN_U16("graphics/party_menu/frlg/pokeball.gbapal");
 static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
                                                  49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,

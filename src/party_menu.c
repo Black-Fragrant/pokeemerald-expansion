@@ -2585,7 +2585,7 @@ static void DisplayPartyPokemonDescriptionText(u8 stringID, struct PartyMenuBox 
     }
     if (c != 2)
     {
-        #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT
+        #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT || PARTY_MENU_STYLE == PARTY_MENU_STYLE_FRLG
         FillWindowPixelRect(menuBox->windowId, 0x05, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, menuBox->infoRects->descTextWidth, 7);
         #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_HGSS
         FillWindowPixelRect(menuBox->windowId, 0x04, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, menuBox->infoRects->descTextWidth, 7);
