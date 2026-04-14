@@ -1259,7 +1259,7 @@ void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, 
 
 void ShowSelectMovePokemonSummaryScreen(struct Pokemon *mons, u8 monIndex, void (*callback)(void), u16 newMove)
 {
-    ShowPokemonSummaryScreen(SUMMARY_MODE_SELECT_MOVE, mons, monIndex, gPlayerPartyCount - 1, callback);
+    ShowPokemonSummaryScreen_BW(SUMMARY_MODE_SELECT_MOVE, mons, monIndex, gPlayerPartyCount - 1, callback);
     sMonSummaryScreen->newMove = newMove;
 }
 
