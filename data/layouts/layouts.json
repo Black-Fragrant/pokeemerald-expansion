@@ -9436,12 +9436,22 @@
     {
       "id": "LAYOUT_SKY_ARROW_BRIDGE_SOUTH_GATE",
       "name": "SkyArrowBridge_SouthGate_Layout",
-      "width": 20,
+      "width": 28,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_SkyArrowBridge",
       "border_filepath": "data/layouts/SkyArrowBridge_SouthGate/border.bin",
       "blockdata_filepath": "data/layouts/SkyArrowBridge_SouthGate/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_ARROW_BRIDGE_GATE",
+      "name": "SkyArrowBridge_Gate_Layout",
+      "width": 19,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/SkyArrowBridge_Gate/border.bin",
+      "blockdata_filepath": "data/layouts/SkyArrowBridge_Gate/map.bin"
     }
   ]
 }
