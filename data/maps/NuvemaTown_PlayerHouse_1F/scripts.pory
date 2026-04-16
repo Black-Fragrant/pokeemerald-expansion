@@ -156,7 +156,7 @@ script NuvemaTown_PH1F_EventScript_XT_Blue
 {
 	showlargeitempic(0, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} oboatined the Xtransceiver!")
+    msgbox("{PLAYER} obtained the Xtransceiver!")
     delay(120)
     closemessage()
 	additem (ITEM_XTRANSCEIVER_BLUE)
@@ -170,7 +170,7 @@ script NuvemaTown_PH1F_EventScript_XT_Red
 {
 	showlargeitempic(1, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} oboatined the Xtransceiver!")
+    msgbox("{PLAYER} obtained the Xtransceiver!")
     delay(120)
     closemessage()
 	additem (ITEM_XTRANSCEIVER_RED)

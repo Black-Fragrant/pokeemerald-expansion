@@ -98,7 +98,8 @@
     "NacreneCity",
     "PinwheelForest_Outside_North",
     "PinwheelForest_Outside_South",
-    "SkyArrowBridge_SouthGate"
+    "SkyArrowBridge_SouthGate",
+    "SkyArrowBridge"
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",
