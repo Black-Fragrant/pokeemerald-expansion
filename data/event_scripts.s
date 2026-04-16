@@ -1813,3 +1813,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/SkyArrowBridge_SouthGate/scripts.inc"
 
 	.include "data/maps/SkyArrowBridge_Gate/scripts.inc"
+
+	.include "data/maps/SkyArrowBridge/scripts.inc"
