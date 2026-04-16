@@ -348,7 +348,7 @@ script PinwheelForest_Inside_EventScript_Battle_Schoolgirl
 	trainerbattle_single(TRAINER_SCHOOLGIRL_PF_INSIDE,
 	text("If I apply what I just learned\n"
            "to the battle, I think I can win!"),
-	text("I've even won against my teacher, though..."))
+	text("I've even won against my teacher,\nthough..."))
 	msgbox("Knowing something and being\n"
            "able to do it seem pretty similar,\l"
            "but they can be very different.", MSGBOX_NPC, TRUE)
