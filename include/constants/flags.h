@@ -845,7 +845,7 @@
 #define FLAG_PINWHEEL_FOREST_I_ITEM_TM_GRASS_KNOT                   0x31D
 #define FLAG_PINWHEEL_FOREST_I_ITEM_MIRACLE_SEED                    0x31E
 #define FLAG_PINWHEEL_FOREST_I_HEIST_CREW                           0x31F
-#define FLAG_UNUSED_0x320                                           0x320
+#define FLAG_SKYARROW_BRIDGE_QUICK_CLAW                             0x320
 #define FLAG_UNUSED_0x321                                           0x321
 #define FLAG_UNUSED_0x322                                           0x322
 #define FLAG_UNUSED_0x323                                           0x323

@@ -162,7 +162,8 @@
     "PinwheelForest_Inside_Extended"
   ],
   "gMapGroup_IndoorSkyArrowBridge": [
-    "SkyArrowBridge_Gate"
+    "SkyArrowBridge_Gate",
+    "SkyArrowBridge_Gate_2"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

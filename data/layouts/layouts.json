@@ -9462,6 +9462,16 @@
       "secondary_tileset": "gTileset_SkyArrowBridge",
       "border_filepath": "data/layouts/SkyArrowBridge/border.bin",
       "blockdata_filepath": "data/layouts/SkyArrowBridge/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_ARROW_BRIDGE_GATE_2",
+      "name": "SkyArrowBridge_Gate_2_Layout",
+      "width": 13,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/SkyArrowBridge_Gate_2/border.bin",
+      "blockdata_filepath": "data/layouts/SkyArrowBridge_Gate_2/map.bin"
     }
   ]
 }

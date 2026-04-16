@@ -1,0 +1,16 @@
+mapscripts SkyArrowBridge_Gate_2_MapScripts {}
+
+script SkyArrowBridge_Gate_2_EventScript_Beauty
+{
+	msgbox("I walked so far! My legs are sore!\n"
+           "...Um, you don't have to look.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script SkyArrowBridge_Gate_2_EventScript_Receptionist
+{
+	msgbox("Hello! If you cross the Skyarrow Bridge\n"
+           "from this side, you will reach\l"
+           "Pinwheel Forest and Nacrene City.", MSGBOX_NPC, TRUE)
+	end
+}
