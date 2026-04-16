@@ -1,1 +1,57 @@
 mapscripts SkyArrowBridge_Gate_MapScripts {}
+
+script SkyArrowBridge_Gate_EventScript_Hiker
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_SKYARROW_BRIDGE_QUICK_CLAW, SkyArrowBridge_Gate_EventScript_Hiker_Received)
+	msgbox("In battles, striking first is essential!\n"
+           "So, here!", MSGBOX_DEFAULT, TRUE, LOCALID_SAB_GATE_HIKER)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_QUICK_CLAW, 1)
+	goto_if_eq (VAR_RESULT, FALSE, SkyArrowBridge_Gate_EventScript_BagIsFull)
+	goto (SkyArrowBridge_Gate_EventScript_Hiker_Received)
+}
+
+script SkyArrowBridge_Gate_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	release()
+	end()
+}
+
+script SkyArrowBridge_Gate_EventScript_Hiker_Received
+{
+    setflag(FLAG_SKYARROW_BRIDGE_QUICK_CLAW)
+    msgbox("If you give it to a Pokémon to hold,\n"
+           "maybe it will let that Pokémon use its\l"
+           "move before its opponent can.\p"
+           "That's what I gave you.\n"
+           "It's called Quick Claw!", MSGBOX_DEFAULT, TRUE, LOCALID_SAB_GATE_HIKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script SkyArrowBridge_Gate_EventScript_OL
+{
+	msgbox("There are people who are obsessed with\n"
+           "certain items.\p"
+           "They'll even buy your items for a lot\n"
+           "of money!\p"
+           "You might even be able to sell items you\n"
+           "can't use to these people, so maybe you\l"
+           "should hang on to them.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script SkyArrowBridge_Gate_EventScript_Receptionist
+{
+	msgbox("Hello! If you cross the Skyarrow Bridge\n"
+           "from here, you'll reach Castelia City.", MSGBOX_NPC, TRUE)
+	end
+}
+
+
