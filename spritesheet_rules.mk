@@ -893,6 +893,18 @@ $(OBJEVENTGFXDIR)/people/cone.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/gold_ball.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/boat_red.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 16 -mheight 8
+
+$(OBJEVENTGFXDIR)/people/boat_blue.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 16 -mheight 8
+
+$(OBJEVENTGFXDIR)/people/boat_yellow.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 16 -mheight 8
+
+$(OBJEVENTGFXDIR)/people/boat_royal.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 16 -mheight 8
+
 
 
 $(OBJEVENTGFXDIR)/misc/ball_poke.4bpp: %.4bpp: %.png

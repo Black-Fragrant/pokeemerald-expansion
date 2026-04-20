@@ -670,6 +670,18 @@ const u16 gObjectEventPal_Cone[] = INCBIN_U16("graphics/object_events/palettes/c
 const u32 gObjectEventPic_GoldBall[] = INCBIN_U32("graphics/object_events/pics/people/gold_ball.4bpp");
 const u16 gObjectEventPal_GoldBall[] = INCBIN_U16("graphics/object_events/palettes/gold_ball.gbapal");
 
+const u32 gObjectEventPic_BoatRed[] = INCBIN_U32("graphics/object_events/pics/misc/boat_red.4bpp");
+const u16 gObjectEventPal_BoatRed[] = INCBIN_U16("graphics/object_events/palettes/boat_red.gbapal");
+
+const u32 gObjectEventPic_BoatBlue[] = INCBIN_U32("graphics/object_events/pics/misc/boat_blue.4bpp");
+const u16 gObjectEventPal_BoatBlue[] = INCBIN_U16("graphics/object_events/palettes/boat_blue.gbapal");
+
+const u32 gObjectEventPic_BoatYellow[] = INCBIN_U32("graphics/object_events/pics/misc/boat_yellow.4bpp");
+const u16 gObjectEventPal_BoatYellow[] = INCBIN_U16("graphics/object_events/palettes/boat_yellow.gbapal");
+
+const u32 gObjectEventPic_BoatRoyal[] = INCBIN_U32("graphics/object_events/pics/misc/boat_royal.4bpp");
+const u16 gObjectEventPal_BoatRoyal[] = INCBIN_U16("graphics/object_events/palettes/boat_royal.gbapal");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCBIN_U16("graphics/object_events/pics/people/red/red_normal.4bpp");
