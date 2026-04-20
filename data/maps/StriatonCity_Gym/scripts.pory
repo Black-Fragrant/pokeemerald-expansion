@@ -146,7 +146,8 @@ script StriatonCity_Gym_EventScript_ReceptionistGivesWater
 
 script StriatonCity_Gym_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	return()
 }
 

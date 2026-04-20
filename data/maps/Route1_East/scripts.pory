@@ -190,7 +190,8 @@ script Route1_East_EventScript_CatchingTutorial
 
 script Route1_East_EventScript_BagIsFull_Continue
 {
-    msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+    msgbox (gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
     return()
 }
 
@@ -266,7 +267,8 @@ script Route1_East_EventScript_Girl_AlreadyGivenPotion
 
 script Route1_East_EventScript_BagIsFull
 {
-	msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox (gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	release
 	end
 }
@@ -345,7 +347,7 @@ script Route1_East_EventScript_Bianca_Top_Compare
 	delay(10)
 	playse(SE_POKENAV_CALL)
 	msgbox("The Xtransceiver is ringing.\p"
-			"Player picked up the Xtransceiver.", MSGBOX_DEFAULT) //this should be transparent
+			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage()
 	playse(SE_POKENAV_HANG_UP)

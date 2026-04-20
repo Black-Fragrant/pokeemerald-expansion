@@ -370,7 +370,7 @@ script NuvemaTown_EventScript_MotherGivesTownMap
 	closemessage()
 	showlargeitempic(2, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} obtained the Town Map!")
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Town Map{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
     delay(120)
 	additem (ITEM_TOWN_MAP)
     call_if_eq (VAR_RESULT, FALSE, NuvemaTown_EventScript_BagIsFull)
@@ -470,7 +470,8 @@ script NuvemaTown_EventScript_MotherGivesTownMap
 
 script NuvemaTown_EventScript_BagIsFull
 {
-    msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+    msgbox (gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
     return()
 }
 

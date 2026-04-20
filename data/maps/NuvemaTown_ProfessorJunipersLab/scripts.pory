@@ -182,11 +182,38 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue
     destroy_speech_bubble()
     closemessage
     delay(10)
+    checkplayergender()
+    goto_if_eq(VAR_RESULT, MALE, NuvemaTown_EventScript_JPL_JuniperGivesDex_Male)
+    goto_if_eq(VAR_RESULT, FEMALE, NuvemaTown_EventScript_JPL_JuniperGivesDex_Female)
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_JuniperGivesDex_Male
+{
+	showlargeitempic(15, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} obtained the Pokédex!", MSGBOX_DEFAULT) //this should be transparent
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Pokédex{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
     setflag(FLAG_SYS_POKEDEX_GET)
     delay(120)
-    closemessage
+    closemessage()
+	hidelargeitempic()
+    goto (NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue_2)
+}
+
+script NuvemaTown_EventScript_JPL_JuniperGivesDex_Female
+{
+	showlargeitempic(16, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Pokédex{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
+    setflag(FLAG_SYS_POKEDEX_GET)
+    delay(120)
+    closemessage()
+	hidelargeitempic()
+    goto (NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue_2)
+}
+
+script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue_2
+{
     fadenewbgm(MUS_BW_JUNIPER)
     savebgm(MUS_BW_JUNIPER)
     msgbox("Professor Juniper: Next, I need to teach\n"
@@ -273,8 +300,11 @@ script NuvemaTown_EventScript_JPL_Books
 
 script NuvemaTown_EventScript_JPL_Laptop
 {
+    lock
     msgbox("There are lots of materials and\n"
-           "research reports about Pokémon!", MSGBOX_SIGN)
+           "research reports about Pokémon!", MSGBOX_TRANSPARENT)
+	closemessage
+    release
 	end
 }
 

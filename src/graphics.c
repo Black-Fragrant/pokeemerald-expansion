@@ -2211,6 +2211,8 @@ const u32 gLargeItemPic_DarkStone[]          = INCBIN_U32("graphics/large_item/d
 const u32 gLargeItemPic_SuperRod[]           = INCBIN_U32("graphics/large_item/super_rod.4bpp.lz");
 const u32 gLargeItemPic_Gram[]               = INCBIN_U32("graphics/large_item/gram.4bpp.lz");
 const u32 gLargeItemPic_Gracidea[]           = INCBIN_U32("graphics/large_item/gracidea.4bpp.lz");
+const u32 gLargeItemPic_PokedexM[]           = INCBIN_U32("graphics/large_item/pokedex_m.4bpp.lz");
+const u32 gLargeItemPic_PokedexF[]           = INCBIN_U32("graphics/large_item/pokedex_f.4bpp.lz");
 
 const u16 gLargeItemPicPalette_XtransceiverBlue[]   = INCBIN_U16("graphics/large_item/xtransceiver_blue.gbapal");
 const u16 gLargeItemPicPalette_XtransceiverRed[]    = INCBIN_U16("graphics/large_item/xtransceiver_red.gbapal");
@@ -2227,6 +2229,8 @@ const u16 gLargeItemPicPalette_DarkStone[]          = INCBIN_U16("graphics/large
 const u16 gLargeItemPicPalette_SuperRod[]           = INCBIN_U16("graphics/large_item/super_rod.gbapal");
 const u16 gLargeItemPicPalette_Gram[]               = INCBIN_U16("graphics/large_item/gram.gbapal");
 const u16 gLargeItemPicPalette_Gracidea[]           = INCBIN_U16("graphics/large_item/gracidea.gbapal");
+const u16 gLargeItemPicPalette_PokedexM[]           = INCBIN_U16("graphics/large_item/pokedex_m.gbapal");
+const u16 gLargeItemPicPalette_PokedexF[]           = INCBIN_U16("graphics/large_item/pokedex_f.gbapal");
 
 const u32 gLargeItemPicBgTiles[]           = INCBIN_U32("graphics/large_item/bg.4bpp.lz");
 const u16 gLargeItemPicBgPal[]           = INCBIN_U16("graphics/large_item/bg.gbapal");

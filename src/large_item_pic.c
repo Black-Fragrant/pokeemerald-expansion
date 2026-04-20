@@ -24,6 +24,8 @@ const struct CompressedSpriteSheet gLargeItemPicSpriteSheets[] =
     { gLargeItemPic_SuperRod, 0x800, 5012 },
     { gLargeItemPic_Gram, 0x800, 5013 },
     { gLargeItemPic_Gracidea, 0x800, 5014 },
+    { gLargeItemPic_PokedexM, 0x800, 5015 },
+    { gLargeItemPic_PokedexF, 0x800, 5016 },
 };
 
 // Palettes
@@ -44,6 +46,8 @@ const struct SpritePalette gLargeItemPicSpritePalettes[] =
     { gLargeItemPicPalette_SuperRod, 5012 },
     { gLargeItemPicPalette_Gram, 5013 },
     { gLargeItemPicPalette_Gracidea, 5014 },
+    { gLargeItemPicPalette_PokedexM, 5015 },
+    { gLargeItemPicPalette_PokedexF, 5016 },
 };
 
 // ===============================
@@ -195,6 +199,24 @@ const struct SpriteTemplate gLargeItemPicTemplate[] =
     [14] = {
         .tileTag = 5014,
         .paletteTag = 5014,
+        .oam = &sLargeItemPic_OamData,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    [15] = {
+        .tileTag = 5015,
+        .paletteTag = 5015,
+        .oam = &sLargeItemPic_OamData,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    [16] = {
+        .tileTag = 5016,
+        .paletteTag = 5016,
         .oam = &sLargeItemPic_OamData,
         .anims = gDummySpriteAnimTable,
         .images = NULL,

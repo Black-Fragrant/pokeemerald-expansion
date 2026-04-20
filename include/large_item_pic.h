@@ -18,6 +18,8 @@ extern const u32 gLargeItemPic_DarkStone[];
 extern const u32 gLargeItemPic_SuperRod[];
 extern const u32 gLargeItemPic_Gram[];
 extern const u32 gLargeItemPic_Gracidea[];
+extern const u32 gLargeItemPic_PokedexM[];
+extern const u32 gLargeItemPic_PokedexF[];
 
 // 64x64 item palettes
 extern const u16 gLargeItemPicPalette_XtransceiverBlue[];
@@ -35,6 +37,8 @@ extern const u16 gLargeItemPicPalette_DarkStone[];
 extern const u16 gLargeItemPicPalette_SuperRod[];
 extern const u16 gLargeItemPicPalette_Gram[];
 extern const u16 gLargeItemPicPalette_Gracidea[];
+extern const u16 gLargeItemPicPalette_PokedexM[];
+extern const u16 gLargeItemPicPalette_PokedexF[];
 
 
 // ======================================================

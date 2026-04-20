@@ -47,7 +47,8 @@ script StriatonCity_BRB1F_EventScript_CheerleaderMan_Received
 
 script StriatonCity_BRB1F_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	release()
 	end()
 }

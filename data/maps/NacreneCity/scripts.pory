@@ -330,7 +330,7 @@ script NacreneCity_EventScript_Trigger_Cheren_Pos4
 
 script NacreneCity_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
 	closemessage
 	return
 }
