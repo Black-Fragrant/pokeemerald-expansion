@@ -215,48 +215,8 @@ Debug_EventScript_Script_1_text::
 	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
-	lock
-	showlargeitempic 5, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 6, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 7, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 8, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 9, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 10, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 11, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 12, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 13, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	showlargeitempic 14, 10, 3
-	delay 40
-	hidelargeitempic
-	delay 20
-	release
+	warp MAP_SKY_ARROW_BRIDGE, 16, 17
+	waitstate
 	end
 
 Debug_EventScript_Script_3::
