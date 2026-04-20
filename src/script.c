@@ -36,6 +36,7 @@ static bool8 sLockFieldControls;
 EWRAM_DATA u8 gMsgIsSignPost = FALSE;
 EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
 EWRAM_DATA u8 gMsgIsShout = FALSE;
+EWRAM_DATA u8 gMsgIsTransparent = FALSE;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];

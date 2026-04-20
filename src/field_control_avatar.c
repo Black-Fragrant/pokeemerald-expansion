@@ -168,6 +168,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     gMsgIsSignPost = FALSE;
     gMsgIsShout = FALSE;
+    gMsgIsTransparent = FALSE;
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);

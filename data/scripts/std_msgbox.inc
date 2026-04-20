@@ -25,6 +25,13 @@ Std_MsgboxShout:
 	waitbuttonpress
 	return
 
+Std_MsgboxTransparent:
+    special SetMsgboxTransparentFlag
+	message NULL
+	waitmessage
+	waitbuttonpress
+	return
+
 Std_MsgboxDefault:
 	message NULL
 	waitmessage
