@@ -197,9 +197,22 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	warp MAP_ROUTE1_EAST, 20, 37
-	waitstate
+	lock
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+    closemessage
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_SHOUT
+    closemessage
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+    closemessage
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_TRANSPARENT
+    closemessage
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+    closemessage
+	release
 	end
+
+Debug_EventScript_Script_1_text::
+	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
 	lock

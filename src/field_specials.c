@@ -5808,3 +5808,8 @@ void SetMsgboxShoutFlag(void)
 {
     gMsgIsShout = TRUE;
 }
+
+void SetMsgboxTransparentFlag(void)
+{
+    gMsgIsTransparent = TRUE;
+}

@@ -123,6 +123,7 @@ gStdScripts::
 	.4byte Std_PutItemAway             @ STD_PUT_ITEM_AWAY
 	.4byte Std_ReceivedItem            @ STD_RECEIVED_ITEM
 	.4byte Std_MsgboxShout   		   @ MSGBOX_SHOUT
+	.4byte Std_MsgboxTransparent       @ MSGBOX_TRANSPARENT
 gStdScripts_End::
 
 
