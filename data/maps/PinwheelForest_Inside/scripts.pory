@@ -668,14 +668,16 @@ script PinwheelForest_Inside_EventScript_Ranger_M_ChestoReceived
 
 script PinwheelForest_Inside_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	release()
 	end()
 }
 
 script PinwheelForest_Inside_EventScript_BagIsFull2
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	return()
 }
 
@@ -899,7 +901,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
     closemessage
 	showlargeitempic(5, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} obtained the Dragon Skull!")
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Dragon Skull{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
     delay(120)
     fadenewbgm(MUS_BW_APPEARS_PLASMA_2)
 	hidelargeitempic
@@ -1061,7 +1063,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
     closemessage
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} gave the\n"
-           "Dragon Skull to Lenora!")
+           "{SHADOW BLUE}{COLOR LIGHT_BLUE}Dragon Skull{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY} to Lenora!", MSGBOX_TRANSPARENT)
     delay(120)
     fadedefaultbgm
     savebgm(MUS_BW_DREAM_YARD)

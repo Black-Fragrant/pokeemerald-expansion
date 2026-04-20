@@ -119,7 +119,7 @@ script Dreamyard_EventScript_Girl_GivePanpour3
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("{PLAYER} received Panpour!") //this should be transparent
+			msgbox("{PLAYER} received Panpour!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
@@ -127,7 +127,7 @@ script Dreamyard_EventScript_Girl_GivePanpour3
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("Panpour was sent to the PC!") //this should be transparent
+			msgbox("Panpour was sent to the PC!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
@@ -178,7 +178,7 @@ script Dreamyard_EventScript_Girl_GivePansage3
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("{PLAYER} received Pansage!") //this should be transparent
+			msgbox("{PLAYER} received Pansage!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
@@ -186,7 +186,7 @@ script Dreamyard_EventScript_Girl_GivePansage3
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("Pansage was sent to the PC!") //this should be transparent
+			msgbox("Pansage was sent to the PC!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
@@ -237,7 +237,7 @@ script Dreamyard_EventScript_Girl_GivePansear3
 		if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("{PLAYER} received Pansear!") //this should be transparent
+			msgbox("{PLAYER} received Pansear!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)
@@ -245,7 +245,7 @@ script Dreamyard_EventScript_Girl_GivePansear3
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("Pansear was sent to the PC!") //this should be transparent
+			msgbox("Pansear was sent to the PC!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
             setflag(FLAG_DREAMYARD_RECEIVED_MONKEY)

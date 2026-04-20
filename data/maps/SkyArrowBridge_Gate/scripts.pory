@@ -16,7 +16,8 @@ script SkyArrowBridge_Gate_EventScript_Hiker
 
 script SkyArrowBridge_Gate_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+    closemessage
 	release()
 	end()
 }

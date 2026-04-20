@@ -6,7 +6,7 @@ script Route2_EventScript_MotherGivesRunningShoes
 	lock()
 	playse(SE_POKENAV_CALL)
 	msgbox("The Xtransceiver is ringing.\p"
-			"Player picked up the Xtransceiver.", MSGBOX_DEFAULT) //this should be transparent
+			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage()
 	playse(SE_POKENAV_HANG_UP)
@@ -40,10 +40,12 @@ script Route2_EventScript_MotherGivesRunningShoes
 	waitmovement(0)
 	delay(10)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} received a pair of Running Shoes!") //this should be transparent
+    msgbox("{PLAYER} received a pair of"
+	"{SHADOW BLUE}{COLOR LIGHT_BLUE}Running Shoes{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
 	setflag(FLAG_SYS_B_DASH)
     delay(120)
 	fadenewbgm(MUS_BW_FOLLOW_ME)
+	closemessage
 	msgbox("When you're wearing the Running Shoes,\n"
 			"you can go anywhere in a flash!\p"
 			"Let me read you the instructions...\p"

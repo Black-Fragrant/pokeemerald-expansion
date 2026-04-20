@@ -193,7 +193,8 @@ script NacreneCity_Gym_EventScript_Receptionist_3
 
 script NacreneCity_Gym_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	return()
 }
 
@@ -321,11 +322,11 @@ script NacreneCity_Gym_EventScript_Book_FourthMemo_Cont
            "“Did you manage to get here\n"
            "without being tricked by the questions?\p"
            "Now, this is the last question!\p"
-           "Q: From this bookshelf...\n"
+           "{COLOR RED}{SHADOW LIGHT_RED}Q: From this bookshelf...\n"
            "Move two backward, move one to the left,\l"
            "Move two forward, move one to the right,\l"
            "and move one backward...\l"
-           "Now, where is it?\p"
+           "Now, where is it?{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}\p"
            "The hint is...\n"
            "Find it by yourself!”", MSGBOX_DEFAULT)
     closemessage()
@@ -390,8 +391,8 @@ script NacreneCity_Gym_EventScript_Book_FirstMemo_Cont
            "Can you solve the questions and\n"
            "come find me?\p"
            "Now this is the first question!\p"
-           "Q: What is the first Pokémon you met\n"
-           "in this Gym?\p"
+           "{COLOR RED}{SHADOW LIGHT_RED}Q: What is the first Pokémon you met\n"
+           "in this Gym?{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}\p"
            "The hint is...\n"
            "on a bookshelf in the middle row!\p"
            "Now, try to find it!”", MSGBOX_DEFAULT)
@@ -519,10 +520,10 @@ script NacreneCity_Gym_EventScript_Book_SecondMemo_Cont
     msgbox("There is a memo on the back cover...\p"
            "“As I thought, that question was easy.\n"
            "Well, this is the second question!\p"
-           "Q: Flame burns inside its body, and it\n"
+           "{COLOR RED}{SHADOW LIGHT_RED}Q: Flame burns inside its body, and it\n"
            "gives off smoke from its head while\l"
            "it runs...\l"
-           "What is this book?\p"
+           "What is this book?{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}\p"
            "The hint is...\n"
            "Somebody may be reading.”", MSGBOX_DEFAULT)
     closemessage()
@@ -1007,8 +1008,8 @@ script NacreneCity_Gym_EventScript_Book_ThirdMemo_Cont
            "That's what I'd expect from a\n"
            "challenger like you!\p"
            "Well, this is the third question!\p"
-           "Q: If you heat it up in a pot, it'll be\n"
-           "delicious. What is this?\p"
+           "{COLOR RED}{SHADOW LIGHT_RED}Q: If you heat it up in a pot, it'll be\n"
+           "delicious. What is this?{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}\p"
            "The hint is on a bookshelf closer to\n"
            "the entrance than here!”", MSGBOX_DEFAULT)
     closemessage()

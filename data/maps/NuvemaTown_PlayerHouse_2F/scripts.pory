@@ -249,7 +249,8 @@ script NuvemaTown_PH2F_EventScript_Wii_Console
 	lock()
 	goto_if_set(FLAG_NUVEMA_PH2F_IS_MESSY, NuvemaTown_PH2F_EventScript_Wii_Console_Messy)
 	msgbox("It's a Wii console!\n"
-       "It has a Wii Remote!", MSGBOX_SIGN)
+       "It has a Wii Remote!", MSGBOX_TRANSPARENT)
+	closemessage
 	release()
 	end()
 }
@@ -257,19 +258,23 @@ script NuvemaTown_PH2F_EventScript_Wii_Console
 script NuvemaTown_PH2F_EventScript_Wii_Console_Messy
 {
 	msgbox("It's a Wii console!\p"
-       "It's not even scratched!", MSGBOX_SIGN)
+       "It's not even scratched!", MSGBOX_TRANSPARENT)
+	closemessage
 	release()
 	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Computer
 {
+	lock
 	msgbox("{PLAYER} checked the PC.\p"
 		"Pokémon Basics...\p"
 		"Pokémon live alongside Pokémon in\n"
 		"this world.\p"
 		"The people who battle with Pokémon\n"
-		"are called Pokémon Trainers.", MSGBOX_SIGN) //this should be transparent
+		"are called Pokémon Trainers.", MSGBOX_TRANSPARENT)
+	closemessage
+	release
 	end()
 }
 
@@ -296,7 +301,7 @@ script NuvemaTown_PH2F_EventScript_Gift_Box
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
 	waitmovement(0)
-	msgbox("{PLAYER} opened the gift box!", MSGBOX_DEFAULT)  //this should be transparent
+	msgbox("{PLAYER} opened the gift box!", MSGBOX_TRANSPARENT)
 	closemessage
 	goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
 }
@@ -321,7 +326,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Snivy
 		{
 			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} chose\n"
-			"Snivy!")
+			"Snivy!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
@@ -329,14 +334,14 @@ script NuvemaTown_PH2F_EventScript_Chose_Snivy
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("Snivvy was sent to the PC!")
+			msgbox("Snivvy was sent to the PC!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
 		else
 		{
-			msgbox("Your Pokémon Storage is full...")
+			msgbox("Your Pokémon Storage is full...", MSGBOX_TRANSPARENT)
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
@@ -359,7 +364,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Tepig
 		{
 			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} chose\n"
-			"Tepig!")
+			"Tepig!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
@@ -367,14 +372,14 @@ script NuvemaTown_PH2F_EventScript_Chose_Tepig
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("Tepig was sent to the PC!")
+			msgbox("Tepig was sent to the PC!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
 		else
 		{
-			msgbox("Your Pokémon Storage is full...")
+			msgbox("Your Pokémon Storage is full...", MSGBOX_TRANSPARENT)
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
@@ -397,7 +402,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 		{
 			playfanfare(MUS_EVOLVED)
 			msgbox("{PLAYER} chose\n"
-			"Oshawott!")
+			"Oshawott!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
@@ -405,14 +410,14 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 		elif (var(VAR_RESULT) == MON_GIVEN_TO_PC)
 		{
 			playfanfare(MUS_EVOLVED)
-			msgbox("Oshawott was sent to the PC!")
+			msgbox("Oshawott was sent to the PC!", MSGBOX_TRANSPARENT)
 			waitfanfare
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
 		else
 		{
-			msgbox("Your Pokémon Storage is full...")
+			msgbox("Your Pokémon Storage is full...", MSGBOX_TRANSPARENT)
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
@@ -636,7 +641,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle
 	closemessage
 	delay(20)
 	playse(SE_USE_ITEM)
-	msgbox("Cheren healed Bianca's Pokémon!") //this should be transparent
+	msgbox("Cheren healed Bianca's Pokémon!", MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage
 	delay(20)
@@ -650,7 +655,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle
 		delay(20)
 	playse(SE_USE_ITEM)
 	special(HealPlayerParty)
-	msgbox("Cheren healed {PLAYER}'s Pokémon!") //this should be transparent
+	msgbox("Cheren healed {PLAYER}'s Pokémon!", MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage
 	delay(20)

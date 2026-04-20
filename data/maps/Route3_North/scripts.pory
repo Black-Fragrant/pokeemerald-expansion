@@ -580,14 +580,16 @@ script Route3_North_EventScript_Breeder_F_Received
 
 script Route3_North_EventScript_BagIsFull
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	release()
 	end()
 }
 
 script Route3_North_EventScript_BagIsFull2
 {
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
 	closemessage
 	return
 }
