@@ -1989,3 +1989,14 @@ const struct Tileset gTileset_SkyArrowBridge =
     .metatileAttributes = gMetatileAttributes_SkyArrowBridge,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CasteliaCity1 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity1,
+    .palettes = gTilesetPalettes_CasteliaCity1,
+    .metatiles = gMetatiles_CasteliaCity1,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity1,
+    .callback = NULL,
+};
