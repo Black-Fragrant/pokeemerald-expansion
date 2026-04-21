@@ -917,6 +917,18 @@ static const struct SpriteFrameImage sPicTable_BoatRoyal[] = {
     overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
 };
 
+static const struct SpriteFrameImage sPicTable_BoatBlack[] = {
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {

@@ -682,6 +682,9 @@ const u16 gObjectEventPal_BoatYellow[] = INCBIN_U16("graphics/object_events/pale
 const u32 gObjectEventPic_BoatRoyal[] = INCBIN_U32("graphics/object_events/pics/misc/boat_royal.4bpp");
 const u16 gObjectEventPal_BoatRoyal[] = INCBIN_U16("graphics/object_events/palettes/boat_royal.gbapal");
 
+const u32 gObjectEventPic_BoatBlack[] = INCBIN_U32("graphics/object_events/pics/misc/boat_black.4bpp");
+const u16 gObjectEventPal_BoatBlack[] = INCBIN_U16("graphics/object_events/palettes/boat_black.gbapal");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCBIN_U16("graphics/object_events/pics/people/red/red_normal.4bpp");

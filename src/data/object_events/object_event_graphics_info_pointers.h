@@ -189,6 +189,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRed;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlue;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatYellow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlack;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurf;
@@ -540,6 +541,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BOAT_BLUE] =                &gObjectEventGraphicsInfo_BoatBlue,
     [OBJ_EVENT_GFX_BOAT_YELLOW] =              &gObjectEventGraphicsInfo_BoatYellow,
     [OBJ_EVENT_GFX_BOAT_ROYAL] =               &gObjectEventGraphicsInfo_BoatRoyal,
+    [OBJ_EVENT_GFX_BOAT_BLACK] =               &gObjectEventGraphicsInfo_BoatBlack,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
