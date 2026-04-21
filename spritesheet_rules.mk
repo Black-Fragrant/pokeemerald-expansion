@@ -905,6 +905,9 @@ $(OBJEVENTGFXDIR)/people/boat_yellow.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/boat_royal.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 16 -mheight 8
 
+$(OBJEVENTGFXDIR)/people/boat_black.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 16 -mheight 8
+
 
 
 $(OBJEVENTGFXDIR)/misc/ball_poke.4bpp: %.4bpp: %.png

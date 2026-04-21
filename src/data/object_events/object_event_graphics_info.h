@@ -6345,3 +6345,21 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyal = {
     .anims = sAnimTable_Inanimate,
     .images = sPicTable_BoatRoyal,
 };
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlack = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_BOAT_BLACK,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 4096,
+    .width = 128,
+    .height = 64,
+    .paletteSlot = PALSLOT_NPC_1,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_NONE,
+    .oam = &gObjectEventBaseOam_8x8,
+    .subspriteTables = gObjectEventSpriteOamTables_128x64,
+    .anims = sAnimTable_Inanimate,
+    .images = sPicTable_BoatBlack,
+};
