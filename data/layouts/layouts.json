@@ -9476,8 +9476,8 @@
     {
       "id": "LAYOUT_CASTELIA_CITY_SOUTH_BANK",
       "name": "CasteliaCity_SouthBank_Layout",
-      "width": 80,
-      "height": 40,
+      "width": 95,
+      "height": 33,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CasteliaCity1",
       "border_filepath": "data/layouts/CasteliaCity_SouthBank/border.bin",
