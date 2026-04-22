@@ -60,22 +60,22 @@
       "x": 3,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_SKY_ARROW_BRIDGE_GATE_2",
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
       "dest_warp_id": "0"
     },
     {
       "x": 4,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_SKY_ARROW_BRIDGE_GATE_2",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "1"
     },
     {
       "x": 5,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_SKY_ARROW_BRIDGE_GATE_2",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [],
