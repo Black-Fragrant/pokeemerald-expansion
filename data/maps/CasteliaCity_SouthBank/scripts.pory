@@ -1,1 +1,130 @@
 mapscripts CasteliaCity_SouthBank_MapScripts {}
+
+script CasteliaCity_SouthBank_EventScript_CitySign
+{
+	msgbox("Castelia City\n"
+        "A City of Grandeur", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_CasteliaStreetSign
+{
+	msgbox("Ahead: Castelia Street\n"
+        "Ocean Side: Cruise Dock", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_ModeStreetSign
+{
+	msgbox("Ahead: Mode Street\n"
+        "Ocean Side: Prime Pier", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_BattleCompanySign
+{
+	msgbox("Battle Company\n"
+        "Talented Trainers Welcome!", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_NarrowStreetSign
+{
+	msgbox("Ahead: Narrow Street\n"
+        "Ocean Side: Unity Pier", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_PAHQSign
+{
+	msgbox("Passerby Analytics HQ\n"
+        "...People pass by as they walk along", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_GymStreetSign
+{
+	msgbox("Ahead: Pokémon Gym\n"
+        "Ocean Side: Liberty Pier", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_SouthBank_EventScript_OL_ByThumbPier
+{
+    msgbox("Castelia City has so many people!\p"
+        "Sometimes there are folks who only\n"
+        "care about themselves.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_Businessman_ByCasteliaStreet
+{
+    msgbox("Busy, busy!\p"
+        "After I eat breakfast, I have to think\n"
+        "about lunch.\p"
+        "After eating lunch, I worry about dinner.\n"
+        "Every day's the same. What a busy life!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_Businessman_ByCruiseDock
+{
+    msgbox("I'm a battling Clerk ♂!\p"
+        "...But my Pokémon are weak.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_Businessman_ByPrimePier
+{
+    msgbox("...Grumble, grumble, grumble.\p"
+        "Should I change my Pokémon's moves,\n"
+        "or should I change my Pokémon?\p"
+        "Grumble, grumble...", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_OL_ByModeStreet
+{
+    msgbox("My favorite way to spend my lunch break\n"
+        "is watching ships at the dock.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_OL_ByUnityPier
+{
+    msgbox("Working women are beautiful, and\n"
+        "battling Pokémon are wonderful!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_OL_ByBattleCompany
+{
+    msgbox("At the battle company, we welcome\n"
+        "Trainers who are proud of their skills.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_Businessman_ByUnityPier
+{
+    msgbox("Hey there Trainer!\n"
+        "Are your Pokémon healthy?\p"
+        "Being healthy's the best, because when\n"
+        "you're healthy, you can do anything!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_OL_ByPAHQ
+{
+    msgbox("Next time, I'll do it! Next time, I want\n"
+        "to eat a Casteliacone for sure!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_SouthBank_EventScript_Businessman_ByLibertyPier
+{
+    msgbox("When work's finally over...\p"
+        "When my thrown Poké Ball rocks three\n"
+        "times and I hear that great “click”...\p"
+        "My life is full of things that give me joy!", MSGBOX_NPC, TRUE)
+    end
+}
