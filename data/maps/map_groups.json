@@ -10,6 +10,8 @@
     "gMapGroup_IndoorNacrene",
     "gMapGroup_PinwheelForest",
     "gMapGroup_IndoorSkyArrowBridge",
+    "gMapGroup_OutdoorCastelia",
+    "gMapGroup_IndoorCastelia",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -84,9 +86,7 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg",
-    "gMapGroup_OutdoorCastelia",
-    "gMapGroup_IndoorCastelia"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "NuvemaTown",
@@ -168,6 +168,14 @@
     "SkyArrowBridge_Gate",
     "SkyArrowBridge_Gate_2"
   ],
+  "gMapGroup_OutdoorCastelia": [
+    "CasteliaCity_ThumbPier",
+    "CasteliaCity_CruiseDock",
+    "CasteliaCity_PrimePier",
+    "CasteliaCity_UnityPier",
+    "CasteliaCity_LibertyPier"
+  ],
+  "gMapGroup_IndoorCastelia": [],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
     "SlateportCity",
@@ -1252,7 +1260,5 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
-  ],
-  "gMapGroup_OutdoorCastelia": [],
-  "gMapGroup_IndoorCastelia": []
+  ]
 }

@@ -9482,6 +9482,56 @@
       "secondary_tileset": "gTileset_CasteliaCity1",
       "border_filepath": "data/layouts/CasteliaCity_SouthBank/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_SouthBank/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_THUMB_PIER",
+      "name": "CasteliaCity_ThumbPier_Layout",
+      "width": 22,
+      "height": 22,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCityPiers",
+      "border_filepath": "data/layouts/CasteliaCity_ThumbPier/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_ThumbPier/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_CRUISE_DOCK",
+      "name": "CasteliaCity_CruiseDock_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCityPiers",
+      "border_filepath": "data/layouts/CasteliaCity_CruiseDock/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_CruiseDock/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_PRIME_PIER",
+      "name": "CasteliaCity_PrimePier_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCityPiers",
+      "border_filepath": "data/layouts/CasteliaCity_PrimePier/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_PrimePier/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_UNITY_PIER",
+      "name": "CasteliaCity_UnityPier_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCityPiers",
+      "border_filepath": "data/layouts/CasteliaCity_UnityPier/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_UnityPier/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_LIBERTY_PIER",
+      "name": "CasteliaCity_LibertyPier_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCityPiers",
+      "border_filepath": "data/layouts/CasteliaCity_LibertyPier/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_LibertyPier/map.bin"
     }
   ]
 }

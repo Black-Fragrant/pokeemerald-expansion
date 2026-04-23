@@ -2000,3 +2000,14 @@ const struct Tileset gTileset_CasteliaCity1 =
     .metatileAttributes = gMetatileAttributes_CasteliaCity1,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CasteliaCityPiers =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCityPiers,
+    .palettes = gTilesetPalettes_CasteliaCityPiers,
+    .metatiles = gMetatiles_CasteliaCityPiers,
+    .metatileAttributes = gMetatileAttributes_CasteliaCityPiers,
+    .callback = NULL,
+};
