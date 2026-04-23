@@ -52,6 +52,7 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "constants/pokemon.h"
+#include "test/battle.h"
 
 static bool32 TryRemoveScreens(enum BattlerId battler);
 static bool32 IsUnnerveAbilityOnOpposingSide(enum BattlerId battler);
@@ -9767,6 +9768,30 @@ bool32 IsSleepClauseEnabled(void)
 
 bool32 AreMultiPartiesFullTeams(void)
 {
+#if TESTING
+    if (IsAITest())
+    {
+        u8 *partySizes = gBattleTestRunnerState->data.partySizes;
+        bool32 fullTeam = FALSE;
+
+        if (partySizes[B_TRAINER_0] && partySizes[B_TRAINER_2]
+         && (partySizes[B_TRAINER_0] > MULTI_PARTY_SIZE || partySizes[B_TRAINER_2] > MULTI_PARTY_SIZE))
+        {
+            fullTeam = TRUE;
+        }
+        if (partySizes[B_TRAINER_1] && partySizes[B_TRAINER_3]
+         && (partySizes[B_TRAINER_1] > MULTI_PARTY_SIZE || partySizes[B_TRAINER_3] > MULTI_PARTY_SIZE))
+        {
+            fullTeam = TRUE;
+        }
+
+        if (!fullTeam)
+        {
+            gSpecialVar_Result = FALSE;
+            return FALSE;
+        }
+    }
+#else
     enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
 
     if (B_MULTI_HALF_TEAMS
@@ -9778,6 +9803,7 @@ bool32 AreMultiPartiesFullTeams(void)
         gSpecialVar_Result = FALSE;
         return FALSE;
     }
+#endif
 
     gSpecialVar_Result = TRUE;
     return TRUE;
