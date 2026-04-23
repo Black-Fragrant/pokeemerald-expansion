@@ -1820,3 +1820,13 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/SkyArrowBridge_Gate_2/scripts.inc"
 
 	.include "data/maps/CasteliaCity_SouthBank/scripts.inc"
+
+	.include "data/maps/CasteliaCity_ThumbPier/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CruiseDock/scripts.inc"
+
+	.include "data/maps/CasteliaCity_PrimePier/scripts.inc"
+
+	.include "data/maps/CasteliaCity_UnityPier/scripts.inc"
+
+	.include "data/maps/CasteliaCity_LibertyPier/scripts.inc"

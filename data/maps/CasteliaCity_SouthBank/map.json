@@ -5,7 +5,7 @@
   "music": "MUS_BW_CASTELIA_CITY",
   "region_map_section": "MAPSEC_CASTELIA_CITY",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_CITY",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -405,35 +405,35 @@
       "x": 79,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_THUMB_PIER",
+      "dest_warp_id": "4"
     },
     {
       "x": 80,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_THUMB_PIER",
+      "dest_warp_id": "3"
     },
     {
       "x": 81,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_THUMB_PIER",
+      "dest_warp_id": "2"
     },
     {
       "x": 82,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_THUMB_PIER",
+      "dest_warp_id": "1"
     },
     {
       "x": 83,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_map": "MAP_CASTELIA_CITY_THUMB_PIER",
       "dest_warp_id": "0"
     },
     {
