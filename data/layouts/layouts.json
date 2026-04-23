@@ -9496,8 +9496,8 @@
     {
       "id": "LAYOUT_CASTELIA_CITY_CRUISE_DOCK",
       "name": "CasteliaCity_CruiseDock_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 31,
+      "height": 22,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CasteliaCityPiers",
       "border_filepath": "data/layouts/CasteliaCity_CruiseDock/border.bin",
@@ -9506,8 +9506,8 @@
     {
       "id": "LAYOUT_CASTELIA_CITY_PRIME_PIER",
       "name": "CasteliaCity_PrimePier_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 31,
+      "height": 22,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CasteliaCityPiers",
       "border_filepath": "data/layouts/CasteliaCity_PrimePier/border.bin",
@@ -9516,8 +9516,8 @@
     {
       "id": "LAYOUT_CASTELIA_CITY_UNITY_PIER",
       "name": "CasteliaCity_UnityPier_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 31,
+      "height": 22,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CasteliaCityPiers",
       "border_filepath": "data/layouts/CasteliaCity_UnityPier/border.bin",
@@ -9526,8 +9526,8 @@
     {
       "id": "LAYOUT_CASTELIA_CITY_LIBERTY_PIER",
       "name": "CasteliaCity_LibertyPier_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 24,
+      "height": 21,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_CasteliaCityPiers",
       "border_filepath": "data/layouts/CasteliaCity_LibertyPier/border.bin",

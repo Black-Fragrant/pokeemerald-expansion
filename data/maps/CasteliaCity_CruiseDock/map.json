@@ -13,8 +13,182 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GATE_F",
+      "x": 20,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOAT_ROYAL",
+      "x": 19,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BUSINESS_MAN",
+      "x": 5,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 4,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 4,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 26,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 10,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 18,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 26,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 8,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "18"
+    },
+    {
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "17"
+    },
+    {
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "16"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "15"
+    },
+    {
+      "x": 8,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "15"
+    },
+    {
+      "x": 8,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "dest_warp_id": "14"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }
