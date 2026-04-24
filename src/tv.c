@@ -3253,6 +3253,14 @@ bool8 TryPutNameRaterShowOnTheAir(void)
     return TRUE;
 }
 
+bool8 CheckIfNameChanged(void)
+{
+    GetBoxMonData(GetSelectedBoxMonFromPcOrParty(), MON_DATA_NICKNAME, gStringVar1);
+    if (!StringCompare(gStringVar3, gStringVar1))
+        return FALSE;
+    return TRUE;
+}
+
 static void ChangeBoxPokemonNickname_CB(void)
 {
     SetBoxMonData(GetSelectedBoxMonFromPcOrParty(), MON_DATA_NICKNAME, gStringVar2);
