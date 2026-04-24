@@ -641,4 +641,5 @@ gSpecials::
 	def_special CheckAddCoins
 	def_special SetMsgboxShoutFlag
 	def_special SetMsgboxTransparentFlag
+	def_special CheckIfNameChanged
 

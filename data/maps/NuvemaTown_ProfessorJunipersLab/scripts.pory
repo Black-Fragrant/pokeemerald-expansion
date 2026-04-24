@@ -60,19 +60,48 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex
     delay(10)
     applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_left, walk_in_place_down, delay_16, walk_right * 2, walk_in_place_down, delay_16, walk_left , walk_in_place_down ))
     waitmovement(0)
-    bufferpartymonnick(STR_VAR_1, 0)
-    bufferleadmonspeciesname (STR_VAR_2)
     msgbox("Professor Juniper: Oh, that's unusual!\n"
             "You've already had a Pokémon battle!\p"
             "So maybe that's why...\p"
             "It feels as though your Pokémon have\n"
             "already begun to trust you!\p"
-            "By the way, you can always change the\n"
-            "nickname of your Pokémon now...\p"
-            "{STR_VAR_1} seems like a\n"
+            "By the way, would you like to give your\n"
+            "Pokémon a nickname?", MSGBOX_YESNO, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+	goto_if_eq(VAR_RESULT, YES, NuvemaTown_EventScript_JPL_NicknameStarter)
+	goto_if_eq(VAR_RESULT, NO, NuvemaTown_EventScript_JPL_DeclineNicknameStarter)
+    end()
+}
+
+script NuvemaTown_EventScript_JPL_NicknameStarter
+{
+    destroy_speech_bubble()
+    closemessage()
+	setvar(VAR_0x8004, 0)
+	call(Common_EventScript_NameReceivedPartyMon)
+	specialvar(VAR_RESULT, CheckIfNameChanged)
+	goto_if_eq(VAR_RESULT, FALSE, NuvemaTown_EventScript_JPL_DeclineNicknameStarter)
+    bufferpartymonnick(STR_VAR_1, 0)
+    bufferleadmonspeciesname (STR_VAR_2)
+    msgbox("{STR_VAR_1} seems like a\n"
             "perfect name for your {STR_VAR_2}!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
     destroy_speech_bubble()
-    closemessage
+    closemessage()
+    goto(NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname)
+}
+
+script NuvemaTown_EventScript_JPL_DeclineNicknameStarter
+{
+    destroy_speech_bubble()
+    closemessage()
+    msgbox("Professor Juniper: You aren't planning\n"
+            "to use a nickname? Well, that's fine, too.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
+    destroy_speech_bubble()
+    closemessage()
+    goto(NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname)
+}
+
+script NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname
+{
     delay(10)
     applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
     waitmovement(0)
@@ -80,10 +109,10 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex
     msgbox("Professor Juniper: As for why I gave all\n"
             "of you Pokémon...", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_JUNIPER)
     destroy_speech_bubble()
-    closemessage
+    closemessage()
     msgbox("Cheren: It's for the Pokédex, right?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_CHEREN)
     destroy_speech_bubble()
-    closemessage
+    closemessage()
     delay(10)
 	playse(SE_PIN)
 	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(emote_question_mark))
