@@ -173,9 +173,12 @@
     "CasteliaCity_CruiseDock",
     "CasteliaCity_PrimePier",
     "CasteliaCity_UnityPier",
-    "CasteliaCity_LibertyPier"
+    "CasteliaCity_LibertyPier",
+    "CasteliaCity_GymStreet"
   ],
-  "gMapGroup_IndoorCastelia": [],
+  "gMapGroup_IndoorCastelia": [
+    "CasteliaCity_PokeCenter"
+  ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
     "SlateportCity",
