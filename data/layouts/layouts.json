@@ -9532,6 +9532,26 @@
       "secondary_tileset": "gTileset_CasteliaCityPiers",
       "border_filepath": "data/layouts/CasteliaCity_LibertyPier/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_LibertyPier/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_POKE_CENTER",
+      "name": "CasteliaCity_PokeCenter_Layout",
+      "width": 13,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokeCenter",
+      "border_filepath": "data/layouts/CasteliaCity_PokeCenter/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_PokeCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_GYM_STREET",
+      "name": "CasteliaCity_GymStreet_Layout",
+      "width": 30,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCity2",
+      "border_filepath": "data/layouts/CasteliaCity_GymStreet/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_GymStreet/map.bin"
     }
   ]
 }
