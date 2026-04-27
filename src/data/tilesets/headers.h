@@ -1998,7 +1998,7 @@ const struct Tileset gTileset_CasteliaCity1 =
     .palettes = gTilesetPalettes_CasteliaCity1,
     .metatiles = gMetatiles_CasteliaCity1,
     .metatileAttributes = gMetatileAttributes_CasteliaCity1,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CasteliaCity1,
 };
 
 const struct Tileset gTileset_CasteliaCityPiers =
@@ -2009,7 +2009,7 @@ const struct Tileset gTileset_CasteliaCityPiers =
     .palettes = gTilesetPalettes_CasteliaCityPiers,
     .metatiles = gMetatiles_CasteliaCityPiers,
     .metatileAttributes = gMetatileAttributes_CasteliaCityPiers,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CasteliaCityPiers,
 };
 
 const struct Tileset gTileset_CasteliaCity2 =
