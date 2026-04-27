@@ -181,6 +181,7 @@ static const u8 sDoorAnimTiles_PokemonCenter[] = INCBIN_U8("graphics/door_anims/
 static const u8 sDoorAnimTiles_Route3_House_1[] = INCBIN_U8("graphics/door_anims/route_3_door_1.4bpp");
 static const u8 sDoorAnimTiles_Route3_House_2[] = INCBIN_U8("graphics/door_anims/route_3_door_2.4bpp");
 static const u8 sDoorAnimTiles_Nacrene_House_1[] = INCBIN_U8("graphics/door_anims/nacrene_house_1.4bpp");
+static const u8 sDoorAnimTiles_Castelia_House_1[] = INCBIN_U8("graphics/door_anims/castelia_house_1.4bpp");
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -349,6 +350,7 @@ static const u8 sDoorAnimPalettes_PokemonCenter[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_Route3_1[] = {11, 11, 11, 11, 11, 11, 11, 11};
 static const u8 sDoorAnimPalettes_Route3_2[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_NacreneHouse_1[] = {12, 12, 12, 12, 12, 12, 12, 12};
+static const u8 sDoorAnimPalettes_CasteliaHouse_1[] = {9, 9, 9, 9, 9, 9, 9, 9};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -456,6 +458,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_Route3_House_1,                               &gTileset_Route3, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route3_House_1, sDoorAnimPalettes_Route3_1},
     {METATILE_Route3_House_2,                               &gTileset_Route3, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route3_House_2, sDoorAnimPalettes_Route3_2},
     {METATILE_Nacrene_House_1,                              &gTileset_NacreneCity, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Nacrene_House_1, sDoorAnimPalettes_NacreneHouse_1},
+    {METATILE_Castelia_House_1,                             &gTileset_CasteliaCity1, DOOR_SOUND_SLIDING,  1, sDoorAnimTiles_Castelia_House_1, sDoorAnimPalettes_CasteliaHouse_1},
     {},
 };
 
