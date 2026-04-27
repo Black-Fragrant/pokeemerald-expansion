@@ -68,5 +68,6 @@ extern const struct Tileset gTileset_Accumula;
 extern const struct Tileset gTileset_Striaton;
 extern const struct Tileset gTileset_Route3;
 extern const struct Tileset gTileset_NacreneCity;
+extern const struct Tileset gTileset_CasteliaCity1;
 
 #endif //GUARD_tilesets_H
