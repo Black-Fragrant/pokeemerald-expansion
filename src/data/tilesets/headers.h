@@ -2031,5 +2031,5 @@ const struct Tileset gTileset_CasteliaCity3 =
     .palettes = gTilesetPalettes_CasteliaCity3,
     .metatiles = gMetatiles_CasteliaCity3,
     .metatileAttributes = gMetatileAttributes_CasteliaCity3,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CasteliaCity3,
 };
