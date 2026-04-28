@@ -51,5 +51,6 @@ void InitTilesetAnim_PinwheelForest(void);
 void InitTilesetAnim_NacreneGym(void);
 void InitTilesetAnim_CasteliaCity1(void);
 void InitTilesetAnim_CasteliaCityPiers(void);
+void InitTilesetAnim_CasteliaCity3(void);
 
 #endif // GUARD_TILESET_ANIMS_H
