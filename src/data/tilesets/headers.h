@@ -2022,3 +2022,14 @@ const struct Tileset gTileset_CasteliaCity2 =
     .metatileAttributes = gMetatileAttributes_CasteliaCity2,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CasteliaCity3 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity3,
+    .palettes = gTilesetPalettes_CasteliaCity3,
+    .metatiles = gMetatiles_CasteliaCity3,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity3,
+    .callback = NULL,
+};

@@ -477,3 +477,6 @@ const u16 gMetatileAttributes_CasteliaCityPiers[] = INCBIN_U16("data/tilesets/se
 
 const u16 gMetatiles_CasteliaCity2[] = INCBIN_U16("data/tilesets/secondary/castelia_city_2/metatiles.bin");
 const u16 gMetatileAttributes_CasteliaCity2[] = INCBIN_U16("data/tilesets/secondary/castelia_city_2/metatile_attributes.bin");
+
+const u16 gMetatiles_CasteliaCity3[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/metatiles.bin");
+const u16 gMetatileAttributes_CasteliaCity3[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/metatile_attributes.bin");
