@@ -174,7 +174,8 @@
     "CasteliaCity_PrimePier",
     "CasteliaCity_UnityPier",
     "CasteliaCity_LibertyPier",
-    "CasteliaCity_GymStreet"
+    "CasteliaCity_GymStreet",
+    "CasteliaCity_ModeStreet"
   ],
   "gMapGroup_IndoorCastelia": [
     "CasteliaCity_PokeCenter"

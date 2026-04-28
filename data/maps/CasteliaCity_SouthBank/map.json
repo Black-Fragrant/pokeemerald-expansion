@@ -517,43 +517,43 @@
       "x": 42,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "8"
     },
     {
       "x": 43,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "9"
     },
     {
       "x": 44,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "11"
     },
     {
       "x": 45,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "12"
     },
     {
       "x": 46,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "14"
     },
     {
       "x": 47,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "15"
     },
     {
       "x": 42,
@@ -679,7 +679,7 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
-      "dest_warp_id": "10"
+      "dest_warp_id": "9"
     },
     {
       "x": 11,
@@ -700,7 +700,7 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
-      "dest_warp_id": "13"
+      "dest_warp_id": "14"
     },
     {
       "x": 14,
