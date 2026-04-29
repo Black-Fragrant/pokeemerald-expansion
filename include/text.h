@@ -30,12 +30,9 @@ enum {
     FONT_SHORT_NARROW,
     FONT_SHORT_NARROWER,
     // start bwBattleUI
-    /* WARNING!
-     * These fonts barely fits the limit of fontId in struct TextPrinter.
-     * Be sure to update that field if you have extra custom fonts accordingly!
-     */
     FONT_OUTLINED,
     FONT_OUTLINED_NARROW,
+    FONT_OUTLINED_HP_NUMBERS, // custom to fit Double Battle's HP bar <-> text mode
     // end bwBattleUI
 };
 
@@ -128,7 +125,10 @@ struct TextPrinter
     u16 downArrowYPosIdx:2;
     bool16 hasFontIdBeenSet:1;
     u8 autoScrollDelay;
-    u8 fontId:4;
+    // Start bwBattleUI
+    //u8 fontId:4;
+    u8 unused:4;
+    // End bwBattleUI
     bool8 hasPrintBeenSpedUp:1;
     u8 japanese:1;
     u8 active:1;
@@ -140,7 +140,11 @@ struct TextPrinter
     u8 minLetterSpacing;
 
     u8 textSpeed;
-    u8 padding[3];
+    // Start bwBattleUI
+    //u8 padding[3];
+    u8 fontId;      // expanded for new battle-related fonts.
+    u8 padding[2];
+    // End bwBattleUI
 
     struct TextPrinter *nextPrinter;
 

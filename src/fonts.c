@@ -937,4 +937,29 @@ ALIGNED(4) const u8 gFontOutlinedNarrowLatinGlyphWidths[] =
     //[OCTOTHORPE] = 12,
     */
 };
+
+ALIGNED(4) const u16 gFontOutlinedHPNumbersLatinGlyphs[] = INCBIN_U16("graphics/fonts/outlined_hp_numbers.latfont");
+ALIGNED(4) const u8 gFontOutlinedHPNumbersLatinGlyphWidths[] =
+{
+    [CHAR_0] = 6,
+    [CHAR_1] = 6,
+    [CHAR_2] = 6,
+    [CHAR_3] = 6,
+    [CHAR_4] = 6,
+    [CHAR_5] = 6,
+    [CHAR_6] = 6,
+    [CHAR_7] = 6,
+    [CHAR_8] = 6,
+    [CHAR_9] = 6,
+    [CHAR_SPACE] = 6,
+    [CHAR_SPACER] = 6,
+    [CHAR_SLASH] = 8,
+
+    [CHAR_EXTRA_SYMBOL_START | CHAR_STATUS_PSN] = 15,
+    [CHAR_EXTRA_SYMBOL_START | CHAR_STATUS_PAR] = 15,
+    [CHAR_EXTRA_SYMBOL_START | CHAR_STATUS_SLP] = 15,
+    [CHAR_EXTRA_SYMBOL_START | CHAR_STATUS_FRZ] = 15,
+    [CHAR_EXTRA_SYMBOL_START | CHAR_STATUS_BRN] = 15,
+    [CHAR_EXTRA_SYMBOL_START | CHAR_STATUS_FBT] = 15,
+};
 // End bwBattleUI

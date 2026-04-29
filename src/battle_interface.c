@@ -676,7 +676,13 @@ u8 CreateBattlerHealthboxSprites(enum BattlerId battler)
     healthBarSpritePtr->subspriteMode = SUBSPRITES_IGNORE_PRIORITY;
     healthBarSpritePtr->oam.priority = 1;
 
-    CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
+    // Start bwBattleUI
+    //CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
+
+    // this element is copied later
+    if (!(BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX))
+        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
+    // End bwBattleUI
 
     gSprites[healthboxLeftSpriteId].hMain_HealthBarSpriteId = healthbarSpriteId;
     gSprites[healthboxLeftSpriteId].hMain_Battler = battler;
@@ -729,7 +735,7 @@ static void SpriteCB_HealthBar(struct Sprite *sprite)
 
     switch (sprite->hBar_Data6)
     {
-        case 0:
+    case 0:
         sprite->x = gSprites[healthboxSpriteId].x + 16 + (BW_BATTLE_UI_HEALTHBOX * 8); // bwBattleUI
         sprite->y = gSprites[healthboxSpriteId].y;
         break;
@@ -1021,6 +1027,14 @@ static void UpdateOpponentHpTextSingles(u32 healthboxSpriteId, s16 value, u32 ma
 
 void UpdateHpTextInHealthbox(u32 healthboxSpriteId, u32 maxOrCurrent, s16 currHp, s16 maxHp)
 {
+    // Start bwBattleUI
+    if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
+    {
+        BattleUI_UpdateHealthboxHPText(healthboxSpriteId, currHp, maxHp);
+        return;
+    }
+    // End bwBattleUI
+
     enum BattlerId battler = gSprites[healthboxSpriteId].hMain_Battler;
     switch (GetBattlerCoordsIndex(battler))
     {
@@ -1138,6 +1152,14 @@ static void PrintSafariMonInfo(u8 healthboxSpriteId, struct Pokemon *mon)
 
 void SwapHpBarsWithHpText(void)
 {
+    // Start bwBattleUI
+    if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
+    {
+        BattleUI_UpdateHpBarText();
+        return;
+    }
+    // End bwBattleUI
+
     u32 healthBarSpriteId;
 
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
@@ -1955,11 +1977,13 @@ static void UpdateLeftNoOfBallsTextOnHealthbox(u8 healthboxSpriteId)
 
 void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elementId)
 {
+    // Start bwBattleUI
     if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
     {
         BattleUI_UpdateHealthbox(healthboxSpriteId, mon, elementId);
         return;
     }
+    // End bwBattleUI
 
     enum BattlerId battler = gSprites[healthboxSpriteId].hMain_Battler;
     s32 maxHp = GetMonData(mon, MON_DATA_MAX_HP);
@@ -2113,6 +2137,14 @@ static void MoveBattleBarGraphically(enum BattlerId battler, u8 whichBar)
             if (maxValue < B_HEALTHBAR_PIXELS)
                 currValue = Q_24_8_TO_INT(currValue);
         }
+
+        // Start bwBattleUI
+        if (BW_BATTLE_UI_HEALTHBOX)
+        {
+            BattleUI_UpdateHpBarGraphically(battler, currValue, maxValue, array);
+            break;
+        }
+        // End bwBattleUI
 
         switch (GetHPBarLevel(currValue, maxValue))
         {
