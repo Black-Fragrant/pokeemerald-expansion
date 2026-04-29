@@ -525,21 +525,21 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
-      "dest_warp_id": "9"
+      "dest_warp_id": "10"
     },
     {
       "x": 44,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
-      "dest_warp_id": "11"
+      "dest_warp_id": "12"
     },
     {
       "x": 45,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
-      "dest_warp_id": "12"
+      "dest_warp_id": "14"
     },
     {
       "x": 46,
@@ -553,7 +553,7 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
-      "dest_warp_id": "15"
+      "dest_warp_id": "14"
     },
     {
       "x": 42,
