@@ -210,6 +210,12 @@
 #define CHAR_UNDERSCORE    0x09
 // start bwBattleUI
 #define CHAR_BIG_MULT_X    0x17
+#define CHAR_STATUS_PSN    0x19
+#define CHAR_STATUS_PAR    0x1A
+#define CHAR_STATUS_SLP    0x1B
+#define CHAR_STATUS_FRZ    0x1C
+#define CHAR_STATUS_BRN    0x1D
+#define CHAR_STATUS_FBT    0x1E
 #define CHAR_EMOJI_HEART   0xE7
 // end bwBattleUI
 

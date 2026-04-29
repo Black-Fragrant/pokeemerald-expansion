@@ -16,6 +16,7 @@ static const u16 sBWBattleUI_MoveBoxTypePalettes[] = INCBIN_U16("graphics/battle
 
 // BW Battle UI uses one palette for both ball_status_bar and ball_display
 static const u16 sBWBattleUI_PartySummaryBarPalette[] = INCBIN_U16("graphics/battle_interface/bw/ball_status_bar.gbapal");
+static const u16 sBWBattleUI_StatusIconPalette[] = INCBIN_U16("graphics/battle_interface/bw/status.gbapal");
 
 static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
 {
@@ -60,6 +61,14 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
         ? (const u16[])INCBIN_U16("graphics/battle_interface/bw/hpbar.gbapal")
         : gBattleInterface_BallDisplayPal,
 };
+
+static const u32 sBWBattleUI_HPBarText[] = INCBIN_U32("graphics/battle_interface/bw/hpbar.4bpp");
+static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
+    "graphics/battle_interface/bw/hpbar_none.4bpp",
+    "graphics/battle_interface/bw/hpbar_red.4bpp",
+    "graphics/battle_interface/bw/hpbar_yellow.4bpp",
+    "graphics/battle_interface/bw/hpbar_green.4bpp");
+static const u32 sBWBattleUI_HPBoxEndFrames[] = INCBIN_U32("graphics/battle_interface/bw/healthbox_end_frames.4bpp");
 
 static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
 {
@@ -240,5 +249,12 @@ static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =
     {
         .foreground = 1,
         .shadow = 2,
+    },
+    [BUI_TXTCLR_HBOX_STATUS] =
+    {
+        // foreground defined on the fly
+        .shadow = 2,
+        .accent = 1,
+        .background = 3,
     },
 };

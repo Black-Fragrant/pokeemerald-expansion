@@ -35,6 +35,7 @@ static u16 FontFunc_ShortNarrower(struct TextPrinter *);
 // start bwBattleUI
 static u16 FontFunc_Outlined(struct TextPrinter *);
 static u16 FontFunc_OutlinedNarrow(struct TextPrinter *);
+static u16 FontFunc_OutlinedHPNumbers(struct TextPrinter *);
 // end bwBattleUI
 static void DecompressGlyph_Small(u16, bool32);
 static void DecompressGlyph_Normal(u16, bool32);
@@ -49,6 +50,7 @@ static void DecompressGlyph_ShortNarrower(u16, bool32);
 // start bwBattleUI
 static void DecompressGlyph_Outlined(u16, bool32);
 static void DecompressGlyph_OutlinedNarrow(u16, bool32);
+static void DecompressGlyph_OutlinedHPNumbers(u16, bool32);
 // end bwBattleUI
 static u32 GetGlyphWidth_Small(u16, bool32);
 static u32 GetGlyphWidth_Normal(u16, bool32);
@@ -62,11 +64,13 @@ static u32 GetGlyphWidth_ShortNarrower(u16, bool32);
 // start bwBattleUI
 static u32 GetGlyphWidth_Outlined(u16, bool32);
 static u32 GetGlyphWidth_OutlinedNarrow(u16, bool32);
+static u32 GetGlyphWidth_OutlinedHPNumbers(u16, bool32);
 // end bwBattleUI
 static struct TextPrinter *AllocateTextPrinter(void);
 static u32 GetNumTextPrinters(void);
 static void FreeFinishedTextPrinters(void);
 static void SpriteCB_TextCursor(struct Sprite *sprite);
+static inline bool32 IsOutlinedFont(u32 fontId); // bwBattleUI
 
 static EWRAM_DATA struct TextPrinter *sFirstTextPrinter = NULL;
 
@@ -100,8 +104,9 @@ static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
     { FONT_SHORT_NARROW,   GetGlyphWidth_ShortNarrow },
     { FONT_SHORT_NARROWER, GetGlyphWidth_ShortNarrower },
     // start bwBattleUI
-    { FONT_OUTLINED,       GetGlyphWidth_Outlined },
-    { FONT_OUTLINED_NARROW,GetGlyphWidth_OutlinedNarrow },
+    { FONT_OUTLINED,                    GetGlyphWidth_Outlined },
+    { FONT_OUTLINED_NARROW,             GetGlyphWidth_OutlinedNarrow },
+    { FONT_OUTLINED_HP_NUMBERS,         GetGlyphWidth_OutlinedHPNumbers },
     // end bwBattleUI
 };
 
@@ -306,6 +311,17 @@ static const struct FontInfo sFontInfos[] =
         .color.foreground = 2,
         .color.background = 1,
         .color.accent = 1,
+        .color.shadow = 3,
+    },
+    [FONT_OUTLINED_HP_NUMBERS] = {
+        .fontFunction = FontFunc_OutlinedHPNumbers,
+        .maxLetterWidth = 16,
+        .maxLetterHeight = 6,
+        .letterSpacing = -1,
+        .lineSpacing = 0,
+        .color.foreground = 2,
+        .color.background = 1,
+        .color.accent = 4,
         .color.shadow = 3,
     },
     // end bwBattleUI
@@ -1030,11 +1046,8 @@ static void PrintGlyph(struct TextPrinter *textPrinter)
         textPrinter->printerTemplate.currentX = newWidth;
 
         // start bwBattleUI
-        // Add more cursedness to this why not!
-        if (textPrinter->printerTemplate.fontId == FONT_OUTLINED
-         || textPrinter->printerTemplate.fontId == FONT_OUTLINED_NARROW
-         || textPrinter->fontId == FONT_OUTLINED
-         || textPrinter->fontId == FONT_OUTLINED_NARROW)
+        if ((IsOutlinedFont(textPrinter->printerTemplate.fontId) || IsOutlinedFont(textPrinter->fontId))
+         && textPrinter->printerTemplate.currentX)
         {
             textPrinter->printerTemplate.currentX--;
         }
@@ -1063,10 +1076,8 @@ static void PrintGlyph(struct TextPrinter *textPrinter)
                 textPrinter->printerTemplate.currentX += gCurGlyph.width;
             */
             // This is the Meat that merge together each characters!
-            if (textPrinter->printerTemplate.fontId == FONT_OUTLINED
-             || textPrinter->printerTemplate.fontId == FONT_OUTLINED_NARROW
-             || textPrinter->fontId == FONT_OUTLINED
-             || textPrinter->fontId == FONT_OUTLINED_NARROW)
+            if (IsOutlinedFont(textPrinter->printerTemplate.fontId)
+             || IsOutlinedFont(textPrinter->fontId))
             {
                 textPrinter->printerTemplate.currentX += gCurGlyph.width + (-1);
             }
@@ -1246,6 +1257,17 @@ static u16 FontFunc_OutlinedNarrow(struct TextPrinter *textPrinter)
     if (!textPrinter->hasFontIdBeenSet)
     {
         textPrinter->fontId = FONT_OUTLINED_NARROW;
+        textPrinter->hasFontIdBeenSet = TRUE;
+    }
+
+    return RenderText(textPrinter);
+}
+
+static u16 FontFunc_OutlinedHPNumbers(struct TextPrinter *textPrinter)
+{
+    if (!textPrinter->hasFontIdBeenSet)
+    {
+        textPrinter->fontId = FONT_OUTLINED_HP_NUMBERS;
         textPrinter->hasFontIdBeenSet = TRUE;
     }
 
@@ -1710,6 +1732,9 @@ static u16 RenderText(struct TextPrinter *textPrinter)
         case FONT_OUTLINED_NARROW:
             DecompressGlyph_OutlinedNarrow(currChar, textPrinter->japanese);
             break;
+        case FONT_OUTLINED_HP_NUMBERS:
+            DecompressGlyph_OutlinedHPNumbers(currChar, textPrinter->japanese);
+            break;
         // end bwBattleUI
         case FONT_BRAILLE:
             break;
@@ -1930,7 +1955,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
 
     // start bwBattleUI
     // if (letterSpacing == -1)
-    if (letterSpacing == -1 && (fontId != FONT_OUTLINED || fontId != FONT_OUTLINED_NARROW))
+    if (letterSpacing == -1 && !IsOutlinedFont(fontId))
         localLetterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
     else
         localLetterSpacing = letterSpacing;
@@ -2706,9 +2731,9 @@ static u32 GetGlyphWidth_ShortNarrower(u16 glyphId, bool32 isJapanese)
 // start bwBattleUI
 static void DecompressGlyph_Outlined(u16 glyphId, bool32 isJapanese)
 {
-    const u16 *glyphs = gFontOutlinedLatinGlyphs + (TILE_SIZE_4BPP * glyphId);
-    gCurGlyph.width = gFontOutlinedLatinGlyphWidths[glyphId];
+    const u16 *glyphs = gFontOutlinedLatinGlyphs + TILE_OFFSET_4BPP(glyphId);
 
+    gCurGlyph.width = gFontOutlinedLatinGlyphWidths[glyphId];
     if (gCurGlyph.width <= 8)
     {
         DecompressGlyphTile(glyphs,      gCurGlyph.gfxBufferTop);
@@ -2733,9 +2758,9 @@ static u32 GetGlyphWidth_Outlined(u16 glyphId, bool32 isJapanese)
 
 static void DecompressGlyph_OutlinedNarrow(u16 glyphId, bool32 isJapanese)
 {
-    const u16 *glyphs = gFontOutlinedNarrowLatinGlyphs + (TILE_SIZE_4BPP * glyphId);
-    gCurGlyph.width = gFontOutlinedNarrowLatinGlyphWidths[glyphId];
+    const u16 *glyphs = gFontOutlinedNarrowLatinGlyphs + TILE_OFFSET_4BPP(glyphId);
 
+    gCurGlyph.width = gFontOutlinedNarrowLatinGlyphWidths[glyphId];
     if (gCurGlyph.width <= 8)
     {
         DecompressGlyphTile(glyphs,      gCurGlyph.gfxBufferTop);
@@ -2756,6 +2781,33 @@ static void DecompressGlyph_OutlinedNarrow(u16 glyphId, bool32 isJapanese)
 static u32 GetGlyphWidth_OutlinedNarrow(u16 glyphId, bool32 isJapanese)
 {
     return isJapanese ? 8 : gFontOutlinedNarrowLatinGlyphWidths[glyphId];
+}
+
+static void DecompressGlyph_OutlinedHPNumbers(u16 glyphId, bool32 isJapanese)
+{
+    const u16 *glyphs = gFontOutlinedHPNumbersLatinGlyphs + TILE_OFFSET_4BPP(glyphId);
+
+    gCurGlyph.width = gFontOutlinedHPNumbersLatinGlyphWidths[glyphId];
+    gCurGlyph.height = 6;
+
+    if (gCurGlyph.width <= 8)
+    {
+        DecompressGlyphTile(glyphs,      gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 16, gCurGlyph.gfxBufferBottom);
+    }
+    else
+    {
+        DecompressGlyphTile(glyphs,     gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 8, gCurGlyph.gfxBufferTop + 8);
+
+        DecompressGlyphTile(glyphs + 16, gCurGlyph.gfxBufferBottom);
+        DecompressGlyphTile(glyphs + 24, gCurGlyph.gfxBufferBottom + 8);
+    }
+}
+
+static u32 GetGlyphWidth_OutlinedHPNumbers(u16 glyphId, bool32 isJapanese)
+{
+    return isJapanese ? 8 : gFontOutlinedHPNumbersLatinGlyphWidths[glyphId];
 }
 
 u32 GetOutlineFontIdToFit(const u8 *str, u32 widthPx)
@@ -2786,6 +2838,7 @@ static const s8 sNarrowerFontIds[] =
     // Start bwBattleUI
     [FONT_OUTLINED] = FONT_OUTLINED_NARROW,
     [FONT_OUTLINED_NARROW] = -1,
+    [FONT_OUTLINED_HP_NUMBERS] = -1,
     // End bwBattleUI
 };
 
@@ -3047,3 +3100,12 @@ void DeactivateSingleTextPrinter(u32 id, enum TextPrinterType type)
     if (foundPrinter)
         FreeFinishedTextPrinters();
 }
+
+// Start bwBattleUI
+static inline bool32 IsOutlinedFont(u32 fontId)
+{
+    return (fontId == FONT_OUTLINED
+         || fontId == FONT_OUTLINED_NARROW
+         || fontId == FONT_OUTLINED_HP_NUMBERS);
+}
+// End bwBattleUI

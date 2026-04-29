@@ -23,6 +23,9 @@ $(FONTGFXDIR)/outlined.latfont: $(FONTGFXDIR)/latin_outlined.png
 $(FONTGFXDIR)/outlined_narrow.latfont: $(FONTGFXDIR)/latin_outlined_narrow.png
 	$(GFX) $< $@
 
+$(FONTGFXDIR)/outlined_hp_numbers.latfont: $(FONTGFXDIR)/latin_outlined_hp_numbers.png
+	$(GFX) $< $@
+
 # end bwBattleUI
 
 ### Miscellaneous ###
