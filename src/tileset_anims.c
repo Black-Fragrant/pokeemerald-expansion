@@ -207,6 +207,54 @@ const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame12[] = INCBIN_U16("data
 const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame13[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/13.4bpp");
 const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame14[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/14.4bpp");
 const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame15[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/15.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame16[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/16.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame17[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/17.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame18[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/18.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame19[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/19.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame20[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/20.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame21[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/21.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame22[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/22.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame23[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/23.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame24[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/24.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame25[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/25.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame26[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/26.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame27[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/27.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame28[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/28.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame29[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/29.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame30[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/30.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame31[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/31.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame32[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/32.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame33[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/33.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame34[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/34.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame35[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/35.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame36[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/36.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame37[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/37.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame38[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/38.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame39[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/39.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame40[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/40.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame41[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/41.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame42[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/42.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame43[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/43.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame44[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/44.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame45[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/45.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame46[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/46.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame47[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/47.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame48[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/48.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame49[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/49.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame50[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/50.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame51[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/51.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame52[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/52.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame53[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/53.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame54[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/54.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame55[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/55.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame56[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/56.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame57[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/57.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame58[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/58.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame59[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/59.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame60[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/60.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame61[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/61.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame62[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/62.4bpp");
+const u16 gQueueAnimTiles_CasteliaCity3_Businessman_Frame63[] = INCBIN_U16("data/tilesets/secondary/castelia_city_3/anim/businessman/63.4bpp");
 
 const u16 *const gQueueAnimTiles_CasteliaCity3_Businessman[] = {
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame0,
@@ -225,6 +273,54 @@ const u16 *const gQueueAnimTiles_CasteliaCity3_Businessman[] = {
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame13,
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame14,
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame15,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame16,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame17,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame18,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame19,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame20,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame21,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame22,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame23,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame24,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame25,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame26,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame27,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame28,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame29,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame30,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame31,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame32,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame33,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame34,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame35,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame36,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame37,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame38,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame39,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame40,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame41,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame42,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame43,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame44,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame45,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame46,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame47,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame48,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame49,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame50,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame51,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame52,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame53,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame54,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame55,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame56,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame57,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame58,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame59,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame60,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame61,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame62,
+    gQueueAnimTiles_CasteliaCity3_Businessman_Frame63,
 };
 
 const u16 gQueueAnimTiles_CasteliaCity1_Flag_Frame0[] = INCBIN_U16("data/tilesets/secondary/castelia_city_1/anim/flag/0.4bpp");
@@ -970,8 +1066,8 @@ static void TilesetAnim_Striaton(u16 timer)
 
 static void TilesetAnim_CasteliaCity3(u16 timer)
 {
-    if (timer % 4 == 0)
-        QueueAnimTiles_CasteliaCity3_Businessman(timer / 4);
+    if (timer % 2 == 0)
+        QueueAnimTiles_CasteliaCity3_Businessman(timer / 2);
 }
 
 static void TilesetAnim_CasteliaCity1(u16 timer)
@@ -1083,7 +1179,7 @@ static void QueueAnimTiles_Striaton_Flag(u16 timer)
 static void QueueAnimTiles_CasteliaCity3_Businessman(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_CasteliaCity3_Businessman);
-    AppendTilesetAnimToBuffer(gQueueAnimTiles_CasteliaCity3_Businessman[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(880)), 96 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_CasteliaCity3_Businessman[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(880)), 64 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_CasteliaCity1_Flag(u16 timer)
