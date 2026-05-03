@@ -2055,3 +2055,14 @@ const struct Tileset gTileset_CasteliaCityCenter =
     .metatileAttributes = gMetatileAttributes_CasteliaCityCenter,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CasteliaCity5 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity5,
+    .palettes = gTilesetPalettes_CasteliaCity5,
+    .metatiles = gMetatiles_CasteliaCity5,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity5,
+    .callback = NULL,
+};
