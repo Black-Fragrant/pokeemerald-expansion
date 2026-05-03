@@ -9562,6 +9562,16 @@
       "secondary_tileset": "gTileset_CasteliaCity3",
       "border_filepath": "data/layouts/CasteliaCity_ModeStreet/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_ModeStreet/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_CASTELIA_STREET",
+      "name": "CasteliaCity_CasteliaStreet_Layout",
+      "width": 33,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CasteliaCity4",
+      "border_filepath": "data/layouts/CasteliaCity_CasteliaStreet/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_CasteliaStreet/map.bin"
     }
   ]
 }

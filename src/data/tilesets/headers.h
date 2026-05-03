@@ -2033,3 +2033,14 @@ const struct Tileset gTileset_CasteliaCity3 =
     .metatileAttributes = gMetatileAttributes_CasteliaCity3,
     .callback = InitTilesetAnim_CasteliaCity3,
 };
+
+const struct Tileset gTileset_CasteliaCity4 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity4,
+    .palettes = gTilesetPalettes_CasteliaCity4,
+    .metatiles = gMetatiles_CasteliaCity4,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity4,
+    .callback = InitTilesetAnim_CasteliaCity4,
+};

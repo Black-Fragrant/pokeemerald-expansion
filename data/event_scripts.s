@@ -1836,3 +1836,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/CasteliaCity_GymStreet/scripts.inc"
 
 	.include "data/maps/CasteliaCity_ModeStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CasteliaStreet/scripts.inc"
