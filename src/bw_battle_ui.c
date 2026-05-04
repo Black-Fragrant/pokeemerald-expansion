@@ -324,11 +324,11 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
         MoveBattleBar(battler, spriteId, EXP_BAR, 0);
     }
 
-    if (flag & HEALTHBOX_FLAG_NICK)
-        BattleUI_UpdateHealthboxNickText(spriteId, mon);
-
     if (flag & HEALTHBOX_FLAG_STATUS_ICON)
         BattleUI_UpdateHealthboxStatusIcon(spriteId, mon);
+
+    if (flag & HEALTHBOX_FLAG_NICK)
+        BattleUI_UpdateHealthboxNickText(spriteId, mon);
 }
 
 void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
