@@ -62,6 +62,7 @@ enum BattleCoordTypes;
 enum BattleHealthboxElements;
 
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes, enum BattlerPosition, u32);
+void SpriteCB_BWBattleUI_HPBar(struct Sprite *);
 void BattleUI_UpdateHealthbox(u8, struct Pokemon *, enum BattleHealthboxElements);
 void BattleUI_UpdateHealthboxHPText(u32, s32, s32);
 void BattleUI_UpdateHpBarGraphically(enum BattlerId, u32, u32, u8 *);

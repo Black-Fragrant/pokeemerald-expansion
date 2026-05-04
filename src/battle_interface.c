@@ -682,6 +682,8 @@ u8 CreateBattlerHealthboxSprites(enum BattlerId battler)
     // this element is copied later
     if (!(BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX))
         CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
+    else // hijack this for setting data6 to what we want
+        data6 = battler;
     // End bwBattleUI
 
     gSprites[healthboxLeftSpriteId].hMain_HealthBarSpriteId = healthbarSpriteId;
@@ -731,12 +733,18 @@ static const u8 *GetHealthboxElementGfxPtr(u8 elementId)
 // Syncs the position of healthbar accordingly with the healthbox.
 static void SpriteCB_HealthBar(struct Sprite *sprite)
 {
+    if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
+    {
+        SpriteCB_BWBattleUI_HPBar(sprite);
+        return;
+    }
+
     u8 healthboxSpriteId = sprite->hBar_HealthBoxSpriteId;
 
     switch (sprite->hBar_Data6)
     {
     case 0:
-        sprite->x = gSprites[healthboxSpriteId].x + 16 + (BW_BATTLE_UI_HEALTHBOX * 8); // bwBattleUI
+        sprite->x = gSprites[healthboxSpriteId].x + 16;
         sprite->y = gSprites[healthboxSpriteId].y;
         break;
     case 1:
