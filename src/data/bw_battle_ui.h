@@ -70,6 +70,7 @@ static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
     "graphics/battle_interface/bw/hpbar_green.4bpp");
 static const u32 sBWBattleUI_HPBoxEndFrames[] = INCBIN_U32("graphics/battle_interface/bw/healthbox_end_frames.4bpp");
 static const u32 sBWBattleUI_HPBoxCaughtIndicator[] = INCBIN_U32("graphics/battle_interface/bw/ball_caught_indicator.4bpp");
+static const u32 sBWBattleUI_EXPBarAnims[] = INCBIN_U32("graphics/battle_interface/bw/expbar.4bpp");
 
 static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
 {
