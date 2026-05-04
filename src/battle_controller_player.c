@@ -2524,9 +2524,13 @@ const u8 *BattleUI_GetTypeEffectivenessSymbol(enum BattlerId battler, enum Move 
     if (IsBattleMoveStatus(move)) return noIcon;
 
     enum BattlerId battlerDef = gMultiUsePlayerCursor;
+
+    if (battlerDef == 0xFF) return noIcon;
+    if (!ShouldShowTypeEffectiveness(battlerDef)) return noIcon;
+
     struct BattleContext ctx = {
         .battlerAtk = battler,
-        .battlerDef = gMultiUsePlayerCursor,
+        .battlerDef = battlerDef,
         .move = move,
         .moveType = CheckDynamicMoveType(GetBattlerMon(battler), move, battler, MON_IN_BATTLE),
         .updateFlags = FALSE,
@@ -2536,11 +2540,6 @@ const u8 *BattleUI_GetTypeEffectivenessSymbol(enum BattlerId battler, enum Move 
         .holdEffectDef = GetBattlerHoldEffect(battlerDef),
     };
     uq4_12_t modifier = CalcTypeEffectivenessMultiplier(&ctx);
-
-    if (!ShouldShowTypeEffectiveness(battlerDef))
-    {
-        return noIcon;
-    }
 
     if (modifier == UQ_4_12(0.0))
     {
