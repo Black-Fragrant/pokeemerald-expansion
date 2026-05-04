@@ -571,18 +571,18 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
         LoadPalette(sBWBattleUI_MoveBoxPalette, BG_PLTT_ID(10 + i), PLTT_SIZE_4BPP);
         LoadPalette(&sBWBattleUI_MoveBoxTypePalettes[type * 3], BG_PLTT_ID(10 + i) + 10, PLTT_SIZEOF(3));
 
-        // name
-        StringCopy(gDisplayedStringBattle, GetMoveName(moveId));
-        if (B_SHOW_EFFECTIVENESS && !IsBattleMoveStatus(moveId))
-        {
-            StringAppend(gDisplayedStringBattle, BattleUI_GetTypeEffectivenessSymbol(battler, moveId));
-        }
-
-        u32 x = (windowId == B_WIN_MOVE_NAME_1) * 8;
-        u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, TILE_TO_PIXELS(9));
-
         if (moveId != MOVE_NONE)
         {
+            // name
+            StringCopy(gDisplayedStringBattle, GetMoveName(moveId));
+            if (B_SHOW_EFFECTIVENESS && !IsBattleMoveStatus(moveId))
+            {
+                StringAppend(gDisplayedStringBattle, BattleUI_GetTypeEffectivenessSymbol(battler, moveId));
+            }
+
+            u32 x = (windowId == B_WIN_MOVE_NAME_1) * 8;
+            u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, TILE_TO_PIXELS(9));
+
             BattleUI_AddTextPrinter(windowId, fontId, x, 4, BUI_TXTCLR_MOVE_BOX, gDisplayedStringBattle);
 
             // pp
@@ -591,7 +591,7 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
                 u8 *txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[i],
                                                         STR_CONV_MODE_RIGHT_ALIGN, 2);
                 *(txtPtr)++ = CHAR_SLASH;
-                ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[i], STR_CONV_MODE_RIGHT_ALIGN, 2);
+                ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[i], STR_CONV_MODE_LEFT_ALIGN, 2);
 
                 u32 state = GetCurrentPpToMaxPpState(moveInfo->currentPp[i], moveInfo->maxPp[i]);
                 x += GetStringRightAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(12));
