@@ -948,31 +948,22 @@ void HandleInputChooseMove(enum BattlerId battler)
 
 static void ReloadMoveNames(enum BattlerId battler)
 {
+    // start bwBattleUI
+    if (BW_BATTLE_UI && BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX)
+    {
+        BattleUI_DisplayMoveBox(battler);
+        return;
+    }
+    // end bwBattleUI
+
     if (gBattleStruct->zmove.viable && !gBattleStruct->zmove.viewing)
     {
-        // start bwBattleUI
-        if (BW_BATTLE_UI && BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX)
-        {
-            BattleUI_DisplayMoveBox(battler);
-            return;
-        }
-        // end bwBattleUI
-
         struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
         MoveSelectionDisplayZMove(GetUsableZMove(battler, moveInfo->moves[gMoveSelectionCursor[battler]]), battler);
     }
     else
     {
         gBattleStruct->zmove.viewing = FALSE;
-
-        // start bwBattleUI
-        if (BW_BATTLE_UI && BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX)
-        {
-            BattleUI_DisplayMoveBox(battler);
-            return;
-        }
-        // end bwBattleUI
-
         MoveSelectionDestroyCursorAt(battler);
         MoveSelectionDisplayMoveNames(battler);
         MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
@@ -2430,6 +2421,7 @@ static void Controller_WaitForDebug(enum BattlerId battler)
 {
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
+        BattleUI_SetCursorMode(NUM_BUI_CURSOR_MODES); // bwBattleUI
         BtlController_Complete(battler);
     }
 }
