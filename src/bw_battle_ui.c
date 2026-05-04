@@ -581,38 +581,41 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
         u32 x = (windowId == B_WIN_MOVE_NAME_1) * 8;
         u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, TILE_TO_PIXELS(9));
 
-        BattleUI_AddTextPrinter(windowId, fontId, x, 4, BUI_TXTCLR_MOVE_BOX, gDisplayedStringBattle);
-
-        // pp
-        if (gBattleResources->bufferA[battler][2] != TRUE || moveInfo->moves[i] != MOVE_NONE)
+        if (moveId != MOVE_NONE)
         {
-            u8 *txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[i],
-                                                    STR_CONV_MODE_RIGHT_ALIGN, 2);
-            *(txtPtr)++ = CHAR_SLASH;
-            ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[i], STR_CONV_MODE_RIGHT_ALIGN, 2);
+            BattleUI_AddTextPrinter(windowId, fontId, x, 4, BUI_TXTCLR_MOVE_BOX, gDisplayedStringBattle);
 
-            u32 state = GetCurrentPpToMaxPpState(moveInfo->currentPp[i], moveInfo->maxPp[i]);
-            x += GetStringRightAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(12));
+            // pp
+            if (gBattleResources->bufferA[battler][2] != TRUE)
+            {
+                u8 *txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[i],
+                                                        STR_CONV_MODE_RIGHT_ALIGN, 2);
+                *(txtPtr)++ = CHAR_SLASH;
+                ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[i], STR_CONV_MODE_RIGHT_ALIGN, 2);
 
-            union TextColor clr = sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX];
-            clr.foreground = state + 1;
+                u32 state = GetCurrentPpToMaxPpState(moveInfo->currentPp[i], moveInfo->maxPp[i]);
+                x += GetStringRightAlignXOffset(FONT_SMALL, gDisplayedStringBattle, TILE_TO_PIXELS(12));
 
-            // can't use BattleUI_AddTextPrinter directly
-            AddTextPrinterParameterized6(windowId, FONT_SMALL,
-                x, 4,
-                0, 0,
-                clr,
-                TEXT_SKIP_DRAW, gDisplayedStringBattle);
+                union TextColor clr = sBWBattleUI_TextColors[BUI_TXTCLR_MOVE_BOX];
+                clr.foreground = state + 1;
+
+                // can't use BattleUI_AddTextPrinter directly
+                AddTextPrinterParameterized6(windowId, FONT_SMALL,
+                    x, 4,
+                    0, 0,
+                    clr,
+                    TEXT_SKIP_DRAW, gDisplayedStringBattle);
+            }
+        }
+
+        if (windowId != B_WIN_MOVE_NAME_1)
+        {
+            PutWindowTilemap(windowId);
+            CopyWindowToVram(windowId, COPYWIN_GFX);
         }
 
         if (moveId != MOVE_NONE)
         {
-            if (windowId != B_WIN_MOVE_NAME_1)
-            {
-                PutWindowTilemap(windowId);
-                CopyWindowToVram(windowId, COPYWIN_GFX);
-            }
-
             gNumberOfMovesToChoose++;
         }
     }
@@ -629,11 +632,6 @@ static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveSt
     u32 zMove = GetUsableZMove(battler, move);
 
     gBattleStruct->zmove.viewing = TRUE;
-
-    if (move == MOVE_NONE)
-    {
-        return;
-    }
 
     bool32 isStatusMove = IsBattleMoveStatus(move);
 
