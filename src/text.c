@@ -1953,13 +1953,10 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
     if (func == NULL)
         return 0;
 
-    // start bwBattleUI
-    // if (letterSpacing == -1)
-    if (letterSpacing == -1 && !IsOutlinedFont(fontId))
+    if (letterSpacing == -1)
         localLetterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
     else
         localLetterSpacing = letterSpacing;
-    // end bwBattleUI
 
     width = 0;
     lineWidth = 0;
@@ -2004,8 +2001,19 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
                 else
                 {
                     lineWidth += glyphWidth;
+                    // Start bwBattleUI
+                    /*
                     if (isJapanese && str[1] != EOS)
                         lineWidth += localLetterSpacing;
+                    */
+                    if (str[1] != EOS)
+                    {
+                        if (isJapanese)
+                            lineWidth += localLetterSpacing;
+                        else if (IsOutlinedFont(fontId))
+                            lineWidth--;
+                    }
+                    // End bwBattleUI
                 }
             }
             bufferPointer = 0;
@@ -2083,8 +2091,19 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             else
             {
                 lineWidth += glyphWidth;
+                // Start bwBattleUI
+                /*
                 if (isJapanese && str[1] != EOS)
                     lineWidth += localLetterSpacing;
+                */
+                if (str[1] != EOS)
+                {
+                    if (isJapanese)
+                        lineWidth += localLetterSpacing;
+                    else if (IsOutlinedFont(fontId))
+                        lineWidth--;
+                }
+                // End bwBattleUI
             }
             break;
         case CHAR_PROMPT_SCROLL:
@@ -2101,13 +2120,34 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             else
             {
                 lineWidth += glyphWidth;
+                // Start bwBattleUI
+                /*
                 if (isJapanese && str[1] != EOS)
                     lineWidth += localLetterSpacing;
+                */
+                if (str[1] != EOS)
+                {
+                    if (isJapanese)
+                        lineWidth += localLetterSpacing;
+                    else if (IsOutlinedFont(fontId))
+                        lineWidth--;
+                }
+                // End bwBattleUI
             }
             break;
         }
         ++str;
     }
+
+    // Start bwBattleUI
+    // decrement the last character width as well
+    if (IsOutlinedFont(fontId))
+    {
+        lineWidth--;
+        if (width)
+            width--;
+    }
+    // End bwBattleUI
 
     if (lineWidth > width)
         return lineWidth;
