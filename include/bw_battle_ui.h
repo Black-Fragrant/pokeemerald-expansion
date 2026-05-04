@@ -66,6 +66,7 @@ void SpriteCB_BWBattleUI_HPBar(struct Sprite *);
 void BattleUI_UpdateHealthbox(u8, struct Pokemon *, enum BattleHealthboxElements);
 void BattleUI_UpdateHealthboxHPText(u32, s32, s32);
 void BattleUI_UpdateHpBarGraphically(enum BattlerId, u32, u32, u8 *);
+void BattleUI_UpdateExpBarGraphically(enum BattlerId, u8 *);
 void BattleUI_UpdateHpBarText(void);
 
 #endif // GUARD_BW_BATTLE_UI_H

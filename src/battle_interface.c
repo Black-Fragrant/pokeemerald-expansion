@@ -2195,6 +2195,13 @@ static void MoveBattleBarGraphically(enum BattlerId battler, u8 whichBar)
             for (i = 0; i < 8; i++)
                 array[i] = 0;
         }
+        // Start bwBattleUI
+        if (BW_BATTLE_UI_HEALTHBOX)
+        {
+            BattleUI_UpdateExpBarGraphically(battler, array);
+            return;
+        }
+        // End bwBattleUI
         for (i = 0; i < 8; i++)
         {
             if (i < 4)

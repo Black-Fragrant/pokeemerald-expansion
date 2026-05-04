@@ -321,7 +321,7 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
         s32 maxExpBarValue = gExperienceTables[growthRate][level + 1] - currLevelExp;
 
         SetBattleBarStruct(battler, spriteId, maxExpBarValue, currExpBarValue, isDoubles);
-        //MoveBattleBar(battler, spriteId, EXP_BAR, 0);
+        MoveBattleBar(battler, spriteId, EXP_BAR, 0);
     }
 
     if (flag & HEALTHBOX_FLAG_NICK)
@@ -435,6 +435,26 @@ void BattleUI_UpdateHpBarGraphically(enum BattlerId battler, u32 currVal, u32 ma
      && IsOnPlayerSide(battler))
     {
         BattleUI_CopyElementToSprite(gSprites[hpboxSpriteId].oam.affineParam, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(2), 20, 1);
+    }
+}
+
+void BattleUI_UpdateExpBarGraphically(enum BattlerId battler, u8 *pixelCountArray)
+{
+    if (!IsOnPlayerSide(battler))
+        return;
+
+    if (GetBattlerCoordsIndex(battler) != BATTLE_COORDS_SINGLES)
+        return;
+
+    u32 hpboxSpriteId = gBattleSpritesDataPtr->battleBars[battler].healthboxSpriteId;
+    const u32 *expBarGfx = sBWBattleUI_EXPBarAnims;
+
+    for (u32 i = 0, tileNum = 36; i < 8; i++, tileNum++)
+    {
+        if (i == 4)
+            tileNum = 96;
+
+        BattleUI_CopyElementToSprite(hpboxSpriteId, expBarGfx + TILE_TO_PIXELS(pixelCountArray[i]), tileNum, 1);
     }
 }
 
