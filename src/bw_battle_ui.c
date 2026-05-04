@@ -6,7 +6,6 @@
 #include "sprite.h"
 #include "string_util.h"
 #include "international_string_util.h"
-#include "sound.h"
 #include "menu.h"
 #include "graphics.h"
 #include "decompress.h"
@@ -15,7 +14,7 @@
 #include "battle_gimmick.h"
 #include "battle_z_move.h"
 #include "battle_interface.h"
-#include "malloc.h"
+#include "pokedex.h"
 #include "bw_battle_ui.h"
 #include "config/bw_battle_ui.h"
 
@@ -76,9 +75,10 @@ static void BattleUI_DisplayMoveBoxGraphics(enum BattlerId, u32);
 static void BattleUI_DisplayNormalMoveBox(enum BattlerId, struct ChooseMoveStruct *);
 static void BattleUI_DisplayZMoveBox(enum BattlerId, struct ChooseMoveStruct *);
 
-static void BattleUI_UpdateHealthboxLvlText(u32, u32);
+static void BattleUI_UpdateHealthboxLvlText(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxNickText(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxStatusIcon(u32, struct Pokemon *);
+static void BattleUI_UpdateHealthboxCaughtMonIndicator(u32, struct Pokemon *);
 static void BattleUI_CopyElementToSprite(u32, const u32 *, u32, u32);
 
 static void BattleUI_AddTextPrinter(u32, u32, u32, u32, enum BattleUITextColors, const u8 *);
@@ -249,12 +249,22 @@ u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId battler)
 
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
 {
-    return sBWBattleUI_HealthboxCoords[index][position][coord];
+    // the base sprite size is 64x32. for x/y coords, we divide them by 2 to get proper offset on the screen
+    u32 offset;
+    if (coord == 0) // x
+        offset = TILE_TO_PIXELS(4);
+    else
+        offset = TILE_TO_PIXELS(2);
+
+    return sBWBattleUI_HealthboxCoords[index][position][coord] + offset;
 }
 
 // these prob should be #define'd globally instead?
-#define hMain_HealthBarSpriteId data[5]
-#define hMain_Battler           data[6]
+#define hMain_HealthBarSpriteId     data[5]
+#define hMain_Battler               data[6]
+
+#define hBar_HealthBoxSpriteId      data[5]
+#define hBar_Data6                  data[6]
 
 #define HEALTHBOX_FLAG_CURRENT_HP            (1 << HEALTHBOX_CURRENT_HP)
 #define HEALTHBOX_FLAG_MAX_HP                (1 << HEALTHBOX_MAX_HP)
@@ -284,7 +294,7 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
         BattleUI_UpdateHealthboxHPText(spriteId, currHp, maxHp);
 
     if (flag & HEALTHBOX_FLAG_LEVEL)
-        BattleUI_UpdateHealthboxLvlText(spriteId, GetMonData(mon, MON_DATA_LEVEL));
+        BattleUI_UpdateHealthboxLvlText(spriteId, mon);
 
     if (flag & HEALTHBOX_FLAG_HEALTH_BAR)
     {
@@ -345,7 +355,7 @@ void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
     u32 yOffset, fontId;
     if (isDoubles)
     {
-        yOffset = 18;
+        yOffset = TILE_TO_PIXELS(2);
         fontId = FONT_OUTLINED_HP_NUMBERS;
 
         BattleUI_CopyElementToSprite(spriteId,  sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 18, BUI_FILL_ELEMENT(6));
@@ -358,16 +368,16 @@ void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
     }
     else
     {
-        yOffset = 24;
+        yOffset = TILE_TO_PIXELS(3) - 2;
         fontId = FONT_SMALL;
 
-        FillSpriteRectColor(spriteId, 56, yOffset, 56, 8, 2);
+        FillSpriteRectColor(spriteId, TILE_TO_PIXELS(7), yOffset, TILE_TO_PIXELS(7), 8, 2);
         yOffset -= 3; // text offset
     }
 
-    u32 strWidth = GetStringWidth(fontId, strbuf, -1);
+    u32 strWidth = GetStringWidth(fontId, strbuf, 0);
     s32 letterSpacing = GetFontAttribute(fontId, FONTATTR_LETTER_SPACING);
-    s32 xOffset = 64 + (32 - (strWidth + letterSpacing));
+    s32 xOffset = TILE_TO_PIXELS(8) + (TILE_TO_PIXELS(4) - (strWidth + letterSpacing));
 
     BattleUI_AddSpriteTextPrinter(spriteId, fontId, xOffset, yOffset, BUI_TXTCLR_HEALTHBOX, strbuf);
 
@@ -421,6 +431,19 @@ void BattleUI_UpdateHpBarGraphically(enum BattlerId battler, u32 currVal, u32 ma
     {
         BattleUI_CopyElementToSprite(gSprites[hpboxSpriteId].oam.affineParam, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(2), 20, 1);
     }
+}
+
+void SpriteCB_BWBattleUI_HPBar(struct Sprite *sprite)
+{
+    u32 healthboxSpriteId = sprite->hBar_HealthBoxSpriteId;
+    enum BattlerId battler = sprite->hBar_Data6;
+    enum BattleCoordTypes coords = GetBattlerCoordsIndex(battler);
+
+    sprite->x = sBWBattleUI_HealthbarCoords[coords][battler][0] + 16;
+    sprite->y = sBWBattleUI_HealthbarCoords[coords][battler][1] + 4;
+
+    sprite->x2 = gSprites[healthboxSpriteId].x2;
+    sprite->y2 = gSprites[healthboxSpriteId].y2;
 }
 
 // local
@@ -753,22 +776,54 @@ static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveSt
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
-static void BattleUI_UpdateHealthboxLvlText(u32 spriteId, u32 lvl)
+static void BattleUI_UpdateHealthboxLvlText(u32 spriteId, struct Pokemon *mon)
 {
     struct Sprite *sprite = &gSprites[spriteId];
     u32 spriteId2 = sprite->oam.affineParam;
     struct Sprite *sprite2 = &gSprites[spriteId2];
+    u32 battler = sprite->hMain_Battler;
 
-    u8 *strbuf = StringCopy(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 8}{LV_2}{COLOR 1}"));
+    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    u32 gender = GetMonGender(mon);
+
+    GetMonData(mon, MON_DATA_NICKNAME, gDisplayedStringBattle);
+    StringGet_Nickname(gDisplayedStringBattle);
+    if (((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !StringCompare(gDisplayedStringBattle, GetSpeciesName(species)))
+     || (GetBattlerSide(battler) == B_SIDE_OPPONENT && IsGhostBattleWithoutScope()))
+    {
+        gender = 100;
+    }
+
+    // use StringCopy to override StringGet_Nickname
+    switch (gender)
+    {
+    case MON_MALE:
+        StringCopy(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 11}♂"));
+        break;
+    case MON_FEMALE:
+        StringCopy(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 10}♀"));
+        break;
+    default:
+        break;
+    }
+
+    u32 lvl = GetMonData(mon, MON_DATA_LEVEL);
+    u8 *strbuf = StringAppend(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 8}{LV_2}{COLOR 1}"));
     ConvertIntToDecimalStringN(strbuf, lvl, STR_CONV_MODE_LEFT_ALIGN, MAX_DIGITS(MAX_LEVEL));
 
-    u32 data1 = sprite->data[1], data2 = sprite2->data[1];
+    u32 data1 = sprite->data[1];
+    u32 data2 = sprite2->data[1];
 
     sprite->data[1] = spriteId2;
     sprite2->data[1] = SPRITE_NONE;
 
-    FillSpriteRectColor(spriteId2, 16, 0, 24, 16, 0);
-    BattleUI_AddSpriteTextPrinter(spriteId2, FONT_OUTLINED, 16, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
+    u32 fontId = FONT_OUTLINED_NARROW;
+    u32 x = GetStringRightAlignXOffset(fontId, gDisplayedStringBattle, TILE_TO_PIXELS(4) - 1);
+    if (IsOnPlayerSide(battler))
+        x += TILE_TO_PIXELS(2) - 2;
+
+    FillSpriteRectColor(spriteId2, x, 0, GetStringWidth(fontId, gDisplayedStringBattle, 0), TILE_TO_PIXELS(2) - 2, 0);
+    BattleUI_AddSpriteTextPrinter(spriteId2, fontId, x, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
 
     sprite->data[1] = data1;
     sprite2->data[1] = data2;
@@ -785,29 +840,8 @@ static void BattleUI_UpdateHealthboxNickText(u32 spriteId, struct Pokemon *mon)
     if (illusionMon != NULL)
         mon = illusionMon;
 
-    u32 species = GetMonData(mon, MON_DATA_SPECIES);
-    u32 gender = GetMonGender(mon);
-
     GetMonData(mon, MON_DATA_NICKNAME, gDisplayedStringBattle);
     StringGet_Nickname(gDisplayedStringBattle);
-
-    if (((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !StringCompare(gDisplayedStringBattle, GetSpeciesName(species)))
-     || (GetBattlerSide(battler) == B_SIDE_OPPONENT && IsGhostBattleWithoutScope()))
-    {
-        gender = 100;
-    }
-
-    switch (gender)
-    {
-    case MON_MALE:
-        StringAppend(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 11}♂"));
-        break;
-    case MON_FEMALE:
-        StringAppend(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 10}♀"));
-        break;
-    default:
-        break;
-    }
 
     // backup data[1] for sprite printer
     s16 data1 = sprite->data[1];
@@ -816,8 +850,16 @@ static void BattleUI_UpdateHealthboxNickText(u32 spriteId, struct Pokemon *mon)
     sprite->data[1] = spriteId2;
     sprite2->data[1] = SPRITE_NONE;
 
-    u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_OUTLINED, 0, TILE_TO_PIXELS(8));
-    BattleUI_AddSpriteTextPrinter(spriteId, fontId, 16, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
+    u32 x;
+    if (IsOnPlayerSide(battler))
+        x = TILE_TO_PIXELS(2);
+    else
+        x = TILE_TO_PIXELS(1);
+
+    FillSpriteRectColor(spriteId, x, 0, TILE_TO_PIXELS(6), TILE_TO_PIXELS(2) - 2, 0);
+
+    u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_OUTLINED, 0, TILE_TO_PIXELS(7));
+    BattleUI_AddSpriteTextPrinter(spriteId, fontId, x, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
 
     sprite->data[1] = data1;
     sprite2->data[1] = data2;
@@ -836,6 +878,7 @@ static void BattleUI_UpdateHealthboxStatusIcon(u32 spriteId, struct Pokemon *mon
 
     u32 statusTileNum = 18;
     BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), statusTileNum, BUI_FILL_ELEMENT(2));
+    BattleUI_UpdateHealthboxCaughtMonIndicator(spriteId, mon);
 
     u32 status = GetMonData(mon, MON_DATA_STATUS);
     u32 statusPalIdx = 0;
@@ -885,10 +928,44 @@ static void BattleUI_UpdateHealthboxStatusIcon(u32 spriteId, struct Pokemon *mon
     sprite->data[1] = spriteId2;
     sprite2->data[1] = SPRITE_NONE;
 
-    BattleUI_AddSpriteTextPrinter(spriteId, FONT_OUTLINED_HP_NUMBERS, 16, 18, BUI_TXTCLR_HBOX_STATUS, gDisplayedStringBattle);
+    u32 x;
+    if (IsOnPlayerSide(battler))
+        x = TILE_TO_PIXELS(2) + 1;
+    else
+        x = TILE_TO_PIXELS(1);
+
+    BattleUI_AddSpriteTextPrinter(spriteId, FONT_OUTLINED_HP_NUMBERS,
+        x, TILE_TO_PIXELS(2),
+        BUI_TXTCLR_HBOX_STATUS, gDisplayedStringBattle);
 
     sprite->data[1] = data1;
     sprite2->data[1] = data2;
+}
+
+static void BattleUI_UpdateHealthboxCaughtMonIndicator(u32 spriteId, struct Pokemon *mon)
+{
+    if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL)
+        return;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+        return;
+
+    u32 battler = gSprites[spriteId].hMain_Battler;
+
+    if (IsOnPlayerSide(battler))
+        return;
+
+    BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxEndFrames, 0, 1);
+    BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(3), 8, 1);
+
+    if (GetBattlerSide(battler) == B_SIDE_OPPONENT && IsGhostBattleWithoutScope())
+        return;
+
+    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(mon, MON_DATA_SPECIES)), FLAG_GET_CAUGHT))
+        return;
+
+    BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxCaughtIndicator, 0, 1);
+    BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxCaughtIndicator + TILE_TO_PIXELS(1), 8, 1);
 }
 
 static void BattleUI_CopyElementToSprite(u32 spriteId, const u32 *element, u32 tileNum, u32 tileTotal)

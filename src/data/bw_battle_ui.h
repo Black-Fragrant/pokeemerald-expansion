@@ -69,20 +69,37 @@ static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
     "graphics/battle_interface/bw/hpbar_yellow.4bpp",
     "graphics/battle_interface/bw/hpbar_green.4bpp");
 static const u32 sBWBattleUI_HPBoxEndFrames[] = INCBIN_U32("graphics/battle_interface/bw/healthbox_end_frames.4bpp");
+static const u32 sBWBattleUI_HPBoxCaughtIndicator[] = INCBIN_U32("graphics/battle_interface/bw/ball_caught_indicator.4bpp");
 
 static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
 {
     [BATTLE_COORDS_SINGLES] =
     {
-        [B_POSITION_PLAYER_LEFT]   = { 152, 88 },
-        [B_POSITION_OPPONENT_LEFT] = { 32,  30 },
+        [B_POSITION_PLAYER_LEFT]    = { 128, 72  },
+        [B_POSITION_OPPONENT_LEFT]  = { 0,   14  },
     },
     [BATTLE_COORDS_DOUBLES] =
     {
-        [B_POSITION_PLAYER_LEFT]    = { 159, 76 },
-        [B_POSITION_PLAYER_RIGHT]   = { 171, 101 },
-        [B_POSITION_OPPONENT_LEFT]  = { 44,  19 },
-        [B_POSITION_OPPONENT_RIGHT] = { 32,  44 },
+        [B_POSITION_PLAYER_LEFT]    = { 128, 56  },
+        [B_POSITION_PLAYER_RIGHT]   = { 128, 82  },
+        [B_POSITION_OPPONENT_LEFT]  = { 0,   0   },
+        [B_POSITION_OPPONENT_RIGHT] = { 0,   26  },
+    },
+};
+
+static const s16 sBWBattleUI_HealthbarCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
+{
+    [BATTLE_COORDS_SINGLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]    = { 164, 82  },
+        [B_POSITION_OPPONENT_LEFT]  = { 28,  24  },
+    },
+    [BATTLE_COORDS_DOUBLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]    = { 164, 66  },
+        [B_POSITION_PLAYER_RIGHT]   = { 164, 92  },
+        [B_POSITION_OPPONENT_LEFT]  = { 28,  10  },
+        [B_POSITION_OPPONENT_RIGHT] = { 28,  36  },
     },
 };
 
