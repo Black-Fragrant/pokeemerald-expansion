@@ -5676,6 +5676,7 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
 
         ClearCurrentTrainerWantRematchVsSeeker();
         gDexNavSpecies = SPECIES_NONE;
+        BattleUI_SetCursorMode(NUM_BUI_CURSOR_MODES); // bwBattleUI
         ResetSpriteData();
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                   | BATTLE_TYPE_RECORDED_LINK
