@@ -134,9 +134,14 @@ void BattleUI_CreateCursorSprite(enum BattlerId battler)
 {
     u32 spriteId = BattleUI_GetCursorSpriteId();
 
-    if (spriteId != SPRITE_NONE
-     || !(BW_BATTLE_UI && BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX))
+    if (!(BW_BATTLE_UI && BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX))
     {
+        return;
+    }
+
+    if (spriteId != SPRITE_NONE)
+    {
+        BattleUI_SetCursorBattler(battler);
         return;
     }
 
