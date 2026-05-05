@@ -110,6 +110,9 @@ static void QueueAnimTiles_CasteliaCity3_Businessman(u16);
 static void TilesetAnim_CasteliaCity4(u16);
 static void QueueAnimTiles_CasteliaCity4_Businessman(u16);
 
+static void TilesetAnim_CasteliaCityCenter(u16);
+static void QueueAnimTiles_CasteliaCityCenter_Fountain(u16);
+
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/0.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/1.4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCBIN_U16("data/tilesets/secondary/poke_center/anim/globe/2.4bpp");
@@ -391,6 +394,20 @@ const u16 *const gQueueAnimTiles_CasteliaCity4_Businessman[] = {
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame61,
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame62,
     gQueueAnimTiles_CasteliaCity3_Businessman_Frame63,
+};
+
+const u16 gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame0[] = INCBIN_U16("data/tilesets/secondary/castelia_city_center/anim/fountain/0.4bpp");
+const u16 gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame1[] = INCBIN_U16("data/tilesets/secondary/castelia_city_center/anim/fountain/1.4bpp");
+const u16 gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame2[] = INCBIN_U16("data/tilesets/secondary/castelia_city_center/anim/fountain/2.4bpp");
+const u16 gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame3[] = INCBIN_U16("data/tilesets/secondary/castelia_city_center/anim/fountain/3.4bpp");
+const u16 gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame4[] = INCBIN_U16("data/tilesets/secondary/castelia_city_center/anim/fountain/4.4bpp");
+
+const u16 *const gQueueAnimTiles_CasteliaCityCenter_Fountain[] = {
+    gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame0,
+    gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame1,
+    gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame2,
+    gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame3,
+    gQueueAnimTiles_CasteliaCityCenter_Fountain_Frame4,
 };
 
 const u16 gQueueAnimTiles_CasteliaCity1_Flag_Frame0[] = INCBIN_U16("data/tilesets/secondary/castelia_city_1/anim/flag/0.4bpp");
@@ -1146,6 +1163,12 @@ static void TilesetAnim_CasteliaCity4(u16 timer)
         QueueAnimTiles_CasteliaCity4_Businessman(timer / 2);
 }
 
+static void TilesetAnim_CasteliaCityCenter(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_CasteliaCityCenter_Fountain(timer / 16);
+}
+
 static void TilesetAnim_CasteliaCity1(u16 timer)
 {
     if (timer % 8 == 0)
@@ -1262,6 +1285,12 @@ static void QueueAnimTiles_CasteliaCity4_Businessman(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_CasteliaCity4_Businessman);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_CasteliaCity4_Businessman[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(944)), 64 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_CasteliaCityCenter_Fountain(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_CasteliaCityCenter_Fountain);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_CasteliaCityCenter_Fountain[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(787)), 43 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_CasteliaCity1_Flag(u16 timer)
@@ -1550,6 +1579,13 @@ void InitTilesetAnim_CasteliaCity4(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_CasteliaCity4;
+}
+
+void InitTilesetAnim_CasteliaCityCenter(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_CasteliaCityCenter;
 }
 
 void InitTilesetAnim_CasteliaCity1(void)

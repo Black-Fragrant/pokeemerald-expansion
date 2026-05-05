@@ -2053,7 +2053,7 @@ const struct Tileset gTileset_CasteliaCityCenter =
     .palettes = gTilesetPalettes_CasteliaCityCenter,
     .metatiles = gMetatiles_CasteliaCityCenter,
     .metatileAttributes = gMetatileAttributes_CasteliaCityCenter,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CasteliaCityCenter,
 };
 
 const struct Tileset gTileset_CasteliaCity5 =
