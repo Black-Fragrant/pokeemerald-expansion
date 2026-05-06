@@ -3188,7 +3188,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 BattleScriptCall(BattleScript_WeatherAbilityActivates);
                 effect++;
             }
-            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect())
+            else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
             {
                 BattleScriptCall(BattleScript_BlockedByPrimalWeather);
                 effect++;
@@ -3202,7 +3202,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 BattleScriptCall(BattleScript_WeatherAbilityActivates);
                 effect++;
             }
-            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect())
+            else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
             {
                 BattleScriptCall(BattleScript_BlockedByPrimalWeather);
                 effect++;
@@ -3217,7 +3217,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 BattleScriptCall(BattleScript_WeatherAbilityActivates);
                 effect++;
             }
-            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect())
+            else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
             {
                 BattleScriptCall(BattleScript_BlockedByPrimalWeather);
                 effect++;
@@ -3233,7 +3233,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                     BattleScriptCall(BattleScript_WeatherAbilityActivates);
                     effect++;
                 }
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect())
+                else if (GetWeather() & B_WEATHER_PRIMAL_ANY)
                 {
                     BattleScriptCall(BattleScript_BlockedByPrimalWeather);
                     effect++;
@@ -4155,9 +4155,9 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_SAND_SPIT:
             if (!gBattleStruct->unableToUseMove
              && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
-             && !(gBattleWeather & B_WEATHER_SANDSTORM && HasWeatherEffect()))
+             && !(GetWeather() & B_WEATHER_SANDSTORM))
             {
-                if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect())
+                if (GetWeather() & B_WEATHER_PRIMAL_ANY)
                 {
                     BattleScriptCall(BattleScript_BlockedByPrimalWeather);
                     effect++;
@@ -4693,7 +4693,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         }
         case ABILITY_PROTOSYNTHESIS:
             if (!gBattleMons[battler].volatiles.weatherAbilityDone
-             && (gBattleWeather & B_WEATHER_SUN) && HasWeatherEffect()
+             && (GetWeather() & B_WEATHER_SUN)
              && !gBattleMons[battler].volatiles.transformed
              && !gBattleMons[battler].volatiles.boosterEnergyActivated)
             {
@@ -7086,7 +7086,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     case ABILITY_PROTOSYNTHESIS:
         {
             enum Stat defHighestStat = GetParadoxBoostedStatId(battlerDef);
-            if (((ctx->weather & B_WEATHER_SUN && HasWeatherEffect()) || gBattleMons[battlerDef].volatiles.boosterEnergyActivated)
+            if (((ctx->weather & B_WEATHER_SUN) || gBattleMons[battlerDef].volatiles.boosterEnergyActivated)
              && ((IsBattleMovePhysical(move) && defHighestStat == STAT_DEF) || (IsBattleMoveSpecial(move) && defHighestStat == STAT_SPDEF))
              && !(gBattleMons[battlerDef].volatiles.transformed))
                 modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
