@@ -178,7 +178,8 @@
     "CasteliaCity_NarrowStreet",
     "CasteliaCity_ModeStreet",
     "CasteliaCity_CasteliaStreet",
-    "CasteliaCity_CentralPlaza"
+    "CasteliaCity_CentralPlaza",
+    "CasteliaCity_NorthStreet"
   ],
   "gMapGroup_IndoorCastelia": [
     "CasteliaCity_PokeCenter"
