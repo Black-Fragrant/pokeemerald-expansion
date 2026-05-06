@@ -1844,3 +1844,39 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/CasteliaCity_NarrowStreet/scripts.inc"
 
 	.include "data/maps/CasteliaCity_NorthStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_BattleCompany1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_BattleCompany47F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_BattleCompany55F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_PasserbyAnalyticsHQ/scripts.inc"
+
+	.include "data/maps/CasteliaCity_EmptyBuilding2F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CafeSonata/scripts.inc"
+
+	.include "data/maps/CasteliaCity_StudioCastelia/scripts.inc"
+
+	.include "data/maps/CasteliaCity_GameFreak1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_EmptyBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CSResidentialBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSEastBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSWestBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSPartyBuilding47F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSEastBuilding47F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CSResidentialBuilding11F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSWestBuilding11F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSPartyBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_GameFreak22F/scripts.inc"
