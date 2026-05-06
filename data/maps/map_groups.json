@@ -182,7 +182,25 @@
     "CasteliaCity_NorthStreet"
   ],
   "gMapGroup_IndoorCastelia": [
-    "CasteliaCity_PokeCenter"
+    "CasteliaCity_PokeCenter",
+    "CasteliaCity_BattleCompany1F",
+    "CasteliaCity_BattleCompany47F",
+    "CasteliaCity_BattleCompany55F",
+    "CasteliaCity_PasserbyAnalyticsHQ",
+    "CasteliaCity_EmptyBuilding1F",
+    "CasteliaCity_EmptyBuilding2F",
+    "CasteliaCity_CafeSonata",
+    "CasteliaCity_StudioCastelia",
+    "CasteliaCity_CSResidentialBuilding1F",
+    "CasteliaCity_CSResidentialBuilding11F",
+    "CasteliaCity_GameFreak1F",
+    "CasteliaCity_GameFreak22F",
+    "CasteliaCity_NSWestBuilding1F",
+    "CasteliaCity_NSWestBuilding11F",
+    "CasteliaCity_NSEastBuilding1F",
+    "CasteliaCity_NSEastBuilding47F",
+    "CasteliaCity_NSPartyBuilding1F",
+    "CasteliaCity_NSPartyBuilding47F"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

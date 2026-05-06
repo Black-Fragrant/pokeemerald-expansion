@@ -3580,3 +3580,98 @@ const u16 gTilesetPalettes_CasteliaCity6[][16] =
 };
 
 const u32 gTilesetTiles_CasteliaCity6[] = INCBIN_U32("data/tilesets/secondary/castelia_city_6/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_IndoorCastelia[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_IndoorCastelia[] = INCBIN_U32("data/tilesets/secondary/indoor_castelia/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_IndoorPasserbyHQ[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_IndoorPasserbyHQ[] = INCBIN_U32("data/tilesets/secondary/indoor_passerby_hq/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_IndoorCasteliaStudio[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_IndoorCasteliaStudio[] = INCBIN_U32("data/tilesets/secondary/indoor_castelia_studio/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CasteliaGym[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/castelia_gym/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CasteliaGym[] = INCBIN_U32("data/tilesets/secondary/castelia_gym/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CafeSonata[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cafe_sonata/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CafeSonata[] = INCBIN_U32("data/tilesets/secondary/cafe_sonata/tiles.4bpp.lz");

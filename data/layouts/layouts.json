@@ -9602,6 +9602,186 @@
       "secondary_tileset": "gTileset_CasteliaCity6",
       "border_filepath": "data/layouts/CasteliaCity_NorthStreet/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_NorthStreet/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_BATTLE_COMPANY1F",
+      "name": "CasteliaCity_BattleCompany1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_BattleCompany1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_BattleCompany1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_BATTLE_COMPANY55F",
+      "name": "CasteliaCity_BattleCompany55F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_BattleCompany55F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_BattleCompany55F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_BATTLE_COMPANY47F",
+      "name": "CasteliaCity_BattleCompany47F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_BattleCompany47F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_BattleCompany47F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_PASSERBY_ANALYTICS_HQ",
+      "name": "CasteliaCity_PasserbyAnalyticsHQ_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_PasserbyAnalyticsHQ/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_PasserbyAnalyticsHQ/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_NSPARTY_BUILDING47F",
+      "name": "CasteliaCity_NSPartyBuilding47F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_NSPartyBuilding47F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_NSPartyBuilding47F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_CSRESIDENTIAL_BUILDING11F",
+      "name": "CasteliaCity_CSResidentialBuilding11F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_CSResidentialBuilding11F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_CSResidentialBuilding11F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_NSEAST_BUILDING1F",
+      "name": "CasteliaCity_NSEastBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_NSEastBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_NSEastBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_CSRESIDENTIAL_BUILDING1F",
+      "name": "CasteliaCity_CSResidentialBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_CSResidentialBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_CSResidentialBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_EMPTY_BUILDING2F",
+      "name": "CasteliaCity_EmptyBuilding2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_EmptyBuilding2F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_EmptyBuilding2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_NSEAST_BUILDING47F",
+      "name": "CasteliaCity_NSEastBuilding47F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_NSEastBuilding47F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_NSEastBuilding47F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_NSWEST_BUILDING1F",
+      "name": "CasteliaCity_NSWestBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_NSWestBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_NSWestBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_GAME_FREAK22F",
+      "name": "CasteliaCity_GameFreak22F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_GameFreak22F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_GameFreak22F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_CAFE_SONATA",
+      "name": "CasteliaCity_CafeSonata_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_CafeSonata/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_CafeSonata/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_NSPARTY_BUILDING1F",
+      "name": "CasteliaCity_NSPartyBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_NSPartyBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_NSPartyBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_NSWEST_BUILDING11F",
+      "name": "CasteliaCity_NSWestBuilding11F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_NSWestBuilding11F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_NSWestBuilding11F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_GAME_FREAK1F",
+      "name": "CasteliaCity_GameFreak1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_GameFreak1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_GameFreak1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_STUDIO_CASTELIA",
+      "name": "CasteliaCity_StudioCastelia_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_StudioCastelia/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_StudioCastelia/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_EMPTY_BUILDING1F",
+      "name": "CasteliaCity_EmptyBuilding1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorCastelia",
+      "border_filepath": "data/layouts/CasteliaCity_EmptyBuilding1F/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_EmptyBuilding1F/map.bin"
     }
   ]
 }
