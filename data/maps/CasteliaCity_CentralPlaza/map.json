@@ -137,43 +137,43 @@
       "x": 20,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "6"
     },
     {
       "x": 21,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "9"
     },
     {
       "x": 22,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "9"
     },
     {
       "x": 23,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "10"
     },
     {
       "x": 24,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "10"
     },
     {
       "x": 25,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "12"
     },
     {
       "x": 9,

@@ -2066,3 +2066,14 @@ const struct Tileset gTileset_CasteliaCity5 =
     .metatileAttributes = gMetatileAttributes_CasteliaCity5,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CasteliaCity6 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity6,
+    .palettes = gTilesetPalettes_CasteliaCity6,
+    .metatiles = gMetatiles_CasteliaCity6,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity6,
+    .callback = InitTilesetAnim_CasteliaCity6,
+};
