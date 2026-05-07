@@ -1048,6 +1048,7 @@
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
 
 // Other
+#define METATILE_Castelia_Indoor_Elevator            0x221
 #define METATILE_Castelia_House_1                    0x243
 #define METATILE_GeneralFrlg_CalmWater               0x12B
 #define METATILE_GeneralFrlg_Door                    0x03D
