@@ -575,7 +575,7 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
         {
             // name
             StringCopy(gDisplayedStringBattle, GetMoveName(moveId));
-            if (B_SHOW_EFFECTIVENESS && !IsBattleMoveStatus(moveId))
+            if (B_SHOW_EFFECTIVENESS)
             {
                 StringAppend(gDisplayedStringBattle, BattleUI_GetTypeEffectivenessSymbol(battler, moveId));
             }
