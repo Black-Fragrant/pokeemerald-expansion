@@ -765,6 +765,9 @@ bool32 BattleLoadAllHealthBoxesGfxAtOnce(u8 state)
         });
     }
 
+    LoadIndicatorSpritesGfx();
+    CategoryIcons_LoadSpritesGfx();
+
     return TRUE;
 }
 // end bwBattleUI
