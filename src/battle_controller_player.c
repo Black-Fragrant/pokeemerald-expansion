@@ -2536,7 +2536,9 @@ const u8 *BattleUI_GetTypeEffectivenessSymbol(enum BattlerId battler, enum Move 
 {
     if (IsBattleMoveStatus(move)) return noIcon;
 
-    enum BattlerId battlerDef = gMultiUsePlayerCursor;
+    enum BattlerId battlerDef = BATTLE_OPPOSITE(battler);
+    if (GetBattlerCoordsIndex(battlerDef) == BATTLE_COORDS_DOUBLES)
+        battlerDef = gMultiUsePlayerCursor;
 
     if (battlerDef == 0xFF) return noIcon;
     if (!ShouldShowTypeEffectiveness(battlerDef)) return noIcon;
