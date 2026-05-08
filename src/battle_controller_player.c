@@ -916,13 +916,21 @@ void HandleInputChooseMove(enum BattlerId battler)
             }
 
             FillWindowPixelBuffer(B_WIN_MOVE_DESCRIPTION, PIXEL_FILL(0));
-            ClearStdWindowAndFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
-            CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_GFX);
+            ClearStdWindowAndFrameToTransparent(B_WIN_MOVE_DESCRIPTION, FALSE);
+            // start bwBattleUI
+            //CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_GFX);
+            CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_FULL);
+            // end bwBattleUI
             PlaySE(SE_SELECT);
+            // start bwBattleUI
+            // no need to reload move box
+            #ifndef BW_BATTLE_UI
             if (B_SHOW_EFFECTIVENESS)
                 MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
+            #endif
+            // end bwBattleUI
         }
     }
     else if (JOY_NEW(B_MOVE_DESCRIPTION_BUTTON) &&
@@ -1802,8 +1810,13 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     u8 cat_start[] = _("{CLEAR_TO 0x03}");
     u8 pwr_start[] = _("{CLEAR_TO 0x38}");
     u8 acc_start[] = _("{CLEAR_TO 0x6C}");
+    // start bwBattleUI
+    /*
     LoadMessageBoxAndBorderGfx();
     DrawStdWindowFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
+    */
+    DrawStdFrameWithCustomTileAndPalette(B_WIN_MOVE_DESCRIPTION, FALSE, 0x22, 1);
+    // end bwBattleUI
     if (pwr < 2)
         StringCopy(pwr_num, gText_BattleSwitchWhich5);
     else
