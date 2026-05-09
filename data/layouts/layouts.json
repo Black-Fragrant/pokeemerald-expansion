@@ -9766,10 +9766,10 @@
     {
       "id": "LAYOUT_CASTELIA_CITY_STUDIO_CASTELIA",
       "name": "CasteliaCity_StudioCastelia_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 16,
+      "height": 15,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_IndoorCastelia",
+      "secondary_tileset": "gTileset_IndoorCasteliaStudio",
       "border_filepath": "data/layouts/CasteliaCity_StudioCastelia/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_StudioCastelia/map.bin"
     },
