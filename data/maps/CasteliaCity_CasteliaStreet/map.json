@@ -225,14 +225,14 @@
       "x": 10,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_map": "MAP_CASTELIA_CITY_CSRESIDENTIAL_BUILDING1F",
       "dest_warp_id": "0"
     },
     {
       "x": 23,
       "y": 32,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_map": "MAP_CASTELIA_CITY_GAME_FREAK1F",
       "dest_warp_id": "0"
     }
   ],

@@ -660,6 +660,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Petililow,             OBJ_EVENT_PAL_TAG_PETILILOW},
     {gObjectEventPal_Munnaow,               OBJ_EVENT_PAL_TAG_MUNNAOW},
     {gObjectEventPal_Musharnaow,            OBJ_EVENT_PAL_TAG_MUSHARNAOW},
+    {gObjectEventPal_Pikachuow,             OBJ_EVENT_PAL_TAG_PIKACHUOW},
     {gObjectEventPal_FlagPole,              OBJ_EVENT_PAL_TAG_FLAG_POLE},
     {gObjectEventPal_GiftBox,               OBJ_EVENT_PAL_TAG_GIFT_BOX},
     {gObjectEventPal_Cone,                  OBJ_EVENT_PAL_TAG_CONE},
