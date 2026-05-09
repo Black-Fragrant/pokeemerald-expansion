@@ -15,7 +15,13 @@
 #include "battle_z_move.h"
 #include "battle_interface.h"
 #include "pokedex.h"
+#include "task.h"
+#include "sound.h"
+#include "gpu_regs.h"
+#include "test_runner.h"
 #include "bw_battle_ui.h"
+#include "constants/songs.h"
+#include "constants/rgb.h"
 #include "config/bw_battle_ui.h"
 
 // constants
@@ -43,6 +49,8 @@
 enum BattleUISpriteTags
 {
     TAG_CURSOR = 0x9999,
+    TAG_ABILITY_POP_UP,
+    TAG_APU_BATTLER,
 };
 
 enum BattleUITextColors
@@ -60,13 +68,18 @@ enum BattleUITextColors
 // EWRAM
 static EWRAM_INIT struct {
     u8 cursorSpriteId;
+    u8 abilityPopUpTaskId[MAX_BATTLERS_COUNT];
 } sBWBattleUI_Resources =
 {
     .cursorSpriteId = SPRITE_NONE,
+    .abilityPopUpTaskId = { TASK_NONE, TASK_NONE, TASK_NONE, TASK_NONE },
 };
 
 // declarations
 static void SpriteCB_BattleUICursor(struct Sprite *);
+
+static void Task_BattleUITrackAbilityPopUpGfx(u8);
+static void Task_BattleUIHandleAbilityPopUp(u8);
 
 static void BattleUI_SetCursorBattler(enum BattlerId);
 static u32 BattleUI_GetCursorBattler(void);
@@ -79,8 +92,14 @@ static void BattleUI_UpdateHealthboxLvlText(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxNickText(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxStatusIcon(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxCaughtMonIndicator(u32, struct Pokemon *);
-static void BattleUI_CopyElementToSprite(u32, const u32 *, u32, u32);
 
+static s16 BattleUI_GetAbilityPopUpCoords(enum BattleCoordTypes, enum BattlerPosition, u32);
+static void BattleUI_PrepareTextForAbilityPopUp(enum BattlerId, enum Ability, u32);
+static void BattleUI_PrepareBattlerTextForAbilityPopUp(enum BattlerId, u32, u32);
+static void BattleUI_BufferBattlerTextForAbilityPopUp(enum BattlerId);
+static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum Ability, u32, u32);
+
+static void BattleUI_CopyElementToSprite(u32, const u32 *, u32, u32);
 static void BattleUI_AddTextPrinter(u32, u32, u32, u32, enum BattleUITextColors, const u8 *);
 static void BattleUI_AddSpriteTextPrinter(u32, u32, u32, u32, enum BattleUITextColors, const u8 *);
 
@@ -254,7 +273,8 @@ u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId battler)
 
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
 {
-    // the base sprite size is 64x32. for x/y coords, we divide them by 2 to get proper offset on the screen
+    // the base sprite size is 64x32 (spawned as two sprites so 128x32).
+    // for x/y coords, we divide them by 2 to get proper offset on the screen
     u32 offset;
     if (coord == 0) // x
         offset = TILE_TO_PIXELS(4);
@@ -471,6 +491,85 @@ void SpriteCB_BWBattleUI_HPBar(struct Sprite *sprite)
     sprite->y2 = gSprites[healthboxSpriteId].y2;
 }
 
+#define tAPU_AutoDestroy data[0]
+#define tAPU_Timer       data[1]
+#define tAPU_State       data[2]
+#define tAPU_Battler     data[3]
+#define tAPU_Ability     data[5]
+#define tAPU_NewAbility  data[6]
+#define tAPU_SpriteId1   data[7]
+#define tAPU_SpriteId2   data[8]
+#define tAPU_Mosaic      data[9]
+
+void BattleUI_CreateAbilityPopUp(enum BattlerId battler, enum Ability ability)
+{
+    if (gTestRunnerEnabled)
+    {
+        TestRunner_Battle_RecordAbilityPopUp(battler, ability);
+        if (gTestRunnerHeadless)
+            return;
+    }
+
+    bool32 playerSide = IsOnPlayerSide(battler);
+    u32 tileTag = TAG_APU_BATTLER + battler;
+    const u32 *gfx = sBWBattleUI_AbilityPopUpGfx;
+    if (!playerSide) gfx += TILE_TO_PIXELS(64);
+
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_ABILITY_POP_UP, TAG_ABILITY_POP_UP);
+    if (IndexOfSpriteTileTag(tileTag) == 0xFF)
+    {
+        LoadSpriteSheet(&(const struct SpriteSheet){ .data = gfx, .size = TILE_OFFSET_4BPP(64), .tag = tileTag, });
+    }
+
+    struct SpriteTemplate template = sBWBattleUI_AbilityPopUpTemplate;
+    template.tileTag = tileTag;
+
+    enum BattleCoordTypes coords = GetBattlerCoordsIndex(battler);
+    enum BattlerPosition position = GetBattlerPosition(battler);
+
+    u32 xCoord = BattleUI_GetAbilityPopUpCoords(coords, position, 0);
+    u32 yCoord = BattleUI_GetAbilityPopUpCoords(coords, position, 1);
+    u32 xSlide = playerSide ? (TILE_TO_PIXELS(-16)) : TILE_TO_PIXELS(16);
+
+    u8 *spriteIds = gBattleStruct->abilityPopUpSpriteIds[battler];
+    spriteIds[0] = CreateSprite(&template, xCoord + xSlide,                     yCoord, 0);
+    spriteIds[1] = CreateSprite(&template, xCoord + xSlide + TILE_TO_PIXELS(8), yCoord, 0);
+    gSprites[spriteIds[1]].oam.tileNum += 32;
+
+    if (!IsAnyAbilityPopUpActive())
+        CreateTask(Task_BattleUITrackAbilityPopUpGfx, 0);
+
+    gBattleStruct->battlerState[battler].activeAbilityPopUps = TRUE;
+
+    const u32 *spriteSrc[2] = { gfx, gfx + TILE_TO_PIXELS(32) };
+    SetupSpritesForTextPrinting(spriteIds, spriteSrc, 2, 1);
+
+    u32 taskId = CreateTask(Task_BattleUIHandleAbilityPopUp, 0);
+    struct Task *task = &gTasks[taskId];
+    task->tAPU_Battler = battler;
+    task->tAPU_SpriteId1 = spriteIds[0];
+    task->tAPU_SpriteId2 = spriteIds[1];
+    if (gBattleScripting.abilityPopupOverwrite)
+    {
+        task->tAPU_Ability = gBattleScripting.abilityPopupOverwrite;
+        task->tAPU_NewAbility = ability;
+    }
+    else
+    {
+        task->tAPU_Ability = ability;
+    }
+
+    sBWBattleUI_Resources.abilityPopUpTaskId[battler] = taskId;
+}
+
+void BattleUI_DestroyAbilityPopUp(enum BattlerId battler)
+{
+    u32 taskId = sBWBattleUI_Resources.abilityPopUpTaskId[battler];
+    if (taskId == TASK_NONE) return;
+
+    gTasks[taskId].tAPU_AutoDestroy = TRUE;
+}
+
 // local
 static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 {
@@ -516,6 +615,189 @@ static void SpriteCB_BattleUICursor(struct Sprite *sprite)
     if (!hasSubsprite)
     {
         sprite->sCursorMode |= (TRUE << BUI_CURSOR_CONVERT_FLAG);
+    }
+}
+
+static void Task_BattleUITrackAbilityPopUpGfx(u8 taskId)
+{
+    if (!IsAnyAbilityPopUpActive())
+    {
+        for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
+        {
+            if (IndexOfSpriteTileTag(TAG_APU_BATTLER + battler) != 0xFF)
+                FreeSpriteTilesByTag(TAG_APU_BATTLER + battler);
+        }
+
+        FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
+        DestroyTask(taskId);
+    }
+}
+
+enum
+{
+    APU_STATE_SLIDE_IN = 0,
+    APU_STATE_PRINT,
+
+    // default
+    APU_STATE_GLOW,
+    APU_STATE_FADE,
+
+    // ability overwrite
+    APU_STATE_MOSAIC,
+    APU_STATE_REPRINT,
+
+    APU_STATE_WAIT,
+    APU_STATE_IDLE,
+    APU_STATE_END
+};
+
+static void Task_BattleUIHandleAbilityPopUp(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    enum BattlerId battler = tAPU_Battler;
+    bool32 isPlayerSide = IsOnPlayerSide(battler);
+
+    struct Sprite *sprite1 = &gSprites[tAPU_SpriteId1];
+    struct Sprite *sprite2 = &gSprites[tAPU_SpriteId2];
+
+    switch (tAPU_State)
+    {
+    case APU_STATE_SLIDE_IN:
+    {
+        if (++tAPU_Timer == 4)
+            PlaySE(SE_M_MIST);
+
+        u32 xCoord = BattleUI_GetAbilityPopUpCoords(
+                        GetBattlerCoordsIndex(battler), GetBattlerPosition(battler), 0);
+        u32 fullX = sprite1->x + sprite1->x2;
+
+        if (fullX == xCoord)
+        {
+            tAPU_Timer = 0;
+            tAPU_State = APU_STATE_PRINT;
+            break;
+        }
+
+        u32 speed = isPlayerSide ? TILE_TO_PIXELS(2) : TILE_TO_PIXELS(-2);
+        sprite1->x2 += speed, sprite2->x2 += speed;
+        break;
+    }
+    case APU_STATE_PRINT:
+    {
+        BattleUI_PrepareTextForAbilityPopUp(battler, tAPU_Ability, OPTIONS_TEXT_SPEED_INSTANT);
+        tAPU_State = tAPU_NewAbility ? APU_STATE_MOSAIC : APU_STATE_GLOW;
+        break;
+    }
+
+    // default
+    case APU_STATE_GLOW:
+    {
+        RunTextPrinters();
+        RunTextPrinters();
+        if (IsTextPrinterActiveOnSprite(tAPU_SpriteId1))
+            break;
+
+        PlaySE(SE_M_HARDEN);
+        BeginNormalPaletteFade(1 << (16 + sprite1->oam.paletteNum), 0, 0, 16, RGB_WHITE);
+        tAPU_State = APU_STATE_FADE;
+        // fallthrough
+    }
+    case APU_STATE_FADE:
+    {
+        UpdatePaletteFade();
+        UpdatePaletteFade();
+        UpdatePaletteFade();
+        UpdatePaletteFade();
+        if (gPaletteFade.active)
+            break;
+
+        BeginNormalPaletteFade(1 << (16 + sprite1->oam.paletteNum), 0, 16, 0, RGB_WHITE);
+        tAPU_State = APU_STATE_WAIT;
+        break;
+    }
+
+    // ability overwrite
+    case APU_STATE_MOSAIC:
+    {
+        RunTextPrinters();
+        RunTextPrinters();
+        if (IsTextPrinterActiveOnSprite(tAPU_SpriteId1))
+            break;
+
+        tAPU_Timer++;
+        if (tAPU_Timer < 8)
+            break;
+
+        PlaySE(SE_M_TELEPORT);
+        sprite1->oam.mosaic = TRUE;
+        sprite2->oam.mosaic = TRUE;
+        tAPU_Mosaic = 10;
+        SetGpuReg(REG_OFFSET_MOSAIC, (tAPU_Mosaic << 12) | (tAPU_Mosaic << 8));
+        tAPU_State = APU_STATE_REPRINT;
+        break;
+    }
+    case APU_STATE_REPRINT:
+    {
+        tAPU_Mosaic--;
+        SetGpuReg(REG_OFFSET_MOSAIC, (tAPU_Mosaic << 12) | (tAPU_Mosaic << 8));
+        if (tAPU_Mosaic > 5)
+            break;
+
+        BattleUI_PrepareTextForAbilityPopUp(battler, tAPU_NewAbility, TEXT_SKIP_DRAW);
+        tAPU_State = APU_STATE_WAIT;
+        break;
+    }
+
+    case APU_STATE_WAIT:
+    {
+        if (tAPU_NewAbility)
+        {
+            tAPU_Mosaic--;
+            SetGpuReg(REG_OFFSET_MOSAIC, (tAPU_Mosaic << 12) | (tAPU_Mosaic << 8));
+            if (tAPU_Mosaic > 0)
+                break;
+
+            tAPU_Mosaic = 0;
+            SetGpuReg(REG_OFFSET_MOSAIC, (tAPU_Mosaic << 12) | (tAPU_Mosaic << 8));
+            sprite1->oam.mosaic = FALSE;
+            sprite2->oam.mosaic = FALSE;
+        }
+        else
+        {
+            UpdatePaletteFade();
+            UpdatePaletteFade();
+            UpdatePaletteFade();
+            UpdatePaletteFade();
+            if (gPaletteFade.active)
+                break;
+        }
+
+        tAPU_Timer = 12;
+        tAPU_State = APU_STATE_IDLE;
+        break;
+    }
+    case APU_STATE_IDLE:
+    {
+        if (tAPU_Timer == 0 || tAPU_AutoDestroy)
+        {
+            tAPU_State = APU_STATE_END;
+            break;
+        }
+
+        if (!gBattleScripting.fixedPopup)
+            tAPU_Timer--;
+
+        break;
+    }
+    case APU_STATE_END:
+    {
+        gBattleStruct->battlerState[battler].activeAbilityPopUps = FALSE;
+        sBWBattleUI_Resources.abilityPopUpTaskId[battler] = TASK_NONE;
+        DestroySprite(sprite1);
+        DestroySprite(sprite2);
+        DestroyTask(taskId);
+        break;
+    }
     }
 }
 
@@ -989,6 +1271,65 @@ static void BattleUI_UpdateHealthboxCaughtMonIndicator(u32 spriteId, struct Poke
 
     BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxCaughtIndicator, 0, 1);
     BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxCaughtIndicator + TILE_TO_PIXELS(1), 8, 1);
+}
+
+static s16 BattleUI_GetAbilityPopUpCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
+{
+    // the base sprite size is 64x32 (spawned as two sprites so 128x32).
+    // for x/y coords, we divide them by 2 to get proper offset on the screen
+    u32 offset;
+    if (coord == 0) // x
+        offset = TILE_TO_PIXELS(4);
+    else
+        offset = TILE_TO_PIXELS(2);
+
+    return sBWBattleUI_AbilityPopUpCoords[index][position][coord] + offset;
+}
+
+static void BattleUI_PrepareTextForAbilityPopUp(enum BattlerId battler, enum Ability ability, u32 speed)
+{
+    u8 *spriteIds = gBattleStruct->abilityPopUpSpriteIds[battler];
+
+    FillSpriteRectSprite(spriteIds[0], 0, 0, 127, 32);
+    BattleUI_PrepareBattlerTextForAbilityPopUp(battler, spriteIds[0], speed);
+    BattleUI_PrepareAbilityTextForAbilityPopUp(ability, spriteIds[0], speed);
+}
+
+static void BattleUI_PrepareBattlerTextForAbilityPopUp(enum BattlerId battler, u32 spriteId, u32 speed)
+{
+    BattleUI_BufferBattlerTextForAbilityPopUp(battler);
+    AddSpriteTextPrinterParameterized6(
+            spriteId, FONT_OUTLINED,
+            7, 0,
+            0, 0,
+            sBWBattleUI_TextColors[BUI_TXTCLR_HBOX_NAME],
+            speed, gStringVar1);
+}
+
+static void BattleUI_BufferBattlerTextForAbilityPopUp(enum BattlerId battler)
+{
+    struct Pokemon *illusionMon = GetIllusionMonPtr(battler);
+    if (illusionMon != NULL)
+        GetMonData(illusionMon, MON_DATA_NICKNAME, gStringVar1);
+    else
+        GetMonData(GetBattlerMon(battler), MON_DATA_NICKNAME, gStringVar1);
+
+    u32 totalChar = StringLength(gStringVar1);
+    u32 lastChar = gStringVar1[totalChar];
+
+    StringAppend(gStringVar1, COMPOUND_STRING("'"));
+    if (lastChar != CHAR_S && lastChar != CHAR_s)
+        StringAppend(gStringVar1, COMPOUND_STRING("s"));
+}
+
+static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum Ability ability, u32 spriteId, u32 speed)
+{
+    AddSpriteTextPrinterParameterized6(
+            spriteId, FONT_OUTLINED,
+            23, 11,
+            0, 0,
+            sBWBattleUI_TextColors[BUI_TXTCLR_HBOX_NAME],
+            speed, gAbilitiesInfo[ability].name);
 }
 
 static void BattleUI_CopyElementToSprite(u32 spriteId, const u32 *element, u32 tileNum, u32 tileTotal)
