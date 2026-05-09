@@ -35,6 +35,8 @@ enum BWBattleUISpritePaletteType
     BUI_SPRITE_PAL_HEALTH_BOX,
     BUI_SPRITE_PAL_HEALTH_BAR,
 
+    BUI_SPRITE_PAL_ABILITY_POP_UP,
+
     NUM_BUI_SPRITE_PALS
 };
 
@@ -68,5 +70,8 @@ void BattleUI_UpdateHealthboxHPText(u32, s32, s32);
 void BattleUI_UpdateHpBarGraphically(enum BattlerId, u32, u32, u8 *);
 void BattleUI_UpdateExpBarGraphically(enum BattlerId, u8 *);
 void BattleUI_UpdateHpBarText(void);
+
+void BattleUI_CreateAbilityPopUp(enum BattlerId, enum Ability);
+void BattleUI_DestroyAbilityPopUp(enum BattlerId);
 
 #endif // GUARD_BW_BATTLE_UI_H

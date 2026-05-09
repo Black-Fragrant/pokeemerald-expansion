@@ -2597,7 +2597,10 @@ static void PrintAbilityOnAbilityPopUp(enum Ability ability, u8 spriteId1, u8 sp
                         FALSE, gSprites[spriteId1].sBattlerId);
 }
 
-static inline bool32 IsAnyAbilityPopUpActive(void)
+// start bwBattleUI
+//static inline bool32 IsAnyAbilityPopUpActive(void)
+bool32 IsAnyAbilityPopUpActive(void)
+// end bwBattleUI
 {
     u32 activeAbilityPopUps = 0;
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
@@ -2611,6 +2614,12 @@ static inline bool32 IsAnyAbilityPopUpActive(void)
 
 void CreateAbilityPopUp(enum BattlerId battler, enum Ability ability, bool32 isDoubleBattle)
 {
+    if (BW_BATTLE_UI && BW_BATTLE_UI_ABILITY_POP_UP)
+    {
+        BattleUI_CreateAbilityPopUp(battler, ability);
+        return;
+    }
+
     u8 *spriteIds;
     u32 xSlide, tileTag;
     enum BattlerPosition battlerPosition = GetBattlerPosition(battler);
@@ -2674,6 +2683,11 @@ void CreateAbilityPopUp(enum BattlerId battler, enum Ability ability, bool32 isD
 
 void UpdateAbilityPopup(enum BattlerId battler)
 {
+    if (BW_BATTLE_UI && BW_BATTLE_UI_ABILITY_POP_UP)
+    {
+        return;
+    }
+
     u8 *spriteIds = gBattleStruct->abilityPopUpSpriteIds[battler];
     enum Ability ability = (gBattleScripting.abilityPopupOverwrite) ? gBattleScripting.abilityPopupOverwrite
                                                            : gBattleMons[battler].ability;
@@ -2749,6 +2763,12 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
 
 void DestroyAbilityPopUp(enum BattlerId battler)
 {
+    if (BW_BATTLE_UI && BW_BATTLE_UI_ABILITY_POP_UP)
+    {
+        BattleUI_DestroyAbilityPopUp(battler);
+        return;
+    }
+
     if (gBattleStruct->battlerState[battler].activeAbilityPopUps)
     {
         gSprites[gBattleStruct->abilityPopUpSpriteIds[battler][0]].sAutoDestroy = TRUE;

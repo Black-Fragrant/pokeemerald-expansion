@@ -86,6 +86,9 @@ $(BATINTGFXDIR)/bw/textbox.gbapal: $(BATINTGFXDIR)/bw/textbox_0.gbapal \
                                    $(BATINTGFXDIR)/bw/textbox_1.gbapal
 	@cat $^ >$@
 
+$(BATINTGFXDIR)/bw/ability_pop_up.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 4
+
 # end bwBattleUI
 
 $(JPCONTESTGFXDIR)/composite_1.4bpp: $(JPCONTESTGFXDIR)/frame_1.4bpp \

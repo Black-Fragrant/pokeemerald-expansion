@@ -18,6 +18,20 @@ static const u16 sBWBattleUI_MoveBoxTypePalettes[] = INCBIN_U16("graphics/battle
 static const u16 sBWBattleUI_PartySummaryBarPalette[] = INCBIN_U16("graphics/battle_interface/bw/ball_status_bar.gbapal");
 static const u16 sBWBattleUI_StatusIconPalette[] = INCBIN_U16("graphics/battle_interface/bw/status.gbapal");
 
+// 
+static const u32 sBWBattleUI_HPBarText[] = INCBIN_U32("graphics/battle_interface/bw/hpbar.4bpp");
+static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
+    "graphics/battle_interface/bw/hpbar_none.4bpp",
+    "graphics/battle_interface/bw/hpbar_red.4bpp",
+    "graphics/battle_interface/bw/hpbar_yellow.4bpp",
+    "graphics/battle_interface/bw/hpbar_green.4bpp");
+static const u32 sBWBattleUI_HPBoxEndFrames[] = INCBIN_U32("graphics/battle_interface/bw/healthbox_end_frames.4bpp");
+static const u32 sBWBattleUI_HPBoxCaughtIndicator[] = INCBIN_U32("graphics/battle_interface/bw/ball_caught_indicator.4bpp");
+static const u32 sBWBattleUI_EXPBarAnims[] = INCBIN_U32("graphics/battle_interface/bw/expbar.4bpp");
+
+// ability pop up
+static const u32 sBWBattleUI_AbilityPopUpGfx[] = INCBIN_U32("graphics/battle_interface/bw/ability_pop_up.4bpp");
+
 static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
 {
     [BUI_SPRITE_GFX_SUMMARY_BAR]  = BW_BATTLE_UI_PARTY_SUMMARY
@@ -60,17 +74,9 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
     [BUI_SPRITE_PAL_HEALTH_BAR]   = BW_BATTLE_UI_HEALTHBOX
         ? (const u16[])INCBIN_U16("graphics/battle_interface/bw/hpbar.gbapal")
         : gBattleInterface_BallDisplayPal,
-};
 
-static const u32 sBWBattleUI_HPBarText[] = INCBIN_U32("graphics/battle_interface/bw/hpbar.4bpp");
-static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
-    "graphics/battle_interface/bw/hpbar_none.4bpp",
-    "graphics/battle_interface/bw/hpbar_red.4bpp",
-    "graphics/battle_interface/bw/hpbar_yellow.4bpp",
-    "graphics/battle_interface/bw/hpbar_green.4bpp");
-static const u32 sBWBattleUI_HPBoxEndFrames[] = INCBIN_U32("graphics/battle_interface/bw/healthbox_end_frames.4bpp");
-static const u32 sBWBattleUI_HPBoxCaughtIndicator[] = INCBIN_U32("graphics/battle_interface/bw/ball_caught_indicator.4bpp");
-static const u32 sBWBattleUI_EXPBarAnims[] = INCBIN_U32("graphics/battle_interface/bw/expbar.4bpp");
+    [BUI_SPRITE_PAL_ABILITY_POP_UP] = (const u16[])INCBIN_U16("graphics/battle_interface/bw/ability_pop_up.gbapal"),
+};
 
 static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
 {
@@ -102,6 +108,22 @@ static const s16 sBWBattleUI_HealthbarCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_C
         [B_POSITION_OPPONENT_LEFT]  = { 28,  10  },
         [B_POSITION_OPPONENT_RIGHT] = { 28,  36  },
     },
+};
+
+static const s16 sBWBattleUI_AbilityPopUpCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
+{
+    [BATTLE_COORDS_SINGLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]    = { 0,   80  },
+        [B_POSITION_OPPONENT_LEFT]  = { 144, 32  },
+    },
+    [BATTLE_COORDS_DOUBLES] =
+    {
+        [B_POSITION_PLAYER_LEFT]    = { 24,  80  },
+        [B_POSITION_PLAYER_RIGHT]   = { 178, 19  },
+        [B_POSITION_OPPONENT_LEFT]  = { 24,  97  },
+        [B_POSITION_OPPONENT_RIGHT] = { 178, 36  },
+    }
 };
 
 static const struct CompressedSpriteSheet sBWBattleUI_CursorSheet =
@@ -249,6 +271,17 @@ static const struct SpriteTemplate sBWBattleUI_CursorTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_BattleUICursor,
+};
+
+static const struct SpriteTemplate sBWBattleUI_AbilityPopUpTemplate =
+{
+    .tileTag = TAG_NONE, // automatically assigned when spawned
+    .paletteTag = TAG_ABILITY_POP_UP,
+    .oam = &(const struct OamData){
+        .shape = SPRITE_SHAPE(64x32),
+        .size = SPRITE_SIZE(64x32),
+    },
+    .callback = SpriteCallbackDummy,
 };
 
 static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =
