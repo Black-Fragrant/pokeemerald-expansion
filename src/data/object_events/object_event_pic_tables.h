@@ -853,6 +853,10 @@ static const struct SpriteFrameImage sPicTable_Musharnaow[] = {
     overworld_ascending_frames(gObjectEventPic_Musharnaow, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Pikachuow[] = {
+    overworld_ascending_frames(gObjectEventPic_Pikachuow, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_FlagPole[] = {
     overworld_ascending_frames(gObjectEventPic_FlagPole, 2, 4),
 };
