@@ -28,6 +28,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CASTELIA_NS_HOOLIGAN_TOP",
       "graphics_id": "OBJ_EVENT_GFX_ROUGHNECK",
       "x": 13,
       "y": 8,
@@ -37,10 +38,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Roughneck_Top",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CASTELIA_NS_HOOLIGAN_BOT",
       "graphics_id": "OBJ_EVENT_GFX_ROUGHNECK",
       "x": 13,
       "y": 9,
@@ -50,7 +52,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Roughneck_Bot",
       "flag": "0"
     },
     {
@@ -63,10 +65,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Dancer",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CASTELIA_NS_BLACKSUIT",
       "graphics_id": "OBJ_EVENT_GFX_BLACK_SUIT",
       "x": 8,
       "y": 23,
@@ -76,7 +79,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NarrowStreet_EventScript_BlackSuit",
       "flag": "0"
     }
   ],
@@ -159,6 +162,61 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_TM70_FLASH",
+      "var_value": "0",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_TM70_FLASH",
+      "var_value": "0",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_TM70_FLASH",
+      "var_value": "0",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_TM70_FLASH",
+      "var_value": "0",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_TM70_FLASH",
+      "var_value": "0",
+      "script": "CasteliaCity_NarrowStreet_EventScript_Trigger"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "CasteliaCity_NarrowStreet_EventScript_CafeSign"
+    }
+  ]
 }

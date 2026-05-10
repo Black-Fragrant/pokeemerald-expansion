@@ -1,1 +1,165 @@
 mapscripts CasteliaCity_NarrowStreet_MapScripts {}
+
+script CasteliaCity_NarrowStreet_EventScript_Roughneck_Top
+{
+    lock
+    msgbox("Smirk!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_HOOLIGAN_TOP)
+    release
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Roughneck_Bot
+{
+    lock
+    msgbox("Ehehehe...", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_HOOLIGAN_BOT)
+    release
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Dancer
+{
+    msgbox("There's not a lot you can do alone.\n"
+        "There are more things two people can do.\p"
+        "There are even more things three people\n"
+        "can do!\p"
+        "That's right... I think what's missing\n"
+        "from my dance is company.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_BlackSuit
+{
+    msgbox("If you use the move Flash, the accuracy\n"
+    "of the opponent's moves goes down.\p"
+    "When you use it twice, the rate to get\n"
+    "hit by a move will be about half.\p"
+    "'Cause it means more light!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_CafeSign
+{
+    msgbox("Café Sonata", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger
+{
+    lock
+    playse(SE_BANG)
+    msgbox("Where did I put those sunglasses?", MSGBOX_SHOUT, TRUE, LOCALID_CASTELIA_NS_BLACKSUIT)
+	waitse()
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 9, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_0, 10, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_0, 11, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos3)
+	call_if_eq (VAR_TEMP_0, 12, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos4)
+	call_if_eq (VAR_TEMP_0, 13, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos5)
+	delay(10)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left)) 
+    waitmovement(0)
+	delay(10)
+    msgbox("Ah, I found them.\p"
+    "And you've really got to have more\n"
+    "light to see your way by.\p"
+    "Take this--it'll help you see in\n"
+    "dark places.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_FLASH)
+	call_if_eq (VAR_RESULT, FALSE, CasteliaCity_NarrowStreet_EventScript_BagIsFull)
+    closemessage
+    setvar(VAR_CASTELIA_TM70_FLASH, 1)
+    msgbox("If you use the move Flash, the accuracy\n"
+    "of the opponent's moves goes down.\p"
+    "When you use it twice, the rate to get\n"
+    "hit by a move will be about half.\p"
+    "'Cause it means more light!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+	call_if_eq (VAR_TEMP_0, 10, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos6)
+	call_if_eq (VAR_TEMP_0, 11, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos7)
+	call_if_eq (VAR_TEMP_0, 12, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos8)
+	call_if_eq (VAR_TEMP_0, 13, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos9)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	delay(20)
+    release
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos1
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_in_place_right)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos2
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_right)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos3
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_right * 2)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos4
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_right * 3)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos5
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_right * 4)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos6
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_left * 1, walk_in_place_right)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos7
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_left * 2, walk_in_place_right)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos8
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_left * 3, walk_in_place_right)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos9
+{
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_left * 4, walk_in_place_right)) 
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_NarrowStreet_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	return()
+}

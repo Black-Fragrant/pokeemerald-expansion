@@ -1,1 +1,7 @@
 mapscripts CasteliaCity_CasteliaStreet_MapScripts {}
+
+script CasteliaCity_CasteliaStreet_EventScript_GameFreakSign
+{
+    msgbox("GAME FREAK", MSGBOX_SIGN)
+    end
+}

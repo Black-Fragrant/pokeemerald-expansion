@@ -120,8 +120,8 @@
 #define VAR_NACRENE_STATE                                0x4062
 #define VAR_DAY_OF_WEEK                                  0x4063
 #define VAR_PINWHEEL_FOREST_STATE                        0x4064
-#define VAR_UNUSED_4065                                  0x4065 // Unused Var
-#define VAR_UNUSED_4066                                  0x4066 // Unused Var
+#define VAR_CASTELIA_TM70_FLASH                          0x4065
+#define VAR_CASTELIA_CASTELIACONE                        0x4066
 #define VAR_UNUSED_4067                                  0x4067 // Unused Var
 #define VAR_UNUSED_4068                                  0x4068 // Unused Var
 #define VAR_ROUTE110_STATE                               0x4069

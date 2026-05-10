@@ -1,1 +1,27 @@
 mapscripts CasteliaCity_NorthStreet_MapScripts {}
+
+script CasteliaCity_NorthStreet_EventScript_Route4Sign
+{
+    msgbox("Route 4 Ahead", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_NorthStreet_EventScript_AceTrainer
+{
+    msgbox("Pokémon Trainers on Route 4\n"
+        "show combinations with Pokémon\l"
+        "even during road construction!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NorthStreet_EventScript_Businessman
+{
+    msgbox("In Nimbasa City, where I work,\n"
+        "I went to see a musical.\p"
+        "Have you heard about it?\n"
+        "The Pokémon Musical?\p"
+        "Pokémon get all dressed up and\n"
+        "dance to the music!", MSGBOX_NPC, TRUE)
+    end
+}
+

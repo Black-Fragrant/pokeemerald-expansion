@@ -2132,3 +2132,14 @@ const struct Tileset gTileset_CafeSonata =
     .metatileAttributes = gMetatileAttributes_CafeSonata,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Route4 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route4,
+    .palettes = gTilesetPalettes_Route4,
+    .metatiles = gMetatiles_Route4,
+    .metatileAttributes = gMetatileAttributes_Route4,
+    .callback = NULL,
+};
