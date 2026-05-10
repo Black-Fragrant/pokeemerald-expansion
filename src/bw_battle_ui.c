@@ -77,6 +77,7 @@ static EWRAM_INIT struct {
 
 // declarations
 static void SpriteCB_BattleUICursor(struct Sprite *);
+static void SpriteCB_GimmickTrigger(struct Sprite *);
 
 static void Task_BattleUITrackAbilityPopUpGfx(u8);
 static void Task_BattleUIHandleAbilityPopUp(u8);
@@ -251,6 +252,9 @@ void BattleUI_DisplayMoveBox(enum BattlerId battler)
 
 u32 BattleUI_LoadSpriteSheet(enum BWBattleUISpriteGraphicsType type, u32 tag)
 {
+    if (IndexOfSpriteTileTag(tag) != 0xFF)
+        return IndexOfSpriteTileTag(tag);
+
     return LoadCompressedSpriteSheet(&(const struct CompressedSpriteSheet){
         .data = sBWBattleUI_SpriteGraphics[type],
         .size = GetDecompressedDataSize(sBWBattleUI_SpriteGraphics[type]),
@@ -570,6 +574,17 @@ void BattleUI_DestroyAbilityPopUp(enum BattlerId battler)
     gTasks[taskId].tAPU_AutoDestroy = TRUE;
 }
 
+u32 BattleUI_CreateGimmickTriggerSprite(enum BattlerId battler)
+{
+    // decrement to exclude GIMMICK_NONE
+    enum Gimmick gimmick = gBattleStruct->gimmick.usableGimmick[battler] - 1;
+
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_GIMMICK_TRIGGER_MEGA + gimmick, TAG_GIMMICK_TRIGGER_TILE);
+    BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_GIMMICK_TRIGGER_MEGA + gimmick, TAG_GIMMICK_TRIGGER_PAL);
+
+    return CreateSprite(&sBWBattleUI_GimmickTriggerTemplate, 40 + 16, 112 + 16, 0);
+}
+
 // local
 static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 {
@@ -616,6 +631,28 @@ static void SpriteCB_BattleUICursor(struct Sprite *sprite)
     {
         sprite->sCursorMode |= (TRUE << BUI_CURSOR_CONVERT_FLAG);
     }
+}
+
+#define sGT_Battler        data[0]
+#define sGT_Hide           data[1]
+static void SpriteCB_GimmickTrigger(struct Sprite *sprite)
+{
+    s16 *data = sprite->data;
+    s32 target, speed;
+
+    if (sGT_Hide)
+    {
+        target = 0;
+        speed = 8;
+    }
+    else
+    {
+        target = -24;
+        speed = -8;
+    }
+
+    if (sprite->y2 != target)
+        sprite->y2 += speed;
 }
 
 static void Task_BattleUITrackAbilityPopUpGfx(u8 taskId)
