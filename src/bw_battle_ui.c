@@ -838,6 +838,7 @@ static void BattleUI_DisplayMoveBoxGraphics(enum BattlerId battler, u32 windowId
 
 static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseMoveStruct *moveInfo)
 {
+    gBattleStruct->zmove.viewing = FALSE;
     bool32 hasDynamax = (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX);
 
     for (u32 i = 0; i < MAX_MON_MOVES; i++)
