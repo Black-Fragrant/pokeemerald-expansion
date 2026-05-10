@@ -830,10 +830,21 @@ void HandleInputChooseMove(enum BattlerId battler)
             gMoveSelectionCursor[battler] ^= 1;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+            // start bwBAttleUI
+            /*
             if (B_SHOW_EFFECTIVENESS)
                 MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
+            */
+            if (!(BW_BATTLE_UI && BW_BATTLE_UI_INPUTBOX))
+            {
+                if (B_SHOW_EFFECTIVENESS)
+                    MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
+                MoveSelectionDisplayPpNumber(battler);
+                MoveSelectionDisplayMoveType(battler);
+            }
+            // end bwBattleUI
             TryMoveSelectionDisplayMoveDescription(battler);
             TryChangeZTrigger(battler, gMoveSelectionCursor[battler]);
         }
@@ -847,10 +858,21 @@ void HandleInputChooseMove(enum BattlerId battler)
             gMoveSelectionCursor[battler] ^= 1;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+            // start bwBAttleUI
+            /*
             if (B_SHOW_EFFECTIVENESS)
                 MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
+            */
+            if (!(BW_BATTLE_UI && BW_BATTLE_UI_INPUTBOX))
+            {
+                if (B_SHOW_EFFECTIVENESS)
+                    MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
+                MoveSelectionDisplayPpNumber(battler);
+                MoveSelectionDisplayMoveType(battler);
+            }
+            // end bwBattleUI
             TryMoveSelectionDisplayMoveDescription(battler);
             TryChangeZTrigger(battler, gMoveSelectionCursor[battler]);
         }
@@ -863,10 +885,21 @@ void HandleInputChooseMove(enum BattlerId battler)
             gMoveSelectionCursor[battler] ^= 2;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+            // start bwBAttleUI
+            /*
             if (B_SHOW_EFFECTIVENESS)
                 MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
+            */
+            if (!(BW_BATTLE_UI && BW_BATTLE_UI_INPUTBOX))
+            {
+                if (B_SHOW_EFFECTIVENESS)
+                    MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
+                MoveSelectionDisplayPpNumber(battler);
+                MoveSelectionDisplayMoveType(battler);
+            }
+            // end bwBattleUI
             TryMoveSelectionDisplayMoveDescription(battler);
             TryChangeZTrigger(battler, gMoveSelectionCursor[battler]);
         }
@@ -880,10 +913,21 @@ void HandleInputChooseMove(enum BattlerId battler)
             gMoveSelectionCursor[battler] ^= 2;
             PlaySE(SE_SELECT);
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+            // start bwBAttleUI
+            /*
             if (B_SHOW_EFFECTIVENESS)
                 MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
+            */
+            if (!(BW_BATTLE_UI && BW_BATTLE_UI_INPUTBOX))
+            {
+                if (B_SHOW_EFFECTIVENESS)
+                    MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
+                MoveSelectionDisplayPpNumber(battler);
+                MoveSelectionDisplayMoveType(battler);
+            }
+            // end bwBattleUI
             TryMoveSelectionDisplayMoveDescription(battler);
             TryChangeZTrigger(battler, gMoveSelectionCursor[battler]);
         }
@@ -920,17 +964,15 @@ void HandleInputChooseMove(enum BattlerId battler)
             // start bwBattleUI
             //CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_GFX);
             CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_FULL);
-            // end bwBattleUI
             PlaySE(SE_SELECT);
-            // start bwBattleUI
             // no need to reload move box
-            #ifndef BW_BATTLE_UI
+            if (BW_BATTLE_UI && BW_BATTLE_UI_INPUTBOX)
+                return;
+            // end bwBattleUI
             if (B_SHOW_EFFECTIVENESS)
                 MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
             MoveSelectionDisplayPpNumber(battler);
             MoveSelectionDisplayMoveType(battler);
-            #endif
-            // end bwBattleUI
         }
     }
     else if (JOY_NEW(B_MOVE_DESCRIPTION_BUTTON) &&
