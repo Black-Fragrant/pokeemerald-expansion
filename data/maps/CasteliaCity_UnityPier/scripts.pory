@@ -1,1 +1,27 @@
 mapscripts CasteliaCity_UnityPier_MapScripts {}
+
+script CasteliaCity_UnityPier_EventScript_Dancer
+{
+    msgbox("I've come to Castelia City to have a\n"
+        "dance lesson!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_UnityPier_EventScript_RichGirl
+{
+    msgbox("Both Pokémon and people will meet their\n"
+        "destined partner someday!\p"
+        "I believe it because my sister who got\n"
+        "married said so!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_UnityPier_EventScript_Receptionist
+{
+    msgbox("People are quite different,\n"
+        "depending on where they live.\p"
+        "It's a bit surprising that rules and ways\n"
+        "of thinking are different just because\l"
+        "the places we live are different!", MSGBOX_NPC, TRUE)
+    end
+}

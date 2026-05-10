@@ -1,1 +1,9 @@
 mapscripts CasteliaCity_CruiseDock_MapScripts {}
+
+script CasteliaCity_CruiseDock_EventScript_Receptionist
+{
+    msgbox("The Royal Unova is now in preparation.\p"
+        "We are working very hard to ready the\n"
+        "ship for the best Pokémon Trainers.", MSGBOX_NPC, TRUE)
+    end
+}
