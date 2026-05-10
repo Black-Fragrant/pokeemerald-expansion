@@ -7,6 +7,7 @@
 #include "battle_z_move.h"
 #include "battle_setup.h"
 #include "battle_util.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "item.h"
 #include "palette.h"
 #include "pokemon.h"
@@ -15,6 +16,7 @@
 #include "test_runner.h"
 
 #include "data/gimmicks.h"
+#include "config/bw_battle_ui.h"
 
 // Populates gBattleStruct->gimmick.usableGimmick for each battler.
 void AssignUsableGimmicks(void)
@@ -140,6 +142,15 @@ void CreateGimmickTriggerSprite(enum BattlerId battler)
         return;
     }
 
+    // start bwBattleUI
+    if (BW_BATTLE_UI_HEALTHBOX)
+    {
+        if (gBattleStruct->gimmick.triggerSpriteId == 0xFF)
+            gBattleStruct->gimmick.triggerSpriteId = BattleUI_CreateGimmickTriggerSprite(battler);
+    }
+    else
+    {
+    // end bwBattleUI
     LoadSpritePalette(gimmick->triggerPal);
     if (GetSpriteTileStartByTag(TAG_GIMMICK_TRIGGER_TILE) == 0xFFFF)
         LoadSpriteSheet(gimmick->triggerSheet);
@@ -155,6 +166,7 @@ void CreateGimmickTriggerSprite(enum BattlerId battler)
                                                                   gSprites[gHealthboxSpriteIds[battler]].x - SINGLES_GIMMICK_TRIGGER_POS_X_SLIDE,
                                                                   gSprites[gHealthboxSpriteIds[battler]].y - SINGLES_GIMMICK_TRIGGER_POS_Y_DIFF, 0);
     }
+    } // bwBattleUI
 
     gSprites[gBattleStruct->gimmick.triggerSpriteId].tBattler = battler;
     gSprites[gBattleStruct->gimmick.triggerSpriteId].tHide = FALSE;

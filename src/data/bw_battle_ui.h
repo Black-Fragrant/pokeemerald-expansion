@@ -57,6 +57,12 @@ static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
     [BUI_SPRITE_GFX_HPBOX_SAFARI]     = BW_BATTLE_UI_HEALTHBOX
         ? (const u32[])INCBIN_U32("graphics/battle_interface/bw/healthbox_safari.4bpp.smol")
         : gHealthboxSafariGfx,
+
+    [BUI_SPRITE_GFX_GIMMICK_TRIGGER_MEGA]     = (const u32[])INCBIN_U32("graphics/battle_interface/bw/mega_trigger.4bpp.smol"),
+    [BUI_SPRITE_GFX_GIMMICK_TRIGGER_BURST]    = (const u32[])INCBIN_U32("graphics/battle_interface/bw/burst_trigger.4bpp.smol"),
+    [BUI_SPRITE_GFX_GIMMICK_TRIGGER_Z_MOVE]   = (const u32[])INCBIN_U32("graphics/battle_interface/bw/z_move_trigger.4bpp.smol"),
+    [BUI_SPRITE_GFX_GIMMICK_TRIGGER_DYNAMAX]  = (const u32[])INCBIN_U32("graphics/battle_interface/bw/dynamax_trigger.4bpp.smol"),
+    [BUI_SPRITE_GFX_GIMMICK_TRIGGER_TERA]     = (const u32[])INCBIN_U32("graphics/battle_interface/bw/tera_trigger.4bpp.smol"),
 };
 
 static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
@@ -76,6 +82,12 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
         : gBattleInterface_BallDisplayPal,
 
     [BUI_SPRITE_PAL_ABILITY_POP_UP] = (const u16[])INCBIN_U16("graphics/battle_interface/bw/ability_pop_up.gbapal"),
+
+    [BUI_SPRITE_PAL_GIMMICK_TRIGGER_MEGA]     = (const u16[])INCBIN_U16("graphics/battle_interface/bw/mega_trigger.gbapal"),
+    [BUI_SPRITE_PAL_GIMMICK_TRIGGER_BURST]    = (const u16[])INCBIN_U16("graphics/battle_interface/bw/burst_trigger.gbapal"),
+    [BUI_SPRITE_PAL_GIMMICK_TRIGGER_Z_MOVE]   = (const u16[])INCBIN_U16("graphics/battle_interface/bw/z_move_trigger.gbapal"),
+    [BUI_SPRITE_PAL_GIMMICK_TRIGGER_DYNAMAX]  = (const u16[])INCBIN_U16("graphics/battle_interface/bw/dynamax_trigger.gbapal"),
+    [BUI_SPRITE_PAL_GIMMICK_TRIGGER_TERA]     = (const u16[])INCBIN_U16("graphics/battle_interface/bw/tera_trigger.gbapal"),
 };
 
 static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
@@ -282,6 +294,28 @@ static const struct SpriteTemplate sBWBattleUI_AbilityPopUpTemplate =
         .size = SPRITE_SIZE(64x32),
     },
     .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sBWBattleUI_GimmickTriggerTemplate =
+{
+    .tileTag = TAG_GIMMICK_TRIGGER_TILE,
+    .paletteTag = TAG_GIMMICK_TRIGGER_PAL,
+    .oam = &(const struct OamData){
+        .shape = SPRITE_SHAPE(32x32),
+        .size = SPRITE_SIZE(32x32),
+        .priority = 1,
+    },
+    .anims = (const union AnimCmd *const[]){
+        [0] = (const union AnimCmd[]){
+            ANIMCMD_FRAME( 0, 8),
+            ANIMCMD_END,
+        },
+        [1] = (const union AnimCmd[]){
+            ANIMCMD_FRAME(16, 8),
+            ANIMCMD_END,
+        },
+    },
+    .callback = SpriteCB_GimmickTrigger,
 };
 
 static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =
