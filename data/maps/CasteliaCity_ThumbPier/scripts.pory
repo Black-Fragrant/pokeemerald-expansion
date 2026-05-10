@@ -1,1 +1,146 @@
 mapscripts CasteliaCity_ThumbPier_MapScripts {}
+
+script CasteliaCity_ThumbPier_EventScript_Roughneck
+{
+    msgbox("Stick up your thumbs, and curl in\n"
+        "your fingers.\p"
+        "This is a thumbs-up pose. That means OK!\n"
+        "In some places, it also means money!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_EVOLUTION_STONES, CasteliaCity_ThumbPier_EventScript_Scientist_Received)
+	msgbox("Pansage, Pansear, and Panpour are\n"
+        "Pokémon that evolve with special stones!\p"
+        "Which Pokémon do you want to evolve?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+	multichoice(22, 3, MULTI_CASTELIA_EVOLUTION_STONE, 1)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansage)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansear)}
+	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Panpour)}
+    goto(CasteliaCity_ThumbPier_EventScript_Scientist_Quit)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_Quit
+{ 
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Yes, that's true.\p"
+        "It's difficult to choose one.\n"
+        "When you decide, let me know!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Then, which Pokémon do you want\n"
+        "to evolve...\p"
+        "Pansage, Pansear, or Panpour?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+	multichoice(22, 3, MULTI_CASTELIA_EVOLUTION_STONE, 1)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansage)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansear)}
+	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Panpour)}
+    goto(CasteliaCity_ThumbPier_EventScript_Scientist_Quit)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_Pansage
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("All right, so it's Pansage?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ThumbPier_EventScript_Scientist_LeafStone)
+	goto(CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_Pansear
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("All right, so it's Pansear?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ThumbPier_EventScript_Scientist_FireStone)
+	goto(CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_Panpour
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("All right, so it's Panpour?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ThumbPier_EventScript_Scientist_WaterStone)
+	goto(CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_LeafStone
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Pansage...\n"
+        "Then, it's a Leaf Stone you need.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_LEAF_STONE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_ThumbPier_EventScript_BagIsFull)
+	goto (CasteliaCity_ThumbPier_EventScript_Scientist_Received)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_FireStone
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Pansear...\n"
+        "Then, it's a Fire Stone you need.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_FIRE_STONE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_ThumbPier_EventScript_BagIsFull)
+	goto (CasteliaCity_ThumbPier_EventScript_Scientist_Received)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_WaterStone
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Panpour...\n"
+        "Then, it's a Water Stone you need.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_WATER_STONE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_ThumbPier_EventScript_BagIsFull)
+	goto (CasteliaCity_ThumbPier_EventScript_Scientist_Received)
+}
+
+script CasteliaCity_ThumbPier_EventScript_Scientist_Received
+{
+    setflag(FLAG_CASTELIA_EVOLUTION_STONES)
+    msgbox("You might already know this, but I will\n"
+        "give you some advice!\p"
+        "When a Pokémon evolves, it will be more\n"
+        "powerful, but it will be slower to learn\l"
+        "a new move.\p"
+        "This is especially true for Pokémon that\n"
+        "evolve with stones.\p"
+        "So, it's up to you: you can have it learn\n"
+        "a good move and then evolve it with\l"
+        "a stone, or evolve it with a stone fast\l"
+        "and then have it learn a move with a TM!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_ThumbPier_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+    closemessage
+	release()
+	end()
+}

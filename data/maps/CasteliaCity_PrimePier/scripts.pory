@@ -1,1 +1,18 @@
 mapscripts CasteliaCity_PrimePier_MapScripts {}
+
+script CasteliaCity_PrimePier_EventScript_Gentleman
+{
+    msgbox("That black boat...\n"
+        "What could it be?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_PrimePier_EventScript_Girl
+{
+    msgbox("When someone is getting under your skin\n"
+        "and you want to yell at them,\n"
+        "scream at the ocean!\p"
+        "...When you're alone, of course.", MSGBOX_NPC, TRUE)
+    end
+}
+

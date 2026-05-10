@@ -1,1 +1,33 @@
 mapscripts CasteliaCity_LibertyPier_MapScripts {}
+
+script CasteliaCity_LibertyPier_EventScript_Youngster
+{
+    msgbox("Aren't Pokémon great?\p"
+        "Even if they're fightin' someone\n"
+        "bigger than them, up and at 'em they go!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyPier_EventScript_Veteran
+{
+    msgbox("Hahaha!\n"
+    "Strength is not in the size of a body.\p"
+    "It's in the size of the heart!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyPier_EventScript_Captain
+{
+    lock
+    faceplayer
+    msgbox("It is small compared to a luxury liner,\n"
+        "but the size of a ship doesn't change\l"
+        "the feeling of adventure when you're\l"
+        "out on the open sea.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_LP_CAPTAIN)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_CASTELIA_LP_CAPTAIN, moves(walk_in_place_down))
+    waitmovement(0)
+    release
+    end
+}

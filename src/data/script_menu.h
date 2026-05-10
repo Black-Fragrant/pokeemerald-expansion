@@ -883,6 +883,65 @@ static const struct MenuAction MultichoiceList_NacreneCityStarters[] =
     {COMPOUND_STRING("Quit")},
 };
 
+static const struct MenuAction MultichoiceList_CasteliaElevator4755[] =
+{
+    {COMPOUND_STRING("47")},
+    {COMPOUND_STRING("55")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator155[] =
+{
+    {COMPOUND_STRING("1")},
+    {COMPOUND_STRING("55")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator147[] =
+{
+    {COMPOUND_STRING("1")},
+    {COMPOUND_STRING("47")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator1[] =
+{
+    {COMPOUND_STRING("1")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator2[] =
+{
+    {COMPOUND_STRING("2")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator11[] =
+{
+    {COMPOUND_STRING("11")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator22[] =
+{
+    {COMPOUND_STRING("22")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaElevator47[] =
+{
+    {COMPOUND_STRING("47")},
+    {COMPOUND_STRING("Cancel")},
+};
+
+static const struct MenuAction MultichoiceList_CasteliaEvolutionStone[] =
+{
+    {COMPOUND_STRING("Pansage")},
+    {COMPOUND_STRING("Pansear")},
+    {COMPOUND_STRING("Panpour")},
+    {COMPOUND_STRING("Cancel")},
+};
+
 static const struct MenuAction sMultichoiceList_BikeShop[] = {
     {COMPOUND_STRING("BICYCLE{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000")},
     {COMPOUND_STRING("NO THANKS")}
@@ -1326,6 +1385,15 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_NCG_QUESTIONS_1]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions1),
     [MULTI_NCG_QUESTIONS_2]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions2),
     [MULTI_NACRENE_STARTERS]           = MULTICHOICE(MultichoiceList_NacreneCityStarters),
+    [MULTI_CASTELIA_ELEVATOR_47_55]    = MULTICHOICE(MultichoiceList_CasteliaElevator4755),
+    [MULTI_CASTELIA_ELEVATOR_1_47]     = MULTICHOICE(MultichoiceList_CasteliaElevator147),
+    [MULTI_CASTELIA_ELEVATOR_1_55]     = MULTICHOICE(MultichoiceList_CasteliaElevator155),
+    [MULTI_CASTELIA_ELEVATOR_1]        = MULTICHOICE(MultichoiceList_CasteliaElevator1),
+    [MULTI_CASTELIA_ELEVATOR_2]        = MULTICHOICE(MultichoiceList_CasteliaElevator2),
+    [MULTI_CASTELIA_ELEVATOR_11]       = MULTICHOICE(MultichoiceList_CasteliaElevator11),
+    [MULTI_CASTELIA_ELEVATOR_22]       = MULTICHOICE(MultichoiceList_CasteliaElevator22),
+    [MULTI_CASTELIA_ELEVATOR_47]       = MULTICHOICE(MultichoiceList_CasteliaElevator47),
+    [MULTI_CASTELIA_EVOLUTION_STONE]   = MULTICHOICE(MultichoiceList_CasteliaEvolutionStone),
     [MULTI_BIKE_SHOP]                  = MULTICHOICE(sMultichoiceList_BikeShop),
     [MULTI_EEVEELUTIONS]               = MULTICHOICE(sMultichoiceList_Eeveelutions),
     [MULTI_ISLAND_23]                  = MULTICHOICE(sMultichoiceList_Island23),
