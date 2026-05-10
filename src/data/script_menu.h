@@ -942,6 +942,13 @@ static const struct MenuAction MultichoiceList_CasteliaEvolutionStone[] =
     {COMPOUND_STRING("Cancel")},
 };
 
+static const struct MenuAction MultichoiceList_CasteliaCones[] =
+{
+    {COMPOUND_STRING("   1 Cone      ¥100")},
+    {COMPOUND_STRING(" 12 CONES   ¥1,200")},
+    {COMPOUND_STRING("Cancel")},
+};
+
 static const struct MenuAction sMultichoiceList_BikeShop[] = {
     {COMPOUND_STRING("BICYCLE{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000")},
     {COMPOUND_STRING("NO THANKS")}
@@ -1394,6 +1401,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_CASTELIA_ELEVATOR_22]       = MULTICHOICE(MultichoiceList_CasteliaElevator22),
     [MULTI_CASTELIA_ELEVATOR_47]       = MULTICHOICE(MultichoiceList_CasteliaElevator47),
     [MULTI_CASTELIA_EVOLUTION_STONE]   = MULTICHOICE(MultichoiceList_CasteliaEvolutionStone),
+    [MULTI_CASTELIA_CONES]             = MULTICHOICE(MultichoiceList_CasteliaCones),
     [MULTI_BIKE_SHOP]                  = MULTICHOICE(sMultichoiceList_BikeShop),
     [MULTI_EEVEELUTIONS]               = MULTICHOICE(sMultichoiceList_Eeveelutions),
     [MULTI_ISLAND_23]                  = MULTICHOICE(sMultichoiceList_Island23),

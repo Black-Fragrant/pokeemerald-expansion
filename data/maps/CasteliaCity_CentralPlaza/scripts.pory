@@ -1,1 +1,25 @@
 mapscripts CasteliaCity_CentralPlaza_MapScripts {}
+
+script CasteliaCity_CentralPlaza_EventScript_Grandpa
+{
+    msgbox("Landscapes with people...\n"
+        "Landscapes with Pokémon...\p"
+        "Each has power and beauty,\n"
+        "compelling me to draw them both.\p"
+        "Oh, my studio is down Mode Street a bit.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_ModeStreetSign
+{
+    msgbox("Ahead: Mode Street\n"
+        "Casteliacones and Studio Castelia", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_CentralPlazaSign
+{
+    msgbox("Castelia City, Central Plaza\n"
+        "Ahead: Route 4", MSGBOX_SIGN)
+    end
+}

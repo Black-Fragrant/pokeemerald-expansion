@@ -1,1 +1,425 @@
-mapscripts CasteliaCity_ModeStreet_MapScripts {}
+mapscripts CasteliaCity_ModeStreet_MapScripts 
+{
+        MAP_SCRIPT_ON_TRANSITION : CasteliaCity_ModeStreet_On_Transition
+}
+
+script CasteliaCity_ModeStreet_On_Transition
+{
+    callnative(DebugMenu_CalculateTime)
+	call_if_eq(VAR_DAY_OF_WEEK, 2, CasteliaCity_ModeStreet_EventScript_Tuesday)
+	call_if_unset(FLAG_DAILY_CASTELIACONE, CasteliaCity_ModeStreet_EventScript_AdjustCrowdVisibility)
+	call_if_set(FLAG_DAILY_CASTELIACONE, CasteliaCity_ModeStreet_EventScript_AdjustCrowdVisibility2)
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Tuesday
+{
+	dotimebasedevents
+	call_if_unset(FLAG_DAILY_CASTELIACONE, CasteliaCity_ModeStreet_EventScript_ResetQueueVar)
+    return
+}
+
+script CasteliaCity_ModeStreet_EventScript_ResetQueueVar
+{
+    setvar(VAR_CASTELIA_CASTELIACONE, 1)
+    return
+}
+
+script CasteliaCity_ModeStreet_EventScript_AdjustCrowdVisibility
+{
+    setflag(FLAG_TEMP_16)
+    setflag(FLAG_TEMP_17)
+    setflag(FLAG_TEMP_18)
+    return()
+}
+
+script CasteliaCity_ModeStreet_EventScript_AdjustCrowdVisibility2
+{
+    setflag(FLAG_TEMP_11)
+    setflag(FLAG_TEMP_12)
+    setflag(FLAG_TEMP_13)
+    setflag(FLAG_TEMP_14)
+    setflag(FLAG_TEMP_15)
+    clearflag(FLAG_TEMP_16)
+    clearflag(FLAG_TEMP_17)
+    clearflag(FLAG_TEMP_18)
+	setobjectxyperm(LOCALID_CASTELIA_MS_QUEUE6, 10, 19)
+    setobjectmovementtype (LOCALID_CASTELIA_MS_QUEUE6, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectxyperm(LOCALID_CASTELIA_MS_QUEUE7, 10, 20)
+	setobjectxyperm(LOCALID_CASTELIA_MS_QUEUE8, 10, 21)
+    return()
+}
+
+script CasteliaCity_ModeStreet_EventScript_CasteliaConeSign
+{
+    msgbox("Castelia's Famous Casteliacone\n"
+        "Closed during Winter", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_StudioSign
+{
+    msgbox("Studio Castelia", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue1_Businessman
+{
+    lock
+    msgbox("I finally get to eat it!\n"
+    "It was worth lining up!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE1, moves(walk_in_place_left))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue2_Beauty
+{
+    lock
+    msgbox("I came all the way from Accumula Town\n"
+    "just to have a taste!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue2_Beauty2
+{
+    lock
+    msgbox("I came all the way from Accumula Town\n"
+    "just to have a taste!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(walk_in_place_left))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue3_OfficeLady
+{
+    lock
+    msgbox("These sweets are mega popular!!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue4_OfficeLady
+{
+    lock
+    msgbox("That's a popular store for you!\n"
+    "It's amazingly crowded!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue5_Businessman
+{
+    lock
+    callnative(DebugMenu_CalculateTime)
+	goto_if_ne(VAR_DAY_OF_WEEK, 2, CasteliaCity_ModeStreet_EventScript_Queue5_Businessman_NoPurchase)
+	goto_if_set(FLAG_DAILY_CASTELIACONE, CasteliaCity_ModeStreet_EventScript_Queue5_Businessman_NoPurchase)
+    faceplayer
+    goto(CasteliaCity_ModeStreet_EventScript_DoYouWantToLineUp)
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue5_Businessman2
+{
+    lock
+    faceplayer
+    msgbox("Huh? Oh, here you can buy the dessert\n"
+        "that everyone in Castelia City\l"
+        "is talking about!\p"
+        "But it looks like I got the last one.\n"
+        "They're sold out for today!\p"
+        "Try again on a different day!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Queue5_Businessman_NoPurchase
+{
+    msgbox("Huh? Oh, here you can buy the dessert\n"
+        "that everyone in Castelia City\l"
+        "is talking about!\p"
+        "But it looks like I got the last one.\n"
+        "They're sold out for today!\p"
+        "Try again on a different day!", MSGBOX_NPC, TRUE)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_Trigger
+{
+    lock
+    callnative(DebugMenu_CalculateTime)
+	goto_if_ne(VAR_DAY_OF_WEEK, 2, CasteliaCity_ModeStreet_EventScript_TriggeredOnOtherDays)
+	playse(SE_PIN)
+	applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
+    goto(CasteliaCity_ModeStreet_EventScript_DoYouWantToLineUp)
+}
+
+script CasteliaCity_ModeStreet_EventScript_TriggeredOnOtherDays
+{
+    setvar(VAR_CASTELIA_CASTELIACONE, 0)
+    release()
+    end()
+}
+
+script CasteliaCity_ModeStreet_EventScript_DoYouWantToLineUp
+{
+    msgbox("Huh? Oh, here you can buy the dessert\n"
+    "that everyone in Castelia City\l"
+    "is talking about!\p"
+    "Are you going to get in line?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_MS_QUEUE5)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ModeStreet_EventScript_LineUp)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("I see. Well, it is crowded.\p"
+    "But just between you and me,\n"
+    "it's actually pretty empty today.\p"
+    "Usually, it's sold out by now.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_QUEUE5)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_up))
+    waitmovement(0)
+    release
+    end
+}
+
+script CasteliaCity_ModeStreet_EventScript_LineUp_Pos1
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down, walk_right, walk_in_place_up))
+    waitmovement(0)
+    return()
+}
+
+script CasteliaCity_ModeStreet_EventScript_LineUp_Pos2
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down, walk_left, walk_in_place_up))
+    waitmovement(0)
+    return()
+}
+
+script CasteliaCity_ModeStreet_EventScript_LineUp
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("I see!\n"
+        "The line gets really long!\p"
+        "But it's definitely delicious.\n"
+        "It's worth lining up!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_QUEUE5)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_up))
+    waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 9, CasteliaCity_ModeStreet_EventScript_LineUp_Pos1)
+	call_if_eq (VAR_TEMP_0, 11, CasteliaCity_ModeStreet_EventScript_LineUp_Pos2)
+    addobject(LOCALID_CASTELIA_MS_QUEUE6)
+    clearflag(FLAG_TEMP_16)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(delay_16, walk_up))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(walk_up * 4, walk_left, walk_up * 2))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE1, moves(walk_right, walk_down * 10))
+    waitmovement(0)
+    removeobject(LOCALID_CASTELIA_MS_QUEUE1)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(walk_in_place_left))
+    waitmovement(0)
+    delay(20)
+    addobject(LOCALID_CASTELIA_MS_QUEUE7)
+    clearflag(FLAG_TEMP_17)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE7, moves(walk_up * 3, walk_left, walk_up * 2))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(walk_right, walk_down * 9))
+    waitmovement(0)
+    removeobject(LOCALID_CASTELIA_MS_QUEUE2)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(walk_in_place_left))
+    waitmovement(0)
+    delay(20)
+    addobject(LOCALID_CASTELIA_MS_QUEUE8)
+    clearflag(FLAG_TEMP_18)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE7, moves(delay_16, walk_up))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(walk_up * 2, walk_left, walk_up * 2))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(walk_right, walk_down * 8))
+    waitmovement(0)
+    removeobject(LOCALID_CASTELIA_MS_QUEUE3)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(walk_in_place_left))
+    waitmovement(0)
+    delay(20)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE7, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(delay_16, walk_up))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(walk_right, walk_down * 8))
+    waitmovement(0)
+    removeobject(LOCALID_CASTELIA_MS_QUEUE4)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_left))
+    waitmovement(0)
+    delay(20)
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE7, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(delay_16, walk_up))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_right, walk_down * 8))
+    waitmovement(0)
+    removeobject(LOCALID_CASTELIA_MS_QUEUE5)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    waitmovement(0)
+    showmoneybox(0, 0)
+	msgbox("How about Castelia City's famous\n"
+        "Casteliacone!\p"
+        "Would you like to buy some?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+	multichoice(20, 3, MULTI_CASTELIA_CONES, 1)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Cone)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Dozen)}
+    goto(CasteliaCity_ModeStreet_EventScript_Reconsider)
+}
+
+script CasteliaCity_ModeStreet_EventScript_Reconsider
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Oh, you really aren't going to buy one?\n"
+    "They'll sell out soon!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+	multichoice(20, 3, MULTI_CASTELIA_CONES, 1)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Cone)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Dozen)}
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Even though you waited in line...\n"
+        "Well, please come again, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_ModeStreet_EventScript_FinishBuyingCones)
+}
+
+script CasteliaCity_ModeStreet_EventScript_FinishBuyingCones
+{
+    applymovement(LOCALID_PLAYER, moves(walk_right))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE7, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(delay_16, walk_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up, walk_in_place_left))
+    waitmovement(0)
+    setvar(VAR_CASTELIA_CASTELIACONE, 0)
+    setflag(FLAG_DAILY_CASTELIACONE)
+    delay(20)
+    release()
+    end()
+}
+
+script CasteliaCity_ModeStreet_EventScript_Purchase1Cone
+{
+    destroy_speech_bubble()
+    closemessage
+    checkmoney(100)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_ModeStreet_EventScript_NotEnoughMoney100)
+	removemoney(100)
+	playse(SE_SHOP)
+	updatemoneybox()
+    waitse()
+    msgbox("Thank you very much!\p"
+        "We hope you enjoy the cute appearance\n"
+        "and the naive flavor!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+    destroy_speech_bubble()
+    closemessage()
+	hidemoneybox
+    giveitem(ITEM_CASTELIACONE, 1)
+    closemessage()
+    delay(20)
+    call_if_eq (VAR_RESULT, FALSE, CasteliaCity_ModeStreet_EventScript_BagIsFull_Continue)
+    goto(CasteliaCity_ModeStreet_EventScript_FinishBuyingCones)
+}
+
+script CasteliaCity_ModeStreet_EventScript_Purchase1Dozen
+{
+    destroy_speech_bubble()
+    closemessage
+    checkmoney(1200)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_ModeStreet_EventScript_NotEnoughMoney1200)
+	removemoney(1200)
+	playse(SE_SHOP)
+	updatemoneybox()
+    waitse()
+    msgbox("Thank you very much!\p"
+        "We hope you enjoy the cute appearance\n"
+        "and the naive flavor!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+    destroy_speech_bubble()
+    closemessage()
+	hidemoneybox
+    giveitem(ITEM_CASTELIACONE, 12)
+    closemessage()
+    delay(20)
+    call_if_eq (VAR_RESULT, FALSE, CasteliaCity_ModeStreet_EventScript_BagIsFull_Continue)
+    goto(CasteliaCity_ModeStreet_EventScript_FinishBuyingCones)
+}
+
+script CasteliaCity_ModeStreet_EventScript_BagIsFull_Continue
+{
+    msgbox (gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+    return()
+}
+
+script CasteliaCity_ModeStreet_EventScript_NotEnoughMoney100
+{
+    msgbox("Oh... You don't have enough money.\p"
+        "Please come back at any time!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+    destroy_speech_bubble()
+    closemessage()
+    goto(CasteliaCity_ModeStreet_EventScript_FinishBuyingCones)
+}
+
+script CasteliaCity_ModeStreet_EventScript_NotEnoughMoney1200
+{
+    checkmoney(100)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_ModeStreet_EventScript_NotEnoughMoney100)
+    msgbox("Oh... You don't have enough money.\n"
+        "for a dozen, how about just one?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_MS_SELLER)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ModeStreet_EventScript_Purchase1Cone)
+    goto(CasteliaCity_ModeStreet_EventScript_ReconsiderEvenNoMoney)
+}
+
+script CasteliaCity_ModeStreet_EventScript_ReconsiderEvenNoMoney
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Oh, you really aren't going to buy one?\n"
+    "They'll sell out soon!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_MS_SELLER)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ModeStreet_EventScript_Purchase1Cone)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Even though you waited in line...\n"
+        "Well, please come again, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_ModeStreet_EventScript_FinishBuyingCones)
+}
+
+

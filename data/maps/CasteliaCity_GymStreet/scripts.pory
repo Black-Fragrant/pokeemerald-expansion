@@ -1,1 +1,51 @@
 mapscripts CasteliaCity_GymStreet_MapScripts {}
+
+script CasteliaCity_GymStreet_EventScript_Businessman_Top
+{
+    msgbox("Being a Pokémon Trainer doesn't\n"
+        "necessarily make someone stronger.\p"
+        "But everyone can love their Pokémon\n"
+        "and enjoy playing together.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_OfficeLady
+{
+    msgbox("My Pokémon is soooo cute!\p"
+        "It always makes me feel better\n"
+        "when I come home!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Businessman_Bottom
+{
+    msgbox("I have six Poké Balls in my Bag!\p"
+        "But, really, what I want is\n"
+        "Great Balls and Ultra Balls!\p"
+        "You can't buy them at the Poké Mart\n"
+        "until you've collected Badges, though.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_AceTrainer
+{
+    msgbox("Before challenging the Gym, you'll want\n"
+        "to be sure you have enough Potions.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Veteran
+{
+    msgbox("What Gym Leaders test is the strength\n"
+        "of the bond between the challenger\l"
+        "and his or her Pokémon!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_GymSign
+{
+    msgbox("Castelia City Pokémon Gym\n"
+        "Leader: Burgh\l"
+        "Premier Insect Artist", MSGBOX_SIGN)
+    end
+}

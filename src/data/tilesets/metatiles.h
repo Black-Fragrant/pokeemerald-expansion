@@ -507,3 +507,6 @@ const u16 gMetatileAttributes_CasteliaGym[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_CafeSonata[] = INCBIN_U16("data/tilesets/secondary/cafe_sonata/metatiles.bin");
 const u16 gMetatileAttributes_CafeSonata[] = INCBIN_U16("data/tilesets/secondary/cafe_sonata/metatile_attributes.bin");
+
+const u16 gMetatiles_Route4[] = INCBIN_U16("data/tilesets/secondary/route_4/metatiles.bin");
+const u16 gMetatileAttributes_Route4[] = INCBIN_U16("data/tilesets/secondary/route_4/metatile_attributes.bin");
