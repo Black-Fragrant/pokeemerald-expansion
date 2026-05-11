@@ -585,6 +585,25 @@ u32 BattleUI_CreateGimmickTriggerSprite(enum BattlerId battler)
     return CreateSprite(&sBWBattleUI_GimmickTriggerTemplate, 40 + 16, 112 + 16, 0);
 }
 
+void BattleUI_GetGimmickIndicatorCoords(enum BattlerPosition position, s16 *x, s16 *y)
+{
+    *x = sBWBattleUI_GimmickIndicatorCoords[position][0];
+    *y = sBWBattleUI_GimmickIndicatorCoords[position][1];
+}
+
+s32 BattleUI_GetGimmickIndicatorXOffset(enum BattlerId battler)
+{
+    s32 x = 0;
+    u32 lvl = GetMonData(GetBattlerMon(battler), MON_DATA_LEVEL);
+
+    if (lvl < 10)
+        x += 8;
+    else if (lvl < 100)
+        x += 4;
+
+    return x;
+}
+
 // local
 static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 {

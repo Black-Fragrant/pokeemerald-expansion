@@ -138,6 +138,15 @@ static const s16 sBWBattleUI_AbilityPopUpCoords[BATTLE_COORDS_COUNT][MAX_BATTLER
     }
 };
 
+// positioned to left-most possible coord (lvl 100)
+static const s8 sBWBattleUI_GimmickIndicatorCoords[MAX_BATTLERS_COUNT][2] =
+{
+    [B_POSITION_PLAYER_LEFT]    = { 47, -11 },
+    [B_POSITION_OPPONENT_LEFT]  = { 33, -11 },
+    [B_POSITION_PLAYER_RIGHT]   = { 47, -11 },
+    [B_POSITION_OPPONENT_RIGHT] = { 33, -11 },
+};
+
 static const struct CompressedSpriteSheet sBWBattleUI_CursorSheet =
 {
     .data = (const u32[])INCBIN_U32("graphics/battle_interface/bw/cursor.4bpp.smol"),
