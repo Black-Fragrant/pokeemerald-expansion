@@ -78,6 +78,7 @@ static EWRAM_INIT struct {
 // declarations
 static void SpriteCB_BattleUICursor(struct Sprite *);
 static void SpriteCB_GimmickTrigger(struct Sprite *);
+static void SpriteCB_MoveInfoTrigger(struct Sprite *);
 
 static void Task_BattleUITrackAbilityPopUpGfx(u8);
 static void Task_BattleUIHandleAbilityPopUp(u8);
@@ -582,7 +583,7 @@ u32 BattleUI_CreateGimmickTriggerSprite(enum BattlerId battler)
     BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_GIMMICK_TRIGGER_MEGA + gimmick, TAG_GIMMICK_TRIGGER_TILE);
     BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_GIMMICK_TRIGGER_MEGA + gimmick, TAG_GIMMICK_TRIGGER_PAL);
 
-    return CreateSprite(&sBWBattleUI_GimmickTriggerTemplate, 40 + 16, 112 + 16, 0);
+    return CreateSprite(&sBWBattleUI_GimmickTriggerTemplate, 32 + 16, 112 + 16, 0);
 }
 
 void BattleUI_GetGimmickIndicatorCoords(enum BattlerPosition position, s16 *x, s16 *y)
@@ -602,6 +603,20 @@ s32 BattleUI_GetGimmickIndicatorXOffset(enum BattlerId battler)
         x += 4;
 
     return x;
+}
+
+u32 BattleUI_CreateMoveInfoTriggerSprite(void)
+{
+    BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_MOVE_INFO_TRIGGER, MOVE_INFO_WINDOW_TAG);
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_MOVE_INFO_TRIGGER, MOVE_INFO_WINDOW_TAG);
+
+    u32 spriteId = CreateSprite(&sBWBattleUI_MoveInfoTriggerTemplate, 0 + 16, 112 + 16, 0);
+    if (B_MOVE_DESCRIPTION_BUTTON == R_BUTTON)
+        StartSpriteAnim(&gSprites[spriteId], TRUE);
+    else
+        StartSpriteAnim(&gSprites[spriteId], FALSE);
+
+    return spriteId;
 }
 
 // local
@@ -672,6 +687,29 @@ static void SpriteCB_GimmickTrigger(struct Sprite *sprite)
 
     if (sprite->y2 != target)
         sprite->y2 += speed;
+}
+
+// Window Trigger (shared w/ last ball window)
+#define sWT_Hide        data[0]
+#define sWT_Timer       data[1]
+#define sWT_Moving      data[2]
+#define sWT_Bounce      data[3] // 0 = Bounce down; 1 = Bounce up
+
+static void SpriteCB_MoveInfoTrigger(struct Sprite *sprite)
+{
+    if (sprite->sWT_Hide)
+    {
+        if (sprite->y2 < 0)
+            sprite->y2 += 8;
+
+        if (sprite->y2 == 0)
+            DestroyMoveInfoWinGfx(sprite);
+    }
+    else
+    {
+        if (sprite->y2 > TILE_TO_PIXELS(-3))
+            sprite->y2 -= 8;
+    }
 }
 
 static void Task_BattleUITrackAbilityPopUpGfx(u8 taskId)

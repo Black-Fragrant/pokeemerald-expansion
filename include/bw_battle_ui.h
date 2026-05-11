@@ -30,6 +30,8 @@ enum BWBattleUISpriteGraphicsType
     BUI_SPRITE_GFX_GIMMICK_TRIGGER_DYNAMAX,
     BUI_SPRITE_GFX_GIMMICK_TRIGGER_TERA,
 
+    BUI_SPRITE_GFX_MOVE_INFO_TRIGGER,
+
     NUM_BUI_SPRITE_GFX
 };
 
@@ -48,6 +50,8 @@ enum BWBattleUISpritePaletteType
     BUI_SPRITE_PAL_GIMMICK_TRIGGER_Z_MOVE,
     BUI_SPRITE_PAL_GIMMICK_TRIGGER_DYNAMAX,
     BUI_SPRITE_PAL_GIMMICK_TRIGGER_TERA,
+
+    BUI_SPRITE_PAL_MOVE_INFO_TRIGGER,
 
     NUM_BUI_SPRITE_PALS
 };
@@ -90,5 +94,7 @@ u32 BattleUI_CreateGimmickTriggerSprite(enum BattlerId);
 
 s32 BattleUI_GetGimmickIndicatorXOffset(enum BattlerId);
 void BattleUI_GetGimmickIndicatorCoords(enum BattlerPosition, s16 *, s16 *);
+
+u32 BattleUI_CreateMoveInfoTriggerSprite(void);
 
 #endif // GUARD_BW_BATTLE_UI_H

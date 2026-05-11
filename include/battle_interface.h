@@ -96,6 +96,8 @@ enum
 #define TAG_MISC_INDICATOR_PAL          0xD779 // Alpha, Omega, and Dynamax indicators use the same palette as each of them only uses 4 different colors.
 #define TAG_TERA_INDICATOR_PAL          0xD77A
 
+#define MOVE_INFO_WINDOW_TAG 0xE722 // bwBattleUI
+
 // start bwBattleUI
 enum BattleHealthboxElements
 {
@@ -149,5 +151,6 @@ void TryToHideMoveInfoWindow(void);
 void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus);
 void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon);
 bool32 IsAnyAbilityPopUpActive(void); // bwBattleUI
+void DestroyMoveInfoWinGfx(struct Sprite *sprite); // bwBattleUI
 
 #endif // GUARD_BATTLE_INTERFACE_H
