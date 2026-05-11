@@ -109,8 +109,8 @@ static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_C
     [BATTLE_COORDS_DOUBLES] =
     {
         [B_POSITION_PLAYER_LEFT]    = { 128, 56  },
-        [B_POSITION_PLAYER_RIGHT]   = { 128, 82  },
         [B_POSITION_OPPONENT_LEFT]  = { 0,   0   },
+        [B_POSITION_PLAYER_RIGHT]   = { 128, 82  },
         [B_POSITION_OPPONENT_RIGHT] = { 0,   26  },
     },
 };
@@ -125,8 +125,8 @@ static const s16 sBWBattleUI_HealthbarCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_C
     [BATTLE_COORDS_DOUBLES] =
     {
         [B_POSITION_PLAYER_LEFT]    = { 164, 66  },
-        [B_POSITION_PLAYER_RIGHT]   = { 164, 92  },
         [B_POSITION_OPPONENT_LEFT]  = { 28,  10  },
+        [B_POSITION_PLAYER_RIGHT]   = { 164, 92  },
         [B_POSITION_OPPONENT_RIGHT] = { 28,  36  },
     },
 };
@@ -141,8 +141,8 @@ static const s16 sBWBattleUI_AbilityPopUpCoords[BATTLE_COORDS_COUNT][MAX_BATTLER
     [BATTLE_COORDS_DOUBLES] =
     {
         [B_POSITION_PLAYER_LEFT]    = { 0,   48  },
-        [B_POSITION_PLAYER_RIGHT]   = { 0,   80  },
         [B_POSITION_OPPONENT_LEFT]  = { 144, 8   },
+        [B_POSITION_PLAYER_RIGHT]   = { 0,   80  },
         [B_POSITION_OPPONENT_RIGHT] = { 144, 32  },
     }
 };
