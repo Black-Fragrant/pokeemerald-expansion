@@ -140,10 +140,10 @@ static const s16 sBWBattleUI_AbilityPopUpCoords[BATTLE_COORDS_COUNT][MAX_BATTLER
     },
     [BATTLE_COORDS_DOUBLES] =
     {
-        [B_POSITION_PLAYER_LEFT]    = { 24,  80  },
-        [B_POSITION_PLAYER_RIGHT]   = { 178, 19  },
-        [B_POSITION_OPPONENT_LEFT]  = { 24,  97  },
-        [B_POSITION_OPPONENT_RIGHT] = { 178, 36  },
+        [B_POSITION_PLAYER_LEFT]    = { 0,   48  },
+        [B_POSITION_PLAYER_RIGHT]   = { 0,   80  },
+        [B_POSITION_OPPONENT_LEFT]  = { 144, 8   },
+        [B_POSITION_OPPONENT_RIGHT] = { 144, 32  },
     }
 };
 
