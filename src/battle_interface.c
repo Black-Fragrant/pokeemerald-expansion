@@ -2433,6 +2433,8 @@ enum
     APU_STATE_END
 };
 
+// start bwBattleUI
+/*
 enum
 {
     TAG_ABILITY_POP_UP = 0xD720, // Only used for the SpritePalette, the rest below is for the SpriteSheets.
@@ -2442,6 +2444,8 @@ enum
     TAG_ABILITY_POP_UP_OPPONENT2,
     TAG_LAST_BALL_WINDOW,
 };
+*/
+// end bwBattleUI
 
 static const u32 sAbilityPopUpGfx[] = INCGFX_U32("graphics/battle_interface/ability_pop_up.png", ".4bpp", "-mwidth 8 -mheight 4");
 static const u16 sAbilityPopUpPalette[] = INCGFX_U16("graphics/battle_interface/ability_pop_up.pal", ".gbapal");
@@ -2929,6 +2933,27 @@ void TryAddLastUsedBallItemSprites(void)
     if (!CanThrowLastUsedBall())
         return;
 
+    // start bwBattleUI
+    if (BW_BATTLE_UI)
+    {
+        // window
+        if (gBattleStruct->ballSpriteIds[1] == MAX_SPRITES)
+            gBattleStruct->ballSpriteIds[1] = BattleUI_CreateLastBallTriggerSprite();
+
+        gSprites[gBattleStruct->ballSpriteIds[1]].sHide = FALSE;
+        if (gBattleStruct->moveInfoSpriteId != MAX_SPRITES)
+            gSprites[gBattleStruct->moveInfoSpriteId].sHide = TRUE;
+
+        // icon
+        if (gBattleStruct->ballSpriteIds[0] == MAX_SPRITES)
+            gBattleStruct->ballSpriteIds[0] = AddItemIconSprite(102, 102, gBallToDisplay);
+
+        BattleUI_SetLastBallIconAttributes(&gSprites[gBattleStruct->ballSpriteIds[0]]);
+        gLastUsedBallMenuPresent = TRUE;
+        return;
+    }
+    // end bwBattleUI
+
     // ball
     if (gBattleStruct->ballSpriteIds[0] == MAX_SPRITES)
     {
@@ -2958,7 +2983,10 @@ void TryAddLastUsedBallItemSprites(void)
         ArrowsChangeColorLastBallCycle(0); //Default the arrows to be invisible
 }
 
-static void DestroyLastUsedBallWinGfx(struct Sprite *sprite)
+// start bwBattleUI
+//static void DestroyLastUsedBallWinGfx(struct Sprite *sprite)
+void DestroyLastUsedBallWinGfx(struct Sprite *sprite)
+// end bwBattleUI
 {
     FreeSpriteTilesByTag(TAG_LAST_BALL_WINDOW);
     if (GetSpriteTileStartByTag(MOVE_INFO_WINDOW_TAG) == 0xFFFF)
@@ -2967,7 +2995,10 @@ static void DestroyLastUsedBallWinGfx(struct Sprite *sprite)
     gBattleStruct->ballSpriteIds[1] = MAX_SPRITES;
 }
 
-static void DestroyLastUsedBallGfx(struct Sprite *sprite)
+// start bwBattleUI
+//static void DestroyLastUsedBallGfx(struct Sprite *sprite)
+void DestroyLastUsedBallGfx(struct Sprite *sprite)
+// end bwBattleUI
 {
     FreeSpriteTilesByTag(102);
     FreeSpritePaletteByTag(102);
@@ -3149,6 +3180,14 @@ static void SpriteCB_LastUsedBallBounce(struct Sprite *sprite)
 
 static void Task_BounceBall(u8 taskId)
 {
+    // start bwBattleUI
+    if (BW_BATTLE_UI)
+    {
+        gTasks[taskId].func = Task_BattleUIBounceLastBallIcon;
+        return;
+    }
+    // end bwBattleUI
+
     struct Sprite *sprite = &gSprites[gBattleStruct->ballSpriteIds[0]];
     struct Task *task = &gTasks[taskId];
     switch (task->sState)
@@ -3210,6 +3249,18 @@ void SwapBallToDisplay(bool32 sameBall)
 void ArrowsChangeColorLastBallCycle(bool32 showArrows)
 {
 #if B_LAST_USED_BALL == TRUE && B_LAST_USED_BALL_CYCLE == TRUE
+    // start bwBattleUI
+    // we use sprite anim instead
+    if (BW_BATTLE_UI)
+    {
+        if (gBattleStruct->ballSpriteIds[1] == MAX_SPRITES)
+            return;
+
+        StartSpriteAnimIfDifferent(&gSprites[gBattleStruct->ballSpriteIds[1]], showArrows);
+        return;
+    }
+    // end bwBattleUI
+
     u16 paletteNum = 16 + gSprites[gBattleStruct->ballSpriteIds[1]].oam.paletteNum;
     struct PlttData *defaultPlttArrow;
     struct PlttData *defaultPlttOutline;

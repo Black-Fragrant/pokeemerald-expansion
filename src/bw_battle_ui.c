@@ -18,6 +18,7 @@
 #include "task.h"
 #include "sound.h"
 #include "gpu_regs.h"
+#include "item_icon.h"
 #include "test_runner.h"
 #include "bw_battle_ui.h"
 #include "constants/songs.h"
@@ -34,6 +35,28 @@
 #define sCursorMode                 data[0]
 #define sBattler                    data[1]
 
+// these prob should be #define'd globally instead?
+#define hMain_HealthBarSpriteId     data[5]
+#define hMain_Battler               data[6]
+
+#define hBar_HealthBoxSpriteId      data[5]
+#define hBar_Data6                  data[6]
+
+#define sGT_Battler        data[0]
+#define sGT_Hide           data[1]
+
+// Window Trigger (shared w/ last ball window)
+#define sWT_Hide        data[0]
+
+// item icon only
+#define sLBI_Y2         data[1]
+#define sLBI_Moving     data[2]
+#define sLBI_Bounce     data[3]
+
+#define tLBI_State      data[0]
+#define tLBI_SameBall   data[1]
+#define tLBI_Y2         data[2]
+
 #define BUI_ACTION_CURSOR_MAX_X     (TILE_TO_PIXELS( 7) - 3)
 #define BUI_ACTION_CURSOR_MAX_Y     (TILE_TO_PIXELS( 2) - 4)
 
@@ -49,8 +72,6 @@
 enum BattleUISpriteTags
 {
     TAG_CURSOR = 0x9999,
-    TAG_ABILITY_POP_UP,
-    TAG_APU_BATTLER,
 };
 
 enum BattleUITextColors
@@ -79,6 +100,9 @@ static EWRAM_INIT struct {
 static void SpriteCB_BattleUICursor(struct Sprite *);
 static void SpriteCB_GimmickTrigger(struct Sprite *);
 static void SpriteCB_MoveInfoTrigger(struct Sprite *);
+static void SpriteCB_LastBallTrigger(struct Sprite *);
+static void SpriteCB_LastBallIcon(struct Sprite *);
+static void SpriteCB_BounceLastBallIcon(struct Sprite *);
 
 static void Task_BattleUITrackAbilityPopUpGfx(u8);
 static void Task_BattleUIHandleAbilityPopUp(u8);
@@ -104,6 +128,7 @@ static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum Ability, u32, u32);
 static void BattleUI_CopyElementToSprite(u32, const u32 *, u32, u32);
 static void BattleUI_AddTextPrinter(u32, u32, u32, u32, enum BattleUITextColors, const u8 *);
 static void BattleUI_AddSpriteTextPrinter(u32, u32, u32, u32, enum BattleUITextColors, const u8 *);
+static bool32 BattleUI_PlayVerticalSlideAnim(bool32, s16 *, s32, s32);
 
 #include "data/bw_battle_ui.h"
 
@@ -288,13 +313,6 @@ s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPositio
 
     return sBWBattleUI_HealthboxCoords[index][position][coord] + offset;
 }
-
-// these prob should be #define'd globally instead?
-#define hMain_HealthBarSpriteId     data[5]
-#define hMain_Battler               data[6]
-
-#define hBar_HealthBoxSpriteId      data[5]
-#define hBar_Data6                  data[6]
 
 #define HEALTHBOX_FLAG_CURRENT_HP            (1 << HEALTHBOX_CURRENT_HP)
 #define HEALTHBOX_FLAG_MAX_HP                (1 << HEALTHBOX_MAX_HP)
@@ -516,7 +534,7 @@ void BattleUI_CreateAbilityPopUp(enum BattlerId battler, enum Ability ability)
     }
 
     bool32 playerSide = IsOnPlayerSide(battler);
-    u32 tileTag = TAG_APU_BATTLER + battler;
+    u32 tileTag = TAG_ABILITY_POP_UP_PLAYER1 + battler;
     const u32 *gfx = sBWBattleUI_AbilityPopUpGfx;
     if (!playerSide) gfx += TILE_TO_PIXELS(64);
 
@@ -608,15 +626,88 @@ s32 BattleUI_GetGimmickIndicatorXOffset(enum BattlerId battler)
 u32 BattleUI_CreateMoveInfoTriggerSprite(void)
 {
     BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_MOVE_INFO_TRIGGER, MOVE_INFO_WINDOW_TAG);
-    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_MOVE_INFO_TRIGGER, MOVE_INFO_WINDOW_TAG);
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_TEXTBOX_0, TAG_ABILITY_POP_UP);
 
-    u32 spriteId = CreateSprite(&sBWBattleUI_MoveInfoTriggerTemplate, 0 + 16, 112 + 16, 0);
-    if (B_MOVE_DESCRIPTION_BUTTON == R_BUTTON)
-        StartSpriteAnim(&gSprites[spriteId], TRUE);
-    else
-        StartSpriteAnim(&gSprites[spriteId], FALSE);
+    return CreateSprite(&sBWBattleUI_MoveInfoTriggerTemplate, 0 + 16, 112 + 16, 0);
+}
 
-    return spriteId;
+u32 BattleUI_CreateLastBallTriggerSprite(void)
+{
+    BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_LAST_BALL_TRIGGER, TAG_LAST_BALL_WINDOW);
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_TEXTBOX_0, TAG_ABILITY_POP_UP);
+
+    return CreateSprite(&sBWBattleUI_LastBallTriggerTemplate, 0 + 16, 112 + 32, 1);
+}
+
+void BattleUI_SetLastBallIconAttributes(struct Sprite *sprite)
+{
+    sprite->x = (-1) + 16;
+    sprite->y = 112 + 16;
+    sprite->sWT_Hide = FALSE;
+    sprite->callback = SpriteCB_LastBallIcon;
+}
+
+enum
+{
+    LBI_STATE_BOUNCE_UP,
+    LBI_STATE_DESTROY,
+    LBI_STATE_CREATE,
+    LBI_STATE_BOUNCE_DOWN,
+    LBI_STATE_FINISH
+};
+
+void Task_BattleUIBounceLastBallIcon(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    struct Sprite *sprite = &gSprites[gBattleStruct->ballSpriteIds[0]];
+
+    switch (tLBI_State)
+    {
+    case LBI_STATE_BOUNCE_UP:
+        sprite->sLBI_Y2 = sprite->y2;
+        sprite->sLBI_Bounce = TRUE;
+        sprite->sLBI_Moving = TRUE;
+        sprite->callback = SpriteCB_BounceLastBallIcon;
+        if (tLBI_SameBall)
+            tLBI_State = LBI_STATE_BOUNCE_DOWN;
+        else
+            tLBI_State = LBI_STATE_DESTROY;
+        break;
+    case LBI_STATE_DESTROY:
+        if (sprite->sLBI_Moving) return;
+        tLBI_Y2 = sprite->sLBI_Y2;
+        DestroyLastUsedBallGfx(sprite);
+        // fallthrough
+    case LBI_STATE_CREATE:
+        gBattleStruct->ballSpriteIds[0] = AddItemIconSprite(102, 102, gBallToDisplay);
+        sprite = &gSprites[gBattleStruct->ballSpriteIds[0]];
+        BattleUI_SetLastBallIconAttributes(sprite);
+        sprite->sLBI_Y2 = tLBI_Y2;
+        sprite->y2 = tLBI_Y2 - 2; // bounced up
+        sprite->callback = SpriteCallbackDummy;
+        // fallthrough
+    case LBI_STATE_BOUNCE_DOWN:
+        if (sprite->sLBI_Moving) return;
+        sprite->sLBI_Bounce = FALSE;
+        sprite->sLBI_Moving = TRUE;
+        sprite->callback = SpriteCB_BounceLastBallIcon;
+        tLBI_State = LBI_STATE_FINISH;
+        break;
+    case LBI_STATE_FINISH:
+        if (sprite->sLBI_Moving) return;
+        sprite->y2 = sprite->sLBI_Y2;
+        sprite->callback = SpriteCB_LastBallIcon;
+        DestroyTask(taskId);
+        break;
+    }
+
+    // Check if the R button was released before the animation was complete
+    if (!gLastUsedBallMenuPresent)
+    {
+        sprite->y2 = sprite->sLBI_Y2;
+        sprite->callback = SpriteCB_LastBallIcon;
+        DestroyTask(taskId);
+    }
 }
 
 // local
@@ -667,49 +758,44 @@ static void SpriteCB_BattleUICursor(struct Sprite *sprite)
     }
 }
 
-#define sGT_Battler        data[0]
-#define sGT_Hide           data[1]
 static void SpriteCB_GimmickTrigger(struct Sprite *sprite)
 {
-    s16 *data = sprite->data;
-    s32 target, speed;
-
-    if (sGT_Hide)
-    {
-        target = 0;
-        speed = 8;
-    }
-    else
-    {
-        target = -24;
-        speed = -8;
-    }
-
-    if (sprite->y2 != target)
-        sprite->y2 += speed;
+    BattleUI_PlayVerticalSlideAnim(sprite->sGT_Hide, &sprite->y2, -24, -12);
 }
-
-// Window Trigger (shared w/ last ball window)
-#define sWT_Hide        data[0]
-#define sWT_Timer       data[1]
-#define sWT_Moving      data[2]
-#define sWT_Bounce      data[3] // 0 = Bounce down; 1 = Bounce up
 
 static void SpriteCB_MoveInfoTrigger(struct Sprite *sprite)
 {
-    if (sprite->sWT_Hide)
-    {
-        if (sprite->y2 < 0)
-            sprite->y2 += 8;
+    bool32 res = BattleUI_PlayVerticalSlideAnim(sprite->sWT_Hide, &sprite->y2, TILE_TO_PIXELS(-3), -12);
+    if (sprite->sWT_Hide && res)
+        DestroyMoveInfoWinGfx(sprite);
+}
 
-        if (sprite->y2 == 0)
-            DestroyMoveInfoWinGfx(sprite);
-    }
+static void SpriteCB_LastBallTrigger(struct Sprite *sprite)
+{
+    bool32 res = BattleUI_PlayVerticalSlideAnim(sprite->sWT_Hide, &sprite->y2, TILE_TO_PIXELS(-5), -20);
+    if (sprite->sWT_Hide && res)
+        DestroyLastUsedBallWinGfx(sprite);
+}
+
+static void SpriteCB_LastBallIcon(struct Sprite *sprite)
+{
+    bool32 res = BattleUI_PlayVerticalSlideAnim(sprite->sWT_Hide, &sprite->y2, TILE_TO_PIXELS(-3), -12);
+    if (sprite->sWT_Hide && res)
+        DestroyLastUsedBallGfx(sprite);
+}
+
+static void SpriteCB_BounceLastBallIcon(struct Sprite *sprite)
+{
+    if (!sprite->sLBI_Moving) return;
+
+    // can't use BattleUI_PlayVerticalSlideAnim as the target cannot be 0
+    s32 target = sprite->sLBI_Y2 - (2 * sprite->sLBI_Bounce);
+    s32 speed = sprite->sLBI_Bounce ? -1 : 1;
+
+    if (sprite->y2 == target)
+        sprite->sLBI_Moving = FALSE;
     else
-    {
-        if (sprite->y2 > TILE_TO_PIXELS(-3))
-            sprite->y2 -= 8;
-    }
+        sprite->y2 += speed;
 }
 
 static void Task_BattleUITrackAbilityPopUpGfx(u8 taskId)
@@ -718,8 +804,8 @@ static void Task_BattleUITrackAbilityPopUpGfx(u8 taskId)
     {
         for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
         {
-            if (IndexOfSpriteTileTag(TAG_APU_BATTLER + battler) != 0xFF)
-                FreeSpriteTilesByTag(TAG_APU_BATTLER + battler);
+            if (IndexOfSpriteTileTag(TAG_ABILITY_POP_UP_PLAYER1 + battler) != 0xFF)
+                FreeSpriteTilesByTag(TAG_ABILITY_POP_UP_PLAYER1 + battler);
         }
 
         FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
@@ -1453,4 +1539,24 @@ static void BattleUI_AddTextPrinter(u32 windowId, u32 fontId, u32 x, u32 y, enum
 static void BattleUI_AddSpriteTextPrinter(u32 spriteId, u32 fontId, u32 x, u32 y, enum BattleUITextColors color, const u8 *str)
 {
     AddSpriteTextPrinterParameterized6(spriteId, fontId, x, y, 0, 0, sBWBattleUI_TextColors[color], TEXT_SKIP_DRAW, str);
+}
+
+static bool32 BattleUI_PlayVerticalSlideAnim(bool32 hide, s16 *y, s32 target, s32 speed)
+{
+    if (hide)
+    {
+        target = 0;
+        speed = -speed;
+    }
+
+    if (*y == target)
+        return TRUE;
+    else
+        (*y) += speed;
+
+    // check again if we finally reached the target
+    if (*y == target)
+        return TRUE;
+
+    return FALSE;
 }
