@@ -63,6 +63,8 @@ static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
     [BUI_SPRITE_GFX_GIMMICK_TRIGGER_Z_MOVE]   = (const u32[])INCBIN_U32("graphics/battle_interface/bw/z_move_trigger.4bpp.smol"),
     [BUI_SPRITE_GFX_GIMMICK_TRIGGER_DYNAMAX]  = (const u32[])INCBIN_U32("graphics/battle_interface/bw/dynamax_trigger.4bpp.smol"),
     [BUI_SPRITE_GFX_GIMMICK_TRIGGER_TERA]     = (const u32[])INCBIN_U32("graphics/battle_interface/bw/tera_trigger.4bpp.smol"),
+
+    [BUI_SPRITE_GFX_MOVE_INFO_TRIGGER] = (const u32[])INCBIN_U32("graphics/battle_interface/bw/move_info.4bpp.smol"),
 };
 
 static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
@@ -88,6 +90,8 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
     [BUI_SPRITE_PAL_GIMMICK_TRIGGER_Z_MOVE]   = (const u16[])INCBIN_U16("graphics/battle_interface/bw/z_move_trigger.gbapal"),
     [BUI_SPRITE_PAL_GIMMICK_TRIGGER_DYNAMAX]  = (const u16[])INCBIN_U16("graphics/battle_interface/bw/dynamax_trigger.gbapal"),
     [BUI_SPRITE_PAL_GIMMICK_TRIGGER_TERA]     = (const u16[])INCBIN_U16("graphics/battle_interface/bw/tera_trigger.gbapal"),
+
+    [BUI_SPRITE_PAL_MOVE_INFO_TRIGGER] = (const u16[])INCBIN_U16("graphics/battle_interface/bw/move_info.gbapal"),
 };
 
 static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
@@ -325,6 +329,28 @@ static const struct SpriteTemplate sBWBattleUI_GimmickTriggerTemplate =
         },
     },
     .callback = SpriteCB_GimmickTrigger,
+};
+
+static const struct SpriteTemplate sBWBattleUI_MoveInfoTriggerTemplate =
+{
+    .tileTag = MOVE_INFO_WINDOW_TAG,
+    .paletteTag = MOVE_INFO_WINDOW_TAG,
+    .oam = &(const struct OamData){
+        .shape = SPRITE_SHAPE(32x32),
+        .size = SPRITE_SIZE(32x32),
+        .priority = 1,
+    },
+    .anims = (const union AnimCmd *const[]){
+        [0] = (const union AnimCmd[]){
+            ANIMCMD_FRAME( 0, 8),
+            ANIMCMD_END,
+        },
+        [1] = (const union AnimCmd[]){
+            ANIMCMD_FRAME(16, 8),
+            ANIMCMD_END,
+        },
+    },
+    .callback = SpriteCB_MoveInfoTrigger,
 };
 
 static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =

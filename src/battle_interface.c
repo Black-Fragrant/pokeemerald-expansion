@@ -2824,7 +2824,8 @@ static const struct SpriteTemplate sSpriteTemplate_LastUsedBallWindow =
     .callback = SpriteCB_LastUsedBallWin
 };
 
-#define MOVE_INFO_WINDOW_TAG 0xE722
+// bwBattleUI
+//#define MOVE_INFO_WINDOW_TAG 0xE722
 
 static const struct OamData sOamData_MoveInfoWindow =
 {
@@ -2982,6 +2983,17 @@ void TryToAddMoveInfoWindow(void)
     if (B_MOVE_DESCRIPTION_BUTTON == L_BUTTON && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         return;
 
+    // start bwBattleUI
+    if (BW_BATTLE_UI)
+    {
+        if (gBattleStruct->moveInfoSpriteId == MAX_SPRITES)
+            gBattleStruct->moveInfoSpriteId = BattleUI_CreateMoveInfoTriggerSprite();
+
+        gSprites[gBattleStruct->moveInfoSpriteId].sHide = FALSE;
+        return;
+    }
+    // end bwBattleUI
+
     LoadSpritePalette(&sSpritePalette_AbilityPopUp);
     if (GetSpriteTileStartByTag(MOVE_INFO_WINDOW_TAG) == 0xFFFF)
         LoadSpriteSheet(&sSpriteSheet_MoveInfoWindow);
@@ -2998,7 +3010,10 @@ void TryToHideMoveInfoWindow(void)
     gSprites[gBattleStruct->moveInfoSpriteId].sHide = TRUE;
 }
 
-static void DestroyMoveInfoWinGfx(struct Sprite *sprite)
+// start bwBattleUI
+//static void DestroyMoveInfoWinGfx(struct Sprite *sprite)
+void DestroyMoveInfoWinGfx(struct Sprite *sprite)
+// end bwBattleUI
 {
     FreeSpriteTilesByTag(MOVE_INFO_WINDOW_TAG);
     if (GetSpriteTileStartByTag(TAG_LAST_BALL_WINDOW) == 0xFFFF)
