@@ -1292,6 +1292,7 @@ static void BattleUI_UpdateHealthboxLvlText(u32 spriteId, struct Pokemon *mon)
         StringCopy(gDisplayedStringBattle, COMPOUND_STRING("{COLOR 10}♀"));
         break;
     default:
+        StringCopy(gDisplayedStringBattle, gText_EmptyString3);
         break;
     }
 
