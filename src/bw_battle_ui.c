@@ -406,12 +406,11 @@ void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
         yOffset = TILE_TO_PIXELS(2);
         fontId = FONT_OUTLINED_HP_NUMBERS;
 
-        BattleUI_CopyElementToSprite(spriteId,  sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 18, BUI_FILL_ELEMENT(6));
-        BattleUI_CopyElementToSprite(spriteId2, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 16, BUI_FILL_ELEMENT(6));
-
         if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
             return;
 
+        BattleUI_CopyElementToSprite(spriteId,  sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 18, BUI_FILL_ELEMENT(6));
+        BattleUI_CopyElementToSprite(spriteId2, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 16, BUI_FILL_ELEMENT(6));
         BattleUI_CopyElementToSprite(sprite->hMain_HealthBarSpriteId, sBWBattleUI_HPBoxEndFrames, 0, BUI_FILL_ELEMENT(8));
     }
     else
@@ -450,6 +449,10 @@ void BattleUI_UpdateHpBarText(void)
         struct Pokemon *mon = GetBattlerMon(i);
 
         gBattleSpritesDataPtr->battlerData[i].hpNumbersNoBars ^= 1;
+
+        BattleUI_CopyElementToSprite(boxSpriteId,                           sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 18, BUI_FILL_ELEMENT(6));
+        BattleUI_CopyElementToSprite(gSprites[boxSpriteId].oam.affineParam, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 16, BUI_FILL_ELEMENT(6));
+
         UpdateHealthboxAttribute(boxSpriteId, mon, HEALTHBOX_CURRENT_HP);
         UpdateHealthboxAttribute(boxSpriteId, mon, HEALTHBOX_HEALTH_BAR);
     }
@@ -474,8 +477,7 @@ void BattleUI_UpdateHpBarGraphically(enum BattlerId battler, u32 currVal, u32 ma
     for (u32 i = 0; i < 6; i++)
         BattleUI_CopyElementToSprite(hpbarSpriteId, hpBarGfx + TILE_TO_PIXELS(pixelCountArray[i]), 2 + i, 1);
 
-    if (GetBattlerCoordsIndex(battler) != BATTLE_COORDS_SINGLES
-     && IsOnPlayerSide(battler))
+    if (IsOnPlayerSide(battler) && !gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
     {
         BattleUI_CopyElementToSprite(gSprites[hpboxSpriteId].oam.affineParam, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(2), 20, 1);
     }
