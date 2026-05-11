@@ -99,6 +99,16 @@ enum
 #define MOVE_INFO_WINDOW_TAG 0xE722 // bwBattleUI
 
 // start bwBattleUI
+enum
+{
+    TAG_ABILITY_POP_UP = 0xD720, // Only used for the SpritePalette, the rest below is for the SpriteSheets.
+    TAG_ABILITY_POP_UP_PLAYER1 = TAG_ABILITY_POP_UP,
+    TAG_ABILITY_POP_UP_OPPONENT1,
+    TAG_ABILITY_POP_UP_PLAYER2,
+    TAG_ABILITY_POP_UP_OPPONENT2,
+    TAG_LAST_BALL_WINDOW,
+};
+
 enum BattleHealthboxElements
 {
     HEALTHBOX_ALL,
@@ -150,7 +160,11 @@ void TryToAddMoveInfoWindow(void);
 void TryToHideMoveInfoWindow(void);
 void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus);
 void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon);
-bool32 IsAnyAbilityPopUpActive(void); // bwBattleUI
-void DestroyMoveInfoWinGfx(struct Sprite *sprite); // bwBattleUI
+// start bwBattleUI
+bool32 IsAnyAbilityPopUpActive(void);
+void DestroyMoveInfoWinGfx(struct Sprite *sprite);
+void DestroyLastUsedBallWinGfx(struct Sprite *sprite);
+void DestroyLastUsedBallGfx(struct Sprite *sprite);
+// end bwBattleUI
 
 #endif // GUARD_BATTLE_INTERFACE_H
