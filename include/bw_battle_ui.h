@@ -88,4 +88,7 @@ void BattleUI_DestroyAbilityPopUp(enum BattlerId);
 
 u32 BattleUI_CreateGimmickTriggerSprite(enum BattlerId);
 
+s32 BattleUI_GetGimmickIndicatorXOffset(enum BattlerId);
+void BattleUI_GetGimmickIndicatorCoords(enum BattlerPosition, s16 *, s16 *);
+
 #endif // GUARD_BW_BATTLE_UI_H
