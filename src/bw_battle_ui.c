@@ -13,6 +13,7 @@
 #include "battle_controllers.h"
 #include "battle_gimmick.h"
 #include "battle_z_move.h"
+#include "safari_zone.h"
 #include "battle_interface.h"
 #include "pokedex.h"
 #include "task.h"
@@ -118,6 +119,8 @@ static void BattleUI_UpdateHealthboxLvlText(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxNickText(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxStatusIcon(u32, struct Pokemon *);
 static void BattleUI_UpdateHealthboxCaughtMonIndicator(u32, struct Pokemon *);
+static void BattleUI_PrintSafariBallText(u32);
+static void BattleUI_PrintNumOfSafariBallsText(u32);
 
 static s16 BattleUI_GetAbilityPopUpCoords(enum BattleCoordTypes, enum BattlerPosition, u32);
 static void BattleUI_PrepareTextForAbilityPopUp(enum BattlerId, enum Ability, u32);
@@ -323,9 +326,10 @@ s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPositio
 #define HEALTHBOX_FLAG_UNUSED_7              (1 << HEALTHBOX_UNUSED_7)
 #define HEALTHBOX_FLAG_UNUSED_8              (1 << HEALTHBOX_UNUSED_8)
 #define HEALTHBOX_FLAG_STATUS_ICON           (1 << HEALTHBOX_STATUS_ICON)
+#define HEALTHBOX_FLAG_SAFARI_ALL_TEXT       (1 << HEALTHBOX_SAFARI_ALL_TEXT)
+#define HEALTHBOX_FLAG_SAFARI_BALLS_TEXT     (1 << HEALTHBOX_SAFARI_BALLS_TEXT)
 #define HEALTHBOX_FLAG_ALL                   (0xFFFF)
 
-// safari handled separately
 void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealthboxElements element)
 {
     enum BattlerId battler = gSprites[spriteId].hMain_Battler;
@@ -335,6 +339,8 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
 
     if (element == HEALTHBOX_ALL)
         flag = HEALTHBOX_FLAG_ALL;
+    else if (element == HEALTHBOX_SAFARI_ALL_TEXT)
+        flag = (HEALTHBOX_FLAG_SAFARI_ALL_TEXT | HEALTHBOX_FLAG_SAFARI_BALLS_TEXT);
     else
         flag = 1 << element;
 
@@ -372,6 +378,15 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
 
     if (flag & HEALTHBOX_FLAG_NICK)
         BattleUI_UpdateHealthboxNickText(spriteId, mon);
+
+    if (!IsOnPlayerSide(battler))
+        return;
+
+    if (flag & HEALTHBOX_FLAG_SAFARI_ALL_TEXT)
+        BattleUI_PrintSafariBallText(spriteId);
+
+    if (flag & HEALTHBOX_FLAG_SAFARI_BALLS_TEXT)
+        BattleUI_PrintNumOfSafariBallsText(spriteId);
 }
 
 void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
@@ -1455,6 +1470,43 @@ static void BattleUI_UpdateHealthboxCaughtMonIndicator(u32 spriteId, struct Poke
 
     BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxCaughtIndicator, 0, 1);
     BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxCaughtIndicator + TILE_TO_PIXELS(1), 8, 1);
+}
+
+static void BattleUI_PrintSafariBallText(u32 spriteId)
+{
+    struct Sprite *sprite1 = &gSprites[spriteId];
+    struct Sprite *sprite2 = &gSprites[sprite1->oam.affineParam];
+
+    s16 data1 = sprite1->data[1], data2 = sprite2->data[1];
+    sprite1->data[1] = sprite1->oam.affineParam, sprite2->data[1] = SPRITE_NONE;
+
+    CopyItemNameHandlePlural(ITEM_SAFARI_BALL, gDisplayedStringBattle, gNumSafariBalls);
+    BattleUI_AddSpriteTextPrinter(spriteId, FONT_OUTLINED_NARROW, 16, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
+
+    sprite1->data[1] = data1, sprite2->data[1] = data2;
+}
+
+static void BattleUI_PrintNumOfSafariBallsText(u32 spriteId)
+{
+    struct Sprite *sprite1 = &gSprites[spriteId];
+    u32 spriteId2 = sprite1->oam.affineParam;
+    struct Sprite *sprite2 = &gSprites[spriteId2];
+
+    s16 data1 = sprite1->data[1], data2 = sprite2->data[1];
+    sprite1->data[1] = spriteId2, sprite2->data[1] = SPRITE_NONE;
+
+    ConvertIntToDecimalStringN(gDisplayedStringBattle, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    u32 x = GetStringRightAlignXOffset(FONT_OUTLINED, gDisplayedStringBattle, TILE_TO_PIXELS(2));
+
+    BattleUI_AddSpriteTextPrinter(spriteId2, FONT_OUTLINED,
+                                    x, TILE_TO_PIXELS(1) + 1,
+                                    BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
+
+    BattleUI_AddSpriteTextPrinter(spriteId2, FONT_OUTLINED_NARROW,
+                                    TILE_TO_PIXELS(2), TILE_TO_PIXELS(1) + 2,
+                                    BUI_TXTCLR_HBOX_NAME, COMPOUND_STRING("/30"));
+
+    sprite1->data[1] = data1, sprite2->data[1] = data2;
 }
 
 static s16 BattleUI_GetAbilityPopUpCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
