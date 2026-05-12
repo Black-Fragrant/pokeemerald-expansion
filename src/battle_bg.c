@@ -170,19 +170,32 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 35,
+        //.width = 14,
         .width = BW_BATTLE_UI_INPUTBOX ? 12 : 14, // bwBattleUI
         .height = 4,
         .paletteNum = 0,
-        .baseBlock = 0x01c0,
+        //.baseBlock = 0x01c0,
+        .baseBlock = BW_BATTLE_UI_INPUTBOX ? 0x00f8 : 0x10c0,
     },
     [B_WIN_ACTION_MENU] = {
         .bg = 0,
+        // start bwBattleUI
+        #if (BW_BATTLE_UI == TRUE && BW_BATTLE_UI_TEXTBOX == TRUE && BW_BATTLE_UI_INPUTBOX == TRUE)
+        .tilemapLeft = 13,
+        .tilemapTop = 34,
+        .width = 17,
+        .height = 6,
+        .paletteNum = 0,
+        .baseBlock = 0x0128,
+        #else
         .tilemapLeft = 17,
         .tilemapTop = 35,
         .width = 12,
         .height = 4,
         .paletteNum = 5,
         .baseBlock = 0x0190,
+        #endif
+        // end bwBattleUI
     },
     [B_WIN_MOVE_NAME_1] = {
         .bg = 0,

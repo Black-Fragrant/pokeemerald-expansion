@@ -3877,14 +3877,21 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     u8 speed;
 
     // start bwBattleUI
-    if (BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX
-     && (windowId == B_WIN_ACTION_MENU
-         || windowId == B_WIN_PP
-         || windowId == B_WIN_PP_REMAINING
-         || windowId == B_WIN_SWITCH_PROMPT
-         || windowId == B_WIN_MOVE_TYPE))
+    if (BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX)
     {
-        return;
+        switch (windowId)
+        {
+        case B_WIN_ACTION_MENU:
+            BattleUI_PopulateActionBox();
+            // fallthrough
+        case B_WIN_PP:
+        case B_WIN_PP_REMAINING:
+        case B_WIN_SWITCH_PROMPT:
+        case B_WIN_MOVE_TYPE:
+            return;
+        default:
+            break;
+        }
     }
     // end bwBattleUI
 

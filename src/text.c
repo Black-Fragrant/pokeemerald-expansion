@@ -316,7 +316,7 @@ static const struct FontInfo sFontInfos[] =
     [FONT_BATTLE_UI_ELEMENTS] = {
         .fontFunction = FontFunc_BattleUIElements,
         .maxLetterWidth = 16,
-        .maxLetterHeight = 6,
+        .maxLetterHeight = 16,
         .letterSpacing = -1,
         .lineSpacing = 0,
         .color.foreground = 2,
@@ -1079,7 +1079,10 @@ static void PrintGlyph(struct TextPrinter *textPrinter)
             if (IsOutlinedFont(textPrinter->printerTemplate.fontId)
              || IsOutlinedFont(textPrinter->fontId))
             {
-                textPrinter->printerTemplate.currentX += gCurGlyph.width + (-1);
+                textPrinter->printerTemplate.currentX += gCurGlyph.width;
+                // POKEBLOCK uses full width, don't decrement
+                if (gCurGlyph.width < 16)
+                    textPrinter->printerTemplate.currentX--;
             }
             else
             {
@@ -2828,7 +2831,7 @@ static void DecompressGlyph_BattleUIElements(u16 glyphId, bool32 isJapanese)
     const u16 *glyphs = gFontBattleUIElementsLatinGlyphs + TILE_OFFSET_4BPP(glyphId);
 
     gCurGlyph.width = gFontBattleUIElementsLatinGlyphWidths[glyphId];
-    gCurGlyph.height = 6;
+    gCurGlyph.height = 16;
 
     if (gCurGlyph.width <= 8)
     {

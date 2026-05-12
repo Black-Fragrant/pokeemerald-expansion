@@ -60,6 +60,7 @@ enum BWBattleUISpritePaletteType
 const u32 *BattleUI_GetTextboxTiles(void);
 const u16 *BattleUI_GetTextboxPalette(void);
 const u32 *BattleUI_GetTextboxTilemap(void);
+void BattleUI_PopulateActionBox(void);
 
 void BattleUI_CreateCursorSprite(enum BattlerId);
 void BattleUI_DestroyCursorSprite(void);
