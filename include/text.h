@@ -32,7 +32,7 @@ enum {
     // start bwBattleUI
     FONT_OUTLINED,
     FONT_OUTLINED_NARROW,
-    FONT_OUTLINED_HP_NUMBERS, // custom to fit Double Battle's HP bar <-> text mode
+    FONT_BATTLE_UI_ELEMENTS, // contains unique number glyph for double battle and status icons
     // end bwBattleUI
 };
 
