@@ -419,7 +419,7 @@ void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
     if (isDoubles)
     {
         yOffset = TILE_TO_PIXELS(2);
-        fontId = FONT_OUTLINED_HP_NUMBERS;
+        fontId = FONT_BATTLE_UI_ELEMENTS;
 
         if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
             return;
@@ -1438,7 +1438,7 @@ static void BattleUI_UpdateHealthboxStatusIcon(u32 spriteId, struct Pokemon *mon
     else
         x = TILE_TO_PIXELS(1);
 
-    BattleUI_AddSpriteTextPrinter(spriteId, FONT_OUTLINED_HP_NUMBERS,
+    BattleUI_AddSpriteTextPrinter(spriteId, FONT_BATTLE_UI_ELEMENTS,
         x, TILE_TO_PIXELS(2),
         BUI_TXTCLR_HBOX_STATUS, gDisplayedStringBattle);
 

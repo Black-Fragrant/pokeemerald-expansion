@@ -938,8 +938,8 @@ ALIGNED(4) const u8 gFontOutlinedNarrowLatinGlyphWidths[] =
     */
 };
 
-ALIGNED(4) const u16 gFontOutlinedHPNumbersLatinGlyphs[] = INCGFX_U16("graphics/fonts/latin_outlined_hp_numbers.png", ".latfont");
-ALIGNED(4) const u8 gFontOutlinedHPNumbersLatinGlyphWidths[] =
+ALIGNED(4) const u16 gFontBattleUIElementsLatinGlyphs[] = INCGFX_U16("graphics/fonts/latin_battle_ui_element.png", ".latfont");
+ALIGNED(4) const u8 gFontBattleUIElementsLatinGlyphWidths[] =
 {
     [CHAR_0] = 6,
     [CHAR_1] = 6,
