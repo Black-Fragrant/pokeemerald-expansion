@@ -424,7 +424,7 @@ void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
         if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
             return;
 
-        BattleUI_CopyElementToSprite(spriteId,  sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 18, BUI_FILL_ELEMENT(6));
+        BattleUI_CopyElementToSprite(spriteId,  sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 20, BUI_FILL_ELEMENT(4));
         BattleUI_CopyElementToSprite(spriteId2, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 16, BUI_FILL_ELEMENT(6));
         BattleUI_CopyElementToSprite(sprite->hMain_HealthBarSpriteId, sBWBattleUI_HPBoxEndFrames, 0, BUI_FILL_ELEMENT(8));
     }
@@ -465,7 +465,7 @@ void BattleUI_UpdateHpBarText(void)
 
         gBattleSpritesDataPtr->battlerData[i].hpNumbersNoBars ^= 1;
 
-        BattleUI_CopyElementToSprite(boxSpriteId,                           sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 18, BUI_FILL_ELEMENT(6));
+        BattleUI_CopyElementToSprite(boxSpriteId,                           sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 20, BUI_FILL_ELEMENT(4));
         BattleUI_CopyElementToSprite(gSprites[boxSpriteId].oam.affineParam, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), 16, BUI_FILL_ELEMENT(6));
 
         UpdateHealthboxAttribute(boxSpriteId, mon, HEALTHBOX_CURRENT_HP);
@@ -1380,7 +1380,7 @@ static void BattleUI_UpdateHealthboxStatusIcon(u32 spriteId, struct Pokemon *mon
     const u8 colorCode[5] = { EXT_CTRL_CODE_BEGIN, EXT_CTRL_CODE_COLOR, battlerPalIdx, EOS };
     StringCopy(gDisplayedStringBattle, colorCode);
 
-    u32 statusTileNum = 18;
+    u32 statusTileNum = 17 + IsOnPlayerSide(battler);
     BattleUI_CopyElementToSprite(spriteId, sBWBattleUI_HPBoxEndFrames + TILE_TO_PIXELS(1), statusTileNum, BUI_FILL_ELEMENT(2));
     BattleUI_UpdateHealthboxCaughtMonIndicator(spriteId, mon);
 
