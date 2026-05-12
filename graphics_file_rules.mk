@@ -14,20 +14,6 @@ TITLESCREENGFXDIR := graphics/title_screen
 types := none normal fight flying poison ground rock bug ghost steel mystery fire water grass electric psychic ice dragon dark fairy stellar
 contest_types := cool beauty cute smart tough
 
-# start bwBattleUI
-
-FONTGFXDIR := graphics/fonts
-$(FONTGFXDIR)/outlined.latfont: $(FONTGFXDIR)/latin_outlined.png
-	$(GFX) $< $@
-
-$(FONTGFXDIR)/outlined_narrow.latfont: $(FONTGFXDIR)/latin_outlined_narrow.png
-	$(GFX) $< $@
-
-$(FONTGFXDIR)/outlined_hp_numbers.latfont: $(FONTGFXDIR)/latin_outlined_hp_numbers.png
-	$(GFX) $< $@
-
-# end bwBattleUI
-
 ### Miscellaneous ###
 
 $(TITLESCREENGFXDIR)/pokemon_logo.gbapal: %.gbapal: %.pal
