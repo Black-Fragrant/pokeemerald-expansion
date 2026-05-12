@@ -328,7 +328,7 @@ s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPositio
 #define HEALTHBOX_FLAG_STATUS_ICON           (1 << HEALTHBOX_STATUS_ICON)
 #define HEALTHBOX_FLAG_SAFARI_ALL_TEXT       (1 << HEALTHBOX_SAFARI_ALL_TEXT)
 #define HEALTHBOX_FLAG_SAFARI_BALLS_TEXT     (1 << HEALTHBOX_SAFARI_BALLS_TEXT)
-#define HEALTHBOX_FLAG_ALL                   (0xFFFF)
+#define HEALTHBOX_FLAG_ALL                   (0x3FF) // exclude safari-related
 
 void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealthboxElements element)
 {
