@@ -437,7 +437,7 @@ ALIGNED(4) const u8 gFontShortJapaneseGlyphWidths[] = {
 };
 
 // Start bwBattleUI
-ALIGNED(4) const u16 gFontOutlinedLatinGlyphs[] = INCBIN_U16("graphics/fonts/outlined.latfont");
+ALIGNED(4) const u16 gFontOutlinedLatinGlyphs[] = INCGFX_U16("graphics/fonts/latin_outlined.png", ".latfont");
 ALIGNED(4) const u8 gFontOutlinedLatinGlyphWidths[] =
 {
     [CHAR_SPACE] = 5,
@@ -687,7 +687,7 @@ ALIGNED(4) const u8 gFontOutlinedLatinGlyphWidths[] =
     */
 };
 
-ALIGNED(4) const u16 gFontOutlinedNarrowLatinGlyphs[] = INCBIN_U16("graphics/fonts/outlined_narrow.latfont");
+ALIGNED(4) const u16 gFontOutlinedNarrowLatinGlyphs[] = INCGFX_U16("graphics/fonts/latin_outlined_narrow.png", ".latfont");
 ALIGNED(4) const u8 gFontOutlinedNarrowLatinGlyphWidths[] =
 {
     [CHAR_SPACE] = 3,
@@ -938,7 +938,7 @@ ALIGNED(4) const u8 gFontOutlinedNarrowLatinGlyphWidths[] =
     */
 };
 
-ALIGNED(4) const u16 gFontOutlinedHPNumbersLatinGlyphs[] = INCBIN_U16("graphics/fonts/outlined_hp_numbers.latfont");
+ALIGNED(4) const u16 gFontOutlinedHPNumbersLatinGlyphs[] = INCGFX_U16("graphics/fonts/latin_outlined_hp_numbers.png", ".latfont");
 ALIGNED(4) const u8 gFontOutlinedHPNumbersLatinGlyphWidths[] =
 {
     [CHAR_0] = 6,
