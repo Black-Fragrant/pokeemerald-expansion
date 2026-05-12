@@ -7,6 +7,21 @@ static const u16 sBWBattleUI_TextboxPalette[] = INCBIN_U16("graphics/battle_inte
 static const u32 sBWBattleUI_TextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox_swag.bin.smolTM");
 static const u32 sBWBattleUI_JustTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox_no_swag.bin.smolTM");
 
+// inputbox->actionbox
+static const u8 sBWBattleUI_ActionBox[] = INCGFX_U8("graphics/battle_interface/bw/actionbox.png", ".4bpp");
+static const u8 *const sBWBattleUI_ActionBoxFields[][BUI_ACTION_BOX_ENTRY_COUNT] =
+{
+    // left-top -> right-bottom
+    { // default
+        COMPOUND_STRING("FIGHT!"),  COMPOUND_STRING("BAG"),
+        COMPOUND_STRING("POKÉMON"), COMPOUND_STRING("RUN"),
+    },
+    { // safari
+        COMPOUND_STRING("BALL!"),    COMPOUND_STRING("{POKEBLOCK}"),
+        COMPOUND_STRING("GO NEAR"),  COMPOUND_STRING("RUN"),
+    },
+};
+
 // inputbox->movebox
 static const u8 sBWBattleUI_MoveBoxGraphics[] = INCGFX_U8("graphics/battle_interface/bw/movebox.png", ".4bpp");
 static const u8 sBWBattleUI_MoveBoxGraphicsFlip[] = INCGFX_U8("graphics/battle_interface/bw/movebox_hflip.png", ".4bpp");
@@ -18,7 +33,7 @@ static const u16 sBWBattleUI_MoveBoxTypePalettes[] = INCGFX_U16("graphics/battle
 static const u16 sBWBattleUI_PartySummaryBarPalette[] = INCGFX_U16("graphics/battle_interface/bw/ball_status_bar.png", ".gbapal");
 static const u16 sBWBattleUI_StatusIconPalette[] = INCGFX_U16("graphics/battle_interface/bw/status.pal", ".gbapal");
 
-// 
+// healthbox
 static const u32 sBWBattleUI_HPBarText[] = INCGFX_U32("graphics/battle_interface/bw/hpbar.png", ".4bpp");
 static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
     "graphics/battle_interface/bw/hpbar_none.4bpp",
@@ -393,5 +408,29 @@ static const union TextColor sBWBattleUI_TextColors[NUM_BUI_TXTCLRS] =
         .shadow = 2,
         .accent = 1,
         .background = 3,
+    },
+    [BUI_TXTCLR_ABOX_1] =
+    {
+        .foreground = 4,
+        .accent = 2,
+        .shadow = 9,
+    },
+    [BUI_TXTCLR_ABOX_2] =
+    {
+        .foreground = 14,
+        .accent = 5,
+        .shadow = 9,
+    },
+    [BUI_TXTCLR_ABOX_3] =
+    {
+        .foreground = 11,
+        .accent = 10,
+        .shadow = 9,
+    },
+    [BUI_TXTCLR_ABOX_4] =
+    {
+        .foreground = 12,
+        .accent = 8,
+        .shadow = 9,
     },
 };

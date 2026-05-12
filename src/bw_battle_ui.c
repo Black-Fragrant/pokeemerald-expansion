@@ -118,6 +118,29 @@ const u32 *BattleUI_GetTextboxTilemap(void)
     }
 }
 
+void BattleUI_PopulateActionBox(void)
+{
+    u32 windowId = B_WIN_ACTION_MENU;
+
+    BlitBitmapToWindow(windowId, sBWBattleUI_ActionBox, 0, 0, TILE_TO_PIXELS(17), TILE_TO_PIXELS(6));
+
+    bool32 safari = !!(gBattleTypeFlags & BATTLE_TYPE_SAFARI);
+    u32 fontId = FONT_BATTLE_UI_ELEMENTS;
+
+    for (u32 i = 0; i < BUI_ACTION_BOX_ENTRY_COUNT; i++)
+    {
+        const u8 *action = sBWBattleUI_ActionBoxFields[safari][i];
+        u32 x = GetStringCenterAlignXOffset(fontId, action, TILE_TO_PIXELS(6));
+        x += (i & 1) ? TILE_TO_PIXELS(10) : TILE_TO_PIXELS(2);
+        u32 y = ((i & 2) ? TILE_TO_PIXELS(4) : TILE_TO_PIXELS(1)) - 1;
+
+        BattleUI_AddTextPrinter(windowId, fontId, x, y, BUI_TXTCLR_ABOX_1 + i, action);
+    }
+
+    PutWindowTilemap(windowId);
+    CopyWindowToVram(windowId, COPYWIN_GFX);
+}
+
 void BattleUI_CreateCursorSprite(enum BattlerId battler)
 {
     u32 spriteId = BattleUI_GetCursorSpriteId();
