@@ -2934,7 +2934,7 @@ void TryAddLastUsedBallItemSprites(void)
         return;
 
     // start bwBattleUI
-    if (BW_BATTLE_UI)
+    if (BW_BATTLE_UI && BW_BATTLE_UI_WINDOW_SPRITES)
     {
         // window
         if (gBattleStruct->ballSpriteIds[1] == MAX_SPRITES)
@@ -3015,7 +3015,7 @@ void TryToAddMoveInfoWindow(void)
         return;
 
     // start bwBattleUI
-    if (BW_BATTLE_UI)
+    if (BW_BATTLE_UI && BW_BATTLE_UI_WINDOW_SPRITES)
     {
         if (gBattleStruct->moveInfoSpriteId == MAX_SPRITES)
             gBattleStruct->moveInfoSpriteId = BattleUI_CreateMoveInfoTriggerSprite();
