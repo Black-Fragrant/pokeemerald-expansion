@@ -296,8 +296,8 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
 
     if (element == HEALTHBOX_ALL)
         flag = HEALTHBOX_FLAG_ALL;
-    else if (element == HEALTHBOX_SAFARI_ALL_TEXT)
-        flag = (HEALTHBOX_FLAG_SAFARI_ALL_TEXT | HEALTHBOX_FLAG_SAFARI_BALLS_TEXT);
+    else if (element == HEALTHBOX_SAFARI_ALL_TEXT || element == HEALTHBOX_SAFARI_BALLS_TEXT)
+        flag = HEALTHBOX_FLAG_SAFARI_ALL_TEXT;
     else
         flag = 1 << element;
 
@@ -340,10 +340,14 @@ void BattleUI_UpdateHealthbox(u8 spriteId, struct Pokemon *mon, enum BattleHealt
         return;
 
     if (flag & HEALTHBOX_FLAG_SAFARI_ALL_TEXT)
-        BattleUI_PrintSafariBallText(spriteId);
+    {
+        u32 *gfx = malloc_and_decompress(sBWBattleUI_SpriteGraphics[BUI_SPRITE_GFX_HPBOX_SAFARI], 0);
+        BattleUI_CopyElementToSprite(spriteId, gfx, 0, 128);
+        Free(gfx);
 
-    if (flag & HEALTHBOX_FLAG_SAFARI_BALLS_TEXT)
+        BattleUI_PrintSafariBallText(spriteId);
         BattleUI_PrintNumOfSafariBallsText(spriteId);
+    }
 }
 
 void BattleUI_UpdateHealthboxHPText(u32 spriteId, s32 currHp, s32 maxHp)
