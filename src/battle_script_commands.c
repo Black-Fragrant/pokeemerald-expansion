@@ -2074,6 +2074,17 @@ u32 GetBattlerTurnOrderNum(enum BattlerId battler)
     return i;
 }
 
+u32 GetBattlerRawSpeedOrder(enum BattlerId battler)
+{
+    u32 i;
+    for (i = 0; i < gBattlersCount; i++)
+    {
+        if (gBattlersByRawSpeed[i] == battler)
+            break;
+    }
+    return i;
+}
+
 // battlerStealer steals the item of itemBattler
 void StealTargetItem(enum BattlerId battlerStealer, enum BattlerId itemBattler)
 {
@@ -7775,7 +7786,6 @@ static void Cmd_transformdataexecution(void)
 {
     CMD_ARGS();
 
-    gChosenMove = MOVE_UNAVAILABLE;
     gBattlescriptCurrInstr = cmd->nextInstr;
     if ((GetConfig(B_TRANSFORM_SEMI_INV_FAIL) >= GEN_2 && IsSemiInvulnerable(gBattlerTarget, EXCLUDE_COMMANDER))
         || (GetConfig(B_TRANSFORM_TARGET_FAIL) >= GEN_2 && gBattleMons[gBattlerTarget].volatiles.transformed)
@@ -7792,6 +7802,7 @@ static void Cmd_transformdataexecution(void)
         u8 *battleMonAttacker, *battleMonTarget;
         u8 timesGotHit;
 
+        gChosenMove = MOVE_UNAVAILABLE;
         gBattleMons[gBattlerAttacker].volatiles.transformed = TRUE;
         gBattleMons[gBattlerAttacker].volatiles.disabledMove = MOVE_NONE;
         gBattleMons[gBattlerAttacker].volatiles.disableTimer = 0;
@@ -7829,6 +7840,7 @@ static void Cmd_transformdataexecution(void)
         // update AI knowledge
         RecordAllMoves(gBattlerAttacker);
         RecordAbilityBattle(gBattlerAttacker, gBattleMons[gBattlerAttacker].ability);
+        SortBattlersByRawSpeed(gBattlersByRawSpeed);
 
         BtlController_EmitResetActionMoveSelection(gBattlerAttacker, B_COMM_TO_CONTROLLER, RESET_MOVE_SELECTION);
         MarkBattlerForControllerExec(gBattlerAttacker);
@@ -10522,6 +10534,7 @@ static void Cmd_sortbattlers(void)
             gBattlersBySpeed[i] = i;
 
         SortBattlersBySpeed(gBattlersBySpeed, FALSE);
+        SortBattlersByRawSpeed(gBattlersByRawSpeed);
     }
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
@@ -10788,7 +10801,7 @@ static void SetStatChangeFlags(struct StatChange *st, u32 flags)
 }
 #undef SET_FLAG
 
-// Scripting battler is the one causing the stat change
+// Script battler is the one causing the stat change
 static void Cmd_trystatchanges(void)
 {
     CMD_ARGS(u8 battler, u16 statChangeFlags);
@@ -10800,6 +10813,12 @@ static void Cmd_trystatchanges(void)
         .battlerAtk = GetBattlerForBattleScript(cmd->battler),
         .move = MOVE_NONE,
     };
+
+    for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+    {
+        cv.abilities[battler] = GetBattlerAbility(battler);
+        cv.holdEffects[battler] = GetBattlerHoldEffect(battler);
+    }
 
     struct StatChange st = {0};
 
@@ -10818,9 +10837,6 @@ static void Cmd_trystatchanges(void)
 
         if (cmd->statChangeFlags & STAT_CHANGE_IGNORE_SELF)
             st.certain = cv.battlerAtk == cv.battlerDef;
-
-        cv.abilities[cv.battlerDef] = GetBattlerAbility(cv.battlerDef);
-        cv.holdEffects[cv.battlerDef] = GetBattlerHoldEffect(cv.battlerDef);
 
         bool32 goToNextInstr = FALSE; // Prevents an addtional stat change call
         bool32 runScript = FALSE;
@@ -10870,6 +10886,12 @@ static void Cmd_trybattlerstatchange(void)
     struct BattleCalcValues cv = {0};
     cv.battlerAtk = cv.battlerDef = GetBattlerForBattleScript(cmd->battler);
 
+    for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+    {
+        cv.abilities[battler] = GetBattlerAbility(battler);
+        cv.holdEffects[battler] = GetBattlerHoldEffect(battler);
+    }
+
     struct StatChange st = {0};
 
     u32 flags = cmd->statChangeFlags;
@@ -10885,9 +10907,6 @@ static void Cmd_trybattlerstatchange(void)
         st.statStageQueue = gSpecialStatuses[cv.battlerDef].statStageQueue;
         st.statStageAmount = gSpecialStatuses[cv.battlerDef].statStageAmount;
     }
-
-    cv.abilities[cv.battlerDef] = GetBattlerAbility(cv.battlerDef);
-    cv.holdEffects[cv.battlerDef] = GetBattlerHoldEffect(cv.battlerDef);
 
     if (TryStatChange(&cv, &st) != STAT_CHANGE_DIDNT_WORK)
     {
@@ -12896,7 +12915,7 @@ void BS_SwitchinAbilities(void)
      || AbilityBattleEffects(ABILITYEFFECT_UNNERVE, battler, ability, MOVE_NONE, TRUE)
      || AbilityBattleEffects(ABILITYEFFECT_ON_SWITCHIN, battler, ability, MOVE_NONE, TRUE)
      || AbilityBattleEffects(ABILITYEFFECT_IMMUNITY, battler, ability, MOVE_NONE, TRUE)
-     || AbilityBattleEffects(ABILITYEFFECT_COMMANDER, battler, ability, MOVE_NONE, TRUE)
+     || AbilityBattleEffects(ABILITYEFFECT_DEPENDS_ON_ALLY, battler, ability, MOVE_NONE, TRUE)
      || AbilityBattleEffects(ABILITYEFFECT_ON_WEATHER, battler, ability, MOVE_NONE, TRUE)
      || AbilityBattleEffects(ABILITYEFFECT_ON_TERRAIN, battler, ability, MOVE_NONE, TRUE)
      || AbilityBattleEffects(ABILITYEFFECT_OPPORTUNIST, battler, ability, MOVE_NONE, TRUE))
