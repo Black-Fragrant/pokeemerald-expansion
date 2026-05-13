@@ -20,6 +20,7 @@
 #include "sound.h"
 #include "gpu_regs.h"
 #include "item_icon.h"
+#include "malloc.h"
 #include "test_runner.h"
 #include "bw_battle_ui.h"
 #include "constants/songs.h"
@@ -221,7 +222,14 @@ enum BWBattleUICursorMode BattleUI_GetCursorMode(void)
 
 void BattleUI_DisplayMoveBox(enum BattlerId battler)
 {
-    CopyToBgTilemapBuffer(0, BattleUI_GetTextboxTilemap(), 0, 0);
+    u32 *tilemap = malloc_and_decompress(BattleUI_GetTextboxTilemap(), NULL);
+    CopyRectToBgTilemapBufferRect(0, tilemap,
+        0, 0,
+        32, DISPLAY_TILE_HEIGHT, // we only need top-most part
+        0, 40,
+        DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT,
+        0, 0, 0);
+    Free(tilemap);
 
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     bool32 hasZMove = (gBattleStruct->zmove.viable && IsGimmickSelected(battler, GIMMICK_Z_MOVE));
@@ -931,18 +939,12 @@ static void BattleUI_DisplayMoveBoxGraphics(enum BattlerId battler, u32 windowId
         return;
     }
 
-    if ((windowId - B_WIN_MOVE_NAME_1) & 2)
-    {
-        BlitBitmapToWindow(windowId, sBWBattleUI_MoveBoxGraphicsFlip,
-            0, 0,
-            TILE_TO_PIXELS(12), TILE_TO_PIXELS(3));
-
-        return;
-    }
-
-    BlitBitmapToWindow(windowId, sBWBattleUI_MoveBoxGraphics,
-        (windowId == B_WIN_MOVE_NAME_1) * 8, 0,
-        TILE_TO_PIXELS(12), TILE_TO_PIXELS(3));
+    u32 slot = windowId - B_WIN_MOVE_NAME_1;
+    BlitBitmapRectToWindow(windowId, sBWBattleUI_MoveBoxGraphics,
+        (slot & 1) ? TILE_TO_PIXELS(14) : 0, (slot & 2) ? TILE_TO_PIXELS(3) : 0,
+        TILE_TO_PIXELS(28), TILE_TO_PIXELS(6),
+        0, 0,
+        TILE_TO_PIXELS(14), TILE_TO_PIXELS(3));
 }
 
 static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseMoveStruct *moveInfo)
@@ -972,7 +974,7 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
                 StringAppend(gDisplayedStringBattle, BattleUI_GetTypeEffectivenessSymbol(battler, moveId));
             }
 
-            u32 x = (windowId == B_WIN_MOVE_NAME_1) * 8;
+            u32 x = TILE_TO_PIXELS(1);
             u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, TILE_TO_PIXELS(9));
 
             BattleUI_AddTextPrinter(windowId, fontId, x, 4, BUI_TXTCLR_MOVE_BOX, gDisplayedStringBattle);
@@ -1013,8 +1015,8 @@ static void BattleUI_DisplayNormalMoveBox(enum BattlerId battler, struct ChooseM
     }
 
     // must be copied separately, otherwise you can see this gets shown on screen before the z move box gets cleared.
-    PutWindowRectTilemap(B_WIN_MOVE_NAME_1, 1, 0, 12, 3);
-    CopyWindowRectToVram(B_WIN_MOVE_NAME_1, COPYWIN_GFX, 1, 0, 12, 3);
+    PutWindowRectTilemap(B_WIN_MOVE_NAME_1, 0, 0, 14, 3);
+    CopyWindowRectToVram(B_WIN_MOVE_NAME_1, COPYWIN_GFX, 0, 0, 14, 3);
 }
 
 static void BattleUI_DisplayZMoveBox(enum BattlerId battler, struct ChooseMoveStruct *moveInfo)
