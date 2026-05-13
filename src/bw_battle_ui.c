@@ -66,7 +66,7 @@ static s16 BattleUI_GetAbilityPopUpCoords(enum BattleCoordTypes, enum BattlerPos
 static void BattleUI_PrepareTextForAbilityPopUp(enum BattlerId, enum Ability, u32);
 static void BattleUI_PrepareBattlerTextForAbilityPopUp(enum BattlerId, u32, u32);
 static void BattleUI_BufferBattlerTextForAbilityPopUp(enum BattlerId);
-static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum Ability, u32, u32);
+static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum BattlerId, enum Ability, u32, u32);
 
 static void BattleUI_CopyElementToSprite(u32, const u32 *, u32, u32);
 static void BattleUI_AddTextPrinter(u32, u32, u32, u32, enum BattleUITextColors, const u8 *);
@@ -569,7 +569,7 @@ u32 BattleUI_CreateGimmickTriggerSprite(enum BattlerId battler)
     BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_GIMMICK_TRIGGER_MEGA + gimmick, TAG_GIMMICK_TRIGGER_TILE);
     BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_GIMMICK_TRIGGER_MEGA + gimmick, TAG_GIMMICK_TRIGGER_PAL);
 
-    return CreateSprite(&sBWBattleUI_GimmickTriggerTemplate, 32 + 16, 112 + 16, 0);
+    return CreateSprite(&sBWBattleUI_GimmickTriggerTemplate, TILE_TO_PIXELS(4) + 16, TILE_TO_PIXELS(14) + 16, 0);
 }
 
 void BattleUI_GetGimmickIndicatorCoords(enum BattlerPosition position, s16 *x, s16 *y)
@@ -596,7 +596,7 @@ u32 BattleUI_CreateMoveInfoTriggerSprite(void)
     BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_MOVE_INFO_TRIGGER, MOVE_INFO_WINDOW_TAG);
     BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_TEXTBOX_0, TAG_ABILITY_POP_UP);
 
-    return CreateSprite(&sBWBattleUI_MoveInfoTriggerTemplate, 0 + 16, 112 + 16, 0);
+    return CreateSprite(&sBWBattleUI_MoveInfoTriggerTemplate, 0 + 16, TILE_TO_PIXELS(14) + 16, 0);
 }
 
 u32 BattleUI_CreateLastBallTriggerSprite(void)
@@ -604,13 +604,13 @@ u32 BattleUI_CreateLastBallTriggerSprite(void)
     BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_LAST_BALL_TRIGGER, TAG_LAST_BALL_WINDOW);
     BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_TEXTBOX_0, TAG_ABILITY_POP_UP);
 
-    return CreateSprite(&sBWBattleUI_LastBallTriggerTemplate, 0 + 16, 112 + 32, 1);
+    return CreateSprite(&sBWBattleUI_LastBallTriggerTemplate, 0 + 16, TILE_TO_PIXELS(14) + 32, 1);
 }
 
 void BattleUI_SetLastBallIconAttributes(struct Sprite *sprite)
 {
     sprite->x = (-1) + 16;
-    sprite->y = 112 + 16;
+    sprite->y = TILE_TO_PIXELS(14) + 16;
     sprite->sWT_Hide = FALSE;
     sprite->callback = SpriteCB_LastBallIcon;
 }
@@ -719,7 +719,7 @@ static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 
 static void SpriteCB_GimmickTrigger(struct Sprite *sprite)
 {
-    BattleUI_PlayVerticalSlideAnim(sprite->sGT_Hide, &sprite->y2, -24, -12);
+    BattleUI_PlayVerticalSlideAnim(sprite->sGT_Hide, &sprite->y2, TILE_TO_PIXELS(-3), -12);
 }
 
 static void SpriteCB_MoveInfoTrigger(struct Sprite *sprite)
@@ -1396,7 +1396,7 @@ static void BattleUI_PrintSafariBallText(u32 spriteId)
     sprite1->data[1] = sprite1->oam.affineParam, sprite2->data[1] = SPRITE_NONE;
 
     CopyItemNameHandlePlural(ITEM_SAFARI_BALL, gDisplayedStringBattle, gNumSafariBalls);
-    BattleUI_AddSpriteTextPrinter(spriteId, FONT_OUTLINED_NARROW, 16, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
+    BattleUI_AddSpriteTextPrinter(spriteId, FONT_OUTLINED_NARROW, TILE_TO_PIXELS(2), 0, BUI_TXTCLR_HBOX_SAFARI, gDisplayedStringBattle);
 
     sprite1->data[1] = data1, sprite2->data[1] = data2;
 }
@@ -1415,11 +1415,11 @@ static void BattleUI_PrintNumOfSafariBallsText(u32 spriteId)
 
     BattleUI_AddSpriteTextPrinter(spriteId2, FONT_OUTLINED,
                                     x, TILE_TO_PIXELS(1) + 1,
-                                    BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
+                                    BUI_TXTCLR_HBOX_SAFARI, gDisplayedStringBattle);
 
     BattleUI_AddSpriteTextPrinter(spriteId2, FONT_OUTLINED_NARROW,
                                     TILE_TO_PIXELS(2), TILE_TO_PIXELS(1) + 2,
-                                    BUI_TXTCLR_HBOX_NAME, COMPOUND_STRING("/30"));
+                                    BUI_TXTCLR_HBOX_SAFARI, COMPOUND_STRING("/30"));
 
     sprite1->data[1] = data1, sprite2->data[1] = data2;
 }
@@ -1441,9 +1441,9 @@ static void BattleUI_PrepareTextForAbilityPopUp(enum BattlerId battler, enum Abi
 {
     u8 *spriteIds = gBattleStruct->abilityPopUpSpriteIds[battler];
 
-    FillSpriteRectSprite(spriteIds[0], 0, 0, 127, 32);
+    FillSpriteRectSprite(spriteIds[0], 0, 0, TILE_TO_PIXELS(14) - 1, TILE_TO_PIXELS(4));
     BattleUI_PrepareBattlerTextForAbilityPopUp(battler, spriteIds[0], speed);
-    BattleUI_PrepareAbilityTextForAbilityPopUp(ability, spriteIds[0], speed);
+    BattleUI_PrepareAbilityTextForAbilityPopUp(battler, ability, spriteIds[0], speed);
 }
 
 static void BattleUI_PrepareBattlerTextForAbilityPopUp(enum BattlerId battler, u32 spriteId, u32 speed)
@@ -1451,9 +1451,9 @@ static void BattleUI_PrepareBattlerTextForAbilityPopUp(enum BattlerId battler, u
     BattleUI_BufferBattlerTextForAbilityPopUp(battler);
     AddSpriteTextPrinterParameterized6(
             spriteId, FONT_OUTLINED,
-            7, 0,
+            TILE_TO_PIXELS(1) - 1, 0,
             0, 0,
-            sBWBattleUI_TextColors[BUI_TXTCLR_HBOX_NAME],
+            sBWBattleUI_TextColors[BUI_TXTCLR_ABILITY_POP_UP],
             speed, gStringVar1);
 }
 
@@ -1473,13 +1473,17 @@ static void BattleUI_BufferBattlerTextForAbilityPopUp(enum BattlerId battler)
         StringAppend(gStringVar1, COMPOUND_STRING("s"));
 }
 
-static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum Ability ability, u32 spriteId, u32 speed)
+static void BattleUI_PrepareAbilityTextForAbilityPopUp(enum BattlerId battler, enum Ability ability, u32 spriteId, u32 speed)
 {
+    u32 x = TILE_TO_PIXELS(3) - 1;
+    if (!IsOnPlayerSide(battler))
+        x += TILE_TO_PIXELS(1);
+
     AddSpriteTextPrinterParameterized6(
             spriteId, FONT_OUTLINED,
-            23, 11,
+            x, TILE_TO_PIXELS(1) + 3,
             0, 0,
-            sBWBattleUI_TextColors[BUI_TXTCLR_HBOX_NAME],
+            sBWBattleUI_TextColors[BUI_TXTCLR_ABILITY_POP_UP],
             speed, gAbilitiesInfo[ability].name);
 }
 

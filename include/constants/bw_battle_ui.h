@@ -86,7 +86,11 @@ enum BattleUITextColors
     BUI_TXTCLR_ABOX_3, // green
     BUI_TXTCLR_ABOX_4, // blue
 
-    NUM_BUI_TXTCLRS
+    NUM_BUI_TXTCLRS,
+
+    // shortcuts
+    BUI_TXTCLR_HBOX_SAFARI = BUI_TXTCLR_HBOX_NAME,
+    BUI_TXTCLR_ABILITY_POP_UP = BUI_TXTCLR_HBOX_NAME,
 };
 
 enum
