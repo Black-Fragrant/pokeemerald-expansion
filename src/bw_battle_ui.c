@@ -104,14 +104,7 @@ const u32 *BattleUI_GetTextboxTilemap(void)
 {
     if (BW_BATTLE_UI && BW_BATTLE_UI_TEXTBOX)
     {
-        if (BW_BATTLE_UI_INPUTBOX)
-        {
-            return sBWBattleUI_TextboxTilemap;
-        }
-        else
-        {
-            return sBWBattleUI_JustTextboxTilemap;
-        }
+        return sBWBattleUI_TextboxTilemap;
     }
     else
     {

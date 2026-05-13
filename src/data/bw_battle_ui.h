@@ -4,8 +4,7 @@
 #include "graphics.h"
 static const u32 sBWBattleUI_TextboxTiles[] = INCGFX_U32("graphics/battle_interface/bw/textbox.png", ".4bpp.smol");
 static const u16 sBWBattleUI_TextboxPalette[] = INCBIN_U16("graphics/battle_interface/bw/textbox.gbapal");
-static const u32 sBWBattleUI_TextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox_swag.bin.smolTM");
-static const u32 sBWBattleUI_JustTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox_no_swag.bin.smolTM");
+static const u32 sBWBattleUI_TextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox.bin.smolTM");
 
 // inputbox->actionbox
 static const u8 sBWBattleUI_ActionBox[] = INCGFX_U8("graphics/battle_interface/bw/actionbox.png", ".4bpp");
