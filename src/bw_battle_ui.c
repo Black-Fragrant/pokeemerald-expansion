@@ -269,13 +269,20 @@ u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId battler)
 
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
 {
-    // the base sprite size is 64x32 (spawned as two sprites so 128x32).
+    // the base sprite size is typically 64x32 (spawned as two sprites so 128x32).
     // for x/y coords, we divide them by 2 to get proper offset on the screen
-    u32 offset;
+    // despite the player's base sprite size being 64x64 instead, it only works
+    // using 64x32 math.. and GetSpriteWidth/Height does not seem to work either
+    s16 offset;
+
     if (coord == 0) // x
         offset = TILE_TO_PIXELS(4);
     else
         offset = TILE_TO_PIXELS(2);
+
+    enum BattlerId battler = GetBattlerAtPosition(position);
+    if (!!(gBattleTypeFlags & BATTLE_TYPE_SAFARI) && IsOnPlayerSide(battler))
+        return sBWBattleUI_SafariPlayerHealthboxCoords[coord] + offset;
 
     return sBWBattleUI_HealthboxCoords[index][position][coord] + offset;
 }
