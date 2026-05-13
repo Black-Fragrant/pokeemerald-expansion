@@ -125,7 +125,7 @@ void BattleUI_PopulateActionBox(void)
     {
         const u8 *action = sBWBattleUI_ActionBoxFields[safari][i];
         u32 x = GetStringCenterAlignXOffset(fontId, action, TILE_TO_PIXELS(6));
-        x += (i & 1) ? TILE_TO_PIXELS(10) : TILE_TO_PIXELS(2);
+        x += (i & 1) ? TILE_TO_PIXELS(10) : (TILE_TO_PIXELS(2) - 2);
         u32 y = ((i & 2) ? TILE_TO_PIXELS(4) : TILE_TO_PIXELS(1)) - 1;
 
         BattleUI_AddTextPrinter(windowId, fontId, x, y, BUI_TXTCLR_ABOX_1 + i, action);
