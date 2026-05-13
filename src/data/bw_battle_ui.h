@@ -128,6 +128,8 @@ static const s16 sBWBattleUI_HealthboxCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_C
     },
 };
 
+static const s16 sBWBattleUI_SafariPlayerHealthboxCoords[2] = { 128, 80 };
+
 static const s16 sBWBattleUI_HealthbarCoords[BATTLE_COORDS_COUNT][MAX_BATTLERS_COUNT][2] =
 {
     [BATTLE_COORDS_SINGLES] =
