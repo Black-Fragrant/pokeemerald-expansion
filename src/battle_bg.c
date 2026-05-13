@@ -219,9 +219,9 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     [B_WIN_MOVE_NAME_2] = {
         .bg = 0,
         #if (BW_BATTLE_UI == TRUE && BW_BATTLE_UI_TEXTBOX == TRUE && BW_BATTLE_UI_INPUTBOX == TRUE)
-        .tilemapLeft = 16,
+        .tilemapLeft = 15,
         .tilemapTop = 54,
-        .width = 12,
+        .width = 14,
         .height = 3,
         .paletteNum = 11,
         .baseBlock = 0x02AC,
@@ -237,12 +237,12 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     [B_WIN_MOVE_NAME_3] = {
         .bg = 0,
         #if (BW_BATTLE_UI == TRUE && BW_BATTLE_UI_TEXTBOX == TRUE && BW_BATTLE_UI_INPUTBOX == TRUE)
-        .tilemapLeft = 2,
+        .tilemapLeft = 1,
         .tilemapTop = 57,
-        .width = 12,
+        .width = 14,
         .height = 3,
         .paletteNum = 12,
-        .baseBlock = 0x02D0,
+        .baseBlock = 0x02D6,
         #else
         .tilemapLeft = 2,
         .tilemapTop = 57,
@@ -255,12 +255,12 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     [B_WIN_MOVE_NAME_4] = {
         .bg = 0,
         #if (BW_BATTLE_UI == TRUE && BW_BATTLE_UI_TEXTBOX == TRUE && BW_BATTLE_UI_INPUTBOX == TRUE)
-        .tilemapLeft = 16,
+        .tilemapLeft = 15,
         .tilemapTop = 57,
-        .width = 12,
+        .width = 14,
         .height = 3,
         .paletteNum = 13,
-        .baseBlock = 0x02F4,
+        .baseBlock = 0x0300,
         #else
         .tilemapLeft = 11,
         .tilemapTop = 57,
@@ -431,7 +431,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .width = 18,
         .height = 6,
         .paletteNum = 5,
-        .baseBlock = BW_BATTLE_UI_INPUTBOX ? 0x0318 : 0x0350,
+        .baseBlock = BW_BATTLE_UI_INPUTBOX ? 0x032a : 0x0350,
     },
     DUMMY_WIN_TEMPLATE
 };
