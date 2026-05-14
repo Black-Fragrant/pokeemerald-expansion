@@ -68,6 +68,7 @@ static bool32 IsPowderMoveBlocked(struct DamageContext *ctx);
 const u8 *AbsorbedByDrainHpAbility(enum BattlerId battlerDef);
 const u8 *AbsorbedByStatIncreaseAbility(enum BattlerId battlerDef, enum Ability abilityDef, enum Stat statId, u32 statAmount);
 const u8 *AbsorbedByFlashFire(enum BattlerId battlerDef);
+static bool32 IsCriticalHit(struct DamageContext *ctx);
 
 ARM_FUNC NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent);
 ARM_FUNC NOINLINE static uq4_12_t PercentToUQ4_12_Floored(u32 percent);
@@ -7702,6 +7703,8 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
 
 static inline s32 DoMoveDamageCalc(struct DamageContext *ctx)
 {
+    ctx->typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(ctx);
+
     if (ctx->typeEffectivenessModifier == UQ_4_12(0.0))
         return 0;
 
@@ -7709,6 +7712,7 @@ static inline s32 DoMoveDamageCalc(struct DamageContext *ctx)
     if (dmg != INT32_MAX)
         return dmg;
 
+    ctx->isCrit = IsCriticalHit(ctx);
     return DoMoveDamageCalcVars(ctx);
 }
 
@@ -7759,10 +7763,34 @@ static inline s32 DoFutureSightAttackDamageCalcVars(struct DamageContext *ctx)
 
 static inline s32 DoFutureSightAttackDamageCalc(struct DamageContext *ctx)
 {
+    struct Pokemon *party = GetBattlerParty(ctx->battlerAtk);
+    struct Pokemon *partyMon = &party[gBattleStruct->futureSight[ctx->battlerDef].partyIndex];
+    struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
+
+    bool32 vesselOrRuin = gBattleMons[ctx->battlerAtk].volatiles.vesselOfRuin;
+    bool32 tabletsOfRuin = gBattleMons[ctx->battlerAtk].volatiles.tabletsOfRuin;
+    bool32 swordOfRuin = gBattleMons[ctx->battlerAtk].volatiles.swordOfRuin;
+    bool32 beadsOfRuin = gBattleMons[ctx->battlerAtk].volatiles.beadsOfRuin;
+
+    PokemonToBattleMon(partyMon , &gBattleMons[ctx->battlerAtk]);
+
+    gBattleMons[ctx->battlerAtk].volatiles.vesselOfRuin = vesselOrRuin;
+    gBattleMons[ctx->battlerAtk].volatiles.tabletsOfRuin = tabletsOfRuin;
+    gBattleMons[ctx->battlerAtk].volatiles.swordOfRuin = swordOfRuin;
+    gBattleMons[ctx->battlerAtk].volatiles.beadsOfRuin = beadsOfRuin;
+
+    ctx->abilities[ctx->battlerAtk] = ABILITY_NONE;
+    ctx->holdEffects[ctx->battlerAtk] = HOLD_EFFECT_NONE;
+    ctx->typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(ctx);
+    ctx->isCrit = IsCriticalHit(ctx);
+
     if (ctx->typeEffectivenessModifier == UQ_4_12(0.0))
         return 0;
 
-    return DoFutureSightAttackDamageCalcVars(ctx);
+    s32 dmg = DoMoveDamageCalc(ctx);
+
+    FreeRestoreBattleMons(savedBattleMons);
+    return dmg;
 }
 
 bool32 IsFutureSightAttackerInParty(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move)
@@ -7933,7 +7961,6 @@ s32 CalcCritChanceStageGen1(struct DamageContext *ctx)
 
 static bool32 IsCriticalHit(struct DamageContext *ctx)
 {
-
     if ((gBattleTypeFlags & (BATTLE_TYPE_CATCH_TUTORIAL | BATTLE_TYPE_POKEDUDE))
     || ((gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE) && (!IS_FRLG || !BtlCtrl_OakOldMan_TestState2Flag(1))))
         return FALSE;
