@@ -15,6 +15,13 @@ static enum TrainerPicID GetKantoTrainerPic(enum Gender gender)
     return gender == MALE ? TRAINER_PIC_RED : TRAINER_PIC_LEAF;
 }
 
+// start fireBlack
+static enum TrainerPicID GetFireBlackTrainerPic(enum Gender gender)
+{
+    return gender == MALE ? TRAINER_PIC_HILBERT : TRAINER_PIC_HILDA;
+}
+// end fireBlack
+
 enum TrainerPicID GetPlayerTrainerPic(enum Gender gender, enum GameVersion version)
 {
     switch (version)
@@ -27,6 +34,7 @@ enum TrainerPicID GetPlayerTrainerPic(enum Gender gender, enum GameVersion versi
             return GetKantoTrainerPic(gender);
         case VERSION_EMERALD:
         default:
-            return GetEmeraldTrainerPic(gender);
+            //return GetEmeraldTrainerPic(gender);
+            return GetFireBlackTrainerPic(gender);
     }
 }
