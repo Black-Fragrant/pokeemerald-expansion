@@ -420,8 +420,8 @@ static const u8 sText_None[]                                = _("NONE");
 #endif
 
 // bg gfx
-const u32 sSummaryScreen_Gfx_BW[]                           = INCBIN_U32("graphics/summary_screen/bw/tiles.4bpp.smol");
-const u16 sSummaryScreen_Pal_BW[]                           = INCBIN_U16("graphics/summary_screen/bw/tiles.gbapal");
+const u32 sSummaryScreen_Gfx_BW[]                           = INCGFX_U32("graphics/summary_screen/bw/tiles.png", ".4bpp.smol");
+const u16 sSummaryScreen_Pal_BW[]                           = INCGFX_U16("graphics/summary_screen/bw/tiles.png", ".gbapal");
 const u32 sSummaryPage_ScrollBG_Tilemap_BW[]                = INCBIN_U32("graphics/summary_screen/bw/scroll_bg.bin.smolTM");
 const u32 sSummaryPage_Info_Tilemap_BW[]                    = INCBIN_U32("graphics/summary_screen/bw/page_info.bin.smolTM");
 const u32 sSummaryPage_Skills_Tilemap_BW[]                  = INCBIN_U32("graphics/summary_screen/bw/page_skills.bin.smolTM");
@@ -429,12 +429,12 @@ const u32 sSummaryPage_BattleMoves_Tilemap_BW[]             = INCBIN_U32("graphi
 const u32 sSummaryPage_ContestMoves_Tilemap_BW[]            = INCBIN_U32("graphics/summary_screen/bw/page_contest_moves.bin.smolTM");
 const u32 sSummaryEffect_Battle_Tilemap_BW[]                = INCBIN_U32("graphics/summary_screen/bw/effect_battle.bin.smolTM");
 const u32 sSummaryEffect_Contest_Tilemap_BW[]               = INCBIN_U32("graphics/summary_screen/bw/effect_contest.bin.smolTM");
-const u16 sSummaryScreen_PPTextPalette_BW[]                 = INCBIN_U16("graphics/summary_screen/bw/text_pp.gbapal");
+const u16 sSummaryScreen_PPTextPalette_BW[]                 = INCGFX_U16("graphics/summary_screen/bw/text_pp.pal", ".gbapal");
 
 // sprite gfx
 static const u8 sButtons_Gfx[][4 * TILE_SIZE_4BPP] = {
-    INCBIN_U8("graphics/summary_screen/bw/a_button.4bpp"),
-    INCBIN_U8("graphics/summary_screen/bw/b_button.4bpp"),
+    INCGFX_U8("graphics/summary_screen/bw/a_button.png", ".4bpp"),
+    INCGFX_U8("graphics/summary_screen/bw/b_button.png", ".4bpp"),
 };
 
 #if BW_SUMMARY_BW_TYPE_ICONS == TRUE
@@ -442,22 +442,22 @@ static const u32 sMoveTypes_Gfx_BW[]                        = INCBIN_U32("graphi
 static const u16 sMoveTypes_Pal_BW[]                        = INCBIN_U16("graphics/types_bw/move_types_bw.gbapal");
 #endif
 static const u32 sTeraTypes_Gfx[]                           = INCBIN_U32("graphics/types_bw/tera/tera_types_bw.4bpp.smol");
-static const u32 sSummaryMoveSelect_Gfx_BW[]                = INCBIN_U32("graphics/summary_screen/bw/move_select.4bpp.smol");
-static const u16 sSummaryMoveSelect_Pal_BW[]                = INCBIN_U16("graphics/summary_screen/bw/move_select.gbapal");
-static const u16 sMarkings_Pal_BW[]                         = INCBIN_U16("graphics/summary_screen/bw/markings.gbapal");
-static const u32 sShinyIcon_Gfx_BW[]                        = INCBIN_U32("graphics/summary_screen/bw/shiny_icon.4bpp.smol");
-static const u32 sPokerusCuredIcon_Gfx_BW[]                 = INCBIN_U32("graphics/summary_screen/bw/pokerus_cured_icon.4bpp.smol");
-static const u16 sCategoryIcons_Pal[]                       = INCBIN_U16("graphics/summary_screen/bw/category_icons.gbapal");
-static const u32 sCategoryIcons_Gfx[]                       = INCBIN_U32("graphics/summary_screen/bw/category_icons.4bpp.smol");
-static const u16 sStatGrades_Pal[]                          = INCBIN_U16("graphics/summary_screen/bw/stat_grades.gbapal");
-static const u32 sStatGrades_Gfx[]                          = INCBIN_U32("graphics/summary_screen/bw/stat_grades.4bpp.smol");
-static const u16 sFriendshipIcon_Pal[]                      = INCBIN_U16("graphics/summary_screen/bw/heart.gbapal");
-static const u32 sFriendshipIcon_Gfx[]                      = INCBIN_U32("graphics/summary_screen/bw/heart.4bpp.smol");
+static const u32 sSummaryMoveSelect_Gfx_BW[]                = INCGFX_U32("graphics/summary_screen/bw/move_select.png", ".4bpp.smol");
+static const u16 sSummaryMoveSelect_Pal_BW[]                = INCGFX_U16("graphics/summary_screen/bw/move_select.pal", ".gbapal");
+static const u16 sMarkings_Pal_BW[]                         = INCGFX_U16("graphics/summary_screen/bw/markings.pal", ".gbapal");
+static const u32 sShinyIcon_Gfx_BW[]                        = INCGFX_U32("graphics/summary_screen/bw/shiny_icon.png", ".4bpp.smol");
+static const u32 sPokerusCuredIcon_Gfx_BW[]                 = INCGFX_U32("graphics/summary_screen/bw/pokerus_cured_icon.png", ".4bpp.smol");
+static const u16 sCategoryIcons_Pal[]                       = INCGFX_U16("graphics/summary_screen/bw/category_icons.png", ".gbapal");
+static const u32 sCategoryIcons_Gfx[]                       = INCGFX_U32("graphics/summary_screen/bw/category_icons.png", ".4bpp.smol");
+static const u16 sStatGrades_Pal[]                          = INCGFX_U16("graphics/summary_screen/bw/stat_grades.png", ".gbapal");
+static const u32 sStatGrades_Gfx[]                          = INCGFX_U32("graphics/summary_screen/bw/stat_grades.png", ".4bpp.smol");
+static const u16 sFriendshipIcon_Pal[]                      = INCGFX_U16("graphics/summary_screen/bw/heart.png", ".gbapal");
+static const u32 sFriendshipIcon_Gfx[]                      = INCGFX_U32("graphics/summary_screen/bw/heart.png", ".4bpp.smol");
 // rave note: yeah I know doing this with a sprite is mad jank, but I promise I have my reasons
 #if BW_SUMMARY_DECAP == TRUE
-static const u32 sRelearnPrompt_Gfx[]                       = INCBIN_U32("graphics/summary_screen/bw/relearn_prompt_decap.4bpp.smol");
+static const u32 sRelearnPrompt_Gfx[]                       = INCGFX_U32("graphics/summary_screen/bw/relearn_prompt_decap.png", ".4bpp.smol");
 #else
-static const u32 sRelearnPrompt_Gfx[]                       = INCBIN_U32("graphics/summary_screen/bw/relearn_prompt.4bpp.smol");
+static const u32 sRelearnPrompt_Gfx[]                       = INCGFX_U32("graphics/summary_screen/bw/relearn_prompt.png", ".4bpp.smol");
 #endif
 
 static const struct BgTemplate sBgTemplates[] =
@@ -1585,8 +1585,8 @@ static const union AnimCmd *const sSpriteAnimTable_StatusCondition[] = {
 };
 
 #if BW_SUMMARY_BW_STATUS_ICONS == TRUE
-static const u32 sStatusGfx_Icons[] = INCBIN_U32("graphics/summary_screen/bw/status_icons.4bpp.smol");
-static const u16 sStatusPal_Icons[] = INCBIN_U16("graphics/summary_screen/bw/status_icons.gbapal");
+static const u32 sStatusGfx_Icons[] = INCGFX_U32("graphics/summary_screen/bw/status_icons.png", ".4bpp.smol");
+static const u16 sStatusPal_Icons[] = INCGFX_U16("graphics/summary_screen/bw/status_icons.png", ".gbapal");
 #endif
 
 static const struct CompressedSpriteSheet sStatusIconsSpriteSheet =
@@ -1691,7 +1691,7 @@ static const struct SpriteTemplate sSpriteTemplate_PokerusCuredIcon =
     .callback = SpriteCallbackDummy
 };
 
-static const u16 sMonShadowPalette[] = INCBIN_U16("graphics/summary_screen/bw/shadow.gbapal");
+static const u16 sMonShadowPalette[] = INCGFX_U16("graphics/summary_screen/bw/shadow.pal", ".gbapal");
 
 static const struct SpritePalette sSpritePal_MonShadow =
 {
