@@ -12,6 +12,7 @@
 #include "link.h"
 #include "sprite.h"
 #include "trainer.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/trainers.h"
 #include "battle_interface.h"
 #include "battle_anim.h"
@@ -84,7 +85,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
         ClearSpritesHealthboxAnimData();
         break;
     case 6:
-        if (BattleLoadAllHealthBoxesGfx(gBattleScripting.reshowHelperState))
+        if (BattleLoadAllHealthBoxesGfxAtOnce(gBattleScripting.reshowHelperState))
         {
             LoadIndicatorSpritesGfx();
             gBattleScripting.reshowHelperState = 0;
@@ -153,6 +154,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
                 SetBattlerShadowSpriteCallback(opponentBattler, species);
             }
 
+            BattleUI_CreateCursorSprite(gBattlerInMenuId); // bwBattleUI
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gBattlerInMenuId], 0);
 
             if (gWirelessCommType != 0 && gReceivedRemoteLinkPlayers)

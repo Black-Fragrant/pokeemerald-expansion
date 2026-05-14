@@ -23,6 +23,7 @@
 #include "util.h"
 #include "window.h"
 #include "line_break.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/battle_anim.h"
 #include "constants/party_menu.h"
 #include "constants/songs.h"
@@ -126,15 +127,18 @@ static void HandleInputChooseAction(enum BattlerId battler)
         {
         case 0:
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SAFARI_BALL, 0);
+            BattleUI_SetCursorMode(BUI_CURSOR_MODE_HIDDEN); // bwBattleUI
             break;
         case 1:
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SAFARI_POKEBLOCK, 0);
             break;
         case 2:
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SAFARI_GO_NEAR, 0);
+            BattleUI_SetCursorMode(BUI_CURSOR_MODE_HIDDEN); // bwBattleUI
             break;
         case 3:
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SAFARI_RUN, 0);
+            BattleUI_SetCursorMode(BUI_CURSOR_MODE_HIDDEN); // bwBattleUI
             break;
         }
         BtlController_Complete(battler);
@@ -208,6 +212,7 @@ static void SafariOpenPokeblockCase(enum BattlerId battler)
 {
     if (!gPaletteFade.active)
     {
+        BattleUI_SetCursorMode(NUM_BUI_CURSOR_MODES); // bwBattleUI
         gBattlerControllerFuncs[battler] = CompleteWhenChosePokeblock;
         CloseMainBattleScreen();
         OpenPokeblockCaseInBattle();
@@ -289,6 +294,8 @@ static void HandleChooseActionAfterDma3(enum BattlerId battler)
     {
         gBattle_BG0_X = 0;
         gBattle_BG0_Y = DISPLAY_HEIGHT;
+        BattleUI_CreateCursorSprite(battler);
+        BattleUI_SetCursorMode(BUI_CURSOR_MODE_ACTION); // bwBattleUI
         gBattlerControllerFuncs[battler] = HandleInputChooseAction;
     }
 }

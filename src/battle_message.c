@@ -26,6 +26,10 @@
 #include "trainer_tower.h"
 #include "window.h"
 #include "line_break.h"
+// start bwBattleUI
+#include "bw_battle_ui.h"
+#include "config/bw_battle_ui.h"
+// end bwBattleUI
 #include "constants/abilities.h"
 #include "constants/battle_dome.h"
 #include "constants/battle_string_ids.h"
@@ -2111,9 +2115,10 @@ static const struct BattleWindowText sTextOnWindowsInfo_KantoTutorial[] =
         .letterSpacing = 0,
         .lineSpacing = 1,
         .speed = 1,
-        .fgColor = 2,
-        .bgColor = 1,
-        .shadowColor = 3,
+        .color.foreground = 2,
+        .color.background = 1,
+        .color.accent = 1,
+        .color.shadow = 3,
     },
 };
 
@@ -3812,6 +3817,25 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     bool32 copyToVram;
     struct TextPrinterTemplate printerTemplate;
     u8 speed;
+
+    // start bwBattleUI
+    if (BW_BATTLE_UI_TEXTBOX && BW_BATTLE_UI_INPUTBOX)
+    {
+        switch (windowId)
+        {
+        case B_WIN_ACTION_MENU:
+            BattleUI_PopulateActionBox();
+            // fallthrough
+        case B_WIN_PP:
+        case B_WIN_PP_REMAINING:
+        case B_WIN_SWITCH_PROMPT:
+        case B_WIN_MOVE_TYPE:
+            return;
+        default:
+            break;
+        }
+    }
+    // end bwBattleUI
 
     if (windowId & B_WIN_COPYTOVRAM)
     {
