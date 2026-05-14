@@ -29,6 +29,7 @@
 #include "trainer.h"
 #include "util.h"
 #include "wild_encounter.h"
+#include "bw_battle_ui.h" // bwBattleUI
 #include "constants/abilities.h"
 #include "constants/item_effects.h"
 #include "constants/songs.h"
@@ -2157,6 +2158,9 @@ static void Controller_HandleTrainerSlideBack(enum BattlerId battler)
     {
         if (!IsOnPlayerSide(battler))
             FreeTrainerFrontPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam);
+        else
+            FreeTrainerBackPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam, battler);
+
         FreeSpriteOamMatrix(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
         DestroySprite(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
         BtlController_Complete(battler);
