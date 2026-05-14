@@ -9782,6 +9782,16 @@
       "secondary_tileset": "gTileset_IndoorCastelia",
       "border_filepath": "data/layouts/CasteliaCity_EmptyBuilding1F/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_EmptyBuilding1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_CASTELIA_GYM",
+      "name": "CasteliaCity_CasteliaGym_Layout",
+      "width": 33,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CasteliaGym",
+      "border_filepath": "data/layouts/CasteliaCity_CasteliaGym/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_CasteliaGym/map.bin"
     }
   ]
 }
