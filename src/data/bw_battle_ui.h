@@ -1,7 +1,6 @@
 // const data
 
 // textbox
-#include "graphics.h"
 static const u32 sBWBattleUI_TextboxTiles[] = INCGFX_U32("graphics/battle_interface/bw/textbox.png", ".4bpp.smol");
 static const u16 sBWBattleUI_TextboxPalette[] = INCBIN_U16("graphics/battle_interface/bw/textbox.gbapal");
 static const u32 sBWBattleUI_TextboxTilemap[] = INCBIN_U32("graphics/battle_interface/bw/textbox.bin.smolTM");
@@ -155,10 +154,10 @@ static const s16 sBWBattleUI_AbilityPopUpCoords[BATTLE_COORDS_COUNT][MAX_BATTLER
     },
     [BATTLE_COORDS_DOUBLES] =
     {
-        [B_POSITION_PLAYER_LEFT]    = { 0,   48  },
-        [B_POSITION_OPPONENT_LEFT]  = { 144, 8   },
+        [B_POSITION_PLAYER_LEFT]    = { 0,   54  },
+        [B_POSITION_OPPONENT_LEFT]  = { 144, 4   },
         [B_POSITION_PLAYER_RIGHT]   = { 0,   80  },
-        [B_POSITION_OPPONENT_RIGHT] = { 144, 32  },
+        [B_POSITION_OPPONENT_RIGHT] = { 144, 28  },
     }
 };
 
