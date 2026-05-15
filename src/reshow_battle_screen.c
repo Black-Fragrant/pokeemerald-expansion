@@ -83,7 +83,10 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
         ClearSpritesHealthboxAnimData();
         break;
     case 6:
-        if (BattleLoadAllHealthBoxesGfxAtOnce(gBattleScripting.reshowHelperState))
+        // start bwBattleUI
+        //if (BattleLoadAllHealthBoxesGfx(gBattleScripting.reshowHelperState))
+        if (BattleUI_LoadAllHealthboxGfx(gBattleScripting.reshowHelperState))
+        // end bwBattleUI
         {
             LoadIndicatorSpritesGfx();
             gBattleScripting.reshowHelperState = 0;
@@ -152,7 +155,6 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
                 SetBattlerShadowSpriteCallback(opponentBattler, species);
             }
 
-            BattleUI_CreateCursorSprite(gBattlerInMenuId); // bwBattleUI
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gBattlerInMenuId], 0);
 
             if (gWirelessCommType != 0 && gReceivedRemoteLinkPlayers)
