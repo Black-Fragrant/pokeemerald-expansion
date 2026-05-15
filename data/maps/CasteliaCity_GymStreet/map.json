@@ -243,8 +243,8 @@
       "x": 20,
       "y": 33,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
-      "dest_warp_id": "17"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_GYM",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],
