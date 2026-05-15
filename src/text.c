@@ -2830,8 +2830,8 @@ static void DecompressGlyph_BattleUIElements(u16 glyphId, bool32 isJapanese)
 {
     const u16 *glyphs = gFontBattleUIElementsLatinGlyphs + TILE_OFFSET_4BPP(glyphId);
 
-    gCurGlyph.width = gFontBattleUIElementsLatinGlyphWidths[glyphId];
-    gCurGlyph.height = 16;
+    gCurGlyph.width = gFontBattleUIElementsLatinGlyphSizes[glyphId][0];
+    gCurGlyph.height = gFontBattleUIElementsLatinGlyphSizes[glyphId][1];
 
     if (gCurGlyph.width <= 8)
     {
@@ -2850,7 +2850,7 @@ static void DecompressGlyph_BattleUIElements(u16 glyphId, bool32 isJapanese)
 
 static u32 GetGlyphWidth_BattleUIElements(u16 glyphId, bool32 isJapanese)
 {
-    return isJapanese ? 8 : gFontBattleUIElementsLatinGlyphWidths[glyphId];
+    return isJapanese ? 8 : gFontBattleUIElementsLatinGlyphSizes[glyphId][0];
 }
 
 u32 GetOutlineFontIdToFit(const u8 *str, u32 widthPx)
