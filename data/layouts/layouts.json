@@ -9792,6 +9792,16 @@
       "secondary_tileset": "gTileset_CasteliaGym",
       "border_filepath": "data/layouts/CasteliaCity_CasteliaGym/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_CasteliaGym/map.bin"
+    },
+    {
+      "id": "LAYOUT_CASTELIA_CITY_GATE",
+      "name": "CasteliaCity_Gate_Layout",
+      "width": 11,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/CasteliaCity_Gate/border.bin",
+      "blockdata_filepath": "data/layouts/CasteliaCity_Gate/map.bin"
     }
   ]
 }
