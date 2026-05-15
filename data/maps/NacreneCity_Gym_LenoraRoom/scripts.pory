@@ -112,8 +112,8 @@ script NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora_Pos1
 
 script NacreneCity_Gym_LenoraRoom_EventScript_Lenora_AcquiredBadge
 {
-    msgbox("Some problems you can't solve even if you\n"
-           "think about them your whole life.\p"
+    msgbox("Some problems you can't solve even if\n"
+           "you think about them your whole life.\p"
            "Some problems have different answers\n"
            "depending on the person.\p"
            "Still, the reason I can't keep my\n"
