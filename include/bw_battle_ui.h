@@ -13,6 +13,8 @@ enum BWBattleUICursorMode
 
 enum BWBattleUISpriteGraphicsType
 {
+    BUI_SPRITE_GFX_CURSOR,
+
     BUI_SPRITE_GFX_SUMMARY_BAR,
     BUI_SPRITE_GFX_SUMMARY_BALL,
 
@@ -38,6 +40,8 @@ enum BWBattleUISpriteGraphicsType
 
 enum BWBattleUISpritePaletteType
 {
+    BUI_SPRITE_PAL_CURSOR,
+
     BUI_SPRITE_PAL_SUMMARY_BAR,
     BUI_SPRITE_PAL_SUMMARY_BALL,
 
@@ -60,6 +64,9 @@ enum BWBattleUISpritePaletteType
 const u32 *BattleUI_GetTextboxTiles(void);
 const u16 *BattleUI_GetTextboxPalette(void);
 const u32 *BattleUI_GetTextboxTilemap(void);
+
+bool32 BattleUI_LoadAllHealthboxGfx(u32);
+
 void BattleUI_PopulateActionBox(void);
 
 void BattleUI_CreateCursorSprite(enum BattlerId);

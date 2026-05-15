@@ -48,6 +48,8 @@ static void SpriteCB_BounceLastBallIcon(struct Sprite *);
 static void Task_BattleUITrackAbilityPopUpGfx(u8);
 static void Task_BattleUIHandleAbilityPopUp(u8);
 
+static inline u32 BattleUI_LoadBlankHealthbarGfx(enum BattlerPosition);
+
 static void BattleUI_SetCursorBattler(enum BattlerId);
 static u32 BattleUI_GetCursorBattler(void);
 
@@ -112,6 +114,84 @@ const u32 *BattleUI_GetTextboxTilemap(void)
     }
 }
 
+bool32 BattleUI_LoadAllHealthboxGfx(u32 state)
+{
+    enum
+    {
+        LOAD_STATE_MISC,
+        LOAD_STATE_HPBOX_PLAYER_LEFT,
+        LOAD_STATE_HPBOX_OPPONENT_LEFT,
+        LOAD_STATE_HPBAR_PLAYER_LEFT,
+        LOAD_STATE_HPBAR_OPPONENT_LEFT,
+        LOAD_STATE_HPBOX_PLAYER_RIGHT,
+        LOAD_STATE_HPBOX_OPPONENT_RIGHT,
+        LOAD_STATE_HPBAR_PLAYER_RIGHT,
+        LOAD_STATE_HPBAR_OPPONENT_RIGHT,
+        LOAD_STATE_FINISH
+    };
+
+    switch (state)
+    {
+    case LOAD_STATE_MISC:
+        BattleUI_SetCursorSpriteId(SPRITE_NONE);
+        BattleUI_CreateCursorSprite(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
+        BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_HEALTH_BOX, TAG_HEALTHBOX_PAL);
+        BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_HEALTH_BAR, TAG_HEALTHBAR_PAL);
+        CategoryIcons_LoadSpritesGfx();
+        break;
+    case LOAD_STATE_HPBOX_PLAYER_LEFT:
+        {
+            enum BWBattleUISpriteGraphicsType type;
+            u32 tag;
+            if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+                type = BUI_SPRITE_GFX_HPBOX_SAFARI, tag = TAG_HEALTHBOX_SAFARI_TILE;
+            else if (GetBattlerCoordsIndex(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)) != BATTLE_COORDS_SINGLES)
+                type = BUI_SPRITE_GFX_HPBOX_D_PLAYER, tag = TAG_HEALTHBOX_PLAYER1_TILE;
+            else
+                type = BUI_SPRITE_GFX_HPBOX_S_PLAYER, tag = TAG_HEALTHBOX_PLAYER1_TILE;
+
+            BattleUI_LoadSpriteSheet(type, tag);
+            break;
+        }
+    case LOAD_STATE_HPBOX_OPPONENT_LEFT:
+        {
+            enum BWBattleUISpriteGraphicsType type;
+            if (GetBattlerCoordsIndex(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)) != BATTLE_COORDS_SINGLES)
+                type = BUI_SPRITE_GFX_HPBOX_D_OPPONENT;
+            else
+                type = BUI_SPRITE_GFX_HPBOX_S_OPPONENT;
+
+            BattleUI_LoadSpriteSheet(type, TAG_HEALTHBOX_OPPONENT1_TILE);
+            break;
+        }
+    case LOAD_STATE_HPBAR_PLAYER_LEFT:
+        BattleUI_LoadBlankHealthbarGfx(B_POSITION_PLAYER_LEFT);
+        break;
+    case LOAD_STATE_HPBAR_OPPONENT_LEFT:
+        BattleUI_LoadBlankHealthbarGfx(B_POSITION_OPPONENT_LEFT);
+        break;
+    case LOAD_STATE_HPBOX_PLAYER_RIGHT:
+        if (!IsDoubleBattle())
+            return TRUE;
+        BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_HPBOX_D_PLAYER, TAG_HEALTHBOX_PLAYER2_TILE);
+        break;
+    case LOAD_STATE_HPBOX_OPPONENT_RIGHT:
+        BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_HPBOX_D_OPPONENT, TAG_HEALTHBOX_OPPONENT2_TILE);
+        break;
+    case LOAD_STATE_HPBAR_PLAYER_RIGHT:
+        BattleUI_LoadBlankHealthbarGfx(B_POSITION_PLAYER_RIGHT);
+        break;
+    case LOAD_STATE_HPBAR_OPPONENT_RIGHT:
+        BattleUI_LoadBlankHealthbarGfx(B_POSITION_OPPONENT_RIGHT);
+        break;
+    case LOAD_STATE_FINISH:
+    default:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 void BattleUI_PopulateActionBox(void)
 {
     u32 windowId = B_WIN_ACTION_MENU;
@@ -150,8 +230,8 @@ void BattleUI_CreateCursorSprite(enum BattlerId battler)
         return;
     }
 
-    LoadCompressedSpriteSheet(&sBWBattleUI_CursorSheet);
-    LoadSpritePalette(&sBWBattleUI_CursorPalette);
+    BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_CURSOR, TAG_CURSOR);
+    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_CURSOR, TAG_CURSOR);
 
     spriteId = CreateSprite(&sBWBattleUI_CursorTemplate, 0, 0, 0);
     AGB_WARNING(spriteId != SPRITE_NONE);
@@ -260,11 +340,6 @@ u32 BattleUI_LoadSpritePalette(enum BWBattleUISpritePaletteType type, u32 tag)
         .data = sBWBattleUI_SpritePalettes[type],
         .tag = tag
     });
-}
-
-u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId battler)
-{
-    return TAG_TRAINER_BACK_PIC_PAL + battler;
 }
 
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
@@ -922,6 +997,16 @@ static void Task_BattleUIHandleAbilityPopUp(u8 taskId)
     }
 }
 
+static inline u32 BattleUI_LoadBlankHealthbarGfx(enum BattlerPosition position)
+{
+    u32 tileSize = 8 + (position % 2);
+    return LoadCompressedSpriteSheet(&(const struct CompressedSpriteSheet){
+        .data = gBlankGfxCompressed,
+        .size = TILE_OFFSET_4BPP(tileSize),
+        .tag = TAG_HEALTHBAR_PLAYER1_TILE + position,
+    });
+}
+
 static void BattleUI_SetCursorBattler(enum BattlerId battler)
 {
     gSprites[BattleUI_GetCursorSpriteId()].sBattler = battler;
@@ -1237,11 +1322,13 @@ static void BattleUI_UpdateHealthboxLvlText(u32 spriteId, struct Pokemon *mon)
     sprite2->data[1] = SPRITE_NONE;
 
     u32 fontId = FONT_OUTLINED_NARROW;
-    u32 x = GetStringRightAlignXOffset(fontId, gDisplayedStringBattle, TILE_TO_PIXELS(4) - 1);
+    u32 x = 0;
     if (IsOnPlayerSide(battler))
         x += TILE_TO_PIXELS(2) - 2;
 
-    FillSpriteRectColor(spriteId2, x, 0, GetStringWidth(fontId, gDisplayedStringBattle, 0), TILE_TO_PIXELS(2) - 2, 0);
+    FillSpriteRectColor(spriteId2, x, 0, TILE_TO_PIXELS(4), TILE_TO_PIXELS(2) - 2, 0);
+
+    x += GetStringRightAlignXOffset(fontId, gDisplayedStringBattle, TILE_TO_PIXELS(4) - 1);
     BattleUI_AddSpriteTextPrinter(spriteId2, fontId, x, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
 
     sprite->data[1] = data1;

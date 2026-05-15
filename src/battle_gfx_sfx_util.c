@@ -703,69 +703,32 @@ void FreeTrainerFrontPicPalette(enum TrainerPicID trainerPicId)
     FreeSpritePaletteByTag(GetTrainerPicTag(trainerPicId, TRUE));
 }
 
-// start bwBattleUI
-void FreeTrainerBackPicPalette(enum TrainerPicID trainerPicId, enum BattlerId battler)
+// Unused.
+void BattleLoadAllHealthBoxesGfxAtOnce(void)
 {
-    FreeSpritePaletteByTag(BattleUI_GetTrainerBackPicPaletteTag(battler));
+    u8 numberOfBattlers = 0;
+    u8 i;
+
+    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
+    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+    if (!IsDoubleBattle())
+    {
+        LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+        LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
+        numberOfBattlers = 2;
+    }
+    else
+    {
+        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
+        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
+        numberOfBattlers = MAX_BATTLERS_COUNT;
+    }
+    for (i = 0; i < numberOfBattlers; i++)
+        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[GetBattlerPosition(i)]);
 }
 
-bool32 BattleLoadAllHealthBoxesGfxAtOnce(u8 state)
-{
-    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_HEALTH_BOX, TAG_HEALTHBOX_PAL);
-    BattleUI_LoadSpritePalette(BUI_SPRITE_PAL_HEALTH_BAR, TAG_HEALTHBAR_PAL);
-
-    enum BWBattleUISpriteGraphicsType playerType = BUI_SPRITE_GFX_HPBOX_S_PLAYER,
-                                      opponentType = BUI_SPRITE_GFX_HPBOX_S_OPPONENT;
-    u32 tag = TAG_HEALTHBOX_PLAYER1_TILE;
-
-    bool32 isDoubles = IsDoubleBattle();
-
-    if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
-    {
-        playerType = BUI_SPRITE_GFX_HPBOX_SAFARI;
-        tag = TAG_HEALTHBOX_SAFARI_TILE;
-    }
-    else if (isDoubles)
-    {
-        if (GetBattlerCoordsIndex(B_BATTLER_0) != BATTLE_COORDS_SINGLES)
-        {
-            playerType = BUI_SPRITE_GFX_HPBOX_D_PLAYER;
-        }
-
-        opponentType = BUI_SPRITE_GFX_HPBOX_D_OPPONENT;
-    }
-
-    BattleUI_LoadSpriteSheet(playerType, tag);
-    BattleUI_LoadSpriteSheet(opponentType, TAG_HEALTHBOX_OPPONENT1_TILE);
-
-    u32 numBattlers = 2;
-
-    if (isDoubles)
-    {
-        BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_HPBOX_D_PLAYER, TAG_HEALTHBOX_PLAYER2_TILE);
-        BattleUI_LoadSpriteSheet(BUI_SPRITE_GFX_HPBOX_D_OPPONENT, TAG_HEALTHBOX_OPPONENT2_TILE);
-        numBattlers = MAX_BATTLERS_COUNT;
-    }
-
-    for (u32 i = 0; i < numBattlers; i++)
-    {
-        u32 tileSize = 8 + (i % 2);
-
-        LoadCompressedSpriteSheet(&(const struct CompressedSpriteSheet){
-            .data = gBlankGfxCompressed,
-            .size = TILE_OFFSET_4BPP(tileSize),
-            .tag = TAG_HEALTHBAR_PLAYER1_TILE + i,
-        });
-    }
-
-    LoadIndicatorSpritesGfx();
-    CategoryIcons_LoadSpritesGfx();
-
-    return TRUE;
-}
-// end bwBattleUI
-
-// unused bwBattleUI
 bool8 BattleLoadAllHealthBoxesGfx(u8 state)
 {
     bool8 retVal = FALSE;
@@ -856,7 +819,10 @@ bool8 BattleInitAllSprites(u8 *state1, u8 *battler)
         (*state1)++;
         break;
     case 1:
-        if (!BattleLoadAllHealthBoxesGfxAtOnce(*battler))
+        // start bwBattleUI
+        //if (!BattleLoadAllHealthBoxesGfx(*battler))
+        if (!BattleUI_LoadAllHealthboxGfx(*battler))
+        // end bwBattleUI
         {
             (*battler)++;
         }
