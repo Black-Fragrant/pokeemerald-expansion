@@ -262,11 +262,6 @@ u32 BattleUI_LoadSpritePalette(enum BWBattleUISpritePaletteType type, u32 tag)
     });
 }
 
-u32 BattleUI_GetTrainerBackPicPaletteTag(enum BattlerId battler)
-{
-    return TAG_TRAINER_BACK_PIC_PAL + battler;
-}
-
 s16 BattleUI_GetHealthboxCoords(enum BattleCoordTypes index, enum BattlerPosition position, u32 coord)
 {
     // the base sprite size is typically 64x32 (spawned as two sprites so 128x32).

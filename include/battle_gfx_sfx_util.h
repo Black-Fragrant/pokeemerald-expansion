@@ -17,7 +17,6 @@ void BattleGfxSfxDummy2(u16 species);
 void DecompressTrainerFrontPic(u16 frontPicId, enum BattlerId battler);
 void DecompressTrainerBackPic(enum TrainerPicID backPicId, enum BattlerId battler);
 void FreeTrainerFrontPicPalette(u16 frontPicId);
-void FreeTrainerBackPicPalette(u16 backPicId, u32 battler);
 bool8 BattleLoadAllHealthBoxesGfx(u8 state);
 bool32 BattleLoadAllHealthBoxesGfxAtOnce(u8 state);
 void LoadBattleBarGfx(u8 unused);

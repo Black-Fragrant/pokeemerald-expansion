@@ -2154,11 +2154,7 @@ static void Controller_HandleTrainerSlideBack(enum BattlerId battler)
 {
     if (gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].callback == SpriteCallbackDummy)
     {
-        if (!IsOnPlayerSide(battler))
-            FreeTrainerFrontPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam);
-        else
-            FreeTrainerBackPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam, battler);
-
+        FreeTrainerFrontPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam);
         FreeSpriteOamMatrix(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
         DestroySprite(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
         BtlController_Complete(battler);
