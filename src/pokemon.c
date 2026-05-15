@@ -5809,6 +5809,10 @@ enum TrainerPicID FacilityClassToPicIndex(u16 facilityClass)
 
 enum TrainerPicID PlayerGenderToFrontTrainerPicId(enum Gender playerGender)
 {
+    // start fireBlack
+    return GetPlayerTrainerPic(playerGender, VERSION_EMERALD);
+    // end fireBlack
+
     if (playerGender != MALE)
         return FacilityClassToPicIndex(IS_FRLG ? FACILITY_CLASS_LEAF : FACILITY_CLASS_MAY);
     else
