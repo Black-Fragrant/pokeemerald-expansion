@@ -198,17 +198,9 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_SHOUT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_TRANSPARENT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-    closemessage
-	release
+	setvar VAR_NACRENE_STATE, 1
+	warp MAP_NACRENE_CITY, 36, 13
+	waitstate
 	end
 
 Debug_EventScript_Script_1_text::
