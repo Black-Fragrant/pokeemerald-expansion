@@ -262,22 +262,20 @@
 #define METATILE_GameCorner_StairsTop                 0x29E
 
 // gTileset_General
-#define METATILE_General_CaveEntrance_Top      0x09F
-#define METATILE_General_Door                  0x000
-#define METATILE_General_Door_Contest          0x1DB
-#define METATILE_General_Door_Gym              0x1CD
-#define METATILE_General_Door_PokeCenter       0x021
-#define METATILE_General_Door_PokeMart         0x041
-#define METATILE_General_Door_PokemonCenter    0x0AB
-#define METATILE_General_Grass                 0x023
-#define METATILE_General_Grass_TreeUp          0x00E
-#define METATILE_General_LongGrass             0x015
-#define METATILE_General_SandPit_Center        0x121
-#define METATILE_General_SecretBase_VineLeft   0x036
-#define METATILE_General_SecretBase_VineRight  0x037
-#define METATILE_General_TallGrass             0x005
-#define METATILE_General_TallGrass_TreeLeft    0x1C6
-#define METATILE_General_TallGrass_TreeRight   0x1C7
+#define METATILE_General_CaveEntrance_Top     0x09F
+#define METATILE_General_Door                 0x000
+#define METATILE_General_Door_Contest         0x1DB
+#define METATILE_General_Door_Gym             0x1CD
+#define METATILE_General_Door_PokeCenter      0x021
+#define METATILE_General_Door_PokeMart        0x041
+#define METATILE_General_Door_PokemonCenter   0x0AB
+#define METATILE_General_Grass                0x023
+#define METATILE_General_Grass_TreeUp         0x00E
+#define METATILE_General_LongGrass            0x015
+#define METATILE_General_SandPit_Center       0x121
+#define METATILE_General_TallGrass            0x005
+#define METATILE_General_TallGrass_TreeLeft   0x1C6
+#define METATILE_General_TallGrass_TreeRight  0x1C7
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
