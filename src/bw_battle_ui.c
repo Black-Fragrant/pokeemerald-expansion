@@ -1237,11 +1237,13 @@ static void BattleUI_UpdateHealthboxLvlText(u32 spriteId, struct Pokemon *mon)
     sprite2->data[1] = SPRITE_NONE;
 
     u32 fontId = FONT_OUTLINED_NARROW;
-    u32 x = GetStringRightAlignXOffset(fontId, gDisplayedStringBattle, TILE_TO_PIXELS(4) - 1);
+    u32 x = 0;
     if (IsOnPlayerSide(battler))
         x += TILE_TO_PIXELS(2) - 2;
 
-    FillSpriteRectColor(spriteId2, x, 0, GetStringWidth(fontId, gDisplayedStringBattle, 0), TILE_TO_PIXELS(2) - 2, 0);
+    FillSpriteRectColor(spriteId2, x, 0, TILE_TO_PIXELS(4), TILE_TO_PIXELS(2) - 2, 0);
+
+    x += GetStringRightAlignXOffset(fontId, gDisplayedStringBattle, TILE_TO_PIXELS(4) - 1);
     BattleUI_AddSpriteTextPrinter(spriteId2, fontId, x, 0, BUI_TXTCLR_HBOX_NAME, gDisplayedStringBattle);
 
     sprite->data[1] = data1;
