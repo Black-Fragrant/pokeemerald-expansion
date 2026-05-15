@@ -294,7 +294,6 @@ static void HandleChooseActionAfterDma3(enum BattlerId battler)
     {
         gBattle_BG0_X = 0;
         gBattle_BG0_Y = DISPLAY_HEIGHT;
-        BattleUI_CreateCursorSprite(battler);
         BattleUI_SetCursorMode(BUI_CURSOR_MODE_ACTION); // bwBattleUI
         gBattlerControllerFuncs[battler] = HandleInputChooseAction;
     }
