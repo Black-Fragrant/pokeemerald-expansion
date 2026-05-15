@@ -46,6 +46,8 @@ static const u32 sBWBattleUI_AbilityPopUpGfx[] = INCGFX_U32("graphics/battle_int
 
 static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
 {
+    [BUI_SPRITE_GFX_CURSOR] = (const u32[])INCGFX_U32("graphics/battle_interface/bw/cursor.png", ".4bpp.smol", "-mwidth 2 -mheight 2"),
+
     [BUI_SPRITE_GFX_SUMMARY_BAR]  = BW_BATTLE_UI_PARTY_SUMMARY
         ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/ball_status_bar.png", ".4bpp.smol")
         : gBattleInterface_BallStatusBarGfx,
@@ -86,6 +88,8 @@ static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
 
 static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
 {
+    [BUI_SPRITE_PAL_CURSOR] = (const u16[])INCGFX_U16("graphics/battle_interface/bw/cursor.png", ".gbapal"),
+
     [BUI_SPRITE_PAL_SUMMARY_BAR]  = BW_BATTLE_UI_PARTY_SUMMARY
         ? sBWBattleUI_PartySummaryBarPalette
         : gBattleInterface_BallStatusBarPal,
@@ -168,19 +172,6 @@ static const s8 sBWBattleUI_GimmickIndicatorCoords[MAX_BATTLERS_COUNT][2] =
     [B_POSITION_OPPONENT_LEFT]  = { 33, -11 },
     [B_POSITION_PLAYER_RIGHT]   = { 47, -11 },
     [B_POSITION_OPPONENT_RIGHT] = { 33, -11 },
-};
-
-static const struct CompressedSpriteSheet sBWBattleUI_CursorSheet =
-{
-    .data = (const u32[])INCGFX_U32("graphics/battle_interface/bw/cursor.png", ".4bpp.smol", "-mwidth 2 -mheight 2"),
-    .size = TILE_OFFSET_4BPP(48),
-    .tag = TAG_CURSOR
-};
-
-static const struct SpritePalette sBWBattleUI_CursorPalette =
-{
-    .data = (const u16[])INCGFX_U16("graphics/battle_interface/bw/cursor.png", ".gbapal"),
-    .tag = TAG_CURSOR
 };
 
 // BATTLE! / BAG / POKEMON / RUN
