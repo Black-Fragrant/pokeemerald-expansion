@@ -439,6 +439,7 @@ static void SlideMultiPartyMenuBoxSpritesOneStep(u8);
 static void Task_WaitAfterMultiPartnerPartySlideIn(u8);
 static void Task_WaitBeforeMultiPartnerFullParty(u8);
 static void Task_WaitAfterMultiPartnerFullParty(u8);
+static void Task_FadeToWhiteAndReload(u8);
 static void BufferMonSelection(void);
 static void Task_PartyMenuWaitForFade(u8 taskId);
 static void Task_ChooseContestMon(u8 taskId);
@@ -1474,6 +1475,22 @@ u8 GetPartyMenuType(void)
     return gPartyMenu.menuType;
 }
 
+static void Task_FadeToWhiteAndReload(u8 taskId)
+{
+    if (!gTasks[taskId].data[13])
+    {
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
+        gTasks[taskId].data[13] = 1;
+    }
+
+    if (gPaletteFade.active)
+        return;
+
+    gTasks[taskId].data[13] = 0;
+    RefreshPartyMenu();
+    SwitchTaskToFollowupFunc(taskId);
+}
+
 void Task_HandleChooseMonInput(u8 taskId)
 {
     if (!gPaletteFade.active && MenuHelpers_ShouldWaitForLinkRecv() != TRUE)
@@ -1506,7 +1523,7 @@ void Task_HandleChooseMonInput(u8 taskId)
 
             LoadBattlePartyCurrentOrderForLayout();
             UpdatePartyToBattleOrder();
-            RefreshPartyMenu();
+            SetTaskFuncWithFollowupFunc(taskId, Task_FadeToWhiteAndReload, Task_HandleChooseMonInput);
             break;
         }
     }
@@ -1908,6 +1925,21 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
     */
     // end bwPartyMenu
     {
+        u32 count;
+
+        switch (gPartyMenu.layout)
+        {
+        case PARTY_LAYOUT_MULTI_FULL_PARTNER:
+            count = CalculatePartyCount(B_TRAINER_2) - 1;
+            break;
+        case PARTY_LAYOUT_MULTI_FULL:
+            count = CalculatePartyCount(B_TRAINER_0) - 1;
+            break;
+        default:
+            count = CalculatePartyCountOfSide(B_BATTLER_0) - 1;
+            break;
+        }
+
         // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
         switch (movementDir)
         {
@@ -1917,11 +1949,11 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                 if (sPartyMenuInternal->chooseHalf)
                     *slotPtr = PARTY_SIZE;
                 else
-                    *slotPtr = gPartiesCount[B_TRAINER_0] - 1;
+                    *slotPtr = count;
             }
             else if (*slotPtr == PARTY_SIZE)
             {
-                *slotPtr = gPartiesCount[B_TRAINER_0] - 1;
+                *slotPtr = count;
             }
             else if (*slotPtr == 0 || *slotPtr == 1)
                 *slotPtr = PARTY_SIZE + 1;
@@ -1933,7 +1965,7 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                 *slotPtr = 0;
             else if (*slotPtr == PARTY_SIZE)
                 (*slotPtr)++;
-            else if (*slotPtr + 2 < gPartiesCount[B_TRAINER_0])
+            else if (*slotPtr + 2 < count + 1)
                 *slotPtr += 2;
             else
             {
@@ -1951,18 +1983,18 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                 if (sPartyMenuInternal->chooseHalf)
                     *slotPtr = PARTY_SIZE;
                 else
-                    *slotPtr = gPartiesCount[B_TRAINER_0] - 1;
+                    *slotPtr = count;
             }
             else if (*slotPtr > 0)
             {
                 if (sPartyMenuInternal->chooseHalf && *slotPtr == PARTY_SIZE)
                 {
-                    *slotPtr = gPartiesCount[B_TRAINER_0] - 1;
+                    *slotPtr = count;
                 }
                 else
                 {
                     (*slotPtr)--;
-                    if (*slotPtr >= gPartiesCount[B_TRAINER_0])
+                    if (*slotPtr >= count + 1)
                         *slotPtr = PARTY_SIZE + 1;
                 }
             }
@@ -1972,7 +2004,7 @@ static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
                 *slotPtr = 0;
             else if (*slotPtr == PARTY_SIZE)
                 *slotPtr = PARTY_SIZE + 1;
-            else if (*slotPtr + 1 < gPartiesCount[B_TRAINER_0])
+            else if (*slotPtr + 1 < count + 1)
                 (*slotPtr)++;
             else
             {
@@ -8157,9 +8189,6 @@ static void Task_WaitAfterMultiPartnerFullParty(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    if (data[0] == 0)
-        PlaySE(SE_M_HARDEN); // The Harden SE plays when the partner party is displayed
-
     if (FollowerNPCIsBattlePartner())
     {
         if (++data[0] == 128)
@@ -8173,12 +8202,14 @@ static void Task_WaitBeforeMultiPartnerFullParty(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
+    if (!data[0])
+        PlaySE(SE_M_HARDEN); // The Harden SE plays when the partner party is about to be displayed
+
     if (++data[0] == 64)
     {
-        RefreshPartyMenu();
         gPartyMenu.layout = PARTY_LAYOUT_MULTI_FULL_SHOWCASE_PARTNER;
         data[0] = 0;
-        gTasks[taskId].func = Task_WaitAfterMultiPartnerFullParty;
+        SetTaskFuncWithFollowupFunc(taskId, Task_FadeToWhiteAndReload, Task_WaitAfterMultiPartnerFullParty);
     }
 }
 
