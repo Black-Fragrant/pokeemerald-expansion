@@ -32,11 +32,7 @@ static const u16 sBWBattleUI_StatusIconPalette[] = INCGFX_U16("graphics/battle_i
 
 // healthbox
 static const u32 sBWBattleUI_HPBarText[] = INCGFX_U32("graphics/battle_interface/bw/hpbar.png", ".4bpp");
-static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
-    "graphics/battle_interface/bw/hpbar_none.4bpp",
-    "graphics/battle_interface/bw/hpbar_red.4bpp",
-    "graphics/battle_interface/bw/hpbar_yellow.4bpp",
-    "graphics/battle_interface/bw/hpbar_green.4bpp");
+static const u32 sBWBattleUI_HPBarAnims[] = INCGFX_U32("graphics/battle_interface/bw/hpbar_anims.png", ".4bpp");
 static const u32 sBWBattleUI_HPBoxEndFrames[] = INCGFX_U32("graphics/battle_interface/bw/healthbox_end_frames.png", ".4bpp");
 static const u32 sBWBattleUI_HPBoxCaughtIndicator[] = INCGFX_U32("graphics/battle_interface/bw/ball_caught_indicator.png", ".4bpp");
 static const u32 sBWBattleUI_EXPBarAnims[] = INCGFX_U32("graphics/battle_interface/bw/expbar.png", ".4bpp");
