@@ -976,16 +976,20 @@ static void LoadPartyMenuBoxes(enum PartyMenuLayout layout)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_RIGHT_COLUMN];
-        if (layout == PARTY_LAYOUT_SINGLE)  //Custom party menu
-            sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_EQUAL_COLUMN]; //
-        sPartyMenuBoxes[i].spriteCoords = sPartyMenuSpriteCoords[layout][i];
+        // start bwPartyMenu
+        //sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_RIGHT_COLUMN];
+        //sPartyMenuBoxes[i].spriteCoords = sPartyMenuSpriteCoords[layout][i];
+        sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_EQUAL_COLUMN];
+        sPartyMenuBoxes[i].spriteCoords = sPartyMenuSpriteCoords[PARTY_LAYOUT_SINGLE][i];
+        // end bwPartyMenu
         sPartyMenuBoxes[i].windowId = i;
         sPartyMenuBoxes[i].monSpriteId = SPRITE_NONE;
         sPartyMenuBoxes[i].itemSpriteId = SPRITE_NONE;
         sPartyMenuBoxes[i].pokeballSpriteId = SPRITE_NONE;
         sPartyMenuBoxes[i].statusSpriteId = SPRITE_NONE;
     }
+
+    return; // bwPartyMenu
 
     // The first party mon goes in the left column
     if (layout != PARTY_LAYOUT_SINGLE) //Custom party menu
@@ -1808,6 +1812,8 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
     s8 newSlotId = *slotPtr;
     enum PartyMenuLayout layout = gPartyMenu.layout;
 
+    // start bwPartyMenu
+    /*
     if (layout == PARTY_LAYOUT_SINGLE
      || layout == PARTY_LAYOUT_MULTI_FULL
      || layout == PARTY_LAYOUT_MULTI_FULL_PARTNER)
@@ -1818,6 +1824,9 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
     {
         UpdatePartySelectionDoubleLayout(slotPtr, movementDir);
     }
+    */
+    UpdatePartySelectionSingleLayout(slotPtr, movementDir);
+    // end bwPartyMenu
 
     if (*slotPtr != newSlotId)
     {
@@ -1829,6 +1838,8 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
 
 static void UpdatePartySelectionSingleLayout(s8 *slotPtr, s8 movementDir)
 {
+    // start bwPartyMenu
+    /*
     if (gPartyMenu.layout != PARTY_LAYOUT_SINGLE) //Custom party menu
     {
         // PARTY_SIZE + 1 is Cancel, PARTY_SIZE is Confirm
@@ -2404,6 +2415,8 @@ static enum CanMoveBeLearned CanTeachMove(struct Pokemon *mon, enum Move move)
 
 static void InitPartyMenuWindows(enum PartyMenuLayout layout)
 {
+    // start bwPartyMenu
+    /*
     switch (layout)
     {
     case PARTY_LAYOUT_MULTI_SHOWCASE:
@@ -2416,9 +2429,13 @@ static void InitPartyMenuWindows(enum PartyMenuLayout layout)
         InitWindows(sMultiPartyMenuWindowTemplate);
         break;
     default: // Singles and full-party multibattle menus
-        InitWindows(sSinglePartyMenuWindowTemplate_Equal); //sSinglePartyMenuWindowTemplate
+        InitWindows(sSinglePartyMenuWindowTemplate);
         break;
     }
+    */
+    InitWindows(sSinglePartyMenuWindowTemplate_Equal);
+    // end bwPartyMenu
+
     LoadPartyMenuWindows();
 }
 
@@ -2445,10 +2462,15 @@ static void CreateCancelConfirmWindows(bool8 chooseHalf)
     {
         if (chooseHalf == TRUE)
         {
+            // start bwPartyMenu
+            /*
             if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE)
                 confirmWindowId = AddWindow(&sConfirmButtonWindowTemplate_equal);
             else
                 confirmWindowId = AddWindow(&sConfirmButtonWindowTemplate);
+            */
+            confirmWindowId = AddWindow(&sConfirmButtonWindowTemplate_equal);
+            // end bwPartyMenu
             FillWindowPixelBuffer(confirmWindowId, PIXEL_FILL(0));
             mainOffset = GetStringCenterAlignXOffset(FONT_SMALL, gMenuText_Confirm, 48);
             AddTextPrinterParameterized4(confirmWindowId, FONT_SMALL, mainOffset, 1, 0, 0, sFontColorTable[0], TEXT_SKIP_DRAW, gMenuText_Confirm);
@@ -2536,10 +2558,15 @@ static void BlitBitmapToPartyWindow_RightColumn(u8 windowId, u8 x, u8 y, u8 widt
 
 static void DrawEmptySlot(u8 windowId)
 {
+    // start bwPartyMenu
+    /*
     if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE) //Custom party menu
         BlitBitmapToPartyWindow(windowId, sEqualEmptySlotTileNums, 14, 0, 0, 14, 5);//
     else
         BlitBitmapToPartyWindow(windowId, sEmptySlotTileNums, 18, 0, 0, 18, 3);
+    */
+    BlitBitmapToPartyWindow(windowId, sEqualEmptySlotTileNums, 14, 0, 0, 14, 5);
+    // end bwPartyMenu
 }
 
 //Custom party menu
@@ -3323,7 +3350,10 @@ static void SwitchSelectedMons(u8 taskId)
         tSlot1Height = GetWindowAttribute(windowIds[0], WINDOW_HEIGHT);
         tSlot1BaseBlock = GetWindowAttribute(windowIds[0], WINDOW_BASE_BLOCK);  //Custom party menu
         tSlot1Offset = 0;
-        if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE && (tSlot1BaseBlock == 0x63 || tSlot1BaseBlock == 0xEF || tSlot1BaseBlock == 0x17B))  //Custom party menu
+        // start bwPartyMenu
+        //if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE && (tSlot1BaseBlock == 0x63 || tSlot1BaseBlock == 0xEF || tSlot1BaseBlock == 0x17B))  //Custom party menu
+        if (tSlot1BaseBlock == 0x63 || tSlot1BaseBlock == 0xEF || tSlot1BaseBlock == 0x17B)
+        // end bwPartyMenu
             tSlot1SlideDir = -1;
         else if (tSlot1Width == 10) //
             tSlot1SlideDir = -1;
@@ -3336,7 +3366,10 @@ static void SwitchSelectedMons(u8 taskId)
         tSlot2Height = GetWindowAttribute(windowIds[1], WINDOW_HEIGHT);
         tSlot2BaseBlock = GetWindowAttribute(windowIds[1], WINDOW_BASE_BLOCK);  //Custom party menu
         tSlot2Offset = 0;
-        if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE && (tSlot2BaseBlock == 0x63 || tSlot2BaseBlock == 0xEF || tSlot2BaseBlock == 0x17B)) //Custom party menu
+        // start bwPartyMenu
+        //if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE && (tSlot2BaseBlock == 0x63 || tSlot2BaseBlock == 0xEF || tSlot2BaseBlock == 0x17B)) //Custom party menu
+        if (tSlot2BaseBlock == 0x63 || tSlot2BaseBlock == 0xEF || tSlot2BaseBlock == 0x17B)
+        // end bwPartyMenu
             tSlot2SlideDir = -1;
         else if (tSlot2Width == 10)//
             tSlot2SlideDir = -1;
