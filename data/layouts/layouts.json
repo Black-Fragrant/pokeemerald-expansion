@@ -9802,6 +9802,26 @@
       "secondary_tileset": "gTileset_Gate",
       "border_filepath": "data/layouts/CasteliaCity_Gate/border.bin",
       "blockdata_filepath": "data/layouts/CasteliaCity_Gate/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4_NORTH",
+      "name": "Route4_North_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Route4",
+      "border_filepath": "data/layouts/Route4_North/border.bin",
+      "blockdata_filepath": "data/layouts/Route4_North/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4_SOUTH",
+      "name": "Route4_South_Layout",
+      "width": 65,
+      "height": 92,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Route4",
+      "border_filepath": "data/layouts/Route4_South/border.bin",
+      "blockdata_filepath": "data/layouts/Route4_South/map.bin"
     }
   ]
 }

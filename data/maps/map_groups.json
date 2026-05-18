@@ -102,7 +102,9 @@
     "PinwheelForest_Outside_South",
     "SkyArrowBridge_SouthGate",
     "SkyArrowBridge",
-    "CasteliaCity_SouthBank"
+    "CasteliaCity_SouthBank",
+    "Route4_South",
+    "Route4_North"
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",

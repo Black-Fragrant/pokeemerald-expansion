@@ -46,36 +46,36 @@
       "x": 3,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_GATE",
+      "dest_map": "MAP_ROUTE4_SOUTH",
       "dest_warp_id": "0"
     },
     {
       "x": 4,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_GATE",
+      "dest_map": "MAP_ROUTE4_SOUTH",
       "dest_warp_id": "0"
     },
     {
       "x": 5,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_GATE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE4_SOUTH",
+      "dest_warp_id": "1"
     },
     {
       "x": 6,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_GATE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE4_SOUTH",
+      "dest_warp_id": "2"
     },
     {
       "x": 7,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_GATE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE4_SOUTH",
+      "dest_warp_id": "2"
     },
     {
       "x": 3,
