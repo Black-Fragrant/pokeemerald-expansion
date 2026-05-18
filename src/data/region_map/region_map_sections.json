@@ -1464,6 +1464,14 @@
       "height": 1
     },
     {
+      "id": "MAPSEC_ACCUMULA_GATE",
+      "name": "Accumula Gate",
+      "x": 21,
+      "y": 12,
+      "width": 1,
+      "height": 1
+    },
+    {
       "id": "MAPSEC_STRIATON_CITY",
       "name": "Striaton City",
       "x": 21,
@@ -1480,8 +1488,24 @@
       "height": 1
     },
     {
+      "id": "MAPSEC_NACRENE_GATE",
+      "name": "Nacrene Gate",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
       "id": "MAPSEC_CASTELIA_CITY",
       "name": "Castelia City",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_CASTELIA_GATE",
+      "name": "Castelia Gate",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1802,6 +1826,22 @@
     {
       "id": "MAPSEC_SKYARROW_BRIDGE",
       "name": "Skyarrow Bridge",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SKYARROW_BRIDGE_SOUTH_GATE",
+      "name": "Bridge Gate",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SKYARROW_BRIDGE_NORTH_GATE",
+      "name": "Bridge Gate",
       "x": 0,
       "y": 0,
       "width": 1,

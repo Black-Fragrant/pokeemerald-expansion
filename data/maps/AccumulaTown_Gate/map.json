@@ -3,7 +3,7 @@
   "name": "AccumulaTown_Gate",
   "layout": "LAYOUT_ACCUMULA_TOWN_GATE",
   "music": "MUS_BW_PASSAGE_TUNNEL",
-  "region_map_section": "MAPSEC_ACCUMULA_TOWN",
+  "region_map_section": "MAPSEC_ACCUMULA_GATE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
