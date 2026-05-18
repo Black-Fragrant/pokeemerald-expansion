@@ -1884,3 +1884,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/CasteliaCity_GameFreak22F/scripts.inc"
 
 	.include "data/maps/CasteliaCity_CasteliaGym/scripts.inc"
+
+	.include "data/maps/CasteliaCity_Gate/scripts.inc"
