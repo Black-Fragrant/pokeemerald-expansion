@@ -32,11 +32,7 @@ static const u16 sBWBattleUI_StatusIconPalette[] = INCGFX_U16("graphics/battle_i
 
 // healthbox
 static const u32 sBWBattleUI_HPBarText[] = INCGFX_U32("graphics/battle_interface/bw/hpbar.png", ".4bpp");
-static const u32 sBWBattleUI_HPBarAnims[] = INCBIN_U32(
-    "graphics/battle_interface/bw/hpbar_none.4bpp",
-    "graphics/battle_interface/bw/hpbar_red.4bpp",
-    "graphics/battle_interface/bw/hpbar_yellow.4bpp",
-    "graphics/battle_interface/bw/hpbar_green.4bpp");
+static const u32 sBWBattleUI_HPBarAnims[] = INCGFX_U32("graphics/battle_interface/bw/hpbar_anims.png", ".4bpp");
 static const u32 sBWBattleUI_HPBoxEndFrames[] = INCGFX_U32("graphics/battle_interface/bw/healthbox_end_frames.png", ".4bpp");
 static const u32 sBWBattleUI_HPBoxCaughtIndicator[] = INCGFX_U32("graphics/battle_interface/bw/ball_caught_indicator.png", ".4bpp");
 static const u32 sBWBattleUI_EXPBarAnims[] = INCGFX_U32("graphics/battle_interface/bw/expbar.png", ".4bpp");
@@ -48,29 +44,14 @@ static const u32 *const sBWBattleUI_SpriteGraphics[NUM_BUI_SPRITE_GFX] =
 {
     [BUI_SPRITE_GFX_CURSOR] = (const u32[])INCGFX_U32("graphics/battle_interface/bw/cursor.png", ".4bpp.smol", "-mwidth 2 -mheight 2"),
 
-    [BUI_SPRITE_GFX_SUMMARY_BAR]  = BW_BATTLE_UI_PARTY_SUMMARY
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/ball_status_bar.png", ".4bpp.smol")
-        : gBattleInterface_BallStatusBarGfx,
-    [BUI_SPRITE_GFX_SUMMARY_BALL] = BW_BATTLE_UI_PARTY_SUMMARY
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/ball_display.png", ".4bpp.smol")
-        : (const u32[])INCGFX_U32("graphics/battle_interface/ball_display.png", ".4bpp.smol"), // typically gets included in the misc hpbox tiles, so we need to be explicit here
+    [BUI_SPRITE_GFX_SUMMARY_BAR]  = (const u32[])INCGFX_U32("graphics/battle_interface/bw/ball_status_bar.png", ".4bpp.smol"),
+    [BUI_SPRITE_GFX_SUMMARY_BALL] = (const u32[])INCGFX_U32("graphics/battle_interface/bw/ball_display.png", ".4bpp.smol"),
 
-    [BUI_SPRITE_GFX_HPBOX_S_PLAYER]   = BW_BATTLE_UI_HEALTHBOX
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_singles_player.png", ".4bpp.smol", "-mwidth 8 -mheight 8")
-        : gHealthboxSinglesPlayerGfx,
-    [BUI_SPRITE_GFX_HPBOX_S_OPPONENT] = BW_BATTLE_UI_HEALTHBOX
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_singles_opponent.png", ".4bpp.smol", "-mwidth 8 -mheight 4")
-        : gHealthboxSinglesOpponentGfx,
-    [BUI_SPRITE_GFX_HPBOX_D_PLAYER]   = BW_BATTLE_UI_HEALTHBOX
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_doubles_player.png", ".4bpp.smol", "-mwidth 8 -mheight 4")
-        : gHealthboxDoublesPlayerGfx,
-    [BUI_SPRITE_GFX_HPBOX_D_OPPONENT] = BW_BATTLE_UI_HEALTHBOX
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_doubles_opponent.png", ".4bpp.smol", "-mwidth 8 -mheight 4")
-        : gHealthboxDoublesOpponentGfx,
-    // TODO: make a new safari box; maybe bw2 style instead?
-    [BUI_SPRITE_GFX_HPBOX_SAFARI]     = BW_BATTLE_UI_HEALTHBOX
-        ? (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_safari.png", ".4bpp.smol", "-mwidth 8 -mheight 8")
-        : gHealthboxSafariGfx,
+    [BUI_SPRITE_GFX_HPBOX_S_PLAYER]   = (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_singles_player.png", ".4bpp.smol", "-mwidth 8 -mheight 8"),
+    [BUI_SPRITE_GFX_HPBOX_S_OPPONENT] = (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_singles_opponent.png", ".4bpp.smol", "-mwidth 8 -mheight 4"),
+    [BUI_SPRITE_GFX_HPBOX_D_PLAYER]   = (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_doubles_player.png", ".4bpp.smol", "-mwidth 8 -mheight 4"),
+    [BUI_SPRITE_GFX_HPBOX_D_OPPONENT] = (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_doubles_opponent.png", ".4bpp.smol", "-mwidth 8 -mheight 4"),
+    [BUI_SPRITE_GFX_HPBOX_SAFARI]     = (const u32[])INCGFX_U32("graphics/battle_interface/bw/healthbox_safari.png", ".4bpp.smol", "-mwidth 8 -mheight 8"),
 
     [BUI_SPRITE_GFX_GIMMICK_TRIGGER_MEGA]     = (const u32[])INCGFX_U32("graphics/battle_interface/bw/mega_trigger.png", ".4bpp.smol"),
     [BUI_SPRITE_GFX_GIMMICK_TRIGGER_BURST]    = (const u32[])INCGFX_U32("graphics/battle_interface/bw/burst_trigger.png", ".4bpp.smol"),
@@ -90,19 +71,11 @@ static const u16 *const sBWBattleUI_SpritePalettes[NUM_BUI_SPRITE_PALS] =
 {
     [BUI_SPRITE_PAL_CURSOR] = (const u16[])INCGFX_U16("graphics/battle_interface/bw/cursor.png", ".gbapal"),
 
-    [BUI_SPRITE_PAL_SUMMARY_BAR]  = BW_BATTLE_UI_PARTY_SUMMARY
-        ? sBWBattleUI_PartySummaryBarPalette
-        : gBattleInterface_BallStatusBarPal,
-    [BUI_SPRITE_PAL_SUMMARY_BALL] = BW_BATTLE_UI_PARTY_SUMMARY
-        ? sBWBattleUI_PartySummaryBarPalette
-        : gBattleInterface_BallDisplayPal,
+    [BUI_SPRITE_PAL_SUMMARY_BAR]  = sBWBattleUI_PartySummaryBarPalette,
+    [BUI_SPRITE_PAL_SUMMARY_BALL] = sBWBattleUI_PartySummaryBarPalette,
 
-    [BUI_SPRITE_PAL_HEALTH_BOX]   = BW_BATTLE_UI_HEALTHBOX
-        ? (const u16[])INCGFX_U16("graphics/battle_interface/bw/healthbox_singles_player.png", ".gbapal")
-        : gBattleInterface_BallStatusBarPal,
-    [BUI_SPRITE_PAL_HEALTH_BAR]   = BW_BATTLE_UI_HEALTHBOX
-        ? (const u16[])INCGFX_U16("graphics/battle_interface/bw/hpbar.png", ".gbapal")
-        : gBattleInterface_BallDisplayPal,
+    [BUI_SPRITE_PAL_HEALTH_BOX]   = (const u16[])INCGFX_U16("graphics/battle_interface/bw/healthbox_singles_player.png", ".gbapal"),
+    [BUI_SPRITE_PAL_HEALTH_BAR]   = (const u16[])INCGFX_U16("graphics/battle_interface/bw/hpbar.png", ".gbapal"),
 
     [BUI_SPRITE_PAL_ABILITY_POP_UP] = (const u16[])INCGFX_U16("graphics/battle_interface/bw/ability_pop_up.png", ".gbapal"),
 
