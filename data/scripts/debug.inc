@@ -33,7 +33,7 @@ Debug_CheatStart::
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
 	setvar VAR_BRINEY_HOUSE_STATE, 1
-	setvar VAR_ROUTE116_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_BADGE02_GET
 	setflag FLAG_BADGE03_GET
@@ -198,9 +198,8 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	setvar VAR_NACRENE_STATE, 1
-	warp MAP_NACRENE_CITY, 36, 13
-	waitstate
+	setvar VAR_TIMES_YOU_HAVE_TRADED, 50
+	release
 	end
 
 Debug_EventScript_Script_1_text::

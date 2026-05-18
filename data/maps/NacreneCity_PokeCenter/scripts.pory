@@ -34,7 +34,7 @@ script NacreneCity_PokeCenter_EventScript_Clerk1
 			"Welcome!\n"
 			"May I help you?")
 	waitmessage
-	pokemart(StriatonCity_Mart_Items)
+	pokemart(NacreneCity_Mart_Items)
 	msgbox("Please come again!", MSGBOX_DEFAULT)
 	release
 	end

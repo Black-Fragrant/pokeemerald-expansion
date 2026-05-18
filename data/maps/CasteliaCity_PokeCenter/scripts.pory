@@ -1,1 +1,468 @@
-mapscripts CasteliaCity_PokeCenter_MapScripts {}
+mapscripts CasteliaCity_PokeCenter_MapScripts
+{
+    MAP_SCRIPT_ON_TRANSITION : CasteliaCity_PokeCenter_On_Transition
+}
+
+script CasteliaCity_PokeCenter_On_Transition
+{
+    call_if_set (FLAG_CASTELIA_POKEMON_CENTER_BREEDER_MOVE, CasteliaCity_PokeCenter_EventScript_PositionBreeder)
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_PositionBreeder
+{
+	setobjectxyperm(LOCALID_CASTELIA_POKECEN_BREEDER, 8, 12)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Nurse
+{
+	setvar(VAR_0x800B, LOCALID_CASTELIA_POKECEN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Clerk1
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(CasteliaCity_Mart_Items)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Clerk2
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(0)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart CasteliaCity_Mart_Items {
+	ITEM_HEAL_BALL
+	ITEM_NET_BALL
+	ITEM_NEST_BALL
+	ITEM_BRIDGE_MAIL_S
+	ITEM_GREET_MAIL
+	ITEM_FAVORED_MAIL
+	ITEM_RSVP_MAIL
+	ITEM_THANKS_MAIL
+	ITEM_INQUIRY_MAIL
+	ITEM_LIKE_MAIL
+	ITEM_REPLY_MAIL
+}
+
+script CasteliaCity_PokeCenter_EventScript_WifiAssistant
+{
+	msgbox("Sorry, we're getting things ready.\n"
+			"Please come back later.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Delivery
+{
+	lock
+	faceplayer
+	goto_if_set(FLAG_CASTELIA_POKEMON_CENTER_LIBERTY_PASS, CasteliaCity_PokeCenter_EventScript_Delivery_Finished)
+	msgbox("Good day. You must be {PLAYER}.\p"
+       "I've received a Mystery Gift for you.\n"
+       "Here you go!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_DELIVERY)
+    destroy_speech_bubble()
+    closemessage
+	showlargeitempic(6, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Liberty Pass{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
+    delay(120)
+	additem (ITEM_LIBERTY_PASS)
+	hidelargeitempic
+    closemessage
+	fadedefaultbgm
+	savebgm(MUS_BW_POKEMON_CENTER)
+	delay(10)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_LIBERTY_PASS)
+	goto(CasteliaCity_PokeCenter_EventScript_Delivery_Finished)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Delivery_Finished
+{
+	msgbox("We look forward to your next visit.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_DELIVERY)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Businessman
+{
+	msgbox("When you're tired, take a rest!\n"
+       "It's the same for people and Pokémon.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Girl
+{
+	lock
+	faceplayer
+	bufferleadmonspeciesname(STR_VAR_1)
+	msgbox("Your favorite is {STR_VAR_1}, isn't it?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_POKECEN_GIRL)
+	goto_if_eq(VAR_RESULT, YES, CasteliaCity_PokeCenter_EventScript_Girl_Yes)
+	destroy_speech_bubble()
+	closemessage
+	bufferleadmonspeciesname(STR_VAR_1)
+	msgbox("What? Your favorite isn't {STR_VAR_1}?!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_GIRL)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Girl_Yes
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Yes, I was right! I thought so!", MSGBOX_NPC, TRUE, LOCALID_CASTELIA_POKECEN_GIRL)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Blacksuit
+{
+	lock
+	faceplayer
+	goto_if_set(FLAG_CASTELIA_POKEMON_CENTER_BLACKSUIT_TALKED_ONCE, CasteliaCity_PokeCenter_EventScript_Blacksuit_RepeatQuestion)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_BLACKSUIT_TALKED_ONCE)
+	msgbox("Pokemon Trades help you connect with\n"
+       "the world!\l"
+       "The world will be bigger.\p"
+       "If you trade Pokemon with many people,\n"
+       "you will be happy!\p"
+       "Because I will give you something good!\p"
+       "So, Trainer, have you traded Pokemon\n"
+       "with many people?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	goto_if_eq(VAR_RESULT, YES, CasteliaCity_PokeCenter_EventScript_Blacksuit_Yes)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_No)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Blacksuit_RepeatQuestion
+{
+	msgbox("Hello, Trainer!\p"
+       "Have you traded Pokemon with\n"
+       "many people?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	goto_if_eq(VAR_RESULT, YES, CasteliaCity_PokeCenter_EventScript_Blacksuit_Yes)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_No)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Blacksuit_No
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Please trade Pokemon with many people!\p"
+       "I will give you a present if you do.\n"
+       "Besides, it's fun!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Blacksuit_Yes
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Oh, wonderful.\p"
+		"Then, let me check how many people you\n"
+		"have traded Pokemon with.\p"
+		"...", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 50, CasteliaCity_PokeCenter_EventScript_Traded_50plus)
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 40, CasteliaCity_PokeCenter_EventScript_Traded_40to49)
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 30, CasteliaCity_PokeCenter_EventScript_Traded_30to39)
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 20, CasteliaCity_PokeCenter_EventScript_Traded_20to29)
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 10, CasteliaCity_PokeCenter_EventScript_Traded_10to19)
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 5, CasteliaCity_PokeCenter_EventScript_Traded_5to9)
+	goto_if_ge(VAR_TIMES_YOU_HAVE_TRADED, 1, CasteliaCity_PokeCenter_EventScript_Traded_1to4)
+	msgbox("Zero? You haven't traded with anybody?!\n"
+       "But the world is so big!\p"
+       "Please trade with your friends or use\n"
+       "the Global Trade Station!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_1to4
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("You've traded Pokémon with {STR_VAR_1}?\n"
+		"The world is bigger than that!\p"
+		"Please trade with your friends or use\n"
+		"the Global Trade Station!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue
+{
+	goto_if_set(FLAG_TEMP_11, CasteliaCity_PokeCenter_EventScript_More_Items_Dialogue)
+	msgbox("Great!\n"
+		"I will give this to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_TEMP_11)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_More_Items_Dialogue
+{
+	msgbox("You are really great!\n"
+    	   "I'm happy, so I will give this to you, too!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Give_WideLens
+{
+	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
+    giveitem(ITEM_WIDE_LENS, 1)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Give_Everstone
+{
+	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
+    giveitem(ITEM_EVERSTONE, 1)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Give_ZoomLens
+{
+	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
+    giveitem(ITEM_ZOOM_LENS, 1)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_ZOOM_LENS)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Give_ChoiceScarf
+{
+	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
+    giveitem(ITEM_CHOICE_SCARF, 1)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_CHOICE_SCARF)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Give_PPMax
+{
+	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
+    giveitem(ITEM_PP_MAX, 1)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_PP_MAX)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_Give_MasterBall
+{
+	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
+    giveitem(ITEM_MASTER_BALL, 1)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_MASTER_BALL)
+	return
+}
+
+script CasteliaCity_PokeCenter_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+    closemessage
+	release()
+	end()
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_5to9
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("Wow!\n"
+		"You have traded with {STR_VAR_1} people!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS, CasteliaCity_PokeCenter_EventScript_Give_WideLens)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_10to19
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("Wow! Great!\n"
+		"You have traded with {STR_VAR_1} people!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS, CasteliaCity_PokeCenter_EventScript_Give_WideLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE, CasteliaCity_PokeCenter_EventScript_Give_Everstone)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_20to29
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("Wow! Impressive!\n"
+		"You have traded with {STR_VAR_1} people!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS, CasteliaCity_PokeCenter_EventScript_Give_WideLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE, CasteliaCity_PokeCenter_EventScript_Give_Everstone)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_ZOOM_LENS, CasteliaCity_PokeCenter_EventScript_Give_ZoomLens)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_30to39
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("Wow! Ecstatic!\n"
+		"You have traded with {STR_VAR_1} people!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS, CasteliaCity_PokeCenter_EventScript_Give_WideLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE, CasteliaCity_PokeCenter_EventScript_Give_Everstone)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_ZOOM_LENS, CasteliaCity_PokeCenter_EventScript_Give_ZoomLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_CHOICE_SCARF, CasteliaCity_PokeCenter_EventScript_Give_ChoiceScarf)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_40to49
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("Wow! Surprising!\n"
+		"You have traded with {STR_VAR_1} people!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS, CasteliaCity_PokeCenter_EventScript_Give_WideLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE, CasteliaCity_PokeCenter_EventScript_Give_Everstone)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_ZOOM_LENS, CasteliaCity_PokeCenter_EventScript_Give_ZoomLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_CHOICE_SCARF, CasteliaCity_PokeCenter_EventScript_Give_ChoiceScarf)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_PP_MAX, CasteliaCity_PokeCenter_EventScript_Give_PPMax)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Traded_50plus
+{
+	buffernumberstring(STR_VAR_1, VAR_TIMES_YOU_HAVE_TRADED)
+	msgbox("Wow! Wonderful!\n"
+		"You have traded with at least 50 people!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS, CasteliaCity_PokeCenter_EventScript_Give_WideLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE, CasteliaCity_PokeCenter_EventScript_Give_Everstone)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_ZOOM_LENS, CasteliaCity_PokeCenter_EventScript_Give_ZoomLens)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_CHOICE_SCARF, CasteliaCity_PokeCenter_EventScript_Give_ChoiceScarf)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_PP_MAX, CasteliaCity_PokeCenter_EventScript_Give_PPMax)
+	call_if_unset(FLAG_CASTELIA_POKEMON_CENTER_ITEM_MASTER_BALL, CasteliaCity_PokeCenter_EventScript_Give_MasterBall)
+	goto(CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Blacksuit_Ending
+{
+	msgbox("What are the Pokémon that I traded\n"
+		"doing now?\p"
+		"What are the people who traded with me\n"
+		"thinking about now?\p"
+		"Thinking about those things\n"
+		"makes me happy!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BLACKSUIT)
+	destroy_speech_bubble()
+	closemessage
+	clearflag(FLAG_TEMP_11)
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Breeder
+{
+	lock
+	faceplayer
+	goto_if_set(FLAG_CASTELIA_POKEMON_CENTER_BREEDER_MOVE, CasteliaCity_PokeCenter_EventScript_Breeder_AskAboutGeonet)
+	msgbox("Wanna recover Pokemon?\n"
+		"Oh, soooooorry!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+	destroy_speech_bubble()
+	closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 5, CasteliaCity_PokeCenter_EventScript_Breeder_MoveRight)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_PokeCenter_EventScript_Breeder_MoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_PokeCenter_EventScript_Breeder_MoveLeft)
+	goto(CasteliaCity_PokeCenter_EventScript_Breeder_AskAboutGeonet)
+}
+
+script CasteliaCity_PokeCenter_EventScript_Breeder_AskAboutGeonet
+{
+	msgbox("Do you know Geonet?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+	goto_if_eq(VAR_RESULT, YES, CasteliaCity_PokeCenter_EventScript_Breeder_Yes)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_CASTELIA_POKECEN_BREEDER, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("You see the globe on the second floor\n"
+		"of this Pokemon Center?\p"
+		"That is Geonet.\p"
+		"If you check on Geonet, you can register\n"
+		"the place where you live!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_BREEDER_MOVE)
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Breeder_Yes
+{
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Oh! You know Geonet!\n"
+		"Great, great!\p"
+		"This is even greater, lemme tell ya!\p"
+		"If you try Geonet, you can register\n"
+		"the place where you live!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_CASTELIA_POKEMON_CENTER_BREEDER_MOVE)
+	release
+	end
+}
+
+script CasteliaCity_PokeCenter_EventScript_Breeder_MoveRight
+{
+	applymovement(LOCALID_CASTELIA_POKECEN_BREEDER, moves(walk_right * 2, walk_in_place_left))
+	waitmovement(0)
+	return
+}
+script CasteliaCity_PokeCenter_EventScript_Breeder_MoveLeft
+{
+	applymovement(LOCALID_CASTELIA_POKECEN_BREEDER, moves(walk_left * 2, walk_in_place_right))
+	waitmovement(0)
+	return
+}
+

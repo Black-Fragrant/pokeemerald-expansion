@@ -125,7 +125,7 @@
 #define FLAG_HIDE_SELPHYS_BUTLER                           0x096
 #define FLAG_HIDE_FOUR_ISLAND_RIVAL                        0x097
 #define FLAG_HIDE_SIX_ISLAND_POKECENTER_RIVAL              0x098
-#define FLAG_HIDE_DEOXYS                                   0x099
+#define FLAG_UNUSED_0xXXX                                   0x099
 #define FLAG_HIDE_BIRTH_ISLAND_METEORITE                   0x09A
 #define FLAG_HIDE_LUGIA                                    0x09B
 #define FLAG_HIDE_HO_OH                                    0x09C
@@ -2102,8 +2102,8 @@
 #define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2                          0
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER                    0
 #define FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER                   0
-#define FLAG_HIDE_MAUVILLE_CITY_WALLY                               0
-#define FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE                        0
+#define FLAG_UNUSED_0xXXX                               0
+#define FLAG_UNUSED_0xXXX                        0
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY                0
 #define FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND                   0
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND     0
@@ -2156,7 +2156,7 @@
 #define FLAG_HIDE_SKY_PILLAR_WALLACE                                0
 #define FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE                              0
 #define FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS                              0
-#define FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY                       0
+#define FLAG_UNUSED_0xXXX                       0
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE                     0
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL                    0
 #define FLAG_HIDE_LILYCOVE_HARBOR_SSTIDAL                           0

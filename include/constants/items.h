@@ -925,7 +925,7 @@ enum __attribute__((packed)) Item
     ITEM_XTRANSCEIVER_BLUE = 753,
     ITEM_XTRANSCEIVER_RED = 754,
     ITEM_DRAGON_SKULL = 755,
-    ITEM_RUBY = 756,
+    ITEM_LIBERTY_PASS = 756,
     ITEM_SAPPHIRE = 757,
 
     // GEN IX ITEMS

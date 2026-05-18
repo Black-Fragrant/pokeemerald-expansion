@@ -1734,6 +1734,8 @@ extern const u32 gItemIcon_DowsingMachine_BW[];
 extern const u16 gItemIconPalette_DowsingMachine_BW[];
 extern const u32 gItemIcon_DragonSkull[];
 extern const u16 gItemIconPalette_DragonSkull[];
+extern const u32 gItemIcon_LibertyPass[];
+extern const u16 gItemIconPalette_LibertyPass[];
 
 // GEN IX ITEMS
 extern const u32 gItemIcon_AbilityShield[];

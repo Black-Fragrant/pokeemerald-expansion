@@ -271,7 +271,7 @@ static const struct MatchCallRival sMayMatchCallHeader =
         { MatchCall_Text_May1,  ALWAYS_AVAILABLE,                    NO_FLAG_TO_SET },
         { MatchCall_Text_May2,  FLAG_DEFEATED_DEWFORD_GYM,           NO_FLAG_TO_SET },
         { MatchCall_Text_May3,  FLAG_DELIVERED_DEVON_GOODS,          NO_FLAG_TO_SET },
-        { MatchCall_Text_May4,  FLAG_HIDE_MAUVILLE_CITY_WALLY,       NO_FLAG_TO_SET },
+        { MatchCall_Text_May4,  FLAG_UNUSED_0xXXX,       NO_FLAG_TO_SET },
         { MatchCall_Text_May5,  FLAG_RECEIVED_HM_STRENGTH,           NO_FLAG_TO_SET },
         { MatchCall_Text_May6,  FLAG_DEFEATED_LAVARIDGE_GYM,         NO_FLAG_TO_SET },
         { MatchCall_Text_May7,  FLAG_DEFEATED_PETALBURG_GYM,         NO_FLAG_TO_SET },
@@ -298,7 +298,7 @@ static const struct MatchCallRival sBrendanMatchCallHeader =
         { MatchCall_Text_Brendan1,  ALWAYS_AVAILABLE,                    NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan2,  FLAG_DEFEATED_DEWFORD_GYM,           NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan3,  FLAG_DELIVERED_DEVON_GOODS,          NO_FLAG_TO_SET },
-        { MatchCall_Text_Brendan4,  FLAG_HIDE_MAUVILLE_CITY_WALLY,       NO_FLAG_TO_SET },
+        { MatchCall_Text_Brendan4,  FLAG_UNUSED_0xXXX,       NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan5,  FLAG_RECEIVED_HM_STRENGTH,           NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan6,  FLAG_DEFEATED_LAVARIDGE_GYM,         NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan7,  FLAG_DEFEATED_PETALBURG_GYM,         NO_FLAG_TO_SET },
@@ -332,9 +332,9 @@ static const struct MatchCallWally sWallyMatchCallHeader =
         MATCH_CALL_TEXT_END
     },
     .locationData = (const struct MatchCallLocationOverride[]) {
-        { FLAG_HIDE_MAUVILLE_CITY_WALLY,          MAPSEC_VERDANTURF_TOWN },
+        { FLAG_UNUSED_0xXXX,          MAPSEC_VERDANTURF_TOWN },
         { FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,    MAPSEC_NONE },
-        { FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY,  MAPSEC_VICTORY_ROAD },
+        { FLAG_UNUSED_0xXXX,  MAPSEC_VICTORY_ROAD },
         { ALWAYS_AVAILABLE,                       MAPSEC_NONE }
     }
 };
