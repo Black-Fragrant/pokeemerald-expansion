@@ -748,8 +748,32 @@ void Task_BattleUIBounceLastBallIcon(u8 taskId)
 static void SpriteCB_BattleUICursor(struct Sprite *sprite)
 {
     enum BWBattleUICursorMode mode = BattleUI_GetCursorMode();
-    bool32 hasSubsprite = (sprite->sCursorMode >> BUI_CURSOR_CONVERT_FLAG);
     enum BattlerId battler = BattleUI_GetCursorBattler();
+    bool32 hasSubsprite = (sprite->sCursorMode >> BUI_CURSOR_CONVERT_FLAG);
+
+    switch (gBattle_BG0_Y)
+    {
+    case 0: // textbox
+    default:
+        mode = BUI_CURSOR_MODE_HIDDEN;
+        break;
+    case DISPLAY_HEIGHT: // action menu
+        mode = BUI_CURSOR_MODE_ACTION;
+        break;
+    case DISPLAY_HEIGHT * 2:
+        if (gBattleStruct->zmove.viable && IsGimmickSelected(battler, GIMMICK_Z_MOVE))
+            mode = BUI_CURSOR_MODE_Z_MOVE;
+        else
+            mode = BUI_CURSOR_MODE_MOVES;
+        break;
+    }
+
+    if (mode != BattleUI_GetCursorMode())
+    {
+        BattleUI_SetCursorMode(mode);
+        hasSubsprite = FALSE;
+    }
+
     u32 cursor = 0;
 
     switch (mode)

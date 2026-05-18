@@ -24,7 +24,10 @@
 #include "palette.h"
 #include "contest.h"
 #include "trainer.h"
-#include "bw_battle_ui.h" // bwBattleUI
+// start bwBattleUI
+#include "bw_battle_ui.h"
+#include "config/bw_battle_ui.h"
+// end bwBattleUI
 #include "trainer_pokemon_sprites.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
@@ -731,6 +734,13 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
 
 bool8 BattleLoadAllHealthBoxesGfx(u8 state)
 {
+    // start bwBattleUI
+    if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
+    {
+        return BattleUI_LoadAllHealthboxGfx(state);
+    }
+    // end bwBattleUI
+
     bool8 retVal = FALSE;
 
     if (state != 0)
@@ -819,10 +829,7 @@ bool8 BattleInitAllSprites(u8 *state1, u8 *battler)
         (*state1)++;
         break;
     case 1:
-        // start bwBattleUI
-        //if (!BattleLoadAllHealthBoxesGfx(*battler))
-        if (!BattleUI_LoadAllHealthboxGfx(*battler))
-        // end bwBattleUI
+        if (!BattleLoadAllHealthBoxesGfx(*battler))
         {
             (*battler)++;
         }
