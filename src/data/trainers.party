@@ -1248,7 +1248,7 @@ Sandile
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY18 ===
+=== TRAINER_CLERK_F_BC_47F_1 ===
 Name: RICKY
 Class: Tuber M
 Pic: Tuber M
@@ -1259,13 +1259,9 @@ AI: Check Bad Move
 
 Linoone
 Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY19 ===
+=== TRAINER_CLERK_M_BC_47F_1 ===
 Name: RICKY
 Class: Tuber M
 Pic: Tuber M
@@ -1277,12 +1273,8 @@ AI: Check Bad Move
 Linoone
 Level: 33
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
 
-=== TRAINER_DUMMY20 ===
+=== TRAINER_SCIENTIST_BC_47F ===
 Name: RICKY
 Class: Tuber M
 Pic: Tuber M
@@ -1294,12 +1286,8 @@ AI: Check Bad Move
 Linoone
 Level: 36
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
 
-=== TRAINER_DUMMY21 ===
+=== TRAINER_CLERK_M_BC_47F_2 ===
 Name: RANDALL
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1312,11 +1300,8 @@ AI: Basic Trainer
 Swellow
 Level: 26
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Quick Attack
-- Agility
-- Wing Attack
 
-=== TRAINER_DUMMY22 ===
+=== TRAINER_CLERK_F_BC_47F_2 ===
 Name: PARKER
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1329,9 +1314,6 @@ AI: Basic Trainer
 Spinda
 Level: 26
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Teeter Dance
-- Dizzy Punch
-- Focus Punch
 
 === TRAINER_DUMMY23 ===
 Name: GEORGE

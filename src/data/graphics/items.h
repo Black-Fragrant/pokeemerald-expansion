@@ -2021,6 +2021,9 @@ const u16 gItemIconPalette_DowsingMachine_BW[] = INCBIN_U16("graphics/items/icon
 const u32 gItemIcon_DragonSkull[] = INCBIN_U32("graphics/items/icons/dragon_skull.4bpp.smol");
 const u16 gItemIconPalette_DragonSkull[] = INCBIN_U16("graphics/items/icon_palettes/dragon_skull.gbapal");
 
+const u32 gItemIcon_LibertyPass[] = INCBIN_U32("graphics/items/icons/liberty_pass.4bpp.smol");
+const u16 gItemIconPalette_LibertyPass[] = INCBIN_U16("graphics/items/icon_palettes/liberty_pass.gbapal");
+
 const u32 gItemIcon_AbilityShield[] = INCBIN_U32("graphics/items/icons/ability_shield.4bpp.smol");
 const u16 gItemIconPalette_AbilityShield[] = INCBIN_U16("graphics/items/icon_palettes/ability_shield.gbapal");
 

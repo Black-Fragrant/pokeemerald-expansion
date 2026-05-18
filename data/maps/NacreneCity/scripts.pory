@@ -168,7 +168,7 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
     closemessage
 	showlargeitempic(4, 10, 3)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} obtained the Dowsing Machine!")
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Dowsing Machine{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
     delay(120)
 	additem (ITEM_DOWSING_MACHINE)
     call_if_eq (VAR_RESULT, FALSE, NacreneCity_EventScript_BagIsFull)

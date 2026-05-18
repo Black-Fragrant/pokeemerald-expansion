@@ -72,11 +72,11 @@
 #define TRAINER_GRUNT_M_PF_INSIDE_2          65
 #define TRAINER_RANGER_M_PF_INSIDE_2         66
 #define TRAINER_GRUNT_M_PF_INSIDE_3          67
-#define TRAINER_DUMMY18                      68
-#define TRAINER_DUMMY19                      69
-#define TRAINER_DUMMY20                      70
-#define TRAINER_DUMMY21                      71
-#define TRAINER_DUMMY22                      72
+#define TRAINER_CLERK_F_BC_47F_1             68
+#define TRAINER_CLERK_M_BC_47F_1             69
+#define TRAINER_SCIENTIST_BC_47F             70
+#define TRAINER_CLERK_M_BC_47F_2             71
+#define TRAINER_CLERK_F_BC_47F_2             72
 #define TRAINER_DUMMY23                      73
 #define TRAINER_DUMMY24                      74
 #define TRAINER_DUMMY25                      75

@@ -1,1 +1,215 @@
 mapscripts CasteliaCity_BattleCompany1F_MapScripts {}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger
+{
+	lock
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	playse(SE_PIN)
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_0, 8, CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos3)
+    delay(10)
+    msgbox("People who work in this building have\n"
+        "Pokemon battles, not opinion battles.\p"
+        "You appear to be strong, but if you go\n"
+        "upstairs, please be extra careful.", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_1F_GRANDPA)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos4)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos5)
+	call_if_eq (VAR_TEMP_0, 8, CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos6)
+	delay(20)
+	playse(SE_DING_DONG)
+	waitse()
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 6))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    setvar(VAR_CASTELIA_BATTLE_COMPANY_STATE, 1)
+    removeobject(LOCALID_BATTLE_COMPANY_1F_GRANDPA)
+    setflag(FLAG_CASTELIA_BATTLE_COMPANY_1F_GRANDPA)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos1
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_left, walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos2
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos3
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_right, walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos4
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 6))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_up * 6))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos5
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 6))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_up * 6, walk_left * 1, walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos6
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 6))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_up * 6, walk_left * 2, walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Sign
+{
+	msgbox("This is Battle Company.\n"
+       "Research and Development of Items!", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Receptionist
+{
+    msgbox("Welcome!\p"
+       "If you use the elevator, please use the\n"
+       "buttons on the door or next to the door.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Businessman
+{
+    msgbox("Every morning, my Pokemon wakes me\n"
+       "with Wake-Up Slap, so I always look like\l"
+       "a wreck.\p"
+       "But I appreciate its good intentions, so\n"
+       "I'll work my hardest to provide for it\l"
+       "today, as always.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_47_55, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo47F)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo55F)}
+	goto (CasteliaCity_BattleCompany1F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo47F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY47F, 7, 2)
+    waitstate
+    end
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo55F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY55F, 7, 2)
+    waitstate
+    end
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}

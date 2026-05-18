@@ -303,7 +303,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 	setflag FLAG_DEVON_GOODS_STOLEN
 	setvar VAR_ROUTE121_STATE, 2
 	setvar VAR_RUSTURF_TUNNEL_STATE, 2
-	setvar VAR_ROUTE116_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	clearflag FLAG_UNUSED_0xXXX
 	clearflag FLAG_UNUSED_0xXXX
 	clearflag FLAG_UNUSED_0xXXX

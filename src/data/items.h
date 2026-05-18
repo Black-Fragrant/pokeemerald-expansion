@@ -14768,21 +14768,21 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_DragonSkull,
     },
 
-    [ITEM_RUBY] =
+    [ITEM_LIBERTY_PASS] =
     {
-        .name = ITEM_NAME("Ruby"),
-        .pluralName = ITEM_PLURAL_NAME("Rubies"),
+        .name = ITEM_NAME("Liberty Pass"),
+        .pluralName = ITEM_PLURAL_NAME("Liberty Passes"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "An exquisite, red-\n"
-            "glowing gem that\n"
-            "symbolizes passion."),
+            "A special pass to go\n"
+            "to Liberty Garden.\n"
+            "Board in Castelia."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_Gem,
-        .iconPalette = gItemIconPalette_Ruby,
+        .iconPic = gItemIcon_LibertyPass,
+        .iconPalette = gItemIconPalette_LibertyPass,
     },
 
     [ITEM_SAPPHIRE] =

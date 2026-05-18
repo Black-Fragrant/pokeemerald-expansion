@@ -100,7 +100,7 @@
 #define VAR_SEASON                                       0x404E
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
-#define VAR_OLDALE_TOWN_STATE                            0x4051
+#define VAR_PLACEHOLDER                                  0x4051
 #define VAR_JUNIPER_PARCEL_DELIEVER                      0x4052 // the first var used in fire black
 #define VAR_NUVEMA_PICK_STARTER                          0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
@@ -122,18 +122,18 @@
 #define VAR_PINWHEEL_FOREST_STATE                        0x4064
 #define VAR_CASTELIA_TM70_FLASH                          0x4065
 #define VAR_CASTELIA_CASTELIACONE                        0x4066
-#define VAR_UNUSED_4067                                  0x4067 // Unused Var
-#define VAR_UNUSED_4068                                  0x4068 // Unused Var
-#define VAR_ROUTE110_STATE                               0x4069
+#define VAR_CASTELIA_BATTLE_COMPANY_STATE                0x4067
+#define VAR_TIMES_YOU_HAVE_TRADED                        0x4068
+#define VAR_CASTELIA_INSIDE_ELEVATORS                    0x4069
 #define VAR_ROUTE111_STATE                               0x406A // Unused Var
 #define VAR_ROUTE112_STATE                               0x406B // Unused Var
 #define VAR_ROUTE113_STATE                               0x406C // Unused Var
 #define VAR_ROUTE114_STATE                               0x406D // Unused Var
 #define VAR_ROUTE115_STATE                               0x406E // Unused Var
-#define VAR_ROUTE116_STATE                               0x406F
-#define VAR_ROUTE117_STATE                               0x4070 // Unused Var
-#define VAR_ROUTE118_STATE                               0x4071
-#define VAR_ROUTE119_STATE                               0x4072
+#define VAR_UNUSED_406F                                  0x406F
+#define VAR_UNUSED_4070                                  0x4070 // Unused Var
+#define VAR_UNUSED_4071                                  0x4071
+#define VAR_UNUSED_4072                                  0x4072
 #define VAR_ROUTE120_STATE                               0x4073 // Unused Var
 #define VAR_ROUTE121_STATE                               0x4074
 #define VAR_ROUTE122_STATE                               0x4075 // Unused Var
