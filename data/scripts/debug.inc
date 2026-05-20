@@ -12,7 +12,7 @@ Debug_CheatStart::
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
 	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	setvar VAR_METEOR_FALLS_STATE, 3
 	givemon SPECIES_TREECKO, 20, ITEM_NONE
 	givemon SPECIES_TORCHIC, 20, ITEM_NONE
@@ -28,7 +28,7 @@ Debug_CheatStart::
 	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
 	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
+	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
@@ -198,7 +198,8 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	setvar VAR_TIMES_YOU_HAVE_TRADED, 50
+	warpsilent MAP_CASTELIA_CITY_BATTLE_COMPANY1F, 7, 8
+    waitstate
 	release
 	end
 

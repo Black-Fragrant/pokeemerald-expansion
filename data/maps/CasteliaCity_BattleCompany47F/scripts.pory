@@ -1,1 +1,252 @@
-mapscripts CasteliaCity_BattleCompany47F_MapScripts {}
+mapscripts CasteliaCity_BattleCompany47F_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_BattleCompany47F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_BattleCompany47F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_BattleCompany47F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1_55, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_BattleCompany47F_EventScript_Elevator_GoTo1F)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_BattleCompany47F_EventScript_Elevator_GoTo55F)}
+	goto (CasteliaCity_BattleCompany47F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Elevator_GoTo1F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY1F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Elevator_GoTo55F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY55F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Battle_OL1
+{
+	trainerbattle_single(TRAINER_CLERK_F_BC_47F_1,
+	text("Welcome to the Battle Company!\n"
+       "Since you are here, battle with me.\l"
+       "I won't take no for an answer!"),
+	text("Oh, dear. Aren't you being\n"
+       "too hard on me?"))
+	msgbox("In the Battle Company, the stronger you\n"
+       "are, the higher the floor you work on.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Battle_Businessman1
+{
+	trainerbattle_single(TRAINER_CLERK_M_BC_47F_1,
+	text("I am pleased to meet you.\p"
+       "Please allow me to introduce you\n"
+       "to my Pokémon."),
+	text("I had the honor of meeting\n"
+       "your Pokémon!"))
+	msgbox("Well, well, you are strong!\n"
+       "I admire you.\n"
+       "I would like to learn by watching you!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Battle_Scientist
+{
+	trainerbattle_single(TRAINER_SCIENTIST_BC_47F,
+	text("Just because I am a Scientist,\n"
+       "people think I am so serious!"),
+	text("Shocking! Nooooo waaaay!\n"
+       "I loooooost!"))
+	msgbox("To return a ridiculous idea\n"
+       "into a reality...\p"
+       "Science can make much more happen\n"
+       "than everyone thinks!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Battle_OL2
+{
+	trainerbattle_single(TRAINER_CLERK_F_BC_47F_2,
+	text("Hee hee! I am better at Pokémon battles\n"
+       "than I am at work!"),
+	text("I'm good at Pokémon, but I still lost!"))
+	msgbox("A competent woman is\n"
+       "as good at Pokémon battles\l"
+       "as she is at her work!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Battle_Businessman2
+{
+	trainerbattle_single(TRAINER_CLERK_M_BC_47F_2,
+	text("Clerks exchange business cards.\p"
+       "Trainers, of course, greet each other\n"
+       "with a Pokémon battle!"),
+	text("What an impressive greeting!\n"
+       "That was a great Pokémon battle!"))
+	msgbox("When I was a child,\n"
+       "I traveled with Pokémon...\p"
+       "Of course, I am still raising Pokémon!\n"
+       "'Cause Pokémon are my friends for life!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Businessman_GivingItems
+{
+	lock()
+	faceplayer()
+	goto_if_set(FLAG_CASTELIA_BATTLE_COMPANY_47F_TIMER_BALLS, CasteliaCity_BattleCompany47F_EventScript_Businessman_Finished)
+	goto_if_set(FLAG_CASTELIA_BATTLE_COMPANY_47F_QUICK_BALLS, CasteliaCity_BattleCompany47F_EventScript_Businessman_GiveTimerBalls)
+	msgbox("Oh! A company tour?\n"
+		"Or some Pokémon practice?\p"
+		"Either way, I'm glad you came.\n"
+		"I'm happy, so I'll give you these!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_47F_BUSINESSMAN)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_QUICK_BALL, 3)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany47F_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_BATTLE_COMPANY_47F_QUICK_BALLS)
+	goto(CasteliaCity_BattleCompany47F_EventScript_Businessman_GiveTimerBalls)
+	end
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Businessman_GiveTimerBalls
+{
+	msgbox("I'm very happy, so I will give you\n"
+		"another present!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_47F_BUSINESSMAN)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_TIMER_BALL, 3)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany47F_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_BATTLE_COMPANY_47F_TIMER_BALLS)
+	goto(CasteliaCity_BattleCompany47F_EventScript_Businessman_Finished)
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Businessman_Finished
+{
+	msgbox("A Quick Ball makes it easier to catch a\n"
+		"Pokémon if you use it at the very\l"
+		"beginning of a battle.\p"
+		"And a Timer Ball makes it easier to catch\n"
+		"a Pokémon you've been battling\l"
+		"for a long time!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_47F_BUSINESSMAN)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Scientist_GivingItems
+{
+	lock()
+	faceplayer()
+	goto_if_set(FLAG_CASTELIA_BATTLE_COMPANY_47F_SCOPE_LENS, CasteliaCity_BattleCompany47F_EventScript_Scientist_Finished)
+	msgbox("I am in charge of development !\p"
+       "I'm going to give you this, because you\n"
+       "came here for a company tour!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_47F_SCIENTIST)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_SCOPE_LENS, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany47F_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_BATTLE_COMPANY_47F_SCOPE_LENS)
+	goto(CasteliaCity_BattleCompany47F_EventScript_Scientist_Finished)
+	end
+}
+
+script CasteliaCity_BattleCompany47F_EventScript_Scientist_Finished
+{
+	msgbox("If a Pokémon holds a Scope Lens, it has\n"
+       "a better chance to make a critical hit!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_47F_SCIENTIST)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+

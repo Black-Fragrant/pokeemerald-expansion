@@ -1249,156 +1249,163 @@ Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLERK_F_BC_47F_1 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
+Name: Ingrid
+Class: Clerk
+Pic: Clerk F
+Gender: Female
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone
-Level: 30
+Herdier
+Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLERK_M_BC_47F_1 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+Name: Clemens
+Class: Clerk
+Pic: Clerk M
 Gender: Male
-Music: Girl
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone
-Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Timburr
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SCIENTIST_BC_47F ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+Name: Randall
+Class: Scientist
+Pic: Scientist M
 Gender: Male
-Music: Girl
+Music: Scientist
+Items: X Sp Def
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone
-Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Roggenrola
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLERK_M_BC_47F_2 ===
-Name: RANDALL
-Class: Cooltrainer
-Pic: Cooltrainer M
+Name: Warren
+Class: Clerk
+Pic: Clerk M
 Gender: Male
-Music: Cool
-Items: Hyper Potion
+Music: Clerk
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Swellow
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Basculin Red Striped
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Basculin Blue Striped
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Basculin Red Striped
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLERK_F_BC_47F_2 ===
-Name: PARKER
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
+Name: Alberta
+Class: Clerk
+Pic: Clerk F
+Gender: Female
+Music: Clerk
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Spinda
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Petilil
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY23 ===
-Name: GEORGE
-Class: Cooltrainer
-Pic: Cooltrainer M
+Cottonee
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_CLERK_M_BC_55F ===
+Name: Ivan
+Class: Clerk
+Pic: Clerk M
 Gender: Male
-Music: Cool
-Items: Hyper Potion
+Music: Clerk
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Slakoth @ Sitrus Berry
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Slack Off
-- Counter
-- Shadow Ball
+Woobat
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY24 ===
-Name: BERKE
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_SCIENTIST_F_BC_55F ===
+Name: Samantha
+Class: Scientist
+Pic: Scientist F
+Gender: Female
+Music: Scientist
+Items: X Sp Atk
+Battle Type: Singles
+AI: Check Bad Move
+
+Munna
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SCIENTIST_M_BC_55F ===
+Name: Steve
+Class: Scientist
+Pic: Scientist M
 Gender: Male
-Music: Cool
-Items: Hyper Potion
+Music: Scientist
+Items: Dire Hit
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Vigoroth
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Focus Energy
-- Slash
+Sewaddle
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY25 ===
-Name: BRAXTON
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_CLERK_O_BC_55F ===
+Name: Wade
+Class: Clerk
+Pic: Clerk O
 Gender: Male
-Music: Cool
-Items: Hyper Potion
+Music: Clerk
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Swellow
-Level: 28
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Focus Energy
-- Quick Attack
-- Wing Attack
-- Endeavor
+Pansear
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY26 ===
-Name: VINCENT
-Class: Cooltrainer
-Pic: Cooltrainer M
+Panpour
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pansage
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_JANITOR_BC_55F ===
+Name: Geoff
+Class: Janitor
+Pic: Janitor
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Clerk
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Sableye
-Level: 44
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_LEROY ===
-Name: LEROY
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Mawile
-Level: 46
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Starmie
-Level: 46
+Trubbish
+Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_WILTON_1 ===
+Minccino
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_DUMMY28 ===
 Name: WILTON
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1420,7 +1427,7 @@ Makuhita
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_DUMMYGAR ===
+=== TRAINER_DUMMY29 ===
 Name: EDGAR
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1438,7 +1445,7 @@ Pelipper
 Level: 43
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_ALBERT ===
+=== TRAINER_DUMMY01 ===
 Name: ALBERT
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1456,7 +1463,7 @@ Muk
 Level: 43
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_SAMUEL ===
+=== TRAINER_DUMMY02 ===
 Name: SAMUEL
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1478,7 +1485,7 @@ Kadabra
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_VITO ===
+=== TRAINER_DUMMY03 ===
 Name: VITO
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1504,7 +1511,7 @@ Shiftry
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_OWEN ===
+=== TRAINER_DUMMY04 ===
 Name: OWEN
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1526,7 +1533,7 @@ Wailord
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_WILTON_2 ===
+=== TRAINER_DUMMY05 ===
 Name: WILTON
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1548,7 +1555,7 @@ Makuhita
 Level: 26
 IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
 
-=== TRAINER_WILTON_3 ===
+=== TRAINER_DUMMY06 ===
 Name: WILTON
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1570,7 +1577,7 @@ Makuhita
 Level: 29
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
-=== TRAINER_WILTON_4 ===
+=== TRAINER_DUMMY07 ===
 Name: WILTON
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1592,7 +1599,7 @@ Makuhita
 Level: 32
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
-=== TRAINER_WILTON_5 ===
+=== TRAINER_DUMMY08 ===
 Name: WILTON
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1614,7 +1621,7 @@ Hariyama
 Level: 35
 IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
 
-=== TRAINER_WARREN ===
+=== TRAINER_DUMMY09 ===
 Name: WARREN
 Class: Cooltrainer
 Pic: Cooltrainer M
@@ -1632,7 +1639,7 @@ Ludicolo
 Level: 33
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_MARY ===
+=== TRAINER_DUMMY10 ===
 Name: MARY
 Class: Cooltrainer
 Pic: Cooltrainer F

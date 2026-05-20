@@ -116,7 +116,7 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	applymovement VAR_0x8004, SeafloorCavern_Room9_Movement_ArchieExit
 	waitmovement 0
 	msgbox SeafloorCavern_Room9_Text_MaxieComeOnPlayer, MSGBOX_DEFAULT
-	setvar VAR_ROUTE128_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	setvar VAR_METEOR_FALLS_STATE, 1
 	clearflag FLAG_UNUSED_0xXXX
 	clearflag FLAG_UNUSED_0xXXX

@@ -12,6 +12,9 @@ enum {
     NAMING_SCREEN_WALDA,
     NAMING_SCREEN_CODE,
     NAMING_SCREEN_RIVAL,
+    NAMING_SCREEN_GRATITUDE,   // ← new
+    NAMING_SCREEN_GREET       // ← new
+
 };
 
 extern void BattleMainCB2(void);

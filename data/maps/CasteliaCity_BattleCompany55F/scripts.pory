@@ -1,1 +1,215 @@
-mapscripts CasteliaCity_BattleCompany55F_MapScripts {}
+mapscripts CasteliaCity_BattleCompany55F_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_BattleCompany55F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_BattleCompany55F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_BattleCompany55F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1_47, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo1F)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo47F)}
+	goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo1F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY1F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo47F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY47F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Battle_Businessman
+{
+	trainerbattle_single(TRAINER_CLERK_M_BC_55F,
+	text("My work is a Pokémon battle!"),
+	text("Today's work\n"
+       "didn't go well..."))
+	msgbox("When I was a child,\n"
+       "I traveled with Pokémon...\p"
+       "Of course, I am still raising Pokémon!\n"
+       "'Cause Pokémon are my friends for life!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Battle_ScientistF
+{
+	trainerbattle_single(TRAINER_SCIENTIST_F_BC_55F,
+	text("I've found a wonderful Trainer!\n"
+       "I will research you immediately!"),
+	text("The results of my research have\n"
+       "revealed that you are the best!"))
+	msgbox("It is very exciting\n"
+       "to unlock the secrets\l"
+       "of Pokémon and their Trainers.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Battle_ScientistM
+{
+	trainerbattle_single(TRAINER_SCIENTIST_M_BC_55F,
+	text("Oh! An unfamiliar face!\p"
+       "To help scientific progress,\n"
+       "please lend me a hand!"),
+	text("Instead of lending a hand,\n"
+       "you gave me a workout!"))
+	msgbox("I don't know if science will make everyone\n"
+       "happy, but if I believe it will, that\l"
+       "helps me do my best. That's a fact.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Battle_ClerkO
+{
+	trainerbattle_single(TRAINER_CLERK_O_BC_55F,
+	text("I was about to take a break,\n"
+       "then I met you!"),
+	text("This encounter was a good one...\n"
+       "for you!"))
+	msgbox("I met my Pokémon\n"
+       "more than ten years ago.\n"
+       "I trust them.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Janitor
+{
+	lock
+	faceplayer
+	goto_if_defeated(TRAINER_JANITOR_BC_55F, CasteliaCity_BattleCompany55F_EventScript_Janitor_Cont)
+	msgbox("Oh! You are the Pokémon Trainer\n"
+       "I met at the entrance!\p"
+       "You've come this far. That means\n"
+       "you must be quite strong.\p"
+       "Are you prepared to face the strongest\n"
+       "person in this building?\p"
+       "Are you prepared to face the chairman?\p"
+       "Then, the time has come. I am the one!\n"
+       "I accept your challenge!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_55F_GRANDPA)
+	destroy_speech_bubble()
+	closemessage
+	trainerbattle_no_intro(TRAINER_JANITOR_BC_55F, text("Wow, you really cleaned up!"))
+	goto(CasteliaCity_BattleCompany55F_EventScript_Janitor_Cont)
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Janitor_Cont
+{
+	goto_if_set(FLAG_CASTELIA_BATTLE_COMPANY_55F_EXP_SHARE, CasteliaCity_BattleCompany55F_EventScript_Janitor_Finished)
+	msgbox("I disguise myself as a janitor because\n"
+		"I like to know what kinds of Trainers\l"
+		"come here.\p"
+		"I had a good time battling you.\p"
+		"This is a token of my esteem.\n"
+		"Please accept this!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_EXP_SHARE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany55F_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_BATTLE_COMPANY_55F_EXP_SHARE)
+	goto(CasteliaCity_BattleCompany55F_EventScript_Janitor_Finished)
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_Janitor_Finished
+{
+	msgbox("A Pokémon holding an Exp. Share gets\n"
+       "some of the Exp. Points from every\l"
+       "battle, even if it's not involved.\p"
+       "That's right! It may be useful\n"
+       "for raising weak Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
+}
+
+script CasteliaCity_BattleCompany55F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+

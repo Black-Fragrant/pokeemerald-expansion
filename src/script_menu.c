@@ -26,6 +26,8 @@
 #include "graphics.h"
 #include "large_item_pic.h"
 #include "gpu_regs.h"
+#include "script.h"
+#include "menu_helpers.h"
 
 #include "data/script_menu.h"
 
@@ -1417,4 +1419,267 @@ u16 GetSelectedSeagallopDestination(void)
             return gSpecialVar_Result;
     }
     return SEAGALLOP_VERMILION_CITY;
+}
+
+/* ========================================================================== */
+/*                          SCROLLING MULTICHOICE BOX                         */
+/* ========================================================================== */
+
+// Text displayed as options.
+
+static const u8 sText_Exercising[]  = _("Exercising");
+static const u8 sText_Reading[]     = _("Reading");
+static const u8 sText_Music[]       = _("Music");
+static const u8 sText_Movies[]      = _("Movies");
+static const u8 sText_Traveling[]   = _("Traveling");
+static const u8 sText_Cooking[]     = _("Cooking");
+static const u8 sText_Fishing[]     = _("Fishing");
+static const u8 sText_VideoGames[]  = _("Video Games");
+
+static const u8 sText_Student[]        = _("Student");
+static const u8 sText_OfficeWorker[]   = _("Office Worker");
+static const u8 sText_Creator[]        = _("Creator");
+static const u8 sText_SelfEmployed[]   = _("Self-Employed");
+static const u8 sText_PublicOfficial[] = _("Public Official");
+static const u8 sText_Homemaker[]      = _("Homemaker");
+static const u8 sText_Artist[]         = _("Artist");
+static const u8 sText_JobHopper[]      = _("Job-Hopper");
+
+static const u8 sText_Normal[]     = _("Normal");
+static const u8 sText_Fire[]       = _("Fire");
+static const u8 sText_Water[]      = _("Water");
+static const u8 sText_Electric[]   = _("Electric");
+static const u8 sText_Grass[]      = _("Grass");
+static const u8 sText_Ice[]        = _("Ice");
+static const u8 sText_Fighting[]   = _("Fighting");
+static const u8 sText_Poison[]     = _("Poison");
+static const u8 sText_Ground[]     = _("Ground");
+static const u8 sText_Flying[]     = _("Flying");
+static const u8 sText_Psychic[]    = _("Pyschic");
+static const u8 sText_Bug[]        = _("Bug");
+static const u8 sText_Rock[]       = _("Rock");
+static const u8 sText_Ghost[]      = _("Ghost");
+static const u8 sText_Dragon[]     = _("Dragon");
+static const u8 sText_Dark[]       = _("Dark");
+static const u8 sText_Steel[]      = _("Steel");
+static const u8 sText_Fairy[]      = _("Fairy");
+
+static const u8 sText_Chili[]    = _("Chili");
+static const u8 sText_Cilan[]    = _("Cilan");
+static const u8 sText_Cress[]    = _("Cress");
+static const u8 sText_Lenora[]   = _("Lenora");
+static const u8 sText_Burgh[]    = _("Burgh");
+static const u8 sText_Elesa[]    = _("Elesa");
+static const u8 sText_Clay[]     = _("Clay");
+static const u8 sText_Skyla[]    = _("Skyla");
+static const u8 sText_Brycen[]   = _("Brycen");
+static const u8 sText_Iris[]     = _("Iris");
+static const u8 sText_Drayden[]  = _("Drayden");
+
+static const u8 sText_DetailsAboutPeople[]   = _("Details about people");
+static const u8 sText_PokemonFavorites[]     = _("Pokémon favorites");
+static const u8 sText_IdealsAndValues[]      = _("Ideals and values");
+static const u8 sText_LikablePeople[]        = _("Likable people");
+static const u8 sText_Preferences[]          = _("Preferences");
+static const u8 sText_Entertainment[]        = _("Entertainment");
+static const u8 sText_SchoolLife[]           = _("School Life");
+static const u8 sText_SportsAndPastimes[]    = _("Sports and pastimes");
+static const u8 sText_MoreAboutPokemon[]     = _("More about Pokémon");
+static const u8 sText_Cancel[]               = _("Cancel");
+
+// Sets of multichoices.
+static const struct ListMenuItem sSet_Hobbies[] =
+{
+    {sText_Exercising,  0},
+    {sText_Reading,     1},
+    {sText_Music,       2},
+    {sText_Movies,      3},
+    {sText_Traveling,   4},
+    {sText_Cooking,     5},
+    {sText_Fishing,     6},
+    {sText_VideoGames,  7},
+};
+
+static const struct ListMenuItem sSet_Occupations[] =
+{
+    {sText_Student,        0},
+    {sText_OfficeWorker,   1},
+    {sText_Creator,        2},
+    {sText_SelfEmployed,   3},
+    {sText_PublicOfficial, 4},
+    {sText_Homemaker,      5},
+    {sText_Artist,         6},
+    {sText_JobHopper,      7},
+};
+
+static const struct ListMenuItem sSet_Types[] =
+{
+    {sText_Normal,   0},
+    {sText_Fire,     1},
+    {sText_Water,    2},
+    {sText_Electric, 3},
+    {sText_Grass,    4},
+    {sText_Ice,      5},
+    {sText_Fighting, 6},
+    {sText_Poison,   7},
+    {sText_Ground,   8},
+    {sText_Flying,   9},
+    {sText_Psychic, 10},
+    {sText_Bug,     11},
+    {sText_Rock,    12},
+    {sText_Ghost,   13},
+    {sText_Dragon,  14},
+    {sText_Dark,    15},
+    {sText_Steel,   16},
+    {sText_Fairy,   17},
+};
+
+static const struct ListMenuItem sSet_Leaders[] =
+{
+    {sText_Chili,    0},
+    {sText_Cilan,    1},
+    {sText_Cress,    2},
+    {sText_Lenora,   3},
+    {sText_Burgh,    4},
+    {sText_Elesa,    5},
+    {sText_Clay,     6},
+    {sText_Skyla,    7},
+    {sText_Brycen,   8},
+    {sText_Iris,     9},
+    {sText_Drayden, 10},
+};
+
+static const struct ListMenuItem sSet_AllTopics[] =
+{
+    {sText_DetailsAboutPeople,  0},
+    {sText_PokemonFavorites,    1},
+    {sText_IdealsAndValues,     2},
+    {sText_LikablePeople,       3},
+    {sText_Preferences,         4},
+    {sText_Entertainment,       5},
+    {sText_SchoolLife,          6},
+    {sText_SportsAndPastimes,   7},
+    {sText_MoreAboutPokemon,    8},
+    {sText_Cancel,              9},
+};
+
+// Table of your multichoice sets.
+struct
+{
+    const struct ListMenuItem *set;
+    int count;
+} static const sScrollingSets[] =
+{
+    {sSet_Hobbies,      ARRAY_COUNT(sSet_Hobbies)},
+    {sSet_Occupations,  ARRAY_COUNT(sSet_Occupations)},
+    {sSet_Types,        ARRAY_COUNT(sSet_Types)},
+    {sSet_Leaders,      ARRAY_COUNT(sSet_Leaders)},
+    {sSet_AllTopics,    ARRAY_COUNT(sSet_AllTopics)},
+};
+
+static void ScrollingMultichoice_MoveCursor(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+{
+    if (!onInit)
+        PlaySE(SE_SELECT);
+}
+
+static void Task_ScrollingMultichoiceInput(u8 taskId);
+
+static const struct ListMenuTemplate sMultichoiceListTemplate =
+{
+    .items = NULL,
+    .moveCursorFunc = ScrollingMultichoice_MoveCursor,
+    .itemPrintFunc = NULL,
+    .totalItems = 0,
+    .maxShowed = 0,
+    .windowId = 0,
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 1,
+    .cursorPal = 2,
+    .fillValue = 1,
+    .cursorShadowPal = 3,
+    .lettersSpacing = 1,
+    .itemVerticalPadding = 0,
+    .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
+    .fontId = FONT_NORMAL,
+    .cursorKind = CURSOR_BLACK_ARROW,
+};
+
+// 0x8004 = set id
+// 0x8005 = window X
+// 0x8006 = window Y
+// 0x8007 = items shown at once
+// 0x8008 = allow B press
+void ScriptMenu_ScrollingMultichoice(void)
+{
+    int i, windowId, taskId;
+    int width = 0;
+
+    int setId = gSpecialVar_0x8004;
+    int left  = gSpecialVar_0x8005;
+    int top   = gSpecialVar_0x8006;
+    int maxShowed = gSpecialVar_0x8007;
+
+    // Compute widest string
+    for (i = 0; i < sScrollingSets[setId].count; i++)
+        width = DisplayTextAndGetWidth(sScrollingSets[setId].set[i].name, width);
+
+    width = ConvertPixelWidthToTileWidth(width);
+
+    // Correct FireRed centering logic
+    left = ScriptMenu_AdjustLeftCoordFromWidth(left, width);
+
+    windowId = CreateWindowFromRect(left, top, width, maxShowed * 2);
+    SetStandardWindowBorderStyle(windowId, FALSE);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+
+    gMultiuseListMenuTemplate = sMultichoiceListTemplate;
+    gMultiuseListMenuTemplate.windowId = windowId;
+    gMultiuseListMenuTemplate.items = sScrollingSets[setId].set;
+    gMultiuseListMenuTemplate.totalItems = sScrollingSets[setId].count;
+    gMultiuseListMenuTemplate.maxShowed = maxShowed;
+
+    taskId = CreateTask(Task_ScrollingMultichoiceInput, 0);
+    gTasks[taskId].data[0] = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
+    gTasks[taskId].data[1] = gSpecialVar_0x8008; // allow B
+    gTasks[taskId].data[2] = windowId;
+}
+
+static void Task_ScrollingMultichoiceInput(u8 taskId)
+{
+    bool32 done = FALSE;
+    s32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    switch (input)
+    {
+    case LIST_HEADER:
+    case LIST_NOTHING_CHOSEN:
+        break;
+
+    case LIST_CANCEL:
+        if (gTasks[taskId].data[1]) // allow B?
+        {
+            PlaySE(SE_SELECT);
+            gSpecialVar_Result = 0x7F;
+            done = TRUE;
+        }
+        break;
+
+    default:
+        PlaySE(SE_SELECT);
+        gSpecialVar_Result = input;
+        done = TRUE;
+        break;
+    }
+
+    if (done)
+    {
+        DestroyListMenuTask(gTasks[taskId].data[0], NULL, NULL);
+        ClearStdWindowAndFrame(gTasks[taskId].data[2], TRUE);
+        RemoveWindow(gTasks[taskId].data[2]);
+        ScriptContext_Enable();
+        DestroyTask(taskId);
+    }
 }

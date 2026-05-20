@@ -1,4 +1,32 @@
-mapscripts CasteliaCity_BattleCompany1F_MapScripts {}
+mapscripts CasteliaCity_BattleCompany1F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_BattleCompany1F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_BattleCompany1F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
 
 script CasteliaCity_BattleCompany1F_EventScript_Trigger
 {
@@ -182,7 +210,7 @@ script CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveUp
 script CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo47F
 {
     closemessage
-	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY47F, 7, 2)
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY47F, 7, 1)
     waitstate
     end
 }
@@ -190,7 +218,7 @@ script CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo47F
 script CasteliaCity_BattleCompany1F_EventScript_Elevator_GoTo55F
 {
     closemessage
-	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY55F, 7, 2)
+	warpsilent(MAP_CASTELIA_CITY_BATTLE_COMPANY55F, 7, 1)
     waitstate
     end
 }

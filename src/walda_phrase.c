@@ -11,9 +11,18 @@
 #include "field_screen_effect.h"
 
 extern const u8 gText_Peekaboo[];
+extern const u8 gText_Thanks[];
+extern const u8 gText_HelloExclamation[];
 
 static void CB2_HandleGivenWaldaPhrase(void);
+
+static void CB2_HandleGivenGratitudePhrase(void);
+
+static void CB2_HandleGivenGreetPhrase(void);
+
 static u32 GetWaldaPhraseInputCase(u8 *);
+static u32 GetGratitudePhraseInputCase(u8 *);
+static u32 GetGreetPhraseInputCase(u8 *);
 static bool32 TryCalculateWallpaper(u16 *, u16 *, u8 *, u8 *, u16, u8 *);
 static void SetWallpaperDataFromLetter(u8 *, u8 *, u32, u32, u32);
 static u32 GetWallpaperDataBits(u8 *, u32, u32);
@@ -79,6 +88,28 @@ static void CB2_HandleGivenWaldaPhrase(void)
     SetMainCallback2(CB2_ReturnToField);
 }
 
+static u32 GetGratitudePhraseInputCase(u8 *inputPtr)
+{
+    if (inputPtr[0] == EOS)
+        return PHRASE_EMPTY;
+
+    if (StringCompare(inputPtr, GetGratitudePhrasePtr()) == 0)
+        return PHRASE_NO_CHANGE;
+
+    return PHRASE_CHANGED;
+}
+
+static u32 GetGreetPhraseInputCase(u8 *inputPtr)
+{
+    if (inputPtr[0] == EOS)
+        return PHRASE_EMPTY;
+
+    if (StringCompare(inputPtr, GetGreetPhrasePtr()) == 0)
+        return PHRASE_NO_CHANGE;
+
+    return PHRASE_CHANGED;
+}
+
 static u32 GetWaldaPhraseInputCase(u8 *inputPtr)
 {
     // No input given
@@ -91,6 +122,94 @@ static u32 GetWaldaPhraseInputCase(u8 *inputPtr)
 
     // Input is new phrase
     return PHRASE_CHANGED;
+}
+
+static void CB2_HandleGivenGratitudePhrase(void)
+{
+    u8 *typed = gStringVar2;
+
+    switch (GetGratitudePhraseInputCase(typed))
+    {
+    case PHRASE_EMPTY:
+        StringCopy(GetGratitudePhrasePtr(), gText_Thanks);
+        break;
+
+    case PHRASE_CHANGED:
+        StringCopyN(GetGratitudePhrasePtr(), typed, 16);  // prevents overflow
+        break;
+
+    case PHRASE_NO_CHANGE:
+        break;
+    }
+
+    StringCopy(gStringVar1, GetGratitudePhrasePtr());
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void CB2_HandleGivenGreetPhrase(void)
+{
+    u8 *typed = gStringVar2;
+
+    switch (GetGreetPhraseInputCase(typed))
+    {
+    case PHRASE_EMPTY:
+        StringCopy(GetGreetPhrasePtr(), gText_HelloExclamation);
+        break;
+
+    case PHRASE_CHANGED:
+        StringCopyN(GetGreetPhrasePtr(), typed, 16);  // prevents overflow
+        break;
+
+    case PHRASE_NO_CHANGE:
+        break;
+    }
+
+    StringCopy(gStringVar1, GetGreetPhrasePtr());
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+u16 TryBufferGratitudeWord(void)
+{
+    if (IsGratitudePhraseEmpty())
+        return FALSE;
+
+    StringCopy(gStringVar1, GetGratitudePhrasePtr());
+    return TRUE;
+}
+
+u16 TryBufferGreetWord(void)
+{
+    if (IsGreetPhraseEmpty())
+        return FALSE;
+
+    StringCopy(gStringVar1, GetGreetPhrasePtr());
+    return TRUE;
+}
+
+void DoExpressGratitude(void)
+{
+    u8 *phrase = GetGratitudePhrasePtr();
+
+    if (IsGratitudePhraseEmpty())
+        StringCopy(phrase, gText_Thanks);
+
+    StringCopy(gStringVar2, phrase);
+
+    DoNamingScreen(NAMING_SCREEN_GRATITUDE, gStringVar2, 0, 0, 0, CB2_HandleGivenGratitudePhrase);
+}
+
+void DoGreetPeople(void)
+{
+    u8 *phrase = GetGreetPhrasePtr();
+
+    if (IsGreetPhraseEmpty())
+        StringCopy(phrase, gText_HelloExclamation);
+
+    StringCopy(gStringVar2, phrase);
+
+    DoNamingScreen(NAMING_SCREEN_GREET, gStringVar2, 0, 0, 0, CB2_HandleGivenGreetPhrase);
 }
 
 u16 TryGetWallpaperWithWaldaPhrase(void)

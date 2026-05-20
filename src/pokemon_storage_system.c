@@ -9809,6 +9809,38 @@ bool32 IsWaldaPhraseEmpty(void)
     return (gSaveBlock1Ptr->waldaPhrase.text[0] == EOS);
 }
 
+u8 *GetGratitudePhrasePtr(void)
+{
+    return gSaveBlock1Ptr->gratitudePhrase;
+}
+
+void SetGratitudePhrase(const u8 *src)
+{
+    StringCopy(gSaveBlock1Ptr->gratitudePhrase, src);
+}
+
+bool32 IsGratitudePhraseEmpty(void)
+{
+    u8 c = gSaveBlock1Ptr->gratitudePhrase[0];
+    return (c == 0x00 || c == EOS);
+}
+
+bool32 IsGreetPhraseEmpty(void)
+{
+    u8 c = gSaveBlock1Ptr->greetPhrase[0];
+    return (c == 0x00 || c == EOS);
+}
+
+u8 *GetGreetPhrasePtr(void)
+{
+    return gSaveBlock1Ptr->greetPhrase;
+}
+
+void SetGreetPhrase(const u8 *src)
+{
+    StringCopy(gSaveBlock1Ptr->greetPhrase, src);
+}
+
 
 //------------------------------------------------------------------------------
 //  SECTION: TilemapUtil

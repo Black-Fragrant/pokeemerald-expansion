@@ -2086,7 +2086,7 @@ const struct Tileset gTileset_IndoorCastelia =
     .palettes = gTilesetPalettes_IndoorCastelia,
     .metatiles = gMetatiles_IndoorCastelia,
     .metatileAttributes = gMetatileAttributes_IndoorCastelia,
-    .callback = NULL,
+    .callback = InitTilesetAnim_IndoorCastelia,
 };
 
 const struct Tileset gTileset_IndoorPasserbyHQ =

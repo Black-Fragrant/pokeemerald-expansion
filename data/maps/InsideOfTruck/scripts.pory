@@ -41,7 +41,7 @@ InsideOfTruck_EventScript_SetIntroFlagsFemale::
 	setflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 1
+	setvar VAR_PLACEHOLDER, 1
 	setdynamicwarp MAP_LITTLEROOT_TOWN, 12, 10
 	releaseall
 	end

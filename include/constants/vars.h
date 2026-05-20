@@ -125,33 +125,33 @@
 #define VAR_CASTELIA_BATTLE_COMPANY_STATE                0x4067
 #define VAR_TIMES_YOU_HAVE_TRADED                        0x4068
 #define VAR_CASTELIA_INSIDE_ELEVATORS                    0x4069
-#define VAR_ROUTE111_STATE                               0x406A // Unused Var
-#define VAR_ROUTE112_STATE                               0x406B // Unused Var
-#define VAR_ROUTE113_STATE                               0x406C // Unused Var
-#define VAR_ROUTE114_STATE                               0x406D // Unused Var
-#define VAR_ROUTE115_STATE                               0x406E // Unused Var
-#define VAR_UNUSED_406F                                  0x406F
-#define VAR_UNUSED_4070                                  0x4070 // Unused Var
-#define VAR_UNUSED_4071                                  0x4071
-#define VAR_UNUSED_4072                                  0x4072
-#define VAR_ROUTE120_STATE                               0x4073 // Unused Var
-#define VAR_ROUTE121_STATE                               0x4074
-#define VAR_ROUTE122_STATE                               0x4075 // Unused Var
-#define VAR_ROUTE123_STATE                               0x4076 // Unused Var
-#define VAR_ROUTE124_STATE                               0x4077 // Unused Var
-#define VAR_ROUTE125_STATE                               0x4078 // Unused Var
-#define VAR_ROUTE126_STATE                               0x4079 // Unused Var
-#define VAR_ROUTE127_STATE                               0x407A // Unused Var
-#define VAR_ROUTE128_STATE                               0x407B
-#define VAR_ROUTE129_STATE                               0x407C // Unused Var
-#define VAR_ROUTE130_STATE                               0x407D // Unused Var
-#define VAR_ROUTE131_STATE                               0x407E // Unused Var
-#define VAR_ROUTE132_STATE                               0x407F // Unused Var
-#define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-#define VAR_DIFFICULTY                                   0x4083
-#define VAR_BIRCH_LAB_STATE                              0x4084
+#define VAR_PAHQ_HOBBY_SURVEY_RESULT                     0x406A
+#define VAR_PAHQ_JOB_SURVEY_RESULT                       0x406B
+#define VAR_PAHQ_BATTLETRADE_SURVEY_RESULT               0x406C
+#define VAR_PAHQ_POKEMON_SURVEY_RESULT                   0x406D
+#define VAR_PAHQ_TYPE_SURVEY_RESULT                      0x406E
+#define VAR_PAHQ_LIVE_SURVEY_RESULT                      0x406F
+#define VAR_PAHQ_MORE_SURVEY_RESULT                      0x4070
+#define VAR_PAHQ_IMPORTANT_SURVEY_RESULT                 0x4071
+#define VAR_PAHQ_BRAINBRAWN_SURVEY_RESULT                0x4072
+#define VAR_PAHQ_PVALUE_SURVEY_RESULT                    0x4073
+#define VAR_PAHQ_PTYPE_SURVEY_RESULT                     0x4074
+#define VAR_PAHQ_SEASON_SURVEY_RESULT                    0x4075
+#define VAR_PAHQ_FOOD_SURVEY_RESULT                      0x4076
+#define VAR_PAHQ_COLOR_SURVEY_RESULT                     0x4077
+#define VAR_PAHQ_MUSIC_SURVEY_RESULT                     0x4078
+#define VAR_PAHQ_TV_SURVEY_RESULT                        0x4079
+#define VAR_PAHQ_MOVIE_SURVEY_RESULT                     0x407A
+#define VAR_PAHQ_STIME_SURVEY_RESULT                     0x407B
+#define VAR_PAHQ_SSUBJECT_SURVEY_RESULT                  0x407C
+#define VAR_PAHQ_WSUBJECT_SURVEY_RESULT                  0x407D
+#define VAR_PAHQ_FPLACES_SURVEY_RESULT                   0x407E
+#define VAR_PAHQ_HOLIDAY_SURVEY_RESULT                   0x407F
+#define VAR_PAHQ_SPORT_SURVEY_RESULT                     0x4080
+#define VAR_PAHQ_PFUN_SURVEY_RESULT                      0x4081
+#define VAR_PAHQ_BECOME_SURVEY_RESULT                    0x4082
+#define VAR_PAHQ_LEADER_SURVEY_RESULT                    0x4083
+#define VAR_DIFFICULTY                                   0x4084 // Don't Touch
 #define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
 #define VAR_CONTEST_HALL_STATE                           0x4086
 #define VAR_CABLE_CLUB_STATE                             0x4087

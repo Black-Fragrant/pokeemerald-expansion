@@ -5930,7 +5930,7 @@ Marowak
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_COOLTRAINER_SAMUEL ===
+=== TRAINER_COOLTRAINER_DUMMY02 ===
 Name: SAMUEL
 Class: Cooltrainer Frlg
 Pic: Cooltrainer M Frlg
@@ -6230,7 +6230,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Swagger
 - Tail Whip
 
-=== TRAINER_COOLTRAINER_OWEN ===
+=== TRAINER_COOLTRAINER_DUMMY04 ===
 Name: OWEN
 Class: Cooltrainer Frlg
 Pic: Cooltrainer M Frlg
@@ -6380,7 +6380,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Leer
 - Growl
 
-=== TRAINER_COOLTRAINER_WARREN ===
+=== TRAINER_COOLTRAINER_DUMMY09 ===
 Name: WARREN
 Class: Cooltrainer Frlg
 Pic: Cooltrainer M Frlg
@@ -6430,7 +6430,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Poison Sting
 - Double Kick
 
-=== TRAINER_COOLTRAINER_MARY ===
+=== TRAINER_COOLTRAINER_DUMMY10 ===
 Name: MARY
 Class: Cooltrainer Frlg
 Pic: Cooltrainer F Frlg
@@ -10635,7 +10635,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Minimize
 - Soft Boiled
 
-=== TRAINER_COOLTRAINER_LEROY ===
+=== TRAINER_COOLTRAINER_DUMMY ===
 Name: LEROY
 Class: Cooltrainer Frlg
 Pic: Cooltrainer M Frlg
@@ -13150,7 +13150,7 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Minimize
 - Soft Boiled
 
-=== TRAINER_COOLTRAINER_LEROY_2 ===
+=== TRAINER_COOLTRAINER_DUMMY_2 ===
 Name: LEROY
 Class: Cooltrainer Frlg
 Pic: Cooltrainer M Frlg
