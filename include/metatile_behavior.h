@@ -203,5 +203,7 @@ bool8 MetatileBehavior_IsTrainerTowerMonitor(u8 metatileBehavior);
 bool8 MetatileBehavior_IsKitchenShelf(u8 metatileBehavior);
 bool8 MetatileBehavior_IsTripleDrawer(u8 metatileBehavior);
 bool8 MetatileBehavior_IsBookCase(u8 metatileBehavior);
+bool8 MetatileBehavior_IsMagazines(u8 metatileBehavior);
+bool8 MetatileBehavior_IsPokemonToRead(u8 metatileBehavior);
 
 #endif // GUARD_METATILE_BEHAVIOR_H

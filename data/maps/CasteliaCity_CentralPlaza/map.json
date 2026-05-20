@@ -119,6 +119,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CASTELIA_CP_DANCER",
       "graphics_id": "OBJ_EVENT_GFX_DANCER",
       "x": 22,
       "y": 19,
@@ -128,8 +129,36 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Dancer",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CASTELIA_CP_DANCER_LEFT",
+      "graphics_id": "OBJ_EVENT_GFX_DANCER",
+      "x": 21,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Dancer_Left",
+      "flag": "FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_LEFT"
+    },
+    {
+      "local_id": "LOCALID_CASTELIA_CP_DANCER_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_DANCER",
+      "x": 23,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Dancer_Right",
+      "flag": "FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_RIGHT"
     }
   ],
   "warp_events": [

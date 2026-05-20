@@ -163,7 +163,7 @@ EventScript_SetViridianGymTrainers::
 	settrainerflag TRAINER_BLACK_BELT_ATSUSHI
 	settrainerflag TRAINER_BLACK_BELT_KIYO
 	settrainerflag TRAINER_BLACK_BELT_TAKASHI
-	settrainerflag TRAINER_COOLTRAINER_DUMMY02
+	settrainerflag TRAINER_COOLTRAINER_DUMMY
 	settrainerflag TRAINER_COOLTRAINER_YUJI
-	settrainerflag TRAINER_COOLTRAINER_DUMMY09
+	settrainerflag TRAINER_COOLTRAINER_DUMMY
 	return

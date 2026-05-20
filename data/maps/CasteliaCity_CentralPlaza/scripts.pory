@@ -10,6 +10,22 @@ script CasteliaCity_CentralPlaza_EventScript_Grandpa
     end
 }
 
+script CasteliaCity_CentralPlaza_EventScript_Dancer_Left
+{
+    msgbox("I've got what I needed to find my dance!\n"
+           "A team! Fantastic!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_Right
+{
+    msgbox("Dancers dance!\n"
+           "The audience smiles!\l"
+           "Hearts beat with joy!\l"
+           "Enough happiness to share!", MSGBOX_NPC, TRUE)
+    end
+}
+
 script CasteliaCity_CentralPlaza_EventScript_ModeStreetSign
 {
     msgbox("Ahead: Mode Street\n"
@@ -22,4 +38,294 @@ script CasteliaCity_CentralPlaza_EventScript_CentralPlazaSign
     msgbox("Castelia City, Central Plaza\n"
         "Ahead: Route 4", MSGBOX_SIGN)
     end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN, CasteliaCity_CentralPlaza_EventScript_Dancer_AfterGivingAmuletCoin)
+    goto_if_set(FLAG_CASTELIA_NARROW_STREET_DANCER, CasteliaCity_CentralPlaza_EventScript_Dancer_FoundLeftDancer)
+    goto_if_set(FLAG_CASTELIA_UNITY_PIER_DANCER, CasteliaCity_CentralPlaza_EventScript_Dancer_FoundRightDancer)
+    goto_if_set(FLAG_CASTELIA_ACTIVATE_OTHER_DANCER_BATTLES, CasteliaCity_CentralPlaza_EventScript_Dancer_WaitingForOthers)
+    goto_if_defeated(TRAINER_DANCER_CENTRAL_PLAZA, CasteliaCity_CentralPlaza_EventScript_Dancer_AskForTeam)
+    goto_if_set(FLAG_CASTELIA_CENTRAL_PLAZA_TALKED_TO_DANCER, CasteliaCity_CentralPlaza_EventScript_Dancer_Cont)
+    setflag(FLAG_CASTELIA_CENTRAL_PLAZA_TALKED_TO_DANCER)
+    msgbox("Hey, Trainer!\p"
+           "Show me your paces!\n"
+           "Give me a whirl!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_CentralPlaza_EventScript_Dancer_Battle)
+    goto(CasteliaCity_CentralPlaza_EventScript_Dancer_NoBattle)
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_NoBattle
+{
+    msgbox("Come on, man!\n"
+           "You gotta go with the flow!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_Cont
+{
+    msgbox("Hey hey, Trainer!\p"
+           "Show me what you can do!\n"
+           "Take me on for a second!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_CentralPlaza_EventScript_Dancer_Battle)
+    goto(CasteliaCity_CentralPlaza_EventScript_Dancer_NoBattle)
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_Battle
+{
+    msgbox("All riiight!\n"
+           "A fight is like a dance!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+	trainerbattle_no_intro(TRAINER_DANCER_CENTRAL_PLAZA, text("My movements lack power!"))
+    msgbox("All riiight!\n"
+           "Let's get down!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_CentralPlaza_EventScript_Dancer_Moves)
+    faceplayer
+    msgbox("How 'bout that!\n"
+           "Those were some smooth moves, no doubt!\p"
+           "But it'd be even tighter if I had a group.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_CentralPlaza_EventScript_Dancer_AskForTeam)
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_Moves
+{
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancers_AllMove
+{
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce
+{
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_left, face_up, face_right, face_down))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(face_left, face_up, face_right, face_down))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(face_left, face_up, face_right, face_down))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_NoGroup
+{
+    msgbox("Really? I'd sure show you some\n"
+           "sweet moves if I had a team, though.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_AskForTeam
+{
+    msgbox("Hey, you!\n"
+           "Would you talk to the other Dancers?\p"
+           "If you invite both of them,\n"
+           "the three of us can groove as a team!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_CentralPlaza_EventScript_Dancer_YesGroup)
+    goto(CasteliaCity_CentralPlaza_EventScript_Dancer_NoGroup)
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_YesGroup
+{
+    msgbox("Same outfit as me!\n"
+           "That guy's a Dancer!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_CentralPlaza_EventScript_Dancer_Moves)
+    setflag(FLAG_CASTELIA_ACTIVATE_OTHER_DANCER_BATTLES)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_WaitingForOthers
+{
+    msgbox("The word on the street is...\p"
+           "Who's that dancin' in a lonely street?\n"
+           "Who's that dancin' in a port?\p"
+           "Who can you meet? Word on the street!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_CentralPlaza_EventScript_Dancer_Moves)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_FoundLeftDancer
+{
+    goto_if_set(FLAG_CASTELIA_UNITY_PIER_DANCER, CasteliaCity_CentralPlaza_EventScript_Dancer_FoundBothDancer)
+    goto(CasteliaCity_CentralPlaza_EventScript_Dancer_FoundOneDancer)
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_FoundRightDancer
+{
+    goto_if_set(FLAG_CASTELIA_NARROW_STREET_DANCER, CasteliaCity_CentralPlaza_EventScript_Dancer_FoundBothDancer)
+    goto(CasteliaCity_CentralPlaza_EventScript_Dancer_FoundOneDancer)
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_FoundOneDancer
+{
+    msgbox("Thanks for talking to him!\n"
+           "We're checkin' out our moves!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMove)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_FoundBothDancer
+{
+    msgbox("Thanks, man!\n"
+           "I've got the best team in the world here!\l"
+           "That's how I feel.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_AMULET_COIN, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CentralPlaza_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN)
+    msgbox("We communicate by dancing.\p"
+           "It's how we say happy things,\n"
+           "sad things...\p"
+           "How we say the world shines brightly!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMove)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_Dancer_AfterGivingAmuletCoin
+{
+    msgbox("All riiight!\n"
+           "Let's dance!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_CP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    random(3)
+    goto_if_eq(VAR_RESULT, 1, CasteliaCity_CentralPlaza_EventScript_DanceRoutine2)
+    goto_if_eq(VAR_RESULT, 2, CasteliaCity_CentralPlaza_EventScript_DanceRoutine3)
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_down))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_down))
+	waitmovement(0)
+    waitse
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_down, face_left, face_up, face_right))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(face_down, face_left, face_up, face_right))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(face_up, face_right, face_down, face_left))
+    waitmovement(0)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_left))
+	waitmovement(0)
+    waitse
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_up, face_right, face_down, face_left))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(face_down, face_right, face_down, face_left))
+    applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(face_down, face_left, face_up, face_right))
+    waitmovement(0)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_left))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_right))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_up))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_up))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_DanceRoutine2
+{
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER, moves(jump_left))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_left))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER, moves(jump_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_left))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_left))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_DanceRoutine3
+{
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_left, face_up, face_right, face_down))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_left))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    playse(SE_LEDGE)
+    applymovement(LOCALID_CASTELIA_CP_DANCER, moves(face_left, face_up, face_right, face_down))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_RIGHT, moves(jump_2_right))
+	applymovement(LOCALID_CASTELIA_CP_DANCER_LEFT, moves(jump_2_left))
+	waitmovement(0)
+    waitse
+    call(CasteliaCity_CentralPlaza_EventScript_Dancers_AllMoveOnce)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_CentralPlaza_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+    closemessage
+	release()
+	end()
 }

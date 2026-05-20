@@ -670,7 +670,7 @@ Mugshot: Purple
 
 Tepig @ Oran Berry
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Odor Sleuth
 - Tail Whip
 - Ember
@@ -678,7 +678,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Purrloin
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Fury Swipes
 - Growl
 - Assist
@@ -696,7 +696,7 @@ Mugshot: Purple
 
 Oshawott @ Oran Berry
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Focus Energy
 - Tail Whip
 - Water Gun
@@ -704,7 +704,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Purrloin
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Fury Swipes
 - Growl
 - Assist
@@ -722,7 +722,7 @@ Mugshot: Purple
 
 Snivy @ Oran Berry
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Growth
 - Leer
 - Vine Whip
@@ -730,7 +730,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Purrloin
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Fury Swipes
 - Growl
 - Assist
@@ -1405,239 +1405,299 @@ Minccino
 Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_DUMMY28 ===
-Name: WILTON
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_DANCER_CENTRAL_PLAZA ===
+Name: Mickey
+Class: Dancer
+Pic: Dancer
 Gender: Male
-Music: Cool
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Pansage
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_DANCER_NARROW_STREET ===
+Name: Edmond
+Class: Dancer
+Pic: Dancer
+Gender: Male
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Panpour
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_DANCER_UNITY_PIER ===
+Name: Raymond
+Class: Dancer
+Pic: Dancer
+Gender: Male
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Pansear
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_GYM_STREET ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Sandile
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Sandile
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BIANCA_CASTELIA_GATE_1 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Green
+
+Herdier
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Odor Sleuth
+- Bite
+- Helping Hand
+- Take Down
+
+Pansear
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Lick
+- Incinerate
+- Fury Swipes
+- Yawn
+
+Munna
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Yawn
+- Psybeam
+- Imprison
+- Moonlight
+
+Dewott
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Water Sport
+- Focus Energy
+- Razor Shell
+- Fury Cutter
+
+=== TRAINER_BIANCA_CASTELIA_GATE_2 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Green
+
+Herdier
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Odor Sleuth
+- Bite
+- Helping Hand
+- Take Down
+
+Panpour
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Lick
+- Water Gun
+- Fury Swipes
+- Water Sport
+
+Munna
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Yawn
+- Psybeam
+- Imprison
+- Moonlight
+
+Servine
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Wrap
+- Growth
+- Leaf Tornado
+- Leech Seed
+
+=== TRAINER_BIANCA_CASTELIA_GATE_3 ===
+Name: Bianca
+Class: PKMN Trainer 1
+Pic: Bianca
+Gender: Female
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Green
+
+Herdier
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Odor Sleuth
+- Bite
+- Helping Hand
+- Take Down
+
+Panpour
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Lick
+- Vine Whip
+- Fury Swipes
+- Leech Seed
+
+Munna
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Yawn
+- Psybeam
+- Imprison
+- Moonlight
+
+Pignite
+Level: 20
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Defense Curl
+- Flame Charge
+- Arm Thrust
+- Smog
+
+=== TRAINER_VETERAN_GAME_FREAK_1 ===
+Name: Morimoto
+Class: Gamefreak
+Pic: Veteran M
+Gender: Male
+Music: Male
 Items: Super Potion
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Electrike
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pansage @ Oran Berry
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Wailmer
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pansear @ Oran Berry
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Makuhita
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Panpour @ Oran Berry
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DUMMY29 ===
-Name: EDGAR
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_VETERAN_GAME_FREAK_2 ===
+Name: Morimoto
+Class: Gamefreak
+Pic: Veteran M
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Male
+Items: Full Restore / Full Restore / Full Restore / Full Restore
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Cacturne
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Liepard
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sucker Punch
+- Night Slash
+- Fake Out 
+- Grass Knot 
 
-Pelipper
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Simipour @ Petaya Berry
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Payback 
+- Acrobatics
+- Crunch 
 
-=== TRAINER_DUMMY01 ===
-Name: ALBERT
-Class: Cooltrainer
-Pic: Cooltrainer M
+Simisear @ Petaya Berry
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flamethrower
+- Payback 
+- Acrobatics
+- Crunch 
+
+Simisage @ Petaya Berry
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Energy Ball
+- Payback 
+- Acrobatics
+- Crunch 
+
+Swoobat
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Endeavor
+- Air Slash
+- Psyshock
+
+Zebstrika
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Wild Charge
+- Pursuit
+- Giga Impact
+- Flame Charge
+
+=== TRAINER_HIKER_GAME_FREAK_1 ===
+Name: Nishino
+Class: Gamefreak
+Pic: Hiker BW
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Male
+Items: Super Potion
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Magneton
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Audino @ Leftovers
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Muk
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_DUMMY02 ===
-Name: SAMUEL
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_HIKER_GAME_FREAK_2 ===
+Name: Nishino
+Class: Gamefreak
+Pic: Hiker BW
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Male
+Items: Full Restore / Full Restore / Full Restore / Full Restore
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Swellow
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Mawile
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Kadabra
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_DUMMY03 ===
-Name: VITO
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Dodrio
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Kadabra
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Electrode
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Shiftry
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_DUMMY04 ===
-Name: OWEN
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Kecleon
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Graveler
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Wailord
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_DUMMY05 ===
-Name: WILTON
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Electrike
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
-
-Wailmer
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
-
-Makuhita
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
-
-=== TRAINER_DUMMY06 ===
-Name: WILTON
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Manectric
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-Wailmer
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-Makuhita
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-=== TRAINER_DUMMY07 ===
-Name: WILTON
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Manectric
-Level: 32
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-Wailmer
-Level: 32
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-Makuhita
-Level: 32
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-=== TRAINER_DUMMY08 ===
-Name: WILTON
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Manectric
-Level: 35
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Wailmer
-Level: 35
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Hariyama
-Level: 35
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-=== TRAINER_DUMMY09 ===
-Name: WARREN
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Graveler
-Level: 33
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Ludicolo
-Level: 33
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Audino @ Leftovers
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hyper Voice
+- Wish
+- Dazzling Gleam
+- Flamethrower
 
 === TRAINER_DUMMY10 ===
 Name: MARY

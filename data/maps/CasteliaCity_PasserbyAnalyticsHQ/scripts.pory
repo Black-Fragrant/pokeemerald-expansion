@@ -158,6 +158,7 @@ script CasteliaCity_PAHQ_EventScript_Scientist
     destroy_speech_bubble()
     closemessage
     setflag(FLAG_CASTELIA_PAHQ_BECAME_STATISTICIAN)
+    setvar(VAR_PAHQ_STATE, 1)
     msgbox("{PLAYER} was appointed\n"
        "as a statistician!", MSGBOX_TRANSPARENT)
     closemessage
@@ -241,7 +242,7 @@ script CasteliaCity_PAHQ_EventScript_Beauty
     faceplayer
     goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires)
     goto_if_set(FLAG_ADDED_SURVEY_MORE_ABOUT_POKEMON, CasteliaCity_PAHQ_EventScript_Beauty_GivesSodaPop)
-    goto_if_set(FLAG_ADDED_SURVEY_SPORTS_AND_PASTIMES, CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires)
+    goto_if_set(FLAG_ADDED_SURVEY_DETAILS_ABOUT_PEOPLE, CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires)
     goto_if_set(FLAG_CASTELIA_PAHQ_BECAME_STATISTICIAN, CasteliaCity_PAHQ_EventScript_Beauty_Survey1)
     msgbox("This is Passerby Analytics HQ.\p"
        "If you want to join us,\n"
@@ -625,15 +626,14 @@ script CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires
     destroy_speech_bubble()
     closemessage
 	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_NoAnsweringQuestionnaires)
-    goto_if_unset(FLAG_ADDED_SURVEY_MORE_ABOUT_POKEMON, CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_SPORTS_AND_PASTIMES, CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_SCHOOL_LIFE, CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_ENTERTAINMENT, CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_PREFERENCES, CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_LIKABLE_PEOPLE, CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_IDEALS_AND_VALUES, CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont)
     goto_if_unset(FLAG_ADDED_SURVEY_POKEMON_FAVORITES, CasteliaCity_PAHQ_EventScript_Beauty_Survey2_Cont)
-    goto_if_unset(FLAG_ADDED_SURVEY_DETAILS_ABOUT_PEOPLE, CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_IDEALS_AND_VALUES, CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_LIKABLE_PEOPLE, CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_PREFERENCES, CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_ENTERTAINMENT, CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_SCHOOL_LIFE, CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_SPORTS_AND_PASTIMES, CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_MORE_ABOUT_POKEMON, CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont)
     msgbox("Oh? It looks like you've answered\n"
        "all the questionnaires.\p"
        "Would you like to re-answer\n"
@@ -643,7 +643,7 @@ script CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires
 	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
     msgbox("Then, will you choose a questionnaire\n"
        "you'd like to answer?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	scrollingmultichoice(4, 20, 0, 6, 0)
+	scrollingmultichoice(4, 20, 0, 6, 1)
     destroy_speech_bubble()
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)}
@@ -785,4 +785,47 @@ script CasteliaCity_PAHQ_EventScript_BagIsFull
 	closemessage
 	release()
 	end()
+}
+
+script CasteliaCity_PAHQ_EventScript_Trigger
+{
+    lock
+    setvar(VAR_PAHQ_STATE, 0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 4))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_PAHQ_BEAUTY, moves(jump_in_place_down))
+	waitmovement(0)
+    waitse
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CASTELIA_PAHQ_BEAUTY, moves(jump_in_place_down))
+	waitmovement(0)
+    waitse
+    msgbox("Excuse me, new statistician!\n"
+           "Please wait!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 4))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_PLAYER, moves(walk_up * 3, walk_left * 1, walk_up * 3, walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_CASTELIA_PAHQ_BEAUTY, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Actually, I have a favor to ask you.\p"
+           "I'm asking statisticians to answer\n"
+           "a questionnaire.\p"
+           "OK, here we go!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)
 }

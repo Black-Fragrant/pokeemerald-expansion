@@ -1395,6 +1395,22 @@ bool8 MetatileBehavior_IsBookCase(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsMagazines(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_MAGAZINES)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsPokemonToRead(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_POKEMON_TO_READ)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsShopShelf(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_SHOP_SHELF)
