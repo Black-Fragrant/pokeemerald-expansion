@@ -56,6 +56,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CASTELIA_NS_DANCER",
       "graphics_id": "OBJ_EVENT_GFX_DANCER",
       "x": 9,
       "y": 12,
@@ -66,7 +67,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CasteliaCity_NarrowStreet_EventScript_Dancer",
-      "flag": "0"
+      "flag": "FLAG_CASTELIA_NARROW_STREET_DANCER"
     },
     {
       "local_id": "LOCALID_CASTELIA_NS_BLACKSUIT",

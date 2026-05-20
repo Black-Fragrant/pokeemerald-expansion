@@ -514,6 +514,10 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_TripleDrawer;
     if (MetatileBehavior_IsBookCase(metatileBehavior) == TRUE)
         return EventScript_BookCase;
+    if (MetatileBehavior_IsMagazines(metatileBehavior) == TRUE)
+        return EventScript_Magazines;
+    if (MetatileBehavior_IsPokemonToRead(metatileBehavior) == TRUE)
+        return EventScript_PokemonToRead;
     if (MetatileBehavior_IsShopShelf(metatileBehavior) == TRUE)
         return EventScript_ShopShelf;
     if (MetatileBehavior_IsBlueprint(metatileBehavior) == TRUE)

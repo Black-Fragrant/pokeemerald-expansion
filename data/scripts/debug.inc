@@ -198,8 +198,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	warpsilent MAP_CASTELIA_CITY_BATTLE_COMPANY1F, 7, 8
-    waitstate
+	setflag FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN
 	release
 	end
 

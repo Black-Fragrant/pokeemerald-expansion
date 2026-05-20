@@ -567,6 +567,8 @@ extern const u8 EventScript_EmptyTrashCan[];
 extern const u8 EventScript_KitchenShelf[];
 extern const u8 EventScript_TripleDrawer[];
 extern const u8 EventScript_BookCase[];
+extern const u8 EventScript_Magazines[];
+extern const u8 EventScript_PokemonToRead[];
 extern const u8 EventScript_ShopShelf[];
 extern const u8 EventScript_Blueprint[];
 extern const u8 EventScript_WirelessBoxResults[];

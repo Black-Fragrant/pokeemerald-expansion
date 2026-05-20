@@ -1,12 +1,5 @@
 mapscripts CasteliaCity_UnityPier_MapScripts {}
 
-script CasteliaCity_UnityPier_EventScript_Dancer
-{
-    msgbox("I've come to Castelia City to have a\n"
-        "dance lesson!", MSGBOX_NPC, TRUE)
-    end
-}
-
 script CasteliaCity_UnityPier_EventScript_RichGirl
 {
     msgbox("Both Pokémon and people will meet their\n"
@@ -23,5 +16,62 @@ script CasteliaCity_UnityPier_EventScript_Receptionist
         "It's a bit surprising that rules and ways\n"
         "of thinking are different just because\l"
         "the places we live are different!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_UnityPier_EventScript_Dancer
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_ACTIVATE_OTHER_DANCER_BATTLES, CasteliaCity_UnityPier_EventScript_Dancer_AskForBattle)
+    msgbox("I've come to Castelia City to have a\n"
+        "dance lesson!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_UP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_UnityPier_EventScript_Dancer_AskForBattle
+{
+    msgbox("What do you want?\p"
+           "Oh! The dance team! You're going to\n"
+           "introduce me to the team!\p"
+           "Oh! Then, before that, let's have a\n"
+           "Pokémon battle!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_UP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_UnityPier_EventScript_Dancer_Battle)
+    goto(CasteliaCity_UnityPier_EventScript_Dancer_NoBattle)
+}
+
+script CasteliaCity_UnityPier_EventScript_Dancer_NoBattle
+{
+    msgbox("If you want me to join your dance team,\n"
+           "you've got to be strong!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_UP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_UnityPier_EventScript_Dancer_Battle
+{
+    msgbox("I was great in Pokémon lessons!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_UP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+	trainerbattle_no_intro(TRAINER_DANCER_UNITY_PIER, text("I was off the beat!\nI have to start up my lessons again!"))
+    msgbox("What was that?\p"
+           "Oh! The dance team!\n"
+           "I will join the team!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_UP_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_CASTELIA_UP_DANCER)
+    setflag(FLAG_CASTELIA_UNITY_PIER_DANCER)
+    clearflag(FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_RIGHT)
+    fadescreen(FADE_FROM_BLACK)
+    delay(20)
+    release
     end
 }

@@ -152,7 +152,7 @@
 #define VAR_PAHQ_BECOME_SURVEY_RESULT                    0x4082
 #define VAR_PAHQ_LEADER_SURVEY_RESULT                    0x4083
 #define VAR_DIFFICULTY                                   0x4084 // Don't Touch
-#define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
+#define VAR_PAHQ_STATE                                   0x4085
 #define VAR_CONTEST_HALL_STATE                           0x4086
 #define VAR_CABLE_CLUB_STATE                             0x4087
 #define VAR_CONTEST_TYPE                                 0x4088

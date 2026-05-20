@@ -661,6 +661,9 @@ const u16 gObjectEventPal_Musharnaow[] = INCBIN_U16("graphics/object_events/pale
 const u32 gObjectEventPic_Pikachuow[] = INCBIN_U32("graphics/object_events/pics/people/pikachuow.4bpp");
 const u16 gObjectEventPal_Pikachuow[] = INCBIN_U16("graphics/object_events/palettes/pikachuow.gbapal");
 
+const u32 gObjectEventPic_Clerko[] = INCBIN_U32("graphics/object_events/pics/people/clerko.4bpp");
+const u16 gObjectEventPal_Clerko[] = INCBIN_U16("graphics/object_events/palettes/clerko.gbapal");
+
 const u32 gObjectEventPic_FlagPole[] = INCBIN_U32("graphics/object_events/pics/people/flag_pole.4bpp");
 const u16 gObjectEventPal_FlagPole[] = INCBIN_U16("graphics/object_events/palettes/flag_pole.gbapal");
 

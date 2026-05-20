@@ -18,12 +18,66 @@ script CasteliaCity_NarrowStreet_EventScript_Roughneck_Bot
 
 script CasteliaCity_NarrowStreet_EventScript_Dancer
 {
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_ACTIVATE_OTHER_DANCER_BATTLES, CasteliaCity_NarrowStreet_EventScript_Dancer_AskForBattle)
     msgbox("There's not a lot you can do alone.\n"
         "There are more things two people can do.\p"
         "There are even more things three people\n"
         "can do!\p"
         "That's right... I think what's missing\n"
-        "from my dance is company.", MSGBOX_NPC, TRUE)
+        "from my dance is company.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Dancer_AskForBattle
+{
+    msgbox("Do you need something?\p"
+           "What...?\n"
+           "You're looking for Dancers for a team?\p"
+           "It sounds very interesting, but I don't\n"
+           "want to do a favor for someone who isn't\l"
+           "stronger than me.\p"
+           "Hey!\n"
+           "Let's have a battle!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_NS_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_NarrowStreet_EventScript_Dancer_Battle)
+    goto(CasteliaCity_NarrowStreet_EventScript_Dancer_NoBattle)
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Dancer_NoBattle
+{
+    msgbox("Hmmmm...", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_DANCER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_NarrowStreet_EventScript_Dancer_Battle
+{
+    msgbox("OK!\n"
+           "Let's begin!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_NS_DANCER)
+    destroy_speech_bubble()
+    closemessage
+	trainerbattle_no_intro(TRAINER_DANCER_NARROW_STREET, text("My footwork was not quite sharp."))
+    msgbox("You're going to create a dance team,\n"
+           "aren't you?\p"
+           "It sounds very interesting.\n"
+           "I'd like to join up!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_CASTELIA_NS_DANCER)
+    setflag(FLAG_CASTELIA_NARROW_STREET_DANCER)
+    clearflag(FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_LEFT)
+    fadescreen(FADE_FROM_BLACK)
+    delay(20)
+    release
     end
 }
 

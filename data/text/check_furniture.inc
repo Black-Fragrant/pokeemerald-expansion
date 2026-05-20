@@ -35,3 +35,13 @@ Text_TripleDrawer:
 Text_BookCase:
 	.string "It's chock full of Pokémon books and\n"
 	.string "photo collections.$"
+	
+Text_Magazines:
+    .string "There are lots of Pokémon magazines!\p"
+	.string "“Pokémon Pal”\n"
+	.string "“Pokémon Handbook”\n"
+	.string "“Adorable Pokémon”$"
+	
+Text_PokemonToRead:
+    .string "Are these books for Pokémon\n"
+    .string "to read?$"
