@@ -76,7 +76,7 @@ Route104_MrBrineysHouse_EventScript_SailToDewford::
 	clearflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX
-	setvar VAR_ROUTE121_STATE, 8
+	setvar VAR_PLACEHOLDER, 8
 	setvar VAR_METEOR_FALLS_STATE, 2
 	setflag FLAG_UNUSED_0xXXX
 	setflag FLAG_UNUSED_0xXXX

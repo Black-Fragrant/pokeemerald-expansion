@@ -1,1 +1,788 @@
 mapscripts CasteliaCity_PasserbyAnalyticsHQ_MapScripts {}
+
+script CasteliaCity_PAHQ_EventScript_Chart
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_PAHQ_BECAME_STATISTICIAN, CasteliaCity_PAHQ_EventScript_Chart_ShowStats)
+	msgbox("STATISTICIANS WANTED!\n"
+       "FOR DETAILS, ASK THE LEADER!", MSGBOX_TRANSPARENT)
+    closemessage
+    release
+	end
+}
+
+script CasteliaCity_PAHQ_EventScript_Chart_ShowStats
+{
+	msgbox("STATS IN PREPARATION...\n"
+       "CHECK BACK LATER!", MSGBOX_TRANSPARENT)
+    closemessage
+    release
+	end
+}
+
+script CasteliaCity_PAHQ_EventScript_RichGirl
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_PAHQ_TALKED_TO_RICHGIRL_ONCE, CasteliaCity_PAHQ_EventScript_RichGirl_Repeat)
+    setflag(FLAG_CASTELIA_PAHQ_TALKED_TO_RICHGIRL_ONCE)
+    msgbox("Hello! Do you always have a feeling\n"
+       "of gratitude?\p"
+       "Oh, you dropped your Poké Ball.\n"
+       "Here you are.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("{PLAYER} received a Pokémon Ball.", MSGBOX_TRANSPARENT)
+    closemessage
+    msgbox("Please remember to thank someone\n"
+       "who helps you!\p"
+       "It may sound trivial, but it's important.\p"
+       "Now, will you tell me your\n"
+       "feeling of gratitude?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_RICHGIRL)
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_RichGirl_Yes)
+    goto(CasteliaCity_PAHQ_EventScript_RichGirl_No)
+}
+
+script CasteliaCity_PAHQ_EventScript_RichGirl_No
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Then, maybe next time.\p"
+        "Don't forget a feeling of gratitude!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_RichGirl_Repeat
+{
+    msgbox("Hello! Do you always have a feeling\n"
+       "of gratitude?\p"
+       "If you don't mind, will you show me your\n"
+       "feeling of gratitude again?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_RICHGIRL)
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_RichGirl_Yes)
+    goto(CasteliaCity_PAHQ_EventScript_RichGirl_No)
+}
+
+script CasteliaCity_PAHQ_EventScript_RichGirl_Yes
+{
+    destroy_speech_bubble()
+    closemessage
+    special(DoExpressGratitude)
+	waitstate
+	specialvar(VAR_RESULT, TryBufferGratitudeWord)
+    msgbox("{STR_VAR_1}\p"
+        "What a wonderful phrase!\n"
+       "It warms up my heart.\p"
+       "If somebody helps you,\n"
+       "show your feelings of gratitude.\p"
+       "I am sure they will appreciate\n"
+       "your feelings.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_Youngster
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_PAHQ_TALKED_TO_YOUNGSTER_ONCE, CasteliaCity_PAHQ_EventScript_Youngster_Repeat)
+    setflag(FLAG_CASTELIA_PAHQ_TALKED_TO_YOUNGSTER_ONCE)
+    msgbox("Hello!\n"
+        "Greeting is important, isn't it?\p"
+        "If you don't mind, would you\n"
+        "tell me your favorite greeting?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_YOUNGSTER)
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Youngster_Yes)
+    goto(CasteliaCity_PAHQ_EventScript_Youngster_No)
+}
+
+script CasteliaCity_PAHQ_EventScript_Youngster_No
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Then, maybe next time.\n"
+       "Let's always have a cheerful greeting!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_YOUNGSTER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_Youngster_Repeat
+{
+    msgbox("Hello!\n"
+        "Greeting is important, isn't it?\p"
+        "If you don't mind, would you tell me\n"
+        "favorite greeting again?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_YOUNGSTER)
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Youngster_Yes)
+    goto(CasteliaCity_PAHQ_EventScript_Youngster_No)
+}
+
+script CasteliaCity_PAHQ_EventScript_Youngster_Yes
+{
+    destroy_speech_bubble()
+    closemessage
+    special(DoGreetPeople)
+	waitstate
+	specialvar(VAR_RESULT, TryBufferGreetWord)
+    msgbox("{STR_VAR_1}\p"
+       "Yes, it's a good greeting!\n"
+       "It cheers me up!\p"
+       "Please feel free to come and say hi again!\n"
+       "I look forward to seeing you again!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_YOUNGSTER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_Scientist
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_PAHQ_BECAME_STATISTICIAN, CasteliaCity_PAHQ_EventScript_Scientist_Cont)
+    msgbox("What are people's favorite things?\n"
+       "What is popular right now?\p"
+       "Have you ever wondered about\n"
+       "these things?\p"
+       "Welcome to Passerby Analytics HQ!\p"
+       "This is where you can find\n"
+       "all the answers.\p"
+       "…You have good eyes.\n"
+       "Eyes full of curiosity.\p"
+       "…Good! I will specially appoint you\n"
+       "as a statistician!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_CASTELIA_PAHQ_BECAME_STATISTICIAN)
+    msgbox("{PLAYER} was appointed\n"
+       "as a statistician!", MSGBOX_TRANSPARENT)
+    closemessage
+    msgbox("Statisticians have only one task!\n"
+       "They conduct requested surveys.\p"
+       "First, you'll receive survey requests\n"
+       "from me.\p"
+       "Then, with the Survey Radar, you'll\n"
+       "choose the survey you want to conduct.\p"
+       "Then, if you pass by a lot of people,\n"
+       "the radar will collect the information.\p"
+       "Of course, we've prepared compensation\n"
+       "for the survey.\p"
+       "Statistician {PLAYER}!\n"
+       "I expect you to do a great job!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_PAHQ_EventScript_Scientist_Multichoice)
+}
+
+script CasteliaCity_PAHQ_EventScript_Scientist_Cont
+{
+    msgbox("Statistician {PLAYER},\n"
+       "good to see you!\p"
+       "Are you surveying people vigorously?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_PAHQ_EventScript_Scientist_Multichoice)
+}
+
+script CasteliaCity_PAHQ_EventScript_Scientist_Multichoice
+{
+    msgbox("What would you like to do today?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+	multichoice(20, 0, MULTI_PAHQ_SCIENTIST, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_PAHQ_EventScript_AcceptARequest)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_PAHQ_EventScript_Scientist_ReportTheResult)}
+    destroy_speech_bubble()
+    closemessage
+    msgbox("I see…\p"
+       "I'm lonely, so\n"
+       "please come visit me sometimes.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_AcceptARequest
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("We are still preparing for the surveys.\p"
+        "Please check back with us shortly!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_Scientist_ReportTheResult
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("You don't seem to have accepted\n"
+       "a survey request.\p"
+       "Please come back if you want to\n"
+       "accept a request.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+//------------------------------------------------
+//----------RICH GIRL RELATED SCRIPTS-------------
+//------------------------------------------------
+
+script CasteliaCity_PAHQ_EventScript_Beauty
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires)
+    goto_if_set(FLAG_ADDED_SURVEY_MORE_ABOUT_POKEMON, CasteliaCity_PAHQ_EventScript_Beauty_GivesSodaPop)
+    goto_if_set(FLAG_ADDED_SURVEY_SPORTS_AND_PASTIMES, CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires)
+    goto_if_set(FLAG_CASTELIA_PAHQ_BECAME_STATISTICIAN, CasteliaCity_PAHQ_EventScript_Beauty_Survey1)
+    msgbox("This is Passerby Analytics HQ.\p"
+       "If you want to join us,\n"
+       "please speak to the leader.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    release    
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey1
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_Intro)
+    msgbox("Actually, I have a favor to ask you.\p"
+        "I'm asking statisticians to answer\n"
+        "a questionnaire.\p"
+        "OK, here we go!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+        "“Details about people.”\p"
+        "“What is your hobby?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	scrollingmultichoice(0, 20, 0, 6, 0)
+	copyvar(VAR_PAHQ_HOBBY_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your job?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	scrollingmultichoice(1, 20, 0, 6, 0)
+	copyvar(VAR_PAHQ_JOB_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_DETAILS_ABOUT_PEOPLE)
+    playse(SE_PIN)
+    msgbox("The “Details About People” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 8)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey2_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey2_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“Pokémon favorites.”\p"
+       "“Which do you prefer,\n"
+       "battles or trades?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_BATTLEORTRADE, 1)
+	copyvar(VAR_PAHQ_BATTLETRADE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite kind of Pokémon?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_POKEMON, 1)
+	copyvar(VAR_PAHQ_POKEMON_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox( "“What is your favorite Pokémon type?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	scrollingmultichoice(2, 20, 0, 6, 0)
+	copyvar(VAR_PAHQ_TYPE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_POKEMON_FAVORITES)
+    playse(SE_PIN)
+    msgbox("The “Pokémon Favorites” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 7)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“Ideals and values.”\p"
+       "“Where do people prefer to live?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_LIVE, 1)
+	copyvar(VAR_PAHQ_LIVE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“Which one do you wish you had more of?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_MORE, 1)
+	copyvar(VAR_PAHQ_MORE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What's most important to you?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_IMPORTANT, 1)
+	copyvar(VAR_PAHQ_IMPORTANT_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_IDEALS_AND_VALUES)
+    playse(SE_PIN)
+    msgbox("The “Ideals and Values” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 6)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“Likable people.”\p"
+       "“Which partner would you choose?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_BRAINBRAWN, 1)
+	copyvar(VAR_PAHQ_BRAINBRAWN_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What do you value more in a person?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_PVALUE, 1)
+	copyvar(VAR_PAHQ_PVALUE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What type of person\n"
+       "do you like?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_PTYPE, 1)
+	copyvar(VAR_PAHQ_PTYPE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_LIKABLE_PEOPLE)
+    playse(SE_PIN)
+    msgbox("The “Likable People” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 5)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“Preferences.”\p"
+       "“What is your favorite season?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_SEASON, 1)
+	copyvar(VAR_PAHQ_SEASON_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite food?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_FOOD, 1)
+	copyvar(VAR_PAHQ_FOOD_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite color?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_COLOR, 1)
+	copyvar(VAR_PAHQ_COLOR_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_PREFERENCES)
+    playse(SE_PIN)
+    msgbox("The “Preferences” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 4)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“Entertainment.”\p"
+       "“What is your favorite music?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_MUSIC, 1)
+	copyvar(VAR_PAHQ_MUSIC_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite kind of\n"
+        "TV program?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_TV, 1)
+	copyvar(VAR_PAHQ_TV_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite kind of movie?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_MOVIE, 1)
+	copyvar(VAR_PAHQ_MOVIE_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_ENTERTAINMENT)
+    playse(SE_PIN)
+    msgbox("The “Entertainment” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 3)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“School life.”\p"
+       "“What is your favorite time\n"
+       "in school?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_STIME, 1)
+	copyvar(VAR_PAHQ_STIME_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite school subject?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_SSUBJECT, 1)
+	copyvar(VAR_PAHQ_SSUBJECT_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your weakest subject?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_WSUBJECT, 1)
+	copyvar(VAR_PAHQ_WSUBJECT_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_SCHOOL_LIFE)
+    playse(SE_PIN)
+    msgbox("The “School Life” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 2)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“Sports and pastimes.”\p"
+       "“Where would you like to go\n"
+       "for fun?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_FPLACES, 1)
+	copyvar(VAR_PAHQ_FPLACES_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What do you do on holidays?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_HOLIDAY, 1)
+	copyvar(VAR_PAHQ_HOLIDAY_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What is your favorite sport?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_SPORT, 1)
+	copyvar(VAR_PAHQ_SPORT_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_SPORTS_AND_PASTIMES)
+    playse(SE_PIN)
+    msgbox("The “Sports and Pastimes” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    buffernumberstring(STR_VAR_1, 1)
+    call(CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont)
+    goto(CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted)
+    msgbox("is about\n"
+       "“More about Pokémon.”\p"
+       "“What do you think\n"
+       "the most fun part of Pokémon is?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_PFUN, 1)
+	copyvar(VAR_PAHQ_PFUN_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage    
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“What would you want to become?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	multichoice(20, 0, MULTI_PAHQ_SURVEY_BECOME, 1)
+	copyvar(VAR_PAHQ_BECOME_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
+    msgbox("“Who is your favorite Gym Leader?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	scrollingmultichoice(3, 20, 0, 6, 0)
+	copyvar(VAR_PAHQ_LEADER_SURVEY_RESULT, VAR_RESULT)
+    destroy_speech_bubble()
+    closemessage
+    call(CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt)
+    goto_if_set(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    call(CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo)
+    setflag(FLAG_ADDED_SURVEY_MORE_ABOUT_POKEMON)
+    playse(SE_PIN)
+    msgbox("The “More About Pokémon” survey\n"
+       "was added to the Survey Radar!", MSGBOX_TRANSPARENT)
+    closemessage
+    waitse
+    goto(CasteliaCity_PAHQ_EventScript_Beauty_GivesSodaPop)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires
+{
+    call(CasteliaCity_PAHQ_EventScript_Beauty_Intro)
+    call(CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnaires)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_NoAnsweringQuestionnaires)
+    goto_if_unset(FLAG_ADDED_SURVEY_MORE_ABOUT_POKEMON, CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_SPORTS_AND_PASTIMES, CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_SCHOOL_LIFE, CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_ENTERTAINMENT, CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_PREFERENCES, CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_LIKABLE_PEOPLE, CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_IDEALS_AND_VALUES, CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_POKEMON_FAVORITES, CasteliaCity_PAHQ_EventScript_Beauty_Survey2_Cont)
+    goto_if_unset(FLAG_ADDED_SURVEY_DETAILS_ABOUT_PEOPLE, CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)
+    msgbox("Oh? It looks like you've answered\n"
+       "all the questionnaires.\p"
+       "Would you like to re-answer\n"
+       "the questionnaires you did before?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+    msgbox("Then, will you choose a questionnaire\n"
+       "you'd like to answer?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+	scrollingmultichoice(4, 20, 0, 6, 0)
+    destroy_speech_bubble()
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey2_Cont)}
+	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont)}
+	elif (var(VAR_RESULT) == 3) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont)}
+	elif (var(VAR_RESULT) == 4) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont)}
+	elif (var(VAR_RESULT) == 5) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont)}
+	elif (var(VAR_RESULT) == 6) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont)}
+	elif (var(VAR_RESULT) == 7) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont)}
+	elif (var(VAR_RESULT) == 8) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont)}
+    goto(CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_GivesSodaPop
+{
+    msgbox("This is the end of\n"
+        "all the questionnaires.\p"
+        "It was fun to get to know you!\p"
+        "And... This is a thank-you gift\n"
+        "for answering the questionnaire.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_SODA_POP, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP)
+    goto(CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords
+{
+    msgbox("You can answer the questionnaires\n"
+        "as many times as you want, so\l"
+        "if you want to change your answers,\l"
+        "please let me know.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_LetsGetStarted
+{
+    msgbox("Let's get started.\n"
+       "This questionnaire...", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee
+{
+    msgbox("I see, I see...\n"
+       "Uh-huh.\p"
+       "Next up...", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_ThatIsIt
+{
+    msgbox("I see, I see...\n"
+       "Uh-huh.\p"
+       "...OK. That's it!\p"
+       "Thank you.\n"
+       "I got a useful questionnaire.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_GiveThisToYouToo
+{
+    msgbox("Oh, I will give this questionnaire sheet\n"
+       "to you, too.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_Beauty_Intro
+{
+    msgbox("Hi, {PLAYER}.\p"
+        "Are you conducting a survey vigorously?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_NoAnsweringQuestionnaires
+{
+    msgbox("All right.\p"
+       "If you change your mind,\n"
+       "please speak to me.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_AnsweredNoForMoreQuestionnaires
+{
+    msgbox("If you want to answer other\n"
+       "questionnaires, too, speak to me.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnaires
+{   
+    msgbox("I'd like to ask you to answer\n"
+       "a questionnaire again.\p"
+       "Will you?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_AskForMoreQuestionnairesContinue
+{   
+    msgbox("Since you're here, why don't you\n"
+        "answer other questionnaires, too?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft
+{   
+    msgbox("Now, you have...\n"
+        "this many questionnaires left: {STR_VAR_1}.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_PAHQ_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}

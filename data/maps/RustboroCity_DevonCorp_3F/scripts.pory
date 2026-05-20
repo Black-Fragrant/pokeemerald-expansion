@@ -68,7 +68,7 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	setvar VAR_BRINEY_LOCATION, 1
 	clearflag FLAG_UNUSED_0xXXX
 	setvar VAR_DEVON_CORP_3F_STATE, 1
-	setvar VAR_ROUTE121_STATE, 6
+	setvar VAR_PLACEHOLDER, 6
 	releaseall
 	end
 

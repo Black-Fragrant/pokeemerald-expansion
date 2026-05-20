@@ -1202,9 +1202,9 @@ static bool16 IsInfiltratedWeatherInstitute(struct WarpData *warp)
 
 static bool16 IsInfiltratedSpaceCenter(struct WarpData *warp)
 {
-    if (VarGet(VAR_ROUTE121_STATE) == 0)
+    if (VarGet(VAR_PLACEHOLDER) == 0)
         return FALSE;
-    else if (VarGet(VAR_ROUTE121_STATE) > 2)
+    else if (VarGet(VAR_PLACEHOLDER) > 2)
         return FALSE;
     else if (warp->mapGroup != MAP_GROUP(MAP_MOSSDEEP_CITY_SPACE_CENTER_1F))
         return FALSE;

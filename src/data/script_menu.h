@@ -949,6 +949,184 @@ static const struct MenuAction MultichoiceList_CasteliaCones[] =
     {COMPOUND_STRING("Cancel")},
 };
 
+static const struct MenuAction MultichoiceList_PAHQ_Scientist[] =
+{
+    {COMPOUND_STRING("Accept a request")},
+    {COMPOUND_STRING("Report the result")},
+    {COMPOUND_STRING("Nothing")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_BattleOrTrade[] =
+{
+    {COMPOUND_STRING("Battle")},
+    {COMPOUND_STRING("Trade")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Pokemon[] =
+{
+    {COMPOUND_STRING("Cool")},
+    {COMPOUND_STRING("Cute")},
+    {COMPOUND_STRING("Strange")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Live[] =
+{
+    {COMPOUND_STRING("The City")},
+    {COMPOUND_STRING("The Country")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_More[] =
+{
+    {COMPOUND_STRING("Time")},
+    {COMPOUND_STRING("Money")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Important[] =
+{
+    {COMPOUND_STRING("Family")},
+    {COMPOUND_STRING("Friends")},
+    {COMPOUND_STRING("Self")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_BrainBrawn[] =
+{
+    {COMPOUND_STRING("Smart")},
+    {COMPOUND_STRING("Athletic")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_PersonalValue[] =
+{
+    {COMPOUND_STRING("Appearance")},
+    {COMPOUND_STRING("Substance")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_PersonalType[] =
+{
+    {COMPOUND_STRING("Fun")},
+    {COMPOUND_STRING("Cool")},
+    {COMPOUND_STRING("Kind")},
+    {COMPOUND_STRING("Rich")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Season[] =
+{
+    {COMPOUND_STRING("Spring")},
+    {COMPOUND_STRING("Summer")},
+    {COMPOUND_STRING("Autumn")},
+    {COMPOUND_STRING("Winter")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Food[] =
+{
+    {COMPOUND_STRING("Sweet")},
+    {COMPOUND_STRING("Spicy")},
+    {COMPOUND_STRING("Sour")},
+    {COMPOUND_STRING("Bitter")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Color[] =
+{
+    {COMPOUND_STRING("Red")},
+    {COMPOUND_STRING("Green")},
+    {COMPOUND_STRING("Blue")},
+    {COMPOUND_STRING("Yellow")},
+    {COMPOUND_STRING("White")},
+    {COMPOUND_STRING("Black")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Music[] =
+{
+    {COMPOUND_STRING("Pop")},
+    {COMPOUND_STRING("Rock")},
+    {COMPOUND_STRING("Jazz")},
+    {COMPOUND_STRING("Rap")},
+    {COMPOUND_STRING("Classical")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_TVPrograms[] =
+{
+    {COMPOUND_STRING("News")},
+    {COMPOUND_STRING("Drama")},
+    {COMPOUND_STRING("Comedy")},
+    {COMPOUND_STRING("Sports")},
+    {COMPOUND_STRING("Cartoons")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Movie[] =
+{
+    {COMPOUND_STRING("Action")},
+    {COMPOUND_STRING("Sci-Fi")},
+    {COMPOUND_STRING("Romance")},
+    {COMPOUND_STRING("Suspense")},
+    {COMPOUND_STRING("Comedy")},
+    {COMPOUND_STRING("Horror")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_SchoolTime[] =
+{
+    {COMPOUND_STRING("Classes")},
+    {COMPOUND_STRING("Breaks")},
+    {COMPOUND_STRING("Lunch")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_SchoolSubject[] =
+{
+    {COMPOUND_STRING("English")},
+    {COMPOUND_STRING("Math")},
+    {COMPOUND_STRING("Science")},
+    {COMPOUND_STRING("Social Studies")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_WeakestSubject[] =
+{
+    {COMPOUND_STRING("English")},
+    {COMPOUND_STRING("Math")},
+    {COMPOUND_STRING("Science")},
+    {COMPOUND_STRING("Social Studies")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_FunPlaces[] =
+{
+    {COMPOUND_STRING("The Beach")},
+    {COMPOUND_STRING("A River")},
+    {COMPOUND_STRING("The Mountains")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Holiday[] =
+{
+    {COMPOUND_STRING("Play Outside")},
+    {COMPOUND_STRING("Shopping")},
+    {COMPOUND_STRING("Reading")},
+    {COMPOUND_STRING("Video Games")},
+    {COMPOUND_STRING("Sleeping Late")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Sport[] =
+{
+    {COMPOUND_STRING("Baseball")},
+    {COMPOUND_STRING("Soccer")},
+    {COMPOUND_STRING("Basketball")},
+    {COMPOUND_STRING("Football")},
+    {COMPOUND_STRING("Hockey")},
+    {COMPOUND_STRING("Martial Arts")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_PokemonFun[] =
+{
+    {COMPOUND_STRING("Battles")},
+    {COMPOUND_STRING("Collecting")},
+    {COMPOUND_STRING("The Story")},
+    {COMPOUND_STRING("Pokémon")},
+};
+
+static const struct MenuAction MultichoiceList_Survey_Become[] =
+{
+    {COMPOUND_STRING("Trainer")},
+    {COMPOUND_STRING("Professor")},
+    {COMPOUND_STRING("Team Plasma")},
+    {COMPOUND_STRING("Pokémon")},
+};
+
 static const struct MenuAction sMultichoiceList_BikeShop[] = {
     {COMPOUND_STRING("BICYCLE{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000")},
     {COMPOUND_STRING("NO THANKS")}
@@ -1402,6 +1580,29 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_CASTELIA_ELEVATOR_47]       = MULTICHOICE(MultichoiceList_CasteliaElevator47),
     [MULTI_CASTELIA_EVOLUTION_STONE]   = MULTICHOICE(MultichoiceList_CasteliaEvolutionStone),
     [MULTI_CASTELIA_CONES]             = MULTICHOICE(MultichoiceList_CasteliaCones),
+    [MULTI_PAHQ_SCIENTIST]             = MULTICHOICE(MultichoiceList_PAHQ_Scientist),
+    [MULTI_PAHQ_SURVEY_BATTLEORTRADE]  = MULTICHOICE(MultichoiceList_Survey_BattleOrTrade),
+    [MULTI_PAHQ_SURVEY_POKEMON]        = MULTICHOICE(MultichoiceList_Survey_Pokemon),
+    [MULTI_PAHQ_SURVEY_LIVE]           = MULTICHOICE(MultichoiceList_Survey_Live),
+    [MULTI_PAHQ_SURVEY_MORE]           = MULTICHOICE(MultichoiceList_Survey_More),
+    [MULTI_PAHQ_SURVEY_IMPORTANT]      = MULTICHOICE(MultichoiceList_Survey_Important),
+    [MULTI_PAHQ_SURVEY_BRAINBRAWN]     = MULTICHOICE(MultichoiceList_Survey_BrainBrawn),
+    [MULTI_PAHQ_SURVEY_PVALUE]         = MULTICHOICE(MultichoiceList_Survey_PersonalValue),
+    [MULTI_PAHQ_SURVEY_PTYPE]          = MULTICHOICE(MultichoiceList_Survey_PersonalType),
+    [MULTI_PAHQ_SURVEY_SEASON]         = MULTICHOICE(MultichoiceList_Survey_Season),
+    [MULTI_PAHQ_SURVEY_FOOD]           = MULTICHOICE(MultichoiceList_Survey_Food),
+    [MULTI_PAHQ_SURVEY_COLOR]          = MULTICHOICE(MultichoiceList_Survey_Color),
+    [MULTI_PAHQ_SURVEY_MUSIC]          = MULTICHOICE(MultichoiceList_Survey_Music),
+    [MULTI_PAHQ_SURVEY_TV]             = MULTICHOICE(MultichoiceList_Survey_TVPrograms),
+    [MULTI_PAHQ_SURVEY_MOVIE]          = MULTICHOICE(MultichoiceList_Survey_Movie),
+    [MULTI_PAHQ_SURVEY_STIME]          = MULTICHOICE(MultichoiceList_Survey_SchoolTime),
+    [MULTI_PAHQ_SURVEY_SSUBJECT]       = MULTICHOICE(MultichoiceList_Survey_SchoolSubject),
+    [MULTI_PAHQ_SURVEY_WSUBJECT]       = MULTICHOICE(MultichoiceList_Survey_WeakestSubject),
+    [MULTI_PAHQ_SURVEY_FPLACES]        = MULTICHOICE(MultichoiceList_Survey_FunPlaces),
+    [MULTI_PAHQ_SURVEY_HOLIDAY]        = MULTICHOICE(MultichoiceList_Survey_Holiday),
+    [MULTI_PAHQ_SURVEY_SPORT]          = MULTICHOICE(MultichoiceList_Survey_Sport),
+    [MULTI_PAHQ_SURVEY_PFUN]           = MULTICHOICE(MultichoiceList_Survey_PokemonFun),
+    [MULTI_PAHQ_SURVEY_BECOME]         = MULTICHOICE(MultichoiceList_Survey_Become),
     [MULTI_BIKE_SHOP]                  = MULTICHOICE(sMultichoiceList_BikeShop),
     [MULTI_EEVEELUTIONS]               = MULTICHOICE(sMultichoiceList_Eeveelutions),
     [MULTI_ISLAND_23]                  = MULTICHOICE(sMultichoiceList_Island23),

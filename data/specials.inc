@@ -530,6 +530,10 @@ gSpecials::
 	def_special TryBufferWaldaPhrase
 	def_special DoWaldaNamingScreen
 	def_special TryGetWallpaperWithWaldaPhrase
+	def_special TryBufferGratitudeWord
+	def_special DoExpressGratitude
+	def_special TryBufferGreetWord
+	def_special DoGreetPeople
 	def_special PlayerNotAtTrainerHillEntrance
 	def_special GetBattlePyramidHint
 	def_special LoadLinkContestPlayerPalettes

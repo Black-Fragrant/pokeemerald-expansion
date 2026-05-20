@@ -482,8 +482,10 @@ static void NamingScreen_Init(void)
     sNamingScreen->template = sNamingScreenTemplates[sNamingScreen->templateNum];
     sNamingScreen->currentPage = sNamingScreen->template->initialPage;
     sNamingScreen->inputCharBaseXPos = (DISPLAY_WIDTH - sNamingScreen->template->maxChars * 8) / 2 + 6;
-    if (sNamingScreen->templateNum == NAMING_SCREEN_WALDA)
-        sNamingScreen->inputCharBaseXPos += 11;
+    if (sNamingScreen->templateNum == NAMING_SCREEN_WALDA
+     || sNamingScreen->templateNum == NAMING_SCREEN_GRATITUDE
+     || sNamingScreen->templateNum == NAMING_SCREEN_GREET)
+    {sNamingScreen->inputCharBaseXPos += 11;}
     sNamingScreen->keyRepeatStartDelayCopy = gKeyRepeatStartDelay;
     memset(sNamingScreen->textBuffer, EOS, sizeof(sNamingScreen->textBuffer));
     if (sNamingScreen->template->copyExistingString)
@@ -1377,6 +1379,8 @@ static void NamingScreen_CreateMonIcon(void);
 static void NamingScreen_CreateWaldaDadIcon(void);
 static void NamingScreen_CreateCodeIcon(void);
 static void NamingScreen_CreateRivalIcon(void);
+static void NamingScreen_CreateGratitudeIcon(void);
+static void NamingScreen_CreateGreetIcon(void);
 
 static void (*const sIconFunctions[])(void) =
 {
@@ -1387,6 +1391,8 @@ static void (*const sIconFunctions[])(void) =
     NamingScreen_CreateWaldaDadIcon,
     NamingScreen_CreateCodeIcon,
     NamingScreen_CreateRivalIcon,
+    NamingScreen_CreateGratitudeIcon,
+    NamingScreen_CreateGreetIcon,
 };
 
 static void CreateInputTargetIcon(void)
@@ -1433,6 +1439,24 @@ static void NamingScreen_CreateWaldaDadIcon(void)
     u8 spriteId;
 
     spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_SCOTT, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
+}
+
+static void NamingScreen_CreateGratitudeIcon(void)
+{
+    u8 spriteId;
+
+    spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_RICH_GIRL, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
+}
+
+static void NamingScreen_CreateGreetIcon(void)
+{
+    u8 spriteId;
+
+    spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_YOUNGSTER, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
 }
@@ -1795,7 +1819,9 @@ static void (*const sDrawTextEntryBoxFuncs[])(void) =
     [NAMING_SCREEN_NICKNAME]   = DrawMonTextEntryBox,
     [NAMING_SCREEN_WALDA]      = DrawNormalTextEntryBox,
     [NAMING_SCREEN_CODE]       = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_RIVAL]      = DrawNormalTextEntryBox
+    [NAMING_SCREEN_RIVAL]      = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_GRATITUDE]  = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_GREET]      = DrawNormalTextEntryBox
 };
 
 static void DrawTextEntryBox(void)
@@ -2188,7 +2214,29 @@ static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
     .unused = 11,
-    .title = COMPOUND_STRING("Tell him the words."),
+    .title = COMPOUND_STRING("What would you say?"),
+};
+
+static const struct NamingScreenTemplate sGratitudeWordsScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = WALDA_PHRASE_LENGTH,
+    .iconFunction = 7,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("What would you say?"),
+};
+
+static const struct NamingScreenTemplate sGreetWordsScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = WALDA_PHRASE_LENGTH,
+    .iconFunction = 8,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("What would you say?"),
 };
 
 static const struct NamingScreenTemplate sCodeScreenTemplate =
@@ -2221,6 +2269,8 @@ static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
     [NAMING_SCREEN_WALDA]      = &sWaldaWordsScreenTemplate,
     [NAMING_SCREEN_CODE]       = &sCodeScreenTemplate,
     [NAMING_SCREEN_RIVAL]      = &sRivalNamingScreenTemplate,
+    [NAMING_SCREEN_GRATITUDE]  = &sGratitudeWordsScreenTemplate,
+    [NAMING_SCREEN_GREET]      = &sGreetWordsScreenTemplate,
 };
 
 static const struct OamData sOam_8x8 =

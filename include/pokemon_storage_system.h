@@ -70,6 +70,14 @@ u8 *GetWaldaPhrasePtr(void);
 void SetWaldaPhrase(const u8 *src);
 bool32 IsWaldaPhraseEmpty(void);
 
+u8 *GetGratitudePhrasePtr(void);
+void SetGratitudePhrase(const u8 *src);
+bool32 IsGratitudePhraseEmpty(void);
+
+u8 *GetGreetPhrasePtr(void);
+void SetGreetPhrase(const u8 *src);
+bool32 IsGreetPhraseEmpty(void);
+
 void ChooseMonFromStorage();
 u32 CountPartyNonEggMons(void);
 void RemoveSelectedPcMon(struct Pokemon *mon);
