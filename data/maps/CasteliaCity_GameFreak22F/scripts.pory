@@ -1,1 +1,208 @@
-mapscripts CasteliaCity_GameFreak22F_MapScripts {}
+mapscripts CasteliaCity_GameFreak22F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_GameFreak22F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_GameFreak22F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Girl
+{
+	msgbox("I am the Graphic Designer. I am devoting\n"
+           "all my energy to every dot!\p"
+           "Hup! I should put one dot here as if I'm\n"
+           "making this part hollow!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Scientist
+{
+	msgbox("Beware of spoilers! What I'm working on\n"
+           "is the ending of the game.\p"
+           "Don't look at it here!\n"
+           "You'll have to play it for yourself.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Director
+{
+    lock
+    faceplayer
+    goto_if_eq(FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE, CasteliaCity_GameFreak22F_EventScript_Director_GotCertificate)
+	msgbox("Hi there!\n"
+           "I am the Game Director.", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
+	specialvar (VAR_RESULT, HasAllHoennMons)
+	goto_if_eq (VAR_RESULT, TRUE, CasteliaCity_GameFreak22F_EventScript_Director_SeenAllUnovaMon)
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Oh! You are working on your Pokédex!\n"
+           "If you fill it up a lot, please let me see!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Director_SeenAllUnovaMon
+{
+    msgbox("Oh! You've caught every kind of\n"
+           "Pokémon in Unova!\p"
+           "Wow! Excellent!\n"
+           "We'll give you an award!!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
+    destroy_speech_bubble()
+    closemessage
+	call(Common_EventScript_PlayGymBadgeFanfare)
+	special(Special_ShowDiploma)
+	waitstate
+    setflag(FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE)
+    msgbox("I will send this award certificate\n"
+           "to your house!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Director_GotCertificate
+{
+    msgbox("How did you meet all the Pokémon\n"
+           "to fill up your Pokédex?\p"
+           "Did you work long and hard to catch\n"
+           "and raise them?\p"
+           "Did you receive them as gifts from\n"
+           "friends?\p"
+           "Maybe you got some in trades from\n"
+           "around the world?\p"
+           "Though everyone's Pokédex may look the\n"
+           "same, the stories they contain are\l"
+           "all unique!", MSGBOX_DEFAULT, TRUE, LOCALID_CSGF1F_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_AceTrainer
+{
+	msgbox("I am the Sound Designer!\p"
+           "I put in a lot of wonderful mechanisms\n"
+           "to change the game's music!\p"
+           "How many of them have you noticed?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_BeardGuy
+{
+	msgbox("I'm Snorlax.\p"
+           "No, no. I'm the Planner!\p"
+           "I don't mean to butt in, but the\n"
+           "Leftovers item is important, isn't it?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_GreenShirtGuy
+{
+    lock
+    faceplayer
+	msgbox("A tip for getting strong\n"
+           "in Pokémon battles...\p"
+           "Let me see.\n"
+           "I guess the most important thing is...\l"
+           "having a lot of battles!\p"
+           "If you become very strong, come back\n"
+           "and have a Pokémon battle with me!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_GREENSHIRTGUY)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_GameFreak22F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_GameFreak22F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_GameFreak22F_EventScript_Elevator_GoTo1F)}
+	goto (CasteliaCity_GameFreak22F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Elevator_GoTo1F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_GAME_FREAK1F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_GameFreak22F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+
+

@@ -885,10 +885,10 @@
 #define FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN                     0x345
 #define FLAG_CASTELIA_CAFE_SONATA_LEMONADE                          0x346
 #define FLAG_CASTELIA_STUDIO_CASTELIA_BERRY                         0x347
-#define FLAG_UNUSED_0x348                                           0x348
-#define FLAG_UNUSED_0x349                                           0x349
-#define FLAG_UNUSED_0x34A                                           0x34A
-#define FLAG_UNUSED_0x34B                                           0x34B
+#define FLAG_CASTELIA_ITEM_TM_REST                                  0x348
+#define FLAG_CASTELIA_GAME_FREAK_GIRL_READ_BOOK                     0x349
+#define FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE                    0x34A
+#define FLAG_CASTELIA_ITEM_TM_CONFIDE                                 0x34B
 #define FLAG_UNUSED_0x34C                                           0x34C
 #define FLAG_UNUSED_0x34D                                           0x34D
 #define FLAG_UNUSED_0x34E                                           0x34E

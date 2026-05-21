@@ -1,1 +1,250 @@
-mapscripts CasteliaCity_NSWestBuilding1F_MapScripts {}
+mapscripts CasteliaCity_NSWestBuilding1F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_NSWestBuilding1F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Receptionist
+{
+	msgbox("By taking a Feeling Check, you can get\n"
+           "a Sweet Heart. That's a good item, right?", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Housewife
+{
+	msgbox("I am the Feeling Reader.\p"
+           "I've heard a lot of people take\n"
+           "Feeling Checks using the C-Gear.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Hiker
+{
+	msgbox("You can't change the name of a Pokémon\n"
+           "you got from someone.\p"
+           "Because the name contains wishes\n"
+           "of the person who named it!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Pikachu
+{
+	lock
+	faceplayer
+	waitse
+	playmoncry (SPECIES_PIKACHU, CRY_MODE_NORMAL)
+	msgbox("Gesundheit: Gyu gyu?!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_NameRater
+{
+    lock 
+    faceplayer 
+    msgbox("Hello, hello!\n"
+           "I am the official Name Rater!\p"
+           "Want me to rate the nicknames\n"
+           "of your Pokémon?", MSGBOX_YESNO, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_NSWestBuilding1F_EventScript_ChooseMonToRate)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_NSWestBuilding1F_EventScript_DeclineNameRate)
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_DeclineNameRate
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("OK! Come see me again if you\n"
+           "change your mind.", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_ChooseMonToRate
+{
+    msgbox("Which Pokémon's nickname\n"
+           "should I critique?", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, CasteliaCity_NSWestBuilding1F_EventScript_RateMonNickname)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, CasteliaCity_NSWestBuilding1F_EventScript_DeclineNameRate)
+	end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_RateMonNickname
+{
+	specialvar (VAR_RESULT, ScriptGetPartyMonSpecies)
+	goto_if_eq (VAR_RESULT, SPECIES_EGG, CasteliaCity_NSWestBuilding1F_EventScript_CantRateEgg)
+	special (BufferMonNickname)
+	special (IsMonOTIDNotPlayers)
+	goto_if_eq (VAR_RESULT, TRUE, CasteliaCity_NSWestBuilding1F_EventScript_PlayerNotMonsOT)
+	specialvar (VAR_RESULT, MonOTNameNotPlayer)
+	special (BufferMonNickname)
+	goto_if_eq (VAR_RESULT, TRUE, CasteliaCity_NSWestBuilding1F_EventScript_PlayerNotMonsOT)
+    msgbox("Hmmm. {STR_VAR_1}, is it?\p"
+           "That sounds good! It's a very “you”\n"
+           "sort of name.\p"
+           "But if you'd like to change it, I can help\n"
+           "you do that. How about it?", MSGBOX_YESNO, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+	goto_if_eq (VAR_RESULT, YES, CasteliaCity_NSWestBuilding1F_EventScript_ChangeNickname)
+    destroy_speech_bubble()
+    closemessage
+	goto(CasteliaCity_NSWestBuilding1F_EventScript_DeclineNameRate)
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_CantRateEgg
+{
+    msgbox("Now, now...\n"
+           "That is merely an Egg!", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_PlayerNotMonsOT
+{
+    msgbox("Hmmm. {STR_VAR_1}!\n"
+           "That is truly impeccable nickname!\p"
+           "Take good care of {STR_VAR_1}!", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_ChangeNickname
+{
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Excellent! What would you like\n"
+           "the new nickname to be?", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+	call (Common_EventScript_NameReceivedPartyMon)
+	specialvar (VAR_RESULT, TryPutNameRaterShowOnTheAir)
+	special (BufferMonNickname)
+	goto_if_eq (VAR_RESULT, TRUE, CasteliaCity_NSWestBuilding1F_EventScript_NewNameDifferent)
+    msgbox("Done! From now on, this Pokémon\n"
+           "shall be known as {STR_VAR_1}!\p"
+           "It looks no different from before,\n"
+           "and yet, this is vastly superior!\p"
+           "How fortunate for you!", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_NewNameDifferent
+{
+    msgbox("Done! From now on, this Pokémon\n"
+           "shall be known as {STR_VAR_1}!\p"
+           "You're right, that does seem to fit it\n"
+           "better. Nicely done!", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSWestBuilding1F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSWestBuilding1F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_11, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_NSWestBuilding1F_EventScript_Elevator_GoTo11F)}
+	goto (CasteliaCity_NSWestBuilding1F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Elevator_GoTo11F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_NSWEST_BUILDING11F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_NSWestBuilding1F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+
+

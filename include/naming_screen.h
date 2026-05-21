@@ -13,7 +13,8 @@ enum {
     NAMING_SCREEN_CODE,
     NAMING_SCREEN_RIVAL,
     NAMING_SCREEN_GRATITUDE,   // ← new
-    NAMING_SCREEN_GREET       // ← new
+    NAMING_SCREEN_GREET,       // ← new
+    NAMING_SCREEN_CONFIDE_PASSWORD,       // ← new
 
 };
 

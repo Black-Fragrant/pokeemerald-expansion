@@ -93,4 +93,57 @@ script CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_GetOff
     end 
 }
 
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Cheerleaderman
+{
+	msgbox("Check places you are curious about!\n"
+           "You may find some hidden items there.\p"
+           "If you use the Town Map item, you may\n"
+           "find a new place to explore!\p"
+           "Talk to a person you are curious about!\n"
+           "It may be a wonderful encounter.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_ITEM_TM_REST, CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker_FinishedGiving)
+    msgbox("People in the past said wise things.\n"
+           "“A child who sleeps well grows well.”\p"
+           "Yes, if a Pokémon uses the move Rest,\n"
+           "the Pokémon will fall asleep and recover!\p"
+           "I already taught the move to my Pokémon,\n"
+           "So I will give this to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB11F_HIKER)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_TM_REST, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CSResidentialBuilding11F_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_ITEM_TM_REST)
+    goto(CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker_FinishedGiving)
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker_FinishedGiving
+{
+    msgbox("Even if a Pokémon falls asleep, I heard\n"
+           "there is a Berry to wake it up instantly.\p"
+           "If a Pokémon holds that Berry and uses\n"
+           "Rest, the Pokémon will fall asleep\l"
+           "and recover, then wake up instantly!\p"
+           "It's a great combination!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB11F_HIKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+
+
 
