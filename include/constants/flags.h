@@ -1575,7 +1575,7 @@
 #define FLAG_DAILY_PFOS_CHALLENGE_ROCK              (DAILY_FLAGS_START + 0x4)
 #define FLAG_DAILY_CASTELIACONE                     (DAILY_FLAGS_START + 0x5)
 #define FLAG_DAILY_STUDIO_CASTELIA_REROLL           (DAILY_FLAGS_START + 0x6)
-#define FLAG_UNUSED_0x927                           (DAILY_FLAGS_START + 0x7)  // Unused Flag
+#define FLAG_DAILY_CASTELIA_MASSAGE                 (DAILY_FLAGS_START + 0x7)
 #define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag
 #define FLAG_UNUSED_0x929                           (DAILY_FLAGS_START + 0x9)  // Unused Flag
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)

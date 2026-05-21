@@ -1006,6 +1006,44 @@ u8 GetLeadMonFriendshipScore(void)
     return GetMonFriendshipScore(&gPlayerParty[GetLeadMonIndex()]);
 }
 
+u8 GiveChosenMonMassage(void)
+{
+    u8 slot = VarGet(VAR_0x8004);
+    struct Pokemon *mon = &gPlayerParty[slot];
+    u32 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+    u32 increase;
+    u8 result;
+
+    // Determine increase amount based on current friendship
+    if (friendship < 100)
+    {
+        increase = 30;
+        result = 0;
+    }
+    else if (friendship < 200)
+    {
+        increase = 10;
+        result = 1;
+    }
+    else
+    {
+        increase = 5;
+        result = 2;
+    }
+
+    // Apply increase with 255 cap
+    if (friendship + increase > 255)
+        friendship = 255;
+    else
+        friendship += increase;
+
+    // Write back new friendship value
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+
+    // Return result tier (0 / 1 / 2)
+    return result;
+}
+
 static void CB2_FieldShowRegionMap(void)
 {
     FieldInitRegionMap(CB2_ReturnToFieldContinueScriptPlayMapMusic);
