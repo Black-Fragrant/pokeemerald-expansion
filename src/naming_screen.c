@@ -484,7 +484,8 @@ static void NamingScreen_Init(void)
     sNamingScreen->inputCharBaseXPos = (DISPLAY_WIDTH - sNamingScreen->template->maxChars * 8) / 2 + 6;
     if (sNamingScreen->templateNum == NAMING_SCREEN_WALDA
      || sNamingScreen->templateNum == NAMING_SCREEN_GRATITUDE
-     || sNamingScreen->templateNum == NAMING_SCREEN_GREET)
+     || sNamingScreen->templateNum == NAMING_SCREEN_GREET
+     || sNamingScreen->templateNum == NAMING_SCREEN_CONFIDE_PASSWORD)
     {sNamingScreen->inputCharBaseXPos += 11;}
     sNamingScreen->keyRepeatStartDelayCopy = gKeyRepeatStartDelay;
     memset(sNamingScreen->textBuffer, EOS, sizeof(sNamingScreen->textBuffer));
@@ -1381,6 +1382,7 @@ static void NamingScreen_CreateCodeIcon(void);
 static void NamingScreen_CreateRivalIcon(void);
 static void NamingScreen_CreateGratitudeIcon(void);
 static void NamingScreen_CreateGreetIcon(void);
+static void NamingScreen_CreateConfideIcon(void);
 
 static void (*const sIconFunctions[])(void) =
 {
@@ -1393,6 +1395,7 @@ static void (*const sIconFunctions[])(void) =
     NamingScreen_CreateRivalIcon,
     NamingScreen_CreateGratitudeIcon,
     NamingScreen_CreateGreetIcon,
+    NamingScreen_CreateConfideIcon,
 };
 
 static void CreateInputTargetIcon(void)
@@ -1457,6 +1460,15 @@ static void NamingScreen_CreateGreetIcon(void)
     u8 spriteId;
 
     spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_YOUNGSTER, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
+}
+
+static void NamingScreen_CreateConfideIcon(void)
+{
+    u8 spriteId;
+
+    spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_SCIENTIST_MALE, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
 }
@@ -1813,15 +1825,16 @@ static void DrawMonTextEntryBox(void)
 
 static void (*const sDrawTextEntryBoxFuncs[])(void) =
 {
-    [NAMING_SCREEN_PLAYER]     = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_BOX]        = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_CAUGHT_MON] = DrawMonTextEntryBox,
-    [NAMING_SCREEN_NICKNAME]   = DrawMonTextEntryBox,
-    [NAMING_SCREEN_WALDA]      = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_CODE]       = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_RIVAL]      = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_GRATITUDE]  = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_GREET]      = DrawNormalTextEntryBox
+    [NAMING_SCREEN_PLAYER]          = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_BOX]             = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_CAUGHT_MON]      = DrawMonTextEntryBox,
+    [NAMING_SCREEN_NICKNAME]        = DrawMonTextEntryBox,
+    [NAMING_SCREEN_WALDA]           = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_CODE]            = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_RIVAL]           = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_GRATITUDE]       = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_GREET]           = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_CONFIDE_PASSWORD]  = DrawNormalTextEntryBox
 };
 
 static void DrawTextEntryBox(void)
@@ -2239,6 +2252,17 @@ static const struct NamingScreenTemplate sGreetWordsScreenTemplate =
     .title = COMPOUND_STRING("What would you say?"),
 };
 
+static const struct NamingScreenTemplate sConfidePasswordScreenTemplate =
+{
+    .copyExistingString = FALSE,
+    .maxChars = 13,                     // ← your requirement
+    .iconFunction = 9,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("Enter password"),
+};
+
 static const struct NamingScreenTemplate sCodeScreenTemplate =
 {
     .copyExistingString = FALSE,
@@ -2262,15 +2286,16 @@ static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
 
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
 {
-    [NAMING_SCREEN_PLAYER]     = &sPlayerNamingScreenTemplate,
-    [NAMING_SCREEN_BOX]        = &sPCBoxNamingTemplate,
-    [NAMING_SCREEN_CAUGHT_MON] = &sMonNamingScreenTemplate,
-    [NAMING_SCREEN_NICKNAME]   = &sMonNamingScreenTemplate,
-    [NAMING_SCREEN_WALDA]      = &sWaldaWordsScreenTemplate,
-    [NAMING_SCREEN_CODE]       = &sCodeScreenTemplate,
-    [NAMING_SCREEN_RIVAL]      = &sRivalNamingScreenTemplate,
-    [NAMING_SCREEN_GRATITUDE]  = &sGratitudeWordsScreenTemplate,
-    [NAMING_SCREEN_GREET]      = &sGreetWordsScreenTemplate,
+    [NAMING_SCREEN_PLAYER]          = &sPlayerNamingScreenTemplate,
+    [NAMING_SCREEN_BOX]             = &sPCBoxNamingTemplate,
+    [NAMING_SCREEN_CAUGHT_MON]      = &sMonNamingScreenTemplate,
+    [NAMING_SCREEN_NICKNAME]        = &sMonNamingScreenTemplate,
+    [NAMING_SCREEN_WALDA]           = &sWaldaWordsScreenTemplate,
+    [NAMING_SCREEN_CODE]            = &sCodeScreenTemplate,
+    [NAMING_SCREEN_RIVAL]           = &sRivalNamingScreenTemplate,
+    [NAMING_SCREEN_GRATITUDE]       = &sGratitudeWordsScreenTemplate,
+    [NAMING_SCREEN_GREET]           = &sGreetWordsScreenTemplate,
+    [NAMING_SCREEN_CONFIDE_PASSWORD]  = &sConfidePasswordScreenTemplate,
 };
 
 static const struct OamData sOam_8x8 =

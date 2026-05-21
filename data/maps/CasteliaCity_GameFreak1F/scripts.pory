@@ -1,1 +1,154 @@
-mapscripts CasteliaCity_GameFreak1F_MapScripts {}
+mapscripts CasteliaCity_GameFreak1F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_GameFreak1F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_GameFreak1F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Boy
+{
+	msgbox("...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Girl
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_GAME_FREAK_GIRL_READ_BOOK, CasteliaCity_GameFreak1F_EventScript_Girl_FinishedReading)
+    msgbox("'Cause he is alone and looks lonely,\n"
+           "I was reading a book to him!\l"
+           "I will read it to you, too!", MSGBOX_DEFAULT, TRUE, LOCALID_CSGF1F_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_CSGF1F_GIRL, moves(walk_in_place_left))
+    applymovement(LOCALID_CSGF1F_BOY, moves(walk_in_place_right))
+    waitmovement(0)
+    delay(10)
+    msgbox("Here, I'll keep reading!\p"
+           "...\n"
+           "Zorua, who was left alone, wandered\l"
+           "around looking for its mother...\p"
+           "Have you seen Zorua? See, it's\n"
+           "the Pokémon that looks like this!", MSGBOX_DEFAULT, TRUE, LOCALID_CSGF1F_GIRL)
+    destroy_speech_bubble()
+    closemessage
+	showmonpic(SPECIES_ZORUA, 10, 3)
+    setseenmon(SPECIES_ZORUA)
+    setflag(FLAG_CASTELIA_GAME_FREAK_GIRL_READ_BOOK)
+    delay(30)
+    waitbuttonpress
+	hidemonpic
+    msgbox("They say Zorua has the power\n"
+           "to bewitch people!\p"
+           "It would be scary if I were bewitched,\n"
+           "but I like Zorua!\n"
+           "'Cause it's cute!\p"
+           "...Huh?\n"
+           "Why are you blushing?", MSGBOX_DEFAULT, TRUE, LOCALID_CSGF1F_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Girl_FinishedReading
+{
+    msgbox("Castelia City is so big\n"
+           "that I feel dizzy.\l"
+           "Even I can get lost!", MSGBOX_DEFAULT, TRUE, LOCALID_CSGF1F_GIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_GameFreak1F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_GameFreak1F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_22, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_GameFreak1F_EventScript_Elevator_GoTo22F)}
+	goto (CasteliaCity_GameFreak1F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Elevator_GoTo22F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_GAME_FREAK22F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_GameFreak1F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+

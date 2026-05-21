@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_CSGF1F_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 5,
       "y": 7,
@@ -24,10 +25,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_GameFreak1F_EventScript_Girl",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CSGF1F_BOY",
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
       "x": 4,
       "y": 7,
@@ -37,7 +39,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_GameFreak1F_EventScript_Boy",
       "flag": "0"
     }
   ],
@@ -51,12 +53,29 @@
     },
     {
       "x": 7,
-      "y": 2,
+      "y": 1,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_GAME_FREAK22F",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CasteliaCity_GameFreak1F_EventScript_Elevator"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CasteliaCity_GameFreak1F_EventScript_Elevator"
+    }
+  ]
 }

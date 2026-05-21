@@ -20,6 +20,8 @@ static void CB2_HandleGivenGratitudePhrase(void);
 
 static void CB2_HandleGivenGreetPhrase(void);
 
+static void CB2_HandleConfidePassword(void);
+
 static u32 GetWaldaPhraseInputCase(u8 *);
 static u32 GetGratitudePhraseInputCase(u8 *);
 static u32 GetGreetPhraseInputCase(u8 *);
@@ -170,6 +172,25 @@ static void CB2_HandleGivenGreetPhrase(void)
     SetMainCallback2(CB2_ReturnToField);
 }
 
+static void CB2_HandleConfidePassword(void)
+{
+    u8 *typed = gStringVar2;
+
+    // Hardcoded password
+    static const u8 sPassword[] = _("EveryoneHappy");
+
+    // CRITICAL: ensure termination (maxChars = 13)
+    typed[13] = EOS;
+
+    if (StringCompare(typed, sPassword) == 0)
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
+
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
 u16 TryBufferGratitudeWord(void)
 {
     if (IsGratitudePhraseEmpty())
@@ -210,6 +231,18 @@ void DoGreetPeople(void)
     StringCopy(gStringVar2, phrase);
 
     DoNamingScreen(NAMING_SCREEN_GREET, gStringVar2, 0, 0, 0, CB2_HandleGivenGreetPhrase);
+}
+
+void PutPasswordForConfide(void)
+{
+    gStringVar2[0] = EOS;  // clear buffer
+
+    DoNamingScreen(
+        NAMING_SCREEN_CONFIDE_PASSWORD,
+        gStringVar2,
+        0, 0, 0,
+        CB2_HandleConfidePassword
+    );
 }
 
 u16 TryGetWallpaperWithWaldaPhrase(void)

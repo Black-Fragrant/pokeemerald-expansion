@@ -1,1 +1,168 @@
-mapscripts CasteliaCity_NSWestBuilding11F_MapScripts {}
+mapscripts CasteliaCity_NSWestBuilding11F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_NSWestBuilding11F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+script CasteliaCity_NSWestBuilding11F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSWestBuilding11F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSWestBuilding11F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_NSWestBuilding11F_EventScript_Elevator_GoTo1F)}
+	goto (CasteliaCity_NSWestBuilding11F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_Elevator_GoTo1F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_NSWEST_BUILDING1F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_MrLock
+{
+    lock 
+    faceplayer
+    applymovement(LOCALID_CCNSWB11F_PEIRRO, moves(face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left))
+    waitmovement(0)
+    delay(10)
+    msgbox("My name is Mr. Lock.\p"
+           "I'm a magical clown who can\n"
+           "open anything.\p"
+           "Your name is {PLAYER}.\n"
+           "I'll see you again, I'm sure.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSWB11F_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_Scientist
+{
+    lock 
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_ITEM_TM_CONFIDE, CasteliaCity_NSWestBuilding11F_EventScript_ObtainedConfide)
+    msgbox("I secretly invented a special\n"
+           "teaching machine.\p"
+           "Only people who know the secret\n"
+           "password can use it.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSWB11F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    special(PutPasswordForConfide)
+    waitstate
+    goto_if_eq (VAR_RESULT, TRUE, CasteliaCity_NSWestBuilding11F_EventScript_GiveConfide)
+    msgbox("Unfortunately, it seems that you don't\n"
+           "remember the password...", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSWB11F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_GiveConfide
+{
+    msgbox("This is the password that will enable you\n"
+           "to use the TM I invented!", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSWB11F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_TM100, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_NSWestBuilding11F_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_ITEM_TM_CONFIDE)
+    goto(CasteliaCity_NSWestBuilding11F_EventScript_ObtainedConfide)
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_ObtainedConfide
+{
+    msgbox(
+           // "It's a superb machine that will swiftly\n"
+           // "fetch a special Pokémon or item\n"
+           // "by connecting to a special network.\p"
+           "It features a really cool move that you\n"
+           "could see from the big screens!", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSWB11F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release 
+    end 
+}
+
+script CasteliaCity_NSWestBuilding11F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+

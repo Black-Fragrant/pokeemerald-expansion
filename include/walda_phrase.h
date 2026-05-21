@@ -13,4 +13,6 @@ void DoExpressGratitude(void);
 u16 TryBufferGreetWord(void);
 void DoGreetPeople(void);
 
+void PutPasswordForConfide(void);
+
 #endif // GUARD_WALDA_PHRASE_H

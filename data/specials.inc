@@ -536,6 +536,7 @@ gSpecials::
 	def_special DoExpressGratitude
 	def_special TryBufferGreetWord
 	def_special DoGreetPeople
+	def_special PutPasswordForConfide
 	def_special PlayerNotAtTrainerHillEntrance
 	def_special GetBattlePyramidHint
 	def_special LoadLinkContestPlayerPalettes
