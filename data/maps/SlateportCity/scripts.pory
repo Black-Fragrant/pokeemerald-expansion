@@ -13,7 +13,7 @@ SlateportCity_OnTransition:
 
 SlateportCity_EventScript_EnterSlateport::
 	setflag FLAG_VISITED_SLATEPORT_CITY
-	setvar VAR_CONTEST_HALL_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	setflag FLAG_UNUSED_0xXXX
 	return
 

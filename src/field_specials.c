@@ -1383,6 +1383,57 @@ void IsFightingTypeInParty(void)
     }
 }
 
+void DoesChosenMonMatchDailyType(void)
+{
+    u8 slot = gSpecialVar_0x8004;
+    struct Pokemon *mon;
+    u16 species;
+    u8 scriptType;
+    u8 typeWanted;
+    u8 type1, type2;
+
+    // Default result
+    gSpecialVar_Result = FALSE;
+
+    // Invalid slot
+    if (slot >= PARTY_SIZE)
+        return;
+
+    mon = &gPlayerParty[slot];
+
+    // Empty slot or egg
+    if (!GetMonData(mon, MON_DATA_SANITY_HAS_SPECIES)
+     || GetMonData(mon, MON_DATA_IS_EGG))
+        return;
+
+    species = GetMonData(mon, MON_DATA_SPECIES);
+
+    // Read script type (0–17)
+    scriptType = VarGet(VAR_STUDIO_CASTELIA_DAILY_TYPE);
+
+    /*
+        Mapping logic:
+        Script values: 0–17
+        Enum values:   1–19 (with 10 = Mystery skipped)
+
+        0–8  → 1–9     (Normal–Steel)
+        9–17 → 11–19   (Fire–Fairy)
+    */
+
+    if (scriptType <= 8)
+        typeWanted = scriptType + 1;   // Normal–Steel
+    else
+        typeWanted = scriptType + 2;   // Fire–Fairy (skip Mystery)
+
+    // Get Pokémon's types
+    type1 = GetSpeciesType(species, 0);
+    type2 = GetSpeciesType(species, 1);
+
+    // Compare
+    if (type1 == typeWanted || type2 == typeWanted)
+        gSpecialVar_Result = TRUE;
+}
+
 void SpawnCameraObject(void)
 {
     u8 obj = SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_SCOTT,

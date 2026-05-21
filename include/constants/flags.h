@@ -883,8 +883,8 @@
 #define FLAG_CASTELIA_CENTRAL_PLAZA_TALKED_TO_DANCER                0x343
 #define FLAG_CASTELIA_ACTIVATE_OTHER_DANCER_BATTLES                 0x344
 #define FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN                     0x345
-#define FLAG_UNUSED_0x346                                           0x346
-#define FLAG_UNUSED_0x347                                           0x347
+#define FLAG_CASTELIA_CAFE_SONATA_LEMONADE                          0x346
+#define FLAG_CASTELIA_STUDIO_CASTELIA_BERRY                         0x347
 #define FLAG_UNUSED_0x348                                           0x348
 #define FLAG_UNUSED_0x349                                           0x349
 #define FLAG_UNUSED_0x34A                                           0x34A
@@ -1574,7 +1574,7 @@
 #define FLAG_DAILY_NACRENE_CAFE_SODA_POP            (DAILY_FLAGS_START + 0x3)
 #define FLAG_DAILY_PFOS_CHALLENGE_ROCK              (DAILY_FLAGS_START + 0x4)
 #define FLAG_DAILY_CASTELIACONE                     (DAILY_FLAGS_START + 0x5)
-#define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag
+#define FLAG_DAILY_STUDIO_CASTELIA_REROLL           (DAILY_FLAGS_START + 0x6)
 #define FLAG_UNUSED_0x927                           (DAILY_FLAGS_START + 0x7)  // Unused Flag
 #define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag
 #define FLAG_UNUSED_0x929                           (DAILY_FLAGS_START + 0x9)  // Unused Flag
