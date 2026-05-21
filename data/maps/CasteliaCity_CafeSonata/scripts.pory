@@ -1,1 +1,65 @@
 mapscripts CasteliaCity_CafeSonata_MapScripts {}
+
+script CasteliaCity_CafeSonata_EventScript_Businessman
+{
+	msgbox("After a tiring day of work, this café is a\n"
+           "perfect spot to let your mind relax.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_CafeSonata_EventScript_Blacksuit
+{
+	msgbox("When I listen to his guitar, it reminds me\n"
+           "of leaving home for the first time, and\l"
+           "the tears of farewell my mother cried...", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_CafeSonata_EventScript_Guitarist
+{
+    lock
+	msgbox("A beautiful melody makes people happy.\n"
+           "A sad melody makes people sorrowful...\l"
+           "That's the power of melodies...", MSGBOX_DEFAULT, TRUE)
+    closemessage
+    release
+	end
+}
+
+script CasteliaCity_CafeSonata_EventScript_Waiter
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_CAFE_SONATA_LEMONADE, CasteliaCity_CafeSonata_EventScript_Waiter_GivenLemonade)
+    msgbox("This is your first visit to this café.\n"
+           "Am I correct?\p"
+           "Please...", MSGBOX_DEFAULT, TRUE, LOCALID_CAFE_SONATA_WAITER)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_LEMONADE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CafeSonata_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_CAFE_SONATA_LEMONADE)
+    msgbox("Give this to your dear Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_CAFE_SONATA_WAITER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CafeSonata_EventScript_Waiter_GivenLemonade
+{
+    msgbox("You came all the way here.\n"
+           "Enjoy...", MSGBOX_DEFAULT, TRUE, LOCALID_CAFE_SONATA_WAITER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CafeSonata_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}

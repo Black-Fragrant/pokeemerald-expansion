@@ -1127,6 +1127,15 @@ static const struct MenuAction MultichoiceList_Survey_Become[] =
     {COMPOUND_STRING("Pokémon")},
 };
 
+static const struct MenuAction MultichoiceList_StudioCasteliaBerry[] =
+{
+    {COMPOUND_STRING("Cheri Berries")},
+    {COMPOUND_STRING("Chesto Berries")},
+    {COMPOUND_STRING("Pecha Berries")},
+    {COMPOUND_STRING("Rawst Berries")},
+    {COMPOUND_STRING("Aspear Berries")},
+};
+
 static const struct MenuAction sMultichoiceList_BikeShop[] = {
     {COMPOUND_STRING("BICYCLE{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000")},
     {COMPOUND_STRING("NO THANKS")}
@@ -1603,6 +1612,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_PAHQ_SURVEY_SPORT]          = MULTICHOICE(MultichoiceList_Survey_Sport),
     [MULTI_PAHQ_SURVEY_PFUN]           = MULTICHOICE(MultichoiceList_Survey_PokemonFun),
     [MULTI_PAHQ_SURVEY_BECOME]         = MULTICHOICE(MultichoiceList_Survey_Become),
+    [MULTI_STUDIO_CASTELIA_BERRY]      = MULTICHOICE(MultichoiceList_StudioCasteliaBerry),
     [MULTI_BIKE_SHOP]                  = MULTICHOICE(sMultichoiceList_BikeShop),
     [MULTI_EEVEELUTIONS]               = MULTICHOICE(sMultichoiceList_Eeveelutions),
     [MULTI_ISLAND_23]                  = MULTICHOICE(sMultichoiceList_Island23),

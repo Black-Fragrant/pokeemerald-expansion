@@ -153,8 +153,8 @@
 #define VAR_PAHQ_LEADER_SURVEY_RESULT                    0x4083
 #define VAR_DIFFICULTY                                   0x4084 // Don't Touch
 #define VAR_PAHQ_STATE                                   0x4085
-#define VAR_CONTEST_HALL_STATE                           0x4086
-#define VAR_CABLE_CLUB_STATE                             0x4087
+#define VAR_STUDIO_CASTELIA_DAILY_TYPE                   0x4086
+#define VAR_CABLE_CLUB_STATE                             0x4087 // Don't Touch
 #define VAR_CONTEST_TYPE                                 0x4088
 #define VAR_SECRET_BASE_INITIALIZED                      0x4089
 #define VAR_CONTEST_PRIZE_PICKUP                         0x408A

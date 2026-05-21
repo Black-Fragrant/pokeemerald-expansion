@@ -1,1 +1,362 @@
 mapscripts CasteliaCity_StudioCastelia_MapScripts {}
+
+script CasteliaCity_StudioCastelia_EventScript_Blacksuit
+{
+	msgbox("Currently, we exhibit works in the motif\n"
+           "of legends in the Unova region.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_Lady
+{
+	msgbox("If you want to see Burgh's paintings,\n"
+           "go to the Pokémon Gym!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_WhiteFlame
+{
+	msgbox("Title “White Flame”", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_AlightingBlackDragon
+{
+	msgbox("Title “Alighting Black Dragon”", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_BlackLightningBolt
+{
+	msgbox("Title “Black Lightning Bolt”", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_TwinHeroes
+{
+	msgbox("Title “Twin Heroes”", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_IdealsAndTruth
+{
+	msgbox("Title “Ideals and Truth”", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_SoaringWhiteDragon
+{
+	msgbox("Title “Soaring White Dragon”", MSGBOX_SIGN)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_Peirro
+{
+    lock
+    faceplayer
+	dotimebasedevents
+	call_if_unset(FLAG_DAILY_STUDIO_CASTELIA_REROLL, CasteliaCity_StudioCastelia_EventScript_Peirro_RandomizeTypes)
+	goto_if_set(FLAG_CASTELIA_STUDIO_CASTELIA_BERRY, CasteliaCity_StudioCastelia_EventScript_Peirro_ObtainedBerries)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 0, CasteliaCity_StudioCastelia_EventScript_CheckType_Normal)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 1, CasteliaCity_StudioCastelia_EventScript_CheckType_Fighting)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 2, CasteliaCity_StudioCastelia_EventScript_CheckType_Flying)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 3, CasteliaCity_StudioCastelia_EventScript_CheckType_Poison)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 4, CasteliaCity_StudioCastelia_EventScript_CheckType_Ground)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 5, CasteliaCity_StudioCastelia_EventScript_CheckType_Rock)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 6, CasteliaCity_StudioCastelia_EventScript_CheckType_Bug)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 7, CasteliaCity_StudioCastelia_EventScript_CheckType_Ghost)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 8, CasteliaCity_StudioCastelia_EventScript_CheckType_Steel)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 9, CasteliaCity_StudioCastelia_EventScript_CheckType_Fire)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 10, CasteliaCity_StudioCastelia_EventScript_CheckType_Water)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 11, CasteliaCity_StudioCastelia_EventScript_CheckType_Grass)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 12, CasteliaCity_StudioCastelia_EventScript_CheckType_Electric)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 13, CasteliaCity_StudioCastelia_EventScript_CheckType_Psychic)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 14, CasteliaCity_StudioCastelia_EventScript_CheckType_Ice)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 15, CasteliaCity_StudioCastelia_EventScript_CheckType_Dragon)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 16, CasteliaCity_StudioCastelia_EventScript_CheckType_Dark)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 17, CasteliaCity_StudioCastelia_EventScript_CheckType_Fairy)
+    msgbox("I am not as good an artist as Burgh,\n"
+           "but I have a liking for paintings.\p"
+           "Let me see. Today, I'd like to paint\n"
+           "{STR_VAR_1}-type Pokémon!\p"
+           "Will you show me what kinds of Pokémon\n"
+           "you have?\p"
+           "Please show me a Pokémon that's\n"
+           "{STR_VAR_1} type!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_StudioCastelia_EventScript_CheckTypes)
+	goto(CasteliaCity_StudioCastelia_EventScript_NoCheckTypes)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_Peirro_RandomizeTypes
+{
+	setflag(FLAG_DAILY_STUDIO_CASTELIA_REROLL)
+	clearflag(FLAG_CASTELIA_STUDIO_CASTELIA_BERRY)
+    random(18)
+	copyvar(VAR_STUDIO_CASTELIA_DAILY_TYPE, VAR_RESULT)
+	return()
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckTypes
+{
+	special(ChoosePartyMon)
+	waitstate
+	special(DoesChosenMonMatchDailyType)
+	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_StudioCastelia_EventScript_TypeNoMatch)
+	msgbox("Oh! You have that type!\n"
+           "I'm inspired!\p"
+           "Thank you! As a token of my gratitude,\n"
+           "which one would you like?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+	multichoice(20, 0, MULTI_STUDIO_CASTELIA_BERRY, 1)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_StudioCastelia_EventScript_CheriBerries)}
+	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_StudioCastelia_EventScript_ChestoBerries)}
+	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_StudioCastelia_EventScript_PechaBerries)}
+	elif (var(VAR_RESULT) == 3) {goto (CasteliaCity_StudioCastelia_EventScript_RawstBerries)}
+	elif (var(VAR_RESULT) == 4) {goto (CasteliaCity_StudioCastelia_EventScript_AspearBerries)}
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_TypeNoMatch
+{
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 0, CasteliaCity_StudioCastelia_EventScript_CheckType_Normal)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 1, CasteliaCity_StudioCastelia_EventScript_CheckType_Fighting)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 2, CasteliaCity_StudioCastelia_EventScript_CheckType_Flying)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 3, CasteliaCity_StudioCastelia_EventScript_CheckType_Poison)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 4, CasteliaCity_StudioCastelia_EventScript_CheckType_Ground)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 5, CasteliaCity_StudioCastelia_EventScript_CheckType_Rock)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 6, CasteliaCity_StudioCastelia_EventScript_CheckType_Bug)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 7, CasteliaCity_StudioCastelia_EventScript_CheckType_Ghost)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 8, CasteliaCity_StudioCastelia_EventScript_CheckType_Steel)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 9, CasteliaCity_StudioCastelia_EventScript_CheckType_Fire)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 10, CasteliaCity_StudioCastelia_EventScript_CheckType_Water)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 11, CasteliaCity_StudioCastelia_EventScript_CheckType_Grass)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 12, CasteliaCity_StudioCastelia_EventScript_CheckType_Electric)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 13, CasteliaCity_StudioCastelia_EventScript_CheckType_Psychic)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 14, CasteliaCity_StudioCastelia_EventScript_CheckType_Ice)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 15, CasteliaCity_StudioCastelia_EventScript_CheckType_Dragon)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 16, CasteliaCity_StudioCastelia_EventScript_CheckType_Dark)
+	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 17, CasteliaCity_StudioCastelia_EventScript_CheckType_Fairy)
+    msgbox("The Pokémon you chose is not the one\n"
+           "I requested.\p"
+           "What I want to paint is a Pokémon that's\n"
+           "{STR_VAR_1} type!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheriBerries
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Five Cheri Berries!\n"
+           "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_CHERI_BERRY, 5)
+	goto(CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries)
+}
+
+script CasteliaCity_StudioCastelia_EventScript_ChestoBerries
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Five Chesto Berries!\n"
+           "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_CHESTO_BERRY, 5)
+	goto(CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries)
+}
+
+script CasteliaCity_StudioCastelia_EventScript_PechaBerries
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Five Pecha Berries!\n"
+           "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_PECHA_BERRY, 5)
+	goto(CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries)
+}
+
+script CasteliaCity_StudioCastelia_EventScript_RawstBerries
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Five Rawst Berries!\n"
+           "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_RAWST_BERRY, 5)
+	goto(CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries)
+}
+
+script CasteliaCity_StudioCastelia_EventScript_AspearBerries
+{
+    destroy_speech_bubble()
+    closemessage
+	msgbox("Five Aspear Berries!\n"
+           "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_ASPEAR_BERRY, 5)
+	goto(CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries)
+}
+
+script CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries
+{
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_StudioCastelia_EventScript_BagIsFull)
+	setflag(FLAG_CASTELIA_STUDIO_CASTELIA_BERRY)
+    msgbox("Aww. You are the best!\n"
+           "Please come back tomorrow, too!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+
+script CasteliaCity_StudioCastelia_EventScript_Peirro_ObtainedBerries
+{
+    msgbox("As long as the artist enjoys creating\n"
+           "an artwork, it doesn't matter if the\l"
+           "result is judged as bad or good.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_NoCheckTypes
+{
+    msgbox("If you catch a Pokémon that's\n"
+           "{STR_VAR_1} type, please show it to me!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Normal
+{
+	bufferstring(STR_VAR_1, text("Normal"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Fighting
+{
+	bufferstring(STR_VAR_1, text("Fighting"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Flying
+{
+	bufferstring(STR_VAR_1, text("Flying"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Poison
+{
+	bufferstring(STR_VAR_1, text("Poison"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Ground
+{
+	bufferstring(STR_VAR_1, text("Ground"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Rock
+{
+	bufferstring(STR_VAR_1, text("Rock"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Bug
+{
+	bufferstring(STR_VAR_1, text("Bug"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Ghost
+{
+	bufferstring(STR_VAR_1, text("Ghost"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Steel
+{
+	bufferstring(STR_VAR_1, text("Steel"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Fire
+{
+	bufferstring(STR_VAR_1, text("Fire"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Water
+{
+	bufferstring(STR_VAR_1, text("Water"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Grass
+{
+	bufferstring(STR_VAR_1, text("Grass"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Electric
+{
+	bufferstring(STR_VAR_1, text("Electric"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Psychic
+{
+	bufferstring(STR_VAR_1, text("Psychic"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Ice
+{
+	bufferstring(STR_VAR_1, text("Ice"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Dragon
+{
+	bufferstring(STR_VAR_1, text("Dragon"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Dark
+{
+	bufferstring(STR_VAR_1, text("Dark"))
+	return
+}
+
+script CasteliaCity_StudioCastelia_EventScript_CheckType_Fairy
+{
+	bufferstring(STR_VAR_1, text("Fairy"))
+	return
+}
+
+
+
+
