@@ -1,1 +1,231 @@
-mapscripts CasteliaCity_CSResidentialBuilding1F_MapScripts {}
+mapscripts CasteliaCity_CSResidentialBuilding1F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_CSResidentialBuilding1F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Cheerleaderman
+{
+	msgbox("It's difficult to watch TV from here.\n"
+           "It's not your concern, though.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Hiker
+{
+	msgbox("When Pokémon are happy, I am happy,\n"
+           "and I laugh!\p"
+           "When Pokémon see me laughing,\n"
+           "they will be happy, too!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Minccino
+{
+	lock
+	faceplayer
+	waitse
+	playmoncry (SPECIES_MINCCINO, CRY_MODE_NORMAL)
+	msgbox("Gahoohoo!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher
+{
+	lock
+	faceplayer
+	dotimebasedevents
+	goto_if_set(FLAG_DAILY_CASTELIA_MASSAGE, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_AlreadyMassaged)
+    msgbox("Hello!\p"
+           "If you'd like, I will massage\n"
+           "your Pokémon.", MSGBOX_YESNO, TRUE, LOCALID_CSRB1F_TEACHER)
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_GivesMassage)
+    destroy_speech_bubble()
+    closemessage
+    goto(CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_NoMassage)
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_NoMassage
+{
+    msgbox("Oh, I see.\p"
+           "Please see me if you change your mind.", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_GivesMassage
+{
+    destroy_speech_bubble()
+    closemessage
+	special(ChoosePartyMon)
+	waitstate
+	goto_if_ge(VAR_0x8004, PARTY_SIZE, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_NoMassage)
+	specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+	goto_if_eq(VAR_RESULT, SPECIES_EGG, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_IsAnEgg)
+    msgbox("All right! Let me get started.", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    playse(SE_CONTEST_HEART)
+    waitse
+    playse(SE_CONTEST_HEART)
+    waitse
+    playse(SE_CONTEST_MONS_TURN)
+    waitse
+    fadescreen(FADE_FROM_BLACK)
+    specialvar(VAR_RESULT, GiveChosenMonMassage)
+    goto_if_eq(VAR_RESULT, 0, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_MuchMore)
+    goto_if_eq(VAR_RESULT, 1, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_More)
+    goto_if_eq(VAR_RESULT, 2, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_LittleMore)
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_MuchMore
+{
+    msgbox("There. All done!\p"
+           "The massage has made your Pokémon\n"
+           "much more friendly to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_DAILY_CASTELIA_MASSAGE)
+	release
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_More
+{
+    msgbox("There. All done!\p"
+           "The massage has made your Pokémon\n"
+           "more friendly to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_DAILY_CASTELIA_MASSAGE)
+	release
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_LittleMore
+{
+    msgbox("There. All done!\p"
+           "The massage has made your Pokémon\n"
+           "a little bit more friendly to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_DAILY_CASTELIA_MASSAGE)
+	release
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_AlreadyMassaged
+{
+    msgbox("Sorry!\n"
+           "I am exhausted from the massage earlier.\p"
+           "Please come back again tomorrow!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_IsAnEgg
+{
+    msgbox("Massage the Egg?\p"
+           "It may be a bit too early for that.", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB1F_TEACHER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_11, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_GoTo11F)}
+	goto (CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_GoTo11F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_CSRESIDENTIAL_BUILDING11F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+

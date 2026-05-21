@@ -57,6 +57,24 @@ script CasteliaCity_StudioCastelia_EventScript_Peirro
 	dotimebasedevents
 	call_if_unset(FLAG_DAILY_STUDIO_CASTELIA_REROLL, CasteliaCity_StudioCastelia_EventScript_Peirro_RandomizeTypes)
 	goto_if_set(FLAG_CASTELIA_STUDIO_CASTELIA_BERRY, CasteliaCity_StudioCastelia_EventScript_Peirro_ObtainedBerries)
+	call(CasteliaCity_StudioCastelia_EventScript_Peirro_TypeChecks)
+    msgbox("I am not as good an artist as Burgh,\n"
+           "but I have a liking for paintings.\p"
+           "Let me see. Today, I'd like to paint\n"
+           "{STR_VAR_1}-type Pokémon!\p"
+           "Will you show me what kinds of Pokémon\n"
+           "you have?\p"
+           "Please show me a Pokémon that's\n"
+           "{STR_VAR_1} type!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_StudioCastelia_EventScript_CheckTypes)
+	goto(CasteliaCity_StudioCastelia_EventScript_NoCheckTypes)
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_Peirro_TypeChecks
+{
 	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 0, CasteliaCity_StudioCastelia_EventScript_CheckType_Normal)
 	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 1, CasteliaCity_StudioCastelia_EventScript_CheckType_Fighting)
 	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 2, CasteliaCity_StudioCastelia_EventScript_CheckType_Flying)
@@ -75,19 +93,7 @@ script CasteliaCity_StudioCastelia_EventScript_Peirro
 	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 15, CasteliaCity_StudioCastelia_EventScript_CheckType_Dragon)
 	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 16, CasteliaCity_StudioCastelia_EventScript_CheckType_Dark)
 	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 17, CasteliaCity_StudioCastelia_EventScript_CheckType_Fairy)
-    msgbox("I am not as good an artist as Burgh,\n"
-           "but I have a liking for paintings.\p"
-           "Let me see. Today, I'd like to paint\n"
-           "{STR_VAR_1}-type Pokémon!\p"
-           "Will you show me what kinds of Pokémon\n"
-           "you have?\p"
-           "Please show me a Pokémon that's\n"
-           "{STR_VAR_1} type!", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
-    destroy_speech_bubble()
-    closemessage
-	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_StudioCastelia_EventScript_CheckTypes)
-	goto(CasteliaCity_StudioCastelia_EventScript_NoCheckTypes)
-	end
+	return
 }
 
 script CasteliaCity_StudioCastelia_EventScript_Peirro_RandomizeTypes
@@ -103,6 +109,9 @@ script CasteliaCity_StudioCastelia_EventScript_CheckTypes
 {
 	special(ChoosePartyMon)
 	waitstate
+	goto_if_ge(VAR_0x8004, PARTY_SIZE, CasteliaCity_StudioCastelia_EventScript_NoCheckTypes)
+	specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+	goto_if_eq(VAR_RESULT, SPECIES_EGG, CasteliaCity_StudioCastelia_EventScript_IsAnEgg)
 	special(DoesChosenMonMatchDailyType)
 	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_StudioCastelia_EventScript_TypeNoMatch)
 	msgbox("Oh! You have that type!\n"
@@ -120,24 +129,7 @@ script CasteliaCity_StudioCastelia_EventScript_CheckTypes
 
 script CasteliaCity_StudioCastelia_EventScript_TypeNoMatch
 {
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 0, CasteliaCity_StudioCastelia_EventScript_CheckType_Normal)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 1, CasteliaCity_StudioCastelia_EventScript_CheckType_Fighting)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 2, CasteliaCity_StudioCastelia_EventScript_CheckType_Flying)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 3, CasteliaCity_StudioCastelia_EventScript_CheckType_Poison)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 4, CasteliaCity_StudioCastelia_EventScript_CheckType_Ground)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 5, CasteliaCity_StudioCastelia_EventScript_CheckType_Rock)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 6, CasteliaCity_StudioCastelia_EventScript_CheckType_Bug)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 7, CasteliaCity_StudioCastelia_EventScript_CheckType_Ghost)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 8, CasteliaCity_StudioCastelia_EventScript_CheckType_Steel)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 9, CasteliaCity_StudioCastelia_EventScript_CheckType_Fire)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 10, CasteliaCity_StudioCastelia_EventScript_CheckType_Water)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 11, CasteliaCity_StudioCastelia_EventScript_CheckType_Grass)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 12, CasteliaCity_StudioCastelia_EventScript_CheckType_Electric)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 13, CasteliaCity_StudioCastelia_EventScript_CheckType_Psychic)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 14, CasteliaCity_StudioCastelia_EventScript_CheckType_Ice)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 15, CasteliaCity_StudioCastelia_EventScript_CheckType_Dragon)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 16, CasteliaCity_StudioCastelia_EventScript_CheckType_Dark)
-	call_if_eq(VAR_STUDIO_CASTELIA_DAILY_TYPE, 17, CasteliaCity_StudioCastelia_EventScript_CheckType_Fairy)
+	call(CasteliaCity_StudioCastelia_EventScript_Peirro_TypeChecks)
     msgbox("The Pokémon you chose is not the one\n"
            "I requested.\p"
            "What I want to paint is a Pokémon that's\n"
@@ -241,8 +233,23 @@ script CasteliaCity_StudioCastelia_EventScript_Peirro_ObtainedBerries
 
 script CasteliaCity_StudioCastelia_EventScript_NoCheckTypes
 {
+	call(CasteliaCity_StudioCastelia_EventScript_Peirro_TypeChecks)
     msgbox("If you catch a Pokémon that's\n"
            "{STR_VAR_1} type, please show it to me!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_StudioCastelia_EventScript_IsAnEgg
+{
+    msgbox("Oh!\n"
+           "The shape of this Egg...\p"
+           "Superb! It gives me chills!\n"
+           "It's electrifying! It makes me tremble!\p"
+           "Alas, even I cannot tell what type\n"
+           "an Egg is!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
     destroy_speech_bubble()
     closemessage
 	release
