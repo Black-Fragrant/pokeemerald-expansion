@@ -296,7 +296,10 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
 	msgbox("How about Castelia City's famous\n"
         "Casteliacone!\p"
         "Would you like to buy some?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
-	multichoice(20, 3, MULTI_CASTELIA_CONES, 1)
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "   1 Cone      ¥100",
+        " 12 CONES   ¥1,200",
+        "Cancel")
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Cone)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Dozen)}
     goto(CasteliaCity_ModeStreet_EventScript_Reconsider)
@@ -308,7 +311,10 @@ script CasteliaCity_ModeStreet_EventScript_Reconsider
     closemessage
     msgbox("Oh, you really aren't going to buy one?\n"
     "They'll sell out soon!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_SELLER)
-	multichoice(20, 3, MULTI_CASTELIA_CONES, 1)
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "   1 Cone      ¥100",
+        " 12 CONES   ¥1,200",
+        "Cancel")
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Cone)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ModeStreet_EventScript_Purchase1Dozen)}
     destroy_speech_bubble()
