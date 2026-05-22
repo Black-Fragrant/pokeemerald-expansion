@@ -17,7 +17,13 @@ script CasteliaCity_ThumbPier_EventScript_Scientist
 	msgbox("Pansage, Pansear, and Panpour are\n"
         "Pokémon that evolve with special stones!\p"
         "Which Pokémon do you want to evolve?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
-	multichoice(22, 3, MULTI_CASTELIA_EVOLUTION_STONE, 1)
+	dynmultichoice(20, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Pansage",
+        "Pansear",
+        "Panpour",
+        "Cancel")
+    destroy_speech_bubble()
+    closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansage)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansear)}
 	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Panpour)}
@@ -44,7 +50,13 @@ script CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain
     msgbox("Then, which Pokémon do you want\n"
         "to evolve...\p"
         "Pansage, Pansear, or Panpour?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
-	multichoice(22, 3, MULTI_CASTELIA_EVOLUTION_STONE, 1)
+	dynmultichoice(20, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Pansage",
+        "Pansear",
+        "Panpour",
+        "Cancel")
+    destroy_speech_bubble()
+    closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansage)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansear)}
 	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Panpour)}
@@ -53,8 +65,6 @@ script CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain
 
 script CasteliaCity_ThumbPier_EventScript_Scientist_Pansage
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("All right, so it's Pansage?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
 	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ThumbPier_EventScript_Scientist_LeafStone)
 	goto(CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain)
@@ -62,8 +72,6 @@ script CasteliaCity_ThumbPier_EventScript_Scientist_Pansage
 
 script CasteliaCity_ThumbPier_EventScript_Scientist_Pansear
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("All right, so it's Pansear?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
 	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ThumbPier_EventScript_Scientist_FireStone)
 	goto(CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain)
@@ -71,8 +79,6 @@ script CasteliaCity_ThumbPier_EventScript_Scientist_Pansear
 
 script CasteliaCity_ThumbPier_EventScript_Scientist_Panpour
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("All right, so it's Panpour?", MSGBOX_YESNO, TRUE, LOCALID_CASTELIA_TP_SCIENTIST)
 	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_ThumbPier_EventScript_Scientist_WaterStone)
 	goto(CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain)

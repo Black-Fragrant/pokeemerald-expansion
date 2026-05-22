@@ -158,7 +158,9 @@ script CasteliaCity_GameFreak22F_EventScript_Elevator
 	applymovement(LOCALID_PLAYER, moves(face_down))
 	waitmovement(0)
 	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
-	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1, 0)
+	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "1",
+        "Cancel")
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_GameFreak22F_EventScript_Elevator_GoTo1F)}
 	goto (CasteliaCity_GameFreak22F_EventScript_Elevator_GetOff)
 }

@@ -118,7 +118,14 @@ script CasteliaCity_StudioCastelia_EventScript_CheckTypes
            "I'm inspired!\p"
            "Thank you! As a token of my gratitude,\n"
            "which one would you like?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
-	multichoice(20, 0, MULTI_STUDIO_CASTELIA_BERRY, 1)
+	dynmultichoice(20, 0, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE,
+        "Cheri Berries",
+        "Chesto Berries",
+        "Pecha Berries",
+        "Rawst Berries",
+        "Aspear Berries")
+    destroy_speech_bubble()
+    closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_StudioCastelia_EventScript_CheriBerries)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_StudioCastelia_EventScript_ChestoBerries)}
 	elif (var(VAR_RESULT) == 2) {goto (CasteliaCity_StudioCastelia_EventScript_PechaBerries)}
@@ -142,8 +149,6 @@ script CasteliaCity_StudioCastelia_EventScript_TypeNoMatch
 
 script CasteliaCity_StudioCastelia_EventScript_CheriBerries
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("Five Cheri Berries!\n"
            "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
     destroy_speech_bubble()
@@ -154,8 +159,6 @@ script CasteliaCity_StudioCastelia_EventScript_CheriBerries
 
 script CasteliaCity_StudioCastelia_EventScript_ChestoBerries
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("Five Chesto Berries!\n"
            "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
     destroy_speech_bubble()
@@ -166,8 +169,6 @@ script CasteliaCity_StudioCastelia_EventScript_ChestoBerries
 
 script CasteliaCity_StudioCastelia_EventScript_PechaBerries
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("Five Pecha Berries!\n"
            "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
     destroy_speech_bubble()
@@ -178,8 +179,6 @@ script CasteliaCity_StudioCastelia_EventScript_PechaBerries
 
 script CasteliaCity_StudioCastelia_EventScript_RawstBerries
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("Five Rawst Berries!\n"
            "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
     destroy_speech_bubble()
@@ -190,8 +189,6 @@ script CasteliaCity_StudioCastelia_EventScript_RawstBerries
 
 script CasteliaCity_StudioCastelia_EventScript_AspearBerries
 {
-    destroy_speech_bubble()
-    closemessage
 	msgbox("Five Aspear Berries!\n"
            "It's all yours now!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
     destroy_speech_bubble()

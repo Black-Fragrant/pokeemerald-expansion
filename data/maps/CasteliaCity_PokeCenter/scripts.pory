@@ -5,7 +5,6 @@ mapscripts CasteliaCity_PokeCenter_MapScripts
 
 script CasteliaCity_PokeCenter_On_Transition
 {
-	setrespawn(HEAL_LOCATION_CASTELIA_CITY_SOUTH_BANK)
     call_if_set (FLAG_CASTELIA_POKEMON_CENTER_BREEDER_MOVE, CasteliaCity_PokeCenter_EventScript_PositionBreeder)
 	end
 }
@@ -13,6 +12,7 @@ script CasteliaCity_PokeCenter_On_Transition
 script CasteliaCity_PokeCenter_EventScript_PositionBreeder
 {
 	setobjectxyperm(LOCALID_CASTELIA_POKECEN_BREEDER, 8, 12)
+	setrespawn(HEAL_LOCATION_CASTELIA_CITY_SOUTH_BANK)
 	return
 }
 

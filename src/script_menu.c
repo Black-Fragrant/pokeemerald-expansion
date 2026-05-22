@@ -1427,43 +1427,6 @@ u16 GetSelectedSeagallopDestination(void)
 
 // Text displayed as options.
 
-static const u8 sText_Exercising[]  = _("Exercising");
-static const u8 sText_Reading[]     = _("Reading");
-static const u8 sText_Music[]       = _("Music");
-static const u8 sText_Movies[]      = _("Movies");
-static const u8 sText_Traveling[]   = _("Traveling");
-static const u8 sText_Cooking[]     = _("Cooking");
-static const u8 sText_Fishing[]     = _("Fishing");
-static const u8 sText_VideoGames[]  = _("Video Games");
-
-static const u8 sText_Student[]        = _("Student");
-static const u8 sText_OfficeWorker[]   = _("Office Worker");
-static const u8 sText_Creator[]        = _("Creator");
-static const u8 sText_SelfEmployed[]   = _("Self-Employed");
-static const u8 sText_PublicOfficial[] = _("Public Official");
-static const u8 sText_Homemaker[]      = _("Homemaker");
-static const u8 sText_Artist[]         = _("Artist");
-static const u8 sText_JobHopper[]      = _("Job-Hopper");
-
-static const u8 sText_Normal[]     = _("Normal");
-static const u8 sText_Fire[]       = _("Fire");
-static const u8 sText_Water[]      = _("Water");
-static const u8 sText_Electric[]   = _("Electric");
-static const u8 sText_Grass[]      = _("Grass");
-static const u8 sText_Ice[]        = _("Ice");
-static const u8 sText_Fighting[]   = _("Fighting");
-static const u8 sText_Poison[]     = _("Poison");
-static const u8 sText_Ground[]     = _("Ground");
-static const u8 sText_Flying[]     = _("Flying");
-static const u8 sText_Psychic[]    = _("Pyschic");
-static const u8 sText_Bug[]        = _("Bug");
-static const u8 sText_Rock[]       = _("Rock");
-static const u8 sText_Ghost[]      = _("Ghost");
-static const u8 sText_Dragon[]     = _("Dragon");
-static const u8 sText_Dark[]       = _("Dark");
-static const u8 sText_Steel[]      = _("Steel");
-static const u8 sText_Fairy[]      = _("Fairy");
-
 static const u8 sText_Chili[]    = _("Chili");
 static const u8 sText_Cilan[]    = _("Cilan");
 static const u8 sText_Cress[]    = _("Cress");
@@ -1476,63 +1439,7 @@ static const u8 sText_Brycen[]   = _("Brycen");
 static const u8 sText_Iris[]     = _("Iris");
 static const u8 sText_Drayden[]  = _("Drayden");
 
-static const u8 sText_DetailsAboutPeople[]   = _("Details about people");
-static const u8 sText_PokemonFavorites[]     = _("Pokémon favorites");
-static const u8 sText_IdealsAndValues[]      = _("Ideals and values");
-static const u8 sText_LikablePeople[]        = _("Likable people");
-static const u8 sText_Preferences[]          = _("Preferences");
-static const u8 sText_Entertainment[]        = _("Entertainment");
-static const u8 sText_SchoolLife[]           = _("School Life");
-static const u8 sText_SportsAndPastimes[]    = _("Sports and pastimes");
-static const u8 sText_MoreAboutPokemon[]     = _("More about Pokémon");
-static const u8 sText_Cancel[]               = _("Cancel");
-
 // Sets of multichoices.
-static const struct ListMenuItem sSet_Hobbies[] =
-{
-    {sText_Exercising,  0},
-    {sText_Reading,     1},
-    {sText_Music,       2},
-    {sText_Movies,      3},
-    {sText_Traveling,   4},
-    {sText_Cooking,     5},
-    {sText_Fishing,     6},
-    {sText_VideoGames,  7},
-};
-
-static const struct ListMenuItem sSet_Occupations[] =
-{
-    {sText_Student,        0},
-    {sText_OfficeWorker,   1},
-    {sText_Creator,        2},
-    {sText_SelfEmployed,   3},
-    {sText_PublicOfficial, 4},
-    {sText_Homemaker,      5},
-    {sText_Artist,         6},
-    {sText_JobHopper,      7},
-};
-
-static const struct ListMenuItem sSet_Types[] =
-{
-    {sText_Normal,   0},
-    {sText_Fire,     1},
-    {sText_Water,    2},
-    {sText_Electric, 3},
-    {sText_Grass,    4},
-    {sText_Ice,      5},
-    {sText_Fighting, 6},
-    {sText_Poison,   7},
-    {sText_Ground,   8},
-    {sText_Flying,   9},
-    {sText_Psychic, 10},
-    {sText_Bug,     11},
-    {sText_Rock,    12},
-    {sText_Ghost,   13},
-    {sText_Dragon,  14},
-    {sText_Dark,    15},
-    {sText_Steel,   16},
-    {sText_Fairy,   17},
-};
 
 static const struct ListMenuItem sSet_Leaders[] =
 {
@@ -1549,20 +1456,6 @@ static const struct ListMenuItem sSet_Leaders[] =
     {sText_Drayden, 10},
 };
 
-static const struct ListMenuItem sSet_AllTopics[] =
-{
-    {sText_DetailsAboutPeople,  0},
-    {sText_PokemonFavorites,    1},
-    {sText_IdealsAndValues,     2},
-    {sText_LikablePeople,       3},
-    {sText_Preferences,         4},
-    {sText_Entertainment,       5},
-    {sText_SchoolLife,          6},
-    {sText_SportsAndPastimes,   7},
-    {sText_MoreAboutPokemon,    8},
-    {sText_Cancel,              9},
-};
-
 // Table of your multichoice sets.
 struct
 {
@@ -1570,11 +1463,7 @@ struct
     int count;
 } static const sScrollingSets[] =
 {
-    {sSet_Hobbies,      ARRAY_COUNT(sSet_Hobbies)},
-    {sSet_Occupations,  ARRAY_COUNT(sSet_Occupations)},
-    {sSet_Types,        ARRAY_COUNT(sSet_Types)},
     {sSet_Leaders,      ARRAY_COUNT(sSet_Leaders)},
-    {sSet_AllTopics,    ARRAY_COUNT(sSet_AllTopics)},
 };
 
 static void ScrollingMultichoice_MoveCursor(s32 itemIndex, bool8 onInit, struct ListMenu *list)

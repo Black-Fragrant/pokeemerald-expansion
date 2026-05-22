@@ -192,7 +192,12 @@ script CasteliaCity_PAHQ_EventScript_Scientist_Cont
 script CasteliaCity_PAHQ_EventScript_Scientist_Multichoice
 {
     msgbox("What would you like to do today?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_SCIENTIST)
-	multichoice(20, 0, MULTI_PAHQ_SCIENTIST, 0)
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Accept a request",
+        "Report the result",
+        "Nothing")
+	destroy_speech_bubble()
+	closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_PAHQ_EventScript_AcceptARequest)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_PAHQ_EventScript_Scientist_ReportTheResult)}
     destroy_speech_bubble()
@@ -271,13 +276,29 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont
     msgbox("is about\n"
         "“Details about people.”\p"
         "“What is your hobby?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	scrollingmultichoice(0, 20, 0, 6, 0)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Exercising",
+        "Reading",
+        "Music",
+        "Movies",
+        "Traveling",
+        "Cooking",
+        "Fishing",
+        "Video Games")
 	copyvar(VAR_PAHQ_HOBBY_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your job?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	scrollingmultichoice(1, 20, 0, 6, 0)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Student",
+        "Office Worker",
+        "Creator",
+        "Self-Employed",
+        "Public Official",
+        "Homemaker",
+        "Artist",
+        "Job-Hopper")
 	copyvar(VAR_PAHQ_JOB_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -306,19 +327,42 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey2_Cont
        "“Pokémon favorites.”\p"
        "“Which do you prefer,\n"
        "battles or trades?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_BATTLEORTRADE, 1)
+	dynmultichoice(20, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Battle",
+        "Trade")
 	copyvar(VAR_PAHQ_BATTLETRADE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite kind of Pokémon?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_POKEMON, 1)
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Cool",
+        "Cute",
+        "Strange")
 	copyvar(VAR_PAHQ_POKEMON_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox( "“What is your favorite Pokémon type?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	scrollingmultichoice(2, 20, 0, 6, 0)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Normal",
+        "Fire",
+        "Water",
+        "Electric",
+        "Grass",
+        "Ice",
+        "Fighting",
+        "Poison",
+        "Ground",
+        "Flying",
+        "Pyschic",
+        "Bug",
+        "Rock",
+        "Ghost",
+        "Dragon",
+        "Dark",
+        "Steel",
+        "Fairy")
 	copyvar(VAR_PAHQ_TYPE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -346,19 +390,26 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey3_Cont
     msgbox("is about\n"
        "“Ideals and values.”\p"
        "“Where do people prefer to live?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_LIVE, 1)
+	dynmultichoice(20, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "The City",
+        "The Country")
 	copyvar(VAR_PAHQ_LIVE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“Which one do you wish you had more of?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_MORE, 1)
+	dynmultichoice(20, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Time",
+        "Money")
 	copyvar(VAR_PAHQ_MORE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What's most important to you?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_IMPORTANT, 1)
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Family",
+        "Friends",
+        "Self")
 	copyvar(VAR_PAHQ_IMPORTANT_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -386,20 +437,28 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey4_Cont
     msgbox("is about\n"
        "“Likable people.”\p"
        "“Which partner would you choose?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_BRAINBRAWN, 1)
+	dynmultichoice(20, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Smart",
+        "Athletic")
 	copyvar(VAR_PAHQ_BRAINBRAWN_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What do you value more in a person?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_PVALUE, 1)
+	dynmultichoice(20, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Appearance",
+        "Substance")
 	copyvar(VAR_PAHQ_PVALUE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What type of person\n"
        "do you like?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_PTYPE, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Fun",
+        "Cool",
+        "Kind",
+        "Rich")
 	copyvar(VAR_PAHQ_PTYPE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -427,19 +486,33 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey5_Cont
     msgbox("is about\n"
        "“Preferences.”\p"
        "“What is your favorite season?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_SEASON, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Spring",
+        "Summer",
+        "Autumn",
+        "Winter")
 	copyvar(VAR_PAHQ_SEASON_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite food?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_FOOD, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Sweet",
+        "Spicy",
+        "Sour",
+        "Bitter")
 	copyvar(VAR_PAHQ_FOOD_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite color?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_COLOR, 1)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Red",
+        "Green",
+        "Blue",
+        "Yellow",
+        "White",
+        "Black")
 	copyvar(VAR_PAHQ_COLOR_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -467,20 +540,36 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey6_Cont
     msgbox("is about\n"
        "“Entertainment.”\p"
        "“What is your favorite music?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_MUSIC, 1)
+	dynmultichoice(20, 0, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE,
+        "Pop",
+        "Rock",
+        "Jazz",
+        "Rap",
+        "Classical")
 	copyvar(VAR_PAHQ_MUSIC_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite kind of\n"
         "TV program?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_TV, 1)
+	dynmultichoice(20, 0, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE,
+        "News",
+        "Drama",
+        "Comedy",
+        "Sports",
+        "Cartoons")
 	copyvar(VAR_PAHQ_TV_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite kind of movie?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_MOVIE, 1)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Action",
+        "Sci-Fi",
+        "Romance",
+        "Suspense",
+        "Comedy",
+        "Horror")
 	copyvar(VAR_PAHQ_MOVIE_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -509,19 +598,30 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey7_Cont
        "“School life.”\p"
        "“What is your favorite time\n"
        "in school?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_STIME, 1)
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Classes",
+        "Breaks",
+        "Lunch")
 	copyvar(VAR_PAHQ_STIME_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite school subject?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_SSUBJECT, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "English",
+        "Math",
+        "Science",
+        "Social Studies")
 	copyvar(VAR_PAHQ_SSUBJECT_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your weakest subject?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_WSUBJECT, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "English",
+        "Math",
+        "Science",
+        "Social Studies")
 	copyvar(VAR_PAHQ_WSUBJECT_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -550,19 +650,33 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey8_Cont
        "“Sports and pastimes.”\p"
        "“Where would you like to go\n"
        "for fun?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_FPLACES, 1)
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "The Beach",
+        "A River",
+        "The Mountains")
 	copyvar(VAR_PAHQ_FPLACES_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What do you do on holidays?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_HOLIDAY, 1)
+	dynmultichoice(20, 0, TRUE, 5, 0, DYN_MULTICHOICE_CB_NONE,
+        "Play Outside",
+        "Shopping",
+        "Reading",
+        "Video Games",
+        "Sleeping Late")
 	copyvar(VAR_PAHQ_HOLIDAY_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What is your favorite sport?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_SPORT, 1)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Baseball",
+        "Soccer",
+        "Basketball",
+        "Football",
+        "Hockey",
+        "Martial Arts")
 	copyvar(VAR_PAHQ_SPORT_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -591,19 +705,38 @@ script CasteliaCity_PAHQ_EventScript_Beauty_Survey9_Cont
        "“More about Pokémon.”\p"
        "“What do you think\n"
        "the most fun part of Pokémon is?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_PFUN, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Battles",
+        "Collecting",
+        "The Story",
+        "Pokémon")
 	copyvar(VAR_PAHQ_PFUN_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage    
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“What would you want to become?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	multichoice(20, 0, MULTI_PAHQ_SURVEY_BECOME, 1)
+	dynmultichoice(20, 0, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Trainer",
+        "Professor",
+        "Team Plasma",
+        "Pokémon")
 	copyvar(VAR_PAHQ_BECOME_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
     call(CasteliaCity_PAHQ_EventScript_Beauty_ISeeISee)
     msgbox("“Who is your favorite Gym Leader?”", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	scrollingmultichoice(3, 20, 0, 6, 0)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Chili",
+        "Cilan",
+        "Cress",
+        "Lenora",
+        "Burgh",
+        "Elesa",
+        "Clay",
+        "Skyla",
+        "Brycen",
+        "Iris",
+        "Drayden")
 	copyvar(VAR_PAHQ_LEADER_SURVEY_RESULT, VAR_RESULT)
     destroy_speech_bubble()
     closemessage
@@ -643,7 +776,17 @@ script CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires
 	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
     msgbox("Then, will you choose a questionnaire\n"
        "you'd like to answer?", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_PAHQ_BEAUTY)
-	scrollingmultichoice(4, 20, 0, 6, 1)
+	dynmultichoice(20, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "Details about people",
+        "Pokémon favorites",
+        "Ideals and values",
+        "Likable people",
+        "Preferences",
+        "Entertainment",
+        "School Life",
+        "Sports and pastimes",
+        "More about Pokémon",
+        "Cancel")
     destroy_speech_bubble()
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)}

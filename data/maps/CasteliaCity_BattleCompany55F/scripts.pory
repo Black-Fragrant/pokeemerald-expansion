@@ -47,7 +47,10 @@ script CasteliaCity_BattleCompany55F_EventScript_Elevator
 	applymovement(LOCALID_PLAYER, moves(face_down))
 	waitmovement(0)
 	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
-	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1_47, 0)
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "1",
+        "47",
+        "Cancel")
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo1F)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo47F)}
 	goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GetOff)
