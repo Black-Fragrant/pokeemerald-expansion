@@ -180,7 +180,6 @@ script CasteliaCity_NSWestBuilding1F_EventScript_NewNameDifferent
     end 
 }
 
-
 script CasteliaCity_NSWestBuilding1F_EventScript_Elevator
 {
     lock

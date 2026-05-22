@@ -298,7 +298,7 @@ ContestHall_EventScript_RandomAudienceScientist1::
 ContestHall_EventScript_CreateAudience::
 	specialvar VAR_RESULT, IsWirelessContest
 	goto_if_eq VAR_RESULT, TRUE, ContestHall_EventScript_CreateWirelessContestAudience
-	switch VAR_CONTEST_TYPE
+	switch VAR_PLACEHOLDER
 	case CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_CreateNormalContestAudience
 	case CONTEST_TYPE_NPC_SUPER, ContestHall_EventScript_CreateSuperContestAudience
 	case CONTEST_TYPE_NPC_HYPER, ContestHall_EventScript_CreateHyperContestAudience
@@ -402,7 +402,7 @@ ContestHall_EventScript_CreateWirelessContestAudience::
 
 ContestHall_EventScript_SetExitWarp::
 	special ClearLinkContestFlags
-	switch VAR_CONTEST_TYPE
+	switch VAR_PLACEHOLDER
 	case CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_SetExitWarpNormalContest
 	case CONTEST_TYPE_NPC_SUPER, ContestHall_EventScript_SetExitWarpSuperContest
 	case CONTEST_TYPE_NPC_HYPER, ContestHall_EventScript_SetExitWarpHyperContest

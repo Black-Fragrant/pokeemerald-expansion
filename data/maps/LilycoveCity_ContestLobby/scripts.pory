@@ -332,19 +332,19 @@ LilycoveCity_ContestLobby_EventScript_SetContestType::
 	return
 
 LilycoveCity_ContestLobby_EventScript_SetNormalContestType::
-	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_NORMAL
+	setvar VAR_PLACEHOLDER, CONTEST_TYPE_NPC_NORMAL
 	return
 
 LilycoveCity_ContestLobby_EventScript_SetSuperContestType::
-	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_SUPER
+	setvar VAR_PLACEHOLDER, CONTEST_TYPE_NPC_SUPER
 	return
 
 LilycoveCity_ContestLobby_EventScript_SetHyperContestType::
-	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_HYPER
+	setvar VAR_PLACEHOLDER, CONTEST_TYPE_NPC_HYPER
 	return
 
 LilycoveCity_ContestLobby_EventScript_SetMasterContestType::
-	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_MASTER
+	setvar VAR_PLACEHOLDER, CONTEST_TYPE_NPC_MASTER
 	return
 
 @ Functionally unused
@@ -813,7 +813,7 @@ LilycoveCity_ContestLobby_EventScript_StartLinkContest::
 	call LilycoveCity_ContestLobby_EventScript_LeadToLinkContestHall
 	setvar VAR_PLACEHOLDER, 1
 	special SetLinkContestPlayerGfx
-	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_LINK
+	setvar VAR_PLACEHOLDER, CONTEST_TYPE_LINK
 	setvar VAR_CONTEST_RANK, CONTEST_RANK_MASTER
 	call LilycoveCity_ContestLobby_EventScript_WarpToContestHall
 	end

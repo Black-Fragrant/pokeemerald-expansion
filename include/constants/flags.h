@@ -888,9 +888,9 @@
 #define FLAG_CASTELIA_ITEM_TM_REST                                  0x348
 #define FLAG_CASTELIA_GAME_FREAK_GIRL_READ_BOOK                     0x349
 #define FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE                    0x34A
-#define FLAG_CASTELIA_ITEM_TM_CONFIDE                                 0x34B
-#define FLAG_UNUSED_0x34C                                           0x34C
-#define FLAG_UNUSED_0x34D                                           0x34D
+#define FLAG_CASTELIA_ITEM_TM_CONFIDE                               0x34B
+#define FLAG_CASTELIA_ITEM_EVIOLITE                                 0x34C
+#define FLAG_CASTELIA_ITEM_TM_ATTRACT                               0x34D
 #define FLAG_UNUSED_0x34E                                           0x34E
 #define FLAG_UNUSED_0x34F                                           0x34F
 #define FLAG_UNUSED_0x350                                           0x350

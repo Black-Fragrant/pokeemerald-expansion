@@ -24,7 +24,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Gentleman",
       "flag": "0"
     },
     {
@@ -37,10 +37,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Dancer",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CCNSPB47F_BEAUTY_SCHOOLGIRL",
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_GIRL",
       "x": 7,
       "y": 12,
@@ -50,7 +51,7 @@
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_SchoolGirl",
       "flag": "0"
     },
     {
@@ -63,7 +64,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_CheerleaderMan",
       "flag": "0"
     },
     {
@@ -76,10 +77,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_BeardMan",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CCNSPB47F_BEAUTY_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 2,
       "y": 9,
@@ -89,10 +91,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Beautys",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CCNSPB47F_BEAUTY_RIGHT",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 3,
       "y": 9,
@@ -102,7 +105,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Beautys",
       "flag": "0"
     },
     {
@@ -115,7 +118,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Cowgirl",
       "flag": "0"
     },
     {
@@ -128,7 +131,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_AceTrainer",
       "flag": "0"
     },
     {
@@ -141,7 +144,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_BattleGirl",
       "flag": "0"
     },
     {
@@ -154,7 +157,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Cowboy",
       "flag": "0"
     },
     {
@@ -167,19 +170,36 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_RichBoy",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
       "x": 7,
-      "y": 2,
+      "y": 1,
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_NSPARTY_BUILDING1F",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Elevator"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CasteliaCity_NSPartyBuilding47F_EventScript_Elevator"
+    }
+  ]
 }

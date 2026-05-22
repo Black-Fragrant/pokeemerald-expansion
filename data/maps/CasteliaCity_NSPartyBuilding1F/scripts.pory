@@ -1,1 +1,249 @@
-mapscripts CasteliaCity_NSPartyBuilding1F_MapScripts {}
+mapscripts CasteliaCity_NSPartyBuilding1F_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : CasteliaCity_NSPartyBuilding1F_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_NSPartyBuilding1F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_NSPartyBuilding1F_Transition
+{
+    call_if_ge(VAR_CASTELIA_PARTY_BUILDING_STATE, 1,CasteliaCity_NSPartyBuilding1F_EventScript_Position_BlackSuit)
+	end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Position_BlackSuit
+{
+	setobjectxyperm(LOCALID_CCNSPB1F_BLACKSUIT, 9, 3)
+    setobjectmovementtype (LOCALID_CCNSPB1F_BLACKSUIT, MOVEMENT_TYPE_FACE_DOWN)
+	return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_Reception
+{
+    msgbox("Where are you from?\p"
+           "Really? You're from Nuvema Town?\n"
+           "It's a great place!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_RichBoy
+{
+    msgbox("I'm invited to a party, but the person\n"
+           "in front of the elevators wants\l"
+           "to pat me down.\p"
+           "Or is it just my imagination?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Lady
+{
+    msgbox("I talked with a lot of people upstairs.\n"
+           "It was fun!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Trigger
+{
+	lock
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+    msgbox("Do you want to go up?", MSGBOX_YESNO, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_PatDown)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_down))
+	waitmovement(0)
+    msgbox("...OK. That's fine, then.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	waitmovement(0)
+	delay(20)
+	release
+	end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_Elevator
+{
+	lock
+	faceplayer
+    goto_if_ge(VAR_CASTELIA_PARTY_BUILDING_STATE, 1,CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_FinishedFrisk)
+    msgbox("Do you want to go up?", MSGBOX_YESNO, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_PatDown)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_down))
+	waitmovement(0)
+    msgbox("...OK. That's fine, then.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_FinishedFrisk
+{
+    msgbox("OK! You can go.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_PatDown
+{
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos1)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos2)
+	call_if_eq (VAR_TEMP_0, 8, CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos3)
+	msgbox("I need to check you.\p"
+           "Frisk, frisk...\n"
+           "Frisk, frisk... And one more frisk...\p"
+           "You don't seem to have\n"
+           "anything suspicious.\p"
+           "OK! You can go.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_WalkRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_WalkRight)
+	call_if_eq (VAR_TEMP_0, 8, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_Detour)
+	call(CasteliaCity_NSPartyBuilding1F_EventScript_Position_BlackSuit)
+	setvar(VAR_CASTELIA_PARTY_BUILDING_STATE, 1)
+	delay(20)
+	release
+	end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_WalkRight
+{
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_right * 2, walk_in_place_Down))
+	waitmovement(0)
+	return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_Detour
+{
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_down, walk_right * 2, walk_up, walk_in_place_Down))
+	waitmovement(0)
+	return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos1
+{
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_left))
+	waitmovement(0)
+	return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos2
+{
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos3
+{
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_right))
+	waitmovement(0)
+	return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_47, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_GoTo47F)}
+	goto (CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_GoTo47F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_NSPARTY_BUILDING47F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+
+
+
+

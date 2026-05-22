@@ -1,1 +1,231 @@
-mapscripts CasteliaCity_NSEastBuilding47F_MapScripts {}
+mapscripts CasteliaCity_NSEastBuilding47F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_NSEastBuilding47F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_Hiker
+{
+    msgbox("When I gaze down at the city from a\n"
+           "tall building, I tremble.\p"
+           "Because...\n"
+           "I-I-I'm scared of heights...", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_BeardGuy
+{
+	lock
+	faceplayer
+	msgbox("Me oh my, the Badges you can get in the\n"
+           "Unova region! Want to hear about them?", MSGBOX_YESNO, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+    destroy_speech_bubble()
+    closemessage
+	goto(CasteliaCity_NSEastBuilding47F_EventScript_BeardGuy_NoWantToHear)
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_BeardGuy_NoWantToHear
+{
+    msgbox("Okey dokey. If you want to know\n"
+           "about them, please come back.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+    destroy_speech_bubble()
+    closemessage
+	release
+	end
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge
+{
+    msgbox("Which Badge do you want to know about?", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+	dynmultichoice(20, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+	"Trio Badge",
+	"Basic Badge",
+	"Insect Badge",
+	"Bolt Badge",
+	"Quake Badge",
+	"Jet Badge",
+	"Freeze Badge",
+	"Legend Badge",
+	"Cancel")
+		if(var(VAR_RESULT) == 0)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Trio Badge, Pokémon up to Lv.20\n"
+				"will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 1)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Basic Badge, Pokémon up to\n"
+           "Lv. 30 will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 2)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Insect Badge, Pokémon up to\n"
+           "Lv. 40 will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 3)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Bolt Badge, Pokémon up to Lv. 50\n"
+           "will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 4)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Quake Badge, Pokémon up to\n"
+           "Lv. 60 will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 5)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Jet Badge, Pokémon up to Lv. 70\n"
+           "will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 6)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Freeze Badge, Pokémon up to\n"
+           "Lv. 80 will obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+		elif(var(VAR_RESULT) == 7)
+		{
+			destroy_speech_bubble()
+			closemessage
+			msgbox("With the Legend Badge, all Pokémon will\n"
+           "obey you without question.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB47F_BEARDGUY)
+			destroy_speech_bubble()
+			closemessage
+			goto(CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge)
+		}
+	destroy_speech_bubble()
+	closemessage
+	goto(CasteliaCity_NSEastBuilding47F_EventScript_BeardGuy_NoWantToHear)
+}
+
+
+script CasteliaCity_NSEastBuilding47F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSEastBuilding47F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSEastBuilding47F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_1, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_NSEastBuilding47F_EventScript_Elevator_GoTo1F)}
+	goto (CasteliaCity_NSEastBuilding47F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_Elevator_GoTo1F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_NSEAST_BUILDING1F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_NSEastBuilding47F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+
+
+
+
+
+

@@ -1,1 +1,15 @@
 mapscripts CasteliaCity_Gate_MapScripts {}
+
+script CasteliaCity_Gate_EventScript_BeardGuy
+{
+    msgbox("Maybe I should try to find a\n"
+           "Pokémon on Route 4 to catch!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_Gate_EventScript_Reception
+{
+    msgbox("Nimbasa City is at the end\n"
+           "of Route 4.", MSGBOX_NPC, TRUE)
+    end
+}
