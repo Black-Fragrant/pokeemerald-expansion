@@ -223,6 +223,14 @@
       "respawn_npc": "LOCALID_NACRENE_POKECEN_NURSE"
     },
     {
+      "id": "HEAL_LOCATION_CASTELIA_CITY_SOUTH_BANK",
+      "map": "MAP_CASTELIA_CITY_SOUTH_BANK",
+      "x": 57,
+      "y": 10,
+      "respawn_map": "MAP_CASTELIA_CITY_POKE_CENTER",
+      "respawn_npc": "LOCALID_CASTELIA_POKECEN_NURSE"
+    },
+    {
       "id": "HEAL_LOCATION_PALLET_TOWN",
       "map": "MAP_PALLET_TOWN",
       "x": 6,
