@@ -97,6 +97,11 @@
     F(WILD_CHARGE) \
     F(ROCK_SMASH) \
     F(SNARL) \
+    F(NATURE_POWER) \
+    F(DARK_PULSE) \
+    F(POWER_UP_PUNCH) \
+    F(DAZZLING_GLEAM) \
+    F(CONFIDE) \
 
 #define FOREACH_HM(F) \
     F(CUT) \

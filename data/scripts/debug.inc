@@ -198,7 +198,12 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	setflag FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN
+	giveitem ITEM_TM_SNARL, 1
+	giveitem ITEM_TM_NATURE_POWER, 1
+	giveitem ITEM_TM_DARK_PULSE, 1
+	giveitem ITEM_TM_POWER_UP_PUNCH, 1
+	giveitem ITEM_TM_DAZZLING_GLEAM, 1
+	giveitem ITEM_TM_CONFIDE, 1
 	release
 	end
 
