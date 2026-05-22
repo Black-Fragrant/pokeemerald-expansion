@@ -1,1 +1,236 @@
-mapscripts CasteliaCity_NSEastBuilding1F_MapScripts {}
+mapscripts CasteliaCity_NSEastBuilding1F_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_NSEastBuilding1F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Grandpa
+{
+    msgbox("Hmmm! Fantastic! Excellent!\n"
+           "Burgh's paintings are magnificent!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Girl
+{
+    msgbox("My Patrat's Ability is Keen Eye!\p"
+           "Even Smoke Screen and Sand-Attack\n"
+           "cannot lower its accuracy!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Patrat
+{
+	lock
+	faceplayer
+	playmoncry(SPECIES_PATRAT, CRY_MODE_NORMAL)
+	msgbox("Skreeree!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Businessman_Top
+{
+    msgbox("I've been thinking about starting\n"
+           "a new business...\p"
+           "But it's quite a chore.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Businessman_Bottom
+{
+    msgbox("Do you think it's a good idea to provide\n"
+           "a service to raise Pokémon for Trainers?\p"
+           "What?\n"
+           "There's a Pokémon Day Care on Route 3?!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_GreenShirtGuy
+{
+    msgbox("What kinds of Abilities do\n"
+           "your Pokémon have?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Scientist
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_ITEM_EVIOLITE, CasteliaCity_NSEastBuilding1F_EventScript_Scientist_ObtainedEviolite)
+    msgbox("I am a Pokémon fanatic.\n"
+           "I am famous in Castelia, too!\p"
+           "Oh, look!\n"
+           "You have a Pokédex!\p"
+           "Well, how many Pokémon\n"
+           "have you found so far?", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB1F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+	setvar(VAR_0x8004, 0)
+	specialvar(VAR_RESULT, ScriptGetPokedexInfo)
+	copyvar(VAR_0x8008, VAR_0x8005)
+	copyvar(VAR_0x8009, VAR_0x8006)
+	copyvar(VAR_0x800A, VAR_RESULT)
+	buffernumberstring(STR_VAR_1, VAR_0x8008)  //Num Hoenn seen
+    goto_if_ge(VAR_0x8008, 20, CasteliaCity_NSEastBuilding1F_EventScript_Scientist_GoodPokedex)
+    goto_if_ge(VAR_0x8008, 153, CasteliaCity_NSEastBuilding1F_EventScript_Scientist_QuiteThePokedex)
+    msgbox("...\n"
+           "{STR_VAR_1} Pokémon!\p"
+           "If you have 20 Pokémon or more,\n"
+           "I'll give you something good!", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB1F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Scientist_GoodPokedex
+{
+    msgbox("...\n"
+           "{STR_VAR_1} Pokémon!\p"
+           "I am quite impressed, so\n"
+           "I will give this to you.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB1F_SCIENTIST)
+    goto(CasteliaCity_NSEastBuilding1F_EventScript_Scientist_GiveEviolite)
+} 
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Scientist_QuiteThePokedex
+{
+    msgbox("...\n"
+           "{STR_VAR_1} Pokémon!\l"
+           "This is quite a Pokédex!\p"
+           "I am quite impressed, so\n"
+           "I will give this to you.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB1F_SCIENTIST)
+    goto(CasteliaCity_NSEastBuilding1F_EventScript_Scientist_GiveEviolite)
+} 
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Scientist_GiveEviolite
+{
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_EVIOLITE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_NSEastBuilding1F_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_ITEM_EVIOLITE)
+    goto(CasteliaCity_NSEastBuilding1F_EventScript_Scientist_ObtainedEviolite)
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Scientist_ObtainedEviolite
+{
+    msgbox("Eviolite is great!\p"
+           "Both Defense and Special Defense\n"
+           "of the Pokémon who holds it will increase!\p"
+           "However, it's a peculiar stone because\n"
+           "it's only effective on Pokémon that\l"
+           "can still evolve.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSEB1F_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+
+
+
+
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_NSEastBuilding1F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_NSEastBuilding1F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	multichoice(25, 5, MULTI_CASTELIA_ELEVATOR_47, 0)
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_NSEastBuilding1F_EventScript_Elevator_GoTo47F)}
+	goto (CasteliaCity_NSEastBuilding1F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Elevator_GoTo47F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_NSEAST_BUILDING47F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_NSEastBuilding1F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+
+
+
+
+

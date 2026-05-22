@@ -1,1 +1,67 @@
 mapscripts Route4_South_MapScripts {}
+
+script Route4_South_EventScript_Hiker
+{
+    msgbox("Oh! Trainer, take a look at the sand.\p"
+           "Do you see how some areas are lighter?\n"
+           "And some of the sand looks... darker...\p"
+           "Pokémon are hiding in the darker sand!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_MineWorker
+{
+    lock
+    faceplayer
+    call(Route4_South_EventScript_MineWorker_Dialogue)
+    release
+    end
+}
+
+script Route4_South_EventScript_MineWorker_Dialogue
+{
+    msgbox("Hey! Trainer!\p"
+           "There is a bit of a problem up ahead.\n"
+           "Sorry, but you can't pass now.\p"
+           "You should go kill some time by\n"
+           "challenging the Castelia City Gym!", MSGBOX_DEFAULT, TRUE, LOCALID_R4S_MINEWORKER)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script Route4_South_EventScript_Trigger_MineWorker
+{
+    lock
+    faceplayer
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_Trigger_MineWorker_Left)
+	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_Trigger_MineWorker_Right)
+	playse(SE_PIN)
+	applymovement(LOCALID_R4S_MINEWORKER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    call(Route4_South_EventScript_MineWorker_Dialogue)
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(20)
+    release
+    end
+}
+
+script Route4_South_EventScript_Trigger_MineWorker_Left
+{
+	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_left))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_Trigger_MineWorker_Right
+{
+	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+

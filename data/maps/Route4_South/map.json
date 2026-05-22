@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_R4S_MINEWORKER",
       "graphics_id": "OBJ_EVENT_GFX_MINE_WORKER",
       "x": 51,
       "y": 51,
@@ -24,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route4_South_EventScript_MineWorker",
       "flag": "0"
     },
     {
@@ -37,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route4_South_EventScript_Hiker",
       "flag": "0"
     },
     {
@@ -77,7 +78,26 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 50,
+      "y": 51,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_STATE",
+      "var_value": "0",
+      "script": "Route4_South_EventScript_Trigger_MineWorker"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 51,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_STATE",
+      "var_value": "0",
+      "script": "Route4_South_EventScript_Trigger_MineWorker"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

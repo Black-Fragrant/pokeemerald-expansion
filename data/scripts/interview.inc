@@ -217,7 +217,7 @@ LilycoveCity_ContestLobby_EventScript_TryShowContestReporter::
 	setvar VAR_0x8005, TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE
 	special InterviewBefore
 	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
-	switch VAR_CONTEST_TYPE
+	switch VAR_PLACEHOLDER
 	case 0, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
 	case 2, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
 	case 1, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
