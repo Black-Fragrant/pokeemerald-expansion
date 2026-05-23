@@ -1,4 +1,236 @@
-mapscripts CasteliaCity_PrimePier_MapScripts {}
+mapscripts CasteliaCity_PrimePier_MapScripts 
+{
+    MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_GYM_STATE, 1 : CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd
+    ]
+}
+
+script CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd
+{
+    lock
+	playse(SE_PIN)
+	applymovement(LOCALID_CCPP_BURGH, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_lt (VAR_TEMP_1, 10, CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos1)
+	call_if_ge (VAR_TEMP_1, 10, CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos2)
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Burgh: Come on! This way!", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	call_if_lt (VAR_TEMP_1, 10, CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos3)
+	call_if_ge (VAR_TEMP_1, 10, CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos4)
+	call_if_eq (VAR_TEMP_1, 8, CasteliaCity_PrimePier_EventScript_MovePlayer_Pos1)
+	call_if_eq (VAR_TEMP_1, 9, CasteliaCity_PrimePier_EventScript_MovePlayer_Pos2)
+	call_if_eq (VAR_TEMP_1, 10, CasteliaCity_PrimePier_EventScript_MovePlayer_Pos3)
+	call_if_eq (VAR_TEMP_1, 11, CasteliaCity_PrimePier_EventScript_MovePlayer_Pos4)
+	call_if_eq (VAR_TEMP_1, 12, CasteliaCity_PrimePier_EventScript_MovePlayer_Pos5)
+	call_if_eq (VAR_TEMP_1, 13, CasteliaCity_PrimePier_EventScript_MovePlayer_Pos6)
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Burgh: Team Plasma...\n"
+           "They took this young lady's Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Bianca: {PLAYER}, is there\n"
+           "anything we can do? My Munna...\p"
+           "Team Plasma took it...", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCPP_IRIS, moves(walk_fast_left, walk_in_place_fast_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("???: I heard this lady's scream and\n"
+           "ran after the thief as fast as I could.\p"
+           "But this city is so big and so crowded...\n"
+           "I'm afraid I lost them.", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_IRIS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Burgh: Iris...\n"
+           "You did everything you could.", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    playse(SE_LEDGE)
+	applymovement(LOCALID_CCPP_IRIS, moves(jump_in_place_down))
+	waitmovement(0)
+    waitse()
+    msgbox("Iris: But that's so bad!\p"
+           "Taking people's Pokémon is really bad!\p"
+           "'Cause it's really nice when\n"
+           "people and Pokémon are together!\p"
+           "They each have something the other\n"
+           "doesn't, and they help each other!", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_IRIS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Bianca: Iris...", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Burgh: Agreed!\n"
+           "No fear--we will get that Pokémon back.", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BURGH)
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_in_place_left))
+	waitmovement(0)
+    msgbox("Right, {PLAYER}?", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Having said that, finding a person or a\n"
+           "Pokémon here in Castelia City will be\l"
+           "like finding a needle in a haystack.", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    playbgm(MUS_BW_APPEARS_PLASMA_2, TRUE)
+    delay(10)
+	playse(SE_EXIT)
+	addobject(LOCALID_CCPP_GRUNTF)
+	waitse()
+	applymovement(LOCALID_CCPP_GRUNTF, moves(walk_right * 3))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_CCPP_GRUNTF, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_in_place_left))
+	applymovement(LOCALID_CCPP_IRIS, moves(walk_in_place_left))
+	applymovement(LOCALID_CCPP_BIANCA, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Team Plasma: I spy a Gym Leader?!\p"
+           "Last time went so well, I thought\n"
+           "I'd grab another Pokémon...\p"
+           "Rethinking...\n"
+           "I need to get out of here!", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_GRUNTF)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCPP_GRUNTF, moves(walk_fast_left * 3))
+	waitmovement(0)
+    delay(10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCPP_GRUNTF)
+	waitse()
+	fadedefaultbgm()
+    savebgm(MUS_BW_CASTELIA_CITY)
+    delay(10)
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_fast_left, walk_in_place_fast_up))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+    msgbox("Burgh: {PLAYER}, let's go!\p"
+           "Iris! You stay by that young lady's side.", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCPP_BURGH, moves(walk_fast_left * 5))
+	waitmovement(0)
+    delay(10)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCPP_BURGH)
+	waitse()
+	applymovement(LOCALID_CCPP_IRIS, moves(walk_right, walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_CCPP_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(30)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_CCPP_IRIS, moves(walk_in_place_left))
+	applymovement(LOCALID_CCPP_BIANCA, moves(walk_in_place_left))
+	waitmovement(0)
+    call(CasteliaCity_PrimePier_EventScript_Iris_Cont)
+    clearflag(FLAG_CASTELIA_BURGH_IN_PURSUIT)
+    setvar(VAR_CASTELIA_GYM_STATE, 2)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos1
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 6, walk_fast_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos2
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 6))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos3
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 2, walk_fast_left * 6))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MeetingWithTheCrowd_Pos4
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 6))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_down * 2, walk_right * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_down * 1, walk_right * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 5))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_up * 1, walk_right * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_up * 2, walk_right * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos6
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_up * 3, walk_right * 2))
+	waitmovement(0)
+    return
+}
 
 script CasteliaCity_PrimePier_EventScript_Gentleman
 {
@@ -14,5 +246,31 @@ script CasteliaCity_PrimePier_EventScript_Girl
         "scream at the ocean!\p"
         "...When you're alone, of course.", MSGBOX_NPC, TRUE)
     end
+}
+
+script CasteliaCity_PrimePier_EventScript_Bianca
+{
+    msgbox("Bianca: Oh, Munna, I can't believe it.\p"
+           "Here I am, a Trainer, and I can't even\n"
+           "protect my own Pokémon... I'm sorry...", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_PrimePier_EventScript_Iris
+{
+    lock
+    faceplayer
+    call(CasteliaCity_PrimePier_EventScript_Iris_Cont)
+    release
+    end
+}
+
+script CasteliaCity_PrimePier_EventScript_Iris_Cont
+{
+    msgbox("Iris: I'm gonna be Bianca's bodyguard.\p"
+           "So you go after those bad guys, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_CCPP_IRIS)
+    destroy_speech_bubble()
+    closemessage
+    return
 }
 

@@ -3,7 +3,352 @@ mapscripts CasteliaCity_EmptyBuilding1F_MapScripts
 	MAP_SCRIPT_ON_FRAME_TABLE
     [
         VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_EmptyBuilding1F_EventScript_NewToFloor
+        VAR_CASTELIA_GYM_STATE, 4 : CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
     ]
+}
+
+script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
+{
+	lock
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+	playbgm(MUS_BW_PLOT_PLASMA, TRUE)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(20)
+    msgbox("Ghetsis: My word: if it isn't\n"
+           "the Gym Leader, Burgh.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Burgh: So, what would you say is the\n"
+           "guiding principle of Team Plasma, anyway?\p"
+           "“Take what you want from people”?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_SAGE2, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bronius: I thought it would be amusing\n"
+           "to prepare a hideout right in front of a\l"
+           "Pokémon Gym, but we were detected\l"
+           "more quickly than I imagined.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_SAGE2)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Ghetsis: Indeed...\p"
+           "No matter. We already have an\n"
+           "exceptional base of operations.\p"
+           "Is everyone familiar with the legend\n"
+           "of the founding of the Unova region?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Iris: I am! It's the black\n"
+           "dragon-type Pokémon, right?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_SAGE2, moves(walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_slow_down, delay_16 * 2, walk_slow_left, delay_16, walk_in_place_slow_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("Ghetsis: The truth is this...\p"
+           "The black dragon appeared before a hero\n"
+           "who sought the ideal way to knit\l"
+           "together a world full of warring people.\p"
+           "The black Dragon-typed Pokémon shared\n"
+           "its knowledge--and bared its fangs\l"
+           "at those who stood against it.\p"
+           "Together, the power of this Pokémon and\n"
+           "the hero brought unity to the hearts of\l"
+           "everyone in the land,\l"
+           "and that is how Unova was created.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_slow_right * 2, delay_16, walk_in_place_slow_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("We shall bring back the hero and\n"
+           "that Pokémon to Unova once again!\p"
+           "If we can win people's hearts and minds,\n"
+           "we can easily create the world that\l"
+           "I--I mean, Team Plasma--desires!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_slow_left, delay_16, walk_in_place_slow_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("Burgh: Here in Castelia, we have\n"
+           "a lot of different kinds of people.\p"
+           "Everyone's ways of thinking and\n"
+           "lifestyles are very different.\p"
+           "Honestly, there's something about what\n"
+           "you're saying I don't quite understand.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+	minimsg("Yes?", 9, 3)
+	delay(20)
+	minimsg("What is it?", 16, 6)
+	delay(100)
+	closeallminimessages
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Burgh: One thing we all have in\n"
+           "common is that we all care a lot\l"
+           "about Pokémon.\p"
+           "Even people meeting for the first time\n"
+           "can talk about Pokémon.\l"
+           "Talk or battle or trade...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_up))
+	waitmovement(0)
+	delay(10)
+    msgbox("Remember your speech at Accumula Town?\p"
+           "You were responsible for leading me to\n"
+           "rethink my relationship with Pokémon.\l"
+           "For that, I thank you.\p"
+           "At that time, I made a promise...\p"
+           "I swore to myself that I would dedicate\n"
+           "myself to Pokémon even more strongly!\p"
+           "What you guys are doing... Aren't you\n"
+           "going to strengthen the bond between\l"
+           "people and Pokémon even more?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("Ghetsis: Myah-ha-ha-ha!\p"
+           "You are quite hard to figure out--a\n"
+           "little more intelligent than \l"
+           "I'd expected.\p"
+           "I am fond of intelligent people, you see.\n"
+           "You'll enjoy hearing about this...\p"
+           "From every corner of the world,\n"
+           "I have gathered knowledgeable people\l"
+           "for our king's benefit.\p"
+           "You could call them the Seven Sages.\p"
+           "Very well! We will submit to your\n"
+           "opinion and be on our way.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_in_place_slow_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("That girl over there...\n"
+           "Return her Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_GRUNT3, moves(walk_in_place_left, walk_in_place_down))
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(delay_16, walk_in_place_down))
+	waitmovement(0)
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	addobject(LOCALID_CCEB1F_MUNNA)
+	waitmoncry
+	delay(20)
+	applymovement(LOCALID_CCEB1F_MUNNA, moves(face_right, delay_16, face_left, delay_16, face_right, delay_16, walk_down))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_CCEB1F_MUNNA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	applymovement(LOCALID_CCEB1F_MUNNA, moves(walk_down * 2))
+	waitmovement(0)
+	delay(10)
+	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
+	waitmoncry
+	delay(20)
+	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+	removeobject(LOCALID_CCEB1F_MUNNA)
+	delay(20)
+    msgbox("Bianca: Th-thank you!\p"
+           "Munny, I'm so glad to see you again!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_LEDGE)
+	applymovement(LOCALID_CCEB1F_IRIS, moves(jump_in_place_up, face_right))
+	waitmovement(0)
+	waitse
+	delay(10)
+    msgbox("Iris: Bianca!\p"
+           "Why are you thanking them?\n"
+           "They take people's precious Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bianca: It's just... I'm... I'm so happy\n"
+           "that my Munna is safe.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_in_place_slow_down))
+	waitmovement(0)
+	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+    msgbox("Ghetsis: The friendship between Pokémon\n"
+           "and people can be very touching.\p"
+           "But, in order to liberate Pokémon from\n"
+           "foolish people, we will revive the legend\l"
+           "of Unova--and win the hearts and minds\l"
+           "of everyone. Farewell...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_GHETSIS)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	fadescreen(FADE_TO_BLACK)
+	fadedefaultbgm
+	savebgm(MUS_BW_CASTELIA_CITY)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	removeobject(LOCALID_CCEB1F_GHETSIS)
+	removeobject(LOCALID_CCEB1F_SAGE2)
+	removeobject(LOCALID_CCEB1F_SAGE5)
+	removeobject(LOCALID_CCEB1F_GRUNT1)
+	removeobject(LOCALID_CCEB1F_GRUNT2)
+	removeobject(LOCALID_CCEB1F_GRUNT3)
+	clearflag(FLAG_CASTELIA_ITEM_SMOKE_BALL)
+	addobject(LOCALID_CCEB1F_SMOKEBALL)
+	fadescreen(FADE_FROM_BLACK)
+	delay(10)
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_fast_up, walk_fast_left))
+	waitmovement(0)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_CCEB1F_IRIS, moves(jump_in_place_left))
+	waitmovement(0)
+	waitse
+	delay(10)
+    msgbox("Iris: What are you doing?\n"
+           "Why are you letting them get away?!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Burgh: Gah!\p"
+           "What do we do if anything's happened\n"
+           "to the other stolen Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_up, walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bianca: It's OK. Thank you, Iris!\p"
+           "No one was hurt. More than anything,\n"
+           "I got my darling Pokémon back again!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Iris: OK, if you're happy...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Burgh: What is everyone\n"
+           "planning to do now?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Bianca: Oh, it would be sensational to\n"
+           "look around Castelia City, but...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_CCEB1F_IRIS, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	playse(SE_LEDGE)
+	applymovement(LOCALID_CCEB1F_IRIS, moves(jump_in_place_right))
+	waitmovement(0)
+	waitse
+	delay(10)
+    msgbox("Iris: Don't worry!\n"
+           "I'll keep on being your bodyguard!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+    msgbox("Bianca: Iris...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Burgh: Uh-hm. That's great!\p"
+           "Iris is a dazzling Pokémon Trainer,\n"
+           "but maybe not at home in the\l"
+           "big city yet.\p"
+           "So, a little give-and-take, hm! People and\n"
+           "Pokémon need to help each other out!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("Iris: Also, thanks for looking\n"
+           "for the Pokémon!\p"
+           "Here, this is for you!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_YACHE_BERRY, 1)
+	call_if_eq (VAR_RESULT, FALSE, CasteliaCity_EmptyBuilding1F_EventScript_BagIsFull2)
+    msgbox("Iris: See you!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_fast_up, walk_fast_right, walk_in_place_fast_down))
+	waitmovement(0)
+	minimsg("Wha...", 16, 10)
+	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_down * 2, walk_left, walk_down))
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_down * 3, walk_left, walk_in_place_down))
+	waitmovement(0)
+	closeallminimessages
+	minimsg("Waaait!", 16, 16)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCEB1F_BIANCA)
+	waitse
+	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_fast_down))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCEB1F_IRIS)
+	waitse
+	delay(20)
+	closeallminimessages
+	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_down, walk_in_place_right))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("Burgh: Well, then, Nate.\n"
+           "I'll be waiting in the Gym.", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_down, walk_right, walk_down))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCEB1F_BURGH)
+	waitse
+	delay(20)
+	setvar(VAR_CASTELIA_GYM_STATE, 5)
+	setvar(VAR_CASTELIA_GYM_RECEPTION_BLOCK, 1)
+	release
+	end
+}
+
+script CasteliaCity_EmptyBuilding1F_EventScript_SmokeBall
+{
+	lock
+	giveitem(ITEM_SMOKE_BALL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_EmptyBuilding1F_EventScript_BagIsFull)
+	removeobject(LOCALID_CCEB1F_SMOKEBALL)
+	release
+	end
 }
 
 script CasteliaCity_EmptyBuilding1F_EventScript_NewToFloor
@@ -95,5 +440,17 @@ script CasteliaCity_EmptyBuilding1F_EventScript_Elevator_GetOff
     end 
 }
 
+script CasteliaCity_EmptyBuilding1F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
 
-
+script CasteliaCity_EmptyBuilding1F_EventScript_BagIsFull2
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	return()
+}

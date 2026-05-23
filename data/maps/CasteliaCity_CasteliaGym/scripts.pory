@@ -1,1 +1,84 @@
 mapscripts CasteliaCity_CasteliaGym_MapScripts {}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist
+{
+    lock
+    faceplayer
+    call(CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Cont)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Cont
+{
+    msgbox("The Gym Leader said he was going to\n"
+           "Primer Pier and left for a little bit.\p"
+           "You're welcome to go track him down.", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Trigger
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 15, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_0, 16, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_0, 17, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos3)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    call(CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Cont)
+    applymovement(LOCALID_PLAYER, moves(walk_down))
+    waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 15, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos4)
+	call_if_eq (VAR_TEMP_0, 16, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos5)
+	call_if_eq (VAR_TEMP_0, 17, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos6)
+    delay(10)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos1
+{
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 3, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos2
+{
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 2, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos3
+{
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 1, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos4
+{
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_right * 3, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos5
+{
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_right * 2, walk_in_place_down))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos6
+{
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_right * 1, walk_in_place_down))
+    waitmovement(0)
+    return
+}

@@ -28,7 +28,7 @@ EverGrandeCity_HallOfFame_EventScript_ShowStevensHouseBeldum::
 
 EverGrandeCity_HallOfFame_EventScript_ReadyReceiveSSTicketEvent::
 	setvar VAR_PLACEHOLDER, 3
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 3
+	setvar VAR_PLACEHOLDER, 3
 	return
 
 EverGrandeCity_HallOfFame_EventScript_ReadyDexUpgradeEvent::

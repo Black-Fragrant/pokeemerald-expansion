@@ -1,5 +1,34 @@
 mapscripts CasteliaCity_CentralPlaza_MapScripts {}
 
+script CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit
+{
+    lock
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    applymovement(LOCALID_CCCP_BURGH, moves(walk_in_place_down, delay_16, walk_in_place_up, delay_16, walk_in_place_down, delay_16))
+    waitmovement(0)
+    msgbox("Burgh: That way!\p"
+           "M'hm. Toward the Gym?!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCP_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_CCCP_BURGH, moves(walk_fast_down * 5))
+    waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCCP_BURGH)
+	waitse()
+    setvar(VAR_CASTELIA_GYM_STATE, 3)
+    clearflag(FLAG_CASTELIA_EMPTY_BUILDING_OUTSIDE_CROWD)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(20)
+    release
+    end
+}
+
 script CasteliaCity_CentralPlaza_EventScript_Grandpa
 {
     msgbox("Landscapes with people...\n"

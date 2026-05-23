@@ -156,6 +156,62 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CCPP_BURGH",
+      "graphics_id": "OBJ_EVENT_GFX_BURGH",
+      "x": 14,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CASTELIA_PRIME_PIER_BURGH"
+    },
+    {
+      "local_id": "LOCALID_CCPP_IRIS",
+      "graphics_id": "OBJ_EVENT_GFX_IRIS",
+      "x": 15,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_PrimePier_EventScript_Iris",
+      "flag": "FLAG_CASTELIA_PRIME_PIER_CROWD"
+    },
+    {
+      "local_id": "LOCALID_CCPP_BIANCA",
+      "graphics_id": "OBJ_EVENT_GFX_BIANCA",
+      "x": 15,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_PrimePier_EventScript_Bianca",
+      "flag": "FLAG_CASTELIA_PRIME_PIER_CROWD"
+    },
+    {
+      "local_id": "LOCALID_CCPP_GRUNTF",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_FEMALE",
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
     }
   ],
   "warp_events": [

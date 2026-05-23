@@ -157,9 +157,9 @@
 #define VAR_CABLE_CLUB_STATE                             0x4087 // Don't Touch
 #define VAR_CASTELIA_PARTY_BUILDING_STATE                0x4088
 #define VAR_ROUTE_4_STATE                                0x4089
-#define VAR_CONTEST_PRIZE_PICKUP                         0x408A
-#define VAR_UNUSED_0x408B                                0x408B // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
+#define VAR_CASTELIA_GYM_STATE                           0x408A
+#define VAR_CASTELIA_GYM_RECEPTION_BLOCK                 0x408B
+#define VAR_CASTELIA_GATE_BIANCA_BATTLE_STATE            0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
 #define VAR_DEVON_CORP_3F_STATE                          0x408F
