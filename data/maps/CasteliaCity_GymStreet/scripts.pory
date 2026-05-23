@@ -49,3 +49,377 @@ script CasteliaCity_GymStreet_EventScript_GymSign
         "Premier Insect Artist", MSGBOX_SIGN)
     end
 }
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(face_right))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playse(SE_EXIT)
+	addobject(LOCALID_CCGS_CHEREN)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_CCGS_CHEREN, moves(walk_left * 3))
+	applymovement(LOCALID_PLAYER, moves(walk_left * 3, walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("Cheren: Hey, {PLAYER}.\n"
+           "I just challenged the Gym Leader Burgh.", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_CHEREN, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+    msgbox("He's a seasoned Gym Leader.\n"
+           "He made me work for that Gym Badge!\p"
+           "But for me, Bug-type Pokémon\n"
+           "aren't that much of a challenge.", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_CHEREN, moves(face_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("I'm going to keep winning like this against\n"
+           "all of the Unova region's Gym Leaders!\p"
+           "Then, I'll head for the Pokémon League\n"
+           "and outperform the Champion!\p"
+           "If I do that, everyone will admit\n"
+           "what a strong Trainer I am...\p"
+           "That will make me feel truly alive...", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_CCGS_CHEREN, moves(walk_down * 6))
+	waitmovement(0)
+    removeobject(LOCALID_CCGS_CHEREN)
+    delay(20)
+	playse(SE_EXIT)
+	addobject(LOCALID_CCGS_BURGH)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_CCGS_BURGH, moves(walk_fast_left * 3))
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_CCGS_BURGH, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_PLAYER, moves(face_right))
+	waitmovement(0)
+    msgbox("Burgh: Ah hah!\p"
+           "You're the one who fought\n"
+           "Team Plasma in Pinwheel Forest...\p"
+           "If I remember, your name is...\n"
+           "{PLAYER}!\p"
+           "Come to challenge the Gym, I suppose?\p"
+           "Aww. Sorry, but could you wait a bit?\p"
+           "I was informed that Team Plasma\n"
+           "has shown up!\p"
+           "In fact... Come with me!\n"
+           "I'm going to the dock at Primer Pier!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_CCGS_BURGH, moves(walk_fast_down * 6))
+	waitmovement(0)
+    removeobject(LOCALID_CCGS_BURGH)
+    clearflag(FLAG_CASTELIA_PRIME_PIER_CROWD)
+    clearflag(FLAG_CASTELIA_PRIME_PIER_BURGH)
+    clearflag(FLAG_ROUTE4_SOUTH_CHEREN)
+    setvar(VAR_CASTELIA_GYM_STATE, 1)
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos1
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_right * 3, walk_down * 2, walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos2
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_right * 2, walk_down * 2, walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos3
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_down * 2, walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos4
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos5
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_down, walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos6
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos7
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos8
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_in_place_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos9
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up, walk_in_place_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos10
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves(walk_right * 2, walk_up, walk_in_place_left))
+	waitmovement(0)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace
+{
+    msgbox("Burgh: This is definitely the place.", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BURGH2)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    setvar(VAR_CASTELIA_GYM_STATE, 4)
+    clearflag(FLAG_CASTELIA_EMPTY_BUILDING_INSIDE_CROWD)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding)
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding
+{
+	applymovement(LOCALID_CCGS_GRUNT2, moves(walk_in_place_fast_right * 4))
+	waitmovement(0)
+	applymovement(LOCALID_CCGS_BURGH2, moves(walk_in_place_left))
+	waitmovement(0)
+    msgbox("Team Plasma: No one's here! Not a soul!\p"
+           "No other Team Plasma members, nor any\n"
+           "of the Seven Sages, are inside.\p"
+           "...If you think I'm lying, why don't\n"
+           "we have a little battle and find out?", MSGBOX_YESNO, TRUE, LOCALID_CCGS_GRUNT2)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_GymStreet_EventScript_BattleWithGrunt)
+    msgbox("Team Plasma: Don't scare me like that.\n"
+           "Come on!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_GRUNT2)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_BURGH2, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    call(CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_BurghsDialogue)
+    delay(10)
+    release
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_BurghsDialogue
+{
+    msgbox("Burgh: Looks like our only\n"
+           "option is to battle them and go on in.", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BURGH2)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script CasteliaCity_GymStreet_EventScript_Burgh
+{
+    lock
+    faceplayer
+    call(CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_BurghsDialogue)
+    release
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Grunt1
+{
+    msgbox("Think about how a Pokémon feels when\n"
+           "it's being used by a pathetic Trainer!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Grunt3
+{
+    msgbox("What's your problem with\n"
+           "taking people's Pokémon?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_GymStreet_EventScript_Grunt2
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 18, CasteliaCity_GymStreet_EventScript_Grunt2_Pos1)
+	call_if_eq (VAR_TEMP_1, 19, CasteliaCity_GymStreet_EventScript_Grunt2_Pos2)
+	call_if_eq (VAR_TEMP_1, 20, CasteliaCity_GymStreet_EventScript_Grunt2_Pos3)
+    goto(CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding)
+}
+
+script CasteliaCity_GymStreet_EventScript_Grunt2_Pos1
+{
+    applymovement(LOCALID_PLAYER, moves(walk_right, walk_down, walk_right, walk_in_place_left))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_GymStreet_EventScript_Grunt2_Pos2
+{
+    applymovement(LOCALID_PLAYER, moves(walk_right, walk_in_place_left))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_GymStreet_EventScript_Grunt2_Pos3
+{
+    applymovement(LOCALID_PLAYER, moves(walk_right, walk_up, walk_right, walk_in_place_left))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_GymStreet_EventScript_BattleWithGrunt
+{
+    msgbox("Team Plasma: I...had a thought!\p"
+           "I'll take care of this weak-looking runt,\n"
+           "so you can show off by handling\l"
+           "that tough-looking guy over there!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_GRUNT2)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_BURGH2, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Burgh: Oh, please!\n"
+           "{PLAYER}, I'll leave that one to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BURGH2)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_CCGS_GRUNT2, moves(walk_right))
+	applymovement(LOCALID_CCGS_BURGH2, moves(lock_facing_direction, walk_right, unlock_facing_direction))
+	applymovement(LOCALID_CCGS_GRUNT1, moves(walk_fast_right * 3))
+	applymovement(LOCALID_CCGS_GRUNT3, moves(walk_fast_right * 4, walk_fast_up))
+	waitmovement(0)
+	trainerbattle_no_intro(TRAINER_GRUNT_M_GYM_STREET, text("Come on! Seriously?! All I did was\ntake away people's Pokémon."))
+	applymovement(LOCALID_CCGS_GRUNT1, moves(lock_facing_direction, walk_left, unlock_facing_direction))
+	applymovement(LOCALID_CCGS_GRUNT2, moves(lock_facing_direction, walk_left, unlock_facing_direction))
+	applymovement(LOCALID_CCGS_GRUNT3, moves(lock_facing_direction, walk_down, unlock_facing_direction))
+	waitmovement(0)
+    delay(10)
+    msgbox("Team Plasma: This is bad...\p"
+           "Badbadbadbadbadbadbad!\p"
+           "Bad for Team Plasma!\n"
+           "Or Plasbad, for short!\p"
+           "It's in my best interest to go\n"
+           "report to the Seven Sages right now!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_GRUNT2)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_GRUNT2, moves(walk_fast_left * 4))
+	applymovement(LOCALID_CCGS_GRUNT1, moves(walk_fast_left, walk_fast_down, walk_fast_left * 4))
+	applymovement(LOCALID_CCGS_GRUNT3, moves(walk_fast_left * 3, walk_fast_up, walk_fast_left * 4))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCGS_GRUNT1)
+	removeobject(LOCALID_CCGS_GRUNT2)
+	removeobject(LOCALID_CCGS_GRUNT3)
+	waitse()
+    setflag(FLAG_CASTELIA_PRIME_PIER_CROWD)
+	delay(20)
+    addobject(LOCALID_CCGS_IRIS)
+    addobject(LOCALID_CCGS_BIANCA)
+	applymovement(LOCALID_CCGS_IRIS, moves(walk_fast_up * 6, walk_in_place_fast_left))
+	applymovement(LOCALID_CCGS_BIANCA, moves(walk_up * 5))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Iris: Phew, we got lost.\p"
+           "Even with directions from the\n"
+           "Xtransceiver, I couldn't figure it out!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_IRIS)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Burgh: Team Plasma is inside.\p"
+           "The stolen Pokémon may be in\n"
+           "there as well.\l"
+           "OK, I'm going in!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BURGH2)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_CCGS_BURGH2, moves(walk_fast_left * 3, walk_fast_down, walk_fast_left * 3))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCGS_BURGH2)
+	waitse()
+    delay(20)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_CCGS_IRIS, moves(jump_in_place_left, walk_fast_left, walk_in_place_fast_down))
+	waitmovement(0)
+	waitse()
+    delay(10)
+    msgbox("Iris: OK! This time, I'll join the fight!\p"
+           "Come on, Bianca. You, too!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_IRIS)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_BIANCA, moves(walk_fast_up))
+	applymovement(LOCALID_CCGS_IRIS, moves(lock_facing_direction, walk_fast_up, unlock_facing_direction))
+	waitmovement(0)
+    delay(10)
+    msgbox("Bianca: W-wait!\p"
+           "{PLAYER}! You come, too!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_CCGS_IRIS, moves(walk_fast_left * 3, walk_fast_down, walk_fast_left * 3))
+	applymovement(LOCALID_CCGS_BIANCA, moves(walk_fast_up, walk_fast_left * 3, walk_fast_down, walk_fast_left * 2))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCGS_IRIS)
+	waitse()
+	applymovement(LOCALID_CCGS_BIANCA, moves(walk_fast_left))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCGS_BIANCA)
+	waitse()
+    delay(20)
+    release
+    end
+}

@@ -1,5 +1,27 @@
 mapscripts CasteliaCity_SouthBank_MapScripts {}
 
+script CasteliaCity_SouthBank_EventScript_Trigger_BurghInPursuit
+{
+    lock
+    applymovement(LOCALID_CCSB_BURGH, moves(walk_in_place_down, delay_16, walk_in_place_up, delay_16, walk_in_place_down, delay_16, walk_in_place_up, delay_16))
+    waitmovement(0)
+    msgbox("Burgh: That way!\p"
+           "M'hm. There, heading toward the Gym?!", MSGBOX_DEFAULT, TRUE, LOCALID_CCSB_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_CCSB_BURGH, moves(walk_fast_up * 6))
+    waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_CCSB_BURGH)
+	waitse()
+    setvar(VAR_CASTELIA_GYM_STATE, 3)
+    clearflag(FLAG_CASTELIA_EMPTY_BUILDING_OUTSIDE_CROWD)
+    delay(20)
+    release
+    end
+}
+
 script CasteliaCity_SouthBank_EventScript_CitySign
 {
 	msgbox("Castelia City\n"

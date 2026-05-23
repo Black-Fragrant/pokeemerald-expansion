@@ -1,5 +1,14 @@
 mapscripts Route4_South_MapScripts {}
 
+script Route4_South_EventScript_Cheren
+{
+    msgbox("Cheren: I believe it would be wise for me\n"
+           "to catch some Ground-type Pokémon.\p"
+           "Or perhaps I should strengthen my\n"
+           "Pokémon. What's my best path forward?", MSGBOX_NPC, TRUE)
+    end
+}
+
 script Route4_South_EventScript_Hiker
 {
     msgbox("Oh! Trainer, take a look at the sand.\p"
