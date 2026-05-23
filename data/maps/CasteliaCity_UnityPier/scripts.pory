@@ -66,11 +66,11 @@ script CasteliaCity_UnityPier_EventScript_Dancer_Battle
            "I will join the team!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_UP_DANCER)
     destroy_speech_bubble()
     closemessage
-    fadescreen(FADE_TO_BLACK)
+    fadescreenswapbuffers (FADE_TO_BLACK)
     removeobject(LOCALID_CASTELIA_UP_DANCER)
     setflag(FLAG_CASTELIA_UNITY_PIER_DANCER)
     clearflag(FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_RIGHT)
-    fadescreen(FADE_FROM_BLACK)
+    fadescreenswapbuffers (FADE_FROM_BLACK)
     delay(20)
     release
     end
