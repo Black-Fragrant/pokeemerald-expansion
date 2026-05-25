@@ -16,6 +16,7 @@ mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
 script NuvemaTown_PH2F_On_Load
 {
 	call_if_set(FLAG_NUVEMA_PH2F_IS_MESSY, NuvemaTown_PlayerHouse_Messy_Room)
+	call_if_set(FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE, NuvemaTown_PlayerHouse_SilverDiploma)
 	end()
 }
 
@@ -92,6 +93,20 @@ script NuvemaTown_PlayerHouse_Messy_Room
 	setmetatile (8, 10, 0x264, FALSE)
 	setmetatile (9, 10, 0x23E, TRUE)
 	setmetatile (10, 10, 0x23F, TRUE)
+	return()
+}
+
+script NuvemaTown_PlayerHouse_SilverDiploma
+{
+	setmetatile (5, 3, 0x2ED, TRUE)
+	setmetatile (5, 4, 0x2F5, TRUE)
+	return()
+}
+
+script NuvemaTown_PlayerHouse_GoldDiploma
+{
+	setmetatile (5, 3, 0x2EE, TRUE)
+	setmetatile (5, 4, 0x2F6, TRUE)
 	return()
 }
 

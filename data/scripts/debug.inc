@@ -197,21 +197,14 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	lock
-	giveitem ITEM_TM_SNARL, 1
-	giveitem ITEM_TM_NATURE_POWER, 1
-	giveitem ITEM_TM_DARK_PULSE, 1
-	giveitem ITEM_TM_POWER_UP_PUNCH, 1
-	giveitem ITEM_TM_DAZZLING_GLEAM, 1
-	giveitem ITEM_TM_CONFIDE, 1
-	release
+	setflag FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE
 	end
 
 Debug_EventScript_Script_1_text::
 	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
-	warp MAP_SKY_ARROW_BRIDGE, 16, 17
+	warp MAP_NUVEMA_TOWN, 16, 17
 	waitstate
 	end
 

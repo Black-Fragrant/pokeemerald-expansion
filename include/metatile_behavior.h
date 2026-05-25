@@ -143,6 +143,7 @@ bool8 MetatileBehavior_IsBookShelf(u8 metatileBehavior);
 bool8 MetatileBehavior_IsPokeCenterBookShelf(u8 metatileBehavior);
 bool8 MetatileBehavior_IsVase(u8 metatileBehavior);
 bool8 MetatileBehavior_IsTrashCan(u8 metatileBehavior);
+bool8 MetatileBehavior_IsDiploma(u8 metatileBehavior);
 bool8 MetatileBehavior_IsShopShelf(u8 metatileBehavior);
 bool8 MetatileBehavior_IsBlueprint(u8 metatileBehavior);
 bool8 MetatileBehavior_IsBattlePyramidWarp(u8 metatileBehavior);

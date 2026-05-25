@@ -1665,6 +1665,9 @@ void PlayTrainerEncounterMusic(void)
         case TRAINER_ENCOUNTER_MUSIC_RANGER:
             music = MUS_BW_SPOTTED_ACE_TRAINER;
             break;
+        case TRAINER_ENCOUNTER_MUSIC_FUNNY:
+            music = MUS_BW_SPOTTED_POKEFAN;
+            break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;
         }

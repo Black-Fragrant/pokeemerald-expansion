@@ -28,6 +28,7 @@ static void DisplayDiplomaText(void);
 static void InitDiplomaBg(void);
 static void InitDiplomaWindow(void);
 static void PrintDiplomaText(u8 *, u8, u8);
+static u8 sDiplomaMedalSpriteId;
 
 EWRAM_DATA static u8 *sDiplomaTilemapPtr = NULL;
 
@@ -46,6 +47,67 @@ static const u16 sDiplomaPalettes[][16] =
 
 static const u32 sDiplomaTilemap[] = INCBIN_U32("graphics/diploma/tilemap.bin.smolTM");
 static const u32 sDiplomaTiles[] = INCBIN_U32("graphics/diploma/tiles.4bpp.smol");
+
+// ----------------------------------------
+// Diploma Medal Sprite (64x256, 4 frames)
+// ----------------------------------------
+
+static const u8 sDiplomaMedalTiles[] = INCBIN_U8("graphics/diploma/medal.4bpp");
+static const u16 sDiplomaMedalPal[]  = INCBIN_U16("graphics/diploma/medal.gbapal");
+
+#define TAG_DIPLOMA_MEDAL  0x5020
+
+static const struct SpriteSheet sDiplomaMedalSpriteSheet =
+{
+    .data = sDiplomaMedalTiles,
+    .size = sizeof(sDiplomaMedalTiles), // 8192 bytes
+    .tag  = TAG_DIPLOMA_MEDAL,
+};
+
+static const struct SpritePalette sDiplomaMedalSpritePalette =
+{
+    .data = sDiplomaMedalPal,
+    .tag  = TAG_DIPLOMA_MEDAL,
+};
+
+// 64×64 → 64 tiles per frame
+static const union AnimCmd sDiplomaMedalAnimCmds[] =
+{
+    ANIMCMD_FRAME(0,   52),  // frame 0: tiles 0–63
+    ANIMCMD_FRAME(64,  4),  // frame 1: tiles 64–127
+    ANIMCMD_FRAME(128, 4),  // frame 2: tiles 128–191
+    ANIMCMD_FRAME(192, 4),  // frame 3: tiles 192–255
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sDiplomaMedalAnimTable[] =
+{
+    sDiplomaMedalAnimCmds,
+};
+
+static const struct OamData sOamData_DiplomaMedal =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .priority = 1,
+};
+
+static const struct SpriteTemplate sDiplomaMedalSpriteTemplate =
+{
+    .tileTag = TAG_DIPLOMA_MEDAL,
+    .paletteTag = TAG_DIPLOMA_MEDAL,
+    .oam = &sOamData_DiplomaMedal,
+    .anims = sDiplomaMedalAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
 
 void CB2_ShowDiploma(void)
 {
@@ -82,6 +144,18 @@ void CB2_ShowDiploma(void)
         ;
     DecompressDataWithHeaderWram(sDiplomaTilemap, sDiplomaTilemapPtr);
     CopyBgTilemapBufferToVram(1);
+    // ------------------------------
+    // Spawn Diploma Medal Sprite
+    // ------------------------------
+    LoadSpriteSheet(&sDiplomaMedalSpriteSheet);
+    LoadSpritePalette(&sDiplomaMedalSpritePalette);
+
+    u8 medalSpriteId = CreateSprite(&sDiplomaMedalSpriteTemplate, 30, 30, 0);
+    StartSpriteAnim(&gSprites[medalSpriteId], 0);
+
+    // store spriteId globally or in static
+    sDiplomaMedalSpriteId = medalSpriteId;
+
     DisplayDiplomaText();
     BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
@@ -119,6 +193,13 @@ static void Task_DiplomaFadeOut(u8 taskId)
     if (!gPaletteFade.active)
     {
         Free(sDiplomaTilemapPtr);
+        // ------------------------------
+        // Destroy Diploma Medal Sprite
+        // ------------------------------
+        DestroySprite(&gSprites[sDiplomaMedalSpriteId]);
+        FreeSpriteTilesByTag(TAG_DIPLOMA_MEDAL);
+        FreeSpritePaletteByTag(TAG_DIPLOMA_MEDAL);
+
         FreeAllWindowBuffers();
         DestroyTask(taskId);
         SetMainCallback2(CB2_ReturnToFieldFadeFromBlack);
@@ -183,8 +264,8 @@ static const struct WindowTemplate sDiplomaWinTemplates[2] =
     {
         .bg = 0,
         .tilemapLeft = 5,
-        .tilemapTop = 2,
-        .width = 20,
+        .tilemapTop = 1,
+        .width = 24,
         .height = 16,
         .paletteNum = 15,
         .baseBlock = 1,
