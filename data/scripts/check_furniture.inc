@@ -18,6 +18,13 @@ EventScript_EmptyTrashCan::
 	msgbox Text_EmptyTrashCan, MSGBOX_SIGN
 	end
 
+EventScript_Diploma::
+	lock
+	special Special_ShowDiploma
+	waitstate
+	release
+	end
+
 EventScript_ShopShelf::
 	msgbox Text_ShopShelf, MSGBOX_SIGN
 	end

@@ -61,9 +61,9 @@ PetalburgCity_Gym_SetGymTrainers::
 	settrainerflag TRAINER_DUMMY
 	settrainerflag TRAINER_DUMMY
 	settrainerflag TRAINER_DUMMY
-	settrainerflag TRAINER_DUMMY10
-	settrainerflag TRAINER_ALEXIA
-	settrainerflag TRAINER_JODY
+	settrainerflag TRAINER_DUMMY
+	settrainerflag TRAINER_DUMMY
+	settrainerflag TRAINER_DUMMY
 	return
 
 FortreeCity_Gym_SetGymTrainers::
@@ -125,7 +125,7 @@ EventScript_SetCeladonGymTrainers::
 	settrainerflag TRAINER_BEAUTY_BRIDGET
 	settrainerflag TRAINER_BEAUTY_TAMIA
 	settrainerflag TRAINER_BEAUTY_LORI
-	settrainerflag TRAINER_COOLTRAINER_DUMMY10
+	settrainerflag TRAINER_COOLTRAINER_DUMMY
 	return
 
 EventScript_SetFuchsiaGymTrainers::

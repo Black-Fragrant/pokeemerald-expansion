@@ -508,6 +508,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_Vase;
     if (MetatileBehavior_IsTrashCan(metatileBehavior) == TRUE)
         return EventScript_EmptyTrashCan;
+    if (MetatileBehavior_IsDiploma(metatileBehavior) == TRUE)
+        return EventScript_Diploma;
     if (MetatileBehavior_IsKitchenShelf(metatileBehavior) == TRUE)
         return EventScript_KitchenShelf;
     if (MetatileBehavior_IsTripleDrawer(metatileBehavior) == TRUE)

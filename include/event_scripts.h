@@ -564,6 +564,7 @@ extern const u8 EventScript_BookShelf[];
 extern const u8 EventScript_PokemonCenterBookShelf[];
 extern const u8 EventScript_Vase[];
 extern const u8 EventScript_EmptyTrashCan[];
+extern const u8 EventScript_Diploma[];
 extern const u8 EventScript_KitchenShelf[];
 extern const u8 EventScript_TripleDrawer[];
 extern const u8 EventScript_BookCase[];

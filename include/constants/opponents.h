@@ -93,11 +93,11 @@
 #define TRAINER_VETERAN_GAME_FREAK_2         86
 #define TRAINER_HIKER_GAME_FREAK_1           87
 #define TRAINER_HIKER_GAME_FREAK_2           88
-#define TRAINER_DUMMY10                      89
-#define TRAINER_ALEXIA                       90
-#define TRAINER_JODY                         91
-#define TRAINER_WENDY                        92
-#define TRAINER_KEIRA                        93
+#define TRAINER_HARLEQUIN_CASTELIA_GYM_1     89
+#define TRAINER_HARLEQUIN_CASTELIA_GYM_2     90
+#define TRAINER_HARLEQUIN_CASTELIA_GYM_3     91
+#define TRAINER_HARLEQUIN_CASTELIA_GYM_4     92
+#define TRAINER_BURGH_CASTELIA_GYM           93
 #define TRAINER_BROOKE_1                     94
 #define TRAINER_JENNIFER                     95
 #define TRAINER_HOPE                         96

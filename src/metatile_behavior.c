@@ -1371,6 +1371,14 @@ bool8 MetatileBehavior_IsTrashCan(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsDiploma(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_DIPLOMA)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsKitchenShelf(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_KITCHEN_SHELF)
