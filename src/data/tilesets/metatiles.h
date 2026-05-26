@@ -510,3 +510,6 @@ const u16 gMetatileAttributes_CafeSonata[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_Route4[] = INCBIN_U16("data/tilesets/secondary/route_4/metatiles.bin");
 const u16 gMetatileAttributes_Route4[] = INCBIN_U16("data/tilesets/secondary/route_4/metatile_attributes.bin");
+
+const u16 gMetatiles_LibertyGarden[] = INCBIN_U16("data/tilesets/secondary/liberty_garden/metatiles.bin");
+const u16 gMetatileAttributes_LibertyGarden[] = INCBIN_U16("data/tilesets/secondary/liberty_garden/metatile_attributes.bin");

@@ -9822,6 +9822,16 @@
       "secondary_tileset": "gTileset_Route4",
       "border_filepath": "data/layouts/Route4_South/border.bin",
       "blockdata_filepath": "data/layouts/Route4_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_LIBERTY_GARDEN",
+      "name": "LibertyGarden_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LibertyGarden",
+      "border_filepath": "data/layouts/LibertyGarden/border.bin",
+      "blockdata_filepath": "data/layouts/LibertyGarden/map.bin"
     }
   ]
 }

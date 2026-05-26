@@ -1888,3 +1888,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Route4_South/scripts.inc"
 
 	.include "data/maps/Route4_North/scripts.inc"
+
+	.include "data/maps/LibertyGarden/scripts.inc"
