@@ -23,11 +23,6 @@
 #include "data.h"
 #include "palette.h"
 #include "contest.h"
-#include "trainer.h"
-// start bwBattleUI
-#include "bw_battle_ui.h"
-#include "config/bw_battle_ui.h"
-// end bwBattleUI
 #include "trainer_pokemon_sprites.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
@@ -628,7 +623,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     if (illusionMon != NULL)
         mon = illusionMon;
 
-    if (GetMonData(mon, MON_DATA_IS_EGG) || GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE) // Don't load GFX of egg Pokémon.
+    if (GetMonData(mon, MON_DATA_IS_EGG) || GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE) // Don't load GFX of egg pokemon.
         return;
 
     isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
@@ -694,16 +689,17 @@ void BattleGfxSfxDummy2(enum Species species)
 {
 }
 
-void DecompressTrainerFrontPic(enum TrainerPicID trainerPicId, enum BattlerId battler)
+void DecompressTrainerFrontPic(u16 frontPicId, enum BattlerId battler)
 {
     enum BattlerPosition position = GetBattlerPosition(battler);
-    DecompressDataWithHeaderWram(GetTrainerFrontPicData(trainerPicId), gMonSpritesGfxPtr->spritesGfx[position]);
-    LoadSpritePaletteWithTag(GetTrainerFrontPicPalette(trainerPicId), GetTrainerPicTag(trainerPicId, TRUE));
+    DecompressPicFromTable(&gTrainerSprites[frontPicId].frontPic,
+                           gMonSpritesGfxPtr->spritesGfx[position]);
+    LoadSpritePalette(&gTrainerSprites[frontPicId].palette);
 }
 
-void FreeTrainerFrontPicPalette(enum TrainerPicID trainerPicId)
+void FreeTrainerFrontPicPalette(u16 frontPicId)
 {
-    FreeSpritePaletteByTag(GetTrainerPicTag(trainerPicId, TRUE));
+    FreeSpritePaletteByTag(gTrainerSprites[frontPicId].palette.tag);
 }
 
 // Unused.
@@ -734,13 +730,6 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
 
 bool8 BattleLoadAllHealthBoxesGfx(u8 state)
 {
-    // start bwBattleUI
-    if (BW_BATTLE_UI && BW_BATTLE_UI_HEALTHBOX)
-    {
-        return BattleUI_LoadAllHealthboxGfx(state);
-    }
-    // end bwBattleUI
-
     bool8 retVal = FALSE;
 
     if (state != 0)
@@ -979,8 +968,8 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
 
     if (changeType == SPECIES_GFX_CHANGE_GHOST_UNVEIL)
     {
-        SetMonData(&gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, gSpeciesInfo[targetSpecies].speciesName);
-        UpdateNickInHealthbox(gHealthboxSpriteIds[battlerAtk], &gParties[B_TRAINER_1][gBattlerPartyIndexes[battlerAtk]]);
+        SetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerAtk]], MON_DATA_NICKNAME, gSpeciesInfo[targetSpecies].speciesName);
+        UpdateNickInHealthbox(gHealthboxSpriteIds[battlerAtk], &gEnemyParty[gBattlerPartyIndexes[battlerAtk]]);
         TryAddPokeballIconToHealthbox(gHealthboxSpriteIds[battlerAtk], TRUE);
     }
     else if (changeType == SPECIES_GFX_CHANGE_TRANSFORM)
@@ -1125,16 +1114,11 @@ void HandleBattleLowHpMusicChange(void)
         enum BattlerId playerBattler2 = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
         u8 battler1PartyId = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[playerBattler1]);
         u8 battler2PartyId = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[playerBattler2]);
-        struct Pokemon mon1 = GetBattlerParty(playerBattler1)[battler1PartyId];
-        struct Pokemon mon2 = GetBattlerParty(playerBattler2)[battler2PartyId];
 
-        if (GetMonData(&mon1, MON_DATA_HP) != 0)
-            HandleLowHpMusicChange(&mon1, playerBattler1);
-        if (IsDoubleBattle())
-        {
-            if (GetMonData(&mon2, MON_DATA_HP) != 0)
-                HandleLowHpMusicChange(&mon2, playerBattler2);
-        }
+        if (GetMonData(&gPlayerParty[battler1PartyId], MON_DATA_HP) != 0)
+            HandleLowHpMusicChange(&gPlayerParty[battler1PartyId], playerBattler1);
+        if (IsDoubleBattle() && GetMonData(&gPlayerParty[battler2PartyId], MON_DATA_HP) != 0)
+            HandleLowHpMusicChange(&gPlayerParty[battler2PartyId], playerBattler2);
     }
 }
 

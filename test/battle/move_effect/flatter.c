@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_FLATTER) == EFFECT_SWAGGER);
+    ASSUME(GetMoveEffect(MOVE_FLATTER) == EFFECT_FLATTER);
 }
 
 SINGLE_BATTLE_TEST("Flatter increases the target's Sp. Attack by 1 stage and confuses them")

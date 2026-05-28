@@ -82,23 +82,23 @@ SINGLE_BATTLE_TEST("Bug Bite eats the target's berry and immediately gains its e
         else if (statId != 0) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
             if (statId == STAT_ATK) {
-                MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
+                MESSAGE("Using Liechi Berry, the Attack of Wobbuffet rose!");
             } else if (statId == STAT_DEF) {
                 if (item == ITEM_GANLON_BERRY) {
-                    MESSAGE("The Ganlon Berry boosted Wobbuffet's Defense!");
+                    MESSAGE("Using Ganlon Berry, the Defense of Wobbuffet rose!");
                 } else {
-                    MESSAGE("The Kee Berry boosted Wobbuffet's Defense!");
+                    MESSAGE("Using Kee Berry, the Defense of Wobbuffet rose!");
                 }
             } else if (statId == STAT_SPDEF) {
                 if (item == ITEM_APICOT_BERRY) {
-                    MESSAGE("The Apicot Berry boosted Wobbuffet's Sp. Def!");
+                    MESSAGE("Using Apicot Berry, the Sp. Def of Wobbuffet rose!");
                 } else {
-                    MESSAGE("The Maranga Berry boosted Wobbuffet's Sp. Def!");
+                    MESSAGE("Using Maranga Berry, the Sp. Def of Wobbuffet rose!");
                 }
             } else if (statId == STAT_SPEED) {
-                MESSAGE("The Salac Berry boosted Wobbuffet's Speed!");
+                MESSAGE("Using Salac Berry, the Speed of Wobbuffet rose!");
             } else if (statId == STAT_SPATK) {
-                MESSAGE("The Petaya Berry boosted Wobbuffet's Sp. Atk!");
+                MESSAGE("Using Petaya Berry, the Sp. Atk of Wobbuffet rose!");
             }
         }
     } THEN {
@@ -127,7 +127,7 @@ SINGLE_BATTLE_TEST("Tanga Berry activates before Bug Bite")
         TURN { MOVE(player, MOVE_BUG_BITE); }
     } SCENE {
         MESSAGE("Wobbuffet used Bug Bite!");
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
         MESSAGE("The Tanga Berry weakened the damage to the opposing Wobbuffet!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BUG_BITE, player);
         HP_BAR(opponent);

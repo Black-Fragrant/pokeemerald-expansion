@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME_STAT_CHANGE(MOVE_TICKLE, attack: -1, defense: -1);
+    ASSUME(GetMoveEffect(MOVE_TICKLE) == EFFECT_TICKLE);
 }
 
 SINGLE_BATTLE_TEST("Tickle reduces the target's Attack and Defense by 1 stage each")

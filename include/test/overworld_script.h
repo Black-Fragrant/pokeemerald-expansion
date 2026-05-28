@@ -1,7 +1,7 @@
 /* Embedded DSL for testing overworld scripts in isolation.
  * The overworld is not available, so it is only possible to test
  * commands which don't affect the overworld itself, e.g. givemon can
- * be tested because it only alters gParties[B_TRAINER_0], but addobject cannot
+ * be tested because it only alters gPlayerParty, but addobject cannot
  * because it affects object events (which aren't loaded).
  *
  * OVERWORLD_SCRIPT(instructions...)
@@ -30,12 +30,12 @@
     ({ \
         const u8 *_script; \
         asm("mov %0, pc\n" \
-            "b 1f\n" \
+            "b .Lend" STR(__LINE__) "\n" \
             STR(__VA_ARGS__) \
             "\n" \
             "end\n" \
             ".balign 2\n" \
-            "1:\n" \
+            ".Lend" STR(__LINE__) ":\n" \
         : "=r" (_script)); \
         _script; \
     })

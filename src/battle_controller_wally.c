@@ -170,7 +170,6 @@ static void WallyHandleActions(enum BattlerId battler)
             PlaySE(SE_SELECT);
             ActionSelectionDestroyCursorAt(0);
             ActionSelectionCreateCursorAt(1, 0);
-            gActionSelectionCursor[battler] = 1; // bwBattleUI
             gBattleStruct->wallyWaitFrames = B_WAIT_TIME_LONG;
             gBattleStruct->wallyBattleState++;
         }
@@ -192,7 +191,7 @@ static void OpenBagAfterPaletteFade(enum BattlerId battler)
     {
         gBattlerControllerFuncs[battler] = CompleteOnChosenItem;
         ReshowBattleScreenDummy();
-        CloseMainBattleScreen();
+        FreeAllWindowBuffers();
         DoWallyTutorialBagMenu();
     }
 }
@@ -283,14 +282,14 @@ void WallyBufferExecCompleted(enum BattlerId battler)
 
 static void WallyHandleDrawTrainerPic(enum BattlerId battler)
 {
-    BtlController_HandleDrawTrainerPic(battler, TRAINER_PIC_JUNIPER, FALSE,
-                                       80, 80 + 4 * (8 - GetTrainerBackPicCoords(TRAINER_PIC_JUNIPER)->size),
+    BtlController_HandleDrawTrainerPic(battler, TRAINER_PIC_BACK_JUNIPER, FALSE,
+                                       80, 80 + 4 * (8 - gTrainerBacksprites[TRAINER_PIC_BACK_JUNIPER].coordinates.size),
                                        30);
 }
 
 static void WallyHandleTrainerSlide(enum BattlerId battler)
 {
-    BtlController_HandleTrainerSlide(battler, TRAINER_PIC_JUNIPER);
+    BtlController_HandleTrainerSlide(battler, TRAINER_PIC_BACK_JUNIPER);
 }
 
 #undef sSpeedX
@@ -367,7 +366,7 @@ static void WallyHandleFaintingCry(enum BattlerId battler)
 
 static void WallyHandleIntroTrainerBallThrow(enum BattlerId battler)
 {
-    const u16 *trainerPal = GetTrainerBackPicPalette(TRAINER_PIC_JUNIPER);
+    const u16 *trainerPal = gTrainerBacksprites[TRAINER_PIC_BACK_JUNIPER].palette.data;
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
 }
 

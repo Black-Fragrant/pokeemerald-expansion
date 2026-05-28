@@ -157,7 +157,7 @@ SINGLE_BATTLE_TEST("Rage volatile behavior on miss depends on generation")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
         MESSAGE("Wobbuffet's rage is building!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
+        MESSAGE("Wobbuffet's attack missed!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
         if (config == GEN_3) {
             MESSAGE("Wobbuffet's rage is building!");

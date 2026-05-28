@@ -313,7 +313,7 @@ script AccumulaTown_PokeCenter_EventScript_Clerk2
 			"Welcome!\n"
 			"May I help you?")
 	waitmessage
-	pokemart
+	pokemart(0)
 	msgbox("Please come again!", MSGBOX_DEFAULT)
 	release
 	end

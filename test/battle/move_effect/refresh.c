@@ -20,22 +20,7 @@ SINGLE_BATTLE_TEST("Refresh cures the user of burn, frostbite, poison, and paral
     } WHEN {
         TURN { MOVE(player, MOVE_REFRESH); }
     } SCENE {
-        switch (status1)
-        {
-            case STATUS1_POISON:
-            case STATUS1_TOXIC_POISON:
-                MESSAGE("Wobbuffet was cured of its poisoning!");
-                break;
-            case STATUS1_BURN:
-                MESSAGE("Wobbuffet's burn was cured!");
-                break;
-            case STATUS1_PARALYSIS:
-                MESSAGE("Wobbuffet was cured of paralysis!");
-                break;
-            case STATUS1_FROSTBITE:
-                MESSAGE("Wobbuffet's frostbite was cured!");
-                break;
-        }
+        MESSAGE("Wobbuffet's status returned to normal!");
         STATUS_ICON(player, none: TRUE);
     }
 }

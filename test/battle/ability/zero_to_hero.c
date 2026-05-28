@@ -128,7 +128,7 @@ SINGLE_BATTLE_TEST("Imposter doesn't apply the heroic transformation message whe
         ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
         MESSAGE("Palafin underwent a heroic transformation!");
         ABILITY_POPUP(opponent, ABILITY_IMPOSTER);
-        MESSAGE("The opposing Ditto transformed into Palafin!");
+        MESSAGE("The opposing Ditto transformed into Palafin using Imposter!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_ZERO_TO_HERO);
             MESSAGE("The opposing Ditto underwent a heroic transformation!");

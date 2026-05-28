@@ -1003,7 +1003,7 @@ u16 GetWeekCount(void)
 
 u8 GetLeadMonFriendshipScore(void)
 {
-    return GetMonFriendshipScore(&gParties[B_TRAINER_0][GetLeadMonIndex()]);
+    return GetMonFriendshipScore(&gPlayerParty[GetLeadMonIndex()]);
 }
 
 u8 GiveChosenMonMassage(void)
@@ -1332,7 +1332,7 @@ void ResetTrickHouseNuggetFlag(void)
 
 bool8 CheckLeadMonCool(void)
 {
-    if (GetMonData(&gParties[B_TRAINER_0][GetLeadMonIndex()], MON_DATA_COOL) < 200)
+    if (GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_COOL) < 200)
         return FALSE;
 
     return TRUE;
@@ -1340,7 +1340,7 @@ bool8 CheckLeadMonCool(void)
 
 bool8 CheckLeadMonBeauty(void)
 {
-    if (GetMonData(&gParties[B_TRAINER_0][GetLeadMonIndex()], MON_DATA_BEAUTY) < 200)
+    if (GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_BEAUTY) < 200)
         return FALSE;
 
     return TRUE;
@@ -1348,7 +1348,7 @@ bool8 CheckLeadMonBeauty(void)
 
 bool8 CheckLeadMonCute(void)
 {
-    if (GetMonData(&gParties[B_TRAINER_0][GetLeadMonIndex()], MON_DATA_CUTE) < 200)
+    if (GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_CUTE) < 200)
         return FALSE;
 
     return TRUE;
@@ -1356,7 +1356,7 @@ bool8 CheckLeadMonCute(void)
 
 bool8 CheckLeadMonSmart(void)
 {
-    if (GetMonData(&gParties[B_TRAINER_0][GetLeadMonIndex()], MON_DATA_SMART) < 200)
+    if (GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_SMART) < 200)
         return FALSE;
 
     return TRUE;
@@ -1364,7 +1364,7 @@ bool8 CheckLeadMonSmart(void)
 
 bool8 CheckLeadMonTough(void)
 {
-    if (GetMonData(&gParties[B_TRAINER_0][GetLeadMonIndex()], MON_DATA_TOUGH) < 200)
+    if (GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_TOUGH) < 200)
         return FALSE;
 
     return TRUE;
@@ -1377,7 +1377,7 @@ void IsGrassTypeInParty(void)
     struct Pokemon *pokemon;
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        pokemon = &gParties[B_TRAINER_0][i];
+        pokemon = &gPlayerParty[i];
         if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && !GetMonData(pokemon, MON_DATA_IS_EGG))
         {
             species = GetMonData(pokemon, MON_DATA_SPECIES);
@@ -1403,7 +1403,7 @@ void IsFightingTypeInParty(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        pokemon = &gParties[B_TRAINER_0][i];
+        pokemon = &gPlayerParty[i];
 
         if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES)
          && !GetMonData(pokemon, MON_DATA_IS_EGG))
@@ -1492,7 +1492,7 @@ void RemoveCameraObject(void)
 
 u8 GetPokeblockNameByMonNature(void)
 {
-    return CopyMonFavoritePokeblockName(GetNature(&gParties[B_TRAINER_0][GetLeadMonIndex()]), gStringVar1);
+    return CopyMonFavoritePokeblockName(GetNature(&gPlayerParty[GetLeadMonIndex()]), gStringVar1);
 }
 
 void GetSecretBaseNearbyMapName(void)
@@ -1595,7 +1595,7 @@ bool8 FoundAbandonedShipRoom6Key(void)
 
 bool8 LeadMonHasEffortRibbon(void)
 {
-    return GetMonData(&gParties[B_TRAINER_0][GetLeadMonIndex()], MON_DATA_EFFORT_RIBBON);
+    return GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_EFFORT_RIBBON);
 }
 
 void GiveLeadMonEffortRibbon(void)
@@ -1605,7 +1605,7 @@ void GiveLeadMonEffortRibbon(void)
     IncrementGameStat(GAME_STAT_RECEIVED_RIBBONS);
     FlagSet(FLAG_SYS_RIBBON_GET);
     ribbonSet = TRUE;
-    leadMon = &gParties[B_TRAINER_0][GetLeadMonIndex()];
+    leadMon = &gPlayerParty[GetLeadMonIndex()];
     SetMonData(leadMon, MON_DATA_EFFORT_RIBBON, &ribbonSet);
     if (GetRibbonCount(leadMon) > NUM_CUTIES_RIBBONS)
         TryPutSpotTheCutiesOnAir(leadMon, MON_DATA_EFFORT_RIBBON);
@@ -1613,7 +1613,7 @@ void GiveLeadMonEffortRibbon(void)
 
 bool8 Special_AreLeadMonEVsMaxedOut(void)
 {
-    if (GetMonEVCount(&gParties[B_TRAINER_0][GetLeadMonIndex()]) >= MAX_TOTAL_EVS)
+    if (GetMonEVCount(&gPlayerParty[GetLeadMonIndex()]) >= MAX_TOTAL_EVS)
         return TRUE;
 
     return FALSE;
@@ -1647,16 +1647,16 @@ void SetShoalItemFlag(u16 unused)
 void LoadWallyZigzagoon(void)
 {
     u16 monData;
-    CreateRandomMon(&gParties[B_TRAINER_0][0], SPECIES_MINCCINO, 5);
+    CreateRandomMon(&gPlayerParty[0], SPECIES_MINCCINO, 5);
     monData = TRUE;
-    SetMonData(&gParties[B_TRAINER_0][0], MON_DATA_ABILITY_NUM, &monData);
+    SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &monData);
     monData = MOVE_TACKLE;
-    SetMonData(&gParties[B_TRAINER_0][0], MON_DATA_MOVE1, &monData);
+    SetMonData(&gPlayerParty[0], MON_DATA_MOVE1, &monData);
     monData = MOVE_TAIL_WHIP;
-    SetMonData(&gParties[B_TRAINER_0][0], MON_DATA_MOVE2, &monData);
+    SetMonData(&gPlayerParty[0], MON_DATA_MOVE2, &monData);
     monData = MOVE_NONE;
-    SetMonData(&gParties[B_TRAINER_0][0], MON_DATA_MOVE3, &monData);
-    SetMonData(&gParties[B_TRAINER_0][0], MON_DATA_MOVE4, &monData);
+    SetMonData(&gPlayerParty[0], MON_DATA_MOVE3, &monData);
+    SetMonData(&gPlayerParty[0], MON_DATA_MOVE4, &monData);
 }
 
 bool8 IsStarterInParty(void)
@@ -1666,7 +1666,7 @@ bool8 IsStarterInParty(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) == starter)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) == starter)
             return TRUE;
     }
     return FALSE;
@@ -1751,8 +1751,8 @@ u8 GetLeadMonIndex(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
-         && GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE)
             return i;
     }
     return 0;
@@ -1760,7 +1760,7 @@ u8 GetLeadMonIndex(void)
 
 enum Species ScriptGetPartyMonSpecies(void)
 {
-    return GetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL);
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL);
 }
 
 enum Species ScriptGetSelectedMonSpecies(void)
@@ -1877,7 +1877,7 @@ bool8 IsBadEggInParty(void)
 
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SANITY_IS_BAD_EGG) == TRUE)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_IS_BAD_EGG) == TRUE)
             return TRUE;
     }
 
@@ -3446,17 +3446,17 @@ void DoDeoxysRockInteraction(void)
 }
 
 static const u16 sDeoxysRockPalettes[DEOXYS_ROCK_LEVELS][16] = {
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_1.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_2.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_3.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_4.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_5.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_6.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_7.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_8.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_9.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_10.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_effects/palettes/deoxys_rock_11.pal", ".gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_1.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_2.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_3.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_4.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_5.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_6.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_7.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_8.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_9.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_10.gbapal"),
+    INCBIN_U16("graphics/field_effects/palettes/deoxys_rock_11.gbapal"),
 };
 
 static const u8 sDeoxysRockCoords[DEOXYS_ROCK_LEVELS][2] = {
@@ -4501,7 +4501,7 @@ void TrySkyBattle(void)
     }
     for (i = 0; i < CalculatePlayerPartyCount(); i++)
     {
-        struct Pokemon* pokemon = &gParties[B_TRAINER_0][i];
+        struct Pokemon* pokemon = &gPlayerParty[i];
         if (CanMonParticipateInSkyBattle(pokemon) && GetMonData(pokemon, MON_DATA_HP) > 0)
         {
             PreparePartyForSkyBattle();
@@ -4522,7 +4522,7 @@ void PreparePartyForSkyBattle(void)
 
     for (i = 0; i < partyCount; i++)
     {
-        struct Pokemon* pokemon = &gParties[B_TRAINER_0][i];
+        struct Pokemon* pokemon = &gPlayerParty[i];
 
         if (CanMonParticipateInSkyBattle(pokemon))
             participatingPokemonSlot += 1 << i;
@@ -4576,7 +4576,7 @@ bool32 CheckPartyHasSpecies(enum Species givenSpecies)
     u32 partyIndex;
 
     for (partyIndex = 0; partyIndex < CalculatePlayerPartyCount(); partyIndex++)
-        if (GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_SPECIES) == givenSpecies)
+        if (GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES) == givenSpecies)
             return TRUE;
 
     return FALSE;
@@ -4617,14 +4617,13 @@ static void UIEndTask(u8 taskId)
 #define tState         data[0]
 #define tPartyIndex    data[1]
 #define tMove          data[2]
-#define tRecoverPp     data[3]
 
 static void UIShowMoveList(u8 taskId)
 {
     gSpecialVar_0x8000 = gTasks[taskId].tPartyIndex;
     gSpecialVar_0x8001 = gTasks[taskId].tMove;
     DestroyTask(taskId);
-    ShowSelectMovePokemonSummaryScreen(gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, CB2_ReturnToFieldWhileLearningMove, gTasks[taskId].tMove);
+    ShowSelectMovePokemonSummaryScreen(gPlayerParty, gTasks[taskId].tPartyIndex, CB2_ReturnToFieldWhileLearningMove, gTasks[taskId].tMove);
 }
 
 static const struct MoveLearnUI sMoveLearnUI =
@@ -4656,7 +4655,6 @@ void CanTeachMoveBoxMon(void)
     gTasks[taskId].tState = GetLearnMoveStartState();
     gTasks[taskId].tPartyIndex = gSpecialVar_0x8004;
     gTasks[taskId].tMove = gSpecialVar_0x8005;
-    gTasks[taskId].tRecoverPp = TRUE;
 }
 
 static void FieldCB_ContinueLearningMove(void)
@@ -4705,25 +4703,25 @@ void GetCodeFeedback(void)
 void SetHiddenNature(void)
 {
     u32 hiddenNature = gSpecialVar_Result;
-    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_HIDDEN_NATURE, &hiddenNature);
-    CalculateMonStats(&gParties[B_TRAINER_0][gSpecialVar_0x8004]);
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HIDDEN_NATURE, &hiddenNature);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
 
 void SetAbility(void)
 {
     u32 ability = gSpecialVar_Result;
-    SetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &ability);
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &ability);
 }
 
 void DaisyMassageServices(void)
 {
-    AdjustFriendship(&gParties[B_TRAINER_0][gSpecialVar_0x8004], FRIENDSHIP_EVENT_MASSAGE);
+    AdjustFriendship(&gPlayerParty[gSpecialVar_0x8004], FRIENDSHIP_EVENT_MASSAGE);
     VarSet(VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 0);
 }
 
 u8 GetLeadMonFriendship(void)
 {
-    struct Pokemon * pokemon = &gParties[B_TRAINER_0][GetLeadMonIndex()];
+    struct Pokemon * pokemon = &gPlayerParty[GetLeadMonIndex()];
     if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == 255)
         return 6;
     else if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 200)
@@ -4767,7 +4765,7 @@ bool8 CapeBrinkGetMoveToTeachLeadPokemon(void)
     struct Pokemon *leadMon;
 
     leadMonSlot = GetLeadMonIndex();
-    leadMon = &gParties[B_TRAINER_0][leadMonSlot];
+    leadMon = &gPlayerParty[leadMonSlot];
 
     if (GetMonData(leadMon, MON_DATA_FRIENDSHIP) != 255)
         return FALSE;
@@ -5059,7 +5057,7 @@ bool8 DoesPlayerPartyContainSpecies(void)
     u8 i;
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG, NULL) == gSpecialVar_0x8004)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == gSpecialVar_0x8004)
             return TRUE;
     }
     return FALSE;
@@ -5542,30 +5540,30 @@ void BrailleCursorToggle(void)
 }
 
 static const u16 sEliteFourLightingPalettes[][16] = {
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_0.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_1.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_2.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_3.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_4.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_5.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_6.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_7.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_8.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_9.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_10.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/elite_four_lighting_11.pal", ".gbapal")
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_0.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_1.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_2.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_3.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_4.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_5.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_6.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_7.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_8.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_9.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_10.gbapal"),
+    INCBIN_U16("graphics/field_specials/elite_four_lighting_11.gbapal")
 };
 
 static const u16 sChampionRoomLightingPalettes[][16] = {
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_0.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_1.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_2.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_3.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_4.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_5.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_6.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_7.pal", ".gbapal"),
-    INCGFX_U16("graphics/field_specials/champion_room_lighting_8.pal", ".gbapal")
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_0.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_1.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_2.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_3.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_4.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_5.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_6.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_7.gbapal"),
+    INCBIN_U16("graphics/field_specials/champion_room_lighting_8.gbapal")
 };
 
 static const u8 sEliteFourLightingTimers[] = {
@@ -5754,8 +5752,8 @@ bool8 PlayerPartyContainsSpeciesWithPlayerID(void)
     u8 i;
     for (i = 0; i < playerCount; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG, NULL) == gSpecialVar_0x8004
-            && GetPlayerIDAsU32() == GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_OT_ID, NULL))
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == gSpecialVar_0x8004
+            && GetPlayerIDAsU32() == GetMonData(&gPlayerParty[i], MON_DATA_OT_ID, NULL))
             return TRUE;
     }
     return FALSE;
@@ -5855,8 +5853,8 @@ void UpdateTrainerCardPhotoIcons(void)
     partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        species[i] = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES_OR_EGG, NULL);
-        personality[i] = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_PERSONALITY, NULL);
+        species[i] = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL);
+        personality[i] = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, NULL);
     }
     VarSet(VAR_TRAINER_CARD_MON_ICON_1, SpeciesToMailSpecies(species[0], personality[0]));
     VarSet(VAR_TRAINER_CARD_MON_ICON_2, SpeciesToMailSpecies(species[1], personality[1]));

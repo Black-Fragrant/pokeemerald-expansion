@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME_STAT_CHANGE(MOVE_VICTORY_DANCE, attack: +1, defense: +1, speed: +1);
+    ASSUME(GetMoveEffect(MOVE_VICTORY_DANCE) == EFFECT_VICTORY_DANCE);
 }
 
 SINGLE_BATTLE_TEST("Victory Dance increases the user's Attack, Defense and Speed by 1 stage each")

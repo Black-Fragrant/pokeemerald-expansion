@@ -119,7 +119,7 @@ SINGLE_BATTLE_TEST("Echoed Voice's power is increased even if it misses")
     s16 damage[3];
 
     GIVEN {
-        ASSUME_STAT_CHANGE(MOVE_SAND_ATTACK, accuracy: -1);
+        ASSUME(GetMoveEffect(MOVE_SAND_ATTACK) == EFFECT_ACCURACY_DOWN);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -132,7 +132,7 @@ SINGLE_BATTLE_TEST("Echoed Voice's power is increased even if it misses")
         HP_BAR(opponent, captureDamage: &damage[0]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ECHOED_VOICE, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
+        MESSAGE("Wobbuffet's attack missed!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ECHOED_VOICE, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
     } THEN {

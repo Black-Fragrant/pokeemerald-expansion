@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME_STAT_CHANGE(MOVE_MEDITATE, attack: +1);
+    ASSUME(GetMoveEffect(MOVE_MEDITATE) == EFFECT_ATTACK_UP);
 }
 
 SINGLE_BATTLE_TEST("Meditate raises Attack by 1 stage", s16 damage)
