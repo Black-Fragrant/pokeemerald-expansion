@@ -44,6 +44,7 @@ prefabs.json
 /pokeemerald-*.png
 /pokefirered-*.png
 /pokeleafgreen-*.png
+/pokefireblack-*.png
 src/data/map_group_count.h
 include/constants/heal_locations.h
 include/constants/script_commands.h
