@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME_STAT_CHANGE(MOVE_AMNESIA, spDef: +2);
+    ASSUME(GetMoveEffect(MOVE_AMNESIA) == EFFECT_SPECIAL_DEFENSE_UP_2);
 }
 
 SINGLE_BATTLE_TEST("Amnesia increases the user's Sp. Defense by 2 stages")

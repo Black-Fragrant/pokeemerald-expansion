@@ -34,7 +34,6 @@ void TestRunner_Battle_CheckBattleRecordActionType(enum BattlerId battlerId, u32
 u32 TestRunner_Battle_GetForcedAbility(enum BattleTrainer trainer, u32 partyIndex);
 u32 TestRunner_Battle_GetChosenGimmick(enum BattleTrainer trainer, u32 partyIndex);
 u32 TestRunner_Battle_GetForcedEnvironment(void);
-void TestRunner_Battle_RecordEffectivenessSound(u32 battlerId, u32 soundId);
 
 #else
 
@@ -52,10 +51,12 @@ void TestRunner_Battle_RecordEffectivenessSound(u32 battlerId, u32 soundId);
 #define TestRunner_Battle_CheckAiMoveScores(...) (void)0
 #define TestRunner_Battle_AISetScore(...) (void)0
 #define TestRunner_Battle_AIAdjustScore(...) (void)0
+
 #define TestRunner_Battle_CheckBattleRecordActionType(...) (void)0
+
 #define TestRunner_Battle_GetForcedAbility(...) (u32)0
+
 #define TestRunner_Battle_GetChosenGimmick(...) (u32)0
-#define TestRunner_Battle_RecordEffectivenessSound(...) (u32)0
 
 #define TestRunner_Battle_GetForcedEnvironment(...) (u8)0
 

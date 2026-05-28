@@ -64,7 +64,6 @@ enum PACKED ItemSortType
 };
 
 typedef void (*ItemUseFunc)(u8);
-typedef bool32 (*ShopCriteriaFunc)(enum Item);
 
 struct ItemInfo
 {
@@ -86,7 +85,6 @@ struct ItemInfo
     u8 flingPower;
     const u32 *iconPic;
     const u16 *iconPalette;
-    ShopCriteriaFunc shopCriteriaFunc;
 };
 
 struct ALIGNED(2) BagPocket
@@ -279,7 +277,5 @@ u32 GetItemStatus1Mask(enum Item itemId);
 bool32 ItemHasVolatileFlag(enum Item itemId, enum Volatile volatile);
 u32 GetItemSellPrice(enum Item itemId);
 bool32 IsHoldEffectChoice(enum HoldEffect holdEffect);
-ShopCriteriaFunc GetItemShopCriteriaFunc(u32 itemId);
-bool32 IsItemShopCriteriaFulfilled(u32 itemId);
 
 #endif // GUARD_ITEM_H

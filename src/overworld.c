@@ -70,7 +70,6 @@
 #include "tv.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
-#include "wild_encounter_ow.h"
 #include "vs_seeker.h"
 #include "frontier_util.h"
 #include "constants/abilities.h"
@@ -446,10 +445,10 @@ void Overworld_ResetBattleFlagsAndVars(void)
     #endif
 
     FlagClear(B_FLAG_INVERSE_BATTLE);
-    FlagClear(WE_FLAG_FORCE_DOUBLE_WILD);
-    FlagClear(WE_SMART_WILD_AI_FLAG);
-    FlagClear(WE_FLAG_NO_CATCHING);
-    FlagClear(WE_FLAG_NO_RUNNING);
+    FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
+    FlagClear(B_SMART_WILD_AI_FLAG);
+    FlagClear(B_FLAG_NO_CATCHING);
+    FlagClear(B_FLAG_NO_RUNNING);
     FlagClear(B_FLAG_DYNAMAX_BATTLE);
     FlagClear(B_FLAG_SKY_BATTLE);
     FlagClear(B_FLAG_NO_WHITEOUT);
@@ -927,7 +926,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
          || gMapHeader.regionMapSectionId != sLastMapSectionId)
             ShowMapNamePopup();
     }
-    SetMinimumOWESpawnTimer();
 }
 
 static void LoadMapFromWarp(bool32 a1)
@@ -988,7 +986,6 @@ static void LoadMapFromWarp(bool32 a1)
         UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
         InitSecretBaseAppearance(TRUE);
     }
-    SetMinimumOWESpawnTimer();
 }
 
 void ResetInitialPlayerAvatarState(void)
@@ -1396,28 +1393,8 @@ void Overworld_FadeOutMapMusic(void)
     FadeOutMapMusic(4);
 }
 
-static bool32 ShouldPlayVanillaAmbientCry(void)
-{
-    switch (OW_AMBIENT_CRIES)
-    {
-    case OW_AMBIENT_CRIES_VANILLA:
-        return TRUE;
-    case OW_AMBIENT_CRIES_OWE_PRIORITY:
-        return !TryPlayAmbientCryOWE();
-    case OW_AMBIENT_CRIES_OWE_ONLY:
-        TryPlayAmbientCryOWE();
-        return FALSE;
-    case OW_AMBIENT_CRIES_NONE:
-    default:
-        return FALSE;
-    }
-}
-
 static void PlayAmbientCry(void)
 {
-    if (!ShouldPlayVanillaAmbientCry())
-        return;
-    
     s16 x, y;
     s8 pan;
     s8 volume;
@@ -1472,8 +1449,8 @@ void UpdateAmbientCry(s16 *state, u16 *delayCounter)
         monsCount = CalculatePlayerPartyCount();
         for (i = 0; i < monsCount; i++)
         {
-            if (!GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SANITY_IS_EGG)
-                && GetMonAbility(&gParties[B_TRAINER_0][0]) == ABILITY_SWARM)
+            if (!GetMonData(&gPlayerParty[i], MON_DATA_SANITY_IS_EGG)
+                && GetMonAbility(&gPlayerParty[0]) == ABILITY_SWARM)
             {
                 divBy = 2;
                 break;
@@ -1845,7 +1822,6 @@ static void OverworldBasic(void)
             ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
-    UpdateOverworldWildEncounter();
 }
 
 // This CB2 is used when starting

@@ -12,7 +12,7 @@ gText_WantsToFly::
 
 EventScript_Follower::
 	lock
-	bufferlivemonnickname STR_VAR_1
+	bufferlivemonnickname 0
 	playfirstmoncry
 	getfolloweraction
 EventScript_FollowerEnd::

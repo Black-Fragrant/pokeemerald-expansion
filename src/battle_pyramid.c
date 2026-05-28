@@ -1188,7 +1188,7 @@ static void ClearPyramidPartyHeldItems(void)
         for (j = 0; j < MAX_FRONTIER_PARTY_SIZE; j++)
         {
             if (gSaveBlock2Ptr->frontier.selectedPartyMons[j] != 0 && gSaveBlock2Ptr->frontier.selectedPartyMons[j] - 1 == i)
-                SetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM, &item);
+                SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &item);
         }
     }
 }
@@ -1222,19 +1222,19 @@ static void RestorePyramidPlayerParty(void)
         int partyIndex = gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1;
         for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
         {
-            if (GetMonData(GetSavedPlayerPartyMon(partyIndex), MON_DATA_SPECIES) == GetMonData(&gParties[B_TRAINER_0][j], MON_DATA_SPECIES))
+            if (GetMonData(GetSavedPlayerPartyMon(partyIndex), MON_DATA_SPECIES) == GetMonData(&gPlayerParty[j], MON_DATA_SPECIES))
             {
                 for (k = 0; k < MAX_MON_MOVES; k++)
                 {
                     for (l = 0; l < MAX_MON_MOVES; l++)
                     {
-                        if (GetMonData(GetSavedPlayerPartyMon(partyIndex), MON_DATA_MOVE1 + l) == GetMonData(&gParties[B_TRAINER_0][j], MON_DATA_MOVE1 + k))
+                        if (GetMonData(GetSavedPlayerPartyMon(partyIndex), MON_DATA_MOVE1 + l) == GetMonData(&gPlayerParty[j], MON_DATA_MOVE1 + k))
                             break;
                     }
                     if (l == MAX_MON_MOVES)
-                        SetMonMoveSlot(&gParties[B_TRAINER_0][j], MOVE_SKETCH, k);
+                        SetMonMoveSlot(&gPlayerParty[j], MOVE_SKETCH, k);
                 }
-                SavePlayerPartyMon(partyIndex, &gParties[B_TRAINER_0][j]);
+                SavePlayerPartyMon(partyIndex, &gPlayerParty[j]);
                 gSelectedOrderFromParty[j] = partyIndex + 1;
                 break;
             }
@@ -1395,7 +1395,7 @@ static bool32 CheckBattlePyramidEvoRequirement(enum Species species, const u16 *
 }
 
 extern u32 GetTotalBaseStat(enum Species species);
-void GenerateBattlePyramidWildMon(enum Species forceSpecies)
+void GenerateBattlePyramidWildMon(void)
 {
     u8 name[POKEMON_NAME_LENGTH + 1];
     int i, j;
@@ -1403,7 +1403,7 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     u32 lvl = gSaveBlock2Ptr->frontier.lvlMode;
     u16 round = (gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvl] / 7) % TOTAL_PYRAMID_ROUNDS;
     const struct BattlePyramidRequirement *reqs = &sBattlePyramidRequirementsByRound[round];
-    enum Species species = forceSpecies;
+    enum Species species;
     u32 bstLim;
     u16 *moves = NULL;
     u16 *abilities = NULL;
@@ -1418,13 +1418,12 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     if (round >= TOTAL_PYRAMID_ROUNDS)
         round = TOTAL_PYRAMID_ROUNDS - 1;
 
-    id = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES) - 1;   // index in table (0-11) -> higher index is lower probability
+    id = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) - 1;   // index in table (0-11) -> higher index is lower probability
     bstLim = 450 + (25*round) + (5*id);                             // higher BST limit for 'rarer' wild mon rolls
 
     while (1)
     {
-        if (!forceSpecies)
-            species = Random() % NUM_SPECIES;
+        species = Random() % NUM_SPECIES;
 
         // check if base species
         if (GET_BASE_SPECIES_ID(species) != species)
@@ -1484,9 +1483,9 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     }
 
     // Set species, name
-    SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES, &species);
+    SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &species);
     StringCopy(name, GetSpeciesName(species));
-    SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_NICKNAME, &name);
+    SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &name);
 
     // set level
     if (lvl != FRONTIER_LVL_50)
@@ -1498,12 +1497,12 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     {
         lvl = 50 - (5 + (Random() % (TOTAL_PYRAMID_ROUNDS - round)/4));
     }
-    SetMonData(&gParties[B_TRAINER_1][0],
+    SetMonData(&gEnemyParty[0],
                MON_DATA_EXP,
                &gExperienceTables[gSpeciesInfo[species].growthRate][lvl]);
 
     // Give initial moves and replace one with desired move
-    GiveBoxMonInitialMoveset(&gParties[B_TRAINER_1][0].box);
+    GiveBoxMonInitialMoveset(&gEnemyParty[0].box);
     if (moves != NULL)
     {
         // get a random move to give
@@ -1511,10 +1510,10 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
         while (1)
         {
             id = moves[Random() % moveCount];
-            if (!MonKnowsMove(&gParties[B_TRAINER_1][0], id))
+            if (!MonKnowsMove(&gEnemyParty[0], id))
             {
                 // replace random move
-                SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_MOVE1 + Random() % MAX_MON_MOVES, &id);
+                SetMonData(&gEnemyParty[0], MON_DATA_MOVE1 + Random() % MAX_MON_MOVES, &id);
                 break;
             }
             i++;
@@ -1527,13 +1526,13 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     // Initialize a random ability num
     if (GetSpeciesAbility(species, 1))
     {
-        i = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_PERSONALITY) % 2;
-        SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &i);
+        i = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY) % 2;
+        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &i);
     }
     else
     {
         i = 0;
-        SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &i);
+        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &i);
     }
 
     // Try to replace with desired ability
@@ -1548,7 +1547,7 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
                 if (id == GetSpeciesAbility(species, j))
                 {
                     // Set this ability num
-                    SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &id);
+                    SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &id);
                     break;
                 }
             }
@@ -1562,13 +1561,13 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     {
         id = (Random() % 17) + 15;
         for (i = 0; i < NUM_STATS; i++)
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HP_IV + i, &id);
+            SetMonData(&gEnemyParty[0], MON_DATA_HP_IV + i, &id);
     }
 
-    CalculateMonStats(&gParties[B_TRAINER_1][0]);
+    CalculateMonStats(&gEnemyParty[0]);
 }
 #else
-void GenerateBattlePyramidWildMon(enum Species forceSpecies)
+void GenerateBattlePyramidWildMon(void)
 {
     u8 name[POKEMON_NAME_LENGTH + 1];
     int i;
@@ -1585,10 +1584,10 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     else
         wildMons = sLevel50WildMonPointers[round];
 
-    id = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES) - 1;
-    SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES, &wildMons[id].species);
+    id = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) - 1;
+    SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &wildMons[id].species);
     StringCopy(name, GetSpeciesName(wildMons[id].species));
-    SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_NICKNAME, &name);
+    SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &name);
     if (lvl != FRONTIER_LVL_50)
     {
         lvl = SetFacilityPtrsGetLevel();
@@ -1599,7 +1598,7 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     {
         lvl = wildMons[id].lvl - 5 + ((Random() % 11));
     }
-    SetMonData(&gParties[B_TRAINER_1][0],
+    SetMonData(&gEnemyParty[0],
                MON_DATA_EXP,
                &gExperienceTables[gSpeciesInfo[wildMons[id].species].growthRate][lvl]);
 
@@ -1607,25 +1606,25 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     {
     case 0:
     case 1:
-        SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &wildMons[id].abilityNum);
+        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &wildMons[id].abilityNum);
         break;
     case ABILITY_RANDOM:
     default:
         if (GetSpeciesAbility(wildMons[id].species, 1))
         {
-            i = GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_PERSONALITY) % 2;
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &i);
+            i = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY) % 2;
+            SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &i);
         }
         else
         {
             i = 0;
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_ABILITY_NUM, &i);
+            SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &i);
         }
         break;
     }
 
     for (i = 0; i < MAX_MON_MOVES; i++)
-        SetMonMoveSlot(&gParties[B_TRAINER_1][0], wildMons[id].moves[i], i);
+        SetMonMoveSlot(&gEnemyParty[0], wildMons[id].moves[i], i);
 
     // UB: Reading outside the array as lvl was used for mon level instead of frontier lvl mode.
     #ifndef UBFIX
@@ -1636,9 +1635,9 @@ void GenerateBattlePyramidWildMon(enum Species forceSpecies)
     {
         id = (Random() % 17) + 15;
         for (i = 0; i < NUM_STATS; i++)
-            SetMonData(&gParties[B_TRAINER_1][0], MON_DATA_HP_IV + i, &id);
+            SetMonData(&gEnemyParty[0], MON_DATA_HP_IV + i, &id);
     }
-    CalculateMonStats(&gParties[B_TRAINER_1][0]);
+    CalculateMonStats(&gEnemyParty[0]);
 }
 #endif
 

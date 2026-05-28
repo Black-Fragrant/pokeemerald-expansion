@@ -3,7 +3,6 @@ ApricornTreeScript::
 	faceplayer
 	message ApricornTree_Text_Intro
 	waitmessage
-	waitbuttonpress
 	special ObjectEventInteractionGetApricornTreeData
 	goto_if_gt VAR_0x8005, 0, ApricornTree_EventScript_WantToPick
 	message ApricornTree_Text_Empty
@@ -67,8 +66,8 @@ ApricornTree_Text_Empty:
 	.string "There are no Apricorns…$"
 
 ApricornTree_Text_WantToPick:
-	.string "…It's {STR_VAR_2} {STR_VAR_1}!\n"
-	.string "Do you want to pick the\l"
+	.string "…It's {STR_VAR_2} {STR_VAR_1}!\p"
+	.string "Do you want to pick the\n"
 	.string "{STR_VAR_1}?$"
 
 ApricornTree_Text_PickedTheApricorn:
@@ -82,9 +81,9 @@ ApricornTree_Text_PutAwayApricorn:
 
 ApricornTree_Text_PocketFull:
 	.string "The BAG's {STR_VAR_3} POCKET is full.\p"
-	.string "{PLAYER} gave up on the\n"
+	.string "{PLAYER} gave up on the\p"
 	.string "{STR_VAR_1}…$"
 
 ApricornTree_Text_ApricornLeftUnpicked:
-	.string "{PLAYER} gave up on the\n"
+	.string "{PLAYER} gave up on the\p"
 	.string "{STR_VAR_1}…$"

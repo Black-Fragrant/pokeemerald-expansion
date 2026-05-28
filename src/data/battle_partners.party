@@ -4,6 +4,7 @@ Class: Pkmn Trainer 1
 Pic: Brendan
 Gender: Male
 Music: Male
+Back Pic: Brendan
 
 === PARTNER_STEVEN ===
 Name: STEVEN
@@ -11,6 +12,7 @@ Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
+Back Pic: Steven
 AI: Basic Trainer
 
 Metang
@@ -49,6 +51,7 @@ Class: PKMN Trainer 1
 Pic: Cheren
 Gender: Male
 Music: Male
+Back Pic: Cheren
 AI: Check Bad Move
 
 Tepig @ Oran Berry
@@ -77,6 +80,7 @@ Class: PKMN Trainer 1
 Pic: Cheren
 Gender: Male
 Music: Male
+Back Pic: Cheren
 AI: Check Bad Move
 
 Oshawott @ Oran Berry
@@ -105,6 +109,7 @@ Class: PKMN Trainer 1
 Pic: Cheren
 Gender: Male
 Music: Male
+Back Pic: Cheren
 AI: Check Bad Move
 
 Snivy @ Oran Berry

@@ -1,9 +1,10 @@
 #include "global.h"
 #include "test/battle.h"
 
+
 ASSUMPTIONS
 {
-    ASSUME_STAT_CHANGE(MOVE_WORK_UP, attack: +1, spAtk: +1);
+    ASSUME(GetMoveEffect(MOVE_WORK_UP) == EFFECT_ATTACK_SPATK_UP);
 }
 
 SINGLE_BATTLE_TEST("Work Up raises Attack and Sp. Attack by 1 stage each", s16 damage)

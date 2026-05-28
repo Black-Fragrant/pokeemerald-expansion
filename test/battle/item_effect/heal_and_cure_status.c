@@ -15,7 +15,6 @@ SINGLE_BATTLE_TEST("Full Restore restores a battler's HP and cures any primary s
     PARAMETRIZE { status = STATUS1_POISON; }
     PARAMETRIZE { status = STATUS1_TOXIC_POISON; }
     PARAMETRIZE { status = STATUS1_SLEEP; }
-    PARAMETRIZE { status = STATUS1_FROSTBITE; }
     PARAMETRIZE { status = STATUS1_NONE; }
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { HP(1); MaxHP(300); Status1(status); }
@@ -25,28 +24,7 @@ SINGLE_BATTLE_TEST("Full Restore restores a battler's HP and cures any primary s
     } SCENE {
         MESSAGE("Wobbuffet had its HP restored.");
         if (status != STATUS1_NONE) {
-            switch (status)
-            {
-                case STATUS1_BURN:
-                    MESSAGE("Wobbuffet's burn was cured!");
-                    break;
-                case STATUS1_FREEZE:
-                    MESSAGE("Wobbuffet thawed out!");
-                    break;
-                case STATUS1_PARALYSIS:
-                    MESSAGE("Wobbuffet was cured of paralysis!");
-                    break;
-                case STATUS1_POISON:
-                case STATUS1_TOXIC_POISON:
-                    MESSAGE("Wobbuffet was cured of its poisoning!");
-                    break;
-                case STATUS1_SLEEP:
-                    MESSAGE("Wobbuffet woke up!");
-                    break;
-                case STATUS1_FROSTBITE:
-                    MESSAGE("Wobbuffet's frostbite was cured!");
-                    break;
-            } // The message is not printed if status wasn't healed.
+            MESSAGE("Wobbuffet had its status healed!"); // The message is not printed if status wasn't healed.
         }
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP);
@@ -63,7 +41,6 @@ SINGLE_BATTLE_TEST("Full Restore restores a party members HP and cures any prima
     PARAMETRIZE { status = STATUS1_POISON; }
     PARAMETRIZE { status = STATUS1_TOXIC_POISON; }
     PARAMETRIZE { status = STATUS1_SLEEP; }
-    PARAMETRIZE { status = STATUS1_FROSTBITE; }
     PARAMETRIZE { status = STATUS1_NONE; }
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { HP(100); MaxHP(300); Status1(status); }
@@ -75,28 +52,7 @@ SINGLE_BATTLE_TEST("Full Restore restores a party members HP and cures any prima
     } SCENE {
         MESSAGE("Wynaut had its HP restored.");
         if (status != STATUS1_NONE) {
-            switch (status)
-            {
-                case STATUS1_BURN:
-                    MESSAGE("Wynaut's burn was cured!");
-                    break;
-                case STATUS1_FREEZE:
-                    MESSAGE("Wynaut thawed out!");
-                    break;
-                case STATUS1_PARALYSIS:
-                    MESSAGE("Wynaut was cured of paralysis!");
-                    break;
-                case STATUS1_POISON:
-                case STATUS1_TOXIC_POISON:
-                    MESSAGE("Wynaut was cured of its poisoning!");
-                    break;
-                case STATUS1_SLEEP:
-                    MESSAGE("Wynaut woke up!");
-                    break;
-                case STATUS1_FROSTBITE:
-                    MESSAGE("Wynaut's frostbite was cured!");
-                    break;
-            } // The message is not printed if status wasn't healed.
+            MESSAGE("Wynaut had its status healed!"); // The message is not printed if status wasn't healed.
         }
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP);
@@ -114,7 +70,6 @@ SINGLE_BATTLE_TEST("Full Restore heals a battler from any primary status")
     PARAMETRIZE { status = STATUS1_POISON; }
     PARAMETRIZE { status = STATUS1_TOXIC_POISON; }
     PARAMETRIZE { status = STATUS1_SLEEP; }
-    PARAMETRIZE { status = STATUS1_FROSTBITE; }
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Status1(status); }
         OPPONENT(SPECIES_WYNAUT);
@@ -122,28 +77,7 @@ SINGLE_BATTLE_TEST("Full Restore heals a battler from any primary status")
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 0); }
     } SCENE {
         NOT MESSAGE("Wobbuffet had its HP restored."); // The message is not printed if mon has max HP.
-        switch (status)
-        {
-            case STATUS1_BURN:
-                MESSAGE("Wobbuffet's burn was cured!");
-                break;
-            case STATUS1_FREEZE:
-                MESSAGE("Wobbuffet thawed out!");
-                break;
-            case STATUS1_PARALYSIS:
-                MESSAGE("Wobbuffet was cured of paralysis!");
-                break;
-            case STATUS1_POISON:
-            case STATUS1_TOXIC_POISON:
-                MESSAGE("Wobbuffet was cured of its poisoning!");
-                break;
-            case STATUS1_SLEEP:
-                MESSAGE("Wobbuffet woke up!");
-                break;
-            case STATUS1_FROSTBITE:
-                MESSAGE("Wobbuffet's frostbite was cured!");
-                break;
-        }
+        MESSAGE("Wobbuffet had its status healed!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -167,25 +101,7 @@ SINGLE_BATTLE_TEST("Full Restore heals a party member from any primary status")
         TURN { SWITCH(player, 1); }
     } SCENE {
         NOT MESSAGE("Wynaut had its HP restored."); // The message is not printed if mon has max HP.
-        switch (status)
-        {
-            case STATUS1_BURN:
-                MESSAGE("Wynaut's burn was cured!");
-                break;
-            case STATUS1_FREEZE:
-                MESSAGE("Wynaut thawed out!");
-                break;
-            case STATUS1_PARALYSIS:
-                MESSAGE("Wynaut was cured of paralysis!");
-                break;
-            case STATUS1_POISON:
-            case STATUS1_TOXIC_POISON:
-                MESSAGE("Wynaut was cured of its poisoning!");
-                break;
-            case STATUS1_SLEEP:
-                MESSAGE("Wynaut woke up!");
-                break;
-        }
+        MESSAGE("Wynaut had its status healed!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_WYNAUT);
         EXPECT_EQ(player->status1, STATUS1_NONE);
@@ -221,7 +137,7 @@ SINGLE_BATTLE_TEST("Full Restore resets Toxic Counter")
     } SCENE {
         MESSAGE("The opposing Wobbuffet used Toxic!");
         MESSAGE("Wobbuffet had its HP restored.");
-        MESSAGE("Wobbuffet was cured of its poisoning!");
+        MESSAGE("Wobbuffet had its status healed!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }

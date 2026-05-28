@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveEffect(MOVE_VENOM_DRENCH) == EFFECT_STAT_CHANGE_ON_STATUS);
+    ASSUME(GetMoveEffect(MOVE_VENOM_DRENCH) == EFFECT_VENOM_DRENCH);
 }
 
 SINGLE_BATTLE_TEST("Venom Drench lowers stats of a poisoned target")

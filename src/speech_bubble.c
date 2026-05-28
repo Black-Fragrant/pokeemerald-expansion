@@ -8,8 +8,8 @@
 
 EWRAM_DATA bool8 gIsSpeechBubbleActive = FALSE;
 
-static const u32 sTailGfx[] = INCGFX_U32("graphics/speech_bubble/speech_bubble_tail.png", ".4bpp.lz");
-static const u16 sTailPal[] = INCGFX_U16("graphics/speech_bubble/speech_bubble_tail.pal", ".gbapal");
+static const u32 sTailGfx[] = INCBIN_U32("graphics/speech_bubble/speech_bubble_tail.4bpp.lz");
+static const u16 sTailPal[] = INCBIN_U16("graphics/speech_bubble/speech_bubble_tail.gbapal");
 
 static const struct Tail sTail = 
 {

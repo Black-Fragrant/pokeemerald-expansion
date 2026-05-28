@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME_STAT_CHANGE(MOVE_HARDEN, defense: +1);
+    ASSUME(GetMoveEffect(MOVE_HARDEN) == EFFECT_DEFENSE_UP);
 }
 
 SINGLE_BATTLE_TEST("Harden raises Defense by 1 stage", s16 damage)
