@@ -4,6 +4,7 @@
 #include "move.h"
 #include "constants/battle_string_ids.h"
 #include "constants/hold_effects.h"
+#include "constants/battle_stat_change.h"
 
 #define MOVE_LIMITATION_ZEROMOVE                (1 << 0)
 #define MOVE_LIMITATION_PP                      (1 << 1)
@@ -56,7 +57,7 @@ enum AbilityEffect
     ABILITYEFFECT_UNNERVE,
     ABILITYEFFECT_ON_SWITCHIN,
     ABILITYEFFECT_SWITCH_IN_FORM_CHANGE,
-    ABILITYEFFECT_COMMANDER, // Commander / Hospitality / Costar
+    ABILITYEFFECT_DEPENDS_ON_ALLY, // Commander / Hospitality / Costar
     ABILITYEFFECT_ON_WEATHER,
     ABILITYEFFECT_ON_TERRAIN,
     ABILITYEFFECT_OPPORTUNIST,
@@ -106,10 +107,8 @@ struct DamageContext
     enum Type moveType:6;
 
     uq4_12_t typeEffectivenessModifier;
-    enum Ability abilityAtk;
-    enum Ability abilityDef;
-    enum HoldEffect holdEffectAtk;
-    enum HoldEffect holdEffectDef;
+    enum Ability abilities[MAX_BATTLERS_COUNT];
+    enum HoldEffect holdEffects[MAX_BATTLERS_COUNT];
 
     // Flags
     u32 isCrit:1;
@@ -131,7 +130,7 @@ struct BattleCalcValues
     enum BattlerId battlerAtk:3;
     enum BattlerId battlerDef:3;
     enum Move move:16;
-    u32 padding:10;
+    enum BattleMoveEffects moveEffect:10;
     enum Ability abilities[MAX_BATTLERS_COUNT];
     enum HoldEffect holdEffects[MAX_BATTLERS_COUNT];
 };
@@ -197,7 +196,6 @@ u8 GetImprisonedMovesCount(enum BattlerId battler, enum Move move);
 s32 GetDrainedBigRootHp(enum BattlerId battler, s32 hp);
 bool32 IsAbilityAndRecord(enum BattlerId battler, enum Ability battlerAbility, enum Ability abilityToCheck);
 bool32 HandleFaintedMonActions(void);
-void TryClearRageAndFuryCutter(void);
 bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2);
 bool32 TryChangeBattleWeather(enum BattlerId battler, u32 battleWeatherId, enum Ability ability);
 bool32 TryChangeBattleTerrain(enum BattlerId battler, u32 statusFlag);
@@ -249,7 +247,7 @@ uq4_12_t CalcTypeEffectivenessMultiplier(struct DamageContext *ctx);
 uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, enum Species speciesDef, enum Ability abilityDef);
 uq4_12_t GetTypeModifier(enum Type atkType, enum Type defType);
 uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType);
-void UpdateMoveResultFlags(uq4_12_t modifier, u16 *resultFlags);
+void UpdateMoveResultFlags(uq4_12_t modifier, u32 *resultFlags);
 s32 GetStealthHazardDamage(enum TypeSideHazard hazardType, enum BattlerId battler);
 s32 GetStealthHazardDamageByTypesAndHP(enum TypeSideHazard hazardType, enum Type type1, enum Type type2, u32 maxHp);
 bool32 CanMegaEvolve(enum BattlerId battler);
@@ -291,12 +289,13 @@ void TryRestoreHeldItems(void);
 bool32 CanStealItem(enum BattlerId battlerStealing, enum BattlerId battlerItem, enum Item item);
 void TrySaveExchangedItem(enum BattlerId battler, enum Item stolenItem);
 bool32 IsBattlerAffectedByHazards(enum BattlerId battler, enum HoldEffect holdEffect, bool32 toxicSpikes);
+void SortBattlersByRawSpeed(u8 battlers[]);
 void SortBattlersBySpeed(enum BattlerId *battlers, bool32 slowToFast);
-bool32 CompareStat(enum BattlerId battler, enum Stat statId, u32 cmpTo, u32 cmpKind, enum Ability ability);
 bool32 BlocksPrankster(enum Move move, enum BattlerId battlerPrankster, enum BattlerId battlerDef, bool32 checkTarget);
 bool32 PickupHasValidTarget(enum BattlerId battler);
 bool32 CantPickupItem(u32 battler);
 u32 GetWeather(void);
+u32 GetAttackerWeather(enum HoldEffect holdEffect, enum Ability ability, u32 weather);
 bool32 IsBattlerWeatherAffected(enum HoldEffect holdEffect, u32 weather, u32 weatherFlags);
 enum MoveTarget GetBattlerMoveTargetType(enum BattlerId battler, enum Move move);
 bool32 CanTargetBattler(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
@@ -306,6 +305,7 @@ void CopyMonAbilityAndTypesToBattleMon(enum BattlerId battler, struct Pokemon *m
 void RecalcBattlerStats(enum BattlerId battler, struct Pokemon *mon, bool32 isDynamaxing);
 bool32 IsGen6ExpShareEnabled(void);
 bool32 MoveHasAdditionalEffect(enum Move move, enum MoveEffect moveEffect);
+bool32 MoveHasAdditionalOnSideEffect(enum Move move);
 bool32 MoveHasAdditionalEffectWithChance(enum Move move, enum MoveEffect moveEffect, u32 chance);
 bool32 MoveHasAdditionalEffectSelf(enum Move move, enum MoveEffect moveEffect);
 bool32 IsMoveEffectRemoveSpeciesType(enum Move move, enum MoveEffect moveEffect, u32 argument);
@@ -335,7 +335,6 @@ bool32 CanBeConfused(enum BattlerId battlerAtk, enum BattlerId effectBattler);
 bool32 IsSafeguardProtected(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Ability abilityAtk);
 u32 GetBattlerAffectionHearts(enum BattlerId battler);
 void TryToRevertMimicryAndFlags(void);
-bool32 BattleArenaTurnEnd(void);
 u32 CountBattlerStatIncreases(enum BattlerId battler, bool32 countEvasionAcc);
 bool32 BattlerHasCopyableChanges(enum BattlerId battler);
 bool32 ChangeTypeBasedOnTerrain(enum BattlerId battler);
@@ -354,6 +353,7 @@ void TryActivateSleepClause(enum BattlerId battler, u32 indexInParty);
 void TryDeactivateSleepClause(enum BattleSide battlerSide, u32 indexInParty);
 bool32 IsSleepClauseActiveForSide(enum BattleSide battlerSide);
 bool32 IsSleepClauseEnabled(void);
+bool32 AreMultiPartiesFullTeams(void);
 void ClearDamageCalcResults(void);
 u32 DoesDestinyBondFail(enum BattlerId battler);
 bool32 IsMoveEffectBlockedByTarget(enum Ability ability);
@@ -391,6 +391,7 @@ bool32 HasPartnerTrainer(enum BattlerId battler);
 bool32 IsAffectedByPowderMove(enum BattlerId battler, enum Ability ability, enum HoldEffect holdEffect);
 enum Move GetNaturePowerMove(void);
 void RemoveAbilityFlags(enum BattlerId battler);
+void RemoveRuinAbilityFlags(enum BattlerId battler);
 void CheckSetUnburden(enum BattlerId battler);
 bool32 IsDazzlingAbility(enum Ability ability);
 bool32 IsAllowedToUseBag(void);
@@ -409,7 +410,11 @@ bool32 CanUseMoveConsecutively(enum BattlerId battler);
 void TryResetConsecutiveUseCounter(enum BattlerId battler);
 void SetOrClearRageVolatile(void);
 enum BattlerId GetTargetBySlot(enum BattlerId battlerAtk, enum BattlerId battlerDef);
+enum BattlerId GetTargetFromSlotId(enum BattlerId battlerAtk, enum BattlerId battlerDef);
 bool32 IsNaturalEnemy(enum Species speciesAttacker, enum Species speciesTarget);
 enum Stat GetDownloadStat(enum BattlerId battler);
+bool32 BattlerJustSwitchedIn(enum BattlerId battler);
+bool32 IsBattlersFirstTurn(enum BattlerId battler);
+struct PartyState *GetBattlerPartyState(enum BattlerId battler);
 
 #endif // GUARD_BATTLE_UTIL_H
