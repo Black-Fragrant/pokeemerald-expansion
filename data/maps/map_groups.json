@@ -1293,6 +1293,8 @@
     "SevenIsland_SevaultCanyon_House_Frlg"
   ],
   "gMapGroup_LibertyGarden": [
-    "LibertyGarden"
+    "LibertyGarden",
+    "LibertyGarden_Basement",
+    "LibertyGarden_Room"
   ]
 }
