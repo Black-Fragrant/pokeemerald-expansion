@@ -9826,8 +9826,8 @@
     {
       "id": "LAYOUT_LIBERTY_GARDEN",
       "name": "LibertyGarden_Layout",
-      "width": 80,
-      "height": 80,
+      "width": 34,
+      "height": 31,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LibertyGarden",
       "border_filepath": "data/layouts/LibertyGarden/border.bin",
