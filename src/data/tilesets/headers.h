@@ -2154,3 +2154,14 @@ const struct Tileset gTileset_LibertyGarden =
     .metatileAttributes = gMetatileAttributes_LibertyGarden,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_IndoorLibertyGarden =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorLibertyGarden,
+    .palettes = gTilesetPalettes_IndoorLibertyGarden,
+    .metatiles = gMetatiles_IndoorLibertyGarden,
+    .metatileAttributes = gMetatileAttributes_IndoorLibertyGarden,
+    .callback = NULL,
+};

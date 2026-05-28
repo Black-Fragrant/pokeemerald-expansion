@@ -9832,6 +9832,26 @@
       "secondary_tileset": "gTileset_LibertyGarden",
       "border_filepath": "data/layouts/LibertyGarden/border.bin",
       "blockdata_filepath": "data/layouts/LibertyGarden/map.bin"
+    },
+    {
+      "id": "LAYOUT_LIBERTY_GARDEN_BASEMENT",
+      "name": "LibertyGarden_Basement_Layout",
+      "width": 34,
+      "height": 31,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorLibertyGarden",
+      "border_filepath": "data/layouts/LibertyGarden_Basement/border.bin",
+      "blockdata_filepath": "data/layouts/LibertyGarden_Basement/map.bin"
+    },
+    {
+      "id": "LAYOUT_LIBERTY_GARDEN_ROOM",
+      "name": "LibertyGarden_Room_Layout",
+      "width": 34,
+      "height": 31,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorLibertyGarden",
+      "border_filepath": "data/layouts/LibertyGarden_Room/border.bin",
+      "blockdata_filepath": "data/layouts/LibertyGarden_Room/map.bin"
     }
   ]
 }
