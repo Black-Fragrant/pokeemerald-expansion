@@ -14,7 +14,56 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 17,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_LIBERTY_GARDEN",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 23,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 24,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
+    }
+  ]
 }
