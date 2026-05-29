@@ -2021,11 +2021,11 @@ const u16 gItemIconPalette_DowsingMachine_BW[] = INCGFX_U16("graphics/items/icon
 const u32 gItemIcon_DragonSkull[] = INCGFX_U32("graphics/items/icons/dragon_skull.png", ".4bpp.smol");
 const u16 gItemIconPalette_DragonSkull[] = INCGFX_U16("graphics/items/icon_palettes/dragon_skull.pal", ".gbapal");
 
-const u32 gItemIcon_LibertyPass[] = INCBIN_U32("graphics/items/icons/liberty_pass.png", ".4bpp.smol");
-const u16 gItemIconPalette_LibertyPass[] = INCBIN_U16("graphics/items/icon_palettes/liberty_pass.pal", ".gbapal");
+const u32 gItemIcon_LibertyPass[] = INCGFX_U32("graphics/items/icons/liberty_pass.png", ".4bpp.smol");
+const u16 gItemIconPalette_LibertyPass[] = INCGFX_U16("graphics/items/icon_palettes/liberty_pass.pal", ".gbapal");
 
-const u32 gItemIcon_AbilityShield[] = INCBIN_U32("graphics/items/icons/ability_shield.4bpp.smol");
-const u16 gItemIconPalette_AbilityShield[] = INCBIN_U16("graphics/items/icon_palettes/ability_shield.gbapal");
+const u32 gItemIcon_AbilityShield[] = INCGFX_U32("graphics/items/icons/ability_shield.png", ".4bpp.smol");
+const u16 gItemIconPalette_AbilityShield[] = INCGFX_U16("graphics/items/icon_palettes/ability_shield.pal", ".gbapal");
 
 const u32 gItemIcon_ClearAmulet[] = INCGFX_U32("graphics/items/icons/clear_amulet.png", ".4bpp.smol");
 const u16 gItemIconPalette_ClearAmulet[] = INCGFX_U16("graphics/items/icon_palettes/clear_amulet.pal", ".gbapal");
