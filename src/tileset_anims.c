@@ -119,6 +119,9 @@ static void QueueAnimTiles_CasteliaCityCenter_Fountain(u16);
 static void TilesetAnim_IndoorCastelia(u16);
 static void QueueAnimTiles_IndoorCastelia_Machine(u16);
 
+static void TilesetAnim_LibertyGarden(u16);
+static void QueueAnimTiles_LibertyGarden_Fountain(u16);
+
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCGFX_U16("data/tilesets/secondary/poke_center/anim/globe/0.png", ".4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCGFX_U16("data/tilesets/secondary/poke_center/anim/globe/1.png", ".4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCGFX_U16("data/tilesets/secondary/poke_center/anim/globe/2.png", ".4bpp");
@@ -491,6 +494,20 @@ const u16 *const gQueueAnimTiles_IndoorCastelia_Machine[] = {
     gQueueAnimTiles_IndoorCastelia_Machine_Frame0,
     gQueueAnimTiles_IndoorCastelia_Machine_Frame1,
     gQueueAnimTiles_IndoorCastelia_Machine_Frame2,
+};
+
+const u16 gQueueAnimTiles_LibertyGarden_Fountain_Frame0[] = INCGFX_U16("data/tilesets/secondary/liberty_garden/anim/fountain/0.png", ".4bpp");
+const u16 gQueueAnimTiles_LibertyGarden_Fountain_Frame1[] = INCGFX_U16("data/tilesets/secondary/liberty_garden/anim/fountain/1.png", ".4bpp");
+const u16 gQueueAnimTiles_LibertyGarden_Fountain_Frame2[] = INCGFX_U16("data/tilesets/secondary/liberty_garden/anim/fountain/2.png", ".4bpp");
+const u16 gQueueAnimTiles_LibertyGarden_Fountain_Frame3[] = INCGFX_U16("data/tilesets/secondary/liberty_garden/anim/fountain/3.png", ".4bpp");
+const u16 gQueueAnimTiles_LibertyGarden_Fountain_Frame4[] = INCGFX_U16("data/tilesets/secondary/liberty_garden/anim/fountain/4.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_LibertyGarden_Fountain[] = {
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame0,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame1,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame2,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame3,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame4,
 };
 
 const u16 gQueueAnimTiles_CasteliaCity1_Flag_Frame0[] = INCGFX_U16("data/tilesets/secondary/castelia_city_1/anim/flag/0.png", ".4bpp");
@@ -1264,6 +1281,12 @@ static void TilesetAnim_IndoorCastelia(u16 timer)
         QueueAnimTiles_IndoorCastelia_Machine(timer / 16);
 }
 
+static void TilesetAnim_LibertyGarden(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_LibertyGarden_Fountain(timer / 16);
+}
+
 static void TilesetAnim_CasteliaCity1(u16 timer)
 {
     if (timer % 8 == 0)
@@ -1398,6 +1421,12 @@ static void QueueAnimTiles_IndoorCastelia_Machine(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorCastelia_Machine);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorCastelia_Machine[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(688)), 8 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_LibertyGarden_Fountain(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_LibertyGarden_Fountain);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_LibertyGarden_Fountain[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(688)), 16 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_CasteliaCity1_Flag(u16 timer)
@@ -1707,6 +1736,13 @@ void InitTilesetAnim_IndoorCastelia(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
     sSecondaryTilesetAnimCallback = TilesetAnim_IndoorCastelia;
+}
+
+void InitTilesetAnim_LibertyGarden(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_LibertyGarden;
 }
 
 void InitTilesetAnim_CasteliaCity1(void)

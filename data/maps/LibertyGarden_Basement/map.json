@@ -2,7 +2,7 @@
   "id": "MAP_LIBERTY_GARDEN_BASEMENT",
   "name": "LibertyGarden_Basement",
   "layout": "LAYOUT_LIBERTY_GARDEN_BASEMENT",
-  "music": "MUS_DUMMY",
+  "music": "MUS_BW_COLD_STORAGE",
   "region_map_section": "MAPSEC_LIBERTY_GARDEN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,7 +13,35 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 2,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "LibertyGarden_Basement_EventScript_Grunt_Battle3",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_LG_BASEMENT_POLICE",
+      "graphics_id": "OBJ_EVENT_GFX_POLICE",
+      "x": 2,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LibertyGarden_Basement_EventScript_Police",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 3,
@@ -24,21 +52,21 @@
     },
     {
       "x": 2,
-      "y": 17,
+      "y": 20,
       "elevation": 0,
       "dest_map": "MAP_LIBERTY_GARDEN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
-      "y": 17,
+      "y": 20,
       "elevation": 0,
       "dest_map": "MAP_LIBERTY_GARDEN",
       "dest_warp_id": "0"
     },
     {
       "x": 4,
-      "y": 17,
+      "y": 20,
       "elevation": 0,
       "dest_map": "MAP_LIBERTY_GARDEN",
       "dest_warp_id": "0"

@@ -898,7 +898,7 @@
 #define FLAG_CASTELIA_EMPTY_BUILDING_INSIDE_CROWD                   0x352
 #define FLAG_CASTELIA_ITEM_SMOKE_BALL                               0x353
 #define FLAG_ROUTE4_SOUTH_CHEREN                                    0x354
-#define FLAG_UNUSED_0x355                                           0x355
+#define FLAG_CASTELIA_LIBERTY_PIER_CHECKED_TICKET                   0x355
 #define FLAG_UNUSED_0x356                                           0x356
 #define FLAG_UNUSED_0x357                                           0x357
 #define FLAG_UNUSED_0x358                                           0x358

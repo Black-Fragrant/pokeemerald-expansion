@@ -98,11 +98,11 @@
 #define TRAINER_HARLEQUIN_CASTELIA_GYM_3     91
 #define TRAINER_HARLEQUIN_CASTELIA_GYM_4     92
 #define TRAINER_BURGH_CASTELIA_GYM           93
-#define TRAINER_BROOKE_1                     94
-#define TRAINER_JENNIFER                     95
-#define TRAINER_HOPE                         96
-#define TRAINER_SHANNON                      97
-#define TRAINER_MICHELLE                     98
+#define TRAINER_GRUNT_M_LIBERTY_GARDEN_1     94
+#define TRAINER_GRUNT_M_LIBERTY_GARDEN_2     95
+#define TRAINER_GRUNT_M_LIBERTY_GARDEN_3     96
+#define TRAINER_GRUNT_M_LG_BASEMENT          97
+#define TRAINER_GRUNT_M_LG_ROOM              98
 #define TRAINER_CAROLINE                     99
 #define TRAINER_JULIE                       100
 #define TRAINER_BROOKE_2                    101

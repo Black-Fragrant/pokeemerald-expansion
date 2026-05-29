@@ -71,11 +71,12 @@ script PinwheelForest_ON_EventScript_Nurse
        "I will make your Pokémon healthy.", MSGBOX_DEFAULT, TRUE, LOCALID_PFON_NURSE)
     destroy_speech_bubble()
     closemessage
-	fadescreenswapbuffers(FADE_TO_BLACK)
+       fadescreenswapbuffers(FADE_TO_BLACK)
     playbgm(MUS_BW_HEAL, TRUE)
 	special(HealPlayerParty)
     delay(140)
-    playbgm(MUS_BW_ROUTE_2, TRUE)
+    fadedefaultbgm
+    savebgm(MUS_BW_ROUTE_2)
 	fadescreenswapbuffers(FADE_FROM_BLACK)
      msgbox("Around Pinwheel Forest, many Pokémon\n"
        "use moves to inflict problems such as\l"

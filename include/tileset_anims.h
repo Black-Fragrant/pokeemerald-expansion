@@ -56,5 +56,6 @@ void InitTilesetAnim_CasteliaCity4(void);
 void InitTilesetAnim_CasteliaCity6(void);
 void InitTilesetAnim_CasteliaCityCenter(void);
 void InitTilesetAnim_IndoorCastelia(void);
+void InitTilesetAnim_LibertyGarden(void);
 
 #endif // GUARD_TILESET_ANIMS_H

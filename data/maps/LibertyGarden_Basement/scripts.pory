@@ -1,1 +1,48 @@
 mapscripts LibertyGarden_Basement_MapScripts {}
+
+script LibertyGarden_Basement_EventScript_Grunt_Battle3
+{
+	trainerbattle_single(TRAINER_GRUNT_M_LG_BASEMENT,
+	text("The Victini on this island\n"
+        "creates limitless energy!"),
+	text("You are just a kid!"))
+	msgbox("If you are exposed to Victini's energy,\n"
+        "you can win any kind of battle.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script LibertyGarden_Basement_EventScript_Police
+{
+    lock
+    faceplayer
+    msgbox("It makes me feel better knowing\n"
+            "there's a strong Trainer like you!\p"
+            "Would you like me to help\n"
+            "by healing your Pokémon?", MSGBOX_YESNO, TRUE, LOCALID_LG_BASEMENT_POLICE)
+    goto_if_eq(VAR_RESULT, TRUE, LibertyGarden_Basement_EventScript_Police_Healing)
+    msgbox("When your Pokémon are hurt in\n"
+            "battle, let me know!", MSGBOX_DEFAULT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script LibertyGarden_Basement_EventScript_Police_Healing
+{
+    destroy_speech_bubble()
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    fadedefaultbgm
+    savebgm(MUS_BW_COLD_STORAGE)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox("Please stop Team Plasma's tyranny!", MSGBOX_DEFAULT, TRUE, LOCALID_LG_BASEMENT_POLICE)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+

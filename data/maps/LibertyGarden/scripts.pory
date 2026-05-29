@@ -1,1 +1,150 @@
 mapscripts LibertyGarden_MapScripts {}
+
+script CasteliaCity_LibertyGarden_EventScript_Captain
+{
+    lock
+    faceplayer
+    msgbox("Do you want to go back to Castelia City", MSGBOX_YESNO, TRUE, LOCALID_LIBERTY_GARDEN_CAPTAIN)
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_LibertyGarden_EventScript_Captain_Warp)
+    msgbox("Just come talk to me when you want\n"
+        "to return to Castelia City!", MSGBOX_DEFAULT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Captain_Warp
+{
+    msgbox("We are just about to leave, so please\n"
+            "get on board and wait a moment.", MSGBOX_DEFAULT)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_left * 3))
+    applymovement(LOCALID_LIBERTY_GARDEN_CAPTAIN, moves(walk_left * 3))
+    waitmovement(0)
+	warp (MAP_CASTELIA_CITY_LIBERTY_PIER, 16, 14)
+	waitstate
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_IslandSign
+{
+    msgbox("Two hundred years ago, an ultra-rich\n"
+        "family bought this island and named it\l"
+        "Liberty Garden.\l"
+        "It's a place where people and Pokémon\l"
+        "could live freely.", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Dock2Sign
+{
+    msgbox("Dock 2\n"
+        "To board the tour boat, go to Dock 1.", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_LighthouseSign
+{
+    msgbox("This lighthouse shines with the light\n"
+        "of freedom.\l"
+        "Only authorized personnel may enter.", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_BlackSuit
+{
+    msgbox("What do they hope to accomplish\n"
+        "by occupying the island?\l"
+        "What a sketchy group!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Beauty
+{
+    msgbox("What are they doing in this little\n"
+        "memorial park? There's nothing here\l"
+        "but an old lighthouse...", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Hiker
+{
+    msgbox("That Team Plasma...\p"
+        "They sure do terrible things!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Boy
+{
+    msgbox("Waaah! I'm scared!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Grandma
+{
+    msgbox("Making my grandchild cry!\p"
+        "If they are underestimating me because\n"
+        "I'm old... Grrr!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Grunt_ByGrandma
+{
+    msgbox("Shut your trap!\p"
+        "If you stay here quietly,\n"
+        "we won't be rough.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Police
+{
+    msgbox("This officer's Pokémon couldn't stand up\n"
+        "to them!\l"
+        "That blasted Team Plasma!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Grunt_Battle1
+{
+	trainerbattle_single(TRAINER_GRUNT_M_LIBERTY_GARDEN_1,
+	text("We finally reached the secret sleeping in\n"
+        "the basement of the lighthouse.\l"
+        "I won't let you interrupt us!"),
+	text("I am bitterly disappointed..."))
+	msgbox("In the basement of the lighthouse\n"
+        "build over 200 years ago,\l"
+        "the mythical Pokémon\l"
+        "Victini was sleeping!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Grunt_Battle2
+{
+	trainerbattle_single(TRAINER_GRUNT_M_LIBERTY_GARDEN_2,
+	text("I was ordered not to let anyone\n"
+        "approach the Plasma Ship!"),
+	text("I lost the battle though..."))
+	msgbox("Although I lost, I won't move!\n"
+        "I will follow my orders!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Grunt_Battle3
+{
+	trainerbattle_single(TRAINER_GRUNT_M_LIBERTY_GARDEN_3,
+	text("We will release Victini\n"
+        "from its confinement\l"
+        "in a small basement on the island!"),
+	text("You're sabotaging\n"
+        "our noble cause!"))
+	msgbox("Selfish people are making\n"
+        "Victini suffer...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+
+
+

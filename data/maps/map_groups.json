@@ -12,6 +12,7 @@
     "gMapGroup_IndoorSkyArrowBridge",
     "gMapGroup_OutdoorCastelia",
     "gMapGroup_IndoorCastelia",
+    "gMapGroup_LibertyGarden",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -86,8 +87,7 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg",
-    "gMapGroup_LibertyGarden"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "NuvemaTown",
@@ -206,6 +206,11 @@
     "CasteliaCity_NSPartyBuilding47F",
     "CasteliaCity_CasteliaGym",
     "CasteliaCity_Gate"
+  ],
+  "gMapGroup_LibertyGarden": [
+    "LibertyGarden",
+    "LibertyGarden_Basement",
+    "LibertyGarden_Room"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -1291,10 +1296,5 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
-  ],
-  "gMapGroup_LibertyGarden": [
-    "LibertyGarden",
-    "LibertyGarden_Basement",
-    "LibertyGarden_Room"
   ]
 }

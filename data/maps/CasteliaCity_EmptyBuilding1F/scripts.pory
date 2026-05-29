@@ -331,6 +331,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
     closemessage
 	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_down, walk_right, walk_down))
 	waitmovement(0)
+	delay(20)
 	playse(SE_EXIT)
 	removeobject(LOCALID_CCEB1F_BURGH)
 	waitse
