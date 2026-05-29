@@ -186,7 +186,7 @@ script CasteliaCity_BattleCompany55F_EventScript_Janitor_Cont
 		"come here.\p"
 		"I had a good time battling you.\p"
 		"This is a token of my esteem.\n"
-		"Please accept this!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+		"Please accept this!", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_55F_GRANDPA)
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_EXP_SHARE, 1)
@@ -201,7 +201,7 @@ script CasteliaCity_BattleCompany55F_EventScript_Janitor_Finished
        "some of the Exp. Points from every\l"
        "battle, even if it's not involved.\p"
        "That's right! It may be useful\n"
-       "for raising weak Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_POKECEN_BREEDER)
+       "for raising weak Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLE_COMPANY_55F_GRANDPA)
 	destroy_speech_bubble()
 	closemessage
 	release
