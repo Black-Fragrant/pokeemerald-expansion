@@ -1,7 +1,10 @@
 #include "global.h"
 #include "constants/trainers.h"
 
-static enum TrainerPicID GetEmeraldTrainerPic(enum Gender gender)
+// start fireBlack
+//static enum TrainerPicID GetEmeraldTrainerPic(enum Gender gender)
+static UNUSED enum TrainerPicID GetEmeraldTrainerPic(enum Gender gender)
+// end fireBlack
 {
     return gender == MALE ? TRAINER_PIC_BRENDAN : TRAINER_PIC_MAY;
 }
