@@ -9836,8 +9836,8 @@
     {
       "id": "LAYOUT_LIBERTY_GARDEN_BASEMENT",
       "name": "LibertyGarden_Basement_Layout",
-      "width": 34,
-      "height": 31,
+      "width": 7,
+      "height": 19,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorLibertyGarden",
       "border_filepath": "data/layouts/LibertyGarden_Basement/border.bin",
@@ -9846,8 +9846,8 @@
     {
       "id": "LAYOUT_LIBERTY_GARDEN_ROOM",
       "name": "LibertyGarden_Room_Layout",
-      "width": 34,
-      "height": 31,
+      "width": 9,
+      "height": 13,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorLibertyGarden",
       "border_filepath": "data/layouts/LibertyGarden_Room/border.bin",

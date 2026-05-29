@@ -19,8 +19,8 @@
       "x": 17,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_LIBERTY_GARDEN",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_LIBERTY_GARDEN_BASEMENT",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [],
