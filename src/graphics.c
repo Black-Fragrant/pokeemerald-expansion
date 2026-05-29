@@ -2232,5 +2232,5 @@ const u16 gLargeItemPicPalette_Gracidea[]           = INCGFX_U16("graphics/large
 const u16 gLargeItemPicPalette_PokedexM[]           = INCGFX_U16("graphics/large_item/pokedex_m.pal", ".gbapal");
 const u16 gLargeItemPicPalette_PokedexF[]           = INCGFX_U16("graphics/large_item/pokedex_f.pal", ".gbapal");
 
-const u32 gLargeItemPicBgTiles[]           = INCGFX_U32("graphics/large_item/bg.png", ".4bpp.lz");
+const u32 gLargeItemPicBgTiles[]           = INCGFX_U32("graphics/large_item/bg.png", ".4bpp.smol");
 const u16 gLargeItemPicBgPal[]           = INCGFX_U16("graphics/large_item/bg.pal", ".gbapal");

@@ -8,7 +8,7 @@
 
 EWRAM_DATA bool8 gIsSpeechBubbleActive = FALSE;
 
-static const u32 sTailGfx[] = INCGFX_U32("graphics/speech_bubble/speech_bubble_tail.png", ".4bpp.lz");
+static const u32 sTailGfx[] = INCGFX_U32("graphics/speech_bubble/speech_bubble_tail.png", ".4bpp.smol");
 static const u16 sTailPal[] = INCGFX_U16("graphics/speech_bubble/speech_bubble_tail.pal", ".gbapal");
 
 static const struct Tail sTail = 
@@ -32,11 +32,9 @@ void LoadTail(s16 x, s16 y)
 
     if (GetSpriteTileStartByTag(TAG_SPEECH_BUBBLE_TAIL) == 0xFFFF)
     {
-        const u8 *gfxPtr = (const u8*)(sTail.gfx);
-
         sheet.tag = TAG_SPEECH_BUBBLE_TAIL;
         sheet.data = sTail.gfx;
-        sheet.size = (gfxPtr[3] << 16) | (gfxPtr[2] << 8) | gfxPtr[1];
+        sheet.size = GetDecompressedDataSize(sTail.gfx);
 
         LoadCompressedSpriteSheet(&sheet);
     }

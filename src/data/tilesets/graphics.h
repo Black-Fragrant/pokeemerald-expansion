@@ -1747,7 +1747,7 @@ const u16 gTilesetPalettes_PokeCenter[][16] =
     INCGFX_U16("data/tilesets/secondary/poke_center/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_PokeCenter[] = INCGFX_U32("data/tilesets/secondary/poke_center/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_PokeCenter[] = INCGFX_U32("data/tilesets/secondary/poke_center/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_Gate[][16] =
 {
@@ -1766,7 +1766,7 @@ const u16 gTilesetPalettes_Gate[][16] =
     INCGFX_U16("data/tilesets/secondary/gate/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Gate[] = INCGFX_U32("data/tilesets/secondary/gate/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_Gate[] = INCGFX_U32("data/tilesets/secondary/gate/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorStriaton[][16] =
 {
@@ -1785,7 +1785,7 @@ const u16 gTilesetPalettes_IndoorStriaton[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_striaton/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorStriaton[] = INCGFX_U32("data/tilesets/secondary/indoor_striaton/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorStriaton[] = INCGFX_U32("data/tilesets/secondary/indoor_striaton/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_StriatonGym[][16] =
 {
@@ -1804,7 +1804,7 @@ const u16 gTilesetPalettes_StriatonGym[][16] =
     INCGFX_U16("data/tilesets/secondary/striaton_gym/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_StriatonGym[] = INCGFX_U32("data/tilesets/secondary/striaton_gym/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_StriatonGym[] = INCGFX_U32("data/tilesets/secondary/striaton_gym/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_DreamYard[][16] =
 {
@@ -1823,7 +1823,7 @@ const u16 gTilesetPalettes_DreamYard[][16] =
     INCGFX_U16("data/tilesets/secondary/dream_yard/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_DreamYard[] = INCGFX_U32("data/tilesets/secondary/dream_yard/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_DreamYard[] = INCGFX_U32("data/tilesets/secondary/dream_yard/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_DreamYardBasement[][16] =
 {
@@ -1842,7 +1842,7 @@ const u16 gTilesetPalettes_DreamYardBasement[][16] =
     INCGFX_U16("data/tilesets/secondary/dream_yard_basement/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_DreamYardBasement[] = INCGFX_U32("data/tilesets/secondary/dream_yard_basement/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_DreamYardBasement[] = INCGFX_U32("data/tilesets/secondary/dream_yard_basement/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_Route3[][16] =
 {
@@ -1861,7 +1861,7 @@ const u16 gTilesetPalettes_Route3[][16] =
     INCGFX_U16("data/tilesets/secondary/route_3/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Route3[] = INCGFX_U32("data/tilesets/secondary/route_3/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_Route3[] = INCGFX_U32("data/tilesets/secondary/route_3/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorRoute3[][16] =
 {
@@ -1880,7 +1880,7 @@ const u16 gTilesetPalettes_IndoorRoute3[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_route_3/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorRoute3[] = INCGFX_U32("data/tilesets/secondary/indoor_route_3/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorRoute3[] = INCGFX_U32("data/tilesets/secondary/indoor_route_3/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CaveBW[][16] =
 {
@@ -1899,7 +1899,7 @@ const u16 gTilesetPalettes_CaveBW[][16] =
     INCGFX_U16("data/tilesets/secondary/cave_bw/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CaveBW[] = INCGFX_U32("data/tilesets/secondary/cave_bw/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CaveBW[] = INCGFX_U32("data/tilesets/secondary/cave_bw/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_NacreneCity[][16] =
 {
@@ -1918,7 +1918,7 @@ const u16 gTilesetPalettes_NacreneCity[][16] =
     INCGFX_U16("data/tilesets/secondary/nacrene_city/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_NacreneCity[] = INCGFX_U32("data/tilesets/secondary/nacrene_city/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_NacreneCity[] = INCGFX_U32("data/tilesets/secondary/nacrene_city/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorNacrene[][16] =
 {
@@ -1937,7 +1937,7 @@ const u16 gTilesetPalettes_IndoorNacrene[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_nacrene/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorNacrene[] = INCGFX_U32("data/tilesets/secondary/indoor_nacrene/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorNacrene[] = INCGFX_U32("data/tilesets/secondary/indoor_nacrene/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_NacreneMuseum[][16] =
 {
@@ -1956,7 +1956,7 @@ const u16 gTilesetPalettes_NacreneMuseum[][16] =
     INCGFX_U16("data/tilesets/secondary/museum/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_NacreneMuseum[] = INCGFX_U32("data/tilesets/secondary/museum/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_NacreneMuseum[] = INCGFX_U32("data/tilesets/secondary/museum/tiles.png", ".4bpp.smol");
 
 #if IS_FRLG
 
@@ -3389,7 +3389,7 @@ const u16 gTilesetPalettes_PinwheelForest[][16] =
     INCGFX_U16("data/tilesets/secondary/pinwheel_forest/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_PinwheelForest[] = INCGFX_U32("data/tilesets/secondary/pinwheel_forest/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_PinwheelForest[] = INCGFX_U32("data/tilesets/secondary/pinwheel_forest/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_NacreneGym[][16] =
 {
@@ -3408,7 +3408,7 @@ const u16 gTilesetPalettes_NacreneGym[][16] =
     INCGFX_U16("data/tilesets/secondary/nacrene_gym/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_NacreneGym[] = INCGFX_U32("data/tilesets/secondary/nacrene_gym/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_NacreneGym[] = INCGFX_U32("data/tilesets/secondary/nacrene_gym/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_SkyArrowBridge[][16] =
 {
@@ -3427,7 +3427,7 @@ const u16 gTilesetPalettes_SkyArrowBridge[][16] =
     INCGFX_U16("data/tilesets/secondary/sky_arrow_bridge/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_SkyArrowBridge[] = INCGFX_U32("data/tilesets/secondary/sky_arrow_bridge/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_SkyArrowBridge[] = INCGFX_U32("data/tilesets/secondary/sky_arrow_bridge/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCity1[][16] =
 {
@@ -3446,7 +3446,7 @@ const u16 gTilesetPalettes_CasteliaCity1[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_1/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCity1[] = INCGFX_U32("data/tilesets/secondary/castelia_city_1/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCity1[] = INCGFX_U32("data/tilesets/secondary/castelia_city_1/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCityPiers[][16] =
 {
@@ -3465,7 +3465,7 @@ const u16 gTilesetPalettes_CasteliaCityPiers[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_piers/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCityPiers[] = INCGFX_U32("data/tilesets/secondary/castelia_city_piers/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCityPiers[] = INCGFX_U32("data/tilesets/secondary/castelia_city_piers/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCity2[][16] =
 {
@@ -3484,7 +3484,7 @@ const u16 gTilesetPalettes_CasteliaCity2[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_2/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCity2[] = INCGFX_U32("data/tilesets/secondary/castelia_city_2/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCity2[] = INCGFX_U32("data/tilesets/secondary/castelia_city_2/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCity3[][16] =
 {
@@ -3503,7 +3503,7 @@ const u16 gTilesetPalettes_CasteliaCity3[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_3/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCity3[] = INCGFX_U32("data/tilesets/secondary/castelia_city_3/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCity3[] = INCGFX_U32("data/tilesets/secondary/castelia_city_3/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCity4[][16] =
 {
@@ -3522,7 +3522,7 @@ const u16 gTilesetPalettes_CasteliaCity4[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_4/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCity4[] = INCGFX_U32("data/tilesets/secondary/castelia_city_4/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCity4[] = INCGFX_U32("data/tilesets/secondary/castelia_city_4/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCityCenter[][16] =
 {
@@ -3541,7 +3541,7 @@ const u16 gTilesetPalettes_CasteliaCityCenter[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_center/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCityCenter[] = INCGFX_U32("data/tilesets/secondary/castelia_city_center/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCityCenter[] = INCGFX_U32("data/tilesets/secondary/castelia_city_center/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCity5[][16] =
 {
@@ -3560,7 +3560,7 @@ const u16 gTilesetPalettes_CasteliaCity5[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_5/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCity5[] = INCGFX_U32("data/tilesets/secondary/castelia_city_5/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCity5[] = INCGFX_U32("data/tilesets/secondary/castelia_city_5/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaCity6[][16] =
 {
@@ -3579,7 +3579,7 @@ const u16 gTilesetPalettes_CasteliaCity6[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_city_6/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaCity6[] = INCGFX_U32("data/tilesets/secondary/castelia_city_6/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaCity6[] = INCGFX_U32("data/tilesets/secondary/castelia_city_6/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorCastelia[][16] =
 {
@@ -3598,7 +3598,7 @@ const u16 gTilesetPalettes_IndoorCastelia[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_castelia/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorCastelia[] = INCGFX_U32("data/tilesets/secondary/indoor_castelia/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorCastelia[] = INCGFX_U32("data/tilesets/secondary/indoor_castelia/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorPasserbyHQ[][16] =
 {
@@ -3617,7 +3617,7 @@ const u16 gTilesetPalettes_IndoorPasserbyHQ[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_passerby_hq/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorPasserbyHQ[] = INCGFX_U32("data/tilesets/secondary/indoor_passerby_hq/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorPasserbyHQ[] = INCGFX_U32("data/tilesets/secondary/indoor_passerby_hq/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorCasteliaStudio[][16] =
 {
@@ -3636,7 +3636,7 @@ const u16 gTilesetPalettes_IndoorCasteliaStudio[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_castelia_studio/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorCasteliaStudio[] = INCGFX_U32("data/tilesets/secondary/indoor_castelia_studio/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorCasteliaStudio[] = INCGFX_U32("data/tilesets/secondary/indoor_castelia_studio/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CasteliaGym[][16] =
 {
@@ -3655,7 +3655,7 @@ const u16 gTilesetPalettes_CasteliaGym[][16] =
     INCGFX_U16("data/tilesets/secondary/castelia_gym/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CasteliaGym[] = INCGFX_U32("data/tilesets/secondary/castelia_gym/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CasteliaGym[] = INCGFX_U32("data/tilesets/secondary/castelia_gym/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_CafeSonata[][16] =
 {
@@ -3674,7 +3674,7 @@ const u16 gTilesetPalettes_CafeSonata[][16] =
     INCGFX_U16("data/tilesets/secondary/cafe_sonata/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_CafeSonata[] = INCGFX_U32("data/tilesets/secondary/cafe_sonata/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_CafeSonata[] = INCGFX_U32("data/tilesets/secondary/cafe_sonata/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_Route4[][16] =
 {
@@ -3693,7 +3693,7 @@ const u16 gTilesetPalettes_Route4[][16] =
     INCGFX_U16("data/tilesets/secondary/route_4/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Route4[] = INCGFX_U32("data/tilesets/secondary/route_4/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_Route4[] = INCGFX_U32("data/tilesets/secondary/route_4/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_LibertyGarden[][16] =
 {
@@ -3712,7 +3712,7 @@ const u16 gTilesetPalettes_LibertyGarden[][16] =
     INCGFX_U16("data/tilesets/secondary/liberty_garden/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_LibertyGarden[] = INCGFX_U32("data/tilesets/secondary/liberty_garden/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_LibertyGarden[] = INCGFX_U32("data/tilesets/secondary/liberty_garden/tiles.png", ".4bpp.smol");
 
 const u16 gTilesetPalettes_IndoorLibertyGarden[][16] =
 {
@@ -3731,4 +3731,4 @@ const u16 gTilesetPalettes_IndoorLibertyGarden[][16] =
     INCGFX_U16("data/tilesets/secondary/indoor_liberty_garden/palettes/12.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_IndoorLibertyGarden[] = INCGFX_U32("data/tilesets/secondary/indoor_liberty_garden/tiles.png", ".4bpp.lz");
+const u32 gTilesetTiles_IndoorLibertyGarden[] = INCGFX_U32("data/tilesets/secondary/indoor_liberty_garden/tiles.png", ".4bpp.smol");
