@@ -410,15 +410,15 @@ static const struct ScrollArrowsTemplate sBagScrollArrowsTemplate = {
 };
 
 // Key item wheel gfx
-static const u8 sRegisterUp_Gfx[] = INCBIN_U8("graphics/bag/select_button.4bpp");
-static const u8 sRegisterRight_Gfx[] = INCBIN_U8("graphics/bag/select_button_right.4bpp");
-static const u8 sRegisterDown_Gfx[] = INCBIN_U8("graphics/bag/select_button_down.4bpp");
-static const u8 sRegisterLeft_Gfx[] = INCBIN_U8("graphics/bag/select_button_left.4bpp");
+static const u8 sRegisterUp_Gfx[] = INCGFX_U8("graphics/bag/select_button.png", ".4bpp");
+static const u8 sRegisterRight_Gfx[] = INCGFX_U8("graphics/bag/select_button_right.png", ".4bpp");
+static const u8 sRegisterDown_Gfx[] = INCGFX_U8("graphics/bag/select_button_down.png", ".4bpp");
+static const u8 sRegisterLeft_Gfx[] = INCGFX_U8("graphics/bag/select_button_left.png", ".4bpp");
 
 static const u8* const sRegisteredSelect_Gfx[] = {sRegisterUp_Gfx, sRegisterRight_Gfx, sRegisterDown_Gfx, sRegisterLeft_Gfx, sRegisterUp_Gfx};
 
-static const u32 sKeyItemBoxGfx[] = INCBIN_U32("graphics/bag/key_item_box.4bpp");
-static const u16 sKeyItemBoxPal[] = INCBIN_U16("graphics/bag/key_item_box.gbapal");
+static const u32 sKeyItemBoxGfx[] = INCGFX_U32("graphics/bag/key_item_box.png", ".4bpp");
+static const u16 sKeyItemBoxPal[] = INCGFX_U16("graphics/bag/key_item_box.png", ".gbapal");
 
 static const struct SpritePalette sSpritePalette_KeyItemBox = {
     .data = sKeyItemBoxPal,

@@ -11,12 +11,14 @@ enum BattleCoordTypes
     BATTLE_COORDS_COUNT,
 };
 
-enum
+// start bwBattleUI
+enum BattleHealthboxHpTextElements
 {
     HP_CURRENT,
     HP_MAX,
     HP_BOTH
 };
+// end bwBattleUI
 
 enum
 {
@@ -34,8 +36,8 @@ enum
 };
 
 #define TAG_HEALTHBOX_PLAYER1_TILE      0xD6FF
-#define TAG_HEALTHBOX_PLAYER2_TILE      0xD700
-#define TAG_HEALTHBOX_OPPONENT1_TILE    0xD701
+#define TAG_HEALTHBOX_OPPONENT1_TILE    0xD700
+#define TAG_HEALTHBOX_PLAYER2_TILE      0xD701
 #define TAG_HEALTHBOX_OPPONENT2_TILE    0xD702
 
 #define TAG_HEALTHBAR_PLAYER1_TILE      0xD704
@@ -46,12 +48,12 @@ enum
 #define TAG_HEALTHBOX_PALS_1            0xD709
 #define TAG_HEALTHBOX_PALS_2            0xD70A
 #define TAG_HEALTHBOX_SAFARI_TILE       0xD70B
+
 #define TAG_STATUS_SUMMARY_BAR_TILE     0xD70C
+#define TAG_STATUS_SUMMARY_BALLS_TILE   0xD71D
 
-#define TAG_STATUS_SUMMARY_BAR_PAL      0xD710
-#define TAG_STATUS_SUMMARY_BALLS_PAL    0xD712
-
-#define TAG_STATUS_SUMMARY_BALLS_TILE   0xD714
+#define TAG_STATUS_SUMMARY_BAR_PAL      0xD71E
+#define TAG_STATUS_SUMMARY_BALLS_PAL    0xD71F
 
 #define TAG_HEALTHBAR_PAL               TAG_HEALTHBAR_PLAYER1_TILE
 #define TAG_HEALTHBOX_PAL               TAG_HEALTHBOX_PLAYER1_TILE
@@ -92,7 +94,20 @@ enum
 #define TAG_MISC_INDICATOR_PAL          0xD779 // Alpha, Omega, and Dynamax indicators use the same palette as each of them only uses 4 different colors.
 #define TAG_TERA_INDICATOR_PAL          0xD77A
 
+#define MOVE_INFO_WINDOW_TAG 0xE722 // bwBattleUI
+
+// start bwBattleUI
 enum
+{
+    TAG_ABILITY_POP_UP = 0xD720, // Only used for the SpritePalette, the rest below is for the SpriteSheets.
+    TAG_ABILITY_POP_UP_PLAYER1 = TAG_ABILITY_POP_UP,
+    TAG_ABILITY_POP_UP_OPPONENT1,
+    TAG_ABILITY_POP_UP_PLAYER2,
+    TAG_ABILITY_POP_UP_OPPONENT2,
+    TAG_LAST_BALL_WINDOW,
+};
+
+enum BattleHealthboxElements
 {
     HEALTHBOX_ALL,
     HEALTHBOX_CURRENT_HP,
@@ -105,8 +120,11 @@ enum
     HEALTHBOX_UNUSED_8,
     HEALTHBOX_STATUS_ICON,
     HEALTHBOX_SAFARI_ALL_TEXT,
-    HEALTHBOX_SAFARI_BALLS_TEXT
+    HEALTHBOX_SAFARI_BALLS_TEXT,
+
+    NUM_HEALTHBOX_ELEMENTS
 };
+// end bwBattleUI
 
 enum BattleCoordTypes GetBattlerCoordsIndex(enum BattlerId battler);
 u8 CreateBattlerHealthboxSprites(enum BattlerId battler);
@@ -140,5 +158,11 @@ void TryToAddMoveInfoWindow(void);
 void TryToHideMoveInfoWindow(void);
 void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus);
 void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon);
+// start bwBattleUI
+bool32 IsAnyAbilityPopUpActive(void);
+void DestroyMoveInfoWinGfx(struct Sprite *sprite);
+void DestroyLastUsedBallWinGfx(struct Sprite *sprite);
+void DestroyLastUsedBallGfx(struct Sprite *sprite);
+// end bwBattleUI
 
 #endif // GUARD_BATTLE_INTERFACE_H
