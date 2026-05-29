@@ -272,7 +272,7 @@ DOUBLE_BATTLE_TEST("Red Card activates but fails if the attacker is rooted")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
         MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
-        MESSAGE("The opposing Wobbuffet anchored itself with its roots!");
+        MESSAGE("The opposing Wobbuffet is anchored in place with its roots!");
         NOT MESSAGE("The opposing Unown was dragged out!");
 
         // Red Card already consumed so cannot activate.
@@ -301,7 +301,7 @@ DOUBLE_BATTLE_TEST("Red Card activates but fails if the attacker has Suction Cup
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
         MESSAGE("Wobbuffet held up its Red Card against the opposing Octillery!");
-        MESSAGE("The opposing Octillery anchors itself with Suction Cups!");
+        MESSAGE("The opposing Octillery is anchored in place with its suction cups!");
         NOT MESSAGE("The opposing Unown was dragged out!");
 
         // Red Card already consumed so cannot activate.
@@ -520,7 +520,7 @@ SINGLE_BATTLE_TEST("Red Card activates and is consumed but fails if the attacker
 SINGLE_BATTLE_TEST("Red Card activates before Eject Pack")
 {
     GIVEN {
-        ASSUME(MoveHasAdditionalEffectSelf(MOVE_OVERHEAT, MOVE_EFFECT_SP_ATK_MINUS_2) == TRUE);
+        ASSUME_MOVE_EFFECT_STAT_CHANGE(MOVE_OVERHEAT, self: TRUE, spAtk: -2);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_EJECT_PACK); }
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_RED_CARD); }

@@ -80,7 +80,7 @@ static EWRAM_DATA void *sTempTileDataBuffer[0x20] = {NULL};
 static EWRAM_DATA u8 sMiniWindowIds[NUM_MINI_WINDOW_IDS] = {0};
 static EWRAM_DATA u16 sMiniWindowBaseBlock = 0;
 
-const u16 gStandardMenuPalette[] = INCBIN_U16("graphics/interface/std_menu.gbapal");
+const u16 gStandardMenuPalette[] = INCGFX_U16("graphics/interface/std_menu.pal", ".gbapal");
 
 static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
 {
@@ -107,7 +107,7 @@ static const struct WindowTemplate sYesNo_WindowTemplates =
     .baseBlock = 0x125
 };
 
-static const u16 sHofPC_TopBar_Pal[] = INCBIN_U16("graphics/interface/hof_pc_topbar.gbapal");
+static const u16 sHofPC_TopBar_Pal[] = INCGFX_U16("graphics/interface/hof_pc_topbar.pal", ".gbapal");
 static const u8 sTextColors[] = { TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY };
 
 // Table of move info icon offsets in graphics/interface/menu_info.png

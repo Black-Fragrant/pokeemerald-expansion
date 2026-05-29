@@ -154,8 +154,8 @@ enum
 
 struct Subsprite
 {
-    s8 x; // was u16 in R/S
-    s8 y; // was u16 in R/S
+    s16 x; // was u16 in R/S
+    s16 y; // was u16 in R/S
     u16 shape:2;
     u16 size:2;
     u16 tileOffset:10;
@@ -274,7 +274,9 @@ void ResetSpriteData(void);
 void AnimateSprites(void);
 void BuildOamBuffer(void);
 u32 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
+u32 CreateSpriteUnchecked(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 u32 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
+u32 CreateSpriteAtEndUnchecked(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 u32 CreateInvisibleSprite(void (*callback)(struct Sprite *));
 u32 CreateSpriteAndAnimate(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 void DestroySprite(struct Sprite *sprite);
@@ -308,6 +310,7 @@ u16 LoadSpriteSheetByTemplate(const struct SpriteTemplate *template, u32 frame, 
 u16 LoadSpriteSheetByTemplateKeyItem(const struct SpriteTemplate *template, u8 frame);
 void LoadSpriteSheets(const struct SpriteSheet *sheets);
 s16 AllocSpriteTiles(u16 tileCount);
+bool32 CanAllocSpriteTiles(u16 tileCount);
 void FreeSpriteTilesByTag(u16 tag);
 void FreeSpriteTileRanges(void);
 u16 GetSpriteTileStartByTag(u16 tag);
@@ -340,5 +343,6 @@ void SetupSpritesForTextPrinting(u8 *spriteIds, const u32 **spriteSrc, u32 numSp
 u32 *GetSrcPtrFromSprite(struct Sprite *sprite);
 u32 GetSpriteWidth(struct Sprite *sprite);
 u32 GetSpriteHeight(struct Sprite *sprite);
+u32 CountFreePaletteSlots(void);
 
 #endif //GUARD_SPRITE_H
