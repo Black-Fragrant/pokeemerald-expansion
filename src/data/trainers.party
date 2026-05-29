@@ -1800,91 +1800,78 @@ IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
 - String Shot
 - Protect
 
-=== TRAINER_BROOKE_1 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Super Potion
+=== TRAINER_GRUNT_M_LIBERTY_GARDEN_1 ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Wingull
+Patrat
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_LIBERTY_GARDEN_2 ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Sandile
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Numel
+Patrat
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Roselia
+=== TRAINER_GRUNT_M_LIBERTY_GARDEN_3 ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Sandile
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_LG_BASEMENT ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Patrat
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JENNIFER ===
-Name: JENNIFER
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
+Scraggy
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_LG_ROOM ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
 
-Sableye
-Level: 30
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
-=== TRAINER_HOPE ===
-Name: HOPE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Roselia
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_SHANNON ===
-Name: SHANNON
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Claydol
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MICHELLE ===
-Name: MICHELLE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Torkoal
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Medicham
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Ludicolo
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Watchog
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
 
 === TRAINER_CAROLINE ===
 Name: CAROLINE

@@ -9837,7 +9837,7 @@
       "id": "LAYOUT_LIBERTY_GARDEN_BASEMENT",
       "name": "LibertyGarden_Basement_Layout",
       "width": 7,
-      "height": 19,
+      "height": 22,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorLibertyGarden",
       "border_filepath": "data/layouts/LibertyGarden_Basement/border.bin",

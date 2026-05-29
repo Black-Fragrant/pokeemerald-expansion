@@ -335,7 +335,7 @@ script CasteliaCity_GymStreet_EventScript_BattleWithGrunt
     closemessage
     delay(10)
 	applymovement(LOCALID_CCGS_GRUNT2, moves(walk_right))
-	applymovement(LOCALID_CCGS_BURGH2, moves(lock_facing_direction, walk_right, unlock_facing_direction))
+	applymovement(LOCALID_CCGS_BURGH2, moves(face_left, lock_facing_direction, walk_right, unlock_facing_direction))
 	applymovement(LOCALID_CCGS_GRUNT1, moves(walk_fast_right * 3))
 	applymovement(LOCALID_CCGS_GRUNT3, moves(walk_fast_right * 4, walk_fast_up))
 	waitmovement(0)

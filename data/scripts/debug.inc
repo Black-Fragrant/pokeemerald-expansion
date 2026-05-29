@@ -204,7 +204,7 @@ Debug_EventScript_Script_1_text::
 	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
-	warp MAP_NUVEMA_TOWN, 16, 17
+	warp MAP_LIBERTY_GARDEN, 15, 7
 	waitstate
 	end
 

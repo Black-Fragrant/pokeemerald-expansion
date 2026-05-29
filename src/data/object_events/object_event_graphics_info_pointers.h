@@ -182,6 +182,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Petililow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Munnaow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Musharnaow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pikachuow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Victiniow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clerko;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlagPole;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GiftBox;
@@ -545,6 +546,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BOAT_ROYAL] =               &gObjectEventGraphicsInfo_BoatRoyal,
     [OBJ_EVENT_GFX_BOAT_BLACK] =               &gObjectEventGraphicsInfo_BoatBlack,
     [OBJ_EVENT_GFX_PIKACHUOW] =                &gObjectEventGraphicsInfo_Pikachuow,
+    [OBJ_EVENT_GFX_VICTINIOW] =                &gObjectEventGraphicsInfo_Victiniow,
     [OBJ_EVENT_GFX_CLERKO] =                   &gObjectEventGraphicsInfo_Clerko,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,

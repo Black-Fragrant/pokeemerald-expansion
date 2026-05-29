@@ -2152,7 +2152,7 @@ const struct Tileset gTileset_LibertyGarden =
     .palettes = gTilesetPalettes_LibertyGarden,
     .metatiles = gMetatiles_LibertyGarden,
     .metatileAttributes = gMetatileAttributes_LibertyGarden,
-    .callback = NULL,
+    .callback = InitTilesetAnim_LibertyGarden,
 };
 
 const struct Tileset gTileset_IndoorLibertyGarden =
