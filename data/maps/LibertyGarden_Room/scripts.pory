@@ -1,1 +1,199 @@
-mapscripts LibertyGarden_Room_MapScripts {}
+mapscripts LibertyGarden_Room_MapScripts
+{
+    MAP_SCRIPT_ON_TRANSITION : LibertyGarden_Room_On_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_LIBERTY_GARDEN_STATE, 0 : LibertyGarden_Room_EventScript_GruntBattle
+    ]
+}
+
+script LibertyGarden_Room_On_Transition
+{
+    call_if_ge (VAR_LIBERTY_GARDEN_STATE, 1, LibertyGarden_Room_EventScript_PositionGrunt)
+    call_if_set (FLAG_VICTINI_CAPTURED, LibertyGarden_Room_EventScript_HideVictini)
+	end()
+}
+
+script LibertyGarden_Room_EventScript_PositionGrunt
+{
+	setobjectxyperm(LOCALID_LG_ROOM_GRUNT, 6, 9)
+    setobjectmovementtype (LOCALID_LG_ROOM_GRUNT, MOVEMENT_TYPE_FACE_LEFT)
+    return()
+}
+
+script LibertyGarden_Room_EventScript_HideVictini
+{
+	setflag(FLAG_TEMP_11)
+    return()
+}
+
+script LibertyGarden_Room_EventScript_GruntBattle
+{
+    lock
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	playse(SE_PIN)
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+    msgbox("The one who obtains this Pokémon is said\n"
+        "to be victorious in any type\l"
+        "of competition...\p"
+        "We  can obtain a power that would make\n"
+        "us invincible!\p"
+        "That is the value of this mythical\n"
+        "Pokémon, Victini!", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    call(LibertyGarden_Room_EventScript_GruntMove)
+    msgbox("This is a secret room meant\n"
+        "to hide Victini!\p"
+        "Two hundred years ago, a certain rich\n"
+        "person bought this entire island and hid\l"
+        "Victini in this underground room.\p"
+        "After that, no one saw Victini, and it\n"
+        "became a mythical Pokémon...", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    call(LibertyGarden_Room_EventScript_GruntMove)
+    msgbox("We, Team Plasma, will liberate Victini\n"
+        "from this room and use its powers to make\l"
+        "our goal a reality!\p"
+        "We won't let a brat like you get in\n"
+        "our way!", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    destroy_speech_bubble()
+    closemessage
+	trainerbattle_no_intro (TRAINER_GRUNT_M_LG_ROOM, text("I failed to seize the victory!"))
+    msgbox("It looks like I underestimated\n"
+        "your strength.\p"
+        "But Victini won't be so simple!\n"
+        "Look!", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(face_left, lock_facing_direction, walk_right * 2, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+    call(LibertyGarden_Room_EventScript_GruntDialogue)
+    setvar(VAR_LIBERTY_GARDEN_STATE, 1)
+    call(LibertyGarden_Room_EventScript_PositionGrunt)
+    delay(20)
+    release
+    end
+}
+
+script LibertyGarden_Room_EventScript_GruntMove
+{
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+    return
+}
+
+script LibertyGarden_Room_EventScript_GruntDialogue
+{
+    msgbox("Looks like it's waiting to test your\n"
+        "strength. You'd better get ready!", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script LibertyGarden_Room_EventScript_GruntDialogue_2
+{
+    msgbox("Victini is still close by and watching\n"
+        "your movements...\p"
+        "If you exit this room and come back, it\n"
+        "might return...", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script LibertyGarden_Room_EventScript_Grunt
+{
+    lock
+    faceplayer
+    call_if_unset(FLAG_TEMP_11, LibertyGarden_Room_EventScript_GruntDialogue)
+    call_if_set(FLAG_TEMP_11, LibertyGarden_Room_EventScript_GruntDialogue_2)
+    release
+    end
+}
+
+script LibertyGarden_Room_EventScript_Victini
+{
+    lock
+	faceplayer
+	playmoncry (SPECIES_VICTINI, CRY_MODE_ENCOUNTER)
+    msgbox("Ta-ta-ta-tah!", MSGBOX_SHOUT)
+	waitmoncry
+    closemessage
+	setwildbattle(SPECIES_VICTINI, 15)
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	special(BattleSetup_StartLegendaryBattle)
+	waitstate
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+    goto_if_eq(VAR_RESULT, B_OUTCOME_CAUGHT, LibertyGarden_Room_EventScript_Victini_Caught)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_LG_ROOM_VICTINI)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("Victini vanished from the\n"
+        "underground room...", MSGBOX_TRANSPARENT)
+    closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    call(LibertyGarden_Room_EventScript_GruntDialogue_2)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    release 
+    end 
+}
+
+script LibertyGarden_Room_EventScript_Victini_Caught
+{
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_LG_ROOM_VICTINI)
+    fadescreen(FADE_FROM_BLACK)
+    setflag(FLAG_VICTINI_CAPTURED)
+    setvar(VAR_LIBERTY_GARDEN_STATE, 2)
+    clearflag(FLAG_LIBERTY_GARDEN_POLICE)
+    clearflag(FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE)
+    clearflag(FLAG_LIBERTY_GARDEN_JUNIPER)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    msgbox("Living with Victini means accepting\n"
+        "Victini's cruel destiny...\p"
+        "Someday we will test you to see if you are\n"
+        "truly ready for that.", MSGBOX_DEFAULT, TRUE, LOCALID_LG_ROOM_GRUNT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_LG_ROOM_GRUNT, moves(walk_fast_left * 2, walk_fast_down * 2))
+	waitmovement(0)
+    delay(10)
+    playse(SE_EXIT)
+    removeobject(LOCALID_LG_ROOM_GRUNT)
+    waitse
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(20)
+    release 
+    end 
+}

@@ -1,4 +1,149 @@
-mapscripts LibertyGarden_MapScripts {}
+mapscripts LibertyGarden_MapScripts
+{
+    MAP_SCRIPT_ON_TRANSITION : LibertyGarden_On_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_LIBERTY_GARDEN_STATE, 2 : LibertyGarden_EventScript_ArrestingGrunts
+    ]
+}
+
+script LibertyGarden_On_Transition
+{
+    call_if_eq (VAR_LIBERTY_GARDEN_STATE, 2, LibertyGarden_Room_EventScript_TempHideTourists)
+    call_if_eq (VAR_LIBERTY_GARDEN_STATE, 4, LibertyGarden_Room_EventScript_TempHideTourists)
+    end
+}
+
+script LibertyGarden_Room_EventScript_TempHideTourists
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script LibertyGarden_EventScript_ArrestingGrunts
+{
+    lock
+	minimsg("Team Plasma forever!", 7, 4)
+	delay(80)
+	minimsg("We won't give up!", 11, 7)
+	delay(100)
+	closeallminimessages
+	minimsg("You're irredeemable!", 6, 4)
+	delay(80)
+	minimsg("Get moving!", 9, 9)
+	delay(100)
+	closeallminimessages
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE4, moves(walk_down * 3, walk_right * 5))
+    applymovement(LOCALID_LIBERTY_GARDEN_GRUNT3, moves(walk_right * 1, walk_down * 3, walk_right * 5))
+    applymovement(LOCALID_LIBERTY_GARDEN_GRUNT2, moves(walk_right * 2, walk_down * 3, walk_right * 5))
+    applymovement(LOCALID_LIBERTY_GARDEN_GRUNT1, moves(walk_right * 3, walk_down * 3, walk_right * 5))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE3, moves(walk_right * 4, walk_down * 3, walk_right * 5))
+    applymovement(LOCALID_PLAYER, moves(delay_16 * 3, walk_down * 3))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE2, moves(delay_16 * 2, walk_down, walk_right * 2, walk_down * 3, walk_right * 5))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE5, moves(delay_16 * 3, walk_up, walk_right * 2, walk_down * 3, walk_right * 5))
+    waitmovement(0)
+    removeobject(LOCALID_LIBERTY_GARDEN_GRUNT1)
+    removeobject(LOCALID_LIBERTY_GARDEN_GRUNT2)
+    removeobject(LOCALID_LIBERTY_GARDEN_GRUNT3)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE2)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE3)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE4)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE5)
+    delay(10)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    msgbox("Professor Juniper: Thanks to you,\n"
+            "{PLAYER}, this group that was\l"
+            "up to no good has been captured!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+    applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Victini is a mythical Pokémon that is said\n"
+        "to radiate energy from its body...\p"
+        "When Pokémon or people come into contact\n"
+        "with that energy, it fills up their bodies,\l"
+        "and they exhibit more power than usual.\p"
+        "That's why there was no end to the\n"
+        "people who wanted to use Victini for\l"
+        "their own evil ends...\p"
+        "I'm sure the rich person who built this\n"
+        "underground room for Victini was\l"
+        "sincerely trying to help it.\p"
+        "But I think shutting the poor thing up in\n"
+        "this room was a mistake.\p"
+        "Thanks to you, Victini has a new destiny\n"
+        "that does not involve being used in\l"
+        "Team Plasma's schemes.\p"
+        "Making sure no one misuses Victini's\n"
+        "powers is now your duty!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Also...\p"
+        "In the Unova Pokédex, Victini was\n"
+        "assigned a special number: zero.\p"
+        "I've heard the special number was\n"
+        "assigned in the hope that Victini's power\l"
+        "to bring victory would be shared with the\l"
+        "Trainer who travels with this Pokédex...", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    addobject(LOCALID_LIBERTY_GARDEN_POLICE6)
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE6, moves(walk_fast_left * 4))
+	waitmovement(0)
+    delay(10)
+    msgbox("Professor Juniper!\p"
+        "We cornered the crooks with our\n"
+        "high-speed police boat!\p"
+        "We will return to Castelia City!\n"
+        "Please come on board, too!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_POLICE6)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Professor Juniper: Thank you!\n"
+        "I'll be right there!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("I can't believe it when people are led\n"
+        "astray by Pokémon's astounding abilities\l"
+        "and try to misuse them...\p"
+        "But it's only when we face Pokémon with a\n"
+        "good heart that we can make a \l"
+        "brighter future!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE6, moves(delay_16 * 2, walk_right * 4))
+    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, moves(walk_right * 8))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE10, moves(delay_16 * 3, walk_up, walk_right * 6))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE9, moves(delay_16 * 3, walk_up, walk_right * 7))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE8, moves(delay_16 * 3, walk_up, walk_right * 9))
+    applymovement(LOCALID_LIBERTY_GARDEN_POLICE7, moves(delay_16 * 3, walk_up, walk_right * 10))
+	waitmovement(0)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE6)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE7)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE8)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE9)
+    removeobject(LOCALID_LIBERTY_GARDEN_POLICE10)
+    removeobject(LOCALID_LIBERTY_GARDEN_JUNIPER)
+    setvar(VAR_LIBERTY_GARDEN_STATE, 3)
+    clearflag(FLAG_TEMP_11)
+    playse(SE_RG_SS_ANNE_HORN)
+    waitse
+    delay(20)
+    release()
+    end()
+}
 
 script CasteliaCity_LibertyGarden_EventScript_Captain
 {
@@ -56,38 +201,94 @@ script CasteliaCity_LibertyGarden_EventScript_LighthouseSign
 
 script CasteliaCity_LibertyGarden_EventScript_BlackSuit
 {
+    lock
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_LibertyGarden_EventScript_BlackSuit_Cont)
     msgbox("What do they hope to accomplish\n"
         "by occupying the island?\l"
         "What a sketchy group!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_BlackSuit_Cont
+{
+    msgbox("If I had known this island's secret\n"
+        "earlier, I would've...\p"
+        "What? No! Nothing!\n"
+        "Just talking to myself!", MSGBOX_NPC, TRUE)
+    release
     end
 }
 
 script CasteliaCity_LibertyGarden_EventScript_Beauty
 {
+    lock
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_LibertyGarden_EventScript_Beauty_Cont)
     msgbox("What are they doing in this little\n"
         "memorial park? There's nothing here\l"
         "but an old lighthouse...", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Beauty_Cont
+{
+    msgbox("Too many people use Pokémon\n"
+        "for bad deeds!", MSGBOX_NPC, TRUE)
+    release
     end
 }
 
 script CasteliaCity_LibertyGarden_EventScript_Hiker
 {
+    lock
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_LibertyGarden_EventScript_Hiker_Cont)
     msgbox("That Team Plasma...\p"
         "They sure do terrible things!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Hiker_Cont
+{
+    msgbox("The smell of the ocean is so soothing!", MSGBOX_NPC, TRUE)
+    release
     end
 }
 
 script CasteliaCity_LibertyGarden_EventScript_Boy
 {
+    lock
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_LibertyGarden_EventScript_Boy_Cont)
     msgbox("Waaah! I'm scared!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Boy_Cont
+{
+    msgbox("You sure took care of\n"
+        "those bad guys, mister!", MSGBOX_NPC, TRUE)
+    release
     end
 }
 
 script CasteliaCity_LibertyGarden_EventScript_Grandma
 {
+    lock
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_LibertyGarden_EventScript_Grandma_Cont)
     msgbox("Making my grandchild cry!\p"
         "If they are underestimating me because\n"
         "I'm old... Grrr!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Grandma_Cont
+{
+    msgbox("Thank you very much for\n"
+        "saving my grandchild.", MSGBOX_NPC, TRUE)
+    release
     end
 }
 
@@ -101,9 +302,50 @@ script CasteliaCity_LibertyGarden_EventScript_Grunt_ByGrandma
 
 script CasteliaCity_LibertyGarden_EventScript_Police
 {
+    lock
+    goto_if_eq(VAR_LIBERTY_GARDEN_STATE, 4, CasteliaCity_LibertyGarden_EventScript_Police_Cont2)
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_LibertyGarden_EventScript_Police_Cont)
     msgbox("This officer's Pokémon couldn't stand up\n"
         "to them!\l"
         "That blasted Team Plasma!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Police_Cont
+{
+    msgbox("I'm really glad a strong Trainer\n"
+        "like you is around!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Police_Cont2
+{
+    msgbox("Recently, I've been bored because\n"
+        "the number of tourists has decreased.", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Police_ByLighthouse
+{
+    lock
+    goto_if_eq(VAR_LIBERTY_GARDEN_STATE, 4, CasteliaCity_LibertyGarden_EventScript_Police_ByLighthouse_Cont)
+    msgbox("My fellow officers rushed here by\n"
+        "police boat!\p"
+        "Thanks to them, we rounded up\n"
+        "these baddies!", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_LibertyGarden_EventScript_Police_ByLighthouse_Cont
+{
+        msgbox("How's that Pokémon doing?\p"
+        "The island sure has been quiet since\n"
+        "that incident.", MSGBOX_NPC, TRUE)
+    release
     end
 }
 

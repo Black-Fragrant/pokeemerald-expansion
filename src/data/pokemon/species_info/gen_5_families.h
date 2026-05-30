@@ -40,7 +40,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Victini,
         .frontPicSize = MON_COORDS_SIZE(48, 56),
-        .frontPicYOffset = 10,
+        .frontPicYOffset = 13,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 2),
             ANIMCMD_FRAME(1, 46),
@@ -49,14 +49,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .frontAnimId = ANIM_H_JUMPS,
         .backPic = gMonBackPic_Victini,
         .backPicSize = MON_COORDS_SIZE(40, 64),
-        .backPicYOffset = 7,
+        .backPicYOffset = 4,
         .backAnimId = BACK_ANIM_H_SHAKE,
         .palette = gMonPalette_Victini,
         .shinyPalette = gMonShinyPalette_Victini,
         .iconSprite = gMonIcon_Victini,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 4, SHADOW_SIZE_S)
+        SHADOW(0, 1, SHADOW_SIZE_S)
         FOOTPRINT(Victini)
         OVERWORLD(
             sPicTable_Victini,
@@ -128,7 +128,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconSprite = gMonIcon_Snivy,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
-        SHADOW(-1, 3, SHADOW_SIZE_S)
+        SHADOW(0, 3, SHADOW_SIZE_S)
         FOOTPRINT(Snivy)
         OVERWORLD(
             sPicTable_Snivy,

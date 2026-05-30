@@ -160,7 +160,7 @@
 #define VAR_CASTELIA_GYM_STATE                           0x408A
 #define VAR_CASTELIA_GYM_RECEPTION_BLOCK                 0x408B
 #define VAR_CASTELIA_GATE_BIANCA_BATTLE_STATE            0x408C
-#define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
+#define VAR_LIBERTY_GARDEN_STATE                         0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
 #define VAR_DEVON_CORP_3F_STATE                          0x408F
 #define VAR_BRINEY_HOUSE_STATE                           0x4090

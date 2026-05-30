@@ -164,7 +164,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 	setflag FLAG_UNUSED_0xXXX
 	clearflag FLAG_UNUSED_0xXXX
 	delay 30
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
+	setvar VAR_PLACEHOLDER, 3
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm

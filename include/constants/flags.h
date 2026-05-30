@@ -899,11 +899,11 @@
 #define FLAG_CASTELIA_ITEM_SMOKE_BALL                               0x353
 #define FLAG_ROUTE4_SOUTH_CHEREN                                    0x354
 #define FLAG_CASTELIA_LIBERTY_PIER_CHECKED_TICKET                   0x355
-#define FLAG_UNUSED_0x356                                           0x356
-#define FLAG_UNUSED_0x357                                           0x357
-#define FLAG_UNUSED_0x358                                           0x358
-#define FLAG_UNUSED_0x359                                           0x359
-#define FLAG_UNUSED_0x35A                                           0x35A
+#define FLAG_VICTINI_CAPTURED                                       0x356
+#define FLAG_LIBERTY_GARDEN_GRUNTS                                  0x357
+#define FLAG_LIBERTY_GARDEN_POLICE                                  0x358
+#define FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE               0x359
+#define FLAG_LIBERTY_GARDEN_JUNIPER                                 0x35A
 #define FLAG_UNUSED_0x35B                                           0x35B
 #define FLAG_UNUSED_0x35C                                           0x35C
 #define FLAG_UNUSED_0x35D                                           0x35D

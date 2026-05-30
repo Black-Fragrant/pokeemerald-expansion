@@ -234,8 +234,19 @@ script CasteliaCity_PrimePier_EventScript_MovePlayer_Pos6
 
 script CasteliaCity_PrimePier_EventScript_Gentleman
 {
+    lock
+    goto_if_ge(VAR_LIBERTY_GARDEN_STATE, 2, CasteliaCity_PrimePier_EventScript_Gentleman_Cont)
     msgbox("That black boat...\n"
         "What could it be?", MSGBOX_NPC, TRUE)
+    release
+    end
+}
+
+script CasteliaCity_PrimePier_EventScript_Gentleman_Cont
+{
+    msgbox("That black boat...\n"
+        "What could it be?", MSGBOX_NPC, TRUE)
+    release
     end
 }
 

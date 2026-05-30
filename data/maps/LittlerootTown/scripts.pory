@@ -28,7 +28,7 @@ LittlerootTown_MapScripts::
 	@ 4: Completed Lati TV / SS Ticket event
 	@ 5: Exited house after above event
 
-	@ State descriptions for VAR_LITTLEROOT_RIVAL_STATE
+	@ State descriptions for VAR_PLACEHOLDER
 	@ 1: Never occurs
 	@ 2: Entered Rival's bedroom
 	@ 3: Met Rival
@@ -44,7 +44,7 @@ LittlerootTown_OnTransition:
 	call_if_eq VAR_PLACEHOLDER, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
 	call_if_eq VAR_PLACEHOLDER, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
 	call_if_eq VAR_OLDALE_RIVAL_STATE, 1, LittlerootTown_EventScript_MoveRivalFromOldale
-	call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_EventScript_SetRivalLeftForRoute103
+	call_if_eq VAR_PLACEHOLDER, 3, LittlerootTown_EventScript_SetRivalLeftForRoute103
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_HideMapNamePopup
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_EventScript_LeftLabAfterDexUpgrade
 	end
