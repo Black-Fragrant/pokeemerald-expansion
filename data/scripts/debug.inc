@@ -29,7 +29,7 @@ Debug_CheatStart::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
 	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
+	setvar VAR_PLACEHOLDER, 4 @ 4: Received Pokedex
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
 	setvar VAR_BRINEY_HOUSE_STATE, 1
@@ -197,15 +197,16 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setflag FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE
+	giveitem ITEM_MASTER_BALL, 3
 	end
 
 Debug_EventScript_Script_1_text::
 	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
-	warp MAP_LIBERTY_GARDEN, 15, 7
-	waitstate
+	setflag FLAG_LIBERTY_GARDEN_POLICE
+	setflag FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE
+	setflag FLAG_LIBERTY_GARDEN_JUNIPER
 	end
 
 Debug_EventScript_Script_3::

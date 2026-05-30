@@ -546,6 +546,9 @@ void BattleSetup_StartLegendaryBattle(void)
 
     switch (GetMonData(&gParties[B_TRAINER_1][0], MON_DATA_SPECIES))
     {
+    case SPECIES_VICTINI:
+        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_BW_VS_LEGENDARY);
+        break;
     case SPECIES_GROUDON:
     case SPECIES_GROUDON_PRIMAL:
         CreateBattleStartTask(B_TRANSITION_GROUDON, MUS_VS_KYOGRE_GROUDON);

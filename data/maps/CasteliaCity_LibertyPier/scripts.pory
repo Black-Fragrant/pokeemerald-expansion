@@ -1,4 +1,19 @@
-mapscripts CasteliaCity_LibertyPier_MapScripts {}
+mapscripts CasteliaCity_LibertyPier_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : CasteliaCity_LibertyPier_On_Transition
+}
+
+script CasteliaCity_LibertyPier_On_Transition
+{
+    call_if_eq (VAR_LIBERTY_GARDEN_STATE, 3, CasteliaCity_LibertyPier_EventScript_HideTourists)
+    end
+}
+
+script CasteliaCity_LibertyPier_EventScript_HideTourists
+{
+    setvar(VAR_LIBERTY_GARDEN_STATE, 4)
+    return
+}
 
 script CasteliaCity_LibertyPier_EventScript_Youngster
 {

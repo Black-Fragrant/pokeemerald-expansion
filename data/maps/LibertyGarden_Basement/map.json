@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "LibertyGarden_Basement_EventScript_Grunt_Battle3",
-      "flag": "0"
+      "flag": "FLAG_LIBERTY_GARDEN_GRUNTS"
     },
     {
       "local_id": "LOCALID_LG_BASEMENT_POLICE",
@@ -39,7 +39,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LibertyGarden_Basement_EventScript_Police",
-      "flag": "0"
+      "flag": "FLAG_LIBERTY_GARDEN_GRUNTS"
     }
   ],
   "warp_events": [
