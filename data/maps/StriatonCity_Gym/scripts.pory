@@ -601,10 +601,9 @@ script StriatonCity_Gym_EventScript_Battle_Cilan
         "Chili or Cress could best you...", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CILAN)
     destroy_speech_bubble()
     closemessage
-    message("{PLAYER} received\n"
-        "the Trio Badge from Cilan!") //this should be transparent
 	playfanfare(MUS_OBTAIN_BADGE)
-    waitmessage
+    msgbox("{PLAYER} received\n"
+        "the Trio Badge from Cilan!", MSGBOX_TRANSPARENT)
 	waitfanfare
 	setflag(FLAG_BADGE01_GET)
     settrainerflag(TRAINER_WAITER_STRIATON_GYM)
@@ -659,10 +658,9 @@ script StriatonCity_Gym_EventScript_Battle_Chili
         "Take this Gym Badge!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CHILI)
     destroy_speech_bubble()
     closemessage
-    message("{PLAYER} received\n"
-        "the Trio Badge from Chili!") //this should be transparent
 	playfanfare(MUS_OBTAIN_BADGE)
-    waitmessage
+    msgbox("{PLAYER} received\n"
+        "the Trio Badge from Chili!", MSGBOX_TRANSPARENT)
 	waitfanfare
 	setflag(FLAG_BADGE01_GET)
     settrainerflag(TRAINER_WAITER_STRIATON_GYM)
@@ -717,10 +715,9 @@ script StriatonCity_Gym_EventScript_Battle_Cress
         "please take this Badge.", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_GYM_CRESS)
     destroy_speech_bubble()
     closemessage
-    message("{PLAYER} received\n"
-        "the Trio Badge from Cress!") //this should be transparent
 	playfanfare(MUS_OBTAIN_BADGE)
-    waitmessage
+    msgbox("{PLAYER} received\n"
+        "the Trio Badge from Cress!", MSGBOX_TRANSPARENT)
 	waitfanfare
 	setflag(FLAG_BADGE01_GET)
     settrainerflag(TRAINER_WAITER_STRIATON_GYM)

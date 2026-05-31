@@ -24,10 +24,9 @@ script NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora
            "worthy of receiving this Basic Badge!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_LR_LENORA)
     destroy_speech_bubble()
     closemessage
-    message("{PLAYER} received\n"
-        "the Basic Badge from Lenora!") //this should be transparent
 	playfanfare(MUS_OBTAIN_BADGE)
-    waitmessage
+    msgbox("{PLAYER} received\n"
+        "the Basic Badge from Lenora!", MSGBOX_TRANSPARENT)
 	waitfanfare
 	setflag(FLAG_BADGE02_GET)
     settrainerflag(TRAINER_SCHOOLBOY_NACRENE_GYM)

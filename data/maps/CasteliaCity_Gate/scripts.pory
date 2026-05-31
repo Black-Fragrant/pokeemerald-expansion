@@ -21,7 +21,7 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
     savebgm(MUS_BW_PASSAGE_TUNNEL)
     playse(SE_EXIT)
 	addobject(LOCALID_CC_GATE_BIANCA)
-    watise
+    waitse
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 2, CasteliaCity_Gate_EventScript_BB_Pos1)
 	call_if_eq (VAR_TEMP_0, 3, CasteliaCity_Gate_EventScript_BB_Pos2)
@@ -111,7 +111,7 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
     setvar(VAR_ROUTE_4_BIANCA_BATTLE, 3)
     playse(SE_EXIT)
 	removeobject(LOCALID_CC_GATE_BIANCA)
-    watise
+    waitse
     delay(20)
     release
     end
