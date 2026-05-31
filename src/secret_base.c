@@ -451,7 +451,7 @@ void EnterSecretBase(void)
 
 bool8 SecretBaseMapPopupEnabled(void)
 {
-    if (gMapHeader.mapType == MAP_TYPE_SECRET_BASE && VarGet(VAR_INIT_SECRET_BASE) == 0)
+    if (gMapHeader.mapType == MAP_TYPE_SECRET_BASE && VarGet(VAR_PLACEHOLDER) == 0)
         return FALSE;
 
     return TRUE;

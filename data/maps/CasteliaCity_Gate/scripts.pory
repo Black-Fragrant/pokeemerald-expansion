@@ -13,3 +13,292 @@ script CasteliaCity_Gate_EventScript_Reception
            "of Route 4.", MSGBOX_NPC, TRUE)
     end
 }
+
+script CasteliaCity_Gate_EventScript_BiancaBattle
+{
+    lock
+	playbgm(MUS_BW_BIANCA, TRUE)
+    savebgm(MUS_BW_PASSAGE_TUNNEL)
+    playse(SE_EXIT)
+	addobject(LOCALID_CC_GATE_BIANCA)
+    watise
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 2, CasteliaCity_Gate_EventScript_BB_Pos1)
+	call_if_eq (VAR_TEMP_0, 3, CasteliaCity_Gate_EventScript_BB_Pos2)
+	call_if_eq (VAR_TEMP_0, 4, CasteliaCity_Gate_EventScript_BB_Pos3)
+	call_if_eq (VAR_TEMP_0, 5, CasteliaCity_Gate_EventScript_BB_Pos4)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_Gate_EventScript_BB_Pos5)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos6)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    waitmovement(0)
+    delay(10)
+    msgbox("Bianca: Heeey, {PLAYER}!\p"
+            "You remember the promise you\n"
+            "made on the Xtransceiver, right?\p"
+            "So, let's get right to our\n"
+            "Pokémon battle!\p"
+            "But, before that...", MSGBOX_DEFAULT, TRUE, LOCALID_CC_GATE_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	call_if_eq (VAR_TEMP_0, 2, CasteliaCity_Gate_EventScript_BB_Pos7)
+	call_if_eq (VAR_TEMP_0, 3, CasteliaCity_Gate_EventScript_BB_Pos8)
+	call_if_eq (VAR_TEMP_0, 4, CasteliaCity_Gate_EventScript_BB_Pos9)
+	call_if_eq (VAR_TEMP_0, 5, CasteliaCity_Gate_EventScript_BB_Pos10)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_Gate_EventScript_BB_Pos11)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos12)
+	delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_CC_GATE_BIANCA, moves(emote_question_mark))
+	waitmovement(0)
+	waitse()
+	delay(60)
+	playse(SE_PIN)
+	applymovement(LOCALID_CC_GATE_BIANCA, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	call_if_eq (VAR_TEMP_0, 2, CasteliaCity_Gate_EventScript_BB_Pos13)
+	call_if_eq (VAR_TEMP_0, 3, CasteliaCity_Gate_EventScript_BB_Pos14)
+	call_if_eq (VAR_TEMP_0, 4, CasteliaCity_Gate_EventScript_BB_Pos15)
+	call_if_eq (VAR_TEMP_0, 5, CasteliaCity_Gate_EventScript_BB_Pos16)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_Gate_EventScript_BB_Pos17)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos18)
+	delay(10)
+    msgbox("They said we can have a Pokémon battle\n"
+        "in the gate as long as we're careful not\l"
+        "to break the electric bulletin board.\p"
+        "I'm the new-and-improved version of me!\n"
+        "It's gonna go great this time!\p"
+        "Let's start up our Pokémon battle again!", MSGBOX_DEFAULT, TRUE, LOCALID_CC_GATE_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	call_if_set(FLAG_CHOSE_SNIVY, CasteliaCity_Gate_BiancaBattle_Oshawott)
+	call_if_set(FLAG_CHOSE_TEPIG, CasteliaCity_Gate_EventScript_BiancaBattle_Snivy)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, CasteliaCity_Gate_EventScript_BiancaBattle_Tepig)
+	delay(20)
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_in_place_down, delay_16, bianca_tip_hat))
+    waitmovement(0)
+	delay(10)
+    msgbox("Bianca: I'll never be a strong Trainer\n"
+            "like you or Cheren or Iris, but...\p"
+            "You know, since we left Nuvema Town,\n"
+            "I've met a lot of people and I've been\l"
+            "thinking about what I want to do in life!\p"
+            "When you look at it that way, Pokémon\n"
+            "have given me a lot of new experiences.", MSGBOX_DEFAULT, TRUE, LOCALID_CC_GATE_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_in_place_up))
+    waitmovement(0)
+	delay(10)
+    msgbox("Having my Pokémon stolen was just\n"
+            "really hard, and I felt really unsure...\p"
+            "Still, I gotta say I'm really glad I went!\p"
+            "I've learned so much on this journey.\n"
+            "And I also learned that being with\l"
+            "Pokémon is really, really important!\p"
+            "OK, well, I hope to see you again soon!\n"
+            "By-bye, {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_CC_GATE_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	call_if_eq (VAR_TEMP_0, 2, CasteliaCity_Gate_EventScript_BB_Pos19)
+	call_if_eq (VAR_TEMP_0, 3, CasteliaCity_Gate_EventScript_BB_Pos20)
+	call_if_eq (VAR_TEMP_0, 4, CasteliaCity_Gate_EventScript_BB_Pos21)
+	call_if_eq (VAR_TEMP_0, 5, CasteliaCity_Gate_EventScript_BB_Pos22)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_Gate_EventScript_BB_Pos23)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos24)
+    delay(20)
+    setvar(VAR_ROUTE_4_BIANCA_BATTLE, 3)
+    playse(SE_EXIT)
+	removeobject(LOCALID_CC_GATE_BIANCA)
+    watise
+    delay(20)
+    release
+    end
+}
+
+script CasteliaCity_Gate_BiancaBattle_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_1, text("I trained with Iris...\nBut I still couldn't win..."))
+	return()
+}
+
+script CasteliaCity_Gate_EventScript_BiancaBattle_Snivy
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_2, text("I trained with Iris...\nBut I still couldn't win..."))
+	return()
+}
+
+script CasteliaCity_Gate_EventScript_BiancaBattle_Tepig
+{
+	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_3, text("I trained with Iris...\nBut I still couldn't win..."))
+	return()
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos1
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 3, walk_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos2
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 2, walk_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos3
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left, walk_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos4
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up * 3))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos5
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_right, walk_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos6
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_right * 2, walk_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos7
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_right * 5, walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos8
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_right * 4, walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos9
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_right * 3, walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos10
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_right * 2, walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos11
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_right * 1, walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos12
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos13
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 5, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos14
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 4, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos15
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 3, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos16
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 2, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos17
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up, walk_left * 1, walk_in_place_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos18
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos19
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down, walk_right * 3, walk_down * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos20
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down, walk_right * 2, walk_down * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos21
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down, walk_right, walk_down * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos22
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down * 3))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos23
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down, walk_left, walk_down * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaCity_Gate_EventScript_BB_Pos24
+{
+    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_down, walk_left * 2, walk_down * 2))
+    waitmovement(0)
+    return
+}

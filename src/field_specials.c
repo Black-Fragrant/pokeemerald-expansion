@@ -4139,7 +4139,7 @@ bool8 InPokemonCenter(void)
       Compared against playTimeHours. When theyre equal, a fan is ready to be lost
       For every fan thats lost this way 12 hours are added to the timer
 
-    VAR_LILYCOVE_FAN_CLUB_STATE
+    VAR_PLACEHOLDER
       0: Player is not the champion yet
       1: Player is the champion, ready to meet their initial fans
       2: Player has met their initial fans
@@ -4179,7 +4179,7 @@ void UpdateTrainerFanClubGameClear(void)
         SetPlayerGotFirstFans();
         SetInitialFansOfPlayer();
         gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
-        VarSet(VAR_LILYCOVE_FAN_CLUB_STATE, 1);
+        VarSet(VAR_PLACEHOLDER, 1);
     }
 }
 
@@ -4196,7 +4196,7 @@ u8 TryGainNewFanFromCounter(u8 incrementId)
         [FANCOUNTER_USED_BATTLE_TOWER] = 1
     };
 
-    if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
+    if (VarGet(VAR_PLACEHOLDER) == 2)
     {
         if (GET_TRAINER_FAN_CLUB_COUNTER + sCounterIncrements[incrementId] > 19)
         {
@@ -4463,7 +4463,7 @@ static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer)
 
 void UpdateTrainerFansAfterLinkBattle(void)
 {
-    if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
+    if (VarGet(VAR_PLACEHOLDER) == 2)
     {
         TryLoseFansFromPlayTimeAfterLinkBattle();
         if (gBattleOutcome == B_OUTCOME_WON)

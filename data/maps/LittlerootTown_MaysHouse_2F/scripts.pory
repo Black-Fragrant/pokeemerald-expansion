@@ -7,7 +7,7 @@ LittlerootTown_MaysHouse_2F_MapScripts::
 LittlerootTown_MaysHouse_2F_OnTransition:
 	call_if_lt VAR_PLACEHOLDER, 2, LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay
 	call_if_ge VAR_PLACEHOLDER, 3, LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
+	call_if_eq VAR_PLACEHOLDER, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
 	call SecretBase_EventScript_SetDecorationFlags
 	setvar VAR_PLACEHOLDER, 0
 	end

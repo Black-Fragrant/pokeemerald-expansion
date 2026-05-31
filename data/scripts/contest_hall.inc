@@ -1050,7 +1050,7 @@ ContestHall_EventScript_SetSketchFlag::
 	return
 
 ContestHall_EventScript_SetReadyForContestArtist::
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	return
 
 ContestHall_EventScript_EndLinkContest::
@@ -1063,7 +1063,7 @@ ContestHall_EventScript_EndLinkContest::
 	return
 
 ContestHall_EventScript_SetReadyForLinkContestArtist::
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	return
 
 @ Unused

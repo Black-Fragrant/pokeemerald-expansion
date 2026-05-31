@@ -26,13 +26,13 @@ Debug_CheatStart::
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
 	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
+	setvar VAR_PLACEHOLDER, 7 @ 7: Told to go meet rival
 	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_PLACEHOLDER, 4 @ 4: Received Pokedex
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
-	setvar VAR_BRINEY_HOUSE_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	setvar VAR_PLACEHOLDER, 2
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_BADGE02_GET

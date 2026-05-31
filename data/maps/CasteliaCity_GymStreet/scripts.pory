@@ -1,4 +1,27 @@
-mapscripts CasteliaCity_GymStreet_MapScripts {}
+mapscripts CasteliaCity_GymStreet_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_ROUTE_4_BIANCA_BATTLE, 1 : CasteliaCity_GymStreet_EventScript_BiancaCalls
+    ]
+}
+
+script CasteliaCity_GymStreet_EventScript_BiancaCalls
+{
+    lock
+    delay(10)
+	playse(SE_POKENAV_CALL)
+	msgbox("The Xtransceiver is ringing.\p"
+			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
+	waitse()
+	closemessage()
+	playse(SE_POKENAV_HANG_UP)
+	waitse()
+    setvar(VAR_ROUTE_4_BIANCA_BATTLE, 2)
+    delay(20)
+    release
+    end
+}
 
 script CasteliaCity_GymStreet_EventScript_Businessman_Top
 {

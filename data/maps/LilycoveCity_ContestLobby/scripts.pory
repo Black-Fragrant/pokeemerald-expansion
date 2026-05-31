@@ -24,13 +24,13 @@ LilycoveCity_ContestLobby_EventScript_ShowBlendMaster::
 	return
 
 LilycoveCity_ContestLobby_OnFrame:
-	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1, LilycoveCity_ContestLobby_EventScript_TryDoContestArtist
-	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 2, LilycoveCity_ContestLobby_EventScript_TryDoLinkContestArtist
+	map_script_2 VAR_PLACEHOLDER, 1, LilycoveCity_ContestLobby_EventScript_TryDoContestArtist
+	map_script_2 VAR_PLACEHOLDER, 2, LilycoveCity_ContestLobby_EventScript_TryDoLinkContestArtist
 	.2byte 0
 
 LilycoveCity_ContestLobby_EventScript_TryDoContestArtist::
 	goto_if_set FLAG_UNUSED_0xXXX, LilycoveCity_ContestLobby_EventScript_ContestArtist
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestArtist::
@@ -55,7 +55,7 @@ LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseum::
 	msgbox LilycoveCity_ContestLobby_Text_IllTakePaintingToMuseum, MSGBOX_DEFAULT
 	closemessage
 	special SaveMuseumContestPainting
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	specialvar VAR_RESULT, GiveMonArtistRibbon
 	call_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_ReceivedArtistRibbon
 	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistExit
@@ -73,7 +73,7 @@ LilycoveCity_ContestLobby_EventScript_ConfirmDontTakePainting::
 	closemessage
 	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistExit
 	waitmovement 0
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	removeobject LOCALID_CONTEST_LOBBY_ARTIST
 	releaseall
 	end
@@ -200,7 +200,7 @@ LilycoveCity_ContestLobby_Movement_ArtistReturnToPlayer:
 
 LilycoveCity_ContestLobby_EventScript_TryDoLinkContestArtist::
 	goto_if_set FLAG_UNUSED_0xXXX, LilycoveCity_ContestLobby_EventScript_LinkContestArtist
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	end
 
 LilycoveCity_ContestLobby_EventScript_LinkContestArtist::
@@ -223,7 +223,7 @@ LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseumLink::
 	msgbox LilycoveCity_ContestLobby_Text_IllTakePaintingToMuseum, MSGBOX_DEFAULT
 	closemessage
 	special SaveMuseumContestPainting
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	specialvar VAR_RESULT, GiveMonArtistRibbon
 	call_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_ReceivedLinkArtistRibbon
 	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistExit
@@ -241,7 +241,7 @@ LilycoveCity_ContestLobby_EventScript_ConfirmDontTakePaintingLink::
 	closemessage
 	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistExit
 	waitmovement 0
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
+	setvar VAR_PLACEHOLDER, 0
 	removeobject LOCALID_CONTEST_LOBBY_LINK_ARTIST
 	releaseall
 	end
@@ -351,14 +351,14 @@ LilycoveCity_ContestLobby_EventScript_SetMasterContestType::
 LilycoveCity_ContestLobby_EventScript_SetDebug::
 	setflag FLAG_UNUSED_0xXXX
 #ifdef UBFIX
-	setvar VAR_LILYCOVE_MUSEUM_2F_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 #else
-	copyvar VAR_LILYCOVE_MUSEUM_2F_STATE, 1, warn=FALSE
+	copyvar VAR_PLACEHOLDER, 1, warn=FALSE
 #endif
 	additem ITEM_CONTEST_PASS
 	setvar VAR_0x800B, 8
 	setvar VAR_CONTEST_RANK, CONTEST_RANK_MASTER
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	setflag FLAG_SYS_RIBBON_GET
 	end
 
