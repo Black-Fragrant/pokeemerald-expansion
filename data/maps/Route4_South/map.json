@@ -110,6 +110,69 @@
       "var": "VAR_ROUTE_4_STATE",
       "var_value": "0",
       "script": "Route4_South_EventScript_Trigger_MineWorker"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 50,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 51,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 53,
+      "y": 72,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "3",
+      "script": "NULL"
     }
   ],
   "bg_events": [

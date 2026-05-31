@@ -904,7 +904,7 @@
 #define FLAG_LIBERTY_GARDEN_POLICE                                  0x358
 #define FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE               0x359
 #define FLAG_LIBERTY_GARDEN_JUNIPER                                 0x35A
-#define FLAG_UNUSED_0x35B                                           0x35B
+#define FLAG_CASTELIA_GYM_ITEM_FRESH_WATER                          0x35B
 #define FLAG_UNUSED_0x35C                                           0x35C
 #define FLAG_UNUSED_0x35D                                           0x35D
 #define FLAG_UNUSED_0x35E                                           0x35E

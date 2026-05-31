@@ -1,9 +1,68 @@
-mapscripts CasteliaCity_CasteliaGym_MapScripts {}
+mapscripts CasteliaCity_CasteliaGym_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD : CasteliaCity_CasteliaGym_On_Load
+}
+
+script CasteliaCity_CasteliaGym_On_Load
+{
+    call_if_eq(VAR_CASTELIA_GYM_TRAP_1, 0, CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin1)
+    call_if_eq(VAR_CASTELIA_GYM_TRAP_2, 0, CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin2)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_1, 1, CasteliaCity_CasteliaGym_Eventscripy_Button1isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_2, 1, CasteliaCity_CasteliaGym_Eventscripy_Button2isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_3, 1, CasteliaCity_CasteliaGym_Eventscripy_Button3isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_4, 1, CasteliaCity_CasteliaGym_Eventscripy_Button4isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_5, 1, CasteliaCity_CasteliaGym_Eventscripy_Button5isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_6, 1, CasteliaCity_CasteliaGym_Eventscripy_Button6isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_7, 1, CasteliaCity_CasteliaGym_Eventscripy_Button7isTriggered)
+	call_if_eq(VAR_CASTELIA_GYM_SWITCH_8, 1, CasteliaCity_CasteliaGym_Eventscripy_Button8isTriggered)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate2)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate3)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate4)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate5)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate6)
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin1
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin2
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymSign
+{
+    goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_Eventscript_GymSign_AfterBadge)
+    msgbox("Castelia Pokémon Gym\p"
+        "Gym Leader: Burgh\n"
+        "Certified Trainers:\l"
+        "Cheren", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymSign_AfterBadge
+{
+    msgbox("Castelia Pokémon Gym\p"
+        "Gym Leader: Burgh\n"
+        "Certified Trainers:\l"
+        "Cheren\l"
+        "{PLAYER}", MSGBOX_SIGN)
+    end
+}
 
 script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist
 {
     lock
     faceplayer
+    goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_AfterBadge)
+    goto_if_set(FLAG_CASTELIA_GYM_ITEM_FRESH_WATER, CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_AfterFreshWater)
+    goto_if_eq(VAR_CASTELIA_GYM_RECEPTION_BLOCK, 1, CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_GivesFreshWater)
     call(CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Cont)
     release
     end
@@ -17,6 +76,49 @@ script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Cont
     destroy_speech_bubble()
     closemessage
     return
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_GivesFreshWater
+{
+    msgbox("What do you think of Castelia City?\p"
+        "I bet, with all of the bustling people,\n"
+        "you started feeling worn down on your\l"
+        "way to the Gym!\p"
+        "Never mind! This will help. Take it!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_FRESH_WATER, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CasteliaGym_Eventscript_BagIsFull)
+	setflag(FLAG_CASTELIA_GYM_ITEM_FRESH_WATER)
+	goto(CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_AfterFreshWater)
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_AfterFreshWater
+{
+    msgbox("The theme of this Gym is\n"
+        "walking through walls.\p"
+        "At first glance, these funny honey walls\n"
+        "may look impassable or even impossible.\l"
+        "If you try hard, it'll work out. So I say.\p"
+        "But... if it doesn't, here's a sweet tip:\n"
+        "step on the switches on the floor!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_AfterBadge
+{
+    msgbox("Wow! That's amazing!\p"
+        "You swatted aside our Gym Leader\n"
+        "Burgh's tricky attacks...\p"
+        "I can barely imagine how much\n"
+        "stronger you're going to get!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
 }
 
 script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Trigger
@@ -43,42 +145,559 @@ script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Trigger
 
 script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos1
 {
-    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 3, walk_in_place_up))
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 3, walk_up * 2, walk_in_place_up))
     waitmovement(0)
     return
 }
 
 script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos2
 {
-    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 2, walk_in_place_up))
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 2, walk_up * 2, walk_in_place_up))
     waitmovement(0)
     return
 }
 
 script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos3
 {
-    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 1, walk_in_place_up))
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_left * 1, walk_up * 2, walk_in_place_up))
     waitmovement(0)
     return
 }
 
 script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos4
 {
-    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_right * 3, walk_in_place_down))
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_down * 2, walk_right * 3, walk_in_place_down))
     waitmovement(0)
     return
 }
 
 script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos5
 {
-    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_right * 2, walk_in_place_down))
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_down * 2, walk_right * 2, walk_in_place_down))
     waitmovement(0)
     return
 }
 
 script CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos6
 {
-    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_right * 1, walk_in_place_down))
+    applymovement(LOCALID_CCCG_RECEPTIONIST, moves(walk_down * 2, walk_right * 1, walk_in_place_down))
     waitmovement(0)
     return
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_1
+{
+	trainerbattle_single(TRAINER_HARLEQUIN_CASTELIA_GYM_1,
+	text("Battles in the Castelia Gym are\n"
+        "beautiful! They are pure art!!"),
+	text("Falling beautifully...\n"
+        "This is also an art..."))
+	msgbox("If you step on two switches, two lamps\n"
+        "will light up and a gate will open!\l"
+        "This is also an art!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2
+{
+    lock
+    clearflag(FLAG_TEMP_11)
+    playse(SE_RG_HELP_OPEN)
+    addobject(LOCALID_CCCG_HARLEQUIN_1)
+    waitse
+    applymovement(LOCALID_CCCG_HARLEQUIN_1, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    waitmovement(0)
+    goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2_AlreadyHaveBadge)
+    msgbox("When you step on the switch,\n"
+        "the one that pops out is--moi!\p"
+        "On that note, have a battle with moi!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_HARLEQUIN_1)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_HARLEQUIN_CASTELIA_GYM_2, text("I wasn't hiding under the floor\njust to lose!"))
+    setvar(VAR_CASTELIA_GYM_TRAP_1, 1)
+    goto(CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2_AfterBattle)
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2_AlreadyHaveBadge
+{
+    msgbox("Now. Come. on.\p"
+        "Step on this switch, and what happens?\n"
+        "Moi!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_HARLEQUIN_1)
+    destroy_speech_bubble()
+    closemessage
+    setvar(VAR_CASTELIA_GYM_TRAP_1, 1)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2_AfterBattle
+{
+    msgbox("Hiding makes battle instincts dull,\n"
+            "you know.", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_HARLEQUIN_1)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Harlequin_2
+{
+    lock
+    faceplayer
+    goto(CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2_AfterBattle)
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3
+{
+    lock
+    clearflag(FLAG_TEMP_12)
+    playse(SE_RG_HELP_OPEN)
+    addobject(LOCALID_CCCG_HARLEQUIN_2)
+    waitse
+    applymovement(LOCALID_CCCG_HARLEQUIN_2, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    waitmovement(0)
+    goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3_AlreadyHaveBadge)
+    msgbox("Yeeeeeeeeah! Thank you for going\n"
+        "to the trouble of calling me out!\p"
+        "I'll channel my gratitude into my\n"
+        "Pokémon's moves and...\l"
+        "make sure it gets to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_HARLEQUIN_2)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_HARLEQUIN_CASTELIA_GYM_3, text("I was defeated by your strong spirit.\nYou seem unfazed by anything!"))
+    setvar(VAR_CASTELIA_GYM_TRAP_2, 1)
+    goto(CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3_AfterBattle)
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3_AlreadyHaveBadge
+{
+    msgbox("If you hadn't stepped on that switch,\n"
+        "I'd still be stuck hidden away.\p"
+        "That's right! Bug Gym Trainers like to\n"
+        "be bugged!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_HARLEQUIN_2)
+    destroy_speech_bubble()
+    closemessage
+    setvar(VAR_CASTELIA_GYM_TRAP_2, 1)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3_AfterBattle
+{
+    msgbox("Hiding beneath the floor, I understand\n"
+        "how a Bug-type Pokémon feels.", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_HARLEQUIN_2)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Harlequin_3
+{
+    lock
+    faceplayer
+    goto(CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3_AfterBattle)
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_4
+{
+	trainerbattle_single(TRAINER_HARLEQUIN_CASTELIA_GYM_4,
+	text("What do you think? This Pokémon Gym...\n"
+        "How should I say? Isn't it full of...\l"
+        "outrageous and mysterious charms?"),
+	text("As a Trainer,\n"
+        "you are full of charm!"))
+	msgbox("I absolutely love this Gym where\n"
+        "Burgh's vision became reality!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Battle_Burgh
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_EventScript_Burgh_AcquiredBadge)
+    msgbox("Thanks again for your help.\p"
+        "My bug Pokémon are scurrying with\n"
+        "excitement about getting to battle you.\p"
+        "Let's get straight to it!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_BURGH_CASTELIA_GYM, text("Is it over?\nHas my muse abandoned me?"))
+    msgbox("Aww...\n"
+        "I lost.\p"
+        "Whatever! Losing to you doesn't bug me\n"
+        "because you are a-MAZ-ingly strong!\p"
+        "This is the Gym Badge!\n"
+        "You beat me, so it's yours!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	playfanfare(MUS_OBTAIN_BADGE)
+    msgbox("{PLAYER} received\n"
+        "the Insect Badge from Burgh!", MSGBOX_TRANSPARENT)
+	waitfanfare
+	setflag(FLAG_BADGE03_GET)
+    setvar(VAR_ROUTE_4_BIANCA_BATTLE, 1)
+    setvar(VAR_ROUTE_4_STATE, 1)
+    settrainerflag(TRAINER_HARLEQUIN_CASTELIA_GYM_1)
+    settrainerflag(TRAINER_HARLEQUIN_CASTELIA_GYM_2)
+    settrainerflag(TRAINER_HARLEQUIN_CASTELIA_GYM_3)
+    settrainerflag(TRAINER_HARLEQUIN_CASTELIA_GYM_4)
+    closemessage
+    delay(10)
+    msgbox("It's the Insect Badge!\n"
+        "It's insectible--I mean, incredible!\p"
+        "If you have three Badges,\n"
+        "Pokémon up to Lv. 40 will obey you,\l"
+        "including traded Pokémon.\p"
+        "Because I'm a generous guy,\n"
+        "I'll also give you this.", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_BURGH)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_STRUGGLE_BUG)
+	call_if_eq (VAR_RESULT, FALSE, CasteliaCity_CasteliaGym_Eventscript_BagIsFull2)
+    closemessage
+    msgbox("Struggle Bug also lowers the\n"
+        "Sp. Atk of the target that was damaged.\p"
+        "I'm the best guy to tell you,\n"
+        "it's the little things that count!", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Burgh_AcquiredBadge
+{
+    msgbox("How many discoveries have you made\n"
+        "since you started your adventure?\p"
+        "When I was a kid, my innocent heard was\n"
+        "captured by the beauty of bug Pokémon.\p"
+        "I drew with them and battled with them,\n"
+        "and after all this time, I continue\l"
+        "to discover new things.\p"
+        "A world shared with Pokémon is a world\l"
+        "swarming with mysteries.", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_BURGH)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button1isTriggered
+{
+	setmetatile (16, 24, 0x291, FALSE)
+	setmetatile (12, 22, 0x2A8, TRUE)
+	setmetatile (12, 23, 0x2AB, TRUE)
+	setmetatile (20, 22, 0x2B1, TRUE)
+	setmetatile (20, 23, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button2isTriggered
+{
+	setmetatile (28, 24, 0x291, FALSE)
+	setmetatile (24, 22, 0x2A8, TRUE)
+	setmetatile (24, 23, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button3isTriggered
+{
+	setmetatile (28, 18, 0x291, FALSE)
+	setmetatile (24, 16, 0x2A8, TRUE)
+	setmetatile (24, 17, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button4isTriggered
+{
+	setmetatile (16, 18, 0x291, FALSE)
+	setmetatile (12, 16, 0x2A8, TRUE)
+	setmetatile (12, 17, 0x2B8, TRUE)
+	setmetatile (20, 16, 0x2B1, TRUE)
+	setmetatile (20, 17, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button5isTriggered
+{
+	setmetatile (10, 21, 0x291, FALSE)
+	setmetatile (6, 19, 0x2A8, TRUE)
+	setmetatile (6, 20, 0x2AB, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button6isTriggered
+{
+	setmetatile (22, 15, 0x291, FALSE)
+	setmetatile (18, 13, 0x2CE, TRUE)
+	setmetatile (18, 14, 0x2AB, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button7isTriggered
+{
+	setmetatile (4, 18, 0x291, FALSE)
+	setmetatile (8, 16, 0x2B1, TRUE)
+	setmetatile (8, 17, 0x2B3, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button8isTriggered
+{
+	setmetatile (10, 15, 0x291, FALSE)
+	setmetatile (14, 13, 0x2C8, TRUE)
+	setmetatile (14, 14, 0x2B3, TRUE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_RedrawGate1
+{
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_6, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_8, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	setmetatile (15, 13, 0x2C5, FALSE)
+	setmetatile (16, 13, 0x2C6, FALSE)
+	setmetatile (17, 13, 0x2C7, FALSE)
+	setmetatile (15, 14, 0x2B5, FALSE)
+	setmetatile (16, 14, 0x2B6, FALSE)
+	setmetatile (17, 14, 0x2B7, FALSE)
+	setmetatile (15, 15, 0x2BD, FALSE)
+	setmetatile (16, 15, 0x2BE, FALSE)
+	setmetatile (17, 15, 0x2BF, FALSE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_RedrawGate2
+{
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_4, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_7, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	setmetatile (9, 16, 0x2AD, FALSE)
+	setmetatile (10, 16, 0x2AE, FALSE)
+	setmetatile (11, 16, 0x2AF, FALSE)
+	setmetatile (9, 17, 0x2B5, FALSE)
+	setmetatile (10, 17, 0x2B6, FALSE)
+	setmetatile (11, 17, 0x2B7, FALSE)
+	setmetatile (9, 18, 0x2BD, FALSE)
+	setmetatile (10, 18, 0x2BE, FALSE)
+	setmetatile (11, 18, 0x2BF, FALSE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_RedrawGate3
+{
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_3, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_4, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	setmetatile (21, 16, 0x2AD, FALSE)
+	setmetatile (22, 16, 0x2AE, FALSE)
+	setmetatile (23, 16, 0x2AF, FALSE)
+	setmetatile (21, 17, 0x2B5, FALSE)
+	setmetatile (22, 17, 0x2B6, FALSE)
+	setmetatile (23, 17, 0x2B7, FALSE)
+	setmetatile (21, 18, 0x2BD, FALSE)
+	setmetatile (22, 18, 0x2BE, FALSE)
+	setmetatile (23, 18, 0x2BF, FALSE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_RedrawGate4
+{
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_5, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	setmetatile (3, 19, 0x2AD, FALSE)
+	setmetatile (4, 19, 0x2AE, FALSE)
+	setmetatile (5, 19, 0x2AF, FALSE)
+	setmetatile (3, 20, 0x2B5, FALSE)
+	setmetatile (4, 20, 0x2B6, FALSE)
+	setmetatile (5, 20, 0x2B7, FALSE)
+	setmetatile (3, 21, 0x2BD, FALSE)
+	setmetatile (4, 21, 0x2BE, FALSE)
+	setmetatile (5, 21, 0x2BF, FALSE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_RedrawGate5
+{
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_1, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	setmetatile (9, 22, 0x2AD, FALSE)
+	setmetatile (10, 22, 0x2AE, FALSE)
+	setmetatile (11, 22, 0x2AF, FALSE)
+	setmetatile (9, 23, 0x2B5, FALSE)
+	setmetatile (10, 23, 0x2B6, FALSE)
+	setmetatile (11, 23, 0x2B7, FALSE)
+	setmetatile (9, 24, 0x2BD, FALSE)
+	setmetatile (10, 24, 0x2BE, FALSE)
+	setmetatile (11, 24, 0x2BF, FALSE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_RedrawGate6
+{
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_1, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	goto_if_eq(VAR_CASTELIA_GYM_SWITCH_2, 0, CasteliaCity_CasteliaGym_Eventscripy_NoTriggering)
+	setmetatile (21, 22, 0x2AD, FALSE)
+	setmetatile (22, 22, 0x2AE, FALSE)
+	setmetatile (23, 22, 0x2AF, FALSE)
+	setmetatile (21, 23, 0x2B5, FALSE)
+	setmetatile (22, 23, 0x2B6, FALSE)
+	setmetatile (23, 23, 0x2B7, FALSE)
+	setmetatile (21, 24, 0x2BD, FALSE)
+	setmetatile (22, 24, 0x2BE, FALSE)
+	setmetatile (23, 24, 0x2BF, FALSE)
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_NoTriggering
+{
+    return
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button1
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_1, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button1isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate5)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate6)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button2
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_2, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button2isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate6)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button3
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_3, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button3isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate3)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button4
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_4, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button4isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate2)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate3)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button5
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_5, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button5isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate4)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button6
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_6, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button6isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate1)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button7
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_7, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button7isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate2)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscripy_Button8
+{
+    lock
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    setvar(VAR_CASTELIA_GYM_SWITCH_8, 1)
+    call(CasteliaCity_CasteliaGym_Eventscripy_Button8isTriggered)
+	special(DrawWholeMapView)
+    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate1)
+	special(DrawWholeMapView)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_BagIsFull2
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	return()
 }

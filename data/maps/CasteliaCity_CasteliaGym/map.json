@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_CCCG_BURGH",
       "graphics_id": "OBJ_EVENT_GFX_BURGH",
       "x": 16,
       "y": 1,
@@ -24,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Battle_Burgh",
       "flag": "0"
     },
     {
@@ -39,6 +40,60 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CasteliaCity_CasteliaGym_Eventscript_GymReceptionist",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PEIRRO",
+      "x": 24,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CCCG_HARLEQUIN_1",
+      "graphics_id": "OBJ_EVENT_GFX_PEIRRO",
+      "x": 22,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Harlequin_2",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_CCCG_HARLEQUIN_2",
+      "graphics_id": "OBJ_EVENT_GFX_PEIRRO",
+      "x": 4,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Harlequin_3",
+      "flag": "FLAG_TEMP_12"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PEIRRO",
+      "x": 9,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_4",
       "flag": "0"
     }
   ],
@@ -92,6 +147,96 @@
       "var": "VAR_CASTELIA_GYM_RECEPTION_BLOCK",
       "var_value": "0",
       "script": "CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_1",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button1"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_2",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button2"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_3",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button3"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_4",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button4"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_5",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button5"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_6",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button6"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_7",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button7"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_SWITCH_8",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_Eventscripy_Button8"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_TRAP_1",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_TRAP_2",
+      "var_value": "0",
+      "script": "CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3"
     }
   ],
   "bg_events": [
@@ -100,16 +245,16 @@
       "x": 13,
       "y": 35,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "CasteliaCity_CasteliaGym_Eventscript_GymSign"
     },
     {
       "type": "sign",
       "x": 19,
       "y": 35,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "CasteliaCity_CasteliaGym_Eventscript_GymSign"
     }
   ]
 }

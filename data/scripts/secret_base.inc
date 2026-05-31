@@ -132,7 +132,7 @@ SecretBase_EventScript_ShrubEnter::
 SecretBase_EventScript_InitSecretBase::
 	closemessage
 	playse SE_EXIT
-	setvar VAR_INIT_SECRET_BASE, 0
+	setvar VAR_PLACEHOLDER, 0
 	setflag FLAG_HIDE_SECRET_BASE_TRAINER
 	special SetPlayerSecretBase
 	special EnterSecretBase
@@ -146,7 +146,7 @@ SecretBase_EventScript_InitSecretBase::
 SecretBase_EventScript_FirstEntrance::
 	applymovement LOCALID_PLAYER, SecretBase_Movement_EnterBase
 	waitmovement 0
-	setvar VAR_INIT_SECRET_BASE, 1
+	setvar VAR_PLACEHOLDER, 1
 	msgbox SecretBase_Text_WantToMakeYourSecretBaseHere, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, SecretBase_EventScript_SetAsBase
 	closemessage
@@ -168,7 +168,7 @@ SecretBase_Movement_EnterBase:
 
 SecretBase_EventScript_Enter::
 	lockall
-	setvar VAR_INIT_SECRET_BASE, 1
+	setvar VAR_PLACEHOLDER, 1
 	playse SE_EXIT
 	special IsCurSecretBaseOwnedByAnotherPlayer
 	goto_if_eq VAR_RESULT, FALSE, SecretBase_EventScript_EnterPlayersBase
