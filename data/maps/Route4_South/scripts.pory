@@ -1,4 +1,19 @@
-mapscripts Route4_South_MapScripts {}
+mapscripts Route4_South_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : Route4_South_On_Transition
+}
+
+script Route4_South_On_Transition
+{
+    call_if_ge(VAR_ROUTE_4_STATE, 1,  Route4_South_EventScript_PositionWorker)
+    end
+}
+
+script Route4_South_EventScript_PositionWorker
+{
+	setobjectxyperm(LOCALID_R4S_MINEWORKER, 49, 52)
+    return
+}
 
 script Route4_South_EventScript_Cheren
 {
@@ -22,6 +37,7 @@ script Route4_South_EventScript_MineWorker
 {
     lock
     faceplayer
+    goto_if_ge(VAR_ROUTE_4_STATE, 1, Route4_South_EventScript_MineWorker_NoLongerBlocking)
     call(Route4_South_EventScript_MineWorker_Dialogue)
     release
     end
@@ -34,6 +50,17 @@ script Route4_South_EventScript_MineWorker_Dialogue
            "Sorry, but you can't pass now.\p"
            "You should go kill some time by\n"
            "challenging the Castelia City Gym!", MSGBOX_DEFAULT, TRUE, LOCALID_R4S_MINEWORKER)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script Route4_South_EventScript_MineWorker_NoLongerBlocking
+{
+    msgbox("Deep in the desert ahead of here,\n"
+        "at the Desert Resort,\l"
+        "there are some ruins that have\l"
+        "become a little tourist destination!", MSGBOX_DEFAULT, TRUE, LOCALID_R4S_MINEWORKER)
     destroy_speech_bubble()
     closemessage
     return
@@ -70,6 +97,192 @@ script Route4_South_EventScript_Trigger_MineWorker_Left
 script Route4_South_EventScript_Trigger_MineWorker_Right
 {
 	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CherenBattle
+{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playbgm(MUS_BW_CHEREN, TRUE)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 47, Route4_South_EventScript_CB_Pos1)
+	call_if_eq (VAR_TEMP_0, 48, Route4_South_EventScript_CB_Pos2)
+	call_if_eq (VAR_TEMP_0, 49, Route4_South_EventScript_CB_Pos3)
+	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_CB_Pos4)
+	call_if_eq (VAR_TEMP_0, 51, Route4_South_EventScript_CB_Pos5)
+	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_CB_Pos6)
+	call_if_eq (VAR_TEMP_0, 53, Route4_South_EventScript_CB_Pos7)
+    delay(10)
+    msgbox("Cheren: Hey, {PLAYER}.\p"
+        "I've been waiting for you to get\n"
+        "the Insect Badge.\p"
+        "And now it's time to see which one of us\n"
+        "is the stronger Trainer!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	call_if_set(FLAG_CHOSE_SNIVY, Route4_South_EventScript_CB_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, Route4_South_EventScript_CB_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, Route4_South_EventScript_CB_Snivy)
+	delay(10)
+    msgbox("Cheren: It's now clear to me.\p"
+        "The reason you are so tough is the trust\n"
+        "between you and your Pokémon.\p"
+        "But...that shouldn't be a problem.\p"
+        "I can get more out of {STR_VAR_1}\n"
+        "and my other Pokémon, too.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	playse(SE_POKENAV_CALL)
+	msgbox("The Xtransceiver is ringing.\p"
+			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
+	waitse()
+	closemessage()
+	playse(SE_POKENAV_HANG_UP)
+	waitse()
+    delay(20)
+    msgbox("Cheren: Nimbasa City's gate is\n"
+            "straight down Route 4.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 47, Route4_South_EventScript_CB_Pos8)
+	call_if_eq (VAR_TEMP_0, 48, Route4_South_EventScript_CB_Pos9)
+	call_if_eq (VAR_TEMP_0, 49, Route4_South_EventScript_CB_Pos10)
+	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_CB_Pos11)
+	call_if_eq (VAR_TEMP_0, 51, Route4_South_EventScript_CB_Pos12)
+	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_CB_Pos13)
+	call_if_eq (VAR_TEMP_0, 53, Route4_South_EventScript_CB_Pos14)
+    removeobject(TRAINER_CHEREN_ROUTE_4_1)
+    setvar(VAR_ROUTE_4_BIANCA_BATTLE, 4)
+    playbgm(MUS_BW_ROUTE_4, TRUE)
+	savebgm(MUS_BW_ROUTE_4)
+    delay(20)
+    release
+    end
+}
+
+script Route4_South_EventScript_CB_Tepig
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_1, text("Impressive.\nBut why can't I win?!"))
+	bufferstring(STR_VAR_1, text("Pignite"))
+	return()
+}
+
+script Route4_South_EventScript_CB_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_2, text("Impressive.\nBut why can't I win?!"))
+	bufferstring(STR_VAR_1, text("Dewott"))
+	return()
+}
+
+script Route4_South_EventScript_CB_Snivy
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_3, text("Impressive.\nBut why can't I win?!"))
+	bufferstring(STR_VAR_1, text("Servine"))
+	return()
+}
+
+script Route4_South_EventScript_CB_Pos1
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 3, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos2
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 2, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos3
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 1, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos4
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos5
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 1, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos6
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 2, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos7
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 3, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos8
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 3, walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos9
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 2, walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos10
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 1, walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos11
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_up * 6))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos12
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 1 , walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos13
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 2 , walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos14
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 3 , walk_up * 5))
 	waitmovement(0)
     return
 }

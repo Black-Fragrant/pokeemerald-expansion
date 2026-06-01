@@ -9806,8 +9806,8 @@
     {
       "id": "LAYOUT_ROUTE4_NORTH",
       "name": "Route4_North_Layout",
-      "width": 80,
-      "height": 80,
+      "width": 26,
+      "height": 29,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Route4",
       "border_filepath": "data/layouts/Route4_North/border.bin",
@@ -9852,6 +9852,16 @@
       "secondary_tileset": "gTileset_IndoorLibertyGarden",
       "border_filepath": "data/layouts/LibertyGarden_Room/border.bin",
       "blockdata_filepath": "data/layouts/LibertyGarden_Room/map.bin"
+    },
+    {
+      "id": "LAYOUT_DESERT_RESORT_OUTSIDE",
+      "name": "DesertResort_Outside_Layout",
+      "width": 56,
+      "height": 29,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Route4",
+      "border_filepath": "data/layouts/DesertResort_Outside/border.bin",
+      "blockdata_filepath": "data/layouts/DesertResort_Outside/map.bin"
     }
   ]
 }
