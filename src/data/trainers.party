@@ -253,6 +253,7 @@ Class: PKMN Trainer 1
 Pic: Bianca
 Gender: Female
 Music: Male
+Items: Potion
 Battle Type: Singles
 AI: Check Bad Move
 Mugshot: Green
@@ -277,6 +278,7 @@ Class: PKMN Trainer 1
 Pic: Bianca
 Gender: Female
 Music: Male
+Items: Potion
 Battle Type: Singles
 AI: Check Bad Move
 Mugshot: Green
@@ -301,6 +303,7 @@ Class: PKMN Trainer 1
 Pic: Bianca
 Gender: Female
 Music: Male
+Items: Potion
 Battle Type: Singles
 AI: Check Bad Move
 Mugshot: Green
@@ -1469,6 +1472,7 @@ Class: PKMN Trainer 1
 Pic: Bianca
 Gender: Female
 Music: Male
+Items: Super Potion / Super Potion
 Battle Type: Singles
 AI: Check Bad Move
 Mugshot: Green
@@ -1511,6 +1515,7 @@ Class: PKMN Trainer 1
 Pic: Bianca
 Gender: Female
 Music: Male
+Items: Super Potion / Super Potion
 Battle Type: Singles
 AI: Check Bad Move
 Mugshot: Green
@@ -1553,6 +1558,7 @@ Class: PKMN Trainer 1
 Pic: Bianca
 Gender: Female
 Music: Male
+Items: Super Potion / Super Potion
 Battle Type: Singles
 AI: Check Bad Move
 Mugshot: Green
@@ -1873,282 +1879,319 @@ Watchog
 Level: 20
 IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
 
-=== TRAINER_CAROLINE ===
-Name: CAROLINE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
+=== TRAINER_CHEREN_ROUTE_4_1 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
+Mugshot: Purple
 
-Skarmory
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pidove
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Leer
+- Quick Attack
+- Air Cutter
+- Roost
 
-Sableye
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Liepard
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Sand-Attack
+- Fury Swipes
+- Pursuit
+- Torment
 
-=== TRAINER_JULIE ===
-Name: JULIE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
+Pansage
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Vine Whip
+- Fury Swipes
+- Leech Seed
+- Bite
+
+Pignite @ Sitrus Berry
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Defense Curl
+- Flame Charge
+- Arm Thrust
+- Smog
+
+=== TRAINER_CHEREN_ROUTE_4_2 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
+Mugshot: Purple
 
-Sandslash
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pidove
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Leer
+- Quick Attack
+- Air Cutter
+- Roost
 
-Ninetales
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Liepard
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Sand-Attack
+- Fury Swipes
+- Pursuit
+- Torment
 
-Tropius
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pansear
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Incinerate
+- Fury Swipes
+- Yawn
+- Bite
 
-=== TRAINER_BROOKE_2 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
+Dewott @ Sitrus Berry
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Water Sport
+- Focus Energy
+- Razor Shell
+- Fury Cutter
+
+=== TRAINER_CHEREN_ROUTE_4_3 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Check Bad Move
+Mugshot: Purple
 
-Wingull
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Pidove
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Leer
+- Quick Attack
+- Air Cutter
+- Roost
 
-Numel
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Liepard
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Sand-Attack
+- Fury Swipes
+- Pursuit
+- Torment
 
-Roselia
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Panpour
+Level: 20
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Water Gun
+- Fury Swipes
+- Water Sport
+- Bite
 
-=== TRAINER_BROOKE_3 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Basic Trainer
+Servine @ Sitrus Berry
+Level: 22
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Wrap
+- Growth
+- Leaf Tornado
+- Leech Seed
 
-Pelipper
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-Numel
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-Roselia
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-=== TRAINER_BROOKE_4 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Pelipper
-Level: 32
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-Numel
-Level: 32
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-Roselia
-Level: 32
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-=== TRAINER_BROOKE_5 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Pelipper
-Level: 34
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Camerupt
-Level: 34
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Roselia
-Level: 34
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-=== TRAINER_PATRICIA ===
-Name: PATRICIA
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
+=== TRAINER_FISHERMAN_ROUTE_4_1 ===
+Name: Hubert
+Class: Fisherman
+Pic: Fisherman BW
+Gender: Male
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Banette
-Level: 41
+Basculin Blue Striped
+Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Lunatone
-Level: 41
+Basculin Red Striped
+Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_KINDRA ===
-Name: KINDRA
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
+=== TRAINER_FISHERMAN_ROUTE_4_2 ===
+Name: Andrew
+Class: Fisherman
+Pic: Fisherman BW
+Gender: Male
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Duskull
-Level: 30
+Basculin Red Striped
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Shuppet
-Level: 30
+Basculin Blue Striped
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_TAMMY ===
-Name: TAMMY
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
-Battle Type: Singles
-AI: Check Bad Move
-
-Duskull
-Level: 29
+Basculin Red Striped
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Shuppet
-Level: 29
+Basculin Blue Striped
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_VALERIE_1 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
+=== TRAINER_PARASOL_LADY_ROUTE_4 ===
+Name: April
+Class: Parasol Lady
+Pic: Parasol Lady BW
 Gender: Female
-Music: Suspicious
+Music: Woman
 Battle Type: Singles
 AI: Check Bad Move
 
-Sableye
-Level: 32
+Tympole
+Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_TASHA ===
-Name: TASHA
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
+Tympole
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_WORKER_ROUTE_4_1 ===
+Name: Gus
+Class: Worker
+Pic: Mine Worker
+Gender: Male
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
-Shuppet
-Level: 32
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Roggenrola
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_VALERIE_2 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
+Roggenrola
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Timburr
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_WORKER_ROUTE_4_2 ===
+Name: Shelby
+Class: Worker
+Pic: Mine Worker
+Gender: Male
+Music: Clerk
 Battle Type: Singles
 AI: Check Bad Move
 
-Sableye
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Timburr
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Spoink
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_VALERIE_3 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
+=== TRAINER_BACKPACKER_M_ROUTE_4_1 ===
+Name: Keane
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Spoink
-Level: 35
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Darumaka
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sableye
-Level: 35
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-=== TRAINER_VALERIE_4 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
+=== TRAINER_BACKPACKER_F_ROUTE_4_1 ===
+Name: Anna
+Class: Backpacker
+Pic: Backpacker F
 Gender: Female
-Music: Suspicious
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Spoink
-Level: 40
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Cottonee
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sableye
-Level: 40
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-=== TRAINER_VALERIE_5 ===
-Name: VALERIE
-Class: Hex Maniac
-Pic: Hex Maniac
+=== TRAINER_BACKPACKER_F_ROUTE_4_2 ===
+Name: Jill
+Class: Backpacker
+Pic: Backpacker F
 Gender: Female
-Music: Suspicious
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Duskull
-Level: 42
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Petilil
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sableye
-Level: 42
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+=== TRAINER_BACKPACKER_M_ROUTE_4_2 ===
+Name: Waylon
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
 
-Grumpig
-Level: 42
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Blitzle
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_WORKER_ROUTE_4_3 ===
+Name: Scott
+Class: Worker
+Pic: Mine Worker
+Gender: Male
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Roggenrola
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Timburr
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_WORKER_ROUTE_4_4 ===
+Name: Zack
+Class: Worker
+Pic: Mine Worker
+Gender: Male
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Timburr
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_M_ROUTE_4_3 ===
+Name: Jerome
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Pidove
+Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CINDY_1 ===
 Name: CINDY
