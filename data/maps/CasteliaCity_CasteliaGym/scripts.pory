@@ -38,6 +38,7 @@ script CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin2
 
 script CasteliaCity_CasteliaGym_Eventscript_GymSign
 {
+    goto_if_ge(VAR_ROUTE_4_BIANCA_BATTLE, 3, CasteliaCity_CasteliaGym_Eventscript_GymSign_BiancaName)
     goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_Eventscript_GymSign_AfterBadge)
     msgbox("Castelia Pokémon Gym\p"
         "Gym Leader: Burgh\n"
@@ -53,6 +54,17 @@ script CasteliaCity_CasteliaGym_Eventscript_GymSign_AfterBadge
         "Certified Trainers:\l"
         "Cheren\l"
         "{PLAYER}", MSGBOX_SIGN)
+    end
+}
+
+script CasteliaCity_CasteliaGym_Eventscript_GymSign_BiancaName
+{
+    msgbox("Castelia Pokémon Gym\p"
+        "Gym Leader: Burgh\n"
+        "Certified Trainers:\l"
+        "Cheren\l"
+        "{PLAYER}\l"
+        "BIANCA", MSGBOX_SIGN)
     end
 }
 
