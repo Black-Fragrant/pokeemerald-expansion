@@ -62,12 +62,28 @@ extern const struct SpritePalette gLargeItemPicSpritePalettes[];
 extern const struct SpriteTemplate gLargeItemPicTemplate[];
 
 // ======================================================
-// Large Item Picture Background Sprite (80x80)
+// Large Item Picture Background Sprite (64x64)
 // ======================================================
 
 // Raw graphics (tiles + palette)
-extern const u32 gLargeItemPicBgTiles[];   // 80x80 tileset (0x1400 bytes uncompressed)
-extern const u16 gLargeItemPicBgPal[];     // palette for the background sprite
+extern const u32 gLargeItemPicBg_TL[]; // top-left
+extern const u32 gLargeItemPicBg_TR[]; // top-right
+extern const u32 gLargeItemPicBg_BL[]; // bottom-left
+extern const u32 gLargeItemPicBg_BR[]; // bottom-right
+extern const u16 gLargeItemPicBgPal[];
+
+// ======================================================
+// Large Item Picture Background Sprite (2×2, 128×128)
+// ======================================================
+
+// 4 sprite sheets (TL, TR, BL, BR)
+extern const struct CompressedSpriteSheet gLargeItemPicBgSpriteSheets_2x2[4];
+
+// Shared palette for all 4 tiles
+extern const struct SpritePalette gLargeItemPicBgSpritePalette_2x2;
+
+// 4 sprite templates (TL, TR, BL, BR)
+extern const struct SpriteTemplate gLargeItemPicBg2x2Templates[4];
 
 // Sprite sheet (compressed or uncompressed, depending on your asset)
 extern const struct CompressedSpriteSheet gLargeItemPicBgSpriteSheet;
