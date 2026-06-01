@@ -229,46 +229,76 @@ const struct SpriteTemplate gLargeItemPicTemplate[] =
 // Large Item Pic Background Sprite
 // ===============================
 
-// 80x80 = 10 tiles wide × 10 tiles tall = 100 tiles
-// 100 tiles × 32 bytes = 0x1400 bytes
-const struct CompressedSpriteSheet gLargeItemPicBgSpriteSheet =
+const struct CompressedSpriteSheet gLargeItemPicBgSpriteSheets_2x2[] =
 {
-    gLargeItemPicBgTiles,   // your 80x80 tileset
-    0x800,                 // size in bytes (uncompressed)
-    4999                    // unique tag (not in 5000–5014 range)
+    { gLargeItemPicBg_TL, 0x800, 4999 }, // top-left
+    { gLargeItemPicBg_TR, 0x800, 4998 }, // top-right
+    { gLargeItemPicBg_BL, 0x800, 4997 }, // bottom-left
+    { gLargeItemPicBg_BR, 0x800, 4996 }, // bottom-right
 };
 
-const struct SpritePalette gLargeItemPicBgSpritePalette =
+static const struct SpriteFrameImage sLargeItemPicBg2x2_Images[] =
+{
+    { gLargeItemPicBg_TL, 0x800 },
+    { gLargeItemPicBg_TR, 0x800 },
+    { gLargeItemPicBg_BL, 0x800 },
+    { gLargeItemPicBg_BR, 0x800 },
+};
+
+const struct SpritePalette gLargeItemPicBgSpritePalette_2x2 =
 {
     gLargeItemPicBgPal,
-    4999,   // same tag as your tileset
+    4999,   // paletteTag (shared)
 };
 
-static const struct OamData sLargeItemPicBg_OamData =
+static const struct OamData sLargeItemPicBg2x2_OamData =
 {
     .y = 0,
     .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_BLEND,   // semi-transparent
+    .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
     .shape = SPRITE_SHAPE(64x64),
     .size = SPRITE_SIZE(64x64),
-    .priority = 1,                 // behind item sprite
+    .priority = 1,
 };
 
-static const struct SpriteFrameImage sLargeItemPicBg_Image[] =
+const struct SpriteTemplate gLargeItemPicBg2x2Templates[] =
 {
-    { gLargeItemPicBgTiles, 0x800 }, 
+    {   // TL
+        .tileTag = 4999,
+        .paletteTag = 4999,
+        .oam = &sLargeItemPicBg2x2_OamData,
+        .anims = gDummySpriteAnimTable,
+        .images = &sLargeItemPicBg2x2_Images[0],
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {   // TR
+        .tileTag = 4998,
+        .paletteTag = 4999,
+        .oam = &sLargeItemPicBg2x2_OamData,
+        .anims = gDummySpriteAnimTable,
+        .images = &sLargeItemPicBg2x2_Images[1],
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {   // BL
+        .tileTag = 4997,
+        .paletteTag = 4999,
+        .oam = &sLargeItemPicBg2x2_OamData,
+        .anims = gDummySpriteAnimTable,
+        .images = &sLargeItemPicBg2x2_Images[2],
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {   // BR
+        .tileTag = 4996,
+        .paletteTag = 4999,
+        .oam = &sLargeItemPicBg2x2_OamData,
+        .anims = gDummySpriteAnimTable,
+        .images = &sLargeItemPicBg2x2_Images[3],
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
 };
-
-const struct SpriteTemplate gLargeItemPicBgSpriteTemplate =
-{
-    .tileTag = 4999,
-    .paletteTag = 4999,
-    .oam = &sLargeItemPicBg_OamData,
-    .anims = gDummySpriteAnimTable,
-    .images = sLargeItemPicBg_Image,   // ⭐ now valid again
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
