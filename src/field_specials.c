@@ -1009,7 +1009,7 @@ u8 GetLeadMonFriendshipScore(void)
 u8 GiveChosenMonMassage(void)
 {
     u8 slot = VarGet(VAR_0x8004);
-    struct Pokemon *mon = &gPlayerParty[slot];
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][slot];
     u32 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
     u32 increase;
     u8 result;
@@ -1437,7 +1437,7 @@ void DoesChosenMonMatchDailyType(void)
     if (slot >= PARTY_SIZE)
         return;
 
-    mon = &gPlayerParty[slot];
+    mon = &gParties[B_TRAINER_PLAYER][slot];
 
     // Empty slot or egg
     if (!GetMonData(mon, MON_DATA_SANITY_HAS_SPECIES)
