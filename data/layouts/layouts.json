@@ -9862,6 +9862,26 @@
       "secondary_tileset": "gTileset_Route4",
       "border_filepath": "data/layouts/DesertResort_Outside/border.bin",
       "blockdata_filepath": "data/layouts/DesertResort_Outside/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4_HOUSE_RIGHT",
+      "name": "Route4_HouseRight_Layout",
+      "width": 9,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorRoute4",
+      "border_filepath": "data/layouts/Route4_HouseRight/border.bin",
+      "blockdata_filepath": "data/layouts/Route4_HouseRight/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4_HOUSE_LEFT",
+      "name": "Route4_HouseLeft_Layout",
+      "width": 9,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorRoute4",
+      "border_filepath": "data/layouts/Route4_HouseLeft/border.bin",
+      "blockdata_filepath": "data/layouts/Route4_HouseLeft/map.bin"
     }
   ]
 }

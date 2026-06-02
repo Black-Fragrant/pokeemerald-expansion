@@ -353,15 +353,15 @@
       "x": 42,
       "y": 63,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_SOUTH",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE4_HOUSE_RIGHT",
+      "dest_warp_id": "1"
     },
     {
       "x": 14,
       "y": 21,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_SOUTH",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE4_HOUSE_LEFT",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
@@ -485,16 +485,16 @@
       "x": 17,
       "y": 19,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
     },
     {
       "type": "sign",
       "x": 18,
       "y": 19,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
     }
   ]
 }
