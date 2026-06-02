@@ -53,7 +53,6 @@ TrainerHill_Elevator_EventScript_CloseFloorSelect::
 TrainerHill_Elevator_EventScript_MoveElevator::
 	waitse
 	special MoveElevator
-	waitstate
 	return
 
 TrainerHill_Elevator_Movement_PlayerMoveToCenterOfElevator:

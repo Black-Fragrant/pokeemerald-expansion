@@ -504,10 +504,7 @@ static void UIShowMoveList(u8 taskId)
     gSpecialVar_0x8008 = gTasks[taskId].tPartyIndex;
     gSpecialVar_0x8009 = gTasks[taskId].tMove;
     gSpecialVar_0x800A = gTasks[taskId].tCategory;
-    // start bwSummaryScreen
-    //ShowSelectMovePokemonSummaryScreen(gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, CB2_InitLearnMoveReturnFromSelectMove, gTasks[taskId].tMove);
-    ShowSelectMovePokemonSummaryScreen_BW(gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, 1, CB2_InitLearnMoveReturnFromSelectMove, gTasks[taskId].tMove);
-    // end bwSummaryScreen
+    ShowSelectMovePokemonSummaryScreen(gParties[B_TRAINER_PLAYER], gTasks[taskId].tPartyIndex, CB2_InitLearnMoveReturnFromSelectMove, gTasks[taskId].tMove);
     DestroyTask(taskId);
     FreeMoveRelearnerResources();
 }
@@ -553,22 +550,10 @@ static void Task_MoveRelearner_Quit(u8 taskId)
 
     if (gInitialSummaryScreenCallback != NULL)
     {
-        // start bwSummaryScreen
-        /*
         if (gRelearnMode == RELEARN_MODE_PSS_PAGE_CONTEST_MOVES)
-            ShowPokemonSummaryScreen(SUMMARY_MODE_RELEARNER_CONTEST, gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_0] - 1, gInitialSummaryScreenCallback);
+            ShowPokemonSummaryScreen(SUMMARY_MODE_RELEARNER_CONTEST, gParties[B_TRAINER_PLAYER], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_PLAYER] - 1, gInitialSummaryScreenCallback);
         else
-            ShowPokemonSummaryScreen(SUMMARY_MODE_RELEARNER_BATTLE, gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_0] - 1, gInitialSummaryScreenCallback);
-        */
-
-        u32 mode;
-        if (gRelearnMode == RELEARN_MODE_PSS_PAGE_CONTEST_MOVES)
-            mode = SUMMARY_MODE_RELEARNER_CONTEST;
-        else
-            mode = SUMMARY_MODE_RELEARNER_BATTLE;
-
-        ShowPokemonSummaryScreen_BW(mode, gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_0] - 1, gInitialSummaryScreenCallback);
-        // end bwSummaryScreen
+            ShowPokemonSummaryScreen(SUMMARY_MODE_RELEARNER_BATTLE, gParties[B_TRAINER_PLAYER], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_PLAYER] - 1, gInitialSummaryScreenCallback);
     }
     else
     {
