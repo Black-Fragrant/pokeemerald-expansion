@@ -566,6 +566,7 @@
 // gTileset_Route3
 #define METATILE_Route3_House_1  0x28C
 #define METATILE_Route3_House_2  0x265
+#define METATILE_Route4_Door     0x272
 
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F

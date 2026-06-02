@@ -180,6 +180,7 @@ static const u8 sDoorAnimTiles_StraitonHouse_2[] = INCGFX_U8("graphics/door_anim
 static const u8 sDoorAnimTiles_PokemonCenter[] = INCGFX_U8("graphics/door_anims/poke_center.png", ".4bpp");
 static const u8 sDoorAnimTiles_Route3_House_1[] = INCGFX_U8("graphics/door_anims/route_3_door_1.png", ".4bpp");
 static const u8 sDoorAnimTiles_Route3_House_2[] = INCGFX_U8("graphics/door_anims/route_3_door_2.png", ".4bpp");
+static const u8 sDoorAnimTiles_Route4_Door[] = INCGFX_U8("graphics/door_anims/route_4_door.png", ".4bpp");
 static const u8 sDoorAnimTiles_Nacrene_House_1[] = INCGFX_U8("graphics/door_anims/nacrene_house_1.png", ".4bpp");
 static const u8 sDoorAnimTiles_Castelia_House_1[] = INCGFX_U8("graphics/door_anims/castelia_house_1.png", ".4bpp");
 static const u8 sDoorAnimTiles_Castelia_Indoor_Elevator[] = INCGFX_U8("graphics/door_anims/castelia_indoor_elevator.png", ".4bpp");
@@ -350,6 +351,7 @@ static const u8 sDoorAnimPalettes_StraitonHouse_2[] = {10, 10, 10, 10, 10, 10, 1
 static const u8 sDoorAnimPalettes_PokemonCenter[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_Route3_1[] = {11, 11, 11, 11, 11, 11, 11, 11};
 static const u8 sDoorAnimPalettes_Route3_2[] = {9, 9, 9, 9, 9, 9, 9, 9};
+static const u8 sDoorAnimPalettes_Route4_Door[] = {10, 10, 10, 10, 10, 10, 10, 10};
 static const u8 sDoorAnimPalettes_NacreneHouse_1[] = {12, 12, 12, 12, 12, 12, 12, 12};
 static const u8 sDoorAnimPalettes_CasteliaHouse_1[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_Castelia_Indoor_Elevator[] = {9, 9, 9, 9, 9, 9, 9, 9};
@@ -459,6 +461,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_General_Door_PokemonCenter,                   &gTileset_General, DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokemonCenter, sDoorAnimPalettes_PokemonCenter},
     {METATILE_Route3_House_1,                               &gTileset_Route3, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route3_House_1, sDoorAnimPalettes_Route3_1},
     {METATILE_Route3_House_2,                               &gTileset_Route3, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route3_House_2, sDoorAnimPalettes_Route3_2},
+    {METATILE_Route4_Door,                                  &gTileset_Route4, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route4_Door, sDoorAnimPalettes_Route4_Door},
     {METATILE_Nacrene_House_1,                              &gTileset_NacreneCity, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Nacrene_House_1, sDoorAnimPalettes_NacreneHouse_1},
     {METATILE_Castelia_House_1,                             &gTileset_CasteliaCity1, DOOR_SOUND_SLIDING,  1, sDoorAnimTiles_Castelia_House_1, sDoorAnimPalettes_CasteliaHouse_1},
     {METATILE_Castelia_Indoor_Elevator,                     &gTileset_IndoorCastelia, DOOR_SOUND_SLIDING,  1, sDoorAnimTiles_Castelia_Indoor_Elevator, sDoorAnimPalettes_Castelia_Indoor_Elevator},
