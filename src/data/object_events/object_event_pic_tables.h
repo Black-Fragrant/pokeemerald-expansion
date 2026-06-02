@@ -885,64 +885,28 @@ static const struct SpriteFrameImage sPicTable_GoldBall[] = {
     overworld_ascending_frames(gObjectEventPic_GoldBall, 2, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_BoatRed[] = {
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRed, 8, 16, 0),
-};
-
-static const struct SpriteFrameImage sPicTable_BoatBlue[] = {
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlue, 8, 16, 0),
-};
-
-static const struct SpriteFrameImage sPicTable_BoatYellow[] = {
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatYellow, 8, 16, 0),
+static const struct SpriteFrameImage sPicTable_Boat[] = {
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
+    obj_frame_tiles(gObjectEventPic_Boat),
 };
 
 static const struct SpriteFrameImage sPicTable_BoatRoyal[] = {
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatRoyal, 8, 16, 0),
-};
-
-static const struct SpriteFrameImage sPicTable_BoatBlack[] = {
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
-    overworld_frame(gObjectEventPic_BoatBlack, 8, 16, 0),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+    obj_frame_tiles(gObjectEventPic_BoatRoyal),
 };
 
 #if IS_FRLG
