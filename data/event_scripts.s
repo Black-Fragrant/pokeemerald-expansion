@@ -1646,6 +1646,13 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	releaseall
 	end
 
+EventScript_SetSail::
+	closemessage
+	delay 20
+	fadescreen FADE_TO_BLACK
+	special DoSeagallopFerryScene
+	waitstate
+	end
 
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"

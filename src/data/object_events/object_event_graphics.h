@@ -683,20 +683,15 @@ const u16 gObjectEventPal_Cone[] = INCGFX_U16("graphics/object_events/palettes/c
 const u32 gObjectEventPic_GoldBall[] = INCGFX_U32("graphics/object_events/pics/people/gold_ball.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_GoldBall[] = INCGFX_U16("graphics/object_events/palettes/gold_ball.pal", ".gbapal");
 
-const u32 gObjectEventPic_BoatRed[] = INCGFX_U32("graphics/object_events/pics/misc/boat_red.png", ".4bpp");
+const u32 gObjectEventPic_Boat[] = INCGFX_U32("graphics/object_events/pics/misc/boat.png", ".4bpp", "-mwidth 8 -mheight 4");
+
 const u16 gObjectEventPal_BoatRed[] = INCGFX_U16("graphics/object_events/palettes/boat_red.pal", ".gbapal");
-
-const u32 gObjectEventPic_BoatBlue[] = INCGFX_U32("graphics/object_events/pics/misc/boat_blue.png", ".4bpp");
 const u16 gObjectEventPal_BoatBlue[] = INCGFX_U16("graphics/object_events/palettes/boat_blue.pal", ".gbapal");
-
-const u32 gObjectEventPic_BoatYellow[] = INCGFX_U32("graphics/object_events/pics/misc/boat_yellow.png", ".4bpp");
 const u16 gObjectEventPal_BoatYellow[] = INCGFX_U16("graphics/object_events/palettes/boat_yellow.pal", ".gbapal");
-
-const u32 gObjectEventPic_BoatRoyal[] = INCGFX_U32("graphics/object_events/pics/misc/boat_royal.png", ".4bpp");
-const u16 gObjectEventPal_BoatRoyal[] = INCGFX_U16("graphics/object_events/palettes/boat_royal.pal", ".gbapal");
-
-const u32 gObjectEventPic_BoatBlack[] = INCGFX_U32("graphics/object_events/pics/misc/boat_black.png", ".4bpp");
 const u16 gObjectEventPal_BoatBlack[] = INCGFX_U16("graphics/object_events/palettes/boat_black.pal", ".gbapal");
+
+const u32 gObjectEventPic_BoatRoyal[] = INCGFX_U32("graphics/object_events/pics/misc/boat_royal.png", ".4bpp", "-mwidth 8 -mheight 4");
+const u16 gObjectEventPal_BoatRoyal[] = INCGFX_U16("graphics/object_events/palettes/boat_royal.pal", ".gbapal");
 
 #if IS_FRLG
 

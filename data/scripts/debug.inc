@@ -197,33 +197,8 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	showlargeitempic 6, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 7, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 8, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 6, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 7, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 8, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 6, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 7, 10, 3
-	delay 20
-	hidelargeitempic
-	showlargeitempic 8, 10, 3
-	delay 20
-	hidelargeitempic
+	setvar VAR_0x8000, BOAT_RED
+	goto EventScript_SetSail
 	end
 
 Debug_EventScript_Script_1_text::
