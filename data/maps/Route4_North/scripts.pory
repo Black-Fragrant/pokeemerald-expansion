@@ -1,1 +1,15 @@
 mapscripts Route4_North_MapScripts {}
+
+script Route4_North_EventScript_Battle_BackpackerM
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_4_3,
+	text("A traveling Backpacker\n"
+        "meets a traveling Trainer."),
+	text("I may have been traveling\n"
+        "to meet you... Just kidding!"))
+	msgbox("My journey taught me that a journey\n"
+        "is not just going somewhere.\p"
+        "Meeting people and learning from them\n"
+        "are both part of my journey.", MSGBOX_NPC, TRUE)
+	end()
+}

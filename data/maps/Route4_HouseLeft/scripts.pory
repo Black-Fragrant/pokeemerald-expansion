@@ -1,1 +1,46 @@
 mapscripts Route4_HouseLeft_MapScripts {}
+
+script Route4_HouseLeft_EventScript_Worker
+{
+    msgbox("Sandstorms are terrible!\p"
+        "But Rock-type, Ground-type, and\n"
+        "Steel-type Pokémon can weather\l"
+        "a Sandstorm without damage.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_HouseLeft_EventScript_Worker_GivesDig
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_ROUTE4S_ITEM_TM_DIG, Route4_HouseLeft_EventScript_Worker_GivenDig)
+    msgbox("I don't mean to brag, but I'm a Dig pro!\p"
+       "I'll give you this TM so you can\n"
+       "use it, too!", MSGBOX_DEFAULT, TRUE, LOCALID_R4HL_WORKER)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_DIG, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Route4_HouseLeft_EventScript_BagIsFull)
+    setflag(FLAG_ROUTE4S_ITEM_TM_DIG)
+	goto (Route4_HouseLeft_EventScript_Worker_GivenDig)
+}
+
+script Route4_HouseLeft_EventScript_Worker_GivenDig
+{
+    msgbox("Using Dig in a cave takes you back to\n"
+       "the entrance instantly!\p"
+       "What do you think of that? Amazing, eh?\n"
+       "Be sure to use Dig and Dig some more!", MSGBOX_DEFAULT, TRUE, LOCALID_R4HL_WORKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script Route4_HouseLeft_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
