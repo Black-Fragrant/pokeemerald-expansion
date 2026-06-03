@@ -45,6 +45,10 @@ static void CreateWakeSprite(s16 x);
 static void SpriteCB_Wake(struct Sprite *sprite);
 static bool8 GetDirectionOfTravel(void);
 
+static void LoadYellowBoatSpriteResources(void);
+static void FreeYellowBoatSpriteResources(void);
+static void CreateYellowBoatSprites(void);
+
 static const u16 sWaterTiles[] = INCGFX_U16("graphics/seagallop/water.png", ".4bpp");
 static const u16 sWaterPal[] = INCGFX_U16("graphics/seagallop/water.png", ".gbapal");
 static const u16 sWaterTilemap_WB[] = INCBIN_U16("graphics/seagallop/wb_tilemap.bin");
@@ -52,6 +56,15 @@ static const u16 sWaterTilemap_EB[] = INCBIN_U16("graphics/seagallop/eb_tilemap.
 static const u16 sFerrySpriteTiles[] = INCGFX_U16("graphics/seagallop/ferry_sprite.png", ".4bpp");
 static const u16 sFerryAndWakePal[] = INCGFX_U16("graphics/seagallop/ferry_and_wake.pal", ".gbapal");
 static const u16 sWakeSpriteTiles[] = INCGFX_U16("graphics/seagallop/wake.png", ".4bpp");
+
+static const u16 sYellowBoatLeftTiles[]  = INCGFX_U16("graphics/seagallop/yellow_boat_left.png",  ".4bpp");
+static const u16 sYellowBoatRightTiles[] = INCGFX_U16("graphics/seagallop/yellow_boat_right.png", ".4bpp");
+
+static const u16 sYellowBoatPal[] = INCGFX_U16("graphics/seagallop/yellow_boat.pal", ".gbapal");
+
+#define TILESTAG_YBOAT_LEFT   5021
+#define TILESTAG_YBOAT_RIGHT  5022
+#define PALTAG_YBOAT          5021
 
 static const struct BgTemplate sBGTemplates[] = {
     {
@@ -124,6 +137,10 @@ static const struct OamData sOamData_Ferry = {
     .size = 3
 };
 
+static const struct OamData sOamData_YellowBoat = {
+    .size = 3 // 64×64
+};
+
 static const struct SpriteTemplate sFerrySpriteTemplate = {
     TILESTAG_FERRY,
     PALTAG_FERRY_WAKE,
@@ -145,6 +162,17 @@ static const struct SpritePalette sFerryAndWakeSpritePalettes[] = {
     {}
 };
 
+static const struct SpriteSheet sYellowBoatSpriteSheets[] = {
+    { sYellowBoatLeftTiles,  sizeof(sYellowBoatLeftTiles),  TILESTAG_YBOAT_LEFT },
+    { sYellowBoatRightTiles, sizeof(sYellowBoatRightTiles), TILESTAG_YBOAT_RIGHT },
+    {}
+};
+
+static const struct SpritePalette sYellowBoatSpritePalettes[] = {
+    { sYellowBoatPal, PALTAG_YBOAT },
+    {}
+};
+
 static const union AnimCmd sSpriteAnims_Wake_WB[] = {
     ANIMCMD_FRAME(0x00, 0x14),
     ANIMCMD_FRAME(0x10, 0x14),
@@ -157,6 +185,36 @@ static const union AnimCmd sSpriteAnims_Wake_EB[] = {
     ANIMCMD_FRAME(0x10, 0x14, .hFlip = TRUE),
     ANIMCMD_FRAME(0x20, 0x0f, .hFlip = TRUE),
     ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_YBoatLeft_WB[] = {
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_YBoatLeft_EB[] = {
+    ANIMCMD_FRAME(0, 10, .hFlip = TRUE),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sAnimTable_YBoatLeft[] = {
+    sAnim_YBoatLeft_WB,
+    sAnim_YBoatLeft_EB
+};
+
+static const union AnimCmd sAnim_YBoatRight_WB[] = {
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_YBoatRight_EB[] = {
+    ANIMCMD_FRAME(0, 10, .hFlip = TRUE),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sAnimTable_YBoatRight[] = {
+    sAnim_YBoatRight_WB,
+    sAnim_YBoatRight_EB
 };
 
 static const union AnimCmd *const sSpriteAnimTable_Wake[] = {
@@ -176,6 +234,26 @@ static const struct SpriteTemplate sWakeSpriteTemplate = {
     NULL,
     gDummySpriteAffineAnimTable,
     SpriteCB_Wake
+};
+
+static const struct SpriteTemplate sYellowBoatLeftTemplate = {
+    TILESTAG_YBOAT_LEFT,
+    PALTAG_YBOAT,
+    &sOamData_YellowBoat,
+    sAnimTable_YBoatLeft,
+    NULL,
+    gDummySpriteAffineAnimTable,
+    SpriteCB_Ferry
+};
+
+static const struct SpriteTemplate sYellowBoatRightTemplate = {
+    TILESTAG_YBOAT_RIGHT,
+    PALTAG_YBOAT,
+    &sOamData_YellowBoat,
+    sAnimTable_YBoatRight,
+    NULL,
+    gDummySpriteAffineAnimTable,
+    SpriteCB_Ferry
 };
 
 void DoSeagallopFerryScene(void)
@@ -239,7 +317,16 @@ static void CB2_SetUpSeagallopScene(void)
         SetDispcnt();
         SetVBlankCallback(VBlankCB_SeaGallop);
         PlaySE(SE_SHIP);
-        CreateFerrySprite();
+        if (gSpecialVar_0x8006 == SEAGALLOP_LIBERTY_GARDEN
+        || gSpecialVar_0x8006 == SEAGALLOP_CASTELIA_CITY)
+        {
+            LoadYellowBoatSpriteResources();
+            CreateYellowBoatSprites();
+        }
+        else
+        {
+            CreateFerrySprite();
+        }
         SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
         SetGpuReg(REG_OFFSET_WININ, 0x3F);
         SetGpuReg(REG_OFFSET_WINOUT, 0x00);
@@ -323,6 +410,7 @@ static void Task_Seagallop_3(void)
     SetMainCallback2(CB2_LoadMap);
     ResetInitialPlayerAvatarState();
     FreeFerrySpriteResources();
+    FreeYellowBoatSpriteResources();
     Free(sBg3TilemapBuffer);
     FreeAllWindowBuffers();
 }
@@ -389,11 +477,24 @@ static void LoadFerrySpriteResources(void)
     LoadSpritePalettes(sFerryAndWakeSpritePalettes);
 }
 
+static void LoadYellowBoatSpriteResources(void)
+{
+    LoadSpriteSheets(sYellowBoatSpriteSheets);
+    LoadSpritePalettes(sYellowBoatSpritePalettes);
+}
+
 static void FreeFerrySpriteResources(void)
 {
     FreeSpriteTilesByTag(TILESTAG_FERRY);
     FreeSpriteTilesByTag(TILESTAG_WAKE);
     FreeSpritePaletteByTag(PALTAG_FERRY_WAKE);
+}
+
+static void FreeYellowBoatSpriteResources(void)
+{
+    FreeSpriteTilesByTag(TILESTAG_YBOAT_LEFT);
+    FreeSpriteTilesByTag(TILESTAG_YBOAT_RIGHT);
+    FreeSpritePaletteByTag(PALTAG_YBOAT);
 }
 
 static void CreateFerrySprite(void)
@@ -411,14 +512,79 @@ static void CreateFerrySprite(void)
     }
 }
 
+static void CreateYellowBoatSprites(void)
+{
+    s16 baseY = 86;
+
+    if (GetDirectionOfTravel() == DIRN_EASTBOUND)
+    {
+        // EB → right half first, then left half
+        u8 rightId = CreateSprite(&sYellowBoatRightTemplate, 0, baseY, 0);
+        u8 leftId  = CreateSprite(&sYellowBoatLeftTemplate,  64, baseY, 0);
+
+        StartSpriteAnim(&gSprites[rightId], 1); // EB flip
+        StartSpriteAnim(&gSprites[leftId],  1);
+
+        gSprites[rightId].data[0] = 48;
+        gSprites[leftId].data[0]  = 48;
+
+        // ============================================
+        // CHANGE #1 — EB: rear = *smaller* X (left side)
+        // ============================================
+        if (gSprites[leftId].x < gSprites[rightId].x)
+        {
+            // left is rear
+            gSprites[leftId].data[7]  = 1;
+            gSprites[rightId].data[7] = 0;
+        }
+        else
+        {
+            // right is rear
+            gSprites[rightId].data[7] = 1;
+            gSprites[leftId].data[7]  = 0;
+        }
+    }
+    else
+    {
+        // WB → left half first, then right half
+        u8 leftId  = CreateSprite(&sYellowBoatLeftTemplate,  0, baseY, 0);
+        u8 rightId = CreateSprite(&sYellowBoatRightTemplate, 64, baseY, 0);
+
+        StartSpriteAnim(&gSprites[leftId],  0); // WB normal
+        StartSpriteAnim(&gSprites[rightId], 0);
+
+        gSprites[leftId].data[0]  = -48;
+        gSprites[rightId].data[0] = -48;
+
+        gSprites[leftId].x  = 240;
+        gSprites[rightId].x = 240 + 64;
+
+        // ============================================
+        // CHANGE #2 — WB: rear = *larger* X (right side)
+        // ============================================
+        if (gSprites[leftId].x > gSprites[rightId].x)
+        {
+            // left is rear
+            gSprites[leftId].data[7]  = 1;
+            gSprites[rightId].data[7] = 0;
+        }
+        else
+        {
+            // right is rear
+            gSprites[rightId].data[7] = 1;
+            gSprites[leftId].data[7]  = 0;
+        }
+    }
+}
+
 static void SpriteCB_Ferry(struct Sprite *sprite)
 {
     sprite->data[1] += sprite->data[0];
     sprite->x2 = sprite->data[1] >> 4;
-    if (sprite->data[2] % 5 == 0)
-    {
+    // Only rear sprite spawns wake
+    if (sprite->data[7] == 1 && sprite->data[2] % 5 == 0)
         CreateWakeSprite(sprite->x + sprite->x2);
-    }
+
     sprite->data[2]++;
     if ((u16)(300 + sprite->x2) > 600)
     {
@@ -455,7 +621,7 @@ static bool8 GetDirectionOfTravel(void)
     // Force Castelia City → always face RIGHT (eastbound)
     if (gSpecialVar_0x8006 == SEAGALLOP_CASTELIA_CITY)
         return DIRN_EASTBOUND;
-        
+
     if (gSpecialVar_0x8004 >= NELEMS(sTravelDirectionMatrix))
     {
         return DIRN_EASTBOUND;
