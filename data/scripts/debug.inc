@@ -195,7 +195,6 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setvar VAR_0x8000, BOAT_RED
 	setvar VAR_0x8006, SEAGALLOP_VERMILION_CITY
 	goto EventScript_SetSail
 	end

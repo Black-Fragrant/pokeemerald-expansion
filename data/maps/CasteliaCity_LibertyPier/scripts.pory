@@ -88,11 +88,12 @@ script CasteliaCity_LibertyPier_EventScript_Captain_Warp
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 15, CasteliaCity_LibertyPier_EventScript_Warp_Pos1)
 	call_if_eq (VAR_TEMP_0, 16, CasteliaCity_LibertyPier_EventScript_Warp_Pos2)
-    delay(10)
-	warp (MAP_LIBERTY_GARDEN, 6, 11)
+    setvar (VAR_0x8006, SEAGALLOP_LIBERTY_GARDEN)
+	delay (20)
+	fadescreen (FADE_TO_BLACK)
+	special (DoSeagallopFerryScene)
 	waitstate
-    release
-    end
+	end
 }
 
 script CasteliaCity_LibertyPier_EventScript_Warp_Pos1

@@ -168,10 +168,12 @@ script CasteliaCity_LibertyGarden_EventScript_Captain_Warp
     applymovement(LOCALID_PLAYER, moves(walk_left * 3))
     applymovement(LOCALID_LIBERTY_GARDEN_CAPTAIN, moves(walk_left * 3))
     waitmovement(0)
-	warp (MAP_CASTELIA_CITY_LIBERTY_PIER, 16, 14)
+    setvar (VAR_0x8006, SEAGALLOP_CASTELIA_CITY)
+	delay (20)
+	fadescreen (FADE_TO_BLACK)
+	special (DoSeagallopFerryScene)
 	waitstate
-    release
-    end
+	end
 }
 
 script CasteliaCity_LibertyGarden_EventScript_IslandSign

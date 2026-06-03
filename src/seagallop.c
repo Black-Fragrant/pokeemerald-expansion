@@ -76,7 +76,9 @@ static const s8 sSeag[][4] = {
     [SEAGALLOP_SEVEN_ISLAND]    = {MAP_GROUP(MAP_SEVEN_ISLAND_HARBOR), MAP_NUM(MAP_SEVEN_ISLAND_HARBOR), 0x08, 0x05},
     [SEAGALLOP_CINNABAR_ISLAND] = {MAP_GROUP(MAP_CINNABAR_ISLAND), MAP_NUM(MAP_CINNABAR_ISLAND),     0x15, 0x07},
     [SEAGALLOP_NAVEL_ROCK]      = {MAP_GROUP(MAP_NAVEL_ROCK_HARBOR_FRLG), MAP_NUM(MAP_NAVEL_ROCK_HARBOR_FRLG),   0x08, 0x05},
-    [SEAGALLOP_BIRTH_ISLAND]    = {MAP_GROUP(MAP_BIRTH_ISLAND_HARBOR_FRLG), MAP_NUM(MAP_BIRTH_ISLAND_HARBOR_FRLG), 0x08, 0x05}
+    [SEAGALLOP_BIRTH_ISLAND]    = {MAP_GROUP(MAP_BIRTH_ISLAND_HARBOR_FRLG), MAP_NUM(MAP_BIRTH_ISLAND_HARBOR_FRLG), 0x08, 0x05},
+    [SEAGALLOP_LIBERTY_GARDEN]  = {MAP_GROUP(MAP_LIBERTY_GARDEN), MAP_NUM(MAP_LIBERTY_GARDEN), 0x06, 0x0B},
+    [SEAGALLOP_CASTELIA_CITY]   = {MAP_GROUP(MAP_CASTELIA_CITY_LIBERTY_PIER), MAP_NUM(MAP_CASTELIA_CITY_LIBERTY_PIER), 0x10, 0x0E}
 };
 
 // Bitpacked array.  In the commented section, right-most bit is the
@@ -446,6 +448,14 @@ static void SpriteCB_Wake(struct Sprite *sprite)
 
 static bool8 GetDirectionOfTravel(void)
 {
+    // Force Liberty Garden → always face LEFT (westbound)
+    if (gSpecialVar_0x8006 == SEAGALLOP_LIBERTY_GARDEN)
+        return DIRN_WESTBOUND;
+
+    // Force Castelia City → always face RIGHT (eastbound)
+    if (gSpecialVar_0x8006 == SEAGALLOP_CASTELIA_CITY)
+        return DIRN_EASTBOUND;
+        
     if (gSpecialVar_0x8004 >= NELEMS(sTravelDirectionMatrix))
     {
         return DIRN_EASTBOUND;
