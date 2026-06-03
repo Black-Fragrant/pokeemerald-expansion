@@ -565,9 +565,9 @@
 #define FLAG_HIDDEN_ITEM_LG_ULTRA_BALL                       (FLAG_HIDDEN_ITEMS_START + 0x0C)
 #define FLAG_HIDDEN_ITEM_ROUTE4S_PEARL                       (FLAG_HIDDEN_ITEMS_START + 0x0D)
 #define FLAG_HIDDEN_ITEM_ROUTE4S_HYPER_POTION                (FLAG_HIDDEN_ITEMS_START + 0x0E)
-#define FLAG_UNUSED_0x203                                    (FLAG_HIDDEN_ITEMS_START + 0x0F)
-#define FLAG_UNUSED_0x204                                    (FLAG_HIDDEN_ITEMS_START + 0x10)
-#define FLAG_UNUSED_0x205                                    (FLAG_HIDDEN_ITEMS_START + 0x11)
+#define FLAG_HIDDEN_ITEM_ROUTE4S_BURN_HEAL                   (FLAG_HIDDEN_ITEMS_START + 0x0F)
+#define FLAG_HIDDEN_ITEM_ROUTE4S_ULTRA_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x10)
+#define FLAG_HIDDEN_ITEM_ROUTE4S_ETHER                       (FLAG_HIDDEN_ITEMS_START + 0x11)
 #define FLAG_UNUSED_0x206                                    (FLAG_HIDDEN_ITEMS_START + 0x12)
 #define FLAG_UNUSED_0x207                                    (FLAG_HIDDEN_ITEMS_START + 0x13)
 #define FLAG_UNUSED_0x208                                    (FLAG_HIDDEN_ITEMS_START + 0x14)
@@ -905,14 +905,14 @@
 #define FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE               0x359
 #define FLAG_LIBERTY_GARDEN_JUNIPER                                 0x35A
 #define FLAG_CASTELIA_GYM_ITEM_FRESH_WATER                          0x35B
-#define FLAG_UNUSED_0x35C                                           0x35C
-#define FLAG_UNUSED_0x35D                                           0x35D
-#define FLAG_UNUSED_0x35E                                           0x35E
-#define FLAG_UNUSED_0x35F                                           0x35F
-#define FLAG_UNUSED_0x360                                           0x360
-#define FLAG_UNUSED_0x361                                           0x361
-#define FLAG_UNUSED_0x362                                           0x362
-#define FLAG_UNUSED_0x363                                           0x363
+#define FLAG_ROUTE4S_ITEM_X_ACCURACY                                0x35C
+#define FLAG_ROUTE4S_ITEM_GREAT_BALL                                0x35D
+#define FLAG_ROUTE4S_ITEM_HYPER_POTION                              0x35E
+#define FLAG_ROUTE4S_ITEM_TM_TORMENT                                0x35F
+#define FLAG_ROUTE4S_ITEM_BURN_HEAL                                 0x360
+#define FLAG_ROUTE4S_ITEM_ETHER                                     0x361
+#define FLAG_ROUTE4S_ITEM_SUPER_POTION                              0x362
+#define FLAG_ROUTE4S_ITEM_TM_DIG                                    0x363
 #define FLAG_UNUSED_0x364                                           0x364
 #define FLAG_UNUSED_0x365                                           0x365
 #define FLAG_UNUSED_0x366                                           0x366

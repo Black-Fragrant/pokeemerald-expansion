@@ -1,1 +1,44 @@
 mapscripts Route4_HouseRight_MapScripts {}
+
+script Route4_HouseRight_EventScript_Krokorok
+{   
+	lock
+	faceplayer
+	playmoncry(SPECIES_KROKOROK, CRY_MODE_NORMAL)
+	msgbox("Glugluglug!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script Route4_HouseRight_EventScript_Housewife
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_TEMP_11, Route4_HouseRight_EventScript_Housewife_Healed)
+    msgbox("What? Are you worn out?\n"
+        "OK! Then rest here for a minute!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_HR_HOUSEWIFE)
+    destroy_speech_bubble()
+    closemessage()
+	fadescreen(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    fadedefaultbgm
+    savebgm(MUS_BW_ROUTE_4)
+	fadescreen(FADE_FROM_BLACK)
+    setflag(FLAG_TEMP_11)
+    delay(10)
+    release 
+    end
+}
+
+script Route4_HouseRight_EventScript_Housewife_Healed
+{
+    msgbox("If you are that full of energy, you can\n"
+        "go anywhere, even in a sandstorm!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_HR_HOUSEWIFE)
+    destroy_speech_bubble()
+    closemessage()
+    release
+    end
+}

@@ -15,6 +15,182 @@ script Route4_South_EventScript_PositionWorker
     return
 }
 
+script Route4_South_EventScript_ConstructionSign
+{
+    msgbox("Route 4", MSGBOX_SIGN)
+    end
+}
+
+script Route4_South_EventScript_RouteSign
+{
+    msgbox("Tired Workers should head\n"
+        "to the prefab house by Castelia City!", MSGBOX_SIGN)
+    end
+}
+
+script Route4_South_EventScript_TrainerTips
+{
+    msgbox("Trainer Tips!\p"
+        "Pokémon have a source of energy\n"
+        "for using moves.\p"
+        "It's called PP, meaning Power Points.\n"
+        "They have PP for each move.\p"
+        "When a move has no PP remaining,\n"
+        "that Pokémon cannot use that move.\p"
+        "That's a good time to head for\n"
+        "the Pokémon Center!", MSGBOX_SIGN)
+    end
+}
+
+script Route4_South_EventScript_Battle_Fisherman_1
+{
+	trainerbattle_single(TRAINER_FISHERMAN_ROUTE_4_1,
+	text("You've been caught by a powerful hook,\n"
+        "which is me!\p"
+        "I'll have a battle with you using\n"
+        "my freshly caught Pokémon!"),
+	text("Oh, no! The one who was caught...\n"
+        "was me!"))
+	msgbox("I usually release the Pokémon I catch.\n"
+        "That's called catch and release!\l"
+        "When I release them, I say these words:\p"
+        "Farewell, Pokémon.\n"
+        "It was a nice fight.\p"
+        "I'll say these words to you, too.\n"
+        "It was a nice fight!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_Fisherman_2
+{
+	trainerbattle_single(TRAINER_FISHERMAN_ROUTE_4_2,
+	text("OK! Good catch! Good catch!\n"
+        "My next catch will be called victory!"),
+	text("The victory that got away\n"
+        "was thiiiiiiiiiis big!"))
+	msgbox("Catch, caught, and catch again...\n"
+        "Life is fishing!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_ParasolLady
+{
+	trainerbattle_single(TRAINER_PARASOL_LADY_ROUTE_4,
+	text("I can't see up ahead\n"
+        "because of the sandstorm!\p"
+        "Because I can't see,\n"
+        "I'll have a battle with you!"),
+	text("S-a-n-d-s-t-o-r-m."))
+	msgbox("This parasol keeps off the sun and rain,\n"
+        "but it can't stand up to sandstorms...\p"
+        "Ah! My tears are falling on Route 4...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_1
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_1,
+	text("My way of life is dynamic!"),
+	text("My way of losing is\n"
+        "also dynamic!"))
+	msgbox("My Pokémon are always with me!\n"
+        "That's why I can be dynamic!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_2
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_2,
+	text("I'm a mucho macho Worker!\n"
+        "I'll bring you down with my muscles!"),
+	text("Argh!\n"
+        "The impudence!"))
+	msgbox("I dismissed you as just a kid...\n"
+        "Not at all... You're quite a Trainer!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerM_1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_4_1,
+	text("Well, at a time like this,\n"
+        "let's have a Pokémon battle!"),
+	text("I see.\n"
+        "Was that your favorite Pokémon?"))
+	msgbox("Whenever I go in the world,\n"
+        "I have Pokémon battles!\p"
+        "Once I ask about someone's favorite\n"
+        "Pokémon, we soon become friends!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerF_1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_ROUTE_4_1,
+	text("My travel partner is a Pokémon\n"
+        "that a popular guidebook recommended!"),
+	text("The guidebook does not tell me\n"
+        "how to win."))
+	msgbox("According to the popular guidebook,\n"
+        "Nimbasa City is an entertainment city.\l"
+        "It must be full of fun!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerF_2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_ROUTE_4_2,
+	text("Where did you come from?\n"
+        "Me? Well, if you can win, I'll tell you!"),
+	text("My first battle...\n"
+        "And I lost..."))
+	msgbox("To tell you the truth,\n"
+        "I just left Castelia City yesterday.\l"
+        "I've just started Pokémon battling, too.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerM_2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_4_2,
+	text("The fun of traveling around the world\n"
+        "is having serious battles\l"
+        "with a lot of Pokémon I meet!"),
+	text("Wooo! You're a top-class Trainer,\n"
+        "the best in the world!\l"
+        "...But what do I know?"))
+	msgbox("As long as my Pokémon are with me,\n"
+        "I can battle Trainers all over the world!\p"
+        "The world is so big! Woooooo!\n"
+        "That's really exciting!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_3
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_3,
+	text("Ho there! Even in the middle of\n"
+        "construction, a Trainer will battle."),
+	text("Gah! I'm digging myself into a big hole!"))
+	msgbox("If you use a Pokémon move called Dig,\n"
+        "you can get out of a cave instantly!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_4
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_4,
+	text("A battle is like a construction project.\n"
+        "They're both a piece of cake for me!"),
+	text("Ooh... That piece of cake was\n"
+        "hard to swallow!"))
+	msgbox("I may have lost in the battle, but I bow\n"
+        "to nobody when it comes to construction!\p"
+        "You must have something like that, right?\n"
+        "Something you do better than anybody?", MSGBOX_NPC, TRUE)
+	end()
+}
+
 script Route4_South_EventScript_Cheren
 {
     msgbox("Cheren: I believe it would be wise for me\n"
@@ -30,6 +206,20 @@ script Route4_South_EventScript_Hiker
            "Do you see how some areas are lighter?\n"
            "And some of the sand looks... darker...\p"
            "Pokémon are hiding in the darker sand!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_BlueShirtGuy
+{
+    msgbox("When I look at the freeway,\n"
+        "I feel exhilarated!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_Beauty
+{
+    msgbox("Ruins buried in the desert...\n"
+        "It's like a grand adventure in a story.", MSGBOX_NPC, TRUE)
     end
 }
 
