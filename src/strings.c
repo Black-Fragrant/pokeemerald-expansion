@@ -974,6 +974,11 @@ const u8 gText_PokedexDiploma[] = _("{CLEAR 0x16}PLAYER: {CLEAR 0x10}{COLOR RED}
                                     "achievement of catching all\n"
                                     "the Pokémon in the Unova region.\n\n"
                                     "{CLEAR_TO 0x32}{COLOR RED}{SHADOW LIGHT_RED}GAME FREAK");
+const u8 gText_ProfJuniperLetter[] = _("I've brought three Pokémon,\n"
+                                    "one for you and one for each\n"
+                                    "of your friends. Please settle\n"
+                                    "your choices politely.\n\n"
+                                    "{CLEAR_TO 0x32}--Professor Juniper");
 const u8 gJPText_GameFreak[] = _("{COLOR RED}{SHADOW LIGHT_RED}ゲ-ムフリ-ク"); // Unused
 const u8 gText_DiplomaEmpty[] = _("{COLOR RED}{SHADOW LIGHT_RED}"); // Unused
 const u8 gText_Hoenn[] = _("UNOVA");

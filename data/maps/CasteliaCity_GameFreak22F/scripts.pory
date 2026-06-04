@@ -73,10 +73,10 @@ script CasteliaCity_GameFreak22F_EventScript_Director_SeenAllUnovaMon
            "We'll give you an award!!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
     destroy_speech_bubble()
     closemessage
-	call(Common_EventScript_PlayGymBadgeFanfare)
-	special(Special_ShowDiploma)
-	waitstate
     setflag(FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE)
+	special(Special_ShowDiploma)
+    waitstate
+    lock
     msgbox("I will send this award certificate\n"
            "to your house!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
     destroy_speech_bubble()

@@ -194,6 +194,13 @@ void Special_ShowDiploma(void)
     LockPlayerFieldControls();
 }
 
+// New: Juniper Letter
+void Special_ShowJuniperLetter(void)
+{
+    SetMainCallback2(CB2_ShowJuniperLetter);
+    LockPlayerFieldControls();
+}
+
 void Special_ViewWallClock(void)
 {
     gMain.savedCallback = CB2_ReturnToField;

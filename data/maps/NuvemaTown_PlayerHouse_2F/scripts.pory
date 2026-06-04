@@ -316,6 +316,8 @@ script NuvemaTown_PH2F_EventScript_Gift_Box
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
 	waitmovement(0)
+	special(Special_ShowJuniperLetter)
+	waitstate
 	msgbox("{PLAYER} opened the gift box!", MSGBOX_TRANSPARENT)
 	closemessage
 	goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
