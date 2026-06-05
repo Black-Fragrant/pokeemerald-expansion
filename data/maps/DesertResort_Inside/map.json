@@ -1,0 +1,56 @@
+{
+  "id": "MAP_DESERT_RESORT_INSIDE",
+  "name": "DesertResort_Inside",
+  "layout": "LAYOUT_DESERT_RESORT_INSIDE",
+  "music": "MUS_BW_GENERAL_CAVE",
+  "region_map_section": "MAPSEC_DESERT_RESORT",
+  "requires_flash": false,
+  "weather": "WEATHER_SANDSTORM",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 75,
+      "y": 70,
+      "elevation": 0,
+      "dest_map": "MAP_DESERT_RESORT_OUTSIDE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 76,
+      "y": 70,
+      "elevation": 0,
+      "dest_map": "MAP_DESERT_RESORT_OUTSIDE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 77,
+      "y": 70,
+      "elevation": 0,
+      "dest_map": "MAP_DESERT_RESORT_OUTSIDE",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 54,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_DESERT_RESORT_INSIDE",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 20,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_DESERT_RESORT_INSIDE",
+      "dest_warp_id": "4"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

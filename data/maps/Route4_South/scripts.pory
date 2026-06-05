@@ -349,7 +349,7 @@ script Route4_South_EventScript_CherenBattle
 	call_if_eq (VAR_TEMP_0, 51, Route4_South_EventScript_CB_Pos12)
 	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_CB_Pos13)
 	call_if_eq (VAR_TEMP_0, 53, Route4_South_EventScript_CB_Pos14)
-    removeobject(TRAINER_CHEREN_ROUTE_4_1)
+    removeobject(LOCALID_ROUTE4S_CHEREN)
     setvar(VAR_ROUTE_4_BIANCA_BATTLE, 4)
     playbgm(MUS_BW_ROUTE_4, TRUE)
 	savebgm(MUS_BW_ROUTE_4)
