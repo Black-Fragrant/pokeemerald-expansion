@@ -668,6 +668,9 @@ const u16 gObjectEventPal_Victiniow[] = INCGFX_U16("graphics/object_events/palet
 const u32 gObjectEventPic_Krokorokow[] = INCGFX_U32("graphics/object_events/pics/people/krokorokow.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_Krokorokow[] = INCGFX_U16("graphics/object_events/palettes/krokorokow.pal", ".gbapal");
 
+const u32 gObjectEventPic_Zenmodeow[] = INCGFX_U32("graphics/object_events/pics/people/zenmodeow.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_Zenmodeow[] = INCGFX_U16("graphics/object_events/palettes/zenmodeow.pal", ".gbapal");
+
 const u32 gObjectEventPic_Clerko[] = INCGFX_U32("graphics/object_events/pics/people/clerko.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_Clerko[] = INCGFX_U16("graphics/object_events/palettes/clerko.pal", ".gbapal");
 
