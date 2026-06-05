@@ -107,7 +107,8 @@
     "CasteliaCity_SouthBank",
     "Route4_South",
     "Route4_North",
-    "DesertResort_Outside"
+    "DesertResort_Outside",
+    "DesertResort_Inside"
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",

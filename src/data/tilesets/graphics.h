@@ -3751,3 +3751,22 @@ const u16 gTilesetPalettes_IndoorRoute4[][16] =
 };
 
 const u32 gTilesetTiles_IndoorRoute4[] = INCBIN_U32("data/tilesets/secondary/indoor_route_4/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_DesertResort[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/desert_resort/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_DesertResort[] = INCBIN_U32("data/tilesets/secondary/desert_resort/tiles.4bpp.lz");

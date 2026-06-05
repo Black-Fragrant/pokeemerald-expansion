@@ -9882,6 +9882,16 @@
       "secondary_tileset": "gTileset_IndoorRoute4",
       "border_filepath": "data/layouts/Route4_HouseLeft/border.bin",
       "blockdata_filepath": "data/layouts/Route4_HouseLeft/map.bin"
+    },
+    {
+      "id": "LAYOUT_DESERT_RESORT_INSIDE",
+      "name": "DesertResort_Inside_Layout",
+      "width": 83,
+      "height": 78,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_DesertResort",
+      "border_filepath": "data/layouts/DesertResort_Inside/border.bin",
+      "blockdata_filepath": "data/layouts/DesertResort_Inside/map.bin"
     }
   ]
 }
