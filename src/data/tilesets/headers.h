@@ -2187,3 +2187,25 @@ const struct Tileset gTileset_DesertResort =
     .metatileAttributes = gMetatileAttributes_DesertResort,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GeneralLake =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GeneralLake,
+    .palettes = gTilesetPalettes_GeneralLake,
+    .metatiles = gMetatiles_GeneralLake,
+    .metatileAttributes = gMetatileAttributes_GeneralLake,
+    .callback = InitTilesetAnim_GeneralLake,
+};
+
+const struct Tileset gTileset_NimbasaPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NimbasaPrimary,
+    .palettes = gTilesetPalettes_NimbasaPrimary,
+    .metatiles = gMetatiles_NimbasaPrimary,
+    .metatileAttributes = gMetatileAttributes_NimbasaPrimary,
+    .callback = NULL,
+};

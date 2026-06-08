@@ -122,6 +122,141 @@ static void QueueAnimTiles_IndoorCastelia_Machine(u16);
 static void TilesetAnim_LibertyGarden(u16);
 static void QueueAnimTiles_LibertyGarden_Fountain(u16);
 
+static void TilesetAnim_GeneralLake(u16);
+static void QueueAnimTiles_GeneralLake_Lake(u16);
+
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame0[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/0.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame1[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/1.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame2[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/2.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame3[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/3.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame4[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/4.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame5[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/5.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame6[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/6.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame7[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/7.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame8[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/8.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame9[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/9.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame10[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/10.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame11[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/11.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame12[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/12.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame13[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/13.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame14[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/14.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame15[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/15.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame16[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/16.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame17[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/17.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame18[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/18.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame19[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/19.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame20[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/20.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame21[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/21.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame22[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/22.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame23[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/23.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame24[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/24.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame25[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/25.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame26[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/26.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame27[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/27.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame28[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/28.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame29[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/29.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame30[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/30.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame31[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/31.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame32[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/32.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame33[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/33.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame34[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/34.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame35[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/35.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame36[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/36.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame37[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/37.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame38[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/38.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame39[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/39.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame40[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/40.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame41[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/41.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame42[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/42.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame43[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/43.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame44[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/44.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame45[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/45.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame46[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/46.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame47[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/47.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame48[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/48.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame49[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/49.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame50[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/50.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame51[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/51.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame52[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/52.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame53[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/53.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame54[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/54.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame55[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/55.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame56[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/56.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame57[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/57.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame58[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/58.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame59[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/59.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame60[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/60.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame61[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/61.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame62[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/62.png", ".4bpp");
+const u16 gQueueAnimTiles_GeneralLake_Lake_Frame63[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/63.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_GeneralLake_Lake[] = {
+    gQueueAnimTiles_GeneralLake_Lake_Frame0,
+    gQueueAnimTiles_GeneralLake_Lake_Frame1,
+    gQueueAnimTiles_GeneralLake_Lake_Frame2,
+    gQueueAnimTiles_GeneralLake_Lake_Frame3,
+    gQueueAnimTiles_GeneralLake_Lake_Frame4,
+    gQueueAnimTiles_GeneralLake_Lake_Frame5,
+    gQueueAnimTiles_GeneralLake_Lake_Frame6,
+    gQueueAnimTiles_GeneralLake_Lake_Frame7,
+    gQueueAnimTiles_GeneralLake_Lake_Frame8,
+    gQueueAnimTiles_GeneralLake_Lake_Frame9,
+    gQueueAnimTiles_GeneralLake_Lake_Frame10,
+    gQueueAnimTiles_GeneralLake_Lake_Frame11,
+    gQueueAnimTiles_GeneralLake_Lake_Frame12,
+    gQueueAnimTiles_GeneralLake_Lake_Frame13,
+    gQueueAnimTiles_GeneralLake_Lake_Frame14,
+    gQueueAnimTiles_GeneralLake_Lake_Frame15,
+    gQueueAnimTiles_GeneralLake_Lake_Frame16,
+    gQueueAnimTiles_GeneralLake_Lake_Frame17,
+    gQueueAnimTiles_GeneralLake_Lake_Frame18,
+    gQueueAnimTiles_GeneralLake_Lake_Frame19,
+    gQueueAnimTiles_GeneralLake_Lake_Frame20,
+    gQueueAnimTiles_GeneralLake_Lake_Frame21,
+    gQueueAnimTiles_GeneralLake_Lake_Frame22,
+    gQueueAnimTiles_GeneralLake_Lake_Frame23,
+    gQueueAnimTiles_GeneralLake_Lake_Frame24,
+    gQueueAnimTiles_GeneralLake_Lake_Frame25,
+    gQueueAnimTiles_GeneralLake_Lake_Frame26,
+    gQueueAnimTiles_GeneralLake_Lake_Frame27,
+    gQueueAnimTiles_GeneralLake_Lake_Frame28,
+    gQueueAnimTiles_GeneralLake_Lake_Frame29,
+    gQueueAnimTiles_GeneralLake_Lake_Frame30,
+    gQueueAnimTiles_GeneralLake_Lake_Frame31,
+    gQueueAnimTiles_GeneralLake_Lake_Frame32,
+    gQueueAnimTiles_GeneralLake_Lake_Frame33,
+    gQueueAnimTiles_GeneralLake_Lake_Frame34,
+    gQueueAnimTiles_GeneralLake_Lake_Frame35,
+    gQueueAnimTiles_GeneralLake_Lake_Frame36,
+    gQueueAnimTiles_GeneralLake_Lake_Frame37,
+    gQueueAnimTiles_GeneralLake_Lake_Frame38,
+    gQueueAnimTiles_GeneralLake_Lake_Frame39,
+    gQueueAnimTiles_GeneralLake_Lake_Frame40,
+    gQueueAnimTiles_GeneralLake_Lake_Frame41,
+    gQueueAnimTiles_GeneralLake_Lake_Frame42,
+    gQueueAnimTiles_GeneralLake_Lake_Frame43,
+    gQueueAnimTiles_GeneralLake_Lake_Frame44,
+    gQueueAnimTiles_GeneralLake_Lake_Frame45,
+    gQueueAnimTiles_GeneralLake_Lake_Frame46,
+    gQueueAnimTiles_GeneralLake_Lake_Frame47,
+    gQueueAnimTiles_GeneralLake_Lake_Frame48,
+    gQueueAnimTiles_GeneralLake_Lake_Frame49,
+    gQueueAnimTiles_GeneralLake_Lake_Frame50,
+    gQueueAnimTiles_GeneralLake_Lake_Frame51,
+    gQueueAnimTiles_GeneralLake_Lake_Frame52,
+    gQueueAnimTiles_GeneralLake_Lake_Frame53,
+    gQueueAnimTiles_GeneralLake_Lake_Frame54,
+    gQueueAnimTiles_GeneralLake_Lake_Frame55,
+    gQueueAnimTiles_GeneralLake_Lake_Frame56,
+    gQueueAnimTiles_GeneralLake_Lake_Frame57,
+    gQueueAnimTiles_GeneralLake_Lake_Frame58,
+    gQueueAnimTiles_GeneralLake_Lake_Frame59,
+    gQueueAnimTiles_GeneralLake_Lake_Frame60,
+    gQueueAnimTiles_GeneralLake_Lake_Frame61,
+    gQueueAnimTiles_GeneralLake_Lake_Frame62,
+    gQueueAnimTiles_GeneralLake_Lake_Frame63,
+};
+
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame0[] = INCGFX_U16("data/tilesets/secondary/poke_center/anim/globe/0.png", ".4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame1[] = INCGFX_U16("data/tilesets/secondary/poke_center/anim/globe/1.png", ".4bpp");
 const u16 gQueueAnimTiles_PokeCenter_Globe_Frame2[] = INCGFX_U16("data/tilesets/secondary/poke_center/anim/globe/2.png", ".4bpp");
@@ -1218,6 +1353,13 @@ void InitTilesetAnim_General(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_General;
 }
 
+void InitTilesetAnim_GeneralLake(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_GeneralLake;
+}
+
 void InitTilesetAnim_Building(void)
 {
     sPrimaryTilesetAnimCounter = 0;
@@ -1349,6 +1491,14 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Flower(timer / 16);
 }
 
+static void TilesetAnim_GeneralLake(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_General_New_Flower(timer / 16);
+    if (timer % 4 == 1)
+        QueueAnimTiles_GeneralLake_Lake(timer / 4);
+}
+
 static void QueueAnimTiles_Building_Tv(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gTilesetAnims_Building_Tv);
@@ -1457,6 +1607,12 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_GeneralLake_Lake(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_GeneralLake_Lake);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_GeneralLake_Lake[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(384)), 64 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_General_New_Water(u16 timer)

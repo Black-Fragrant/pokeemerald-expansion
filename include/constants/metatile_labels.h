@@ -277,6 +277,9 @@
 #define METATILE_General_TallGrass_TreeLeft   0x1C6
 #define METATILE_General_TallGrass_TreeRight  0x1C7
 
+// gTileset_GeneralLake
+#define METATILE_GeneralLake_Door_PokemonCenter  0x0AB
+
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x21B

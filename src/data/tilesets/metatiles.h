@@ -522,3 +522,9 @@ const u16 gMetatileAttributes_IndoorRoute4[] = INCBIN_U16("data/tilesets/seconda
 
 const u16 gMetatiles_DesertResort[] = INCBIN_U16("data/tilesets/secondary/desert_resort/metatiles.bin");
 const u16 gMetatileAttributes_DesertResort[] = INCBIN_U16("data/tilesets/secondary/desert_resort/metatile_attributes.bin");
+
+const u16 gMetatiles_GeneralLake[] = INCBIN_U16("data/tilesets/primary/general_lake/metatiles.bin");
+const u16 gMetatileAttributes_GeneralLake[] = INCBIN_U16("data/tilesets/primary/general_lake/metatile_attributes.bin");
+
+const u16 gMetatiles_NimbasaPrimary[] = INCBIN_U16("data/tilesets/primary/nimbasa_primary/metatiles.bin");
+const u16 gMetatileAttributes_NimbasaPrimary[] = INCBIN_U16("data/tilesets/primary/nimbasa_primary/metatile_attributes.bin");

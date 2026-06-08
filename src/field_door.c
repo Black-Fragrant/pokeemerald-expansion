@@ -459,6 +459,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_Straiton_House_1,                             &gTileset_Striaton, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_StraitonHouse_1, sDoorAnimPalettes_StraitonHouse_1},
     {METATILE_Straiton_House_2,                             &gTileset_Striaton, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_StraitonHouse_2, sDoorAnimPalettes_StraitonHouse_2},
     {METATILE_General_Door_PokemonCenter,                   &gTileset_General, DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokemonCenter, sDoorAnimPalettes_PokemonCenter},
+    {METATILE_GeneralLake_Door_PokemonCenter,               &gTileset_GeneralLake, DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokemonCenter, sDoorAnimPalettes_PokemonCenter},
     {METATILE_Route3_House_1,                               &gTileset_Route3, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route3_House_1, sDoorAnimPalettes_Route3_1},
     {METATILE_Route3_House_2,                               &gTileset_Route3, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route3_House_2, sDoorAnimPalettes_Route3_2},
     {METATILE_Route4_Door,                                  &gTileset_Route4, DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_Route4_Door, sDoorAnimPalettes_Route4_Door},

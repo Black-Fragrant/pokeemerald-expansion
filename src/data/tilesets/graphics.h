@@ -3770,3 +3770,41 @@ const u16 gTilesetPalettes_DesertResort[][16] =
 };
 
 const u32 gTilesetTiles_DesertResort[] = INCBIN_U32("data/tilesets/secondary/desert_resort/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GeneralLake[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_lake/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GeneralLake[] = INCBIN_U32("data/tilesets/primary/general_lake/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_NimbasaPrimary[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/nimbasa_primary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_NimbasaPrimary[] = INCBIN_U32("data/tilesets/primary/nimbasa_primary/tiles.4bpp.lz");

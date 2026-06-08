@@ -196,10 +196,8 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	special Special_ShowJuniperLetter
-	lock
-	goto CasteliaCity_GameFreak22F_EventScript_Director_SeenAllUnovaMon
-	release
+	warpsilent MAP_NACRENE_CITY, 8, 16
+	waitstate
 	end
 
 Debug_EventScript_Script_1_text::
