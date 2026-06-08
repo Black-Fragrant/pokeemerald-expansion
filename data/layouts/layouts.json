@@ -8928,7 +8928,7 @@
       "name": "Route2_Layout",
       "width": 66,
       "height": 66,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_Accumula",
       "border_filepath": "data/layouts/Route2/border.bin",
       "blockdata_filepath": "data/layouts/Route2/map.bin"
@@ -8938,7 +8938,7 @@
       "name": "StriatonCity_Layout",
       "width": 80,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_Striaton",
       "border_filepath": "data/layouts/StriatonCity/border.bin",
       "blockdata_filepath": "data/layouts/StriatonCity/map.bin"
@@ -9218,7 +9218,7 @@
       "name": "Route3_North_Layout",
       "width": 98,
       "height": 33,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_Route3",
       "border_filepath": "data/layouts/Route3_North/border.bin",
       "blockdata_filepath": "data/layouts/Route3_North/map.bin"
@@ -9228,7 +9228,7 @@
       "name": "Route3_South_Layout",
       "width": 70,
       "height": 33,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_Route3",
       "border_filepath": "data/layouts/Route3_South/border.bin",
       "blockdata_filepath": "data/layouts/Route3_South/map.bin"
@@ -9278,7 +9278,7 @@
       "name": "NacreneCity_Layout",
       "width": 72,
       "height": 36,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_NacreneCity",
       "border_filepath": "data/layouts/NacreneCity/border.bin",
       "blockdata_filepath": "data/layouts/NacreneCity/map.bin"
@@ -9288,7 +9288,7 @@
       "name": "PinwheelForest_Outside_North_Layout",
       "width": 32,
       "height": 32,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_NacreneCity",
       "border_filepath": "data/layouts/PinwheelForest_Outside_North/border.bin",
       "blockdata_filepath": "data/layouts/PinwheelForest_Outside_North/map.bin"
@@ -9298,7 +9298,7 @@
       "name": "PinwheelForest_Outside_South_Layout",
       "width": 64,
       "height": 34,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralLake",
       "secondary_tileset": "gTileset_NacreneCity",
       "border_filepath": "data/layouts/PinwheelForest_Outside_South/border.bin",
       "blockdata_filepath": "data/layouts/PinwheelForest_Outside_South/map.bin"

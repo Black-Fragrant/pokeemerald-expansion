@@ -41,6 +41,8 @@ void InitTilesetAnim_SilphCo(void);
 void InitTilesetAnim_MtEmber(void);
 
 // BW
+void InitTilesetAnim_GeneralLake(void);
+
 void InitTilesetAnim_Nuvema(void);
 void InitTilesetAnim_IndoorNuvema(void);
 void InitTilesetAnim_PokeCenter(void);
