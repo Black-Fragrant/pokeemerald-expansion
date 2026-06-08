@@ -317,7 +317,6 @@ script NuvemaTown_PH2F_EventScript_Gift_Box
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
 	waitmovement(0)
 	special(Special_ShowJuniperLetter)
-	waitstate
 	msgbox("{PLAYER} opened the gift box!", MSGBOX_TRANSPARENT)
 	closemessage
 	goto (NuvemaTown_PH2F_EventScript_Choose_Starter)
@@ -477,7 +476,6 @@ script NuvemaTown_PH2F_EventScript_Cheren_Says_Tepig
 	closemessage
 	delay(20)
 	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
-	waitstate
 	end()
 }
 
@@ -491,7 +489,6 @@ script NuvemaTown_PH2F_EventScript_Cheren_Says_Oshawott
 	closemessage
 	delay(20)
 	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
-	waitstate
 	end()
 }
 
@@ -505,7 +502,6 @@ script NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy
 	closemessage
 	delay(20)
 	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
-	waitstate
 	end()
 }
 

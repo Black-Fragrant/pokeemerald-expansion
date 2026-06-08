@@ -71,7 +71,6 @@ script Route1_East_EventScript_CatchingTutorial
 	special(SavePlayerParty)
 	special(LoadWallyZigzagoon)
 	special(StartWallyTutorialBattle)
-	waitstate
 	special(LoadPlayerParty)
 	delay(10)
 	applymovement(LOCALID_ROUTE1_EAST_JUNIPER_CT, moves(walk_down * 2))

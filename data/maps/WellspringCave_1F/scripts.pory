@@ -165,7 +165,6 @@ script WellspringCave_1F_EventScript_ChooseParty
 	special(SavePlayerParty)
 	fadescreen(FADE_TO_BLACK)
 	special(ChooseHalfPartyForBattle)
-	waitstate
 	goto_if_ne(VAR_RESULT, 0, WellspringCave_1F_EventScript_DoMultibattle)
 	special(LoadPlayerParty)
 	goto(WellspringCave_1F_EventScript_ChooseParty)
@@ -189,7 +188,6 @@ script WellspringCave_1F_EventScript_DoMultibattle_Tepig
 	goto_if_eq(VAR_RESULT, 1, WellspringCave_1F_EventScript_FinishedMultibattle)
 	fadescreen(FADE_TO_BLACK)
 	special(SetCB2WhiteOut)
-	waitstate
     end
 }
 
@@ -200,7 +198,6 @@ script WellspringCave_1F_EventScript_DoMultibattle_Oshawott
 	goto_if_eq(VAR_RESULT, 1, WellspringCave_1F_EventScript_FinishedMultibattle)
 	fadescreen(FADE_TO_BLACK)
 	special(SetCB2WhiteOut)
-	waitstate
     end
 }
 
@@ -211,7 +208,6 @@ script WellspringCave_1F_EventScript_DoMultibattle_Snivy
 	goto_if_eq(VAR_RESULT, 1, WellspringCave_1F_EventScript_FinishedMultibattle)
 	fadescreen(FADE_TO_BLACK)
 	special(SetCB2WhiteOut)
-	waitstate
     end
 }
 
@@ -259,7 +255,6 @@ script WellspringCave_1F_EventScript_FinishedMultibattle
     setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 2)
     setflag(FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS)
     warpsilent(MAP_WELLSPRING_CAVE_1F, 25, 7)
-    waitstate
     end
 }
 

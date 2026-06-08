@@ -108,7 +108,6 @@ script CasteliaCity_StudioCastelia_EventScript_Peirro_RandomizeTypes
 script CasteliaCity_StudioCastelia_EventScript_CheckTypes
 {
 	special(ChoosePartyMon)
-	waitstate
 	goto_if_ge(VAR_0x8004, PARTY_SIZE, CasteliaCity_StudioCastelia_EventScript_NoCheckTypes)
 	specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 	goto_if_eq(VAR_RESULT, SPECIES_EGG, CasteliaCity_StudioCastelia_EventScript_IsAnEgg)
