@@ -86,7 +86,6 @@ script CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_GivesMassage
     destroy_speech_bubble()
     closemessage
 	special(ChoosePartyMon)
-	waitstate
 	goto_if_ge(VAR_0x8004, PARTY_SIZE, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_NoMassage)
 	specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 	goto_if_eq(VAR_RESULT, SPECIES_EGG, CasteliaCity_CSResidentialBuilding1F_EventScript_Teacher_IsAnEgg)
@@ -208,7 +207,6 @@ script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_GoTo11F
 {
     closemessage
 	warpsilent(MAP_CASTELIA_CITY_CSRESIDENTIAL_BUILDING11F, 7, 1)
-    waitstate
     end
 }
 

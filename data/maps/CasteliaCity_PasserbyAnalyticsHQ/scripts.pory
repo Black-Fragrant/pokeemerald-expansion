@@ -70,7 +70,6 @@ script CasteliaCity_PAHQ_EventScript_RichGirl_Yes
     destroy_speech_bubble()
     closemessage
     special(DoExpressGratitude)
-	waitstate
 	specialvar(VAR_RESULT, TryBufferGratitudeWord)
     msgbox("{STR_VAR_1}\p"
         "What a wonderful phrase!\n"
@@ -126,7 +125,6 @@ script CasteliaCity_PAHQ_EventScript_Youngster_Yes
     destroy_speech_bubble()
     closemessage
     special(DoGreetPeople)
-	waitstate
 	specialvar(VAR_RESULT, TryBufferGreetWord)
     msgbox("{STR_VAR_1}\p"
        "Yes, it's a good greeting!\n"

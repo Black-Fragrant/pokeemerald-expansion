@@ -75,7 +75,6 @@ script CasteliaCity_GameFreak22F_EventScript_Director_SeenAllUnovaMon
     closemessage
     setflag(FLAG_CASTELIA_GAME_FREAK_GOT_CERTIFICATE)
 	special(Special_ShowDiploma)
-    waitstate
     lock
     msgbox("I will send this award certificate\n"
            "to your house!", MSGBOX_DEFAULT, TRUE, LOCALID_GAMEFREAK_DIRECTOR)
@@ -183,7 +182,6 @@ script CasteliaCity_GameFreak22F_EventScript_Elevator_GoTo1F
 {
     closemessage
 	warpsilent(MAP_CASTELIA_CITY_GAME_FREAK1F, 7, 1)
-    waitstate
     end
 }
 

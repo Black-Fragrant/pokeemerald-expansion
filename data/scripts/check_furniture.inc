@@ -21,7 +21,6 @@ EventScript_EmptyTrashCan::
 EventScript_Diploma::
 	lock
 	special Special_ShowDiploma
-	waitstate
 	release
 	end
 

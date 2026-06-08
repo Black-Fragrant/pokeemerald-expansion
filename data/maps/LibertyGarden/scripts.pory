@@ -172,7 +172,6 @@ script CasteliaCity_LibertyGarden_EventScript_Captain_Warp
 	delay (20)
 	fadescreen (FADE_TO_BLACK)
 	special (DoSeagallopFerryScene)
-	waitstate
 	end
 }
 

@@ -197,7 +197,6 @@ Debug_EventScript_Text_DefensiveIVs:
 Debug_EventScript_Script_1::
 	lock
 	special Special_ShowJuniperLetter
-	waitstate
 	lock
 	goto CasteliaCity_GameFreak22F_EventScript_Director_SeenAllUnovaMon
 	release
