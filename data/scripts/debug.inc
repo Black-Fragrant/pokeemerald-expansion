@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	warpsilent MAP_NACRENE_CITY, 8, 16
+	warpsilent MAP_STRIATON_CITY, 20, 21
 	waitstate
 	end
 

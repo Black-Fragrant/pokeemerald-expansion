@@ -93,6 +93,7 @@ static void QueueAnimTiles_IndoorStriaton_Machine(u16);
 
 static void TilesetAnim_Striaton(u16);
 static void QueueAnimTiles_Striaton_Flag(u16);
+static void QueueAnimTiles_Striaton_Fountain(u16);
 
 static void TilesetAnim_CaveBW(u16);
 static void QueueAnimTiles_CaveBW_Drop(u16);
@@ -319,6 +320,16 @@ const u16 *const gQueueAnimTiles_IndoorStriaton_Machine[] = {
     gQueueAnimTiles_IndoorStriaton_Machine_Frame5,
     gQueueAnimTiles_IndoorStriaton_Machine_Frame6,
     gQueueAnimTiles_IndoorStriaton_Machine_Frame7,
+};
+
+const u16 gQueueAnimTiles_Striaton_Fountain_Frame0[] = INCGFX_U16("data/tilesets/secondary/striaton/anim/fountain/0.png", ".4bpp");
+const u16 gQueueAnimTiles_Striaton_Fountain_Frame1[] = INCGFX_U16("data/tilesets/secondary/striaton/anim/fountain/1.png", ".4bpp");
+const u16 gQueueAnimTiles_Striaton_Fountain_Frame2[] = INCGFX_U16("data/tilesets/secondary/striaton/anim/fountain/2.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_Striaton_Fountain[] = {
+    gQueueAnimTiles_Striaton_Fountain_Frame0,
+    gQueueAnimTiles_Striaton_Fountain_Frame1,
+    gQueueAnimTiles_Striaton_Fountain_Frame2,
 };
 
 const u16 gQueueAnimTiles_Striaton_Flag_Frame0[] = INCGFX_U16("data/tilesets/secondary/striaton/anim/flag/0.png", ".4bpp");
@@ -1391,6 +1402,8 @@ static void TilesetAnim_Striaton(u16 timer)
 {
     if (timer % 8 == 0)
         QueueAnimTiles_Striaton_Flag(timer / 8);
+    if (timer % 16 == 1)
+        QueueAnimTiles_Striaton_Fountain(timer / 16);
 }
 
 static void TilesetAnim_CasteliaCity3(u16 timer)
@@ -1535,6 +1548,12 @@ static void QueueAnimTiles_IndoorStriaton_Machine(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_IndoorStriaton_Machine);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_IndoorStriaton_Machine[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(746)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Striaton_Fountain(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Striaton_Fountain);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_Striaton_Fountain[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(684)), 19 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Striaton_Flag(u16 timer)
