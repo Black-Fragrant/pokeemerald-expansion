@@ -749,6 +749,7 @@
 #define MUS_BW_CREDITS                    812
 #define MUS_BW_CREDITS_END                813
 #define MUS_BW_PWT_VENUE                  814
+#define MUS_NIMBASSA_CITY                 815
 
 #define END_MUS                           MUS_BW_PWT_VENUE
 
