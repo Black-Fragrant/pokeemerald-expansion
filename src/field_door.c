@@ -803,6 +803,118 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
         .tiles = sDoorAnimTiles_TrainerHillRoofElevator,
         .palettes = sDoorAnimPalettes_TrainerHillRoofElevator
     },
+    {
+        .metatileNum = METATILE_Nuvema_House_Door,
+        .tileset = &gTileset_Nuvema,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_NuvemaHouse,
+        .palettes = sDoorAnimPalettes_NuvemaHouse
+    },
+    {
+        .metatileNum = METATILE_Nuvema_Lab_Door,
+        .tileset = &gTileset_Nuvema,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_NuvemaLab,
+        .palettes = sDoorAnimPalettes_NuvemaLab
+    },
+    {
+        .metatileNum = METATILE_Accumula_House_1,
+        .tileset = &gTileset_Accumula,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_AccumulaHouse_1,
+        .palettes = sDoorAnimPalettes_AccumulaHouse_1
+    },
+    {
+        .metatileNum = METATILE_Accumula_House_2,
+        .tileset = &gTileset_Accumula,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_AccumulaHouse_2,
+        .palettes = sDoorAnimPalettes_AccumulaHouse_2
+    },
+    {
+        .metatileNum = METATILE_Straiton_House_1,
+        .tileset = &gTileset_Striaton,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_StraitonHouse_1,
+        .palettes = sDoorAnimPalettes_StraitonHouse_1
+    },
+    {
+        .metatileNum = METATILE_Straiton_House_2,
+        .tileset = &gTileset_Striaton,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_StraitonHouse_2,
+        .palettes = sDoorAnimPalettes_StraitonHouse_2
+    },
+    {
+        .metatileNum = METATILE_General_Door_PokemonCenter,
+        .tileset = &gTileset_General,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_PokemonCenter,
+        .palettes = sDoorAnimPalettes_PokemonCenter
+    },
+    {
+        .metatileNum = METATILE_GeneralLake_Door_PokemonCenter,
+        .tileset = &gTileset_GeneralLake,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_PokemonCenter,
+        .palettes = sDoorAnimPalettes_PokemonCenter
+    },
+    {
+        .metatileNum = METATILE_Route3_House_1,
+        .tileset = &gTileset_Route3,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Route3_House_1,
+        .palettes = sDoorAnimPalettes_Route3_1
+    },
+    {
+        .metatileNum = METATILE_Route3_House_2,
+        .tileset = &gTileset_Route3,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Route3_House_2,
+        .palettes = sDoorAnimPalettes_Route3_2
+    },
+    {
+        .metatileNum = METATILE_Route4_Door,
+        .tileset = &gTileset_Route4,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Route4_Door,
+        .palettes = sDoorAnimPalettes_Route4_Door
+    },
+    {
+        .metatileNum = METATILE_Nacrene_House_1,
+        .tileset = &gTileset_NacreneCity,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Nacrene_House_1,
+        .palettes = sDoorAnimPalettes_NacreneHouse_1
+    },
+    {
+        .metatileNum = METATILE_Castelia_House_1,
+        .tileset = &gTileset_CasteliaCity1,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Castelia_House_1,
+        .palettes = sDoorAnimPalettes_CasteliaHouse_1
+    },
+    {
+        .metatileNum = METATILE_Castelia_Indoor_Elevator,
+        .tileset = &gTileset_IndoorCastelia,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Castelia_Indoor_Elevator,
+        .palettes = sDoorAnimPalettes_Castelia_Indoor_Elevator
+    },
 #else
     {
         .metatileNum = METATILE_GeneralFrlg_Door,
@@ -1053,118 +1165,6 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
         .palettes = sDoorAnimPalettes_TrainerTowerRoofElevator
     },
 #endif // !IS_FRLG
-    {
-        .metatileNum = METATILE_Nuvema_House_Door,
-        .tileset = &gTileset_Nuvema,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_NuvemaHouse,
-        .palettes = sDoorAnimPalettes_NuvemaHouse
-    },
-    {
-        .metatileNum = METATILE_Nuvema_Lab_Door,
-        .tileset = &gTileset_Nuvema,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_NuvemaLab,
-        .palettes = sDoorAnimPalettes_NuvemaLab
-    },
-    {
-        .metatileNum = METATILE_Accumula_House_1,
-        .tileset = &gTileset_Accumula,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_AccumulaHouse_1,
-        .palettes = sDoorAnimPalettes_AccumulaHouse_1
-    },
-    {
-        .metatileNum = METATILE_Accumula_House_2,
-        .tileset = &gTileset_Accumula,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_AccumulaHouse_2,
-        .palettes = sDoorAnimPalettes_AccumulaHouse_2
-    },
-    {
-        .metatileNum = METATILE_Straiton_House_1,
-        .tileset = &gTileset_Striaton,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_StraitonHouse_1,
-        .palettes = sDoorAnimPalettes_StraitonHouse_1
-    },
-    {
-        .metatileNum = METATILE_Straiton_House_2,
-        .tileset = &gTileset_Striaton,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_StraitonHouse_2,
-        .palettes = sDoorAnimPalettes_StraitonHouse_2
-    },
-    {
-        .metatileNum = METATILE_General_Door_PokemonCenter,
-        .tileset = &gTileset_General,
-        .sound = DOOR_SOUND_SLIDING,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_PokemonCenter,
-        .palettes = sDoorAnimPalettes_PokemonCenter
-    },
-    {
-        .metatileNum = METATILE_GeneralLake_Door_PokemonCenter,
-        .tileset = &gTileset_GeneralLake,
-        .sound = DOOR_SOUND_SLIDING,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_PokemonCenter,
-        .palettes = sDoorAnimPalettes_PokemonCenter
-    },
-    {
-        .metatileNum = METATILE_Route3_House_1,
-        .tileset = &gTileset_Route3,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_Route3_House_1,
-        .palettes = sDoorAnimPalettes_Route3_1
-    },
-    {
-        .metatileNum = METATILE_Route3_House_2,
-        .tileset = &gTileset_Route3,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_Route3_House_2,
-        .palettes = sDoorAnimPalettes_Route3_2
-    },
-    {
-        .metatileNum = METATILE_Route4_Door,
-        .tileset = &gTileset_Route4,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_Route4_Door,
-        .palettes = sDoorAnimPalettes_Route4_Door
-    },
-    {
-        .metatileNum = METATILE_Nacrene_House_1,
-        .tileset = &gTileset_NacreneCity,
-        .sound = DOOR_SOUND_NORMAL,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_Nacrene_House_1,
-        .palettes = sDoorAnimPalettes_NacreneHouse_1
-    },
-    {
-        .metatileNum = METATILE_Castelia_House_1,
-        .tileset = &gTileset_CasteliaCity1,
-        .sound = DOOR_SOUND_SLIDING,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_Castelia_House_1,
-        .palettes = sDoorAnimPalettes_CasteliaHouse_1
-    },
-    {
-        .metatileNum = METATILE_Castelia_Indoor_Elevator,
-        .tileset = &gTileset_IndoorCastelia,
-        .sound = DOOR_SOUND_SLIDING,
-        .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_Castelia_Indoor_Elevator,
-        .palettes = sDoorAnimPalettes_Castelia_Indoor_Elevator
-    },
     {},
 };
 
