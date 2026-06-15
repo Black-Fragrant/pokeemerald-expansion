@@ -685,7 +685,7 @@ void Task_FollowerNPCOutOfDoor(u8 taskId)
         }
         break;
     case REALLOW_MOVEMENT:
-        {
+    {
         struct MapPosition position;
         enum Direction playerDirection;
 
@@ -701,7 +701,7 @@ void Task_FollowerNPCOutOfDoor(u8 taskId)
             HideMapNamePopUpWindow();
         }
         DestroyTask(taskId);
-        }
+    }
         break;
     }
 }
