@@ -461,48 +461,37 @@ script NuvemaTown_PH2F_EventScript_Finish_Choosing
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_down, walk_in_place_left))
 	waitmovement(0)
 	delay (10)
-	goto_if_set(FLAG_CHOSE_SNIVY, NuvemaTown_PH2F_EventScript_Cheren_Says_Tepig)
-	goto_if_set(FLAG_CHOSE_TEPIG, NuvemaTown_PH2F_EventScript_Cheren_Says_Oshawott)
-	goto_if_set(FLAG_CHOSE_OSHAWOTT, NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy)
+	call_if_set(FLAG_CHOSE_SNIVY, NuvemaTown_PH2F_EventScript_Cheren_Says_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, NuvemaTown_PH2F_EventScript_Cheren_Says_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy)
+	msgbox("Cheren: Hey, how come you get to pick\n"
+		"out my Pokémon?\p"
+		"Oh, never mind. I wanted {STR_VAR_1}\n"
+		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	delay(20)
+	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
+	waitstate
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_Cheren_Says_Tepig
 {
-	msgbox("Cheren: Hey, how come you get to pick\n"
-		"out my Pokémon?\p"
-		"Oh, never mind. I wanted Tepig\n"
-		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
-	destroy_speech_bubble()
-	closemessage
-	delay(20)
-	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
-	end()
+	bufferstring(STR_VAR_1, text("Tepig"))
+	return
 }
 
 script NuvemaTown_PH2F_EventScript_Cheren_Says_Oshawott
 {
-	msgbox("Cheren: Hey, how come you get to pick\n"
-		"out my Pokémon?\p"
-		"Oh, never mind. I wanted Oshawott\n"
-		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
-	destroy_speech_bubble()
-	closemessage
-	delay(20)
-	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
-	end()
+	bufferstring(STR_VAR_1, text("Oshawott"))
+	return
 }
 
 script NuvemaTown_PH2F_EventScript_Cheren_Says_Snivy
 {
-	msgbox("Cheren: Hey, how come you get to pick\n"
-		"out my Pokémon?\p"
-		"Oh, never mind. I wanted Snivy\n"
-		"from the start, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
-	destroy_speech_bubble()
-	closemessage
-	delay(20)
-	warpsilent (MAP_NUVEMA_TOWN_PLAYER_HOUSE_2F, 4, 8)
-	end()
+	bufferstring(STR_VAR_1, text("Snivy"))
+	return
 }
 
 script NuvemaTown_PH2F_EventScript_BiancaBattle
