@@ -2,7 +2,7 @@
   "id": "MAP_NIMBASA_CITY",
   "name": "NimbasaCity",
   "layout": "LAYOUT_NIMBASA_CITY",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_NIMBASSA_CITY",
   "region_map_section": "MAPSEC_NIMBASA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
