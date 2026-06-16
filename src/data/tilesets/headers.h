@@ -2209,3 +2209,14 @@ const struct Tileset gTileset_NimbasaPrimary =
     .metatileAttributes = gMetatileAttributes_NimbasaPrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NimbasaSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NimbasaSecondary,
+    .palettes = gTilesetPalettes_NimbasaSecondary,
+    .metatiles = gMetatiles_NimbasaSecondary,
+    .metatileAttributes = gMetatileAttributes_NimbasaSecondary,
+    .callback = NULL,
+};

@@ -1,0 +1,42 @@
+{
+  "id": "MAP_NIMBASA_CITY",
+  "name": "NimbasaCity",
+  "layout": "LAYOUT_NIMBASA_CITY",
+  "music": "MUS_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_NIMBASA_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 51,
+      "y": 52,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 52,
+      "y": 52,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 53,
+      "y": 52,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

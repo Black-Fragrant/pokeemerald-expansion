@@ -1909,3 +1909,5 @@ EventScript_SetSail::
 	.include "data/maps/Route4_HouseLeft/scripts.inc"
 
 	.include "data/maps/DesertResort_Inside/scripts.inc"
+
+	.include "data/maps/NimbasaCity/scripts.inc"
