@@ -9892,6 +9892,16 @@
       "secondary_tileset": "gTileset_DesertResort",
       "border_filepath": "data/layouts/DesertResort_Inside/border.bin",
       "blockdata_filepath": "data/layouts/DesertResort_Inside/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY",
+      "name": "NimbasaCity_Layout",
+      "width": 76,
+      "height": 59,
+      "primary_tileset": "gTileset_NimbasaPrimary",
+      "secondary_tileset": "gTileset_NimbasaSecondary",
+      "border_filepath": "data/layouts/NimbasaCity/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity/map.bin"
     }
   ]
 }

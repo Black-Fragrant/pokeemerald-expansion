@@ -44,22 +44,22 @@
       "x": 12,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_map": "MAP_NIMBASA_CITY",
       "dest_warp_id": "0"
     },
     {
       "x": 13,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_NORTH",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "1"
     },
     {
       "x": 14,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_NORTH",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [],

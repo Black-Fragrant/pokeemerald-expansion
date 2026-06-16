@@ -528,3 +528,6 @@ const u16 gMetatileAttributes_GeneralLake[] = INCBIN_U16("data/tilesets/primary/
 
 const u16 gMetatiles_NimbasaPrimary[] = INCBIN_U16("data/tilesets/primary/nimbasa_primary/metatiles.bin");
 const u16 gMetatileAttributes_NimbasaPrimary[] = INCBIN_U16("data/tilesets/primary/nimbasa_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_NimbasaSecondary[] = INCBIN_U16("data/tilesets/secondary/nimbasa_secondary/metatiles.bin");
+const u16 gMetatileAttributes_NimbasaSecondary[] = INCBIN_U16("data/tilesets/secondary/nimbasa_secondary/metatile_attributes.bin");
