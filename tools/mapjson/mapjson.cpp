@@ -165,7 +165,14 @@ string generate_map_header_text(Json map_data, Json layouts_data) {
     text << "\t.2byte " << json_to_string(map_data, "music") << "\n";
 
     text << "\t.2byte " << json_to_string(layout, "id") << "\n"
-         << "\t.2byte "  << json_to_string(map_data, "region_map_section") << "\n"
+         << "\t.2byte "  << json_to_string(map_data, "region_map_section") << "\n";
+
+    if (!map_data["night_music"].is_null())
+        text << "\t.2byte " << json_to_string(map_data, "night_music") << "\n";
+    else
+        text << "\t.2byte MUS_NONE\n";
+
+    text
          << "\t.byte "  << json_to_string(map_data, "weather") << "\n"
          << "\t.byte "  << json_to_string(map_data, "map_type") << "\n";
 
@@ -174,11 +181,6 @@ string generate_map_header_text(Json map_data, Json layouts_data) {
         text << "\t.byte 0\n";
     else
         text << "\t.byte " << floor_number << "\n";
-
-    if (!map_data["night_music"].is_null())
-        text << "\t.2byte " << json_to_string(map_data, "night_music") << "\n";
-    else
-        text << "\t.2byte MUS_NONE\n";
 
     if (version == "ruby")
         text << "\t.byte " << json_to_string(map_data, "show_map_name") << "\n";
