@@ -443,7 +443,7 @@ script CasteliaGym_ButtonAlreadyPressed
 script CasteliaGym_ButtonGroupAPanToLights
 {
     special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 4, walk_fast_up * 2))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 4))
     waitmovement(0)
     return
 }
@@ -451,7 +451,7 @@ script CasteliaGym_ButtonGroupAPanToLights
 script CasteliaGym_ButtonGroupAPanBack
 {
     delay(12)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 2, walk_fast_right * 4))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 4))
     waitmovement(0)
     special(RemoveCameraObject)
     return
@@ -460,7 +460,7 @@ script CasteliaGym_ButtonGroupAPanBack
 script CasteliaGym_ButtonGroupBPanToLights
 {
     special(SpawnCameraObject)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 4, walk_fast_up * 2))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
     waitmovement(0)
     return
 }
@@ -468,7 +468,7 @@ script CasteliaGym_ButtonGroupBPanToLights
 script CasteliaGym_ButtonGroupBPanBack
 {
     delay(12)
-    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 2, walk_fast_left * 4))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 4))
     waitmovement(0)
     special(RemoveCameraObject)
     return
@@ -567,6 +567,7 @@ script CasteliaGym_Button1
     setflag(FLAG_CASTELIA_GYM_BUTTON_1_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button1ALightsOn)
+    setmetatile (16, 24, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -590,6 +591,7 @@ script CasteliaGym_Button2
     setflag(FLAG_CASTELIA_GYM_BUTTON_2_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button2ALightsOn)
+    setmetatile (28, 24, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -606,6 +608,7 @@ script CasteliaGym_Button3
     setflag(FLAG_CASTELIA_GYM_BUTTON_3_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button3ALightsOn)
+    setmetatile (28, 18, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -622,6 +625,7 @@ script CasteliaGym_Button4
     setflag(FLAG_CASTELIA_GYM_BUTTON_4_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button4ALightsOn)
+    setmetatile (22, 15, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -638,6 +642,7 @@ script CasteliaGym_Button5
     setflag(FLAG_CASTELIA_GYM_BUTTON_5_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button5ALightsOn)
+    setmetatile (16, 18, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -661,6 +666,7 @@ script CasteliaGym_Button6
     setflag(FLAG_CASTELIA_GYM_BUTTON_6_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button6ALightsOn)
+    setmetatile (10, 21, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -677,6 +683,7 @@ script CasteliaGym_Button7
     setflag(FLAG_CASTELIA_GYM_BUTTON_7_B)
     call(CasteliaGym_ButtonGroupBPanToLights)
     call(CasteliaGym_Button7BLightsOn)
+    setmetatile (10, 15, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
@@ -693,6 +700,7 @@ script CasteliaGym_Button8
     setflag(FLAG_CASTELIA_GYM_BUTTON_8_B)
     call(CasteliaGym_ButtonGroupBPanToLights)
     call(CasteliaGym_Button8BLightsOn)
+    setmetatile (4, 18, 0x291, FALSE)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
     call(CasteliaGym_UpdateGatesAfterLightOn)
