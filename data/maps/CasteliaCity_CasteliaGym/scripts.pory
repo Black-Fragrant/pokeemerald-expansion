@@ -1,26 +1,31 @@
 mapscripts CasteliaCity_CasteliaGym_MapScripts 
 {
     MAP_SCRIPT_ON_LOAD : CasteliaCity_CasteliaGym_On_Load
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_CASTELIA_GYM_HONEY_WALL_ENTRY, VAR_CASTELIA_GYM_HONEY_WALL_ENTRY : CasteliaCity_CasteliaGym_On_Warp_Into_Map
+    ]
+    MAP_SCRIPT_ON_RETURN_TO_FIELD : CasteliaCity_CasteliaGym_On_Return_To_Field
 }
 
 script CasteliaCity_CasteliaGym_On_Load
 {
     call_if_eq(VAR_CASTELIA_GYM_TRAP_1, 0, CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin1)
     call_if_eq(VAR_CASTELIA_GYM_TRAP_2, 0, CasteliaCity_CasteliaGym_Eventscripy_HideHarlequin2)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_1, 1, CasteliaCity_CasteliaGym_Eventscripy_Button1isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_2, 1, CasteliaCity_CasteliaGym_Eventscripy_Button2isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_3, 1, CasteliaCity_CasteliaGym_Eventscripy_Button3isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_4, 1, CasteliaCity_CasteliaGym_Eventscripy_Button4isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_5, 1, CasteliaCity_CasteliaGym_Eventscripy_Button5isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_6, 1, CasteliaCity_CasteliaGym_Eventscripy_Button6isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_7, 1, CasteliaCity_CasteliaGym_Eventscripy_Button7isTriggered)
-	call_if_eq(VAR_CASTELIA_GYM_SWITCH_8, 1, CasteliaCity_CasteliaGym_Eventscripy_Button8isTriggered)
-    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate1)
-    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate2)
-    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate3)
-    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate4)
-    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate5)
-    call(CasteliaCity_CasteliaGym_Eventscripy_RedrawGate6)
+    call(CasteliaGym_RestoreLightTiles)
+    end
+}
+
+script CasteliaCity_CasteliaGym_On_Warp_Into_Map
+{
+    special(Special_CasteliaGym_InitHoneyWalls)
+    end
+}
+
+script CasteliaCity_CasteliaGym_On_Return_To_Field
+{
+    special(Special_CasteliaGym_InitHoneyWalls)
+    call(CasteliaGym_RestoreLightTiles)
     end
 }
 
@@ -396,6 +401,630 @@ script CasteliaCity_CasteliaGym_EventScript_Burgh_AcquiredBadge
         "swarming with mysteries.", MSGBOX_DEFAULT, TRUE, LOCALID_CCCG_BURGH)
     destroy_speech_bubble()
     closemessage
+    release
+    end
+}
+
+script CasteliaGym_PlayButtonPressSe
+{
+    playse(SE_SUCCESS)
+    delay(8)
+    playse(SE_SUCCESS)
+    waitse
+    return
+}
+
+script CasteliaGym_PlayLightOnSe
+{
+    // Placeholder SFX until final Castelia Gym light audio is chosen.
+    playse(SE_SWITCH)
+    return
+}
+
+script CasteliaGym_UpdateGatesAfterLightOn
+{
+    special(Special_CasteliaGym_CheckHoneyGateOpenStates)
+    call_if_eq(VAR_RESULT, TRUE, CasteliaGym_WaitForGateOpen)
+    return
+}
+
+script CasteliaGym_WaitForGateOpen
+{
+    waitstate
+    return
+}
+
+script CasteliaGym_ButtonAlreadyPressed
+{
+    release
+    end
+}
+
+script CasteliaGym_ButtonGroupAPanToLights
+{
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 4, walk_fast_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaGym_ButtonGroupAPanBack
+{
+    delay(12)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 2, walk_fast_right * 4))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    return
+}
+
+script CasteliaGym_ButtonGroupBPanToLights
+{
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_right * 4, walk_fast_up * 2))
+    waitmovement(0)
+    return
+}
+
+script CasteliaGym_ButtonGroupBPanBack
+{
+    delay(12)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 2, walk_fast_left * 4))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    return
+}
+
+script CasteliaGym_RestoreLightTiles
+{
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_1_A, CasteliaGym_Button1ALightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_1_B, CasteliaGym_Button1BLightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_2_A, CasteliaGym_Button2ALightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_3_A, CasteliaGym_Button3ALightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_4_A, CasteliaGym_Button4ALightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_5_A, CasteliaGym_Button5ALightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_5_B, CasteliaGym_Button5BLightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_6_A, CasteliaGym_Button6ALightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_7_B, CasteliaGym_Button7BLightsOn)
+    call_if_set(FLAG_CASTELIA_GYM_BUTTON_8_B, CasteliaGym_Button8BLightsOn)
+    return
+}
+
+script CasteliaGym_Button1ALightsOn
+{
+    setmetatile(12, 22, 0x2A8, TRUE)
+    setmetatile(12, 23, 0x2AB, TRUE)
+    return
+}
+
+script CasteliaGym_Button1BLightsOn
+{
+    setmetatile(20, 22, 0x2B1, TRUE)
+    setmetatile(20, 23, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaGym_Button2ALightsOn
+{
+    setmetatile(24, 22, 0x2A8, TRUE)
+    setmetatile(24, 23, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaGym_Button3ALightsOn
+{
+    setmetatile(24, 16, 0x2A8, TRUE)
+    setmetatile(24, 17, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaGym_Button4ALightsOn
+{
+    setmetatile(18, 13, 0x2CE, TRUE)
+    setmetatile(18, 14, 0x2AB, TRUE)
+    return
+}
+
+script CasteliaGym_Button5ALightsOn
+{
+    setmetatile(12, 16, 0x2A8, TRUE)
+    setmetatile(12, 17, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaGym_Button5BLightsOn
+{
+    setmetatile(20, 16, 0x2B1, TRUE)
+    setmetatile(20, 17, 0x2B8, TRUE)
+    return
+}
+
+script CasteliaGym_Button6ALightsOn
+{
+    setmetatile(6, 19, 0x2A8, TRUE)
+    setmetatile(6, 20, 0x2AB, TRUE)
+    return
+}
+
+script CasteliaGym_Button7BLightsOn
+{
+    setmetatile(14, 13, 0x2C8, TRUE)
+    setmetatile(14, 14, 0x2B3, TRUE)
+    return
+}
+
+script CasteliaGym_Button8BLightsOn
+{
+    setmetatile(8, 16, 0x2B1, TRUE)
+    setmetatile(8, 17, 0x2B3, TRUE)
+    return
+}
+
+script CasteliaGym_Button1
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_1_A, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_1_A)
+    call(CasteliaGym_ButtonGroupAPanToLights)
+    call(CasteliaGym_Button1ALightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupAPanBack)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_1_B)
+    call(CasteliaGym_ButtonGroupBPanToLights)
+    call(CasteliaGym_Button1BLightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupBPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button2
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_2_A, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_2_A)
+    call(CasteliaGym_ButtonGroupAPanToLights)
+    call(CasteliaGym_Button2ALightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupAPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button3
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_3_A, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_3_A)
+    call(CasteliaGym_ButtonGroupAPanToLights)
+    call(CasteliaGym_Button3ALightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupAPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button4
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_4_A, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_4_A)
+    call(CasteliaGym_ButtonGroupAPanToLights)
+    call(CasteliaGym_Button4ALightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupAPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button5
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_5_A, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_5_A)
+    call(CasteliaGym_ButtonGroupAPanToLights)
+    call(CasteliaGym_Button5ALightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupAPanBack)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_5_B)
+    call(CasteliaGym_ButtonGroupBPanToLights)
+    call(CasteliaGym_Button5BLightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupBPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button6
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_6_A, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_6_A)
+    call(CasteliaGym_ButtonGroupAPanToLights)
+    call(CasteliaGym_Button6ALightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupAPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button7
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_7_B, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_7_B)
+    call(CasteliaGym_ButtonGroupBPanToLights)
+    call(CasteliaGym_Button7BLightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupBPanBack)
+    release
+    end
+}
+
+script CasteliaGym_Button8
+{
+    lock
+    goto_if_set(FLAG_CASTELIA_GYM_BUTTON_8_B, CasteliaGym_ButtonAlreadyPressed)
+    call(CasteliaGym_PlayButtonPressSe)
+    setflag(FLAG_CASTELIA_GYM_BUTTON_8_B)
+    call(CasteliaGym_ButtonGroupBPanToLights)
+    call(CasteliaGym_Button8BLightsOn)
+    special(DrawWholeMapView)
+    call(CasteliaGym_PlayLightOnSe)
+    call(CasteliaGym_UpdateGatesAfterLightOn)
+    call(CasteliaGym_ButtonGroupBPanBack)
+    release
+    end
+}
+
+script CasteliaGym_HidePlayer
+{
+    hideplayer
+    end
+}
+
+script CasteliaGym_ShowPlayer
+{
+    showplayer
+    end
+}
+
+script CasteliaGym_HoneyWall0
+{
+    lock
+    setvar(VAR_0x8004, 0)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall1
+{
+    lock
+    setvar(VAR_0x8004, 1)
+    goto_if_unset(FLAG_CASTELIA_GYM_GATE_2_OPENED, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall2
+{
+    lock
+    setvar(VAR_0x8004, 2)
+    goto_if_unset(FLAG_CASTELIA_GYM_GATE_3_OPENED, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall3
+{
+    lock
+    setvar(VAR_0x8004, 3)
+    goto_if_unset(FLAG_CASTELIA_GYM_GATE_4_OPENED, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall4
+{
+    lock
+    setvar(VAR_0x8004, 4)
+    goto_if_unset(FLAG_CASTELIA_GYM_GATE_5_OPENED, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall5
+{
+    lock
+    setvar(VAR_0x8004, 5)
+    goto_if_unset(FLAG_CASTELIA_GYM_GATE_6_OPENED, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall6
+{
+    lock
+    setvar(VAR_0x8004, 6)
+    goto_if_unset(FLAG_CASTELIA_GYM_GATE_7_OPENED, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall0_Left
+{
+    lock
+    setvar(VAR_0x8004, 0)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall0_Right
+{
+    lock
+    setvar(VAR_0x8004, 0)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall1_Left
+{
+    lock
+    setvar(VAR_0x8004, 1)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall1_Right
+{
+    lock
+    setvar(VAR_0x8004, 1)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall2_Left
+{
+    lock
+    setvar(VAR_0x8004, 2)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall2_Right
+{
+    lock
+    setvar(VAR_0x8004, 2)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall3_Left
+{
+    lock
+    setvar(VAR_0x8004, 3)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall3_Right
+{
+    lock
+    setvar(VAR_0x8004, 3)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall4_Left
+{
+    lock
+    setvar(VAR_0x8004, 4)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall4_Right
+{
+    lock
+    setvar(VAR_0x8004, 4)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall5_Left
+{
+    lock
+    setvar(VAR_0x8004, 5)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall5_Right
+{
+    lock
+    setvar(VAR_0x8004, 5)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall6_Left
+{
+    lock
+    setvar(VAR_0x8004, 6)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWall6_Right
+{
+    lock
+    setvar(VAR_0x8004, 6)
+    call(CasteliaGym_HoneyWallBounce)
+    release
+    end
+}
+
+script CasteliaGym_HoneyWallPass
+{
+    specialvar(VAR_RESULT, GetPlayerFacingDirection)
+    goto_if_eq(VAR_RESULT, DIR_NORTH, CasteliaGym_HoneyWallPass_FromBelow)
+    goto_if_eq(VAR_RESULT, DIR_SOUTH, CasteliaGym_HoneyWallPass_FromAbove)
+    call(CasteliaGym_HoneyWallBounce)
+    return
+}
+
+script CasteliaGym_HoneyWallPass_FromBelow
+{
+    special(StartHoneyWallHoldUp)
+    waitstate
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaGym_HoneyWallPass_FromBelowSuccess)
+    goto(CasteliaGym_HoneyWallPass_FromBelowFailure)
+}
+
+script CasteliaGym_HoneyWallPass_FromAbove
+{
+    special(StartHoneyWallHoldDown)
+    waitstate
+    goto_if_eq(VAR_RESULT, TRUE, CasteliaGym_HoneyWallPass_FromAboveSuccess)
+    goto(CasteliaGym_HoneyWallPass_FromAboveFailure)
+}
+
+script CasteliaGym_HoneyWallPlayWiggle
+{
+    special(StartHoneyWallWiggle)
+    playse(SE_MUD_BALL)
+    return
+}
+
+script CasteliaGym_PlayHoneyWallBounceSe
+{
+    // Placeholder SFX until final Castelia Gym bounce audio is chosen.
+    playse(SE_WALL_HIT)
+    return
+}
+
+script CasteliaGym_HoneyWallPass_FromBelowSuccess
+{
+    call(CasteliaGym_HoneyWallPlayWiggle)
+    applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_2_up, unlock_facing_direction, face_up))
+    waitstate
+    waitmovement(0)
+    goto(CasteliaGym_HoneyWallPass_Finish)
+}
+
+script CasteliaGym_HoneyWallPass_FromBelowFailure
+{
+    call(CasteliaGym_HoneyWallPlayWiggle)
+    call(CasteliaGym_PlayHoneyWallBounceSe)
+    applymovement(LOCALID_PLAYER, moves(face_up, lock_facing_direction, jump_down, unlock_facing_direction, face_up))
+    waitstate
+    waitmovement(0)
+    goto(CasteliaGym_HoneyWallPass_Finish)
+}
+
+script CasteliaGym_HoneyWallPass_FromAboveSuccess
+{
+    call(CasteliaGym_HoneyWallPlayWiggle)
+    applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_2_down, unlock_facing_direction, face_down))
+    waitstate
+    waitmovement(0)
+    goto(CasteliaGym_HoneyWallPass_Finish)
+}
+
+script CasteliaGym_HoneyWallPass_FromAboveFailure
+{
+    call(CasteliaGym_HoneyWallPlayWiggle)
+    call(CasteliaGym_PlayHoneyWallBounceSe)
+    applymovement(LOCALID_PLAYER, moves(face_down, lock_facing_direction, jump_up, unlock_facing_direction, face_down))
+    waitstate
+    waitmovement(0)
+    goto(CasteliaGym_HoneyWallPass_Finish)
+}
+
+script CasteliaGym_HoneyWallPass_Finish
+{
+    special(RestoreHoneyWallIdle)
+    return
+}
+
+script CasteliaGym_HoneyWallBounce
+{
+    call(CasteliaGym_HoneyWallPlayWiggle)
+    call(CasteliaGym_PlayHoneyWallBounceSe)
+    call(CasteliaGym_HoneyWallBounceMovement)
+    waitstate
+    waitmovement(0)
+    special(RestoreHoneyWallIdle)
+    return
+}
+
+script CasteliaGym_HoneyWallBounceMovement
+{
+    special(Special_CasteliaGym_GetHoneyWallBounceDirection)
+    goto_if_eq(VAR_RESULT, DIR_NORTH, CasteliaGym_HoneyWallBounceUp)
+    goto_if_eq(VAR_RESULT, DIR_SOUTH, CasteliaGym_HoneyWallBounceDown)
+    goto(CasteliaGym_HoneyWallBounceDown)
+}
+
+script CasteliaGym_HoneyWallBounceDown
+{
+    applymovement(LOCALID_PLAYER, moves(face_up, lock_facing_direction, jump_down, unlock_facing_direction, face_up))
+    return
+}
+
+script CasteliaGym_HoneyWallBounceUp
+{
+    applymovement(LOCALID_PLAYER, moves(face_down, lock_facing_direction, jump_up, unlock_facing_direction, face_down))
+    return
+}
+
+script CasteliaGym_HoneyWallCenterClosed
+{
+    call(CasteliaGym_HoneyWallBounce)
     release
     end
 }

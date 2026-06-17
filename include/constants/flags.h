@@ -929,6 +929,24 @@
 #define FLAG_UNUSED_0x371                                           0x371
 #define FLAG_UNUSED_0x372                                           0x372
 #define FLAG_UNUSED_0x373                                           0x373
+
+#define FLAG_CASTELIA_GYM_BUTTON_1_A                                FLAG_UNUSED_0x364
+#define FLAG_CASTELIA_GYM_BUTTON_1_B                                FLAG_UNUSED_0x365
+#define FLAG_CASTELIA_GYM_BUTTON_2_A                                FLAG_UNUSED_0x366
+#define FLAG_CASTELIA_GYM_BUTTON_3_A                                FLAG_UNUSED_0x367
+#define FLAG_CASTELIA_GYM_BUTTON_4_A                                FLAG_UNUSED_0x368
+#define FLAG_CASTELIA_GYM_BUTTON_5_A                                FLAG_UNUSED_0x369
+#define FLAG_CASTELIA_GYM_BUTTON_5_B                                FLAG_UNUSED_0x36A
+#define FLAG_CASTELIA_GYM_BUTTON_6_A                                FLAG_UNUSED_0x36B
+#define FLAG_CASTELIA_GYM_BUTTON_7_B                                FLAG_UNUSED_0x36C
+#define FLAG_CASTELIA_GYM_BUTTON_8_B                                FLAG_UNUSED_0x36D
+#define FLAG_CASTELIA_GYM_GATE_2_OPENED                             FLAG_UNUSED_0x36E
+#define FLAG_CASTELIA_GYM_GATE_3_OPENED                             FLAG_UNUSED_0x36F
+#define FLAG_CASTELIA_GYM_GATE_4_OPENED                             FLAG_UNUSED_0x370
+#define FLAG_CASTELIA_GYM_GATE_5_OPENED                             FLAG_UNUSED_0x371
+#define FLAG_CASTELIA_GYM_GATE_6_OPENED                             FLAG_UNUSED_0x372
+#define FLAG_CASTELIA_GYM_GATE_7_OPENED                             FLAG_UNUSED_0x373
+
 #define FLAG_UNUSED_0x374                                           0x374
 #define FLAG_UNUSED_0x375                                           0x375
 #define FLAG_UNUSED_0x376                                           0x376
