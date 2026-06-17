@@ -333,10 +333,7 @@ script StriatonCity_TS_EventScript_Cheren_Battle
 
 script StriatonCity_TS_EventScript_Cheren_BerryReceived
 {
-	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
-	call_if_eq (VAR_TEMP_0, 7, StriatonCity_TS_EventScript_Cheren_Pos1)
-	call_if_eq (VAR_TEMP_0, 8, StriatonCity_TS_EventScript_Cheren_Pos2)
-	call_if_eq (VAR_TEMP_0, 9, StriatonCity_TS_EventScript_Cheren_Pos3)
+	faceplayer
 	msgbox("Cheren: If you give a Pokémon this kind\n"
 			"of Berry to hold, it will eat it to heal up\l"
 			"when its HP goes down in battle.\p"
@@ -372,26 +369,6 @@ script StriatonCity_TS_CherenBattle_Snivy
 	return()
 }
 
-script StriatonCity_TS_EventScript_Cheren_Pos1
-{
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_left))
-	waitmovement(0)
-	return()
-}
-
-script StriatonCity_TS_EventScript_Cheren_Pos2
-{
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_down))
-	waitmovement(0)
-	return()
-}
-
-script StriatonCity_TS_EventScript_Cheren_Pos3
-{
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_right))
-	waitmovement(0)
-	return()
-}
 script StriatonCity_TS_EventScript_BagIsFull2
 {
 	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)

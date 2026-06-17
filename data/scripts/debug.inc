@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	warpsilent MAP_ROUTE4_NORTH, 13, 8
+	warpsilent MAP_CASTELIA_CITY_CASTELIA_GYM, 16, 29
 	waitstate
 	end
 
