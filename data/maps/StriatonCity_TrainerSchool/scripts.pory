@@ -369,6 +369,27 @@ script StriatonCity_TS_CherenBattle_Snivy
 	return()
 }
 
+script StriatonCity_TS_EventScript_Cheren_Pos1
+{
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_Pos2
+{
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_down))
+	waitmovement(0)
+	return()
+}
+
+script StriatonCity_TS_EventScript_Cheren_Pos3
+{
+	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_right))
+	waitmovement(0)
+	return()
+}
+
 script StriatonCity_TS_EventScript_BagIsFull2
 {
 	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
