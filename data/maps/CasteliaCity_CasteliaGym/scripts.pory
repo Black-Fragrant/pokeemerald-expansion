@@ -712,12 +712,14 @@ script CasteliaGym_Button8
 script CasteliaGym_HidePlayer
 {
     hideplayer
+    releaseall
     end
 }
 
 script CasteliaGym_ShowPlayer
 {
     showplayer
+    releaseall
     end
 }
 
@@ -977,6 +979,7 @@ script CasteliaGym_HoneyWallPass_FromBelowFailure
 script CasteliaGym_HoneyWallPass_FromAboveSuccess
 {
     call(CasteliaGym_HoneyWallPlayWiggle)
+    showplayer
     applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_2_down, unlock_facing_direction, face_down))
     waitstate
     waitmovement(0)
