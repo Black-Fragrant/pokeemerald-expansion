@@ -2220,3 +2220,14 @@ const struct Tileset gTileset_NimbasaSecondary =
     .metatileAttributes = gMetatileAttributes_NimbasaSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_RelicCastle =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RelicCastle,
+    .palettes = gTilesetPalettes_RelicCastle,
+    .metatiles = gMetatiles_RelicCastle,
+    .metatileAttributes = gMetatileAttributes_RelicCastle,
+    .callback = NULL,
+};
