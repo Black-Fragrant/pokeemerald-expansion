@@ -9902,6 +9902,316 @@
       "secondary_tileset": "gTileset_NimbasaSecondary",
       "border_filepath": "data/layouts/NimbasaCity/border.bin",
       "blockdata_filepath": "data/layouts/NimbasaCity/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_1F_WEST",
+      "name": "RelicCastle_1F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_1F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_1F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_1F_EAST",
+      "name": "RelicCastle_1F_East_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_1F_East/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_1F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B1F_WEST",
+      "name": "RelicCastle_B1F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B1F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B1F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B1F_EAST",
+      "name": "RelicCastle_B1F_East_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B1F_East/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B1F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B2F_WEST",
+      "name": "RelicCastle_B2F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B2F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B2F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B2F_EAST",
+      "name": "RelicCastle_B2F_East_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B2F_East/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B2F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B3F_EAST",
+      "name": "RelicCastle_B3F_East_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B3F_East/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B3F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B3F_WEST",
+      "name": "RelicCastle_B3F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B3F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B3F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B5F_EAST",
+      "name": "RelicCastle_B5F_East_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B5F_East/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B5F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B4F_EAST",
+      "name": "RelicCastle_B4F_East_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B4F_East/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B4F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B5F_WEST",
+      "name": "RelicCastle_B5F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B5F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B5F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B4F_WEST",
+      "name": "RelicCastle_B4F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B4F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B4F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM1",
+      "name": "RelicCastle_LF_Room1_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room1/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room1/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_WEST_STAIRS",
+      "name": "RelicCastle_LF_WestStairs_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_WestStairs/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_WestStairs/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM12",
+      "name": "RelicCastle_LF_Room12_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room12/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room12/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_VOLCARONA_ROOM",
+      "name": "RelicCastle_LF_VolcaronaRoom_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_VolcaronaRoom/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_VolcaronaRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_B6F_WEST",
+      "name": "RelicCastle_B6F_West_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_B6F_West/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_B6F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_EAST_STAIRS",
+      "name": "RelicCastle_LF_EastStairs_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_EastStairs/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_EastStairs/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM11",
+      "name": "RelicCastle_LF_Room11_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room11/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room11/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM15",
+      "name": "RelicCastle_LF_Room15_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room15/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room15/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM9",
+      "name": "RelicCastle_LF_Room9_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room9/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room9/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM6",
+      "name": "RelicCastle_LF_Room6_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room6/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room6/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM13",
+      "name": "RelicCastle_LF_Room13_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room13/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room13/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM4",
+      "name": "RelicCastle_LF_Room4_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room4/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room4/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM3",
+      "name": "RelicCastle_LF_Room3_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room3/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room3/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM14",
+      "name": "RelicCastle_LF_Room14_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room14/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room14/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM2",
+      "name": "RelicCastle_LF_Room2_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room2/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room2/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM5",
+      "name": "RelicCastle_LF_Room5_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room5/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room5/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM10",
+      "name": "RelicCastle_LF_Room10_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room10/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room10/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM7",
+      "name": "RelicCastle_LF_Room7_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room7/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room7/map.bin"
+    },
+    {
+      "id": "LAYOUT_RELIC_CASTLE_LF_ROOM8",
+      "name": "RelicCastle_LF_Room8_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RelicCastle",
+      "border_filepath": "data/layouts/RelicCastle_LF_Room8/border.bin",
+      "blockdata_filepath": "data/layouts/RelicCastle_LF_Room8/map.bin"
     }
   ]
 }

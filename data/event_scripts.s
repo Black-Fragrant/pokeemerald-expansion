@@ -1911,3 +1911,65 @@ EventScript_SetSail::
 	.include "data/maps/DesertResort_Inside/scripts.inc"
 
 	.include "data/maps/NimbasaCity/scripts.inc"
+
+	.include "data/maps/RelicCastle_1F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_1F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B1F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B1F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B2F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B2F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B3F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B3F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B4F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B5F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B5F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B4F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room14/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room10/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room6/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room15/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room11/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room13/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room3/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_WestStairs/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room2/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room7/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room12/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room1/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room9/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_EastStairs/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room4/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_VolcaronaRoom/scripts.inc"
+
+	.include "data/maps/RelicCastle_B6F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room5/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room8/scripts.inc"

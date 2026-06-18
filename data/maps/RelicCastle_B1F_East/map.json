@@ -1,0 +1,20 @@
+{
+  "id": "MAP_RELIC_CASTLE_B1F_EAST",
+  "name": "RelicCastle_B1F_East",
+  "layout": "LAYOUT_RELIC_CASTLE_B1F_EAST",
+  "music": "MUS_BW_RELIC_CASTLE",
+  "region_map_section": "MAPSEC_RELIC_CASTLE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
+}
