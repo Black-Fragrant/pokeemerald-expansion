@@ -470,16 +470,16 @@ script CasteliaGym_ButtonGroupBPanBack
 
 script CasteliaGym_RestoreLightTiles
 {
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_1_A, CasteliaGym_Button1ALightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_1_B, CasteliaGym_Button1BLightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_2_A, CasteliaGym_Button2ALightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_3_A, CasteliaGym_Button3ALightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_4_A, CasteliaGym_Button4ALightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_5_A, CasteliaGym_Button5ALightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_5_B, CasteliaGym_Button5BLightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_6_A, CasteliaGym_Button6ALightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_7_B, CasteliaGym_Button7BLightsOn)
-    call_if_set(FLAG_CASTELIA_GYM_BUTTON_8_B, CasteliaGym_Button8BLightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_1, 1, CasteliaGym_Button1ALightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_1, 1, CasteliaGym_Button1BLightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_2, 1, CasteliaGym_Button2ALightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_3, 1, CasteliaGym_Button3ALightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_4, 1, CasteliaGym_Button4ALightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_5, 1, CasteliaGym_Button5ALightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_5, 1, CasteliaGym_Button5BLightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_6, 1, CasteliaGym_Button6ALightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_7, 1, CasteliaGym_Button7BLightsOn)
+    call_if_ge(VAR_CASTELIA_GYM_SWITCH_8, 1, CasteliaGym_Button8BLightsOn)
     call_if_ge(VAR_CASTELIA_GYM_SWITCH_1, 1, CasteliaGym_Button1isFlat)
     call_if_ge(VAR_CASTELIA_GYM_SWITCH_2, 1, CasteliaGym_Button2isFlat)
     call_if_ge(VAR_CASTELIA_GYM_SWITCH_3, 1, CasteliaGym_Button3isFlat)
@@ -613,22 +613,19 @@ script CasteliaGym_Button1
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_1_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button1ALightsOn)
     call(CasteliaGym_Button1isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
-    call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupAPanBack)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_1_B)
     call(CasteliaGym_ButtonGroupBPanToLights)
     call(CasteliaGym_Button1BLightsOn)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_1, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupBPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_1, 1)
     release
     end
 }
@@ -637,15 +634,14 @@ script CasteliaGym_Button2
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_2_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button2ALightsOn)
     call(CasteliaGym_Button2isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_2, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupAPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_2, 1)
     release
     end
 }
@@ -654,15 +650,14 @@ script CasteliaGym_Button3
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_3_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button3ALightsOn)
     call(CasteliaGym_Button3isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_3, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupAPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_3, 1)
     release
     end
 }
@@ -671,15 +666,14 @@ script CasteliaGym_Button4
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_4_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button4ALightsOn)
     call(CasteliaGym_Button4isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_4, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupAPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_4, 1)
     release
     end
 }
@@ -688,22 +682,19 @@ script CasteliaGym_Button5
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_5_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button5ALightsOn)
     call(CasteliaGym_Button5isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
-    call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupAPanBack)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_5_B)
     call(CasteliaGym_ButtonGroupBPanToLights)
     call(CasteliaGym_Button5BLightsOn)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_5, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupBPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_5, 1)
     release
     end
 }
@@ -712,15 +703,14 @@ script CasteliaGym_Button6
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_6_A)
     call(CasteliaGym_ButtonGroupAPanToLights)
     call(CasteliaGym_Button6ALightsOn)
     call(CasteliaGym_Button6isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_6, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupAPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_6, 1)
     release
     end
 }
@@ -729,15 +719,14 @@ script CasteliaGym_Button7
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_7_B)
     call(CasteliaGym_ButtonGroupBPanToLights)
     call(CasteliaGym_Button7BLightsOn)
     call(CasteliaGym_Button7isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_7, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupBPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_7, 1)
     release
     end
 }
@@ -746,15 +735,14 @@ script CasteliaGym_Button8
 {
     lock
     call(CasteliaGym_PlayButtonPressSe)
-    setflag(FLAG_CASTELIA_GYM_BUTTON_8_B)
     call(CasteliaGym_ButtonGroupBPanToLights)
     call(CasteliaGym_Button8BLightsOn)
     call(CasteliaGym_Button8isFlat)
     special(DrawWholeMapView)
     call(CasteliaGym_PlayLightOnSe)
+    setvar(VAR_CASTELIA_GYM_SWITCH_8, 1)
     call(CasteliaGym_UpdateGatesAfterLightOn)
     call(CasteliaGym_ButtonGroupBPanBack)
-    setvar(VAR_CASTELIA_GYM_SWITCH_8, 1)
     release
     end
 }
@@ -786,8 +774,7 @@ script CasteliaGym_HoneyWall1
 {
     lock
     setvar(VAR_0x8004, 1)
-    goto_if_unset(FLAG_CASTELIA_GYM_GATE_2_OPENED, CasteliaGym_HoneyWallCenterClosed)
-    call(CasteliaGym_HoneyWallPass)
+    call(CasteliaGym_HoneyWallPassIfOpen)
     release
     end
 }
@@ -796,8 +783,7 @@ script CasteliaGym_HoneyWall2
 {
     lock
     setvar(VAR_0x8004, 2)
-    goto_if_unset(FLAG_CASTELIA_GYM_GATE_3_OPENED, CasteliaGym_HoneyWallCenterClosed)
-    call(CasteliaGym_HoneyWallPass)
+    call(CasteliaGym_HoneyWallPassIfOpen)
     release
     end
 }
@@ -806,8 +792,7 @@ script CasteliaGym_HoneyWall3
 {
     lock
     setvar(VAR_0x8004, 3)
-    goto_if_unset(FLAG_CASTELIA_GYM_GATE_4_OPENED, CasteliaGym_HoneyWallCenterClosed)
-    call(CasteliaGym_HoneyWallPass)
+    call(CasteliaGym_HoneyWallPassIfOpen)
     release
     end
 }
@@ -816,8 +801,7 @@ script CasteliaGym_HoneyWall4
 {
     lock
     setvar(VAR_0x8004, 4)
-    goto_if_unset(FLAG_CASTELIA_GYM_GATE_5_OPENED, CasteliaGym_HoneyWallCenterClosed)
-    call(CasteliaGym_HoneyWallPass)
+    call(CasteliaGym_HoneyWallPassIfOpen)
     release
     end
 }
@@ -826,8 +810,7 @@ script CasteliaGym_HoneyWall5
 {
     lock
     setvar(VAR_0x8004, 5)
-    goto_if_unset(FLAG_CASTELIA_GYM_GATE_6_OPENED, CasteliaGym_HoneyWallCenterClosed)
-    call(CasteliaGym_HoneyWallPass)
+    call(CasteliaGym_HoneyWallPassIfOpen)
     release
     end
 }
@@ -836,8 +819,7 @@ script CasteliaGym_HoneyWall6
 {
     lock
     setvar(VAR_0x8004, 6)
-    goto_if_unset(FLAG_CASTELIA_GYM_GATE_7_OPENED, CasteliaGym_HoneyWallCenterClosed)
-    call(CasteliaGym_HoneyWallPass)
+    call(CasteliaGym_HoneyWallPassIfOpen)
     release
     end
 }
@@ -974,6 +956,14 @@ script CasteliaGym_HoneyWallPass
     goto_if_eq(VAR_RESULT, DIR_NORTH, CasteliaGym_HoneyWallPass_FromBelow)
     goto_if_eq(VAR_RESULT, DIR_SOUTH, CasteliaGym_HoneyWallPass_FromAbove)
     call(CasteliaGym_HoneyWallBounce)
+    return
+}
+
+script CasteliaGym_HoneyWallPassIfOpen
+{
+    special(Special_CasteliaGym_IsHoneyWallPassable)
+    goto_if_eq(VAR_RESULT, FALSE, CasteliaGym_HoneyWallCenterClosed)
+    call(CasteliaGym_HoneyWallPass)
     return
 }
 

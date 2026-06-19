@@ -300,6 +300,7 @@ gSpecials::
 	def_special RemoveCameraObject
 	def_special Special_CasteliaGym_InitHoneyWalls
 	def_special Special_CasteliaGym_CheckHoneyGateOpenStates
+	def_special Special_CasteliaGym_IsHoneyWallPassable
 	def_special StartHoneyWallHoldUp
 	def_special StartHoneyWallHoldDown
 	def_special RestoreHoneyWallIdle
