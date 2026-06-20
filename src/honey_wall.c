@@ -12,6 +12,8 @@
 #include "task.h"
 
 #define CASTELIA_GYM_HONEY_WALL_COUNT 7
+#define CASTELIA_GYM_GATE_5_WALL_ID 4
+#define HONEY_WALL_ID_ALL 0xFF
 #define HONEY_WALL_TILE_TAG 0x5A00
 #define HONEY_GATE_TILE_TAG 0x5A01
 #define HONEY_WALL_PAL_TAG  0x5A02
@@ -114,8 +116,9 @@ static bool8 IsCasteliaGymHoneyWallPassable(u16 wallId);
 static bool8 IsCasteliaGymHoneyGateOpen(u8 wallId);
 static enum Direction GetCasteliaGymHoneyWallVerticalBounceDirection(u8 wallIndex, enum Direction facingDirection);
 static void SetCasteliaGymHoneyGatePassability(void);
+static void SetCasteliaGymHoneyGatePassabilityForWallId(u8 wallId);
 static void SetCasteliaGymHoneyWallPassability(u8 wallIndex, bool8 passable);
-static bool8 RefreshCasteliaGymHoneyGateSprites(void);
+static bool8 RefreshCasteliaGymHoneyGateSprites(u8 wallId);
 static void DestroyCasteliaGymHoneySprite(u8 *spriteId, u8 kind);
 static void DestroyCasteliaGymHoneyGateOpenSprite(struct Sprite *sprite);
 static void DestroyCasteliaGymHoneyAnimSprite(struct Sprite *sprite);
@@ -888,6 +891,14 @@ static void SetCasteliaGymHoneyGatePassability(void)
         SetCasteliaGymHoneyWallPassability(i, IsCasteliaGymHoneyWallPassable(sCasteliaGymHoneyWalls[i].wallId));
 }
 
+static void SetCasteliaGymHoneyGatePassabilityForWallId(u8 wallId)
+{
+    u8 wallIndex;
+
+    if (TryGetCasteliaGymHoneyWallIndexById(wallId, &wallIndex))
+        SetCasteliaGymHoneyWallPassability(wallIndex, IsCasteliaGymHoneyWallPassable(wallId));
+}
+
 static void SetCasteliaGymHoneyWallPassability(u8 wallIndex, bool8 passable)
 {
     s8 dx;
@@ -897,13 +908,16 @@ static void SetCasteliaGymHoneyWallPassability(u8 wallIndex, bool8 passable)
         MapGridSetMetatileImpassabilityAt(wall->x + dx + MAP_OFFSET, wall->y + MAP_OFFSET, !passable);
 }
 
-static bool8 RefreshCasteliaGymHoneyGateSprites(void)
+static bool8 RefreshCasteliaGymHoneyGateSprites(u8 wallId)
 {
     u8 i;
     bool8 startedGateAnim = FALSE;
 
     for (i = 0; i < CASTELIA_GYM_HONEY_WALL_COUNT; i++)
     {
+        if (wallId != HONEY_WALL_ID_ALL && sCasteliaGymHoneyWalls[i].wallId != wallId)
+            continue;
+
         if (sCasteliaGymHoneyWalls[i].wallId != 0
             && IsCasteliaGymHoneyGateOpen(sCasteliaGymHoneyWalls[i].wallId)
             && sCasteliaGymHoneyGateSpriteIds[i] != SPRITE_NONE)
@@ -1049,7 +1063,18 @@ void Special_CasteliaGym_CheckHoneyGateOpenStates(void)
     bool8 startedGateAnim;
 
     SetCasteliaGymHoneyGatePassability();
-    startedGateAnim = RefreshCasteliaGymHoneyGateSprites();
+    startedGateAnim = RefreshCasteliaGymHoneyGateSprites(HONEY_WALL_ID_ALL);
+    gSpecialVar_Result = startedGateAnim;
+    if (startedGateAnim)
+        CreateTask(Task_CasteliaGymWaitGateOpenAnim, 8);
+}
+
+void Special_CasteliaGym_CheckButton1FirstGateOpenState(void)
+{
+    bool8 startedGateAnim;
+
+    SetCasteliaGymHoneyGatePassabilityForWallId(CASTELIA_GYM_GATE_5_WALL_ID);
+    startedGateAnim = RefreshCasteliaGymHoneyGateSprites(CASTELIA_GYM_GATE_5_WALL_ID);
     gSpecialVar_Result = startedGateAnim;
     if (startedGateAnim)
         CreateTask(Task_CasteliaGymWaitGateOpenAnim, 8);
