@@ -2231,3 +2231,14 @@ const struct Tileset gTileset_RelicCastle =
     .metatileAttributes = gMetatileAttributes_RelicCastle,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_RelicCastleContinue =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RelicCastleContinue,
+    .palettes = gTilesetPalettes_RelicCastleContinue,
+    .metatiles = gMetatiles_RelicCastleContinue,
+    .metatileAttributes = gMetatileAttributes_RelicCastleContinue,
+    .callback = NULL,
+};

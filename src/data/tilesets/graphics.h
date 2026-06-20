@@ -3836,3 +3836,22 @@ const u16 gTilesetPalettes_RelicCastle[][16] =
 };
 
 const u32 gTilesetTiles_RelicCastle[] = INCBIN_U32("data/tilesets/secondary/relic_castle/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_RelicCastleContinue[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/relic_castle_continue/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_RelicCastleContinue[] = INCBIN_U32("data/tilesets/secondary/relic_castle_continue/tiles.4bpp.lz");
