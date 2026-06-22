@@ -1695,14 +1695,6 @@ const u32 gBattleAnimBgImage_Swamp[] = INCGFX_U32("graphics/battle_anims/backgro
 const u16 gBattleAnimBGPalette_Swamp[] = INCGFX_U16("graphics/battle_anims/backgrounds/swampswizzle.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_Swamp[] = INCGFX_U32("graphics/battle_anims/backgrounds/swampswizzle.bin", ".smolTM");
 
-const u32 gPartyMenuBg_Gfx[] = INCGFX_U32("graphics/party_menu/bg.png", ".4bpp.smol", "-num_tiles 62 -Wnum_tiles");
-const u16 gPartyMenuBg_Pal[] = INCGFX_U16("graphics/party_menu/bg.png", ".gbapal");
-const u32 gPartyMenuBg_Tilemap[] = INCGFX_U32("graphics/party_menu/bg.bin", ".smolTM");
-
-const u32 gPartyMenuPokeball_Gfx[] = INCGFX_U32("graphics/party_menu/pokeball.png", ".4bpp.smol");
-const u32 gPartyMenuPokeballSmall_Gfx[] = INCGFX_U32("graphics/party_menu/pokeball_small.png", ".4bpp.smol"); //unused
-const u16 gPartyMenuPokeball_Pal[] = INCGFX_U16("graphics/party_menu/pokeball.png", ".gbapal");
-
 const u32 gStatusGfx_Icons[] = INCGFX_U32("graphics/interface/status_icons.png", ".4bpp.smol");
 const u16 gStatusPal_Icons[] = INCGFX_U16("graphics/interface/status_icons.png", ".gbapal");
 
