@@ -67,6 +67,25 @@ extern const u16 gHeldItemPalette[];
 extern void (*gItemUseCB)(u8, TaskFunc);
 extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
 
+/*
+**DS PARTY SCREEN**
+Below features are configs for the DS party screen.
+I did not create the DS party screen, the base comes from TheXaman: https://github.com/TheXaman/pokeemerald/tree/tx_ui_party_screen_ds_style_2
+While graphics + other touch ups come from the original FRLG/Em patch here: https://www.pokecommunity.com/threads/fr-em-pok%C3%A9mon-party-screen-modifications-base-hgss-and-bw-styles.414022/
+Huge credits to everyone involved!
+*/
+
+#define PARTY_MENU_STYLE_DEFAULT    0
+#define PARTY_MENU_STYLE_FRLG       1
+#define PARTY_MENU_STYLE_HGSS       2
+#define PARTY_MENU_STYLE_BW         3
+
+#define PARTY_MENU_STYLE                   PARTY_MENU_STYLE_BW
+#define PARTY_MENU_ALPHA                   (PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW) // If TRUE, the columns have a transparent BG. 
+                                                                                     // Only designed for the BW style, so looks ugly on other styles.
+#define PARTY_MENU_HIGHLIGHT_ACTIVE_SINGLE FALSE // If TRUE, in single battles, changes the colour of the first party slot. Easier to see who is on the field, in my opinion.
+#define PARTY_MENU_HIGHLIGHT_ACTIVE_DOUBLE FALSE // If TRUE, in double battles, changes the colour of the first two party slots. Easier to see who is on the field, in my opinion.
+                                                 // This is not active in multi-battles, as it uses the colour that is usually used to represent our partner's pokemon.
 void AnimatePartySlot(u8 slot, u8 animNum);
 bool8 IsMultiBattle(void);
 u8 GetCursorSelectionMonId(void);
