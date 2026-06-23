@@ -219,7 +219,8 @@
   ],
   "gMapGroup_IndoorRoute4": [
     "Route4_HouseRight",
-    "Route4_HouseLeft"
+    "Route4_HouseLeft",
+    "Route4_Gate"
   ],
   "gMapGroup_RelicCastle": [
     "RelicCastle_1F_East",

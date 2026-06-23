@@ -10212,6 +10212,16 @@
       "secondary_tileset": "gTileset_RelicCastle",
       "border_filepath": "data/layouts/RelicCastle_LF_Room8/border.bin",
       "blockdata_filepath": "data/layouts/RelicCastle_LF_Room8/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4_GATE",
+      "name": "Route4_Gate_Layout",
+      "width": 11,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/Route4_Gate/border.bin",
+      "blockdata_filepath": "data/layouts/Route4_Gate/map.bin"
     }
   ]
 }

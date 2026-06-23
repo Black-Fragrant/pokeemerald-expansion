@@ -85,36 +85,36 @@
       "x": 75,
       "y": 70,
       "elevation": 0,
-      "dest_map": "MAP_DESERT_RESORT_OUTSIDE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE4_GATE",
+      "dest_warp_id": "6"
     },
     {
       "x": 76,
       "y": 70,
       "elevation": 0,
-      "dest_map": "MAP_DESERT_RESORT_OUTSIDE",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_ROUTE4_GATE",
+      "dest_warp_id": "7"
     },
     {
       "x": 77,
       "y": 70,
       "elevation": 0,
-      "dest_map": "MAP_DESERT_RESORT_OUTSIDE",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_ROUTE4_GATE",
+      "dest_warp_id": "8"
     },
     {
       "x": 54,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_DESERT_RESORT_INSIDE",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_RELIC_CASTLE_1F_EAST",
+      "dest_warp_id": "0"
     },
     {
       "x": 20,
       "y": 19,
       "elevation": 0,
-      "dest_map": "MAP_DESERT_RESORT_INSIDE",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_RELIC_CASTLE_1F_WEST",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

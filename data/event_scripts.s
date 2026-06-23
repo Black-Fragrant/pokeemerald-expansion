@@ -1973,3 +1973,5 @@ EventScript_SetSail::
 	.include "data/maps/RelicCastle_LF_Room5/scripts.inc"
 
 	.include "data/maps/RelicCastle_LF_Room8/scripts.inc"
+
+	.include "data/maps/Route4_Gate/scripts.inc"
