@@ -53,8 +53,8 @@
 #define VAR_REPEL_STEP_COUNT                             0x4021
 #define VAR_ICE_STEP_COUNT                               0x4022
 #define VAR_STARTER_MON                                  0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
-#define VAR_MIRAGE_RND_H                                 0x4024
-#define VAR_MIRAGE_RND_L                                 0x4025
+#define VAR_MIRAGE_RND_H                                 0x4024 // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
+#define VAR_MIRAGE_RND_L                                 0x4025 // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
 #define VAR_SECRET_BASE_MAP                              0x4026
 #define VAR_CYCLING_ROAD_RECORD_COLLISIONS               0x4027
 #define VAR_CYCLING_ROAD_RECORD_TIME_L                   0x4028
@@ -94,13 +94,13 @@
 #define VAR_ASH_GATHER_COUNT                             0x4048
 #define VAR_BIRCH_STATE                                  0x4049
 #define VAR_CRUISE_STEP_COUNT                            0x404A
-#define VAR_POKELOT_RND1                                 0x404B
-#define VAR_POKELOT_RND2                                 0x404C
+#define VAR_POKELOT_RND1                                 0x404B // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
+#define VAR_POKELOT_RND2                                 0x404C // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
 #define VAR_SEASON                                       0x404E
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
-#define VAR_OLDALE_TOWN_STATE                            0x4051
+#define VAR_PLACEHOLDER                                  0x4051
 #define VAR_JUNIPER_PARCEL_DELIEVER                      0x4052 // the first var used in fire black
 #define VAR_NUVEMA_PICK_STARTER                          0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
@@ -120,59 +120,59 @@
 #define VAR_NACRENE_STATE                                0x4062
 #define VAR_DAY_OF_WEEK                                  0x4063
 #define VAR_PINWHEEL_FOREST_STATE                        0x4064
-#define VAR_UNUSED_4065                                  0x4065 // Unused Var
-#define VAR_UNUSED_4066                                  0x4066 // Unused Var
-#define VAR_UNUSED_4067                                  0x4067 // Unused Var
-#define VAR_UNUSED_4068                                  0x4068 // Unused Var
-#define VAR_ROUTE110_STATE                               0x4069
-#define VAR_ROUTE111_STATE                               0x406A // Unused Var
-#define VAR_ROUTE112_STATE                               0x406B // Unused Var
-#define VAR_ROUTE113_STATE                               0x406C // Unused Var
-#define VAR_ROUTE114_STATE                               0x406D // Unused Var
-#define VAR_ROUTE115_STATE                               0x406E // Unused Var
-#define VAR_ROUTE116_STATE                               0x406F
-#define VAR_ROUTE117_STATE                               0x4070 // Unused Var
-#define VAR_ROUTE118_STATE                               0x4071
-#define VAR_ROUTE119_STATE                               0x4072
-#define VAR_ROUTE120_STATE                               0x4073 // Unused Var
-#define VAR_ROUTE121_STATE                               0x4074
-#define VAR_ROUTE122_STATE                               0x4075 // Unused Var
-#define VAR_ROUTE123_STATE                               0x4076 // Unused Var
-#define VAR_ROUTE124_STATE                               0x4077 // Unused Var
-#define VAR_ROUTE125_STATE                               0x4078 // Unused Var
-#define VAR_ROUTE126_STATE                               0x4079 // Unused Var
-#define VAR_ROUTE127_STATE                               0x407A // Unused Var
-#define VAR_ROUTE128_STATE                               0x407B
-#define VAR_ROUTE129_STATE                               0x407C // Unused Var
-#define VAR_ROUTE130_STATE                               0x407D // Unused Var
-#define VAR_ROUTE131_STATE                               0x407E // Unused Var
-#define VAR_ROUTE132_STATE                               0x407F // Unused Var
-#define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-#define VAR_DIFFICULTY                                   0x4083
-#define VAR_BIRCH_LAB_STATE                              0x4084
-#define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
-#define VAR_CONTEST_HALL_STATE                           0x4086
-#define VAR_CABLE_CLUB_STATE                             0x4087
-#define VAR_CONTEST_TYPE                                 0x4088
-#define VAR_SECRET_BASE_INITIALIZED                      0x4089
-#define VAR_CONTEST_PRIZE_PICKUP                         0x408A
-#define VAR_UNUSED_0x408B                                0x408B // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
-#define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
+#define VAR_CASTELIA_TM70_FLASH                          0x4065
+#define VAR_CASTELIA_CASTELIACONE                        0x4066
+#define VAR_CASTELIA_BATTLE_COMPANY_STATE                0x4067
+#define VAR_TIMES_YOU_HAVE_TRADED                        0x4068
+#define VAR_CASTELIA_INSIDE_ELEVATORS                    0x4069
+#define VAR_PAHQ_HOBBY_SURVEY_RESULT                     0x406A
+#define VAR_PAHQ_JOB_SURVEY_RESULT                       0x406B
+#define VAR_PAHQ_BATTLETRADE_SURVEY_RESULT               0x406C
+#define VAR_PAHQ_POKEMON_SURVEY_RESULT                   0x406D
+#define VAR_PAHQ_TYPE_SURVEY_RESULT                      0x406E
+#define VAR_PAHQ_LIVE_SURVEY_RESULT                      0x406F
+#define VAR_PAHQ_MORE_SURVEY_RESULT                      0x4070
+#define VAR_PAHQ_IMPORTANT_SURVEY_RESULT                 0x4071
+#define VAR_PAHQ_BRAINBRAWN_SURVEY_RESULT                0x4072
+#define VAR_PAHQ_PVALUE_SURVEY_RESULT                    0x4073
+#define VAR_PAHQ_PTYPE_SURVEY_RESULT                     0x4074
+#define VAR_PAHQ_SEASON_SURVEY_RESULT                    0x4075
+#define VAR_PAHQ_FOOD_SURVEY_RESULT                      0x4076
+#define VAR_PAHQ_COLOR_SURVEY_RESULT                     0x4077
+#define VAR_PAHQ_MUSIC_SURVEY_RESULT                     0x4078
+#define VAR_PAHQ_TV_SURVEY_RESULT                        0x4079
+#define VAR_PAHQ_MOVIE_SURVEY_RESULT                     0x407A
+#define VAR_PAHQ_STIME_SURVEY_RESULT                     0x407B
+#define VAR_PAHQ_SSUBJECT_SURVEY_RESULT                  0x407C
+#define VAR_PAHQ_WSUBJECT_SURVEY_RESULT                  0x407D
+#define VAR_PAHQ_FPLACES_SURVEY_RESULT                   0x407E
+#define VAR_PAHQ_HOLIDAY_SURVEY_RESULT                   0x407F
+#define VAR_PAHQ_SPORT_SURVEY_RESULT                     0x4080
+#define VAR_PAHQ_PFUN_SURVEY_RESULT                      0x4081
+#define VAR_PAHQ_BECOME_SURVEY_RESULT                    0x4082
+#define VAR_PAHQ_LEADER_SURVEY_RESULT                    0x4083
+#define VAR_DIFFICULTY                                   0x4084 // Don't Touch
+#define VAR_PAHQ_STATE                                   0x4085
+#define VAR_STUDIO_CASTELIA_DAILY_TYPE                   0x4086
+#define VAR_CABLE_CLUB_STATE                             0x4087 // Don't Touch
+#define VAR_CASTELIA_PARTY_BUILDING_STATE                0x4088
+#define VAR_ROUTE_4_STATE                                0x4089
+#define VAR_CASTELIA_GYM_STATE                           0x408A
+#define VAR_CASTELIA_GYM_RECEPTION_BLOCK                 0x408B
+#define VAR_CASTELIA_GATE_BIANCA_BATTLE_STATE            0x408C
+#define VAR_LIBERTY_GARDEN_STATE                         0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
-#define VAR_DEVON_CORP_3F_STATE                          0x408F
-#define VAR_BRINEY_HOUSE_STATE                           0x4090
-#define VAR_UNUSED_0x4091                                0x4091 // Unused Var
-#define VAR_LITTLEROOT_INTRO_STATE                       0x4092
-#define VAR_MAUVILLE_GYM_STATE                           0x4093
-#define VAR_LILYCOVE_MUSEUM_2F_STATE                     0x4094
-#define VAR_LILYCOVE_FAN_CLUB_STATE                      0x4095
-#define VAR_BRINEY_LOCATION                              0x4096
-#define VAR_INIT_SECRET_BASE                             0x4097
-#define VAR_PETALBURG_WOODS_STATE                        0x4098
-#define VAR_LILYCOVE_CONTEST_LOBBY_STATE                 0x4099
+#define VAR_CASTELIA_GYM_SWITCH_1                        0x408F
+#define VAR_CASTELIA_GYM_SWITCH_2                        0x4090
+#define VAR_CASTELIA_GYM_SWITCH_3                        0x4091
+#define VAR_CASTELIA_GYM_SWITCH_4                        0x4092
+#define VAR_CASTELIA_GYM_SWITCH_5                        0x4093
+#define VAR_CASTELIA_GYM_SWITCH_6                        0x4094
+#define VAR_CASTELIA_GYM_SWITCH_7                        0x4095
+#define VAR_CASTELIA_GYM_SWITCH_8                        0x4096
+#define VAR_CASTELIA_GYM_TRAP_1                          0x4097
+#define VAR_CASTELIA_GYM_TRAP_2                          0x4098
+#define VAR_ROUTE_4_BIANCA_BATTLE                        0x4099
 #define VAR_RUSTURF_TUNNEL_STATE                         0x409A
 #define VAR_UNUSED_0x409B                                0x409B // Unused Var
 #define VAR_ELITE_4_STATE                                0x409C

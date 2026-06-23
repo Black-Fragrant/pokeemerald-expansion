@@ -281,13 +281,6 @@ static void RemoveSaveInfoWindow(void);
 static void HideStartMenuWindow(void);
 static void HideStartMenuDebug(void);
 
-void SetDexPokemonPokenavFlags(void) // unused
-{
-    FlagSet(FLAG_SYS_POKEDEX_GET);
-    FlagSet(FLAG_SYS_POKEMON_GET);
-    FlagSet(FLAG_SYS_POKENAV_GET);
-}
-
 static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
@@ -1148,8 +1141,8 @@ static u8 SaveOverwriteInputCallback(void)
 }
 
 #define TAG_THROBBER 0x1000
-static const u16 sThrobber_Pal[] = INCBIN_U16("graphics/text_window/throbber.gbapal");
-const u32 gThrobber_Gfx[] = INCBIN_U32("graphics/text_window/throbber.4bpp.smol");
+static const u16 sThrobber_Pal[] = INCGFX_U16("graphics/text_window/throbber.png", ".gbapal");
+const u32 gThrobber_Gfx[] = INCGFX_U32("graphics/text_window/throbber.png", ".4bpp.smol");
 static u8 spriteId;
 
 static const struct OamData sOam_Throbber =

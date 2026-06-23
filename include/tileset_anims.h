@@ -41,6 +41,8 @@ void InitTilesetAnim_SilphCo(void);
 void InitTilesetAnim_MtEmber(void);
 
 // BW
+void InitTilesetAnim_GeneralLake(void);
+
 void InitTilesetAnim_Nuvema(void);
 void InitTilesetAnim_IndoorNuvema(void);
 void InitTilesetAnim_PokeCenter(void);
@@ -49,5 +51,13 @@ void InitTilesetAnim_IndoorStriaton(void);
 void InitTilesetAnim_CaveBW(void);
 void InitTilesetAnim_PinwheelForest(void);
 void InitTilesetAnim_NacreneGym(void);
+void InitTilesetAnim_CasteliaCity1(void);
+void InitTilesetAnim_CasteliaCityPiers(void);
+void InitTilesetAnim_CasteliaCity3(void);
+void InitTilesetAnim_CasteliaCity4(void);
+void InitTilesetAnim_CasteliaCity6(void);
+void InitTilesetAnim_CasteliaCityCenter(void);
+void InitTilesetAnim_IndoorCastelia(void);
+void InitTilesetAnim_LibertyGarden(void);
 
 #endif // GUARD_TILESET_ANIMS_H

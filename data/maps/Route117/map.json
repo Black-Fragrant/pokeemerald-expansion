@@ -408,5 +408,6 @@
       "item": "ITEM_REPEL",
       "flag": "FLAG_UNUSED_0xXXX"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

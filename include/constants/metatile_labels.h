@@ -14,19 +14,20 @@
 #define METATILE_BattleDome_Door_PreBattleRoom  0x20A
 
 // gTileset_BattleFrontier
-#define METATILE_BattleFrontier_CorridorOpenDoor_Bottom  0x20F
-#define METATILE_BattleFrontier_CorridorOpenDoor_Top     0x207
-#define METATILE_BattleFrontier_Door_Elevator            0x20E
-#define METATILE_BattleFrontier_Door_MultiCorridor       0x2AD
-#define METATILE_BattleFrontier_Elevator_Bottom0         0x339
-#define METATILE_BattleFrontier_Elevator_Bottom1         0x33A
-#define METATILE_BattleFrontier_Elevator_Bottom2         0x33B
-#define METATILE_BattleFrontier_Elevator_Mid0            0x331
-#define METATILE_BattleFrontier_Elevator_Mid1            0x332
-#define METATILE_BattleFrontier_Elevator_Mid2            0x333
-#define METATILE_BattleFrontier_Elevator_Top0            0x329
-#define METATILE_BattleFrontier_Elevator_Top1            0x32A
-#define METATILE_BattleFrontier_Elevator_Top2            0x32B
+#define METATILE_BattleFrontier_CorridorOpenDoor_Bottom   0x20F
+#define METATILE_BattleFrontier_CorridorOpenDoor_Top      0x207
+#define METATILE_BattleFrontier_Door_Elevator             0x20E
+#define METATILE_BattleFrontier_Door_MultiCorridor_Left   0x2AD
+#define METATILE_BattleFrontier_Door_MultiCorridor_Right  0x2AE
+#define METATILE_BattleFrontier_Elevator_Bottom0          0x339
+#define METATILE_BattleFrontier_Elevator_Bottom1          0x33A
+#define METATILE_BattleFrontier_Elevator_Bottom2          0x33B
+#define METATILE_BattleFrontier_Elevator_Mid0             0x331
+#define METATILE_BattleFrontier_Elevator_Mid1             0x332
+#define METATILE_BattleFrontier_Elevator_Mid2             0x333
+#define METATILE_BattleFrontier_Elevator_Top0             0x329
+#define METATILE_BattleFrontier_Elevator_Top1             0x32A
+#define METATILE_BattleFrontier_Elevator_Top2             0x32B
 
 // gTileset_BattleFrontierOutsideEast
 #define METATILE_BattleFrontierOutsideEast_Door              0x3FC
@@ -262,22 +263,23 @@
 #define METATILE_GameCorner_StairsTop                 0x29E
 
 // gTileset_General
-#define METATILE_General_CaveEntrance_Top      0x09F
-#define METATILE_General_Door                  0x000
-#define METATILE_General_Door_Contest          0x1DB
-#define METATILE_General_Door_Gym              0x1CD
-#define METATILE_General_Door_PokeCenter       0x021
-#define METATILE_General_Door_PokeMart         0x041
-#define METATILE_General_Door_PokemonCenter    0x0AB
-#define METATILE_General_Grass                 0x023
-#define METATILE_General_Grass_TreeUp          0x00E
-#define METATILE_General_LongGrass             0x015
-#define METATILE_General_SandPit_Center        0x121
-#define METATILE_General_SecretBase_VineLeft   0x036
-#define METATILE_General_SecretBase_VineRight  0x037
-#define METATILE_General_TallGrass             0x005
-#define METATILE_General_TallGrass_TreeLeft    0x1C6
-#define METATILE_General_TallGrass_TreeRight   0x1C7
+#define METATILE_General_CaveEntrance_Top     0x09F
+#define METATILE_General_Door                 0x000
+#define METATILE_General_Door_Contest         0x1DB
+#define METATILE_General_Door_Gym             0x1CD
+#define METATILE_General_Door_PokeCenter      0x021
+#define METATILE_General_Door_PokeMart        0x041
+#define METATILE_General_Door_PokemonCenter   0x0AB
+#define METATILE_General_Grass                0x023
+#define METATILE_General_Grass_TreeUp         0x00E
+#define METATILE_General_LongGrass            0x015
+#define METATILE_General_SandPit_Center       0x121
+#define METATILE_General_TallGrass            0x005
+#define METATILE_General_TallGrass_TreeLeft   0x1C6
+#define METATILE_General_TallGrass_TreeRight  0x1C7
+
+// gTileset_GeneralLake
+#define METATILE_GeneralLake_Door_PokemonCenter  0x0AB
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
@@ -568,6 +570,9 @@
 // gTileset_Route3
 #define METATILE_Route3_House_1  0x28C
 #define METATILE_Route3_House_2  0x265
+
+// gTileset_Route4
+#define METATILE_Route4_Door  0x272
 
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F
@@ -1048,6 +1053,8 @@
 #define METATILE_ViridianForest_HugeTreeTopMiddle_Mowed  0x281
 
 // Other
+#define METATILE_Castelia_House_1                    0x243
+#define METATILE_Castelia_Indoor_Elevator            0x221
 #define METATILE_GeneralFrlg_CalmWater               0x12B
 #define METATILE_GeneralFrlg_Door                    0x03D
 #define METATILE_GeneralFrlg_Plain_Grass             0x00D

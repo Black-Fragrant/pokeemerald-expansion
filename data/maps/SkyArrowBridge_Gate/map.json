@@ -3,7 +3,7 @@
   "name": "SkyArrowBridge_Gate",
   "layout": "LAYOUT_SKY_ARROW_BRIDGE_GATE",
   "music": "MUS_BW_PASSAGE_TUNNEL",
-  "region_map_section": "MAPSEC_SKYARROW_BRIDGE",
+  "region_map_section": "MAPSEC_SKYARROW_BRIDGE_SOUTH_GATE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

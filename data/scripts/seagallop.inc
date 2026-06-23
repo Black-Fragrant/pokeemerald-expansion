@@ -99,14 +99,6 @@ EventScript_DepartingNotVermilion::
 	goto EventScript_SetSail
 	end
 
-EventScript_SetSail::
-	closemessage
-	delay 20
-	fadescreen FADE_TO_BLACK
-	special DoSeagallopFerryScene
-	waitstate
-	end
-
 EventScript_CancelSail::
 	specialvar VAR_RESULT, IsPlayerLeftOfVermilionSailor
 	goto_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_WalkUpPier

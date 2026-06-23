@@ -267,6 +267,7 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_SILPH_SCOPED]           = gBattleAnimGeneral_SilphScoped,
     [B_ANIM_ROCK_THROW]             = gBattleAnimGeneral_SafariRockThrow,
     [B_ANIM_SAFARI_REACTION]        = gBattleAnimGeneral_SafariReaction,
+    [B_ANIM_HELD_ITEM_BERRY]        = gBattleAnimGeneral_HeldItemBerry,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =
@@ -340,16 +341,37 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
     if (gTestRunnerEnabled)
     {
         TestRunner_Battle_RecordAnimation(animType, animId);
-        // Play Transform and Ally Switch even in Headless as these move animations also change mon data.
-        if (gTestRunnerHeadless
-            #if TESTING // Because gBattleTestRunnerState is not seen outside of test env.
-             && !gBattleTestRunnerState->forceMoveAnim
-            #endif // TESTING
-            && !(animType == ANIM_TYPE_MOVE && (animId == MOVE_TRANSFORM || animId == MOVE_ALLY_SWITCH)))
+
+        bool32 forceMoveAnim = FALSE;
+        #if TESTING // Because gBattleTestRunnerState is not seen outside of test env.
+        forceMoveAnim = gBattleTestRunnerState->forceMoveAnim;
+        #endif
+        if (!forceMoveAnim)
         {
-            gAnimScriptCallback = Nop;
-            gAnimScriptActive = FALSE;
-            return;
+            enum { DEFAULT, PLAY, SKIP } mode = DEFAULT;
+            if (animType == ANIM_TYPE_MOVE)
+            {
+                switch (animId)
+                {
+                // Play Transform and Ally Switch even in headless
+                // because the animations also change mon data.
+                case MOVE_TRANSFORM:
+                case MOVE_ALLY_SWITCH:
+                    mode = PLAY;
+                    break;
+                // Skip Celebrate even in non-headless because it's
+                // very noisy.
+                case MOVE_CELEBRATE:
+                    mode = SKIP;
+                    break;
+                }
+            }
+            if ((mode == DEFAULT && gTestRunnerHeadless) || mode == SKIP)
+            {
+                gAnimScriptCallback = Nop;
+                gAnimScriptActive = FALSE;
+                return;
+            }
         }
     }
 
@@ -1138,6 +1160,8 @@ static void Task_InitUpdateMonBg(u8 taskId)
         gTasks[updateTaskId].t2_BgY = gBattle_BG2_Y;
     }
 
+    assertf(sMonAnimTaskIdArray[tIsPartner] == TASK_NONE, "Duplicate monbg without clearmonbg");
+
     gTasks[updateTaskId].t2_InBg2 = tInBg2;
     gTasks[updateTaskId].t2_BattlerId = tBattlerId;
     sMonAnimTaskIdArray[tIsPartner] = updateTaskId;
@@ -1251,17 +1275,17 @@ void MoveBattlerSpriteToBG(enum BattlerId battler, bool8 toBG_2, bool8 setSprite
         if (IsContest() == TRUE)
         {
             RequestDma3Fill(0, (void *)(BG_SCREEN_ADDR(16)), 0x2000, 1);
-            RequestDma3Fill(0xFF, (void *)(BG_SCREEN_ADDR(30)), 0x1000, 0);
+            RequestDma3Fill(0, (void *)(BG_SCREEN_ADDR(30)), 0x1000, 0);
         }
         else
         {
             RequestDma3Fill(0, (void *)(BG_SCREEN_ADDR(8)), 0x2000, 1);
-            RequestDma3Fill(0xFF, (void *)(BG_SCREEN_ADDR(28)), 0x1000, 0);
+            RequestDma3Fill(0, (void *)(BG_SCREEN_ADDR(28)), 0x1000, 0);
         }
 
         GetBattleAnimBg1Data(&animBg);
         CpuFill16(0, animBg.bgTiles, 0x1000);
-        CpuFill16(0xFF, animBg.bgTilemap, 0x800);
+        CpuFill16(0, animBg.bgTilemap, 0x800);
 
         SetAnimBgAttribute(1, BG_ANIM_PRIORITY, 2);
         SetAnimBgAttribute(1, BG_ANIM_SCREEN_SIZE, 1);

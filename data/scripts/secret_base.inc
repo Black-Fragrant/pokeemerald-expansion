@@ -132,21 +132,21 @@ SecretBase_EventScript_ShrubEnter::
 SecretBase_EventScript_InitSecretBase::
 	closemessage
 	playse SE_EXIT
-	setvar VAR_INIT_SECRET_BASE, 0
+	setvar VAR_PLACEHOLDER, 0
 	setflag FLAG_HIDE_SECRET_BASE_TRAINER
 	special SetPlayerSecretBase
 	special EnterSecretBase
 	setvar VAR_0x8004, 0
 	setvar VAR_0x8005, 0
 	special InitSecretBaseDecorationSprites
-	setvar VAR_SECRET_BASE_INITIALIZED, 1
+	setvar VAR_PLACEHOLDER, 1
 	waitstate
 	end
 
 SecretBase_EventScript_FirstEntrance::
 	applymovement LOCALID_PLAYER, SecretBase_Movement_EnterBase
 	waitmovement 0
-	setvar VAR_INIT_SECRET_BASE, 1
+	setvar VAR_PLACEHOLDER, 1
 	msgbox SecretBase_Text_WantToMakeYourSecretBaseHere, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, SecretBase_EventScript_SetAsBase
 	closemessage
@@ -158,7 +158,6 @@ SecretBase_EventScript_SetAsBase::
 	closemessage
 	setflag FLAG_RECEIVED_SECRET_POWER
 	special EnterNewlyCreatedSecretBase
-	waitstate
 	end
 
 SecretBase_Movement_EnterBase:
@@ -168,20 +167,20 @@ SecretBase_Movement_EnterBase:
 
 SecretBase_EventScript_Enter::
 	lockall
-	setvar VAR_INIT_SECRET_BASE, 1
+	setvar VAR_PLACEHOLDER, 1
 	playse SE_EXIT
 	special IsCurSecretBaseOwnedByAnotherPlayer
 	goto_if_eq VAR_RESULT, FALSE, SecretBase_EventScript_EnterPlayersBase
 	clearflag FLAG_HIDE_SECRET_BASE_TRAINER
 	special EnterSecretBase
-	setvar VAR_SECRET_BASE_INITIALIZED, 0
+	setvar VAR_PLACEHOLDER, 0
 	waitstate
 	end
 
 SecretBase_EventScript_EnterPlayersBase::
 	setflag FLAG_HIDE_SECRET_BASE_TRAINER
 	special EnterSecretBase
-	setvar VAR_SECRET_BASE_INITIALIZED, 0
+	setvar VAR_PLACEHOLDER, 0
 	waitstate
 	end
 
@@ -252,7 +251,7 @@ SecretBase_EventScript_InitDecorations::
 	setvar VAR_0x8004, 0
 	setvar VAR_0x8005, 0
 	special InitSecretBaseDecorationSprites
-	setvar VAR_SECRET_BASE_INITIALIZED, 1
+	setvar VAR_PLACEHOLDER, 1
 	end
 
 SecretBase_EventScript_SetDecoration::
@@ -641,7 +640,6 @@ SecretBase_EventScript_BattleTrainer::
 	setvar VAR_0x8004, SPECIAL_BATTLE_SECRET_BASE
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle
-	waitstate
 	call_if_eq VAR_RESULT, B_OUTCOME_DREW, SecretBase_EventScript_DrewSecretBaseBattle
 	call_if_eq VAR_RESULT, B_OUTCOME_WON, SecretBase_EventScript_WonSecretBaseBattle
 	call_if_eq VAR_RESULT, B_OUTCOME_LOST, SecretBase_EventScript_LostSecretBaseBattle

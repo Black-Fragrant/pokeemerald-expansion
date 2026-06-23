@@ -15,10 +15,13 @@
 #include "menu.h"
 #include "pokedex.h"
 #include "constants/rgb.h"
+#include "script.h"
 
 extern const u8 gText_DexNational[];
 extern const u8 gText_DexHoenn[];
 extern const u8 gText_PokedexDiploma[];
+
+extern const u8 gText_ProfJuniperLetter[];
 
 static void MainCB2(void);
 static void Task_DiplomaFadeIn(u8);
@@ -28,6 +31,13 @@ static void DisplayDiplomaText(void);
 static void InitDiplomaBg(void);
 static void InitDiplomaWindow(void);
 static void PrintDiplomaText(u8 *, u8, u8);
+static u8 sDiplomaMedalSpriteId;
+
+// Juniper Letter forward declarations
+static void DisplayJuniperLetterText(void);
+static void Task_JuniperFadeIn(u8);
+static void Task_JuniperWaitForKeyPress(u8);
+static void Task_JuniperFadeOut(u8);
 
 EWRAM_DATA static u8 *sDiplomaTilemapPtr = NULL;
 
@@ -40,12 +50,81 @@ static void VBlankCB(void)
 
 static const u16 sDiplomaPalettes[][16] =
 {
-    INCBIN_U16("graphics/diploma/national.gbapal"),
-    INCBIN_U16("graphics/diploma/hoenn.gbapal"),
+    INCGFX_U16("graphics/diploma/national.pal", ".gbapal"),
+    INCGFX_U16("graphics/diploma/hoenn.pal", ".gbapal"),
 };
 
-static const u32 sDiplomaTilemap[] = INCBIN_U32("graphics/diploma/tilemap.bin.smolTM");
-static const u32 sDiplomaTiles[] = INCBIN_U32("graphics/diploma/tiles.4bpp.smol");
+static const u32 sDiplomaTilemap[] = INCGFX_U32("graphics/diploma/tilemap.bin", ".smolTM");
+static const u32 sDiplomaTiles[] = INCGFX_U32("graphics/diploma/tiles.png", ".4bpp.smol");
+
+// ---------------------------------------------------------
+// Juniper Letter Graphics (your own files)
+// ---------------------------------------------------------
+
+static const u32 sJuniperLetterTilemap[] = INCGFX_U32("graphics/juniper_letter/tilemap.bin", ".smolTM");
+static const u32 sJuniperLetterTiles[]   = INCGFX_U32("graphics/juniper_letter/tiles.png", ".4bpp.smol");
+static const u16 sJuniperLetterPal[]     = INCGFX_U16("graphics/juniper_letter/palette.pal", ".gbapal");
+
+// ----------------------------------------
+// Diploma Medal Sprite (64x256, 4 frames)
+// ----------------------------------------
+
+static const u8 sDiplomaMedalTiles[] = INCBIN_U8("graphics/diploma/medal.4bpp");
+static const u16 sDiplomaMedalPal[]  = INCBIN_U16("graphics/diploma/medal.gbapal");
+
+#define TAG_DIPLOMA_MEDAL  0x5020
+
+static const struct SpriteSheet sDiplomaMedalSpriteSheet =
+{
+    .data = sDiplomaMedalTiles,
+    .size = sizeof(sDiplomaMedalTiles), // 8192 bytes
+    .tag  = TAG_DIPLOMA_MEDAL,
+};
+
+static const struct SpritePalette sDiplomaMedalSpritePalette =
+{
+    .data = sDiplomaMedalPal,
+    .tag  = TAG_DIPLOMA_MEDAL,
+};
+
+// 64×64 → 64 tiles per frame
+static const union AnimCmd sDiplomaMedalAnimCmds[] =
+{
+    ANIMCMD_FRAME(0,   52),  // frame 0: tiles 0–63
+    ANIMCMD_FRAME(64,  4),  // frame 1: tiles 64–127
+    ANIMCMD_FRAME(128, 4),  // frame 2: tiles 128–191
+    ANIMCMD_FRAME(192, 4),  // frame 3: tiles 192–255
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sDiplomaMedalAnimTable[] =
+{
+    sDiplomaMedalAnimCmds,
+};
+
+static const struct OamData sOamData_DiplomaMedal =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .priority = 1,
+};
+
+static const struct SpriteTemplate sDiplomaMedalSpriteTemplate =
+{
+    .tileTag = TAG_DIPLOMA_MEDAL,
+    .paletteTag = TAG_DIPLOMA_MEDAL,
+    .oam = &sOamData_DiplomaMedal,
+    .anims = sDiplomaMedalAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
 
 void CB2_ShowDiploma(void)
 {
@@ -82,6 +161,18 @@ void CB2_ShowDiploma(void)
         ;
     DecompressDataWithHeaderWram(sDiplomaTilemap, sDiplomaTilemapPtr);
     CopyBgTilemapBufferToVram(1);
+    // ------------------------------
+    // Spawn Diploma Medal Sprite
+    // ------------------------------
+    LoadSpriteSheet(&sDiplomaMedalSpriteSheet);
+    LoadSpritePalette(&sDiplomaMedalSpritePalette);
+
+    u8 medalSpriteId = CreateSprite(&sDiplomaMedalSpriteTemplate, 30, 30, 0);
+    StartSpriteAnim(&gSprites[medalSpriteId], 0);
+
+    // store spriteId globally or in static
+    sDiplomaMedalSpriteId = medalSpriteId;
+
     DisplayDiplomaText();
     BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
@@ -90,6 +181,91 @@ void CB2_ShowDiploma(void)
     SetMainCallback2(MainCB2);
     CreateTask(Task_DiplomaFadeIn, 0);
 }
+
+// ---------------------------------------------------------
+// Juniper Letter Window Template (clone of diploma)
+// ---------------------------------------------------------
+static const struct WindowTemplate sJuniperWinTemplates[2] =
+{
+    {
+        .bg = 0,
+        .tilemapLeft = 5,
+        .tilemapTop = 4,   // moved down ~24px (3 tiles)
+        .width = 24,
+        .height = 16,
+        .paletteNum = 15,
+        .baseBlock = 1,
+    },
+    DUMMY_WIN_TEMPLATE,
+};
+
+// New: Juniper Letter screen
+void CB2_ShowJuniperLetter(void)
+{
+    SetVBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0);
+    SetGpuReg(REG_OFFSET_BG3CNT, 0);
+    SetGpuReg(REG_OFFSET_BG2CNT, 0);
+    SetGpuReg(REG_OFFSET_BG1CNT, 0);
+    SetGpuReg(REG_OFFSET_BG0CNT, 0);
+    SetGpuReg(REG_OFFSET_BG3HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG3VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+
+    DmaFill16(3, 0, VRAM, VRAM_SIZE);
+    DmaFill32(3, 0, OAM, OAM_SIZE);
+    DmaFill16(3, 0, PLTT, PLTT_SIZE);
+
+    ScanlineEffect_Stop();
+    ResetTasks();
+    ResetSpriteData();
+    ResetPaletteFade();
+    FreeAllSpritePalettes();
+
+    // TODO: replace with Juniper-specific palettes later
+    LoadPalette(sJuniperLetterPal, BG_PLTT_ID(0), 32);
+
+    sDiplomaTilemapPtr = Alloc(0x1000);
+
+    // TODO: later we can make Juniper-specific BG init if needed
+    InitDiplomaBg();
+    InitWindows(sJuniperWinTemplates);
+    DeactivateAllTextPrinters();
+    LoadPalette(gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    FillWindowPixelBuffer(0, PIXEL_FILL(0));
+    PutWindowTilemap(0);
+
+    ResetTempTileDataBuffers();
+
+    // TODO: replace with Juniper-specific tiles later
+    DecompressAndCopyTileDataToVram(1, &sJuniperLetterTiles, 0, 0, 0);
+    while (FreeTempTileDataBuffersIfPossible())
+        ;
+
+    // TODO: replace with Juniper-specific tilemap later
+    DecompressDataWithHeaderWram(sJuniperLetterTilemap, sDiplomaTilemapPtr);
+    CopyBgTilemapBufferToVram(1);
+
+    // NOTE: no medal sprite here
+
+    // TODO: replace with Juniper-specific text function
+    DisplayJuniperLetterText();
+
+    BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+    EnableInterrupts(1);
+    SetVBlankCallback(VBlankCB);
+    SetMainCallback2(MainCB2);
+
+    // TODO: later we’ll make a separate task for longer delay
+    CreateTask(Task_JuniperFadeIn, 0);
+}
+
 
 static void MainCB2(void)
 {
@@ -103,6 +279,38 @@ static void Task_DiplomaFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active)
         gTasks[taskId].func = Task_DiplomaWaitForKeyPress;
+}
+
+// ---------------------------------------------------------
+// Juniper Letter Tasks (clone of diploma tasks, simplified)
+// ---------------------------------------------------------
+
+static void Task_JuniperFadeIn(u8 taskId)
+{
+    if (!gPaletteFade.active)
+        gTasks[taskId].func = Task_JuniperWaitForKeyPress;
+}
+
+static void Task_JuniperWaitForKeyPress(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON | B_BUTTON))
+    {
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_JuniperFadeOut;
+    }
+}
+
+static void Task_JuniperFadeOut(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        Free(sDiplomaTilemapPtr);
+        FreeAllWindowBuffers();
+        DestroyTask(taskId);
+
+        ScriptContext_Enable();  // <-- REQUIRED for script to continue
+        SetMainCallback2(CB2_ReturnToFieldContinueScript);
+    }
 }
 
 static void Task_DiplomaWaitForKeyPress(u8 taskId)
@@ -119,9 +327,17 @@ static void Task_DiplomaFadeOut(u8 taskId)
     if (!gPaletteFade.active)
     {
         Free(sDiplomaTilemapPtr);
+
+        // Destroy Diploma Medal Sprite
+        DestroySprite(&gSprites[sDiplomaMedalSpriteId]);
+        FreeSpriteTilesByTag(TAG_DIPLOMA_MEDAL);
+        FreeSpritePaletteByTag(TAG_DIPLOMA_MEDAL);
+
         FreeAllWindowBuffers();
         DestroyTask(taskId);
-        SetMainCallback2(CB2_ReturnToFieldFadeFromBlack);
+
+        // FIX: resume script after waitstate
+        SetMainCallback2(CB2_ReturnToFieldContinueScript);
     }
 }
 
@@ -138,6 +354,19 @@ static void DisplayDiplomaText(void)
         StringCopy(gStringVar1, gText_DexHoenn);
     }
     StringExpandPlaceholders(gStringVar4, gText_PokedexDiploma);
+    PrintDiplomaText(gStringVar4, 0, 1);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, COPYWIN_FULL);
+}
+
+// ---------------------------------------------------------
+// Juniper Letter Text
+// ---------------------------------------------------------
+static void DisplayJuniperLetterText(void)
+{
+    // Replace this with your actual text pointer later
+    StringCopy(gStringVar4, gText_ProfJuniperLetter);
+
     PrintDiplomaText(gStringVar4, 0, 1);
     PutWindowTilemap(0);
     CopyWindowToVram(0, COPYWIN_FULL);
@@ -183,8 +412,8 @@ static const struct WindowTemplate sDiplomaWinTemplates[2] =
     {
         .bg = 0,
         .tilemapLeft = 5,
-        .tilemapTop = 2,
-        .width = 20,
+        .tilemapTop = 1,
+        .width = 24,
         .height = 16,
         .paletteNum = 15,
         .baseBlock = 1,

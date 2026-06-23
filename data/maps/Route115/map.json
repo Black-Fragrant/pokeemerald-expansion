@@ -451,5 +451,6 @@
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_UNUSED_0xXXX"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

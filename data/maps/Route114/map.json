@@ -505,5 +505,6 @@
       "item": "ITEM_REVIVE",
       "flag": "FLAG_UNUSED_0xXXX"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

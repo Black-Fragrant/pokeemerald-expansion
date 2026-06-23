@@ -12,7 +12,7 @@ Debug_CheatStart::
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
 	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	setvar VAR_METEOR_FALLS_STATE, 3
 	givemon SPECIES_TREECKO, 20, ITEM_NONE
 	givemon SPECIES_TORCHIC, 20, ITEM_NONE
@@ -26,14 +26,14 @@ Debug_CheatStart::
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
 	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
+	setvar VAR_PLACEHOLDER, 7 @ 7: Told to go meet rival
+	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
+	setvar VAR_PLACEHOLDER, 2 @ 2: Met Rival's Mom (and is corresponding gender)
+	setvar VAR_PLACEHOLDER, 4 @ 4: Received Pokedex
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
-	setvar VAR_BRINEY_HOUSE_STATE, 1
-	setvar VAR_ROUTE116_STATE, 2
+	setvar VAR_PLACEHOLDER, 1
+	setvar VAR_PLACEHOLDER, 2
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_BADGE02_GET
 	setflag FLAG_BADGE03_GET
@@ -159,7 +159,6 @@ Debug_EventScript_CheckEVs::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckEVs_End
 	callnative Script_GetChosenMonOffensiveEVs
 	msgbox Debug_EventScript_Text_OffensiveEVs, MSGBOX_DEFAULT
@@ -180,7 +179,6 @@ Debug_EventScript_CheckIVs::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckIVs_End
 	callnative Script_GetChosenMonOffensiveIVs
 	msgbox Debug_EventScript_Text_OffensiveIVs, MSGBOX_DEFAULT
@@ -198,25 +196,17 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_SHOUT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_TRANSPARENT
-    closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-    closemessage
-	release
+	warpsilent MAP_CASTELIA_CITY_THUMB_PIER, 14, 14
+	waitstate
 	end
 
 Debug_EventScript_Script_1_text::
 	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
-	warp MAP_SKY_ARROW_BRIDGE, 16, 17
-	waitstate
+	setflag FLAG_LIBERTY_GARDEN_POLICE
+	setflag FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE
+	setflag FLAG_LIBERTY_GARDEN_JUNIPER
 	end
 
 Debug_EventScript_Script_3::
@@ -286,12 +276,10 @@ Debug_HatchAnEgg::
 	getpartysize
 	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_HatchAnEgg_End
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_ne VAR_RESULT, SPECIES_EGG, DebugScript_HatchAnEgg_CantForceHatch
 	special EggHatch
-	waitstate
 Debug_HatchAnEgg_End::
 	releaseall
 	end
@@ -372,7 +360,6 @@ Debug_EventScript_WallyTutorial::
 	special SavePlayerParty
 	special LoadWallyZigzagoon
 	special StartWallyTutorialBattle
-	waitstate
 	special LoadPlayerParty
 	release
 	end
@@ -413,7 +400,6 @@ Debug_EventScript_InflictStatus1_Close:
 
 Debug_EventScript_InflictStatus1_Single:
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -439,7 +425,6 @@ Debug_EventScript_InflictStatus1_Single:
 
 Debug_EventScript_KoPokemon::
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -449,7 +434,6 @@ Debug_EventScript_KoPokemon::
 
 Debug_EventScript_SetHiddenNature::
 	special ChoosePartyMon
-	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
 	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
@@ -487,7 +471,6 @@ Debug_EventScript_SetHiddenNature::
 
 Debug_EventScript_SetAbility::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_GetAbilityNames
 	dynmultipush gStringVar1, 0
 	dynmultipush gStringVar2, 1
@@ -502,14 +485,12 @@ Debug_EventScript_SetAbilityClose:
 
 Debug_EventScript_SetFriendship::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_Party_SetFriendship
 	releaseall
 	end
 
 Debug_EventScript_GivePokerus::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_Party_SetPokerus
 	releaseall
 	end

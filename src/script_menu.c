@@ -26,6 +26,8 @@
 #include "graphics.h"
 #include "large_item_pic.h"
 #include "gpu_regs.h"
+#include "script.h"
+#include "menu_helpers.h"
 
 #include "data/script_menu.h"
 
@@ -600,15 +602,6 @@ bool8 ScriptMenu_YesNo(u8 left, u8 top)
     }
 }
 
-// Unused
-bool8 IsScriptActive(void)
-{
-    if (gSpecialVar_Result == 0xFF)
-        return FALSE;
-    else
-        return TRUE;
-}
-
 static void Task_HandleYesNoInput(u8 taskId)
 {
     if (gTasks[taskId].tRight < 5)
@@ -1017,18 +1010,28 @@ u8 CreateLargeItemSprite_PicBox(u16 picId, s16 x, s16 y, u8 priority)
     return CreateSprite(&gLargeItemPicTemplate[picId], x, y, priority);
 }
 
-static void ReapplyLargeItemPicBlending(void)
+static void CreateLargeItemPicBg2x2(u8 *outSpriteIds, s16 centerX, s16 centerY)
 {
-    SetGpuReg(REG_OFFSET_BLDCNT,
-              BLDCNT_TGT1_OBJ
-            | BLDCNT_TGT2_BG0
-            | BLDCNT_TGT2_BG1
-            | BLDCNT_TGT2_BG2
-            | BLDCNT_TGT2_BG3
-            | BLDCNT_TGT2_BD
-            | BLDCNT_EFFECT_BLEND);
+    // Offsets for each quadrant relative to the center
+    // TL = (-32, -32), TR = (+32, -32)
+    // BL = (-32, +32), BR = (+32, +32)
+    static const s16 sOffsets[4][2] =
+    {
+        { -32, -32 }, // TL
+        { +32, -32 }, // TR
+        { -32, +32 }, // BL
+        { +32, +32 }, // BR
+    };
 
-    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(10, 6));
+    for (int i = 0; i < 4; i++)
+    {
+        outSpriteIds[i] = CreateSprite(
+            &gLargeItemPicBg2x2Templates[i],
+            centerX + sOffsets[i][0],
+            centerY + sOffsets[i][1],
+            1   // priority behind item
+        );
+    }
 }
 
 static void Task_LargeItemPicWindow(u8 taskId)
@@ -1038,7 +1041,7 @@ static void Task_LargeItemPicWindow(u8 taskId)
     switch (task->data[0])
     {
     case 0:
-        //ReapplyLargeItemPicBlending();
+        // ReapplyLargeItemPicBlending();
         break;
 
     case 1: // begin closing
@@ -1046,53 +1049,74 @@ static void Task_LargeItemPicWindow(u8 taskId)
         task->data[0]++;
         break;
 
-    case 2: // destroy sprites + free resources
-        // Free item sprite tiles/palette
-        FreeSpriteTilesByTag(task->data[2]);     // tileTag
-        FreeSpritePaletteByTag(task->data[2]);   // paletteTag
+    case 2:
+        {
+                // Free item sprite tiles + palette
+                FreeSpriteTilesByTag(task->data[2]);
+                FreeSpritePaletteByTag(task->data[2]);
+                DestroySprite(&gSprites[task->data[3]]);
 
-        // Destroy item sprite
-        DestroySprite(&gSprites[task->data[3]]); // item spriteId
+                // Free all 4 BG tiles
+                FreeSpriteTilesByTag(4999);
+                FreeSpriteTilesByTag(4998);
+                FreeSpriteTilesByTag(4997);
+                FreeSpriteTilesByTag(4996);
 
-        // ⭐ Free BG sprite tiles/palette (tag 4999)
-        FreeSpriteTilesByTag(4999);
-        FreeSpritePaletteByTag(4999);
+                // Free shared palette
+                FreeSpritePaletteByTag(4999);
 
-        // Destroy BG sprite
-        DestroySprite(&gSprites[task->data[4]]); // bg spriteId
+                // Destroy all 4 BG sprites
+                DestroySprite(&gSprites[task->data[4]]);
+                DestroySprite(&gSprites[task->data[5]]);
+                DestroySprite(&gSprites[task->data[6]]);
+                DestroySprite(&gSprites[task->data[7]]);
 
-        DestroyTask(taskId);
-        break;
+                DestroyTask(taskId);
+                break;
+        }
     }
 }
 
 bool8 ScriptMenu_ShowLargeItemPic(u16 picId, u8 x, u8 y)
 {
     u8 spriteId;
-    u8 bgSpriteId;
     u8 taskId;
-    // -----------------------------------------
-    // 1. Load background sprite graphics
-    // -----------------------------------------
-    LoadCompressedSpriteSheet(&gLargeItemPicBgSpriteSheet);
-    LoadSpritePalette(&gLargeItemPicBgSpritePalette);
-    // -----------------------------------------
-    // 2. Create background sprite (80x80)
-    // Priority 3 = behind item sprite
-    // -----------------------------------------
-    bgSpriteId = CreateSprite(
-        &gLargeItemPicBgSpriteTemplate,
-        x * 8 + 40,
-        y * 8 + 40,
-        1
-    );
-    spriteId = CreateLargeItemSprite_PicBox(picId, x * 8 + 40, y * 8 + 40, 0);
+    u8 bgSpriteIds[4];
 
+    s16 centerX = x * 8 + 40;
+    s16 centerY = y * 8 + 40;
+
+    // -----------------------------------------
+    // Load all 4 BG tiles + shared palette
+    // -----------------------------------------
+    for (int i = 0; i < 4; i++)
+        LoadCompressedSpriteSheet(&gLargeItemPicBgSpriteSheets_2x2[i]);
+
+    LoadSpritePalette(&gLargeItemPicBgSpritePalette_2x2);
+
+    // -----------------------------------------
+    // Create the 4 background sprites
+    // -----------------------------------------
+    CreateLargeItemPicBg2x2(bgSpriteIds, centerX, centerY);
+
+    // -----------------------------------------
+    // Create the item sprite (foreground)
+    // -----------------------------------------
+    spriteId = CreateLargeItemSprite_PicBox(picId, centerX, centerY, 0);
+
+    // -----------------------------------------
+    // Create task
+    // -----------------------------------------
     taskId = CreateTask(Task_LargeItemPicWindow, 0x50);
-    gTasks[taskId].data[0] = 0;          // state
-    gTasks[taskId].data[2] = 5000 + picId; // tileTag/paletteTag
-    gTasks[taskId].data[3] = spriteId;       // item spriteId
-    gTasks[taskId].data[4] = bgSpriteId;     // ⭐ background spriteId
+    gTasks[taskId].data[0] = 0;                 // state
+    gTasks[taskId].data[2] = 5000 + picId;      // item tileTag/paletteTag
+    gTasks[taskId].data[3] = spriteId;          // item spriteId
+
+    // Store all 4 BG sprite IDs
+    gTasks[taskId].data[4] = bgSpriteIds[0];
+    gTasks[taskId].data[5] = bgSpriteIds[1];
+    gTasks[taskId].data[6] = bgSpriteIds[2];
+    gTasks[taskId].data[7] = bgSpriteIds[3];
 
     return TRUE;
 }
@@ -1321,7 +1345,6 @@ void DrawSeagallopDestinationMenu(void)
     u8 top;
     u8 numItems;
     u8 cursorWidth;
-    u8 UNUSED fontHeight;
     u8 windowId;
     u8 i;
     gSpecialVar_Result = 0xFF;
@@ -1342,7 +1365,6 @@ void DrawSeagallopDestinationMenu(void)
         top = 0;
     }
     cursorWidth = GetMenuCursorDimensionByFont(FONT_NORMAL, 0);
-    fontHeight = GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT);
     windowId = CreateWindowFromRect(17, top, 11, numItems * 2);
     SetStandardWindowBorderStyle(windowId, FALSE);
 
@@ -1417,4 +1439,156 @@ u16 GetSelectedSeagallopDestination(void)
             return gSpecialVar_Result;
     }
     return SEAGALLOP_VERMILION_CITY;
+}
+
+/* ========================================================================== */
+/*                          SCROLLING MULTICHOICE BOX                         */
+/* ========================================================================== */
+
+// Text displayed as options.
+
+static const u8 sText_Chili[]    = _("Chili");
+static const u8 sText_Cilan[]    = _("Cilan");
+static const u8 sText_Cress[]    = _("Cress");
+static const u8 sText_Lenora[]   = _("Lenora");
+static const u8 sText_Burgh[]    = _("Burgh");
+static const u8 sText_Elesa[]    = _("Elesa");
+static const u8 sText_Clay[]     = _("Clay");
+static const u8 sText_Skyla[]    = _("Skyla");
+static const u8 sText_Brycen[]   = _("Brycen");
+static const u8 sText_Iris[]     = _("Iris");
+static const u8 sText_Drayden[]  = _("Drayden");
+
+// Sets of multichoices.
+
+static const struct ListMenuItem sSet_Leaders[] =
+{
+    {sText_Chili,    0},
+    {sText_Cilan,    1},
+    {sText_Cress,    2},
+    {sText_Lenora,   3},
+    {sText_Burgh,    4},
+    {sText_Elesa,    5},
+    {sText_Clay,     6},
+    {sText_Skyla,    7},
+    {sText_Brycen,   8},
+    {sText_Iris,     9},
+    {sText_Drayden, 10},
+};
+
+// Table of your multichoice sets.
+struct
+{
+    const struct ListMenuItem *set;
+    int count;
+} static const sScrollingSets[] =
+{
+    {sSet_Leaders,      ARRAY_COUNT(sSet_Leaders)},
+};
+
+static void ScrollingMultichoice_MoveCursor(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+{
+    if (!onInit)
+        PlaySE(SE_SELECT);
+}
+
+static void Task_ScrollingMultichoiceInput(u8 taskId);
+
+static const struct ListMenuTemplate sMultichoiceListTemplate =
+{
+    .items = NULL,
+    .moveCursorFunc = ScrollingMultichoice_MoveCursor,
+    .itemPrintFunc = NULL,
+    .totalItems = 0,
+    .maxShowed = 0,
+    .windowId = 0,
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 1,
+    .cursorPal = 2,
+    .fillValue = 1,
+    .cursorShadowPal = 3,
+    .lettersSpacing = 1,
+    .itemVerticalPadding = 0,
+    .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
+    .fontId = FONT_NORMAL,
+    .cursorKind = CURSOR_BLACK_ARROW,
+};
+
+// 0x8004 = set id
+// 0x8005 = window X
+// 0x8006 = window Y
+// 0x8007 = items shown at once
+// 0x8008 = allow B press
+void ScriptMenu_ScrollingMultichoice(void)
+{
+    int i, windowId, taskId;
+    int width = 0;
+
+    int setId = gSpecialVar_0x8004;
+    int left  = gSpecialVar_0x8005;
+    int top   = gSpecialVar_0x8006;
+    int maxShowed = gSpecialVar_0x8007;
+
+    // Compute widest string
+    for (i = 0; i < sScrollingSets[setId].count; i++)
+        width = DisplayTextAndGetWidth(sScrollingSets[setId].set[i].name, width);
+
+    width = ConvertPixelWidthToTileWidth(width);
+
+    // Correct FireRed centering logic
+    left = ScriptMenu_AdjustLeftCoordFromWidth(left, width);
+
+    windowId = CreateWindowFromRect(left, top, width, maxShowed * 2);
+    SetStandardWindowBorderStyle(windowId, FALSE);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+
+    gMultiuseListMenuTemplate = sMultichoiceListTemplate;
+    gMultiuseListMenuTemplate.windowId = windowId;
+    gMultiuseListMenuTemplate.items = sScrollingSets[setId].set;
+    gMultiuseListMenuTemplate.totalItems = sScrollingSets[setId].count;
+    gMultiuseListMenuTemplate.maxShowed = maxShowed;
+
+    taskId = CreateTask(Task_ScrollingMultichoiceInput, 0);
+    gTasks[taskId].data[0] = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
+    gTasks[taskId].data[1] = gSpecialVar_0x8008; // allow B
+    gTasks[taskId].data[2] = windowId;
+}
+
+static void Task_ScrollingMultichoiceInput(u8 taskId)
+{
+    bool32 done = FALSE;
+    s32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    switch (input)
+    {
+    case LIST_HEADER:
+    case LIST_NOTHING_CHOSEN:
+        break;
+
+    case LIST_CANCEL:
+        if (gTasks[taskId].data[1]) // allow B?
+        {
+            PlaySE(SE_SELECT);
+            gSpecialVar_Result = 0x7F;
+            done = TRUE;
+        }
+        break;
+
+    default:
+        PlaySE(SE_SELECT);
+        gSpecialVar_Result = input;
+        done = TRUE;
+        break;
+    }
+
+    if (done)
+    {
+        DestroyListMenuTask(gTasks[taskId].data[0], NULL, NULL);
+        ClearStdWindowAndFrame(gTasks[taskId].data[2], TRUE);
+        RemoveWindow(gTasks[taskId].data[2]);
+        ScriptContext_Enable();
+        DestroyTask(taskId);
+    }
 }

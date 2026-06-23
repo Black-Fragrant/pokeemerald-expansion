@@ -3,6 +3,7 @@
   "name": "Route116",
   "layout": "LAYOUT_ROUTE116",
   "music": "MUS_ROUTE104",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_116",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -435,7 +436,7 @@
       "x": 47,
       "y": 9,
       "elevation": 3,
-      "var": "VAR_ROUTE116_STATE",
+      "var": "VAR_PLACEHOLDER",
       "var_value": "1",
       "script": "Route116_EventScript_BrineyTrigger"
     }

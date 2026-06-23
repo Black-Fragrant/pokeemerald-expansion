@@ -146,7 +146,7 @@ script NacreneCity_BLB_EventScript_Multi_Received
     msgbox("A lot of items have effects when Pokémon\n"
        "hold them, so try to find them!\p"
        "Well, work hard to fill up your Pokédex!\n"
-       "Good luck!", MSGBOX_DEFAULT, TRUE)
+       "Good luck!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BLB_ACETRAINER_F)
     destroy_speech_bubble()
     closemessage
     release

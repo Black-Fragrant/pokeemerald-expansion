@@ -18,6 +18,12 @@ EventScript_EmptyTrashCan::
 	msgbox Text_EmptyTrashCan, MSGBOX_SIGN
 	end
 
+EventScript_Diploma::
+	lock
+	special Special_ShowDiploma
+	release
+	end
+
 EventScript_ShopShelf::
 	msgbox Text_ShopShelf, MSGBOX_SIGN
 	end
@@ -36,4 +42,12 @@ EventScript_TripleDrawer::
 	
 EventScript_BookCase::
 	msgbox Text_BookCase, MSGBOX_SIGN
+	end
+	
+EventScript_Magazines::
+	msgbox Text_Magazines, MSGBOX_SIGN
+	end
+	
+EventScript_PokemonToRead::
+	msgbox Text_PokemonToRead, MSGBOX_SIGN
 	end

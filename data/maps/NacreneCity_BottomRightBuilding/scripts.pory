@@ -81,6 +81,7 @@ script NacreneCity_BRB_EventScript_Trader
                     "my Petilil!\p"
                     "I will take good care of your Cottonee!"))
 	setflag(FLAG_NACRENE_TRADED_PETILIL)
+    addvar(VAR_TIMES_YOU_HAVE_TRADED, 1)
 	release
 	end
 }

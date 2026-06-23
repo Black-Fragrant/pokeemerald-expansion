@@ -461,5 +461,6 @@
       "item": "ITEM_NUGGET",
       "flag": "FLAG_UNUSED_0xXXX"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

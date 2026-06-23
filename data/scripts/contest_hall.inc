@@ -2,7 +2,7 @@
 LilycoveCity_ContestLobby_EventScript_SpeakToContestReceptionist::
 	lock
 	faceplayer
-	goto_if_ne VAR_CONTEST_PRIZE_PICKUP, 0, LilycoveCity_ContestLobby_EventScript_PickUpPrize
+	goto_if_ne VAR_PLACEHOLDER, 0, LilycoveCity_ContestLobby_EventScript_PickUpPrize
 	call_if_set FLAG_RECEIVED_POKEBLOCK_CASE, LilycoveCity_ContestLobby_EventScript_ReceptionWelcome
 	call_if_unset FLAG_RECEIVED_POKEBLOCK_CASE, LilycoveCity_ContestLobby_EventScript_GivePokeblockCase
 	goto LilycoveCity_ContestLobby_EventScript_AskEnterContest
@@ -22,14 +22,14 @@ LilycoveCity_ContestLobby_EventScript_GivePokeblockCase::
 
 LilycoveCity_ContestLobby_EventScript_PickUpPrize::
 	msgbox LilycoveCity_ContestLobby_Text_PokemonWonWeHavePrize, MSGBOX_DEFAULT
-	switch VAR_CONTEST_PRIZE_PICKUP
+	switch VAR_PLACEHOLDER
 	case 4, LilycoveCity_ContestLobby_EventScript_GiveLuxuryBallAtCounter
 	end
 
 LilycoveCity_ContestLobby_EventScript_GiveLuxuryBallAtCounter::
 	giveitem ITEM_LUXURY_BALL
 	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_ContestLobby_EventScript_NoRoomForLuxuryBallAtCounter
-	setvar VAR_CONTEST_PRIZE_PICKUP, 0
+	setvar VAR_PLACEHOLDER, 0
 	closemessage
 	release
 	end
@@ -179,7 +179,7 @@ LilycoveCity_ContestLobby_EventScript_EnterMon::
 	msgbox LilycoveCity_ContestLobby_Text_YourMonIsEntryNum4, MSGBOX_DEFAULT
 	closemessage
 	releaseall
-	setvar VAR_CONTEST_HALL_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	return
 
 ContestHall_EventScript_DoContest::
@@ -202,7 +202,7 @@ ContestHall_EventScript_DoContest::
 	call ContestHall_EventScript_CongratulateWinner
 	call ContestHall_EventScript_AudienceLookAround
 	call ContestHall_EventScript_GiveWinnerPrize
-	setvar VAR_CONTEST_HALL_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	return
 
 ContestHall_EventScript_GetContestRankStringId::
@@ -270,7 +270,7 @@ ContestHall_EventScript_ContestGettingStarted::
 	return
 
 ContestHall_EventScript_GettingStarted::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_GettingStartedLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_GettingStartedLink
 	lockall
 	msgbox ContestHall_Text_GettingStartedParticipantsAsFollows, MSGBOX_DEFAULT
 	releaseall
@@ -313,7 +313,6 @@ ContestHall_EventScript_TryWaitForLink::
 
 ContestHall_EventScript_WaitForLink::
 	special LinkContestWaitForConnection
-	waitstate
 	return
 
 ContestHall_EventScript_ContestantWalkToCenter::
@@ -382,7 +381,7 @@ ContestHall_EventScript_ShowContestMonPic::
 	return
 
 ContestHall_EventScript_EntryXTrainersMon::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_EntryXTrainersMonLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_EntryXTrainersMonLink
 	message ContestHall_Text_EntryXTrainersMon
 	waitmessage
 	return
@@ -409,7 +408,7 @@ ContestHall_EventScript_AudienceVote::
 	return
 
 ContestHall_EventScript_AudienceWillVote::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_AudienceWillVoteLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_AudienceWillVoteLink
 	msgbox ContestHall_Text_SeenContestantsAudienceWillVote, MSGBOX_DEFAULT
 	return
 
@@ -433,7 +432,7 @@ ContestHall_EventScript_AudienceWillVoteWireless::
 	return
 
 ContestHall_EventScript_VotingUnderWay::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_VotingUnderWayLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_VotingUnderWayLink
 	message ContestHall_Text_VotingUnderWay
 	return
 
@@ -475,11 +474,11 @@ ContestHall_EventScript_AudienceReactToContestant::
 @    and are set to 9 if they havent displayed a heart yet, and 1 if they have
 ContestHall_EventScript_AudienceHeartEmotes::
 	special GetContestMonCondition
-	call_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_GetNumberOfHeartsNormal
-	call_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_SUPER, ContestHall_EventScript_GetNumberOfHeartsSuper
-	call_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_HYPER, ContestHall_EventScript_GetNumberOfHeartsHyper
-	call_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_MASTER, ContestHall_EventScript_GetNumberOfHeartsMaster
-	call_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_GetNumberOfHeartsLink
+	call_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_GetNumberOfHeartsNormal
+	call_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_NPC_SUPER, ContestHall_EventScript_GetNumberOfHeartsSuper
+	call_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_NPC_HYPER, ContestHall_EventScript_GetNumberOfHeartsHyper
+	call_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_NPC_MASTER, ContestHall_EventScript_GetNumberOfHeartsMaster
+	call_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_GetNumberOfHeartsLink
 	setvar VAR_TEMP_1, 9
 	setvar VAR_TEMP_2, 9
 	setvar VAR_TEMP_3, 9
@@ -772,7 +771,7 @@ ContestHall_EventScript_DoContestAppeals::
 	return
 
 ContestHall_EventScript_LetsAppeal::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_LetsAppealLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_LetsAppealLink
 	msgbox ContestHall_Text_VotingCompleteLetsAppeal, MSGBOX_DEFAULT
 	return
 
@@ -820,7 +819,7 @@ ContestHall_EventScript_ContestResults::
 	return
 
 ContestHall_EventScript_ThatsItForJudging::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_ThatsItForJudgingLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_ThatsItForJudgingLink
 	msgbox ContestHall_Text_ThatsItForJudging, MSGBOX_DEFAULT
 	return
 
@@ -832,7 +831,7 @@ ContestHall_EventScript_ThatsItForJudgingLink::
 	return
 
 ContestHall_EventScript_ThankYouForAppeals::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_ThankYouForAppealsLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_ThankYouForAppealsLink
 	msgbox ContestHall_Text_ThankYouForAppeals, MSGBOX_DEFAULT
 	return
 
@@ -844,7 +843,7 @@ ContestHall_EventScript_ThankYouForAppealsLink::
 	return
 
 ContestHall_EventScript_JudgeLooksReady::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_JudgeLooksReadyLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_JudgeLooksReadyLink
 	msgbox ContestHall_Text_JudgeLooksReady, MSGBOX_DEFAULT
 	return
 
@@ -856,7 +855,7 @@ ContestHall_EventScript_JudgeLooksReadyLink::
 	return
 
 ContestHall_EventScript_WeWillDeclareWinner::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_WeWillDeclareWinnerLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_WeWillDeclareWinnerLink
 	msgbox ContestHall_Text_WeWillNowDeclareWinner, MSGBOX_DEFAULT
 	return
 
@@ -906,7 +905,7 @@ ContestHall_EventScript_CongratulateWinner::
 	return
 
 ContestHall_EventScript_CongratsWinner::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_CongratsWinnerLink
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_CongratsWinnerLink
 	msgbox ContestHall_Text_CongratsTrainerXandMon, MSGBOX_DEFAULT
 	return
 
@@ -918,7 +917,7 @@ ContestHall_EventScript_CongratsWinnerLink::
 ContestHall_EventScript_AudienceLookAround::
 	addvar VAR_TEMP_1, 1
 	lockall
-	call_if_gt VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_VObjectAudienceLookAround
+	call_if_gt VAR_PLACEHOLDER, CONTEST_TYPE_NPC_NORMAL, ContestHall_EventScript_VObjectAudienceLookAround
 	applymovement LOCALID_CONTEST_AUDIENCE_5, ContestHall_Movement_AudienceMemberLookRight
 	applymovement LOCALID_CONTEST_AUDIENCE_2, ContestHall_Movement_AudienceMemberLookDown
 	applymovement LOCALID_CONTEST_AUDIENCE_3, ContestHall_Movement_AudienceMemberLookRight
@@ -1001,7 +1000,7 @@ ContestHall_EventScript_VObjectAudienceLookAround::
 	return
 
 ContestHall_EventScript_GiveWinnerPrize::
-	goto_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_LINK, ContestHall_EventScript_EndLinkContest
+	goto_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_LINK, ContestHall_EventScript_EndLinkContest
 	call ContestHall_EventScript_CheckShouldSkipPrize
 	goto_if_set FLAG_TEMP_2, ContestHall_EventScript_SkipPrize
 	lockall
@@ -1050,7 +1049,7 @@ ContestHall_EventScript_SetSketchFlag::
 	return
 
 ContestHall_EventScript_SetReadyForContestArtist::
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
+	setvar VAR_PLACEHOLDER, 1
 	return
 
 ContestHall_EventScript_EndLinkContest::
@@ -1063,7 +1062,7 @@ ContestHall_EventScript_EndLinkContest::
 	return
 
 ContestHall_EventScript_SetReadyForLinkContestArtist::
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	return
 
 @ Unused
@@ -1116,7 +1115,7 @@ ContestHall_EventScript_GivePrizeIfWinner::
 	return
 
 ContestHall_EventScript_GiveContestPrizes::
-	call_if_eq VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_SUPER, ContestHall_EventScript_SetSketchFlag
+	call_if_eq VAR_PLACEHOLDER, CONTEST_TYPE_NPC_SUPER, ContestHall_EventScript_SetSketchFlag
 	specialvar VAR_RESULT, HasMonWonThisContestBefore
 	goto_if_eq VAR_RESULT, FALSE, ContestHall_EventScript_ReceiveContestRibbon
 	goto_if_eq VAR_CONTEST_RANK, CONTEST_RANK_MASTER, ContestHall_EventScript_GiveLuxuryBall
@@ -1130,7 +1129,7 @@ ContestHall_EventScript_NoRoomForLuxuryBall::
 	call Common_EventScript_BagIsFull
 	msgbox ContestHall_Text_PickUpPrizeAtCounterLater, MSGBOX_DEFAULT
 	releaseall
-	setvar VAR_CONTEST_PRIZE_PICKUP, 4
+	setvar VAR_PLACEHOLDER, 4
 	return
 
 ContestHall_EventScript_GiveLuxuryBall::

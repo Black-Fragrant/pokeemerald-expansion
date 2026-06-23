@@ -1,0 +1,479 @@
+mapscripts Route4_South_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : Route4_South_On_Transition
+}
+
+script Route4_South_On_Transition
+{
+    call_if_ge(VAR_ROUTE_4_STATE, 1,  Route4_South_EventScript_PositionWorker)
+    end
+}
+
+script Route4_South_EventScript_PositionWorker
+{
+	setobjectxyperm(LOCALID_R4S_MINEWORKER, 49, 52)
+    return
+}
+
+script Route4_South_EventScript_ConstructionSign
+{
+    msgbox("Route 4", MSGBOX_SIGN)
+    end
+}
+
+script Route4_South_EventScript_RouteSign
+{
+    msgbox("Tired Workers should head\n"
+        "to the prefab house by Castelia City!", MSGBOX_SIGN)
+    end
+}
+
+script Route4_South_EventScript_TrainerTips
+{
+    msgbox("Trainer Tips!\p"
+        "Pokémon have a source of energy\n"
+        "for using moves.\p"
+        "It's called PP, meaning Power Points.\n"
+        "They have PP for each move.\p"
+        "When a move has no PP remaining,\n"
+        "that Pokémon cannot use that move.\p"
+        "That's a good time to head for\n"
+        "the Pokémon Center!", MSGBOX_SIGN)
+    end
+}
+
+script Route4_South_EventScript_Battle_Fisherman_1
+{
+	trainerbattle_single(TRAINER_FISHERMAN_ROUTE_4_1,
+	text("You've been caught by a powerful hook,\n"
+        "which is me!\p"
+        "I'll have a battle with you using\n"
+        "my freshly caught Pokémon!"),
+	text("Oh, no! The one who was caught...\n"
+        "was me!"))
+	msgbox("I usually release the Pokémon I catch.\n"
+        "That's called catch and release!\l"
+        "When I release them, I say these words:\p"
+        "Farewell, Pokémon.\n"
+        "It was a nice fight.\p"
+        "I'll say these words to you, too.\n"
+        "It was a nice fight!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_Fisherman_2
+{
+	trainerbattle_single(TRAINER_FISHERMAN_ROUTE_4_2,
+	text("OK! Good catch! Good catch!\n"
+        "My next catch will be called victory!"),
+	text("The victory that got away\n"
+        "was thiiiiiiiiiis big!"))
+	msgbox("Catch, caught, and catch again...\n"
+        "Life is fishing!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_ParasolLady
+{
+	trainerbattle_single(TRAINER_PARASOL_LADY_ROUTE_4,
+	text("I can't see up ahead\n"
+        "because of the sandstorm!\p"
+        "Because I can't see,\n"
+        "I'll have a battle with you!"),
+	text("S-a-n-d-s-t-o-r-m."))
+	msgbox("This parasol keeps off the sun and rain,\n"
+        "but it can't stand up to sandstorms...\p"
+        "Ah! My tears are falling on Route 4...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_1
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_1,
+	text("My way of life is dynamic!"),
+	text("My way of losing is\n"
+        "also dynamic!"))
+	msgbox("My Pokémon are always with me!\n"
+        "That's why I can be dynamic!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_2
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_2,
+	text("I'm a mucho macho Worker!\n"
+        "I'll bring you down with my muscles!"),
+	text("Argh!\n"
+        "The impudence!"))
+	msgbox("I dismissed you as just a kid...\n"
+        "Not at all... You're quite a Trainer!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerM_1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_4_1,
+	text("Well, at a time like this,\n"
+        "let's have a Pokémon battle!"),
+	text("I see.\n"
+        "Was that your favorite Pokémon?"))
+	msgbox("Whenever I go in the world,\n"
+        "I have Pokémon battles!\p"
+        "Once I ask about someone's favorite\n"
+        "Pokémon, we soon become friends!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerF_1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_ROUTE_4_1,
+	text("My travel partner is a Pokémon\n"
+        "that a popular guidebook recommended!"),
+	text("The guidebook does not tell me\n"
+        "how to win."))
+	msgbox("According to the popular guidebook,\n"
+        "Nimbasa City is an entertainment city.\l"
+        "It must be full of fun!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerF_2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_ROUTE_4_2,
+	text("Where did you come from?\n"
+        "Me? Well, if you can win, I'll tell you!"),
+	text("My first battle...\n"
+        "And I lost..."))
+	msgbox("To tell you the truth,\n"
+        "I just left Castelia City yesterday.\l"
+        "I've just started Pokémon battling, too.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_BackpackerM_2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_4_2,
+	text("The fun of traveling around the world\n"
+        "is having serious battles\l"
+        "with a lot of Pokémon I meet!"),
+	text("Wooo! You're a top-class Trainer,\n"
+        "the best in the world!\l"
+        "...But what do I know?"))
+	msgbox("As long as my Pokémon are with me,\n"
+        "I can battle Trainers all over the world!\p"
+        "The world is so big! Woooooo!\n"
+        "That's really exciting!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_3
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_3,
+	text("Ho there! Even in the middle of\n"
+        "construction, a Trainer will battle."),
+	text("Gah! I'm digging myself into a big hole!"))
+	msgbox("If you use a Pokémon move called Dig,\n"
+        "you can get out of a cave instantly!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Battle_MineWorker_4
+{
+	trainerbattle_single(TRAINER_WORKER_ROUTE_4_4,
+	text("A battle is like a construction project.\n"
+        "They're both a piece of cake for me!"),
+	text("Ooh... That piece of cake was\n"
+        "hard to swallow!"))
+	msgbox("I may have lost in the battle, but I bow\n"
+        "to nobody when it comes to construction!\p"
+        "You must have something like that, right?\n"
+        "Something you do better than anybody?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route4_South_EventScript_Cheren
+{
+    msgbox("Cheren: I believe it would be wise for me\n"
+           "to catch some Ground-type Pokémon.\p"
+           "Or perhaps I should strengthen my\n"
+           "Pokémon. What's my best path forward?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_Hiker
+{
+    msgbox("Oh! Trainer, take a look at the sand.\p"
+           "Do you see how some areas are lighter?\n"
+           "And some of the sand looks... darker...\p"
+           "Pokémon are hiding in the darker sand!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_BlueShirtGuy
+{
+    msgbox("When I look at the freeway,\n"
+        "I feel exhilarated!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_Beauty
+{
+    msgbox("Ruins buried in the desert...\n"
+        "It's like a grand adventure in a story.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_South_EventScript_MineWorker
+{
+    lock
+    faceplayer
+    goto_if_ge(VAR_ROUTE_4_STATE, 1, Route4_South_EventScript_MineWorker_NoLongerBlocking)
+    call(Route4_South_EventScript_MineWorker_Dialogue)
+    release
+    end
+}
+
+script Route4_South_EventScript_MineWorker_Dialogue
+{
+    msgbox("Hey! Trainer!\p"
+           "There is a bit of a problem up ahead.\n"
+           "Sorry, but you can't pass now.\p"
+           "You should go kill some time by\n"
+           "challenging the Castelia City Gym!", MSGBOX_DEFAULT, TRUE, LOCALID_R4S_MINEWORKER)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script Route4_South_EventScript_MineWorker_NoLongerBlocking
+{
+    msgbox("Deep in the desert ahead of here,\n"
+        "at the Desert Resort,\l"
+        "there are some ruins that have\l"
+        "become a little tourist destination!", MSGBOX_DEFAULT, TRUE, LOCALID_R4S_MINEWORKER)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script Route4_South_EventScript_Trigger_MineWorker
+{
+    lock
+    faceplayer
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_Trigger_MineWorker_Left)
+	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_Trigger_MineWorker_Right)
+	playse(SE_PIN)
+	applymovement(LOCALID_R4S_MINEWORKER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+    call(Route4_South_EventScript_MineWorker_Dialogue)
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(20)
+    release
+    end
+}
+
+script Route4_South_EventScript_Trigger_MineWorker_Left
+{
+	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_left))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_Trigger_MineWorker_Right
+{
+	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CherenBattle
+{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playbgm(MUS_BW_CHEREN, TRUE)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 47, Route4_South_EventScript_CB_Pos1)
+	call_if_eq (VAR_TEMP_0, 48, Route4_South_EventScript_CB_Pos2)
+	call_if_eq (VAR_TEMP_0, 49, Route4_South_EventScript_CB_Pos3)
+	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_CB_Pos4)
+	call_if_eq (VAR_TEMP_0, 51, Route4_South_EventScript_CB_Pos5)
+	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_CB_Pos6)
+	call_if_eq (VAR_TEMP_0, 53, Route4_South_EventScript_CB_Pos7)
+    delay(10)
+    msgbox("Cheren: Hey, {PLAYER}.\p"
+        "I've been waiting for you to get\n"
+        "the Insect Badge.\p"
+        "And now it's time to see which one of us\n"
+        "is the stronger Trainer!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	call_if_set(FLAG_CHOSE_SNIVY, Route4_South_EventScript_CB_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, Route4_South_EventScript_CB_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, Route4_South_EventScript_CB_Snivy)
+	delay(10)
+    msgbox("Cheren: It's now clear to me.\p"
+        "The reason you are so tough is the trust\n"
+        "between you and your Pokémon.\p"
+        "But...that shouldn't be a problem.\p"
+        "I can get more out of {STR_VAR_1}\n"
+        "and my other Pokémon, too.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	playse(SE_POKENAV_CALL)
+	msgbox("The Xtransceiver is ringing.\p"
+			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
+	waitse()
+	closemessage()
+	playse(SE_POKENAV_HANG_UP)
+	waitse()
+    delay(20)
+    msgbox("Cheren: Nimbasa City's gate is\n"
+            "straight down Route 4.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE4S_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 47, Route4_South_EventScript_CB_Pos8)
+	call_if_eq (VAR_TEMP_0, 48, Route4_South_EventScript_CB_Pos9)
+	call_if_eq (VAR_TEMP_0, 49, Route4_South_EventScript_CB_Pos10)
+	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_CB_Pos11)
+	call_if_eq (VAR_TEMP_0, 51, Route4_South_EventScript_CB_Pos12)
+	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_CB_Pos13)
+	call_if_eq (VAR_TEMP_0, 53, Route4_South_EventScript_CB_Pos14)
+    removeobject(LOCALID_ROUTE4S_CHEREN)
+    setvar(VAR_ROUTE_4_BIANCA_BATTLE, 4)
+    playbgm(MUS_BW_ROUTE_4, TRUE)
+	savebgm(MUS_BW_ROUTE_4)
+    delay(20)
+    release
+    end
+}
+
+script Route4_South_EventScript_CB_Tepig
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_1, text("Impressive.\nBut why can't I win?!"))
+	bufferstring(STR_VAR_1, text("Pignite"))
+	return()
+}
+
+script Route4_South_EventScript_CB_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_2, text("Impressive.\nBut why can't I win?!"))
+	bufferstring(STR_VAR_1, text("Dewott"))
+	return()
+}
+
+script Route4_South_EventScript_CB_Snivy
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_3, text("Impressive.\nBut why can't I win?!"))
+	bufferstring(STR_VAR_1, text("Servine"))
+	return()
+}
+
+script Route4_South_EventScript_CB_Pos1
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 3, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos2
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 2, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos3
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 1, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos4
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos5
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 1, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos6
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 2, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos7
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 3, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos8
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 3, walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos9
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 2, walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos10
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_right * 1, walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos11
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_up * 6))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos12
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 1 , walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos13
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 2 , walk_up * 5))
+	waitmovement(0)
+    return
+}
+
+script Route4_South_EventScript_CB_Pos14
+{
+	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_left * 3 , walk_up * 5))
+	waitmovement(0)
+    return
+}
+

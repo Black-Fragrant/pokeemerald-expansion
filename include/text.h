@@ -5,9 +5,11 @@
 #include "constants/characters.h"
 
 // This is to prevent the user from having a higher text speed modifier than the printing system can handle.
-STATIC_ASSERT(   TEXT_SPEED_SLOW_MODIFIER    <= 31
+STATIC_ASSERT(   TEXT_SPEED_SLOWER_MODIFIER    <= 31
+              && TEXT_SPEED_SLOW_MODIFIER  <= 31
               && TEXT_SPEED_MEDIUM_MODIFIER  <= 31
               && TEXT_SPEED_FAST_MODIFIER    <= 31
+              && TEXT_SPEED_FASTER_MODIFIER    <= 31
               && TEXT_SPEED_INSTANT_MODIFIER <= 31, TextSpeedModifiersCantGoPast31)
 
 // Given as a text speed when all the text should be
@@ -30,6 +32,11 @@ enum {
     FONT_SHORT_NARROW,
     FONT_BW_SUMMARY_SCREEN,
     FONT_SHORT_NARROWER,
+    // start bwBattleUI
+    FONT_OUTLINED,
+    FONT_OUTLINED_NARROW,
+    FONT_BATTLE_UI_ELEMENTS, // contains unique number glyph for double battle and status icons
+    // end bwBattleUI
 };
 
 #define FONT_MALE FONT_NORMAL
@@ -121,7 +128,10 @@ struct TextPrinter
     u16 downArrowYPosIdx:2;
     bool16 hasFontIdBeenSet:1;
     u8 autoScrollDelay;
-    u8 fontId:4;
+    // Start bwBattleUI
+    //u8 fontId:4;
+    u8 unused:4;
+    // End bwBattleUI
     bool8 hasPrintBeenSpedUp:1;
     u8 japanese:1;
     u8 active:1;
@@ -133,7 +143,11 @@ struct TextPrinter
     u8 minLetterSpacing;
 
     u8 textSpeed;
-    u8 padding[3];
+    // Start bwBattleUI
+    //u8 padding[3];
+    u8 fontId;      // expanded for new battle-related fonts.
+    u8 padding[2];
+    // End bwBattleUI
 
     struct TextPrinter *nextPrinter;
 
@@ -187,7 +201,7 @@ extern struct TextGlyph gCurGlyph;
 void DeactivateAllTextPrinters(void);
 void DeactivateSingleTextPrinter(u32 id, enum TextPrinterType type);
 u16 AddTextPrinterParameterized(u8 windowId, u8 fontId, const u8 *str, u8 x, u8 y, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16));
-u16 AddSpriteTextPrinterParametrerized(u8 spriteId, u8 fontId, const u8 *str, u8 x, u8 y, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16));
+u16 AddSpriteTextPrinterParameterized(u8 spriteId, u8 fontId, const u8 *str, u8 x, u8 y, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16));
 void AddSpriteTextPrinterParameterized3(u8 spriteId, u8 fontId, u8 left, u8 top, const u8 *color, s8 speed, const u8 *str);
 void AddSpriteTextPrinterParameterized4(u8 spriteId, u8 fontId, u8 left, u8 top, u8 letterSpacing, u8 lineSpacing, const u8 *color, s8 speed, const u8 *str);
 void AddSpriteTextPrinterParameterized6(u8 spriteId, u8 fontId, u8 left, u8 top, u8 letterSpacing, u8 lineSpacing, const union TextColor color, s8 speed, const u8 *str);
@@ -214,9 +228,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing);
 s32 GetStringLineWidth(u8 fontId, const u8 *str, s16 letterSpacing, u32 lineNum, u32 strSize);
 u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str);
 u8 DrawKeypadIcon(u8 windowId, u8 keypadIconId, u16 x, u16 y);
-u8 GetKeypadIconTileOffset(u8 keypadIconId);
 u8 GetKeypadIconWidth(u8 keypadIconId);
-u8 GetKeypadIconHeight(u8 keypadIconId);
 void SetDefaultFontsPointer(void);
 u8 GetFontAttribute(u8 fontId, u8 attributeId);
 u8 GetMenuCursorDimensionByFont(u8 fontId, u8 whichDimension);

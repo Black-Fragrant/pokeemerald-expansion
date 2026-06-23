@@ -29,6 +29,7 @@
 #include "config/overworld.h"
 #include "config/pokemon.h"
 #include "config/summary_screen.h"
+#include "config/wild_encounter.h"
 
 // Invalid Versions show as "----------" in Gen 4 and Gen 5's summary screen.
 // In Gens 6 and 7, invalid versions instead show "a distant land" in the summary screen.
@@ -190,10 +191,12 @@ enum Gender
 #define OPTIONS_BUTTON_MODE_LR 1
 #define OPTIONS_BUTTON_MODE_L_EQUALS_A 2
 
-#define OPTIONS_TEXT_SPEED_SLOW 0
-#define OPTIONS_TEXT_SPEED_MID 1
-#define OPTIONS_TEXT_SPEED_FAST 2
-#define OPTIONS_TEXT_SPEED_INSTANT 3
+#define OPTIONS_TEXT_SPEED_SLOWER 0
+#define OPTIONS_TEXT_SPEED_SLOW 1
+#define OPTIONS_TEXT_SPEED_MID 2
+#define OPTIONS_TEXT_SPEED_FAST 3
+#define OPTIONS_TEXT_SPEED_FASTER 4
+#define OPTIONS_TEXT_SPEED_INSTANT 5
 
 #define OPTIONS_SOUND_MONO 0
 #define OPTIONS_SOUND_STEREO 1

@@ -654,11 +654,13 @@ script AccumulaTown_EventScript_N_Battle
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
 	waitmovement(0)
 	special(RemoveCameraObject)
+	setflag(FLAG_TEXT_SPEED_FASTER)
 	delay(10)
 	msgbox("???: Your Pokémon...\p"
 		"Just now, it was saying...", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N) //this should be fast
 	destroy_speech_bubble()
 	closemessage()
+	clearflag(FLAG_TEXT_SPEED_FASTER)
 	applymovement(LOCALID_ACCUMULA_CHEREN_LOOKAROUND, moves(walk_in_place_up))
 	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
 	waitmovement(0)
@@ -667,6 +669,7 @@ script AccumulaTown_EventScript_N_Battle
 			"That's an odd thing to say.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
 	destroy_speech_bubble()
 	closemessage()
+	setflag(FLAG_TEXT_SPEED_FASTER)
 	delay(10)
 	msgbox("???: Yes, they're talking.\p"
 			"Oh.\n"
@@ -675,6 +678,7 @@ script AccumulaTown_EventScript_N_Battle
 			"My name is N.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N) //this should be fast
 	destroy_speech_bubble()
 	closemessage()
+	clearflag(FLAG_TEXT_SPEED_FASTER)
 	delay(10)
 	msgbox("Cheren: My name is Cheren,\n"
 			"and this is {PLAYER}.\p"
@@ -684,6 +688,7 @@ script AccumulaTown_EventScript_N_Battle
 			"Champion, though.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_CHEREN_LOOKAROUND)
 	destroy_speech_bubble()
 	closemessage()
+	setflag(FLAG_TEXT_SPEED_FASTER)
 	delay(10)
 	msgbox("N: The Pokédex, eh?\p"
 			"So... You're going to confine many, many\n"
@@ -693,20 +698,25 @@ script AccumulaTown_EventScript_N_Battle
 			"Are Pokémon really happy that way?", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N)
 	destroy_speech_bubble()
 	closemessage()
+	clearflag(FLAG_TEXT_SPEED_FASTER)
 	delay(10)
 	special(SpawnCameraObject)
 	applymovement(LOCALID_ACCUMULA_N, moves(walk_down))
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
 	waitmovement(0)
 	special(RemoveCameraObject)
+	setflag(FLAG_TEXT_SPEED_FASTER)
+	delay(10)
 	msgbox("Well, {PLAYER}, is it?\n"
 			"Let me hear your Pokémon's voice again!", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N)
 	destroy_speech_bubble()
 	closemessage()
+	clearflag(FLAG_TEXT_SPEED_FASTER)
 	clearflag(FLAG_ACCUMULA_TEAM_PLASMA)
 	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 2)
 	trainerbattle_no_intro (TRAINER_N_ACCUMULA_TOWN, text("I never expected to hear\nPokémon say such things..."))
 	setflag(FLAG_ACCUMULA_TEAM_PLASMA)
+	setflag(FLAG_TEXT_SPEED_FASTER)
 	setvar(VAR_ACCUMULA_TEAM_PLASMA_PREACH, 4)
 	msgbox("N: As long as Pokémon are confined\n"
 			"in Poké Balls...\p"
@@ -716,6 +726,7 @@ script AccumulaTown_EventScript_N_Battle
 			"Pokémon, because they're my friends.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_N)
 	destroy_speech_bubble()
 	closemessage()
+	clearflag(FLAG_TEXT_SPEED_FASTER)
 	delay(10)
 	applymovement(LOCALID_ACCUMULA_N, moves(walk_up * 6))
 	waitmovement(0)

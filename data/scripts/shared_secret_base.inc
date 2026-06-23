@@ -6,7 +6,7 @@ SecretBase_MapScripts::
 	.byte 0
 
 SecretBase_OnWarp:
-	map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, SecretBase_EventScript_InitDecorations
+	map_script_2 VAR_PLACEHOLDER, 0, SecretBase_EventScript_InitDecorations
 	.2byte 0
 
 SecretBase_OnTransition:
@@ -16,7 +16,7 @@ SecretBase_OnTransition:
 	end
 
 SecretBase_OnFrame:
-	map_script_2 VAR_INIT_SECRET_BASE, 0, SecretBase_EventScript_FirstEntrance
+	map_script_2 VAR_PLACEHOLDER, 0, SecretBase_EventScript_FirstEntrance
 	.2byte 0
 
 SecretBase_OnResume:

@@ -1998,7 +1998,7 @@ const struct Tileset gTileset_CasteliaCity1 =
     .palettes = gTilesetPalettes_CasteliaCity1,
     .metatiles = gMetatiles_CasteliaCity1,
     .metatileAttributes = gMetatileAttributes_CasteliaCity1,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CasteliaCity1,
 };
 
 const struct Tileset gTileset_CasteliaCityPiers =
@@ -2009,7 +2009,7 @@ const struct Tileset gTileset_CasteliaCityPiers =
     .palettes = gTilesetPalettes_CasteliaCityPiers,
     .metatiles = gMetatiles_CasteliaCityPiers,
     .metatileAttributes = gMetatileAttributes_CasteliaCityPiers,
-    .callback = NULL,
+    .callback = InitTilesetAnim_CasteliaCityPiers,
 };
 
 const struct Tileset gTileset_CasteliaCity2 =
@@ -2020,5 +2020,225 @@ const struct Tileset gTileset_CasteliaCity2 =
     .palettes = gTilesetPalettes_CasteliaCity2,
     .metatiles = gMetatiles_CasteliaCity2,
     .metatileAttributes = gMetatileAttributes_CasteliaCity2,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CasteliaCity3 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity3,
+    .palettes = gTilesetPalettes_CasteliaCity3,
+    .metatiles = gMetatiles_CasteliaCity3,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity3,
+    .callback = InitTilesetAnim_CasteliaCity3,
+};
+
+const struct Tileset gTileset_CasteliaCity4 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity4,
+    .palettes = gTilesetPalettes_CasteliaCity4,
+    .metatiles = gMetatiles_CasteliaCity4,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity4,
+    .callback = InitTilesetAnim_CasteliaCity4,
+};
+
+const struct Tileset gTileset_CasteliaCityCenter =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCityCenter,
+    .palettes = gTilesetPalettes_CasteliaCityCenter,
+    .metatiles = gMetatiles_CasteliaCityCenter,
+    .metatileAttributes = gMetatileAttributes_CasteliaCityCenter,
+    .callback = InitTilesetAnim_CasteliaCityCenter,
+};
+
+const struct Tileset gTileset_CasteliaCity5 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity5,
+    .palettes = gTilesetPalettes_CasteliaCity5,
+    .metatiles = gMetatiles_CasteliaCity5,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity5,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CasteliaCity6 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaCity6,
+    .palettes = gTilesetPalettes_CasteliaCity6,
+    .metatiles = gMetatiles_CasteliaCity6,
+    .metatileAttributes = gMetatileAttributes_CasteliaCity6,
+    .callback = InitTilesetAnim_CasteliaCity6,
+};
+
+const struct Tileset gTileset_IndoorCastelia =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorCastelia,
+    .palettes = gTilesetPalettes_IndoorCastelia,
+    .metatiles = gMetatiles_IndoorCastelia,
+    .metatileAttributes = gMetatileAttributes_IndoorCastelia,
+    .callback = InitTilesetAnim_IndoorCastelia,
+};
+
+const struct Tileset gTileset_IndoorPasserbyHQ =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorPasserbyHQ,
+    .palettes = gTilesetPalettes_IndoorPasserbyHQ,
+    .metatiles = gMetatiles_IndoorPasserbyHQ,
+    .metatileAttributes = gMetatileAttributes_IndoorPasserbyHQ,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IndoorCasteliaStudio =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorCasteliaStudio,
+    .palettes = gTilesetPalettes_IndoorCasteliaStudio,
+    .metatiles = gMetatiles_IndoorCasteliaStudio,
+    .metatileAttributes = gMetatileAttributes_IndoorCasteliaStudio,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CasteliaGym =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CasteliaGym,
+    .palettes = gTilesetPalettes_CasteliaGym,
+    .metatiles = gMetatiles_CasteliaGym,
+    .metatileAttributes = gMetatileAttributes_CasteliaGym,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CafeSonata =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CafeSonata,
+    .palettes = gTilesetPalettes_CafeSonata,
+    .metatiles = gMetatiles_CafeSonata,
+    .metatileAttributes = gMetatileAttributes_CafeSonata,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Route4 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route4,
+    .palettes = gTilesetPalettes_Route4,
+    .metatiles = gMetatiles_Route4,
+    .metatileAttributes = gMetatileAttributes_Route4,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_LibertyGarden =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LibertyGarden,
+    .palettes = gTilesetPalettes_LibertyGarden,
+    .metatiles = gMetatiles_LibertyGarden,
+    .metatileAttributes = gMetatileAttributes_LibertyGarden,
+    .callback = InitTilesetAnim_LibertyGarden,
+};
+
+const struct Tileset gTileset_IndoorLibertyGarden =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorLibertyGarden,
+    .palettes = gTilesetPalettes_IndoorLibertyGarden,
+    .metatiles = gMetatiles_IndoorLibertyGarden,
+    .metatileAttributes = gMetatileAttributes_IndoorLibertyGarden,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IndoorRoute4 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorRoute4,
+    .palettes = gTilesetPalettes_IndoorRoute4,
+    .metatiles = gMetatiles_IndoorRoute4,
+    .metatileAttributes = gMetatileAttributes_IndoorRoute4,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DesertResort =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DesertResort,
+    .palettes = gTilesetPalettes_DesertResort,
+    .metatiles = gMetatiles_DesertResort,
+    .metatileAttributes = gMetatileAttributes_DesertResort,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GeneralLake =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GeneralLake,
+    .palettes = gTilesetPalettes_GeneralLake,
+    .metatiles = gMetatiles_GeneralLake,
+    .metatileAttributes = gMetatileAttributes_GeneralLake,
+    .callback = InitTilesetAnim_GeneralLake,
+};
+
+const struct Tileset gTileset_NimbasaPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NimbasaPrimary,
+    .palettes = gTilesetPalettes_NimbasaPrimary,
+    .metatiles = gMetatiles_NimbasaPrimary,
+    .metatileAttributes = gMetatileAttributes_NimbasaPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NimbasaSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NimbasaSecondary,
+    .palettes = gTilesetPalettes_NimbasaSecondary,
+    .metatiles = gMetatiles_NimbasaSecondary,
+    .metatileAttributes = gMetatileAttributes_NimbasaSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_RelicCastle =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RelicCastle,
+    .palettes = gTilesetPalettes_RelicCastle,
+    .metatiles = gMetatiles_RelicCastle,
+    .metatileAttributes = gMetatileAttributes_RelicCastle,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_RelicCastleContinue =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RelicCastleContinue,
+    .palettes = gTilesetPalettes_RelicCastleContinue,
+    .metatiles = gMetatiles_RelicCastleContinue,
+    .metatileAttributes = gMetatileAttributes_RelicCastleContinue,
     .callback = NULL,
 };

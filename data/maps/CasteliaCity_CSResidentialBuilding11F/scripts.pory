@@ -1,0 +1,151 @@
+mapscripts CasteliaCity_CSResidentialBuilding11F_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_CASTELIA_INSIDE_ELEVATORS, 1 : CasteliaCity_CSResidentialBuilding11F_EventScript_NewToFloor
+    ]
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_NewToFloor
+{
+	lockall()
+	playse(SE_DING_DONG)
+	waitse()
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    releaseall()
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator
+{
+    lock
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 1)
+    delay (10)
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_PlayerMoveRight)
+	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_PlayerMoveUp)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+	applymovement(LOCALID_PLAYER, moves(face_down))
+	waitmovement(0)
+	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "1",
+        "Cancel")
+	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_GoTo1F)}
+	goto (CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_GetOff)
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_PlayerMoveRight
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_PlayerMoveUp
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_GoTo1F
+{
+    closemessage
+	warpsilent(MAP_CASTELIA_CITY_CSRESIDENTIAL_BUILDING1F, 7, 1)
+    waitstate
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Elevator_GetOff
+{
+    closemessage
+	playse(SE_SLIDING_DOOR)
+	setdooropen(7, 2)
+	waitse()
+    delay (10)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+    delay (20)
+	playse(SE_SLIDING_DOOR)
+	setdoorclosed(7, 2)
+	waitse()
+    setvar(VAR_CASTELIA_INSIDE_ELEVATORS, 0)
+    delay (10)
+    release
+    end 
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Cheerleaderman
+{
+	msgbox("Check places you are curious about!\n"
+           "You may find some hidden items there.\p"
+           "If you use the Town Map item, you may\n"
+           "find a new place to explore!\p"
+           "Talk to a person you are curious about!\n"
+           "It may be a wonderful encounter.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_CASTELIA_ITEM_TM_REST, CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker_FinishedGiving)
+    msgbox("People in the past said wise things.\n"
+           "“A child who sleeps well grows well.”\p"
+           "Yes, if a Pokémon uses the move Rest,\n"
+           "the Pokémon will fall asleep and recover!\p"
+           "I already taught the move to my Pokémon,\n"
+           "So I will give this to you!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB11F_HIKER)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_TM_REST, 1)
+	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CSResidentialBuilding11F_EventScript_BagIsFull)
+    setflag(FLAG_CASTELIA_ITEM_TM_REST)
+    goto(CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker_FinishedGiving)
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_Hiker_FinishedGiving
+{
+    msgbox("Even if a Pokémon falls asleep, I heard\n"
+           "there is a Berry to wake it up instantly.\p"
+           "If a Pokémon holds that Berry and uses\n"
+           "Rest, the Pokémon will fall asleep\l"
+           "and recover, then wake up instantly!\p"
+           "It's a great combination!", MSGBOX_DEFAULT, TRUE, LOCALID_CSRB11F_HIKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CSResidentialBuilding11F_EventScript_BagIsFull
+{
+	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
+	closemessage
+	release()
+	end()
+}
+
+
+

@@ -520,5 +520,6 @@
       "item": "ITEM_POKE_BALL",
       "flag": "FLAG_UNUSED_0xXXX"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -1,0 +1,443 @@
+{
+  "id": "MAP_CASTELIA_CITY_CENTRAL_PLAZA",
+  "name": "CasteliaCity_CentralPlaza",
+  "layout": "LAYOUT_CASTELIA_CITY_CENTRAL_PLAZA",
+  "music": "MUS_BW_CASTELIA_CITY",
+  "region_map_section": "MAPSEC_CASTELIA_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 14,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 9,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 16,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 23,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 30,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 31,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 37,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
+      "x": 27,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Grandpa",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CASTELIA_CP_DANCER",
+      "graphics_id": "OBJ_EVENT_GFX_DANCER",
+      "x": 22,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Dancer",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CASTELIA_CP_DANCER_LEFT",
+      "graphics_id": "OBJ_EVENT_GFX_DANCER",
+      "x": 21,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Dancer_Left",
+      "flag": "FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_LEFT"
+    },
+    {
+      "local_id": "LOCALID_CASTELIA_CP_DANCER_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_DANCER",
+      "x": 23,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Dancer_Right",
+      "flag": "FLAG_CASTELIA_CENTRAL_PLAZA_DANCER_RIGHT"
+    },
+    {
+      "local_id": "LOCALID_CCCP_BURGH",
+      "graphics_id": "OBJ_EVENT_GFX_BURGH",
+      "x": 12,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CASTELIA_BURGH_IN_PURSUIT"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 20,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 21,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "9"
+    },
+    {
+      "x": 22,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "9"
+    },
+    {
+      "x": 23,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "10"
+    },
+    {
+      "x": 24,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "10"
+    },
+    {
+      "x": 25,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NORTH_STREET",
+      "dest_warp_id": "12"
+    },
+    {
+      "x": 9,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 10,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 11,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 12,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 13,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 14,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 18,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 20,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 25,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 26,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 27,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 28,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 31,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 32,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 33,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 34,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 35,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "7"
+    },
+    {
+      "x": 36,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "9"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "CasteliaCity_CentralPlaza_EventScript_CentralPlazaSign"
+    },
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 29,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 30,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 27,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_EAST",
+      "script": "CasteliaCity_CentralPlaza_EventScript_ModeStreetSign"
+    }
+  ]
+}

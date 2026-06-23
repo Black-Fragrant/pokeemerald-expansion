@@ -12,7 +12,6 @@
 #include "constants/battle_palace.h"
 #include "constants/battle_pike.h"
 #include "constants/battle_pyramid.h"
-#include "constants/battle_setup.h"
 #include "constants/battle_special.h"
 #include "constants/battle_tent.h"
 #include "constants/battle_tower.h"
@@ -44,6 +43,7 @@
 #include "constants/lilycove_lady.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
+#include "constants/mass_outbreak.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_labels.h"
 #include "constants/move_relearner.h"
@@ -53,6 +53,8 @@
 #include "constants/pokeball.h"
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
+#include "constants/pokemon_size_record.h"
+#include "constants/random_mon_generation.h"
 #include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/script_menu.h"
@@ -106,6 +108,8 @@ gSpecialVars::
 	.4byte gSpecialVar_Unused_0x8014
 	.4byte gTrainerBattleParameter + 2 // gTrainerBattleParameter.params.opponentA
 
+	.purgem def_special
+	.set ALLOCATE_SPECIAL_TABLE, 1
 	.include "data/specials.inc"
 
 gStdScripts::
@@ -1093,9 +1097,9 @@ EventScript_AfterWhiteOutMomHeal::
 	end
 
 EventScript_ResetMrBriney::
-	goto_if_eq VAR_BRINEY_LOCATION, 1, EventScript_MoveMrBrineyToHouse
-	goto_if_eq VAR_BRINEY_LOCATION, 2, EventScript_MoveMrBrineyToDewford
-	goto_if_eq VAR_BRINEY_LOCATION, 3, EventScript_MoveMrBrineyToRoute109
+	goto_if_eq VAR_PLACEHOLDER, 1, EventScript_MoveMrBrineyToHouse
+	goto_if_eq VAR_PLACEHOLDER, 2, EventScript_MoveMrBrineyToDewford
+	goto_if_eq VAR_PLACEHOLDER, 3, EventScript_MoveMrBrineyToRoute109
 	end
 
 EventScript_MoveMrBrineyToHouse::
@@ -1124,15 +1128,15 @@ Common_EventScript_UpdateBrineyLocation::
 	return
 
 EventScript_SetBrineyLocation_House::
-	setvar VAR_BRINEY_LOCATION, 1
+	setvar VAR_PLACEHOLDER, 1
 	return
 
 EventScript_SetBrineyLocation_Dewford::
-	setvar VAR_BRINEY_LOCATION, 2
+	setvar VAR_PLACEHOLDER, 2
 	return
 
 EventScript_SetBrineyLocation_Route109::
-	setvar VAR_BRINEY_LOCATION, 3
+	setvar VAR_PLACEHOLDER, 3
 	return
 
 	.include "data/scripts/pkmn_center_nurse.inc"
@@ -1167,8 +1171,8 @@ Common_EventScript_BufferTrendyPhrase::
 	return
 
 EventScript_BackupMrBrineyLocation::
-	copyvar VAR_0x8008, VAR_BRINEY_LOCATION
-	setvar VAR_BRINEY_LOCATION, 0
+	copyvar VAR_0x8008, VAR_PLACEHOLDER
+	setvar VAR_PLACEHOLDER, 0
 	return
 
 	.include "data/scripts/surf.inc"
@@ -1227,7 +1231,6 @@ EventScript_RegionMap::
 	msgbox Common_Text_LookCloserAtMap, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special FieldShowRegionMap
-	waitstate
 	releaseall
 	end
 
@@ -1261,7 +1264,7 @@ Movement_FerryDepart:
 	step_end
 
 EventScript_HideMrBriney::
-	setvar VAR_BRINEY_LOCATION, 0
+	setvar VAR_PLACEHOLDER, 0
 	return
 
 RusturfTunnel_EventScript_SetRusturfTunnelOpen::
@@ -1300,7 +1303,6 @@ Common_EventScript_FerryDepartIsland::
 Common_EventScript_NameReceivedPartyMon::
 	fadescreen FADE_TO_BLACK
 	special ChangePokemonNickname
-	waitstate
 	return
 
 Common_EventScript_PlayerHandedOverTheItem::
@@ -1315,10 +1317,10 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/scripts/elite_four.inc"
 	.include "data/scripts/movement.inc"
 	.include "data/scripts/check_furniture.inc"
+	.include "data/scripts/mart_clerk.inc"
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
-	.include "data/text/mart_clerk.inc"
 	.include "data/text/obtain_item.inc"
 	.include "data/text/move_relearner.inc"
 
@@ -1496,7 +1498,6 @@ EventScript_GetInGameTradeSpeciesInfo::
 
 EventScript_ChooseMonForInGameTrade::
 	special ChoosePartyMon
-	waitstate
 	lock
 	faceplayer
 	return
@@ -1508,7 +1509,6 @@ EventScript_GetInGameTradeSpecies::
 EventScript_DoInGameTrade::
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
-	waitstate
 	lock
 	faceplayer
 	return
@@ -1641,10 +1641,16 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	playse SE_PC_ON
 	msgbox gText_PlayerHouseBootPC
 	special BedroomPC
-	waitstate
 	releaseall
 	end
 
+EventScript_SetSail::
+	closemessage
+	delay 20
+	fadescreen FADE_TO_BLACK
+	special DoSeagallopFerryScene
+	waitstate
+	end
 
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
@@ -1700,6 +1706,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
+	.include "data/scripts/wild_encounter.inc"
 
 	.include "data/maps/NuvemaTown/scripts.inc"
 
@@ -1834,3 +1841,137 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/CasteliaCity_PokeCenter/scripts.inc"
 
 	.include "data/maps/CasteliaCity_GymStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_ModeStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CasteliaStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CentralPlaza/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NarrowStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NorthStreet/scripts.inc"
+
+	.include "data/maps/CasteliaCity_BattleCompany1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_BattleCompany47F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_BattleCompany55F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_PasserbyAnalyticsHQ/scripts.inc"
+
+	.include "data/maps/CasteliaCity_EmptyBuilding2F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CafeSonata/scripts.inc"
+
+	.include "data/maps/CasteliaCity_StudioCastelia/scripts.inc"
+
+	.include "data/maps/CasteliaCity_GameFreak1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_EmptyBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CSResidentialBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSEastBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSWestBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSPartyBuilding47F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSEastBuilding47F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CSResidentialBuilding11F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSWestBuilding11F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_NSPartyBuilding1F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_GameFreak22F/scripts.inc"
+
+	.include "data/maps/CasteliaCity_CasteliaGym/scripts.inc"
+
+	.include "data/maps/CasteliaCity_Gate/scripts.inc"
+
+	.include "data/maps/Route4_South/scripts.inc"
+
+	.include "data/maps/Route4_North/scripts.inc"
+
+	.include "data/maps/LibertyGarden/scripts.inc"
+
+	.include "data/maps/LibertyGarden_Basement/scripts.inc"
+
+	.include "data/maps/LibertyGarden_Room/scripts.inc"
+
+	.include "data/maps/DesertResort_Outside/scripts.inc"
+
+	.include "data/maps/Route4_HouseRight/scripts.inc"
+
+	.include "data/maps/Route4_HouseLeft/scripts.inc"
+
+	.include "data/maps/DesertResort_Inside/scripts.inc"
+
+	.include "data/maps/NimbasaCity/scripts.inc"
+
+	.include "data/maps/RelicCastle_1F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_1F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B1F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B1F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B2F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B2F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B3F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B3F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B4F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B5F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_B5F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_B4F_East/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room14/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room10/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room6/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room15/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room11/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room13/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room3/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_WestStairs/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room2/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room7/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room12/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room1/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room9/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_EastStairs/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room4/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_VolcaronaRoom/scripts.inc"
+
+	.include "data/maps/RelicCastle_B6F_West/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room5/scripts.inc"
+
+	.include "data/maps/RelicCastle_LF_Room8/scripts.inc"
+
+	.include "data/maps/Route4_Gate/scripts.inc"

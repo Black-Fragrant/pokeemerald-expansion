@@ -377,6 +377,20 @@
       "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CCSB_BURGH",
+      "graphics_id": "OBJ_EVENT_GFX_BURGH",
+      "x": 11,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CASTELIA_BURGH_IN_PURSUIT"
     }
   ],
   "warp_events": [
@@ -440,43 +454,43 @@
       "x": 60,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "10"
     },
     {
       "x": 61,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "12"
     },
     {
       "x": 62,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "14"
     },
     {
       "x": 63,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "15"
     },
     {
       "x": 64,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "17"
     },
     {
       "x": 65,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_CASTELIA_STREET",
+      "dest_warp_id": "19"
     },
     {
       "x": 60,
@@ -517,43 +531,43 @@
       "x": 42,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "8"
     },
     {
       "x": 43,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "10"
     },
     {
       "x": 44,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "12"
     },
     {
       "x": 45,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "14"
     },
     {
       "x": 46,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "14"
     },
     {
       "x": 47,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_MODE_STREET",
+      "dest_warp_id": "14"
     },
     {
       "x": 42,
@@ -594,43 +608,43 @@
       "x": 26,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "4"
     },
     {
       "x": 27,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "5"
     },
     {
       "x": 28,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "6"
     },
     {
       "x": 29,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "7"
     },
     {
       "x": 30,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "8"
     },
     {
       "x": 31,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_NARROW_STREET",
+      "dest_warp_id": "9"
     },
     {
       "x": 26,
@@ -671,43 +685,43 @@
       "x": 9,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "8"
     },
     {
       "x": 10,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "9"
     },
     {
       "x": 11,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "11"
     },
     {
       "x": 12,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "12"
     },
     {
       "x": 13,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "14"
     },
     {
       "x": 14,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CASTELIA_CITY_SOUTH_BANK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_CASTELIA_CITY_GYM_STREET",
+      "dest_warp_id": "15"
     },
     {
       "x": 9,
@@ -750,9 +764,60 @@
       "elevation": 0,
       "dest_map": "MAP_CASTELIA_CITY_POKE_CENTER",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_PASSERBY_ANALYTICS_HQ",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 39,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_CASTELIA_CITY_BATTLE_COMPANY1F",
+      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_SouthBank_EventScript_Trigger_BurghInPursuit"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_SouthBank_EventScript_Trigger_BurghInPursuit"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_SouthBank_EventScript_Trigger_BurghInPursuit"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_CASTELIA_GYM_STATE",
+      "var_value": "2",
+      "script": "CasteliaCity_SouthBank_EventScript_Trigger_BurghInPursuit"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

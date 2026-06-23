@@ -4,14 +4,46 @@
 #include "main.h"
 #include "task.h"
 
+enum PartyMenuLayout
+{
+    PARTY_LAYOUT_SINGLE,
+    PARTY_LAYOUT_DOUBLE,
+    PARTY_LAYOUT_MULTI,
+    PARTY_LAYOUT_MULTI_SHOWCASE,                // The layout during the screen that appears just before a multi battle
+    PARTY_LAYOUT_MULTI_FULL,
+    PARTY_LAYOUT_MULTI_FULL_PARTNER,
+    PARTY_LAYOUT_MULTI_FULL_SHOWCASE,           // The layout used to present player team in full-teams multi battle
+    PARTY_LAYOUT_MULTI_FULL_SHOWCASE_PARTNER,   // The layout used to present partner team in full-teams multi battle
+    PARTY_LAYOUT_COUNT,
+    KEEP_PARTY_LAYOUT
+};
+
+enum PartyMenuType
+{
+    PARTY_MENU_TYPE_FIELD,
+    PARTY_MENU_TYPE_IN_BATTLE,
+    PARTY_MENU_TYPE_CONTEST,
+    PARTY_MENU_TYPE_CHOOSE_MON,
+    PARTY_MENU_TYPE_CHOOSE_HALF,                // multi battles, eReader battles, and some battle facilities
+    PARTY_MENU_TYPE_MULTI_SHOWCASE,
+    PARTY_MENU_TYPE_DAYCARE,
+    PARTY_MENU_TYPE_MOVE_RELEARNER,
+    PARTY_MENU_TYPE_UNION_ROOM_REGISTER,        // trading board
+    PARTY_MENU_TYPE_UNION_ROOM_TRADE,           // trading board
+    PARTY_MENU_TYPE_SPIN_TRADE,                 // Unused beta for Gen IV's Spin Trade
+    PARTY_MENU_TYPE_MINIGAME,
+    PARTY_MENU_TYPE_STORE_PYRAMID_HELD_ITEMS,
+    PARTY_MENU_TYPE_MULTI_FULL_SHOWCASE
+};
+
 // seems like the last two fields may have been left as all-purpose vars
 // and the second of the two just happens to only be used in one case
 struct PartyMenu
 {
     MainCallback exitCallback;
     TaskFunc task;
-    u8 menuType:4;
-    u8 layout:2;
+    enum PartyMenuType menuType:4;
+    enum PartyMenuLayout layout:4;
     s8 slotId;
     s8 slotId2;
     u8 action;
@@ -35,6 +67,25 @@ extern const u16 gHeldItemPalette[];
 extern void (*gItemUseCB)(u8, TaskFunc);
 extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
 
+/*
+**DS PARTY SCREEN**
+Below features are configs for the DS party screen.
+I did not create the DS party screen, the base comes from TheXaman: https://github.com/TheXaman/pokeemerald/tree/tx_ui_party_screen_ds_style_2
+While graphics + other touch ups come from the original FRLG/Em patch here: https://www.pokecommunity.com/threads/fr-em-pok%C3%A9mon-party-screen-modifications-base-hgss-and-bw-styles.414022/
+Huge credits to everyone involved!
+*/
+
+#define PARTY_MENU_STYLE_DEFAULT    0
+#define PARTY_MENU_STYLE_FRLG       1
+#define PARTY_MENU_STYLE_HGSS       2
+#define PARTY_MENU_STYLE_BW         3
+
+#define PARTY_MENU_STYLE                   PARTY_MENU_STYLE_BW
+#define PARTY_MENU_ALPHA                   (PARTY_MENU_STYLE == PARTY_MENU_STYLE_BW) // If TRUE, the columns have a transparent BG. 
+                                                                                     // Only designed for the BW style, so looks ugly on other styles.
+#define PARTY_MENU_HIGHLIGHT_ACTIVE_SINGLE FALSE // If TRUE, in single battles, changes the colour of the first party slot. Easier to see who is on the field, in my opinion.
+#define PARTY_MENU_HIGHLIGHT_ACTIVE_DOUBLE FALSE // If TRUE, in double battles, changes the colour of the first two party slots. Easier to see who is on the field, in my opinion.
+                                                 // This is not active in multi-battles, as it uses the colour that is usually used to represent our partner's pokemon.
 void AnimatePartySlot(u8 slot, u8 animNum);
 bool8 IsMultiBattle(void);
 u8 GetCursorSelectionMonId(void);
@@ -83,7 +134,7 @@ void CB2_ChooseMonToGiveItem(void);
 void ChooseMonToGiveMailFromMailbox(void);
 void InitChooseHalfPartyForBattle(u8 unused);
 void ClearSelectedPartyOrder(void);
-void ChooseMonForTradingBoard(u8 menuType, MainCallback callback);
+void ChooseMonForTradingBoard(enum PartyMenuType menuType, MainCallback callback);
 void ChooseMonForMoveTutor(void);
 void ChooseMonForWirelessMinigame(void);
 void OpenPartyMenuInBattle(u8 partyAction);
@@ -114,5 +165,9 @@ bool32 SetUpFieldMove_Fly(void);
 bool32 SetUpFieldMove_Waterfall(void);
 bool32 SetUpFieldMove_Dive(void);
 bool32 SetUpFieldMove_RockClimb(void);
+
+#if TESTING
+s8 Test_UpdatePartySelectionSingleLayout(s8 slotId, s8 movementDir, bool8 chooseHalf, u8 lastSelectedSlot);
+#endif
 
 #endif // GUARD_PARTY_MENU_H

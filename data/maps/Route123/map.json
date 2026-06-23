@@ -836,5 +836,6 @@
       "item": "ITEM_RARE_CANDY",
       "flag": "FLAG_UNUSED_0xXXX"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
