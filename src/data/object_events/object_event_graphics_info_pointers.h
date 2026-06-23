@@ -185,16 +185,22 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pikachuow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Victiniow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Krokorokow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zenmodeow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Volcaronaow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Clerko;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlagPole;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GiftBox;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cone;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldBall;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRed;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlue;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatYellow;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyal;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlack;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRedLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRedRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlueLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlueRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatYellowLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatYellowRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlackLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlackRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyalLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyalRightHalf;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurf;
@@ -542,15 +548,21 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GIFT_BOX] =                 &gObjectEventGraphicsInfo_GiftBox,
     [OBJ_EVENT_GFX_CONE] =                     &gObjectEventGraphicsInfo_Cone,
     [OBJ_EVENT_GFX_GOLD_BALL] =                &gObjectEventGraphicsInfo_GoldBall,
-    [OBJ_EVENT_GFX_BOAT_RED] =                 &gObjectEventGraphicsInfo_BoatRed,
-    [OBJ_EVENT_GFX_BOAT_BLUE] =                &gObjectEventGraphicsInfo_BoatBlue,
-    [OBJ_EVENT_GFX_BOAT_YELLOW] =              &gObjectEventGraphicsInfo_BoatYellow,
-    [OBJ_EVENT_GFX_BOAT_BLACK] =               &gObjectEventGraphicsInfo_BoatBlack,
-    [OBJ_EVENT_GFX_BOAT_ROYAL] =               &gObjectEventGraphicsInfo_BoatRoyal,
+    [OBJ_EVENT_GFX_BOAT_RED_LEFT_HALF] =       &gObjectEventGraphicsInfo_BoatRedLeftHalf,
+    [OBJ_EVENT_GFX_BOAT_RED_RIGHT_HALF] =      &gObjectEventGraphicsInfo_BoatRedRightHalf,
+    [OBJ_EVENT_GFX_BOAT_BLUE_LEFT_HALF] =      &gObjectEventGraphicsInfo_BoatBlueLeftHalf,
+    [OBJ_EVENT_GFX_BOAT_BLUE_RIGHT_HALF] =     &gObjectEventGraphicsInfo_BoatBlueRightHalf,
+    [OBJ_EVENT_GFX_BOAT_YELLOW_LEFT_HALF] =    &gObjectEventGraphicsInfo_BoatYellowLeftHalf,
+    [OBJ_EVENT_GFX_BOAT_YELLOW_RIGHT_HALF] =   &gObjectEventGraphicsInfo_BoatYellowRightHalf,
+    [OBJ_EVENT_GFX_BOAT_BLACK_LEFT_HALF] =     &gObjectEventGraphicsInfo_BoatBlackLeftHalf,
+    [OBJ_EVENT_GFX_BOAT_BLACK_RIGHT_HALF] =    &gObjectEventGraphicsInfo_BoatBlackRightHalf,
+    [OBJ_EVENT_GFX_BOAT_ROYAL_LEFT_HALF] =      &gObjectEventGraphicsInfo_BoatRoyalLeftHalf,
+    [OBJ_EVENT_GFX_BOAT_ROYAL_RIGHT_HALF] =     &gObjectEventGraphicsInfo_BoatRoyalRightHalf,
     [OBJ_EVENT_GFX_PIKACHUOW] =                &gObjectEventGraphicsInfo_Pikachuow,
     [OBJ_EVENT_GFX_VICTINIOW] =                &gObjectEventGraphicsInfo_Victiniow,
     [OBJ_EVENT_GFX_KROKOROKOW] =               &gObjectEventGraphicsInfo_Krokorokow,
     [OBJ_EVENT_GFX_ZENMODEOW] =                &gObjectEventGraphicsInfo_Zenmodeow,
+    [OBJ_EVENT_GFX_VOLCARONAOW] =              &gObjectEventGraphicsInfo_Volcaronaow,
     [OBJ_EVENT_GFX_CLERKO] =                   &gObjectEventGraphicsInfo_Clerko,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,

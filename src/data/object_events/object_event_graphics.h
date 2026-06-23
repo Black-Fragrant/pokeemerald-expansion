@@ -671,6 +671,9 @@ const u16 gObjectEventPal_Krokorokow[] = INCGFX_U16("graphics/object_events/pale
 const u32 gObjectEventPic_Zenmodeow[] = INCGFX_U32("graphics/object_events/pics/people/zenmodeow.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u16 gObjectEventPal_Zenmodeow[] = INCGFX_U16("graphics/object_events/palettes/zenmodeow.pal", ".gbapal");
 
+const u32 gObjectEventPic_Volcaronaow[] = INCGFX_U32("graphics/object_events/pics/people/volcaronaow.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_Volcaronaow[] = INCGFX_U16("graphics/object_events/palettes/volcaronaow.pal", ".gbapal");
+
 const u32 gObjectEventPic_Clerko[] = INCGFX_U32("graphics/object_events/pics/people/clerko.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_Clerko[] = INCGFX_U16("graphics/object_events/palettes/clerko.pal", ".gbapal");
 
@@ -686,14 +689,16 @@ const u16 gObjectEventPal_Cone[] = INCGFX_U16("graphics/object_events/palettes/c
 const u32 gObjectEventPic_GoldBall[] = INCGFX_U32("graphics/object_events/pics/people/gold_ball.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_GoldBall[] = INCGFX_U16("graphics/object_events/palettes/gold_ball.pal", ".gbapal");
 
-const u32 gObjectEventPic_Boat[] = INCGFX_U32("graphics/object_events/pics/misc/boat.png", ".4bpp", "-mwidth 8 -mheight 4");
+const u32 gObjectEventPic_BoatLeftHalf[] = INCGFX_U32("graphics/object_events/pics/misc/boat_left_half.png", ".4bpp");
+const u32 gObjectEventPic_BoatRightHalf[] = INCGFX_U32("graphics/object_events/pics/misc/boat_right_half.png", ".4bpp");
 
 const u16 gObjectEventPal_BoatRed[] = INCGFX_U16("graphics/object_events/palettes/boat_red.pal", ".gbapal");
 const u16 gObjectEventPal_BoatBlue[] = INCGFX_U16("graphics/object_events/palettes/boat_blue.pal", ".gbapal");
 const u16 gObjectEventPal_BoatYellow[] = INCGFX_U16("graphics/object_events/palettes/boat_yellow.pal", ".gbapal");
 const u16 gObjectEventPal_BoatBlack[] = INCGFX_U16("graphics/object_events/palettes/boat_black.pal", ".gbapal");
 
-const u32 gObjectEventPic_BoatRoyal[] = INCGFX_U32("graphics/object_events/pics/misc/boat_royal.png", ".4bpp", "-mwidth 8 -mheight 4");
+const u32 gObjectEventPic_BoatRoyalLeftHalf[] = INCGFX_U32("graphics/object_events/pics/misc/boat_royal_left_half.png", ".4bpp");
+const u32 gObjectEventPic_BoatRoyalRightHalf[] = INCGFX_U32("graphics/object_events/pics/misc/boat_royal_right_half.png", ".4bpp");
 const u16 gObjectEventPal_BoatRoyal[] = INCGFX_U16("graphics/object_events/palettes/boat_royal.pal", ".gbapal");
 
 #if IS_FRLG

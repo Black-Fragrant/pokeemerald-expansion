@@ -869,6 +869,10 @@ static const struct SpriteFrameImage sPicTable_Zenmodeow[] = {
     overworld_ascending_frames(gObjectEventPic_Zenmodeow, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Volcaronaow[] = {
+    overworld_ascending_frames(gObjectEventPic_Volcaronaow, 4, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Clerko[] = {
     overworld_ascending_frames(gObjectEventPic_Clerko, 2, 4),
 };
@@ -889,28 +893,20 @@ static const struct SpriteFrameImage sPicTable_GoldBall[] = {
     overworld_ascending_frames(gObjectEventPic_GoldBall, 2, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_Boat[] = {
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
-    obj_frame_tiles(gObjectEventPic_Boat),
+static const struct SpriteFrameImage sPicTable_BoatLeftHalf[] = {
+    obj_frame_tiles(gObjectEventPic_BoatLeftHalf),
 };
 
-static const struct SpriteFrameImage sPicTable_BoatRoyal[] = {
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
-    obj_frame_tiles(gObjectEventPic_BoatRoyal),
+static const struct SpriteFrameImage sPicTable_BoatRightHalf[] = {
+    obj_frame_tiles(gObjectEventPic_BoatRightHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_BoatRoyalLeftHalf[] = {
+    obj_frame_tiles(gObjectEventPic_BoatRoyalLeftHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_BoatRoyalRightHalf[] = {
+    obj_frame_tiles(gObjectEventPic_BoatRoyalRightHalf),
 };
 
 #if IS_FRLG
