@@ -1038,7 +1038,7 @@ static void Task_LargeItemPicWindow(u8 taskId)
     switch (task->data[0])
     {
     case 0:
-        ReapplyLargeItemPicBlending();
+        //ReapplyLargeItemPicBlending();
         break;
 
     case 1: // begin closing

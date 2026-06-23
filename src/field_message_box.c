@@ -5,9 +5,11 @@
 #include "text.h"
 #include "match_call.h"
 #include "field_message_box.h"
+#include "field_weather.h"
 #include "text_window.h"
 #include "script.h"
 #include "field_name_box.h"
+#include "gpu_regs.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
@@ -176,6 +178,13 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
     TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     StringExpandPlaceholders(gStringVar4, str);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
+    if (gMsgIsTransparent)
+    {
+        //SetGpuRegBits(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3 | BLDCNT_TGT2_OBJ | BLDCNT_EFFECT_BLEND);
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(15, 6));
+        SetGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR);
+        SetGpuRegBits(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0);
+    }
     CreateTask_DrawFieldMessage();
 }
 
@@ -190,6 +199,11 @@ void HideFieldMessageBox(void)
     DestroyTask_DrawFieldMessage();
     ClearDialogWindowAndFrame(0, TRUE);
     DestroyNamebox();
+    //ClearGpuRegBits(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3 | BLDCNT_TGT2_OBJ | BLDCNT_EFFECT_BLEND);
+    ClearGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR);
+    ClearGpuRegBits(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0);
+    //SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    Weather_SetBlendCoeffs(8, BASE_SHADOW_INTENSITY); // preserve shadow darkness
     gMsgIsShout = FALSE;
     gMsgIsTransparent = FALSE;
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
