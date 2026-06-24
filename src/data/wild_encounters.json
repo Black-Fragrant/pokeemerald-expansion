@@ -14256,6 +14256,144 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_DESERT_RESORT_OUTSIDE",
+          "base_label": "gDesertResort_Outside",
+          "land_mons": {
+            "encounter_rate": 15,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_MARACTUS"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_SCRAGGY"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_SCRAGGY"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_SCRAGGY"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_DWEBBLE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_DESERT_RESORT_INSIDE",
+          "base_label": "gDesertResort_Inside",
+          "land_mons": {
+            "encounter_rate": 15,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_MARACTUS"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_SIGILYPH"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_SIGILYPH"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_SIGILYPH"
+              }
+            ]
+          }
         }
       ]
     },
