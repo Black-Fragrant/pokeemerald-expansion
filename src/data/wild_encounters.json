@@ -13359,6 +13359,282 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_1F_EAST",
+          "base_label": "gRelicCastle_1F_East",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_1F_WEST",
+          "base_label": "gRelicCastle_1F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B1F_EAST",
+          "base_label": "gRelicCastle_B1F_East",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B1F_WEST",
+          "base_label": "gRelicCastle_B1F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_SANDILE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_YAMASK"
+              }
+            ]
+          }
         }
       ]
     },
