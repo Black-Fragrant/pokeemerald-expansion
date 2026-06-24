@@ -13635,6 +13635,627 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B2F_EAST",
+          "base_label": "gRelicCastle_B2F_East",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B2F_WEST",
+          "base_label": "gRelicCastle_B2F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B3F_EAST",
+          "base_label": "gRelicCastle_B3F_East",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B3F_WEST",
+          "base_label": "gRelicCastle_B3F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B4F_EAST",
+          "base_label": "gRelicCastle_B4F_East",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B4F_WEST",
+          "base_label": "gRelicCastle_B4F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B5F_EAST",
+          "base_label": "gRelicCastle_B5F_East",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B5F_WEST",
+          "base_label": "gRelicCastle_B5F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_RELIC_CASTLE_B6F_WEST",
+          "base_label": "gRelicCastle_B6F_West",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_KROKOROK"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_COFAGRIGUS"
+              }
+            ]
+          }
         }
       ]
     },
