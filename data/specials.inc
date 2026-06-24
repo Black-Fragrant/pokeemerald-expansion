@@ -297,6 +297,15 @@ gSpecials::
 	def_special ShowGlassWorkshopMenu
 	def_special SpawnCameraObject
 	def_special RemoveCameraObject
+	def_special Special_CasteliaGym_InitHoneyWalls
+	def_special Special_CasteliaGym_CheckHoneyGateOpenStates
+	def_special Special_CasteliaGym_CheckButton1FirstGateOpenState
+	def_special Special_CasteliaGym_IsHoneyWallPassable
+	def_special StartHoneyWallHoldUp
+	def_special StartHoneyWallHoldDown
+	def_special RestoreHoneyWallIdle
+	def_special StartHoneyWallWiggle
+	def_special Special_CasteliaGym_GetHoneyWallBounceDirection
 	def_special GetPokeblockNameByMonNature
 	def_special GetSecretBaseNearbyMapName
 	def_special CheckRelicanthWailord
@@ -650,4 +659,3 @@ gSpecials::
 	def_special SetMsgboxShoutFlag
 	def_special SetMsgboxTransparentFlag
 	def_special CheckIfNameChanged
-

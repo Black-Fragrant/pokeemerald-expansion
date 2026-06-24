@@ -195,19 +195,19 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	lock
-	warpsilent MAP_DESERT_RESORT_INSIDE, 54, 18
-	waitstate
-	end
+    lock
+    warpsilent MAP_CASTELIA_CITY_CASTELIA_GYM, 16, 29
+    waitstate
+    end
 
 Debug_EventScript_Script_1_text::
 	.string "This is a text.$"
 
 Debug_EventScript_Script_2::
-	setflag FLAG_LIBERTY_GARDEN_POLICE
-	setflag FLAG_LIBERTY_GARDEN_POLICE_OUTSIDE_LIGHTHOUSE
-	setflag FLAG_LIBERTY_GARDEN_JUNIPER
-	end
+    lock
+    warpsilent MAP_CASTELIA_CITY_CASTELIA_GYM, 16, 17
+    waitstate
+    end
 
 Debug_EventScript_Script_3::
 	release
