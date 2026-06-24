@@ -19,8 +19,8 @@
       "x": 13,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_RELIC_CASTLE_B1F_EAST",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RELIC_CASTLE_B2F_EAST",
+      "dest_warp_id": "1"
     },
     {
       "x": 18,
@@ -54,8 +54,8 @@
       "x": 19,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_RELIC_CASTLE_B1F_EAST",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RELIC_CASTLE_B2F_EAST",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [],
