@@ -2229,7 +2229,7 @@ const struct Tileset gTileset_RelicCastle =
     .palettes = gTilesetPalettes_RelicCastle,
     .metatiles = gMetatiles_RelicCastle,
     .metatileAttributes = gMetatileAttributes_RelicCastle,
-    .callback = NULL,
+    .callback = InitTilesetAnim_RelicCastle,
 };
 
 const struct Tileset gTileset_RelicCastleContinue =
@@ -2240,5 +2240,5 @@ const struct Tileset gTileset_RelicCastleContinue =
     .palettes = gTilesetPalettes_RelicCastleContinue,
     .metatiles = gMetatiles_RelicCastleContinue,
     .metatileAttributes = gMetatileAttributes_RelicCastleContinue,
-    .callback = NULL,
+    .callback = InitTilesetAnim_RelicCastleContinue,
 };

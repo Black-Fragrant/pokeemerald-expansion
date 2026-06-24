@@ -126,6 +126,133 @@ static void QueueAnimTiles_LibertyGarden_Fountain(u16);
 static void TilesetAnim_GeneralLake(u16);
 static void QueueAnimTiles_GeneralLake_Lake(u16);
 
+static void TilesetAnim_RelicCastle(u16);
+static void QueueAnimTiles_RelicCastle_Pile(u16);
+static void QueueAnimTiles_RelicCastle_Dust(u16);
+
+static void TilesetAnim_RelicCastleContinue(u16);
+static void QueueAnimTiles_RelicCastleContinue_Pile(u16);
+static void QueueAnimTiles_RelicCastleContinue_Dust(u16);
+
+const u16 gQueueAnimTiles_RelicCastle_Pile_Frame0[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/pile/0.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Pile_Frame1[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/pile/1.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Pile_Frame2[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/pile/2.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_RelicCastle_Pile[] = {
+    gQueueAnimTiles_RelicCastle_Pile_Frame0,
+    gQueueAnimTiles_RelicCastle_Pile_Frame1,
+    gQueueAnimTiles_RelicCastle_Pile_Frame2,
+};
+
+const u16 *const gQueueAnimTiles_RelicCastleContinue_Pile[] = {
+    gQueueAnimTiles_RelicCastle_Pile_Frame0,
+    gQueueAnimTiles_RelicCastle_Pile_Frame1,
+    gQueueAnimTiles_RelicCastle_Pile_Frame2,
+};
+
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame0[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/0.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame1[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/1.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame2[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/2.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame3[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/3.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame4[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/4.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame5[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/5.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame6[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/6.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame7[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/7.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame8[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/8.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame9[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/9.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame10[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/10.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame11[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/11.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame12[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/12.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame13[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/13.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame14[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/14.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame15[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/15.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame16[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/16.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame17[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/17.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame18[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/18.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame19[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/19.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame20[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/20.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame21[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/21.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame22[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/22.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame23[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/23.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame24[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/24.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame25[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/25.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame26[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/26.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame27[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/27.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame28[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/28.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame29[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/29.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame30[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/30.png", ".4bpp");
+const u16 gQueueAnimTiles_RelicCastle_Dust_Frame31[] = INCGFX_U16("data/tilesets/secondary/relic_castle/anim/dust/31.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_RelicCastle_Dust[] = {
+    gQueueAnimTiles_RelicCastle_Dust_Frame0,
+    gQueueAnimTiles_RelicCastle_Dust_Frame1,
+    gQueueAnimTiles_RelicCastle_Dust_Frame2,
+    gQueueAnimTiles_RelicCastle_Dust_Frame3,
+    gQueueAnimTiles_RelicCastle_Dust_Frame4,
+    gQueueAnimTiles_RelicCastle_Dust_Frame5,
+    gQueueAnimTiles_RelicCastle_Dust_Frame6,
+    gQueueAnimTiles_RelicCastle_Dust_Frame7,
+    gQueueAnimTiles_RelicCastle_Dust_Frame8,
+    gQueueAnimTiles_RelicCastle_Dust_Frame9,
+    gQueueAnimTiles_RelicCastle_Dust_Frame10,
+    gQueueAnimTiles_RelicCastle_Dust_Frame11,
+    gQueueAnimTiles_RelicCastle_Dust_Frame12,
+    gQueueAnimTiles_RelicCastle_Dust_Frame13,
+    gQueueAnimTiles_RelicCastle_Dust_Frame14,
+    gQueueAnimTiles_RelicCastle_Dust_Frame15,
+    gQueueAnimTiles_RelicCastle_Dust_Frame16,
+    gQueueAnimTiles_RelicCastle_Dust_Frame17,
+    gQueueAnimTiles_RelicCastle_Dust_Frame18,
+    gQueueAnimTiles_RelicCastle_Dust_Frame19,
+    gQueueAnimTiles_RelicCastle_Dust_Frame20,
+    gQueueAnimTiles_RelicCastle_Dust_Frame21,
+    gQueueAnimTiles_RelicCastle_Dust_Frame22,
+    gQueueAnimTiles_RelicCastle_Dust_Frame23,
+    gQueueAnimTiles_RelicCastle_Dust_Frame24,
+    gQueueAnimTiles_RelicCastle_Dust_Frame25,
+    gQueueAnimTiles_RelicCastle_Dust_Frame26,
+    gQueueAnimTiles_RelicCastle_Dust_Frame27,
+    gQueueAnimTiles_RelicCastle_Dust_Frame28,
+    gQueueAnimTiles_RelicCastle_Dust_Frame29,
+    gQueueAnimTiles_RelicCastle_Dust_Frame30,
+    gQueueAnimTiles_RelicCastle_Dust_Frame31,
+};
+
+const u16 *const gQueueAnimTiles_RelicCastleContinue_Dust[] = {
+    gQueueAnimTiles_RelicCastle_Dust_Frame0,
+    gQueueAnimTiles_RelicCastle_Dust_Frame1,
+    gQueueAnimTiles_RelicCastle_Dust_Frame2,
+    gQueueAnimTiles_RelicCastle_Dust_Frame3,
+    gQueueAnimTiles_RelicCastle_Dust_Frame4,
+    gQueueAnimTiles_RelicCastle_Dust_Frame5,
+    gQueueAnimTiles_RelicCastle_Dust_Frame6,
+    gQueueAnimTiles_RelicCastle_Dust_Frame7,
+    gQueueAnimTiles_RelicCastle_Dust_Frame8,
+    gQueueAnimTiles_RelicCastle_Dust_Frame9,
+    gQueueAnimTiles_RelicCastle_Dust_Frame10,
+    gQueueAnimTiles_RelicCastle_Dust_Frame11,
+    gQueueAnimTiles_RelicCastle_Dust_Frame12,
+    gQueueAnimTiles_RelicCastle_Dust_Frame13,
+    gQueueAnimTiles_RelicCastle_Dust_Frame14,
+    gQueueAnimTiles_RelicCastle_Dust_Frame15,
+    gQueueAnimTiles_RelicCastle_Dust_Frame16,
+    gQueueAnimTiles_RelicCastle_Dust_Frame17,
+    gQueueAnimTiles_RelicCastle_Dust_Frame18,
+    gQueueAnimTiles_RelicCastle_Dust_Frame19,
+    gQueueAnimTiles_RelicCastle_Dust_Frame20,
+    gQueueAnimTiles_RelicCastle_Dust_Frame21,
+    gQueueAnimTiles_RelicCastle_Dust_Frame22,
+    gQueueAnimTiles_RelicCastle_Dust_Frame23,
+    gQueueAnimTiles_RelicCastle_Dust_Frame24,
+    gQueueAnimTiles_RelicCastle_Dust_Frame25,
+    gQueueAnimTiles_RelicCastle_Dust_Frame26,
+    gQueueAnimTiles_RelicCastle_Dust_Frame27,
+    gQueueAnimTiles_RelicCastle_Dust_Frame28,
+    gQueueAnimTiles_RelicCastle_Dust_Frame29,
+    gQueueAnimTiles_RelicCastle_Dust_Frame30,
+    gQueueAnimTiles_RelicCastle_Dust_Frame31,
+};
+
 const u16 gQueueAnimTiles_GeneralLake_Lake_Frame0[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/0.png", ".4bpp");
 const u16 gQueueAnimTiles_GeneralLake_Lake_Frame1[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/1.png", ".4bpp");
 const u16 gQueueAnimTiles_GeneralLake_Lake_Frame2[] = INCGFX_U16("data/tilesets/primary/general_lake/anim/lake/2.png", ".4bpp");
@@ -1364,6 +1491,20 @@ void InitTilesetAnim_General(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_General;
 }
 
+void InitTilesetAnim_RelicCastle(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_RelicCastle;
+}
+
+void InitTilesetAnim_RelicCastleContinue(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_RelicCastleContinue;
+}
+
 void InitTilesetAnim_GeneralLake(void)
 {
     sPrimaryTilesetAnimCounter = 0;
@@ -1504,6 +1645,22 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Flower(timer / 16);
 }
 
+static void TilesetAnim_RelicCastle(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_RelicCastle_Pile(timer / 16);
+    if (timer % 8 == 1)
+        QueueAnimTiles_RelicCastle_Dust(timer / 8);
+}
+
+static void TilesetAnim_RelicCastleContinue(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_RelicCastleContinue_Pile(timer / 16);
+    if (timer % 8 == 1)
+        QueueAnimTiles_RelicCastleContinue_Dust(timer / 8);
+}
+
 static void TilesetAnim_GeneralLake(u16 timer)
 {
     if (timer % 16 == 0)
@@ -1626,6 +1783,30 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_RelicCastle_Pile(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_RelicCastle_Pile);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_RelicCastle_Pile[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(882)), 9 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_RelicCastle_Dust(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_RelicCastle_Dust);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_RelicCastle_Dust[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(1000)), 8 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_RelicCastleContinue_Pile(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_RelicCastleContinue_Pile);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_RelicCastleContinue_Pile[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(960)), 9 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_RelicCastleContinue_Dust(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_RelicCastleContinue_Dust);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_RelicCastleContinue_Dust[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(1000)), 8 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_GeneralLake_Lake(u16 timer)
