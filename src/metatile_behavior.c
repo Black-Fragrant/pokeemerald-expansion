@@ -137,6 +137,8 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_CYCLING_ROAD_PULL_DOWN_GRASS]       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FAST_WATER]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_CYCLING_ROAD_WATER]                 = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
+    [MB_RELIC_CASTLE]                       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_RELIC_CASTLE_FOOTPRINTS]            = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
 };
 
 bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
@@ -195,6 +197,15 @@ bool8 MetatileBehavior_IsPokeGrass(u8 metatileBehavior)
 bool8 MetatileBehavior_IsSandOrDeepSand(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_SAND || metatileBehavior == MB_DEEP_SAND)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsRelicCastle(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_RELIC_CASTLE
+     || metatileBehavior == MB_RELIC_CASTLE_FOOTPRINTS)
         return TRUE;
     else
         return FALSE;
@@ -737,7 +748,8 @@ bool8 MetatileBehavior_IsAshGrass(u8 metatileBehavior)
 bool8 MetatileBehavior_IsFootprints(u8 metatileBehavior)
 {
     // MB_FOOTPRINTS is not used by any metatiles.
-    if (metatileBehavior == MB_FOOTPRINTS)
+    if (metatileBehavior == MB_FOOTPRINTS
+     || metatileBehavior == MB_RELIC_CASTLE_FOOTPRINTS)
         return TRUE;
     else
         return FALSE;
