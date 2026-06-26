@@ -561,7 +561,7 @@ script Route3_North_EventScript_Battle_Breeder_F_GivesBerry
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_ORAN_BERRY, 1)
-	goto_if_eq (VAR_RESULT, FALSE, Route3_North_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (Route3_North_EventScript_Breeder_F_Received)
 	end
 }
@@ -576,22 +576,6 @@ script Route3_North_EventScript_Breeder_F_Received
 	setflag(FLAG_ROUTE3N_ITEM_ORAN_BERRY)
 	release()
 	end()
-}
-
-script Route3_North_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
-script Route3_North_EventScript_BagIsFull2
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	closemessage
-	return
 }
 
 script Route3_North_EventScript_CherenByCave
@@ -682,7 +666,7 @@ script Route3_North_EventScript_Trigger_ThankingYou
 	waitmovement(0)
 	delay(10)
 	giveitem(ITEM_HEAL_BALL, 3)
-	call_if_eq (VAR_RESULT, FALSE, Route3_North_EventScript_BagIsFull2)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
 	msgbox("Ooh! Those are Heal Balls!\p"
        "They completely heal the captured\n"
        "Pokémon on the spot! How sweet of you!\p"

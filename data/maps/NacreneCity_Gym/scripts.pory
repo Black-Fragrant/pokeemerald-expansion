@@ -120,7 +120,7 @@ script NacreneCity_Gym_EventScript_ReceptionistGivesWater
     destroy_speech_bubble()
     closemessage()
 	giveitem(ITEM_FRESH_WATER, 1)
-	call_if_eq (VAR_RESULT, FALSE, NacreneCity_Gym_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     closemessage
     msgbox("All Trainers in this Gym use\n"
            "Normal-type Pokémon.\p"
@@ -189,13 +189,6 @@ script NacreneCity_Gym_EventScript_Receptionist_3
            "and when a Trainer wins the Gym Badge.", MSGBOX_NPC, TRUE)
     release
 	end
-}
-
-script NacreneCity_Gym_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	return()
 }
 
 script NacreneCity_Gym_EventScript_GymSign

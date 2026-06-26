@@ -1,1 +1,26 @@
 mapscripts DesertResort_Outside_MapScripts {}
+
+script DesertResort_Outside_EventScript_Cheerleaderman
+{
+    msgbox("I'm going to see the ruins, but I'm afraid\n"
+        "I might get lost in the desert.\p"
+        "It's really big, and sometimes you run\n"
+        "into Pokémon.\p"
+        "Will I be in trouble if I'm not strong?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script DesertResort_Outside_EventScript_Schoolboy
+{
+    msgbox("I hear you can find the newly discovered\n"
+           "entrance to the ruins if you go through\l"
+           "the gate and just head straight.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script DesertResort_Outside_EventScript_Sign
+{
+    msgbox("Desert Resort Ahead\n"
+           "It's nicer than the average desert!", MSGBOX_SIGN)
+    end
+}

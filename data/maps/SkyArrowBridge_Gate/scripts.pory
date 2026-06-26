@@ -10,16 +10,8 @@ script SkyArrowBridge_Gate_EventScript_Hiker
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_QUICK_CLAW, 1)
-	goto_if_eq (VAR_RESULT, FALSE, SkyArrowBridge_Gate_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (SkyArrowBridge_Gate_EventScript_Hiker_Received)
-}
-
-script SkyArrowBridge_Gate_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-    closemessage
-	release()
-	end()
 }
 
 script SkyArrowBridge_Gate_EventScript_Hiker_Received

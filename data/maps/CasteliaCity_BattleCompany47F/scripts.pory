@@ -186,7 +186,7 @@ script CasteliaCity_BattleCompany47F_EventScript_Businessman_GivingItems
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_QUICK_BALL, 3)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany47F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_BATTLE_COMPANY_47F_QUICK_BALLS)
 	goto(CasteliaCity_BattleCompany47F_EventScript_Businessman_GiveTimerBalls)
 	end
@@ -199,17 +199,9 @@ script CasteliaCity_BattleCompany47F_EventScript_Businessman_GiveTimerBalls
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_TIMER_BALL, 3)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany47F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_BATTLE_COMPANY_47F_TIMER_BALLS)
 	goto(CasteliaCity_BattleCompany47F_EventScript_Businessman_Finished)
-}
-
-script CasteliaCity_BattleCompany47F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
 }
 
 script CasteliaCity_BattleCompany47F_EventScript_Businessman_Finished
@@ -237,7 +229,7 @@ script CasteliaCity_BattleCompany47F_EventScript_Scientist_GivingItems
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_SCOPE_LENS, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany47F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_BATTLE_COMPANY_47F_SCOPE_LENS)
 	goto(CasteliaCity_BattleCompany47F_EventScript_Scientist_Finished)
 	end

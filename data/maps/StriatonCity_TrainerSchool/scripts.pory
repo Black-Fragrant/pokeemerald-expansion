@@ -77,7 +77,7 @@ script StriatonCity_TS_EventScript_Boy_QuizWon
 	destroy_speech_bubble()
 	closemessage
     giveitem(ITEM_FULL_HEAL, 1)
-	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_TS_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (StriatonCity_TS_EventScript_Boy_Quiz_Received)
 	end
 }
@@ -93,14 +93,6 @@ script StriatonCity_TS_EventScript_Boy_Quiz_Wrong
 	closemessage
     release
     end
-}
-
-script StriatonCity_TS_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
 }
 
 script StriatonCity_TS_EventScript_Boy_Quiz_Received
@@ -327,7 +319,7 @@ script StriatonCity_TS_EventScript_Cheren_Battle
 	setflag(FLAG_STRIATON_GYM_RECEPTIONIST)
 	clearflag(FLAG_STRIATON_CILAN)
 	giveitem(ITEM_ORAN_BERRY, 3)
-	call_if_eq (VAR_RESULT, FALSE, StriatonCity_TS_EventScript_BagIsFull2)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
 	goto (StriatonCity_TS_EventScript_Cheren_BerryReceived)
 }
 
@@ -387,12 +379,6 @@ script StriatonCity_TS_EventScript_Cheren_Pos3
 {
 	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_right))
 	waitmovement(0)
-	return()
-}
-
-script StriatonCity_TS_EventScript_BagIsFull2
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
 	return()
 }
 

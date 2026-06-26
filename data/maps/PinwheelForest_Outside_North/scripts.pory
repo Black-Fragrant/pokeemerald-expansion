@@ -27,7 +27,7 @@ script PinwheelForest_ON_EventScript_BattleGirl
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_TM_ROCK_SMASH, 1)
-	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_ON_EventScript_BagIsFull)
+    goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     goto(PinwheelForest_ON_EventScript_BattleGirl_received)
 }
 
@@ -40,13 +40,6 @@ script PinwheelForest_ON_EventScript_BattleGirl_received
     destroy_speech_bubble()
     closemessage
     setflag(FLAG_PINWHEEL_FOREST_RECEIVED_ROCK_SMASH)
-	release()
-	end()
-}
-
-script PinwheelForest_ON_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
 	release()
 	end()
 }
@@ -137,7 +130,7 @@ script PinwheelForest_ON_Trigger_Burgh
        delay(20)
        release
        end()
-       }
+}
 
 
 

@@ -171,7 +171,7 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
     msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Dowsing Machine{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
     delay(120)
 	additem (ITEM_DOWSING_MACHINE)
-    call_if_eq (VAR_RESULT, FALSE, NacreneCity_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
 	hidelargeitempic
     closemessage
 	fadedefaultbgm
@@ -276,7 +276,7 @@ script NacreneCity_EventScript_Trigger_Cheren
 	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_right))
 	waitmovement(0)
 	giveitem(ITEM_CHESTO_BERRY, 3)
-	call_if_eq (VAR_RESULT, FALSE, NacreneCity_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
 	msgbox("Give your Pokémon a\n"
        "Chesto Berry to hold. Then, if it ever\l"
        "falls asleep, it will wake up immediately.\p"
@@ -325,13 +325,6 @@ script NacreneCity_EventScript_Trigger_Cheren_Pos4
 {
 	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_down * 2, walk_right))
 	waitmovement(0)
-	return
-}
-
-script NacreneCity_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
 	return
 }
 

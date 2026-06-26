@@ -1,1 +1,154 @@
 mapscripts RelicCastle_1F_East_MapScripts {}
+
+script RelicCastle_1F_East_EventScript_Scientist
+{
+    msgbox("There are two things I've learned\n"
+           "about quicksand!\p"
+           "If you try to walk through the middle,\n"
+           "you'll fall.\p"
+           "And if you try to run through it,\n"
+           "you'll fall.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script RelicCastle_1F_East_EventScript_Battle_PsychicM
+{
+	trainerbattle_single(TRAINER_PSYCHIC_M_RELIC_CASTLE_1F,
+	text("My psychic-type Pokémon\n"
+           "just started making noises.\p"
+           "Is that because we're in the ruins...\n"
+           "or is it because of you?"),
+	text("So...strong!\n"
+           "Who are you?!"))
+	msgbox("It is said that long ago, these ruins\n"
+           "were the heart of civilization for people\l"
+           "and Pokémon in the Unova region.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script RelicCastle_1F_East_EventScript_Battle_PsychicF
+{
+	trainerbattle_single(TRAINER_PSYCHIC_F_RELIC_CASTLE_1F,
+	text("Just being here fills me\n"
+           "with magical power..."),
+	text("You seem to be\n"
+           "full of magical power, too..."))
+	msgbox("In ancient places,\n"
+           "magical energy remains...\p"
+           "I can understand it.\n"
+           "So much sorrow and joy...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script RelicCastle_1F_East_EventScript_Worker
+{
+    lock
+    faceplayer
+    call(RelicCastle_1F_East_EventScript_Worker_Dialogue)
+    release
+    end
+}
+
+script RelicCastle_1F_East_EventScript_Worker_Dialogue
+{
+    msgbox("Trainer! You still can't move ahead\n"
+           "'cause there is so much sand!\p"
+           "I will do my best to remove the sand.\n"
+           "Give me a second!", MSGBOX_DEFAULT, TRUE, LOCALID_RC1F_WORKER)
+    destroy_speech_bubble()
+    closemessage
+    return
+}
+
+script RelicCastle_1F_East_EventScript_Trigger_Worker
+{
+    lock
+	playse(SE_PIN)
+	applymovement(LOCALID_RC1F_WORKER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_RC1F_WORKER, moves(walk_in_place_right))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(face_left))
+	waitmovement(0)
+	delay(10)
+    call(RelicCastle_1F_East_EventScript_Worker_Dialogue)
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	applymovement(LOCALID_RC1F_WORKER, moves(face_up))
+	waitmovement(0)
+	delay(10)
+    release
+    end
+}
+
+script RelicCastle_1F_East_EventScript_Backpacker
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_RELIC_CASTLE_FOSSIL, RelicCastle_1F_East_EventScript_Backpacker_AlreadyGivenFossil)
+    msgbox("I've been carrying two Pokémon Fossils,\n"
+           "but they're just so heavy...\p"
+           "Would you take one of them off my hands?", MSGBOX_DEFAULT, TRUE, LOCALID_RC1F_BACKPACKER)
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Cover Fossil",
+        "Plume Fossil",
+        "Cancel")
+	if (var(VAR_RESULT) == 0) {goto (RelicCastle_1F_East_EventScript_GivesCoverFossil)}
+	elif (var(VAR_RESULT) == 1) {goto (RelicCastle_1F_East_EventScript_GivesPlumeFossil)}
+	goto (RelicCastle_1F_East_EventScript_NoWantFossil)
+}
+
+script RelicCastle_1F_East_EventScript_NoWantFossil
+{
+    msgbox("Oh, won't you please take one?\n"
+           "They're really weighing me down.", MSGBOX_DEFAULT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script RelicCastle_1F_East_EventScript_GivesCoverFossil
+{
+    msgbox("Oh, you like the Cover Fossil?\p"
+           "I heard it is the Fossil of a Pokémon\n"
+           "that used to swim in the ancient sea!", MSGBOX_DEFAULT)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_COVER_FOSSIL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_RELIC_CASTLE_FOSSIL)
+    closemessage
+    release
+    end
+}
+
+script RelicCastle_1F_East_EventScript_GivesPlumeFossil
+{
+    msgbox("Oh, you like the Plume Fossil?\p"
+           "It is the Fossil of a bird Pokémon\n"
+           "that lived in an ancient forest.\l"
+           "...But they say it couldn't fly.", MSGBOX_DEFAULT)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_PLUME_FOSSIL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_RELIC_CASTLE_FOSSIL)
+    closemessage
+    release
+    end
+}
+
+script RelicCastle_1F_East_EventScript_Backpacker_AlreadyGivenFossil
+{
+    msgbox("That museum in Nacrene City...\p"
+           "I hear Pokémon can be restored from\n"
+           "Fossils there.\p"
+           "'Cause Lenora loves bones and Fossils!", MSGBOX_DEFAULT, TRUE, LOCALID_RC1F_BACKPACKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}

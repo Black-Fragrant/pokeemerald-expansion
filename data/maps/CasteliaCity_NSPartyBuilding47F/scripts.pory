@@ -138,7 +138,7 @@ script CasteliaCity_NSPartyBuilding47F_EventScript_SchoolGirl
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_TM_ATTRACT)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_NSPartyBuilding47F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_ITEM_TM_ATTRACT)
 	goto(CasteliaCity_NSPartyBuilding47F_EventScript_SchoolGirl_ObtainedAttract)
 }
@@ -154,28 +154,6 @@ script CasteliaCity_NSPartyBuilding47F_EventScript_SchoolGirl_ObtainedAttract
 	release
 	end
 }
-
-script CasteliaCity_NSPartyBuilding47F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 script CasteliaCity_NSPartyBuilding47F_EventScript_Elevator
 {

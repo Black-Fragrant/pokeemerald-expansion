@@ -568,10 +568,10 @@
 #define FLAG_HIDDEN_ITEM_ROUTE4S_BURN_HEAL                   (FLAG_HIDDEN_ITEMS_START + 0x0F)
 #define FLAG_HIDDEN_ITEM_ROUTE4S_ULTRA_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x10)
 #define FLAG_HIDDEN_ITEM_ROUTE4S_ETHER                       (FLAG_HIDDEN_ITEMS_START + 0x11)
-#define FLAG_UNUSED_0x206                                    (FLAG_HIDDEN_ITEMS_START + 0x12)
-#define FLAG_UNUSED_0x207                                    (FLAG_HIDDEN_ITEMS_START + 0x13)
-#define FLAG_UNUSED_0x208                                    (FLAG_HIDDEN_ITEMS_START + 0x14)
-#define FLAG_UNUSED_0x209                                    (FLAG_HIDDEN_ITEMS_START + 0x15)
+#define FLAG_HIDDEN_ITEM_DESERT_RESORT_HYPER_POTION          (FLAG_HIDDEN_ITEMS_START + 0x12)
+#define FLAG_HIDDEN_ITEM_DESERT_RESORT_STARDUST              (FLAG_HIDDEN_ITEMS_START + 0x13)
+#define FLAG_HIDDEN_ITEM_DESERT_RESORT_RARE_CANDY            (FLAG_HIDDEN_ITEMS_START + 0x14)
+#define FLAG_HIDDEN_ITEM_RELIC_CASTLE_B1F_ELIXIR             (FLAG_HIDDEN_ITEMS_START + 0x15)
 #define FLAG_UNUSED_0x20A                                    (FLAG_HIDDEN_ITEMS_START + 0x16)
 #define FLAG_UNUSED_0x20B                                    (FLAG_HIDDEN_ITEMS_START + 0x17)
 #define FLAG_UNUSED_0x20C                                    (FLAG_HIDDEN_ITEMS_START + 0x18)
@@ -913,20 +913,20 @@
 #define FLAG_ROUTE4S_ITEM_ETHER                                     0x361
 #define FLAG_ROUTE4S_ITEM_SUPER_POTION                              0x362
 #define FLAG_ROUTE4S_ITEM_TM_DIG                                    0x363
-#define FLAG_UNUSED_0x364                                           0x364
-#define FLAG_UNUSED_0x365                                           0x365
-#define FLAG_UNUSED_0x366                                           0x366
-#define FLAG_UNUSED_0x367                                           0x367
-#define FLAG_UNUSED_0x368                                           0x368
-#define FLAG_UNUSED_0x369                                           0x369
-#define FLAG_UNUSED_0x36A                                           0x36A
-#define FLAG_UNUSED_0x36B                                           0x36B
-#define FLAG_UNUSED_0x36C                                           0x36C
-#define FLAG_UNUSED_0x36D                                           0x36D
-#define FLAG_UNUSED_0x36E                                           0x36E
-#define FLAG_UNUSED_0x36F                                           0x36F
-#define FLAG_UNUSED_0x370                                           0x370
-#define FLAG_UNUSED_0x371                                           0x371
+#define FLAG_DESERT_RESORT_ITEM_BLACK_GLASSES                       0x364
+#define FLAG_DESERT_RESORT_ITEM_SOFT_SAND                           0x365
+#define FLAG_DESERT_RESORT_ITEM_RAWST_BERRY_1                       0x366
+#define FLAG_DESERT_RESORT_ITEM_RAWST_BERRY_2                       0x367
+#define FLAG_DESERT_RESORT_ITEM_FRESH_WATER                         0x368
+#define FLAG_DESERT_RESORT_ITEM_SUPER_POTION                        0x369
+#define FLAG_DESERT_RESORT_ITEM_HEART_SCALE                         0x36A
+#define FLAG_DESERT_RESORT_ITEM_STARDUST                            0x36B
+#define FLAG_DESERT_RESORT_ITEM_TM_ROCK_TOMB                        0x36C
+#define FLAG_DESERT_RESORT_ITEM_FIRE_STONE                          0x36D
+#define FLAG_DESERT_RESORT_ITEM_SAFETY_GOGGLES                      0x36E
+#define FLAG_RELIC_CASTLE_FOSSIL                                    0x36F
+#define FLAG_RELIC_CASTLE_WROKER                                    0x370
+#define FLAG_RELIC_CASTLE_B1F_ITEM_REVIVE                           0x371
 #define FLAG_UNUSED_0x372                                           0x372
 #define FLAG_UNUSED_0x373                                           0x373
 #define FLAG_UNUSED_0x374                                           0x374

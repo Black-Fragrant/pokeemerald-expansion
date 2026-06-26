@@ -105,7 +105,7 @@ script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_GivesFreshWater
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_FRESH_WATER, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CasteliaGym_Eventscript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_GYM_ITEM_FRESH_WATER)
 	goto(CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_AfterFreshWater)
 }
@@ -378,7 +378,7 @@ script CasteliaCity_CasteliaGym_EventScript_Battle_Burgh
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_TM_STRUGGLE_BUG)
-	call_if_eq (VAR_RESULT, FALSE, CasteliaCity_CasteliaGym_Eventscript_BagIsFull2)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     closemessage
     msgbox("Struggle Bug also lowers the\n"
         "Sp. Atk of the target that was damaged.\p"
@@ -1102,19 +1102,4 @@ script CasteliaGym_HoneyWallCenterClosed
     call(CasteliaGym_HoneyWallBounce)
     release
     end
-}
-
-script CasteliaCity_CasteliaGym_Eventscript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
-script CasteliaCity_CasteliaGym_Eventscript_BagIsFull2
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	return()
 }

@@ -69,19 +69,11 @@ script NacreneCity_Cafe_EventScript_Waitress
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_SODA_POP, 1)
-	goto_if_eq (VAR_RESULT, FALSE, NacreneCity_Cafe_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     closemessage
     setflag(FLAG_DAILY_NACRENE_CAFE_SODA_POP)
     release 
     end 
-}
-
-script NacreneCity_Cafe_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-    closemessage
-	release()
-	end()
 }
 
 script NacreneCity_Cafe_EventScript_Waitress_ReceivedSodaToday

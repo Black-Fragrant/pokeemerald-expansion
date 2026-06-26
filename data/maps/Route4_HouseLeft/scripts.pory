@@ -20,7 +20,7 @@ script Route4_HouseLeft_EventScript_Worker_GivesDig
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_TM_DIG, 1)
-	goto_if_eq (VAR_RESULT, FALSE, Route4_HouseLeft_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_ROUTE4S_ITEM_TM_DIG)
 	goto (Route4_HouseLeft_EventScript_Worker_GivenDig)
 }
@@ -35,12 +35,4 @@ script Route4_HouseLeft_EventScript_Worker_GivenDig
     closemessage
     release
     end
-}
-
-script Route4_HouseLeft_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
 }

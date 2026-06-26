@@ -2193,359 +2193,310 @@ Pidove
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CINDY_1 ===
-Name: CINDY
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move
-
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_DAPHNE ===
-Name: DAPHNE
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move
-
-Luvdisc @ Nugget
-Level: 39
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Attract
-- Sweet Kiss
-- Flail
-- Water Pulse
-
-Luvdisc @ Nugget
-Level: 39
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Attract
-- Safeguard
-- Take Down
-- Water Pulse
-
-=== TRAINER_GRUNT_SPACE_CENTER_2 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
+=== TRAINER_DOCTOR_DESERT_RESORT ===
+Name: Jerry
+Class: Doctor
+Pic: Doctor
 Gender: Male
-Music: Magma
+Music: Clerk
+Items: Full Heal / Hyper Potion
 Battle Type: Singles
 AI: Check Bad Move
 
-Mightyena
-Level: 26
+Solosis
+Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Mightyena
-Level: 28
+=== TRAINER_BACKPACKER_M_DESERT_RESORT_1 ===
+Name: Kelsey
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Tranquill
+Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Numel
-Level: 30
+=== TRAINER_BACKPACKER_F_DESERT_RESORT_1 ===
+Name: Liz
+Class: Backpacker
+Pic: Backpacker F
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Watchog
+Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CINDY_2 ===
-Name: CINDY
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
-Items: Full Restore
+=== TRAINER_BACKPACKER_M_DESERT_RESORT_2 ===
+Name: Nate
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Zigzagoon @ Nugget
-Level: 11
+Dwebble
+Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Tackle
-- Tail Whip
 
-=== TRAINER_BRIANNA ===
-Name: BRIANNA
-Class: Lady
-Pic: Lady
+=== TRAINER_PSYCHIC_F_DESERT_RESORT ===
+Name: Cybil
+Class: Psychic
+Pic: Psychic F BW
 Gender: Female
-Music: Female
-Items: Full Restore
+Music: Cruel
 Battle Type: Singles
 AI: Check Bad Move
 
-Seaking @ Nugget
-Level: 40
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Gothita
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_NAOMI ===
-Name: NAOMI
-Class: Lady
-Pic: Lady
+=== TRAINER_BACKPACKER_F_DESERT_RESORT_2 ===
+Name: Elaine
+Class: Backpacker
+Pic: Backpacker F
 Gender: Female
-Music: Female
-Items: Full Restore
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Roselia @ Nugget
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Maractus
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CINDY_3 ===
-Name: CINDY
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
-Items: Full Restore
+=== TRAINER_PSYCHIC_M_DESERT_RESORT_1 ===
+Name: Low
+Class: Psychic
+Pic: Psychic M BW
+Gender: Male
+Music: Cruel
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone @ Nugget
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Yamask
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CINDY_4 ===
-Name: CINDY
-Class: Lady
-Pic: Lady
+Munna
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RANGER_F_DESERT_RESORT ===
+Name: Mylene
+Class: Ranger
+Pic: Ranger F
 Gender: Female
-Music: Female
-Items: Full Restore
+Music: Ranger
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone @ Nugget
-Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Ducklett
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CINDY_5 ===
-Name: CINDY
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
-Items: Full Restore
+=== TRAINER_RANGER_M_DESERT_RESORT ===
+Name: Jaden
+Class: Ranger
+Pic: Ranger M
+Gender: Male
+Music: Ranger
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone @ Nugget
-Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Darumaka
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CINDY_6 ===
-Name: CINDY
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
-Items: Full Restore
+Blitzle
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_PSYCHIC_M_DESERT_RESORT_2 ===
+Name: Gaven
+Class: Psychic
+Pic: Psychic M BW
+Gender: Male
+Music: Cruel
 Battle Type: Singles
 AI: Check Bad Move
 
-Linoone @ Nugget
+Solosis
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Woobat
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_PSYCHIC_M_RELIC_CASTLE_1F ===
+Name: Perry
+Class: Psychic
+Pic: Psychic M BW
+Gender: Male
+Music: Cruel
+Battle Type: Singles
+AI: Check Bad Move
+
+Sigilyph
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_PSYCHIC_F_RELIC_CASTLE_1F ===
+Name: Dua
+Class: Psychic
+Pic: Psychic F BW
+Gender: Female
+Music: Cruel
+Battle Type: Singles
+AI: Check Bad Move
+
+Woobat
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Munna
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_RELIC_CASTLE_B1F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Watchog
+Level: 34
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Krokorok
+Level: 34
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Krokorok
+Level: 34
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_RELIC_CASTLE_B2F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Scraggy
+Level: 35
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Watchog
+Level: 35
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_F_RELIC_CASTLE_B2F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt F
+Gender: Female
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Garbodor
 Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-- Fury Swipes
-- Mud Sport
-- Odor Sleuth
-- Sand Attack
-
-=== TRAINER_MELISSA ===
-Name: MELISSA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHEILA ===
-Name: SHEILA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
+=== TRAINER_GRUNT_M_RELIC_CASTLE_B3F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 
-Shroomish
-Level: 21
+Krokorok
+Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHIRLEY ===
-Name: SHIRLEY
-Class: Beauty
-Pic: Beauty
+=== TRAINER_GRUNT_F_RELIC_CASTLE_B3F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt F
 Gender: Female
-Music: Female
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 
-Numel
-Level: 21
+Liepard
+Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JESSICA_1 ===
-Name: JESSICA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Kecleon
-Level: 29
+Trubbish
+Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Bind
-- Lick
-- Fury Swipes
-- Feint Attack
 
-Seviper
-Level: 29
+Trubbish
+Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Tail
-- Screech
-- Glare
-- Crunch
 
-=== TRAINER_CONNIE ===
-Name: CONNIE
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
+=== TRAINER_GRUNT_M_RELIC_CASTLE_B4F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 
-Goldeen
-Level: 40
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_BRIDGET ===
-Name: BRIDGET
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Azumarill
-Level: 40
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_OLIVIA ===
-Name: OLIVIA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Clamperl
+Watchog
 Level: 35
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Iron Defense
-- Whirlpool
-- Rain Dance
-- Water Pulse
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Corphish
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Taunt
-- Crabhammer
-- Water Pulse
-
-Lombre
-Level: 39
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Uproar
-- Fury Swipes
-- Fake Out
-- Water Pulse
-
-=== TRAINER_TIFFANY ===
-Name: TIFFANY
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 39
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Sharpedo
-Level: 39
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_JESSICA_2 ===
-Name: JESSICA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Kecleon
+Scraggy
 Level: 35
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Bind
-- Lick
-- Fury Swipes
-- Feint Attack
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Seviper
-Level: 35
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Poison Tail
-- Screech
-- Glare
-- Crunch
-
-=== TRAINER_JESSICA_3 ===
-Name: JESSICA
-Class: Beauty
-Pic: Beauty
+=== TRAINER_GRUNT_F_RELIC_CASTLE_B4F ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt F
 Gender: Female
-Music: Female
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 
-Kecleon
-Level: 38
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Bind
-- Lick
-- Fury Swipes
-- Feint Attack
+Trubbish
+Level: 35
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Seviper
-Level: 38
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Poison Tail
-- Screech
-- Glare
-- Crunch
+Liepard
+Level: 35
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GRUNT_M_RELIC_CASTLE_LF ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
+Battle Type: Singles
+AI: Check Bad Move
+
+Krookodile
+Level: 64
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JESSICA_4 ===
 Name: JESSICA

@@ -40,7 +40,7 @@ script NacreneCity_Gym_LenoraRoom_EventScript_Battle_Lenora
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_TM_RETALIATE)
-	call_if_eq (VAR_RESULT, FALSE, NacreneCity_Gym_LenoraRoom_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     closemessage
     msgbox("Retaliate does a lot more damage if an\n"
            "ally fainted the turn before you use it!\p"
@@ -123,10 +123,4 @@ script NacreneCity_Gym_LenoraRoom_EventScript_Lenora_AcquiredBadge
     closemessage
     release
     end
-}
-
-script NacreneCity_Gym_LenoraRoom_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
-	return()
 }

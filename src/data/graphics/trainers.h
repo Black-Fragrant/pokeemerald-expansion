@@ -622,6 +622,15 @@ const u16 gTrainerPalette_FishermanBW[] = INCGFX_U16("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_ParasolLadyBW[] = INCGFX_U32("graphics/trainers/front_pics/parasol_lady_bw.png", ".4bpp.smol");
 const u16 gTrainerPalette_ParasolLadyBW[] = INCGFX_U16("graphics/trainers/front_pics/parasol_lady_bw.png", ".gbapal");
 
+const u32 gTrainerFrontPic_Doctor[] = INCGFX_U32("graphics/trainers/front_pics/doctor.png", ".4bpp.smol");
+const u16 gTrainerPalette_Doctor[] = INCGFX_U16("graphics/trainers/front_pics/doctor.png", ".gbapal");
+
+const u32 gTrainerFrontPic_PsychicMBW[] = INCGFX_U32("graphics/trainers/front_pics/psychic_m_bw.png", ".4bpp.smol");
+const u16 gTrainerPalette_PsychicMBW[] = INCGFX_U16("graphics/trainers/front_pics/psychic_m_bw.png", ".gbapal");
+
+const u32 gTrainerFrontPic_PsychicFBW[] = INCGFX_U32("graphics/trainers/front_pics/psychic_f_bw.png", ".4bpp.smol");
+const u16 gTrainerPalette_PsychicFBW[] = INCGFX_U16("graphics/trainers/front_pics/psychic_f_bw.png", ".gbapal");
+
 const u8 gTrainerBackPic_Hilbert[] = INCGFX_U8("graphics/trainers/back_pics/hilbert.png", ".4bpp");
 const u8 gTrainerBackPic_Hilda[] = INCGFX_U8("graphics/trainers/back_pics/hilda.png", ".4bpp");
 const u8 gTrainerBackPic_Juniper[] = INCGFX_U8("graphics/trainers/back_pics/juniper.png", ".4bpp");
@@ -1559,6 +1568,18 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PARASOL_LADY_BW] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ParasolLadyBW, gTrainerPalette_ParasolLadyBW),
+    },
+    [TRAINER_PIC_DOCTOR] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Doctor, gTrainerPalette_Doctor),
+    },
+    [TRAINER_PIC_PSYCHIC_M_BW] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicMBW, gTrainerPalette_PsychicMBW),
+    },
+    [TRAINER_PIC_PSYCHIC_F_BW] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicFBW, gTrainerPalette_PsychicFBW),
     },
     // end fireBlack
 };

@@ -1,1 +1,19 @@
 mapscripts Route4_Gate_MapScripts {}
+
+script Route4_Gate_EventScript_Receptionist
+{
+    msgbox("The Desert Resort is especially known\n"
+           "for the Relic Castle.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script Route4_Gate_EventScript_Schoolboy
+{
+    msgbox("I'm a School Kid, so I know this!\p"
+           "Just like in caves, you can run into\n"
+           "Pokémon almost anywhere in the desert.\p"
+           "But they don't like hiding in the pale\n"
+           "sand. If you walk there, you won't have\l"
+           "to worry about battling.", MSGBOX_NPC, TRUE)
+    end
+}

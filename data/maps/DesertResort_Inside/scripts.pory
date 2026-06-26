@@ -1,1 +1,288 @@
 mapscripts DesertResort_Inside_MapScripts {}
+
+script DesertResort_Inside_EventScript_KarateKing
+{
+    msgbox("I came all the way out to the Desert Resort\n"
+           "to train, but...\p"
+           "There are so many Ground-type Pokémon,\n"
+           "and I'm already in tatters...", MSGBOX_NPC, TRUE)
+    end
+}
+
+script DesertResort_Inside_EventScript_Statues
+{
+    lock
+    msgbox("It appears to be a statue of a Pokémon.", MSGBOX_TRANSPARENT)
+    closemessage
+    release
+    end
+}
+
+script DesertResort_Inside_EventScript_Battle_Doctor
+{
+	trainerbattle_single(TRAINER_DOCTOR_DESERT_RESORT,
+	text("I'm a Trainer first,\n"
+           "and a Doctor second!"),
+	text("Whenever I meet a Trainer,\n"
+           "I can't help having a battle..."),
+	DesertResort_Inside_EventScript_Doctor)
+	goto(DesertResort_Inside_EventScript_Doctor)
+	end()
+}
+
+script DesertResort_Inside_EventScript_Doctor
+{
+    msgbox("Now, I'll make\n"
+           "your Pokémon healthy!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_DOCTOR)
+    destroy_speech_bubble()
+    closemessage
+       fadescreenswapbuffers(FADE_TO_BLACK)
+    playbgm(MUS_BW_HEAL, TRUE)
+	special(HealPlayerParty)
+    delay(140)
+    fadedefaultbgm
+    savebgm(MUS_BW_GENERAL_CAVE)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+     msgbox("Desert Resort is a harsh place.\n"
+           "Do you have medicines?", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_DOCTOR)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script DesertResort_Inside_EventScript_Battle_BackpackerM_1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_DESERT_RESORT_1,
+	text("Having traveled the world, I realized\n"
+           "we can communicate through our Pokémon."),
+	text("That message came through\n"
+           "loud and clear!"))
+	msgbox("Having traveled around the world,\n"
+           "I learned that travel brings change!\p"
+           "We shouldn't be afraid of change.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_BackpackerF_1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_DESERT_RESORT_1,
+	text("Being with my Pokémon makes me happy\n"
+           "even when we're in a bad situation!"),
+	text("Yes! It was fun that your Pokémon and mine\n"
+           "were both so energetic!"))
+	msgbox("When I feel lonely at night,\n"
+           "I curl up with my Pokémon and watch\l"
+           "the twinkling stars.\p"
+           "I track the shooting stars and slow\n"
+           "down the rhythm of my life.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script DesertResort_Inside_EventScript_BlackSuit
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_DESERT_RESORT_ITEM_SOFT_SAND, DesertResort_Inside_EventScript_BlackSuit_ObtainedSoftSand)
+     msgbox("You're the first person to come\n"
+           "clear out here to talk to me!\p"
+           "I'm so moved!\n"
+           "So, I'll give you this!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_SOFT_SAND, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_DESERT_RESORT_ITEM_SOFT_SAND)
+    msgbox("If a Pokémon holds this Soft Sand,\n"
+       "the power of its Ground-type moves goes up!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script DesertResort_Inside_EventScript_BlackSuit_ObtainedSoftSand
+{
+    msgbox("According to what I've heard, that\n"
+           "Relic Castle is the ruins of a city built\l"
+           "by the hero of old and the dragon Pokémon\l"
+           "that accompanied the hero.", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script DesertResort_Inside_EventScript_Backpacker
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_DESERT_RESORT_ITEM_SAFETY_GOGGLES, DesertResort_Inside_EventScript_Backpacker_ObtainedSafetyGoggles)
+     msgbox("I don't need my Safety Goggles here!\n"
+           "So you can have these.", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BACKPACKER)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_SAFETY_GOGGLES, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_DESERT_RESORT_ITEM_SAFETY_GOGGLES)
+    msgbox("These goggles protect the holder\n"
+           "from both weather-related\l"
+           "damage and powder.", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BACKPACKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script DesertResort_Inside_EventScript_Backpacker_ObtainedSafetyGoggles
+{
+    msgbox("Oh! A sea of sand! I don't need\n"
+           "Go-Goggles here!\p"
+           "Oh, I've come here all the way from\n"
+           "the Hoenn region.", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BACKPACKER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script DesertResort_Inside_EventScript_Battle_BackpackerM_2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_DESERT_RESORT_2,
+	text("Countless feelings infuse these ruins!\p"
+           "It's fun to imagine them!\n"
+           "And how are you feeling?"),
+	text("I am feeling...\n"
+           "very upset because I could not win!"))
+	msgbox("People and Pokémon\n"
+           "each have different feelings.\p"
+           "And probably both are correct.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_PsychicF
+{
+	trainerbattle_single(TRAINER_PSYCHIC_F_DESERT_RESORT,
+	text("I am a Psychic, so just one look at you\n"
+           "tells me that you are a Trainer!"),
+	text("I am a Psychic,\n"
+           "so I can tell the battle is over."))
+	msgbox("Sifting the ever-changing sands...\n"
+           "sifting my ever-changing feelings...\p"
+           "Telepathy means others will be aware of\n"
+           "my feelings. That could be a good thing.\p"
+           "Wait! It means others will be aware when\n"
+           "I have awkward or painful feelings, too!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_BackpackerF_2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_DESERT_RESORT_2,
+	text("Whether I travel or not,\n"
+           "I want to make a great discovery."),
+	text("Oh! I may have discovered\n"
+           "something good about you!"))
+	msgbox("The world is full of mysteries!\p"
+           "That's why I look closely.\n"
+           "That's why I listen carefully.\p"
+           "I think, I reflect, and\n"
+           "I discover something new.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_PsychicM_1
+{
+	trainerbattle_single(TRAINER_PSYCHIC_M_DESERT_RESORT_1,
+	text("The Abilities of my Pokémon!\n"
+           "I will show them to you."),
+	text("I could not make really good use\n"
+           "of the Ability Mummy..."))
+	msgbox("If an Ability is changed to Mummy,\n"
+           "the Pokémon cannot use its original\l"
+           "Ability. It's subtly devious, isn't it?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_RangerF
+{
+	trainerbattle_single(TRAINER_RANGER_F_DESERT_RESORT,
+	text("Scorching desert!\n"
+           "A passion for adventure!\l"
+           "And a heated battle!"),
+	text("Hot! Hot! Hot! Hot!!"),
+	DesertResort_Inside_EventScript_RangerF_GivesRastBerry)
+	goto(DesertResort_Inside_EventScript_RangerF_GivesRastBerry)
+	end()
+}
+
+script DesertResort_Inside_EventScript_RangerF_GivesRastBerry
+{
+	goto_if_set(FLAG_DESERT_RESORT_ITEM_RAWST_BERRY_1, DesertResort_Inside_EventScript_RangerF_RawstReceived)
+	msgbox("Speed is crucial\n"
+           "to treat a burn!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_RANGERF)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_RAWST_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+	goto (DesertResort_Inside_EventScript_RangerF_RawstReceived)
+	end
+}
+
+script DesertResort_Inside_EventScript_RangerF_RawstReceived
+{
+	msgbox("Whether it is hot or cold,\n"
+           "there is no problem if you have passion!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_RANGERF)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_DESERT_RESORT_ITEM_RAWST_BERRY_1)
+	release()
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_RangerM
+{
+	trainerbattle_single(TRAINER_RANGER_M_DESERT_RESORT,
+	text("I will show you the harshness\n"
+           "of the desert through a battle!"),
+	text("Desert...hot... Mouth...dry... Grfrrrfl..."),
+	DesertResort_Inside_EventScript_RangerM_GivesRastBerry)
+	goto(DesertResort_Inside_EventScript_RangerM_GivesRastBerry)
+	end()
+}
+
+script DesertResort_Inside_EventScript_RangerM_GivesRastBerry
+{
+	goto_if_set(FLAG_DESERT_RESORT_ITEM_RAWST_BERRY_2, DesertResort_Inside_EventScript_RangerM_RawstReceived)
+	msgbox("Be careful of burns!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_RANGERM)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_RAWST_BERRY, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+	goto (DesertResort_Inside_EventScript_RangerM_RawstReceived)
+	end
+}
+
+script DesertResort_Inside_EventScript_RangerM_RawstReceived
+{
+	msgbox("If a Pokémon gets a burn,\n"
+           "it also weakens physical attacks.\l"
+           "This works quite well!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_RANGERM)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_DESERT_RESORT_ITEM_RAWST_BERRY_2)
+	release()
+	end()
+}
+
+script DesertResort_Inside_EventScript_Battle_PsychicM_2
+{
+	trainerbattle_single(TRAINER_PSYCHIC_M_DESERT_RESORT_2,
+	text("Oh! That moment!\p"
+           "That's when we use Pokémon."),
+	text("Oh! Is it over already?"))
+	msgbox("Oh! That moment.\p"
+           "That's when you notice\n"
+           "how great Pokémon are!", MSGBOX_NPC, TRUE)
+	end()
+}

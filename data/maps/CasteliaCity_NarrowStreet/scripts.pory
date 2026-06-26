@@ -128,7 +128,7 @@ script CasteliaCity_NarrowStreet_EventScript_Trigger
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_TM_FLASH)
-	call_if_eq (VAR_RESULT, FALSE, CasteliaCity_NarrowStreet_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     closemessage
     setvar(VAR_CASTELIA_TM70_FLASH, 1)
     msgbox("If you use the move Flash, the accuracy\n"
@@ -209,11 +209,4 @@ script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos9
     applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_left * 4, walk_in_place_right)) 
     waitmovement(0)
     return
-}
-
-script CasteliaCity_NarrowStreet_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	return()
 }

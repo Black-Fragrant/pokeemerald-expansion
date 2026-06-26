@@ -190,7 +190,7 @@ script CasteliaCity_BattleCompany55F_EventScript_Janitor_Cont
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_EXP_SHARE, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_BattleCompany55F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_BATTLE_COMPANY_55F_EXP_SHARE)
 	goto(CasteliaCity_BattleCompany55F_EventScript_Janitor_Finished)
 }
@@ -207,12 +207,3 @@ script CasteliaCity_BattleCompany55F_EventScript_Janitor_Finished
 	release
 	end
 }
-
-script CasteliaCity_BattleCompany55F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-

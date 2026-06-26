@@ -809,7 +809,7 @@ script CasteliaCity_PAHQ_EventScript_Beauty_GivesSodaPop
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_SODA_POP, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_PAHQ_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_CASTELIA_PAHQ_OBTAINED_SODA_POP)
     goto(CasteliaCity_PAHQ_EventScript_Beauty_FinishingWords)
 }
@@ -918,14 +918,6 @@ script CasteliaCity_PAHQ_EventScript_CalculateNumbersOfSurveysLeft
     destroy_speech_bubble()
     closemessage
     return
-}
-
-script CasteliaCity_PAHQ_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
 }
 
 script CasteliaCity_PAHQ_EventScript_Trigger

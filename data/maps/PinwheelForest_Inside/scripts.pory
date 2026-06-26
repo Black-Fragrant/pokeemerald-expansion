@@ -649,7 +649,7 @@ script PinwheelForest_Inside_EventScript_Ranger_M_GivesChestoBerry
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_CHESTO_BERRY, 1)
-	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (PinwheelForest_Inside_EventScript_Ranger_M_ChestoReceived)
 	end
 }
@@ -664,21 +664,6 @@ script PinwheelForest_Inside_EventScript_Ranger_M_ChestoReceived
 	setflag(FLAG_PINWHEEL_FOREST_I_ITEM_CHESTO_BERRY)
 	release()
 	end()
-}
-
-script PinwheelForest_Inside_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
-script PinwheelForest_Inside_EventScript_BagIsFull2
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	return()
 }
 
 script PinwheelForest_Inside_EventScript_Battle_Youngster
@@ -714,7 +699,7 @@ script PinwheelForest_Inside_EventScript_Ranger_F_GivesChestoBerry
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_CHESTO_BERRY, 1)
-	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (PinwheelForest_Inside_EventScript_Ranger_F_ChestoReceived)
 	end
 }
@@ -756,7 +741,7 @@ script PinwheelForest_Inside_EventScript_Ranger_F_GivesPechaBerry
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_PECHA_BERRY, 1)
-	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (PinwheelForest_Inside_EventScript_Ranger_F_PechaReceived)
 	end
 }
@@ -850,7 +835,7 @@ script PinwheelForest_Inside_EventScript_Ranger_M_GivesPechaBerry
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_PECHA_BERRY, 1)
-	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (PinwheelForest_Inside_EventScript_Ranger_M_PechaReceived)
 	end
 }
@@ -1077,7 +1062,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_MOON_STONE, 1)
-	call_if_eq (VAR_RESULT, FALSE, PinwheelForest_Inside_EventScript_BagIsFull2)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     msgbox("Lenora: This is a Moon Stone!\p"
            "Some Pokémon evolve when you\n"
            "use this item on them.\p"
