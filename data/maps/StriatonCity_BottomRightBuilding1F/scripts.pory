@@ -28,7 +28,7 @@ script StriatonCity_BRB1F_EventScript_CheerleaderMan
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_GREAT_BALL, 1)
-	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_BRB1F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (StriatonCity_BRB1F_EventScript_CheerleaderMan_Received)
 	end
 }
@@ -41,14 +41,6 @@ script StriatonCity_BRB1F_EventScript_CheerleaderMan_Received
 	destroy_speech_bubble()
 	closemessage
 	setflag(FLAG_STRIATON_BRB1F_GREAT_BALL)
-	release()
-	end()
-}
-
-script StriatonCity_BRB1F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
 	release()
 	end()
 }

@@ -237,7 +237,7 @@ script CasteliaCity_CentralPlaza_EventScript_Dancer_FoundBothDancer
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_AMULET_COIN, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CentralPlaza_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_CASTELIA_CENTRAL_PLAZA_AMULET_COIN)
     msgbox("We communicate by dancing.\p"
            "It's how we say happy things,\n"
@@ -349,12 +349,4 @@ script CasteliaCity_CentralPlaza_EventScript_DanceRoutine3
     delay(20)
     release
     end
-}
-
-script CasteliaCity_CentralPlaza_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-    closemessage
-	release()
-	end()
 }

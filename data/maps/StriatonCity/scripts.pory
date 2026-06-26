@@ -158,7 +158,7 @@ script StriatonCity_EventScript_Roughneck_Right
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_DUSK_BALL, 1)
-	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (StriatonCity_EventScript_Roughneck_Right_Received)
 	end
 }
@@ -176,14 +176,6 @@ script StriatonCity_EventScript_Roughneck_Right_Received
 	end()
 }
 
-script StriatonCity_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
 script StriatonCity_EventScript_Fisherman
 {
 	lock()
@@ -194,7 +186,7 @@ script StriatonCity_EventScript_Fisherman
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_BIG_PEARL, 1)
-	goto_if_eq (VAR_RESULT, FALSE, StriatonCity_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (StriatonCity_EventScript_Fisherman_Received)
 	end
 }

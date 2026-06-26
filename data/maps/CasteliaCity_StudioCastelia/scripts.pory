@@ -198,7 +198,7 @@ script CasteliaCity_StudioCastelia_EventScript_AspearBerries
 
 script CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries
 {
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_StudioCastelia_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_STUDIO_CASTELIA_BERRY)
     msgbox("Aww. You are the best!\n"
            "Please come back tomorrow, too!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_STUDIO_PEIRRO)
@@ -206,14 +206,6 @@ script CasteliaCity_StudioCastelia_EventScript_FinishGivingBerries
     closemessage
 	release
 	end
-}
-
-script CasteliaCity_StudioCastelia_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
 }
 
 script CasteliaCity_StudioCastelia_EventScript_Peirro_ObtainedBerries

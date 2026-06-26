@@ -73,7 +73,7 @@ script PinwheelForest_OS_EventScript_Challenge_Rock
        "Challenge Rock.\p"
        "A piece of the rock broke away!", MSGBOX_DEFAULT)
        giveitem(ITEM_STAR_PIECE, 1)
-	goto_if_eq (VAR_RESULT, FALSE, PinwheelForest_OS_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
        setflag(FLAG_DAILY_PFOS_CHALLENGE_ROCK)
        closemessage
        release
@@ -94,19 +94,3 @@ script PinwheelForest_OS_EventScript_Challenge_Rock_No
        release 
        end 
 }
-
-script PinwheelForest_OS_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_DEFAULT)
-	release()
-	end()
-}
-
-
-
-
-
-
-
-
-

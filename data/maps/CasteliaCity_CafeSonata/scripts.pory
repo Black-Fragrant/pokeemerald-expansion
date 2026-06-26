@@ -37,7 +37,7 @@ script CasteliaCity_CafeSonata_EventScript_Waiter
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_LEMONADE, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_CafeSonata_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_CASTELIA_CAFE_SONATA_LEMONADE)
     msgbox("Give this to your dear Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_CAFE_SONATA_WAITER)
     destroy_speech_bubble()
@@ -54,12 +54,4 @@ script CasteliaCity_CafeSonata_EventScript_Waiter_GivenLemonade
     closemessage
     release
     end
-}
-
-script CasteliaCity_CafeSonata_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
 }

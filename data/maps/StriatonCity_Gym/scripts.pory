@@ -134,7 +134,7 @@ script StriatonCity_Gym_EventScript_ReceptionistGivesWater
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_FRESH_WATER, 1)
-	call_if_eq (VAR_RESULT, FALSE, StriatonCity_Gym_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     closemessage
     delay(10)
 	applymovement(LOCALID_STRIATON_GYM_GYMRECEPTIONIST, moves(walk_right * 3, walk_in_place_down))
@@ -142,13 +142,6 @@ script StriatonCity_Gym_EventScript_ReceptionistGivesWater
     delay(10)
     releaseall()
     end()
-}
-
-script StriatonCity_Gym_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	return()
 }
 
 script StriatonCity_Gym_EventScript_GymReceptionist
@@ -766,7 +759,7 @@ script StriatonCity_Gym_EventScript_BadgeObtained
     destroy_speech_bubble()
     closemessage
 	giveitem(ITEM_TM_WORK_UP)
-	call_if_eq (VAR_RESULT, FALSE, StriatonCity_Gym_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     closemessage
     msgbox("TM83 contains Work Up.\p"
         "If you use Work Up, the Pokémon's\n"

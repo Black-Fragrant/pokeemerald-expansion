@@ -36,7 +36,7 @@ script StriatonCity_TRB2F_EventScript_FennelGivesHM01
     closemessage
 	delay(10)
 	giveitem(ITEM_HM_CUT, 1)
-	call_if_eq (VAR_RESULT, FALSE, StriatonCity_TRB2F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
     msgbox("There are some moves that a Pokémon can\n"
             "use even when it is not fighting!\p"
             "With this Hidden Machine, you can teach\n"
@@ -60,13 +60,6 @@ script StriatonCity_TRB2F_EventScript_FennelGivesHM01
     delay(10)
     releaseall()
     end()
-}
-
-script StriatonCity_TRB2F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	return()
 }
 
 script StriatonCity_TRB2F_EventScript_SchoolGirl

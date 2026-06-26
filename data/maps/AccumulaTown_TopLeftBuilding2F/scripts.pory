@@ -21,7 +21,7 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Guy
 	destroy_speech_bubble()
 	closemessage
 	giveitem(ITEM_POKE_BALL, 1)
-	goto_if_eq (VAR_RESULT, FALSE, AccumulaTown_TopLeftBuilding2F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	goto (AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball)
 	end
 }
@@ -35,14 +35,6 @@ script AccumulaTown_TopLeftBuilding2F_EventScript_Guy_AlreadyGivenPokeball
 	destroy_speech_bubble()
 	closemessage
 	setflag(FLAG_RECEIVED_POKEBALL_ACCUMULA)
-	release
-	end
-}
-
-script AccumulaTown_TopLeftBuilding2F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
 	release
 	end
 }

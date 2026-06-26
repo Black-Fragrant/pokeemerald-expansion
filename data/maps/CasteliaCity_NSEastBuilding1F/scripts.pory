@@ -133,7 +133,7 @@ script CasteliaCity_NSEastBuilding1F_EventScript_Scientist_GiveEviolite
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_EVIOLITE, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_NSEastBuilding1F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_CASTELIA_ITEM_EVIOLITE)
     goto(CasteliaCity_NSEastBuilding1F_EventScript_Scientist_ObtainedEviolite)
 }
@@ -151,18 +151,6 @@ script CasteliaCity_NSEastBuilding1F_EventScript_Scientist_ObtainedEviolite
     release
     end
 }
-
-script CasteliaCity_NSEastBuilding1F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
-
-
-
 
 script CasteliaCity_NSEastBuilding1F_EventScript_Elevator
 {

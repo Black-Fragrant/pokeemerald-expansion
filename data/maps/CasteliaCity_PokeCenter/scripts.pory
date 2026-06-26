@@ -247,7 +247,7 @@ script CasteliaCity_PokeCenter_EventScript_Give_WideLens
 {
 	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
     giveitem(ITEM_WIDE_LENS, 1)
-	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_WIDE_LENS)
 	return
 }
@@ -256,7 +256,7 @@ script CasteliaCity_PokeCenter_EventScript_Give_Everstone
 {
 	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
     giveitem(ITEM_EVERSTONE, 1)
-	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_EVERSTONE)
 	return
 }
@@ -265,7 +265,7 @@ script CasteliaCity_PokeCenter_EventScript_Give_ZoomLens
 {
 	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
     giveitem(ITEM_ZOOM_LENS, 1)
-	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_ZOOM_LENS)
 	return
 }
@@ -274,7 +274,7 @@ script CasteliaCity_PokeCenter_EventScript_Give_ChoiceScarf
 {
 	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
     giveitem(ITEM_CHOICE_SCARF, 1)
-	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_CHOICE_SCARF)
 	return
 }
@@ -283,7 +283,7 @@ script CasteliaCity_PokeCenter_EventScript_Give_PPMax
 {
 	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
     giveitem(ITEM_PP_MAX, 1)
-	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_PP_MAX)
 	return
 }
@@ -292,17 +292,9 @@ script CasteliaCity_PokeCenter_EventScript_Give_MasterBall
 {
 	call(CasteliaCity_PokeCenter_EventScript_First_Items_Dialogue)
     giveitem(ITEM_MASTER_BALL, 1)
-	goto_if_eq(VAR_RESULT, FALSE, CasteliaCity_PokeCenter_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
 	setflag(FLAG_CASTELIA_POKEMON_CENTER_ITEM_MASTER_BALL)
 	return
-}
-
-script CasteliaCity_PokeCenter_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-    closemessage
-	release()
-	end()
 }
 
 script CasteliaCity_PokeCenter_EventScript_Traded_5to9

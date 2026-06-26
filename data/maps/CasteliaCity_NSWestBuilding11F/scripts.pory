@@ -141,7 +141,7 @@ script CasteliaCity_NSWestBuilding11F_EventScript_GiveConfide
     destroy_speech_bubble()
     closemessage
     giveitem(ITEM_TM100, 1)
-	goto_if_eq (VAR_RESULT, FALSE, CasteliaCity_NSWestBuilding11F_EventScript_BagIsFull)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_CASTELIA_ITEM_TM_CONFIDE)
     goto(CasteliaCity_NSWestBuilding11F_EventScript_ObtainedConfide)
 }
@@ -159,12 +159,3 @@ script CasteliaCity_NSWestBuilding11F_EventScript_ObtainedConfide
     release 
     end 
 }
-
-script CasteliaCity_NSWestBuilding11F_EventScript_BagIsFull
-{
-	msgbox(gText_TooBadBagIsFull, MSGBOX_TRANSPARENT)
-	closemessage
-	release()
-	end()
-}
-
