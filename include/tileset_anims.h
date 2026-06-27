@@ -61,5 +61,7 @@ void InitTilesetAnim_IndoorCastelia(void);
 void InitTilesetAnim_LibertyGarden(void);
 void InitTilesetAnim_RelicCastle(void);
 void InitTilesetAnim_RelicCastleContinue(void);
+void InitTilesetAnim_NimbasaPrimary(void);
+void InitTilesetAnim_NimbasaSecondary(void);
 
 #endif // GUARD_TILESET_ANIMS_H
