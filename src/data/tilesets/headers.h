@@ -2207,7 +2207,7 @@ const struct Tileset gTileset_NimbasaPrimary =
     .palettes = gTilesetPalettes_NimbasaPrimary,
     .metatiles = gMetatiles_NimbasaPrimary,
     .metatileAttributes = gMetatileAttributes_NimbasaPrimary,
-    .callback = NULL,
+    .callback = InitTilesetAnim_NimbasaPrimary,
 };
 
 const struct Tileset gTileset_NimbasaSecondary =
@@ -2218,7 +2218,7 @@ const struct Tileset gTileset_NimbasaSecondary =
     .palettes = gTilesetPalettes_NimbasaSecondary,
     .metatiles = gMetatiles_NimbasaSecondary,
     .metatileAttributes = gMetatileAttributes_NimbasaSecondary,
-    .callback = NULL,
+    .callback = InitTilesetAnim_NimbasaSecondary,
 };
 
 const struct Tileset gTileset_RelicCastle =

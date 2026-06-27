@@ -205,7 +205,7 @@ Debug_EventScript_Script_1_text::
 
 Debug_EventScript_Script_2::
     lock
-    warpsilent MAP_CASTELIA_CITY_CASTELIA_GYM, 16, 17
+    warpsilent MAP_NIMBASA_CITY, 28, 41
     waitstate
     end
 
