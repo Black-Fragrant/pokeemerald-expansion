@@ -72,5 +72,6 @@ extern const struct Tileset gTileset_NacreneCity;
 extern const struct Tileset gTileset_CasteliaCity1;
 extern const struct Tileset gTileset_IndoorCastelia;
 extern const struct Tileset gTileset_Route4;
+extern const struct Tileset gTileset_NimbasaPrimary;
 
 #endif //GUARD_tilesets_H
