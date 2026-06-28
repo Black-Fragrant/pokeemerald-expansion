@@ -1513,7 +1513,7 @@
     },
     {
       "id": "MAPSEC_NIMBASA_CITY",
-      "name": "Nimbasa CITY",
+      "name": "Nimbasa City",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1529,7 +1529,7 @@
     },
     {
       "id": "MAPSEC_DRIFTVEIL_CITY",
-      "name": "Driftveil CITY",
+      "name": "Driftveil City",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1553,7 +1553,7 @@
     },
     {
       "id": "MAPSEC_OPELUCID_CITY",
-      "name": "Opelucid CITY",
+      "name": "Opelucid City",
       "x": 0,
       "y": 0,
       "width": 1,
