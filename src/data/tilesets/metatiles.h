@@ -537,3 +537,9 @@ const u16 gMetatileAttributes_RelicCastle[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_RelicCastleContinue[] = INCBIN_U16("data/tilesets/secondary/relic_castle_continue/metatiles.bin");
 const u16 gMetatileAttributes_RelicCastleContinue[] = INCBIN_U16("data/tilesets/secondary/relic_castle_continue/metatile_attributes.bin");
+
+const u16 gMetatiles_NimbasaPrimary2[] = INCBIN_U16("data/tilesets/primary/nimbasa_primary_2/metatiles.bin");
+const u16 gMetatileAttributes_NimbasaPrimary2[] = INCBIN_U16("data/tilesets/primary/nimbasa_primary_2/metatile_attributes.bin");
+
+const u16 gMetatiles_NimbasaSecondary2[] = INCBIN_U16("data/tilesets/secondary/nimbasa_secondary_2/metatiles.bin");
+const u16 gMetatileAttributes_NimbasaSecondary2[] = INCBIN_U16("data/tilesets/secondary/nimbasa_secondary_2/metatile_attributes.bin");

@@ -2242,3 +2242,25 @@ const struct Tileset gTileset_RelicCastleContinue =
     .metatileAttributes = gMetatileAttributes_RelicCastleContinue,
     .callback = InitTilesetAnim_RelicCastleContinue,
 };
+
+const struct Tileset gTileset_NimbasaPrimary2 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NimbasaPrimary2,
+    .palettes = gTilesetPalettes_NimbasaPrimary2,
+    .metatiles = gMetatiles_NimbasaPrimary2,
+    .metatileAttributes = gMetatileAttributes_NimbasaPrimary2,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NimbasaSecondary2 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NimbasaSecondary2,
+    .palettes = gTilesetPalettes_NimbasaSecondary2,
+    .metatiles = gMetatiles_NimbasaSecondary2,
+    .metatileAttributes = gMetatileAttributes_NimbasaSecondary2,
+    .callback = NULL,
+};

@@ -10222,6 +10222,16 @@
       "secondary_tileset": "gTileset_Gate",
       "border_filepath": "data/layouts/Route4_Gate/border.bin",
       "blockdata_filepath": "data/layouts/Route4_Gate/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_EXTENDED",
+      "name": "NimbasaCityExtended_Layout",
+      "width": 80,
+      "height": 50,
+      "primary_tileset": "gTileset_NimbasaPrimary2",
+      "secondary_tileset": "gTileset_NimbasaSecondary2",
+      "border_filepath": "data/layouts/NimbasaCityExtended/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCityExtended/map.bin"
     }
   ]
 }
