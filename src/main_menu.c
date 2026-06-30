@@ -1,13 +1,16 @@
 #include "global.h"
 #include "trainer_pokemon_sprites.h"
 #include "bg.h"
+#include "bw_main_menu_graphics.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "data.h"
 #include "decompress.h"
 #include "event_data.h"
+#include "event_object_movement.h"
 #include "field_effect.h"
+#include "field_player_avatar.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
@@ -26,7 +29,9 @@
 #include "pokeball.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "pokemon_icon.h"
 #include "random.h"
+#include "region_map.h"
 #include "rtc.h"
 #include "save.h"
 #include "scanline_effect.h"
@@ -40,6 +45,9 @@
 #include "title_screen.h"
 #include "window.h"
 #include "mystery_gift_menu.h"
+#include "constants/battle.h"
+#include "constants/event_objects.h"
+#include "constants/species.h"
 
 /*
  * Main menu state machine
@@ -166,6 +174,102 @@
  */
 
 #define OPTION_MENU_FLAG (1 << 15)
+#define B_MAIN_MENU_BW_STYLE TRUE
+
+#if B_MAIN_MENU_BW_STYLE
+#define MAIN_MENU_BG_TEXT 0
+#define MAIN_MENU_BG_PANEL 1
+#define MAIN_MENU_BG_BACKDROP 2
+
+#define MAIN_MENU_DISPCNT (DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP)
+#define MAIN_MENU_WININ 0
+#define MAIN_MENU_WINOUT 0
+#define MAIN_MENU_BLDCNT 0
+#define MAIN_MENU_BLDY 0
+#define MAIN_MENU_WINDOW_FILL PIXEL_FILL(0)
+#define MAIN_MENU_PANEL_PRIORITY 1
+#define MAIN_MENU_COPY_MODE COPYWIN_FULL
+
+// BW text coordinates are screen pixels in the dedicated full-screen BG0 window.
+#define BW_MAIN_MENU_NO_SAVE_NEW_GAME_TEXT_X 24
+#define BW_MAIN_MENU_NO_SAVE_NEW_GAME_TEXT_Y 16
+#define BW_MAIN_MENU_NO_SAVE_OPTIONS_TEXT_X 24
+#define BW_MAIN_MENU_NO_SAVE_OPTIONS_TEXT_Y 40
+#define BW_MAIN_MENU_CONTINUE_TEXT_X 24
+#define BW_MAIN_MENU_CONTINUE_TEXT_Y 8
+#define BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_X 24
+#define BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_Y 112
+#define BW_MAIN_MENU_SAVED_OPTIONS_TEXT_X 24
+#define BW_MAIN_MENU_SAVED_OPTIONS_TEXT_Y 136
+#define BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_X 24
+#define BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_Y 136
+#define BW_MAIN_MENU_SAVED_MYSTERY_EVENTS_TEXT_X 24
+#define BW_MAIN_MENU_SAVED_MYSTERY_EVENTS_TEXT_Y 160
+
+#define BW_CONTINUE_PLAYER_NAME_X 72
+#define BW_CONTINUE_PLAYER_NAME_Y 40
+#define BW_CONTINUE_TEAM_LABEL_X 24
+#define BW_CONTINUE_TEAM_LABEL_Y 56
+#define BW_CONTINUE_LOCATION_TEXT_X 128
+#define BW_CONTINUE_LOCATION_TEXT_Y 8
+#define BW_CONTINUE_BADGES_TEXT_X 128
+#define BW_CONTINUE_BADGES_TEXT_Y 24
+#define BW_CONTINUE_POKEDEX_TEXT_X 128
+#define BW_CONTINUE_POKEDEX_TEXT_Y 40
+#define BW_CONTINUE_TIME_TEXT_X 128
+#define BW_CONTINUE_TIME_TEXT_Y 56
+
+// BW continue detail sprite coordinates are screen pixels.
+#define BW_CONTINUE_PLAYER_SPRITE_X 40
+#define BW_CONTINUE_PLAYER_SPRITE_Y 40
+#define BW_CONTINUE_PARTY_ICON_START_X 40
+#define BW_CONTINUE_PARTY_ICON_START_Y 88
+#define BW_CONTINUE_PARTY_ICON_SPACING_X 32
+
+// Imported panel palettes are swapped for selection. BG1 is alpha-blended over BG2.
+#define BW_MAIN_MENU_PANEL_PAL_START 1
+#define BW_MAIN_MENU_PANEL_PAL_COUNT 3
+#define BW_MAIN_MENU_PANEL_BLDCNT (BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG2)
+#define BW_MAIN_MENU_PANEL_BLDALPHA BLDALPHA_BLEND(16, 7)
+#else
+#define MAIN_MENU_BG_TEXT 0
+#define MAIN_MENU_BG_PANEL 1
+
+#define MAIN_MENU_DISPCNT (DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP)
+#define MAIN_MENU_WININ (WININ_WIN0_BG0 | WININ_WIN0_OBJ)
+#define MAIN_MENU_WINOUT (WINOUT_WIN01_BG0 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR)
+#define MAIN_MENU_BLDCNT (BLDCNT_EFFECT_DARKEN | BLDCNT_TGT1_BG0)
+#define MAIN_MENU_BLDY 7
+#define MAIN_MENU_WINDOW_FILL PIXEL_FILL(0xA)
+#define MAIN_MENU_PANEL_PRIORITY 3
+#define MAIN_MENU_COPY_MODE COPYWIN_GFX
+#define MAIN_MENU_NEW_GAME_TEXT_X 0
+#define MAIN_MENU_NEW_GAME_TEXT_Y 1
+#define MAIN_MENU_OPTIONS_TEXT_X 0
+#define MAIN_MENU_OPTIONS_TEXT_Y 1
+#define MAIN_MENU_CONTINUE_TEXT_X 0
+#define MAIN_MENU_CONTINUE_TEXT_Y 1
+#define MAIN_MENU_MYSTERY_GIFT_TEXT_X 0
+#define MAIN_MENU_MYSTERY_GIFT_TEXT_Y 1
+#define MAIN_MENU_MYSTERY_EVENTS_TEXT_X 0
+#define MAIN_MENU_MYSTERY_EVENTS_TEXT_Y 1
+#define MAIN_MENU_SAVE_PLAYER_LABEL_X 0
+#define MAIN_MENU_SAVE_PLAYER_LABEL_Y 17
+#define MAIN_MENU_SAVE_PLAYER_NAME_RIGHT_X 100
+#define MAIN_MENU_SAVE_PLAYER_NAME_X 0
+#define MAIN_MENU_SAVE_PLAYER_NAME_Y 17
+#define MAIN_MENU_SAVE_TEAM_LABEL_X 0
+#define MAIN_MENU_SAVE_TEAM_LABEL_Y 40
+#define MAIN_MENU_SAVE_TIME_LABEL_X 0x6C
+#define MAIN_MENU_SAVE_TIME_LABEL_Y 17
+#define MAIN_MENU_SAVE_TIME_RIGHT_X 0xD0
+#define MAIN_MENU_SAVE_POKEDEX_LABEL_X 0
+#define MAIN_MENU_SAVE_POKEDEX_LABEL_Y 33
+#define MAIN_MENU_SAVE_POKEDEX_RIGHT_X 100
+#define MAIN_MENU_SAVE_BADGES_LABEL_X 0x6C
+#define MAIN_MENU_SAVE_BADGES_LABEL_Y 33
+#define MAIN_MENU_SAVE_BADGES_RIGHT_X 0xD0
+#endif
 
 // Static type declarations
 
@@ -173,6 +277,12 @@
 
 static EWRAM_DATA bool8 sStartedPokeBallTask = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
+#if B_MAIN_MENU_BW_STYLE
+static EWRAM_DATA u8 sBwMainMenuPlayerSpriteId = 0;
+static EWRAM_DATA u8 sBwMainMenuPartyIconSpriteIds[PARTY_SIZE] = {0};
+static EWRAM_DATA u16 sBwMainMenuPlayerGraphicsId = 0;
+static EWRAM_DATA bool8 sBwMainMenuPartyIconPalettesLoaded = FALSE;
+#endif
 
 static u8 sBirchSpeechMainTaskId;
 
@@ -184,6 +294,27 @@ static void Task_MainMenuCheckBattery(u8);
 static void Task_WaitForSaveFileErrorWindow(u8);
 static void CreateMainMenuErrorWindow(const u8 *);
 static void ClearMainMenuWindowTilemap(const struct WindowTemplate *);
+#if B_MAIN_MENU_BW_STYLE
+static void LoadBwMainMenuGraphics(void);
+static void LoadBwMainMenuPalettes(void);
+static void LoadBwMainMenuPanelPalettes(void);
+static void LoadBwMainMenuTextPalette(void);
+static void LoadBwMainMenuTilemap(u8);
+static void UpdateBwMainMenuSelectionPalette(u8, u8);
+static void SetBwMainMenuPanelBlendRegs(void);
+static void PrintBwMainMenuText(const u8 *, u8, u8, const u8 *);
+static void ResetBwMainMenuExtraSprites(void);
+static void CreateBwMainMenuExtraSprites(void);
+static void CreateBwMainMenuPlayerSprite(void);
+static void CreateBwMainMenuPartyIcons(void);
+static void DestroyBwMainMenuExtraSprites(void);
+static void FreeBwMainMenuObjectSpriteResources(u16, struct Sprite *);
+#endif
+static void SetMainMenuWindowAndBlendRegs(void);
+static void FillMainMenuWindowPixelBuffer(u8);
+#if !B_MAIN_MENU_BW_STYLE
+static void DrawMainMenuOptionWindowBorder(const struct WindowTemplate *);
+#endif
 static void Task_DisplayMainMenu(u8);
 static void Task_WaitForBatteryDryErrorWindow(u8);
 static void MainMenu_FormatSavegameText(void);
@@ -211,6 +342,7 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway(u8);
 static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8);
 static void Task_NewGameBirchSpeech_WaitForPlayerFadeIn(u8);
 static void Task_NewGameBirchSpeech_BoyOrGirl(u8);
+static void ResetNewGameBirchSpeechBgs(void);
 static void LoadMainMenuWindowFrameTiles(u8, u16);
 static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
 static void Task_HighlightSelectedMainMenuItem(u8);
@@ -244,6 +376,10 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
+#if B_MAIN_MENU_BW_STYLE
+static void MainMenu_FormatSavegameTeam(void);
+static void MainMenu_FormatSavegameLocation(void);
+#endif
 
 // .rodata
 
@@ -271,11 +407,20 @@ static const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nc
 static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while\nthe Wireless Adapter is attached.");
 static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.");
 
+#if B_MAIN_MENU_BW_STYLE
+static const u8 gText_ContinueMenuTime[] = _("TIME: ");
+static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX: ");
+static const u8 gText_ContinueMenuBadges[] = _("BADGES: ");
+static const u8 gText_ContinueMenuTeam[] = _("Team:");
+#else
 static const u8 gText_ContinueMenuPlayer[] = _("PLAYER");
 static const u8 gText_ContinueMenuTime[] = _("TIME");
 static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX");
 static const u8 gText_ContinueMenuBadges[] = _("BADGES");
+#endif
 
+// Main menu window positions and sizes are BG tile coordinates/counts.
+// One BG tile is 8x8 pixels; text X/Y constants above are window-local pixels.
 #define MENU_LEFT 2
 #define MENU_TOP_WIN0 1
 #define MENU_TOP_WIN1 5
@@ -303,6 +448,10 @@ static const u8 gText_ContinueMenuBadges[] = _("BADGES");
 #define MENU_WIN_HCOORDS WIN_RANGE(((MENU_LEFT - 1) * 8) + MENU_SHADOW_PADDING, (MENU_LEFT + MENU_WIDTH + 1) * 8 - MENU_SHADOW_PADDING)
 #define MENU_WIN_VCOORDS(n) WIN_RANGE(((MENU_TOP_WIN##n - 1) * 8) + MENU_SHADOW_PADDING, (MENU_TOP_WIN##n + MENU_HEIGHT_WIN##n + 1) * 8 - MENU_SHADOW_PADDING)
 #define MENU_SCROLL_SHIFT WIN_RANGE(32, 32)
+
+#if B_MAIN_MENU_BW_STYLE
+#define BW_MAIN_MENU_TEXT_WINDOW 8
+#endif
 
 static const struct WindowTemplate sWindowTemplates_MainMenu[] =
 {
@@ -388,6 +537,18 @@ static const struct WindowTemplate sWindowTemplates_MainMenu[] =
         .paletteNum = 15,
         .baseBlock = 0x16D
     },
+#if B_MAIN_MENU_BW_STYLE
+    // Transparent BG0 text overlay for the BW panel layout.
+    {
+        .bg = MAIN_MENU_BG_TEXT,
+        .tilemapLeft = 0,
+        .tilemapTop = 0,
+        .width = DISPLAY_TILE_WIDTH,
+        .height = DISPLAY_TILE_HEIGHT,
+        .paletteNum = 15,
+        .baseBlock = 1
+    },
+#endif
     DUMMY_WIN_TEMPLATE
 };
 
@@ -423,22 +584,76 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
     DUMMY_WIN_TEMPLATE
 };
 
+#if !B_MAIN_MENU_BW_STYLE
 static const u16 sMainMenuBgPal[] = INCGFX_U16("graphics/interface/main_menu_bg.pal", ".gbapal");
+#endif
 static const u16 sMainMenuTextPal[] = INCGFX_U16("graphics/interface/main_menu_text.pal", ".gbapal");
 
+#if B_MAIN_MENU_BW_STYLE
+#define BW_MAIN_MENU_TEXT_BG_COLOR TEXT_COLOR_TRANSPARENT
+#define BW_MAIN_MENU_TEXT_FG_COLOR TEXT_COLOR_WHITE
+#define BW_MAIN_MENU_TEXT_SHADOW_COLOR TEXT_COLOR_DARK_GRAY
+#define BW_MAIN_MENU_TEXT_BLUE_COLOR TEXT_COLOR_BLUE
+#define BW_MAIN_MENU_TEXT_FG_RGB RGB_WHITE
+#define BW_MAIN_MENU_TEXT_SHADOW_RGB RGB(12, 12, 12)
+#define BW_MAIN_MENU_TEXT_BLUE_RGB RGB(3, 19, 31)
+
+static const u8 sTextColor_BwMainMenu[] = {BW_MAIN_MENU_TEXT_BG_COLOR, BW_MAIN_MENU_TEXT_FG_COLOR, BW_MAIN_MENU_TEXT_SHADOW_COLOR};
+static const u8 sTextColor_BwMainMenuBlueName[] = {BW_MAIN_MENU_TEXT_BG_COLOR, BW_MAIN_MENU_TEXT_BLUE_COLOR, BW_MAIN_MENU_TEXT_SHADOW_COLOR};
+#define MAIN_MENU_HEADER_TEXT_COLOR sTextColor_BwMainMenu
+#define MAIN_MENU_INFO_TEXT_COLOR sTextColor_BwMainMenu
+#define MAIN_MENU_PLAYER_NAME_TEXT_COLOR sTextColor_BwMainMenuBlueName
+#else
 static const u8 sTextColor_Headers[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
 static const u8 sTextColor_MenuInfo[] = {TEXT_DYNAMIC_COLOR_1, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_3};
+#define MAIN_MENU_HEADER_TEXT_COLOR sTextColor_Headers
+#define MAIN_MENU_INFO_TEXT_COLOR sTextColor_MenuInfo
+#define MAIN_MENU_PLAYER_NAME_TEXT_COLOR MAIN_MENU_INFO_TEXT_COLOR
+#endif
 
 static const struct BgTemplate sMainMenuBgTemplates[] = {
     {
         .bg = 0,
         .charBaseIndex = 2,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0
+    },
+    {
+        .bg = 1,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 29,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = MAIN_MENU_PANEL_PRIORITY,
+        .baseTile = 0
+    },
+#if B_MAIN_MENU_BW_STYLE
+    {
+        .bg = 2,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 2,
+        .baseTile = 0
+    }
+#endif
+};
+
+static const struct BgTemplate sBirchSpeechBgTemplates[] = {
+    {
+        .bg = 0,
+        .charBaseIndex = 3,
         .mapBaseIndex = 30,
         .screenSize = 0,
         .paletteMode = 0,
         .priority = 0,
         .baseTile = 0
     },
+    // Birch's intro uses BG1 for the platform layer; keep this independent from the BW menu panel BG.
     {
         .bg = 1,
         .charBaseIndex = 0,
@@ -448,16 +663,6 @@ static const struct BgTemplate sMainMenuBgTemplates[] = {
         .priority = 3,
         .baseTile = 0
     }
-};
-
-static const struct BgTemplate sBirchBgTemplate = {
-    .bg = 0,
-    .charBaseIndex = 3,
-    .mapBaseIndex = 30,
-    .screenSize = 0,
-    .paletteMode = 0,
-    .priority = 0,
-    .baseTile = 0
 };
 
 static const struct ScrollArrowsTemplate sScrollArrowsTemplate_MainMenu = {2, 0x78, 8, 3, 0x78, 0x98, 3, 4, 1, 1, 0};
@@ -585,7 +790,11 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     SetGpuReg(REG_OFFSET_BG2HOFS, 0);
     SetGpuReg(REG_OFFSET_BG2VOFS, 0);
     SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+#if B_MAIN_MENU_BW_STYLE
+    SetGpuReg(REG_OFFSET_BG1VOFS, -4);
+#else
     SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+#endif
     SetGpuReg(REG_OFFSET_BG0HOFS, 0);
     SetGpuReg(REG_OFFSET_BG0VOFS, 0);
 
@@ -594,12 +803,22 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
 
     ResetPaletteFade();
+#if B_MAIN_MENU_BW_STYLE
+    LoadBwMainMenuPalettes();
+#else
     LoadPalette(sMainMenuBgPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+#endif
     LoadPalette(sMainMenuTextPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+#if B_MAIN_MENU_BW_STYLE
+    LoadBwMainMenuTextPalette();
+#endif
     ScanlineEffect_Stop();
     ResetTasks();
     ResetSpriteData();
     FreeAllSpritePalettes();
+#if B_MAIN_MENU_BW_STYLE
+    ResetBwMainMenuExtraSprites();
+#endif
     if (returningFromOptionsMenu)
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK); // fade to black
     else
@@ -609,7 +828,16 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     ChangeBgX(0, 0, BG_COORD_SET);
     ChangeBgY(0, 0, BG_COORD_SET);
     ChangeBgX(1, 0, BG_COORD_SET);
+#if B_MAIN_MENU_BW_STYLE
+    ChangeBgY(1, -4, BG_COORD_SET);
+#else
     ChangeBgY(1, 0, BG_COORD_SET);
+#endif
+#if B_MAIN_MENU_BW_STYLE
+    ChangeBgX(2, 0, BG_COORD_SET);
+    ChangeBgY(2, 0, BG_COORD_SET);
+    LoadBwMainMenuGraphics();
+#endif
     InitWindows(sWindowTemplates_MainMenu);
     DeactivateAllTextPrinters();
     LoadMainMenuWindowFrameTiles(0, MAIN_MENU_BORDER_TILE);
@@ -625,13 +853,217 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     EnableInterrupts(1);
     SetVBlankCallback(VBlankCB_MainMenu);
     SetMainCallback2(CB2_MainMenu);
-    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+    SetGpuReg(REG_OFFSET_DISPCNT, MAIN_MENU_DISPCNT);
     ShowBg(0);
+#if B_MAIN_MENU_BW_STYLE
     HideBg(1);
+    ShowBg(2);
+#else
+    HideBg(1);
+#endif
     CreateTask(Task_MainMenuCheckSaveFile, 0);
 
     return 0;
 }
+
+#if B_MAIN_MENU_BW_STYLE
+static void LoadBwMainMenuGraphics(void)
+{
+    DecompressDataWithHeaderVram(gBwMainMenuPanelTiles, (void *)BG_CHAR_ADDR(0));
+    DecompressDataWithHeaderVram(gBwMainMenuBackgroundTiles, (void *)BG_CHAR_ADDR(1));
+    DecompressDataWithHeaderVram(gBwMainMenuBackgroundTilemap, (void *)BG_SCREEN_ADDR(30));
+}
+
+static void LoadBwMainMenuPalettes(void)
+{
+    LoadPalette(gBwMainMenuBgPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+    LoadBwMainMenuPanelPalettes();
+}
+
+static void LoadBwMainMenuPanelPalettes(void)
+{
+    LoadPalette(gBwMainMenuUnselectedPal, BG_PLTT_ID(BW_MAIN_MENU_PANEL_PAL_START), BW_MAIN_MENU_PANEL_PAL_COUNT * PLTT_SIZE_4BPP);
+}
+
+static void LoadBwMainMenuTextPalette(void)
+{
+    u16 palette = BW_MAIN_MENU_TEXT_FG_RGB;
+
+    LoadPalette(&palette, BG_PLTT_ID(15) + BW_MAIN_MENU_TEXT_FG_COLOR, PLTT_SIZEOF(1));
+    palette = BW_MAIN_MENU_TEXT_SHADOW_RGB;
+    LoadPalette(&palette, BG_PLTT_ID(15) + BW_MAIN_MENU_TEXT_SHADOW_COLOR, PLTT_SIZEOF(1));
+    palette = BW_MAIN_MENU_TEXT_BLUE_RGB;
+    LoadPalette(&palette, BG_PLTT_ID(15) + BW_MAIN_MENU_TEXT_BLUE_COLOR, PLTT_SIZEOF(1));
+}
+
+static void LoadBwMainMenuTilemap(u8 menuType)
+{
+    const u32 *tilemap;
+
+    if (menuType == HAS_NO_SAVED_GAME)
+        tilemap = gBwMainMenuNewGameTilemap;
+    else
+        tilemap = gBwMainMenuContinueTilemap;
+
+    DecompressDataWithHeaderVram(tilemap, (void *)BG_SCREEN_ADDR(29));
+    ShowBg(1);
+}
+
+static void UpdateBwMainMenuSelectionPalette(u8 menuType, u8 selectedMenuItem)
+{
+    LoadBwMainMenuPanelPalettes();
+
+    if (menuType == HAS_NO_SAVED_GAME)
+    {
+        if (selectedMenuItem < 2)
+            LoadPalette(gBwMainMenuSelectedPal, BG_PLTT_ID(BW_MAIN_MENU_PANEL_PAL_START + selectedMenuItem), PLTT_SIZE_4BPP);
+    }
+    else
+    {
+        if (selectedMenuItem < 3)
+            LoadPalette(gBwMainMenuSelectedPal, BG_PLTT_ID(BW_MAIN_MENU_PANEL_PAL_START + selectedMenuItem), PLTT_SIZE_4BPP);
+    }
+}
+
+static void SetBwMainMenuPanelBlendRegs(void)
+{
+    SetGpuReg(REG_OFFSET_BLDCNT, BW_MAIN_MENU_PANEL_BLDCNT);
+    SetGpuReg(REG_OFFSET_BLDALPHA, BW_MAIN_MENU_PANEL_BLDALPHA);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+}
+
+static void PrintBwMainMenuText(const u8 *text, u8 x, u8 y, const u8 *colors)
+{
+    AddTextPrinterParameterized3(BW_MAIN_MENU_TEXT_WINDOW, FONT_NORMAL, x, y, colors, TEXT_SKIP_DRAW, text);
+}
+
+static void ResetBwMainMenuExtraSprites(void)
+{
+    u8 i;
+
+    sBwMainMenuPlayerSpriteId = MAX_SPRITES;
+    sBwMainMenuPlayerGraphicsId = 0;
+    sBwMainMenuPartyIconPalettesLoaded = FALSE;
+    for (i = 0; i < PARTY_SIZE; i++)
+        sBwMainMenuPartyIconSpriteIds[i] = MAX_SPRITES;
+}
+
+static void CreateBwMainMenuExtraSprites(void)
+{
+    DestroyBwMainMenuExtraSprites();
+    CreateBwMainMenuPlayerSprite();
+    CreateBwMainMenuPartyIcons();
+}
+
+static void CreateBwMainMenuPlayerSprite(void)
+{
+    u8 spriteId;
+
+    sBwMainMenuPlayerGraphicsId = GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender);
+    spriteId = CreateObjectGraphicsSprite(sBwMainMenuPlayerGraphicsId, SpriteCallbackDummy, BW_CONTINUE_PLAYER_SPRITE_X, BW_CONTINUE_PLAYER_SPRITE_Y, 0);
+    if (spriteId != MAX_SPRITES)
+    {
+        sBwMainMenuPlayerSpriteId = spriteId;
+        gSprites[spriteId].oam.priority = 0;
+        StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
+    }
+}
+
+static void CreateBwMainMenuPartyIcons(void)
+{
+    u8 i;
+    u8 partyCount = min(gPartiesCount[B_TRAINER_PLAYER], PARTY_SIZE);
+
+    if (partyCount == 0)
+        return;
+
+    LoadMonIconPalettes();
+    sBwMainMenuPartyIconPalettesLoaded = TRUE;
+    for (i = 0; i < partyCount; i++)
+    {
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+
+        if (species != SPECIES_NONE)
+        {
+            u32 personality = GetMonData(mon, MON_DATA_PERSONALITY);
+            bool32 isEgg = GetMonData(mon, MON_DATA_IS_EGG);
+            u8 spriteId = CreateMonIconIsEgg(species, SpriteCB_MonIcon, BW_CONTINUE_PARTY_ICON_START_X + (i * BW_CONTINUE_PARTY_ICON_SPACING_X), BW_CONTINUE_PARTY_ICON_START_Y, 0, personality, isEgg);
+
+            if (spriteId != MAX_SPRITES)
+            {
+                sBwMainMenuPartyIconSpriteIds[i] = spriteId;
+                gSprites[spriteId].oam.priority = 0;
+            }
+        }
+    }
+}
+
+static void DestroyBwMainMenuExtraSprites(void)
+{
+    u8 i;
+
+    if (sBwMainMenuPlayerSpriteId != MAX_SPRITES)
+    {
+        FreeBwMainMenuObjectSpriteResources(sBwMainMenuPlayerGraphicsId, &gSprites[sBwMainMenuPlayerSpriteId]);
+        sBwMainMenuPlayerSpriteId = MAX_SPRITES;
+    }
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (sBwMainMenuPartyIconSpriteIds[i] != MAX_SPRITES)
+        {
+            FreeAndDestroyMonIconSprite(&gSprites[sBwMainMenuPartyIconSpriteIds[i]]);
+            sBwMainMenuPartyIconSpriteIds[i] = MAX_SPRITES;
+        }
+    }
+
+    if (sBwMainMenuPartyIconPalettesLoaded)
+    {
+        FreeMonIconPalettes();
+        sBwMainMenuPartyIconPalettesLoaded = FALSE;
+    }
+}
+
+static void FreeBwMainMenuObjectSpriteResources(u16 graphicsId, struct Sprite *sprite)
+{
+    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    u16 tileTag = graphicsInfo->tileTag;
+    u16 paletteTag = GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum);
+
+    if (OW_GFX_COMPRESS && graphicsInfo->compressed && tileTag == TAG_NONE)
+        tileTag = COMP_OW_TILE_TAG_BASE + graphicsId;
+
+    DestroySprite(sprite);
+    if (tileTag != TAG_NONE)
+        FreeSpriteTilesByTag(tileTag);
+    if (paletteTag != TAG_NONE)
+        FreeSpritePaletteByTag(paletteTag);
+}
+#endif
+
+static void SetMainMenuWindowAndBlendRegs(void)
+{
+    SetGpuReg(REG_OFFSET_WIN0H, 0);
+    SetGpuReg(REG_OFFSET_WIN0V, 0);
+    SetGpuReg(REG_OFFSET_WININ, MAIN_MENU_WININ);
+    SetGpuReg(REG_OFFSET_WINOUT, MAIN_MENU_WINOUT);
+    SetGpuReg(REG_OFFSET_BLDCNT, MAIN_MENU_BLDCNT);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BLDY, MAIN_MENU_BLDY);
+}
+
+static void FillMainMenuWindowPixelBuffer(u8 windowId)
+{
+    FillWindowPixelBuffer(windowId, MAIN_MENU_WINDOW_FILL);
+}
+
+#if !B_MAIN_MENU_BW_STYLE
+static void DrawMainMenuOptionWindowBorder(const struct WindowTemplate *template)
+{
+    DrawMainMenuWindowBorder(template, MAIN_MENU_BORDER_TILE);
+}
+#endif
 
 #define tMenuType data[0]
 #define tCurrItem data[1]
@@ -648,13 +1080,7 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
 
     if (!gPaletteFade.active)
     {
-        SetGpuReg(REG_OFFSET_WIN0H, 0);
-        SetGpuReg(REG_OFFSET_WIN0V, 0);
-        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG0 | WININ_WIN0_OBJ);
-        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
-        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_EFFECT_DARKEN | BLDCNT_TGT1_BG0);
-        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
-        SetGpuReg(REG_OFFSET_BLDY, 7);
+        SetMainMenuWindowAndBlendRegs();
 
         if (IsWirelessAdapterConnected())
             tWirelessAdapterConnected = TRUE;
@@ -726,13 +1152,7 @@ static void Task_MainMenuCheckBattery(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        SetGpuReg(REG_OFFSET_WIN0H, 0);
-        SetGpuReg(REG_OFFSET_WIN0V, 0);
-        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG0 | WININ_WIN0_OBJ);
-        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
-        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_EFFECT_DARKEN | BLDCNT_TGT1_BG0);
-        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
-        SetGpuReg(REG_OFFSET_BLDY, 7);
+        SetMainMenuWindowAndBlendRegs();
 
         if (!(RtcGetErrorStatus() & RTC_ERR_FLAG_MASK))
         {
@@ -764,13 +1184,7 @@ static void Task_DisplayMainMenu(u8 taskId)
 
     if (!gPaletteFade.active)
     {
-        SetGpuReg(REG_OFFSET_WIN0H, 0);
-        SetGpuReg(REG_OFFSET_WIN0V, 0);
-        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG0 | WININ_WIN0_OBJ);
-        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
-        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_EFFECT_DARKEN | BLDCNT_TGT1_BG0);
-        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
-        SetGpuReg(REG_OFFSET_BLDY, 7);
+        SetMainMenuWindowAndBlendRegs();
 
         palette = RGB_BLACK;
         LoadPalette(&palette, BG_PLTT_ID(15) + 14, PLTT_SIZEOF(1));
@@ -786,6 +1200,11 @@ static void Task_DisplayMainMenu(u8 taskId)
 
         // Note: If there is no save file, the save block is zeroed out,
         // so the default gender is MALE.
+#if B_MAIN_MENU_BW_STYLE
+        LoadBwMainMenuPalettes();
+        LoadBwMainMenuTilemap(gTasks[taskId].tMenuType);
+        LoadBwMainMenuTextPalette();
+#else
         if (gSaveBlock2Ptr->playerGender == MALE)
         {
             palette = RGB(4, 16, 31);
@@ -796,90 +1215,37 @@ static void Task_DisplayMainMenu(u8 taskId)
             palette = RGB(31, 3, 21);
             LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
         }
+#endif
 
+#if B_MAIN_MENU_BW_STYLE
+        FillMainMenuWindowPixelBuffer(BW_MAIN_MENU_TEXT_WINDOW);
         switch (gTasks[taskId].tMenuType)
         {
         case HAS_NO_SAVED_GAME:
         default:
-            FillWindowPixelBuffer(0, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(1, PIXEL_FILL(0xA));
-            AddTextPrinterParameterized3(0, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
-            AddTextPrinterParameterized3(1, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuOption);
-            PutWindowTilemap(0);
-            PutWindowTilemap(1);
-            CopyWindowToVram(0, COPYWIN_GFX);
-            CopyWindowToVram(1, COPYWIN_GFX);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[0], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[1], MAIN_MENU_BORDER_TILE);
+            PrintBwMainMenuText(gText_MainMenuNewGame, BW_MAIN_MENU_NO_SAVE_NEW_GAME_TEXT_X, BW_MAIN_MENU_NO_SAVE_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuOption, BW_MAIN_MENU_NO_SAVE_OPTIONS_TEXT_X, BW_MAIN_MENU_NO_SAVE_OPTIONS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
             break;
         case HAS_SAVED_GAME:
-            FillWindowPixelBuffer(2, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(3, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(4, PIXEL_FILL(0xA));
-            AddTextPrinterParameterized3(2, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuContinue);
-            AddTextPrinterParameterized3(3, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
-            AddTextPrinterParameterized3(4, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            PrintBwMainMenuText(gText_MainMenuContinue, BW_MAIN_MENU_CONTINUE_TEXT_X, BW_MAIN_MENU_CONTINUE_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuNewGame, BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_X, BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuOption, BW_MAIN_MENU_SAVED_OPTIONS_TEXT_X, BW_MAIN_MENU_SAVED_OPTIONS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
             MainMenu_FormatSavegameText();
-            PutWindowTilemap(2);
-            PutWindowTilemap(3);
-            PutWindowTilemap(4);
-            CopyWindowToVram(2, COPYWIN_GFX);
-            CopyWindowToVram(3, COPYWIN_GFX);
-            CopyWindowToVram(4, COPYWIN_GFX);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[2], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[3], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[4], MAIN_MENU_BORDER_TILE);
             break;
         case HAS_MYSTERY_GIFT:
-            FillWindowPixelBuffer(2, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(3, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(4, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(5, PIXEL_FILL(0xA));
-            AddTextPrinterParameterized3(2, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuContinue);
-            AddTextPrinterParameterized3(3, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
-            AddTextPrinterParameterized3(4, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuMysteryGift);
-            AddTextPrinterParameterized3(5, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            PrintBwMainMenuText(gText_MainMenuContinue, BW_MAIN_MENU_CONTINUE_TEXT_X, BW_MAIN_MENU_CONTINUE_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuNewGame, BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_X, BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuMysteryGift, BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_X, BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuOption, BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_X, BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_Y + 24, MAIN_MENU_HEADER_TEXT_COLOR);
             MainMenu_FormatSavegameText();
-            PutWindowTilemap(2);
-            PutWindowTilemap(3);
-            PutWindowTilemap(4);
-            PutWindowTilemap(5);
-            CopyWindowToVram(2, COPYWIN_GFX);
-            CopyWindowToVram(3, COPYWIN_GFX);
-            CopyWindowToVram(4, COPYWIN_GFX);
-            CopyWindowToVram(5, COPYWIN_GFX);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[2], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[3], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[4], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[5], MAIN_MENU_BORDER_TILE);
             break;
         case HAS_MYSTERY_EVENTS:
-            FillWindowPixelBuffer(2, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(3, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(4, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(5, PIXEL_FILL(0xA));
-            FillWindowPixelBuffer(6, PIXEL_FILL(0xA));
-            AddTextPrinterParameterized3(2, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuContinue);
-            AddTextPrinterParameterized3(3, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
-            AddTextPrinterParameterized3(4, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuMysteryGift2);
-            AddTextPrinterParameterized3(5, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuMysteryEvents);
-            AddTextPrinterParameterized3(6, FONT_NORMAL, 0, 1, sTextColor_Headers, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            PrintBwMainMenuText(gText_MainMenuContinue, BW_MAIN_MENU_CONTINUE_TEXT_X, BW_MAIN_MENU_CONTINUE_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuNewGame, BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_X, BW_MAIN_MENU_SAVED_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuMysteryGift2, BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_X, BW_MAIN_MENU_SAVED_MYSTERY_GIFT_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuMysteryEvents, BW_MAIN_MENU_SAVED_MYSTERY_EVENTS_TEXT_X, BW_MAIN_MENU_SAVED_MYSTERY_EVENTS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR);
+            PrintBwMainMenuText(gText_MainMenuOption, BW_MAIN_MENU_SAVED_MYSTERY_EVENTS_TEXT_X, BW_MAIN_MENU_SAVED_MYSTERY_EVENTS_TEXT_Y + 24, MAIN_MENU_HEADER_TEXT_COLOR);
             MainMenu_FormatSavegameText();
-            PutWindowTilemap(2);
-            PutWindowTilemap(3);
-            PutWindowTilemap(4);
-            PutWindowTilemap(5);
-            PutWindowTilemap(6);
-            CopyWindowToVram(2, COPYWIN_GFX);
-            CopyWindowToVram(3, COPYWIN_GFX);
-            CopyWindowToVram(4, COPYWIN_GFX);
-            CopyWindowToVram(5, COPYWIN_GFX);
-            CopyWindowToVram(6, COPYWIN_GFX);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[2], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[3], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[4], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[5], MAIN_MENU_BORDER_TILE);
-            DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[6], MAIN_MENU_BORDER_TILE);
             tScrollArrowTaskId = AddScrollIndicatorArrowPair(&sScrollArrowsTemplate_MainMenu, &sCurrItemAndOptionMenuCheck);
             gTasks[tScrollArrowTaskId].func = Task_ScrollIndicatorArrowPairOnMainMenu;
             if (sCurrItemAndOptionMenuCheck == 4)
@@ -891,6 +1257,105 @@ static void Task_DisplayMainMenu(u8 taskId)
             }
             break;
         }
+        PutWindowTilemap(BW_MAIN_MENU_TEXT_WINDOW);
+        CopyWindowToVram(BW_MAIN_MENU_TEXT_WINDOW, MAIN_MENU_COPY_MODE);
+        SetBwMainMenuPanelBlendRegs();
+#else
+        switch (gTasks[taskId].tMenuType)
+        {
+        case HAS_NO_SAVED_GAME:
+        default:
+            FillMainMenuWindowPixelBuffer(0);
+            FillMainMenuWindowPixelBuffer(1);
+            AddTextPrinterParameterized3(0, FONT_NORMAL, MAIN_MENU_NEW_GAME_TEXT_X, MAIN_MENU_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, MAIN_MENU_OPTIONS_TEXT_X, MAIN_MENU_OPTIONS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            PutWindowTilemap(0);
+            PutWindowTilemap(1);
+            CopyWindowToVram(0, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(1, MAIN_MENU_COPY_MODE);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[0]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[1]);
+            break;
+        case HAS_SAVED_GAME:
+            FillMainMenuWindowPixelBuffer(2);
+            FillMainMenuWindowPixelBuffer(3);
+            FillMainMenuWindowPixelBuffer(4);
+            AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_CONTINUE_TEXT_X, MAIN_MENU_CONTINUE_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuContinue);
+            AddTextPrinterParameterized3(3, FONT_NORMAL, MAIN_MENU_NEW_GAME_TEXT_X, MAIN_MENU_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
+            AddTextPrinterParameterized3(4, FONT_NORMAL, MAIN_MENU_OPTIONS_TEXT_X, MAIN_MENU_OPTIONS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            MainMenu_FormatSavegameText();
+            PutWindowTilemap(2);
+            PutWindowTilemap(3);
+            PutWindowTilemap(4);
+            CopyWindowToVram(2, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(3, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(4, MAIN_MENU_COPY_MODE);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[2]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[3]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[4]);
+            break;
+        case HAS_MYSTERY_GIFT:
+            FillMainMenuWindowPixelBuffer(2);
+            FillMainMenuWindowPixelBuffer(3);
+            FillMainMenuWindowPixelBuffer(4);
+            FillMainMenuWindowPixelBuffer(5);
+            AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_CONTINUE_TEXT_X, MAIN_MENU_CONTINUE_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuContinue);
+            AddTextPrinterParameterized3(3, FONT_NORMAL, MAIN_MENU_NEW_GAME_TEXT_X, MAIN_MENU_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
+            AddTextPrinterParameterized3(4, FONT_NORMAL, MAIN_MENU_MYSTERY_GIFT_TEXT_X, MAIN_MENU_MYSTERY_GIFT_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuMysteryGift);
+            AddTextPrinterParameterized3(5, FONT_NORMAL, MAIN_MENU_OPTIONS_TEXT_X, MAIN_MENU_OPTIONS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            MainMenu_FormatSavegameText();
+            PutWindowTilemap(2);
+            PutWindowTilemap(3);
+            PutWindowTilemap(4);
+            PutWindowTilemap(5);
+            CopyWindowToVram(2, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(3, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(4, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(5, MAIN_MENU_COPY_MODE);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[2]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[3]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[4]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[5]);
+            break;
+        case HAS_MYSTERY_EVENTS:
+            FillMainMenuWindowPixelBuffer(2);
+            FillMainMenuWindowPixelBuffer(3);
+            FillMainMenuWindowPixelBuffer(4);
+            FillMainMenuWindowPixelBuffer(5);
+            FillMainMenuWindowPixelBuffer(6);
+            AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_CONTINUE_TEXT_X, MAIN_MENU_CONTINUE_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuContinue);
+            AddTextPrinterParameterized3(3, FONT_NORMAL, MAIN_MENU_NEW_GAME_TEXT_X, MAIN_MENU_NEW_GAME_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuNewGame);
+            AddTextPrinterParameterized3(4, FONT_NORMAL, MAIN_MENU_MYSTERY_GIFT_TEXT_X, MAIN_MENU_MYSTERY_GIFT_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuMysteryGift2);
+            AddTextPrinterParameterized3(5, FONT_NORMAL, MAIN_MENU_MYSTERY_EVENTS_TEXT_X, MAIN_MENU_MYSTERY_EVENTS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuMysteryEvents);
+            AddTextPrinterParameterized3(6, FONT_NORMAL, MAIN_MENU_OPTIONS_TEXT_X, MAIN_MENU_OPTIONS_TEXT_Y, MAIN_MENU_HEADER_TEXT_COLOR, TEXT_SKIP_DRAW, gText_MainMenuOption);
+            MainMenu_FormatSavegameText();
+            PutWindowTilemap(2);
+            PutWindowTilemap(3);
+            PutWindowTilemap(4);
+            PutWindowTilemap(5);
+            PutWindowTilemap(6);
+            CopyWindowToVram(2, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(3, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(4, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(5, MAIN_MENU_COPY_MODE);
+            CopyWindowToVram(6, MAIN_MENU_COPY_MODE);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[2]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[3]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[4]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[5]);
+            DrawMainMenuOptionWindowBorder(&sWindowTemplates_MainMenu[6]);
+            tScrollArrowTaskId = AddScrollIndicatorArrowPair(&sScrollArrowsTemplate_MainMenu, &sCurrItemAndOptionMenuCheck);
+            gTasks[tScrollArrowTaskId].func = Task_ScrollIndicatorArrowPairOnMainMenu;
+            if (sCurrItemAndOptionMenuCheck == 4)
+            {
+                ChangeBgY(0, 0x2000, BG_COORD_ADD);
+                ChangeBgY(1, 0x2000, BG_COORD_ADD);
+                tIsScrolled = TRUE;
+                gTasks[tScrollArrowTaskId].tArrowTaskIsScrolled = TRUE;
+            }
+            break;
+        }
+#endif
         gTasks[taskId].func = Task_HighlightSelectedMainMenuItem;
     }
 }
@@ -916,8 +1381,10 @@ static bool8 HandleMainMenuInput(u8 taskId)
     {
         PlaySE(SE_SELECT);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA);
+#if !B_MAIN_MENU_BW_STYLE
         SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, DISPLAY_WIDTH));
         SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, DISPLAY_HEIGHT));
+#endif
         gTasks[taskId].func = Task_HandleMainMenuBPressed;
     }
     else if ((JOY_NEW(DPAD_UP)) && tCurrItem > 0)
@@ -962,6 +1429,9 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
     {
         if (gTasks[taskId].tMenuType == HAS_MYSTERY_EVENTS)
             RemoveScrollIndicatorArrowPair(gTasks[taskId].tScrollArrowTaskId);
+#if B_MAIN_MENU_BW_STYLE
+        DestroyBwMainMenuExtraSprites();
+#endif
         ClearStdWindowAndFrame(0, TRUE);
         ClearStdWindowAndFrame(1, TRUE);
         ClearStdWindowAndFrame(2, TRUE);
@@ -1144,6 +1614,9 @@ static void Task_HandleMainMenuBPressed(u8 taskId)
     {
         if (gTasks[taskId].tMenuType == HAS_MYSTERY_EVENTS)
             RemoveScrollIndicatorArrowPair(gTasks[taskId].tScrollArrowTaskId);
+#if B_MAIN_MENU_BW_STYLE
+        DestroyBwMainMenuExtraSprites();
+#endif
         sCurrItemAndOptionMenuCheck = 0;
         FreeAllWindowBuffers();
         SetMainCallback2(CB2_InitTitleScreen);
@@ -1201,6 +1674,10 @@ static void Task_DisplayMainMenuInvalidActionError(u8 taskId)
 
 static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 selectedMenuItem, s16 isScrolled)
 {
+#if B_MAIN_MENU_BW_STYLE
+    (void)isScrolled;
+    UpdateBwMainMenuSelectionPalette(menuType, selectedMenuItem);
+#else
     SetGpuReg(REG_OFFSET_WIN0H, MENU_WIN_HCOORDS);
 
     switch (menuType)
@@ -1282,6 +1759,7 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
         }
         break;
     }
+#endif
 }
 
 #define tPlayerSpriteId data[2]
@@ -1294,11 +1772,25 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
+static void ResetNewGameBirchSpeechBgs(void)
+{
+    ClearScheduledBgCopiesToVram();
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(0, sBirchSpeechBgTemplates, ARRAY_COUNT(sBirchSpeechBgTemplates));
+    ChangeBgX(0, 0, BG_COORD_SET);
+    ChangeBgY(0, 0, BG_COORD_SET);
+    ChangeBgX(1, 0, BG_COORD_SET);
+    ChangeBgY(1, 0, BG_COORD_SET);
+    SetGpuReg(REG_OFFSET_BG2CNT, 0);
+    SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+}
+
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    ResetNewGameBirchSpeechBgs();
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
-    InitBgFromTemplate(&sBirchBgTemplate);
     SetGpuReg(REG_OFFSET_WIN0H, 0);
     SetGpuReg(REG_OFFSET_WIN0V, 0);
     SetGpuReg(REG_OFFSET_WININ, 0);
@@ -1825,11 +2317,9 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     u8 spriteId;
     u16 savedIme;
 
-    ResetBgsAndClearDma3BusyFlags(0);
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    ResetNewGameBirchSpeechBgs();
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
-    InitBgsFromTemplates(0, sMainMenuBgTemplates, ARRAY_COUNT(sMainMenuBgTemplates));
-    InitBgFromTemplate(&sBirchBgTemplate);
     SetVBlankCallback(NULL);
     SetGpuReg(REG_OFFSET_BG2CNT, 0);
     SetGpuReg(REG_OFFSET_BG1CNT, 0);
@@ -2153,28 +2643,45 @@ void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
 
 static void CreateMainMenuErrorWindow(const u8 *str)
 {
+    LoadMainMenuWindowFrameTiles(0, MAIN_MENU_BORDER_TILE);
     FillWindowPixelBuffer(7, PIXEL_FILL(1));
     AddTextPrinterParameterized(7, FONT_NORMAL, str, 0, 1, 2, 0);
     PutWindowTilemap(7);
-    CopyWindowToVram(7, COPYWIN_GFX);
+    CopyWindowToVram(7, MAIN_MENU_COPY_MODE);
     DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[7], MAIN_MENU_BORDER_TILE);
+#if !B_MAIN_MENU_BW_STYLE
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(9, DISPLAY_WIDTH - 9));
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(113, DISPLAY_HEIGHT - 1));
+#endif
 }
 
 static void MainMenu_FormatSavegameText(void)
 {
+#if B_MAIN_MENU_BW_STYLE
+    MainMenu_FormatSavegamePlayer();
+    MainMenu_FormatSavegameTeam();
+    MainMenu_FormatSavegameLocation();
+    MainMenu_FormatSavegameBadges();
+    MainMenu_FormatSavegamePokedex();
+    MainMenu_FormatSavegameTime();
+    CreateBwMainMenuExtraSprites();
+#else
     MainMenu_FormatSavegamePlayer();
     MainMenu_FormatSavegamePokedex();
     MainMenu_FormatSavegameTime();
     MainMenu_FormatSavegameBadges();
+#endif
 }
 
 static void MainMenu_FormatSavegamePlayer(void)
 {
+#if B_MAIN_MENU_BW_STYLE
+    PrintBwMainMenuText(gSaveBlock2Ptr->playerName, BW_CONTINUE_PLAYER_NAME_X, BW_CONTINUE_PLAYER_NAME_Y, MAIN_MENU_PLAYER_NAME_TEXT_COLOR);
+#else
     StringExpandPlaceholders(gStringVar4, gText_ContinueMenuPlayer);
-    AddTextPrinterParameterized3(2, FONT_NORMAL, 0, 17, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
-    AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, gSaveBlock2Ptr->playerName, 100), 17, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gSaveBlock2Ptr->playerName);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_SAVE_PLAYER_LABEL_X, MAIN_MENU_SAVE_PLAYER_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, gStringVar4);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, gSaveBlock2Ptr->playerName, MAIN_MENU_SAVE_PLAYER_NAME_RIGHT_X), MAIN_MENU_SAVE_PLAYER_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, gSaveBlock2Ptr->playerName);
+#endif
 }
 
 static void MainMenu_FormatSavegameTime(void)
@@ -2182,12 +2689,23 @@ static void MainMenu_FormatSavegameTime(void)
     u8 str[0x20];
     u8 *ptr;
 
+#if B_MAIN_MENU_BW_STYLE
+    u8 time[8];
+
+    ptr = ConvertIntToDecimalStringN(time, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+    *ptr = CHAR_COLON;
+    ConvertIntToDecimalStringN(ptr + 1, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringCopy(str, gText_ContinueMenuTime);
+    StringAppend(str, time);
+    PrintBwMainMenuText(str, BW_CONTINUE_TIME_TEXT_X, BW_CONTINUE_TIME_TEXT_Y, MAIN_MENU_INFO_TEXT_COLOR);
+#else
     StringExpandPlaceholders(gStringVar4, gText_ContinueMenuTime);
-    AddTextPrinterParameterized3(2, FONT_NORMAL, 0x6C, 17, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_SAVE_TIME_LABEL_X, MAIN_MENU_SAVE_TIME_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, gStringVar4);
     ptr = ConvertIntToDecimalStringN(str, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
     *ptr = 0xF0;
     ConvertIntToDecimalStringN(ptr + 1, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, str, 0xD0), 17, sTextColor_MenuInfo, TEXT_SKIP_DRAW, str);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, str, MAIN_MENU_SAVE_TIME_RIGHT_X), MAIN_MENU_SAVE_TIME_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, str);
+#endif
 }
 
 static void MainMenu_FormatSavegamePokedex(void)
@@ -2201,10 +2719,17 @@ static void MainMenu_FormatSavegamePokedex(void)
             dexCount = GetNationalPokedexCount(FLAG_GET_CAUGHT);
         else
             dexCount = GetRegionalPokedexCount(FLAG_GET_CAUGHT);
+#if B_MAIN_MENU_BW_STYLE
+        StringCopy(str, gText_ContinueMenuPokedex);
+        ConvertIntToDecimalStringN(gStringVar4, dexCount, STR_CONV_MODE_LEFT_ALIGN, 4);
+        StringAppend(str, gStringVar4);
+        PrintBwMainMenuText(str, BW_CONTINUE_POKEDEX_TEXT_X, BW_CONTINUE_POKEDEX_TEXT_Y, MAIN_MENU_INFO_TEXT_COLOR);
+#else
         StringExpandPlaceholders(gStringVar4, gText_ContinueMenuPokedex);
-        AddTextPrinterParameterized3(2, FONT_NORMAL, 0, 33, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_SAVE_POKEDEX_LABEL_X, MAIN_MENU_SAVE_POKEDEX_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, gStringVar4);
         ConvertIntToDecimalStringN(str, dexCount, STR_CONV_MODE_LEFT_ALIGN, 4);
-        AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, str, 100), 33, sTextColor_MenuInfo, TEXT_SKIP_DRAW, str);
+        AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, str, MAIN_MENU_SAVE_POKEDEX_RIGHT_X), MAIN_MENU_SAVE_POKEDEX_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, str);
+#endif
     }
 }
 
@@ -2219,11 +2744,33 @@ static void MainMenu_FormatSavegameBadges(void)
         if (FlagGet(i))
             badgeCount++;
     }
+#if B_MAIN_MENU_BW_STYLE
+    StringCopy(str, gText_ContinueMenuBadges);
+    ConvertIntToDecimalStringN(gStringVar4, badgeCount, STR_CONV_MODE_LEADING_ZEROS, 1);
+    StringAppend(str, gStringVar4);
+    PrintBwMainMenuText(str, BW_CONTINUE_BADGES_TEXT_X, BW_CONTINUE_BADGES_TEXT_Y, MAIN_MENU_INFO_TEXT_COLOR);
+#else
     StringExpandPlaceholders(gStringVar4, gText_ContinueMenuBadges);
-    AddTextPrinterParameterized3(2, FONT_NORMAL, 0x6C, 33, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, MAIN_MENU_SAVE_BADGES_LABEL_X, MAIN_MENU_SAVE_BADGES_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, gStringVar4);
     ConvertIntToDecimalStringN(str, badgeCount, STR_CONV_MODE_LEADING_ZEROS, 1);
-    AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, str, 0xD0), 33, sTextColor_MenuInfo, TEXT_SKIP_DRAW, str);
+    AddTextPrinterParameterized3(2, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, str, MAIN_MENU_SAVE_BADGES_RIGHT_X), MAIN_MENU_SAVE_BADGES_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR, TEXT_SKIP_DRAW, str);
+#endif
 }
+
+#if B_MAIN_MENU_BW_STYLE
+static void MainMenu_FormatSavegameTeam(void)
+{
+    PrintBwMainMenuText(gText_ContinueMenuTeam, BW_CONTINUE_TEAM_LABEL_X, BW_CONTINUE_TEAM_LABEL_Y, MAIN_MENU_INFO_TEXT_COLOR);
+}
+
+static void MainMenu_FormatSavegameLocation(void)
+{
+    const struct MapHeader *mapHeader = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+
+    GetMapName(gStringVar4, mapHeader->regionMapSectionId, 0);
+    PrintBwMainMenuText(gStringVar4, BW_CONTINUE_LOCATION_TEXT_X, BW_CONTINUE_LOCATION_TEXT_Y, MAIN_MENU_INFO_TEXT_COLOR);
+}
+#endif
 
 static void LoadMainMenuWindowFrameTiles(u8 bgId, u16 tileOffset)
 {
