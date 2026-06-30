@@ -1975,34 +1975,26 @@ const u32 gStorageSystemMenu_Gfx[] = INCGFX_U32("graphics/pokemon_storage/menu.p
 const u16 gStorageSystemPartyMenu_Pal[] = INCGFX_U16("graphics/pokemon_storage/party_menu.pal", ".gbapal");
 const u32 gStorageSystemPartyMenu_Tilemap[] = INCGFX_U32("graphics/pokemon_storage/party_menu.bin", ".smolTM");
 
-// naming screen
-
-const u16 gNamingScreenMenu_Pal[6][16] =
-{
-    INCGFX_U16("graphics/naming_screen/menu.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/page_swap_upper.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/page_swap_lower.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/page_swap_others.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/buttons.pal", ".gbapal"),
-    INCGFX_U16("graphics/naming_screen/cursor.pal", ".gbapal"),
-};
-const u32 gNamingScreenMenu_Gfx[]                = INCGFX_U32("graphics/naming_screen/menu.png", ".4bpp.smol");
-const u32 gNamingScreenPageSwapFrame_Gfx[]       = INCGFX_U32("graphics/naming_screen/page_swap_frame.png", ".4bpp");
-const u32 gNamingScreenBackButton_Gfx[]          = INCGFX_U32("graphics/naming_screen/back_button.png", ".4bpp");
-const u32 gNamingScreenOKButton_Gfx[]            = INCGFX_U32("graphics/naming_screen/ok_button.png", ".4bpp");
-const u32 gNamingScreenPageSwapUpper_Gfx[]       = INCGFX_U32("graphics/naming_screen/page_swap_upper.png", ".4bpp");
-const u32 gNamingScreenPageSwapLower_Gfx[]       = INCGFX_U32("graphics/naming_screen/page_swap_lower.png", ".4bpp");
-const u32 gNamingScreenPageSwapOthers_Gfx[]      = INCGFX_U32("graphics/naming_screen/page_swap_others.png", ".4bpp");
-const u32 gNamingScreenCursor_Gfx[]              = INCGFX_U32("graphics/naming_screen/cursor.png", ".4bpp", "-num_tiles 5 -Wnum_tiles");
-const u32 gNamingScreenCursorSquished_Gfx[]      = INCGFX_U32("graphics/naming_screen/cursor_squished.png", ".4bpp", "-num_tiles 5 -Wnum_tiles");
-const u32 gNamingScreenCursorFilled_Gfx[]        = INCGFX_U32("graphics/naming_screen/cursor_filled.png", ".4bpp", "-num_tiles 5 -Wnum_tiles");
-const u32 gNamingScreenPageSwapButton_Gfx[]      = INCGFX_U32("graphics/naming_screen/page_swap_button.png", ".4bpp");
-const u32 gNamingScreenInputArrow_Gfx[]          = INCGFX_U32("graphics/naming_screen/input_arrow.png", ".4bpp");
-const u32 gNamingScreenUnderscore_Gfx[]          = INCGFX_U32("graphics/naming_screen/underscore.png", ".4bpp");
-const u32 gNamingScreenBackground_Tilemap[]      = INCGFX_U32("graphics/naming_screen/background.bin", ".smolTM");
-const u32 gNamingScreenKeyboardUpper_Tilemap[]   = INCGFX_U32("graphics/naming_screen/keyboard_upper.bin", ".smolTM");
-const u32 gNamingScreenKeyboardLower_Tilemap[]   = INCGFX_U32("graphics/naming_screen/keyboard_lower.bin", ".smolTM");
-const u32 gNamingScreenKeyboardSymbols_Tilemap[] = INCGFX_U32("graphics/naming_screen/keyboard_symbols.bin", ".smolTM");
+const u16 gNamingScreenBwBg_Pal[]                 = INCGFX_U16("graphics/naming_screen_bw/bg.pal", ".gbapal");
+const u16 gNamingScreenBwText_Pal[]               = INCGFX_U16("graphics/naming_screen_bw/text.pal", ".gbapal");
+const u16 gNamingScreenBwSelectedButton_Pal[]     = INCGFX_U16("graphics/naming_screen_bw/button_selected.pal", ".gbapal");
+const u16 gNamingScreenBwCursor_Pal[]             = INCGFX_U16("graphics/naming_screen_bw/cursor.pal", ".gbapal");
+const u16 gNamingScreenBwUnderscore_Pal[]         = INCGFX_U16("graphics/naming_screen_bw/underscore.pal", ".gbapal");
+const u16 gNamingScreenBwPcIcon_Pal[]             = INCGFX_U16("graphics/naming_screen_bw/pc_icon/0.png", ".gbapal");
+const u16 gNamingScreenBwRival_Pal[]              = INCGFX_U16("graphics/naming_screen_bw/rival.png", ".gbapal");
+const u32 gNamingScreenBwTiles_Gfx[]              = INCGFX_U32("graphics/naming_screen_bw/tiles.png", ".4bpp.smol");
+const u32 gNamingScreenBwCursor_Gfx[]             = INCGFX_U32("graphics/naming_screen_bw/cursor.png", ".4bpp");
+const u32 gNamingScreenBwActiveCursorSmall_Gfx[]  = INCGFX_U32("graphics/naming_screen_bw/active_cursor_small.png", ".4bpp");
+const u32 gNamingScreenBwActiveCursorBig_Gfx[]    = INCGFX_U32("graphics/naming_screen_bw/active_cursor_big.png", ".4bpp");
+const u32 gNamingScreenBwUnderscore_Gfx[]         = INCGFX_U32("graphics/naming_screen_bw/underscore.png", ".4bpp");
+const u32 gNamingScreenBwPcIcon0_Gfx[]            = INCGFX_U32("graphics/naming_screen_bw/pc_icon/0.png", ".4bpp");
+const u32 gNamingScreenBwPcIcon1_Gfx[]            = INCGFX_U32("graphics/naming_screen_bw/pc_icon/1.png", ".4bpp");
+const u32 gNamingScreenBwRival_Gfx[]              = INCGFX_U32("graphics/naming_screen_bw/rival.png", ".4bpp");
+const u32 gNamingScreenBwBackground_Tilemap[]     = INCGFX_U32("graphics/naming_screen_bw/bg.bin", ".smolTM");
+const u32 gNamingScreenBwButtons_Tilemap[]        = INCGFX_U32("graphics/naming_screen_bw/buttons_eng.bin", ".smolTM");
+const u32 gNamingScreenBwKeyboardUpper_Tilemap[]  = INCGFX_U32("graphics/naming_screen_bw/letters_uppers.bin", ".smolTM");
+const u32 gNamingScreenBwKeyboardLower_Tilemap[]  = INCGFX_U32("graphics/naming_screen_bw/letters_lowers.bin", ".smolTM");
+const u32 gNamingScreenBwKeyboardSymbols_Tilemap[] = INCGFX_U32("graphics/naming_screen_bw/symbols.bin", ".smolTM");
 
 // union room chat
 const u16 gUnionRoomChat_Background_Pal[] = INCGFX_U16("graphics/union_room_chat/background.png", ".gbapal");
