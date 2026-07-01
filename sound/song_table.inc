@@ -822,6 +822,9 @@ gSongTable::
     song mus_pkmn_bw12_204, MUSIC_PLAYER_BGM, 0
     song mus_pkmn_bw12_205, MUSIC_PLAYER_BGM, 0
 	song mus_bw_nimbassa_city, MUSIC_PLAYER_BGM, 0
+	song se_step_grass, MUSIC_PLAYER_SE2, 2
+	song se_step_snow, MUSIC_PLAYER_SE2, 2
+	song se_step_sand2, MUSIC_PLAYER_SE2, 2
 
 	.align 2
 dummy_song_header:
