@@ -299,6 +299,7 @@ static void LoadPalettes(void);
 static void DrawBgTilemap(u8, const void *);
 static void DrawBwKeyboardPageTilemap(u8, u8);
 static void DrawBwButtonsTilemap(void);
+static void NamingScreen_BWCleanup(void);
 static void NamingScreen_RedrawOptions(void);
 static u8 GetNextKeyboardPage(u8 page);
 static u8 GetPageButtonId(u8 page);
@@ -569,15 +570,19 @@ static bool8 MainState_Exit(void)
 {
     if (!gPaletteFade.active)
     {
+        MainCallback returnCallback;
+
         if (sNamingScreen->templateNum == NAMING_SCREEN_PLAYER)
             SeedRngAndSetTrainerId();
+
         if (sNamingScreen->templateNum == NAMING_SCREEN_CAUGHT_MON
          && CalculatePlayerPartyCount() < PARTY_SIZE)
-            SetMainCallback2(BattleMainCB2);
+            returnCallback = BattleMainCB2;
         else
-            SetMainCallback2(sNamingScreen->returnCallback);
-        DestroyTask(FindTaskIdByFunc(Task_NamingScreen));
-        FreeAllWindowBuffers();
+            returnCallback = sNamingScreen->returnCallback;
+
+        NamingScreen_BWCleanup();
+        SetMainCallback2(returnCallback);
         FREE_AND_SET_NULL(sNamingScreen);
     }
     return FALSE;
@@ -1596,6 +1601,53 @@ static void DrawBwKeyboardPageTilemap(u8 bg, u8 page)
 static void DrawBwButtonsTilemap(void)
 {
     CopyToBgTilemapBuffer(3, gNamingScreenBwButtons_Tilemap, 0, BW_BUTTON_TILEMAP_OFFSET);
+}
+
+static void NamingScreen_BWCleanup(void)
+{
+    u8 taskId;
+
+    gKeyRepeatStartDelay = sNamingScreen->keyRepeatStartDelayCopy;
+
+    ResetVHBlank();
+    ClearScheduledBgCopiesToVram();
+
+    HideBg(0);
+    HideBg(1);
+    HideBg(2);
+    HideBg(3);
+
+    FreeAllWindowBuffers();
+    UnsetBgTilemapBuffer(0);
+    UnsetBgTilemapBuffer(1);
+    UnsetBgTilemapBuffer(2);
+    UnsetBgTilemapBuffer(3);
+
+    taskId = FindTaskIdByFunc(Task_HandlePageSwapAnim);
+    if (taskId != TASK_NONE)
+        DestroyTask(taskId);
+
+    taskId = FindTaskIdByFunc(Task_HandleInput);
+    if (taskId != TASK_NONE)
+        DestroyTask(taskId);
+
+    taskId = FindTaskIdByFunc(Task_NamingScreen);
+    if (taskId != TASK_NONE)
+        DestroyTask(taskId);
+
+    ResetSpriteData();
+    FreeAllSpritePalettes();
+    ResetPaletteFade();
+    ResetBgsAndClearDma3BusyFlags(0);
+
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0);
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+
+    DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
+    DmaClear32(3, (void *)OAM, OAM_SIZE);
+    DmaClear16(3, (void *)PLTT, PLTT_SIZE);
 }
 
 static void NamingScreen_RedrawOptions(void)
