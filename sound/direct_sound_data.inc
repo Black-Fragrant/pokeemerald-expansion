@@ -3,6 +3,18 @@ DirectSoundWaveData_sc88pro_glockenspiel::
 	.incbin "sound/direct_sound_samples/sc88pro_glockenspiel.bin"
 
 	.align 2
+DirectSoundWaveData_step_grass::
+	.incbin "sound/steps/grass.bin"
+
+	.align 2
+DirectSoundWaveData_step_snow::
+	.incbin "sound/steps/snow.bin"
+
+	.align 2
+DirectSoundWaveData_step_sand2::
+	.incbin "sound/steps/sand2.bin"
+
+	.align 2
 DirectSoundWaveData_sc88pro_organ2::
 	.incbin "sound/direct_sound_samples/sc88pro_organ2.bin"
 

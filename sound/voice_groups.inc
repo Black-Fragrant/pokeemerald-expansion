@@ -133,6 +133,7 @@
 .include "sound/voicegroups/vs_aqua_magma_leader.inc"
 .include "sound/voicegroups/rs_sfx_1.inc"
 .include "sound/voicegroups/rs_sfx_2.inc"
+.include "sound/voicegroups/step_sfx.inc"
 .include "sound/cry_tables.inc"
 .include "sound/voicegroups/frlg_sfx.inc"
 .include "sound/voicegroups/bard.inc"
