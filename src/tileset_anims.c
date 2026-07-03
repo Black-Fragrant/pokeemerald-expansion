@@ -145,6 +145,281 @@ static void QueueAnimTiles_NimbasaSecondary_Lights(u16);
 static void QueueAnimTiles_NimbasaSecondary_MusicalHall(u16);
 static void QueueAnimTiles_NimbasaSecondary_StadiumDome(u16);
 
+static void TilesetAnim_NimbasaPrimary2(u16);
+static void QueueAnimTiles_NimbasaPrimary2_Fountain(u16);
+static void QueueAnimTiles_NimbasaPrimary2_FountainMedium(u16);
+static void QueueAnimTiles_NimbasaPrimary2_FountainSmall(u16);
+static void QueueAnimTiles_NimbasaPrimary2_Lake(u16);
+static void QueueAnimTiles_NimbasaPrimary2_Roof(u16);
+static void QueueAnimTiles_NimbasaPrimary2_Wall(u16);
+
+static void TilesetAnim_NimbasaSecondary2(u16);
+static void QueueAnimTiles_NimbasaSecondary2_Lights(u16);
+static void QueueAnimTiles_NimbasaSecondary2_FerrisWheel(u16);
+
+const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/0.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame1[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/1.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame2[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/2.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame3[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/3.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame4[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/4.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_NimbasaPrimary2_Fountain[] = {
+    gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame0,
+    gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame1,
+    gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame2,
+    gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame3,
+    gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame4,
+};
+
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/0.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame1[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/1.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame2[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/2.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame3[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/3.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame4[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/4.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame5[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/5.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame6[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/6.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame7[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/7.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame8[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/8.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame9[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/9.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame10[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/10.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame11[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/11.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame12[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/12.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame13[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/13.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame14[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/14.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame15[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/15.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame16[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/16.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame17[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/17.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame18[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/18.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame19[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/19.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame20[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/20.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame21[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/21.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame22[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/22.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame23[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/23.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame24[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/24.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame25[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/25.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame26[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/26.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame27[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/27.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame28[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/28.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame29[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/29.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame30[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/30.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame31[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/31.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame32[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/32.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame33[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/33.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame34[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/34.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame35[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/35.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame36[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/36.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame37[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/37.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame38[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/38.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame39[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/39.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame40[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/40.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame41[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/41.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame42[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/42.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame43[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/43.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame44[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/44.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame45[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/45.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame46[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/46.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame47[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/47.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame48[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/48.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame49[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/49.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame50[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/50.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame51[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/51.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame52[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/52.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame53[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/53.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame54[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/54.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Roof_Frame55[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/roof/55.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_NimbasaPrimary2_Roof[] = {
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame0,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame0,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame1,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame2,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame3,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame4,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame5,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame6,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame7,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame7,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame8,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame9,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame10,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame11,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame12,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame13,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame14,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame14,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame15,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame16,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame17,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame18,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame19,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame20,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame21,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame21,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame22,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame23,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame24,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame25,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame26,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame27,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame28,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame28,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame29,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame30,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame31,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame32,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame33,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame34,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame35,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame35,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame36,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame37,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame38,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame39,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame40,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame41,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame42,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame42,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame43,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame44,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame45,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame46,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame47,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame48,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame49,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame49,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame50,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame51,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame52,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame53,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame54,
+    gQueueAnimTiles_NimbasaPrimary2_Roof_Frame55,
+};
+
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/0.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame1[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/1.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame2[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/2.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame3[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/3.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame4[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/4.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame5[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/5.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame6[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/6.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame7[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/7.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame8[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/8.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame9[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/9.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame10[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/10.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame11[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/11.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame12[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/12.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame13[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/13.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame14[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/14.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame15[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/15.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame16[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/16.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame17[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/17.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame18[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/18.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame19[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/19.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaPrimary2_Wall_Frame20[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/wall/20.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_NimbasaPrimary2_Wall[] = {
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame0,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame0,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame1,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame1,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame2,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame3,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame3,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame4,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame5,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame5,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame6,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame7,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame7,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame8,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame9,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame9,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame10,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame11,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame11,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame12,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame13,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame13,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame14,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame15,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame15,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame16,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame17,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame17,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame18,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame19,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame19,
+    gQueueAnimTiles_NimbasaPrimary2_Wall_Frame20,
+};
+
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame0[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/0.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame1[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/1.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame2[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/2.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame3[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/3.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame4[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/4.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame5[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/5.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame6[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/6.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame7[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/7.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame8[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/8.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame9[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/9.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame10[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/10.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame11[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/11.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame12[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/12.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame13[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/13.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame14[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/14.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame15[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/15.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame16[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/16.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame17[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/17.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame18[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/18.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame19[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/19.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame20[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/20.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame21[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/21.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame22[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/22.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame23[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/23.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame24[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/24.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame25[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/25.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame26[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/26.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame27[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/27.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame28[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/28.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame29[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/29.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame30[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/30.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame31[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary_2/anim/ferris_wheel/31.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_NimbasaSecondary2_FerrisWheel[] = {
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame0,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame1,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame2,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame3,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame4,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame5,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame6,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame7,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame8,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame9,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame10,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame11,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame12,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame13,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame14,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame15,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame16,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame17,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame18,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame19,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame20,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame21,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame22,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame23,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame24,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame25,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame26,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame27,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame28,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame29,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame30,
+    gQueueAnimTiles_NimbasaSecondary2_FerrisWheel_Frame31,
+};
+
 const u16 gQueueAnimTiles_NimbasaPrimary_Fountain_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary/anim/fountain/0.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaPrimary_Fountain_Frame1[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary/anim/fountain/1.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaPrimary_Fountain_Frame2[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary/anim/fountain/2.png", ".4bpp");
@@ -174,6 +449,14 @@ const u16 *const gQueueAnimTiles_LibertyGarden_Fountain[] = {
 };
 
 const u16 *const gQueueAnimTiles_NimbasaPrimary_FountainMedium[] = {
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame0,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame1,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame2,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame3,
+    gQueueAnimTiles_LibertyGarden_Fountain_Frame4,
+};
+
+const u16 *const gQueueAnimTiles_NimbasaPrimary2_FountainMedium[] = {
     gQueueAnimTiles_LibertyGarden_Fountain_Frame0,
     gQueueAnimTiles_LibertyGarden_Fountain_Frame1,
     gQueueAnimTiles_LibertyGarden_Fountain_Frame2,
@@ -380,6 +663,73 @@ const u16 *const gQueueAnimTiles_NimbasaPrimary_Lake[] = {
     gQueueAnimTiles_GeneralLake_Lake_Frame63,
 };
 
+const u16 *const gQueueAnimTiles_NimbasaPrimary2_Lake[] = {
+    gQueueAnimTiles_GeneralLake_Lake_Frame0,
+    gQueueAnimTiles_GeneralLake_Lake_Frame1,
+    gQueueAnimTiles_GeneralLake_Lake_Frame2,
+    gQueueAnimTiles_GeneralLake_Lake_Frame3,
+    gQueueAnimTiles_GeneralLake_Lake_Frame4,
+    gQueueAnimTiles_GeneralLake_Lake_Frame5,
+    gQueueAnimTiles_GeneralLake_Lake_Frame6,
+    gQueueAnimTiles_GeneralLake_Lake_Frame7,
+    gQueueAnimTiles_GeneralLake_Lake_Frame8,
+    gQueueAnimTiles_GeneralLake_Lake_Frame9,
+    gQueueAnimTiles_GeneralLake_Lake_Frame10,
+    gQueueAnimTiles_GeneralLake_Lake_Frame11,
+    gQueueAnimTiles_GeneralLake_Lake_Frame12,
+    gQueueAnimTiles_GeneralLake_Lake_Frame13,
+    gQueueAnimTiles_GeneralLake_Lake_Frame14,
+    gQueueAnimTiles_GeneralLake_Lake_Frame15,
+    gQueueAnimTiles_GeneralLake_Lake_Frame16,
+    gQueueAnimTiles_GeneralLake_Lake_Frame17,
+    gQueueAnimTiles_GeneralLake_Lake_Frame18,
+    gQueueAnimTiles_GeneralLake_Lake_Frame19,
+    gQueueAnimTiles_GeneralLake_Lake_Frame20,
+    gQueueAnimTiles_GeneralLake_Lake_Frame21,
+    gQueueAnimTiles_GeneralLake_Lake_Frame22,
+    gQueueAnimTiles_GeneralLake_Lake_Frame23,
+    gQueueAnimTiles_GeneralLake_Lake_Frame24,
+    gQueueAnimTiles_GeneralLake_Lake_Frame25,
+    gQueueAnimTiles_GeneralLake_Lake_Frame26,
+    gQueueAnimTiles_GeneralLake_Lake_Frame27,
+    gQueueAnimTiles_GeneralLake_Lake_Frame28,
+    gQueueAnimTiles_GeneralLake_Lake_Frame29,
+    gQueueAnimTiles_GeneralLake_Lake_Frame30,
+    gQueueAnimTiles_GeneralLake_Lake_Frame31,
+    gQueueAnimTiles_GeneralLake_Lake_Frame32,
+    gQueueAnimTiles_GeneralLake_Lake_Frame33,
+    gQueueAnimTiles_GeneralLake_Lake_Frame34,
+    gQueueAnimTiles_GeneralLake_Lake_Frame35,
+    gQueueAnimTiles_GeneralLake_Lake_Frame36,
+    gQueueAnimTiles_GeneralLake_Lake_Frame37,
+    gQueueAnimTiles_GeneralLake_Lake_Frame38,
+    gQueueAnimTiles_GeneralLake_Lake_Frame39,
+    gQueueAnimTiles_GeneralLake_Lake_Frame40,
+    gQueueAnimTiles_GeneralLake_Lake_Frame41,
+    gQueueAnimTiles_GeneralLake_Lake_Frame42,
+    gQueueAnimTiles_GeneralLake_Lake_Frame43,
+    gQueueAnimTiles_GeneralLake_Lake_Frame44,
+    gQueueAnimTiles_GeneralLake_Lake_Frame45,
+    gQueueAnimTiles_GeneralLake_Lake_Frame46,
+    gQueueAnimTiles_GeneralLake_Lake_Frame47,
+    gQueueAnimTiles_GeneralLake_Lake_Frame48,
+    gQueueAnimTiles_GeneralLake_Lake_Frame49,
+    gQueueAnimTiles_GeneralLake_Lake_Frame50,
+    gQueueAnimTiles_GeneralLake_Lake_Frame51,
+    gQueueAnimTiles_GeneralLake_Lake_Frame52,
+    gQueueAnimTiles_GeneralLake_Lake_Frame53,
+    gQueueAnimTiles_GeneralLake_Lake_Frame54,
+    gQueueAnimTiles_GeneralLake_Lake_Frame55,
+    gQueueAnimTiles_GeneralLake_Lake_Frame56,
+    gQueueAnimTiles_GeneralLake_Lake_Frame57,
+    gQueueAnimTiles_GeneralLake_Lake_Frame58,
+    gQueueAnimTiles_GeneralLake_Lake_Frame59,
+    gQueueAnimTiles_GeneralLake_Lake_Frame60,
+    gQueueAnimTiles_GeneralLake_Lake_Frame61,
+    gQueueAnimTiles_GeneralLake_Lake_Frame62,
+    gQueueAnimTiles_GeneralLake_Lake_Frame63,
+};
+
 const u16 gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary/anim/fountain_small/0.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame1[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary/anim/fountain_small/1.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame2[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary/anim/fountain_small/2.png", ".4bpp");
@@ -394,12 +744,27 @@ const u16 *const gQueueAnimTiles_NimbasaPrimary_FountainSmall[] = {
     gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame4,
 };
 
+const u16 *const gQueueAnimTiles_NimbasaPrimary2_FountainSmall[] = {
+    gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame0,
+    gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame1,
+    gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame2,
+    gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame3,
+    gQueueAnimTiles_NimbasaPrimary_FountainSmall_Frame4,
+};
+
 const u16 gQueueAnimTiles_NimbasaSecondary_Lights_Frame0[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary/anim/lights/0.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaSecondary_Lights_Frame1[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary/anim/lights/1.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaSecondary_Lights_Frame2[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary/anim/lights/2.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaSecondary_Lights_Frame3[] = INCGFX_U16("data/tilesets/secondary/nimbasa_secondary/anim/lights/3.png", ".4bpp");
 
 const u16 *const gQueueAnimTiles_NimbasaSecondary_Lights[] = {
+    gQueueAnimTiles_NimbasaSecondary_Lights_Frame0,
+    gQueueAnimTiles_NimbasaSecondary_Lights_Frame1,
+    gQueueAnimTiles_NimbasaSecondary_Lights_Frame2,
+    gQueueAnimTiles_NimbasaSecondary_Lights_Frame3,
+};
+
+const u16 *const gQueueAnimTiles_NimbasaSecondary2_Lights[] = {
     gQueueAnimTiles_NimbasaSecondary_Lights_Frame0,
     gQueueAnimTiles_NimbasaSecondary_Lights_Frame1,
     gQueueAnimTiles_NimbasaSecondary_Lights_Frame2,
@@ -1671,6 +2036,20 @@ void InitTilesetAnim_NimbasaSecondary(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_NimbasaSecondary;
 }
 
+void InitTilesetAnim_NimbasaPrimary2(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_NimbasaPrimary2;
+}
+
+void InitTilesetAnim_NimbasaSecondary2(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_NimbasaSecondary2;
+}
+
 void InitTilesetAnim_RelicCastle(void)
 {
     sSecondaryTilesetAnimCounter = 0;
@@ -1823,6 +2202,30 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Current(timer / 4);
     if (timer % 16 == 3)
         QueueAnimTiles_General_New_Flower(timer / 16);
+}
+
+static void TilesetAnim_NimbasaPrimary2(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_NimbasaPrimary2_Fountain(timer / 16);
+    if (timer % 16 == 1)
+        QueueAnimTiles_NimbasaPrimary2_FountainMedium(timer / 16);
+    if (timer % 16 == 2)
+        QueueAnimTiles_NimbasaPrimary2_FountainSmall(timer / 16);
+    if (timer % 4 == 3)
+        QueueAnimTiles_NimbasaPrimary2_Lake(timer / 4);
+    if (timer % 8 == 4)
+        QueueAnimTiles_NimbasaPrimary2_Wall(timer / 8);
+    if (timer % 4 == 0)
+        QueueAnimTiles_NimbasaPrimary2_Roof(timer / 4);
+}
+
+static void TilesetAnim_NimbasaSecondary2(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_NimbasaSecondary2_Lights(timer / 16);
+    if (timer % 8 == 1)
+        QueueAnimTiles_NimbasaSecondary2_FerrisWheel(timer / 8);
 }
 
 static void TilesetAnim_NimbasaPrimary(u16 timer)
@@ -1985,6 +2388,54 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaPrimary2_Fountain(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaPrimary2_Fountain);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaPrimary2_Fountain[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(400)), 23 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaPrimary2_FountainMedium(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaPrimary2_FountainMedium);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaPrimary2_FountainMedium[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(368)), 16 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaPrimary2_FountainSmall(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaPrimary2_FountainSmall);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaPrimary2_FountainSmall[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(423)), 3 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaPrimary2_Lake(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaPrimary2_Lake);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaPrimary2_Lake[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(432)), 64 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaPrimary2_Roof(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaPrimary2_Roof);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaPrimary2_Roof[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(246)), 70 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaPrimary2_Wall(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaPrimary2_Wall);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaPrimary2_Wall[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(187)), 5 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaSecondary2_Lights(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaSecondary2_Lights);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaSecondary2_Lights[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(528)), 16 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaSecondary2_FerrisWheel(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaSecondary2_FerrisWheel);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaSecondary2_FerrisWheel[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(704)), 304 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_NimbasaPrimary_Fountain(u16 timer)

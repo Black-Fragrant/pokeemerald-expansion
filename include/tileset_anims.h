@@ -63,5 +63,7 @@ void InitTilesetAnim_RelicCastle(void);
 void InitTilesetAnim_RelicCastleContinue(void);
 void InitTilesetAnim_NimbasaPrimary(void);
 void InitTilesetAnim_NimbasaSecondary(void);
+void InitTilesetAnim_NimbasaPrimary2(void);
+void InitTilesetAnim_NimbasaSecondary2(void);
 
 #endif // GUARD_TILESET_ANIMS_H
