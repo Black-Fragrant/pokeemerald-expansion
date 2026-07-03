@@ -10226,8 +10226,8 @@
     {
       "id": "LAYOUT_NIMBASA_CITY_EXTENDED",
       "name": "NimbasaCityExtended_Layout",
-      "width": 80,
-      "height": 50,
+      "width": 69,
+      "height": 31,
       "primary_tileset": "gTileset_NimbasaPrimary2",
       "secondary_tileset": "gTileset_NimbasaSecondary2",
       "border_filepath": "data/layouts/NimbasaCityExtended/border.bin",
