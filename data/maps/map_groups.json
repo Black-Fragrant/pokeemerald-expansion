@@ -111,7 +111,9 @@
     "Route4_North",
     "DesertResort_Outside",
     "DesertResort_Inside",
-    "NimbasaCity"
+    "NimbasaCity",
+    "Route5",
+    "Route16"
   ],
   "gMapGroup_IndoorNuvema": [
     "NuvemaTown_PlayerHouse_1F",

@@ -69,8 +69,8 @@ script DesertResort_Inside_EventScript_Battle_BackpackerF_1
 	trainerbattle_single(TRAINER_BACKPACKER_F_DESERT_RESORT_1,
 	text("Being with my Pokémon makes me happy\n"
            "even when we're in a bad situation!"),
-	text("Yes! It was fun that your Pokémon and mine\n"
-           "were both so energetic!"))
+	text("Yes! It was fun that your Pokémon and\n"
+           "mine were both so energetic!"))
 	msgbox("When I feel lonely at night,\n"
            "I curl up with my Pokémon and watch\l"
            "the twinkling stars.\p"
@@ -105,8 +105,8 @@ script DesertResort_Inside_EventScript_BlackSuit_ObtainedSoftSand
 {
     msgbox("According to what I've heard, that\n"
            "Relic Castle is the ruins of a city built\l"
-           "by the hero of old and the dragon Pokémon\l"
-           "that accompanied the hero.", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
+           "by the hero of old and the dragon\l"
+           "Pokémon that accompanied the hero.", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
     destroy_speech_bubble()
     closemessage
     release
