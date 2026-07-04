@@ -74,6 +74,8 @@
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
+#include "fieldmap.h"
+#include "metatile_behavior.h"
 
 extern enum Item gSpecialVar_ItemId;
 
@@ -5472,6 +5474,30 @@ void SetWildMonHeldItem(void)
     bool32 itemHeldBoost = CanFirstMonBoostHeldItemRarity();
     u16 chanceNoItem = itemHeldBoost ? 20 : 45;
     u16 chanceNotRare = itemHeldBoost ? 80 : 95;
+
+    // --- DARK TALL GRASS HELD ITEM BOOST ---
+    {
+        s16 x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;
+        s16 y = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y;
+        u16 behavior = MapGridGetMetatileBehaviorAt(x, y);
+
+        if (MetatileBehavior_IsTallGrassDark(behavior))
+        {
+            if (!itemHeldBoost)
+            {
+                // Normal: 25% no item, 50% common, 25% rare
+                chanceNoItem = 25;
+                chanceNotRare = 75; // 25 rare
+            }
+            else
+            {
+                // Compound Eyes: 0% no item, 60% common, 40% rare
+                chanceNoItem = 0;
+                chanceNotRare = 60; // 40 rare
+            }
+        }
+    }
+    // ------------------------------------------------
 
     for (i = 0; i < count; i++)
     {

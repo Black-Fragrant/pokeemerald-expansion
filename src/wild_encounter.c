@@ -337,32 +337,74 @@ u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, en
             min = wildPokemon[wildMonIndex].maxLevel;
             max = wildPokemon[wildMonIndex].minLevel;
         }
+
+        // --- DARK TALL GRASS LEVEL BOOST (+5) ---
+        if (area == WILD_AREA_LAND)
+        {
+            s16 x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;
+            s16 y = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y;
+            u16 behavior = MapGridGetMetatileBehaviorAt(x, y);
+
+            if (MetatileBehavior_IsTallGrassDark(behavior))
+            {
+                min += 2;
+                max += 3;
+
+                // Clamp boosted range
+                if (max > 100)
+                    max = 100;
+                if (min > max)
+                    min = max;
+            }
+        }
+        // ----------------------------------------
+
         range = max - min + 1;
         rand = Random() % range;
 
-        // check ability for max level mon
+        // Ability-based max-level bias
         if (!GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SANITY_IS_EGG))
         {
             enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][0]);
             if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
             {
                 if (Random() % 2 == 0)
-                    return max;
+                {
+                    // Ensure ability-based max level is capped
+                    return (max > 100 ? 100 : max);
+                }
 
                 if (rand != 0)
                     rand--;
             }
         }
-        return min + rand;
+
+        // Normal level roll, with final cap
+        {
+            u8 level = min + rand;
+            if (level > 100)
+                level = 100;
+            return level;
+        }
     }
     else
     {
-        // Looks for the max level of all slots that share the same species as the selected slot.
+        // Lure logic: max level of same-species slots + 1
         max = GetMaxLevelOfSpeciesInWildTable(wildPokemon, wildPokemon[wildMonIndex].species, area);
         if (max > 0)
-            return max + 1;
+        {
+            u8 level = max + 1;
+            if (level > 100)
+                level = 100;
+            return level;
+        }
         else // Failsafe
-            return wildPokemon[wildMonIndex].maxLevel + 1;
+        {
+            u8 level = wildPokemon[wildMonIndex].maxLevel + 1;
+            if (level > 100)
+                level = 100;
+            return level;
+        }
     }
 }
 
@@ -1141,16 +1183,31 @@ static void ApplyCleanseTagEncounterRateMod(u32 *encRate)
 
 bool8 TryDoDoubleWildBattle(void)
 {
-    if (GetSafariZoneFlag()
-      || (WE_DOUBLE_WILD_REQUIRE_2_MONS && GetMonsStateToDoubles() != PLAYER_HAS_TWO_USABLE_MONS))
-        return FALSE;
-    if (FollowerNPCIsBattlePartner() && FNPC_FLAG_PARTNER_WILD_BATTLES != 0
-     && (FNPC_FLAG_PARTNER_WILD_BATTLES == FNPC_ALWAYS || FlagGet(FNPC_FLAG_PARTNER_WILD_BATTLES)) && FNPC_NPC_FOLLOWER_WILD_BATTLE_VS_2 == TRUE)
-        return TRUE;
-    else if (FlagGet(WE_FLAG_FORCE_DOUBLE_WILD))
-        return TRUE;
-    else if (RandomPercentage(RNG_NONE, WE_DOUBLE_WILD_CHANCE))
-        return TRUE;
+    // --- DARK TALL GRASS DOUBLE BATTLE CHANCE ---
+    {
+        s16 x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;
+        s16 y = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y;
+        u16 behavior = MapGridGetMetatileBehaviorAt(x, y);
+
+        if (MetatileBehavior_IsTallGrassDark(behavior))
+        {
+            // Respect the "must have 2 usable mons" rule if enabled
+            if (WE_DOUBLE_WILD_REQUIRE_2_MONS
+                && GetMonsStateToDoubles() != PLAYER_HAS_TWO_USABLE_MONS)
+            {
+                return FALSE;
+            }
+
+            // Use WE_DOUBLE_WILD_CHANCE only for dark grass
+            if (RandomPercentage(RNG_NONE, WE_DOUBLE_WILD_CHANCE))
+                return TRUE;
+
+            return FALSE; // Dark grass but chance failed
+        }
+    }
+    // ------------------------------------------------
+
+    // Outside dark grass: NEVER allow double wild battles
     return FALSE;
 }
 
