@@ -1977,3 +1977,7 @@ EventScript_SetSail::
 	.include "data/maps/Route4_Gate/scripts.inc"
 
 	.include "data/maps/NimbasaCityExtended/scripts.inc"
+
+	.include "data/maps/Route16/scripts.inc"
+
+	.include "data/maps/Route5/scripts.inc"

@@ -2264,3 +2264,25 @@ const struct Tileset gTileset_NimbasaSecondary2 =
     .metatileAttributes = gMetatileAttributes_NimbasaSecondary2,
     .callback = InitTilesetAnim_NimbasaSecondary2,
 };
+
+const struct Tileset gTileset_Route5 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route5,
+    .palettes = gTilesetPalettes_Route5,
+    .metatiles = gMetatiles_Route5,
+    .metatileAttributes = gMetatileAttributes_Route5,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Route16 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route16,
+    .palettes = gTilesetPalettes_Route16,
+    .metatiles = gMetatiles_Route16,
+    .metatileAttributes = gMetatileAttributes_Route16,
+    .callback = NULL,
+};
