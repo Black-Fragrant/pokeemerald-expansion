@@ -146,6 +146,7 @@ const u32 gFieldEffectObjectPic_Unknown17[] = INCGFX_U32("graphics/field_effects
 const u32 gFieldEffectObjectPic_UnusedGrass2[] = INCGFX_U32("graphics/field_effects/pics/unused_grass_2.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gFieldEffectObjectPic_LongGrass[] = INCGFX_U32("graphics/field_effects/pics/long_grass.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gFieldEffectObjectPic_TallGrass[] = INCGFX_U32("graphics/field_effects/pics/tall_grass.png", ".4bpp", "-mwidth 2 -mheight 2");
+const u32 gFieldEffectObjectPic_TallGrassDark[] = INCGFX_U32("graphics/field_effects/pics/tall_grass_dark.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gFieldEffectObjectPic_ShortGrass[] = INCGFX_U32("graphics/field_effects/pics/short_grass.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gFieldEffectObjectPic_SandFootprints[] = INCGFX_U32("graphics/field_effects/pics/sand_footprints.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gFieldEffectObjectPic_DeepSandFootprints[] = INCGFX_U32("graphics/field_effects/pics/deep_sand_footprints.png", ".4bpp", "-mwidth 2 -mheight 2");

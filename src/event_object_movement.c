@@ -6055,12 +6055,22 @@ bool8 FollowablePlayerMovement_GoSpeed4(struct ObjectEvent *objectEvent, struct 
 
 movement_type_def(MovementType_CopyPlayerInGrass, gMovementTypeFuncs_CopyPlayerInGrass)
 
+static bool8 IsGrassOrDarkGrass(u8 behavior)
+{
+    return MetatileBehavior_IsPokeGrass(behavior)
+        || MetatileBehavior_IsTallGrassDark(behavior);
+}
+
 bool8 MovementType_CopyPlayerInGrass_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     if (gObjectEvents[gPlayerAvatar.objectEventId].movementActionId == MOVEMENT_ACTION_NONE || gPlayerAvatar.tileTransitionState == T_TILE_CENTER)
         return FALSE;
 
-    return gCopyPlayerMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPokeGrass);
+    return gCopyPlayerMovementFuncs[PlayerGetCopyableMovement()](
+    objectEvent,
+    sprite,
+    GetPlayerMovementDirection(),
+    IsGrassOrDarkGrass);
 }
 
 void MovementType_TreeDisguise(struct Sprite *sprite)
@@ -9811,12 +9821,18 @@ static void GetGroundEffectFlags_TallGrassOnSpawn(struct ObjectEvent *objEvent, 
 {
     if (MetatileBehavior_IsTallGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN;
+
+    if (MetatileBehavior_IsTallGrassDark(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN_DARK;
 }
 
 static void GetGroundEffectFlags_TallGrassOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
 {
     if (MetatileBehavior_IsTallGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE;
+
+    if (MetatileBehavior_IsTallGrassDark(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE_DARK;
 }
 
 static void GetGroundEffectFlags_LongGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
@@ -9942,6 +9958,7 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
 
     static const MetatileFunc metatileFuncs[] = {
         MetatileBehavior_IsTallGrass,
+        MetatileBehavior_IsTallGrassDark,
         MetatileBehavior_IsLongGrass,
         MetatileBehavior_IsPuddle,
         MetatileBehavior_IsSurfableWaterOrUnderwater,
@@ -9951,6 +9968,7 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
 
     static const u32 jumpLandingFlags[] = {
         GROUND_EFFECT_FLAG_LAND_IN_TALL_GRASS,
+        GROUND_EFFECT_FLAG_LAND_IN_TALL_GRASS_DARK,
         GROUND_EFFECT_FLAG_LAND_IN_LONG_GRASS,
         GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER,
         GROUND_EFFECT_FLAG_LAND_IN_DEEP_WATER,
@@ -9961,7 +9979,7 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
     if (objEvent->landingJump && !objEvent->disableJumpLandingGroundEffect)
     {
         u8 i;
-
+        
         for (i = 0; i < ARRAY_COUNT(metatileFuncs); i++)
         {
             if (metatileFuncs[i](objEvent->currentMetatileBehavior))
@@ -10221,6 +10239,19 @@ void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *
     FieldEffectStart(FLDEFF_TALL_GRASS);
 }
 
+void GroundEffect_SpawnOnTallGrassDark(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = TRUE; // skip to end of anim
+    FieldEffectStart(FLDEFF_TALL_GRASS_DARK);
+}
+
 void GroundEffect_StepOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = objEvent->currentCoords.x;
@@ -10232,6 +10263,19 @@ void GroundEffect_StepOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *s
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
     FieldEffectStart(FLDEFF_TALL_GRASS);
+}
+
+void GroundEffect_StepOnTallGrassDark(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2; // priority
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = FALSE; // normal animation
+    FieldEffectStart(FLDEFF_TALL_GRASS_DARK);
 }
 
 void GroundEffect_SpawnOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -10442,6 +10486,27 @@ void GroundEffect_JumpOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *s
         GroundEffect_SpawnOnTallGrass(objEvent, sprite);
 }
 
+void GroundEffect_JumpOnTallGrassDark(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    u8 spriteId;
+
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    FieldEffectStart(FLDEFF_JUMP_TALL_GRASS);
+
+    spriteId = FindTallGrassFieldEffectSpriteId(
+        objEvent->localId,
+        objEvent->mapNum,
+        objEvent->mapGroup,
+        objEvent->currentCoords.x,
+        objEvent->currentCoords.y);
+
+    if (spriteId == MAX_SPRITES)
+        GroundEffect_SpawnOnTallGrassDark(objEvent, sprite);
+}
+
 void GroundEffect_JumpOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = objEvent->currentCoords.x;
@@ -10496,26 +10561,29 @@ void GroundEffect_Seaweed(struct ObjectEvent *objEvent, struct Sprite *sprite)
 }
 
 static void (*const sGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct Sprite *sprite) = {
-    GroundEffect_SpawnOnTallGrass,      // GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN
-    GroundEffect_StepOnTallGrass,       // GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE
-    GroundEffect_SpawnOnLongGrass,      // GROUND_EFFECT_FLAG_LONG_GRASS_ON_SPAWN
-    GroundEffect_StepOnLongGrass,       // GROUND_EFFECT_FLAG_LONG_GRASS_ON_MOVE
-    GroundEffect_WaterReflection,       // GROUND_EFFECT_FLAG_WATER_REFLECTION
-    GroundEffect_IceReflection,         // GROUND_EFFECT_FLAG_ICE_REFLECTION
-    GroundEffect_FlowingWater,          // GROUND_EFFECT_FLAG_SHALLOW_FLOWING_WATER
-    GroundEffect_SandTracks,            // GROUND_EFFECT_FLAG_SAND
-    GroundEffect_DeepSandTracks,        // GROUND_EFFECT_FLAG_DEEP_SAND
-    GroundEffect_Ripple,                // GROUND_EFFECT_FLAG_RIPPLES
-    GroundEffect_StepOnPuddle,          // GROUND_EFFECT_FLAG_PUDDLE
-    GroundEffect_SandHeap,              // GROUND_EFFECT_FLAG_SAND_PILE
-    GroundEffect_JumpOnTallGrass,       // GROUND_EFFECT_FLAG_LAND_IN_TALL_GRASS
-    GroundEffect_JumpOnLongGrass,       // GROUND_EFFECT_FLAG_LAND_IN_LONG_GRASS
-    GroundEffect_JumpOnShallowWater,    // GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER
-    GroundEffect_JumpOnWater,           // GROUND_EFFECT_FLAG_LAND_IN_DEEP_WATER
-    GroundEffect_JumpLandingDust,       // GROUND_EFFECT_FLAG_LAND_ON_NORMAL_GROUND
-    GroundEffect_ShortGrass,            // GROUND_EFFECT_FLAG_SHORT_GRASS
-    GroundEffect_HotSprings,            // GROUND_EFFECT_FLAG_HOT_SPRINGS
-    GroundEffect_Seaweed                // GROUND_EFFECT_FLAG_SEAWEED
+    GroundEffect_SpawnOnTallGrass,        // 0
+    GroundEffect_StepOnTallGrass,         // 1
+    GroundEffect_SpawnOnLongGrass,        // 2
+    GroundEffect_StepOnLongGrass,         // 3
+    GroundEffect_WaterReflection,         // 4
+    GroundEffect_IceReflection,           // 5
+    GroundEffect_FlowingWater,            // 6
+    GroundEffect_SandTracks,              // 7
+    GroundEffect_DeepSandTracks,          // 8
+    GroundEffect_Ripple,                  // 9
+    GroundEffect_StepOnPuddle,            // 10
+    GroundEffect_SandHeap,                // 11
+    GroundEffect_JumpOnTallGrass,         // 12
+    GroundEffect_JumpOnLongGrass,         // 13
+    GroundEffect_JumpOnShallowWater,      // 14
+    GroundEffect_JumpOnWater,             // 15
+    GroundEffect_JumpLandingDust,         // 16
+    GroundEffect_ShortGrass,              // 17
+    GroundEffect_HotSprings,              // 18
+    GroundEffect_Seaweed,                 // 19
+    GroundEffect_SpawnOnTallGrassDark,    // 20
+    GroundEffect_StepOnTallGrassDark,     // 21
+    GroundEffect_JumpOnTallGrassDark      // 22 (optional, if you want dark‑grass landing)
 };
 
 static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *sprite, u32 flags)

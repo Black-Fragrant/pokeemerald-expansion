@@ -27,6 +27,7 @@ u8 FindTallGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s
 void UpdateRayquazaSpotlightEffect(struct Sprite *sprite);
 void UpdateShadowFieldEffect(struct Sprite *sprite);
 void UpdateTallGrassFieldEffect(struct Sprite *sprite);
+void UpdateTallGrassFieldEffectDark(struct Sprite *sprite);
 void WaitFieldEffectSpriteAnim(struct Sprite *sprite);
 void UpdateAshFieldEffect(struct Sprite *sprite);
 void UpdateSurfBlobFieldEffect(struct Sprite *sprite);
@@ -44,5 +45,6 @@ void SetSpriteInvisible(u8 spriteId);
 void ShowWarpArrowSprite(u8 spriteId, enum Direction direction, s16 x, s16 y);
 
 u32 FldEff_TallGrass(void);
+u32 FldEff_TallGrassDark(void);
 
 #endif //GUARD_FIELD_EFFECT_HELPERS_H

@@ -114,6 +114,10 @@ static const struct SpriteFrameImage sPicTable_TallGrass[] = {
     overworld_ascending_frames(gFieldEffectObjectPic_TallGrass, 2, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_TallGrassDark[] = {
+    overworld_ascending_frames(gFieldEffectObjectPic_TallGrassDark, 2, 2),
+};
+
 static const union AnimCmd sAnim_TallGrass[] =
 {
     ANIMCMD_FRAME(1, 10),
@@ -136,6 +140,15 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .anims = sAnimTable_TallGrass,
     .images = sPicTable_TallGrass,
     .callback = UpdateTallGrassFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrassDark = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_TallGrass,
+    .images = sPicTable_TallGrassDark,
+    .callback = UpdateTallGrassFieldEffectDark,
 };
 
 static const struct SpriteFrameImage sPicTable_Ripple[] = {
