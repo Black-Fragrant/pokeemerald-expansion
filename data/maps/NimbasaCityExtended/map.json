@@ -35,6 +35,13 @@
       "elevation": 0,
       "dest_map": "MAP_NIMBASA_CITY",
       "dest_warp_id": "13"
+    },
+    {
+      "x": 39,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY_EXTENDED",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
