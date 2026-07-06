@@ -9896,7 +9896,7 @@
     {
       "id": "LAYOUT_NIMBASA_CITY",
       "name": "NimbasaCity_Layout",
-      "width": 76,
+      "width": 80,
       "height": 59,
       "primary_tileset": "gTileset_NimbasaPrimary",
       "secondary_tileset": "gTileset_NimbasaSecondary",
@@ -10236,18 +10236,18 @@
     {
       "id": "LAYOUT_ROUTE16",
       "name": "Route16_Layout_2",
-      "width": 60,
-      "height": 40,
+      "width": 64,
+      "height": 38,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Route16",
+      "secondary_tileset": "gTileset_Route5",
       "border_filepath": "data/layouts/Route16/border.bin",
       "blockdata_filepath": "data/layouts/Route16/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE5",
       "name": "Route5_Layout_2",
-      "width": 60,
-      "height": 40,
+      "width": 62,
+      "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Route5",
       "border_filepath": "data/layouts/Route5/border.bin",
