@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-    warpsilent MAP_DESERT_RESORT_INSIDE, 54, 20
+    warpsilent MAP_NIMBASA_CITY, 35, 16
     waitstate
     end
 
