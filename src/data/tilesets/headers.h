@@ -2276,13 +2276,24 @@ const struct Tileset gTileset_Route5 =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_Route16 =
+const struct Tileset gTileset_LostlornForest =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_Route16,
-    .palettes = gTilesetPalettes_Route16,
-    .metatiles = gMetatiles_Route16,
-    .metatileAttributes = gMetatileAttributes_Route16,
+    .tiles = gTilesetTiles_LostlornForest,
+    .palettes = gTilesetPalettes_LostlornForest,
+    .metatiles = gMetatiles_LostlornForest,
+    .metatileAttributes = gMetatileAttributes_LostlornForest,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Trailer =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Trailer,
+    .palettes = gTilesetPalettes_Trailer,
+    .metatiles = gMetatiles_Trailer,
+    .metatileAttributes = gMetatileAttributes_Trailer,
     .callback = NULL,
 };
