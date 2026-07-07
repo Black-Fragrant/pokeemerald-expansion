@@ -16,6 +16,7 @@
     "gMapGroup_IndoorRoute4",
     "gMapGroup_RelicCastle",
     "gMapGroup_OutdoorNimbasa",
+    "gMapGroup_LostlornForest",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -90,8 +91,7 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg",
-    "gMapGroup_LostlornForest"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg"
   ],
   "gMapGroup_BWTownsAndRoutes": [
     "NuvemaTown",
@@ -261,6 +261,10 @@
   ],
   "gMapGroup_OutdoorNimbasa": [
     "NimbasaCityExtended"
+  ],
+  "gMapGroup_LostlornForest": [
+    "LostlornForest",
+    "LostlornForest_Trailer"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -1346,9 +1350,5 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
-  ],
-  "gMapGroup_LostlornForest": [
-    "LostlornForest",
-    "LostlornForest_Trailer"
   ]
 }

@@ -10256,8 +10256,8 @@
     {
       "id": "LAYOUT_LOSTLORN_FOREST",
       "name": "LostlornForest_Layout",
-      "width": 60,
-      "height": 60,
+      "width": 85,
+      "height": 54,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LostlornForest",
       "border_filepath": "data/layouts/LostlornForest/border.bin",

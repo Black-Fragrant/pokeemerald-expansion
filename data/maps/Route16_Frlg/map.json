@@ -3,7 +3,6 @@
   "name": "Route16_Frlg",
   "layout": "LAYOUT_ROUTE16_FRLG",
   "music": "MUS_RG_ROUTE3",
-  "region": "REGION_KANTO",
   "region_map_section": "MAPSEC_ROUTE_16",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -12,7 +11,6 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
-  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -28,7 +26,6 @@
   ],
   "object_events": [
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BIKER",
       "x": 16,
       "y": 12,
@@ -42,7 +39,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BIKER",
       "x": 14,
       "y": 14,
@@ -56,7 +52,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BIKER",
       "x": 12,
       "y": 12,
@@ -70,7 +65,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BIKER",
       "x": 8,
       "y": 12,
@@ -84,7 +78,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BIKER",
       "x": 10,
       "y": 14,
@@ -98,7 +91,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BIKER",
       "x": 6,
       "y": 14,
@@ -113,7 +105,6 @@
     },
     {
       "local_id": "LOCALID_ROUTE16_CUT_TREE",
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG",
       "x": 41,
       "y": 11,
@@ -127,7 +118,6 @@
       "flag": "FLAG_TEMP_12"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY_FRLG",
       "x": 30,
       "y": 5,
@@ -141,7 +131,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_MAN",
       "x": 31,
       "y": 5,
@@ -155,7 +144,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SNORLAX",
       "x": 31,
       "y": 13,
@@ -206,9 +194,7 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
@@ -236,5 +222,7 @@
       "quantity": 1,
       "underfoot": true
     }
-  ]
+  ],
+  "floor_number": 0,
+  "region": "REGION_KANTO"
 }
