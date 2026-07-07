@@ -10252,6 +10252,26 @@
       "secondary_tileset": "gTileset_Route5",
       "border_filepath": "data/layouts/Route5/border.bin",
       "blockdata_filepath": "data/layouts/Route5/map.bin"
+    },
+    {
+      "id": "LAYOUT_LOSTLORN_FOREST",
+      "name": "LostlornForest_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LostlornForest",
+      "border_filepath": "data/layouts/LostlornForest/border.bin",
+      "blockdata_filepath": "data/layouts/LostlornForest/map.bin"
+    },
+    {
+      "id": "LAYOUT_LOSTLORN_FOREST_TRAILER",
+      "name": "LostlornForest_Trailer_Layout",
+      "width": 20,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Trailer",
+      "border_filepath": "data/layouts/LostlornForest_Trailer/border.bin",
+      "blockdata_filepath": "data/layouts/LostlornForest_Trailer/map.bin"
     }
   ]
 }

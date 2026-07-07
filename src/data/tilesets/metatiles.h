@@ -547,5 +547,8 @@ const u16 gMetatileAttributes_NimbasaSecondary2[] = INCBIN_U16("data/tilesets/se
 const u16 gMetatiles_Route5[] = INCBIN_U16("data/tilesets/secondary/route_5/metatiles.bin");
 const u16 gMetatileAttributes_Route5[] = INCBIN_U16("data/tilesets/secondary/route_5/metatile_attributes.bin");
 
-const u16 gMetatiles_Route16[] = INCBIN_U16("data/tilesets/secondary/route_16/metatiles.bin");
-const u16 gMetatileAttributes_Route16[] = INCBIN_U16("data/tilesets/secondary/route_16/metatile_attributes.bin");
+const u16 gMetatiles_LostlornForest[] = INCBIN_U16("data/tilesets/secondary/lostlorn_forest/metatiles.bin");
+const u16 gMetatileAttributes_LostlornForest[] = INCBIN_U16("data/tilesets/secondary/lostlorn_forest/metatile_attributes.bin");
+
+const u16 gMetatiles_Trailer[] = INCBIN_U16("data/tilesets/secondary/trailer/metatiles.bin");
+const u16 gMetatileAttributes_Trailer[] = INCBIN_U16("data/tilesets/secondary/trailer/metatile_attributes.bin");

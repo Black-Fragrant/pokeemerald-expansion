@@ -3913,21 +3913,40 @@ const u16 gTilesetPalettes_Route5[][16] =
 
 const u32 gTilesetTiles_Route5[] = INCBIN_U32("data/tilesets/secondary/route_5/tiles.4bpp.lz");
 
-const u16 gTilesetPalettes_Route16[][16] =
+const u16 gTilesetPalettes_LostlornForest[][16] =
 {
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/00.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/01.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/02.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/03.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/04.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/05.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/06.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/07.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/08.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/09.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/10.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/11.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/route_16/palettes/12.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/lostlorn_forest/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_Route16[] = INCBIN_U32("data/tilesets/secondary/route_16/tiles.4bpp.lz");
+const u32 gTilesetTiles_LostlornForest[] = INCBIN_U32("data/tilesets/secondary/lostlorn_forest/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Trailer[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/trailer/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Trailer[] = INCBIN_U32("data/tilesets/secondary/trailer/tiles.4bpp.lz");
