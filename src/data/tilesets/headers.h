@@ -2297,3 +2297,69 @@ const struct Tileset gTileset_Trailer =
     .metatileAttributes = gMetatileAttributes_Trailer,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_BattleInstitute =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BattleInstitute,
+    .palettes = gTilesetPalettes_BattleInstitute,
+    .metatiles = gMetatiles_BattleInstitute,
+    .metatileAttributes = gMetatileAttributes_BattleInstitute,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_StadiumPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_StadiumPrimary,
+    .palettes = gTilesetPalettes_StadiumPrimary,
+    .metatiles = gMetatiles_StadiumPrimary,
+    .metatileAttributes = gMetatileAttributes_StadiumPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_StadiumSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_StadiumSecondary,
+    .palettes = gTilesetPalettes_StadiumSecondary,
+    .metatiles = gMetatiles_StadiumSecondary,
+    .metatileAttributes = gMetatileAttributes_StadiumSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MusicalTheater =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MusicalTheater,
+    .palettes = gTilesetPalettes_MusicalTheater,
+    .metatiles = gMetatiles_MusicalTheater,
+    .metatileAttributes = gMetatileAttributes_MusicalTheater,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NimbasaGym =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NimbasaGym,
+    .palettes = gTilesetPalettes_NimbasaGym,
+    .metatiles = gMetatiles_NimbasaGym,
+    .metatileAttributes = gMetatileAttributes_NimbasaGym,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GearStation =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GearStation,
+    .palettes = gTilesetPalettes_GearStation,
+    .metatiles = gMetatiles_GearStation,
+    .metatileAttributes = gMetatileAttributes_GearStation,
+    .callback = NULL,
+};

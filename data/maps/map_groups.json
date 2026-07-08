@@ -17,6 +17,7 @@
     "gMapGroup_RelicCastle",
     "gMapGroup_OutdoorNimbasa",
     "gMapGroup_IndoorNimbasa",
+    "gMapGroup_BattleSubway",
     "gMapGroup_IndoorRoute5",
     "gMapGroup_LostlornForest",
     "gMapGroup_TownsAndRoutes",
@@ -264,7 +265,28 @@
   "gMapGroup_OutdoorNimbasa": [
     "NimbasaCityExtended"
   ],
-  "gMapGroup_IndoorNimbasa": [],
+  "gMapGroup_IndoorNimbasa": [
+    "NimbasaCity_SouthGate",
+    "NimbasaCity_WestGate",
+    "NimbasaCity_EastGate",
+    "NimbasaCity_PokeCenter",
+    "NimbasaCity_LetfBuilding_1F",
+    "NimbasaCity_LetfBuilding_2F",
+    "NimbasaCity_RightBuilding_1F",
+    "NimbasaCity_RightBuilding_2F",
+    "NimbasaCity_BattleInstitute",
+    "NimbasaCity_SmallCourt_Lobby",
+    "NimbasaCity_SmallCourt_Audience",
+    "NimbasaCity_BigStadium_Lobby",
+    "NimbasaCity_BigStadium_Audience",
+    "NimbasaCity_TennisCourt",
+    "NimbasaCity_BasketballCourt",
+    "NimbasaCity_BaseballField",
+    "NimbasaCity_FootballField",
+    "NimbasaCity_SoccerField",
+    "NimbasaCity_MusicalTheater",
+    "NimbasaCity_NimbasaGym"
+  ],
   "gMapGroup_IndoorRoute5": [
     "Route5_Trailer"
   ],
@@ -1356,5 +1378,8 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
+  ],
+  "gMapGroup_BattleSubway": [
+    "GearStation_Lobby"
   ]
 }
