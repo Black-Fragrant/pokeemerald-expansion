@@ -16,6 +16,8 @@
     "gMapGroup_IndoorRoute4",
     "gMapGroup_RelicCastle",
     "gMapGroup_OutdoorNimbasa",
+    "gMapGroup_IndoorNimbasa",
+    "gMapGroup_IndoorRoute5",
     "gMapGroup_LostlornForest",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
@@ -261,6 +263,10 @@
   ],
   "gMapGroup_OutdoorNimbasa": [
     "NimbasaCityExtended"
+  ],
+  "gMapGroup_IndoorNimbasa": [],
+  "gMapGroup_IndoorRoute5": [
+    "Route5_Trailer"
   ],
   "gMapGroup_LostlornForest": [
     "LostlornForest",

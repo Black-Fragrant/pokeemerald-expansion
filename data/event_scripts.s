@@ -1985,3 +1985,5 @@ EventScript_SetSail::
 	.include "data/maps/LostlornForest_Trailer/scripts.inc"
 
 	.include "data/maps/LostlornForest/scripts.inc"
+
+	.include "data/maps/Route5_Trailer/scripts.inc"
