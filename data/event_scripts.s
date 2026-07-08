@@ -1987,3 +1987,45 @@ EventScript_SetSail::
 	.include "data/maps/LostlornForest/scripts.inc"
 
 	.include "data/maps/Route5_Trailer/scripts.inc"
+
+	.include "data/maps/NimbasaCity_SouthGate/scripts.inc"
+
+	.include "data/maps/NimbasaCity_WestGate/scripts.inc"
+
+	.include "data/maps/NimbasaCity_EastGate/scripts.inc"
+
+	.include "data/maps/NimbasaCity_PokeCenter/scripts.inc"
+
+	.include "data/maps/NimbasaCity_LetfBuilding_2F/scripts.inc"
+
+	.include "data/maps/NimbasaCity_LetfBuilding_1F/scripts.inc"
+
+	.include "data/maps/NimbasaCity_RightBuilding_2F/scripts.inc"
+
+	.include "data/maps/NimbasaCity_RightBuilding_1F/scripts.inc"
+
+	.include "data/maps/NimbasaCity_BattleInstitute/scripts.inc"
+
+	.include "data/maps/NimbasaCity_SmallCourt_Lobby/scripts.inc"
+
+	.include "data/maps/NimbasaCity_SmallCourt_Audience/scripts.inc"
+
+	.include "data/maps/NimbasaCity_BigStadium_Audience/scripts.inc"
+
+	.include "data/maps/NimbasaCity_BigStadium_Lobby/scripts.inc"
+
+	.include "data/maps/NimbasaCity_BasketballCourt/scripts.inc"
+
+	.include "data/maps/NimbasaCity_TennisCourt/scripts.inc"
+
+	.include "data/maps/NimbasaCity_FootballField/scripts.inc"
+
+	.include "data/maps/NimbasaCity_BaseballField/scripts.inc"
+
+	.include "data/maps/NimbasaCity_SoccerField/scripts.inc"
+
+	.include "data/maps/NimbasaCity_MusicalTheater/scripts.inc"
+
+	.include "data/maps/NimbasaCity_NimbasaGym/scripts.inc"
+
+	.include "data/maps/GearStation_Lobby/scripts.inc"

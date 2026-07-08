@@ -552,3 +552,21 @@ const u16 gMetatileAttributes_LostlornForest[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_Trailer[] = INCBIN_U16("data/tilesets/secondary/trailer/metatiles.bin");
 const u16 gMetatileAttributes_Trailer[] = INCBIN_U16("data/tilesets/secondary/trailer/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleInstitute[] = INCBIN_U16("data/tilesets/secondary/battle_institute/metatiles.bin");
+const u16 gMetatileAttributes_BattleInstitute[] = INCBIN_U16("data/tilesets/secondary/battle_institute/metatile_attributes.bin");
+
+const u16 gMetatiles_StadiumPrimary[] = INCBIN_U16("data/tilesets/primary/stadium_primary/metatiles.bin");
+const u16 gMetatileAttributes_StadiumPrimary[] = INCBIN_U16("data/tilesets/primary/stadium_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_StadiumSecondary[] = INCBIN_U16("data/tilesets/secondary/stadium_secondary/metatiles.bin");
+const u16 gMetatileAttributes_StadiumSecondary[] = INCBIN_U16("data/tilesets/secondary/stadium_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_MusicalTheater[] = INCBIN_U16("data/tilesets/secondary/musical_theater/metatiles.bin");
+const u16 gMetatileAttributes_MusicalTheater[] = INCBIN_U16("data/tilesets/secondary/musical_theater/metatile_attributes.bin");
+
+const u16 gMetatiles_NimbasaGym[] = INCBIN_U16("data/tilesets/secondary/nimbasa_gym/metatiles.bin");
+const u16 gMetatileAttributes_NimbasaGym[] = INCBIN_U16("data/tilesets/secondary/nimbasa_gym/metatile_attributes.bin");
+
+const u16 gMetatiles_GearStation[] = INCBIN_U16("data/tilesets/secondary/gear_station/metatiles.bin");
+const u16 gMetatileAttributes_GearStation[] = INCBIN_U16("data/tilesets/secondary/gear_station/metatile_attributes.bin");

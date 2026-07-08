@@ -843,7 +843,7 @@ gFameCheckerFlavorTextOriginLocation_Brock2::
 	.string "PEWTER CITY$"
 
 gFameCheckerFlavorTextOriginLocation_Brock3::
-	.string "ROUTE 4$"
+	.string "Route 4$"
 
 gFameCheckerFlavorTextOriginLocation_Brock4::
 	.string "MT. MOON$"

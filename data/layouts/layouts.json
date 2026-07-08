@@ -10282,6 +10282,216 @@
       "secondary_tileset": "gTileset_Trailer",
       "border_filepath": "data/layouts/Route5_Trailer/border.bin",
       "blockdata_filepath": "data/layouts/Route5_Trailer/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_SOUTH_GATE",
+      "name": "NimbasaCity_SouthGate_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/NimbasaCity_SouthGate/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_SouthGate/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_WEST_GATE",
+      "name": "NimbasaCity_WestGate_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/NimbasaCity_WestGate/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_WestGate/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_EAST_GATE",
+      "name": "NimbasaCity_EastGate_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Gate",
+      "border_filepath": "data/layouts/NimbasaCity_EastGate/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_EastGate/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_POKE_CENTER",
+      "name": "NimbasaCity_PokeCenter_Layout",
+      "width": 20,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokeCenter",
+      "border_filepath": "data/layouts/NimbasaCity_PokeCenter/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_PokeCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_LETF_BUILDING_2F",
+      "name": "NimbasaCity_LetfBuilding_2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/NimbasaCity_LetfBuilding_2F/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_LetfBuilding_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_LETF_BUILDING_1F",
+      "name": "NimbasaCity_LetfBuilding_1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/NimbasaCity_LetfBuilding_1F/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_LetfBuilding_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_RIGHT_BUILDING_1F",
+      "name": "NimbasaCity_RightBuilding_1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/NimbasaCity_RightBuilding_1F/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_RightBuilding_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_RIGHT_BUILDING_2F",
+      "name": "NimbasaCity_RightBuilding_2F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAccumula",
+      "border_filepath": "data/layouts/NimbasaCity_RightBuilding_2F/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_RightBuilding_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_BATTLE_INSTITUTE",
+      "name": "NimbasaCity_BattleInstitute_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleInstitute",
+      "border_filepath": "data/layouts/NimbasaCity_BattleInstitute/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_BattleInstitute/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_SMALL_COURT_LOBBY",
+      "name": "NimbasaCity_SmallCourt_Lobby_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_SmallCourt_Lobby/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_SmallCourt_Lobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_SMALL_COURT_AUDIENCE",
+      "name": "NimbasaCity_SmallCourt_Audience_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_SmallCourt_Audience/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_SmallCourt_Audience/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_BIG_STADIUM_AUDIENCE",
+      "name": "NimbasaCity_BigStadium_Audience_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_BigStadium_Audience/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_BigStadium_Audience/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_BIG_STADIUM_LOBBY",
+      "name": "NimbasaCity_BigStadium_Lobby_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_BigStadium_Lobby/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_BigStadium_Lobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_TENNIS_COURT",
+      "name": "NimbasaCity_TennisCourt_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_TennisCourt/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_TennisCourt/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_BASKETBALL_COURT",
+      "name": "NimbasaCity_BasketballCourt_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_BasketballCourt/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_BasketballCourt/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_SOCCER_FIELD",
+      "name": "NimbasaCity_SoccerField_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_SoccerField/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_SoccerField/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_FOOTBALL_FIELD",
+      "name": "NimbasaCity_FootballField_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_FootballField/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_FootballField/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_BASEBALL_FIELD",
+      "name": "NimbasaCity_BaseballField_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_StadiumPrimary",
+      "secondary_tileset": "gTileset_StadiumSecondary",
+      "border_filepath": "data/layouts/NimbasaCity_BaseballField/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_BaseballField/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_MUSICAL_THEATER",
+      "name": "NimbasaCity_MusicalTheater_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MusicalTheater",
+      "border_filepath": "data/layouts/NimbasaCity_MusicalTheater/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_MusicalTheater/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_NIMBASA_GYM",
+      "name": "NimbasaCity_NimbasaGym_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_NimbasaGym",
+      "border_filepath": "data/layouts/NimbasaCity_NimbasaGym/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_NimbasaGym/map.bin"
+    },
+    {
+      "id": "LAYOUT_GEAR_STATION_LOBBY",
+      "name": "GearStation_Lobby_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/GearStation_Lobby/border.bin",
+      "blockdata_filepath": "data/layouts/GearStation_Lobby/map.bin"
     }
   ]
 }
