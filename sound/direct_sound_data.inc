@@ -11,8 +11,8 @@ DirectSoundWaveData_step_snow::
 	.incbin "sound/steps/snow.bin"
 
 	.align 2
-DirectSoundWaveData_step_sand2::
-	.incbin "sound/steps/sand2.bin"
+DirectSoundWaveData_step_sand::
+	.incbin "sound/steps/sand.bin"
 
 	.align 2
 DirectSoundWaveData_sc88pro_organ2::

@@ -59,10 +59,10 @@ se_step_snow:
 	.word	step_sfx_grp
 	.word	se_step_snow_1
 
-	.global	se_step_sand2
+	.global	se_step_sand
 	.align	2
 
-se_step_sand2_1:
+se_step_sand_1:
 	.byte	KEYSH , step_sfx_key+0
 	.byte	TEMPO , 150*step_sfx_tbs/2
 	.byte		VOICE , 2
@@ -76,12 +76,12 @@ se_step_sand2_1:
 
 	.align	2
 
-se_step_sand2:
+se_step_sand:
 	.byte	1	@ NumTrks
 	.byte	0	@ NumBlks
 	.byte	step_sfx_pri	@ Priority
 	.byte	step_sfx_rev	@ Reverb.
 	.word	step_sfx_grp
-	.word	se_step_sand2_1
+	.word	se_step_sand_1
 
 	.end

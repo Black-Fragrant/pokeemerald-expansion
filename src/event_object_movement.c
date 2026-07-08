@@ -10433,7 +10433,7 @@ static void PlayMetatileFootstepSE(struct ObjectEvent *objEvent)
     case MB_RELIC_CASTLE_FOOTPRINTS:
     case MB_SAND:
     case MB_DEEP_SAND:
-        PlaySE(SE_STEP_SAND2);
+        PlaySE(SE_STEP_SAND);
         break;
     }
 }
