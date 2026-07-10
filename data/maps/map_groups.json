@@ -287,6 +287,9 @@
     "NimbasaCity_MusicalTheater",
     "NimbasaCity_NimbasaGym"
   ],
+  "gMapGroup_BattleSubway": [
+    "GearStation_Lobby"
+  ],
   "gMapGroup_IndoorRoute5": [
     "Route5_Trailer"
   ],
@@ -1378,8 +1381,5 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
-  ],
-  "gMapGroup_BattleSubway": [
-    "GearStation_Lobby"
   ]
 }
