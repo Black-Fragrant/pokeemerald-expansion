@@ -81,7 +81,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIANCA",
-      "x": 57,
+      "x": 58,
       "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -259,8 +259,8 @@
       "x": 57,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_MUSICAL_THEATER",
+      "dest_warp_id": "1"
     },
     {
       "x": 61,

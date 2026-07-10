@@ -10466,8 +10466,8 @@
     {
       "id": "LAYOUT_NIMBASA_CITY_MUSICAL_THEATER",
       "name": "NimbasaCity_MusicalTheater_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 29,
+      "height": 25,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_MusicalTheater",
       "border_filepath": "data/layouts/NimbasaCity_MusicalTheater/border.bin",
