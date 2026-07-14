@@ -10436,8 +10436,8 @@
     {
       "id": "LAYOUT_NIMBASA_CITY_SOCCER_FIELD",
       "name": "NimbasaCity_SoccerField_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 72,
+      "height": 39,
       "primary_tileset": "gTileset_StadiumPrimary",
       "secondary_tileset": "gTileset_StadiumSecondary",
       "border_filepath": "data/layouts/NimbasaCity_SoccerField/border.bin",
@@ -10456,8 +10456,8 @@
     {
       "id": "LAYOUT_NIMBASA_CITY_BASEBALL_FIELD",
       "name": "NimbasaCity_BaseballField_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 72,
+      "height": 71,
       "primary_tileset": "gTileset_StadiumPrimary",
       "secondary_tileset": "gTileset_StadiumSecondary",
       "border_filepath": "data/layouts/NimbasaCity_BaseballField/border.bin",
