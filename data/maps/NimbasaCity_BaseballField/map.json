@@ -2,7 +2,7 @@
   "id": "MAP_NIMBASA_CITY_BASEBALL_FIELD",
   "name": "NimbasaCity_BaseballField",
   "layout": "LAYOUT_NIMBASA_CITY_BASEBALL_FIELD",
-  "music": "MUS_NIMBASSA_CITY",
+  "music": "MUS_NIMBASA_CITY",
   "region_map_section": "MAPSEC_NIMBASA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

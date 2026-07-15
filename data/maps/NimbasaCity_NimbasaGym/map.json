@@ -2,7 +2,7 @@
   "id": "MAP_NIMBASA_CITY_NIMBASA_GYM",
   "name": "NimbasaCity_NimbasaGym",
   "layout": "LAYOUT_NIMBASA_CITY_NIMBASA_GYM",
-  "music": "MUS_NIMBASSA_CITY",
+  "music": "MUS_NIMBASA_CITY",
   "region_map_section": "MAPSEC_NIMBASA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

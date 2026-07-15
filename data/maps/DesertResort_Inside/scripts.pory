@@ -93,8 +93,8 @@ script DesertResort_Inside_EventScript_BlackSuit
     giveitem(ITEM_SOFT_SAND, 1)
 	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
     setflag(FLAG_DESERT_RESORT_ITEM_SOFT_SAND)
-    msgbox("If a Pokémon holds this Soft Sand,\n"
-       "the power of its Ground-type moves goes up!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
+    msgbox("If a Pokémon holds this Soft Sand, the\n"
+           "power of its Ground-type moves goes up!", MSGBOX_DEFAULT, TRUE, LOCALID_DRI_BLACKSUIT)
     destroy_speech_bubble()
     closemessage
     release
