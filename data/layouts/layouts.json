@@ -10446,8 +10446,8 @@
     {
       "id": "LAYOUT_NIMBASA_CITY_FOOTBALL_FIELD",
       "name": "NimbasaCity_FootballField_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 72,
+      "height": 39,
       "primary_tileset": "gTileset_StadiumPrimary",
       "secondary_tileset": "gTileset_StadiumSecondary",
       "border_filepath": "data/layouts/NimbasaCity_FootballField/border.bin",

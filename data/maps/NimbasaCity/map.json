@@ -245,15 +245,15 @@
       "x": 17,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_SMALL_COURT_LOBBY",
+      "dest_warp_id": "1"
     },
     {
       "x": 35,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_BIG_STADIUM_LOBBY",
+      "dest_warp_id": "1"
     },
     {
       "x": 57,
