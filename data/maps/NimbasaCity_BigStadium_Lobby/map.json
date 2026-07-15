@@ -2,7 +2,7 @@
   "id": "MAP_NIMBASA_CITY_BIG_STADIUM_LOBBY",
   "name": "NimbasaCity_BigStadium_Lobby",
   "layout": "LAYOUT_NIMBASA_CITY_BIG_STADIUM_LOBBY",
-  "music": "MUS_NIMBASSA_CITY",
+  "music": "MUS_NIMBASA_CITY",
   "region_map_section": "MAPSEC_NIMBASA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

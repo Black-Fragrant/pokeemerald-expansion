@@ -2,7 +2,7 @@
   "id": "MAP_NIMBASA_CITY_LETF_BUILDING_1F",
   "name": "NimbasaCity_LetfBuilding_1F",
   "layout": "LAYOUT_NIMBASA_CITY_LETF_BUILDING_1F",
-  "music": "MUS_NIMBASSA_CITY",
+  "music": "MUS_NIMBASA_CITY",
   "region_map_section": "MAPSEC_NIMBASA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

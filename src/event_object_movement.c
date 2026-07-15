@@ -10469,15 +10469,14 @@ static void PlayMetatileFootstepSE(struct ObjectEvent *objEvent)
     switch (objEvent->currentMetatileBehavior)
     {
     case MB_TALL_GRASS:
-        PlaySE(SE_STEP_GRASS);
+    case MB_TALL_GRASS_DARK:
+        PlaySE(SE_M_POISON_POWDER);
         break;
     case MB_SNOW:
-        PlaySE(SE_STEP_SNOW);
+        PlaySE(SE_M_POISON_POWDER);
         break;
-    case MB_RELIC_CASTLE_FOOTPRINTS:
-    case MB_SAND:
     case MB_DEEP_SAND:
-        PlaySE(SE_STEP_SAND);
+        PlaySE(SE_M_SAND_ATTACK);
         break;
     }
 }

@@ -1,4 +1,4 @@
-voice_group bw_nimbassa_city
+voice_group bw_nimbasa_city
 	voice_keysplit_all voicegroup_rs_drumset
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_french_horn_60, 255, 127, 231, 127
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_trumpet_60, 255, 127, 231, 127
