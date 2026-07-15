@@ -10460,6 +10460,28 @@ void GroundEffect_StepOnPuddle(struct ObjectEvent *objEvent, struct Sprite *spri
     StartFieldEffectForObjectEvent(FLDEFF_SPLASH, objEvent);
 }
 
+static void PlayMetatileFootstepSE(struct ObjectEvent *objEvent)
+{
+    if (objEvent->currentCoords.x == objEvent->previousCoords.x
+     && objEvent->currentCoords.y == objEvent->previousCoords.y)
+        return;
+
+    switch (objEvent->currentMetatileBehavior)
+    {
+    case MB_TALL_GRASS:
+        PlaySE(SE_STEP_GRASS);
+        break;
+    case MB_SNOW:
+        PlaySE(SE_STEP_SNOW);
+        break;
+    case MB_RELIC_CASTLE_FOOTPRINTS:
+    case MB_SAND:
+    case MB_DEEP_SAND:
+        PlaySE(SE_STEP_SAND);
+        break;
+    }
+}
+
 void GroundEffect_SandHeap(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     StartFieldEffectForObjectEvent(FLDEFF_SAND_PILE, objEvent);
@@ -10662,6 +10684,7 @@ static void DoGroundEffects_OnBeginStep(struct ObjectEvent *objEvent, struct Spr
         GetAllGroundEffectFlags_OnBeginStep(objEvent, &flags);
         SetObjectEventSpriteOamTableForLongGrass(objEvent, sprite);
         filters_out_some_ground_effects(objEvent, &flags);
+        PlayMetatileFootstepSE(objEvent);
         DoFlaggedGroundEffects(objEvent, sprite, flags);
         objEvent->triggerGroundEffectsOnMove = FALSE;
         objEvent->disableCoveringGroundEffects = 0;
