@@ -1,6 +1,6 @@
 	.include "MPlayDef.s"
 
-	.equ	step_sfx_grp, voicegroup_step_sfx
+	.equ	step_sfx_grp, step_sfx
 	.equ	step_sfx_pri, 4
 	.equ	step_sfx_rev, reverb_set+50
 	.equ	step_sfx_mvl, 127
