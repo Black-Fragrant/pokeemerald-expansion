@@ -1026,6 +1026,11 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
             DoMossdeepGymWarp();
             return TRUE;
         }
+        if (MetatileBehavior_IsSpinWarp(metatileBehavior) == TRUE)
+        {
+            DoSpinWarp();
+            return TRUE;
+        }
         DoWarp();
         return TRUE;
     }
@@ -1043,7 +1048,8 @@ static bool8 IsWarpMetatileBehavior(u16 metatileBehavior)
      && MetatileBehavior_IsAquaHideoutWarp(metatileBehavior) != TRUE
      && MetatileBehavior_IsMtPyreHole(metatileBehavior) != TRUE
      && MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) != TRUE
-     && MetatileBehavior_IsUnionRoomWarp(metatileBehavior) != TRUE)
+     && MetatileBehavior_IsUnionRoomWarp(metatileBehavior) != TRUE
+     && MetatileBehavior_IsSpinWarp(metatileBehavior) != TRUE)
         return FALSE;
     return TRUE;
 }

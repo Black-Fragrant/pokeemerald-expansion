@@ -47,5 +47,6 @@ bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, enum Directi
 void SetPlayerVisibility(bool8 visible);
 void Task_WarpAndLoadMap(u8 taskId);
 void Task_DoDoorWarp(u8 taskId);
+void DoSpinWarp(void);
 
 #endif // GUARD_FIELD_SCREEN_EFFECT_H

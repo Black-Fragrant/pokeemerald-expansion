@@ -141,6 +141,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_RELIC_CASTLE_FOOTPRINTS]            = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_TALL_GRASS_DARK]                    = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_SNOW]                               = TILE_FLAG_UNUSED,
+    [MB_SPIN_WARP]                          = TILE_FLAG_UNUSED,
 };
 
 bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
@@ -1842,6 +1843,14 @@ bool8 MetatileBehavior_IsBurglary(u8 metatileBehavior)
 bool8 MetatileBehavior_IsTrainerTowerMonitor(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TRAINER_TOWER_MONITOR)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSpinWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SPIN_WARP)
         return TRUE;
     else
         return FALSE;

@@ -1730,3 +1730,11 @@ bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, enum Directi
     }
     return FALSE;
 }
+
+void DoSpinWarp(void)
+{
+    LockPlayerFieldControls();
+    TryFadeOutOldMapMusic();
+    gFieldCallback = FieldCB_SpinEnterWarp;
+    CreateTask(Task_SpinExitWarp, 10);
+}
