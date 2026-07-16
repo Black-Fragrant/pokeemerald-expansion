@@ -41,7 +41,15 @@
       "flag": "0"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 14,
+      "y": 63,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY_FOOTBALL_FIELD",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

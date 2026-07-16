@@ -2317,7 +2317,7 @@ const struct Tileset gTileset_StadiumPrimary =
     .palettes = gTilesetPalettes_StadiumPrimary,
     .metatiles = gMetatiles_StadiumPrimary,
     .metatileAttributes = gMetatileAttributes_StadiumPrimary,
-    .callback = NULL,
+    .callback = InitTilesetAnim_StadiumPrimary,
 };
 
 const struct Tileset gTileset_StadiumSecondary =
@@ -2328,7 +2328,7 @@ const struct Tileset gTileset_StadiumSecondary =
     .palettes = gTilesetPalettes_StadiumSecondary,
     .metatiles = gMetatiles_StadiumSecondary,
     .metatileAttributes = gMetatileAttributes_StadiumSecondary,
-    .callback = NULL,
+    .callback = InitTilesetAnim_StadiumSecondary,
 };
 
 const struct Tileset gTileset_MusicalTheater =
