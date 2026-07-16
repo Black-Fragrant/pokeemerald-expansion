@@ -157,6 +157,330 @@ static void TilesetAnim_NimbasaSecondary2(u16);
 static void QueueAnimTiles_NimbasaSecondary2_Lights(u16);
 static void QueueAnimTiles_NimbasaSecondary2_FerrisWheel(u16);
 
+static void TilesetAnim_StadiumPrimary(u16);
+static void QueueAnimTiles_StadiumPrimary_Border(u16);
+static void QueueAnimTiles_StadiumPrimary_CourtLining(u16);
+static void QueueAnimTiles_StadiumPrimary_FloorLining(u16);
+
+static void TilesetAnim_StadiumSecondary(u16);
+static void QueueAnimTiles_StadiumSecondary_BaseballColumn(u16);
+static void QueueAnimTiles_StadiumSecondary_BasketballHoop(u16);
+static void QueueAnimTiles_StadiumSecondary_CourtLining(u16);
+static void QueueAnimTiles_StadiumSecondary_FootballGate(u16);
+static void QueueAnimTiles_StadiumSecondary_SoccerGate(u16);
+static void QueueAnimTiles_StadiumSecondary_TennisNet(u16);
+static void QueueAnimTiles_StadiumSecondary_Warp(u16);
+
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame0[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame1[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame2[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame3[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame4[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame5[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame6[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame7[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame8[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame9[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame10[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame11[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame12[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame13[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame14[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame15[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumPrimary_Border[] = {
+    gQueueAnimTiles_StadiumPrimary_Border_Frame0,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame1,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame2,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame3,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame4,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame5,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame6,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame7,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame8,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame9,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame10,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame11,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame12,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame13,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame14,
+    gQueueAnimTiles_StadiumPrimary_Border_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumPrimary_CourtLining_Frame0[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/court_lining/0.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_CourtLining_Frame1[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/court_lining/1.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_CourtLining_Frame2[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/court_lining/2.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumPrimary_CourtLining[] = {
+    gQueueAnimTiles_StadiumPrimary_CourtLining_Frame0,
+    gQueueAnimTiles_StadiumPrimary_CourtLining_Frame1,
+    gQueueAnimTiles_StadiumPrimary_CourtLining_Frame2,
+    gQueueAnimTiles_StadiumPrimary_CourtLining_Frame1,
+};
+
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame0[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame1[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame2[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame3[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame4[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame5[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame6[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame7[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame8[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame9[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame10[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame11[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame12[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame13[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame14[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumPrimary_FloorLining_Frame15[] = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/floor_lining/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumPrimary_FloorLining[] = {
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame0,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame1,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame2,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame3,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame4,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame5,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame6,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame7,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame8,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame9,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame10,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame11,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame12,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame13,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame14,
+    gQueueAnimTiles_StadiumPrimary_FloorLining_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame0[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame1[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame2[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame3[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame4[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/baseball_column/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_BaseballColumn[] = {
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame0,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame1,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame2,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame3,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame4,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame5,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame6,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame7,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame8,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame9,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame10,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame11,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame12,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame13,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame14,
+    gQueueAnimTiles_StadiumSecondary_BaseballColumn_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame0[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame1[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame2[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame3[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame4[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/basketball_hoop/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_BasketballHoop[] = {
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame0,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame1,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame2,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame3,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame4,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame5,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame6,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame7,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame8,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame9,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame10,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame11,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame12,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame13,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame14,
+    gQueueAnimTiles_StadiumSecondary_BasketballHoop_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_CourtLining_Frame0[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/court_lining/0.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_CourtLining_Frame1[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/court_lining/1.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_CourtLining_Frame2[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/court_lining/2.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_CourtLining[] = {
+    gQueueAnimTiles_StadiumSecondary_CourtLining_Frame0,
+    gQueueAnimTiles_StadiumSecondary_CourtLining_Frame1,
+    gQueueAnimTiles_StadiumSecondary_CourtLining_Frame2,
+    gQueueAnimTiles_StadiumSecondary_CourtLining_Frame1,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame0[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame1[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame2[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame3[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame4[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_FootballGate_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/football_gate/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_FootballGate[] = {
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame0,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame1,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame2,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame3,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame4,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame5,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame6,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame7,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame8,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame9,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame10,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame11,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame12,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame13,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame14,
+    gQueueAnimTiles_StadiumSecondary_FootballGate_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame0[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame1[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame2[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame3[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame4[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/soccer_gate/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_SoccerGate[] = {
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame0,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame1,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame2,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame3,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame4,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame5,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame6,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame7,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame8,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame9,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame10,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame11,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame12,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame13,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame14,
+    gQueueAnimTiles_StadiumSecondary_SoccerGate_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame0[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame1[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame2[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame3[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame4[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_TennisNet_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/tennis_net/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_TennisNet[] = {
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame0,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame1,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame2,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame3,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame4,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame5,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame6,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame7,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame8,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame9,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame10,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame11,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame12,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame13,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame14,
+    gQueueAnimTiles_StadiumSecondary_TennisNet_Frame15,
+};
+
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame0[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame1[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame2[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame3[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame4[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/10.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/11.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/12.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/13.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/14.png", ".4bpp");
+const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_StadiumSecondary_Warp[] = {
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame0,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame1,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame2,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame3,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame4,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame5,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame6,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame7,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame8,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame9,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame10,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame11,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame12,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame13,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame14,
+    gQueueAnimTiles_StadiumSecondary_Warp_Frame15,
+};
+
 const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/0.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame1[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/1.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame2[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/2.png", ".4bpp");
@@ -2022,6 +2346,20 @@ void InitTilesetAnim_General(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_General;
 }
 
+void InitTilesetAnim_StadiumPrimary(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_StadiumPrimary;
+}
+
+void InitTilesetAnim_StadiumSecondary(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_StadiumSecondary;
+}
+
 void InitTilesetAnim_NimbasaPrimary(void)
 {
     sPrimaryTilesetAnimCounter = 0;
@@ -2202,6 +2540,34 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Current(timer / 4);
     if (timer % 16 == 3)
         QueueAnimTiles_General_New_Flower(timer / 16);
+}
+
+static void TilesetAnim_StadiumPrimary(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_StadiumPrimary_Border(timer / 16);
+    if (timer % 32 == 1)
+        QueueAnimTiles_StadiumPrimary_CourtLining(timer / 32);
+    if (timer % 16 == 2)
+        QueueAnimTiles_StadiumPrimary_FloorLining(timer / 16);
+}
+
+static void TilesetAnim_StadiumSecondary(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_StadiumSecondary_BaseballColumn(timer / 16);
+    if (timer % 8 == 1)
+        QueueAnimTiles_StadiumSecondary_BasketballHoop(timer / 8);
+    if (timer % 32 == 2)
+        QueueAnimTiles_StadiumSecondary_CourtLining(timer / 32);
+    if (timer % 16 == 3)
+        QueueAnimTiles_StadiumSecondary_FootballGate(timer / 16);
+    if (timer % 16 == 4)
+        QueueAnimTiles_StadiumSecondary_SoccerGate(timer / 16);
+    if (timer % 16 == 5)
+        QueueAnimTiles_StadiumSecondary_TennisNet(timer / 16);
+    if (timer % 4 == 2)
+        QueueAnimTiles_StadiumSecondary_Warp(timer / 4);
 }
 
 static void TilesetAnim_NimbasaPrimary2(u16 timer)
@@ -2388,6 +2754,66 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumPrimary_Border(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumPrimary_Border);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumPrimary_Border[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(288)), 40 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumPrimary_CourtLining(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumPrimary_CourtLining);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumPrimary_CourtLining[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(354)), 82 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumPrimary_FloorLining(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumPrimary_FloorLining);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumPrimary_FloorLining[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(96)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_BaseballColumn(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_BaseballColumn);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_BaseballColumn[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(832)), 16 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_BasketballHoop(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_BasketballHoop);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_BasketballHoop[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(776)), 9 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_CourtLining(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_CourtLining);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_CourtLining[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(513)), 149 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_FootballGate(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_FootballGate);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_FootballGate[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(752)), 24 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_SoccerGate(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_SoccerGate);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_SoccerGate[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(785)), 47 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_TennisNet(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_TennisNet);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_TennisNet[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(848)), 8 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_StadiumSecondary_Warp(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_StadiumSecondary_Warp);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_StadiumSecondary_Warp[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(856)), 8 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_NimbasaPrimary2_Fountain(u16 timer)
