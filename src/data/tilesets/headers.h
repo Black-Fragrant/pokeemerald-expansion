@@ -2306,7 +2306,7 @@ const struct Tileset gTileset_BattleInstitute =
     .palettes = gTilesetPalettes_BattleInstitute,
     .metatiles = gMetatiles_BattleInstitute,
     .metatileAttributes = gMetatileAttributes_BattleInstitute,
-    .callback = NULL,
+    .callback = InitTilesetAnim_BattleInstitute,
 };
 
 const struct Tileset gTileset_StadiumPrimary =
