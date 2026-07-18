@@ -67,5 +67,6 @@ void InitTilesetAnim_NimbasaPrimary2(void);
 void InitTilesetAnim_NimbasaSecondary2(void);
 void InitTilesetAnim_StadiumPrimary(void);
 void InitTilesetAnim_StadiumSecondary(void);
+void InitTilesetAnim_BattleInstitute(void);
 
 #endif // GUARD_TILESET_ANIMS_H

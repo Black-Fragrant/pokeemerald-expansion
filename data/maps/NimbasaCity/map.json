@@ -217,8 +217,8 @@
       "x": 23,
       "y": 41,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_BATTLE_INSTITUTE",
+      "dest_warp_id": "1"
     },
     {
       "x": 23,

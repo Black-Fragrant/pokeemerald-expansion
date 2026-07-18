@@ -171,6 +171,45 @@ static void QueueAnimTiles_StadiumSecondary_SoccerGate(u16);
 static void QueueAnimTiles_StadiumSecondary_TennisNet(u16);
 static void QueueAnimTiles_StadiumSecondary_Warp(u16);
 
+static void TilesetAnim_BattleInstitute(u16);
+static void QueueAnimTiles_BattleInstitute_Cable(u16);
+
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame0[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame1[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame2[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame3[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame4[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame5[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame6[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame7[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame8[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame9[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame10[] = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/10.png", ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame11[] = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/11.png", ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame12[] = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/12.png", ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame13[] = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/13.png", ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame14[] = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/14.png", ".4bpp");
+const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame15[] = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/15.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_BattleInstitute_Cable[] = {
+    gQueueAnimTiles_BattleInstitute_Cable_Frame0,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame1,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame2,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame3,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame4,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame5,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame6,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame7,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame8,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame9,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame10,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame11,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame12,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame13,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame14,
+    gQueueAnimTiles_BattleInstitute_Cable_Frame15,
+};
+
 const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame0[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/0.png",  ".4bpp");
 const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame1[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/1.png",  ".4bpp");
 const u16 gQueueAnimTiles_StadiumPrimary_Border_Frame2[]  = INCGFX_U16("data/tilesets/primary/stadium_primary/anim/border/2.png",  ".4bpp");
@@ -453,14 +492,6 @@ const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame4[]  = INCGFX_U16("data/til
 const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame5[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/5.png",  ".4bpp");
 const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame6[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/6.png",  ".4bpp");
 const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame7[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/7.png",  ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame8[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/8.png",  ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame9[]  = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/9.png",  ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame10[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/10.png", ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame11[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/11.png", ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame12[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/12.png", ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame13[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/13.png", ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame14[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/14.png", ".4bpp");
-const u16 gQueueAnimTiles_StadiumSecondary_Warp_Frame15[] = INCGFX_U16("data/tilesets/secondary/stadium_secondary/anim/warp/15.png", ".4bpp");
 
 const u16 *const gQueueAnimTiles_StadiumSecondary_Warp[] = {
     gQueueAnimTiles_StadiumSecondary_Warp_Frame0,
@@ -471,14 +502,6 @@ const u16 *const gQueueAnimTiles_StadiumSecondary_Warp[] = {
     gQueueAnimTiles_StadiumSecondary_Warp_Frame5,
     gQueueAnimTiles_StadiumSecondary_Warp_Frame6,
     gQueueAnimTiles_StadiumSecondary_Warp_Frame7,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame8,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame9,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame10,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame11,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame12,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame13,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame14,
-    gQueueAnimTiles_StadiumSecondary_Warp_Frame15,
 };
 
 const u16 gQueueAnimTiles_NimbasaPrimary2_Fountain_Frame0[] = INCGFX_U16("data/tilesets/primary/nimbasa_primary_2/anim/fountain/0.png", ".4bpp");
@@ -2346,6 +2369,13 @@ void InitTilesetAnim_General(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_General;
 }
 
+void InitTilesetAnim_BattleInstitute(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_BattleInstitute;
+}
+
 void InitTilesetAnim_StadiumPrimary(void)
 {
     sPrimaryTilesetAnimCounter = 0;
@@ -2540,6 +2570,12 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Current(timer / 4);
     if (timer % 16 == 3)
         QueueAnimTiles_General_New_Flower(timer / 16);
+}
+
+static void TilesetAnim_BattleInstitute(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_BattleInstitute_Cable(timer / 16);
 }
 
 static void TilesetAnim_StadiumPrimary(u16 timer)
@@ -2754,6 +2790,12 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_BattleInstitute_Cable(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_BattleInstitute_Cable);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_BattleInstitute_Cable[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(548)), 6 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_StadiumPrimary_Border(u16 timer)
