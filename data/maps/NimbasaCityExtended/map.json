@@ -40,8 +40,8 @@
       "x": 39,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY_EXTENDED",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_NIMBASA_GYM",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],

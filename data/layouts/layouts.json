@@ -10476,8 +10476,8 @@
     {
       "id": "LAYOUT_NIMBASA_CITY_NIMBASA_GYM",
       "name": "NimbasaCity_NimbasaGym_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 57,
+      "height": 50,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_NimbasaGym",
       "border_filepath": "data/layouts/NimbasaCity_NimbasaGym/border.bin",
