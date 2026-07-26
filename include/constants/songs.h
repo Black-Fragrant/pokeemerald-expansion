@@ -752,8 +752,10 @@
 #define MUS_BW_CREDITS_END                813
 #define MUS_BW_PWT_VENUE                  814
 #define MUS_NIMBASA_CITY                 815
+#define MUS_MUSICAL_HALL                 816
+#define MUS_MUSICAL_HALL_DRESSUP         817
 
-#define END_MUS                           MUS_BW_PWT_VENUE
+#define END_MUS                           MUS_MUSICAL_HALL_DRESSUP
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
