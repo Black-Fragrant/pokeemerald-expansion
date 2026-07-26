@@ -822,6 +822,8 @@ gSongTable::
     song mus_pkmn_bw12_204, MUSIC_PLAYER_BGM, 0
     song mus_pkmn_bw12_205, MUSIC_PLAYER_BGM, 0
 	song mus_bw_nimbasa_city, MUSIC_PLAYER_BGM, 0
+	song mus_musical_hall, MUSIC_PLAYER_BGM, 0
+	song mus_musical_hall_dressup, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:

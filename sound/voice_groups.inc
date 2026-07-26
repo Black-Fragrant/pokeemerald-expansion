@@ -280,3 +280,5 @@
 .include "sound/voicegroups/voicegroup604.inc"
 .include "sound/voicegroups/voicegroup605.inc"
 .include "sound/voicegroups/bw_nimbasa_city.inc"
+.include "sound/voicegroups/musical_hall.inc"
+.include "sound/voicegroups/musical_hall_dressup.inc"
