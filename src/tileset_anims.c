@@ -174,6 +174,156 @@ static void QueueAnimTiles_StadiumSecondary_Warp(u16);
 static void TilesetAnim_BattleInstitute(u16);
 static void QueueAnimTiles_BattleInstitute_Cable(u16);
 
+static void TilesetAnim_NimbasaGym(u16);
+static void QueueAnimTiles_NimbasaGym_Star(u16);
+static void QueueAnimTiles_NimbasaGym_Screen(u16);
+
+const u16 gQueueAnimTiles_NimbasaGym_Star_Frame0[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/0.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Star_Frame1[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/1.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Star_Frame2[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/2.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Star_Frame3[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/3.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Star_Frame4[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/4.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_NimbasaGym_Star[] = {
+    gQueueAnimTiles_NimbasaGym_Star_Frame0,
+    gQueueAnimTiles_NimbasaGym_Star_Frame1,
+    gQueueAnimTiles_NimbasaGym_Star_Frame2,
+    gQueueAnimTiles_NimbasaGym_Star_Frame3,
+    gQueueAnimTiles_NimbasaGym_Star_Frame4,
+};
+
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame0[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/0.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame1[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/1.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame2[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/2.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame3[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/3.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame4[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/4.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame5[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/5.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame6[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/6.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame7[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/7.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame8[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/8.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame9[]  = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/9.png",  ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame10[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/10.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame11[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/11.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame12[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/12.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame13[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/13.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame14[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/14.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame15[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/15.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame16[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/16.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame17[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/17.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame18[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/18.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame19[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/19.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame20[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/20.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame21[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/21.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame22[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/22.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame23[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/23.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame24[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/24.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame25[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/25.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame26[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/26.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame27[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/27.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame28[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/28.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame29[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/29.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame30[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/30.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame31[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/31.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame32[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/32.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame33[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/33.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame34[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/34.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame35[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/35.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame36[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/36.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame37[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/37.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame38[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/38.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame39[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/39.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame40[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/40.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame41[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/41.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame42[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/42.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame43[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/43.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame44[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/44.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame45[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/45.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame46[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/46.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame47[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/47.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame48[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/48.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame49[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/49.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame50[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/50.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame51[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/51.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame52[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/52.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame53[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/53.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame54[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/54.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame55[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/55.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame56[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/56.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame57[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/57.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame58[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/58.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame59[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/59.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame60[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/60.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame61[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/61.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame62[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/62.png", ".4bpp");
+const u16 gQueueAnimTiles_NimbasaGym_Screen_Frame63[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/screen/63.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_NimbasaGym_Screen[] = {
+    gQueueAnimTiles_NimbasaGym_Screen_Frame0,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame1,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame2,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame3,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame4,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame5,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame6,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame7,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame8,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame9,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame10,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame11,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame12,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame13,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame14,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame15,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame16,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame17,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame18,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame19,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame20,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame21,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame22,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame23,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame24,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame25,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame26,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame27,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame28,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame29,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame30,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame31,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame32,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame33,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame34,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame35,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame36,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame37,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame38,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame39,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame40,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame41,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame42,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame43,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame44,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame45,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame46,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame47,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame48,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame49,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame50,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame51,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame52,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame53,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame54,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame55,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame56,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame57,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame58,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame59,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame60,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame61,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame62,
+    gQueueAnimTiles_NimbasaGym_Screen_Frame63,
+};
+
 const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame0[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/0.png",  ".4bpp");
 const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame1[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/1.png",  ".4bpp");
 const u16 gQueueAnimTiles_BattleInstitute_Cable_Frame2[]  = INCGFX_U16("data/tilesets/secondary/battle_institute/anim/cable/2.png",  ".4bpp");
@@ -2369,6 +2519,13 @@ void InitTilesetAnim_General(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_General;
 }
 
+void InitTilesetAnim_NimbasaGym(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_NimbasaGym;
+}
+
 void InitTilesetAnim_BattleInstitute(void)
 {
     sSecondaryTilesetAnimCounter = 0;
@@ -2570,6 +2727,14 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Current(timer / 4);
     if (timer % 16 == 3)
         QueueAnimTiles_General_New_Flower(timer / 16);
+}
+
+static void TilesetAnim_NimbasaGym(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_NimbasaGym_Star(timer / 16);
+    if (timer % 4 == 1)
+        QueueAnimTiles_NimbasaGym_Screen(timer / 4);
 }
 
 static void TilesetAnim_BattleInstitute(u16 timer)
@@ -2790,6 +2955,18 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaGym_Star(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaGym_Star);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaGym_Star[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(732)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_NimbasaGym_Screen(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_NimbasaGym_Screen);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_NimbasaGym_Screen[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(736)), 32 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_BattleInstitute_Cable(u16 timer)
