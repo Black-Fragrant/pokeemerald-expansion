@@ -2350,7 +2350,7 @@ const struct Tileset gTileset_NimbasaGym =
     .palettes = gTilesetPalettes_NimbasaGym,
     .metatiles = gMetatiles_NimbasaGym,
     .metatileAttributes = gMetatileAttributes_NimbasaGym,
-    .callback = NULL,
+    .callback = InitTilesetAnim_NimbasaGym,
 };
 
 const struct Tileset gTileset_GearStation =
