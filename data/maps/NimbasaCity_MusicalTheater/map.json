@@ -2,7 +2,7 @@
   "id": "MAP_NIMBASA_CITY_MUSICAL_THEATER",
   "name": "NimbasaCity_MusicalTheater",
   "layout": "LAYOUT_NIMBASA_CITY_MUSICAL_THEATER",
-  "music": "MUS_BW_MUSICAL",
+  "music": "MUS_MUSICAL_HALL",
   "region_map_section": "MAPSEC_NIMBASA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
