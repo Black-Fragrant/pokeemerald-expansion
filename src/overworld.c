@@ -194,6 +194,7 @@ static bool8 MapLdr_Credits(void);
 static void CameraCB_CreditsPan(struct CameraObject *camera);
 static void Task_OvwldCredits_FadeOut(u8 taskId);
 static void Task_OvwldCredits_WaitFade(u8 taskId);
+static bool8 sMapPopupShownThisWarp = FALSE;
 
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
 // This callback is called with a player's key code. It then returns an
@@ -2107,8 +2108,10 @@ void CB2_ReturnToFieldFadeFromBlack(void)
 
 static void FieldCB_FadeTryShowMapPopup(void)
 {
-    if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-        ShowMapNamePopup();
+    if (!sMapPopupShownThisWarp  // new: only if case 11 didn't show
+     && gMapHeader.showMapName == TRUE
+     && SecretBaseMapPopupEnabled() == TRUE)
+    {ShowMapNamePopup();}
     FieldCB_WarpExitFadeFromBlack();
 }
 
@@ -2303,6 +2306,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
     switch (*state)
     {
     case 0:
+        sMapPopupShownThisWarp = FALSE;  // new: reset per warp/load sequence
         FieldClearVBlankHBlankCallbacks();
         LoadMapFromWarp(a2);
         (*state)++;
@@ -2370,16 +2374,20 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
 
             if (OW_HIDE_REPEAT_MAP_POPUP)
             {
-                // Name-based suppression for warps: only show if names differ
                 if (!MapNamesMatch(gMapHeader.regionMapSectionId, prevMapSecId))
+                {
                     ShowMapNamePopup();
+                    sMapPopupShownThisWarp = TRUE;
+                }
             }
             else
             {
-                // Original behavior: show popup unless Battle Frontier repeat
                 if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
                 || gMapHeader.regionMapSectionId != prevMapSecId)
+                {
                     ShowMapNamePopup();
+                    sMapPopupShownThisWarp = TRUE;
+                }
             }
         }
         (*state)++;
