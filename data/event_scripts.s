@@ -2029,3 +2029,27 @@ EventScript_SetSail::
 	.include "data/maps/NimbasaCity_NimbasaGym/scripts.inc"
 
 	.include "data/maps/GearStation_Lobby/scripts.inc"
+
+	.include "data/maps/Platform_SingleTrain/scripts.inc"
+
+	.include "data/maps/Platform_SuperDoubleTrain/scripts.inc"
+
+	.include "data/maps/Platform_SuperSingleTrain/scripts.inc"
+
+	.include "data/maps/Platform_SuperMultiTrain/scripts.inc"
+
+	.include "data/maps/Platform_DoubleTrain/scripts.inc"
+
+	.include "data/maps/Platform_TrainToAnvilleTown/scripts.inc"
+
+	.include "data/maps/Platform_WifiTrain/scripts.inc"
+
+	.include "data/maps/Platform_MultiTrain/scripts.inc"
+
+	.include "data/maps/AnvilleTown_BottomLeftHouse/scripts.inc"
+
+	.include "data/maps/AnvilleTown_TopHouse/scripts.inc"
+
+	.include "data/maps/AnvilleTown/scripts.inc"
+
+	.include "data/maps/AnvilleTown_BottomRightHouse/scripts.inc"
