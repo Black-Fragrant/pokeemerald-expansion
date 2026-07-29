@@ -50,7 +50,7 @@ static void VBCB_FieldUpdateRegionMap(void);
 static void MCB2_FieldUpdateRegionMap(void);
 static void FieldUpdateRegionMap(void);
 static void PrintRegionMapSecName();
-static void PrintTitleWindowText();
+//static void PrintTitleWindowText();
 
 static const struct BgTemplate sFieldRegionMapBgTemplates[] = {
     {
@@ -219,28 +219,28 @@ static void PrintRegionMapSecName(void)
     }
 }
 
-static void PrintTitleWindowText(void)
-{
-    static const u8 FlyPromptText[] = _("{R_BUTTON} FLY");
-    const u8 *region;
-    if (IS_FRLG)
-        region = gText_Kanto;
-    else
-        region = gText_Hoenn;
-    u32 hoennOffset = GetStringCenterAlignXOffset(FONT_NORMAL, region, 0x38);
-    u32 flyOffset = GetStringCenterAlignXOffset(FONT_NORMAL, FlyPromptText, 0x38);
-
-    FillWindowPixelBuffer(WIN_TITLE, PIXEL_FILL(1));
-
-    if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
-        && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
-    {
-        AddTextPrinterParameterized(WIN_TITLE, FONT_NORMAL, FlyPromptText, flyOffset, 1, 0, NULL);
-        ScheduleBgCopyTilemapToVram(WIN_TITLE);
-    }
-    else
-    {
-        AddTextPrinterParameterized(WIN_TITLE, FONT_NORMAL, region, hoennOffset, 1, 0, NULL);
-        CopyWindowToVram(WIN_TITLE, COPYWIN_FULL);
-    }
-}
+//static void PrintTitleWindowText(void)
+//{
+//    static const u8 FlyPromptText[] = _("{R_BUTTON} FLY");
+//    const u8 *region;
+//    if (IS_FRLG)
+//        region = gText_Kanto;
+//    else
+//        region = gText_Hoenn;
+//    u32 hoennOffset = GetStringCenterAlignXOffset(FONT_NORMAL, region, 0x38);
+//    u32 flyOffset = GetStringCenterAlignXOffset(FONT_NORMAL, FlyPromptText, 0x38);
+//
+//    FillWindowPixelBuffer(WIN_TITLE, PIXEL_FILL(1));
+//
+//    if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
+//        && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+//    {
+//        AddTextPrinterParameterized(WIN_TITLE, FONT_NORMAL, FlyPromptText, flyOffset, 1, 0, NULL);
+//        ScheduleBgCopyTilemapToVram(WIN_TITLE);
+//    }
+//    else
+//    {
+//        AddTextPrinterParameterized(WIN_TITLE, FONT_NORMAL, region, hoennOffset, 1, 0, NULL);
+//        CopyWindowToVram(WIN_TITLE, COPYWIN_FULL);
+//    }
+//}
