@@ -39,6 +39,7 @@
 #include "malloc.h"
 #include "m4a.h"
 #include "map_name_popup.h"
+#include "region_map.h"
 #include "map_preview_screen.h"
 #include "match_call.h"
 #include "menu.h"
@@ -868,6 +869,20 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
     return SetDiveWarp(CONNECTION_DIVE, x, y);
 }
 
+static bool32 MapNamesMatch(u16 mapSecA, u16 mapSecB)
+{
+    // Use existing engine buffers
+    GetMapName(gStringVar4, mapSecA, 0);
+    GetMapName(gStringVar1, mapSecB, 0);
+
+    return (StringCompare(gStringVar4, gStringVar1) == 0);
+}
+
+static mapsec_u16_t GetMapSecIdFromGroupAndNum(u8 mapGroup, u8 mapNum)
+{
+    return gMapGroups[mapGroup][mapNum]->regionMapSectionId;
+}
+
 void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 {
     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, -1, -1);
@@ -910,15 +925,18 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
 
+    // --- Map popup logic (walking transition) ---
     if (OW_HIDE_REPEAT_MAP_POPUP)
     {
-        if (gMapHeader.regionMapSectionId != sLastMapSectionId)
+        // Only show popup if map names differ
+        if (!MapNamesMatch(gMapHeader.regionMapSectionId, sLastMapSectionId))
             ShowMapNamePopup();
     }
     else
     {
+        // Original behavior: show popup unless Battle Frontier repeat
         if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
-         || gMapHeader.regionMapSectionId != sLastMapSectionId)
+        || gMapHeader.regionMapSectionId != sLastMapSectionId)
             ShowMapNamePopup();
     }
     SetMinimumOWESpawnTimer();
@@ -2343,7 +2361,27 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
             RunMapPreviewScreenFadeIn(gMapHeader.regionMapSectionId);
         }
         else if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-            ShowMapNamePopup();
+        {
+            // Get previous map's section ID from gLastUsedWarp (set in ApplyCurrentWarp)
+            u16 prevMapSecId = GetMapSecIdFromGroupAndNum(
+                gLastUsedWarp.mapGroup,
+                gLastUsedWarp.mapNum
+            );
+
+            if (OW_HIDE_REPEAT_MAP_POPUP)
+            {
+                // Name-based suppression for warps: only show if names differ
+                if (!MapNamesMatch(gMapHeader.regionMapSectionId, prevMapSecId))
+                    ShowMapNamePopup();
+            }
+            else
+            {
+                // Original behavior: show popup unless Battle Frontier repeat
+                if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
+                || gMapHeader.regionMapSectionId != prevMapSecId)
+                    ShowMapNamePopup();
+            }
+        }
         (*state)++;
         break;
     case 12:
