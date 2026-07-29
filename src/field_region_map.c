@@ -83,15 +83,6 @@ static const struct WindowTemplate sFieldRegionMapWindowTemplates[] =
         .paletteNum = 15,
         .baseBlock = 1
     },
-    [WIN_TITLE] = {
-        .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 1,
-        .width = 7,
-        .height = 2,
-        .paletteNum = 15,
-        .baseBlock = 25
-    },
     DUMMY_WIN_TEMPLATE
 };
 
@@ -156,7 +147,7 @@ static void FieldUpdateRegionMap(void)
     case 1:
         DrawStdFrameWithCustomTileAndPalette(WIN_TITLE, FALSE, 0x27, 0xd);
         FillWindowPixelBuffer(WIN_TITLE, PIXEL_FILL(1));
-        PrintTitleWindowText();
+//        PrintTitleWindowText();
         ScheduleBgCopyTilemapToVram(0);
         DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME, FALSE, 0x27, 0xd);
         PrintRegionMapSecName();
@@ -180,7 +171,7 @@ static void FieldUpdateRegionMap(void)
         {
         case MAP_INPUT_MOVE_END:
                 PrintRegionMapSecName();
-                PrintTitleWindowText();
+//                PrintTitleWindowText();
                 break;
         case MAP_INPUT_A_BUTTON:
         case MAP_INPUT_B_BUTTON:
