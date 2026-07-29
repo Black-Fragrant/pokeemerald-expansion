@@ -570,3 +570,9 @@ const u16 gMetatileAttributes_NimbasaGym[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_GearStation[] = INCBIN_U16("data/tilesets/secondary/gear_station/metatiles.bin");
 const u16 gMetatileAttributes_GearStation[] = INCBIN_U16("data/tilesets/secondary/gear_station/metatile_attributes.bin");
+
+const u16 gMetatiles_AnvilleTown[] = INCBIN_U16("data/tilesets/secondary/anville_town/metatiles.bin");
+const u16 gMetatileAttributes_AnvilleTown[] = INCBIN_U16("data/tilesets/secondary/anville_town/metatile_attributes.bin");
+
+const u16 gMetatiles_IndoorAnvilleTown[] = INCBIN_U16("data/tilesets/secondary/indoor_anville_town/metatiles.bin");
+const u16 gMetatileAttributes_IndoorAnvilleTown[] = INCBIN_U16("data/tilesets/secondary/indoor_anville_town/metatile_attributes.bin");

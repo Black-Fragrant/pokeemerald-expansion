@@ -2363,3 +2363,25 @@ const struct Tileset gTileset_GearStation =
     .metatileAttributes = gMetatileAttributes_GearStation,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_AnvilleTown =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_AnvilleTown,
+    .palettes = gTilesetPalettes_AnvilleTown,
+    .metatiles = gMetatiles_AnvilleTown,
+    .metatileAttributes = gMetatileAttributes_AnvilleTown,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IndoorAnvilleTown =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndoorAnvilleTown,
+    .palettes = gTilesetPalettes_IndoorAnvilleTown,
+    .metatiles = gMetatiles_IndoorAnvilleTown,
+    .metatileAttributes = gMetatileAttributes_IndoorAnvilleTown,
+    .callback = NULL,
+};

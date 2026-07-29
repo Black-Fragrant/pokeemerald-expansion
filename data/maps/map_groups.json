@@ -18,6 +18,7 @@
     "gMapGroup_OutdoorNimbasa",
     "gMapGroup_IndoorNimbasa",
     "gMapGroup_BattleSubway",
+    "gMapGroup_AnvilleTown",
     "gMapGroup_IndoorRoute5",
     "gMapGroup_LostlornForest",
     "gMapGroup_TownsAndRoutes",
@@ -288,7 +289,21 @@
     "NimbasaCity_NimbasaGym"
   ],
   "gMapGroup_BattleSubway": [
-    "GearStation_Lobby"
+    "GearStation_Lobby",
+    "Platform_SingleTrain",
+    "Platform_SuperSingleTrain",
+    "Platform_DoubleTrain",
+    "Platform_SuperDoubleTrain",
+    "Platform_WifiTrain",
+    "Platform_MultiTrain",
+    "Platform_SuperMultiTrain",
+    "Platform_TrainToAnvilleTown"
+  ],
+  "gMapGroup_AnvilleTown": [
+    "AnvilleTown",
+    "AnvilleTown_TopHouse",
+    "AnvilleTown_BottomLeftHouse",
+    "AnvilleTown_BottomRightHouse"
   ],
   "gMapGroup_IndoorRoute5": [
     "Route5_Trailer"

@@ -10492,6 +10492,126 @@
       "secondary_tileset": "gTileset_GearStation",
       "border_filepath": "data/layouts/GearStation_Lobby/border.bin",
       "blockdata_filepath": "data/layouts/GearStation_Lobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_SINGLE_TRAIN",
+      "name": "Platform_SingleTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_SingleTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_SingleTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_SUPER_MULTI_TRAIN",
+      "name": "Platform_SuperMultiTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_SuperMultiTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_SuperMultiTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_MULTI_TRAIN",
+      "name": "Platform_MultiTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_MultiTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_MultiTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_SUPER_SINGLE_TRAIN",
+      "name": "Platform_SuperSingleTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_SuperSingleTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_SuperSingleTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_WIFI_TRAIN",
+      "name": "Platform_WifiTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_WifiTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_WifiTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_SUPER_DOUBLE_TRAIN",
+      "name": "Platform_SuperDoubleTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_SuperDoubleTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_SuperDoubleTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_TRAIN_TO_ANVILLE_TOWN",
+      "name": "Platform_TrainToAnvilleTown_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_TrainToAnvilleTown/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_TrainToAnvilleTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATFORM_DOUBLE_TRAIN",
+      "name": "Platform_DoubleTrain_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStation",
+      "border_filepath": "data/layouts/Platform_DoubleTrain/border.bin",
+      "blockdata_filepath": "data/layouts/Platform_DoubleTrain/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANVILLE_TOWN",
+      "name": "AnvilleTown_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_AnvilleTown",
+      "border_filepath": "data/layouts/AnvilleTown/border.bin",
+      "blockdata_filepath": "data/layouts/AnvilleTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANVILLE_TOWN_TOP_HOUSE",
+      "name": "AnvilleTown_TopHouse_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAnvilleTown",
+      "border_filepath": "data/layouts/AnvilleTown_TopHouse/border.bin",
+      "blockdata_filepath": "data/layouts/AnvilleTown_TopHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANVILLE_TOWN_BOTTOM_RIGHT_HOUSE",
+      "name": "AnvilleTown_BottomRightHouse_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAnvilleTown",
+      "border_filepath": "data/layouts/AnvilleTown_BottomRightHouse/border.bin",
+      "blockdata_filepath": "data/layouts/AnvilleTown_BottomRightHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_ANVILLE_TOWN_BOTTOM_LEFT_HOUSE",
+      "name": "AnvilleTown_BottomLeftHouse_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_IndoorAnvilleTown",
+      "border_filepath": "data/layouts/AnvilleTown_BottomLeftHouse/border.bin",
+      "blockdata_filepath": "data/layouts/AnvilleTown_BottomLeftHouse/map.bin"
     }
   ]
 }
