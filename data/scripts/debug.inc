@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-    warpsilent MAP_NUVEMA_TOWN, 14, 16
+    warpsilent MAP_ROUTE16, 35, 5
     waitstate
     end
 
