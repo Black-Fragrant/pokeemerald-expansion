@@ -537,6 +537,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_SSAnne,                OBJ_EVENT_PAL_TAG_SS_ANNE},
     {gObjectEventPal_Seagallop,             OBJ_EVENT_PAL_TAG_SEAGALLOP},
 #endif // IS_FRLG
+    {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_CuttableTree,          OBJ_EVENT_PAL_TAG_CUTTABLE_TREE},
     {gObjectEventPal_PushableBoulder,       OBJ_EVENT_PAL_TAG_PUSHABLE_BOULDER},
     {gObjectEventPal_Cheren,                OBJ_EVENT_PAL_TAG_CHEREN},
