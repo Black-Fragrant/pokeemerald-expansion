@@ -39,6 +39,7 @@
 #include "malloc.h"
 #include "m4a.h"
 #include "map_name_popup.h"
+#include "region_map.h"
 #include "map_preview_screen.h"
 #include "match_call.h"
 #include "menu.h"
@@ -193,6 +194,7 @@ static bool8 MapLdr_Credits(void);
 static void CameraCB_CreditsPan(struct CameraObject *camera);
 static void Task_OvwldCredits_FadeOut(u8 taskId);
 static void Task_OvwldCredits_WaitFade(u8 taskId);
+static bool8 sMapPopupShownThisWarp = FALSE;
 
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
 // This callback is called with a player's key code. It then returns an
@@ -868,6 +870,20 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
     return SetDiveWarp(CONNECTION_DIVE, x, y);
 }
 
+static bool32 MapNamesMatch(u16 mapSecA, u16 mapSecB)
+{
+    // Use existing engine buffers
+    GetMapName(gStringVar4, mapSecA, 0);
+    GetMapName(gStringVar1, mapSecB, 0);
+
+    return (StringCompare(gStringVar4, gStringVar1) == 0);
+}
+
+static mapsec_u16_t GetMapSecIdFromGroupAndNum(u8 mapGroup, u8 mapNum)
+{
+    return gMapGroups[mapGroup][mapNum]->regionMapSectionId;
+}
+
 void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 {
     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, -1, -1);
@@ -910,15 +926,18 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
 
+    // --- Map popup logic (walking transition) ---
     if (OW_HIDE_REPEAT_MAP_POPUP)
     {
-        if (gMapHeader.regionMapSectionId != sLastMapSectionId)
+        // Only show popup if map names differ
+        if (!MapNamesMatch(gMapHeader.regionMapSectionId, sLastMapSectionId))
             ShowMapNamePopup();
     }
     else
     {
+        // Original behavior: show popup unless Battle Frontier repeat
         if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
-         || gMapHeader.regionMapSectionId != sLastMapSectionId)
+        || gMapHeader.regionMapSectionId != sLastMapSectionId)
             ShowMapNamePopup();
     }
     SetMinimumOWESpawnTimer();
@@ -2089,8 +2108,10 @@ void CB2_ReturnToFieldFadeFromBlack(void)
 
 static void FieldCB_FadeTryShowMapPopup(void)
 {
-    if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-        ShowMapNamePopup();
+    if (!sMapPopupShownThisWarp  // new: only if case 11 didn't show
+     && gMapHeader.showMapName == TRUE
+     && SecretBaseMapPopupEnabled() == TRUE)
+    {ShowMapNamePopup();}
     FieldCB_WarpExitFadeFromBlack();
 }
 
@@ -2285,6 +2306,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
     switch (*state)
     {
     case 0:
+        sMapPopupShownThisWarp = FALSE;  // new: reset per warp/load sequence
         FieldClearVBlankHBlankCallbacks();
         LoadMapFromWarp(a2);
         (*state)++;
@@ -2343,7 +2365,31 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
             RunMapPreviewScreenFadeIn(gMapHeader.regionMapSectionId);
         }
         else if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-            ShowMapNamePopup();
+        {
+            // Get previous map's section ID from gLastUsedWarp (set in ApplyCurrentWarp)
+            u16 prevMapSecId = GetMapSecIdFromGroupAndNum(
+                gLastUsedWarp.mapGroup,
+                gLastUsedWarp.mapNum
+            );
+
+            if (OW_HIDE_REPEAT_MAP_POPUP)
+            {
+                if (!MapNamesMatch(gMapHeader.regionMapSectionId, prevMapSecId))
+                {
+                    ShowMapNamePopup();
+                    sMapPopupShownThisWarp = TRUE;
+                }
+            }
+            else
+            {
+                if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
+                || gMapHeader.regionMapSectionId != prevMapSecId)
+                {
+                    ShowMapNamePopup();
+                    sMapPopupShownThisWarp = TRUE;
+                }
+            }
+        }
         (*state)++;
         break;
     case 12:
