@@ -40,9 +40,9 @@
  */
 
 #define MAP_WIDTH 28
-#define MAP_HEIGHT 15
+#define MAP_HEIGHT 18
 #define MAPCURSOR_X_MIN 1
-#define MAPCURSOR_Y_MIN 2
+#define MAPCURSOR_Y_MIN 1
 #define MAPCURSOR_X_MAX (MAPCURSOR_X_MIN + MAP_WIDTH - 1)
 #define MAPCURSOR_Y_MAX (MAPCURSOR_Y_MIN + MAP_HEIGHT - 1)
 
@@ -943,7 +943,7 @@ static u8 ProcessRegionMapInput_Zoomed(void)
         sRegionMap->zoomedCursorDeltaY = -1;
         input = MAP_INPUT_MOVE_START;
     }
-    if (JOY_HELD(DPAD_DOWN) && sRegionMap->scrollY < 0x3c)
+    if (JOY_HELD(DPAD_DOWN) && sRegionMap->scrollY < 0x5c)
     {
         sRegionMap->zoomedCursorDeltaY = +1;
         input = MAP_INPUT_MOVE_START;

@@ -3,7 +3,7 @@
   "name": "Route3_South",
   "layout": "LAYOUT_ROUTE3_SOUTH",
   "music": "MUS_BW_ROUTE_2",
-  "region_map_section": "MAPSEC_ROUTE_3",
+  "region_map_section": "MAPSEC_ROUTE_3_EXTENDED",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",

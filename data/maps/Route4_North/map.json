@@ -3,7 +3,7 @@
   "name": "Route4_North",
   "layout": "LAYOUT_ROUTE4_NORTH",
   "music": "MUS_BW_ROUTE_4",
-  "region_map_section": "MAPSEC_ROUTE_4",
+  "region_map_section": "MAPSEC_ROUTE_4_EXTENDED",
   "requires_flash": false,
   "weather": "WEATHER_SANDSTORM",
   "map_type": "MAP_TYPE_ROUTE",

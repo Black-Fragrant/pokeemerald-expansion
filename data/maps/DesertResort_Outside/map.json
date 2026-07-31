@@ -3,7 +3,7 @@
   "name": "DesertResort_Outside",
   "layout": "LAYOUT_DESERT_RESORT_OUTSIDE",
   "music": "MUS_BW_ROUTE_4",
-  "region_map_section": "MAPSEC_DESERT_RESORT",
+  "region_map_section": "MAPSEC_DESERT_RESORT_OUTSIDE",
   "requires_flash": false,
   "weather": "WEATHER_SANDSTORM",
   "map_type": "MAP_TYPE_ROUTE",
