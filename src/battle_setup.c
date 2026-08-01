@@ -58,6 +58,7 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "speech_bubble.h"
 
 enum TransitionType
 {
@@ -485,6 +486,7 @@ static void DoBattlePikeWildBattle(void)
 
 static void DoTrainerBattle(void)
 {
+    DestroyTail();
     CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_A][0], TRAINER_BATTLE_PARAM.opponentA);
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
         CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_B][0], TRAINER_BATTLE_PARAM.opponentB);
@@ -1675,6 +1677,14 @@ void ShowTrainerIntroSpeech(void)
         else
             CopyPyramidTrainerSpeechBefore(LocalIdToPyramidTrainerId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId));
 
+        if (gNoOfApproachingTrainers == 0)
+        {
+            LoadTailFromObjectEventId(VarGet(gSpecialVar_LastTalked));
+        }
+        else
+        {
+            LoadTailFromObjectEventId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId);
+        }
         ShowFieldMessageFromBuffer();
     }
     else if (InTrainerHillChallenge())
@@ -1684,10 +1694,26 @@ void ShowTrainerIntroSpeech(void)
         else
             CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_INTRO, LocalIdToHillTrainerId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId));
 
+        if (gNoOfApproachingTrainers == 0)
+        {
+            LoadTailFromObjectEventId(VarGet(gSpecialVar_LastTalked));
+        }
+        else
+        {
+            LoadTailFromObjectEventId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId);
+        }
         ShowFieldMessageFromBuffer();
     }
     else
     {
+        if (gNoOfApproachingTrainers == 0)
+        {
+            LoadTailFromObjectEventId(VarGet(gSpecialVar_LastTalked));
+        }
+        else
+        {
+            LoadTailFromObjectEventId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId);
+        }
         ShowFieldMessage(GetIntroSpeechOfApproachingTrainer());
     }
 }
@@ -1725,6 +1751,7 @@ const u8 *BattleSetup_GetTrainerPostBattleScript(void)
 
 void ShowTrainerCantBattleSpeech(void)
 {
+    LoadTailFromObjectEventId(VarGet(gSpecialVar_LastTalked));
     ShowFieldMessage(GetTrainerCantBattleSpeech());
 }
 
