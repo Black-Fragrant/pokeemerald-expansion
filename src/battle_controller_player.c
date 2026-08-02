@@ -1897,8 +1897,9 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     StringAppend(gDisplayedStringBattle, acc_start);
     StringAppend(gDisplayedStringBattle, acc_desc);
     StringAppend(gDisplayedStringBattle, acc_num);
-    StringAppend(gDisplayedStringBattle, gText_NewLine);
-    StringAppend(gDisplayedStringBattle, GetMoveDescription(move));
+    u8 *descStart = StringAppend(gDisplayedStringBattle, gText_NewLine);
+    u8 *descEnd = StringAppend(gDisplayedStringBattle, GetMoveDescription(move));
+    WrapFontIdToFit(descStart, descEnd, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_DESCRIPTION));
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_DESCRIPTION);
 
     if (gCategoryIconSpriteId == 0xFF)
@@ -2537,6 +2538,8 @@ static u32 CheckTypeEffectiveness(enum BattlerId battlerAtk, enum BattlerId batt
     ctx.move = moveInfo->moves[gMoveSelectionCursor[battlerAtk]];
     ctx.moveType = CheckDynamicMoveType(GetBattlerMon(battlerAtk), ctx.move, battlerAtk, MON_IN_BATTLE);
     ctx.updateFlags = FALSE;
+    ctx.weather = GetWeather();
+    ctx.terrain = gFieldTimers.terrain;
     ctx.abilities[ctx.battlerAtk] = GetBattlerAbility(battlerAtk);
     ctx.abilities[ctx.battlerDef] = GetBattlerAbility(battlerDef);
     ctx.holdEffects[ctx.battlerAtk] = GetBattlerHoldEffect(battlerAtk);
