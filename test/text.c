@@ -97,7 +97,19 @@ TEST("Move descriptions fit on Pokemon Summary Screen")
 {
     TO_DO; // test failing
     u32 i;
-    const u32 fontId = FONT_NORMAL, widthPx = 152;
+    const u32 fontId = FONT_NARROWER, widthPx = 152;
+    enum Move move = MOVE_NONE;
+    for (i = 1; i < MOVES_COUNT_ALL; i++)
+    {
+        PARAMETRIZE_LABEL("%S", GetMoveDescription(i)) { move = i; }
+    }
+    EXPECT_LE(GetStringWidth(fontId, GetMoveDescription(move), 0), widthPx);
+}
+
+TEST("Move descriptions fit on battle move info window")
+{
+    u32 i;
+    const u32 fontId = FONT_NARROWER, widthPx = 144;
     enum Move move = MOVE_NONE;
     for (i = 1; i < MOVES_COUNT_ALL; i++)
     {
@@ -534,7 +546,7 @@ TEST("Ability descriptions fit on Pokemon Summary Screen")
 {
     TO_DO; // test failing
     u32 i;
-    const u32 fontId = FONT_NORMAL, widthPx = 146;
+    const u32 fontId = FONT_NARROWER, widthPx = 146;
     enum Ability ability = ABILITY_NONE;
     for (i = 1; i < ABILITIES_COUNT; i++)
     {
