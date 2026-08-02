@@ -778,7 +778,7 @@ static bool8 TrainerExclamationMark(u8 taskId, struct Task *task, struct ObjectE
     enum Direction direction;
     if (trainerObj->facingDirection == DIR_SOUTH && task->tTrainerRange > 2)
     {
-        task->tFuncId = 12;
+        task->tFuncId = 13;
     }
     else
     {
@@ -955,7 +955,7 @@ static bool8 OffscreenAboveTrainerCreateCameraObj(u8 taskId, struct Task *task, 
     specialObjectId = SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_YOUNGSTER, 7, LOCALID_CAMERA, gSaveBlock1Ptr->pos.x + 7, gSaveBlock1Ptr->pos.y + 7, 3);
     gObjectEvents[specialObjectId].invisible = TRUE;
     CameraObjectSetFollowedSpriteId(gObjectEvents[specialObjectId].spriteId);
-    task->tFuncId = 13;
+    task->tFuncId = 14;
     return FALSE;
 }
 
@@ -977,7 +977,7 @@ static bool8 OffscreenAboveTrainerCameraObjMoveUp(u8 taskId, struct Task *task, 
         ObjectEventGetLocalIdAndMap(trainerObj, (u8 *)&gFieldEffectArguments[0], (u8 *)&gFieldEffectArguments[1], (u8 *)&gFieldEffectArguments[2]);
         FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
         task->tData5 = 0;
-        task->tFuncId = 14;
+        task->tFuncId = 15;
     }
     return FALSE;
 }
