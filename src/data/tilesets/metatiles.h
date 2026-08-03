@@ -576,3 +576,9 @@ const u16 gMetatileAttributes_AnvilleTown[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_IndoorAnvilleTown[] = INCBIN_U16("data/tilesets/secondary/indoor_anville_town/metatiles.bin");
 const u16 gMetatileAttributes_IndoorAnvilleTown[] = INCBIN_U16("data/tilesets/secondary/indoor_anville_town/metatile_attributes.bin");
+
+const u16 gMetatiles_BattleSubway[] = INCBIN_U16("data/tilesets/secondary/battle_subway/metatiles.bin");
+const u16 gMetatileAttributes_BattleSubway[] = INCBIN_U16("data/tilesets/secondary/battle_subway/metatile_attributes.bin");
+
+const u16 gMetatiles_GearStationPlatforms[] = INCBIN_U16("data/tilesets/secondary/gear_station_platforms/metatiles.bin");
+const u16 gMetatileAttributes_GearStationPlatforms[] = INCBIN_U16("data/tilesets/secondary/gear_station_platforms/metatile_attributes.bin");

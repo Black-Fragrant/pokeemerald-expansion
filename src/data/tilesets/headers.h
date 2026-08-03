@@ -2385,3 +2385,25 @@ const struct Tileset gTileset_IndoorAnvilleTown =
     .metatileAttributes = gMetatileAttributes_IndoorAnvilleTown,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_BattleSubway =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BattleSubway,
+    .palettes = gTilesetPalettes_BattleSubway,
+    .metatiles = gMetatiles_BattleSubway,
+    .metatileAttributes = gMetatileAttributes_BattleSubway,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GearStationPlatforms =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GearStationPlatforms,
+    .palettes = gTilesetPalettes_GearStationPlatforms,
+    .metatiles = gMetatiles_GearStationPlatforms,
+    .metatileAttributes = gMetatileAttributes_GearStationPlatforms,
+    .callback = NULL,
+};
