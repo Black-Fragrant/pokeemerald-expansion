@@ -238,8 +238,8 @@
       "x": 46,
       "y": 33,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_warp_id": "1"
     },
     {
       "x": 17,

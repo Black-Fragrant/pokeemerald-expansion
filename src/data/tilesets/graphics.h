@@ -4102,3 +4102,41 @@ const u16 gTilesetPalettes_IndoorAnvilleTown[][16] =
 };
 
 const u32 gTilesetTiles_IndoorAnvilleTown[] = INCBIN_U32("data/tilesets/secondary/indoor_anville_town/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_BattleSubway[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/battle_subway/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_BattleSubway[] = INCBIN_U32("data/tilesets/secondary/battle_subway/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GearStationPlatforms[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/gear_station_platforms/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GearStationPlatforms[] = INCBIN_U32("data/tilesets/secondary/gear_station_platforms/tiles.4bpp.lz");
