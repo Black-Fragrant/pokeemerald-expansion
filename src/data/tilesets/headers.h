@@ -2361,7 +2361,7 @@ const struct Tileset gTileset_GearStation =
     .palettes = gTilesetPalettes_GearStation,
     .metatiles = gMetatiles_GearStation,
     .metatileAttributes = gMetatileAttributes_GearStation,
-    .callback = NULL,
+    .callback = InitTilesetAnim_GearStation,
 };
 
 const struct Tileset gTileset_AnvilleTown =

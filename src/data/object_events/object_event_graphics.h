@@ -698,6 +698,27 @@ const u32 gObjectEventPic_BoatRoyalLeftHalf[] = INCGFX_U32("graphics/object_even
 const u32 gObjectEventPic_BoatRoyalRightHalf[] = INCGFX_U32("graphics/object_events/pics/misc/boat_royal_right_half.png", ".4bpp");
 const u16 gObjectEventPal_BoatRoyal[] = INCGFX_U16("graphics/object_events/palettes/boat_royal.pal", ".gbapal");
 
+const u32 gObjectEventPic_TrainTailLeftHalf[] = INCGFX_U32("graphics/object_events/pics/misc/train_tail_left_half.png", ".4bpp");
+const u32 gObjectEventPic_TrainTailRightHalf[] = INCGFX_U32("graphics/object_events/pics/misc/train_tail_right_half.png", ".4bpp");
+
+const u32 gObjectEventPic_TrainLeftHalf[] = INCGFX_U32("graphics/object_events/pics/misc/train_left_half.png", ".4bpp");
+const u32 gObjectEventPic_TrainRightHalf[] = INCGFX_U32("graphics/object_events/pics/misc/train_right_half.png", ".4bpp");
+
+const u32 gObjectEventPic_TrainHeadLeftHalf[] = INCGFX_U32("graphics/object_events/pics/misc/train_head_left_half.png", ".4bpp");
+const u32 gObjectEventPic_TrainHeadRightHalf[] = INCGFX_U32("graphics/object_events/pics/misc/train_head_right_half.png", ".4bpp");
+
+const u32 gObjectEventPic_TrainTailOpenDoor[] = INCGFX_U32("graphics/object_events/pics/misc/train_tail_open_door.png", ".4bpp");
+const u32 gObjectEventPic_TrainHeadOpenDoor[] = INCGFX_U32("graphics/object_events/pics/misc/train_head_open_door.png", ".4bpp");
+
+const u16 gObjectEventPal_TrainSingle[] = INCGFX_U16("graphics/object_events/palettes/train_single.pal", ".gbapal");
+const u16 gObjectEventPal_TrainSuperSingle[] = INCGFX_U16("graphics/object_events/palettes/train_super_single.pal", ".gbapal");
+const u16 gObjectEventPal_TrainDouble[] = INCGFX_U16("graphics/object_events/palettes/train_double.pal", ".gbapal");
+const u16 gObjectEventPal_TrainSuperDouble[] = INCGFX_U16("graphics/object_events/palettes/train_super_double.pal", ".gbapal");
+const u16 gObjectEventPal_TrainWifi[] = INCGFX_U16("graphics/object_events/palettes/train_wifi.pal", ".gbapal");
+const u16 gObjectEventPal_TrainMulti[] = INCGFX_U16("graphics/object_events/palettes/train_multi.pal", ".gbapal");
+const u16 gObjectEventPal_TrainSuperMulti[] = INCGFX_U16("graphics/object_events/palettes/train_super_multi.pal", ".gbapal");
+const u16 gObjectEventPal_TrainAnvil[] = INCGFX_U16("graphics/object_events/palettes/train_anvil.pal", ".gbapal");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
