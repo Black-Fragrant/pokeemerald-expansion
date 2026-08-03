@@ -173,6 +173,82 @@ static void TilesetAnim_NimbasaGym(u16);
 static void QueueAnimTiles_NimbasaGym_Star(u16);
 static void QueueAnimTiles_NimbasaGym_Screen(u16);
 
+static void TilesetAnim_GearStation(u16);
+static void QueueAnimTiles_GearStation_Board(u16);
+
+const u16 gQueueAnimTiles_GearStation_Board_Frame0[] = INCGFX_U16("data/tilesets/secondary/gear_station/anim/board/0.png", ".4bpp");
+const u16 gQueueAnimTiles_GearStation_Board_Frame1[] = INCGFX_U16("data/tilesets/secondary/gear_station/anim/board/1.png", ".4bpp");
+const u16 gQueueAnimTiles_GearStation_Board_Frame2[] = INCGFX_U16("data/tilesets/secondary/gear_station/anim/board/2.png", ".4bpp");
+const u16 gQueueAnimTiles_GearStation_Board_Frame3[] = INCGFX_U16("data/tilesets/secondary/gear_station/anim/board/3.png", ".4bpp");
+const u16 gQueueAnimTiles_GearStation_Board_Frame4[] = INCGFX_U16("data/tilesets/secondary/gear_station/anim/board/4.png", ".4bpp");
+
+const u16 *const gQueueAnimTiles_GearStation_Board[] = {
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame0,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame2,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame3,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+    gQueueAnimTiles_GearStation_Board_Frame4,
+    gQueueAnimTiles_GearStation_Board_Frame1,
+};
+
 const u16 gQueueAnimTiles_NimbasaGym_Star_Frame0[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/0.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaGym_Star_Frame1[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/1.png", ".4bpp");
 const u16 gQueueAnimTiles_NimbasaGym_Star_Frame2[] = INCGFX_U16("data/tilesets/secondary/nimbasa_gym/anim/star/2.png", ".4bpp");
@@ -2439,6 +2515,13 @@ void InitTilesetAnim_General(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_General;
 }
 
+void InitTilesetAnim_GearStation(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_GearStation;
+}
+
 void InitTilesetAnim_NimbasaGym(void)
 {
     sSecondaryTilesetAnimCounter = 0;
@@ -2647,6 +2730,12 @@ static void TilesetAnim_General(u16 timer)
         QueueAnimTiles_General_New_Current(timer / 4);
     if (timer % 16 == 3)
         QueueAnimTiles_General_New_Flower(timer / 16);
+}
+
+static void TilesetAnim_GearStation(u16 timer)
+{
+    if (timer % 2 == 0)
+        QueueAnimTiles_GearStation_Board(timer / 2);
 }
 
 static void TilesetAnim_NimbasaGym(u16 timer)
@@ -2877,6 +2966,12 @@ static void QueueAnimTiles_Nuvema_Windmill(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_Nuvema_Windmill);
     AppendTilesetAnimToBuffer(gQueueAnimTiles_Nuvema_Windmill[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(800)), 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_GearStation_Board(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gQueueAnimTiles_GearStation_Board);
+    AppendTilesetAnimToBuffer(gQueueAnimTiles_GearStation_Board[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(616)), 8 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_NimbasaGym_Star(u16 timer)

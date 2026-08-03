@@ -201,6 +201,79 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlackLe
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBlackRightHalf;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyalLeftHalf;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatRoyalRightHalf;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSingleHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperSingleHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainDoubleHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperDoubleHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainWifiHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainMultiHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainSuperMultiHeadOpenDoor;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilTailLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilTailRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilHeadLeftHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilHeadRightHalf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilTailOpenDoor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TrainAnvilHeadOpenDoor;
+
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurf;
@@ -558,6 +631,70 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BOAT_BLACK_RIGHT_HALF] =    &gObjectEventGraphicsInfo_BoatBlackRightHalf,
     [OBJ_EVENT_GFX_BOAT_ROYAL_LEFT_HALF] =      &gObjectEventGraphicsInfo_BoatRoyalLeftHalf,
     [OBJ_EVENT_GFX_BOAT_ROYAL_RIGHT_HALF] =     &gObjectEventGraphicsInfo_BoatRoyalRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_TAIL_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainSingleTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_TAIL_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainSingleTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_LEFT_HALF]           = &gObjectEventGraphicsInfo_TrainSingleLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_RIGHT_HALF]          = &gObjectEventGraphicsInfo_TrainSingleRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_HEAD_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainSingleHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_HEAD_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainSingleHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_TAIL_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainSingleTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SINGLE_HEAD_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainSingleHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_TAIL_LEFT_HALF]  = &gObjectEventGraphicsInfo_TrainSuperSingleTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_TAIL_RIGHT_HALF] = &gObjectEventGraphicsInfo_TrainSuperSingleTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_LEFT_HALF]       = &gObjectEventGraphicsInfo_TrainSuperSingleLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_RIGHT_HALF]      = &gObjectEventGraphicsInfo_TrainSuperSingleRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_HEAD_LEFT_HALF]  = &gObjectEventGraphicsInfo_TrainSuperSingleHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_HEAD_RIGHT_HALF] = &gObjectEventGraphicsInfo_TrainSuperSingleHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_TAIL_OPEN_DOOR]  = &gObjectEventGraphicsInfo_TrainSuperSingleTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_SINGLE_HEAD_OPEN_DOOR]  = &gObjectEventGraphicsInfo_TrainSuperSingleHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_TAIL_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainDoubleTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_TAIL_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainDoubleTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_LEFT_HALF]           = &gObjectEventGraphicsInfo_TrainDoubleLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_RIGHT_HALF]          = &gObjectEventGraphicsInfo_TrainDoubleRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_HEAD_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainDoubleHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_HEAD_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainDoubleHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_TAIL_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainDoubleTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_DOUBLE_HEAD_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainDoubleHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_TAIL_LEFT_HALF]  = &gObjectEventGraphicsInfo_TrainSuperDoubleTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_TAIL_RIGHT_HALF] = &gObjectEventGraphicsInfo_TrainSuperDoubleTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_LEFT_HALF]       = &gObjectEventGraphicsInfo_TrainSuperDoubleLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_RIGHT_HALF]      = &gObjectEventGraphicsInfo_TrainSuperDoubleRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_HEAD_LEFT_HALF]  = &gObjectEventGraphicsInfo_TrainSuperDoubleHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_HEAD_RIGHT_HALF] = &gObjectEventGraphicsInfo_TrainSuperDoubleHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_TAIL_OPEN_DOOR]  = &gObjectEventGraphicsInfo_TrainSuperDoubleTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_DOUBLE_HEAD_OPEN_DOOR]  = &gObjectEventGraphicsInfo_TrainSuperDoubleHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_TAIL_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainWifiTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_TAIL_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainWifiTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_LEFT_HALF]           = &gObjectEventGraphicsInfo_TrainWifiLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_RIGHT_HALF]          = &gObjectEventGraphicsInfo_TrainWifiRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_HEAD_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainWifiHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_HEAD_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainWifiHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_TAIL_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainWifiTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_WIFI_HEAD_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainWifiHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_TAIL_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainMultiTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_TAIL_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainMultiTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_LEFT_HALF]           = &gObjectEventGraphicsInfo_TrainMultiLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_RIGHT_HALF]          = &gObjectEventGraphicsInfo_TrainMultiRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_HEAD_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainMultiHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_HEAD_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainMultiHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_TAIL_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainMultiTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_MULTI_HEAD_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainMultiHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_TAIL_LEFT_HALF]  = &gObjectEventGraphicsInfo_TrainSuperMultiTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_TAIL_RIGHT_HALF] = &gObjectEventGraphicsInfo_TrainSuperMultiTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_LEFT_HALF]       = &gObjectEventGraphicsInfo_TrainSuperMultiLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_RIGHT_HALF]      = &gObjectEventGraphicsInfo_TrainSuperMultiRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_HEAD_LEFT_HALF]  = &gObjectEventGraphicsInfo_TrainSuperMultiHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_HEAD_RIGHT_HALF] = &gObjectEventGraphicsInfo_TrainSuperMultiHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_TAIL_OPEN_DOOR]  = &gObjectEventGraphicsInfo_TrainSuperMultiTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_SUPER_MULTI_HEAD_OPEN_DOOR]  = &gObjectEventGraphicsInfo_TrainSuperMultiHeadOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_TAIL_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainAnvilTailLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_TAIL_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainAnvilTailRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_LEFT_HALF]           = &gObjectEventGraphicsInfo_TrainAnvilLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_RIGHT_HALF]          = &gObjectEventGraphicsInfo_TrainAnvilRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_HEAD_LEFT_HALF]      = &gObjectEventGraphicsInfo_TrainAnvilHeadLeftHalf,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_HEAD_RIGHT_HALF]     = &gObjectEventGraphicsInfo_TrainAnvilHeadRightHalf,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_TAIL_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainAnvilTailOpenDoor,
+    [OBJ_EVENT_GFX_TRAIN_ANVIL_HEAD_OPEN_DOOR]      = &gObjectEventGraphicsInfo_TrainAnvilHeadOpenDoor,
     [OBJ_EVENT_GFX_PIKACHUOW] =                &gObjectEventGraphicsInfo_Pikachuow,
     [OBJ_EVENT_GFX_VICTINIOW] =                &gObjectEventGraphicsInfo_Victiniow,
     [OBJ_EVENT_GFX_KROKOROKOW] =               &gObjectEventGraphicsInfo_Krokorokow,

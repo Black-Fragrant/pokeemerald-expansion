@@ -100,182 +100,182 @@
       "x": 26,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SINGLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 21,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SINGLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 22,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SINGLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_SINGLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 13,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_SINGLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_SINGLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 26,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 18,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 19,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 20,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 21,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_DOUBLE_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 8,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_TRAIN_TO_ANVILLE_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 9,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_TRAIN_TO_ANVILLE_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 10,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_TRAIN_TO_ANVILLE_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 11,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_TRAIN_TO_ANVILLE_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_MULTI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_MULTI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_SUPER_MULTI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_MULTI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 13,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_MULTI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_MULTI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_WIFI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 21,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_WIFI_TRAIN",
       "dest_warp_id": "0"
     },
     {
       "x": 3,
       "y": 22,
       "elevation": 0,
-      "dest_map": "MAP_GEAR_STATION_LOBBY",
+      "dest_map": "MAP_PLATFORM_WIFI_TRAIN",
       "dest_warp_id": "0"
     }
   ],

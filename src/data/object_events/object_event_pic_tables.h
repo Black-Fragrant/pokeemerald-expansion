@@ -907,6 +907,38 @@ static const struct SpriteFrameImage sPicTable_BoatRoyalRightHalf[] = {
     obj_frame_tiles(gObjectEventPic_BoatRoyalRightHalf),
 };
 
+static const struct SpriteFrameImage sPicTable_TrainTailLeftHalf[] = {
+    obj_frame_tiles(gObjectEventPic_TrainTailLeftHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainTailRightHalf[] = {
+    obj_frame_tiles(gObjectEventPic_TrainTailRightHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainLeftHalf[] = {
+    obj_frame_tiles(gObjectEventPic_TrainLeftHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainRightHalf[] = {
+    obj_frame_tiles(gObjectEventPic_TrainRightHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainHeadLeftHalf[] = {
+    obj_frame_tiles(gObjectEventPic_TrainHeadLeftHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainHeadRightHalf[] = {
+    obj_frame_tiles(gObjectEventPic_TrainHeadRightHalf),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainTailOpenDoor[] = {
+    obj_frame_tiles(gObjectEventPic_TrainTailOpenDoor),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainHeadOpenDoor[] = {
+    obj_frame_tiles(gObjectEventPic_TrainHeadOpenDoor),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
