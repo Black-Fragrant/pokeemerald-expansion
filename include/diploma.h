@@ -3,5 +3,6 @@
 
 void CB2_ShowDiploma(void);
 void CB2_ShowJuniperLetter(void);
+void CB2_ShowSubwayMap(void);
 
 #endif // GUARD_DIPLOMA_H

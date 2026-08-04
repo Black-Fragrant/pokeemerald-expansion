@@ -201,6 +201,13 @@ void Special_ShowJuniperLetter(void)
     LockPlayerFieldControls();
 }
 
+// New: SubwayMap
+void Special_ShowSubwayMap(void)
+{
+    SetMainCallback2(CB2_ShowSubwayMap);
+    LockPlayerFieldControls();
+}
+
 void Special_ViewWallClock(void)
 {
     gMain.savedCallback = CB2_ReturnToField;

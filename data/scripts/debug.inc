@@ -205,7 +205,7 @@ Debug_EventScript_Script_1_text::
 
 Debug_EventScript_Script_2::
     lock
-    warpsilent MAP_ROUTE3_SOUTH, 46, 4
+    warpsilent MAP_CASTELIA_CITY_LIBERTY_PIER, 15, 15
     waitstate
     end
 
