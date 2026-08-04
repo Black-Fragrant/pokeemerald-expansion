@@ -297,7 +297,19 @@
     "Platform_WifiTrain",
     "Platform_MultiTrain",
     "Platform_SuperMultiTrain",
-    "Platform_TrainToAnvilleTown"
+    "Platform_TrainToAnvilleTown",
+    "InterPlatform_Single",
+    "InterPlatform_SuperSingle",
+    "InterPlatform_Double",
+    "InterPlatform_SuperDouble",
+    "InterPlatform_Multi",
+    "InterPlatform_SuperMulti",
+    "BattleSubway_Single",
+    "BattleSubway_SuperSingle",
+    "BattleSubway_Double",
+    "BattleSubway_SuperDouble",
+    "BattleSubway_Multi",
+    "BattleSubway_SuperMulti"
   ],
   "gMapGroup_AnvilleTown": [
     "AnvilleTown",

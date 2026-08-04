@@ -1708,6 +1708,7 @@ EventScript_SetSail::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+	.include "data/scripts/battle_subway.inc"
 
 	.include "data/maps/NuvemaTown/scripts.inc"
 
@@ -2054,3 +2055,27 @@ EventScript_SetSail::
 	.include "data/maps/AnvilleTown/scripts.inc"
 
 	.include "data/maps/AnvilleTown_BottomRightHouse/scripts.inc"
+
+	.include "data/maps/InterPlatform_SuperDouble/scripts.inc"
+
+	.include "data/maps/InterPlatform_SuperSingle/scripts.inc"
+
+	.include "data/maps/InterPlatform_Double/scripts.inc"
+
+	.include "data/maps/InterPlatform_Multi/scripts.inc"
+
+	.include "data/maps/InterPlatform_Single/scripts.inc"
+
+	.include "data/maps/InterPlatform_SuperMulti/scripts.inc"
+
+	.include "data/maps/BattleSubway_SuperSingle/scripts.inc"
+
+	.include "data/maps/BattleSubway_Multi/scripts.inc"
+
+	.include "data/maps/BattleSubway_Single/scripts.inc"
+
+	.include "data/maps/BattleSubway_Double/scripts.inc"
+
+	.include "data/maps/BattleSubway_SuperMulti/scripts.inc"
+
+	.include "data/maps/BattleSubway_SuperDouble/scripts.inc"

@@ -1,10 +1,2 @@
 mapscripts Platform_SingleTrain_MapScripts {}
 
-script Platform_SingleTrain_EventScript_SubwayMap
-{
-    lock
-	special(Special_ShowSubwayMap)
-    lock
-	release
-	end
-}
