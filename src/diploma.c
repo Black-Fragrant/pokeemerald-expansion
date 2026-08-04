@@ -58,12 +58,20 @@ static const u32 sDiplomaTilemap[] = INCGFX_U32("graphics/diploma/tilemap.bin", 
 static const u32 sDiplomaTiles[] = INCGFX_U32("graphics/diploma/tiles.png", ".4bpp.smol");
 
 // ---------------------------------------------------------
-// Juniper Letter Graphics (your own files)
+// Juniper Letter Graphics
 // ---------------------------------------------------------
 
 static const u32 sJuniperLetterTilemap[] = INCGFX_U32("graphics/juniper_letter/tilemap.bin", ".smolTM");
 static const u32 sJuniperLetterTiles[]   = INCGFX_U32("graphics/juniper_letter/tiles.png", ".4bpp.smol");
 static const u16 sJuniperLetterPal[]     = INCGFX_U16("graphics/juniper_letter/palette.pal", ".gbapal");
+
+// ---------------------------------------------------------
+// Subway Map Graphics
+// ---------------------------------------------------------
+
+static const u32 sSubwayMapTilemap[] = INCGFX_U32("graphics/subway_map/tilemap.bin", ".smolTM");
+static const u32 sSubwayMapTiles[]   = INCGFX_U32("graphics/subway_map/tiles.png", ".4bpp.smol");
+static const u16 sSubwayMapPal[]     = INCGFX_U16("graphics/subway_map/palette.pal", ".gbapal");
 
 // ----------------------------------------
 // Diploma Medal Sprite (64x256, 4 frames)
@@ -227,12 +235,10 @@ void CB2_ShowJuniperLetter(void)
     ResetPaletteFade();
     FreeAllSpritePalettes();
 
-    // TODO: replace with Juniper-specific palettes later
     LoadPalette(sJuniperLetterPal, BG_PLTT_ID(0), 32);
 
     sDiplomaTilemapPtr = Alloc(0x1000);
 
-    // TODO: later we can make Juniper-specific BG init if needed
     InitDiplomaBg();
     InitWindows(sJuniperWinTemplates);
     DeactivateAllTextPrinters();
@@ -242,18 +248,13 @@ void CB2_ShowJuniperLetter(void)
 
     ResetTempTileDataBuffers();
 
-    // TODO: replace with Juniper-specific tiles later
     DecompressAndCopyTileDataToVram(1, &sJuniperLetterTiles, 0, 0, 0);
     while (FreeTempTileDataBuffersIfPossible())
         ;
 
-    // TODO: replace with Juniper-specific tilemap later
     DecompressDataWithHeaderWram(sJuniperLetterTilemap, sDiplomaTilemapPtr);
     CopyBgTilemapBufferToVram(1);
 
-    // NOTE: no medal sprite here
-
-    // TODO: replace with Juniper-specific text function
     DisplayJuniperLetterText();
 
     BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
@@ -262,10 +263,61 @@ void CB2_ShowJuniperLetter(void)
     SetVBlankCallback(VBlankCB);
     SetMainCallback2(MainCB2);
 
-    // TODO: later we’ll make a separate task for longer delay
     CreateTask(Task_JuniperFadeIn, 0);
 }
 
+// New: Subway Map screen
+void CB2_ShowSubwayMap(void)
+{
+    SetVBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0);
+    SetGpuReg(REG_OFFSET_BG3CNT, 0);
+    SetGpuReg(REG_OFFSET_BG2CNT, 0);
+    SetGpuReg(REG_OFFSET_BG1CNT, 0);
+    SetGpuReg(REG_OFFSET_BG0CNT, 0);
+    SetGpuReg(REG_OFFSET_BG3HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG3VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+
+    DmaFill16(3, 0, VRAM, VRAM_SIZE);
+    DmaFill32(3, 0, OAM, OAM_SIZE);
+    DmaFill16(3, 0, PLTT, PLTT_SIZE);
+
+    ScanlineEffect_Stop();
+    ResetTasks();
+    ResetSpriteData();
+    ResetPaletteFade();
+    FreeAllSpritePalettes();
+
+    LoadPalette(sSubwayMapPal, BG_PLTT_ID(0), 32);
+
+    sDiplomaTilemapPtr = Alloc(0x1000);
+
+    InitDiplomaBg();
+
+    ResetTempTileDataBuffers();
+
+    DecompressAndCopyTileDataToVram(1, &sSubwayMapTiles, 0, 0, 0);
+    while (FreeTempTileDataBuffersIfPossible())
+        ;
+
+    DecompressDataWithHeaderWram(sSubwayMapTilemap, sDiplomaTilemapPtr);
+    CopyBgTilemapBufferToVram(1);
+
+    BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+
+    EnableInterrupts(1);
+    SetVBlankCallback(VBlankCB);
+    SetMainCallback2(MainCB2);
+
+    CreateTask(Task_JuniperFadeIn, 0);
+}
 
 static void MainCB2(void)
 {
