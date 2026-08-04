@@ -10612,6 +10612,126 @@
       "secondary_tileset": "gTileset_IndoorAnvilleTown",
       "border_filepath": "data/layouts/AnvilleTown_BottomLeftHouse/border.bin",
       "blockdata_filepath": "data/layouts/AnvilleTown_BottomLeftHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTER_PLATFORM_SUPER_MULTI",
+      "name": "InterPlatform_SuperMulti_Layout",
+      "width": 89,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStationPlatforms",
+      "border_filepath": "data/layouts/InterPlatform_SuperMulti/border.bin",
+      "blockdata_filepath": "data/layouts/InterPlatform_SuperMulti/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTER_PLATFORM_SINGLE",
+      "name": "InterPlatform_Single_Layout",
+      "width": 89,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStationPlatforms",
+      "border_filepath": "data/layouts/InterPlatform_Single/border.bin",
+      "blockdata_filepath": "data/layouts/InterPlatform_Single/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTER_PLATFORM_SUPER_SINGLE",
+      "name": "InterPlatform_SuperSingle_Layout",
+      "width": 89,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStationPlatforms",
+      "border_filepath": "data/layouts/InterPlatform_SuperSingle/border.bin",
+      "blockdata_filepath": "data/layouts/InterPlatform_SuperSingle/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTER_PLATFORM_SUPER_DOUBLE",
+      "name": "InterPlatform_SuperDouble_Layout",
+      "width": 89,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStationPlatforms",
+      "border_filepath": "data/layouts/InterPlatform_SuperDouble/border.bin",
+      "blockdata_filepath": "data/layouts/InterPlatform_SuperDouble/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTER_PLATFORM_MULTI",
+      "name": "InterPlatform_Multi_Layout",
+      "width": 89,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStationPlatforms",
+      "border_filepath": "data/layouts/InterPlatform_Multi/border.bin",
+      "blockdata_filepath": "data/layouts/InterPlatform_Multi/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTER_PLATFORM_DOUBLE",
+      "name": "InterPlatform_Double_Layout",
+      "width": 89,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GearStationPlatforms",
+      "border_filepath": "data/layouts/InterPlatform_Double/border.bin",
+      "blockdata_filepath": "data/layouts/InterPlatform_Double/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_SUBWAY_SUPER_DOUBLE",
+      "name": "BattleSubway_SuperDouble_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleSubway",
+      "border_filepath": "data/layouts/BattleSubway_SuperDouble/border.bin",
+      "blockdata_filepath": "data/layouts/BattleSubway_SuperDouble/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_SUBWAY_MULTI",
+      "name": "BattleSubway_Multi_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleSubway",
+      "border_filepath": "data/layouts/BattleSubway_Multi/border.bin",
+      "blockdata_filepath": "data/layouts/BattleSubway_Multi/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_SUBWAY_SUPER_SINGLE",
+      "name": "BattleSubway_SuperSingle_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleSubway",
+      "border_filepath": "data/layouts/BattleSubway_SuperSingle/border.bin",
+      "blockdata_filepath": "data/layouts/BattleSubway_SuperSingle/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_SUBWAY_SUPER_MULTI",
+      "name": "BattleSubway_SuperMulti_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleSubway",
+      "border_filepath": "data/layouts/BattleSubway_SuperMulti/border.bin",
+      "blockdata_filepath": "data/layouts/BattleSubway_SuperMulti/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_SUBWAY_DOUBLE",
+      "name": "BattleSubway_Double_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleSubway",
+      "border_filepath": "data/layouts/BattleSubway_Double/border.bin",
+      "blockdata_filepath": "data/layouts/BattleSubway_Double/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_SUBWAY_SINGLE",
+      "name": "BattleSubway_Single_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleSubway",
+      "border_filepath": "data/layouts/BattleSubway_Single/border.bin",
+      "blockdata_filepath": "data/layouts/BattleSubway_Single/map.bin"
     }
   ]
 }
