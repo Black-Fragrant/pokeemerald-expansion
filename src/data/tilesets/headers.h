@@ -2394,7 +2394,7 @@ const struct Tileset gTileset_BattleSubway =
     .palettes = gTilesetPalettes_BattleSubway,
     .metatiles = gMetatiles_BattleSubway,
     .metatileAttributes = gMetatileAttributes_BattleSubway,
-    .callback = NULL,
+    .callback = InitTilesetAnim_BattleSubway,
 };
 
 const struct Tileset gTileset_GearStationPlatforms =
