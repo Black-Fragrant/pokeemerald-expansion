@@ -10586,8 +10586,8 @@
     {
       "id": "LAYOUT_ANVILLE_TOWN_TOP_HOUSE",
       "name": "AnvilleTown_TopHouse_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 11,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAnvilleTown",
       "border_filepath": "data/layouts/AnvilleTown_TopHouse/border.bin",
@@ -10596,8 +10596,8 @@
     {
       "id": "LAYOUT_ANVILLE_TOWN_BOTTOM_RIGHT_HOUSE",
       "name": "AnvilleTown_BottomRightHouse_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 11,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAnvilleTown",
       "border_filepath": "data/layouts/AnvilleTown_BottomRightHouse/border.bin",
@@ -10606,8 +10606,8 @@
     {
       "id": "LAYOUT_ANVILLE_TOWN_BOTTOM_LEFT_HOUSE",
       "name": "AnvilleTown_BottomLeftHouse_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 11,
+      "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_IndoorAnvilleTown",
       "border_filepath": "data/layouts/AnvilleTown_BottomLeftHouse/border.bin",
