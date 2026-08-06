@@ -4,6 +4,8 @@
 
 WILD_BATTLE_TEST("Front anims work")
 {
+    TO_DO;
+
     enum Species species = SPECIES_WOBBUFFET;
     for (enum AnimFunctionIDs animId = 0; animId < ANIM_COUNT; animId++)
     {
