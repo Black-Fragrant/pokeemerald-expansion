@@ -46,21 +46,21 @@
       "x": 4,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_ANVILLE_TOWN_TOP_HOUSE",
+      "dest_map": "MAP_ANVILLE_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 5,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_ANVILLE_TOWN_TOP_HOUSE",
+      "dest_map": "MAP_ANVILLE_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 6,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_ANVILLE_TOWN_TOP_HOUSE",
+      "dest_map": "MAP_ANVILLE_TOWN",
       "dest_warp_id": "0"
     }
   ],
