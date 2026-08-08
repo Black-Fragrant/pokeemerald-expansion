@@ -2407,3 +2407,14 @@ const struct Tileset gTileset_GearStationPlatforms =
     .metatileAttributes = gMetatileAttributes_GearStationPlatforms,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GeneralAnville =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GeneralAnville,
+    .palettes = gTilesetPalettes_GeneralAnville,
+    .metatiles = gMetatiles_GeneralAnville,
+    .metatileAttributes = gMetatileAttributes_GeneralAnville,
+    .callback = NULL,
+};

@@ -200,6 +200,7 @@ static const u8 sDoorAnimTiles_Nacrene_House_1[] = INCGFX_U8("graphics/door_anim
 static const u8 sDoorAnimTiles_Castelia_House_1[] = INCGFX_U8("graphics/door_anims/castelia_house_1.png", ".4bpp");
 static const u8 sDoorAnimTiles_Castelia_Indoor_Elevator[] = INCGFX_U8("graphics/door_anims/castelia_indoor_elevator.png", ".4bpp");
 static const u8 sDoorAnimTiles_NimbasaCity_Door[] = INCGFX_U8("graphics/door_anims/nimbasa_city_door.png", ".4bpp");
+static const u8 sDoorAnimTiles_AnvilleTown_Door[] = INCGFX_U8("graphics/door_anims/anville_town.png", ".4bpp");
 
 static const struct DoorAnimFrame sDoorAnimFrames_Open1x1[] = {
     {4, -1},
@@ -378,6 +379,7 @@ static const u8 sDoorAnimPalettes_NacreneHouse_1[] = {12, 12, 12, 12, 12, 12, 12
 static const u8 sDoorAnimPalettes_CasteliaHouse_1[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_Castelia_Indoor_Elevator[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_NimbasaCity_Door[] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_AnvilleTown_Door[] = {10, 10, 10, 10, 10, 10, 10, 10};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -932,6 +934,14 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
         .size = DOOR_SIZE_1x1,
         .tiles = sDoorAnimTiles_PokemonCenter,
         .palettes = sDoorAnimPalettes_PokemonCenter
+    },
+    {
+        .metatileNum = METATILE_AnvilleTown_Door,
+        .tileset = &gTileset_GeneralAnville,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_AnvilleTown_Door,
+        .palettes = sDoorAnimPalettes_AnvilleTown_Door
     },
 #else
     {

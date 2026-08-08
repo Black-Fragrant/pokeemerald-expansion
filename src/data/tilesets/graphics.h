@@ -4140,3 +4140,22 @@ const u16 gTilesetPalettes_GearStationPlatforms[][16] =
 };
 
 const u32 gTilesetTiles_GearStationPlatforms[] = INCBIN_U32("data/tilesets/secondary/gear_station_platforms/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GeneralAnville[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_anville/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GeneralAnville[] = INCBIN_U32("data/tilesets/primary/general_anville/tiles.4bpp.lz");

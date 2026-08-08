@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-    warpsilent MAP_BATTLE_SUBWAY_SINGLE, 2, 3
+    warpsilent MAP_ANVILLE_TOWN, 20, 42
     waitstate
     end
 

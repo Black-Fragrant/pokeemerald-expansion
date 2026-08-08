@@ -10576,9 +10576,9 @@
     {
       "id": "LAYOUT_ANVILLE_TOWN",
       "name": "AnvilleTown_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
+      "width": 64,
+      "height": 56,
+      "primary_tileset": "gTileset_GeneralAnville",
       "secondary_tileset": "gTileset_AnvilleTown",
       "border_filepath": "data/layouts/AnvilleTown/border.bin",
       "blockdata_filepath": "data/layouts/AnvilleTown/map.bin"
