@@ -2498,55 +2498,64 @@ Krookodile
 Level: 64
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JESSICA_4 ===
-Name: JESSICA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
+=== TRAINER_GRUNT_M_NIMBASA_CITY ===
+Name: Grunt
+Class: Team Plasma
+Pic: Plasma Grunt M
+Gender: Male
+Music: Plasma
 Battle Type: Singles
 AI: Check Bad Move
 
-Kecleon
-Level: 41
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Bind
-- Lick
-- Fury Swipes
-- Feint Attack
+Watchog
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Seviper
-Level: 41
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Poison Tail
-- Screech
-- Glare
-- Crunch
+Trubbish
+Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JESSICA_5 ===
-Name: JESSICA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
+=== TRAINER_N_NIMBASA_CITY ===
+Name: N
+Class: PKMN Trainer 2
+Pic: N
+Gender: Male
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Blue
 
-Kecleon
-Level: 44
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-- Bind
-- Lick
-- Fury Swipes
-- Feint Attack
+Sandile
+Level: 22
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Assurance
+- Embargo
+- Sand Tomb
+- Mud-Slap
 
-Seviper
-Level: 44
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-- Poison Tail
-- Screech
-- Glare
-- Crunch
+Scraggy
+Level: 22
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Swagger
+- Brick Break
+- Headbutt
+- Faint Attack
+
+Darumaka
+Level: 22
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Fire Punch
+- Headbutt
+- Facade
+- Uproar
+
+Sigilyph
+Level: 22
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Whirlwind
+- Psybeam
+- Tailwind
+- Air Cutter
 
 === TRAINER_WINSTON_1 ===
 Name: WINSTON

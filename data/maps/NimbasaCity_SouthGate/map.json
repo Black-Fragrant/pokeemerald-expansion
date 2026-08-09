@@ -13,8 +13,189 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [],
-  "coord_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GATE_F",
+      "x": 9,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_SouthGate_EventScript_Receptionist",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_SouthGate_EventScript_Grandpa",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_NCSG_CHEREN",
+      "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+      "x": 5,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIMBASA_CITY_SOUTH_GATE_JUNIPER_CHEREN"
+    },
+    {
+      "local_id": "LOCALID_NCSG_JUNIPER",
+      "graphics_id": "OBJ_EVENT_GFX_JUNIPER",
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIMBASA_CITY_SOUTH_GATE_JUNIPER_CHEREN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 4,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 6,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 7,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE4_NORTH",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 6,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 7,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "4",
+      "script": "NimbasaCity_SouthGate_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "4",
+      "script": "NimbasaCity_SouthGate_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "4",
+      "script": "NimbasaCity_SouthGate_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "4",
+      "script": "NimbasaCity_SouthGate_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "4",
+      "script": "NimbasaCity_SouthGate_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE_4_BIANCA_BATTLE",
+      "var_value": "4",
+      "script": "NimbasaCity_SouthGate_EventScript_Trigger"
+    }
+  ],
   "bg_events": []
 }

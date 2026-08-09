@@ -2024,6 +2024,12 @@ const u16 gItemIconPalette_DragonSkull[] = INCGFX_U16("graphics/items/icon_palet
 const u32 gItemIcon_LibertyPass[] = INCGFX_U32("graphics/items/icons/liberty_pass.png", ".4bpp.smol");
 const u16 gItemIconPalette_LibertyPass[] = INCGFX_U16("graphics/items/icon_palettes/liberty_pass.pal", ".gbapal");
 
+const u32 gItemIcon_VSRecorder[] = INCGFX_U32("graphics/items/icons/vs_recorder.png", ".4bpp.smol");
+const u16 gItemIconPalette_VSRecorder[] = INCGFX_U16("graphics/items/icon_palettes/vs_recorder.pal", ".gbapal");
+
+const u32 gItemIcon_PropCase[] = INCGFX_U32("graphics/items/icons/prop_case.png", ".4bpp.smol");
+const u16 gItemIconPalette_PropCase[] = INCGFX_U16("graphics/items/icon_palettes/prop_case.pal", ".gbapal");
+
 const u32 gItemIcon_AbilityShield[] = INCGFX_U32("graphics/items/icons/ability_shield.png", ".4bpp.smol");
 const u16 gItemIconPalette_AbilityShield[] = INCGFX_U16("graphics/items/icon_palettes/ability_shield.pal", ".gbapal");
 

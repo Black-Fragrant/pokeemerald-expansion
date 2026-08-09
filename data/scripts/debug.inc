@@ -196,7 +196,8 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-    warpsilent MAP_ANVILLE_TOWN, 20, 42
+	setvar VAR_ROUTE_4_BIANCA_BATTLE, 4
+    warpsilent MAP_NIMBASA_CITY_SOUTH_GATE, 5, 12
     waitstate
     end
 

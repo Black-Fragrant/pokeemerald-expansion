@@ -1,1 +1,289 @@
 mapscripts NimbasaCity_SouthGate_MapScripts {}
+
+script NimbasaCity_SouthGate_EventScript_Grandpa
+{
+    msgbox("Look at the electric bulletin board to\n"
+        "see what's happening in Nimbasa City!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_SouthGate_EventScript_Receptionist
+{
+    msgbox("If you've come from Route 4,\n"
+        "Nimbasa City is ahead.\p"
+        "Next! If you've come from Nimbasa City,\n"
+        "Route 4 is ahead!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	special(SpawnCameraObject)
+	call_if_eq (VAR_TEMP_0, 2, NimbasaCity_SouthGate_EventScript_Camera1)
+	call_if_eq (VAR_TEMP_0, 3, NimbasaCity_SouthGate_EventScript_Camera2)
+	call_if_eq (VAR_TEMP_0, 4, NimbasaCity_SouthGate_EventScript_Camera3)
+	call_if_eq (VAR_TEMP_0, 5, NimbasaCity_SouthGate_EventScript_Camera4)
+	call_if_eq (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Camera5)
+	call_if_eq (VAR_TEMP_0, 7, NimbasaCity_SouthGate_EventScript_Camera6)
+	special(RemoveCameraObject)
+	playse(SE_PIN)
+	applymovement(LOCALID_NCSG_JUNIPER, moves(emote_exclamation_mark))
+	waitmovement(0)
+    delay(10)
+    waitse
+    playbgm(MUS_BW_JUNIPER, TRUE)
+    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Professor Juniper: Hello, {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Cheren: Come here.", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	call_if_eq (VAR_TEMP_0, 2, NimbasaCity_SouthGate_EventScript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_0, 3, NimbasaCity_SouthGate_EventScript_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_0, 4, NimbasaCity_SouthGate_EventScript_Trigger_Pos3)
+	call_if_eq (VAR_TEMP_0, 5, NimbasaCity_SouthGate_EventScript_Trigger_Pos4)
+	call_if_eq (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Trigger_Pos3)
+	call_if_eq (VAR_TEMP_0, 7, NimbasaCity_SouthGate_EventScript_Trigger_Pos5)
+	special(RemoveCameraObject)
+    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("Professor Juniper: Elesa called and was\n"
+            "asking me all about Electric-type\l"
+            "Pokémon, and I thought about you guys.\p"
+            "That's why I wanted to see you.\n"
+            "Ta-da! Freebies for you!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Here, Cheren!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+	call_if_le (VAR_TEMP_0, 5, NimbasaCity_SouthGate_EventScript_Trigger_Pos6)
+	call_if_ge (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Trigger_Pos7)
+    delay(10)
+    msgbox("You, too, {PLAYER}.", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_ULTRA_BALL, 10)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
+    closemessage
+    applymovement(LOCALID_NCSG_JUNIPER, moves(lock_facing_direction, walk_up, unlock_facing_direction))
+	waitmovement(0)
+    delay(10)
+    msgbox("If you see a Pokémon that\n"
+            "you want to have join you,\l"
+            "be sure to use a good type of Poké Ball.\p"
+            "Because this could be the\n"
+            "first and last time you see that Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("I know it might seem strange for me\n"
+            "to say this, since I'm the one who asked\l"
+            "you to complete the Pokédex, but please,\l"
+            "remember to enjoy your journey!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NCSG_JUNIPER, moves(face_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("Of course, I'm not saying you can just\n"
+            "neglect the Pokédex. But you know that!\p"
+            "Now, if you'll please excuse me,\n"
+            "I have to go meet Bianca.", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
+    destroy_speech_bubble()
+    closemessage
+	call_if_le (VAR_TEMP_0, 5, NimbasaCity_SouthGate_EventScript_Trigger_Pos8)
+	call_if_ge (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Trigger_Pos9)
+    delay(20)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NCSG_JUNIPER)
+    waitse
+    fadedefaultbgm
+    savebgm(MUS_BW_PASSAGE_TUNNEL)
+    delay(20)
+    msgbox("Cheren: It seems the Professor\n"
+            "gave us the Pokédex as a reason\l"
+            "to send us on a journey.\p"
+            "At least, that's what my mom told me.\p"
+            "They wanted us to go out and see the\n"
+            "world, so my mom, Bianca's mom, and your\l"
+            "mom made a request to Professor Juniper.", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	call_if_le (VAR_TEMP_0, 5, NimbasaCity_SouthGate_EventScript_Trigger_Pos10)
+	call_if_ge (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Trigger_Pos11)
+    delay(10)
+    msgbox("{PLAYER}, what should we do now?\p"
+            "I think I'd like to show the professor my\n"
+            "thanks by going to Route 4 and catching\l"
+            "some Pokémon I haven't yet caught.", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_CHEREN)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	call_if_le (VAR_TEMP_0, 5, NimbasaCity_SouthGate_EventScript_Trigger_Pos12)
+	call_if_ge (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Trigger_Pos13)
+	special(RemoveCameraObject)
+    delay(20)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NCSG_CHEREN)
+    waitse
+    setvar(VAR_ROUTE_4_BIANCA_BATTLE, 5)
+    delay(20)
+    release
+    end
+}
+
+script NimbasaCity_SouthGate_EventScript_Camera1
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 2, walk_right))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Camera2
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Camera3
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Camera4
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Camera5
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Camera6
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2, walk_right, walk_in_place_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_right, walk_in_place_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left, walk_up * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_left, walk_in_place_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos6
+{
+    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_left, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos7
+{
+    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_right, walk_in_place_down))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos8
+{
+    applymovement(LOCALID_PLAYER, moves(delay_16 * 3, walk_in_place_down))
+    applymovement(LOCALID_NCSG_CHEREN, moves(delay_16 * 6, walk_in_place_down))
+    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_left, walk_down * 4, walk_right * 2, walk_down * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos9
+{
+    applymovement(LOCALID_PLAYER, moves(delay_16 * 3, walk_in_place_down))
+    applymovement(LOCALID_NCSG_CHEREN, moves(delay_16 * 6, walk_in_place_down))
+    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_right, walk_down * 4, walk_left * 2, walk_down * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos10
+{
+    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos11
+{
+    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_right))
+	waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos12
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left))
+    applymovement(LOCALID_NCSG_CHEREN, moves(walk_down * 5))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_SouthGate_EventScript_Trigger_Pos13
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
+    applymovement(LOCALID_NCSG_CHEREN, moves(walk_down * 5))
+	waitmovement(0)
+    return
+}

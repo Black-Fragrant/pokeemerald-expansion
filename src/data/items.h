@@ -14146,7 +14146,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_BICYCLE] =
     {
-        .name = ITEM_NAME("Bike"),
+        .name = ITEM_NAME("Bicycle"),
         .price = 0,
         .description = COMPOUND_STRING(
             "A folding bicycle\n"
@@ -14886,36 +14886,36 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CardKey,
     },
 
-    [ITEM_LIFT_KEY] =
+    [ITEM_PROP_CASE] =
     {
-        .name = ITEM_NAME("Lift Key"),
+        .name = ITEM_NAME("Prop Case"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "An elevator key\n"
-            "used in Team\n"
-            "Rocket's Hideout."),
+            "A lovely case to\n"
+            "store various props\n"
+            "for Pokémon to wear."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_LiftKey,
-        .iconPalette = gItemIconPalette_Key,
+        .iconPic = gItemIcon_PropCase,
+        .iconPalette = gItemIconPalette_PropCase,
     },
 
-    [ITEM_SILPH_SCOPE] =
+    [ITEM_VS_RECORDER] =
     {
-        .name = ITEM_NAME("Silph Scope"),
+        .name = ITEM_NAME("Vs. Recorder"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Silph Co's scope\n"
-            "makes unseeable\n"
-            "Pokémon visible."),
+            "A recording device\n"
+            "that records videos\n"
+            "at special facilities."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_SilphScope,
-        .iconPalette = gItemIconPalette_SilphScope,
+        .iconPic = gItemIcon_VSRecorder,
+        .iconPalette = gItemIconPalette_VSRecorder,
     },
 
     [ITEM_XTRANSCEIVER_BLUE] =

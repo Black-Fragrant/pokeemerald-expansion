@@ -300,7 +300,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 	setobjectxyperm LOCALID_RUSTBORO_DEVON_EMPLOYEE, 30, 10
 	setflag FLAG_DEVON_GOODS_STOLEN
 	setvar VAR_PLACEHOLDER, 2
-	setvar VAR_RUSTURF_TUNNEL_STATE, 2
+	setvar VAR_PLACEHOLDER, 2
 	setvar VAR_PLACEHOLDER, 1
 	clearflag FLAG_UNUSED_0xXXX
 	clearflag FLAG_UNUSED_0xXXX

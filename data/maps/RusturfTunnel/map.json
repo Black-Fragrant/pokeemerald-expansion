@@ -189,7 +189,7 @@
       "x": 9,
       "y": 4,
       "elevation": 3,
-      "var": "VAR_RUSTURF_TUNNEL_STATE",
+      "var": "VAR_PLACEHOLDER",
       "var_value": "2",
       "script": "RusturfTunnel_EventScript_AquaGruntBackUp"
     },
@@ -198,7 +198,7 @@
       "x": 9,
       "y": 5,
       "elevation": 3,
-      "var": "VAR_RUSTURF_TUNNEL_STATE",
+      "var": "VAR_PLACEHOLDER",
       "var_value": "2",
       "script": "RusturfTunnel_EventScript_AquaGruntBackUp"
     },

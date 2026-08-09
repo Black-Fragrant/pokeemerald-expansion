@@ -1641,12 +1641,12 @@ u8 TryUpdateRusturfTunnelState(void)
     {
         if (FlagGet(FLAG_UNUSED_0xXXX))
         {
-            VarSet(VAR_RUSTURF_TUNNEL_STATE, 4);
+            VarSet(VAR_PLACEHOLDER, 4);
             return TRUE;
         }
         else if (FlagGet(FLAG_UNUSED_0xXXX))
         {
-            VarSet(VAR_RUSTURF_TUNNEL_STATE, 5);
+            VarSet(VAR_PLACEHOLDER, 5);
             return TRUE;
         }
     }

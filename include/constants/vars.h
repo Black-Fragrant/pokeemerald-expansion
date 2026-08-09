@@ -173,10 +173,10 @@
 #define VAR_CASTELIA_GYM_TRAP_1                          0x4097
 #define VAR_CASTELIA_GYM_TRAP_2                          0x4098
 #define VAR_ROUTE_4_BIANCA_BATTLE                        0x4099
-#define VAR_RUSTURF_TUNNEL_STATE                         0x409A
+#define VAR_VS_RECORDER                                  0x409A
 #define VAR_CASTELIA_GYM_HONEY_WALL_ENTRY                0x409B
 #define VAR_RELIC_CASTLE_STATE                           0x409C
-#define VAR_UNUSED_0x409D                                0x409D // Unused Var
+#define VAR_NIMBASA_STATE                                0x409D
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE      0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
