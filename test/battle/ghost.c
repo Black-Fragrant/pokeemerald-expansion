@@ -56,7 +56,7 @@ GHOST_BATTLE_TEST("Ghost battle: Intro plays correctly (no Silph Scope)")
 GHOST_BATTLE_TEST("Ghost battle: Intro plays correctly (with Silph Scope)")
 {
     RUN_OVERWORLD_SCRIPT(
-        additem ITEM_SILPH_SCOPE;
+        additem ITEM_VS_RECORDER;
     );
 
     GIVEN {
@@ -92,7 +92,7 @@ GHOST_BATTLE_TEST("Ghost battle: player cannot capture ghost (no Silph Scope)")
 GHOST_BATTLE_TEST("Ghost battle: player cannot capture ghost (Marowak)")
 {
     RUN_OVERWORLD_SCRIPT(
-        additem ITEM_SILPH_SCOPE;
+        additem ITEM_VS_RECORDER;
     );
 
     GIVEN {

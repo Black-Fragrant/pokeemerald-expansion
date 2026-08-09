@@ -927,8 +927,8 @@
 #define FLAG_RELIC_CASTLE_FOSSIL                                    0x36F
 #define FLAG_RELIC_CASTLE_WROKER                                    0x370
 #define FLAG_RELIC_CASTLE_B1F_ITEM_REVIVE                           0x371
-#define FLAG_UNUSED_0x372                                           0x372
-#define FLAG_UNUSED_0x373                                           0x373
+#define FLAG_NIMBASA_CITY_GRUNTS                                    0x372
+#define FLAG_NIMBASA_CITY_SOUTH_GATE_JUNIPER_CHEREN                 0x373
 #define FLAG_UNUSED_0x374                                           0x374
 #define FLAG_UNUSED_0x375                                           0x375
 #define FLAG_UNUSED_0x376                                           0x376

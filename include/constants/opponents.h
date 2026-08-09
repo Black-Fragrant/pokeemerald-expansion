@@ -138,8 +138,8 @@
 #define TRAINER_GRUNT_M_RELIC_CASTLE_B4F     131
 #define TRAINER_GRUNT_F_RELIC_CASTLE_B4F     132
 #define TRAINER_GRUNT_M_RELIC_CASTLE_LF      133
-#define TRAINER_JESSICA_4                   134
-#define TRAINER_JESSICA_5                   135
+#define TRAINER_GRUNT_M_NIMBASA_CITY         134
+#define TRAINER_N_NIMBASA_CITY               135
 #define TRAINER_WINSTON_1                   136
 #define TRAINER_MOLLIE                      137
 #define TRAINER_GARRET                      138

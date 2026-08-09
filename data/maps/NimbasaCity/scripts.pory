@@ -1,1 +1,308 @@
 mapscripts NimbasaCity_MapScripts {}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts
+{
+    lock 
+    playbgm(MUS_BW_APPEARS_PLASMA_2, TRUE)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 51, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos1)
+	call_if_eq (VAR_TEMP_0, 52, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos2)
+	call_if_eq (VAR_TEMP_0, 53, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos3)
+	call_if_eq (VAR_TEMP_0, 54, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos4)
+	call_if_eq (VAR_TEMP_0, 55, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos5)
+	call_if_eq (VAR_TEMP_0, 56, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos6)
+	call_if_eq (VAR_TEMP_0, 57, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos7)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(20)
+    msgbox("Team Plasma: Gramps! We know you run\n"
+            "the Day Care!\p"
+            "How do we know?\n"
+            "Because we're Team Plasma!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_GTUNT1)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Team Plasma: We are taking Pokémon away\n"
+            "from people.\p"
+            "Since you work at the Day Care, we figure\n"
+            "you must have a lot of Pokémon!\l"
+            "Hand'em over!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_GTUNT2)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    msgbox("Day-Care Man: What kind of\n"
+            "nonsense is this?!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_DAYCAREMAN)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, moves(walk_in_place_left, delay_16, walk_in_place_right, delay_16, walk_in_place_down, delay_16))
+    waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, moves(emote_exclamation_mark))
+	waitmovement(0)
+    delay(20)
+    waitse
+    applymovement(LOCALID_NIMBASACITY_GTUNT1, moves(delay_8, face_down))
+    applymovement(LOCALID_NIMBASACITY_GTUNT2, moves(delay_16, face_down))
+    applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, moves(walk_fast_down * 2, walk_fast_right * 2))
+    waitmovement(0)
+    delay(10)
+    msgbox("Oh! A Strong-looking Trainer!\n"
+            "Please help me!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_DAYCAREMAN)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NIMBASACITY_GTUNT2, moves(walk_left * 2, walk_in_place_down))
+    waitmovement(0)
+    applymovement(LOCALID_NIMBASACITY_GTUNT1, moves(walk_down))
+    waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Team Plasma: If you're going to get in\n"
+            "our way, we'll take your Pokémon, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_GTUNT2)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NIMBASACITY_GTUNT2, moves(walk_fast_down))
+    waitmovement(0)
+	trainerbattle_no_intro (TRAINER_GRUNT_M_NIMBASA_CITY, text("Plasmaaaa!\nWahhhhh!"))
+    msgbox("Team Plasma: !!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_GTUNT2)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+    applymovement(LOCALID_NIMBASACITY_GTUNT2, moves(lock_facing_direction, walk_slow_up, unlock_facing_direction))
+    waitmovement(0)
+    msgbox("Team Plasma: This went downhill fast!\n"
+            "So I think... We'd better... Ruuuun!\p"
+            "Let's hide out at the amusemenet park!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_GTUNT1)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NIMBASACITY_GTUNT1, moves(walk_fast_right * 2, walk_fast_up * 4))
+    applymovement(LOCALID_NIMBASACITY_GTUNT2, moves(delay_8, walk_fast_right * 3, walk_fast_up * 4))
+    waitmovement(0)
+    removeobject(LOCALID_NIMBASACITY_GTUNT1)
+    removeobject(LOCALID_NIMBASACITY_GTUNT2)
+	fadedefaultbgm
+	savebgm(MUS_NIMBASA_CITY)
+    delay(20)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    waitmovement(0)
+    msgbox("Day-Care Man: Thank you so much!\p"
+            "Please take this as a token\n"
+            "of my gratitude.\p"
+            "It's a brand-new Bike.\n"
+            "I'd always planned on riding around\l"
+            "Nimbasa City...\l"
+            "But I never ended up riding it.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_DAYCAREMAN)
+    destroy_speech_bubble()
+    closemessage
+	showlargeitempic(7, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Bicycle{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
+    delay(120)
+	additem (ITEM_BICYCLE)
+	hidelargeitempic
+    closemessage
+	fadedefaultbgm
+	savebgm(MUS_NIMBASA_CITY)
+	delay(10)
+    msgbox("Day-Care Man: I have a Day Care\n"
+            "on Route 3!\p"
+            "If you have any Pokémon you want\n"
+            "me to raise, please drop them off!\p"
+            "I just came to sightsee, but\n"
+            "I got in a lot of trouble!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_DAYCAREMAN)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_in_place_down))
+    applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, moves(walk_down * 6))
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NIMBASACITY_DAYCAREMAN)
+    waitse
+    delay(20)
+    msgbox("Bianca: Hey, {PLAYER}! Yoo-hoo!", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage
+	playbgm(MUS_BW_BIANCA, TRUE)
+    addobject(LOCALID_NIMBASACITY_BIANCA_ENTRANCE)
+    applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, moves(walk_up * 6))
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+    applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, moves(walk_in_place_left))
+    waitmovement(0)
+	delay(10)
+    msgbox("The professor told me Nimbasa City\n"
+            "has a lot of things to see and do--\p"
+            "the amusement park, Big Stadium,\n"
+            "Small Court, and the Battle Subway!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, moves(face_up, delay_8, face_right, delay_8, face_down, delay_8, face_left))
+    waitmovement(0)
+	delay(10)
+    msgbox("I'm going to go see the Pokémon Musical!\n"
+            "See you later!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_ENTRANCE)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, moves(walk_up * 2, walk_right * 2, walk_up * 4))
+    waitmovement(0)
+    removeobject(LOCALID_NIMBASACITY_BIANCA_ENTRANCE)
+	fadedefaultbgm
+	savebgm(MUS_NIMBASA_CITY)
+    setvar(VAR_NIMBASA_STATE, 1)
+    delay(20)
+    release 
+    end 
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_right * 3, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_right * 2, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_right * 1, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left * 1, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos6
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left * 2, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_TeamPlasmaGrunts_Pos7
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_left * 3, walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_GiveVSRecorder
+{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+    delay(30)
+    waitse
+    playse(SE_EXIT)
+    addobject(LOCALID_NIMBASACITY_ACE_TRAINER)
+    waitse
+    delay(20)
+    msgbox("I won!\n"
+            "Then I lost...", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ACE_TRAINER)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 45, NimbasaCity_EventScript_GiveVSRecorder_Pos1)
+	call_if_eq (VAR_TEMP_0, 46, NimbasaCity_EventScript_GiveVSRecorder_Pos2)
+	call_if_eq (VAR_TEMP_0, 47, NimbasaCity_EventScript_GiveVSRecorder_Pos3)
+    applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_down, walk_in_place_up))
+    waitmovement(0)
+    delay(10)
+    msgbox("Gear Station has trains where\n"
+            "you can battle other Trainers.\l"
+            "The Battle Subway!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ACE_TRAINER)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 45, NimbasaCity_EventScript_GiveVSRecorder_Pos4)
+	call_if_eq (VAR_TEMP_0, 47, NimbasaCity_EventScript_GiveVSRecorder_Pos5)
+    delay(10)
+    msgbox("You're a Trainer, aren't you?\n"
+            "Please just accept this without a word!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ACE_TRAINER)
+    destroy_speech_bubble()
+    closemessage
+	showlargeitempic(8, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Vs. Recorder{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
+    delay(120)
+	additem (ITEM_VS_RECORDER)
+	hidelargeitempic
+    closemessage
+	fadedefaultbgm
+	savebgm(MUS_NIMBASA_CITY)
+	delay(10)
+    msgbox("If you have a Vs. Recorder, you can\n"
+            "record battles with friends or on the\l"
+            "Battle Subway!\p"
+            "Anyway, this woman of mystery will\n"
+            "go somewhere... That's right!\l"
+            "She'll go to the Battle Institute!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ACE_TRAINER)
+    destroy_speech_bubble()
+    closemessage
+	delay(10)
+	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_down * 6))
+	waitmovement(0)
+    removeobject(LOCALID_NIMBASACITY_ACE_TRAINER)
+    setvar(VAR_VS_RECORDER, 1)
+	delay(20)
+    release 
+    end 
+}
+
+script NimbasaCity_EventScript_GiveVSRecorder_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(face_right))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_GiveVSRecorder_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(face_right, lock_facing_direction, walk_left, unlock_facing_direction))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_GiveVSRecorder_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(face_left))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_GiveVSRecorder_Pos4
+{
+	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_in_place_left))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_GiveVSRecorder_Pos5
+{
+	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}

@@ -1736,6 +1736,10 @@ extern const u32 gItemIcon_DragonSkull[];
 extern const u16 gItemIconPalette_DragonSkull[];
 extern const u32 gItemIcon_LibertyPass[];
 extern const u16 gItemIconPalette_LibertyPass[];
+extern const u32 gItemIcon_VSRecorder[];
+extern const u16 gItemIconPalette_VSRecorder[];
+extern const u32 gItemIcon_PropCase[];
+extern const u16 gItemIconPalette_PropCase[];
 
 // GEN IX ITEMS
 extern const u32 gItemIcon_AbilityShield[];

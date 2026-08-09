@@ -1271,7 +1271,7 @@ EventScript_HideMrBriney::
 RusturfTunnel_EventScript_SetRusturfTunnelOpen::
 	removeobject LOCALID_RUSTURF_TUNNEL_WANDAS_BF
 	removeobject LOCALID_RUSTURF_TUNNEL_WANDA
-	setvar VAR_RUSTURF_TUNNEL_STATE, 6
+	setvar VAR_PLACEHOLDER, 6
 	setflag FLAG_RUSTURF_TUNNEL_OPENED
 	return
 

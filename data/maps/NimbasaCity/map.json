@@ -132,8 +132,9 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NIMBASACITY_DAYCAREMAN",
       "graphics_id": "OBJ_EVENT_GFX_GRANDPA",
-      "x": 52,
+      "x": 51,
       "y": 41,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -142,9 +143,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_NIMBASA_CITY_GRUNTS"
     },
     {
+      "local_id": "LOCALID_NIMBASACITY_GTUNT2",
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
       "x": 56,
       "y": 41,
@@ -155,9 +157,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_NIMBASA_CITY_GRUNTS"
     },
     {
+      "local_id": "LOCALID_NIMBASACITY_GTUNT1",
       "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
       "x": 55,
       "y": 40,
@@ -168,14 +171,29 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_NIMBASA_CITY_GRUNTS"
     },
     {
+      "local_id": "LOCALID_NIMBASACITY_ACE_TRAINER",
       "graphics_id": "OBJ_EVENT_GFX_ACE_TRAINER_FEMALE",
       "x": 46,
       "y": 33,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_NIMBASACITY_BIANCA_ENTRANCE",
+      "graphics_id": "OBJ_EVENT_GFX_BIANCA",
+      "x": 55,
+      "y": 49,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -189,22 +207,22 @@
       "x": 53,
       "y": 52,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_NORTH",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_SOUTH_GATE",
+      "dest_warp_id": "6"
     },
     {
       "x": 54,
       "y": 52,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_NORTH",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_NIMBASA_CITY_SOUTH_GATE",
+      "dest_warp_id": "7"
     },
     {
       "x": 55,
       "y": 52,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE4_NORTH",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_NIMBASA_CITY_SOUTH_GATE",
+      "dest_warp_id": "8"
     },
     {
       "x": 30,
@@ -315,12 +333,93 @@
   "coord_events": [
     {
       "type": "trigger",
+      "x": 45,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_VS_RECORDER",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_GiveVSRecorder"
+    },
+    {
+      "type": "trigger",
       "x": 46,
       "y": 34,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_VS_RECORDER",
       "var_value": "0",
-      "script": "NULL"
+      "script": "NimbasaCity_EventScript_GiveVSRecorder"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_VS_RECORDER",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_GiveVSRecorder"
+    },
+    {
+      "type": "trigger",
+      "x": 51,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 53,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 55,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 56,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
+    },
+    {
+      "type": "trigger",
+      "x": 57,
+      "y": 45,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_STATE",
+      "var_value": "0",
+      "script": "NimbasaCity_EventScript_TeamPlasmaGrunts"
     }
   ],
   "bg_events": [
