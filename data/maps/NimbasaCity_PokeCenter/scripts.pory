@@ -1,4 +1,13 @@
-mapscripts NimbasaCity_PokeCenter_MapScripts {}
+mapscripts NimbasaCity_PokeCenter_MapScripts
+{
+	MAP_SCRIPT_ON_TRANSITION : NimbasaCity_PokeCenter_On_Transition
+}
+
+script NimbasaCity_PokeCenter_On_Transition 
+{
+	setrespawn(HEAL_LOCATION_NIMBASA_CITY)
+	end()	
+}
 
 script NimbasaCity_PokeCenter_EventScript_Nurse
 {

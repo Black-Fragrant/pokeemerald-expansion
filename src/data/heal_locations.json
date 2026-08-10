@@ -397,6 +397,14 @@
       "map": "MAP_SKY_ARROW_BRIDGE",
       "x": 16,
       "y": 5
+    },
+    {
+      "id": "HEAL_LOCATION_NIMBASA_CITY",
+      "map": "MAP_NIMBASA_CITY",
+      "x": 30,
+      "y": 41,
+      "respawn_map": "MAP_NIMBASA_CITY_POKE_CENTER",
+      "respawn_npc": "LOCALID_NIMBASA_POKECEN_NURSE"
     }
   ]
 }
