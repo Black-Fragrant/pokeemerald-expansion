@@ -1,1 +1,27 @@
 mapscripts NimbasaCity_RightBuilding_1F_MapScripts {}
+
+script NimbasaCity_NCRB1F_EventScript_Krokorok
+{   
+	lock
+	faceplayer
+	playmoncry(SPECIES_KROKOROK, CRY_MODE_NORMAL)
+	msgbox("Nuha nuha nuhaha!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script NimbasaCity_NCRB1F_EventScript_AceTrainerMale
+{
+    msgbox("Shiny Krokorok...\n"
+        "I wonder what colors they are!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_NCRB1F_EventScript_AceTrainerFemale
+{
+    msgbox("People say Shiny Pokémon\n"
+        "look like they're gleaming when\l"
+        "they come out of the grass!", MSGBOX_NPC, TRUE)
+    end
+}

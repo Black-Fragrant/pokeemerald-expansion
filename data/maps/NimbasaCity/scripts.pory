@@ -1,5 +1,131 @@
 mapscripts NimbasaCity_MapScripts {}
 
+script NimbasaCity_EventScript_BattleInstituteSign
+{
+    msgbox("Battle Institute!\n"
+            "Test your Trainer Skills!", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_CitySign
+{
+    msgbox("Nimbasa City\n"
+            "Lit by the Flash of Lightning!", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_BattleSubwaySign
+{
+    msgbox("Battle Subway\n"
+            "Battle and Ride!", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_SmallCourtSign
+{
+    msgbox("Small Court\n"
+            "Tennis and Basketball", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_BigStadiumSign
+{
+    msgbox("Big Stadium\n"
+            "Baseball, Football, and Soccer", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_MusicalTheater
+{
+    msgbox("Musical Theater", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_TrainerTipsEast
+{
+    msgbox("Trainer Tips!\p"
+        "The Musical Theater is always\n"
+        "looking for participants!\p"
+        "You might get more wonderful Props\n"
+        "if you participate repeatedly!", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_TrainerTipsWest
+{
+    msgbox("Trainer Tips!\p"
+        "Games occur at specific times in\n"
+        "Big Stadium and Small Court!\p"
+        "You might be able to have a Pokémon\n"
+        "battle with your favorite athlete!", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_EventScript_Peirro
+{
+    msgbox("As it happens, Nimbasa City is a major\n"
+        "destination for Pokémon battles.\p"
+        "There are Pokémon Trainers in\n"
+        "lots of these buildings.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_Housewife
+{
+    msgbox("Nimbasa's Pokémon Gym is\n"
+        "in the amusement park!\p"
+        "No doubt it has a surprising gimmick!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_Schoolgirl
+{
+    msgbox("I was a good girl, so I got to\n"
+        "go to the amusement park!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_Girl
+{
+    msgbox("Ferris wheel! Ferris wheel!\n"
+        "I love Ferris wheels!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_Backpacker
+{
+    msgbox("There are performers\n"
+        "crowding around Route 5.\p"
+        "Seeing all the fun the Pokémon and\n"
+        "Trainers are having fills me with energy!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_FootballPlayer
+{
+    msgbox("We athletes and our Pokémon\n"
+        "show excellent teamwork!\p"
+        "You can see it at Big Stadium and\n"
+        "Small Court, so please stop by!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_BeardGuy
+{
+    msgbox("Coming to flashy Nimbasa City makes\n"
+        "me feel light and happy, as if I were\l"
+        "holding an Air Balloon.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_EventScript_Roughneck
+{
+    msgbox("Leisurely trips by train...\p"
+        "Riding from Gear Station to\l"
+        "Anville Town feels a bit like a dream.", MSGBOX_NPC, TRUE)
+    end
+}
+
 script NimbasaCity_EventScript_TeamPlasmaGrunts
 {
     lock 
@@ -266,6 +392,7 @@ script NimbasaCity_EventScript_GiveVSRecorder
 	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_down * 6))
 	waitmovement(0)
     removeobject(LOCALID_NIMBASACITY_ACE_TRAINER)
+    clearflag(FLAG_NIMBASA_CITY_BATTLE_INSTITUTE_WOMAN)
     setvar(VAR_VS_RECORDER, 1)
 	delay(20)
     release 

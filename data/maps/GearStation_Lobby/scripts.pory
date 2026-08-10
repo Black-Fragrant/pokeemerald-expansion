@@ -1,1 +1,35 @@
 mapscripts GearStation_Lobby_MapScripts {}
+
+script GearStation_Lobby_EventScript_RecordMachine
+{
+    lock
+    msgbox("Under Construction", MSGBOX_TRANSPARENT, FALSE)
+    closemessage
+    release 
+    end
+}
+
+script GearStation_Lobby_EventScript_ConductorTop
+{
+    msgbox("The Battle Subway!\p"
+        "As the name suggests, it's the subway\n"
+        "where Trainers wage battles.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script GearStation_Lobby_EventScript_ConductorBottom
+{
+    msgbox("You can take the Battle Subway from\n"
+        "Gear Station!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script GearStation_Lobby_EventScript_Blackbelt
+{
+    msgbox("The Battle Subway has seven lines\n"
+        "in total!\p"
+        "But I heard that the only lines you can\n"
+        "take at the beginning are the Single,\l"
+        "Double, or Multi Trains!", MSGBOX_NPC, TRUE)
+    end
+}

@@ -929,10 +929,10 @@
 #define FLAG_RELIC_CASTLE_B1F_ITEM_REVIVE                           0x371
 #define FLAG_NIMBASA_CITY_GRUNTS                                    0x372
 #define FLAG_NIMBASA_CITY_SOUTH_GATE_JUNIPER_CHEREN                 0x373
-#define FLAG_UNUSED_0x374                                           0x374
-#define FLAG_UNUSED_0x375                                           0x375
-#define FLAG_UNUSED_0x376                                           0x376
-#define FLAG_UNUSED_0x377                                           0x377
+#define FLAG_NIMBASA_CITY_HM_STRENGTH                               0x374
+#define FLAG_NIMBASA_CITY_SOOTHE_BELL                               0x375
+#define FLAG_NIMBASA_CITY_SUN_STONE                                 0x376
+#define FLAG_NIMBASA_CITY_BATTLE_INSTITUTE_WOMAN                    0x377
 #define FLAG_UNUSED_0x378                                           0x378
 #define FLAG_UNUSED_0x379                                           0x379
 #define FLAG_UNUSED_0x37A                                           0x37A

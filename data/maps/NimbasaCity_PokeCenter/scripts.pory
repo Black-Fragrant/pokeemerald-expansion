@@ -1,1 +1,86 @@
 mapscripts NimbasaCity_PokeCenter_MapScripts {}
+
+script NimbasaCity_PokeCenter_EventScript_Nurse
+{
+	setvar(VAR_0x800B, LOCALID_CASTELIA_POKECEN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
+script NimbasaCity_PokeCenter_EventScript_WifiAssistant
+{
+	msgbox("Sorry, we're getting things ready.\n"
+			"Please come back later.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCity_PokeCenter_EventScript_Clerk1
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(NimbasaCity_Mart_Items)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script NimbasaCity_PokeCenter_EventScript_Clerk2
+{
+	lock
+	faceplayer
+	message("Hello.\p"
+			"Welcome!\n"
+			"May I help you?")
+	waitmessage
+	pokemart(0)
+	msgbox("Please come again!", MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart NimbasaCity_Mart_Items {
+	ITEM_TM_FRUSTRATION
+	ITEM_TM_RETURN
+	ITEM_TM_THUNDER_WAVE
+	ITEM_TM_GYRO_BALL
+	ITEM_TM_LIGHT_SCREEN
+	ITEM_TM_SAFEGUARD
+	ITEM_TM_REFLECT
+}
+
+script NimbasaCity_PokeCenter_EventScript_Gentleman
+{
+	msgbox("Nimbasa City rocks!\p"
+        "There was a guy who gave me an HM\n"
+        "called Strength. For free!\p"
+        "He's somewhere near this Pokémon\l"
+        "Center, so why don't you go look for him?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_PokeCenter_EventScript_RichGirl
+{
+	msgbox("My beauteous Minccino!\n"
+			"I met it on Route 5.\p"
+			"I'm pretty sure it will be popular\n"
+			"in musicals!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_PokeCenter_EventScript_Minccino
+{
+	lock
+	faceplayer
+	playmoncry(SPECIES_MINCCINO, CRY_MODE_NORMAL)
+	msgbox("Chulululucha", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}

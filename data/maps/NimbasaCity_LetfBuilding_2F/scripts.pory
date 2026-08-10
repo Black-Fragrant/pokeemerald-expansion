@@ -1,1 +1,66 @@
 mapscripts NimbasaCity_LetfBuilding_2F_MapScripts {}
+
+script NimbasaCity_LFB2F_EventScript_Richboy
+{
+    msgbox("A sports game, like baseball or foorball,\n"
+        "starts at a certain time every day.\p"
+        "That's in Big Stadium!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_LFB2F_EventScript_Richgirl
+{
+    msgbox("In the Small Court, you can find games of\n"
+        "basketball and tennis.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_LFB2F_EventScript_Lady
+{
+    lock 
+    faceplayer
+    goto_if_set(FLAG_NIMBASA_CITY_SOOTHE_BELL, NimbasaCity_LFB2F_EventScript_ObtainedSootheBell)
+    msgbox("Oh...?", MSGBOX_DEFAULT, TRUE, LOCALID_LFB2F_LADY)
+	specialvar(VAR_RESULT, GetLeadMonFriendshipScore)
+	goto_if_ge(VAR_RESULT, FRIENDSHIP_70_TO_99, NimbasaCity_LFB2F_EventScript_GiveSootheBell)
+	goto(NimbasaCity_LFB2F_EventScript_NotFriendly)
+}
+
+script NimbasaCity_LFB2F_EventScript_NotFriendly
+{
+    bufferleadmonspeciesname(STR_VAR_1)
+    msgbox("Oh, my!\p"
+            "Your {STR_VAR_1}'s feelings\n"
+            "toward you seem to be neutral.\p"
+            "If you can win its friendship,\n"
+            "I will give you something nice!", MSGBOX_DEFAULT, FALSE, LOCALID_LFB2F_LADY)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_LFB2F_EventScript_GiveSootheBell
+{
+    bufferleadmonspeciesname(STR_VAR_1)
+    msgbox("Oh, my!\p"
+            "Your {STR_VAR_1} seems to like you!\p"
+            "That's so nice to see. Makes me want\n"
+            "to give you this!", MSGBOX_DEFAULT, FALSE, LOCALID_LFB2F_LADY)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_SOOTHE_BELL, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_NIMBASA_CITY_SOOTHE_BELL)
+    goto(NimbasaCity_LFB2F_EventScript_ObtainedSootheBell)
+}
+
+script NimbasaCity_LFB2F_EventScript_ObtainedSootheBell
+{
+    msgbox("If a Pokémon holds a Soothe Bell, it will\n"
+            "become more friendly to you.", MSGBOX_DEFAULT, TRUE, LOCALID_LFB2F_LADY)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}

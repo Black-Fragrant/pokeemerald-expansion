@@ -196,8 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-	setvar VAR_ROUTE_4_BIANCA_BATTLE, 4
-    warpsilent MAP_NIMBASA_CITY_SOUTH_GATE, 5, 12
+    warpsilent MAP_NACRENE_CITY_BOTTOM_RIGHT_BUILDING, 8, 12
     waitstate
     end
 
@@ -206,8 +205,7 @@ Debug_EventScript_Script_1_text::
 
 Debug_EventScript_Script_2::
     lock
-    warpsilent MAP_CASTELIA_CITY_LIBERTY_PIER, 15, 15
-    waitstate
+    clearflag FLAG_NIMBASA_CITY_BATTLE_INSTITUTE_WOMAN
     end
 
 Debug_EventScript_Script_3::
