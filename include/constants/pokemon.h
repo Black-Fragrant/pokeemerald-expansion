@@ -205,10 +205,11 @@ enum OtIdMethod
 #define FRIENDSHIP_NONE        0
 #define FRIENDSHIP_1_TO_49     1
 #define FRIENDSHIP_50_TO_99    2
-#define FRIENDSHIP_100_TO_149  3
-#define FRIENDSHIP_150_TO_199  4
-#define FRIENDSHIP_200_TO_254  5
-#define FRIENDSHIP_MAX         6
+#define FRIENDSHIP_70_TO_99    3
+#define FRIENDSHIP_100_TO_149  4
+#define FRIENDSHIP_150_TO_199  5
+#define FRIENDSHIP_200_TO_254  6
+#define FRIENDSHIP_MAX         7
 
 // Constants for GetBattlerAffectionHearts (based on friendship value)
 #define AFFECTION_NO_HEARTS     0 // 0-79 friendship

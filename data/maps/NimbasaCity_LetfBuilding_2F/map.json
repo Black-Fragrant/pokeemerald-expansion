@@ -13,8 +13,57 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_LFB2F_EventScript_Richboy",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_RICH_GIRL",
+      "x": 2,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_LFB2F_EventScript_Richgirl",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_LFB2F_LADY",
+      "graphics_id": "OBJ_EVENT_GFX_LADY",
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_LFB2F_EventScript_Lady",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_NIMBASA_CITY_LETF_BUILDING_1F",
+      "dest_warp_id": "1"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

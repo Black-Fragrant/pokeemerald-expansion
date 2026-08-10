@@ -24,7 +24,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_Peirro",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_Roughneck",
       "flag": "0"
     },
     {
@@ -50,7 +50,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_Backpacker",
       "flag": "0"
     },
     {
@@ -63,7 +63,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_FootballPlayer",
       "flag": "0"
     },
     {
@@ -76,12 +76,12 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_BeardGuy",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIANCA",
-      "x": 58,
+      "x": 57,
       "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -102,7 +102,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_Housewife",
       "flag": "0"
     },
     {
@@ -115,7 +115,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_Schoolgirl",
       "flag": "0"
     },
     {
@@ -128,7 +128,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_EventScript_Girl",
       "flag": "0"
     },
     {
@@ -228,8 +228,8 @@
       "x": 30,
       "y": 40,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_POKE_CENTER",
+      "dest_warp_id": "1"
     },
     {
       "x": 23,
@@ -242,14 +242,14 @@
       "x": 23,
       "y": 31,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_map": "MAP_NIMBASA_CITY_LETF_BUILDING_1F",
       "dest_warp_id": "0"
     },
     {
       "x": 30,
       "y": 31,
       "elevation": 0,
-      "dest_map": "MAP_NIMBASA_CITY",
+      "dest_map": "MAP_NIMBASA_CITY_RIGHT_BUILDING_1F",
       "dest_warp_id": "0"
     },
     {
@@ -428,64 +428,64 @@
       "x": 11,
       "y": 13,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_TrainerTipsWest"
     },
     {
       "type": "sign",
       "x": 19,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_SmallCourtSign"
     },
     {
       "type": "sign",
       "x": 37,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_BigStadiumSign"
     },
     {
       "type": "sign",
       "x": 59,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_MusicalTheater"
     },
     {
       "type": "sign",
       "x": 68,
       "y": 13,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_TrainerTipsEast"
     },
     {
       "type": "sign",
       "x": 49,
       "y": 39,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_BattleSubwaySign"
     },
     {
       "type": "sign",
       "x": 53,
       "y": 39,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_CitySign"
     },
     {
       "type": "sign",
       "x": 26,
       "y": 41,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_EventScript_BattleInstituteSign"
     }
   ]
 }

@@ -12572,7 +12572,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_LIGHT_SCREEN] =
     {
         .name = ITEM_NAME("TM16"),
-        .price = 3000,
+        .price = 30000,
         .description = COMPOUND_STRING(
             "Creates a wall of\n"
             "light that reduces\n"
@@ -12628,7 +12628,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_SAFEGUARD] =
     {
         .name = ITEM_NAME("TM20"),
-        .price = 3000,
+        .price = 30000,
         .description = COMPOUND_STRING(
             "Prevents status\n"
             "conditions for\n"
@@ -12642,7 +12642,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_FRUSTRATION] =
     {
         .name = ITEM_NAME("TM21"),
-        .price = 1000,
+        .price = 10000,
         .description = COMPOUND_STRING(
             "The less the user\n"
             "likes you, the more\n"
@@ -12726,7 +12726,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_RETURN] =
     {
         .name = ITEM_NAME("TM27"),
-        .price = 1000,
+        .price = 10000,
         .description = COMPOUND_STRING(
             "The more the user\n"
             "likes you, the more\n"
@@ -12810,7 +12810,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_REFLECT] =
     {
         .name = ITEM_NAME("TM33"),
-        .price = 3000,
+        .price = 30000,
         .description = COMPOUND_STRING(
             "Creates a wall of\n"
             "light that weakens\n"
@@ -13370,7 +13370,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_THUNDER_WAVE] =
     {
         .name = ITEM_NAME("TM73"),
-        .price = 3000,
+        .price = 10000,
         .description = COMPOUND_STRING(
             "Paralyzes the foe\n"
             "with a weak jolt\n"
@@ -13384,7 +13384,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TM_GYRO_BALL] =
     {
         .name = ITEM_NAME("TM74"),
-        .price = 3000,
+        .price = 10000,
         .description = COMPOUND_STRING(
             "Does more damage\n"
             "the slower the\n"

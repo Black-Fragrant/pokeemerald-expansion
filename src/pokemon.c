@@ -6534,6 +6534,8 @@ u32 GetMonFriendshipScore(struct Pokemon *pokemon)
         return FRIENDSHIP_150_TO_199;
     if (friendshipScore >= 100)
         return FRIENDSHIP_100_TO_149;
+    if (friendshipScore >= 70)
+        return FRIENDSHIP_70_TO_99;
     if (friendshipScore >= 50)
         return FRIENDSHIP_50_TO_99;
     if (friendshipScore >= 1)

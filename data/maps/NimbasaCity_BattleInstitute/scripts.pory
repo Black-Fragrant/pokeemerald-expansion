@@ -1,1 +1,98 @@
 mapscripts NimbasaCity_BattleInstitute_MapScripts {}
+
+script NimbasaCity_BattleInstitute_EventScript_AceTrainerFemale
+{
+    msgbox("The Battle Test...\p"
+            "This woman of mystery will show you\n"
+            "the ropes.\p"
+            "Battle effectively and keep your\n"
+            "Pokémon from fainting!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_BattleInstitute_EventScript_RecordMachine
+{
+    lock
+    msgbox("There is no test result to display now.", MSGBOX_TRANSPARENT, FALSE)
+    closemessage
+    release 
+    end
+}
+
+script NimbasaCity_BattleInstitute_EventScript_Scientist
+{
+    lock
+    faceplayer
+    msgbox("I will judge your battles in a\n"
+        "Battle Test!\p"
+        "What would you like to do?", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLEINSTITUTE_SCIENTIST)
+    goto(NimbasaCity_BattleInstitute_EventScript_Select)
+}
+
+script NimbasaCity_BattleInstitute_EventScript_Select
+{
+	dynmultichoice(20, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Challenge",
+        "Info",
+        "Download",
+        "Cancel")
+    destroy_speech_bubble()
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_BattleInstitute_EventScript_Challenge)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_BattleInstitute_EventScript_Info)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_BattleInstitute_EventScript_Download)}
+    goto(NimbasaCity_BattleInstitute_EventScript_No)
+}
+
+script NimbasaCity_BattleInstitute_EventScript_Challenge
+{
+    msgbox("I am sorry...\p"
+            "It may be too early for you to challenge\n"
+            "a Battle Test.\p"
+            "Please come back after you finish\n"
+            "your journey and build your strength.", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLEINSTITUTE_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_BattleInstitute_EventScript_Info
+{
+    msgbox("You will take a Battle Test using\n"
+            "three Pokémon for Single Battles\l"
+            "and four Pokémon for Double Battles.\p"
+            "You may not use duplicate Pokémon or\n"
+            "held items.\p"
+            "For these battles, all Pokémon will be\n"
+            "set to Lv. 50.\p"
+            "You will battle against five Trainers in a\n"
+            "row, and I will be your judge.\p"
+            "What would you like to do?", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLEINSTITUTE_SCIENTIST)
+    goto(NimbasaCity_BattleInstitute_EventScript_Select)
+}
+
+script NimbasaCity_BattleInstitute_EventScript_Download
+{
+    msgbox("Would you like to download\n"
+        "a special Battle Test?", MSGBOX_YESNO, TRUE, LOCALID_BATTLEINSTITUTE_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    goto_if_eq(VAR_RESULT, FALSE, NimbasaCity_BattleInstitute_EventScript_No)
+	call(Common_EventScript_SaveGame)
+	goto_if_eq(VAR_RESULT, 0, NimbasaCity_BattleInstitute_EventScript_No)
+    msgbox("It appears that you have not\n"
+            "enabled internet connection...", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLEINSTITUTE_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_BattleInstitute_EventScript_No)
+}
+
+script NimbasaCity_BattleInstitute_EventScript_No
+{
+    msgbox("See you again.", MSGBOX_DEFAULT, TRUE, LOCALID_BATTLEINSTITUTE_SCIENTIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}

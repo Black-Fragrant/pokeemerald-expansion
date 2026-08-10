@@ -1,1 +1,46 @@
 mapscripts NimbasaCity_RightBuilding_2F_MapScripts {}
+
+script NimbasaCity_NCRB2F_EventScript_AceTrainerMale
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_NIMBASA_CITY_SUN_STONE, NimbasaCity_NCRB2F_EventScript_ObtainedSunStone)
+    msgbox("If I compared the glow of Nimbasa to\n"
+            "something, it would be the sun!\p"
+            "Yes, the sun!\n"
+            "It inspires me to give you this!", MSGBOX_DEFAULT, TRUE, LOCALID_NCRB2F_ACETRAINER)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_SUN_STONE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_NIMBASA_CITY_SUN_STONE)
+    goto(NimbasaCity_NCRB2F_EventScript_ObtainedSunStone)
+}
+
+script NimbasaCity_NCRB2F_EventScript_ObtainedSunStone
+{
+    msgbox("Sun Stones are stones that make certain\n"
+            "Pokémon evolve!\p"
+            "I gave it to Cottonee as a present!", MSGBOX_DEFAULT, TRUE, LOCALID_NCRB2F_ACETRAINER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_NCRB2F_EventScript_Grandpa
+{
+    msgbox("When a Pokémon evolves, it gets stronger\n"
+            "and its appearance changes significantly.\p"
+            "A Pokémon that you keep from evolving\n"
+            "will learn moves more quickly!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_NCRB2F_EventScript_Girl
+{
+    msgbox("If you love your Pokémon, even if it\n"
+        "changes its appearance, you'll stay\l"
+        "connected with your Pokémon.", MSGBOX_NPC, TRUE)
+    end
+}

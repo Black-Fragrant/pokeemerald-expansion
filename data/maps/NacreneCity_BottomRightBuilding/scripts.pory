@@ -33,8 +33,8 @@ script NacreneCity_BRB_EventScript_Girl
     destroy_speech_bubble()
     closemessage
 	specialvar(VAR_RESULT, GetLeadMonFriendshipScore)
-	goto_if_ge(VAR_RESULT, 100, NacreneCity_BRB_EventScript_Girl_100_255)
-	goto_if_ge(VAR_RESULT, 50, NacreneCity_BRB_EventScript_Girl_50_100)
+	goto_if_ge(VAR_RESULT, FRIENDSHIP_100_TO_149, NacreneCity_BRB_EventScript_Girl_100_255)
+	goto_if_ge(VAR_RESULT, FRIENDSHIP_50_TO_99, NacreneCity_BRB_EventScript_Girl_50_100)
     msgbox("Hmmm...\n"
        "It may still take some time.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BRB_GIRL)
     destroy_speech_bubble()

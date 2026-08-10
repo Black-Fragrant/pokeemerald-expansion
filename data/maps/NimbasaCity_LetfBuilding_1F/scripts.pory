@@ -1,1 +1,49 @@
 mapscripts NimbasaCity_LetfBuilding_1F_MapScripts {}
+
+script NimbasaCity_LFB1F_EventScript_AceTrainer
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_NIMBASA_CITY_HM_STRENGTH, NimbasaCity_LFB1F_EventScript_ObtainedStrength)
+    msgbox("You! Experience feeling like a\n"
+            "powerful man!", MSGBOX_DEFAULT, TRUE, LOCALID_LFB1F_ACE_TRAINER)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_HM_STRENGTH, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_NIMBASA_CITY_HM_STRENGTH)
+    goto(NimbasaCity_LFB1F_EventScript_ObtainedStrength)
+}
+
+script NimbasaCity_LFB1F_EventScript_ObtainedStrength
+{
+    msgbox("A Pokémon that can use Strength can\n"
+            "push a big rock even when it is\l"
+            "not fighting!\p"
+            "If you want to push some rocks around,\n"
+            "go to Route 16!\p"
+            "Thump! Thump!", MSGBOX_DEFAULT, TRUE, LOCALID_LFB1F_ACE_TRAINER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_LFB1F_EventScript_Lady
+{
+    msgbox("Have you seen the musical?\p"
+            "My own Pokémon up on the stage...\p"
+            "That is an indescribably\n"
+            "moving experience.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_LFB1F_EventScript_Housewife
+{
+    msgbox("Castelia City is the heart of business.\n"
+        "Nimbasa City is the heart of leisure.\p"
+        "Various people and Pokémon gather\n"
+        "all over Unova, and the region is\l"
+        "becoming more and more lively.", MSGBOX_NPC, TRUE)
+    end
+}
