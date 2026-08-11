@@ -103,12 +103,6 @@ const u16 gTrainerPalette_BugManiac[] = INCGFX_U16("graphics/trainers/front_pics
 const u32 gTrainerFrontPic_PokemonBreederM[] = INCGFX_U32("graphics/trainers/front_pics/pokemon_breeder_m.png", ".4bpp.smol");
 const u16 gTrainerPalette_PokemonBreederM[] = INCGFX_U16("graphics/trainers/front_pics/pokemon_breeder_m.png", ".gbapal");
 
-const u32 gTrainerFrontPic_PsychicM[] = INCGFX_U32("graphics/trainers/front_pics/psychic_m.png", ".4bpp.smol");
-const u16 gTrainerPalette_PsychicM[] = INCGFX_U16("graphics/trainers/front_pics/psychic_m.png", ".gbapal");
-
-const u32 gTrainerFrontPic_PsychicF[] = INCGFX_U32("graphics/trainers/front_pics/psychic_f.png", ".4bpp.smol");
-const u16 gTrainerPalette_PsychicF[] = INCGFX_U16("graphics/trainers/front_pics/psychic_f.png", ".gbapal");
-
 const u32 gTrainerFrontPic_Gentleman[] = INCGFX_U32("graphics/trainers/front_pics/gentleman.png", ".4bpp.smol");
 const u16 gTrainerPalette_Gentleman[] = INCGFX_U16("graphics/trainers/front_pics/gentleman.png", ".gbapal");
 
@@ -631,6 +625,27 @@ const u16 gTrainerPalette_PsychicMBW[] = INCGFX_U16("graphics/trainers/front_pic
 const u32 gTrainerFrontPic_PsychicFBW[] = INCGFX_U32("graphics/trainers/front_pics/psychic_f_bw.png", ".4bpp.smol");
 const u16 gTrainerPalette_PsychicFBW[] = INCGFX_U16("graphics/trainers/front_pics/psychic_f_bw.png", ".gbapal");
 
+const u32 gTrainerFrontPic_Striker[] = INCGFX_U32("graphics/trainers/front_pics/striker.png", ".4bpp.smol");
+const u16 gTrainerPalette_Striker[] = INCGFX_U16("graphics/trainers/front_pics/striker.png", ".gbapal");
+
+const u32 gTrainerFrontPic_Linebacker[] = INCGFX_U32("graphics/trainers/front_pics/linebacker.png", ".4bpp.smol");
+const u16 gTrainerPalette_Linebacker[] = INCGFX_U16("graphics/trainers/front_pics/linebacker.png", ".gbapal");
+
+const u32 gTrainerFrontPic_Infielder[] = INCGFX_U32("graphics/trainers/front_pics/infielder.png", ".4bpp.smol");
+const u16 gTrainerPalette_Infielder[] = INCGFX_U16("graphics/trainers/front_pics/infielder.png", ".gbapal");
+
+const u32 gTrainerFrontPic_Smasher[] = INCGFX_U32("graphics/trainers/front_pics/smasher.png", ".4bpp.smol");
+const u16 gTrainerPalette_Smasher[] = INCGFX_U16("graphics/trainers/front_pics/smasher.png", ".gbapal");
+
+const u32 gTrainerFrontPic_Hoopster[] = INCGFX_U32("graphics/trainers/front_pics/hoopster.png", ".4bpp.smol");
+const u16 gTrainerPalette_Hoopster[] = INCGFX_U16("graphics/trainers/front_pics/hoopster.png", ".gbapal");
+
+const u32 gTrainerFrontPic_BackersM[] = INCGFX_U32("graphics/trainers/front_pics/backers_m.png", ".4bpp.smol");
+const u16 gTrainerPalette_BackersM[] = INCGFX_U16("graphics/trainers/front_pics/backers_m.png", ".gbapal");
+
+const u32 gTrainerFrontPic_BackersF[] = INCGFX_U32("graphics/trainers/front_pics/backers_f.png", ".4bpp.smol");
+const u16 gTrainerPalette_BackersF[] = INCGFX_U16("graphics/trainers/front_pics/backers_f.png", ".gbapal");
+
 const u8 gTrainerBackPic_Hilbert[] = INCGFX_U8("graphics/trainers/back_pics/hilbert.png", ".4bpp");
 const u8 gTrainerBackPic_Hilda[] = INCGFX_U8("graphics/trainers/back_pics/hilda.png", ".4bpp");
 const u8 gTrainerBackPic_Juniper[] = INCGFX_U8("graphics/trainers/back_pics/juniper.png", ".4bpp");
@@ -926,11 +941,11 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     },
     [TRAINER_PIC_PSYCHIC_M] =
     {
-        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicM, gTrainerPalette_PsychicM),
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicMBW, gTrainerPalette_PsychicMBW),
     },
     [TRAINER_PIC_PSYCHIC_F] =
     {
-        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicF, gTrainerPalette_PsychicF),
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicFBW, gTrainerPalette_PsychicFBW),
     },
     [TRAINER_PIC_GENTLEMAN] =
     {
@@ -1580,6 +1595,34 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PSYCHIC_F_BW] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicFBW, gTrainerPalette_PsychicFBW),
+    },
+    [TRAINER_PIC_STRIKER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Striker, gTrainerPalette_Striker),
+    },
+    [TRAINER_PIC_LINEBACKER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Linebacker, gTrainerPalette_Linebacker),
+    },
+    [TRAINER_PIC_INFIELDER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Infielder, gTrainerPalette_Infielder),
+    },
+    [TRAINER_PIC_SMASHER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Smasher, gTrainerPalette_Smasher),
+    },
+    [TRAINER_PIC_HOOPSTER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Hoopster, gTrainerPalette_Hoopster),
+    },
+    [TRAINER_PIC_BACKERS_M] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_BackersM, gTrainerPalette_BackersM),
+    },
+    [TRAINER_PIC_BACKERS_F] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_BackersF, gTrainerPalette_BackersF),
     },
     // end fireBlack
 };

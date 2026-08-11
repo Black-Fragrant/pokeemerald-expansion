@@ -2557,452 +2557,486 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Tailwind
 - Air Cutter
 
-=== TRAINER_WINSTON_1 ===
-Name: WINSTON
-Class: Rich Boy
-Pic: Rich Boy
+=== TRAINER_INFIELDER_ALEX_34 ===
+Name: Alex
+Class: Infielder
+Pic: Infielder
 Gender: Male
-Music: Rich
-Items: Full Restore
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Zigzagoon @ Nugget
-Level: 7
+Pansear
+Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_MOLLIE ===
-Name: MOLLIE
-Class: Expert
-Pic: Expert F
-Gender: Female
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Whiscash
-Level: 33
+Pansage
+Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Meditite
-Level: 33
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Panpour
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GARRET ===
-Name: GARRET
-Class: Rich Boy
-Pic: Rich Boy
+=== TRAINER_INFIELDER_ALEX_56 ===
+Name: Alex
+Class: Infielder
+Pic: Infielder
 Gender: Male
-Music: Rich
-Items: Full Restore
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Azumarill @ Nugget
-Level: 45
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_WINSTON_2 ===
-Name: WINSTON
-Class: Rich Boy
-Pic: Rich Boy
-Gender: Male
-Music: Rich
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move
-
-Linoone @ Nugget
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_WINSTON_3 ===
-Name: WINSTON
-Class: Rich Boy
-Pic: Rich Boy
-Gender: Male
-Music: Rich
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move
-
-Linoone @ Nugget
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_WINSTON_4 ===
-Name: WINSTON
-Class: Rich Boy
-Pic: Rich Boy
-Gender: Male
-Music: Rich
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move
-
-Linoone @ Nugget
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_WINSTON_5 ===
-Name: WINSTON
-Class: Rich Boy
-Pic: Rich Boy
-Gender: Male
-Music: Rich
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move
-
-Linoone @ Nugget
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Fury Swipes
-- Mud Sport
-- Odor Sleuth
-- Sand Attack
-
-=== TRAINER_STEVE_1 ===
-Name: STEVE
-Class: Pokemaniac
-Pic: Pokemaniac
-Gender: Male
-Music: Suspicious
-Battle Type: Singles
-AI: Check Bad Move
-
-Aron
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_THALIA_1 ===
-Name: THALIA
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move
-
-Wailmer
-Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Horsea
-Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_MARK ===
-Name: MARK
-Class: Pokemaniac
-Pic: Pokemaniac
-Gender: Male
-Music: Suspicious
-Battle Type: Singles
-AI: Check Bad Move
-
-Rhyhorn
+Pansear
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_MT_CHIMNEY_1 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt F
-Gender: Female
-Music: Magma
-Battle Type: Singles
-AI: Check Bad Move
-
-Numel
-Level: 20
+Pansage
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_STEVE_2 ===
-Name: STEVE
-Class: Pokemaniac
-Pic: Pokemaniac
+Panpour
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_INFIELDER_ALEX_78 ===
+Name: Alex
+Class: Infielder
+Pic: Infielder
 Gender: Male
-Music: Suspicious
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Lairon
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Simipour
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_STEVE_3 ===
-Name: STEVE
-Class: Pokemaniac
-Pic: Pokemaniac
+Simisage
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Simisear
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKERS_AMY_EIRA_56 ===
+Name: Amy & Eira
+Class: Backers
+Pic: Backers F
+Gender: Female
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Panpour
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pansear
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKERS_AMY_EIRA_78 ===
+Name: Amy & Eira
+Class: Backers
+Pic: Backers F
+Gender: Female
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Simipour
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Simisear
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_INFIELDER_CONNOR_78 ===
+Name: Connor
+Class: Infielder
+Pic: Infielder
 Gender: Male
-Music: Suspicious
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Lairon
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Sandile
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Rhyhorn
-Level: 29
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Unfezant
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_STEVE_4 ===
-Name: STEVE
-Class: Pokemaniac
-Pic: Pokemaniac
+=== TRAINER_STRIKER_TONY_34 ===
+Name: Tony
+Class: Striker
+Pic: Striker
 Gender: Male
-Music: Suspicious
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Lairon
+Ducklett
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_STRIKER_TONY_56 ===
+Name: Tony
+Class: Striker
+Pic: Striker
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Ducklett
+Level: 33
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_STRIKER_TONY_78 ===
+Name: Tony
+Class: Striker
+Pic: Striker
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Swanna
+Level: 41
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKERS_KAY_ALI_56 ===
+Name: Kay & Ali
+Class: Backers
+Pic: Backers F
+Gender: Female
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Ducklett
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Ducklett
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKERS_KAY_ALI_78 ===
+Name: Kay & Ali
+Class: Backers
+Pic: Backers F
+Gender: Female
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Swanna
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Swanna
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_STRIKER_ROBERTO_78 ===
+Name: Roberto
+Class: Striker
+Pic: Striker
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Liepard
+Level: 41
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LINEBACKER_DAN_34 ===
+Name: Dan
+Class: Linebacker
+Pic: Linebacker
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Darumaka
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Timburr
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LINEBACKER_DAN_56 ===
+Name: Dan
+Class: Linebacker
+Pic: Linebacker
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Darumaka
 Level: 32
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Rhyhorn
+Gurdurr
 Level: 32
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-=== TRAINER_STEVE_5 ===
-Name: STEVE
-Class: Pokemaniac
-Pic: Pokemaniac
-Gender: Male
-Music: Suspicious
-Battle Type: Singles
-AI: Check Bad Move
-
-Aggron
-Level: 35
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Rhydon
-Level: 35
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-=== TRAINER_LUIS ===
-Name: LUIS
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DOMINIK ===
-Name: DOMINIK
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_LINEBACKER_DAN_78 ===
+Name: Dan
+Class: Linebacker
+Pic: Linebacker
 Gender: Male
-Music: Swimmer
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Tentacool
-Level: 26
+Gurdurr
+Level: 40
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DOUGLAS ===
-Name: DOUGLAS
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Tentacool
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Tentacool
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_DARRIN ===
-Name: DARRIN
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Tentacool
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Wingull
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Tentacool
-Level: 24
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_TONY_1 ===
-Name: TONY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 26
+Darmanitan
+Level: 40
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JEROME ===
-Name: JEROME
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_BACKERS_HAWK_DAR_56 ===
+Name: Hawk & Dar
+Class: Backers
+Pic: Backers M
 Gender: Male
-Music: Swimmer
-Battle Type: Singles
+Music: Funny
+Battle Type: Doubles
 AI: Check Bad Move
 
-Tentacruel
-Level: 26
+Darumaka
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_MATTHEW ===
-Name: MATTHEW
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 26
+Darumaka
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DAVID ===
-Name: DAVID
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_BACKERS_HAWK_DAR_78 ===
+Name: Hawk & Dar
+Class: Backers
+Pic: Backers M
 Gender: Male
-Music: Swimmer
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Darmanitan
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Darmanitan
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LINEBACKER_BOB_78 ===
+Name: Bob
+Class: Linebacker
+Pic: Linebacker
+Gender: Male
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Tentacool
+Sawk
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Throh
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SMASHER_ELENA_34 ===
+Name: Elena
+Class: Smasher
+Pic: Smasher
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Blitzle
 Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Carvanha
+=== TRAINER_SMASHER_ELENA_56 ===
+Name: Elena
+Class: Smasher
+Pic: Smasher
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Zebstrika
+Level: 33
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SMASHER_ELENA_78 ===
+Name: Elena
+Class: Smasher
+Pic: Smasher
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Zebstrika
+Level: 41
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKERS_JOE_ROSS_56 ===
+Name: Joe & Ross
+Class: Backers
+Pic: Backers M
+Gender: Male
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Zebstrika
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Zebstrika
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKERS_JOE_ROSS_78 ===
+Name: Joe & Ross
+Class: Backers
+Pic: Backers M
+Gender: Male
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Zebstrika
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Zebstrika
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_SMASHER_ASPEN_78 ===
+Name: Aspen
+Class: Smasher
+Pic: Smasher
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Whimsicott
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lilligant
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_HOOPSTER_BOBBY_34 ===
+Name: Bobby
+Class: Hoopster
+Pic: Hoopster
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Whirlipede
 Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SPENCER ===
-Name: SPENCER
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_HOOPSTER_BOBBY_56 ===
+Name: Bobby
+Class: Hoopster
+Pic: Hoopster
 Gender: Male
-Music: Swimmer
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Tentacool
+Scolipede
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Wingull
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_ROLAND ===
-Name: ROLAND
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_HOOPSTER_BOBBY_78 ===
+Name: Bobby
+Class: Hoopster
+Pic: Hoopster
 Gender: Male
-Music: Swimmer
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Carvanha
-Level: 34
+Scolipede
+Level: 41
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_NOLEN ===
-Name: NOLEN
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_BACKERS_MASA_YAS_56 ===
+Name: Masa & Yas
+Class: Backers
+Pic: Backers M
 Gender: Male
-Music: Swimmer
-Battle Type: Singles
+Music: Funny
+Battle Type: Doubles
 AI: Check Bad Move
 
-Tentacruel
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_STAN ===
-Name: STAN
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Horsea
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BARRY ===
-Name: BARRY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Gyarados
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_DEAN ===
-Name: DEAN
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
+Scolipede
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Wingull
+Scolipede
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Carvanha
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_RODNEY ===
-Name: RODNEY
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_BACKERS_MASA_YAS_78 ===
+Name: Masa & Yas
+Class: Backers
+Pic: Backers M
 Gender: Male
-Music: Swimmer
+Music: Funny
+Battle Type: Doubles
+AI: Check Bad Move
+
+Scolipede
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Boldore
+Level: 39
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_HOOPSTER_JOHN_78 ===
+Name: John
+Class: Hoopster
+Pic: Hoopster
+Gender: Male
+Music: Hiker
 Battle Type: Singles
 AI: Check Bad Move
 
-Gyarados
-Level: 34
+Stoutland
+Level: 40
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Boldore
+Level: 40
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RICHARD ===
@@ -13287,7 +13321,7 @@ Nuzleaf
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DEANDRE ===
+=== TRAINER_DUMMYDRE ===
 Name: DEANDRE
 Class: Youngster
 Pic: Youngster
