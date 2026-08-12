@@ -593,6 +593,9 @@ const u16 gObjectEventPal_Looker[] = INCGFX_U16("graphics/object_events/palettes
 const u32 gObjectEventPic_MineWorker[] = INCGFX_U32("graphics/object_events/pics/people/mine_worker.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_MineWorker[] = INCGFX_U16("graphics/object_events/palettes/mine_worker.pal", ".gbapal");
 
+const u32 gObjectEventPic_Worker[] = INCGFX_U32("graphics/object_events/pics/people/worker.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_Worker[] = INCGFX_U16("graphics/object_events/palettes/worker.pal", ".gbapal");
+
 const u32 gObjectEventPic_Mother[] = INCGFX_U32("graphics/object_events/pics/people/mother.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPal_Mother[] = INCGFX_U16("graphics/object_events/palettes/mother.pal", ".gbapal");
 

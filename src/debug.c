@@ -1955,6 +1955,13 @@ void DebugMenu_CalculateTime(struct ScriptContext *ctx)
 
 void DebugMenu_CalculateTimeOfDay(struct ScriptContext *ctx)
 {
+    // Refresh RTC values
+    RtcCalcLocalTime();
+
+    // Store the NUMERICAL hour (0–23)
+    VarSet(VAR_TIME_OF_DAY, gLocalTime.hours);
+
+    // If you still want the period string, keep this:
     enum TimeOfDay timeOfDay = GetTimeOfDay();
     switch (timeOfDay)
     {
@@ -1965,7 +1972,7 @@ void DebugMenu_CalculateTimeOfDay(struct ScriptContext *ctx)
         StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[timeOfDay]);
         break;
     case TIMES_OF_DAY_COUNT:
-            break;
+        break;
     }
 }
 

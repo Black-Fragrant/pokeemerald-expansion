@@ -1,1 +1,249 @@
-mapscripts NimbasaCity_BaseballField_MapScripts {}
+mapscripts NimbasaCity_BaseballField_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_BaseballField_Lobby_On_Transition
+}
+
+script NimbasaCity_BaseballField_Lobby_On_Transition
+{
+    call_if_unset(FLAG_BADGE07_GET, NimbasaCity_BaseballField_EventScript_HideNPC2)
+    call_if_unset(FLAG_BADGE05_GET, NimbasaCity_BaseballField_EventScript_HideNPC1)
+    end
+}
+
+script NimbasaCity_BaseballField_EventScript_HideNPC1
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_BaseballField_EventScript_HideNPC2
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_BaseballField_EventScript_Alex
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_INFIELDER_ALEX_34, NimbasaCity_BaseballField_EventScript_Alex_Defeated_3)
+    goto_if_defeated(TRAINER_INFIELDER_ALEX_56, NimbasaCity_BaseballField_EventScript_Alex_Defeated_2)
+    goto_if_defeated(TRAINER_INFIELDER_ALEX_78, NimbasaCity_BaseballField_EventScript_Alex_Defeated)
+    goto_if_unset(FLAG_BADGE05_GET, NimbasaCity_BaseballField_EventScript_Alex_3)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_BaseballField_EventScript_Alex_2)
+	trainerbattle_single(TRAINER_INFIELDER_ALEX_78,
+	text("I am stronger than ever.\n"
+        "I will work out today, too!!"),
+	text("I got worked over."))
+    goto(NimbasaCity_BaseballField_EventScript_Alex_Defeated)
+}
+
+script NimbasaCity_BaseballField_EventScript_Alex_Defeated
+{
+    msgbox("A swing and a miss...\n"
+        "I can't keep up with your strength!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Alex_2
+{
+	trainerbattle_single(TRAINER_INFIELDER_ALEX_56,
+	text("I am quite strong.\n"
+        "I will work out today, too!"),
+	text("I... I got worked over."))
+    goto(NimbasaCity_BaseballField_EventScript_Alex_Defeated_2)
+}
+
+script NimbasaCity_BaseballField_EventScript_Alex_Defeated_2
+{
+    msgbox("Your strength!\n"
+        "You pack quite a punch!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Alex_3
+{
+	trainerbattle_single(TRAINER_INFIELDER_ALEX_34,
+	text("I'm a little bit strong.\n"
+        "I will work out!"),
+	text("I got worked over..."))
+    goto(NimbasaCity_BaseballField_EventScript_Alex_Defeated_3)
+}
+
+script NimbasaCity_BaseballField_EventScript_Alex_Defeated_3
+{
+    msgbox("You're quite strong.\n"
+        "You have left the Little League!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Ami
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_AMI_EIRA_56, NimbasaCity_BaseballField_EventScript_Ami_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_AMI_EIRA_78, NimbasaCity_BaseballField_EventScript_Ami_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_BaseballField_EventScript_Ami_2)
+    trainerbattle_double(TRAINER_BACKERS_AMI_EIRA_78,
+	text("Hit a home run!"),
+	text("Ami: We're slammed.\n"
+        "Eira: I'm going home."),
+	text("A one-on-two battle is\n"
+        "too funky!"))
+    goto(NimbasaCity_BaseballField_EventScript_Ami_Defeated)
+}
+
+script NimbasaCity_BaseballField_EventScript_Ami_Defeated
+{
+    msgbox("Elesa's fashion sense\n"
+        "is funky, too.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Ami_2
+{
+    trainerbattle_double(TRAINER_BACKERS_AMI_EIRA_56,
+	text("Which do you like better,\n"
+        "tennis or basketball?"),
+	text("Ami: The game ended\n"
+        "before I knew what was going on.\p"
+        "Eira: The combination of you\n"
+        "and your Pokémon is great!"),
+	text("What? You have only one\n"
+        "Pokémon that can fight?"))
+    goto(NimbasaCity_BaseballField_EventScript_Ami_Defeated_2)
+}
+
+script NimbasaCity_BaseballField_EventScript_Ami_Defeated_2
+{
+    msgbox("I love both tennis and basketball!\p"
+        "I can't choose just one of them, just\n"
+        "like I can't choose my favorite Pokémon.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Eira
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_AMI_EIRA_56, NimbasaCity_BaseballField_EventScript_Eira_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_AMI_EIRA_78, NimbasaCity_BaseballField_EventScript_Eira_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_BaseballField_EventScript_Eira_2)
+    trainerbattle_double(TRAINER_BACKERS_AMI_EIRA_78,
+	text("Hey, what does “long ball” mean?\n"
+        "What I heard is\l"
+        "it means a home run."),
+	text("Ami: We're slammed.\n"
+        "Eira: I'm going home."),
+	text("We two battle together, so\n"
+        "you need two Pokémon!"))
+    goto(NimbasaCity_BaseballField_EventScript_Eira_Defeated)
+}
+
+script NimbasaCity_BaseballField_EventScript_Eira_Defeated
+{
+    msgbox("What I heard is\n"
+        "it means a home run.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Eira_2
+{
+    trainerbattle_double(TRAINER_BACKERS_AMI_EIRA_56,
+	text("We are always together!\n"
+        "Our combination play must be great!"),
+	text("Ami: The game ended\n"
+        "before I knew what was going on.\p"
+        "Eira: The combination of you\n"
+        "and your Pokémon is great!"),
+	text("You have only one\n"
+        "healthy Pokémon...?"))
+    goto(NimbasaCity_BaseballField_EventScript_Eira_Defeated_2)
+}
+
+script NimbasaCity_BaseballField_EventScript_Eira_Defeated_2
+{
+    msgbox("Be in sync with your partner,\n"
+        "and with your Pokémon, too.\n"
+        "Tag Battles are tough!\p"
+        "But if you are in sync,\n"
+        "it will be very exciting!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_Connor
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_INFIELDER_CONNOR_78, NimbasaCity_BaseballField_EventScript_Connor_Defeated)
+	trainerbattle_single(TRAINER_INFIELDER_CONNOR_78,
+	text("Hey!\n"
+        "Hey, let's practice together!\p"
+        "I have to warn you--I will go all out\n"
+        "even if we are just practicing!"),
+	text("I was no match for you...\n"
+        "There is always someone better."))
+    goto(NimbasaCity_BaseballField_EventScript_Connor_Defeated)
+}
+
+script NimbasaCity_BaseballField_EventScript_Connor_Defeated
+{
+    msgbox("I promise you!\p"
+    "I will learn from this experience\n"
+    "and become an even better player!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_1
+{
+    msgbox("I give 100 percent of my energy all the\n"
+        "time! That is the only thing I can do.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_2
+{
+    msgbox("What I brag about is my bat!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_3
+{
+    msgbox("It's not bad to grow up.\p"
+        "But it's bad to forget what it felt like\n"
+        "to be a child.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_4
+{
+    msgbox("I have baseball, and I have Pokémon...\n"
+        "How happy I am!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_5
+{
+    msgbox("To be good at something, you have to do\n"
+        "it repeatedly, day after day after day.\p"
+        "That's how you get results.\n"
+        "Otherwise, you won't get better at it.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_6
+{
+    msgbox("If you don't swing a bat, you can't hit\n"
+        "a ball.\p"
+        "If you don't do things, you won't fail...\n"
+        "but you won't succeed, either.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BaseballField_EventScript_BaseballPlayer_7
+{
+    msgbox("When I was a kid, I played catch with\n"
+        "my Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+

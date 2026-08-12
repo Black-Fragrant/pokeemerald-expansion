@@ -1,1 +1,377 @@
-mapscripts NimbasaCity_FootballField_MapScripts {}
+mapscripts NimbasaCity_FootballField_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_FootballField_Lobby_On_Transition
+}
+
+script NimbasaCity_FootballField_Lobby_On_Transition
+{
+    call_if_unset(FLAG_BADGE07_GET, NimbasaCity_FootballField_EventScript_HideNPC2)
+    call_if_unset(FLAG_BADGE05_GET, NimbasaCity_FootballField_EventScript_HideNPC1)
+    end
+}
+
+script NimbasaCity_FootballField_EventScript_HideNPC1
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_FootballField_EventScript_HideNPC2
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_FootballField_EventScript_Dan
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_LINEBACKER_DAN_34, NimbasaCity_FootballField_EventScript_Dan_Defeated_3)
+    goto_if_defeated(TRAINER_LINEBACKER_DAN_56, NimbasaCity_FootballField_EventScript_Dan_Defeated_2)
+    goto_if_defeated(TRAINER_LINEBACKER_DAN_78, NimbasaCity_FootballField_EventScript_Dan_Defeated)
+    goto_if_unset(FLAG_BADGE05_GET, NimbasaCity_FootballField_EventScript_Dan_3)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_FootballField_EventScript_Dan_2)
+	trainerbattle_single(TRAINER_LINEBACKER_DAN_78,
+	text("POWER!!!\p"
+        "With my ripped muscles,\n"
+        "I will overcome everything!"),
+	text("I still don't have\n"
+        "enough muscles...?!"))
+    goto(NimbasaCity_FootballField_EventScript_Dan_Defeated)
+}
+
+script NimbasaCity_FootballField_EventScript_Dan_Defeated
+{
+    msgbox("Maybe I should change\n"
+        "my training regimen...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Dan_2
+{
+	trainerbattle_single(TRAINER_LINEBACKER_DAN_56,
+	text("POWER!!\p"
+        "If you have power that nobody can beat,\n"
+        "you can win both Pokémon battles\l"
+        "and football games!"),
+	text("I...still don't have enough power?"))
+    goto(NimbasaCity_FootballField_EventScript_Dan_Defeated_2)
+}
+
+script NimbasaCity_FootballField_EventScript_Dan_Defeated_2
+{
+    msgbox("Mmmm... Maybe I should\n"
+        "train more...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Dan_3
+{
+	trainerbattle_single(TRAINER_LINEBACKER_DAN_34,
+	text("POWER!\p"
+        "Power is essential for both\n"
+        "Pokémon and football!"),
+	text("Didn't I have enough power...?"))
+    goto(NimbasaCity_FootballField_EventScript_Dan_Defeated_3)
+}
+
+script NimbasaCity_FootballField_EventScript_Dan_Defeated_3
+{
+    msgbox("I am training to be the very best\n"
+        "with my Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Hawk
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_HAWK_DAR_56, NimbasaCity_FootballField_EventScript_Hawk_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_HAWK_DAR_78, NimbasaCity_FootballField_EventScript_Hawk_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_FootballField_EventScript_Hawk_2)
+    trainerbattle_double(TRAINER_BACKERS_HAWK_DAR_78,
+	text("Look!\n"
+        "My defense is magnificent!"),
+	text("Hawk: It's strange. When professionals\n"
+        "are playing, it looks so easy...\p"
+        "Dar: I guess we cannot play\n"
+        "quite as well as the professionals..."),
+	text("DE-fense! DE-fense!"))
+    goto(NimbasaCity_FootballField_EventScript_Hawk_Defeated)
+}
+
+script NimbasaCity_FootballField_EventScript_Hawk_Defeated
+{
+    msgbox("Rock-solid defense!\n"
+        "That's a real thrill in football!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Hawk_2
+{
+    trainerbattle_double(TRAINER_BACKERS_HAWK_DAR_56,
+	text("Watching a practice makes you feel\n"
+        "that you are stronger, too,\l"
+        "doesn't it?\l"
+        "So let's have a battle!"),
+	text("Hawk: ...I could not\n"
+        "do it well at all.\p"
+        "Dar: ...I could not\n"
+        "do it right at all."),
+	text("We cannot have\n"
+        "a one-on-two battle."))
+    goto(NimbasaCity_FootballField_EventScript_Hawk_Defeated_2)
+}
+
+script NimbasaCity_FootballField_EventScript_Hawk_Defeated_2
+{
+    msgbox("They can do even the hardest things\n"
+        "as if they were so simple...\p"
+        "That's the great thing\n"
+        "about professionals.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Dar
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_HAWK_DAR_56, NimbasaCity_FootballField_EventScript_Dar_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_HAWK_DAR_78, NimbasaCity_FootballField_EventScript_Dar_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_FootballField_EventScript_Dar_2)
+    trainerbattle_double(TRAINER_BACKERS_HAWK_DAR_78,
+	text("Look!\n"
+        "My magnificent offense!"),
+	text("Hawk: It's strange. When professionals\n"
+        "are playing, it looks so easy...\p"
+        "Dar: I guess we cannot play\n"
+        "quite as well as the professionals..."),
+	text("Offffffense!"))
+    goto(NimbasaCity_FootballField_EventScript_Dar_Defeated)
+}
+
+script NimbasaCity_FootballField_EventScript_Dar_Defeated
+{
+    msgbox("Offense that smashes in every direction!\n"
+        "That's a real thrill in football!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Dar_2
+{
+    trainerbattle_double(TRAINER_BACKERS_HAWK_DAR_56,
+	text("We were watching various team sports,\n"
+        "and we wanted to fight as a duo, too!"),
+	text("Hawk: ...I could not\n"
+        "do it well at all.\p"
+        "Dar: ...I could not\n"
+        "do it right at all."),
+	text("We would like to have\n"
+        "a Pokémon battle as a duo."))
+    goto(NimbasaCity_FootballField_EventScript_Dar_Defeated_2)
+}
+
+script NimbasaCity_FootballField_EventScript_Dar_Defeated_2
+{
+    msgbox("Playing as a team is difficult.\p"
+        "We could do more great things\n"
+        "if we could understand what\l"
+        "other people were thinking!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Bob
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_LINEBACKER_BOB_78, NimbasaCity_FootballField_EventScript_Bob_Defeated)
+	trainerbattle_single(TRAINER_LINEBACKER_BOB_78,
+	text("Kids! Please cooperate with the\n"
+        "physical therapy for me and my Pokémon!"),
+	text("My tackle was supposed to crush\n"
+        "even Rock-type Pokémon..."))
+    goto(NimbasaCity_FootballField_EventScript_Bob_Defeated)
+}
+
+script NimbasaCity_FootballField_EventScript_Bob_Defeated
+{
+    msgbox("I was injured in a rough game, so\n"
+        "I am undergoing some physical therapy.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_1
+{
+    lock
+    msgbox("Athletes who score points, and athletes\n"
+        "who support them...\p"
+        "Determining their different roles is the\n"
+        "key to building a team!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_1)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_2
+{
+    lock
+    msgbox("Football is a fun sport that is divided\n"
+        "into offense and defense.", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_2)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_3
+{
+    lock
+    msgbox("OK! I will defend to the end with moves\n"
+        "like Protect and Detect!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_3)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_4
+{
+    lock
+    msgbox("I've trained and built up my muscles\n"
+        "by tackling Pokémon!\p"
+        "Nothing can move me!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_4)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_5
+{
+    lock
+    msgbox("The helmet and pads weigh\n"
+        "15 to 18 pounds!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_5)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_6
+{
+    lock
+    msgbox("His... Those eyes...\p"
+        "It looks like he's coming\n"
+        "right at me!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_6)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_7
+{
+    lock
+    msgbox("My favorite moves?\p"
+        "...Hmm.\n"
+        "I'd say Tackle and Take Down.", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_7)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_8
+{
+    lock
+    msgbox("Reading your opponent's attack and\n"
+        "deciding your next move...\p"
+        "Both Pokémon battles and football have\n"
+        "the same thrill!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_8)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_9
+{
+    lock
+    msgbox("The appeal of football?\n"
+        "Let me see...\p"
+        "First, just watch a game without thinking\n"
+        "about the rules!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_9)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_10
+{
+    lock
+    msgbox("I'll protect my team with my whole body\n"
+        "to avoid our opponents' interference!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_10)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_11
+{
+    lock
+    msgbox("In football, the quarterback is the\n"
+        "athlete who decides a strategy and\l"
+        "carries it out.\p"
+        "He's kind of like a Pokémon Trainer!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_11)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_12
+{
+    lock
+    msgbox("In football, you have to learn each and\n"
+        "every formation by heart!", MSGBOX_DEFAULT, TRUE, LOCALID_NCFF_FP_12)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_13
+{
+    msgbox("The ball used in football is oval-shaped\n"
+        "and hard to throw, isn't it?\p"
+        "But once you get the hang of it, you can\n"
+        "throw it perfectly!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_14
+{
+    msgbox("I am a greeeeeat secret weapon!\p"
+        "The only problem is, I am so secret that\n"
+        "I've never been in a game...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_FootballPlayer_15
+{
+    msgbox("Yoo-hoo! Pass me the ball!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_FootballField_EventScript_Gentleman
+{
+    msgbox("Bodies crashing into other bodies!\n"
+        "Go, go, go!\p"
+        "I am the owner. That's what\n"
+        "I like to see.", MSGBOX_NPC, TRUE)
+	end()
+}
+

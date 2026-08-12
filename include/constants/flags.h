@@ -933,8 +933,8 @@
 #define FLAG_NIMBASA_CITY_SOOTHE_BELL                               0x375
 #define FLAG_NIMBASA_CITY_SUN_STONE                                 0x376
 #define FLAG_NIMBASA_CITY_BATTLE_INSTITUTE_WOMAN                    0x377
-#define FLAG_UNUSED_0x378                                           0x378
-#define FLAG_UNUSED_0x379                                           0x379
+#define FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING                  0x378
+#define FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING                  0x379
 #define FLAG_UNUSED_0x37A                                           0x37A
 #define FLAG_UNUSED_0x37B                                           0x37B
 #define FLAG_UNUSED_0x37C                                           0x37C
@@ -1576,7 +1576,7 @@
 #define FLAG_DAILY_CASTELIACONE                     (DAILY_FLAGS_START + 0x5)
 #define FLAG_DAILY_STUDIO_CASTELIA_REROLL           (DAILY_FLAGS_START + 0x6)
 #define FLAG_DAILY_CASTELIA_MASSAGE                 (DAILY_FLAGS_START + 0x7)
-#define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag
+#define FLAG_DAILY_RESET_STADIUM_TRAINER            (DAILY_FLAGS_START + 0x8)
 #define FLAG_UNUSED_0x929                           (DAILY_FLAGS_START + 0x9)  // Unused Flag
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
 #define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)

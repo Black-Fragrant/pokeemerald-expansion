@@ -143,8 +143,8 @@
 #define TRAINER_INFIELDER_ALEX_34            136
 #define TRAINER_INFIELDER_ALEX_56            137
 #define TRAINER_INFIELDER_ALEX_78            138
-#define TRAINER_BACKERS_AMY_EIRA_56          139
-#define TRAINER_BACKERS_AMY_EIRA_78          140
+#define TRAINER_BACKERS_AMI_EIRA_56          139
+#define TRAINER_BACKERS_AMI_EIRA_78          140
 #define TRAINER_INFIELDER_CONNOR_78          141
 #define TRAINER_STRIKER_TONY_34              142
 #define TRAINER_STRIKER_TONY_56              143
