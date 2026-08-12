@@ -1415,7 +1415,7 @@ Name: Mickey
 Class: Dancer
 Pic: Dancer
 Gender: Male
-Music: Clerk
+Music: Dancer
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -1428,7 +1428,7 @@ Name: Edmond
 Class: Dancer
 Pic: Dancer
 Gender: Male
-Music: Clerk
+Music: Dancer
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -1441,7 +1441,7 @@ Name: Raymond
 Class: Dancer
 Pic: Dancer
 Gender: Male
-Music: Clerk
+Music: Dancer
 Battle Type: Singles
 AI: Check Bad Move
 
@@ -3039,368 +3039,457 @@ Boldore
 Level: 40
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RICHARD ===
-Name: RICHARD
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
+=== TRAINER_NIMBASA_GYM_LADY_1 ===
+Name: Magnolia
+Class: Lady
+Pic: Rich Girl
+Gender: Female
+Music: Lass
 Battle Type: Singles
 AI: Check Bad Move
 
-Pelipper
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_HERMAN ===
-Name: HERMAN
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Wingull
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Tentacruel
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_SANTIAGO ===
-Name: SANTIAGO
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Tentacruel
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wailmer
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GILBERT ===
-Name: GILBERT
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Sharpedo
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_FRANKLIN ===
-Name: FRANKLIN
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Sealeo
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_KEVIN ===
-Name: KEVIN
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Spheal
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_JACK ===
-Name: JACK
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Gyarados
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_DUDLEY ===
-Name: DUDLEY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Tentacool
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wingull
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Tentacruel
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_CHAD ===
-Name: CHAD
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Tentacool
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wailmer
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_TONY_2 ===
-Name: TONY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Sharpedo
-Level: 30
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-=== TRAINER_TONY_3 ===
-Name: TONY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Sharpedo
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-=== TRAINER_TONY_4 ===
-Name: TONY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Staryu
-Level: 34
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Sharpedo
-Level: 36
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-=== TRAINER_TONY_5 ===
-Name: TONY
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
-Battle Type: Singles
-AI: Check Bad Move
-
-Starmie
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Sharpedo
-Level: 39
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-=== TRAINER_TAKAO ===
-Name: TAKAO
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Machop
-Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-=== TRAINER_HITOSHI ===
-Name: HITOSHI
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Machop
-Level: 32
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Machoke
-Level: 32
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
-=== TRAINER_KIYO ===
-Name: KIYO
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Hariyama
-Level: 34
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_KOICHI ===
-Name: KOICHI
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Machop
+Emolga
 Level: 24
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Machoke
-Level: 28
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Emolga
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_NOB_1 ===
-Name: NOB
-Class: Black Belt
-Pic: Black Belt
+=== TRAINER_NIMBASA_GYM_RICH_BOY_1 ===
+Name: Cody
+Class: Rich Boy
+Pic: Rich Boy
 Gender: Male
-Music: Intense
+Music: Youngster
 Battle Type: Singles
 AI: Check Bad Move
 
-Machop
-Level: 19
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Blitzle
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_NOB_2 ===
-Name: NOB
-Class: Black Belt
-Pic: Black Belt
+=== TRAINER_NIMBASA_GYM_RICH_BOY_2 ===
+Name: Cody
+Class: Rich Boy
+Pic: Rich Boy
 Gender: Male
-Music: Intense
+Music: Youngster
 Battle Type: Singles
 AI: Check Bad Move
 
-Machoke
+Blitzle
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Blitzle
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_NIMBASA_GYM_LADY_2 ===
+Name: Colette
+Class: Lady
+Pic: Rich Girl
+Gender: Female
+Music: Lass
+Battle Type: Singles
+AI: Check Bad Move
+
+Emolga
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ELESA_NIMBASA_GYM ===
+Name: Elesa
+Class: Leader
+Pic: Elesa
+Gender: Female
+Music: Male
+Items: Hyper Potion / Hyper Potion
+Battle Type: Singles
+AI: Check Bad Move / Try To Faint
+Mugshot: Yellow
+
+Emolga
+Level: 25
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Volt Switch
+- Aerial Ace
+- Pursuit
+- Quick Attack
+
+Emolga
+Level: 25
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Volt Switch
+- Aerial Ace
+- Pursuit
+- Quick Attack
+
+Zebstrika
 Level: 27
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Flame Charge
+- Spark
+- Volt Switch
+- Quick Attack
 
-=== TRAINER_NOB_3 ===
-Name: NOB
-Class: Black Belt
-Pic: Black Belt
+=== TRAINER_CHEREN_ROUTE_5_1 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
 Gender: Male
-Music: Intense
+Music: Male
 Battle Type: Singles
 AI: Check Bad Move
+Mugshot: Purple
 
-Machop
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Liepard
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fury Swipes
+- Pursuit
+- Torment
+- Fake Out
 
-Machoke
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Pansage @ Miracle Seed
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fury Swipes
+- Leech Seed
+- Bite
+- Seed Bomb
 
-=== TRAINER_NOB_4 ===
-Name: NOB
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
+Tranquill
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Quick Attack
+- Air Cutter
+- Roost
+- Detect
 
-Machop
-Level: 31
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-Machoke
-Level: 31
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-Machoke
-Level: 31
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-
-=== TRAINER_NOB_5 ===
-Name: NOB
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Machop
-Level: 33
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Machoke
-Level: 33
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Machoke
-Level: 33
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-Machamp @ Black Belt
-Level: 33
-IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
-
-=== TRAINER_YUJI ===
-Name: YUJI
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Makuhita
+Pignite @ Sitrus Berry
 Level: 26
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Flame Charge
+- Arm Thrust
+- Smog
+- Rollout
 
-Machoke
+=== TRAINER_CHEREN_ROUTE_5_2 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Purple
+
+Liepard
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fury Swipes
+- Pursuit
+- Torment
+- Fake Out
+
+Pansear @ Charcoal
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fury Swipes
+- Yawn
+- Bite
+- Flame Burst
+
+Tranquill
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Quick Attack
+- Air Cutter
+- Roost
+- Detect
+
+Dewott @ Sitrus Berry
 Level: 26
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Focus Energy
+- Razor Shell
+- Fury Cutter
+- Water Pulse
+
+=== TRAINER_CHEREN_ROUTE_5_3 ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Check Bad Move
+Mugshot: Purple
+
+Liepard
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fury Swipes
+- Pursuit
+- Torment
+- Fake Out
+
+Panpour @ Mystic Water
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Fury Swipes
+- Water Sport
+- Bite
+- Scald
+
+Tranquill
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Quick Attack
+- Air Cutter
+- Roost
+- Detect
+
+Servine @ Sitrus Berry
+Level: 26
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Growth
+- Leaf Tornado
+- Leech Seed
+- Mega Drain
+
+=== TRAINER_PRESCHOOLER_F_ROUTE_5 ===
+Name: Sarah
+Class: Preschooler
+Pic: Preschooler F
+Gender: Female
+Music: Kid
+Battle Type: Singles
+AI: Check Bad Move
+
+Herdier @ Sitrus Berry
+Level: 26
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Helping Hand
+- Take Down
+- Work Up
+- Crunch
+
+=== TRAINER_PRESCHOOLER_M_ROUTE_5 ===
+Name: Billy
+Class: Preschooler
+Pic: Preschooler M
+Gender: Male
+Music: Kid
+Battle Type: Singles
+AI: Check Bad Move
+
+Herdier @ Sitrus Berry
+Level: 26
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+- Helping Hand
+- Take Down
+- Work Up
+- Crunch
+
+=== TRAINER_BAKER_ROUTE_5 ===
+Name: Jenn
+Class: Baker
+Pic: Baker
+Gender: Male
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Pansear
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Panpour
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pansage
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_HARLEQUIN_ROUTE_5 ===
+Name: Paul
+Class: Harlequin
+Pic: Harlequin
+Gender: Male
+Music: Funny
+Battle Type: Singles
+AI: Check Bad Move
+
+Whirlipede
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Whirlipede
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_MUCISIAN_ROUTE_5 ===
+Name: Preston
+Class: Musician
+Pic: Musician
+Gender: Male
+Music: Funny
+Battle Type: Singles
+AI: Check Bad Move
+
+Blitzle
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Blitzle
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_DANCER_ROUTE_5 ===
+Name: Brian
+Class: Dancer
+Pic: Dancer
+Gender: Male
+Music: Dancer
+Battle Type: Singles
+AI: Check Bad Move
+
+Darumaka
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Darumaka
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ARTIST_ROUTE_5 ===
+Name: Horton
+Class: Artist
+Pic: Artist
+Gender: Male
+Music: Gentleman
+Battle Type: Singles
+AI: Check Bad Move
+
+Sigilyph
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_F_ROUTE_5 ===
+Name: Lois
+Class: Backpacker
+Pic: Backpacker F
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Munna
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_M_ROUTE_5 ===
+Name: Michael
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Palpitoad
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_POLICEMAN_ROUTE_16 ===
+Name: Daniel
+Class: Backpacker
+Pic: Policeman
+Gender: Male
+Music: Clerk
+Battle Type: Singles
+AI: Check Bad Move
+
+Herdier
+Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_CYCLIST_F_ROUTE_16 ===
+Name: Krissa
+Class: Cyclist
+Pic: Cyclist F
+Gender: Female
+Music: Cyclist
+Battle Type: Singles
+AI: Check Bad Move
+
+Ducklett
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Liepard
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_M_ROUTE_16_1 ===
+Name: Stephen
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Drilbur
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_M_ROUTE_16_2 ===
+Name: Peter
+Class: Backpacker
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Scraggy
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_CYCLIST_M_ROUTE_16 ===
+Name: Hector
+Class: Cyclist
+Pic: Cyclist M
+Gender: Male
+Music: Cyclist
+Battle Type: Singles
+AI: Check Bad Move
+
+Whirlipede
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Whirlipede
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_F_ROUTE_16 ===
+Name: Lora
+Class: Backpacker
+Pic: Backpacker F
+Gender: Female
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Swadloon
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAISUKE ===
 Name: DAISUKE

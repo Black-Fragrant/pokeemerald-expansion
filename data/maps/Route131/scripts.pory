@@ -17,12 +17,12 @@ Route131_EventScript_CheckSetAbnormalWeather::
 	return
 
 Route131_EventScript_Richard::
-	trainerbattle_single TRAINER_RICHARD, Route131_Text_RichardIntro, Route131_Text_RichardDefeat
+	trainerbattle_single TRAINER_DUMMY, Route131_Text_RichardIntro, Route131_Text_RichardDefeat
 	msgbox Route131_Text_RichardPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route131_EventScript_Herman::
-	trainerbattle_single TRAINER_HERMAN, Route131_Text_HermanIntro, Route131_Text_HermanDefeat
+	trainerbattle_single TRAINER_DUMMY, Route131_Text_HermanIntro, Route131_Text_HermanDefeat
 	msgbox Route131_Text_HermanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -52,7 +52,7 @@ Route131_EventScript_Talia::
 	end
 
 Route131_EventScript_Kevin::
-	trainerbattle_single TRAINER_KEVIN, Route131_Text_KevinIntro, Route131_Text_KevinDefeat
+	trainerbattle_single TRAINER_DUMMY, Route131_Text_KevinIntro, Route131_Text_KevinDefeat
 	msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
