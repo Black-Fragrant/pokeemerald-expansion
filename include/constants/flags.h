@@ -935,8 +935,8 @@
 #define FLAG_NIMBASA_CITY_BATTLE_INSTITUTE_WOMAN                    0x377
 #define FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING                  0x378
 #define FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING                  0x379
-#define FLAG_UNUSED_0x37A                                           0x37A
-#define FLAG_UNUSED_0x37B                                           0x37B
+#define FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL                    0x37A
+#define FLAG_NIMBASA_CITY_EXTENDED_N                                0x37B
 #define FLAG_UNUSED_0x37C                                           0x37C
 #define FLAG_UNUSED_0x37D                                           0x37D
 #define FLAG_UNUSED_0x37E                                           0x37E

@@ -196,8 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-	buffernumberstring STR_VAR_1, VAR_TIME_OF_DAY
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+	setflag FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL 
 	release
     end
 

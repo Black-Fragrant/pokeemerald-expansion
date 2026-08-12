@@ -178,7 +178,7 @@
 #define VAR_RELIC_CASTLE_STATE                           0x409C
 #define VAR_NIMBASA_STATE                                0x409D
 #define VAR_TIME_OF_DAY                                  0x409E
-#define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
+#define VAR_NIMBASA_N_BATTLE_STATE                       0x409F
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
 #define VAR_UNUSED_0x40A1                                0x40A1 // Unused var
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
