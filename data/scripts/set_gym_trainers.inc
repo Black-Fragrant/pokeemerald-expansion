@@ -29,7 +29,7 @@ RustboroCity_Gym_SetGymTrainers::
 	return
 
 DewfordTown_Gym_SetGymTrainers::
-	settrainerflag TRAINER_TAKAO
+	settrainerflag TRAINER_DUMMY
 	settrainerflag TRAINER_JOCELYN
 	settrainerflag TRAINER_LAURA
 	settrainerflag TRAINER_BRENDEN
@@ -164,6 +164,6 @@ EventScript_SetViridianGymTrainers::
 	settrainerflag TRAINER_BLACK_BELT_KIYO
 	settrainerflag TRAINER_BLACK_BELT_TAKASHI
 	settrainerflag TRAINER_COOLTRAINER_DUMMY
-	settrainerflag TRAINER_COOLTRAINER_YUJI
+	settrainerflag TRAINER_COOLTRAINER_DUMMY
 	settrainerflag TRAINER_COOLTRAINER_DUMMY
 	return

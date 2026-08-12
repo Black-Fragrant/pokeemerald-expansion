@@ -253,5 +253,41 @@ script NimbasaCityExtended_EventScript_NBT_Pos10
     return
 }
 
+script NimbasaCityExtended_EventScript_GymSign
+{
+    msgbox("Nimbasa City Pokémon Gym\n"
+        "Leader: Elesa\l"
+        "The Shining Beauty", MSGBOX_SIGN)
+	end
+}
+
+script NimbasaCityExtended_EventScript_PeirroLeft
+{
+    msgbox("Whooshing, swooshing roller coaster!\n"
+       "Whirltwirlwhirltwirl...whoa!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCityExtended_EventScript_PeirroRight
+{
+    msgbox("Spinning, spinning Ferris wheel!\n"
+        "Climbing, climbing Ferris wheel!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCityExtended_EventScript_Girl
+{
+    msgbox("Look! Look!\n"
+       "It's a clown!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCityExtended_EventScript_Housewife
+{
+    msgbox("No matter how old you get, amusement\n"
+       "parks are always exciting, am I right?", MSGBOX_NPC, TRUE)
+	end
+}
+
 
 
