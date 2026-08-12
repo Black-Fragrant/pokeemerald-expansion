@@ -1,1 +1,268 @@
-mapscripts NimbasaCity_SoccerField_MapScripts {}
+mapscripts NimbasaCity_SoccerField_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_SoccerField_Lobby_On_Transition
+}
+
+script NimbasaCity_SoccerField_Lobby_On_Transition
+{
+    call_if_unset(FLAG_BADGE07_GET, NimbasaCity_SoccerField_EventScript_HideNPC2)
+    call_if_unset(FLAG_BADGE05_GET, NimbasaCity_SoccerField_EventScript_HideNPC1)
+    end
+}
+
+script NimbasaCity_SoccerField_EventScript_HideNPC1
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_SoccerField_EventScript_HideNPC2
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_SoccerField_EventScript_Tony
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_STRIKER_TONY_34, NimbasaCity_SoccerField_EventScript_Tony_Defeated_3)
+    goto_if_defeated(TRAINER_STRIKER_TONY_56, NimbasaCity_SoccerField_EventScript_Tony_Defeated_2)
+    goto_if_defeated(TRAINER_STRIKER_TONY_78, NimbasaCity_SoccerField_EventScript_Tony_Defeated)
+    goto_if_unset(FLAG_BADGE05_GET, NimbasaCity_SoccerField_EventScript_Tony_3)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_SoccerField_EventScript_Tony_2)
+	trainerbattle_single(TRAINER_STRIKER_TONY_78,
+	text("Pokémon and Poké Balls\n"
+        "are my real friends!\p"
+        "Please join the training of\n"
+        "our Pokémon Eleven!"),
+	text("Aghhhhh! I'm still such a rookie!\n"
+        "I have more than enough guts, though!"))
+    goto(NimbasaCity_SoccerField_EventScript_Tony_Defeated)
+}
+
+script NimbasaCity_SoccerField_EventScript_Tony_Defeated
+{
+    msgbox("My Pokémon and I\n"
+        "still haven't practiced enough...\l"
+        "To put it in levels, we're about a 20...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Tony_2
+{
+	trainerbattle_single(TRAINER_STRIKER_TONY_56,
+	text("Pokémon and Poké Balls\n"
+        "are my real friends!\p"
+        "Join the training of\n"
+        "our Pokémon Eleven!"),
+	text("Aghhhhh! I am still such a rookie!\n"
+        "But I have more guts than anybody else!"))
+    goto(NimbasaCity_SoccerField_EventScript_Tony_Defeated_2)
+}
+
+script NimbasaCity_SoccerField_EventScript_Tony_Defeated_2
+{
+    msgbox("My Pokémon and I still haven't\n"
+        "practiced enough...\p"
+        "To put it in levels, we're maybe a ten...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Tony_3
+{
+	trainerbattle_single(TRAINER_STRIKER_TONY_34,
+	text("Pokémon and Poké Balls\n"
+        "are my real friends!\p"
+        "Join the training of\n"
+        "our Pokémon Eleven!"),
+	text("Aghhhhh! I must still be green!\n"
+        "I have plenty of guts, though!"))
+    goto(NimbasaCity_SoccerField_EventScript_Tony_Defeated_3)
+}
+
+script NimbasaCity_SoccerField_EventScript_Tony_Defeated_3
+{
+    msgbox("Both my Pokémon and I\n"
+        "still haven't gotten enough practice...\p"
+        "In terms of levels, that would be a five...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Kay
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_KAY_ALI_56, NimbasaCity_SoccerField_EventScript_Kay_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_KAY_ALI_78, NimbasaCity_SoccerField_EventScript_Kay_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_SoccerField_EventScript_Kay_2)
+    trainerbattle_double(TRAINER_BACKERS_KAY_ALI_78,
+	text("Olé, olé, oléeee!\n"
+        "This is the fan song I wrote!\p"
+        "The Pokémon listening to this song\n"
+        "try harder than usual!"),
+	text("Kay: Olé, olé...\n"
+        "Huh? It's over.\p"
+        "Ali: You are very strong!"),
+	text("Olé, olé, oléeee!\n"
+        "I am cheering now!\p"
+        "If you have two Pokémon,\n"
+        "I don't mind battling with you!"))
+    goto(NimbasaCity_SoccerField_EventScript_Kay_Defeated)
+}
+
+script NimbasaCity_SoccerField_EventScript_Kay_Defeated
+{
+    msgbox("“Ole!” means\n"
+        "“Go!” or “Move forward!”", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Kay_2
+{
+    trainerbattle_double(TRAINER_BACKERS_KAY_ALI_56,
+	text("Watching athletes practice with Pokémon\n"
+        "made me want to have a Pokémon battle."),
+	text("Kay: Great\n"
+        "You are like a professional!\p"
+        "Ali: How did you know?"),
+	text("We are two!\n"
+        "We use two Pokémon, too!"))
+    goto(NimbasaCity_SoccerField_EventScript_Kay_Defeated_2)
+}
+
+script NimbasaCity_SoccerField_EventScript_Kay_Defeated_2
+{
+    msgbox("Ohhh... I knew it was difficult\n"
+        "to fight with Pokémon as well as\l"
+        "the professionals do.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Ali
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_KAY_ALI_56, NimbasaCity_SoccerField_EventScript_Ali_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_KAY_ALI_78, NimbasaCity_SoccerField_EventScript_Ali_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_SoccerField_EventScript_Ali_2)
+    trainerbattle_double(TRAINER_BACKERS_KAY_ALI_78,
+	text("My friend came here with me...\n"
+        "She comes 'cause she wants to sing\l"
+        "more than cheering for the team."),
+	text("Kay: Olé, olé...\n"
+        "Huh? It's over.\p"
+        "Ali: You are very strong!"),
+	text("With only one Pokémon,\n"
+        "It's a bit hard to battle."))
+    goto(NimbasaCity_SoccerField_EventScript_Ali_Defeated)
+}
+
+script NimbasaCity_SoccerField_EventScript_Ali_Defeated
+{
+    msgbox("I am a fan of all the players\n"
+        "who are doing their best!\l"
+        "So, I want both teams to win!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Ali_2
+{
+    trainerbattle_double(TRAINER_BACKERS_KAY_ALI_56,
+	text("Pokémon do\n"
+        "what I cannot do.\p"
+        "You know how wonderful this is,\n"
+        "don't you?"),
+	text("Kay: Great\n"
+        "You are like a professional!\p"
+        "Ali: How did you know?"),
+	text("Aren't you in trouble if you don't have\n"
+        "more Pokémon that can fight?"))
+    goto(NimbasaCity_SoccerField_EventScript_Ali_Defeated_2)
+}
+
+script NimbasaCity_SoccerField_EventScript_Ali_Defeated_2
+{
+    msgbox("Even existing sports shine\n"
+        "with new appeal\l"
+        "when they team up with Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_Roberto
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_STRIKER_ROBERTO_78, NimbasaCity_SoccerField_EventScript_Roberto_Defeated)
+	trainerbattle_single(TRAINER_STRIKER_ROBERTO_78,
+	text("I am about to give a lecture\n"
+        "on the strength created by gathering\l"
+        "a proper balance of different Pokémon!"),
+	text("Bam! You lectured me!\n"
+        "What a great Trainer!"))
+    goto(NimbasaCity_SoccerField_EventScript_Roberto_Defeated)
+}
+
+script NimbasaCity_SoccerField_EventScript_Roberto_Defeated
+{
+    msgbox("Team play with Pokémon\n"
+        "brought new fun to our sport.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_1
+{
+    msgbox("Everybody makes mistakes.\p"
+        "But goalkeepers cannot afford a mistake,\n"
+        "because they cannot score goals to make\n"
+        "up for it.\p"
+        "If one Pokémon on a team makes a\n"
+        "mistake, however, the other Pokémon\n"
+        "and their Trainer can cover for it!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_2
+{
+    msgbox("If a Striker catches a teammate's eye,\n"
+        "they understand each other.\p"
+        "A Pokémon and its Trainer are the same.\n"
+        "Don't you agree?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_3
+{
+    msgbox("Really strong Trainers thoroughly do\n"
+        "whatever they can do!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_4
+{
+    msgbox("Soccer is beautiful and fun!\n"
+        "Pokémon are also beautiful and fun!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_5
+{
+    msgbox("Soccer with Pokémon is Pokémon soccer.\n"
+        "The abbreviation is...Poccer?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_6
+{
+    msgbox("Throw a sound pass as a team member!\p"
+        "After that, to receive a sound pass,\n"
+        "you'll need to move swiftly.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SoccerField_EventScript_FootballPlayer_7
+{
+    msgbox("Run! Run!\n"
+        "Just think about running!", MSGBOX_NPC, TRUE)
+	end()
+}

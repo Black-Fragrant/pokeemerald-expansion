@@ -1,1 +1,71 @@
 mapscripts NimbasaCity_BigStadium_Audience_MapScripts {}
+
+script NimbasaCity_BigStadium_Audience_EventScript_Hiker
+{
+    msgbox("Just one ball can make people and\n"
+        "Pokémon smile.\p"
+        "Sports are wonderful things!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_RichGirl
+{
+    lock
+    faceplayer
+    goto_if_unset(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING, NimbasaCity_BigStadium_Audience_EventScript_RichGirl_2)
+    msgbox("We can tell how good these professionals\n"
+        "are just by watching them practice.", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSA_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_RichGirl_2
+{
+    msgbox("Professional athletes look so attractive\n"
+        "during a game!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSA_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_Teacher
+{
+    msgbox("On the field, they play games in earnest!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_Dancer
+{
+    msgbox("Yahooooooo!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_Youngster
+{
+    msgbox("I want to be a person who is good at\n"
+        "football and Pokémon battles!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_CheerleaderMan
+{
+    msgbox("There!\n"
+        "There, turn like that!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_Beauty
+{
+    msgbox("Eeeee! Turn this waaaaay!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Audience_EventScript_Maid
+{
+    msgbox("Following a ball right and left\n"
+        "makes me feel woozy.", MSGBOX_NPC, TRUE)
+	end()
+}

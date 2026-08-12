@@ -1,4 +1,135 @@
-mapscripts NimbasaCity_MapScripts {}
+mapscripts NimbasaCity_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_On_Transition
+}
+
+script NimbasaCity_On_Transition
+{
+    setflag(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING)
+    setflag(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING)
+	dotimebasedevents
+	call_if_unset(FLAG_DAILY_RESET_STADIUM_TRAINER, NimbasaCity_EventScript_ResetStadiumTrainerFlags)
+    callnative(DebugMenu_CalculateTime)
+    callnative(DebugMenu_CalculateTimeOfDay)
+	call_if_eq(VAR_DAY_OF_WEEK, 0, NimbasaCity_EventScript_Sunday)
+	call_if_eq(VAR_DAY_OF_WEEK, 1, NimbasaCity_EventScript_Monday)
+	call_if_eq(VAR_DAY_OF_WEEK, 2, NimbasaCity_EventScript_Tuesday)
+	call_if_eq(VAR_DAY_OF_WEEK, 3, NimbasaCity_EventScript_Wednesday)
+	call_if_eq(VAR_DAY_OF_WEEK, 4, NimbasaCity_EventScript_Thursday)
+	call_if_eq(VAR_DAY_OF_WEEK, 5, NimbasaCity_EventScript_Friday)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, NimbasaCity_EventScript_Saturday)
+    end
+}
+
+script NimbasaCity_EventScript_Sunday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 16, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Monday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 16, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Tuesday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 11, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Wednesday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Thursday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 11, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 16, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Friday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Saturday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 11, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_CourtGameActive
+{
+    clearflag(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING)
+    return
+}
+
+script NimbasaCity_EventScript_StadiumGameActive
+{
+    clearflag(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING)
+    return
+}
+
+script NimbasaCity_EventScript_ResetStadiumTrainerFlags
+{
+    cleartrainerflag(TRAINER_INFIELDER_ALEX_34)
+    cleartrainerflag(TRAINER_INFIELDER_ALEX_56)
+    cleartrainerflag(TRAINER_INFIELDER_ALEX_78)
+    cleartrainerflag(TRAINER_BACKERS_AMI_EIRA_56)
+    cleartrainerflag(TRAINER_BACKERS_AMI_EIRA_78)
+    cleartrainerflag(TRAINER_INFIELDER_CONNOR_78)
+    cleartrainerflag(TRAINER_STRIKER_TONY_34)
+    cleartrainerflag(TRAINER_STRIKER_TONY_56)
+    cleartrainerflag(TRAINER_STRIKER_TONY_78)
+    cleartrainerflag(TRAINER_BACKERS_KAY_ALI_56)
+    cleartrainerflag(TRAINER_BACKERS_KAY_ALI_78)
+    cleartrainerflag(TRAINER_STRIKER_ROBERTO_78)
+    cleartrainerflag(TRAINER_LINEBACKER_DAN_34)
+    cleartrainerflag(TRAINER_LINEBACKER_DAN_56)
+    cleartrainerflag(TRAINER_LINEBACKER_DAN_78)
+    cleartrainerflag(TRAINER_BACKERS_HAWK_DAR_56)
+    cleartrainerflag(TRAINER_BACKERS_HAWK_DAR_78)
+    cleartrainerflag(TRAINER_LINEBACKER_BOB_78)
+    cleartrainerflag(TRAINER_SMASHER_ELENA_34)
+    cleartrainerflag(TRAINER_SMASHER_ELENA_56)
+    cleartrainerflag(TRAINER_SMASHER_ELENA_78)
+    cleartrainerflag(TRAINER_BACKERS_JOE_ROSS_56)
+    cleartrainerflag(TRAINER_BACKERS_JOE_ROSS_78)
+    cleartrainerflag(TRAINER_SMASHER_ASPEN_78)
+    cleartrainerflag(TRAINER_HOOPSTER_BOBBY_34)
+    cleartrainerflag(TRAINER_HOOPSTER_BOBBY_56)
+    cleartrainerflag(TRAINER_HOOPSTER_BOBBY_78)
+    cleartrainerflag(TRAINER_BACKERS_MASA_YAS_56)
+    cleartrainerflag(TRAINER_BACKERS_MASA_YAS_78)
+    cleartrainerflag(TRAINER_HOOPSTER_JOHN_78)
+    setflag(FLAG_DAILY_RESET_STADIUM_TRAINER)
+    return
+}
 
 script NimbasaCity_EventScript_BattleInstituteSign
 {

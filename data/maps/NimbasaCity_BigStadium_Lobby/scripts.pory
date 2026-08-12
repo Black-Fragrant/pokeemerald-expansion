@@ -1,1 +1,200 @@
-mapscripts NimbasaCity_BigStadium_Lobby_MapScripts {}
+mapscripts NimbasaCity_BigStadium_Lobby_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_BigStadium_Lobby_On_Transition
+}
+
+script NimbasaCity_BigStadium_Lobby_On_Transition
+{
+    call_if_unset(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_HideYoungster)
+    callnative(DebugMenu_CalculateTime)
+	call_if_eq(VAR_DAY_OF_WEEK, 0, NimbasaCity_BigStadium_Lobby_EventScript_WarpToBaseball)
+	call_if_eq(VAR_DAY_OF_WEEK, 1, NimbasaCity_BigStadium_Lobby_EventScript_WarpToBaseball)
+	call_if_eq(VAR_DAY_OF_WEEK, 2, NimbasaCity_BigStadium_Lobby_EventScript_WarpToSoccer)
+	call_if_eq(VAR_DAY_OF_WEEK, 3, NimbasaCity_BigStadium_Lobby_EventScript_WarpToFootball)
+	call_if_eq(VAR_DAY_OF_WEEK, 4, NimbasaCity_BigStadium_Lobby_EventScript_WarpToBaseball)
+	call_if_eq(VAR_DAY_OF_WEEK, 5, NimbasaCity_BigStadium_Lobby_EventScript_WarpToSoccer)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, NimbasaCity_BigStadium_Lobby_EventScript_WarpToFootball)
+    end
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_WarpToBaseball
+{
+    setdynamicwarp(MAP_NIMBASA_CITY_BASEBALL_FIELD, 14, 63)
+    call_if_unset(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_HideBaseBallPlayer)
+    setflag(FLAG_TEMP_12)
+    setflag(FLAG_TEMP_13)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_WarpToSoccer
+{
+    setdynamicwarp(MAP_NIMBASA_CITY_SOCCER_FIELD, 14, 31)
+    call_if_unset(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_HideSoccerPlayer)
+    setflag(FLAG_TEMP_11)
+    setflag(FLAG_TEMP_13)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_WarpToFootball
+{
+    setdynamicwarp(MAP_NIMBASA_CITY_FOOTBALL_FIELD, 14, 31)
+    call_if_unset(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_HideFootballPlayer)
+    setflag(FLAG_TEMP_11)
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_HideYoungster
+{
+    setflag(FLAG_TEMP_14)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_HideBaseBallPlayer
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_HideSoccerPlayer
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_HideFootballPlayer
+{
+    setflag(FLAG_TEMP_13)
+    return
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_OfficeLady
+{
+    msgbox("I'm raising the same Pokémon as\n"
+        "my favorite athlete's Pokémon.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_AceTrainer
+{
+    msgbox("You sure look up to athletes when\n"
+        "you're a kid.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Youngster
+{
+    msgbox("When I throw a Poké Ball, I copy the\n"
+        "throwing form of a quarterback!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_BaseballPlayer
+{
+    msgbox("Yeah! I am an Infielder!\p"
+        "I hurt my hand, so I can't write\n"
+        "an autograph! Sorry!\p"
+        "Say, how did you sign your Trainer Card?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_SoccerPlayer
+{
+    msgbox("Bwa ha ha! I am a Striker!\p"
+        "My hand got hurt, so I won't be able to\n"
+        "sign any autographs! Regrets!\p"
+        "What does your Trainer Card signature\n"
+        "look like?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_FootballPlayer
+{
+    msgbox("Ha ha! I am a football player!\p"
+        "I injured my hand, so I can't sign\n"
+        "autographs! I'm sorry about that.\p"
+        "So, what does the autograph on your\n"
+        "Trainer Card look like?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_EventScript_Security
+{
+    msgbox("I am sorry.\p"
+        "But you cannot go onto the field\n"
+        "because a game is in progress.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Receptionist
+{
+    lock
+    faceplayer
+	call_if_eq(VAR_DAY_OF_WEEK, 2, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_2)
+	call_if_eq(VAR_DAY_OF_WEEK, 3, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_3)
+	call_if_eq(VAR_DAY_OF_WEEK, 5, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_2)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_3)
+    goto_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_BaseballActive)
+    msgbox("Infielders are practicing\n"
+        "in Big Stadium now.\p"
+        "People can watch them practicing!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_BaseballActive
+{
+    msgbox("There is a baseball game\n"
+        "in Big Stadium now!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_2
+{
+    goto_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_SoccerActive)
+    msgbox("Soccer players are practicing\n"
+        "in Big Stadium now!\p"
+        "People can watch them practicing!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_SoccerActive
+{
+    msgbox("There is a soccer game\n"
+        "in Big Stadium now!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_3
+{
+    goto_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_FootballActive)
+    msgbox("Football players are practicing in\n"
+        "Big Stadium now.\p"
+        "People can watch them practicing!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_BigStadium_Lobby_EventScript_Receptionist_FootballActive
+{
+    msgbox("There is a football game in\n"
+        "Big Stadium now!", MSGBOX_DEFAULT, TRUE, LOCALID_NCBSL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+

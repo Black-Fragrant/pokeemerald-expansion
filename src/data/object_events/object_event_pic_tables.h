@@ -767,6 +767,10 @@ static const struct SpriteFrameImage sPicTable_MineWorker[] = {
     overworld_ascending_frames(gObjectEventPic_MineWorker, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Worker[] = {
+    overworld_ascending_frames(gObjectEventPic_Worker, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Mother[] = {
     overworld_ascending_frames(gObjectEventPic_Mother, 2, 4),
 };
