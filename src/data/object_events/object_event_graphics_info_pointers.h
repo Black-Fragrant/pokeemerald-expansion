@@ -160,6 +160,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kindergarte
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KindergartenerMale;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Looker;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MineWorker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Worker;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mother;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_N;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PapaJuniper;
@@ -596,6 +597,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_KINDERGARTENER_MALE] =      &gObjectEventGraphicsInfo_KindergartenerMale,
     [OBJ_EVENT_GFX_LOOKER] =                   &gObjectEventGraphicsInfo_Looker,
     [OBJ_EVENT_GFX_MINE_WORKER] =              &gObjectEventGraphicsInfo_MineWorker,
+    [OBJ_EVENT_GFX_WORKER] =                   &gObjectEventGraphicsInfo_Worker,
     [OBJ_EVENT_GFX_MOTHER] =                   &gObjectEventGraphicsInfo_Mother,
     [OBJ_EVENT_GFX_N] =                        &gObjectEventGraphicsInfo_N,
     [OBJ_EVENT_GFX_PAPA_JUNIPER] =             &gObjectEventGraphicsInfo_PapaJuniper,

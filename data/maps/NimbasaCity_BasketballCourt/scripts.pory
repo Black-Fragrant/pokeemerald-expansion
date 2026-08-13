@@ -1,1 +1,233 @@
-mapscripts NimbasaCity_BasketballCourt_MapScripts {}
+mapscripts NimbasaCity_BasketballCourt_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_BasketballCourt_Lobby_On_Transition
+}
+
+script NimbasaCity_BasketballCourt_Lobby_On_Transition
+{
+    call_if_unset(FLAG_BADGE07_GET, NimbasaCity_BasketballCourt_EventScript_HideNPC2)
+    call_if_unset(FLAG_BADGE05_GET, NimbasaCity_BasketballCourt_EventScript_HideNPC1)
+    end
+}
+
+script NimbasaCity_BasketballCourt_EventScript_HideNPC1
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_BasketballCourt_EventScript_HideNPC2
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Bobby
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_HOOPSTER_BOBBY_34, NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated_3)
+    goto_if_defeated(TRAINER_HOOPSTER_BOBBY_56, NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated_2)
+    goto_if_defeated(TRAINER_HOOPSTER_BOBBY_78, NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated)
+    goto_if_unset(FLAG_BADGE05_GET, NimbasaCity_BasketballCourt_EventScript_Bobby_3)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_BasketballCourt_EventScript_Bobby_2)
+	trainerbattle_single(TRAINER_HOOPSTER_BOBBY_78,
+	text("I am in the starting lineup now,\n"
+       "but I will be even better soon!\p"
+       "I will practice with a lot\n"
+       "of Pokémon battles!"),
+	text("UGHH!\n"
+       "My field positioning was terrible!"))
+    goto(NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated
+{
+    msgbox("If I think about why I made a mistake\n"
+       "and correct it, I'll make fewer mistakes.\p"
+       "And if I work to improve my strength,\n"
+       "I'll get even stronger!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Bobby_2
+{
+	trainerbattle_single(TRAINER_HOOPSTER_BOBBY_56,
+	text("I play occasionally,\n"
+        "but I want to become a better player!\p"
+        "So I will fight\n"
+        "a lot of Pokémon battles, too!"),
+	text("UGHH!\n"
+        "I couldn't even pass the ball!"))
+    goto(NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated_2)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated_2
+{
+    msgbox("I will do anything to play better!\n"
+        "It's over if you get complacent!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Bobby_3
+{
+	trainerbattle_single(TRAINER_HOOPSTER_BOBBY_34,
+	text("I'm still a rookie, but someday\n"
+        "I will be a great player!\p"
+        "I'll improve by having a lot\n"
+        "of Pokémon battles!"),
+	text("Ugh!\n"
+        "I missed the rebound!"))
+    goto(NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated_3)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Bobby_Defeated_3
+{
+    msgbox("I won't make excuses for losing!\p"
+        "Why waste time dreaming up excuses?\n"
+        "I'll spend that time getting stronger!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Masa
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_MASA_YAS_56, NimbasaCity_BasketballCourt_EventScript_Masa_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_MASA_YAS_78, NimbasaCity_BasketballCourt_EventScript_Masa_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_BasketballCourt_EventScript_Masa_2)
+    trainerbattle_double(TRAINER_BACKERS_MASA_YAS_78,
+	text("Oh!\p"
+       "Athletes are looking over this way!\n"
+       "Let's have a battle to impress them."),
+	text("Masa: Agghhh!\n"
+        "We showed them an embarrassing scene.\p"
+        "Yas: Hurrah! Hurrah!\n"
+        "My Pokémon! What...?"),
+	text("Is that athlete looking at me?\n"
+       "No, he's not."))
+    goto(NimbasaCity_BasketballCourt_EventScript_Masa_Defeated)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Masa_Defeated
+{
+    msgbox("I thought they were looking at us, but\n"
+        "they were looking at their opponents...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Masa_2
+{
+    trainerbattle_double(TRAINER_BACKERS_MASA_YAS_56,
+	text("Watching people practicing\n"
+        "makes me want to get moving, too!\p"
+        "Soooooo, let's practice\n"
+        "Pokémon battles."),
+	text("Masa: I laugh even though\n"
+        "we lost because it was fun!\p"
+        "Yas: Ah! I didn't cheer enough\n"
+        "for our Pokémon."),
+	text("We cannot have\n"
+        "a one-on-two battle."))
+    goto(NimbasaCity_BasketballCourt_EventScript_Masa_Defeated_2)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Masa_Defeated_2
+{
+    msgbox("It's way more fun to have a battle\n"
+        "ourselves than watching\l"
+        "other people practicing!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Yas
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_MASA_YAS_56, NimbasaCity_BasketballCourt_EventScript_Yas_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_MASA_YAS_78, NimbasaCity_BasketballCourt_EventScript_Yas_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_BasketballCourt_EventScript_Yas_2)
+    trainerbattle_double(TRAINER_BACKERS_MASA_YAS_78,
+	text("If I win in a Pokémon battle,\n"
+        "cheer for this team."),
+	text("Masa: Agghhh!\n"
+        "We showed them an embarrassing scene.\p"
+        "Yas: Hurrah! Hurrah!\n"
+        "My Pokémon! What...?"),
+	text("Ummmm. The cheering for this team\n"
+       "is not nearly loud enough..."))
+    goto(NimbasaCity_BasketballCourt_EventScript_Yas_Defeated)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Yas_Defeated
+{
+    msgbox("I lost, so I will cheer for you!\p"
+        "Hurray! Hurray! Go you go!\n"
+        "Hustle! Hustle! Go you go!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Yas_2
+{
+    trainerbattle_double(TRAINER_BACKERS_MASA_YAS_56,
+	text("We usually cheer for other people,\n"
+        "but today we would like\l"
+        "to gather our courage\l"
+        "and have our own Pokémon battle."),
+	text("Masa: I laugh even though\n"
+        "we lost because it was fun!\p"
+        "Yas: Ah! I didn't cheer enough\n"
+        "for our Pokémon."),
+	text("You have only one Pokémon\n"
+        "that can fight. It's out of the question."))
+    goto(NimbasaCity_BasketballCourt_EventScript_Yas_Defeated_2)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_Yas_Defeated_2
+{
+    msgbox("I am not good at sports,\n"
+        "but I enjoy sports in my own way--\l"
+        "by cheering my heart out for people!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_John
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_HOOPSTER_JOHN_78, NimbasaCity_BasketballCourt_EventScript_John_Defeated)
+	trainerbattle_single(TRAINER_HOOPSTER_JOHN_78,
+	text("A young Trainer! It's important for the\n"
+       "young to get lots of exercise, isn't it?"),
+	text("A good sweat...\n"
+       "Boy, I am glad that I am an athlete!"))
+    goto(NimbasaCity_BasketballCourt_EventScript_John_Defeated)
+}
+
+script NimbasaCity_BasketballCourt_EventScript_John_Defeated
+{
+    msgbox("I want a Poké Ball that's\n"
+       "as big as a basketball!\p"
+       "I think it would be more comfortable\n"
+       "for the Pokemon inside it.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_BasketballPlayerLeft
+{
+    msgbox("A fight against your opponent can end in\n"
+        "the blink of an eye!\p"
+        "The important thing is how much you\n"
+        "prepare before the fight.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_BasketballCourt_EventScript_BasketballPlayerRight
+{
+    msgbox("I don't play basketball just because\n"
+        "I'm tall.\p"
+        "Maybe I grew tall because I wanted to\n"
+        "play basketball so badly?!", MSGBOX_NPC, TRUE)
+	end()
+}
+

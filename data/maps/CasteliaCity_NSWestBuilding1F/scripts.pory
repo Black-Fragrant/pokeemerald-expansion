@@ -80,8 +80,6 @@ script CasteliaCity_NSWestBuilding1F_EventScript_NameRater
 
 script CasteliaCity_NSWestBuilding1F_EventScript_DeclineNameRate
 {
-    destroy_speech_bubble()
-    closemessage
     msgbox("OK! Come see me again if you\n"
            "change your mind.", MSGBOX_DEFAULT, TRUE, LOCALID_CSNSWB1F_NAMERATER)
     destroy_speech_bubble()

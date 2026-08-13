@@ -24,7 +24,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Policeman",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Gentleman_TopRight",
       "flag": "0"
     },
     {
@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Lady",
       "flag": "0"
     },
     {
@@ -63,7 +63,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Gentleman_ByThePainting",
       "flag": "0"
     },
     {
@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Maid",
       "flag": "0"
     },
     {
@@ -89,7 +89,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Dancer",
       "flag": "0"
     },
     {
@@ -102,7 +102,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Krokorok",
       "flag": "0"
     },
     {
@@ -115,10 +115,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_BlueShirtGuy",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NCMT_RECEPTION_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_WAITRESS",
       "x": 10,
       "y": 16,
@@ -128,10 +129,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Receptionist_Left",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NCMT_RECEPTION_MIDDLE",
       "graphics_id": "OBJ_EVENT_GFX_WAITRESS",
       "x": 14,
       "y": 16,
@@ -141,10 +143,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NCMT_RECEPTION_RIGHT",
       "graphics_id": "OBJ_EVENT_GFX_WAITRESS",
       "x": 18,
       "y": 16,
@@ -154,10 +157,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Receptionist_Right",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_NCMT_RICHGIRL",
       "graphics_id": "OBJ_EVENT_GFX_RICH_GIRL",
       "x": 23,
       "y": 14,
@@ -167,7 +171,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_RichGirl",
       "flag": "0"
     },
     {
@@ -180,7 +184,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Pokefan",
       "flag": "0"
     },
     {
@@ -193,8 +197,36 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_MusicalTheater_EventScript_KindergartenGirl",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_NCMT_BIANCA",
+      "graphics_id": "OBJ_EVENT_GFX_BIANCA",
+      "x": 13,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIMBASA_CITY_MUSICAL_THEATER_BIANCA_AND_OWNER"
+    },
+    {
+      "local_id": "LOCALID_NCMT_OWNER",
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "x": 14,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIMBASA_CITY_MUSICAL_THEATER_BIANCA_AND_OWNER"
     }
   ],
   "warp_events": [
@@ -227,16 +259,56 @@
       "x": 25,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
     },
     {
       "type": "sign",
       "x": 26,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_MusicalTheater_EventScript_EntranceSign"
+    },
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_MusicalTheater_EventScript_EntranceSign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_MusicalTheater_EventScript_EntranceSign"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_MusicalTheater_EventScript_EntranceSign"
+    },
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCity_MusicalTheater_EventScript_Painting"
     }
   ]
 }

@@ -1,1 +1,147 @@
-mapscripts NimbasaCity_SmallCourt_Lobby_MapScripts {}
+mapscripts NimbasaCity_SmallCourt_Lobby_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_SmallCourt_Lobby_On_Transition
+}
+
+script NimbasaCity_SmallCourt_Lobby_On_Transition
+{
+    call_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_SmallCourt_Lobby_EventScript_HideCouple)
+    callnative(DebugMenu_CalculateTime)
+	call_if_eq(VAR_DAY_OF_WEEK, 0, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToTennis)
+	call_if_eq(VAR_DAY_OF_WEEK, 1, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToTennis)
+	call_if_eq(VAR_DAY_OF_WEEK, 2, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToBasketball)
+	call_if_eq(VAR_DAY_OF_WEEK, 3, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToTennis)
+	call_if_eq(VAR_DAY_OF_WEEK, 4, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToBasketball)
+	call_if_eq(VAR_DAY_OF_WEEK, 5, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToTennis)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, NimbasaCity_SmallCourt_Lobby_EventScript_WarpToBasketball)
+    end
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_WarpToTennis
+{
+    setdynamicwarp(MAP_NIMBASA_CITY_TENNIS_COURT, 10, 23)
+    call_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_SmallCourt_Lobby_EventScript_HideTennisPlayer)
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_WarpToBasketball
+{
+    setdynamicwarp(MAP_NIMBASA_CITY_BASKETBALL_COURT, 10, 23)
+    call_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_SmallCourt_Lobby_EventScript_HideBasketballPlayer)
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_HideCouple
+{
+    setflag(FLAG_TEMP_13)
+    return
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_HideTennisPlayer
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_HideBasketballPlayer
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Security
+{
+    msgbox("I am sorry.\p"
+        "But you cannot enter the court\n"
+        "because a game is in progress.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Blacksuit
+{
+    msgbox("If you speak to athletes during a\n"
+        "practice, they may challenge you to a\l"
+        "Pokémon battle!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Roughneck
+{
+    msgbox("We love sports.\n"
+        "Watching games is great, but we enjoy\l"
+        "watching practices, too!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Beauty
+{
+    msgbox("New styles of basketball and tennis\n"
+        "created by people and Pokémon...\l"
+        "These may be advanced forms of sports.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_TennisPlayer
+{
+    msgbox("First-rank Smashers are waiting for you\n"
+        "in the court with their Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_BasketballPlayer
+{
+    msgbox("First-rank Hoopsters are waiting for you\n"
+        "in the court with their Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist
+{
+    lock
+    faceplayer
+	call_if_eq(VAR_DAY_OF_WEEK, 2, NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_2)
+	call_if_eq(VAR_DAY_OF_WEEK, 4, NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_2)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_2)
+    goto_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_TennisActive)
+    msgbox("Tennis players are practicing\n"
+        "in Small Court now!\p"
+        "People can watch them practicing!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_TennisActive
+{
+    msgbox("There is a tennis match\n"
+        "in Small Court now!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_2
+{
+    goto_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_BasketballActive)
+    msgbox("Basketball players are practicing\n"
+        "in Small Court now!\p"
+        "People can watch them practicing!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Lobby_EventScript_Receptionist_BasketballActive
+{
+    msgbox("There is a basketball game\n"
+        "in Small Court now!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCL_RECEPTIONIST)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}

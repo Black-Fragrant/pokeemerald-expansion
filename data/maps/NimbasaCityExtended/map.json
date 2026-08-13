@@ -13,7 +13,129 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_NCE_N",
+      "graphics_id": "OBJ_EVENT_GFX_N",
+      "x": 26,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIMBASA_CITY_EXTENDED_N"
+    },
+    {
+      "local_id": "LOCALID_NCE_N_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_N",
+      "x": 53,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL"
+    },
+    {
+      "local_id": "LOCALID_NCE_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 47,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "local_id": "LOCALID_NCE_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_MALE",
+      "x": 47,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMPORARY_DISAPPEARING"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PEIRRO",
+      "x": 28,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCityExtended_EventScript_PeirroLeft",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HOUSEWIFE",
+      "x": 32,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCityExtended_EventScript_Housewife",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "x": 31,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCityExtended_EventScript_Girl",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PEIRRO",
+      "x": 39,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCityExtended_EventScript_PeirroRight",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 49,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_X_ATTACK",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_NIMBASA_CITY_EXTENDED_ITEM_X_ATTACK"
+    }
+  ],
   "warp_events": [
     {
       "x": 9,
@@ -44,6 +166,93 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_N_BATTLE_STATE",
+      "var_value": "0",
+      "script": "NimbasaCityExtended_EventScript_N_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_N_BATTLE_STATE",
+      "var_value": "0",
+      "script": "NimbasaCityExtended_EventScript_N_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_N_BATTLE_STATE",
+      "var_value": "0",
+      "script": "NimbasaCityExtended_EventScript_N_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_N_BATTLE_STATE",
+      "var_value": "0",
+      "script": "NimbasaCityExtended_EventScript_N_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_NIMBASA_N_BATTLE_STATE",
+      "var_value": "0",
+      "script": "NimbasaCityExtended_EventScript_N_Trigger"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 37,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "NimbasaCityExtended_EventScript_GymSign"
+    },
+    {
+      "type": "sign",
+      "x": 45,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 46,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 47,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    },
+    {
+      "type": "sign",
+      "x": 48,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 mapscripts NimbasaCity_RightBuilding_1F_MapScripts {}
 
 script NimbasaCity_NCRB1F_EventScript_Krokorok
-{   
+{
 	lock
 	faceplayer
 	playmoncry(SPECIES_KROKOROK, CRY_MODE_NORMAL)

@@ -1,4 +1,403 @@
-mapscripts NimbasaCity_MapScripts {}
+mapscripts NimbasaCity_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_On_Transition
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NIMBASA_STATE, 2 : NimbasaCity_EventScript_Confrontation
+    ]
+}
+
+script NimbasaCity_On_Transition
+{
+    setflag(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING)
+    setflag(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING)
+	dotimebasedevents
+	call_if_unset(FLAG_DAILY_RESET_STADIUM_TRAINER, NimbasaCity_EventScript_ResetStadiumTrainerFlags)
+    callnative(DebugMenu_CalculateTime)
+    callnative(DebugMenu_CalculateTimeOfDay)
+	call_if_eq(VAR_DAY_OF_WEEK, 0, NimbasaCity_EventScript_Sunday)
+	call_if_eq(VAR_DAY_OF_WEEK, 1, NimbasaCity_EventScript_Monday)
+	call_if_eq(VAR_DAY_OF_WEEK, 2, NimbasaCity_EventScript_Tuesday)
+	call_if_eq(VAR_DAY_OF_WEEK, 3, NimbasaCity_EventScript_Wednesday)
+	call_if_eq(VAR_DAY_OF_WEEK, 4, NimbasaCity_EventScript_Thursday)
+	call_if_eq(VAR_DAY_OF_WEEK, 5, NimbasaCity_EventScript_Friday)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, NimbasaCity_EventScript_Saturday)
+    end
+}
+
+script NimbasaCity_EventScript_Sunday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 16, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Monday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 16, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Tuesday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 11, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Wednesday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Thursday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 11, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 16, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Friday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_Saturday
+{
+	call_if_eq(VAR_TIME_OF_DAY, 10, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 11, NimbasaCity_EventScript_CourtGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 14, NimbasaCity_EventScript_StadiumGameActive)
+	call_if_eq(VAR_TIME_OF_DAY, 15, NimbasaCity_EventScript_StadiumGameActive)
+    return
+}
+
+script NimbasaCity_EventScript_CourtGameActive
+{
+    clearflag(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING)
+    return
+}
+
+script NimbasaCity_EventScript_StadiumGameActive
+{
+    clearflag(FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING)
+    return
+}
+
+script NimbasaCity_EventScript_ResetStadiumTrainerFlags
+{
+    cleartrainerflag(TRAINER_INFIELDER_ALEX_34)
+    cleartrainerflag(TRAINER_INFIELDER_ALEX_56)
+    cleartrainerflag(TRAINER_INFIELDER_ALEX_78)
+    cleartrainerflag(TRAINER_BACKERS_AMI_EIRA_56)
+    cleartrainerflag(TRAINER_BACKERS_AMI_EIRA_78)
+    cleartrainerflag(TRAINER_INFIELDER_CONNOR_78)
+    cleartrainerflag(TRAINER_STRIKER_TONY_34)
+    cleartrainerflag(TRAINER_STRIKER_TONY_56)
+    cleartrainerflag(TRAINER_STRIKER_TONY_78)
+    cleartrainerflag(TRAINER_BACKERS_KAY_ALI_56)
+    cleartrainerflag(TRAINER_BACKERS_KAY_ALI_78)
+    cleartrainerflag(TRAINER_STRIKER_ROBERTO_78)
+    cleartrainerflag(TRAINER_LINEBACKER_DAN_34)
+    cleartrainerflag(TRAINER_LINEBACKER_DAN_56)
+    cleartrainerflag(TRAINER_LINEBACKER_DAN_78)
+    cleartrainerflag(TRAINER_BACKERS_HAWK_DAR_56)
+    cleartrainerflag(TRAINER_BACKERS_HAWK_DAR_78)
+    cleartrainerflag(TRAINER_LINEBACKER_BOB_78)
+    cleartrainerflag(TRAINER_SMASHER_ELENA_34)
+    cleartrainerflag(TRAINER_SMASHER_ELENA_56)
+    cleartrainerflag(TRAINER_SMASHER_ELENA_78)
+    cleartrainerflag(TRAINER_BACKERS_JOE_ROSS_56)
+    cleartrainerflag(TRAINER_BACKERS_JOE_ROSS_78)
+    cleartrainerflag(TRAINER_SMASHER_ASPEN_78)
+    cleartrainerflag(TRAINER_HOOPSTER_BOBBY_34)
+    cleartrainerflag(TRAINER_HOOPSTER_BOBBY_56)
+    cleartrainerflag(TRAINER_HOOPSTER_BOBBY_78)
+    cleartrainerflag(TRAINER_BACKERS_MASA_YAS_56)
+    cleartrainerflag(TRAINER_BACKERS_MASA_YAS_78)
+    cleartrainerflag(TRAINER_HOOPSTER_JOHN_78)
+    setflag(FLAG_DAILY_RESET_STADIUM_TRAINER)
+    return
+}
+
+script NimbasaCity_EventScript_Confrontation
+{
+    lock
+    delay(20)
+    fadeoutbgm(1)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 4))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    playbgm(MUS_BW_UNWAVERING_EMOTIONS, TRUE)
+    delay(20)
+	special(SpawnCameraObject)
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Daddy?!\n"
+        "What are you doing here?", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("I've come to take you\n"
+        "back home, of course!\p"
+        "Your mother told me that you'd\n"
+        "made it all the way out here.\p"
+        "Haven't you gone far enough?", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(lock_facing_direction, walk_right, unlock_facing_direction))
+	waitmovement(0)
+    delay(10)
+    msgbox("No way!\p"
+        "I'm going to keep traveling\n"
+        "with {PLAYER} and my Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("Absolutely not! Others do\n"
+        "things their way, and we do things ours!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Is that so?\p"
+        "Then, how about you do things your way,\n"
+        "and I'll do things mine!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Sweetie, you keep going on your travels.", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(emote_question_mark))
+	waitmovement(0)
+    delay(10)
+	playse(SE_PIN)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(emote_question_mark))
+	waitmovement(0)
+    delay(10)
+    waitse
+    addobject(LOCALID_NIMBASACITY_ELESA)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(face_down))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(face_down))
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_up * 5))
+	waitmovement(0)
+    delay(10)
+    msgbox("Hey! Who do you think\n"
+        "you are? This is a family matter!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("My name is Elesa.\p"
+        "I'm this town's Gym Leader.\n"
+        "I also happen to be a model.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_right, walk_in_place_up))
+	waitmovement(0)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("You know, there are many people\n"
+        "in this world.\p"
+        "There are people whose way of thinking\n"
+        "may be completely different from yours.\l"
+        "Sometimes, this means you may get hurt.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Of course!\p"
+        "That's exactly right!\n"
+        "It's because I'm worried about that...", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("But it's important to keep trying,\n"
+        "to learn about the differences between\l"
+        "yourself and others...\p"
+        "To learn that being different is OK.\p"
+        "And you shouldn't worry.\p"
+        "Trainers always have Pokémon\n"
+        "at their side.\p"
+        "Pokémon are wonderful. It's not only how\n"
+        "cute they can be, but also how much you\l"
+        "can depend on them...", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Please!\p"
+        "I know there's gonna be painful stuff\n"
+        "like you're worrying about!\l"
+        "I know! Really, I get it!\p"
+        "But, like, listen...\p"
+        "There'll be tons of nice people, too.\p"
+        "Know what else? Since I've been\n"
+        "traveling with Pokémon, I've already\l"
+        "gotten tougher, I can totally tell.\p"
+        "So...please?", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_down, emote_heart)) //this should be ...
+	waitmovement(0)
+    delay(40)
+    msgbox("Hmm...\n"
+        "I guess.\p"
+        "If wanting to continue your journey\n"
+        "is selfishness on your part,\l"
+        "wanting to stop you is\l"
+        "selfishness on mine.\p"
+        "I'm surprised to find I'm the one\n"
+        "being childish--at my age!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    msgbox("This Gym Leader's comments helped me\n"
+        "wake up.\p"
+        "Bianca, I'm sure it's better that you\n"
+        "take the path you want to take now.\p"
+        "I hope that your journey will be fun.\n"
+        "Bon voyage!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("{PLAYER}, please...\n"
+        "Take care of my little girl, OK?", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(delay_16 * 2, walk_in_place_down))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(delay_16 * 2, walk_in_place_down))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_down * 2, walk_right, walk_down * 4))
+	waitmovement(0)
+    removeobject(LOCALID_NIMBASACITY_BIANCA_FATHER)
+    delay(10)
+	special(SpawnCameraObject)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    msgbox("Papa, I'll come home after\n"
+        "I find out what I really want to do!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    destroy_speech_bubble()
+    closemessage
+    delay(30)
+    msgbox("I'm sure he traveled\n"
+        "as a Trainer himself, in the past...\l"
+        "Being a parent must be hard.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_in_place_left))
+	waitmovement(0)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_in_place_right))
+	waitmovement(0)
+    delay(10)
+    call_if_unset(FLAG_BADGE04_GET, NimbasaCity_EventScript_Confrontation_ElesaWalkDown)
+    call_if_set(FLAG_BADGE04_GET, NimbasaCity_EventScript_Confrontation_ElesaWalkLeft)
+    delay(10)
+    msgbox("She's so cool! Hah!\n"
+        "I want to be a totally cool woman\l"
+        "like Elesa!\p"
+        "Mm. I wonder how I'll get there.\p"
+        "Well, before that, I guess I need to\n"
+        "discover what I really want to do!\l"
+        "See ya later, {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    destroy_speech_bubble()
+    closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_down * 5))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    removeobject(LOCALID_NIMBASACITY_BIANCA_CONFRONT)
+    delay(20)
+    setvar(VAR_NIMBASA_STATE, 3)
+	fadedefaultbgm
+	savebgm(MUS_NIMBASA_CITY)
+    delay(20)
+    release
+    end
+}
+
+script NimbasaCity_EventScript_Confrontation_ElesaWalkDown
+{
+    msgbox("Did I meddle unnecessarily?\p"
+        "You looked troubled, so\n"
+        "I decided to chime in.\p"
+        "By the way, if you're Trainers, please\n"
+        "stop by the Pokémon Gym.\p"
+        "I'll teach you a little something about\n"
+        "how tough a journey can get.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(delay_16 * 2, walk_in_place_down))
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_down, walk_left, walk_down * 5))
+	waitmovement(0)
+    removeobject(LOCALID_NIMBASACITY_ELESA)
+    delay(20)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_Confrontation_ElesaWalkLeft
+{
+    msgbox("Did I meddle unnecessarily?\p"
+        "You looked troubled, so\n"
+        "I decided to chime in.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_in_place_up))
+	waitmovement(0)
+    delay(10)
+    msgbox("I'm sorry, {PLAYER}.\n"
+        "I'll be waiting on Route 5.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(face_down, lock_facing_direction, walk_up, unlock_facing_direction))
+	waitmovement(0)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(delay_16 * 3, walk_in_place_left))
+	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_left * 9))
+	waitmovement(0)
+    removeobject(LOCALID_NIMBASACITY_ELESA)
+    delay(20)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_in_place_up))
+	waitmovement(0)
+    return
+}
 
 script NimbasaCity_EventScript_BattleInstituteSign
 {
@@ -430,6 +829,183 @@ script NimbasaCity_EventScript_GiveVSRecorder_Pos4
 script NimbasaCity_EventScript_GiveVSRecorder_Pos5
 {
 	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_in_place_right))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BiancaStopsPlayer
+{
+    lock
+    msgbox("Bianca: Yoo-hoo, {PLAYER}!", MSGBOX_DEFAULT, FALSE)
+    closemessage
+	playbgm(MUS_BW_BIANCA, TRUE)
+    addobject(LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 14, NimbasaCity_EventScript_BSP_Pos1)
+	call_if_eq (VAR_TEMP_1, 15, NimbasaCity_EventScript_BSP_Pos2)
+	call_if_eq (VAR_TEMP_1, 16, NimbasaCity_EventScript_BSP_Pos3)
+	call_if_eq (VAR_TEMP_1, 17, NimbasaCity_EventScript_BSP_Pos4)
+	call_if_eq (VAR_TEMP_1, 18, NimbasaCity_EventScript_BSP_Pos5)
+    delay(10)
+    msgbox("I just had a look at the Musical Theater.\n"
+        "It's sooo cool!\p"
+        "Since you're here, come on, {PLAYER}!\p"
+        "Come with me!\n"
+        "Over here, over here!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_NIMBASA_CITY_BIANCA_BLOCKING_THEATER)
+	call_if_eq (VAR_TEMP_1, 14, NimbasaCity_EventScript_BSP_Pos6)
+	call_if_eq (VAR_TEMP_1, 15, NimbasaCity_EventScript_BSP_Pos7)
+	call_if_eq (VAR_TEMP_1, 16, NimbasaCity_EventScript_BSP_Pos8)
+	call_if_eq (VAR_TEMP_1, 17, NimbasaCity_EventScript_BSP_Pos9)
+	call_if_eq (VAR_TEMP_1, 18, NimbasaCity_EventScript_BSP_Pos10)
+    delay(10)
+    msgbox("OK, we're here! Let's go in!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_in_place_up, delay_16))
+	waitmovement(0)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_up))
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
+    waitse
+    delay(20)
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+    warp(MAP_NIMBASA_CITY_MUSICAL_THEATER, 14, 23)
+    waitstate
+    end
+}
+
+script NimbasaCity_EventScript_BSP_Pos1
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_left * 6, walk_up, walk_left))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos2
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_left * 7))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos3
+{
+    setobjectxy(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, 23, 16)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_left * 7))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos4
+{
+    setobjectxy(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, 23, 17)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_left * 7))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos5
+{
+    setobjectxy(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, 23, 18)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_left * 7))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos6
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_right, walk_down * 2, walk_right * 40, walk_up * 4, walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 2, walk_down * 2, walk_right * 40, walk_up * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos7
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_right, walk_down, walk_right * 40, walk_up * 4, walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 2, walk_down, walk_right * 40, walk_up * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos8
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_right * 41, walk_up * 4, walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 42, walk_up * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos9
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_right, walk_up, walk_right * 40, walk_up * 4, walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 2, walk_up, walk_right * 40, walk_up * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BSP_Pos10
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_right, walk_up * 2, walk_right * 40, walk_up * 4, walk_in_place_down))
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 2, walk_up * 2, walk_right * 40, walk_up * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BiancaBlockingMusicalTheater
+{
+    lock
+    faceplayer
+    msgbox("Bianca: Ooh, {PLAYER}!\p"
+        "Are you interested in musicals?\n"
+        "Then, let's go in together!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_BLOCKING)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_in_place_up, delay_16))
+	waitmovement(0)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_0, 56, NimbasaCity_EventScript_BBMT_Pos1)
+	call_if_eq (VAR_TEMP_0, 57, NimbasaCity_EventScript_BBMT_Pos2)
+	call_if_eq (VAR_TEMP_0, 58, NimbasaCity_EventScript_BBMT_Pos3)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NIMBASACITY_BIANCA_BLOCKING)
+    waitse
+    delay(20)
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+    warp(MAP_NIMBASA_CITY_MUSICAL_THEATER, 14, 23)
+    waitstate
+    end
+}
+
+script NimbasaCity_EventScript_BBMT_Pos1
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_up))
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_in_place_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BBMT_Pos2
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_up))
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCity_EventScript_BBMT_Pos3
+{
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_up))
+	applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_up))
 	waitmovement(0)
     return
 }

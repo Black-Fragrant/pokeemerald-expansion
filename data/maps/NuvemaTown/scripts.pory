@@ -36,7 +36,7 @@ script NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
 	lockall()
 	clearflag(FLAG_NUVEMA_JUNIPER)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down, walk_down ))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
 	waitmovement(0)
 	applymovement(LOCALID_JUNIPER, moves( walk_down * 10, walk_right * 5, walk_up ))
 	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down * 10, walk_right * 5, walk_up ))

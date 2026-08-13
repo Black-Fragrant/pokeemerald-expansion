@@ -97,7 +97,7 @@
       "x": 12,
       "y": 45,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "NULL"
     },
     {
@@ -105,7 +105,7 @@
       "x": 16,
       "y": 45,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "NULL"
     }
   ]

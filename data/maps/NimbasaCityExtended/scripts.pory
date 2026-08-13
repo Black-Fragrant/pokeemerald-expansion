@@ -1,1 +1,293 @@
-mapscripts NimbasaCityExtended_MapScripts {}
+mapscripts NimbasaCityExtended_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCityExtended_On_Transition
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_NIMBASA_N_BATTLE_STATE, 1 : NimbasaCityExtended_EventScript_TurnPlayer
+    ]
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NIMBASA_N_BATTLE_STATE, 1 : NimbasaCityExtended_EventScript_N_Battle
+    ]
+}
+
+script NimbasaCityExtended_On_Transition
+{
+    call_if_eq(VAR_NIMBASA_N_BATTLE_STATE, 1, NimbasaCityExtended_EventScript_PlayMusic)
+    end
+}
+
+script NimbasaCityExtended_EventScript_PlayMusic
+{
+    savebgm(MUS_BW_APPEARS_PLASMA_2)
+    return
+}
+
+script NimbasaCityExtended_EventScript_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_WEST)
+    return
+}
+
+script NimbasaCityExtended_EventScript_N_Trigger
+{
+    lock
+	playbgm(MUS_BW_N, TRUE)
+	playse(SE_PIN)
+	applymovement(LOCALID_NCE_N, moves(face_left, emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, NimbasaCityExtended_EventScript_NBT_Pos1)
+	call_if_eq (VAR_TEMP_1, 10, NimbasaCityExtended_EventScript_NBT_Pos2)
+	call_if_eq (VAR_TEMP_1, 11, NimbasaCityExtended_EventScript_NBT_Pos3)
+	call_if_eq (VAR_TEMP_1, 12, NimbasaCityExtended_EventScript_NBT_Pos4)
+	call_if_eq (VAR_TEMP_1, 13, NimbasaCityExtended_EventScript_NBT_Pos5)
+	delay(10)
+	setflag(FLAG_TEXT_SPEED_FASTER)
+    msgbox("N: You're looking for Team Plasma, right?\p"
+        "They ran into the amusement park.\n"
+        "Come with me.", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_N)
+    destroy_speech_bubble()
+    closemessage
+	call_if_eq (VAR_TEMP_1, 9, NimbasaCityExtended_EventScript_NBT_Pos6)
+	call_if_eq (VAR_TEMP_1, 10, NimbasaCityExtended_EventScript_NBT_Pos7)
+	call_if_eq (VAR_TEMP_1, 11, NimbasaCityExtended_EventScript_NBT_Pos8)
+	call_if_eq (VAR_TEMP_1, 12, NimbasaCityExtended_EventScript_NBT_Pos9)
+	call_if_eq (VAR_TEMP_1, 13, NimbasaCityExtended_EventScript_NBT_Pos10)
+	applymovement(LOCALID_NCE_N, moves(delay_8, walk_in_place_down, delay_16, walk_in_place_up, delay_16, walk_in_place_down, delay_16, walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+    msgbox("N: They're not here.\p"
+        "Let's ride the Ferris wheel\n"
+        "and see if we can spot them.\p"
+        "I love Ferris wheels.\n"
+        "The circular motion... The mechanics...\p"
+        "They're like collections of\n"
+        "elegant formulas.", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_N)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_in_place_up))
+	waitmovement(0)
+	clearflag(FLAG_TEXT_SPEED_FASTER)
+    setflag(FLAG_NIMBASA_CITY_EXTENDED_N)
+    clearflag(FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL)
+    setvar(VAR_NIMBASA_N_BATTLE_STATE, 1)
+    fadescreenswapbuffers (FADE_TO_BLACK)
+    warpsilent(MAP_NIMBASA_CITY_EXTENDED, 55, 13)
+    waitstate
+    end()
+}
+
+script NimbasaCityExtended_EventScript_N_Battle
+{
+    lock
+    setvar(VAR_NIMBASA_N_BATTLE_STATE, 0)
+    addobject(LOCALID_NCE_GRUNT_1)
+    addobject(LOCALID_NCE_GRUNT_2)
+	applymovement(LOCALID_NCE_GRUNT_2, moves(walk_right * 2))
+	applymovement(LOCALID_NCE_GRUNT_1, moves(walk_right * 3))
+	waitmovement(0)
+	delay(10)
+    msgbox("Team Plasma: My lord N!", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_GRUNT_1)
+    destroy_speech_bubble()
+    closemessage
+    msgbox("Team Plasma: You're safe, sire!", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_GRUNT_2)
+    destroy_speech_bubble()
+    closemessage
+	setflag(FLAG_TEXT_SPEED_FASTER)
+    msgbox("N: There's no problem.\p"
+       "You're part of the people we brought in\n"
+       "to help us save the Pokémon.\l"
+       "So, you're under my protection, as well.\p"
+       "Go, quickly, and let my battle cover\n"
+       "your retreat.\p"
+       "...Now then, {PLAYER},\n"
+       "do you follow my logic?", MSGBOX_YESNO, TRUE, LOCALID_NCE_N_RIGHT)
+    goto_if_eq(VAR_RESULT, FALSE, NimbasaCityExtended_EventScript_N_AnswerNo)
+    goto(NimbasaCityExtended_EventScript_N_AnswerYes)
+}
+
+script NimbasaCityExtended_EventScript_N_AnswerYes
+{
+    msgbox("If true, your words please me.\p"
+        "Ah. Then...\n"
+        "The future I envision...\p"
+        "Perhaps I can't beat you here and now,\n"
+        "but I'll battle you to buy time for these\l"
+        "members of Team Plasma to get away!", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage
+	clearflag(FLAG_TEXT_SPEED_FASTER)
+    goto(NimbasaCityExtended_EventScript_N_StartBattle)
+}
+
+script NimbasaCityExtended_EventScript_N_AnswerNo
+{
+    msgbox("So that's how it is...\n"
+        "That's unfortunate.\p"
+        "Ah. Then...\n"
+        "The future I envision...\p"
+        "Perhaps I can't beat you here and now,\n"
+        "but I'll battle you anyway to buy time\l"
+        "for these members of Team Plasma\l"
+        "to flee.", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage
+	clearflag(FLAG_TEXT_SPEED_FASTER)
+    goto(NimbasaCityExtended_EventScript_N_StartBattle)
+}
+
+script NimbasaCityExtended_EventScript_N_StartBattle
+{
+    delay(10)
+	applymovement(LOCALID_NCE_GRUNT_2, moves(walk_fast_left * 2))
+	applymovement(LOCALID_NCE_GRUNT_1, moves(walk_fast_left * 3))
+	waitmovement(0)
+    removeobject(LOCALID_NCE_GRUNT_1)
+    removeobject(LOCALID_NCE_GRUNT_2)
+	trainerbattle_no_intro (TRAINER_N_NIMBASA_CITY, text("The result was the same...\nBut you... Who are you?"))
+    msgbox("N: You're quite strong.\p"
+        "But I have a future that I must change.\n"
+        "And, for that future...", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_N_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCE_N_RIGHT, moves(walk_right))
+	waitmovement(0)
+    fadescreenswapbuffers (FADE_TO_BLACK)
+    fadescreenswapbuffers (FADE_FROM_BLACK)
+	applymovement(LOCALID_NCE_N_RIGHT, moves(lock_facing_direction, walk_slow_left, unlock_facing_direction))
+	waitmovement(0)
+    delay(10)
+    msgbox("If your conviction is not strong enough,\n"
+        "you will never be able to defeat me.", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_N_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    delay(10)
+	applymovement(LOCALID_NCE_N_RIGHT, moves(walk_left * 6))
+	waitmovement(0)
+    removeobject(LOCALID_NCE_N_RIGHT)
+    setvar(VAR_NIMBASA_N_BATTLE_STATE, 2)
+	fadedefaultbgm
+	savebgm(MUS_NIMBASA_CITY)
+    delay(20)
+    release 
+    end 
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos1
+{
+	applymovement(LOCALID_NCE_N, moves(walk_left, walk_up, walk_left * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos2
+{
+	applymovement(LOCALID_NCE_N, moves(walk_left * 3))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos3
+{
+	applymovement(LOCALID_NCE_N, moves(walk_left, walk_down, walk_left * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos4
+{
+	applymovement(LOCALID_NCE_N, moves(walk_left, walk_down * 2, walk_left * 2))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos5
+{
+	applymovement(LOCALID_NCE_N, moves(walk_left, walk_down * 3, walk_left * 1))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_right))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos6
+{
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 4, walk_down * 4, walk_right * 27))
+	applymovement(LOCALID_NCE_N, moves(walk_right * 3, walk_down * 4, walk_right * 29))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos7
+{
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 21, walk_down * 3, walk_right * 10))
+	applymovement(LOCALID_NCE_N, moves(walk_right * 20, walk_down * 3, walk_right * 12))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos8
+{
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 21, walk_down * 2, walk_right * 10))
+	applymovement(LOCALID_NCE_N, moves(walk_right * 20, walk_down * 2, walk_right * 12))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos9
+{
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 4, walk_down * 1, walk_right * 27))
+	applymovement(LOCALID_NCE_N, moves(walk_right * 3, walk_down * 1, walk_right * 29))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_NBT_Pos10
+{
+	applymovement(LOCALID_PLAYER, moves(delay_8, walk_right * 30))
+	applymovement(LOCALID_NCE_N, moves(walk_right * 31))
+	waitmovement(0)
+    return
+}
+
+script NimbasaCityExtended_EventScript_GymSign
+{
+    msgbox("Nimbasa City Pokémon Gym\n"
+        "Leader: Elesa\l"
+        "The Shining Beauty", MSGBOX_SIGN)
+	end
+}
+
+script NimbasaCityExtended_EventScript_PeirroLeft
+{
+    msgbox("Whooshing, swooshing roller coaster!\n"
+       "Whirltwirlwhirltwirl...whoa!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCityExtended_EventScript_PeirroRight
+{
+    msgbox("Spinning, spinning Ferris wheel!\n"
+        "Climbing, climbing Ferris wheel!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCityExtended_EventScript_Girl
+{
+    msgbox("Look! Look!\n"
+       "It's a clown!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCityExtended_EventScript_Housewife
+{
+    msgbox("No matter how old you get, amusement\n"
+       "parks are always exciting, am I right?", MSGBOX_NPC, TRUE)
+	end
+}
+
+
+
