@@ -299,7 +299,7 @@
 #define TRAINER_COOLTRAINER_GEORGE                 293
 #define TRAINER_COOLTRAINER_COLBY                  294
 #define TRAINER_COOLTRAINER_PAUL                   295
-#define TRAINER_COOLTRAINER_ROLANDO                296
+#define TRAINER_COOLTRAINER_DUMMYO                296
 #define TRAINER_COOLTRAINER_GILBERT                297
 #define TRAINER_COOLTRAINER_DUMMY04                   298
 #define TRAINER_COOLTRAINER_BERKE                  299

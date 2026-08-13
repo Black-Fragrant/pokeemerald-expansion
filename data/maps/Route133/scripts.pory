@@ -3,7 +3,7 @@ Route133_MapScripts::
 	.byte 0
 
 Route133_EventScript_Franklin::
-	trainerbattle_single TRAINER_FRANKLIN, Route133_Text_FranklinIntro, Route133_Text_FranklinDefeat
+	trainerbattle_single TRAINER_DUMMY, Route133_Text_FranklinIntro, Route133_Text_FranklinDefeat
 	msgbox Route133_Text_FranklinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -28,7 +28,7 @@ Route133_EventScript_Beck::
 	end
 
 Route133_EventScript_Mollie::
-	trainerbattle_single TRAINER_MOLLIE, Route133_Text_MollieIntro, Route133_Text_MollieDefeat
+	trainerbattle_single TRAINER_DUMMY, Route133_Text_MollieIntro, Route133_Text_MollieDefeat
 	msgbox Route133_Text_MolliePostBattle, MSGBOX_AUTOCLOSE
 	end
 

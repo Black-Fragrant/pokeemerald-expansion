@@ -1,1 +1,233 @@
-mapscripts NimbasaCity_TennisCourt_MapScripts {}
+mapscripts NimbasaCity_TennisCourt_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION : NimbasaCity_TennisCourt_Lobby_On_Transition
+}
+
+script NimbasaCity_TennisCourt_Lobby_On_Transition
+{
+    call_if_unset(FLAG_BADGE07_GET, NimbasaCity_TennisCourt_EventScript_HideNPC2)
+    call_if_unset(FLAG_BADGE05_GET, NimbasaCity_TennisCourt_EventScript_HideNPC1)
+    end
+}
+
+script NimbasaCity_TennisCourt_EventScript_HideNPC1
+{
+    setflag(FLAG_TEMP_11)
+    return
+}
+
+script NimbasaCity_TennisCourt_EventScript_HideNPC2
+{
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script NimbasaCity_TennisCourt_EventScript_Elena
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_SMASHER_ELENA_34, NimbasaCity_TennisCourt_EventScript_Elena_Defeated_3)
+    goto_if_defeated(TRAINER_SMASHER_ELENA_56, NimbasaCity_TennisCourt_EventScript_Elena_Defeated_2)
+    goto_if_defeated(TRAINER_SMASHER_ELENA_78, NimbasaCity_TennisCourt_EventScript_Elena_Defeated)
+    goto_if_unset(FLAG_BADGE05_GET, NimbasaCity_TennisCourt_EventScript_Elena_3)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_TennisCourt_EventScript_Elena_2)
+	trainerbattle_single(TRAINER_SMASHER_ELENA_78,
+	text("As a proper lady, I am elegant\n"
+        "all the way down to my toes!"),
+	text("As a proper lady, I am elegant\n"
+        "all the way down to my toes!"))
+    goto(NimbasaCity_TennisCourt_EventScript_Elena_Defeated)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Elena_Defeated
+{
+    msgbox("Oh! I am a lady,\n"
+        "yet I have lost my nerve...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Elena_2
+{
+	trainerbattle_single(TRAINER_SMASHER_ELENA_56,
+	text("An elegant Smasher\n"
+        "has an elegant battle!"),
+	text("E-e-e-even though I lost,\n"
+        "I will not panic."))
+    goto(NimbasaCity_TennisCourt_EventScript_Elena_Defeated_2)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Elena_Defeated_2
+{
+    msgbox("Because I am a lady, I won't be,\n"
+            "well, you know,\l"
+            "ch-ch-chagrined at losing.\l"
+            "Well, maybe a teensy little bit.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Elena_3
+{
+	trainerbattle_single(TRAINER_SMASHER_ELENA_34,
+	text("An elegant Smasher\n"
+        "has an elegant battle!"),
+	text("E-e-e-even though I lost,\n"
+        "I will not panic."))
+    goto(NimbasaCity_TennisCourt_EventScript_Elena_Defeated_3)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Elena_Defeated_3
+{
+    msgbox("Because I am a lady, I won't\n"
+        "be chagrined at losing the battle!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Joe
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_JOE_ROSS_56, NimbasaCity_TennisCourt_EventScript_Joe_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_JOE_ROSS_78, NimbasaCity_TennisCourt_EventScript_Joe_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_TennisCourt_EventScript_Joe_2)
+    trainerbattle_double(TRAINER_BACKERS_JOE_ROSS_78,
+	text("I want to play tennis\n"
+        "like a strong athlete!"),
+	text("Joe: A no-point game\n"
+        "against you 'cause you're strong...\p"
+        "Ross: A no-point game\n"
+        "'cause we could not win at all!"),
+	text("Only one Pokémon?\n"
+        "Then, we cannot have a battle."))
+    goto(NimbasaCity_TennisCourt_EventScript_Joe_Defeated)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Joe_Defeated
+{
+    msgbox("I want to be as good a Cyclist\n"
+        "as a strong person like you...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Joe_2
+{
+    trainerbattle_double(TRAINER_BACKERS_JOE_ROSS_56,
+	text("I get excited just by\n"
+        "coming to this stadium!!"),
+	text("Joe: I got super excited!\p"
+        "Ross: What a thrill!\n"
+        "It's taking my breath away!"),
+	text("We don't want to have\n"
+        "a one-on-two battle."))
+    goto(NimbasaCity_TennisCourt_EventScript_Joe_Defeated_2)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Joe_Defeated_2
+{
+    msgbox("Just by being here! Just by watching it!\n"
+        "I get really excited!\p"
+        "If I played a game here,\n"
+        "I would be extremely excited!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Ross
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_BACKERS_JOE_ROSS_56, NimbasaCity_TennisCourt_EventScript_Ross_Defeated_2)
+    goto_if_defeated(TRAINER_BACKERS_JOE_ROSS_78, NimbasaCity_TennisCourt_EventScript_Ross_Defeated)
+    goto_if_unset(FLAG_BADGE07_GET, NimbasaCity_TennisCourt_EventScript_Ross_2)
+    trainerbattle_double(TRAINER_BACKERS_JOE_ROSS_78,
+	text("I want to play ball\n"
+        "like a strong athlete!"),
+	text("Joe: A no-point game\n"
+        "against you 'cause you're strong...\p"
+        "Ross: A no-point game\n"
+        "'cause we could not win at all!"),
+	text("Only one Pokémon?\n"
+        "I prefer a doubles match."))
+    goto(NimbasaCity_TennisCourt_EventScript_Ross_Defeated)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Ross_Defeated
+{
+    msgbox("I want to learn more from\n"
+        "a strong person like you...", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Ross_2
+{
+    trainerbattle_double(TRAINER_BACKERS_JOE_ROSS_56,
+	text("If we fight in this stadium,\n"
+        "don't you think we will understand\l"
+        "how our star players feel?"),
+	text("Joe: I got super excited!\p"
+        "Ross: What a thrill!\n"
+        "It's taking my breath away!"),
+	text("One-on-two?\n"
+        "We cannot fight like that."))
+    goto(NimbasaCity_TennisCourt_EventScript_Ross_Defeated_2)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Ross_Defeated_2
+{
+    msgbox("We had a battle with Pokémon\n"
+        "in the stadium...\p"
+        "I am happy 'cause I experienced\n"
+        "what star players feel!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_Aspen
+{
+    lock
+    faceplayer
+    goto_if_defeated(TRAINER_SMASHER_ASPEN_78, NimbasaCity_TennisCourt_EventScript_Aspen_Defeated)
+	trainerbattle_single(TRAINER_SMASHER_ASPEN_78,
+	text("The qualifying round is coming soon.\p"
+        "I will practice smashes\n"
+        "by using you as a wall!"),
+	text("Oh, whew! Must...catch...my breath.\n"
+        "That was some good training..."))
+    goto(NimbasaCity_TennisCourt_EventScript_Aspen_Defeated)
+}
+
+script NimbasaCity_TennisCourt_EventScript_Aspen_Defeated
+{
+    msgbox("You and I have just met!\n"
+        "Let's start this game from the beginning.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_YoungsterLeft
+{
+    msgbox("I am a ball boy who collects\n"
+        "tennis balls.\p"
+        "You are a Pokémon Trainer who\n"
+        "collects Pokémon.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_YoungsterRight
+{
+    msgbox("To become ball boys,\n"
+        "we gotta practice.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_TennisPlayerLeft
+{
+    msgbox("Pokémon tennis is wonderful!\p"
+        "Players are never alone.\n"
+        "Their Pokémon are always with them!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_TennisCourt_EventScript_TennisPlayerRight
+{
+    msgbox("Tennis is all about rackets and balls.\n"
+        "There's nothing profound about it.", MSGBOX_NPC, TRUE)
+	end()
+}
+

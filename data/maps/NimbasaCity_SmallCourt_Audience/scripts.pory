@@ -1,1 +1,87 @@
 mapscripts NimbasaCity_SmallCourt_Audience_MapScripts {}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Gentleman
+{
+    lock
+    faceplayer
+    goto_if_unset(FLAG_NIMBASA_CITY_SMALL_COURT_GAME_ONGOING, NimbasaCity_SmallCourt_Audience_EventScript_Gentleman_2)
+    msgbox("Hey! Now! There!\n"
+        "Ah! No! No, no!\p"
+        "Yes! Yes, yes!\n"
+        "That's right! Ha!\p"
+        "Why don't you do it like I said?!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCA_GENTLEMAN)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Gentleman_2
+{
+    msgbox("I watch them practice quietly.\n"
+        "Because I trust the athletes!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCA_GENTLEMAN)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Lass
+{
+    lock
+    msgbox("I believe in big money!\p"
+        "...No, I mean I will gain glory!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCA_LASS)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Youngster
+{
+    lock
+    msgbox("Woooow! Coooool!\n"
+        "Someday I want to be on that court!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSCA_YOUNGSTER)
+    destroy_speech_bubble()
+    closemessage
+    release
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_BattleGirl
+{
+    msgbox("Did you see it?\n"
+        "That's a great muscle move!\p"
+        "Good muscle! Good hustle!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_GreenShirtGuy
+{
+    msgbox("Hm-hum! I can copy that play in my\n"
+        "next game.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Pokefan
+{
+    msgbox("Oh! This could be a once-in-a-lifetime\n"
+        "game! I might witness history!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Roughneck
+{
+    msgbox("We love sports.\n"
+        "Watching games is great, but we enjoy\l"
+        "watching practices, too!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_SmallCourt_Audience_EventScript_Beauty
+{
+    msgbox("New styles of basketball and tennis\n"
+        "created by people and Pokémon...\l"
+        "These may be advanced forms of sports.", MSGBOX_NPC, TRUE)
+	end()
+}

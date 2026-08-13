@@ -1,1 +1,687 @@
-mapscripts NimbasaCity_MusicalTheater_MapScripts {}
+mapscripts NimbasaCity_MusicalTheater_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NIMBASA_STATE, 1 : NimbasaCity_MusicalTheater_EventScript_Introduction
+    ]
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Introduction
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves( walk_up * 3))
+	applymovement(LOCALID_NCMT_BIANCA, moves( walk_up * 2, delay_16, walk_in_place_right))
+	waitmovement(0)
+    delay(20)
+    msgbox("Bianca: A. Mazing. Isn't it?", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_NCMT_OWNER, moves(face_down, emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(20)
+    msgbox("Hello, you two! How do you do?\p"
+        "I'm the owner of this theater.\n"
+        "Pleasure to meet you!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_OWNER, moves(walk_left, walk_in_place_down, delay_16, walk_right, walk_in_place_down, delay_16))
+	waitmovement(0)
+    msgbox("Ooh! I must say that you two seem like\n"
+       "phenomenal Trainers!\p"
+        "What do we do here? We use Props to make\n"
+        "your Pokémon fashionable and glamorous!\p"
+        "Do you want to join in and play Dress Up?\n"
+        "To get you started, here's a Prop Case!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_OWNER, moves(walk_left, walk_down, delay_16, walk_right, walk_in_place_down, delay_16))
+	waitmovement(0)
+	showlargeitempic(9, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Prop Case{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
+    delay(120)
+	additem (ITEM_PROP_CASE)
+	hidelargeitempic
+    closemessage
+	fadedefaultbgm
+	savebgm(MUS_MUSICAL_HALL)
+	delay(10)
+	applymovement(LOCALID_NCMT_OWNER, moves(lock_facing_direction, walk_up, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+    msgbox("This Prop Case lets you store Props for\n"
+        "decorating your Pokémon!\p"
+        "First off, you need to pick a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain
+{
+    msgbox("Now, now. Don't be like that.\n"
+        "Please reconsider and select a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Intro_CantPickEggs
+{
+    msgbox("Now, now. We can't have an Egg on Stage.\n"
+        "Please reconsider and select a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon
+{
+	specialvar (VAR_RESULT, ScriptGetPartyMonSpecies)
+	goto_if_eq (VAR_RESULT, SPECIES_EGG, NimbasaCity_MusicalTheater_EventScript_Intro_CantPickEggs)
+    msgbox("Then... It's time to play Dress Up!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("Wow! The two of you did a fantastic job\n"
+        "coordinating everything!\l"
+        "Utterly charming!\p"
+        "If you have a Pokémon who can play\n"
+        "Dress Up, you can participate in the\l"
+        "Pokémon Musical!\p"
+        "Would you two please join us?\n"
+        "The receptionist can explain everything.\p"
+        "Let us say a brief farewell!\n"
+        "I eagerly anticipate seeing you on stage!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_OWNER, moves(walk_left * 8))
+	waitmovement(0)
+    removeobject(LOCALID_NCMT_OWNER)
+    delay(20)
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_in_place_right))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Oh, I don't know what to do!\p"
+        "Doing the musical would be totally cool,\n"
+        "but there's other stuff I wanna do.\p"
+        "OK, that's it! I made up my mind!\n"
+        "I'm going to see the sights in Nimbasa!\p"
+        "See ya, {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_down * 2, walk_right, walk_down))
+	waitmovement(0)
+    delay(20)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NCMT_BIANCA)
+    waitse
+    setvar(VAR_NIMBASA_STATE, 2)
+    clearflag(FLAG_NIMBASA_CITY_BIANCA_AND_FATHER)
+    delay(20)
+    release
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_EntranceSign
+{
+    msgbox("Musical Theater\n"
+       "Props + Music + Dance = Moving Spectacle!", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Painting
+{
+    msgbox("You can hang Musical Photos from your\n"
+       "previous shows here.", MSGBOX_SIGN)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_RichGirl
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_NIMBASA_CITY_ITEM_TM_ECHOED_VOICE, NimbasaCity_MusicalTheater_EventScript_ObtainedEchoedVoice)
+    msgbox("If you are active in the musical, people\n"
+        "will become your fans and give you Props.\p"
+        "I don't have any Props, so I'll give you\n"
+        "this instead!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_ECHOED_VOICE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_NIMBASA_CITY_ITEM_TM_ECHOED_VOICE)
+    msgbox("With the move Echoed Voice, the power is\n"
+        "boosted more and more if it's used\l"
+        "every turn.\p"
+        "Having a group use it might work well!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_ObtainedEchoedVoice
+{
+    msgbox("Persistence is important, so keep\n"
+       "participating in the musical, and keep\l"
+       "using Echoed Voice!\p"
+       "You'll make more fans in the musical, and\n"
+       "you'll do more damage with Echoed Voice!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Pokefan
+{
+    msgbox("Originally, people performed in this\n"
+       "Musical Theater.\p"
+       "One time, a Pokémon wandered up on\n"
+       "stage and started imitating the actors.\p"
+       "Everybody thought it was sensational!\n"
+       "Ta-daaa! The Pokémon Musical was born.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_KindergartenGirl
+{
+    msgbox("Know what? When there are cute Pokémon,\n"
+       "my eyes are glued to the stage!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_BlueShirtGuy
+{
+    msgbox("I want to make Pokémon more glamorous\n"
+       "than ever before, so I'm researching the\l"
+       "styles others use when playing Dress Up.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Krokorok
+{
+	lock
+	faceplayer
+	playmoncry(SPECIES_KROKOROK, CRY_MODE_NORMAL)
+	msgbox("Gwah!", MSGBOX_NPC, TRUE)
+	waitmoncry
+	release
+	end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Dancer
+{
+    msgbox("When you play Dress Up, matching the\n"
+       "show you're performing in is im-por-tant!\p"
+       "If it's a good match, you can win the\n"
+       "hearts of the audience!\l"
+       "You'll be sure to attract attention.\p"
+       "If you're going to get on stage,\n"
+       "it's a waste if you don't stand out!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Maid
+{
+    msgbox("Pokémon Props each have their own image:\n"
+       "cool, cute, elegant, or quirky.\p"
+       "Before you play Dress Up, take a moment\n"
+       "to think about the image you prefer.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Gentleman_TopRight
+{
+    msgbox("It is such a treat when Trainers have\n"
+       "played Dress Up with their Pokémon\l"
+       "with such charming results.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Lady
+{
+    msgbox("I'm not trying to brag, but we're\n"
+       "rather rich.\p"
+       "When you say rich people, you think\n"
+       "musical. It's a matter of taste, I guess.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Policeman
+{
+    msgbox("The seats are beyond this entrance,\n"
+       "but I think you belong on the\l"
+       "spectacular stage!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Gentleman_ByThePainting
+{
+    msgbox("We really want you to participate in\n"
+       "the musical!\p"
+       "I apologize in advance if any of our\n"
+       "Props don't suit some kinds of Pokémon.\p"
+       "Pokémon are individuals, after all!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left
+{
+    lock
+    faceplayer
+    msgbox("Welcome to the Pokémon Musical!\p"
+       "Here you and your friends can\n"
+       "perform together!\p"
+       "Would you like to participate?", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Select)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Select
+{
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No",
+        "Info")
+    destroy_speech_bubble()
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_NoWifiConnection)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Finish)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info)}
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Finish)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_NoWifiConnection
+{
+    msgbox("I am sorry...\p"
+            "It appears that you have not\n"
+            "enabled internet connection...", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Finish)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Finish
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_PleaseVisitAgain_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info
+{
+    msgbox("What would you like me to explain?", MSGBOX_DEFAULT, FALSE)
+	dynmultichoice(10, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "What's the Pokémon Musical?",
+        "How to Participate",
+        "Eligible Pokémon",
+        "Dress Up",
+        "Shows",
+        "Cancel")
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain1)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain2)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain3)}
+	elif (var(VAR_RESULT) == 3) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain4)}
+	elif (var(VAR_RESULT) == 4) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain5)}
+	elif (var(VAR_RESULT) == 5) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_AskAgain)}
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_AskAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain1
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_WhatsThePokemonMusical_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain2
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_HowToParticipate_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain3
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_EligiblePokemon_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain4
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_DressUp_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain5
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_Shows_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_AskAgain
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_AskAgain_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_LEFT)
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Select)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle
+{
+    lock
+    faceplayer
+    msgbox("Welcome to the Pokémon Musical!\p"
+       "Here you can participate in\n"
+       "a musical alone.\p"
+       "Would you like to participate?", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Select)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Select
+{
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No",
+        "Info")
+    destroy_speech_bubble()
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_InPreparation)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Finish)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info)}
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Finish)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_InPreparation
+{
+    msgbox("I am sorry...\p"
+            "We are still preparing the stages\n"
+            "for the musicals...", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Finish)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Finish
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_PleaseVisitAgain_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info
+{
+    msgbox("What would you like me to explain?", MSGBOX_DEFAULT, FALSE)
+	dynmultichoice(10, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "What's the Pokémon Musical?",
+        "How to Participate",
+        "Eligible Pokémon",
+        "Dress Up",
+        "Shows",
+        "Cancel")
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain1)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain2)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain3)}
+	elif (var(VAR_RESULT) == 3) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain4)}
+	elif (var(VAR_RESULT) == 4) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain5)}
+	elif (var(VAR_RESULT) == 5) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_AskAgain)}
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_AskAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain1
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_WhatsThePokemonMusical_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain2
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_HowToParticipate_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain3
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_EligiblePokemon_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain4
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_DressUp_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain5
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_Shows_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_AskAgain
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_AskAgain_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_MIDDLE)
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Select)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right
+{
+    lock
+    faceplayer
+    msgbox("Welcome to the Pokémon Musical!\p"
+       "This is a changing room for Dress Up only.\n"
+       "Would you like to Dress Up your Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Select)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Select
+{
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No",
+        "Info")
+    destroy_speech_bubble()
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_NoDressingUp)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Finish)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info)}
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Finish)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_NoDressingUp
+{
+    msgbox("I am sorry...\p"
+            "We are still preparing the\n"
+            "dressing rooms...", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Finish)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Finish
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_PleaseVisitAgain_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info
+{
+    msgbox("What would you like me to explain?", MSGBOX_DEFAULT, FALSE)
+	dynmultichoice(10, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE,
+        "What's the Pokémon Musical?",
+        "How to Participate",
+        "Eligible Pokémon",
+        "Dress Up",
+        "Shows",
+        "Cancel")
+    closemessage
+	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain1)}
+	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain2)}
+	elif (var(VAR_RESULT) == 2) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain3)}
+	elif (var(VAR_RESULT) == 3) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain4)}
+	elif (var(VAR_RESULT) == 4) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain5)}
+	elif (var(VAR_RESULT) == 5) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_AskAgain)}
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_AskAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain1
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_WhatsThePokemonMusical_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain2
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_HowToParticipate_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain3
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_EligiblePokemon_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain4
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_DressUp_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain5
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_Shows_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    destroy_speech_bubble()
+    closemessage
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_AskAgain
+{
+    msgbox(NimbasaCity_MusicalTheater_EventScript_AskAgain_text, MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_RECEPTION_RIGHT)
+    goto(NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Select)
+}
+
+raw `
+
+NimbasaCity_MusicalTheater_EventScript_PleaseVisitAgain_text::
+	.string "Please visit us again.$"
+
+NimbasaCity_MusicalTheater_EventScript_AskAgain_text::
+	.string "Participate in the musical?$"
+
+NimbasaCity_MusicalTheater_EventScript_WhatsThePokemonMusical_text::
+	.string "The Pokémon Musical is a show where\n"
+	.string "Pokémon wearing Props perform on stage.\l"
+	.string "Anyone can participate!\p"
+	.string "We encourage all Trainers to show the\n"
+	.string "world how charming their Pokémon are!\p"
+	.string "The audience is looking forward to seeing\n"
+	.string "how you Dress Up your Pokémon, and how\l"
+	.string "your Pokémon perform!$"
+
+NimbasaCity_MusicalTheater_EventScript_HowToParticipate_text::
+    .string "You can join the musical from any of the\n"
+    .string "three reception areas.\p"
+    .string "The reception area in the center is for\n"
+    .string "participating alone.\p"
+    .string "When you participate alone, you will\n"
+    .string "be joined by other Trainers from around\l"
+    .string "the Unova region.\p"
+    .string "If you want to put on a musical with your\n"
+    .string "friends, go to the left reception area.\p"
+    .string "You'll be asked to pick a Leader who\n"
+    .string "will choose which show to perform,\l"
+    .string "and the others will join the group.\p"
+    .string "The reception area to the right is where\n"
+    .string "you go to Dress Up only.$"
+
+NimbasaCity_MusicalTheater_EventScript_EligiblePokemon_text::
+    .string "The Pokémon that will participate in the\n"
+    .string "musical are chosen from your party at\l"
+    .string "the reception area.\p"
+    .string "Because of their shape, some Pokémon\n"
+    .string "have a hard time wearing certain Props.\p"
+    .string "You might want to try Dress Up in the\n"
+    .string "changing room first if you're worried!$"
+
+NimbasaCity_MusicalTheater_EventScript_DressUp_text::
+    .string "Oh, Dress Up is my favorite part! That's\n"
+    .string "where you put the Props you've collected\l"
+    .string "on the Pokémon that will be performing.\p"
+    .string "Depending on the Pokémon, you can put\n"
+    .string "the Props in different places.\p"
+    .string "When you use Props that fit the theme of\n"
+    .string "the show you've chosen, the audience\l"
+    .string "will notice your Pokémon more!\p"
+    .string "Sometimes a Prop that doesn't fit the\n"
+    .string "theme will also make your Pokémon\l"
+    .string "stand out.\p"
+    .string "If you want to get an idea of how it's\n"
+    .string "done, you can watch how other people\l"
+    .string "Dress Up and then try it yourself!$"
+
+NimbasaCity_MusicalTheater_EventScript_Shows_text::
+    .string "You can choose which show to perform\n"
+    .string "when you participate in the musical.\p"
+    .string "There is no need for Trainers to give\n"
+    .string "commands, but if your Pokémon is carrying\l"
+    .string "a Prop in its arms, it can use that Prop\l"
+    .string "to show off and appeal to the audience.\p"
+    .string "Depending on how you Dress Up your\n"
+    .string "Pokémon, the reactions from the audience\l"
+    .string "will change!$"
+
+`

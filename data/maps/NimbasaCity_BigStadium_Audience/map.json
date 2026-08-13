@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_NCBSA_RICHGIRL",
       "graphics_id": "OBJ_EVENT_GFX_RICH_GIRL",
       "x": 15,
       "y": 6,
@@ -24,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_RichGirl",
       "flag": "0"
     },
     {
@@ -37,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_Teacher",
       "flag": "0"
     },
     {
@@ -50,8 +51,73 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_Hiker",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAID",
+      "x": 23,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_Maid",
+      "flag": "FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DANCER",
+      "x": 12,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_Dancer",
+      "flag": "FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_Youngster",
+      "flag": "FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CHEERLEADER_MAN",
+      "x": 19,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_CheerleaderMan",
+      "flag": "FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "x": 26,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NimbasaCity_BigStadium_Audience_EventScript_Beauty",
+      "flag": "FLAG_NIMBASA_CITY_BIG_STADIUM_GAME_ONGOING"
     }
   ],
   "warp_events": [

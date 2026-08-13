@@ -5,6 +5,9 @@
 #define METATILE_Accumula_House_1  0x279
 #define METATILE_Accumula_House_2  0x2B5
 
+// gTileset_AnvilleTown
+#define METATILE_AnvilleTown_Door  0x152
+
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x21B
 
@@ -1066,7 +1069,6 @@
 #define METATILE_GeneralFrlg_WideTreeTopRight_Grass  0x00C
 #define METATILE_GeneralFrlg_WideTreeTopRight_Mowed  0x00F
 #define METATILE_Nacrene_House_1                     0x2CB
-#define METATILE_AnvilleTown_Door                    0x152
 #define METATILE_NimbasaCity_Door                    0x24C
 #define METATILE_NimbasaCity_Door_PokemonCenter      0x04B
 #define METATILE_RSCave_CrackedFloor                 0x22F

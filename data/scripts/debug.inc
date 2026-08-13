@@ -196,12 +196,12 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-    warpsilent MAP_NACRENE_CITY_BOTTOM_RIGHT_BUILDING, 8, 12
-    waitstate
+	setflag FLAG_BADGE04_GET 
+	release
     end
 
 Debug_EventScript_Script_1_text::
-	.string "This is a text.$"
+	.string "{STR_VAR_1}$"
 
 Debug_EventScript_Script_2::
     lock
