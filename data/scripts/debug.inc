@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-	setflag FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL 
+	setflag FLAG_BADGE04_GET 
 	release
     end
 

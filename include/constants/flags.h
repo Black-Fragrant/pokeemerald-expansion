@@ -938,9 +938,9 @@
 #define FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL                    0x37A
 #define FLAG_NIMBASA_CITY_EXTENDED_N                                0x37B
 #define FLAG_NIMBASA_CITY_EXTENDED_ITEM_X_ATTACK                    0x37C
-#define FLAG_UNUSED_0x37D                                           0x37D
-#define FLAG_UNUSED_0x37E                                           0x37E
-#define FLAG_UNUSED_0x37F                                           0x37F
+#define FLAG_NIMBASA_CITY_BIANCA_BLOCKING_THEATER                   0x37D
+#define FLAG_NIMBASA_CITY_MUSICAL_THEATER_BIANCA_AND_OWNER          0x37E
+#define FLAG_NIMBASA_CITY_BIANCA_AND_FATHER                         0x37F
 #define FLAG_UNUSED_0x380                                           0x380
 #define FLAG_UNUSED_0x381                                           0x381
 #define FLAG_UNUSED_0x382                                           0x382

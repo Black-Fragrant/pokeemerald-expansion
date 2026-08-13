@@ -1,1 +1,142 @@
-mapscripts NimbasaCity_MusicalTheater_MapScripts {}
+mapscripts NimbasaCity_MusicalTheater_MapScripts 
+{
+	MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_NIMBASA_STATE, 1 : NimbasaCity_MusicalTheater_EventScript_Introduction
+    ]
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Introduction
+{
+    lock
+	applymovement(LOCALID_PLAYER, moves( walk_up * 3))
+	applymovement(LOCALID_NCMT_BIANCA, moves( walk_up * 2, delay_16, walk_in_place_right))
+	waitmovement(0)
+    delay(20)
+    msgbox("Bianca: A. Mazing. Isn't it?", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_NCMT_OWNER, moves(face_down, emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(10)
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(20)
+    msgbox("Hello, you two! How do you do?\p"
+        "I'm the owner of this theater.\n"
+        "Pleasure to meet you!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_OWNER, moves(walk_left, walk_in_place_down, delay_16, walk_right, walk_in_place_down, delay_16))
+	waitmovement(0)
+    msgbox("Ooh! I must say that you two seem like\n"
+       "phenomenal Trainers!\p"
+        "What do we do here? We use Props to make\n"
+        "your Pokémon fashionable and glamorous!\p"
+        "Do you want to join in and play Dress Up?\n"
+        "To get you started, here's a Prop Case!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_OWNER, moves(walk_left, walk_down, delay_16, walk_right, walk_in_place_down, delay_16))
+	waitmovement(0)
+	showlargeitempic(9, 10, 3)
+    playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
+    msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Prop Case{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
+    delay(120)
+	additem (ITEM_PROP_CASE)
+	hidelargeitempic
+    closemessage
+	fadedefaultbgm
+	savebgm(MUS_MUSICAL_HALL)
+	delay(10)
+	applymovement(LOCALID_NCMT_OWNER, moves(lock_facing_direction, walk_up, unlock_facing_direction))
+	waitmovement(0)
+	delay(10)
+    msgbox("This Prop Case lets you store Props for\n"
+        "decorating your Pokémon!\p"
+        "First off, you need to pick a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain
+{
+    msgbox("Now, now. Don't be like that.\n"
+        "Please reconsider and select a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_Intro_CantPickEggs
+{
+    msgbox("Now, now. We can't have an Egg on Stage.\n"
+        "Please reconsider and select a Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	chooseboxmon
+	waitstate
+	goto_if_ne (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon)
+	goto_if_eq (VAR_0x8004, PARTY_NOTHING_CHOSEN, NimbasaCity_MusicalTheater_EventScript_Intro_SelectPokemonAgain)
+}
+
+script NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon
+{
+	specialvar (VAR_RESULT, ScriptGetPartyMonSpecies)
+	goto_if_eq (VAR_RESULT, SPECIES_EGG, NimbasaCity_MusicalTheater_EventScript_Intro_CantPickEggs)
+    msgbox("Then... It's time to play Dress Up!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("Wow! The two of you did a fantastic job\n"
+        "coordinating everything!\l"
+        "Utterly charming!\p"
+        "If you have a Pokémon who can play\n"
+        "Dress Up, you can participate in the\l"
+        "Pokémon Musical!\p"
+        "Would you two please join us?\n"
+        "The receptionist can explain everything.\p"
+        "Let us say a brief farewell!\n"
+        "I eagerly anticipate seeing you on stage!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_OWNER)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_OWNER, moves(walk_left * 8))
+	waitmovement(0)
+    removeobject(LOCALID_NCMT_OWNER)
+    delay(20)
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_in_place_right))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+    delay(10)
+    msgbox("Oh, I don't know what to do!\p"
+        "Doing the musical would be totally cool,\n"
+        "but there's other stuff I wanna do.\p"
+        "OK, that's it! I made up my mind!\n"
+        "I'm going to see the sights in Nimbasa!\p"
+        "See ya, {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_BIANCA)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_down * 2, walk_right, walk_down))
+	waitmovement(0)
+    delay(20)
+    playse(SE_EXIT)
+    removeobject(LOCALID_NCMT_BIANCA)
+    waitse
+    setvar(VAR_NIMBASA_STATE, 2)
+    clearflag(FLAG_NIMBASA_CITY_BIANCA_AND_FATHER)
+    delay(20)
+    release
+    end
+}
