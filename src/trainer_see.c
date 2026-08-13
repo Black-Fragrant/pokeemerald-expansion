@@ -1118,12 +1118,12 @@ u8 FldEff_QuestionMarkIcon(void)
         UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
         return 0;
     }
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emoticons, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
     {
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, 1);
-        UpdateSpritePaletteByTemplate(&sSpriteTemplate_ExclamationQuestionMark, &gSprites[spriteId]);
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, 4);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emoticons, &gSprites[spriteId]);
     }
 
     return 0;
