@@ -941,7 +941,7 @@
 #define FLAG_NIMBASA_CITY_BIANCA_BLOCKING_THEATER                   0x37D
 #define FLAG_NIMBASA_CITY_MUSICAL_THEATER_BIANCA_AND_OWNER          0x37E
 #define FLAG_NIMBASA_CITY_BIANCA_AND_FATHER                         0x37F
-#define FLAG_UNUSED_0x380                                           0x380
+#define FLAG_NIMBASA_CITY_ITEM_TM_ECHOED_VOICE                      0x380
 #define FLAG_UNUSED_0x381                                           0x381
 #define FLAG_UNUSED_0x382                                           0x382
 #define FLAG_UNUSED_0x383                                           0x383
