@@ -628,7 +628,7 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
     msgbox("{PLAYER} obtained the {SHADOW BLUE}{COLOR LIGHT_BLUE}Bicycle{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
     delay(120)
-	additem (ITEM_BICYCLE)
+	additem(ITEM_MACH_BIKE)
 	hidelargeitempic
     closemessage
 	fadedefaultbgm
