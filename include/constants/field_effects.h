@@ -85,6 +85,7 @@
 #define FLDEFF_PHOTO_FLASH               80
 #define FLDEFF_OW_ENCOUNTER_SPAWN_ANIM   81
 #define FLDEFF_TALL_GRASS_DARK           82
+#define FLDEFF_ELLIPSIS_ICON             83
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1

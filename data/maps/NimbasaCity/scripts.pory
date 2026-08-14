@@ -188,11 +188,11 @@ script NimbasaCity_EventScript_Confrontation
     msgbox("Sweetie, you keep going on your travels.", MSGBOX_DEFAULT, FALSE)
     destroy_speech_bubble()
     closemessage
-	playse(SE_PIN)
+	playse(SE_M_HYPER_BEAM2)
 	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(emote_question_mark))
 	waitmovement(0)
     delay(10)
-	playse(SE_PIN)
+	playse(SE_M_HYPER_BEAM2)
 	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(emote_question_mark))
 	waitmovement(0)
     delay(10)
@@ -259,7 +259,7 @@ script NimbasaCity_EventScript_Confrontation
         "So...please?", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_down, emote_heart)) //this should be ...
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_down, emote_ellipsis))
 	waitmovement(0)
     delay(40)
     msgbox("Hmm...\n"

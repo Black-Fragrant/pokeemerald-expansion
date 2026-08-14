@@ -296,7 +296,7 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	closemessage
 	playbgm(MUS_BW_GHETSIS_AMBITIONS, TRUE)
 	delay(10)
-	playse(SE_PIN)
+	playse(SE_M_HYPER_BEAM2)
 	applymovement(LOCALID_PLAYER, moves(emote_question_mark))
 	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(emote_question_mark))
 	waitmovement(0)

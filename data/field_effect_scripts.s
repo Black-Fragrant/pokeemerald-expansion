@@ -89,6 +89,7 @@ gFieldEffectScriptPointers::
 	.4byte gFldEffScript_PhotoFlash      		        @ FLDEFF_PHOTO_FLASH
 	.4byte gFieldEffectScript_OWE_SpawnAnim				@ FLDEFF_OW_ENCOUNTER_SPAWN_ANIM
 	.4byte gFieldEffectScript_TallGrassDark             @ FLDEFF_TALL_GRASS_DARK
+	.4byte gFieldEffectScript_EllipsisIcon1   		    @ FLDEFF_ELLIPSIS_ICON
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -424,4 +425,8 @@ gFieldEffectScript_OWE_SpawnAnim::
 
 gFieldEffectScript_TallGrassDark::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_TallGrassDark
+	field_eff_end
+
+gFieldEffectScript_EllipsisIcon1::
+	field_eff_callnative FldEff_EllipsisIcon
 	field_eff_end
