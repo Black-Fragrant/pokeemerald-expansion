@@ -591,7 +591,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_fast_right))
     applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_fast_right))
 	waitmovement(0)
-	playse(SE_PIN)
+	playse(SE_M_HYPER_BEAM2)
 	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(emote_question_mark))
 	waitmovement(0)
 	waitse()

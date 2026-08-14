@@ -47,7 +47,7 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
 	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_Gate_EventScript_BB_Pos11)
 	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos12)
 	delay(10)
-	playse(SE_PIN)
+	playse(SE_M_HYPER_BEAM2)
 	applymovement(LOCALID_CC_GATE_BIANCA, moves(emote_question_mark))
 	waitmovement(0)
 	waitse()

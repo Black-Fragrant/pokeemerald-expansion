@@ -182,3 +182,5 @@
 	create_movement_action n_raise_arms, MOVEMENT_ACTION_N_RAISE_ARMS
 	create_movement_action shadow_triad_teleport_in, MOVEMENT_ACTION_SHADOW_TRIAD_TELEPORT_IN
 	create_movement_action shadow_triad_teleport_out, MOVEMENT_ACTION_SHADOW_TRIAD_TELEPORT_OUT
+	
+	create_movement_action emote_ellipsis, MOVEMENT_ACTION_EMOTE_ELLIPSIS

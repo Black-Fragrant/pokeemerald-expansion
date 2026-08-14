@@ -33,4 +33,6 @@ void PlayerFaceTrainerAfterBattle(void);
 u8 FldEff_DoubleExclMarkIcon(void);
 u8 FldEff_XIcon(void);
 
+u8 FldEff_EllipsisIcon(void);
+
 #endif // GUARD_TRAINER_SEE_H

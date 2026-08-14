@@ -196,9 +196,14 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-	setflag FLAG_BADGE04_GET 
+	applymovement LOCALID_PLAYER, Debug_EventScript_Script_1_movement
+	waitmovement 0
 	release
     end
+
+Debug_EventScript_Script_1_movement::
+	emote_ellipsis
+	step_end
 
 Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1}$"

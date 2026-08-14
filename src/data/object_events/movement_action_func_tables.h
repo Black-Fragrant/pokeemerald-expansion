@@ -161,6 +161,7 @@ u8 MovementAction_RestoreAnimation_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_SetInvisible_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_SetVisible_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteExclamationMark_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteEllipsis_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteQuestionMark_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteHeart_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RevealTrainer_Step0(struct ObjectEvent *, struct Sprite *);
@@ -503,6 +504,7 @@ u8 (*const gMovementActionFuncs_NSummon[])(struct ObjectEvent *, struct Sprite *
 u8 (*const gMovementActionFuncs_NRaiseArms[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_ShadowTriadTeleportIn[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_ShadowTriadTeleportOut[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteEllipsis[])(struct ObjectEvent *, struct Sprite *);
 
 u8 (*const gMovementActionFuncs_SpinDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_SpinUp[])(struct ObjectEvent *, struct Sprite *);
@@ -703,6 +705,7 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_N_RAISE_ARMS] = gMovementActionFuncs_NRaiseArms,
     [MOVEMENT_ACTION_SHADOW_TRIAD_TELEPORT_IN] = gMovementActionFuncs_ShadowTriadTeleportIn,
     [MOVEMENT_ACTION_SHADOW_TRIAD_TELEPORT_OUT] = gMovementActionFuncs_ShadowTriadTeleportOut,
+    [MOVEMENT_ACTION_EMOTE_ELLIPSIS] = gMovementActionFuncs_EmoteEllipsis,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1287,6 +1290,11 @@ u8 (*const gMovementActionFuncs_SetVisible[])(struct ObjectEvent *, struct Sprit
 
 u8 (*const gMovementActionFuncs_EmoteExclamationMark[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_EmoteExclamationMark_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteEllipsis[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteEllipsis_Step0,
     MovementAction_Finish,
 };
 

@@ -114,7 +114,7 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname
     destroy_speech_bubble()
     closemessage()
     delay(10)
-	playse(SE_PIN)
+	playse(SE_M_HYPER_BEAM2)
 	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(emote_question_mark))
 	waitmovement(0)
 	waitse()
