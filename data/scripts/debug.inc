@@ -198,6 +198,7 @@ Debug_EventScript_Script_1::
     lock
 	applymovement LOCALID_PLAYER, Debug_EventScript_Script_1_movement
 	waitmovement 0
+	additem ITEM_MACH_BIKE
 	release
     end
 
