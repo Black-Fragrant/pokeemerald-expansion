@@ -838,7 +838,9 @@ script NimbasaCity_EventScript_BiancaStopsPlayer
     lock
     msgbox("Bianca: Yoo-hoo, {PLAYER}!", MSGBOX_DEFAULT, FALSE)
     closemessage
-	playbgm(MUS_BW_BIANCA, TRUE)
+	special(ForcePlayerOffBike)
+	playbgm(MUS_BW_BIANCA, FALSE)
+    delay(20)
     addobject(LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
 	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
 	waitmovement(0)

@@ -196,9 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-	applymovement LOCALID_PLAYER, Debug_EventScript_Script_1_movement
-	waitmovement 0
-	additem ITEM_MACH_BIKE
+	setvar VAR_NIMBASA_STATE, 1
 	release
     end
 
