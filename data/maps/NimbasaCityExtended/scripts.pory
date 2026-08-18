@@ -32,6 +32,7 @@ script NimbasaCityExtended_EventScript_TurnPlayer
 script NimbasaCityExtended_EventScript_N_Trigger
 {
     lock
+	special(ForcePlayerOffBike)
 	playbgm(MUS_BW_N, TRUE)
 	playse(SE_PIN)
 	applymovement(LOCALID_NCE_N, moves(face_left, emote_exclamation_mark))

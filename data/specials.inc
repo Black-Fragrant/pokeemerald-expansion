@@ -630,6 +630,7 @@ gSpecials::
 	def_special DrawElevatorCurrentFloorWindow
 	def_special GetElevatorFloor
 	def_special ForcePlayerOntoBike
+	def_special ForcePlayerOffBike
 	def_special Script_IsFanClubMemberFanOfPlayer
 	def_special Script_GetNumFansOfPlayerInTrainerFanClub
 	def_special Script_BufferFanClubTrainerName
