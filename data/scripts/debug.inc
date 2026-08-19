@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
     lock
-	setvar VAR_NIMBASA_STATE, 1
+	addmoney 1000000
 	release
     end
 
