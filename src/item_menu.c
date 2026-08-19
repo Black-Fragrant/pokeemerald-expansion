@@ -804,6 +804,11 @@ void CB2_GoToSellMenu(void)
     GoToBagMenu(ITEMMENULOCATION_SHOP, POCKETS_COUNT, CB2_ExitSellMenu);
 }
 
+void CB2_GoToGourmetSellMenu(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_SHOP, POCKETS_COUNT, CB2_ExitSellMenu);
+}
+
 void CB2_GoToItemDepositMenu(void)
 {
     GoToBagMenu(ITEMMENULOCATION_ITEMPC, POCKETS_COUNT, CB2_PlayerPCExitBagMenu);
@@ -1846,8 +1851,38 @@ static void OpenContextMenu(u8 taskId)
             gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
         }
         break;
-    case ITEMMENULOCATION_PARTY:
     case ITEMMENULOCATION_SHOP:
+        {
+            if (FlagGet(FLAG_SYS_GOURMET_MANIAC))
+            {
+                // Gourmet mode: only items in the gourmet table can be sold
+                if (GetGourmetSellPrice(gSpecialVar_ItemId) > 0)
+                {
+                    gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                    gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
+                    memcpy(gBagMenu->contextMenuItemsBuffer,
+                        sContextMenuItems_ItemsPocket,
+                        sizeof(sContextMenuItems_ItemsPocket));
+                }
+                else
+                {
+                    // Not sellable in gourmet mode
+                    gBagMenu->contextMenuItemsPtr = sContextMenuItems_Cancel;
+                    gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
+                }
+            }
+            else
+            {
+                // Normal shop behavior
+                gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
+                memcpy(gBagMenu->contextMenuItemsBuffer,
+                    sContextMenuItems_ItemsPocket,
+                    sizeof(sContextMenuItems_ItemsPocket));
+            }
+            break;
+        }
+    case ITEMMENULOCATION_PARTY:
     case ITEMMENULOCATION_BERRY_TREE:
     case ITEMMENULOCATION_ITEMPC:
     case ITEMMENULOCATION_BERRY_TREE_MULCH:
@@ -2585,10 +2620,34 @@ static void Task_KeyItemWheel(u8 taskId) {
 #undef tIconWindow
 #undef tUsingRegisteredKeyItem
 
+static const u8 sText_GourmetCantBuy[] =_("Hmm... This is not quite what I'm\nlooking for.\pI don't think my master will be satisfied\nwith such a smell...{PAUSE_UNTIL_PRESS}");
+static const u8 sText_GourmetOffer[] =_("Oh, it smells so good!\pThat {STR_VAR_2} of yours is a very\nrare ingredient indeed!\pHow many would you like to sell?");
+
 static void Task_ItemContext_Sell(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
+    // --- GOURMET MANIAC MODE ---
+    if (FlagGet(FLAG_SYS_GOURMET_MANIAC))
+    {
+        s32 gourmetPrice = GetGourmetSellPrice(gSpecialVar_ItemId);
 
+        if (gourmetPrice < 0)
+        {
+            CopyItemName(gSpecialVar_ItemId, gStringVar1);
+            StringExpandPlaceholders(gStringVar4, sText_GourmetCantBuy);
+            DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, CloseItemMessage);
+            return;
+        }
+
+        tItemCount = 1;   // <-- FIX HERE
+
+        CopyItemName(gSpecialVar_ItemId, gStringVar2);
+        StringExpandPlaceholders(gStringVar4, sText_GourmetOffer);
+
+        DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, InitSellHowManyInput);
+        return;
+    }
+    // --- NORMAL SHOP MODE (vanilla) ---
     if (GetItemPrice(gSpecialVar_ItemId) == 0 || GetItemImportance(gSpecialVar_ItemId))
     {
         CopyItemName(gSpecialVar_ItemId, gStringVar2);
@@ -2621,7 +2680,21 @@ static void DisplaySellItemPriceAndConfirm(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    ConvertIntToDecimalStringN(gStringVar1, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount, STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
+    u32 price;
+
+    if (FlagGet(FLAG_SYS_GOURMET_MANIAC))
+        price = GetGourmetSellPrice(gSpecialVar_ItemId) * tItemCount;
+    else
+        price = GetItemSellPrice(gSpecialVar_ItemId) * tItemCount;
+
+    ConvertIntToDecimalStringN(
+        gStringVar1,
+        price,
+        STR_CONV_MODE_LEFT_ALIGN,
+        MAX_MONEY_DIGITS
+    );
+
+    // Vanilla confirmation text (works for both modes)
     StringExpandPlaceholders(gStringVar4, gText_ICanPayVar1);
     DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, AskSellItems);
 }
@@ -2644,9 +2717,15 @@ static void CancelSell(u8 taskId)
 static void InitSellHowManyInput(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
+    tItemCount = 1;
     u8 windowId = BagMenu_AddWindow(ITEMWIN_QUANTITY_WIDE);
 
-    PrintItemSoldAmount(windowId, 1, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount);
+    u32 price = FlagGet(FLAG_SYS_GOURMET_MANIAC)
+                ? GetGourmetSellPrice(gSpecialVar_ItemId)
+                : GetItemSellPrice(gSpecialVar_ItemId);
+
+    PrintItemSoldAmount(windowId, tItemCount, price * tItemCount);
+
     DisplayCurrentMoneyWindow();
     gTasks[taskId].func = Task_ChooseHowManyToSell;
 }
@@ -2657,7 +2736,13 @@ static void Task_ChooseHowManyToSell(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        PrintItemSoldAmount(gBagMenu->windowIds[ITEMWIN_QUANTITY_WIDE], tItemCount, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount);
+        u32 price = FlagGet(FLAG_SYS_GOURMET_MANIAC)
+                    ? GetGourmetSellPrice(gSpecialVar_ItemId)
+                    : GetItemSellPrice(gSpecialVar_ItemId);
+
+        PrintItemSoldAmount(gBagMenu->windowIds[ITEMWIN_QUANTITY_WIDE],
+                            tItemCount,
+                            price * tItemCount);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -2681,7 +2766,14 @@ static void ConfirmSell(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
-    ConvertIntToDecimalStringN(gStringVar1, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount, STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
+
+    u32 price = FlagGet(FLAG_SYS_GOURMET_MANIAC)
+                ? GetGourmetSellPrice(gSpecialVar_ItemId)
+                : GetItemSellPrice(gSpecialVar_ItemId);
+
+    ConvertIntToDecimalStringN(gStringVar1, price * tItemCount,
+                               STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
+
     StringExpandPlaceholders(gStringVar4, gText_TurnedOverVar1ForVar2);
     DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, SellItem);
 }
@@ -2694,7 +2786,11 @@ static void SellItem(u8 taskId)
 
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, tItemCount);
-    AddMoney(&gSaveBlock1Ptr->money, GetItemSellPrice(gSpecialVar_ItemId) * tItemCount);
+    u32 payout = FlagGet(FLAG_SYS_GOURMET_MANIAC)
+                 ? GetGourmetSellPrice(gSpecialVar_ItemId)
+                 : GetItemSellPrice(gSpecialVar_ItemId) * tItemCount;
+
+    AddMoney(&gSaveBlock1Ptr->money, payout);
     DestroyListMenuTask(tListTaskId, scrollPos, cursorPos);
     UpdatePocketItemList(gBagPosition.pocket);
     UpdatePocketListPosition(gBagPosition.pocket);
