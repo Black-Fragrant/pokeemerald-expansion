@@ -14,8 +14,10 @@
 
 EWRAM_DATA static u8 sMoneyBoxWindowId = 0;
 EWRAM_DATA static u8 sMoneyLabelSpriteId = 0;
+EWRAM_DATA static u8 sBPLabelSpriteId = 0;
 
 #define MONEY_LABEL_TAG 0x2722 | BLEND_IMMUNE_FLAG
+#define BP_LABEL_TAG 0x2723 | BLEND_IMMUNE_FLAG
 
 static const struct OamData sOamData_MoneyLabel =
 {
@@ -64,6 +66,27 @@ static const struct SpritePalette sSpritePalette_MoneyLabel =
 {
     .data = gShopMenu_Pal,
     .tag = MONEY_LABEL_TAG
+};
+
+static const struct SpriteTemplate sSpriteTemplate_BPLabel =
+{
+    .tileTag = BP_LABEL_TAG,
+    .paletteTag = BP_LABEL_TAG,
+    .oam = &sOamData_MoneyLabel,
+    .anims = sSpriteAnimTable_MoneyLabel,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_BPLabel =
+{
+    .data = gShopMenuBP_Gfx,
+    .size = 256,
+    .tag = BP_LABEL_TAG,
+};
+
+static const struct SpritePalette sSpritePalette_BPLabel =
+{
+    .data = gShopMenu_Pal,
+    .tag = BP_LABEL_TAG
 };
 
 u32 GetMoney(u32 *moneyPtr)
@@ -142,7 +165,7 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
 {
     u8 *txtPtr = gStringVar4;
     u32 numDigits = CountDigits(amount);
-    u32 maxDigits = (numDigits > 6) ? MAX_MONEY_DIGITS: 6;
+    u32 maxDigits = (numDigits > 6) ? MAX_MONEY_DIGITS : 6;
     u32 leadingSpaces;
 
     ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, maxDigits);
@@ -152,7 +175,23 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
     while (leadingSpaces-- > 0)
         *(txtPtr++) = CHAR_SPACER;
 
-    StringExpandPlaceholders(txtPtr, gText_PokedollarVar1);
+    if (FlagGet(FLAG_SYS_BP_SHOP))
+    {
+        // Build "<amount> BP"
+        StringCopy(txtPtr, gStringVar1);
+        StringAppend(txtPtr, gText_BP); // "BP"
+
+        // Shift BP text left by ~8 pixels
+        u8 bpX = (x >= 8) ? x - 8 : 0;
+
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, bpX, y, speed, NULL);
+        return;
+    }
+    else
+    {
+        // Vanilla: "₽{STR_VAR_1}"
+        StringExpandPlaceholders(txtPtr, gText_PokedollarVar1);
+    }
 
     if (numDigits > 8)
         PrependFontIdToFit(gStringVar4, txtPtr + 1 + numDigits, FONT_NORMAL, 54);
@@ -206,4 +245,16 @@ void AddMoneyLabelObject(u16 x, u16 y)
 void RemoveMoneyLabelObject(void)
 {
     DestroySpriteAndFreeResources(&gSprites[sMoneyLabelSpriteId]);
+}
+
+void AddBPLabelObject(u16 x, u16 y)
+{
+    LoadCompressedSpriteSheet(&sSpriteSheet_BPLabel);
+    LoadSpritePalette(&sSpritePalette_BPLabel);
+    sBPLabelSpriteId = CreateSprite(&sSpriteTemplate_BPLabel, x, y, 0);
+}
+
+void RemoveBPLabelObject(void)
+{
+    DestroySpriteAndFreeResources(&gSprites[sBPLabelSpriteId]);
 }
