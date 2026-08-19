@@ -161,7 +161,8 @@ static void PrintShopCurrencyInMoneyBoxWithBorder(u8 windowId, u8 tileOffset, u8
 static const u8 sText_BattlePointsVar1[] = _("{STR_VAR_1} BP");
 static const u8 sText_BattlePointsVar3[] = _("{STR_VAR_3} BP");
 static const u8 sText_Var1Var2ThatllBeVar3[] = _("{STR_VAR_1}? And you wanted {STR_VAR_2}?\nThat'll be {STR_VAR_3}.");
-
+static const u8 sText_KeyItemMoneyPrice[] = _("You wanted {STR_VAR_1}?\nThat'll be ¥{STR_VAR_3}. Will that be okay?");
+static const u8 sText_KeyItemBPPrice[]    = _("You wanted {STR_VAR_1}?\nThat'll be {STR_VAR_3} BP. Will that be okay?");
 
 // Battle Point price table
 // Format: { itemId, bpPrice }
@@ -1232,15 +1233,16 @@ static void Task_BuyMenu(u8 taskId)
 
                         // STR_VAR_2 = quantity (always 1)
                         ConvertIntToDecimalStringN(gStringVar2, 1,
-                                                   STR_CONV_MODE_LEFT_ALIGN, MAX_ITEM_DIGITS);
+                                                STR_CONV_MODE_LEFT_ALIGN, MAX_ITEM_DIGITS);
 
-                        // STR_VAR_3 = price (still set, but NOT expanded)
+                        // STR_VAR_3 = price
                         ConvertIntToDecimalStringN(gStringVar3, sShopData->totalCost,
-                                                   STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
+                                                STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
 
-                        // ⭐ IMPORTANT: DO NOT EXPAND STR_VAR_3 HERE
-                        // Vanilla template (NO price placeholder)
-                        StringExpandPlaceholders(gStringVar4, gText_YouWantedVar1ThatllBeVar2);
+                        if (FlagGet(FLAG_SYS_BP_SHOP))
+                            StringExpandPlaceholders(gStringVar4, sText_KeyItemBPPrice);
+                        else
+                            StringExpandPlaceholders(gStringVar4, sText_KeyItemMoneyPrice);
 
                         BuyMenuDisplayMessage(taskId, gStringVar4, BuyMenuConfirmPurchase);
                     }
