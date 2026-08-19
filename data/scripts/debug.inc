@@ -195,10 +195,16 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-    lock
-	addmoney 1000000
+	lock
+	faceplayer
+	setflag FLAG_SYS_GOURMET_MANIAC
+	message BattleSubway_ExchangeServiceCorner_Text_WouldLikeToChoosePrize
+	waitmessage
+	pokemart
+	msgbox BattleSubway_ExchangeServiceCorner_Text_ThankYouVisitWithPoints
+	clearflag FLAG_SYS_GOURMET_MANIAC
 	release
-    end
+	end
 
 Debug_EventScript_Script_1_movement::
 	emote_ellipsis

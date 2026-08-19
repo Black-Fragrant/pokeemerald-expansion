@@ -75,6 +75,7 @@ enum {
     MART_TYPE_NORMAL,
     MART_TYPE_DECOR,
     MART_TYPE_DECOR2,
+    MART_TYPE_GOURMET,   // NEW
 };
 
 // shop view window NPC info enum
@@ -262,6 +263,116 @@ static u32 GetShopItemPrice(u16 itemId)
     return 0;
 }
 
+struct GourmetPriceEntry
+{
+    u16 itemId;
+    u32 price;
+};
+
+static const struct GourmetPriceEntry sGourmetPriceTable[] =
+{
+    { ITEM_CHERI_BERRY, 20 },
+    { ITEM_CHESTO_BERRY, 20 },
+    { ITEM_PECHA_BERRY, 20 },
+    { ITEM_RAWST_BERRY, 20 },
+    { ITEM_ASPEAR_BERRY, 20 },
+    { ITEM_LEPPA_BERRY, 20 },
+    { ITEM_ORAN_BERRY, 20 },
+    { ITEM_PERSIM_BERRY, 20 },
+    { ITEM_LUM_BERRY, 20 },
+    { ITEM_SITRUS_BERRY, 20 },
+    { ITEM_FIGY_BERRY, 20 },
+    { ITEM_WIKI_BERRY, 20 },
+    { ITEM_MAGO_BERRY, 20 },
+    { ITEM_AGUAV_BERRY, 20 },
+    { ITEM_IAPAPA_BERRY, 20 },
+    { ITEM_RAZZ_BERRY, 500 },
+    { ITEM_BLUK_BERRY, 500 },
+    { ITEM_NANAB_BERRY, 500 },
+    { ITEM_WEPEAR_BERRY, 500 },
+    { ITEM_PINAP_BERRY, 500 },
+    { ITEM_POMEG_BERRY, 500 },
+    { ITEM_KELPSY_BERRY, 500 },
+    { ITEM_QUALOT_BERRY, 500 },
+    { ITEM_HONDEW_BERRY, 500 },
+    { ITEM_GREPA_BERRY, 500 },
+    { ITEM_TAMATO_BERRY, 500 },
+    { ITEM_CORNN_BERRY, 500 },
+    { ITEM_MAGOST_BERRY, 500 },
+    { ITEM_RABUTA_BERRY, 500 },
+    { ITEM_NOMEL_BERRY, 500 },
+    { ITEM_SPELON_BERRY, 500 },
+    { ITEM_PAMTRE_BERRY, 500 },
+    { ITEM_WATMEL_BERRY, 500 },
+    { ITEM_DURIN_BERRY, 500 },
+    { ITEM_BELUE_BERRY, 500 },
+    { ITEM_CHILAN_BERRY, 500 },
+    { ITEM_OCCA_BERRY, 500 },
+    { ITEM_PASSHO_BERRY, 500 },
+    { ITEM_WACAN_BERRY, 500 },
+    { ITEM_RINDO_BERRY, 500 },
+    { ITEM_YACHE_BERRY, 500 },
+    { ITEM_CHOPLE_BERRY, 500 },
+    { ITEM_KEBIA_BERRY, 500 },
+    { ITEM_SHUCA_BERRY, 500 },
+    { ITEM_COBA_BERRY, 500 },
+    { ITEM_PAYAPA_BERRY, 500 },
+    { ITEM_TANGA_BERRY, 500 },
+    { ITEM_CHARTI_BERRY, 500 },
+    { ITEM_KASIB_BERRY, 500 },
+    { ITEM_HABAN_BERRY, 500 },
+    { ITEM_COLBUR_BERRY, 500 },
+    { ITEM_BABIRI_BERRY, 500 },
+    { ITEM_ROSELI_BERRY, 500 },
+    { ITEM_LIECHI_BERRY, 30000 },
+    { ITEM_GANLON_BERRY, 30000 },
+    { ITEM_SALAC_BERRY, 30000 },
+    { ITEM_PETAYA_BERRY, 30000 },
+    { ITEM_APICOT_BERRY, 30000 },
+    { ITEM_LANSAT_BERRY, 30000 },
+    { ITEM_STARF_BERRY, 30000 },
+    { ITEM_ENIGMA_BERRY, 30000 },
+    { ITEM_MICLE_BERRY, 30000 },
+    { ITEM_CUSTAP_BERRY, 30000 },
+    { ITEM_JABOCA_BERRY, 30000 },
+    { ITEM_ROWAP_BERRY, 30000 },
+    { ITEM_KEE_BERRY, 30000 },
+    { ITEM_MARANGA_BERRY, 30000 },
+    { ITEM_ENIGMA_BERRY_E_READER, 30000 },
+
+    { ITEM_SWEET_HEART, 100 },
+    { ITEM_STICK, 200 },
+    { ITEM_FRESH_WATER, 200 },
+    { ITEM_LEFTOVERS, 200 },
+    { ITEM_LUCKY_EGG, 200 },
+    { ITEM_SODA_POP, 300 },
+    { ITEM_LEMONADE, 350 },
+    { ITEM_TINY_MUSHROOM, 500 },
+    { ITEM_HONEY, 500 },
+    { ITEM_WATMEL_BERRY, 500 },
+    { ITEM_MOOMOO_MILK, 500 },
+    { ITEM_BERRY_JUICE, 1500 },
+    { ITEM_CASTELIACONE, 2000 },
+    { ITEM_LAVA_COOKIE, 4000 },
+    { ITEM_OLD_GATEAU, 4000 },
+    { ITEM_BIG_MUSHROOM, 5000 },
+    { ITEM_RAGE_CANDY_BAR, 6000 },
+    { ITEM_SHOAL_SALT, 7000 },
+    { ITEM_RARE_CANDY, 10000 },
+    { ITEM_BALMMUSHROOM, 25000 },
+    { ITEM_NONE, 0 }   // <-- REQUIRED TERMINATOR
+};
+
+s32 GetGourmetSellPrice(u16 itemId)
+{
+    for (int i = 0; sGourmetPriceTable[i].itemId != ITEM_NONE; i++)
+    {
+        if (sGourmetPriceTable[i].itemId == itemId)
+            return sGourmetPriceTable[i].price;
+    }
+    return -1; // not sellable
+}
+
 static void Task_ShopMenu(u8 taskId);
 static void Task_HandleShopMenuQuit(u8 taskId);
 static void CB2_InitBuyMenu(void);
@@ -323,6 +434,12 @@ static const struct MenuAction sShopMenuActions_BuyQuit[] =
 {
     { gText_ShopBuy, {.void_u8=Task_HandleShopMenuBuy} },
     { gText_ShopQuit, {.void_u8=Task_HandleShopMenuQuit} }
+};
+
+static const struct MenuAction sShopMenuActions_Gourmet[] =
+{
+    { gText_ShopSell, {.void_u8=Task_HandleShopMenuSell} },
+    { gText_ShopQuit, {.void_u8=Task_HandleShopMenuQuit} },
 };
 
 static const struct WindowTemplate sShopMenuWindowTemplates[] =
@@ -497,13 +614,25 @@ static u8 CreateShopMenu(u8 martType)
     LockPlayerFieldControls();
     sMartInfo.martType = martType;
 
-    if (martType == MART_TYPE_NORMAL)
+    // --- NEW: Gourmet Maniac mode ---
+    if (martType == MART_TYPE_GOURMET)
+    {
+        struct WindowTemplate winTemplate = sShopMenuWindowTemplates[WIN_BUY_QUIT];
+        winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_Gourmet,
+                                                   ARRAY_COUNT(sShopMenuActions_Gourmet));
+        sMartInfo.windowId = AddWindow(&winTemplate);
+        sMartInfo.menuActions = sShopMenuActions_Gourmet;
+        numMenuItems = ARRAY_COUNT(sShopMenuActions_Gourmet);
+    }
+    // --- Normal PokéMart ---
+    else if (martType == MART_TYPE_NORMAL)
     {
         // BP shop → Buy / Quit only
         if (FlagGet(FLAG_SYS_BP_SHOP))
         {
             struct WindowTemplate winTemplate = sShopMenuWindowTemplates[WIN_BUY_QUIT];
-            winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuyQuit, ARRAY_COUNT(sShopMenuActions_BuyQuit));
+            winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuyQuit,
+                                                       ARRAY_COUNT(sShopMenuActions_BuyQuit));
             sMartInfo.windowId = AddWindow(&winTemplate);
             sMartInfo.menuActions = sShopMenuActions_BuyQuit;
             numMenuItems = ARRAY_COUNT(sShopMenuActions_BuyQuit);
@@ -512,7 +641,8 @@ static u8 CreateShopMenu(u8 martType)
         {
             // Normal money shop → Buy / Sell / Quit
             struct WindowTemplate winTemplate = sShopMenuWindowTemplates[WIN_BUY_SELL_QUIT];
-            winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuySellQuit, ARRAY_COUNT(sShopMenuActions_BuySellQuit));
+            winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuySellQuit,
+                                                       ARRAY_COUNT(sShopMenuActions_BuySellQuit));
             sMartInfo.windowId = AddWindow(&winTemplate);
             sMartInfo.menuActions = sShopMenuActions_BuySellQuit;
             numMenuItems = ARRAY_COUNT(sShopMenuActions_BuySellQuit);
@@ -521,7 +651,8 @@ static u8 CreateShopMenu(u8 martType)
     else
     {
         struct WindowTemplate winTemplate = sShopMenuWindowTemplates[WIN_BUY_QUIT];
-        winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuyQuit, ARRAY_COUNT(sShopMenuActions_BuyQuit));
+        winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuyQuit,
+                                                   ARRAY_COUNT(sShopMenuActions_BuyQuit));
         sMartInfo.windowId = AddWindow(&winTemplate);
         sMartInfo.menuActions = sShopMenuActions_BuyQuit;
         numMenuItems = ARRAY_COUNT(sShopMenuActions_BuyQuit);
@@ -607,8 +738,17 @@ static void Task_HandleShopMenuBuy(u8 taskId)
 static void Task_HandleShopMenuSell(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    tCallbackHi = (u32)CB2_GoToSellMenu >> 16;
-    tCallbackLo = (u32)CB2_GoToSellMenu;
+
+    if (FlagGet(FLAG_SYS_GOURMET_MANIAC))
+    {
+        tCallbackHi = (u32)CB2_GoToGourmetSellMenu >> 16;
+        tCallbackLo = (u32)CB2_GoToGourmetSellMenu;
+    }
+    else
+    {
+        tCallbackHi = (u32)CB2_GoToSellMenu >> 16;
+        tCallbackLo = (u32)CB2_GoToSellMenu;
+    }
     gTasks[taskId].func = Task_GoToBuyOrSellMenu;
     FadeScreen(FADE_TO_BLACK, 0);
 }
@@ -1580,7 +1720,11 @@ static void RecordItemPurchase(u8 taskId)
 
 void CreatePokemartMenu(const u16 *itemsForSale)
 {
-    CreateShopMenu(MART_TYPE_NORMAL);
+    if (FlagGet(FLAG_SYS_GOURMET_MANIAC))
+        CreateShopMenu(MART_TYPE_GOURMET);
+    else
+        CreateShopMenu(MART_TYPE_NORMAL);
+
     SetShopItemsForSale(itemsForSale);
     ClearItemPurchases();
     SetShopMenuCallback(ScriptContext_Enable);

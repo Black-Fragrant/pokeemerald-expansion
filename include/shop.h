@@ -8,5 +8,6 @@ void CreatePokemartMenu(const u16 *itemsForSale);
 void CreateDecorationShop1Menu(const u16 *itemsForSale);
 void CreateDecorationShop2Menu(const u16 *itemsForSale);
 void CB2_ExitSellMenu(void);
+s32 GetGourmetSellPrice(u16 itemId);
 
 #endif // GUARD_SHOP_H
