@@ -26,6 +26,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "config/save.h"
+#include "constants/battle_frontier.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -470,8 +471,8 @@ struct BattleFrontier
     /*0xCB2*/ u16 curChallengeBattleNum; // Battle number / room number (Pike) / floor number (Pyramid)
     /*0xCB4*/ u16 trainerIds[20];
     /*0xCDC*/ u32 winStreakActiveFlags;
-    /*0xCE0*/ u16 towerWinStreaks[4][FRONTIER_LVL_MODE_COUNT];
-    /*0xCF0*/ u16 towerRecordWinStreaks[4][FRONTIER_LVL_MODE_COUNT];
+    /*0xCE0*/ u16 towerWinStreaks[FRONTIER_MODE_COUNT][FRONTIER_LVL_MODE_COUNT];
+    /*0xCF0*/ u16 towerRecordWinStreaks[FRONTIER_MODE_COUNT][FRONTIER_LVL_MODE_COUNT];
     /*0xD00*/ u16 battledBrainFlags;
     /*0xD02*/ u16 towerSinglesStreak; // Never read
     /*0xD04*/ u16 towerNumWins; // Increments to MAX_STREAK but never read otherwise

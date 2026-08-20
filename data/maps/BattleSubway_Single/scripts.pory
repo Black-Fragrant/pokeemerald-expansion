@@ -1,1 +1,25 @@
-mapscripts BattleSubway_Single_MapScripts {}
+mapscripts BattleSubway_Single_MapScripts 
+    {
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_TEMP_0, 0 : BattleSubway_Single_TurnPlayer
+    ]
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_TEMP_0, 0 : BattleSubway_Single_Loading
+    ]
+    }
+
+script BattleSubway_Single_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_EAST)
+	return()
+}
+
+script BattleSubway_Single_Loading
+{
+	setvar(VAR_TEMP_0, 1)
+	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	goto_if_eq(VAR_RESULT, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_OpponentEnter)
+
+}

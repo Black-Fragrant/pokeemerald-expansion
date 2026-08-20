@@ -20,11 +20,14 @@
 #define FACILITY_MULTI_OR_EREADER  9  // Direct Corner multi battles, multi battle with Steven, and e-Reader battles
 
 // Battle Frontier battle modes.
-#define FRONTIER_MODE_SINGLES      0
-#define FRONTIER_MODE_DOUBLES      1
-#define FRONTIER_MODE_MULTIS       2
-#define FRONTIER_MODE_LINK_MULTIS  3
-#define FRONTIER_MODE_COUNT        4
+#define FRONTIER_MODE_SINGLES           0
+#define FRONTIER_MODE_SUPER_SINGLES     1
+#define FRONTIER_MODE_DOUBLES           2
+#define FRONTIER_MODE_SUPER_DOUBLES     3
+#define FRONTIER_MODE_MULTIS            4
+#define FRONTIER_MODE_SUPER_MULTIS      5
+#define FRONTIER_MODE_LINK_MULTIS       6
+#define FRONTIER_MODE_COUNT             7
 
 // Challenge Statuses
 #define CHALLENGE_STATUS_SAVING   1
