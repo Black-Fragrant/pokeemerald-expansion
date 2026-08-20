@@ -83,13 +83,16 @@ static void DoFacilityTrainerBattleInternal(u8 facility)
         switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
         {
         case FRONTIER_MODE_SINGLES:
+        case FRONTIER_MODE_SUPER_SINGLES:
             FillFrontierTrainerParty(FRONTIER_PARTY_SIZE);
             break;
         case FRONTIER_MODE_DOUBLES:
+        case FRONTIER_MODE_SUPER_DOUBLES:
             FillFrontierTrainerParty(FRONTIER_DOUBLES_PARTY_SIZE);
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
             break;
         case FRONTIER_MODE_MULTIS:
+        case FRONTIER_MODE_SUPER_MULTIS:
             FillFrontierTrainersParties(FRONTIER_MULTI_PARTY_SIZE);
             gPartnerTrainerId = gSaveBlock2Ptr->frontier.trainerIds[17];
             FillPartnerParty(gPartnerTrainerId);

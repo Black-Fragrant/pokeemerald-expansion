@@ -179,7 +179,7 @@
 #define VAR_NIMBASA_STATE                                0x409D
 #define VAR_TIME_OF_DAY                                  0x409E
 #define VAR_NIMBASA_N_BATTLE_STATE                       0x409F
-#define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
+#define VAR_BATTLE_SUBWAY_BOARDING                       0x40A0
 #define VAR_UNUSED_0x40A1                                0x40A1 // Unused var
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
 #define VAR_CABLE_CAR_STATION_STATE                      0x40A3

@@ -2077,7 +2077,11 @@ static void AppendIfValid(enum Species species, enum Item heldItem, u16 hp, enum
 
 // gSpecialVar_Result is the level mode before and after calls to this function
 // gSpecialVar_0x8004 is used to store the return value instead (TRUE if there are insufficient eligible mons)
-// The names of ineligible Pokémon that have been caught are also buffered to print
+// The names of ineligible Pokémon that have been caught are also buffered to prin
+
+// Modified: Always treat as Open Level mode.
+// gSpecialVar_Result is ignored for level-mode logic.
+// No level 50 checks, no level-mode return, no lvlMode save.
 static void CheckPartyIneligibility(void)
 {
     enum Species speciesArray[PARTY_SIZE];
@@ -2122,11 +2126,12 @@ static void CheckPartyIneligibility(void)
             if (VarGet(VAR_FRONTIER_FACILITY) == FRONTIER_FACILITY_PYRAMID)
             {
                 if (heldItem == ITEM_NONE)
-                    AppendIfValid(species, heldItem, hp, gSpecialVar_Result, level, speciesArray, itemArray, &numEligibleMons);
+                    AppendIfValid(species, heldItem, hp, FRONTIER_LVL_OPEN, level, speciesArray, itemArray, &numEligibleMons);
             }
             else
             {
-                AppendIfValid(species, heldItem, hp, gSpecialVar_Result, level, speciesArray, itemArray, &numEligibleMons);
+                // Always treat as Open Level mode
+                AppendIfValid(species, heldItem, hp, FRONTIER_LVL_OPEN, level, speciesArray, itemArray, &numEligibleMons);
             }
             monId++;
             if (monId >= PARTY_SIZE)
@@ -2197,8 +2202,9 @@ static void CheckPartyIneligibility(void)
     }
     else
     {
+        // Eligible: store only open level mode
         gSpecialVar_0x8004 = FALSE;
-        gSaveBlock2Ptr->frontier.lvlMode = gSpecialVar_Result;
+        gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_OPEN; 
     }
     #undef numEligibleMons
 }

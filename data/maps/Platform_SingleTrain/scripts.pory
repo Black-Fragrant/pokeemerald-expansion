@@ -1,2 +1,243 @@
 mapscripts Platform_SingleTrain_MapScripts {}
 
+script Platform_SingleTrain_EventScript_Trigger
+{
+    lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, Platform_SingleTrain_EventScript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_1, 11, Platform_SingleTrain_EventScript_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_1, 12, Platform_SingleTrain_EventScript_Trigger_Pos3)
+	call_if_eq (VAR_TEMP_1, 13, Platform_SingleTrain_EventScript_Trigger_Pos4)
+    goto(Platform_SingleTrain_EventScript_Start)
+}
+
+script Platform_SingleTrain_EventScript_Trigger_Pos1
+{
+    applymovement(LOCALID_PLAYER, moves(face_down))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_Trigger_Pos2
+{
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_Trigger_Pos3
+{
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_Trigger_Pos4
+{
+    applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_Start
+{
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
+    waitmovement(0)
+	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) //this needs further research
+	special(SavePlayerParty)
+	msgbox("Welcome to the Battle Subway!\p"
+            "I will guide you to\n"
+            "the Single Train here.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    goto(Platform_SingleTrain_EventScript_Selection)
+}
+
+script Platform_SingleTrain_EventScript_Selection
+{
+	msgbox("Would you like to board\n"
+            "the Single Train?", MSGBOX_DEFAULT, FALSE)
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Board",
+        "Info",
+        "Cancel")
+    destroy_speech_bubble()
+	if (var(VAR_RESULT) == 0) {goto (Platform_SingleTrain_EventScript_Prepare)}
+	elif (var(VAR_RESULT) == 1) {goto (Platform_SingleTrain_EventScript_Info)}
+    goto(Platform_SingleTrain_EventScript_Cancel)
+}
+
+script Platform_SingleTrain_EventScript_Info
+{
+    msgbox("In the Single Train, you will battle\n"
+            "using three Pokémon.\p"
+            "You may not have duplicate Pokémon\n"
+            "or duplicate held items.\p"
+            "All Pokémon will be temporarily set to\n"
+            "Lv. 50 for the battles here.\p"
+            "The Single Train has seven cars, so you\n"
+            "will fight against seven Trainers.\p"
+            "If you manage to defeat all seven,\n"
+            "you will arrive at a station and earn\l"
+            "Battle Points (BP).\l"
+            "Good luck!\p"
+            "If you need a break from your challenge,\n"
+            "remember to save the game!\p"
+            "If you don't save, you'll have to start\n"
+            "the challenge all over again.\l"
+            "Please be aware of that!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    goto(Platform_SingleTrain_EventScript_Selection)
+}
+
+script Platform_SingleTrain_EventScript_CancelChallengeSaveFailed
+{
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS)  // No status provided, so it relies on VAR_0x8006 being 0 already
+	goto(Platform_SingleTrain_EventScript_Cancel)
+}
+
+script Platform_SingleTrain_EventScript_LoadPartyCancelChallenge
+{
+	special(LoadPlayerParty)
+	callnative(UpdateFollowingPokemon)
+    goto(Platform_SingleTrain_EventScript_Cancel)
+}
+
+script Platform_SingleTrain_EventScript_Cancel
+{
+	msgbox("We hope to see you again!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, Platform_SingleTrain_EventScript_Cancel_Pos1)
+	call_if_eq (VAR_TEMP_1, 11, Platform_SingleTrain_EventScript_Cancel_Pos2)
+    release 
+    end 
+}
+
+script Platform_SingleTrain_EventScript_Cancel_Pos1
+{
+    applymovement(LOCALID_PLAYER, moves(walk_left))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_Cancel_Pos2
+{
+    applymovement(LOCALID_PLAYER, moves(walk_left))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_NotEnoughValidMons
+{
+    msgbox("You don't have three\n"
+            "eligible Pokémon!\p"
+            "Please prepare three\n"
+            "different Pokémon\l"
+            "and have each of them hold\l"
+            "a different item to enter the battle.\p"
+            "Eggs and Mythical Pokémon are\n"
+            "not allowed to enter!", MSGBOX_TRANSPARENT)
+    closemessage
+    goto (Platform_SingleTrain_EventScript_Cancel)
+}
+
+script Platform_SingleTrain_EventScript_Prepare
+{
+	setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES) //this needs further research
+	frontier_checkineligible //research complete - checks for all levels but store the result of level 50 mode
+	goto_if_eq(VAR_0x8004, TRUE, Platform_SingleTrain_EventScript_NotEnoughValidMons) 
+    setvar(VAR_RESULT, FRONTIER_LVL_OPEN)
+	frontier_set(FRONTIER_DATA_LVL_MODE, VAR_RESULT) //modified function, this store the eligibility-check result, but now its always open level
+	msgbox("Please select three Pokémon you wish\n"
+            "to enter!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	fadescreen(FADE_TO_BLACK)
+	callnative(RemoveFollowingPokemon)
+	frontier_get(FRONTIER_DATA_LVL_MODE) 
+	copyvar(VAR_0x8004, VAR_RESULT) // research complete, this stores open level in 8004
+	setvar(VAR_0x8005, FRONTIER_PARTY_SIZE) //research complete, this var is defined to be 3
+	special(ChoosePartyForBattleFrontier) //
+	goto_if_eq(VAR_RESULT, 0, Platform_SingleTrain_EventScript_LoadPartyCancelChallenge)
+	msgbox ("Would you like to save the game?", MSGBOX_YESNO, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq(VAR_RESULT, YES, Platform_SingleTrain_EventScript_SaveBeforeChallenge)
+	goto (Platform_SingleTrain_EventScript_LoadPartyCancelChallenge)
+}
+
+script Platform_SingleTrain_EventScript_SaveBeforeChallenge
+{
+	frontier_set(FRONTIER_DATA_SELECTED_MON_ORDER) //It copies the player’s selected party order into the Frontier saveblock
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // VAR_TEMP_CHALLENGE_STATUS is used to react to the status in OnFrame map scripts
+	// tower_init // decides which Trainer Tower floor layout to load when entering a floor
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, TRUE) // indicate that the win streak is currently active.
+	frontier_set(FRONTIER_DATA_PAUSED, FALSE) // Marks whether the Frontier challenge is paused.
+	special(LoadPlayerParty)
+	closemessage
+	delay(2)
+	call(Common_EventScript_SaveGame)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
+	goto_if_eq (VAR_RESULT, 0, Platform_SingleTrain_EventScript_CancelChallengeSaveFailed)
+	incrementgamestat(GAME_STAT_ENTERED_BATTLE_TOWER) //you have entered the tower +1 times
+	goto(Platform_SingleTrain_EventScript_BoardTheTrain)
+}
+
+script Platform_SingleTrain_EventScript_BoardTheTrain
+{
+	special(SavePlayerParty)
+	setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER) // these three load the saved Frontier party selection
+	setvar(VAR_0x8005, FRONTIER_PARTY_SIZE) 
+	special(CallFrontierUtilFunc)
+	setvar(VAR_RESULT, 0)
+	msgbox("Now, please board\n"
+            "the Single Train!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, Platform_SingleTrain_EventScript_BTT_Pos1)
+	call_if_eq (VAR_TEMP_1, 10, Platform_SingleTrain_EventScript_BTT_Pos2)
+	call_if_eq (VAR_TEMP_1, 11, Platform_SingleTrain_EventScript_BTT_Pos3)
+    playse(SE_EXIT)
+    waitse
+    delay(20)
+    removeobject(LOCALID_SINGLETRAIN_0)
+    addobject(LOCALID_SINGLETRAIN_1)
+    applymovement(LOCALID_SINGLETRAIN_1, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
+    applymovement(LOCALID_SINGLETRAIN_2, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
+    applymovement(LOCALID_SINGLETRAIN_3, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
+    waitmovement(0)
+	fadescreen(FADE_TO_BLACK)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
+	warpsilent(MAP_BATTLE_SUBWAY_SINGLE, 5, 5)
+	waitstate
+	end
+}
+
+script Platform_SingleTrain_EventScript_BTT_Pos1
+{
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(walk_right * 5, walk_in_place_up))
+    applymovement(LOCALID_PLAYER, moves(walk_down, walk_right * 4, walk_up * 2, delay_16, set_invisible))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_BTT_Pos2
+{
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(walk_right * 5, walk_in_place_up))
+    applymovement(LOCALID_PLAYER, moves(walk_right * 5, walk_up * 2, delay_16, set_invisible))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_BTT_Pos3
+{
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(walk_right * 5, walk_in_place_up))
+    applymovement(LOCALID_PLAYER, moves(walk_up, walk_right * 4, walk_up * 2, delay_16, set_invisible))
+    waitmovement(0)
+    return
+}
+
+
+
+
+
