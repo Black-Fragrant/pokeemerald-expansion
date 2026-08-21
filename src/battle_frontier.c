@@ -359,6 +359,7 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
         SetMonData(dst, MON_DATA_ABILITY_NUM, &ability);
     }
 
+    // EVs
     if (fmon->ev != NULL)
     {
         SetMonData(dst, MON_DATA_HP_EV, &(fmon->ev[0]));
@@ -369,14 +370,17 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
         SetMonData(dst, MON_DATA_SPEED_EV, &(fmon->ev[5]));
     }
 
+    // IVs
     if (fmon->iv)
         SetMonData(dst, MON_DATA_IVS, &(fmon->iv));
 
+    // Shiny
     if (fmon->isShiny)
     {
         u32 data = TRUE;
         SetMonData(dst, MON_DATA_IS_SHINY, &data);
     }
+    // --- ORIGINAL GIMMICK ASSIGNMENTS (kept for compatibility, but overridden below) ---
     if (fmon->dynamaxLevel > 0)
     {
         u32 data = fmon->dynamaxLevel;
@@ -393,7 +397,18 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
         SetMonData(dst, MON_DATA_TERA_TYPE, &data);
     }
 
-
+    // --- HARD DISABLE GIMMICKS FOR FACILITY ENEMY POKÉMON ---
+    {
+        u32 zero = 0;
+        // Disable Dynamax
+        SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &zero);
+        // Disable Gigantamax
+        SetMonData(dst, MON_DATA_GIGANTAMAX_FACTOR, &zero);
+        // Disable Tera (TYPE_MYSTERY = 0)
+        SetMonData(dst, MON_DATA_TERA_TYPE, &zero);
+    }
+    
+    // Ball + stats
     SetMonData(dst, MON_DATA_POKEBALL, &ball);
     CalculateMonStats(dst);
 }
