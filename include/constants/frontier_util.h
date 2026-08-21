@@ -45,8 +45,8 @@
 #define FRONTIER_DATA_RECORD_DISABLED    6
 #define FRONTIER_DATA_HEARD_BRAIN_SPEECH 7
 
-#define STREAK_TOWER_SINGLES_50       (1 << 0)
-#define STREAK_TOWER_SINGLES_OPEN     (1 << 1)
+#define STREAK_TOWER_SINGLES          (1 << 0)
+#define STREAK_TOWER_SUPER_SINGLES    (1 << 1)
 #define STREAK_DOME_SINGLES_50        (1 << 2)
 #define STREAK_DOME_SINGLES_OPEN      (1 << 3)
 #define STREAK_PALACE_SINGLES_50      (1 << 4)
@@ -59,10 +59,10 @@
 #define STREAK_PIKE_OPEN              (1 << 11)
 #define STREAK_PYRAMID_50             (1 << 12)
 #define STREAK_PYRAMID_OPEN           (1 << 13)
-#define STREAK_TOWER_DOUBLES_50       (1 << 14)
-#define STREAK_TOWER_DOUBLES_OPEN     (1 << 15)
-#define STREAK_TOWER_MULTIS_50        (1 << 16)
-#define STREAK_TOWER_MULTIS_OPEN      (1 << 17)
+#define STREAK_TOWER_DOUBLES          (1 << 14)
+#define STREAK_TOWER_SUPER_DOUBLES    (1 << 15)
+#define STREAK_TOWER_MULTIS           (1 << 16)
+#define STREAK_TOWER_SUPER_MULTIS     (1 << 17)
 #define STREAK_TOWER_LINK_MULTIS_50   (1 << 18)
 #define STREAK_TOWER_LINK_MULTIS_OPEN (1 << 19)
 #define STREAK_DOME_DOUBLES_50        (1 << 20)
