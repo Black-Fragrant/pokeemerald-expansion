@@ -449,6 +449,12 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_RANGER] = { _("Ranger"), 15 }, //updated to bw money rates
     [TRAINER_CLASS_GAMEFREAK] = { _("Game Freak"), 1 },
     [TRAINER_CLASS_HARLEQUIN] = { _("Harlequin"), 1 },
+    [TRAINER_CLASS_ROUGHNECK] = { _("Roughneck"), 1 },
+    [TRAINER_CLASS_BIKER] = { _("Biker"), 1 },
+    [TRAINER_CLASS_POLICEMAN] = { _("Policeman"), 1 },
+    [TRAINER_CLASS_MAID] = { _("Maid"), 1 },
+    [TRAINER_CLASS_SOCIALITE] = { _("Socialite"), 1 },
+    [TRAINER_CLASS_ACE_TRAINER] = { _("Ace Trainer"), 1 },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =
