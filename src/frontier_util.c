@@ -1099,32 +1099,36 @@ static void TowerPrintPrevOrCurrentStreak(u8 battleMode, enum FrontierLevelMode 
 {
     bool8 isCurrent;
     u16 winStreak = TowerGetWinStreak(battleMode, lvlMode);
+
     switch (battleMode)
     {
     default:
     case FRONTIER_MODE_SINGLES:
-        if (lvlMode != FRONTIER_LVL_50)
-            isCurrent = IsWinStreakActive(STREAK_TOWER_SINGLES_OPEN);
-        else
-            isCurrent = IsWinStreakActive(STREAK_TOWER_SINGLES_50);
+        isCurrent = IsWinStreakActive(STREAK_TOWER_SINGLES);
         break;
+
+    case FRONTIER_MODE_SUPER_SINGLES:
+        isCurrent = IsWinStreakActive(STREAK_TOWER_SUPER_SINGLES);
+        break;
+
     case FRONTIER_MODE_DOUBLES:
-        if (lvlMode != FRONTIER_LVL_50)
-            isCurrent = IsWinStreakActive(STREAK_TOWER_DOUBLES_OPEN);
-        else
-            isCurrent = IsWinStreakActive(STREAK_TOWER_DOUBLES_50);
+        isCurrent = IsWinStreakActive(STREAK_TOWER_DOUBLES);
         break;
+
+    case FRONTIER_MODE_SUPER_DOUBLES:
+        isCurrent = IsWinStreakActive(STREAK_TOWER_SUPER_DOUBLES);
+        break;
+
     case FRONTIER_MODE_MULTIS:
-        if (lvlMode != FRONTIER_LVL_50)
-            isCurrent = IsWinStreakActive(STREAK_TOWER_MULTIS_OPEN);
-        else
-            isCurrent = IsWinStreakActive(STREAK_TOWER_MULTIS_50);
+        isCurrent = IsWinStreakActive(STREAK_TOWER_MULTIS);
         break;
+
+    case FRONTIER_MODE_SUPER_MULTIS:
+        isCurrent = IsWinStreakActive(STREAK_TOWER_SUPER_MULTIS);
+        break;
+
     case FRONTIER_MODE_LINK_MULTIS:
-        if (lvlMode != FRONTIER_LVL_50)
-            isCurrent = IsWinStreakActive(STREAK_TOWER_LINK_MULTIS_OPEN);
-        else
-            isCurrent = IsWinStreakActive(STREAK_TOWER_LINK_MULTIS_50);
+        isCurrent = FALSE;  // Link Multis has no streak
         break;
     }
 
@@ -1139,23 +1143,39 @@ static void ShowTowerResultsWindow(u8 battleMode)
     gRecordsWindowId = AddWindow(&sFrontierResultsWindowTemplate);
     DrawStdWindowFrame(gRecordsWindowId, FALSE);
     FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
-    if (battleMode == FRONTIER_MODE_SINGLES)
-        StringExpandPlaceholders(gStringVar4, gText_SingleBattleRoomResults);
-    else if (battleMode == FRONTIER_MODE_DOUBLES)
-        StringExpandPlaceholders(gStringVar4, gText_DoubleBattleRoomResults);
-    else if (battleMode == FRONTIER_MODE_MULTIS)
-        StringExpandPlaceholders(gStringVar4, gText_MultiBattleRoomResults);
-    else
-        StringExpandPlaceholders(gStringVar4, gText_LinkMultiBattleRoomResults);
 
+    // Updated mode text
+    switch (battleMode)
+    {
+    case FRONTIER_MODE_SINGLES:
+        StringExpandPlaceholders(gStringVar4, gText_SingleBattleRoomResults);
+        break;
+    case FRONTIER_MODE_SUPER_SINGLES:
+        StringExpandPlaceholders(gStringVar4, gText_SuperSingleBattleRoomResults);
+        break;
+    case FRONTIER_MODE_DOUBLES:
+        StringExpandPlaceholders(gStringVar4, gText_DoubleBattleRoomResults);
+        break;
+    case FRONTIER_MODE_SUPER_DOUBLES:
+        StringExpandPlaceholders(gStringVar4, gText_SuperDoubleBattleRoomResults);
+        break;
+    case FRONTIER_MODE_MULTIS:
+        StringExpandPlaceholders(gStringVar4, gText_MultiBattleRoomResults);
+        break;
+    case FRONTIER_MODE_SUPER_MULTIS:
+        StringExpandPlaceholders(gStringVar4, gText_SuperMultiBattleRoomResults);
+        break;
+    case FRONTIER_MODE_LINK_MULTIS:
+        StringExpandPlaceholders(gStringVar4, gText_LinkMultiBattleRoomResults);
+        break;
+    }
     PrintAligned(gStringVar4, 2);
-    AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, gText_Lv502, 16, 49, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, gText_OpenLv, 16, 97, TEXT_SKIP_DRAW, NULL);
+    // Remove Lv50/Open labels entirely
     PrintHyphens(10);
+    // Print only ONE streak row
     TowerPrintPrevOrCurrentStreak(battleMode, FRONTIER_LVL_50, 72, 132, 49);
     TowerPrintRecordStreak(battleMode, FRONTIER_LVL_50, 72, 132, 65);
-    TowerPrintPrevOrCurrentStreak(battleMode, FRONTIER_LVL_OPEN, 72, 132, 97);
-    TowerPrintRecordStreak(battleMode, FRONTIER_LVL_OPEN, 72, 132, 113);
+
     PutWindowTilemap(gRecordsWindowId);
     CopyWindowToVram(gRecordsWindowId, COPYWIN_FULL);
 }

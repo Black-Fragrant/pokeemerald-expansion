@@ -647,20 +647,26 @@ static void (* const sBattleTowerFuncs[])(void) =
     [BATTLE_TOWER_FUNC_SET_INTERVIEW_DATA]  = SetTowerInterviewData,
 };
 
-static const u32 sWinStreakFlags[][2] =
+static const u32 sWinStreakFlags[] =
 {
-    {STREAK_TOWER_SINGLES_50,     STREAK_TOWER_SINGLES_OPEN},
-    {STREAK_TOWER_DOUBLES_50,     STREAK_TOWER_DOUBLES_OPEN},
-    {STREAK_TOWER_MULTIS_50,      STREAK_TOWER_MULTIS_OPEN},
-    {STREAK_TOWER_LINK_MULTIS_50, STREAK_TOWER_LINK_MULTIS_OPEN},
+    [FRONTIER_MODE_SINGLES]        = STREAK_TOWER_SINGLES,
+    [FRONTIER_MODE_SUPER_SINGLES]  = STREAK_TOWER_SUPER_SINGLES,
+    [FRONTIER_MODE_DOUBLES]        = STREAK_TOWER_DOUBLES,
+    [FRONTIER_MODE_SUPER_DOUBLES]  = STREAK_TOWER_SUPER_DOUBLES,
+    [FRONTIER_MODE_MULTIS]         = STREAK_TOWER_MULTIS,
+    [FRONTIER_MODE_SUPER_MULTIS]   = STREAK_TOWER_SUPER_MULTIS,
+    [FRONTIER_MODE_LINK_MULTIS]    = 0,  // no streak tracking
 };
 
-static const u32 sWinStreakMasks[][2] =
+static const u32 sWinStreakMasks[] =
 {
-    {~(STREAK_TOWER_SINGLES_50),     ~(STREAK_TOWER_SINGLES_OPEN)},
-    {~(STREAK_TOWER_DOUBLES_50),     ~(STREAK_TOWER_DOUBLES_OPEN)},
-    {~(STREAK_TOWER_MULTIS_50),      ~(STREAK_TOWER_MULTIS_OPEN)},
-    {~(STREAK_TOWER_LINK_MULTIS_50), ~(STREAK_TOWER_LINK_MULTIS_OPEN)},
+    [FRONTIER_MODE_SINGLES]        = ~(STREAK_TOWER_SINGLES),
+    [FRONTIER_MODE_SUPER_SINGLES]  = ~(STREAK_TOWER_SUPER_SINGLES),
+    [FRONTIER_MODE_DOUBLES]        = ~(STREAK_TOWER_DOUBLES),
+    [FRONTIER_MODE_SUPER_DOUBLES]  = ~(STREAK_TOWER_SUPER_DOUBLES),
+    [FRONTIER_MODE_MULTIS]         = ~(STREAK_TOWER_MULTIS),
+    [FRONTIER_MODE_SUPER_MULTIS]   = ~(STREAK_TOWER_SUPER_MULTIS),
+    [FRONTIER_MODE_LINK_MULTIS]    = ~0,  // mask does nothing
 };
 
 // The challenge number at which an Apprentice can appear, depending on how many of their questions were answered
@@ -721,7 +727,9 @@ static void InitTowerChallenge(void)
     gSaveBlock2Ptr->frontier.challengePaused = FALSE;
     gSaveBlock2Ptr->frontier.disableRecordBattle = FALSE;
     ResetFrontierTrainerIds();
-    if (!(gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode][lvlMode]))
+
+    // Updated: 1-D streak flag table
+    if (!(gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode]))
         gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] = 0;
 
     ValidateBattleTowerRecordChecksums();
@@ -742,7 +750,8 @@ static void GetTowerData(void)
         gSpecialVar_Result = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
         break;
     case TOWER_DATA_WIN_STREAK_ACTIVE:
-        gSpecialVar_Result = ((gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode][lvlMode]) != 0);
+        // Updated: no lvlMode indexing, 1-D streak flag table
+        gSpecialVar_Result = ((gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode]) != 0);
         break;
     case TOWER_DATA_LVL_MODE:
         gSaveBlock2Ptr->frontier.towerLvlMode = gSaveBlock2Ptr->frontier.lvlMode;
@@ -763,10 +772,11 @@ static void SetTowerData(void)
         gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] = gSpecialVar_0x8006;
         break;
     case TOWER_DATA_WIN_STREAK_ACTIVE:
+        // Updated: no lvlMode indexing, 1-D streak flag table
         if (gSpecialVar_0x8006)
-            gSaveBlock2Ptr->frontier.winStreakActiveFlags |= sWinStreakFlags[battleMode][lvlMode];
+            gSaveBlock2Ptr->frontier.winStreakActiveFlags |= sWinStreakFlags[battleMode];
         else
-            gSaveBlock2Ptr->frontier.winStreakActiveFlags &= sWinStreakMasks[battleMode][lvlMode];
+            gSaveBlock2Ptr->frontier.winStreakActiveFlags &= sWinStreakMasks[battleMode];
         break;
     case TOWER_DATA_LVL_MODE:
         gSaveBlock2Ptr->frontier.towerLvlMode = gSaveBlock2Ptr->frontier.lvlMode;
