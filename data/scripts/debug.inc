@@ -215,7 +215,9 @@ Debug_EventScript_Script_1_text::
 
 Debug_EventScript_Script_2::
     lock
-    clearflag FLAG_NIMBASA_CITY_BATTLE_INSTITUTE_WOMAN
+    warpsilent MAP_PLATFORM_SINGLE_TRAIN, 16, 10
+	waitstate
+	release 
     end
 
 Debug_EventScript_Script_3::
