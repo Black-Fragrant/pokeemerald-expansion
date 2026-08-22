@@ -399,13 +399,18 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
 
     // --- HARD DISABLE GIMMICKS FOR FACILITY ENEMY POKÉMON ---
     {
+        u32 teraMystery = TYPE_MYSTERY;
+        u32 blockDynamax = BLOCK_AI_DYNAMAX;
         u32 zero = 0;
-        // Disable Dynamax
-        SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &zero);
+
+        // Disable Dynamax via sentinel
+        SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &blockDynamax);
+
         // Disable Gigantamax
         SetMonData(dst, MON_DATA_GIGANTAMAX_FACTOR, &zero);
-        // Disable Tera (TYPE_MYSTERY = 0)
-        SetMonData(dst, MON_DATA_TERA_TYPE, &zero);
+
+        // Disable Tera (TYPE_MYSTERY)
+        SetMonData(dst, MON_DATA_TERA_TYPE, &teraMystery);
     }
     
     // Ball + stats
