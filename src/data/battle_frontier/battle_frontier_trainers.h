@@ -6,7 +6,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_LONDON] = {
         .facilityClass = FACILITY_CLASS_YOUNGSTER,
@@ -14,7 +14,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_BERRY] = {
         .facilityClass = FACILITY_CLASS_YOUNGSTER,
@@ -22,7 +22,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_SMITH] = {
         .facilityClass = FACILITY_CLASS_YOUNGSTER,
@@ -30,7 +30,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_AGNEAU] = {
         .facilityClass = FACILITY_CLASS_LASS,
@@ -38,7 +38,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_CREVETT] = {
         .facilityClass = FACILITY_CLASS_LASS,
@@ -46,7 +46,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_JILLIAN] = {
         .facilityClass = FACILITY_CLASS_LASS,
@@ -54,7 +54,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_COIN] = {
         .facilityClass = FACILITY_CLASS_LASS,
@@ -62,7 +62,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_YOUNGSTER_LASS_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_EGON] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_M,
@@ -70,7 +70,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_EZRA] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_M,
@@ -78,7 +78,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_EGBERT] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_M,
@@ -86,7 +86,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_KEVYN] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_M,
@@ -94,7 +94,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_HEARTS] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_F,
@@ -102,7 +102,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_ELISE] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_F,
@@ -110,7 +110,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_PEACHES] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_F,
@@ -118,7 +118,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_PLUM] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_F,
@@ -126,7 +126,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SCHOOL_KID_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_POUND] = {
         .facilityClass = FACILITY_CLASS_RICH_BOY,
@@ -134,7 +134,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_RUPEE] = {
         .facilityClass = FACILITY_CLASS_RICH_BOY,
@@ -142,7 +142,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_DOLLAR] = {
         .facilityClass = FACILITY_CLASS_RICH_BOY,
@@ -150,7 +150,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_RUTIE] = {
         .facilityClass = FACILITY_CLASS_RICH_BOY,
@@ -158,7 +158,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_WON] = {
         .facilityClass = FACILITY_CLASS_LADY,
@@ -166,7 +166,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_PESO] = {
         .facilityClass = FACILITY_CLASS_LADY,
@@ -174,7 +174,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_SASHA] = {
         .facilityClass = FACILITY_CLASS_LADY,
@@ -182,7 +182,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_REAL] = {
         .facilityClass = FACILITY_CLASS_LADY,
@@ -190,7 +190,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_RICH_BOY_LADY_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_ODA] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_M,
@@ -198,7 +198,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_HIDE] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_M,
@@ -206,7 +206,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_NOBU] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_M,
@@ -214,7 +214,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_TADA] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_M,
@@ -222,7 +222,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_JANICE] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_F,
@@ -230,7 +230,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_DAKOTA] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_F,
@@ -238,7 +238,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_MONROE] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_F,
@@ -246,7 +246,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_HELLEN] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_F,
@@ -254,7 +254,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_TUBER_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_IRWIN] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -262,7 +262,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_ANANDA] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -270,7 +270,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_SERJBU] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -278,7 +278,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_MYERA] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -286,7 +286,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_TATYANA] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -294,7 +294,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_THERESA] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -302,7 +302,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_SAWYER] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -310,7 +310,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_ABDUL] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -318,7 +318,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_VERN] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -326,7 +326,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_WILLOW] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -334,7 +334,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_CHAONNE] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -342,7 +342,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_TERRA] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -350,7 +350,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_NORM] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_M,
@@ -358,7 +358,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_ORMOND] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_M,
@@ -366,7 +366,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_KALI] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_M,
@@ -374,7 +374,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_NEROLA] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_F,
@@ -382,7 +382,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_KARELEN] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_F,
@@ -390,7 +390,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_FARNA] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_F,
@@ -398,7 +398,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_1}
     },
     [FRONTIER_TRAINER_HODGMAN] = {
         .facilityClass = FACILITY_CLASS_HIKER,
@@ -406,7 +406,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HIKER_1}
     },
     [FRONTIER_TRAINER_SABER] = {
         .facilityClass = FACILITY_CLASS_HIKER,
@@ -414,7 +414,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HIKER_1}
     },
     [FRONTIER_TRAINER_DIPLO] = {
         .facilityClass = FACILITY_CLASS_FISHERMAN,
@@ -422,7 +422,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_FISHERMAN_1}
     },
     [FRONTIER_TRAINER_JAGUAR] = {
         .facilityClass = FACILITY_CLASS_FISHERMAN,
@@ -430,7 +430,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_FISHERMAN_1}
     },
     [FRONTIER_TRAINER_POLO] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -438,7 +438,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_LEONE] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -446,7 +446,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_SCAMPI] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -454,7 +454,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_TIIU] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -462,7 +462,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_ATLAS] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -470,7 +470,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_CALISTO] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -478,7 +478,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_NICHOLS] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -486,7 +486,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_PAULO] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -494,7 +494,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_BALUT] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -502,7 +502,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_CARABEL] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -510,7 +510,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_KLARA] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -518,7 +518,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_OLGA] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -526,7 +526,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_BOB] = {
         .facilityClass = FACILITY_CLASS_POLICEMAN,
@@ -534,7 +534,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_BOBHIKO] = {
         .facilityClass = FACILITY_CLASS_POLICEMAN,
@@ -542,7 +542,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_MICAH] = {
         .facilityClass = FACILITY_CLASS_CLERK_M,
@@ -550,7 +550,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_HENRIK] = {
         .facilityClass = FACILITY_CLASS_CLERK_M,
@@ -558,7 +558,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_2}
     },
     [FRONTIER_TRAINER_LINCOLN] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -566,7 +566,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_TRUMAN] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -574,7 +574,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_HERBERT] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -582,7 +582,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_KILEY] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -590,7 +590,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_TANNA] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -598,7 +598,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_TERESA] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -606,7 +606,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_CHESTIN] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -614,7 +614,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_PERSIM] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -622,7 +622,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_PEACHUM] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -630,7 +630,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_ROBERTA] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -638,7 +638,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_FAUN] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -646,7 +646,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_HANISKA] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -654,7 +654,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_RODGER] = {
         .facilityClass = FACILITY_CLASS_WORKER_FREEZE,
@@ -662,7 +662,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_FABIAN] = {
         .facilityClass = FACILITY_CLASS_WORKER_FREEZE,
@@ -670,7 +670,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_CIMON] = {
         .facilityClass = FACILITY_CLASS_WORKER_MINE,
@@ -678,7 +678,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_LEW] = {
         .facilityClass = FACILITY_CLASS_WORKER_MINE,
@@ -686,7 +686,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_EMIL] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_M,
@@ -694,7 +694,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_KEGAN] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_M,
@@ -702,7 +702,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_WAY] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_F,
@@ -710,7 +710,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_MIN] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_F,
@@ -718,7 +718,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_3}
     },
     [FRONTIER_TRAINER_MARX] = {
         .facilityClass = FACILITY_CLASS_JANITOR,
@@ -726,7 +726,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_DURBIN] = {
         .facilityClass = FACILITY_CLASS_JANITOR,
@@ -734,7 +734,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_FURZE] = {
         .facilityClass = FACILITY_CLASS_DEPOT_AGENT,
@@ -742,7 +742,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_CLOUD] = {
         .facilityClass = FACILITY_CLASS_DEPOT_AGENT,
@@ -750,7 +750,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_BASILEU] = {
         .facilityClass = FACILITY_CLASS_CLERK_M2,
@@ -758,7 +758,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_HOFFMAN] = {
         .facilityClass = FACILITY_CLASS_CLERK_M2,
@@ -766,7 +766,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_LARA] = {
         .facilityClass = FACILITY_CLASS_CLERK_F,
@@ -774,7 +774,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_ELODIE] = {
         .facilityClass = FACILITY_CLASS_CLERK_F,
@@ -782,7 +782,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_GODWIN] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -790,7 +790,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_KOCHER] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -798,7 +798,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_TURTLE] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -806,7 +806,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_PELLA] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -814,7 +814,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_TRENTON] = {
         .facilityClass = FACILITY_CLASS_GENTLEMAN,
@@ -822,7 +822,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_ENZO] = {
         .facilityClass = FACILITY_CLASS_GENTLEMAN,
@@ -830,7 +830,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_DIONE] = {
         .facilityClass = FACILITY_CLASS_SOCIALITE,
@@ -838,7 +838,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_NERID] = {
         .facilityClass = FACILITY_CLASS_SOCIALITE,
@@ -846,7 +846,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_WILLY] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_M,
@@ -854,7 +854,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_TIMMY] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_M,
@@ -862,7 +862,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_ROANNE] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
@@ -870,7 +870,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_QUYEN] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
@@ -878,7 +878,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BASIC_TRAINERS_4}
     },
     [FRONTIER_TRAINER_SHERMAN] = {
         .facilityClass = FACILITY_CLASS_YOUNGSTER,
@@ -886,7 +886,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_SILL] = {
         .facilityClass = FACILITY_CLASS_YOUNGSTER,
@@ -894,7 +894,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_HUITRES] = {
         .facilityClass = FACILITY_CLASS_LASS,
@@ -902,7 +902,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_PAULINA] = {
         .facilityClass = FACILITY_CLASS_LASS,
@@ -910,7 +910,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_FRITZ] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_M,
@@ -918,7 +918,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_LAYTON] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_M,
@@ -926,7 +926,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_PERCY] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_F,
@@ -934,7 +934,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_SCOUT] = {
         .facilityClass = FACILITY_CLASS_SCHOOL_KID_F,
@@ -942,7 +942,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_BERTRAN] = {
         .facilityClass = FACILITY_CLASS_RICH_BOY,
@@ -950,7 +950,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_TROY] = {
         .facilityClass = FACILITY_CLASS_RICH_BOY,
@@ -958,7 +958,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_HUITRE] = {
         .facilityClass = FACILITY_CLASS_LADY,
@@ -966,7 +966,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_POISSON] = {
         .facilityClass = FACILITY_CLASS_LADY,
@@ -974,7 +974,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_BETTY] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_F,
@@ -982,7 +982,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_HELEN] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_F,
@@ -990,7 +990,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_USEF] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_M,
@@ -998,7 +998,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_ZAID] = {
         .facilityClass = FACILITY_CLASS_PRESCHOOLER_M,
@@ -1006,7 +1006,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_MABON] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -1014,7 +1014,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_SHAMUS] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -1022,7 +1022,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_POLINA] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -1030,7 +1030,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_ZLATA] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -1038,7 +1038,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_KARSTON] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -1046,7 +1046,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_LENNART] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -1054,7 +1054,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_IKAORA] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -1062,7 +1062,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_MEENA] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -1070,7 +1070,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_FILIPPE] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_M,
@@ -1078,7 +1078,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_SERGIO] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_M,
@@ -1086,7 +1086,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_BIIJAL] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_F,
@@ -1094,7 +1094,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_MERYL] = {
         .facilityClass = FACILITY_CLASS_POKEFAN_F,
@@ -1102,7 +1102,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_GLEN] = {
         .facilityClass = FACILITY_CLASS_HIKER,
@@ -1110,7 +1110,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HIKER_2}
     },
     [FRONTIER_TRAINER_TAPIOCA] = {
         .facilityClass = FACILITY_CLASS_HIKER,
@@ -1118,7 +1118,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HIKER_2}
     },
     [FRONTIER_TRAINER_DUNCAN] = {
         .facilityClass = FACILITY_CLASS_FISHERMAN,
@@ -1126,7 +1126,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_FISHERMAN_2}
     },
     [FRONTIER_TRAINER_MORGAN] = {
         .facilityClass = FACILITY_CLASS_FISHERMAN,
@@ -1134,7 +1134,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_FISHERMAN_2}
     },
     [FRONTIER_TRAINER_COCOME] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -1142,7 +1142,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PARASOL_LADY_1}
     },
     [FRONTIER_TRAINER_NU] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -1150,7 +1150,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PARASOL_LADY_1}
     },
     [FRONTIER_TRAINER_POMODI] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -1158,7 +1158,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PARASOL_LADY_1}
     },
     [FRONTIER_TRAINER_CALON] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -1166,7 +1166,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ROUGHNECK_1}
     },
     [FRONTIER_TRAINER_OBERON] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -1174,7 +1174,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ROUGHNECK_1}
     },
     [FRONTIER_TRAINER_TRITON] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -1182,7 +1182,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ROUGHNECK_1}
     },
     [FRONTIER_TRAINER_JACOB] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -1190,7 +1190,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BIKER_1}
     },
     [FRONTIER_TRAINER_JOACHIM] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -1198,7 +1198,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BIKER_1}
     },
     [FRONTIER_TRAINER_XAVIER] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -1206,7 +1206,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BIKER_1}
     },
     [FRONTIER_TRAINER_CHELSIE] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -1214,7 +1214,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_COL] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -1222,7 +1222,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_MARIS] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -1230,7 +1230,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_BRANT] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -1238,7 +1238,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_EGIL] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -1246,7 +1246,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_SURUNE] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -1254,7 +1254,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_CEYLON] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -1262,7 +1262,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_CYANEA] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -1270,7 +1270,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_MINERVA] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -1278,7 +1278,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_BOGEY] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -1286,7 +1286,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PAINTER_1}
     },
     [FRONTIER_TRAINER_DALI] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -1294,7 +1294,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PAINTER_1}
     },
     [FRONTIER_TRAINER_IRON] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -1302,7 +1302,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PAINTER_1}
     },
     [FRONTIER_TRAINER_MARCH] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -1310,7 +1310,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_NURSERY_AIDE_1}
     },
     [FRONTIER_TRAINER_HAZEL] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -1318,7 +1318,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_NURSERY_AIDE_2}
     },
     [FRONTIER_TRAINER_POLKA] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -1326,7 +1326,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_NURSERY_AIDE_3}
     },
     [FRONTIER_TRAINER_ANTOIN] = {
         .facilityClass = FACILITY_CLASS_WORKER_FREEZE,
@@ -1334,7 +1334,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_FREEZE_1}
     },
     [FRONTIER_TRAINER_REY] = {
         .facilityClass = FACILITY_CLASS_WORKER_FREEZE,
@@ -1342,7 +1342,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_FREEZE_1}
     },
     [FRONTIER_TRAINER_EARWIN] = {
         .facilityClass = FACILITY_CLASS_WORKER_MINE,
@@ -1350,7 +1350,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_MINE_1}
     },
     [FRONTIER_TRAINER_LAMONT] = {
         .facilityClass = FACILITY_CLASS_WORKER_MINE,
@@ -1358,7 +1358,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_MINE_1}
     },
     [FRONTIER_TRAINER_AMHED] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_M,
@@ -1366,7 +1366,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_3}
     },
     [FRONTIER_TRAINER_HAMID] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_M,
@@ -1374,7 +1374,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_3}
     },
     [FRONTIER_TRAINER_MINNOW] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_F,
@@ -1382,7 +1382,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_3}
     },
     [FRONTIER_TRAINER_OREN] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_F,
@@ -1390,7 +1390,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_3}
     },
     [FRONTIER_TRAINER_BOBJIRO] = {
         .facilityClass = FACILITY_CLASS_POLICEMAN,
@@ -1398,7 +1398,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_POLICEMAN_1}
     },
     [FRONTIER_TRAINER_BOBYOSI] = {
         .facilityClass = FACILITY_CLASS_POLICEMAN,
@@ -1406,7 +1406,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_POLICEMAN_1}
     },
     [FRONTIER_TRAINER_VADIM] = {
         .facilityClass = FACILITY_CLASS_CLERK_M,
@@ -1414,7 +1414,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_4}
     },
     [FRONTIER_TRAINER_YURI] = {
         .facilityClass = FACILITY_CLASS_CLERK_M,
@@ -1422,7 +1422,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_4}
     },
     [FRONTIER_TRAINER_MOHAIR] = {
         .facilityClass = FACILITY_CLASS_CLERK_F,
@@ -1430,7 +1430,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_4}
     },
     [FRONTIER_TRAINER_VELOUR] = {
         .facilityClass = FACILITY_CLASS_CLERK_F,
@@ -1438,7 +1438,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_4}
     },
     [FRONTIER_TRAINER_KETMON] = {
         .facilityClass = FACILITY_CLASS_JANITOR,
@@ -1446,7 +1446,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_NIDA] = {
         .facilityClass = FACILITY_CLASS_JANITOR,
@@ -1454,7 +1454,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_CAMERON] = {
         .facilityClass = FACILITY_CLASS_DEPOT_AGENT,
@@ -1462,7 +1462,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_JACKIE] = {
         .facilityClass = FACILITY_CLASS_DEPOT_AGENT,
@@ -1470,7 +1470,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_ADENINE] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -1478,7 +1478,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_FRANK] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -1486,7 +1486,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_THYMINE] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -1494,7 +1494,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_KIKURI] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -1502,7 +1502,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_KUSHINA] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -1510,7 +1510,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_TOMATOE] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -1518,7 +1518,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_DANIIL] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_M,
@@ -1526,7 +1526,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_FEDOR] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_M,
@@ -1534,15 +1534,15 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_KATHY] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
-        .trainerName = _("Fedor"),
+        .trainerName = _("Kathy"),
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_SUE] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
@@ -1550,7 +1550,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_ASHLEY] = {
         .facilityClass = FACILITY_CLASS_SOCIALITE,
@@ -1558,7 +1558,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_JOICE] = {
         .facilityClass = FACILITY_CLASS_SOCIALITE,
@@ -1566,7 +1566,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_BOYCE] = {
         .facilityClass = FACILITY_CLASS_GENTLEMAN,
@@ -1574,7 +1574,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_DOVER] = {
         .facilityClass = FACILITY_CLASS_GENTLEMAN,
@@ -1582,7 +1582,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_FLORIAN] = {
         .facilityClass = FACILITY_CLASS_PILOT,
@@ -1590,7 +1590,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PILOT_1}
     },
     [FRONTIER_TRAINER_PHYL] = {
         .facilityClass = FACILITY_CLASS_PILOT,
@@ -1598,7 +1598,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PILOT_1}
     },
     [FRONTIER_TRAINER_FAUST] = {
         .facilityClass = FACILITY_CLASS_CLERK_M2,
@@ -1606,7 +1606,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_ULFGANG] = {
         .facilityClass = FACILITY_CLASS_CLERK_M2,
@@ -1614,7 +1614,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_CHARIS] = {
         .facilityClass = FACILITY_CLASS_SCIENTIST_F,
@@ -1622,7 +1622,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_LOTTE] = {
         .facilityClass = FACILITY_CLASS_SCIENTIST_F,
@@ -1630,7 +1630,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_THERESE] = {
         .facilityClass = FACILITY_CLASS_SCIENTIST_F,
@@ -1638,7 +1638,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_SPACEY] = {
         .facilityClass = FACILITY_CLASS_SCIENTIST_M,
@@ -1646,7 +1646,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_SHAN] = {
         .facilityClass = FACILITY_CLASS_SCIENTIST_M,
@@ -1654,7 +1654,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_STUBS] = {
         .facilityClass = FACILITY_CLASS_SCIENTIST_M,
@@ -1662,7 +1662,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_BOLDBAT] = {
         .facilityClass = FACILITY_CLASS_PSYCHIC_M,
@@ -1670,7 +1670,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PSYCHIC_1}
     },
     [FRONTIER_TRAINER_KHAAN] = {
         .facilityClass = FACILITY_CLASS_PSYCHIC_M,
@@ -1678,7 +1678,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PSYCHIC_1}
     },
     [FRONTIER_TRAINER_SOLONGO] = {
         .facilityClass = FACILITY_CLASS_PSYCHIC_M,
@@ -1686,7 +1686,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PSYCHIC_1}
     },
     [FRONTIER_TRAINER_LONGO] = {
         .facilityClass = FACILITY_CLASS_PSYCHIC_F,
@@ -1694,7 +1694,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PSYCHIC_1}
     },
     [FRONTIER_TRAINER_SAMBALA] = {
         .facilityClass = FACILITY_CLASS_PSYCHIC_F,
@@ -1702,7 +1702,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PSYCHIC_1}
     },
     [FRONTIER_TRAINER_ZAYA] = {
         .facilityClass = FACILITY_CLASS_PSYCHIC_F,
@@ -1710,7 +1710,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PSYCHIC_1}
     },
     [FRONTIER_TRAINER_ENPI] = {
         .facilityClass = FACILITY_CLASS_BLACK_BELT,
@@ -1718,7 +1718,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BLACK_BELT_1}
     },
     [FRONTIER_TRAINER_HARIMAO] = {
         .facilityClass = FACILITY_CLASS_BLACK_BELT,
@@ -1726,7 +1726,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BLACK_BELT_1}
     },
     [FRONTIER_TRAINER_UNSU] = {
         .facilityClass = FACILITY_CLASS_BLACK_BELT,
@@ -1734,7 +1734,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BLACK_BELT_1}
     },
     [FRONTIER_TRAINER_ACES] = {
         .facilityClass = FACILITY_CLASS_BATTLE_GIRL,
@@ -1742,7 +1742,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BLACK_BELT_1}
     },
     [FRONTIER_TRAINER_FLUSH] = {
         .facilityClass = FACILITY_CLASS_BATTLE_GIRL,
@@ -1750,7 +1750,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BLACK_BELT_1}
     },
     [FRONTIER_TRAINER_QUEENIE] = {
         .facilityClass = FACILITY_CLASS_BATTLE_GIRL,
@@ -1758,7 +1758,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BLACK_BELT_1}
     },
     [FRONTIER_TRAINER_MOUSE] = {
         .facilityClass = FACILITY_CLASS_PKMN_RANGER_M,
@@ -1766,7 +1766,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_SKYBLUE] = {
         .facilityClass = FACILITY_CLASS_PKMN_RANGER_M,
@@ -1774,7 +1774,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_SMOKEY] = {
         .facilityClass = FACILITY_CLASS_PKMN_RANGER_M,
@@ -1782,7 +1782,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_IVY] = {
         .facilityClass = FACILITY_CLASS_PKMN_RANGER_F,
@@ -1790,7 +1790,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_PAULA] = {
         .facilityClass = FACILITY_CLASS_PKMN_RANGER_F,
@@ -1798,7 +1798,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_TERRAN] = {
         .facilityClass = FACILITY_CLASS_PKMN_RANGER_F,
@@ -1806,7 +1806,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_GWEN] = {
         .facilityClass = FACILITY_CLASS_ACE_TRAINER_F,
@@ -1814,7 +1814,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_1}
     },
     [FRONTIER_TRAINER_MOOI] = {
         .facilityClass = FACILITY_CLASS_ACE_TRAINER_F,
@@ -1822,7 +1822,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_2}
     },
     [FRONTIER_TRAINER_PALM] = {
         .facilityClass = FACILITY_CLASS_ACE_TRAINER_F,
@@ -1830,7 +1830,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_3}
     },
     [FRONTIER_TRAINER_DYLAN] = {
         .facilityClass = FACILITY_CLASS_ACE_TRAINER_M,
@@ -1838,7 +1838,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_2}
     },
     [FRONTIER_TRAINER_FARLEY] = {
         .facilityClass = FACILITY_CLASS_ACE_TRAINER_M,
@@ -1846,7 +1846,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_1}
     },
     [FRONTIER_TRAINER_REGIGEL] = {
         .facilityClass = FACILITY_CLASS_ACE_TRAINER_M,
@@ -1854,7 +1854,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_3}
     },
     [FRONTIER_TRAINER_COLOMBO] = {
         .facilityClass = FACILITY_CLASS_VETERAN_M,
@@ -1862,7 +1862,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_DONTA] = {
         .facilityClass = FACILITY_CLASS_VETERAN_M,
@@ -1870,7 +1870,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_1}
     },
     [FRONTIER_TRAINER_LERON] = {
         .facilityClass = FACILITY_CLASS_VETERAN_M,
@@ -1878,7 +1878,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_PONTA] = {
         .facilityClass = FACILITY_CLASS_VETERAN_M,
@@ -1886,7 +1886,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_1}
     },
     [FRONTIER_TRAINER_GINGER] = {
         .facilityClass = FACILITY_CLASS_VETERAN_F,
@@ -1894,7 +1894,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_HECATE] = {
         .facilityClass = FACILITY_CLASS_VETERAN_F,
@@ -1902,7 +1902,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_JEUNE] = {
         .facilityClass = FACILITY_CLASS_VETERAN_F,
@@ -1910,7 +1910,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_RISHA] = {
         .facilityClass = FACILITY_CLASS_VETERAN_F,
@@ -1918,7 +1918,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_CEDRIC] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -1926,7 +1926,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_FELTON] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_M,
@@ -1934,7 +1934,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_SIMONE] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -1942,7 +1942,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_1}
     },
     [FRONTIER_TRAINER_WALD] = {
         .facilityClass = FACILITY_CLASS_BACKPACKER_F,
@@ -1950,7 +1950,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_2}
     },
     [FRONTIER_TRAINER_GONYAN] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -1958,7 +1958,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_4}
     },
     [FRONTIER_TRAINER_HASAN] = {
         .facilityClass = FACILITY_CLASS_WAITER,
@@ -1966,7 +1966,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_3}
     },
     [FRONTIER_TRAINER_AMBER] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -1974,7 +1974,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_3}
     },
     [FRONTIER_TRAINER_ROE] = {
         .facilityClass = FACILITY_CLASS_WAITRESS,
@@ -1982,7 +1982,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_4}
     },
     [FRONTIER_TRAINER_JORGE] = {
         .facilityClass = FACILITY_CLASS_HIKER,
@@ -1990,7 +1990,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HIKER_3}
     },
     [FRONTIER_TRAINER_KEMUEL] = {
         .facilityClass = FACILITY_CLASS_HIKER,
@@ -1998,7 +1998,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HIKER_4}
     },
     [FRONTIER_TRAINER_FIRD] = {
         .facilityClass = FACILITY_CLASS_FISHERMAN,
@@ -2006,7 +2006,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_FISHERMAN_3}
     },
     [FRONTIER_TRAINER_HUMFREY] = {
         .facilityClass = FACILITY_CLASS_FISHERMAN,
@@ -2014,7 +2014,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_FISHERMAN_4}
     },
     [FRONTIER_TRAINER_HILARY] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -2022,7 +2022,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PARASOL_LADY_2}
     },
     [FRONTIER_TRAINER_VANNA] = {
         .facilityClass = FACILITY_CLASS_PARASOL_LADY,
@@ -2030,7 +2030,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PARASOL_LADY_2}
     },
     [FRONTIER_TRAINER_GANYMED] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -2038,7 +2038,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ROUGHNECK_2}
     },
     [FRONTIER_TRAINER_PROTEUS] = {
         .facilityClass = FACILITY_CLASS_ROUGHNECK,
@@ -2046,7 +2046,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ROUGHNECK_2}
     },
     [FRONTIER_TRAINER_PETRO] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -2054,7 +2054,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BIKER_2}
     },
     [FRONTIER_TRAINER_PHILIPO] = {
         .facilityClass = FACILITY_CLASS_BIKER,
@@ -2062,7 +2062,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BIKER_2}
     },
     [FRONTIER_TRAINER_JUDY] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -2070,7 +2070,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BAKER_1}
     },
     [FRONTIER_TRAINER_VESPERA] = {
         .facilityClass = FACILITY_CLASS_BAKER,
@@ -2078,7 +2078,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_BAKER_1}
     },
     [FRONTIER_TRAINER_ARAMIS] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -2086,7 +2086,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HARLEQUIN_1}
     },
     [FRONTIER_TRAINER_ATHOS] = {
         .facilityClass = FACILITY_CLASS_HARLEQUIN,
@@ -2094,7 +2094,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_HARLEQUIN_1}
     },
     [FRONTIER_TRAINER_ANGUILE] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -2102,7 +2102,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_MAID_1}
     },
     [FRONTIER_TRAINER_FESAN] = {
         .facilityClass = FACILITY_CLASS_MAID,
@@ -2110,7 +2110,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_MAID_1}
     },
     [FRONTIER_TRAINER_HACIKAN] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -2118,7 +2118,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ARTIST_1}
     },
     [FRONTIER_TRAINER_RIKKYU] = {
         .facilityClass = FACILITY_CLASS_ARTIST,
@@ -2126,7 +2126,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ARTIST_1}
     },
     [FRONTIER_TRAINER_CHACHI] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -2134,7 +2134,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_NURSERY_AIDE_4}
     },
     [FRONTIER_TRAINER_EVELYN] = {
         .facilityClass = FACILITY_CLASS_NURSERY_AIDE,
@@ -2142,7 +2142,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_NURSERY_AIDE_4}
     },
     [FRONTIER_TRAINER_ROMAN] = {
         .facilityClass = FACILITY_CLASS_WORKER_FREEZE,
@@ -2150,7 +2150,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_FREEZE_2}
     },
     [FRONTIER_TRAINER_VALERY] = {
         .facilityClass = FACILITY_CLASS_WORKER_FREEZE,
@@ -2158,7 +2158,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_FREEZE_2}
     },
     [FRONTIER_TRAINER_HAYES] = {
         .facilityClass = FACILITY_CLASS_WORKER_MINE,
@@ -2166,7 +2166,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_MINE_2}
     },
     [FRONTIER_TRAINER_QUINN] = {
         .facilityClass = FACILITY_CLASS_WORKER_MINE,
@@ -2174,7 +2174,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_WORKER_MINE_3}
     },
     [FRONTIER_TRAINER_DANTE] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_M,
@@ -2182,7 +2182,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_MARION] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_M,
@@ -2190,7 +2190,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_BIRGIT] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_F,
@@ -2198,7 +2198,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_MARGIT] = {
         .facilityClass = FACILITY_CLASS_CYCLIST_F,
@@ -2206,7 +2206,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_5}
     },
     [FRONTIER_TRAINER_BANK] = {
         .facilityClass = FACILITY_CLASS_CLERK_M,
@@ -2214,7 +2214,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_ELWIN] = {
         .facilityClass = FACILITY_CLASS_CLERK_M,
@@ -2222,7 +2222,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_BOBEMON] = {
         .facilityClass = FACILITY_CLASS_POLICEMAN,
@@ -2230,7 +2230,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_POLICEMAN_2}
     },
     [FRONTIER_TRAINER_BOBNORI] = {
         .facilityClass = FACILITY_CLASS_POLICEMAN,
@@ -2238,7 +2238,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_POLICEMAN_2}
     },
     [FRONTIER_TRAINER_ERIC] = {
         .facilityClass = FACILITY_CLASS_JANITOR,
@@ -2246,7 +2246,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_JANITOR_1}
     },
     [FRONTIER_TRAINER_OSCAR] = {
         .facilityClass = FACILITY_CLASS_JANITOR,
@@ -2254,7 +2254,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_JANITOR_1}
     },
     [FRONTIER_TRAINER_ISADORE] = {
         .facilityClass = FACILITY_CLASS_DEPOT_AGENT,
@@ -2262,7 +2262,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_DEPOT_AGENT_1}
     },
     [FRONTIER_TRAINER_RAMSES] = {
         .facilityClass = FACILITY_CLASS_DEPOT_AGENT,
@@ -2270,7 +2270,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_DEPOT_AGENT_1}
     },
     [FRONTIER_TRAINER_ANETTE] = {
         .facilityClass = FACILITY_CLASS_CLERK_F,
@@ -2278,7 +2278,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_ANORA] = {
         .facilityClass = FACILITY_CLASS_CLERK_F,
@@ -2286,7 +2286,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_6}
     },
     [FRONTIER_TRAINER_DWIGHT] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -2294,7 +2294,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_LEVANT] = {
         .facilityClass = FACILITY_CLASS_DOCTOR,
@@ -2302,7 +2302,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_PANARAT] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -2310,7 +2310,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_SAISUNE] = {
         .facilityClass = FACILITY_CLASS_NURSE,
@@ -2318,7 +2318,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_7}
     },
     [FRONTIER_TRAINER_EOIN] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_M,
@@ -2326,7 +2326,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_MANFORD] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_M,
@@ -2334,7 +2334,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_JANET] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
@@ -2342,7 +2342,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_SHAWNA] = {
         .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
@@ -2350,7 +2350,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_SUPER_TRAINER_8}
     },
     [FRONTIER_TRAINER_APARNA] = {
         .facilityClass = FACILITY_CLASS_SOCIALITE,
@@ -2358,7 +2358,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_SATY] = {
         .facilityClass = FACILITY_CLASS_SOCIALITE,
@@ -2366,7 +2366,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_CAMUS] = {
         .facilityClass = FACILITY_CLASS_GENTLEMAN,
@@ -2374,7 +2374,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_KAVAN] = {
         .facilityClass = FACILITY_CLASS_GENTLEMAN,
@@ -2382,7 +2382,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_ACE_TRAINER_4}
     },
     [FRONTIER_TRAINER_ARTEMAS] = {
         .facilityClass = FACILITY_CLASS_PILOT,
@@ -2390,7 +2390,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PILOT_2}
     },
     [FRONTIER_TRAINER_CHAND] = {
         .facilityClass = FACILITY_CLASS_PILOT,
@@ -2398,6 +2398,6 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechBefore = {EC_WORD_NONE},
         .speechWin = {EC_WORD_NONE},
         .speechLose = {EC_WORD_NONE},
-        .monSet = (const u16[]){FRONTIER_MONS_SWIMMER_M_1}
+        .monSet = (const u16[]){FRONTIER_MONS_PILOT_2}
     }
 };
