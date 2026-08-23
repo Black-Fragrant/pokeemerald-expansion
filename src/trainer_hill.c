@@ -392,16 +392,16 @@ void CopyTrainerHillTrainerText(u8 which, u16 localId)
     switch (which)
     {
     case TRAINER_HILL_TEXT_INTRO:
-        FrontierSpeechToString(sHillData->floors[floorId].trainers[id].speechBefore);
+        FrontierSpeechECToString(sHillData->floors[floorId].trainers[id].speechBefore);
         break;
     case TRAINER_HILL_TEXT_PLAYER_LOST:
-        FrontierSpeechToString(sHillData->floors[floorId].trainers[id].speechWin);
+        FrontierSpeechECToString(sHillData->floors[floorId].trainers[id].speechWin);
         break;
     case TRAINER_HILL_TEXT_PLAYER_WON:
-        FrontierSpeechToString(sHillData->floors[floorId].trainers[id].speechLose);
+        FrontierSpeechECToString(sHillData->floors[floorId].trainers[id].speechLose);
         break;
     case TRAINER_HILL_TEXT_AFTER:
-        FrontierSpeechToString(sHillData->floors[floorId].trainers[id].speechAfter);
+        FrontierSpeechECToString(sHillData->floors[floorId].trainers[id].speechAfter);
         break;
     }
 

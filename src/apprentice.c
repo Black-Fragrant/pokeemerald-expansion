@@ -142,9 +142,7 @@ void ResetApprenticeStruct(struct Apprentice *apprentice)
 {
     u8 i;
 
-    for (i = 0; i < ARRAY_COUNT(apprentice->speechWon); i++)
-        apprentice->speechWon[i] = EC_EMPTY_WORD;
-
+    apprentice->speechWon = COMPOUND_STRING("");
     apprentice->playerName[0] = EOS;
     apprentice->id = NUM_APPRENTICES;
 }
@@ -156,8 +154,7 @@ void ResetAllApprenticeData(void)
     PLAYER_APPRENTICE.saveId = 0;
     for (i = 0; i < APPRENTICE_COUNT; i++)
     {
-        for (j = 0; j < ARRAY_COUNT(gSaveBlock2Ptr->apprentices[i].speechWon); j++)
-            gSaveBlock2Ptr->apprentices[i].speechWon[j] = EC_EMPTY_WORD;
+        gSaveBlock2Ptr->apprentices[i].speechWon = COMPOUND_STRING("");
         gSaveBlock2Ptr->apprentices[i].id = NUM_APPRENTICES;
         gSaveBlock2Ptr->apprentices[i].playerName[0] = EOS;
         gSaveBlock2Ptr->apprentices[i].lvlMode = 0;
@@ -1059,8 +1056,7 @@ static void ApprenticeBufferString(void)
             StringCopy(stringDst, gText_OpenLevel);
         break;
     case APPRENTICE_BUFF_WIN_SPEECH:
-        FrontierSpeechToString(gSaveBlock2Ptr->apprentices[0].speechWon);
-        StringCopy(stringDst, gStringVar4);
+        StringCopy(stringDst, gSaveBlock2Ptr->apprentices[0].speechWon);
         break;
     case APPRENTICE_BUFF_LEAD_MON_SPECIES:
         speciesArrayId = APPRENTICE_SPECIES_ID(PLAYER_APPRENTICE.leadMonId);

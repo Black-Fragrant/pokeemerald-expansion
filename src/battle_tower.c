@@ -1037,7 +1037,7 @@ static void GetOpponentIntroSpeech(void)
 #else
     if (trainerId < FRONTIER_TRAINERS_COUNT)
 #endif //FREE_BATTLE_TOWER_E_READER
-        FrontierSpeechToString(gFacilityTrainers[trainerId].speechBefore);
+        FrontierSpeechToString(gFacilityTrainers[trainerId].speechBeforeStr);
     else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].greeting);
     else
@@ -1086,9 +1086,9 @@ static void SaveBattleTowerRecord(void)
 
     for (i = 0; i < EASY_CHAT_BATTLE_WORDS_COUNT; i++)
     {
-        playerRecord->greeting[i] = gSaveBlock1Ptr->easyChatBattleStart[i];
-        playerRecord->speechWon[i] = gSaveBlock1Ptr->easyChatBattleWon[i];
-        playerRecord->speechLost[i] = gSaveBlock1Ptr->easyChatBattleLost[i];
+        playerRecord->greeting   = COMPOUND_STRING("");
+        playerRecord->speechWon  = COMPOUND_STRING("");
+        playerRecord->speechLost = COMPOUND_STRING("");
     }
 
     for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
@@ -1783,12 +1783,9 @@ bool32 RubyBattleTowerRecordToEmerald(struct RSBattleTowerRecord *src, struct Em
             dst->name[i] = src->name[i];
         for (i = 0; i < TRAINER_ID_LENGTH; i++)
             dst->trainerId[i] = src->trainerId[i];
-        for (i = 0; i < EASY_CHAT_BATTLE_WORDS_COUNT; i++)
-            dst->greeting[i] = src->greeting[i];
-        for (i = 0; i < EASY_CHAT_BATTLE_WORDS_COUNT; i++)
-            dst->speechWon[i] = sRecordTrainerSpeechWon[i];
-        for (i = 0; i < EASY_CHAT_BATTLE_WORDS_COUNT; i++)
-            dst->speechLost[i] = sRecordTrainerSpeechLost[i];
+        dst->greeting   = COMPOUND_STRING("");
+        dst->speechWon  = COMPOUND_STRING("");
+        dst->speechLost = COMPOUND_STRING("");
         for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
             dst->party[i] = src->party[i];
 
@@ -1837,7 +1834,7 @@ bool32 EmeraldBattleTowerRecordToRuby(struct EmeraldBattleTowerRecord *src, stru
         for (i = 0; i < TRAINER_ID_LENGTH; i++)
             dst->trainerId[i] = src->trainerId[i];
         for (i = 0; i < EASY_CHAT_BATTLE_WORDS_COUNT; i++)
-            dst->greeting[i] = src->greeting[i];
+            dst->greeting[i] = EC_EMPTY_WORD;
         for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
             dst->party[i] = src->party[i];
 
