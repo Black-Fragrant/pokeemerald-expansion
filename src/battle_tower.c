@@ -719,8 +719,9 @@ void CallBattleTowerFunc(void)
 
 static void InitTowerChallenge(void)
 {
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    // Always use Lv 50 for Battle Subway
+    gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_50;
 
     gSaveBlock2Ptr->frontier.challengeStatus = CHALLENGE_STATUS_SAVING;
     gSaveBlock2Ptr->frontier.curChallengeBattleNum = 0;
@@ -730,7 +731,7 @@ static void InitTowerChallenge(void)
 
     // Updated: 1-D streak flag table
     if (!(gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode]))
-        gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] = 0;
+        gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] = 0;
 
     ValidateBattleTowerRecordChecksums();
     SetDynamicWarp(0, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, WARP_ID_NONE);

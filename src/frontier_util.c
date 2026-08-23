@@ -801,28 +801,23 @@ static const u8 *const sHallFacilityToRecordsText[] =
 
 // Trainer ID ranges for possible frontier trainers to encounter on particular challenges
 // Trainers are scaled by difficulty, so higher trainer IDs have better teams
+// Battle Subway Normal Course trainer ID ranges
 static const u16 sFrontierTrainerIdRanges[][2] =
 {
-    {FRONTIER_TRAINER_JOSHUA,   FRONTIER_TRAINER_KOCHER},   //   0 -  99
-    {FRONTIER_TRAINER_FAUN,  FRONTIER_TRAINER_TROY},  //  80 - 119
-    {FRONTIER_TRAINER_TURTLE,    FRONTIER_TRAINER_TAPIOCA},  // 100 - 139
-    {FRONTIER_TRAINER_HUITRE,  FRONTIER_TRAINER_MINERVA}, // 120 - 159
-    {FRONTIER_TRAINER_DUNCAN,  FRONTIER_TRAINER_VELOUR}, // 140 - 179
-    {FRONTIER_TRAINER_BOGEY, FRONTIER_TRAINER_PHYL},  // 160 - 199
-    {FRONTIER_TRAINER_KETMON,    FRONTIER_TRAINER_QUEENIE},   // 180 - 219
-    {FRONTIER_TRAINER_FAUST,   FRONTIER_TRAINER_CHAND}, // 200 - 299
+    {  0,  69 },   // Challenge 0 (battles 0–6)
+    {  0, 109 },   // Challenge 1 (battles 7–13)
+    { 50, 109 },   // Challenge 2 (battles 14–20)
+    {  0,   0 },   // Challenge 3+ (Normal trains end after 21 wins)
 };
 
+// Battle Subway Super Course trainer ID ranges
 static const u16 sFrontierTrainerIdRangesHard[][2] =
 {
-    {FRONTIER_TRAINER_TURTLE,    FRONTIER_TRAINER_TROY},  // 100 - 119
-    {FRONTIER_TRAINER_HUITRE,  FRONTIER_TRAINER_TAPIOCA},  // 120 - 139
-    {FRONTIER_TRAINER_DUNCAN,  FRONTIER_TRAINER_MINERVA}, // 140 - 159
-    {FRONTIER_TRAINER_BOGEY, FRONTIER_TRAINER_VELOUR}, // 160 - 179
-    {FRONTIER_TRAINER_KETMON,    FRONTIER_TRAINER_PHYL},  // 180 - 199
-    {FRONTIER_TRAINER_FAUST,   FRONTIER_TRAINER_QUEENIE},   // 200 - 219
-    {FRONTIER_TRAINER_MOUSE,    FRONTIER_TRAINER_RISHA},   // 220 - 239
-    {FRONTIER_TRAINER_FAUST,   FRONTIER_TRAINER_CHAND}, // 200 - 299
+    { 110, 179 },  // Challenge 0 (battles 0–6)
+    { 110, 199 },  // Challenge 1 (battles 7–13)
+    { 160, 219 },  // Challenge 2 (battles 14–20)
+    { 180, 299 },  // Challenge 3 (battles 21–27)
+    { 200, 299 },  // Challenge 4+ (battles 28+)
 };
 
 #define BANNED_SPECIES_SHOWN 6
@@ -2846,62 +2841,93 @@ u8 GetFrontierTrainerFixedIvs(u16 trainerId)
     return fixedIv;
 }
 
-
 u16 GetRandomScaledFrontierTrainerId(u8 challengeNum, u8 battleNum)
 {
     u16 trainerId;
+    bool8 isSuperMode = FALSE;
 
-    if (challengeNum <= 7)
+    // Determine if this is a Super mode
+    switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
     {
-        if (battleNum == FRONTIER_STAGES_PER_CHALLENGE - 1)
-        {
-            // The last battle in each challenge has a jump in difficulty, pulls from a table with higher ranges
-            trainerId = (sFrontierTrainerIdRangesHard[challengeNum][1] - sFrontierTrainerIdRangesHard[challengeNum][0]) + 1;
-            trainerId = sFrontierTrainerIdRangesHard[challengeNum][0] + (Random() % trainerId);
-        }
-        else
-        {
-            trainerId = (sFrontierTrainerIdRanges[challengeNum][1] - sFrontierTrainerIdRanges[challengeNum][0]) + 1;
-            trainerId = sFrontierTrainerIdRanges[challengeNum][0] + (Random() % trainerId);
-        }
+    case FRONTIER_MODE_SUPER_SINGLES:
+    case FRONTIER_MODE_SUPER_DOUBLES:
+    case FRONTIER_MODE_SUPER_MULTIS:
+        isSuperMode = TRUE;
+        break;
+    }
+
+    // Select the correct difficulty table
+    const u16 (*ranges)[2] = isSuperMode ? sFrontierTrainerIdRangesHard : sFrontierTrainerIdRanges;
+
+    // Clamp challengeNum to table size
+    if (isSuperMode)
+    {
+        if (challengeNum > 4)
+            challengeNum = 4;
     }
     else
     {
-        // After challenge 7, trainer IDs always come from the last, hardest range, which is the same for both trainer ID tables
-        trainerId = (sFrontierTrainerIdRanges[7][1] - sFrontierTrainerIdRanges[7][0]) + 1;
-        trainerId = sFrontierTrainerIdRanges[7][0] + (Random() % trainerId);
+        if (challengeNum > 3)
+            challengeNum = 3;
     }
+
+    u16 minId = ranges[challengeNum][0];
+    u16 maxId = ranges[challengeNum][1];
+
+    // Normal trains end after 21 wins
+    if (minId == 0 && maxId == 0)
+        return TRAINER_NONE;
+
+    u16 span = (maxId - minId) + 1;
+    trainerId = minId + (Random() % span);
 
     return trainerId;
 }
 
 static void UNUSED GetRandomScaledFrontierTrainerIdRange(u8 challengeNum, u8 battleNum, u16 *trainerIdPtr, u8 *rangePtr)
 {
-    u16 trainerId, range;
+    bool8 isSuperMode = FALSE;
 
-    if (challengeNum <= 7)
+    // Determine if this is a Super mode
+    switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
     {
-        if (battleNum == FRONTIER_STAGES_PER_CHALLENGE - 1)
-        {
-            // The last battle in each challenge has a jump in difficulty, pulls from a table with higher ranges
-            range = (sFrontierTrainerIdRangesHard[challengeNum][1] - sFrontierTrainerIdRangesHard[challengeNum][0]) + 1;
-            trainerId = sFrontierTrainerIdRangesHard[challengeNum][0];
-        }
-        else
-        {
-            range = (sFrontierTrainerIdRanges[challengeNum][1] - sFrontierTrainerIdRanges[challengeNum][0]) + 1;
-            trainerId = sFrontierTrainerIdRanges[challengeNum][0];
-        }
+    case FRONTIER_MODE_SUPER_SINGLES:
+    case FRONTIER_MODE_SUPER_DOUBLES:
+    case FRONTIER_MODE_SUPER_MULTIS:
+        isSuperMode = TRUE;
+        break;
+    }
+
+    // Select the correct difficulty table
+    const u16 (*ranges)[2] = isSuperMode ? sFrontierTrainerIdRangesHard : sFrontierTrainerIdRanges;
+
+    // Clamp challengeNum to table size
+    if (isSuperMode)
+    {
+        if (challengeNum > 4)
+            challengeNum = 4;
     }
     else
     {
-        // After challenge 7, trainer IDs always come from the last, hardest range, which is the same for both trainer ID tables
-        range = (sFrontierTrainerIdRanges[7][1] - sFrontierTrainerIdRanges[7][0]) + 1;
-        trainerId = sFrontierTrainerIdRanges[7][0];
+        if (challengeNum > 3)
+            challengeNum = 3;
     }
 
-    *trainerIdPtr = trainerId;
-    *rangePtr = range;
+    u16 minId = ranges[challengeNum][0];
+    u16 maxId = ranges[challengeNum][1];
+
+    // Normal trains end after 21 wins
+    if (minId == 0 && maxId == 0)
+    {
+        *trainerIdPtr = 0;
+        *rangePtr = 0;
+        return;
+    }
+
+    u16 span = (maxId - minId) + 1;
+
+    *trainerIdPtr = minId;
+    *rangePtr = span;
 }
 
 void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
