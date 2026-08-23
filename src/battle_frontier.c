@@ -191,12 +191,50 @@ void FacilityTrainerBattle(struct ScriptContext *ctx)
 
 void FillFrontierTrainerParty(u8 monsCount)
 {
+    // Override monsCount based on battle mode
+    switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
+    {
+    case FRONTIER_MODE_SINGLES:
+    case FRONTIER_MODE_SUPER_SINGLES:
+        monsCount = FRONTIER_PARTY_SIZE; // 3
+        break;
+
+    case FRONTIER_MODE_DOUBLES:
+    case FRONTIER_MODE_SUPER_DOUBLES:
+        monsCount = FRONTIER_DOUBLES_PARTY_SIZE; // 4
+        break;
+
+    case FRONTIER_MODE_MULTIS:
+    case FRONTIER_MODE_SUPER_MULTIS:
+        monsCount = FRONTIER_MULTI_PARTY_SIZE; // 2
+        break;
+    }
+
     ZeroEnemyPartyMons();
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, B_TRAINER_OPPONENT_A, monsCount);
 }
 
 void FillFrontierTrainersParties(u8 monsCount)
 {
+    // Override monsCount based on battle mode
+    switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
+    {
+    case FRONTIER_MODE_SINGLES:
+    case FRONTIER_MODE_SUPER_SINGLES:
+        monsCount = FRONTIER_PARTY_SIZE; // 3
+        break;
+
+    case FRONTIER_MODE_DOUBLES:
+    case FRONTIER_MODE_SUPER_DOUBLES:
+        monsCount = FRONTIER_DOUBLES_PARTY_SIZE; // 4
+        break;
+
+    case FRONTIER_MODE_MULTIS:
+    case FRONTIER_MODE_SUPER_MULTIS:
+        monsCount = FRONTIER_MULTI_PARTY_SIZE; // 2
+        break;
+    }
+
     ZeroEnemyPartyMons();
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentA, B_TRAINER_OPPONENT_A, monsCount);
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentB, B_TRAINER_OPPONENT_B, monsCount);
