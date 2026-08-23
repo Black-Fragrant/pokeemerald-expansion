@@ -90,6 +90,7 @@ static void CopyFrontierBrainText(bool8 playerWonText);
 static u16 *MakeCaughtBannedSpeciesList(u32 totalBannedSpecies);
 static void PrintBannedSpeciesName(u8 windowId, u32 itemId, u8 y);
 static void Task_BannedSpeciesWindowInput(u8 taskId);
+void SetPartyToLevel50(void);
 
 // battledBit: Flags to change the conversation when the Frontier Brain is encountered for a battle
 // First bit is has battled them before and not won yet, second bit is has battled them and won (obtained a Symbol)
@@ -3306,22 +3307,7 @@ u8 SetFacilityPtrsGetLevel(void)
 
 u8 GetFrontierEnemyMonLevel(enum FrontierLevelMode lvlMode)
 {
-    u8 level;
-
-    switch (lvlMode)
-    {
-    default:
-    case FRONTIER_LVL_50:
-        level = FRONTIER_MAX_LEVEL_50;
-        break;
-    case FRONTIER_LVL_OPEN:
-        level = GetHighestLevelInPlayerParty();
-        if (level < FRONTIER_MIN_LEVEL_OPEN)
-            level = FRONTIER_MIN_LEVEL_OPEN;
-        break;
-    }
-
-    return level;
+    return 50;
 }
 
 s32 GetHighestLevelInPlayerParty(void)
@@ -3474,3 +3460,33 @@ static void Task_BannedSpeciesWindowInput(u8 taskId)
 #undef tArrowTaskId
 #undef tScrollOffset
 #undef tListPointerElemId
+
+void SetPartyToLevel50(void)
+{
+    u8 count = gPartiesCount[B_TRAINER_PLAYER];
+
+    for (u32 i = 0; i < count; i++)
+    {
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+
+        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u32 level   = GetMonData(mon, MON_DATA_LEVEL, NULL);
+
+        if (species != SPECIES_NONE
+            && level != 50
+            && GetMonData(mon, MON_DATA_IS_EGG, NULL) == 0)
+        {
+            // EXP values for level 50 for each growth rate
+            u32 experience[] = {100000, 117360, 125000, 156250, 142500};
+            int j = 0;
+
+            while (GetMonData(mon, MON_DATA_LEVEL, NULL) != 50)
+            {
+                SetMonData(mon, MON_DATA_EXP, (u8 *)&experience[j]);
+                CalculateMonStats(mon);
+                j++;
+            }
+        }
+    }
+}
+

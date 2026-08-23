@@ -188,6 +188,7 @@ script Platform_SingleTrain_EventScript_BoardTheTrain
 	setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER) // these three load the saved Frontier party selection
 	setvar(VAR_0x8005, FRONTIER_PARTY_SIZE) 
 	special(CallFrontierUtilFunc)
+    callnative(SetPartyToLevel50)
 	setvar(VAR_RESULT, 0)
 	msgbox("Now, please board\n"
             "the Single Train!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
