@@ -2819,26 +2819,46 @@ bool8 IsFrontierTrainerFemale(u16 trainerId)
 // Duplicated in Battle Dome as GetDomeTrainerMonIvs
 u8 GetFrontierTrainerFixedIvs(u16 trainerId)
 {
-    u8 fixedIv;
+    u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    u16 battleNum  = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
 
-    if (trainerId <= FRONTIER_TRAINER_KOCHER)         // 0 - 99
-        fixedIv = 3;
-    else if (trainerId <= FRONTIER_TRAINER_TROY)   // 100 - 119
-        fixedIv = 6;
-    else if (trainerId <= FRONTIER_TRAINER_TAPIOCA)   // 120 - 139
-        fixedIv = 9;
-    else if (trainerId <= FRONTIER_TRAINER_MINERVA)  // 140 - 159
-        fixedIv = 12;
-    else if (trainerId <= FRONTIER_TRAINER_VELOUR)  // 160 - 179
-        fixedIv = 15;
-    else if (trainerId <= FRONTIER_TRAINER_PHYL)   // 180 - 199
-        fixedIv = 18;
-    else if (trainerId <= FRONTIER_TRAINER_QUEENIE)    // 200 - 219
-        fixedIv = 21;
-    else                                            // 220+ (- 299)
-        fixedIv = MAX_PER_STAT_IVS;
+    bool8 isSuperMode = FALSE;
 
-    return fixedIv;
+    switch (battleMode)
+    {
+    case FRONTIER_MODE_SUPER_SINGLES:
+    case FRONTIER_MODE_SUPER_DOUBLES:
+    case FRONTIER_MODE_SUPER_MULTIS:
+        isSuperMode = TRUE;
+        break;
+    }
+
+    // Battle Subway IV scaling:
+    // IVs increase smoothly until battle 21, then lock at 31.
+
+    if (battleNum >= 21)
+        return MAX_PER_STAT_IVS; // 31
+
+    if (!isSuperMode)
+    {
+        // Normal Course IV scaling
+        if (battleNum < 7)
+            return 8;   // Battles 1–7
+        else if (battleNum < 14)
+            return 12;  // Battles 8–14
+        else
+            return 18;  // Battles 15–20
+    }
+    else
+    {
+        // Super Course IV scaling
+        if (battleNum < 7)
+            return 16;  // Battles 1–7
+        else if (battleNum < 14)
+            return 20;  // Battles 8–14
+        else
+            return 26;  // Battles 15–20
+    }
 }
 
 u16 GetRandomScaledFrontierTrainerId(u8 challengeNum, u8 battleNum)
