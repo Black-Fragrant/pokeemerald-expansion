@@ -140,8 +140,6 @@ void Apprentice_ScriptContext_Enable(void)
 
 void ResetApprenticeStruct(struct Apprentice *apprentice)
 {
-    u8 i;
-
     apprentice->speechWon = COMPOUND_STRING("");
     apprentice->playerName[0] = EOS;
     apprentice->id = NUM_APPRENTICES;
