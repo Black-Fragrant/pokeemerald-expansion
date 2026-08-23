@@ -759,7 +759,7 @@ static void BufferNPCMessage(void)
     else
         speechId = sNPCTable[sNpcId].speechId3;
 
-    FrontierSpeechToString(sNPCSpeeches[speechId]);
+    FrontierSpeechECToString(sNPCSpeeches[speechId]);
 }
 
 static void StatusInflictionScreenFlash(void)
@@ -1452,12 +1452,12 @@ static void BufferTrainerIntro(void)
     if (gSpecialVar_0x8005 == 0)
     {
         if (TRAINER_BATTLE_PARAM.opponentA < FRONTIER_TRAINERS_COUNT)
-            FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].speechBefore);
+            FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentA].speechBeforeStr);
     }
     else if (gSpecialVar_0x8005 == 1)
     {
         if (TRAINER_BATTLE_PARAM.opponentB < FRONTIER_TRAINERS_COUNT)
-            FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentB].speechBefore);
+            FrontierSpeechToString(gFacilityTrainers[TRAINER_BATTLE_PARAM.opponentB].speechBeforeStr);
     }
 }
 

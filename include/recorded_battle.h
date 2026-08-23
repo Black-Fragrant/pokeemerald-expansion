@@ -33,7 +33,7 @@ struct RecordedBattleSave
     u8 apprenticeLanguage:3;
     u8 multiplayerId:2;
     u8 playersBattlers; // Setup so player 2/3 battler and player 0/1 second battler occupy same bits
-    u16 easyChatSpeech[EASY_CHAT_BATTLE_WORDS_COUNT];
+    const u8 *easyChatSpeech;
     u8 battleRecord[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
     u32 checksum;
 };
@@ -90,6 +90,6 @@ u8 GetRecordedBattleApprenticeId(void);
 u8 GetRecordedBattleRecordMixFriendLanguage(void);
 u8 GetRecordedBattleApprenticeLanguage(void);
 void RecordedBattle_SaveBattleOutcome(void);
-u16 *GetRecordedBattleEasyChatSpeech(void);
+const u8 *GetRecordedBattleEasyChatSpeech(void);
 
 #endif // GUARD_RECORDED_BATTLE_H

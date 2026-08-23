@@ -1818,7 +1818,7 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
     #endif //FREE_BATTLE_TOWER_E_READER
             CopyFrontierBrainText(FALSE);
         else if (trainerId < FRONTIER_TRAINERS_COUNT)
-            FrontierSpeechToString(gFacilityTrainers[trainerId].speechBefore);
+            FrontierSpeechToString(gFacilityTrainers[trainerId].speechBeforeStr);
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
             FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].greeting);
         else
@@ -1839,7 +1839,7 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
         }
         else if (trainerId < FRONTIER_TRAINERS_COUNT)
         {
-            FrontierSpeechToString(gFacilityTrainers[trainerId].speechWin);
+            FrontierSpeechToString(gFacilityTrainers[trainerId].speechWinStr);
         }
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         {
@@ -1869,7 +1869,7 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
         }
         else if (trainerId < FRONTIER_TRAINERS_COUNT)
         {
-            FrontierSpeechToString(gFacilityTrainers[trainerId].speechLose);
+            FrontierSpeechToString(gFacilityTrainers[trainerId].speechLoseStr);
         }
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         {
@@ -3268,7 +3268,12 @@ u16 GetRandomFrontierMonFromSet(u16 trainerId)
     return monId;
 }
 
-void FrontierSpeechToString(const u16 *words)
+void FrontierSpeechToString(const u8 *str)
+{
+    StringCopy(gStringVar4, str);
+}
+
+void FrontierSpeechECToString(const u16 *words)
 {
     ConvertEasyChatWordsToString(gStringVar4, words, 3, 2);
     if (GetStringWidth(FONT_NORMAL, gStringVar4, -1) > 204u)

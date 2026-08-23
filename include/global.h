@@ -351,7 +351,7 @@ struct Apprentice
     u8 number;
     //u8 padding2;
     struct ApprenticeMon party[MULTI_PARTY_SIZE];
-    u16 speechWon[EASY_CHAT_BATTLE_WORDS_COUNT];
+    const u8 *speechWon;
     u8 playerId[TRAINER_ID_LENGTH];
     u8 playerName[PLAYER_NAME_LENGTH];
     u8 language;
@@ -392,9 +392,9 @@ struct EmeraldBattleTowerRecord
     /*0x02*/ u16 winStreak;
     /*0x04*/ u8 name[PLAYER_NAME_LENGTH + 1];
     /*0x0C*/ u8 trainerId[TRAINER_ID_LENGTH];
-    /*0x10*/ u16 greeting[EASY_CHAT_BATTLE_WORDS_COUNT];
-    /*0x1C*/ u16 speechWon[EASY_CHAT_BATTLE_WORDS_COUNT];
-    /*0x28*/ u16 speechLost[EASY_CHAT_BATTLE_WORDS_COUNT];
+    /*0x10*/ const u8 *greeting;
+    /*0x1C*/ const u8 *speechWon;
+    /*0x28*/ const u8 *speechLost;
     /*0x34*/ struct BattleTowerPokemon party[MAX_FRONTIER_PARTY_SIZE];
     /*0xE4*/ u8 language;
     /*0xE7*/ //u8 padding[3];
