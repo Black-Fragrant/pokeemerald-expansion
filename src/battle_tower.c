@@ -74,60 +74,65 @@ static void FillTentTrainerParty_(u16 trainerId, u8 firstMonId, u8 monCount);
 
 const struct FacilityClass gTowerMaleFacilityClasses[FACILITY_CLASSES_MALE] =
 {
-    {FACILITY_CLASS_RUIN_MANIAC, OBJ_EVENT_GFX_HIKER},
-    {FACILITY_CLASS_TUBER_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_COOLTRAINER_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_RICH_BOY, OBJ_EVENT_GFX_RICH_BOY},
-    {FACILITY_CLASS_POKEMANIAC, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_SWIMMER_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_BLACK_BELT, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_GUITARIST, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_KINDLER, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_CAMPER, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_BUG_MANIAC, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_PSYCHIC_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_GENTLEMAN, OBJ_EVENT_GFX_GENTLEMAN},
-    {FACILITY_CLASS_SCHOOL_KID_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_POKEFAN_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_EXPERT_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_YOUNGSTER, OBJ_EVENT_GFX_YOUNGSTER},
-    {FACILITY_CLASS_FISHERMAN, OBJ_EVENT_GFX_FISHERMAN},
-    {FACILITY_CLASS_CYCLING_TRIATHLETE_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_RUNNING_TRIATHLETE_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_SWIMMING_TRIATHLETE_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_DRAGON_TAMER, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_BIRD_KEEPER, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_NINJA_BOY, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_SAILOR, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_COLLECTOR, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_PKMN_BREEDER_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_PKMN_RANGER_M, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_BUG_CATCHER, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_HIKER, OBJ_EVENT_GFX_HIKER},
+    {FACILITY_CLASS_HIKER,              OBJ_EVENT_GFX_HIKER},
+    {FACILITY_CLASS_BLACK_BELT,         OBJ_EVENT_GFX_KARATE_KING},
+    {FACILITY_CLASS_RICH_BOY,           OBJ_EVENT_GFX_RICH_BOY},
+    {FACILITY_CLASS_PSYCHIC_M,          OBJ_EVENT_GFX_PSYCHIC_MALE},
+    {FACILITY_CLASS_GENTLEMAN,          OBJ_EVENT_GFX_GENTLEMAN},
+    {FACILITY_CLASS_SCHOOL_KID_M,       OBJ_EVENT_GFX_SCHOOL_BOY},
+    {FACILITY_CLASS_POKEFAN_M,          OBJ_EVENT_GFX_POKEFAN_MALE},
+    {FACILITY_CLASS_YOUNGSTER,          OBJ_EVENT_GFX_YOUNGSTER},
+    {FACILITY_CLASS_FISHERMAN,          OBJ_EVENT_GFX_FISHERMAN},
+    {FACILITY_CLASS_PKMN_BREEDER_M,     OBJ_EVENT_GFX_BREEDER_MALE},
+    {FACILITY_CLASS_PKMN_RANGER_M,      OBJ_EVENT_GFX_COWBOY},
+    {FACILITY_CLASS_ARTIST,             OBJ_EVENT_GFX_GRANDPA},
+    {FACILITY_CLASS_CYCLIST_M,          OBJ_EVENT_GFX_BIKER_MALE},
+    {FACILITY_CLASS_VETERAN_M,          OBJ_EVENT_GFX_VETERAN_MALE},
+    {FACILITY_CLASS_WAITER,             OBJ_EVENT_GFX_WAITER},
+    {FACILITY_CLASS_WORKER_MINE,        OBJ_EVENT_GFX_MINE_WORKER},
+    {FACILITY_CLASS_WORKER_FREEZE,      OBJ_EVENT_GFX_WORKER},
+    {FACILITY_CLASS_BACKPACKER_M,       OBJ_EVENT_GFX_BACKPACKER_MALE},
+    {FACILITY_CLASS_DEPOT_AGENT,        OBJ_EVENT_GFX_PILOT_GREEN},
+    {FACILITY_CLASS_CLERK_M,            OBJ_EVENT_GFX_BUSINESS_MAN},
+    {FACILITY_CLASS_CLERK_M2,           OBJ_EVENT_GFX_CLERKO},
+    {FACILITY_CLASS_DOCTOR,             OBJ_EVENT_GFX_DOCTOR},
+    {FACILITY_CLASS_JANITOR,            OBJ_EVENT_GFX_JANITOR},
+    {FACILITY_CLASS_PILOT,              OBJ_EVENT_GFX_PILOT_BLUE},
+    {FACILITY_CLASS_PRESCHOOLER_M,      OBJ_EVENT_GFX_KINDERGARTENER_MALE},
+    {FACILITY_CLASS_SUBWAY_BOSS_EMMET,  OBJ_EVENT_GFX_EMMET},
+    {FACILITY_CLASS_SUBWAY_BOSS_INGO,   OBJ_EVENT_GFX_INGO},
+    {FACILITY_CLASS_SCIENTIST_M,        OBJ_EVENT_GFX_SCIENTIST_MALE},
+    {FACILITY_CLASS_ROUGHNECK,          OBJ_EVENT_GFX_ROUGHNECK},
+    {FACILITY_CLASS_BIKER,              OBJ_EVENT_GFX_MOTORCYCLIST},
+    {FACILITY_CLASS_POLICEMAN,          OBJ_EVENT_GFX_POLICE},
+    {FACILITY_CLASS_HARLEQUIN,          OBJ_EVENT_GFX_PEIRRO},
+    {FACILITY_CLASS_ACE_TRAINER_M,      OBJ_EVENT_GFX_ACE_TRAINER_MALE},
 };
 
 const struct FacilityClass gTowerFemaleFacilityClasses[FACILITY_CLASSES_FEMALE] =
 {
-    {FACILITY_CLASS_AROMA_LADY, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_TUBER_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_COOLTRAINER_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_HEX_MANIAC, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_LADY, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_BEAUTY, OBJ_EVENT_GFX_BEAUTY},
-    {FACILITY_CLASS_PSYCHIC_F, OBJ_EVENT_GFX_LASS},
-    {FACILITY_CLASS_SCHOOL_KID_F, OBJ_EVENT_GFX_GIRL_3},
-    {FACILITY_CLASS_POKEFAN_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_EXPERT_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_CYCLING_TRIATHLETE_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_RUNNING_TRIATHLETE_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_SWIMMING_TRIATHLETE_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_BATTLE_GIRL, OBJ_EVENT_GFX_GIRL_3},
-    {FACILITY_CLASS_PARASOL_LADY, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_SWIMMER_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_PICNICKER, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_PKMN_BREEDER_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_PKMN_RANGER_F, OBJ_EVENT_GFX_SCOTT},
-    {FACILITY_CLASS_LASS, OBJ_EVENT_GFX_LASS},
+    {FACILITY_CLASS_PKMN_BREEDER_F,     OBJ_EVENT_GFX_BREEDER_FEMALE},
+    {FACILITY_CLASS_LADY,               OBJ_EVENT_GFX_RICH_GIRL},
+    {FACILITY_CLASS_PSYCHIC_F,          OBJ_EVENT_GFX_PSYCHIC_FEMALE},
+    {FACILITY_CLASS_SCHOOL_KID_F,       OBJ_EVENT_GFX_SCHOOL_GIRL},
+    {FACILITY_CLASS_POKEFAN_F,          OBJ_EVENT_GFX_POKEFAN_FEMALE},
+    {FACILITY_CLASS_BATTLE_GIRL,        OBJ_EVENT_GFX_BATTLE_GIRL},
+    {FACILITY_CLASS_PARASOL_LADY,       OBJ_EVENT_GFX_PARASOL_LADY},
+    {FACILITY_CLASS_PKMN_RANGER_F,      OBJ_EVENT_GFX_COWGIRL},
+    {FACILITY_CLASS_LASS,               OBJ_EVENT_GFX_LASS},
+    {FACILITY_CLASS_CYCLIST_F,          OBJ_EVENT_GFX_BIKER_FEMALE},
+    {FACILITY_CLASS_VETERAN_F,          OBJ_EVENT_GFX_VETERAN_FEMALE},
+    {FACILITY_CLASS_WAITRESS,           OBJ_EVENT_GFX_WAITRESS},
+    {FACILITY_CLASS_BAKER,              OBJ_EVENT_GFX_BAKER},
+    {FACILITY_CLASS_BACKPACKER_F,       OBJ_EVENT_GFX_BACKPACKER_FEMALE},
+    {FACILITY_CLASS_CLERK_F,            OBJ_EVENT_GFX_OFFICE_LADY},
+    {FACILITY_CLASS_NURSE,              OBJ_EVENT_GFX_NURSE},
+    {FACILITY_CLASS_NURSERY_AIDE,       OBJ_EVENT_GFX_TEACHER},
+    {FACILITY_CLASS_PRESCHOOLER_F,      OBJ_EVENT_GFX_KINDERGARTENER_FEMALE},
+    {FACILITY_CLASS_SCIENTIST_F,        OBJ_EVENT_GFX_SCIENTIST_FEMALE},
+    {FACILITY_CLASS_MAID,               OBJ_EVENT_GFX_MAID},
+    {FACILITY_CLASS_SOCIALITE,          OBJ_EVENT_GFX_LADY},
+    {FACILITY_CLASS_ACE_TRAINER_F,      OBJ_EVENT_GFX_ACE_TRAINER_FEMALE},
 };
 
 // Excludes the unused RS_FACILITY_CLASS_BOARDER_1 and _2
@@ -740,7 +745,7 @@ static void InitTowerChallenge(void)
 
 static void GetTowerData(void)
 {
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
 
     switch (gSpecialVar_0x8005)
@@ -755,14 +760,14 @@ static void GetTowerData(void)
         gSpecialVar_Result = ((gSaveBlock2Ptr->frontier.winStreakActiveFlags & sWinStreakFlags[battleMode]) != 0);
         break;
     case TOWER_DATA_LVL_MODE:
-        gSaveBlock2Ptr->frontier.towerLvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+        gSaveBlock2Ptr->frontier.towerLvlMode = FRONTIER_LVL_50;
         break;
     }
 }
 
 static void SetTowerData(void)
 {
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
 
     switch (gSpecialVar_0x8005)
@@ -780,7 +785,7 @@ static void SetTowerData(void)
             gSaveBlock2Ptr->frontier.winStreakActiveFlags &= sWinStreakMasks[battleMode];
         break;
     case TOWER_DATA_LVL_MODE:
-        gSaveBlock2Ptr->frontier.towerLvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+        gSaveBlock2Ptr->frontier.towerLvlMode = FRONTIER_LVL_50;
         break;
     }
 }
@@ -801,124 +806,208 @@ static void SetTowerBattleWon(void)
     gSpecialVar_Result = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
 }
 
-static bool8 ChooseSpecialBattleTowerTrainer(void)
-{
-    s32 i, j, validMons;
-    s32 trainerIds[9];
-    s32 idsCount = 0;
-    s32 winStreak = 0;
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
-    u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+//  static bool8 ChooseSpecialBattleTowerTrainer(void)
+//  {
+//      s32 i, j, validMons;
+//      s32 trainerIds[9];
+//      s32 idsCount = 0;
+//      s32 winStreak = 0;
+//      enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
+//      u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
 
-    if (VarGet(VAR_FRONTIER_FACILITY) != FRONTIER_FACILITY_TOWER)
-        return FALSE;
+//      if (VarGet(VAR_FRONTIER_FACILITY) != FRONTIER_FACILITY_TOWER)
+//          return FALSE;
 
-    winStreak = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
-    for (i = 0; i < BATTLE_TOWER_RECORD_COUNT; i++)
-    {
-        u32 *record = (u32 *)(&gSaveBlock2Ptr->frontier.towerRecords[i]);
-        u32 recordHasData = 0;
-        u32 checksum = 0;
-        for (j = 0; j < (sizeof(struct EmeraldBattleTowerRecord) - 4) / 4; j++) // - 4, because of the last field being the checksum itself.
-        {
-            recordHasData |= record[j];
-            checksum += record[j];
-        }
-        validMons = 0;
-        for (j = 0; j < MAX_FRONTIER_PARTY_SIZE; j++)
-        {
-            if (gSaveBlock2Ptr->frontier.towerRecords[i].party[j].species != SPECIES_NONE
-                && gSaveBlock2Ptr->frontier.towerRecords[i].party[j].level <= GetFrontierEnemyMonLevel(lvlMode))
-                validMons++;
-        }
+//      winStreak = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
+//      for (i = 0; i < BATTLE_TOWER_RECORD_COUNT; i++)
+//      {
+//          u32 *record = (u32 *)(&gSaveBlock2Ptr->frontier.towerRecords[i]);
+//          u32 recordHasData = 0;
+//          u32 checksum = 0;
+//          for (j = 0; j < (sizeof(struct EmeraldBattleTowerRecord) - 4) / 4; j++) // - 4, because of the last field being the checksum itself.
+//          {
+//              recordHasData |= record[j];
+//              checksum += record[j];
+//          }
+//          validMons = 0;
+//          for (j = 0; j < MAX_FRONTIER_PARTY_SIZE; j++)
+//          {
+//              if (gSaveBlock2Ptr->frontier.towerRecords[i].party[j].species != SPECIES_NONE
+//                  && gSaveBlock2Ptr->frontier.towerRecords[i].party[j].level <= GetFrontierEnemyMonLevel(lvlMode))
+//                  validMons++;
+//          }
+//  
+//          if (validMons >= sBattleTowerPartySizes2[battleMode]
+//              && gSaveBlock2Ptr->frontier.towerRecords[i].winStreak == winStreak
+//              && gSaveBlock2Ptr->frontier.towerRecords[i].lvlMode == lvlMode
+//              && recordHasData
+//              && gSaveBlock2Ptr->frontier.towerRecords[i].checksum == checksum)
+//          {
+//              trainerIds[idsCount] = i + TRAINER_RECORD_MIXING_FRIEND;
+//              idsCount++;
+//          }
+//      }
 
-        if (validMons >= sBattleTowerPartySizes2[battleMode]
-            && gSaveBlock2Ptr->frontier.towerRecords[i].winStreak == winStreak
-            && gSaveBlock2Ptr->frontier.towerRecords[i].lvlMode == lvlMode
-            && recordHasData
-            && gSaveBlock2Ptr->frontier.towerRecords[i].checksum == checksum)
-        {
-            trainerIds[idsCount] = i + TRAINER_RECORD_MIXING_FRIEND;
-            idsCount++;
-        }
-    }
+//      if (battleMode == FRONTIER_MODE_SINGLES)
+//      {
+//          ValidateApprenticesChecksums();
+//          for (i = 0; i < APPRENTICE_COUNT; i++)
+//          {
+//              if (gSaveBlock2Ptr->apprentices[i].lvlMode != 0
+//                  && sApprenticeChallengeThreshold[gSaveBlock2Ptr->apprentices[i].numQuestions] == winStreak
+//                  && gSaveBlock2Ptr->apprentices[i].lvlMode - 1 == lvlMode)
+//              {
+//                  trainerIds[idsCount] = i + TRAINER_RECORD_MIXING_APPRENTICE;
+//                  idsCount++;
+//              }
+//          }
+//      }
 
-    if (battleMode == FRONTIER_MODE_SINGLES)
-    {
-        ValidateApprenticesChecksums();
-        for (i = 0; i < APPRENTICE_COUNT; i++)
-        {
-            if (gSaveBlock2Ptr->apprentices[i].lvlMode != 0
-                && sApprenticeChallengeThreshold[gSaveBlock2Ptr->apprentices[i].numQuestions] == winStreak
-                && gSaveBlock2Ptr->apprentices[i].lvlMode - 1 == lvlMode)
-            {
-                trainerIds[idsCount] = i + TRAINER_RECORD_MIXING_APPRENTICE;
-                idsCount++;
-            }
-        }
-    }
-
-    if (idsCount != 0)
-    {
-        TRAINER_BATTLE_PARAM.opponentA = trainerIds[Random() % idsCount];
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
-}
+//      if (idsCount != 0)
+//      {
+//          TRAINER_BATTLE_PARAM.opponentA = trainerIds[Random() % idsCount];
+//          return TRUE;
+//      }
+//      else
+//      {
+//          return FALSE;
+//      }
+//  }
 
 static void SetNextTowerOpponent(void)
 {
     enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+
+    // Battle Tent stays vanilla
     if (lvlMode == FRONTIER_LVL_TENT)
     {
         SetNextBattleTentOpponent();
+        return;
     }
-    else
+
+    u16 id;
+    u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    u16 winStreak = GetCurrentFacilityWinStreak();
+    u32 challengeNum = winStreak / FRONTIER_STAGES_PER_CHALLENGE;
+
+    SetFacilityPtrsGetLevel();
+
+    // --- LINK MULTIS: No boss, vanilla trainer selection ---
+    if (battleMode == FRONTIER_MODE_LINK_MULTIS)
     {
-        u16 id;
-        u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-        u16 winStreak = GetCurrentFacilityWinStreak();
-        u32 challengeNum = winStreak / FRONTIER_STAGES_PER_CHALLENGE;
-        SetFacilityPtrsGetLevel();
+        s32 i;
+        while (1)
+        {
+            id = GetRandomScaledFrontierTrainerId(
+                    challengeNum,
+                    gSaveBlock2Ptr->frontier.curChallengeBattleNum);
 
-        if (battleMode == FRONTIER_MODE_MULTIS || battleMode == FRONTIER_MODE_LINK_MULTIS)
-        {
-            id = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
-            TRAINER_BATTLE_PARAM.opponentA = gSaveBlock2Ptr->frontier.trainerIds[id * 2];
-            TRAINER_BATTLE_PARAM.opponentB = gSaveBlock2Ptr->frontier.trainerIds[id * 2 + 1];
-            SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
-            SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentB, 1);
-        }
-        else if (ChooseSpecialBattleTowerTrainer())
-        {
-            SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
-            gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = TRAINER_BATTLE_PARAM.opponentA;
-        }
-        else
-        {
-            s32 i;
-            while (1)
+            for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)
             {
-                id = GetRandomScaledFrontierTrainerId(challengeNum, gSaveBlock2Ptr->frontier.curChallengeBattleNum);
-
-                // Ensure trainer wasn't previously fought in this challenge.
-                for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)
-                {
-                    if (gSaveBlock2Ptr->frontier.trainerIds[i] == id)
-                        break;
-                }
-                if (i == gSaveBlock2Ptr->frontier.curChallengeBattleNum)
+                if (gSaveBlock2Ptr->frontier.trainerIds[i] == id)
                     break;
             }
-
-            TRAINER_BATTLE_PARAM.opponentA = id;
-            SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
-            if (gSaveBlock2Ptr->frontier.curChallengeBattleNum + 1 < FRONTIER_STAGES_PER_CHALLENGE)
-                gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = TRAINER_BATTLE_PARAM.opponentA;
+            if (i == gSaveBlock2Ptr->frontier.curChallengeBattleNum)
+                break;
         }
+
+        TRAINER_BATTLE_PARAM.opponentA = id;
+        SetBattleFacilityTrainerGfxId(id, 0);
+
+        if (gSaveBlock2Ptr->frontier.curChallengeBattleNum + 1 < FRONTIER_STAGES_PER_CHALLENGE)
+            gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = id;
+
+        return;
+    }
+
+    // --- SUBWAY BOSS CHECK ---
+    bool8 bossReady = FALSE;
+
+    // Normal modes → boss at battle 21
+    if (winStreak == 20)
+        bossReady = TRUE;
+
+    // Super modes → boss at battle 49
+    if (winStreak == 48)
+        bossReady = TRUE;
+
+    if (bossReady)
+    {
+        switch (battleMode)
+        {
+        // --- SINGLES ---
+        case FRONTIER_MODE_SINGLES:
+            TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_SINGLE;
+            break;
+
+        // --- SUPER SINGLES ---
+        case FRONTIER_MODE_SUPER_SINGLES:
+            TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_SUPER_SINGLE;
+            break;
+
+        // --- DOUBLES ---
+        case FRONTIER_MODE_DOUBLES:
+            TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_EMMET_DOUBLE;
+            break;
+
+        // --- SUPER DOUBLES ---
+        case FRONTIER_MODE_SUPER_DOUBLES:
+            TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_EMMET_SUPER_DOUBLE;
+            break;
+
+        // --- MULTIS ---
+        case FRONTIER_MODE_MULTIS:
+            TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_MULTI;
+            TRAINER_BATTLE_PARAM.opponentB = FRONTIER_TRAINER_EMMET_MULTI;
+            break;
+
+        // --- SUPER MULTIS ---
+        case FRONTIER_MODE_SUPER_MULTIS:
+            TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_SUPER_MULTI;
+            TRAINER_BATTLE_PARAM.opponentB = FRONTIER_TRAINER_EMMET_SUPER_MULTI;
+            break;
+        }
+
+        // Apply overworld graphics for opponent A
+        SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
+
+        // Apply overworld graphics for opponent B (Multis only)
+        if (battleMode == FRONTIER_MODE_MULTIS
+         || battleMode == FRONTIER_MODE_SUPER_MULTIS)
+        {
+            SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentB, 1);
+        }
+
+        // Store trainer ID for streak tracking (vanilla behavior)
+        gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum]
+            = TRAINER_BATTLE_PARAM.opponentA;
+
+        return;
+    }
+
+    // --- NORMAL TRAINER SELECTION (vanilla preserved) ---
+    {
+        s32 i;
+        while (1)
+        {
+            id = GetRandomScaledFrontierTrainerId(
+                    challengeNum,
+                    gSaveBlock2Ptr->frontier.curChallengeBattleNum);
+
+            for (i = 0; i < gSaveBlock2Ptr->frontier.curChallengeBattleNum; i++)
+            {
+                if (gSaveBlock2Ptr->frontier.trainerIds[i] == id)
+                    break;
+            }
+            if (i == gSaveBlock2Ptr->frontier.curChallengeBattleNum)
+                break;
+        }
+
+        TRAINER_BATTLE_PARAM.opponentA = id;
+        SetBattleFacilityTrainerGfxId(id, 0);
+
+        if (gSaveBlock2Ptr->frontier.curChallengeBattleNum + 1 < FRONTIER_STAGES_PER_CHALLENGE)
+            gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = id;
     }
 }
 
@@ -1047,12 +1136,12 @@ static void GetOpponentIntroSpeech(void)
 
 static void SaveCurrentWinStreak(void)
 {
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
     u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u16 winStreak = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
 
-    if (gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] < winStreak)
-        gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] = winStreak;
+    if (gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] < winStreak)
+        gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] = winStreak;
 }
 
 static void SaveBattleTowerRecord(void)
@@ -1063,7 +1152,7 @@ static void SaveBattleTowerRecord(void)
     struct EmeraldBattleTowerRecord *playerRecord = &gSaveBlock2Ptr->frontier.towerPlayer;
 
     ClearBattleTowerRecord(playerRecord);
-    lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    lvlMode = FRONTIER_LVL_50;
     battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     if (gSaveBlock2Ptr->playerGender != MALE)
     {
@@ -1105,9 +1194,8 @@ static void SaveBattleTowerRecord(void)
 
 static void SaveTowerChallenge(void)
 {
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u16 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    s32 challengeNum = (signed)(gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE);
+    s32 challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] / FRONTIER_STAGES_PER_CHALLENGE;
 
     if (gSpecialVar_0x8005 == 0 && (challengeNum > 1 || gSaveBlock2Ptr->frontier.curChallengeBattleNum != 0))
         SaveBattleTowerRecord();
@@ -1158,7 +1246,7 @@ static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
 {
     s32 i, count;
     enum Species validSpecies[3];
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
     enum Species species1 = GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES);
     enum Species species2 = GetMonData(&gParties[B_TRAINER_PLAYER][1], MON_DATA_SPECIES);
 
@@ -1196,9 +1284,9 @@ static void LoadMultiPartnerCandidatesData(void)
     struct ObjectEventTemplate *objEventTemplates;
 
     objEventTemplates = gSaveBlock1Ptr->objectEventTemplates;
-    lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    lvlMode = FRONTIER_LVL_50;
     battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE;
+    challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] / FRONTIER_STAGES_PER_CHALLENGE;
     species1 = GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES);
     species2 = GetMonData(&gParties[B_TRAINER_PLAYER][1], MON_DATA_SPECIES);
 
@@ -1483,7 +1571,6 @@ static void LoadLinkMultiOpponentsData(void)
     s32 challengeNum;
     s32 i, j;
     s32 trainerId = 0;
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u32 battleNum = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
     GetMultiplayerId(); // Yet another pointless function call.
@@ -1493,7 +1580,7 @@ static void LoadLinkMultiOpponentsData(void)
     case 0:
         if (battleMode == FRONTIER_MODE_LINK_MULTIS)
         {
-            challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE;
+            challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] / FRONTIER_STAGES_PER_CHALLENGE;
             if (IsLinkTaskFinished())
             {
                 SendBlock(BitmaskAllOtherLinkPlayers(), &challengeNum, sizeof(challengeNum));
@@ -1652,7 +1739,7 @@ static void ClearBattleTowerRecord(struct EmeraldBattleTowerRecord *record)
 
 u16 GetCurrentBattleTowerWinStreak(enum FrontierLevelMode lvlMode, u8 battleMode)
 {
-    u16 winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode];
+    u16 winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50];
 
     if (winStreak > MAX_STREAK)
         return MAX_STREAK;
@@ -1687,7 +1774,7 @@ static void AwardBattleTowerRibbons(void)
     struct RibbonCounter ribbons[3]; // BUG: 4 Pokémon can receive ribbons in a double battle mode.
 #endif
     u8 ribbonType = 0;
-    enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
     u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u8 monCount = GetMonCountForBattleMode(battleMode);
 

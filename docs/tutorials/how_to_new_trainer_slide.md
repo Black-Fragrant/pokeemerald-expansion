@@ -28,7 +28,7 @@ static const u8* const sFrontierTrainerSlides[DIFFICULTY_COUNT][FRONTIER_TRAINER
 {
     [DIFFICULTY_NORMAL] =
     {
-+        [TRAINER_ANABEL] =
++        [TRAINER_DUMMY] =
 +        {
 +            [TRAINER_SLIDE_ENEMY_Z_MOVE] = COMPOUND_STRING("Victory...is ours!"), //{PAUSE_UNTIL_PRESS} is omitted, so the battle will continue as soon as the next is finished printing.
 +        }

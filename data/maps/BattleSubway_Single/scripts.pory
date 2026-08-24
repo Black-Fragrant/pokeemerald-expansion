@@ -2,24 +2,248 @@ mapscripts BattleSubway_Single_MapScripts
     {
         MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
     [
-        VAR_TEMP_0, 0 : BattleSubway_Single_TurnPlayer
+        VAR_TEMP_0, 0 : BattleSubway_Single_EventScript_TurnPlayer
     ]
         MAP_SCRIPT_ON_FRAME_TABLE
     [
-        VAR_TEMP_0, 0 : BattleSubway_Single_Loading
+        VAR_TEMP_0, 0 : BattleSubway_Single_EventScript_Loading
     ]
     }
 
-script BattleSubway_Single_TurnPlayer
+script BattleSubway_Single_EventScript_TurnPlayer
 {
+	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	goto_if_eq(VAR_RESULT, 0, BattleSubway_Single_EventScript_TurnPlayer2) //this is the first person you battle
 	turnobject (LOCALID_PLAYER, DIR_EAST)
 	return()
 }
 
-script BattleSubway_Single_Loading
+script BattleSubway_Single_EventScript_TurnPlayer2
 {
-	setvar(VAR_TEMP_0, 1)
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
-	goto_if_eq(VAR_RESULT, 0, BattleFrontier_BattleTowerBattleRoom_EventScript_OpponentEnter)
+	turnobject (LOCALID_PLAYER, DIR_NORTH)
+	return()
+}
 
+script BattleSubway_Single_EventScript_MovePlayer1
+{
+    applymovement(LOCALID_PLAYER, moves(walk_right * 4))
+  	waitmovement(0)
+	return
+}
+
+script BattleSubway_Single_EventScript_MovePlayer2
+{
+    applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_right * 3))
+  	waitmovement(0)
+	return
+}
+
+script BattleSubway_Single_EventScript_Loading
+{
+    // the tower_setopponent command was ran in the previous map's scripts
+	setvar(VAR_TEMP_0, 1)
+	getplayerxy (VAR_TEMP_1, VAR_TEMP_2)
+	call_if_eq (VAR_TEMP_1, 1, BattleSubway_Single_EventScript_MovePlayer1)
+	call_if_eq (VAR_TEMP_1, 2, BattleSubway_Single_EventScript_MovePlayer2)
+  	tower_getopponentintro(0)
+	msgbox(gStringVar4, MSGBOX_DEFAULT, TRUE, LOCALID_SUBWAY_S_OPPONENT)
+	waitmessage
+	call(BattleSubway_Single_EventScript_DoBattle)
+ 	goto_if_eq(VAR_RESULT, B_OUTCOME_WON, BattleSubway_Single_EventScript_DefeatedOpponent)
+    goto(BattleSubway_Single_EventScript_WarpToStationLost)
+}
+
+script BattleSubway_Single_EventScript_DefeatedOpponent
+{
+	frontier_incrementstreak //increase win streak by 1
+	tower_setbattlewon //current challenge number 0-6
+	goto_if_eq(VAR_RESULT, FRONTIER_STAGES_PER_CHALLENGE, BattleSubway_Single_EventScript_RecordBeforeWarp) //warp to intermediate station after 7 battles
+//	frontier_getbrainstatus
+//	call_if_ne VAR_RESULT, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleTowerBattleRoom_EventScript_SecondAttendantEnter
+    delay(10)
+    applymovement(LOCALID_SUBWAY_S_OPPONENT, moves(walk_up * 2, walk_in_place_down))
+  	waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_right * 8, walk_up * 2))
+  	waitmovement(0)
+	delay(30)
+	playfanfare(MUS_HEAL)
+	waitfanfare
+	special(HealPlayerParty)
+    goto(BattleSubway_Single_EventScript_AskReadyForOpponent)
+}
+
+script BattleSubway_Single_EventScript_AskReadyForOpponent
+{
+	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+    buffernumberstring(STR_VAR_1, VAR_RESULT)
+    copyvar(VAR_0x8001, VAR_RESULT)
+    addvar(VAR_0x8001, 1)
+    buffernumberstring(STR_VAR_2, VAR_0x8001)
+	msgbox("Current winning streak: {STR_VAR_1}!\p"
+            "Next car: No.{STR_VAR_2}!\n"
+            "Continue to battle?", MSGBOX_TRANSPARENT)
+    waitmessage
+	frontier_get(FRONTIER_DATA_RECORD_DISABLED) //check if the last battle can be recorded
+	goto_if_eq(VAR_RESULT, TRUE, BattleSubway_Single_EventScript_AskReadyForOpponentNoRecord) //this happens if you already recorded the last battle
+	dynmultichoice(20, 4, TRUE, 4, 0, DYN_MULTICHOICE_CB_NONE,
+        "Continue",
+        "Record",
+        "Rest",
+        "Retire")
+	goto_if_eq (VAR_RESULT, 0, BattleSubway_Single_EventScript_Proceeding)
+	goto_if_eq (VAR_RESULT, 1, BattleSubway_Single_EventScript_Recording)
+	goto_if_eq (VAR_RESULT, 2, BattleSubway_Single_EventScript_Resting)
+	goto_if_eq (VAR_RESULT, 3, BattleSubway_Single_EventScript_Retiring)
+	end
+}
+
+script BattleSubway_Single_EventScript_AskReadyForOpponentNoRecord
+{
+	dynmultichoice(20, 4, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Continue",
+        "Rest",
+        "Retire")
+	goto_if_eq (VAR_RESULT, 0, BattleSubway_Single_EventScript_Proceeding)
+	goto_if_eq (VAR_RESULT, 1, BattleSubway_Single_EventScript_Resting)
+	goto_if_eq (VAR_RESULT, 2, BattleSubway_Single_EventScript_Retiring)
+	end
+}
+
+script BattleSubway_Single_EventScript_Proceeding
+{
+	closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_in_place_right))
+  	waitmovement(0)
+	delay(20)
+    playse(SE_EXIT)
+	fadescreen(FADE_TO_BLACK)
+    waitse
+	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
+	warpsilent(MAP_BATTLE_SUBWAY_SINGLE, 1, 5)
+	waitstate
+	end
+}
+
+script BattleSubway_Single_EventScript_Retiring
+{
+	msgbox("Cancel your challenge?", MSGBOX_TRANSPARENT)
+    waitmessage
+	dynmultichoice(22, 6, FALSE, 2, 1, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No")
+	goto_if_eq (VAR_RESULT, 0, BattleSubway_Single_EventScript_QuitChallenge)
+	goto(BattleSubway_Single_EventScript_AskReadyForOpponent)
+}
+
+script BattleSubway_Single_EventScript_QuitChallenge
+{
+	setflag(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE)
+	goto(BattleSubway_Single_EventScript_WarpToStationLost)
+}
+
+script BattleSubway_Single_EventScript_Resting
+{
+	msgbox("Save and quit the game?", MSGBOX_TRANSPARENT)
+    waitmessage
+	dynmultichoice(22, 6, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No")
+	goto_if_eq (VAR_RESULT, 0, BattleSubway_Single_EventScript_PauseChallenge)
+	goto(BattleSubway_Single_EventScript_AskReadyForOpponent)
+}
+
+script BattleSubway_Single_EventScript_PauseChallenge
+{
+	msgbox("Saving...\n"
+            "Don't turn off the power.", MSGBOX_TRANSPARENT)
+	waitmessage
+    setdynamicwarp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10)
+	tower_save(CHALLENGE_STATUS_PAUSED) // set VAR_TEMP_CHALLENGE_STATUS to 0, and runs savegamefrontier
+	playse(SE_SAVE)
+	waitse
+	fadescreen(FADE_TO_BLACK)
+	frontier_reset //performs a soft reset
+	end
+}
+
+script BattleSubway_Single_EventScript_Recording
+{
+	frontier_savebattle //saves the recording, and also disables recording features
+	goto_if_eq(VAR_RESULT, FALSE, BattleSubway_Single_EventScript_RecordingFailed)
+	playse(SE_SAVE)
+	msgbox("{PLAYER}'s battle has been saved as a\n"
+            "Battle Video.", MSGBOX_TRANSPARENT)
+	goto(BattleSubway_Single_EventScript_AskReadyForOpponent)
+}
+
+script BattleSubway_Single_EventScript_RecordingFailed
+{
+	msgbox(BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved, MSGBOX_TRANSPARENT)
+	goto(BattleSubway_Single_EventScript_AskReadyForOpponent)
+}
+
+script BattleSubway_Single_EventScript_DoBattle
+{
+	destroy_speech_bubble()
+    closemessage()
+    frontier_set(FRONTIER_DATA_RECORD_DISABLED, FALSE) //this battle can be recorded
+	special(HealPlayerParty)
+	dofacilitytrainerbattle(FACILITY_BATTLE_TOWER)
+	waitstate
+	frontier_restorehelditems
+	special(HealPlayerParty)
+	frontier_resetsketch //reset sketched moves in battle
+	frontier_get(FRONTIER_DATA_BATTLE_OUTCOME) //gets the outcome of the battle literally
+	return
+}
+
+script BattleSubway_Single_EventScript_RecordBeforeWarp
+{
+	msgbox("Would you like to save the last battle as\n"
+		"your Battle Video?", MSGBOX_TRANSPARENT)
+    waitmessage
+	dynmultichoice(22, 6, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No")
+	goto_if_eq(VAR_RESULT, 1, BattleSubway_Single_EventScript_WarpToStationWon)
+	frontier_savebattle //saves the recording, and also disables recording features
+	goto_if_eq(VAR_RESULT, FALSE, BattleSubway_Single_EventScript_RecordBeforeWarpFailed)
+	playse(SE_SAVE)
+	msgbox("{PLAYER}'s battle has been saved as a\n"
+            "Battle Video.", MSGBOX_TRANSPARENT)
+    waitmessage
+	closemessage
+	goto(BattleSubway_Single_EventScript_WarpToStationWon)
+}
+
+script BattleSubway_Single_EventScript_RecordBeforeWarpFailed
+{
+	msgbox(BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved, MSGBOX_TRANSPARENT)
+ 	goto(BattleSubway_Single_EventScript_WarpToStation)
+}
+
+script BattleSubway_Single_EventScript_WarpToStationLost
+{
+    frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST) //sets specail var 8006 to 4
+ 	goto(BattleSubway_Single_EventScript_WarpToStation)
+}
+
+script BattleSubway_Single_EventScript_WarpToStationWon
+{
+    applymovement(LOCALID_SUBWAY_S_OPPONENT, moves(walk_up * 2, walk_in_place_down))
+  	waitmovement(0)
+    applymovement(LOCALID_PLAYER, moves(walk_right * 6, walk_down * 2))
+  	waitmovement(0)
+	delay(20)
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON) //sets specail var 8006 to 3
+	warp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10) //warp to intermediate station after 7 battles
+	waitstate
+	end
+}
+
+script BattleSubway_Single_EventScript_WarpToStation
+{
+	warp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10)
+	waitstate
+	end
 }

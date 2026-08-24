@@ -145,16 +145,12 @@ script Platform_SingleTrain_EventScript_Prepare
 	setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES) //this needs further research
 	frontier_checkineligible //research complete - checks for all levels but store the result of level 50 mode
 	goto_if_eq(VAR_0x8004, TRUE, Platform_SingleTrain_EventScript_NotEnoughValidMons) 
-    setvar(VAR_RESULT, FRONTIER_LVL_OPEN)
-	frontier_set(FRONTIER_DATA_LVL_MODE, VAR_RESULT) //modified function, this store the eligibility-check result, but now its always open level
 	msgbox("Please select three Pokémon you wish\n"
             "to enter!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
 	fadescreen(FADE_TO_BLACK)
 	callnative(RemoveFollowingPokemon)
-	frontier_get(FRONTIER_DATA_LVL_MODE) 
-	copyvar(VAR_0x8004, VAR_RESULT) // research complete, this stores open level in 8004
 	setvar(VAR_0x8005, FRONTIER_PARTY_SIZE) //research complete, this var is defined to be 3
 	special(ChoosePartyForBattleFrontier) //
 	goto_if_eq(VAR_RESULT, 0, Platform_SingleTrain_EventScript_LoadPartyCancelChallenge)
@@ -209,7 +205,8 @@ script Platform_SingleTrain_EventScript_BoardTheTrain
     waitmovement(0)
 	fadescreen(FADE_TO_BLACK)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
-	warpsilent(MAP_BATTLE_SUBWAY_SINGLE, 5, 5)
+	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
+	warpsilent(MAP_BATTLE_SUBWAY_SINGLE, 2, 7)
 	waitstate
 	end
 }

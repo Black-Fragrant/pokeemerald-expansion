@@ -98,7 +98,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
 {
     [FRONTIER_FACILITY_TOWER] =
     {
-        .trainerId = TRAINER_ANABEL,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = TRUE,
         .lostTexts = {
@@ -116,7 +116,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     },
     [FRONTIER_FACILITY_DOME] =
     {
-        .trainerId = TRAINER_TUCKER,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
@@ -140,7 +140,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     },
     [FRONTIER_FACILITY_PALACE] =
     {
-        .trainerId = TRAINER_SPENSER,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
@@ -166,7 +166,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     },
     [FRONTIER_FACILITY_ARENA] =
     {
-        .trainerId = TRAINER_GRETA,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = TRUE,
         .lostTexts = {
@@ -192,7 +192,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     },
     [FRONTIER_FACILITY_FACTORY] =
     {
-        .trainerId = TRAINER_NOLAND,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
@@ -216,7 +216,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     },
     [FRONTIER_FACILITY_PIKE] =
     {
-        .trainerId = TRAINER_LUCY,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = TRUE,
         .lostTexts = {
@@ -234,7 +234,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
     },
     [FRONTIER_FACILITY_PYRAMID] =
     {
-        .trainerId = TRAINER_BRANDON,
+        .trainerId = TRAINER_DUMMY,
         .objEventGfx = OBJ_EVENT_GFX_SCOTT,
         .isFemale = FALSE,
         .lostTexts = {
@@ -951,7 +951,7 @@ static void SetFrontierData(void)
         gSaveBlock2Ptr->frontier.challengeStatus = gSpecialVar_0x8006;
         break;
     case FRONTIER_DATA_LVL_MODE:
-        gSaveBlock2Ptr->frontier.lvlMode = gSpecialVar_0x8006;
+        gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_50;
         break;
     case FRONTIER_DATA_BATTLE_NUM:
         gSaveBlock2Ptr->frontier.curChallengeBattleNum = gSpecialVar_0x8006;
@@ -1084,7 +1084,7 @@ static void TowerPrintRecordStreak(u8 battleMode, enum FrontierLevelMode lvlMode
 
 static u16 TowerGetWinStreak(u8 battleMode, enum FrontierLevelMode lvlMode)
 {
-    u16 winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode];
+    u16 winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50];
     if (winStreak > MAX_STREAK)
         return MAX_STREAK;
     else
@@ -1763,41 +1763,37 @@ static void Script_GetFrontierBrainStatus(void)
 
 u8 GetFrontierBrainStatus(void)
 {
-    s32 status = FRONTIER_BRAIN_NOT_READY;
-    s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    u16 winStreakNoModifier = GetCurrentFacilityWinStreak();
-    s32 winStreak = winStreakNoModifier + gFrontierBrainInfo[facility].streakAppearances[3];
-    s32 symbolsCount;
+    u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    u16 winStreak = GetCurrentFacilityWinStreak();
 
-    if (battleMode != FRONTIER_MODE_SINGLES)
+    // Subway: Link Multis never have bosses
+    if (battleMode == FRONTIER_MODE_LINK_MULTIS)
         return FRONTIER_BRAIN_NOT_READY;
 
-    symbolsCount = GetPlayerSymbolCountForFacility(facility);
-    switch (symbolsCount)
+    // Subway: Normal Courses (Singles, Doubles, Multis)
+    // Boss appears at battle 21 → winStreak == 20
+    if (battleMode == FRONTIER_MODE_SINGLES
+     || battleMode == FRONTIER_MODE_DOUBLES
+     || battleMode == FRONTIER_MODE_MULTIS)
     {
-    // Missing a symbol
-    case 0:
-    case 1:
-        if (winStreak == gFrontierBrainInfo[facility].streakAppearances[symbolsCount])
-            status = symbolsCount + 1; // FRONTIER_BRAIN_SILVER and FRONTIER_BRAIN_GOLD
-        break;
-    // Already received both symbols
-    case 2:
-    default:
-        // Silver streak is reached
-        if (winStreak == gFrontierBrainInfo[facility].streakAppearances[0])
-            status = FRONTIER_BRAIN_STREAK;
-        // Gold streak is reached
-        else if (winStreak == gFrontierBrainInfo[facility].streakAppearances[1])
-            status = FRONTIER_BRAIN_STREAK_LONG;
-        // Some increment of the gold streak is reached
-        else if (winStreak > gFrontierBrainInfo[facility].streakAppearances[1] && (winStreak - gFrontierBrainInfo[facility].streakAppearances[1]) % gFrontierBrainInfo[facility].streakAppearances[2] == 0)
-            status = FRONTIER_BRAIN_STREAK_LONG;
-        break;
+        if (winStreak == 20)
+            return FRONTIER_BRAIN_SILVER; // Normal Subway Boss
+        return FRONTIER_BRAIN_NOT_READY;
     }
 
-    return status;
+    // Subway: Super Courses (Singles, Doubles, Multis)
+    // Boss appears at battle 49 → winStreak == 48
+    if (battleMode == FRONTIER_MODE_SUPER_SINGLES
+     || battleMode == FRONTIER_MODE_SUPER_DOUBLES
+     || battleMode == FRONTIER_MODE_SUPER_MULTIS)
+    {
+        if (winStreak == 48)
+            return FRONTIER_BRAIN_GOLD; // Super Subway Boss
+        return FRONTIER_BRAIN_NOT_READY;
+    }
+
+    // Everything else unchanged
+    return FRONTIER_BRAIN_NOT_READY;
 }
 
 void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
@@ -1928,7 +1924,7 @@ u32 GetCurrentFacilityWinStreak(void)
     switch (facility)
     {
     case FRONTIER_FACILITY_TOWER:
-        return gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode];
+        return gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50];
     case FRONTIER_FACILITY_DOME:
         return gSaveBlock2Ptr->frontier.domeWinStreaks[battleMode][lvlMode];
     case FRONTIER_FACILITY_PALACE:
@@ -1979,7 +1975,7 @@ static void GiveBattlePoints(void)
     switch (facility)
     {
     case FRONTIER_FACILITY_TOWER:
-        challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE;
+        challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] / FRONTIER_STAGES_PER_CHALLENGE;
         break;
     case FRONTIER_FACILITY_DOME:
         challengeNum = gSaveBlock2Ptr->frontier.domeWinStreaks[battleMode][lvlMode];
@@ -2073,8 +2069,8 @@ static void AppendIfValid(enum Species species, enum Item heldItem, u16 hp, enum
         return;
     if (gSpeciesInfo[species].isFrontierBanned)
         return;
-    if (lvlMode == FRONTIER_LVL_50 && monLevel > FRONTIER_MAX_LEVEL_50)
-        return;
+//  if (lvlMode == FRONTIER_LVL_50 && monLevel > FRONTIER_MAX_LEVEL_50)
+//      return;
 
     for (i = 0; i < *count && speciesArray[i] != species; i++)
         ;
@@ -2221,9 +2217,7 @@ static void CheckPartyIneligibility(void)
     }
     else
     {
-        // Eligible: store only open level mode
         gSpecialVar_0x8004 = FALSE;
-        gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_OPEN; 
     }
     #undef numEligibleMons
 }
@@ -2235,7 +2229,7 @@ static void ValidateVisitingTrainer(void)
 
 static void IncrementWinStreak(void)
 {
-    s32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    s32 lvlMode = FRONTIER_LVL_50;
     s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
 
@@ -2957,6 +2951,7 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
     u8 trainerObjectGfxId;
 
     SetFacilityPtrsGetLevel();
+
 #if FREE_BATTLE_TOWER_E_READER == FALSE
     if (trainerId == TRAINER_EREADER)
     {
@@ -2965,8 +2960,9 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
     else if (trainerId == TRAINER_FRONTIER_BRAIN)
 #else
     if (trainerId == TRAINER_FRONTIER_BRAIN)
-#endif //FREE_BATTLE_TOWER_E_READER
+#endif
     {
+        // Frontier Brain unused in Subway
         SetFrontierBrainObjEventGfx_2();
         return;
     }
@@ -3031,6 +3027,7 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
         }
     }
 
+    // Fallback
     switch (tempVarId)
     {
     case 0:
