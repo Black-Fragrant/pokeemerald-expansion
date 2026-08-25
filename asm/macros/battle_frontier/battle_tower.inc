@@ -164,3 +164,20 @@
 	setmultitrainerbattle TRAINER_NONE, NULL, TRAINER_NONE, NULL, \partnerId
 	multi_do_fixed MULTI_BATTLE_2_VS_WILD
 	.endm
+
+	.macro setsubwaywinstreak mode:req, streak:req
+    setvar VAR_0x8004, \mode
+    setvar VAR_0x8005, \streak
+    special SetSubwayWinStreak
+	.endm
+
+	.macro buffersubwaywinstreak mode:req
+	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER
+	setvar VAR_FRONTIER_BATTLE_MODE, \mode
+	setvar VAR_0x8004, BATTLE_TOWER_FUNC_GET_DATA
+	setvar VAR_0x8005, TOWER_DATA_WIN_STREAK
+	special CallBattleTowerFunc
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	.endm
+
+

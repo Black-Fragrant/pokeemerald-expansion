@@ -661,3 +661,4 @@ gSpecials::
 	def_special SetMsgboxShoutFlag
 	def_special SetMsgboxTransparentFlag
 	def_special CheckIfNameChanged
+	def_special SetSubwayWinStreak
