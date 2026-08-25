@@ -221,10 +221,19 @@ Debug_EventScript_Script_2::
     end
 
 Debug_EventScript_Script_3::
+	lock
+	setsubwaywinstreak FRONTIER_MODE_SINGLES, 19 
+	buffersubwaywinstreak FRONTIER_MODE_SINGLES
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
 Debug_EventScript_Script_4::
+	lock
+	buffersubwaywinstreak FRONTIER_MODE_SINGLES
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 

@@ -2414,7 +2414,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .trainerName = _("Ingo"),
         .speechBeforeStr = COMPOUND_STRING("Thank you for riding then\nBattle Subway today.\pI am the Subway Boss Ingo.\pI will choose the next destination\nbased on your talent.\pDo you understand Pokémon well?\nCan you hold on to your principle?\lWill you go on to victory or defeat?\pAll aboard!"),
         .speechWinStr    = COMPOUND_STRING("Ah. Your battle was not bad at all.\pHowever, we seem to have done\nslightly better than you.\pWe would really like to battle\nwith you again!\pPlease ride the Battle Subway again!"),
-        .speechLoseStr   = COMPOUND_STRING("Bravo!!\pYour talent has brought you to the\ndestination called Victory!\pHowever, your journey has just started.\pWhen you choose your next destination,\ngo full speed ahead!"),
+        .speechLoseStr   = COMPOUND_STRING("Bravo!!\pYour talent has brought you to the\ndestination called Victory!\pHowever, your journey\nhas just started.\pWhen you choose your next destination,\ngo full speed ahead!"),
         .monSet = (const u16[]){FRONTIER_MONS_INGO_1}
     },
     [FRONTIER_TRAINER_INGO_SUPER_SINGLE] = {

@@ -205,6 +205,7 @@ script BattleSubway_Single_EventScript_RecordBeforeWarp
 	dynmultichoice(22, 6, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
         "Yes",
         "No")
+	closemessage
 	goto_if_eq(VAR_RESULT, 1, BattleSubway_Single_EventScript_WarpToStationWon)
 	frontier_savebattle //saves the recording, and also disables recording features
 	goto_if_eq(VAR_RESULT, FALSE, BattleSubway_Single_EventScript_RecordBeforeWarpFailed)
@@ -219,6 +220,8 @@ script BattleSubway_Single_EventScript_RecordBeforeWarp
 script BattleSubway_Single_EventScript_RecordBeforeWarpFailed
 {
 	msgbox(BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved, MSGBOX_TRANSPARENT)
+    waitmessage
+	closemessage
  	goto(BattleSubway_Single_EventScript_WarpToStation)
 }
 
