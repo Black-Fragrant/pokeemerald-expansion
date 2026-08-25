@@ -2420,57 +2420,57 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
     [FRONTIER_TRAINER_INGO_SUPER_SINGLE] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_INGO,
         .trainerName = _("Ingo"),
-        .speechBeforeStr = COMPOUND_STRING("Welcome! I've been waiting for you! Let me introduce myself... I am the Subway Boss Ingo. What can I see after winning, winning, and winning? Where is my destination? I've kept thinking, and I've learned one thing. That is, you cannot know what happens after winning without winning. Therefore, I will exert every possible effort to battle with you. All aboard!"),
-        .speechWinStr    = COMPOUND_STRING("I have won this time, but your talent is very strong! Your tactics...reading... You have great skills. That's right! I would like to battle you again and again! Please ride the Battle Subway again soon"),
-        .speechLoseStr   = COMPOUND_STRING("Bravo! Excellent!! I am glad that I fought so hard against a wonderful Trainer like you. That's right! You grow stronger by matching yourself against a strong opponent. Please do your best and run toward the destination, an even higher state."),
+        .speechBeforeStr = COMPOUND_STRING("Welcome! I've been waiting for you!\nLet me introduce myself...\pI am the Subway Boss Ingo.\pWhat can I see after winning,\nwinning, and winning?\lWhere is my destination?\pI've kept thinking,\nand I've learned one thing.\pThat is, you cannot know what happens\nafter winning without winning.\pTherefore, I will exert every possible\neffort to battle with you.\pAll aboard!"),
+        .speechWinStr    = COMPOUND_STRING("I have won this time,\nbut your talent is very strong!\pYour tactics...reading...\nYou have great skills. That's right!\pI would like to battle\nyou again and again!\pPlease ride the Battle Subway\nagain soon"),
+        .speechLoseStr   = COMPOUND_STRING("Bravo! Excellent!!\pI am glad that I fought so hard\nagainst a wonderful Trainer like you.\pThat's right!\pYou grow stronger by matching\nyourself against a strong opponent.\pPlease do your best and run\ntoward the destination,\lan even higher state."),
         .monSet = (const u16[]){FRONTIER_MONS_INGO_2}
     },
     [FRONTIER_TRAINER_EMMET_DOUBLE] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_EMMET,
         .trainerName = _("Emmet"),
-        .speechBeforeStr = COMPOUND_STRING(""),
-        .speechWinStr    = COMPOUND_STRING(""),
-        .speechLoseStr   = COMPOUND_STRING(""),
+        .speechBeforeStr = COMPOUND_STRING("I am Emmet.\nI am a Subway Boss.\lI like Double Battles.\lI like combinations of two Pokémon.\pAnd I like winning more than\nanything else.\pSo let's start a great battle in which\nevery Pokémon uses various moves."),
+        .speechWinStr    = COMPOUND_STRING("I am Emmet.\nI won against you.\lBut I think I just got lucky.\pIn a Double Battle, if you misread one thing,\nthe rest will be totally different.\lYou know.\pPlease win 20 battles in a row,\nand fight with me!"),
+        .speechLoseStr   = COMPOUND_STRING("I am Emmet.\nI lost against you.\lBecause you are the strongest\nTrainer I've fought lately.\pYou're a verrrrry strong Trainer!\nYup! It was fun!\lRide the trains some more!"),
         .monSet = (const u16[]){FRONTIER_MONS_EMMET_1}
     },
     [FRONTIER_TRAINER_EMMET_SUPER_DOUBLE] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_EMMET,
         .trainerName = _("Emmet"),
-        .speechBeforeStr = COMPOUND_STRING(""),
-        .speechWinStr    = COMPOUND_STRING(""),
-        .speechLoseStr   = COMPOUND_STRING(""),
+        .speechBeforeStr = COMPOUND_STRING("Hi, do you remember me?\nI am Emmet. I am a Subway Boss.\pI like Double Battles.\nI like combinations of two Pokémon.\pAnd I like winning more\nthan anything else.\pThis time, I am really serious.\nReally serious.\pBecause if a battle is not serious,\nit is not fun."),
+        .speechWinStr    = COMPOUND_STRING("I am Emmet.\nI won against you.\lBut this is not the end.\pI am sure you will show up\nhere again.\pI will wait for it and\nwin against you again.\pBecause I am a Subway Boss.\nI am Emmet."),
+        .speechLoseStr   = COMPOUND_STRING("I am Emmet.\nI am a Subway Boss,\nbut I lost against you again.\pBut I feel good.\nBecause it was very fun!\pYou want to win,\nand I don't want to lose.\lThat's real.\pWhen we clash in battles,\nI feel very excited!"),
         .monSet = (const u16[]){FRONTIER_MONS_EMMET_2}
     },
     [FRONTIER_TRAINER_INGO_MULTI] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_INGO,
         .trainerName = _("Ingo"),
-        .speechBeforeStr = COMPOUND_STRING("I am a Subway Boss, Ingo. The fellow over to the side is also a Subway Boss, Emmet. Will a Multi Battle help us cover each other's weakness? Or will you show your overwhelming power? I look forward to seeing how well you fight. However, it is difficult to win unless you and your partner are in total sync."),
-        .speechWinStr    = COMPOUND_STRING("We make a good two-car train, Ingo and Emmet. This time, we worked together toward a victory. However, your abilities are very impressive."),
-        .speechLoseStr   = COMPOUND_STRING("Bravo!! What you showed us is a spark as Trainers. However, let me say just one thing. Winning against us is a milestone in your life. You can rack up more and more. Please move on toward an even greater goal!"),
+        .speechBeforeStr = COMPOUND_STRING("I am a Subway Boss, Ingo.\pThe fellow over to the side\nis also a Subway Boss, Emmet.\pWill a Multi Battle help us\ncover each other's weakness?\lOr will you show your overwhelming power?\pI look forward to seeing\nhow well you fight.\pHowever, it is difficult to win unless\nyou and your partner are in total sync."),
+        .speechWinStr    = COMPOUND_STRING("We make a good two-car train,\nIngo and Emmet.\pThis time, we worked together\ntoward a victory.\pHowever, your abilities are very impressive."),
+        .speechLoseStr   = COMPOUND_STRING("Bravo!! What you showed us is a\nspark as Trainers.\pHowever, let me say just one thing.\pWinning against us is\na milestone in your life.\pYou can rack up more and more.\pPlease move on toward\nan even greater goal!"),
         .monSet = (const u16[]){FRONTIER_MONS_INGO_3}
     },
     [FRONTIER_TRAINER_EMMET_MULTI] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_EMMET,
         .trainerName = _("Emmet"),
-        .speechBeforeStr = COMPOUND_STRING(""),
-        .speechWinStr    = COMPOUND_STRING(""),
-        .speechLoseStr   = COMPOUND_STRING(""),
+        .speechBeforeStr = COMPOUND_STRING("Follow the rules. Safe driving!\nFollow the schedule. Everybody smile!\pCheck safety. Everything's ready!\nAim for victory! All aboard!"),
+        .speechWinStr    = COMPOUND_STRING("I am Emmet.\nI won together with Ingo.\pBut if we fight again,\nwe won't know what to expect.\pThat's why we are waiting\nfor you to come back!"),
+        .speechLoseStr   = COMPOUND_STRING("I am Emmet.\nI lost together with Ingo.\pYour combination is\nthe best, perfect!\pYou're verrrrry strong Trainers.\nYup! It was so much fun!"),
         .monSet = (const u16[]){FRONTIER_MONS_EMMET_3}
     },
     [FRONTIER_TRAINER_INGO_SUPER_MULTI] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_INGO,
         .trainerName = _("Ingo"),
-        .speechBeforeStr = COMPOUND_STRING("Let me introduce myself again. I am a Subway Boss, Ingo! Well, there is nothing else to say for the person who comes all the way here. Let's have the greatest battle, better than ever before."),
-        .speechWinStr    = COMPOUND_STRING("We, Ingo and Emmet, are a two-car train. This time, we were able to work toward a victory. Well, will you stop here? Or will you challenge us again? It's up to you. But let me say one thing. There is no terminal called End in your life!"),
-        .speechLoseStr   = COMPOUND_STRING("Bravo!! Really excellent! The best combination of you and your Pokémon. It is incredible! When you and someone else combine, your engine powers something special! If you like, please challenge us with a different combination."),
+        .speechBeforeStr = COMPOUND_STRING("Let me introduce myself again.\nI am a Subway Boss, Ingo!\pWell, there is nothing else to say for\nthe person who comes all the way here.\pLet's have the greatest battle,\nbetter than ever before."),
+        .speechWinStr    = COMPOUND_STRING("We, Ingo and Emmet,\nare a two-car train.\pThis time, we were able to\nwork toward a victory.\pWell, will you stop here?\nOr will you challenge us again?\pIt's up to you.\nBut let me say one thing.\pThere is no terminal called\nEnd in your life!"),
+        .speechLoseStr   = COMPOUND_STRING("Bravo!!\nReally excellent!\pThe best combination of\nyou and your Pokémon.\lIt is incredible!\pWhen you and someone else combine,\nyour engine powers something special!\pIf you like, please challenge us\nwith a different combination."),
         .monSet = (const u16[]){FRONTIER_MONS_INGO_4}
     },
     [FRONTIER_TRAINER_EMMET_SUPER_MULTI] = {
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_EMMET,
         .trainerName = _("Emmet"),
-        .speechBeforeStr = COMPOUND_STRING(""),
-        .speechWinStr    = COMPOUND_STRING(""),
-        .speechLoseStr   = COMPOUND_STRING(""),
+        .speechBeforeStr = COMPOUND_STRING("What I do. What I say.\nAlways the same.\pFollow the rules. Safe driving!\nFollow the schedules. Everyone smile!\lCheck safety. Everything's ready!\lAim for victory! All aboard!"),
+        .speechWinStr    = COMPOUND_STRING("I am Emmet.\nWe won, but I am not really satisfied.\pI can tell that you won't give up.\pBecause you will be much,\nmuch stronger.\pThat's why we are waiting\nfor you to come back!"),
+        .speechLoseStr   = COMPOUND_STRING("I am Emmet.\nWe lost against you again.\pBut I am satisfied.\nYou are too strong!\pThe strength you have,\nyour trust in your Pokémon,\ltheir never-ending support! Yep!\pIt was the most fun battle ever!\nPlease come back soon!"),
         .monSet = (const u16[]){FRONTIER_MONS_EMMET_4}
     }
 };
