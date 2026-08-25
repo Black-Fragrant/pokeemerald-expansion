@@ -5181,23 +5181,32 @@ u16 GetBattleBGM(void)
     {
         enum TrainerClassID trainerClass;
 
+        // --- Modified Frontier/Subway logic ---
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        {
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
-        else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-            trainerClass = TRAINER_CLASS_EXPERT;
-        else
-            trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
 
+            // Subway Boss → Alder theme
+            if (trainerClass == TRAINER_CLASS_SUBWAY_BOSS)
+                return MUS_BW_VS_ALDER;
+
+            // Other Frontier trainers → Subway trainer theme
+            return MUS_BW_VS_TRAINER_SUBWAY;
+        }
+        // --- End modified block ---
+
+        else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+        {
+            trainerClass = TRAINER_CLASS_EXPERT;
+        }
+        else
+        {
+            trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+        }
+
+        // Vanilla trainer class → BGM mapping
         switch (trainerClass)
         {
-        case TRAINER_CLASS_AQUA_LEADER:
-        case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_AQUA_MAGMA_LEADER;
-        case TRAINER_CLASS_TEAM_AQUA:
-        case TRAINER_CLASS_TEAM_MAGMA:
-        case TRAINER_CLASS_AQUA_ADMIN:
-        case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_LEADER:
             return MUS_BW_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:
