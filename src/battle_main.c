@@ -5091,15 +5091,23 @@ static void HandleEndTurn_BattleWon(void)
         gBattleOutcome &= ~B_OUTCOME_LINK_BATTLE_RAN;
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER
-            && gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL | BATTLE_TYPE_EREADER_TRAINER))
+          && gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL | BATTLE_TYPE_EREADER_TRAINER))
     {
         BattleStopLowHpSound();
         gBattlescriptCurrInstr = BattleScript_FrontierTrainerBattleWon;
 
-        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
-            PlayBGM(MUS_BW_GYM_LEADER);
-        else
-            PlayBGM(MUS_VICTORY_TRAINER);
+        // --- Added Subway Boss victory music override ---
+        {
+            enum TrainerClassID classId = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
+
+            if (classId == TRAINER_CLASS_SUBWAY_BOSS)
+                PlayBGM(MUS_BW_GYM_LEADER);   // Subway Boss victory theme
+            else if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+                PlayBGM(MUS_BW_GYM_LEADER);   // Vanilla Frontier Brain rule
+            else
+                PlayBGM(MUS_BW_VICTORY_TRAINER);
+        }
+        // --- End added block ---
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
