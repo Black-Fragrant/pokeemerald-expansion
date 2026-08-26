@@ -942,9 +942,9 @@
 #define FLAG_NIMBASA_CITY_MUSICAL_THEATER_BIANCA_AND_OWNER          0x37E
 #define FLAG_NIMBASA_CITY_BIANCA_AND_FATHER                         0x37F
 #define FLAG_NIMBASA_CITY_ITEM_TM_ECHOED_VOICE                      0x380
-#define FLAG_UNUSED_0x381                                           0x381
-#define FLAG_UNUSED_0x382                                           0x382
-#define FLAG_UNUSED_0x383                                           0x383
+#define FLAG_BATTLE_SUBWAY_DEFEATED_SINGLE                          0x381
+#define FLAG_BATTLE_SUBWAY_DEFEATED_DOUBLE                          0x382
+#define FLAG_BATTLE_SUBWAY_DEFEATED_MULTI                           0x383
 #define FLAG_UNUSED_0x384                                           0x384
 #define FLAG_UNUSED_0x385                                           0x385
 #define FLAG_UNUSED_0x386                                           0x386

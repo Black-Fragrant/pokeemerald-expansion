@@ -2328,7 +2328,7 @@ static void ResetSketchedMoves(void)
                 if (k == MAX_MON_MOVES)
                     SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][i], MOVE_SKETCH, j);
             }
-            SavePlayerPartyMon(gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1, &gParties[B_TRAINER_PLAYER][i]);
+//            SavePlayerPartyMon(gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1, &gParties[B_TRAINER_PLAYER][i]);
         }
     }
 }
@@ -3531,19 +3531,4 @@ void SetPartyToLevel50(void)
             }
         }
     }
-}
-
-void SetSubwayWinStreak(void)
-{
-    u32 mode   = gSpecialVar_0x8004;
-    u32 streak = gSpecialVar_0x8005;
-
-    // Tower/Subway always uses FRONTIER_LVL_50
-    gSaveBlock2Ptr->frontier.towerWinStreaks[mode][FRONTIER_LVL_50] = streak;
-
-    // Compute curChallengeBattleNum automatically
-    // FRONTIER_STAGES_PER_CHALLENGE is normally 7
-    u32 battleNum = streak % FRONTIER_STAGES_PER_CHALLENGE;
-
-    gSaveBlock2Ptr->frontier.curChallengeBattleNum = battleNum;
 }

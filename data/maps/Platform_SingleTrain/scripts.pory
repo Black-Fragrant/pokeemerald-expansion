@@ -1,4 +1,104 @@
-mapscripts Platform_SingleTrain_MapScripts {}
+mapscripts Platform_SingleTrain_MapScripts 
+{
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_TEMP_CHALLENGE_STATUS, 0 : Platform_SingleTrain_EventScript_GetChallengeStatus
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING: Platform_SingleTrain_EventScript_QuitWithoutSaving
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_PAUSED: Platform_SingleTrain_EventScript_ResumeChallenge
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST: Platform_SingleTrain_EventScript_LostChallenge
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN: Platform_SingleTrain_EventScript_RideBackToNimbasa
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_FINAL_STOP: Platform_SingleTrain_EventScript_RideBackToNimbasa
+    ]
+}
+
+script Platform_SingleTrain_EventScript_GetChallengeStatus
+{
+	frontier_getstatus
+	end
+}
+
+script Platform_SingleTrain_EventScript_QuitWithoutSaving
+{
+	lock
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
+    waitmovement(0)
+	msgbox("Excuse me!\p"
+            "You didn't save before you quit your\n"
+            "challenge last time.\p"
+            "I am sorry, but you'll have to start\n"
+            "your challenge over again.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+	special(LoadPlayerParty)
+	setsubwaywinstreak(FRONTIER_MODE_SINGLES, 0)
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, FALSE)
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, 0)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+    goto(Platform_SingleTrain_EventScript_Cancel_Cont)
+}
+
+script Platform_SingleTrain_EventScript_WalkFromTrainToConductor
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 5, walk_up, walk_in_place_right))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_right, delay_16 * 5, walk_in_place_down, delay_16 * 2, walk_in_place_left))
+    waitmovement(0)
+    return
+}
+
+script Platform_SingleTrain_EventScript_LostChallenge
+{
+	lock
+    call(Platform_SingleTrain_EventScript_WalkFromTrainToConductor)
+	setsubwaywinstreak(FRONTIER_MODE_SINGLES, 0)
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, FALSE)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+	goto(Platform_SingleTrain_EventScript_LoadPartyCancelChallenge)
+}
+
+script Platform_SingleTrain_EventScript_RideBackToNimbasa
+{
+	lock
+    call(Platform_SingleTrain_EventScript_WalkFromTrainToConductor)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+    msgbox(BattleSubway_Text_ThankYouForPlaying, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+    release
+    end
+}
+
+script Platform_SingleTrain_EventScript_ResumeChallenge
+{
+	lock
+    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    waitmovement(0)
+	msgbox("It's good to see you back.\p"
+            "Would you like to resume your challenge\n"
+            "at the Battle Subway?", MSGBOX_YESNO, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+    goto_if_eq(VAR_RESULT, TRUE, Platform_SingleTrain_EventScript_ResumeChallenge2)
+	fadescreen(FADE_TO_BLACK)
+	frontier_reset //performs a soft reset
+    end
+}
+
+script Platform_SingleTrain_EventScript_ResumeChallenge2
+{
+	tower_save(CHALLENGE_STATUS_SAVING)
+	playse(SE_SAVE)
+	waitse
+	msgbox("Now, I will guid you to the place\n"
+            "where you interrupted your challenge.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+	frontier_set(FRONTIER_DATA_PAUSED, FALSE)
+    // Only writes a single boolean (challengePaused = FALSE) and does nothing else. They are not interchangeable. One is a full save operation, the other is a single flag write.
+	goto(Platform_SingleTrain_EventScript_BoardTheTrain)
+	end
+}
 
 script Platform_SingleTrain_EventScript_Trigger
 {
@@ -43,7 +143,7 @@ script Platform_SingleTrain_EventScript_Start
 {
     applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
     waitmovement(0)
-	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) //this needs further research
+	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
 	special(SavePlayerParty)
 	msgbox("Welcome to the Battle Subway!\p"
             "I will guide you to\n"
@@ -55,6 +155,7 @@ script Platform_SingleTrain_EventScript_Selection
 {
 	msgbox("Would you like to board\n"
             "the Single Train?", MSGBOX_DEFAULT, FALSE)
+    waitmessage
 	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "Board",
         "Info",
@@ -105,6 +206,11 @@ script Platform_SingleTrain_EventScript_Cancel
 	msgbox("We hope to see you again!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
+    goto(Platform_SingleTrain_EventScript_Cancel_Cont)
+}
+
+script Platform_SingleTrain_EventScript_Cancel_Cont
+{
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_1, 9, Platform_SingleTrain_EventScript_Cancel_Pos1)
 	call_if_eq (VAR_TEMP_1, 11, Platform_SingleTrain_EventScript_Cancel_Pos2)
@@ -142,11 +248,10 @@ script Platform_SingleTrain_EventScript_NotEnoughValidMons
 
 script Platform_SingleTrain_EventScript_Prepare
 {
-	setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES) //this needs further research
+	setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES)
 	frontier_checkineligible //research complete - checks for all levels but store the result of level 50 mode
 	goto_if_eq(VAR_0x8004, TRUE, Platform_SingleTrain_EventScript_NotEnoughValidMons) 
-	msgbox("Please select three Pokémon you wish\n"
-            "to enter!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	msgbox(BattleSubway_Text_PleaseSelectThreePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
 	fadescreen(FADE_TO_BLACK)
@@ -154,7 +259,7 @@ script Platform_SingleTrain_EventScript_Prepare
 	setvar(VAR_0x8005, FRONTIER_PARTY_SIZE) //research complete, this var is defined to be 3
 	special(ChoosePartyForBattleFrontier) //
 	goto_if_eq(VAR_RESULT, 0, Platform_SingleTrain_EventScript_LoadPartyCancelChallenge)
-	msgbox ("Would you like to save the game?", MSGBOX_YESNO, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	msgbox (BattleSubway_Text_WouldYouLikeToSave, MSGBOX_YESNO, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
 	goto_if_eq(VAR_RESULT, YES, Platform_SingleTrain_EventScript_SaveBeforeChallenge)
@@ -164,11 +269,10 @@ script Platform_SingleTrain_EventScript_Prepare
 script Platform_SingleTrain_EventScript_SaveBeforeChallenge
 {
 	frontier_set(FRONTIER_DATA_SELECTED_MON_ORDER) //It copies the player’s selected party order into the Frontier saveblock
-	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // VAR_TEMP_CHALLENGE_STATUS is used to react to the status in OnFrame map scripts
+	setvar(VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING) // VAR_TEMP_CHALLENGE_STATUS is used to react to the status in OnFrame map scripts
 	// tower_init // decides which Trainer Tower floor layout to load when entering a floor
 	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, TRUE) // indicate that the win streak is currently active.
 	frontier_set(FRONTIER_DATA_PAUSED, FALSE) // Marks whether the Frontier challenge is paused.
-	special(LoadPlayerParty)
 	closemessage
 	delay(2)
 	call(Common_EventScript_SaveGame)
@@ -180,7 +284,6 @@ script Platform_SingleTrain_EventScript_SaveBeforeChallenge
 
 script Platform_SingleTrain_EventScript_BoardTheTrain
 {
-	special(SavePlayerParty)
 	setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER) // these three load the saved Frontier party selection
 	setvar(VAR_0x8005, FRONTIER_PARTY_SIZE) 
 	special(CallFrontierUtilFunc)
@@ -206,6 +309,15 @@ script Platform_SingleTrain_EventScript_BoardTheTrain
 	fadescreen(FADE_TO_BLACK)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
 	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
+	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	goto_if_eq(VAR_RESULT, 0, Platform_SingleTrain_EventScript_BoardTheTrain2) //this is the first person you battle
+	warpsilent(MAP_BATTLE_SUBWAY_SINGLE, 1, 5)
+	waitstate
+	end
+}
+
+script Platform_SingleTrain_EventScript_BoardTheTrain2
+{
 	warpsilent(MAP_BATTLE_SUBWAY_SINGLE, 2, 7)
 	waitstate
 	end

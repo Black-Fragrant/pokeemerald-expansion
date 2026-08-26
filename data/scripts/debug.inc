@@ -215,14 +215,16 @@ Debug_EventScript_Script_1_text::
 
 Debug_EventScript_Script_2::
     lock
-    warpsilent MAP_PLATFORM_SINGLE_TRAIN, 16, 10
+	setsubwaywinstreak FRONTIER_MODE_SINGLES, 20
+	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON 
+	setvar VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_WON
+	warp MAP_INTER_PLATFORM_SINGLE, 72, 7
 	waitstate
 	release 
     end
 
 Debug_EventScript_Script_3::
 	lock
-	setsubwaywinstreak FRONTIER_MODE_SINGLES, 19 
 	buffersubwaywinstreak FRONTIER_MODE_SINGLES
 	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
 	closemessage
@@ -230,8 +232,11 @@ Debug_EventScript_Script_3::
 	end
 
 Debug_EventScript_Script_4::
-	lock
-	buffersubwaywinstreak FRONTIER_MODE_SINGLES
+    lock
+	bufferrecordsubwaywinstreak FRONTIER_MODE_SINGLES
+	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
+	closemessage
+	bufferrecordsubwaywinstreak FRONTIER_MODE_SUPER_SINGLES
 	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
 	closemessage
 	release

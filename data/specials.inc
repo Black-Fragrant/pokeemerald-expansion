@@ -662,3 +662,4 @@ gSpecials::
 	def_special SetMsgboxTransparentFlag
 	def_special CheckIfNameChanged
 	def_special SetSubwayWinStreak
+	def_special AdjustPlatformNPCAmount

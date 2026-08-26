@@ -74,8 +74,8 @@ script BattleSubway_Single_EventScript_DefeatedOpponent
 
 script BattleSubway_Single_EventScript_AskReadyForOpponent
 {
+	buffersubwaywinstreak(FRONTIER_MODE_SINGLES)
 	frontier_get(FRONTIER_DATA_BATTLE_NUM)
-    buffernumberstring(STR_VAR_1, VAR_RESULT)
     copyvar(VAR_0x8001, VAR_RESULT)
     addvar(VAR_0x8001, 1)
     buffernumberstring(STR_VAR_2, VAR_0x8001)
@@ -158,7 +158,8 @@ script BattleSubway_Single_EventScript_PauseChallenge
             "Don't turn off the power.", MSGBOX_TRANSPARENT)
 	waitmessage
     setdynamicwarp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10)
-	tower_save(CHALLENGE_STATUS_PAUSED) // set VAR_TEMP_CHALLENGE_STATUS to 0, and runs savegamefrontier
+	tower_save(CHALLENGE_STATUS_PAUSED) 
+	// Saves the entire Frontier challenge state, sets challengeStatus, sets challengePaused = TRUE, clears enemy party, and performs a full Frontier save.
 	playse(SE_SAVE)
 	waitse
 	fadescreen(FADE_TO_BLACK)
@@ -206,7 +207,7 @@ script BattleSubway_Single_EventScript_RecordBeforeWarp
         "Yes",
         "No")
 	closemessage
-	goto_if_eq(VAR_RESULT, 1, BattleSubway_Single_EventScript_WarpToStationWon)
+	goto_if_ne(VAR_RESULT, 0, BattleSubway_Single_EventScript_WarpToStationWon)
 	frontier_savebattle //saves the recording, and also disables recording features
 	goto_if_eq(VAR_RESULT, FALSE, BattleSubway_Single_EventScript_RecordBeforeWarpFailed)
 	playse(SE_SAVE)
@@ -225,10 +226,41 @@ script BattleSubway_Single_EventScript_RecordBeforeWarpFailed
  	goto(BattleSubway_Single_EventScript_WarpToStation)
 }
 
+script BattleSubway_Single_EventScript_RecordBeforeWarpFailed2
+{
+	msgbox(BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved, MSGBOX_TRANSPARENT)
+    waitmessage
+	closemessage
+ 	goto(BattleSubway_Single_EventScript_WarpToStationLost_Cont)
+}
+
 script BattleSubway_Single_EventScript_WarpToStationLost
 {
     frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST) //sets specail var 8006 to 4
- 	goto(BattleSubway_Single_EventScript_WarpToStation)
+	msgbox("Would you like to save the last battle as\n"
+		"your Battle Video?", MSGBOX_TRANSPARENT)
+    waitmessage
+	dynmultichoice(22, 6, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
+        "Yes",
+        "No")
+	closemessage
+	goto_if_ne(VAR_RESULT, 0, BattleSubway_Single_EventScript_WarpToStationLost_Cont)
+	frontier_savebattle //saves the recording, and also disables recording features
+	goto_if_eq(VAR_RESULT, FALSE, BattleSubway_Single_EventScript_RecordBeforeWarpFailed2)
+	playse(SE_SAVE)
+	msgbox("{PLAYER}'s battle has been saved as a\n"
+            "Battle Video.", MSGBOX_TRANSPARENT)
+    waitmessage
+	closemessage
+	fadescreen(FADE_TO_BLACK)
+ 	goto(BattleSubway_Single_EventScript_WarpToStationLost_Cont)
+}
+
+script BattleSubway_Single_EventScript_WarpToStationLost_Cont
+{
+	warp(MAP_PLATFORM_SINGLE_TRAIN, 21, 9)
+	waitstate
+	end
 }
 
 script BattleSubway_Single_EventScript_WarpToStationWon
@@ -237,9 +269,10 @@ script BattleSubway_Single_EventScript_WarpToStationWon
   	waitmovement(0)
     applymovement(LOCALID_PLAYER, moves(walk_right * 6, walk_down * 2))
   	waitmovement(0)
-	delay(20)
 	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON) //sets specail var 8006 to 3
-	warp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10) //warp to intermediate station after 7 battles
+	setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_WON)
+	delay(20)
+	warp(MAP_INTER_PLATFORM_SINGLE, 72, 7) //warp to intermediate station after 7 battles
 	waitstate
 	end
 }
