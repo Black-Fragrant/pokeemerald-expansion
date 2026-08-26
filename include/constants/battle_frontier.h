@@ -30,15 +30,17 @@
 #define FRONTIER_MODE_COUNT             7
 
 // Challenge Statuses
-#define CHALLENGE_STATUS_SAVING   1
-#define CHALLENGE_STATUS_PAUSED   2
-#define CHALLENGE_STATUS_WON      3
-#define CHALLENGE_STATUS_LOST     4
+#define CHALLENGE_STATUS_SAVING       1
+#define CHALLENGE_STATUS_PAUSED       2
+#define CHALLENGE_STATUS_WON          3
+#define CHALLENGE_STATUS_LOST         4
+#define CHALLENGE_STATUS_RETURN       5
+#define CHALLENGE_STATUS_FINAL_STOP   6
 
 // Special trainer battles.
-#define SPECIAL_BATTLE_SECRET_BASE 1
-#define SPECIAL_BATTLE_EREADER 2
-#define SPECIAL_BATTLE_MULTI 3
+#define SPECIAL_BATTLE_SECRET_BASE    1
+#define SPECIAL_BATTLE_EREADER        2
+#define SPECIAL_BATTLE_MULTI          3
 
 // Facility trainer Battles
 #define FACILITY_BATTLE_TOWER           0

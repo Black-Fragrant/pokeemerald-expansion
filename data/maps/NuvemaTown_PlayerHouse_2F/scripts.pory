@@ -127,7 +127,7 @@ script NuvemaTown_PH2F_EventScript_HideBianca
 script NuvemaTown_PH2F_EventScript_TurnPlayer
 {
 	turnobject (LOCALID_PLAYER, DIR_EAST)
-	return()
+	end()
 }
 
 script NuvemaTown_PH2F_EventScript_PlayMusic

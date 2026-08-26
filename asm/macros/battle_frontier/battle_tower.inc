@@ -180,4 +180,18 @@
 	buffernumberstring STR_VAR_1, VAR_RESULT
 	.endm
 
+	.macro bufferrecordsubwaywinstreak mode:req
+	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER
+	setvar VAR_FRONTIER_BATTLE_MODE, \mode
+	setvar VAR_0x8004, BATTLE_TOWER_FUNC_GET_RECORD_WIN_STREAK
+	special CallBattleTowerFunc
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	.endm
+
+	.macro adjustplatformNPCamount mode:req
+    setvar VAR_FRONTIER_BATTLE_MODE, \mode   @ REQUIRED
+    setvar VAR_0x8004, \mode                 @ your special’s input
+    special AdjustPlatformNPCAmount
+	.endm
+
 

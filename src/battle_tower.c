@@ -67,6 +67,7 @@ static void ValidateApprenticesChecksums(void);
 static void SetNextBattleTentOpponent(void);
 static void ClearBattleTowerRecord(struct EmeraldBattleTowerRecord *record);
 static void FillTentTrainerParty_(u16 trainerId, u8 firstMonId, u8 monCount);
+static void GetTowerRecordWinStreak(void);
 
 #include "data/battle_frontier/battle_frontier_trainer_mons.h"
 #include "data/battle_frontier/battle_frontier_trainers.h"
@@ -650,6 +651,7 @@ static void (* const sBattleTowerFuncs[])(void) =
     [BATTLE_TOWER_FUNC_TRY_CLOSE_LINK]      = TowerTryCloseLink,
     [BATTLE_TOWER_FUNC_SET_PARTNER_GFX]     = SetMultiPartnerGfx,
     [BATTLE_TOWER_FUNC_SET_INTERVIEW_DATA]  = SetTowerInterviewData,
+    [BATTLE_TOWER_FUNC_GET_RECORD_WIN_STREAK] = GetTowerRecordWinStreak,
 };
 
 static const u32 sWinStreakFlags[] =
@@ -1140,8 +1142,13 @@ static void SaveCurrentWinStreak(void)
     u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u16 winStreak = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
 
-    if (gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] < winStreak)
-        gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][FRONTIER_LVL_50] = winStreak;
+    // Update current streak
+    if (gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] < winStreak)
+        gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] = winStreak;
+
+    // ⭐ Update record streak (new)
+    if (gSaveBlock2Ptr->frontier.towerRecordWinStreaks[battleMode][lvlMode] < winStreak)
+        gSaveBlock2Ptr->frontier.towerRecordWinStreaks[battleMode][lvlMode] = winStreak;
 }
 
 static void SaveBattleTowerRecord(void)
@@ -2158,4 +2165,81 @@ void TrySetLinkBattleTowerEnemyPartyLevel(void)
             }
         }
     }
+}
+
+void SetSubwayWinStreak(void)
+{
+    u32 mode   = gSpecialVar_0x8004;
+    u32 streak = gSpecialVar_0x8005;
+
+    // Tower/Subway always uses FRONTIER_LVL_50
+    u32 lvlMode = FRONTIER_LVL_50;
+
+    // Write current streak
+    gSaveBlock2Ptr->frontier.towerWinStreaks[mode][lvlMode] = streak;
+
+    // Compute curChallengeBattleNum automatically
+    u32 battleNum = streak % FRONTIER_STAGES_PER_CHALLENGE;
+    gSaveBlock2Ptr->frontier.curChallengeBattleNum = battleNum;
+
+    // ⭐ Smart record update
+    u32 oldRecord = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[mode][lvlMode];
+
+    if (streak > oldRecord)
+        gSaveBlock2Ptr->frontier.towerRecordWinStreaks[mode][lvlMode] = streak;
+}
+
+static void GetTowerRecordWinStreak(void)
+{
+    enum FrontierLevelMode lvlMode = FRONTIER_LVL_50;
+    u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+
+    gSpecialVar_Result =
+        gSaveBlock2Ptr->frontier.towerRecordWinStreaks[battleMode][lvlMode];
+}
+
+void AdjustPlatformNPCAmount(void)
+{
+    u32 mode = gSpecialVar_0x8004;
+
+    // Read the current Battle Tower streak directly from the Frontier data.
+    u32 streak = gSaveBlock2Ptr->frontier.towerWinStreaks[mode][FRONTIER_LVL_50];
+
+    static const u16 sTempFlags[16] =
+    {
+        FLAG_TEMP_1,
+        FLAG_TEMP_2,
+        FLAG_TEMP_3,
+        FLAG_TEMP_4,
+        FLAG_TEMP_5,
+        FLAG_TEMP_6,
+        FLAG_TEMP_7,
+        FLAG_TEMP_8,
+        FLAG_TEMP_9,
+        FLAG_TEMP_A,
+        FLAG_TEMP_B,
+        FLAG_TEMP_C,
+        FLAG_TEMP_D,
+        FLAG_TEMP_E,
+        FLAG_TEMP_F,
+        FLAG_TEMP_10,
+    };
+
+    // Set every flag first.
+    for (u32 i = 0; i < 16; i++)
+        FlagSet(sTempFlags[i]);
+
+    // 113+ means all flags remain set.
+    if (streak >= 113)
+        return;
+
+    // 0-7   -> TEMP_1
+    // 8-14  -> TEMP_2
+    // 15-21 -> TEMP_3
+    // 22-28 -> TEMP_4
+    // ...
+    // 106-112 -> TEMP_10
+    u32 cycle = (streak == 0) ? 0 : (streak - 1) / 7;
+
+    FlagClear(sTempFlags[cycle]);
 }

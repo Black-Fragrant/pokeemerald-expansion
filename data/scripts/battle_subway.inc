@@ -97,4 +97,32 @@ Battle_Subway_TMs:
 	pokemartlistend
 
 
+BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved::
+	.string "There was an error of some sort.\n"
+	.string "Your record could not be saved.$"
+
+BattleSubway_Text_PleaseSelectThreePokemonYouWishToEnter::
+	.string "Please select three Pokémon you wish\n"
+	.string "to enter!$"
+
+BattleSubway_Text_WouldYouLikeToSave::
+	.string "Would you like to save the game?$"
+
+BattleSubway_Text_WhatWouldYouLikeToDo::
+	.string "What would you like to do?$"
+
+BattleSubway_Text_TheSelectionWasCanceled::
+	.string "The selection was canceled.$"
+
+BattleSubway_Text_DoYouWantToReturnToNimbasaCity::
+	.string "Do you want to return to Nimbasa City?$"
+
+BattleSubway_Text_ReturnToNimbasaCity::
+	.string "Well then, we'll return to Nimbasa City.$"
+
+BattleSubway_Text_ThankYouForPlaying::
+	.string "Thank you for playing!\p"
+	.string "If you want to resume your challenge,\n"
+	.string "please visit us again.\p"
+	.string "We hope to see you again!$"
 
