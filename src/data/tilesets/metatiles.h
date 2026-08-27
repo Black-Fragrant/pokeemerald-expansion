@@ -585,3 +585,6 @@ const u16 gMetatileAttributes_GearStationPlatforms[] = INCBIN_U16("data/tilesets
 
 const u16 gMetatiles_GeneralAnville[] = INCBIN_U16("data/tilesets/primary/general_anville/metatiles.bin");
 const u16 gMetatileAttributes_GeneralAnville[] = INCBIN_U16("data/tilesets/primary/general_anville/metatile_attributes.bin");
+
+const u16 gMetatiles_DressingRoom[] = INCBIN_U16("data/tilesets/secondary/dressing_room/metatiles.bin");
+const u16 gMetatileAttributes_DressingRoom[] = INCBIN_U16("data/tilesets/secondary/dressing_room/metatile_attributes.bin");

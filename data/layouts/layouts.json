@@ -10732,6 +10732,16 @@
       "secondary_tileset": "gTileset_BattleSubway",
       "border_filepath": "data/layouts/BattleSubway_Single/border.bin",
       "blockdata_filepath": "data/layouts/BattleSubway_Single/map.bin"
+    },
+    {
+      "id": "LAYOUT_NIMBASA_CITY_DRESSING_ROOM",
+      "name": "NimbasaCity_DressingRoom_Layout",
+      "width": 20,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_DressingRoom",
+      "border_filepath": "data/layouts/NimbasaCity_DressingRoom/border.bin",
+      "blockdata_filepath": "data/layouts/NimbasaCity_DressingRoom/map.bin"
     }
   ]
 }

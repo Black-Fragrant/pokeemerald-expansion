@@ -2418,3 +2418,14 @@ const struct Tileset gTileset_GeneralAnville =
     .metatileAttributes = gMetatileAttributes_GeneralAnville,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_DressingRoom =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DressingRoom,
+    .palettes = gTilesetPalettes_DressingRoom,
+    .metatiles = gMetatiles_DressingRoom,
+    .metatileAttributes = gMetatileAttributes_DressingRoom,
+    .callback = NULL,
+};
