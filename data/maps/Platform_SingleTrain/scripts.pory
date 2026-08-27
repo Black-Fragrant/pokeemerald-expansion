@@ -87,9 +87,13 @@ script Platform_SingleTrain_EventScript_ResumeChallenge
 
 script Platform_SingleTrain_EventScript_ResumeChallenge2
 {
+    delay(10)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
 	tower_save(CHALLENGE_STATUS_SAVING)
 	playse(SE_SAVE)
 	waitse
+    closemessage
 	msgbox("Now, I will guid you to the place\n"
             "where you interrupted your challenge.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
