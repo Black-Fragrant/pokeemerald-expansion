@@ -75,10 +75,10 @@ script BattleSubway_Single_EventScript_DefeatedOpponent
 script BattleSubway_Single_EventScript_AskReadyForOpponent
 {
 	buffersubwaywinstreak(FRONTIER_MODE_SINGLES)
+	delay(10)
 	frontier_get(FRONTIER_DATA_BATTLE_NUM)
-    copyvar(VAR_0x8001, VAR_RESULT)
-    addvar(VAR_0x8001, 1)
-    buffernumberstring(STR_VAR_2, VAR_0x8001)
+    addvar(VAR_RESULT, 1)
+    buffernumberstring(STR_VAR_2, VAR_RESULT)
 	msgbox("Current winning streak: {STR_VAR_1}!\p"
             "Next car: No.{STR_VAR_2}!\n"
             "Continue to battle?", MSGBOX_TRANSPARENT)
@@ -154,14 +154,14 @@ script BattleSubway_Single_EventScript_Resting
 
 script BattleSubway_Single_EventScript_PauseChallenge
 {
-	msgbox("Saving...\n"
-            "Don't turn off the power.", MSGBOX_TRANSPARENT)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
 	waitmessage
     setdynamicwarp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10)
 	tower_save(CHALLENGE_STATUS_PAUSED) 
 	// Saves the entire Frontier challenge state, sets challengeStatus, sets challengePaused = TRUE, clears enemy party, and performs a full Frontier save.
 	playse(SE_SAVE)
 	waitse
+    closemessage
 	fadescreen(FADE_TO_BLACK)
 	frontier_reset //performs a soft reset
 	end

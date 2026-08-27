@@ -100,6 +100,10 @@ Battle_Subway_TMs:
 BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved::
 	.string "There was an error of some sort.\n"
 	.string "Your record could not be saved.$"
+	
+BattleSubway_Text_SavingDontTurnOff::
+	.string "Saving...\n"
+	.string "Don't turn off the power.$"
 
 BattleSubway_Text_PleaseSelectThreePokemonYouWishToEnter::
 	.string "Please select three Pokémon you wish\n"

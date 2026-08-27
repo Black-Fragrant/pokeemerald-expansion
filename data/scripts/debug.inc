@@ -215,7 +215,7 @@ Debug_EventScript_Script_1_text::
 
 Debug_EventScript_Script_2::
     lock
-	setsubwaywinstreak FRONTIER_MODE_SINGLES, 20
+	setsubwaywinstreak FRONTIER_MODE_SINGLES, 14
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON 
 	setvar VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_WON
 	warp MAP_INTER_PLATFORM_SINGLE, 72, 7

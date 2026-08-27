@@ -136,10 +136,13 @@ script InterPlatform_Single_EventScript_WonChallenge
 	special(HealPlayerParty)
     setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
     setdynamicwarp(MAP_INTER_PLATFORM_SINGLE, 72, 8)
 	tower_save(0)
 	playse(SE_SAVE)
 	waitse
+    closemessage
 	callnative(UpdateFollowingPokemon)
 	msgbox("Please enjoy your time here.\p"
             "If you would like to continue your\n"
@@ -181,10 +184,13 @@ script InterPlatform_Single_EventScript_WonChallengeFinalStop
 	special(HealPlayerParty)
     setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
     setdynamicwarp(MAP_INTER_PLATFORM_SINGLE, 72, 8)
 	tower_save(0)
 	playse(SE_SAVE)
 	waitse
+    closemessage
 	callnative(UpdateFollowingPokemon)
 	msgbox("This is the end of the Single Train line.\p"
             "When you want to return to Nimbasa City,\n"
@@ -321,11 +327,14 @@ script InterPlatform_Single_EventScript_Conductor_SaveBeforeChallenge
 	setvar(VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING) // VAR_TEMP_CHALLENGE_STATUS is used to react to the status in OnFrame map scripts
 	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, TRUE) // indicate that the win streak is currently active.
 	frontier_set(FRONTIER_DATA_PAUSED, FALSE) // Marks whether the Frontier challenge is paused.
-	closemessage
-	delay(2)
+    delay(10)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
     setdynamicwarp(MAP_PLATFORM_SINGLE_TRAIN, 16, 10)
 	tower_save(CHALLENGE_STATUS_SAVING)
 	playse(SE_SAVE)
+    waitse
+    closemessage
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
 	goto_if_eq (VAR_RESULT, 0, InterPlatform_Single_EventScript_Conductor_CancelChallengeSaveFailed)
     fadescreen(FADE_TO_BLACK)
