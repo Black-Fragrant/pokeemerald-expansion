@@ -2079,3 +2079,5 @@ EventScript_SetSail::
 	.include "data/maps/BattleSubway_SuperMulti/scripts.inc"
 
 	.include "data/maps/BattleSubway_SuperDouble/scripts.inc"
+
+	.include "data/maps/NimbasaCity_DressingRoom/scripts.inc"
