@@ -62,26 +62,29 @@ static const u16 sTextWindowPalettes[][16] =
 
 static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
 {
-    {gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal},
-    {sTextWindowFrame2_Gfx, sTextWindowFrame2_Pal},
-    {sTextWindowFrame3_Gfx, sTextWindowFrame3_Pal},
-    {sTextWindowFrame4_Gfx, sTextWindowFrame4_Pal},
-    {sTextWindowFrame5_Gfx, sTextWindowFrame5_Pal},
-    {sTextWindowFrame6_Gfx, sTextWindowFrame6_Pal},
-    {sTextWindowFrame7_Gfx, sTextWindowFrame7_Pal},
-    {sTextWindowFrame8_Gfx, sTextWindowFrame8_Pal},
-    {sTextWindowFrame9_Gfx, sTextWindowFrame9_Pal},
-    {sTextWindowFrame10_Gfx, sTextWindowFrame10_Pal},
-    {sTextWindowFrame11_Gfx, sTextWindowFrame11_Pal},
-    {sTextWindowFrame12_Gfx, sTextWindowFrame12_Pal},
-    {sTextWindowFrame13_Gfx, sTextWindowFrame13_Pal},
-    {sTextWindowFrame14_Gfx, sTextWindowFrame14_Pal},
-    {sTextWindowFrame15_Gfx, sTextWindowFrame15_Pal},
-    {sTextWindowFrame16_Gfx, sTextWindowFrame16_Pal},
-    {sTextWindowFrame17_Gfx, sTextWindowFrame17_Pal},
-    {sTextWindowFrame18_Gfx, sTextWindowFrame18_Pal},
-    {sTextWindowFrame19_Gfx, sTextWindowFrame19_Pal},
-    {sTextWindowFrame20_Gfx, sTextWindowFrame20_Pal}
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 0
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 1
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 2
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 3
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 4
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 5
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 6
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 7
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 8
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 9
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 10
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 11
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 12
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 13
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 14
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 15
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 16
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 17
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 18
+    { gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal }, // 19
+    // NEW ENTRIES
+    { sTextWindowFrame2_Gfx, sTextWindowFrame2_Pal }, // 20 → style 2
+    { sTextWindowFrame3_Gfx, sTextWindowFrame3_Pal }, // 21 → style 3
 };
 
 static const u16 sTextWindowDexNavFrame[] = INCGFX_U16("graphics/text_window/dexnav_pal.pal", ".gbapal");

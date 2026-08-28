@@ -29,6 +29,7 @@
 #include "gpu_regs.h"
 #include "script.h"
 #include "menu_helpers.h"
+#include "text_window.h"
 
 #include "data/script_menu.h"
 
@@ -374,7 +375,9 @@ static void MultichoiceDynamic_MoveCursor(s32 itemIndex, bool8 onInit, struct Li
     }
 }
 
-static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenuItem *items, bool8 ignoreBPress, u32 initialRow, u8 maxBeforeScroll, u32 callbackSet)
+static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenuItem *items,
+                                       bool8 ignoreBPress, u32 initialRow,
+                                       u8 maxBeforeScroll, u32 callbackSet)
 {
     u32 i;
     u8 windowId;
@@ -384,28 +387,55 @@ static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenu
     u32 windowHeight;
     struct ListMenu *list;
 
+    // Compute widest string
     for (i = 0; i < argc; ++i)
-    {
         width = DisplayTextAndGetWidth(items[i].name, width);
-    }
-    LoadMessageBoxAndBorderGfx();
+
+    LoadMessageBoxAndBorderGfx(); // keep underlying textbox behavior
+
     windowHeight = (argc < maxBeforeScroll) ? argc * 2 : maxBeforeScroll * 2;
     newWidth = ConvertPixelWidthToTileWidth(width);
     left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
+
+    // Create window
     windowId = CreateWindowFromRect(left, top, newWidth, windowHeight);
-    SetStandardWindowBorderStyle(windowId, FALSE);
+
+    // SELECT STYLE BASED ON TRANSPARENT FLAG
+    if (gMsgIsTransparent)
+    {
+        // STYLE INDEX 3
+        LoadWindowGfx(windowId, 21, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM));
+    }
+    else
+    {
+        // STYLE INDEX 2
+        LoadWindowGfx(windowId, 20, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM));
+    }
+
+    // Draw frame using selected style
+    DrawStdFrameWithCustomTileAndPalette(windowId, FALSE,
+                                         STD_WINDOW_BASE_TILE_NUM,
+                                         STD_WINDOW_PALETTE_NUM);
+
     CopyWindowToVram(windowId, COPYWIN_FULL);
 
-    // I don't like this being global either, but I could not come up with another solution that
-    // does not invade the whole ListMenu infrastructure.
+    // Dynamic event setup
     sDynamicMenuEventId = callbackSet;
     sDynamicMenuEventScratchPad = AllocZeroed(100 * sizeof(u16));
-    if (sDynamicMenuEventId != DYN_MULTICHOICE_CB_NONE && sDynamicListMenuEventCollections[sDynamicMenuEventId].OnInit)
+
+    if (sDynamicMenuEventId != DYN_MULTICHOICE_CB_NONE &&
+        sDynamicListMenuEventCollections[sDynamicMenuEventId].OnInit)
     {
-        struct DynamicListMenuEventArgs eventArgs = {.selectedItem = initialRow, .windowId = windowId, .list = NULL};
+        struct DynamicListMenuEventArgs eventArgs =
+        {
+            .selectedItem = initialRow,
+            .windowId = windowId,
+            .list = NULL
+        };
         sDynamicListMenuEventCollections[sDynamicMenuEventId].OnInit(&eventArgs);
     }
 
+    // List menu setup
     gMultiuseListMenuTemplate = sScriptableListMenuTemplate;
     gMultiuseListMenuTemplate.windowId = windowId;
     gMultiuseListMenuTemplate.items = items;
@@ -419,19 +449,29 @@ static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenu
     gTasks[taskId].data[2] = windowId;
     gTasks[taskId].data[5] = argc;
     gTasks[taskId].data[7] = maxBeforeScroll;
-    StoreWordInTwoHalfwords((u16*) &gTasks[taskId].data[3], (u32) items);
-    list = (void *) gTasks[gTasks[taskId].data[0]].data;
+
+    StoreWordInTwoHalfwords((u16 *)&gTasks[taskId].data[3], (u32)items);
+
+    list = (void *)gTasks[gTasks[taskId].data[0]].data;
     ListMenuChangeSelectionFull(list, TRUE, FALSE, initialRow, TRUE);
 
-    if (sDynamicMenuEventId != DYN_MULTICHOICE_CB_NONE && sDynamicListMenuEventCollections[sDynamicMenuEventId].OnSelectionChanged)
+    if (sDynamicMenuEventId != DYN_MULTICHOICE_CB_NONE &&
+        sDynamicListMenuEventCollections[sDynamicMenuEventId].OnSelectionChanged)
     {
-        struct DynamicListMenuEventArgs eventArgs = {.selectedItem = items[initialRow].id, .windowId = windowId, .list = &gMultiuseListMenuTemplate};
+        struct DynamicListMenuEventArgs eventArgs =
+        {
+            .selectedItem = items[initialRow].id,
+            .windowId = windowId,
+            .list = &gMultiuseListMenuTemplate
+        };
         sDynamicListMenuEventCollections[sDynamicMenuEventId].OnSelectionChanged(&eventArgs);
     }
+
     ListMenuGetScrollAndRow(gTasks[taskId].data[0], &gScrollableMultichoice_ScrollOffset, NULL);
+
+    // Scroll arrows
     if (argc > maxBeforeScroll)
     {
-        // Create Scrolling Arrows
         struct ScrollArrowsTemplate template;
         template.firstX = (newWidth / 2) * 8 + 12 + (left) * 8;
         template.firstY = top * 8 + 5;
@@ -442,10 +482,11 @@ static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenu
         template.firstArrowType = SCROLL_ARROW_UP;
         template.secondArrowType = SCROLL_ARROW_DOWN;
         template.tileTag = 2000;
-        template.palTag = 100,
+        template.palTag = 100;
         template.palNum = 0;
 
-        gTasks[taskId].data[6] = AddScrollIndicatorArrowPair(&template, &gScrollableMultichoice_ScrollOffset);
+        gTasks[taskId].data[6] =
+            AddScrollIndicatorArrowPair(&template, &gScrollableMultichoice_ScrollOffset);
     }
 }
 
@@ -456,15 +497,25 @@ void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8 ignore
     int width = 0;
     u8 newWidth;
 
+    // Compute widest string
     for (i = 0; i < count; i++)
-    {
         width = DisplayTextAndGetWidth(actions[i].text, width);
-    }
 
     newWidth = ConvertPixelWidthToTileWidth(width);
     left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
+
+    // Create window
     windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
-    SetStandardWindowBorderStyle(windowId, FALSE);
+
+    // FORCE STYLE INDEX 1
+    LoadWindowGfx(windowId, 0, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM));
+
+    // Draw frame using style 1 tiles/palette
+    DrawStdFrameWithCustomTileAndPalette(windowId, FALSE,
+                                         STD_WINDOW_BASE_TILE_NUM,
+                                         STD_WINDOW_PALETTE_NUM);
+
+    // Print menu items
     PrintMenuTable(windowId, count, actions);
     InitMenuInUpperLeftCornerNormal(windowId, count, cursorPos);
     ScheduleBgCopyTilemapToVram(0);
