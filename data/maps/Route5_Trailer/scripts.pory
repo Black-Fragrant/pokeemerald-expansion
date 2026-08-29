@@ -1,1 +1,40 @@
 mapscripts Route5_Trailer_MapScripts {}
+
+script Route5_Trailer_EventScript_Maid
+{    
+	lock
+	faceplayer
+    goto_if_unset(FLAG_TEMP_11, Route5_Trailer_EventScript_FirstConversation)
+    goto(Route5_Trailer_EventScript_ItemManiac)
+}
+
+script Route5_Trailer_EventScript_FirstConversation
+{
+    msgbox("Hi! I am a humble Maid!\p"
+            "My master has a big heart to match his\n"
+            "big belly. He's a gourmet!\p"
+            "So I am looking for ingredients that will\n"
+            "make his heart jump for joy!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_TRAILER_MAID)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_TEMP_11)
+    goto(Route5_Trailer_EventScript_ItemManiac)
+}
+
+script Route5_Trailer_EventScript_ItemManiac
+{
+	setflag(FLAG_SYS_GOURMET_MANIAC)
+	message("Sniff, sniff... Sniff, sniff...\p"
+        "Oh! That aroma! It smells so gourmet!\p"
+        "Do you have a wonderful ingredient in\n"
+        "your Bag?\l"
+        "Would you consider selling it to me?")
+	waitmessage
+	pokemart
+	msgbox("Aww... Well, that's OK.\p"
+        "If you find a gourmet ingredient for me,\n"
+        "please let me know!")
+	clearflag(FLAG_SYS_GOURMET_MANIAC)
+	release
+	end
+}

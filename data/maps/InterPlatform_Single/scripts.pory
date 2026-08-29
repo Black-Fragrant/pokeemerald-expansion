@@ -534,7 +534,7 @@ script InterPlatform_Single_EventScript_JanitorAfterItem_21
 script InterPlatform_Single_EventScript_Gentleman_21
 {
     msgbox("It's the end of the line already...\p"
-        "I guess that means my Pokemon\n"
+        "I guess that means my Pokémon\n"
         "battle journey is over for now.", MSGBOX_NPC, TRUE)
 	end
 }

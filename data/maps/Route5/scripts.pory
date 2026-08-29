@@ -1,1 +1,272 @@
 mapscripts Route5_MapScripts {}
+
+script Route5_EventScript_RouteSign
+{
+    msgbox("Route 5\n"
+        "Performer Street", MSGBOX_SIGN)
+    end
+}
+
+script Route5_EventScript_TrainerTips
+{
+    msgbox("Trainer Tips!\p"
+        "There are different Cases\n"
+        "for each type of item.\p"
+        "Items are placed automatically in\n"
+        "the correct Case by their type.\p"
+        "The name of the Case tells you\n"
+        "what type of items will be kept there.", MSGBOX_SIGN)
+    end
+}
+
+script Route5_EventScript_BridgeSign
+{
+    msgbox("Driftveil Drawbridge", MSGBOX_SIGN)
+    end
+}
+
+script Route5_EventScript_Battle_Baker
+{
+	trainerbattle_single(TRAINER_BAKER_ROUTE_5,
+	text("These Pokémon usually help me bake.\n"
+        "Today, they'll help me battle you!"),
+	text("Oh, my...\n"
+        "It was a tasty battle."))
+	msgbox("I get on well with my Pokémon, and we\n"
+        "bake bread together. It's so much fun!\l"
+        "I don't mind getting up early every day.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route5_EventScript_Battle_Harlequin
+{
+	trainerbattle_single(TRAINER_HARLEQUIN_ROUTE_5,
+	text("I will show you all the moves\n"
+        "that my Pokémon have mastered!"),
+	text("I am sorry that I underestimated\n"
+        "you and your Pokémon's moves!"))
+	msgbox("Sometimes a battle is so beautiful\n"
+        "that it takes your breath away.\p"
+        "Ours was such a battle!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route5_EventScript_Battle_Musician
+{
+	trainerbattle_single(TRAINER_MUCISIAN_ROUTE_5,
+	text("I will show you all the moves\n"
+        "that my Pokémon have mastered!"),
+	text("There's a rhythm to attacking\n"
+        "and defending...\l"
+        "I think ours got thrown off."),
+	Route5_EventScript_Battle_Musician_GivesMetronome)
+	goto(Route5_EventScript_Battle_Musician_GivesMetronome)
+	end()
+}
+
+script Route5_EventScript_Battle_Musician_GivesMetronome
+{
+    setobjectmovementtype (LOCALID_ROUTE5_MUSICIAN, MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN)
+	goto_if_set(FLAG_ROUTE5_ITEM_METRONOME, Route5_EventScript_Battle_Musician_Received)
+	msgbox("In battling you, I came to understand...\p"
+        "You're the best!\n"
+        "Here! This is for you!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_MUSICIAN)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_METRONOME, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+	goto (Route5_EventScript_Battle_Musician_Received)
+	end
+}
+
+script Route5_EventScript_Battle_Musician_Received
+{
+	msgbox("If you want your Pokémon to\n"
+        "hold an Electric Guitar like me,\l"
+        "go to the Musical Theater!\l"
+        "Cooler than cool!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_MUSICIAN)
+	destroy_speech_bubble()
+	closemessage
+	setflag(FLAG_ROUTE5_ITEM_METRONOME)
+	release()
+	end()
+}
+
+script Route5_EventScript_Battle_Dancer
+{
+	trainerbattle_single(TRAINER_DANCER_ROUTE_5,
+	text("Turn around, and it's my turn.\n" //there should be a music note
+        "Turn around, and it's your turn."),
+	text("Turn around, turn around, turn around..."))
+	msgbox("It's difficult to have a battle while\n"
+        "tapping my toes.\p"
+        "But I am a Dancer!\n"
+        "It is natural to dance!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route5_EventScript_Battle_Artist
+{
+	trainerbattle_single(TRAINER_ARTIST_ROUTE_5,
+	text("Hi, Trainer!\n"
+        "Let me turn you into a work of art!"),
+	text("Oh, I just got whitewashed!"))
+	msgbox("The reason why there are so many colors\n"
+        "in this world...white, black, red, green,\l"
+        "blue, yellow...is that they can be mixed\l"
+        "to create an explosion of new color!\p"
+        "Boom!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route5_EventScript_Battle_BackpackerF
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_ROUTE_5,
+	text("The big bag...\n"
+        "What do you think is inside?"),
+	text("I lost, but now I have more things\n"
+        "to add to my bag."))
+	msgbox("I'll tell you a secret. The things I put\n"
+        "in the bag are memories of my journey!\p"
+        "The things you can't see are very heavy!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route5_EventScript_Battle_BackpackerM
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_5,
+	text("As my mind roams, as the wind blows,\n"
+        "destiny has brought us to this battle."),
+	text("Urgh... I didn't know\n"
+        "I was flying against the wind..."))
+	msgbox("I want to fly around the Unova region,\n"
+        "blown by the wind!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route5_EventScript_AudienceLeft
+{
+	msgbox("The Pokémon and the performers\n"
+        "all have amazing moves!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route5_EventScript_AudienceMiddle
+{
+	msgbox("The street performers are my favorites.\n"
+        "They're so charming!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route5_EventScript_AudienceRight
+{
+	msgbox("I think being able to make people\n"
+        "smile is a super-awesome talent!\p"
+        "That's why Pokémon are so awesome!\n"
+        "Because they can make you smile!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route5_EventScript_GateOperator
+{
+	lock
+	faceplayer
+	call(Route5_EventScript_GateOperator_Dialogue)
+	release
+	end
+}
+
+script Route5_EventScript_GateOperator_Dialogue
+{
+	msgbox("The drawbridge is raised right now\n"
+        "so ships can pass. You can't cross.\p"
+        "If you make a request to Drifveil's Gym\n"
+        "Leader, Clay, he could... Well, I'm not\l"
+        "sure how you'd reach him over there...\p"
+        "If you talk to Nimbasa City's Gym Leader,\n"
+        "Elesa, she might be able to do something.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_GATE_OPERATOR)
+	destroy_speech_bubble()
+	closemessage
+	return
+}
+
+script Route5_EventScript_Trigger
+{
+	lock
+	msgbox("Excuse me!\n"
+        "Please stop right there!", MSGBOX_DEFAULT)
+	closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 14, Route5_EventScript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_1, 15, Route5_EventScript_Trigger_Pos1)
+	call_if_eq (VAR_TEMP_1, 16, Route5_EventScript_Trigger_Pos2)
+	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_Trigger_Pos3)
+	call_if_eq (VAR_TEMP_1, 14, Route5_EventScript_Trigger_Cam1)
+	call_if_eq (VAR_TEMP_1, 15, Route5_EventScript_Trigger_Cam2)
+	call_if_eq (VAR_TEMP_1, 16, Route5_EventScript_Trigger_Cam2)
+	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_Trigger_Cam2)
+	call(Route5_EventScript_GateOperator_Dialogue)
+	call_if_eq (VAR_TEMP_1, 14, Route5_EventScript_Trigger_Cam3)
+	call_if_eq (VAR_TEMP_1, 15, Route5_EventScript_Trigger_Cam4)
+	call_if_eq (VAR_TEMP_1, 16, Route5_EventScript_Trigger_Cam4)
+	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_Trigger_Cam4)
+	release
+	end
+}
+
+script Route5_EventScript_Trigger_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_in_place_up))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_Trigger_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_Trigger_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_right, walk_up * 2))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_Trigger_Cam1
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 1))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}
+
+script Route5_EventScript_Trigger_Cam2
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}
+
+script Route5_EventScript_Trigger_Cam3
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 1))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}
+
+script Route5_EventScript_Trigger_Cam4
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}

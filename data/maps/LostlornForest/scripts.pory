@@ -1,1 +1,75 @@
 mapscripts LostlornForest_MapScripts {}
+
+script LostlornForest_EventScript_Backpacker
+{
+    lock
+    faceplayer
+    msgbox("You know, there are people in the world\n"
+        "with many different values.\p"
+        "Some people enjoy things you might not\n"
+        "think are fun...\p"
+        "Having a lot of different values in the\n"
+        "world makes it a richer place.\l"
+        "That's what I think, anyway.", MSGBOX_DEFAULT, TRUE, LOCALID_LOSTLORNFOREST_BACKPACKER)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 14, LostlornForest_EventScript_Backpacker_Pos1)
+	call_if_eq (VAR_TEMP_1, 15, LostlornForest_EventScript_Backpacker_Pos1)
+	call_if_eq (VAR_TEMP_1, 16, LostlornForest_EventScript_Backpacker_Pos2)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("I really enjoy traveling around the world\n"
+        "and talking with different people, but\l"
+        "the woman who lives here seems to think\l"
+        "living quietly by herself is important.", MSGBOX_DEFAULT, TRUE, LOCALID_LOSTLORNFOREST_BACKPACKER)
+    destroy_speech_bubble()
+    closemessage
+	call_if_eq (VAR_TEMP_1, 14, LostlornForest_EventScript_Backpacker_Pos3)
+	call_if_eq (VAR_TEMP_1, 15, LostlornForest_EventScript_Backpacker_Pos3)
+	call_if_eq (VAR_TEMP_1, 16, LostlornForest_EventScript_Backpacker_Pos4)
+    removeobject(LOCALID_LOSTLORNFOREST_BACKPACKER)
+    delay(10)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    delay(10)
+    release
+    end
+}
+
+script LostlornForest_EventScript_Backpacker_Pos1
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+	applymovement(LOCALID_LOSTLORNFOREST_BACKPACKER, moves(walk_down * 3, walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}
+
+script LostlornForest_EventScript_Backpacker_Pos2
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 2, walk_down * 3))
+	applymovement(LOCALID_LOSTLORNFOREST_BACKPACKER, moves(walk_right, walk_down * 4, walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}
+
+script LostlornForest_EventScript_Backpacker_Pos3
+{
+	applymovement(LOCALID_LOSTLORNFOREST_BACKPACKER, moves(walk_down, walk_right * 3, walk_down * 5))
+	waitmovement(0)
+	return
+}
+
+script LostlornForest_EventScript_Backpacker_Pos4
+{
+	applymovement(LOCALID_LOSTLORNFOREST_BACKPACKER, moves(walk_right * 2, walk_down * 6))
+	waitmovement(0)
+	return
+}

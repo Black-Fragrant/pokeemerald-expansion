@@ -363,29 +363,29 @@
       "x": 7,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE5",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_WEST_GATE",
+      "dest_warp_id": "5"
     },
     {
       "x": 7,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE5",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_NIMBASA_CITY_WEST_GATE",
+      "dest_warp_id": "6"
     },
     {
       "x": 72,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE16",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_NIMBASA_CITY_EAST_GATE",
+      "dest_warp_id": "1"
     },
     {
       "x": 72,
       "y": 17,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE16",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_NIMBASA_CITY_EAST_GATE",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [
