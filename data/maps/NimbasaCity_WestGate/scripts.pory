@@ -1,1 +1,15 @@
 mapscripts NimbasaCity_WestGate_MapScripts {}
+
+script NimbasaCity_WestGate_EventScript_Receptionist
+{
+    msgbox("There are performers gathering on\n"
+        "Route 5!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_WestGate_EventScript_Cowboy
+{
+    msgbox("I wonder who writes the news on the\n"
+        "bulletin board...", MSGBOX_NPC, TRUE)
+    end
+}

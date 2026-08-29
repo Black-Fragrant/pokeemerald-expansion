@@ -20,6 +20,7 @@
     "gMapGroup_BattleSubway",
     "gMapGroup_AnvilleTown",
     "gMapGroup_IndoorRoute5",
+    "gMapGroup_IndoorRoute16",
     "gMapGroup_LostlornForest",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
@@ -321,6 +322,7 @@
   "gMapGroup_IndoorRoute5": [
     "Route5_Trailer"
   ],
+  "gMapGroup_IndoorRoute16": [],
   "gMapGroup_LostlornForest": [
     "LostlornForest",
     "LostlornForest_Trailer"

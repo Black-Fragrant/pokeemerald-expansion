@@ -1,1 +1,7 @@
 mapscripts LostlornForest_Trailer_MapScripts {}
+
+script LostlornForest_Trailer_EventScript_Zoroark
+{
+    msgbox("...", MSGBOX_NPC, TRUE)
+    end()
+}

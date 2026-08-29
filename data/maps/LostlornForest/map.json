@@ -19,28 +19,29 @@
       "x": 15,
       "y": 36,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_BIG_MUSHROOM",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_LOSTLORN_FOREST_ITEM_BIG_MUSHROOM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
       "x": 59,
       "y": 36,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_BIG_MUSHROOM",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_LOSTLORN_FOREST_ITEM_BIG_MUSHROOM"
     },
     {
+      "local_id": "LOCALID_LOSTLORNFOREST_BACKPACKER",
       "graphics_id": "OBJ_EVENT_GFX_BACKPACKER_MALE",
       "x": 17,
       "y": 15,
@@ -50,8 +51,34 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "LostlornForest_EventScript_Backpacker",
+      "flag": "FLAG_LOSTLORN_FOREST_BACKPACKER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 30,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_LOSTLORN_FOREST_ITEM_RARE_CANDY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 74,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_LOSTLORN_FOREST_ITEM_RARE_CANDY"
     }
   ],
   "warp_events": [
@@ -92,5 +119,22 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 26,
+      "y": 26,
+      "elevation": 0,
+      "item": "ITEM_PROTEIN",
+      "flag": "FLAG_HIDDEN_ITEM_LOSTLORN_FOREST_PROTEIN"
+    },
+    {
+      "type": "hidden_item",
+      "x": 70,
+      "y": 26,
+      "elevation": 0,
+      "item": "ITEM_PROTEIN",
+      "flag": "FLAG_HIDDEN_ITEM_LOSTLORN_FOREST_PROTEIN"
+    }
+  ]
 }

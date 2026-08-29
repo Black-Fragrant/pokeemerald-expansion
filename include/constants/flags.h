@@ -572,7 +572,7 @@
 #define FLAG_HIDDEN_ITEM_DESERT_RESORT_STARDUST              (FLAG_HIDDEN_ITEMS_START + 0x13)
 #define FLAG_HIDDEN_ITEM_DESERT_RESORT_RARE_CANDY            (FLAG_HIDDEN_ITEMS_START + 0x14)
 #define FLAG_HIDDEN_ITEM_RELIC_CASTLE_B1F_ELIXIR             (FLAG_HIDDEN_ITEMS_START + 0x15)
-#define FLAG_UNUSED_0x20A                                    (FLAG_HIDDEN_ITEMS_START + 0x16)
+#define FLAG_HIDDEN_ITEM_LOSTLORN_FOREST_PROTEIN             (FLAG_HIDDEN_ITEMS_START + 0x16)
 #define FLAG_UNUSED_0x20B                                    (FLAG_HIDDEN_ITEMS_START + 0x17)
 #define FLAG_UNUSED_0x20C                                    (FLAG_HIDDEN_ITEMS_START + 0x18)
 #define FLAG_UNUSED_0x20D                                    (FLAG_HIDDEN_ITEMS_START + 0x19)
@@ -945,18 +945,18 @@
 #define FLAG_BATTLE_SUBWAY_DEFEATED_SINGLE                          0x381
 #define FLAG_BATTLE_SUBWAY_DEFEATED_DOUBLE                          0x382
 #define FLAG_BATTLE_SUBWAY_DEFEATED_MULTI                           0x383
-#define FLAG_UNUSED_0x384                                           0x384
-#define FLAG_UNUSED_0x385                                           0x385
-#define FLAG_UNUSED_0x386                                           0x386
-#define FLAG_UNUSED_0x387                                           0x387
-#define FLAG_UNUSED_0x388                                           0x388
-#define FLAG_UNUSED_0x389                                           0x389
-#define FLAG_UNUSED_0x38A                                           0x38A
-#define FLAG_UNUSED_0x38B                                           0x38B
-#define FLAG_UNUSED_0x38C                                           0x38C
-#define FLAG_UNUSED_0x38D                                           0x38D
-#define FLAG_UNUSED_0x38E                                           0x38E
-#define FLAG_UNUSED_0x38F                                           0x38F
+#define FLAG_ROUTE5_ITEM_METRONOME                                  0x384
+#define FLAG_ROUTE5_ITEM_GREAT_BALL                                 0x385
+#define FLAG_ROUTE5_ITEM_ZINC                                       0x386
+#define FLAG_ROUTE5_ITEM_REVIVE                                     0x387
+#define FLAG_ROUTE5_ITEM_HYPER_POTION                               0x388
+#define FLAG_ROUTE16_ITEM_MACHO_BRACE                               0x389
+#define FLAG_ROUTE16_ITEM_RARE_CANDY                                0x38A
+#define FLAG_ROUTE16_ITEM_TM_PAYBACK                                0x38B
+#define FLAG_ROUTE16_ITEM_CHARCOAL                                  0x38C
+#define FLAG_LOSTLORN_FOREST_ITEM_BIG_MUSHROOM                      0x38D
+#define FLAG_LOSTLORN_FOREST_ITEM_RARE_CANDY                        0x38E
+#define FLAG_LOSTLORN_FOREST_BACKPACKER                             0x38F
 #define FLAG_UNUSED_0x390                                           0x390
 #define FLAG_UNUSED_0x391                                           0x391
 #define FLAG_UNUSED_0x392                                           0x392

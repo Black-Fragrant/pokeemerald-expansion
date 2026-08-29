@@ -1,1 +1,48 @@
 mapscripts NimbasaCity_EastGate_MapScripts {}
+
+script NimbasaCity_EastGate_Receptionist
+{
+	msgbox("This way leads to Route 16\n"
+        "and Marvelous Bridge!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCity_EastGate_AceTrainer
+{
+	msgbox("A camper has been parked in\n"
+        "Lostlorn Forest on Route 16.\p"
+        "I wonder how long it's been there.", MSGBOX_NPC, TRUE)
+	end
+}
+
+script NimbasaCity_EastGate_BaseballPlayer
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_ROUTE16_ITEM_MACHO_BRACE, NimbasaCity_EastGate_ObtainedMachoBrace)
+	msgbox("Let's train Pokémon vigorously!\p"
+        "You, who like training, and you, who\n"
+        "don't like training!\p"
+        "Let's train our Pokémon by giving\n"
+        "them these!", MSGBOX_DEFAULT, TRUE, LOCALID_NCEG_BASEBALL_PLAYER)
+	destroy_speech_bubble()
+	closemessage
+	giveitem(ITEM_MACHO_BRACE, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_ROUTE16_ITEM_MACHO_BRACE)
+    goto(NimbasaCity_EastGate_ObtainedMachoBrace)
+	end
+}
+
+script NimbasaCity_EastGate_ObtainedMachoBrace
+{
+    msgbox("A Pokémon's Speed decreases when it\n"
+            "holds a Macho Brace, but it\l"
+            "grows stronger!\p"
+            "It's a tool that is a bit difficult to use,\n"
+            "but that's the way it goes!", MSGBOX_DEFAULT, TRUE, LOCALID_NCEG_BASEBALL_PLAYER)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}

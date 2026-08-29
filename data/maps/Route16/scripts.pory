@@ -1,1 +1,106 @@
 mapscripts Route16_MapScripts {}
+
+script Route16_EventScript_RouteSign
+{
+	msgbox("Route 16", MSGBOX_SIGN)
+	end()
+}
+
+script Route16_EventScript_BridgeSign
+{
+	msgbox("Marvelous Bridge\n"
+        "Truly marvelous! And also a bridge!", MSGBOX_SIGN)
+	end()
+}
+
+script Route16_EventScript_Workers
+{
+	msgbox("They said Marvelous Bridge\n"
+        "is being checked!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route16_EventScript_Battle_Police
+{
+	trainerbattle_single(TRAINER_POLICEMAN_ROUTE_16,
+	text("I am patrolling.\n"
+        "I will check your strength, too!"),
+	text("You were so strong\n"
+        "that I couldn't help falling back!"))
+	msgbox("Nothing scares me\n"
+        "when I patrol with my Pokémon!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route16_EventScript_Battle_CyclistF
+{
+	trainerbattle_single(TRAINER_CYCLIST_F_ROUTE_16,
+	text("I will have a Pokémon battle\n"
+        "at this speed!"),
+	text("I'm upset because I lost,\n"
+        "so I will ring the bell. Ting-a-ling."))//there should be a music note
+	msgbox("If you ride a Bicycle,\n"
+        "you zip along!\p"
+        "If you are with Pokémon,\n"
+        "you can do many things.\p"
+        "It's fun to do things\n"
+        "you can't usually do!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route16_EventScript_Battle_BackpackerM1
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_16_1,
+	text("Amazing, to find a quiet spot like this\n"
+        "right next to the big city!\p"
+        "Wow! I got a little excited,\n"
+        "so I want to have a battle!"),
+	text("Well, I have calmed down."))
+	msgbox("Do Pokémon also\n"
+        "feel calm in nature?\p"
+        "Or do they also enjoy\n"
+        "the glitz of cities?", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route16_EventScript_Battle_BackpackerM2
+{
+	trainerbattle_single(TRAINER_BACKPACKER_M_ROUTE_16_2,
+	text("I'm looking for a place...\n"
+        "that is not in any guidebook."),
+	text("Your strength!\n"
+        "I want to put it in a guidebook!"))
+	msgbox("A journey to find something new!\n"
+        "That is my goal.\p"
+        "For example, that big rock!\n"
+        "You can push it with the move Strength!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route16_EventScript_Battle_CyclistM
+{
+	trainerbattle_single(TRAINER_CYCLIST_M_ROUTE_16,
+	text("I ride a Bicycle,\n"
+        "I feel fresh winds,\l"
+        "and I win Pokémon battles!"),
+	text("A pleasant wind is carrying a defeat.\n"
+        "...Now, it is stopping here, though."))
+	msgbox("Most people don't know this,\n"
+        "but coming to Nimbasa\n"
+        "and riding a Bicycle is very popular.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script Route16_EventScript_Battle_BackpackerF
+{
+	trainerbattle_single(TRAINER_BACKPACKER_F_ROUTE_16,
+	text("Because all roads are connected, I can\n"
+        "go anywhere and challenge anyone!"),
+	text("I felt the bond between\n"
+        "you and your Pokémon!"))
+	msgbox("I keep traveling\n"
+        "to forget my sadness...\p"
+        "But the sad memory returns\n"
+        "every time a season passes.", MSGBOX_NPC, TRUE)
+	end()
+}
