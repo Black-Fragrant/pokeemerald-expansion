@@ -7,6 +7,7 @@ script Route3_North_On_Transition
 {
     call_if_eq (VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1,  Route3_North_EventScript_PositionBiancaAndGirl)
     call_if_eq (VAR_ROUTE3_NORTH_CHEREN_BATTLE, 3,  Route3_North_EventScript_PositionBiancaAndGirl_Continue)
+	call_if_set(FLAG_PENDING_DAYCARE_EGG, Route3_North_EventScript_MoveDayCareMan)
 	end()
 }
 
@@ -25,6 +26,13 @@ script Route3_North_EventScript_PositionBiancaAndGirl_Continue
 	setobjectxyperm(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, 47, 24)
 	setobjectmovementtype(LOCALID_ROUTE3N_BIANCA, MOVEMENT_TYPE_FACE_RIGHT)
 	setobjectmovementtype(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, MOVEMENT_TYPE_FACE_LEFT)
+	return
+}
+
+script Route3_North_EventScript_MoveDayCareMan
+{
+	setobjectxyperm(LOCALID_ROUTE3N_DAYCARE_MAN, 78, 15) //vanilla BW doesnt move so i changed the coordinate to not moving
+	setvar(VAR_TEMP_0, 1)
 	return
 }
 
@@ -122,8 +130,8 @@ script Route3_North_EventScript_Battle_Twins
     lock
     faceplayer
     goto_if_defeated(TRAINER_TWINS_ROUTE_3, Route3_North_EventScript_TwinsDefeated)
-	getpartysize
-	goto_if_eq (VAR_RESULT, 1, Route3_North_EventScript_Battle_Twins_NotEnoughPokemon)
+	specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
+	goto_if_lt (VAR_RESULT, 2, Route3_North_EventScript_Battle_Twins_NotEnoughPokemon)
 	playse(SE_PIN)
 	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(emote_exclamation_mark))
 	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
@@ -187,8 +195,8 @@ script Route3_North_EventScript_Battle_Twins_NotEnoughPokemon
 script Route3_North_EventScript_Trigger_NotEnoughPokemon
 {
     lock
-	getpartysize
-	goto_if_eq (VAR_RESULT, 1, Route3_North_EventScript_Trigger_OnePokemon)
+	specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
+	goto_if_lt (VAR_RESULT, 2, Route3_North_EventScript_Trigger_OnePokemon)
 	playse(SE_PIN)
 	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(emote_exclamation_mark))
 	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
@@ -732,4 +740,3 @@ script Route3_North_EventScript_Trigger_ThankingYou_Pos5
 	waitmovement(0)
 	return
 }
-

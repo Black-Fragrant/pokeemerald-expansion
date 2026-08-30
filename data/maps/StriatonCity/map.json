@@ -341,7 +341,7 @@
       "x": 39,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "StriatonCity_EventScript_SignPost"
     },
     {
@@ -349,7 +349,7 @@
       "x": 56,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "StriatonCity_EventScript_StriatonCityGymSign"
     },
     {
@@ -357,7 +357,7 @@
       "x": 60,
       "y": 14,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "StriatonCity_EventScript_StriatonCityGymSign"
     },
     {
@@ -373,7 +373,7 @@
       "x": 71,
       "y": 7,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "StriatonCity_EventScript_DreamyardSign"
     },
     {
