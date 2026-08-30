@@ -38,7 +38,7 @@ script Route16_EventScript_Battle_CyclistF
 	text("I will have a Pokémon battle\n"
         "at this speed!"),
 	text("I'm upset because I lost,\n"
-        "so I will ring the bell. Ting-a-ling."))//there should be a music note
+        "so I will ring the bell. Ting-a-ling. {EMOJI_NOTE}"))
 	msgbox("If you ride a Bicycle,\n"
         "you zip along!\p"
         "If you are with Pokémon,\n"
