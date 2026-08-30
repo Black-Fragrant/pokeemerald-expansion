@@ -33,7 +33,7 @@
       "x": 15,
       "y": 42,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Route1_West_EventScript_SignPost"
     }
   ]

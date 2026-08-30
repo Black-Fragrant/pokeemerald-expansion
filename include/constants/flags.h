@@ -957,7 +957,7 @@
 #define FLAG_LOSTLORN_FOREST_ITEM_BIG_MUSHROOM                      0x38D
 #define FLAG_LOSTLORN_FOREST_ITEM_RARE_CANDY                        0x38E
 #define FLAG_LOSTLORN_FOREST_BACKPACKER                             0x38F
-#define FLAG_UNUSED_0x390                                           0x390
+#define FLAG_DAYCARE_MAN                                            0x390
 #define FLAG_UNUSED_0x391                                           0x391
 #define FLAG_UNUSED_0x392                                           0x392
 #define FLAG_UNUSED_0x393                                           0x393

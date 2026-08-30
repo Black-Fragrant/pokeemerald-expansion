@@ -647,6 +647,7 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
     waitmovement(0)
     playse(SE_EXIT)
     removeobject(LOCALID_NIMBASACITY_DAYCAREMAN)
+    clearflag(FLAG_DAYCARE_MAN)
     waitse
     delay(20)
     msgbox("Bianca: Hey, {PLAYER}! Yoo-hoo!", MSGBOX_DEFAULT, FALSE)

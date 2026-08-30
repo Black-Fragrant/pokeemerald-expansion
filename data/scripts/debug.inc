@@ -195,12 +195,10 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	release
-	end
-
-Debug_EventScript_Script_1_movement::
-	emote_ellipsis
-	step_end
+	warp MAP_ROUTE3_NORTH, 79, 15
+	waitstate
+	release 
+    end
 
 Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1}$"
@@ -219,17 +217,7 @@ Debug_EventScript_Script_2::
     end
 
 Debug_EventScript_Script_3::
-	lock
-	buffersubwaywinstreak FRONTIER_MODE_SINGLES
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_TRANSPARENT
-	dynmultichoice 20, 4, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, Debug_EventScript_Script_1_text, Debug_EventScript_Script_2_text, Debug_EventScript_Script_1_text
-	closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-	dynmultichoice 20, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, Debug_EventScript_Script_2_text, Debug_EventScript_Script_1_text, Debug_EventScript_Script_1_text, Debug_EventScript_Script_1_text
-	closemessage
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_SHOUT
-	dynmultichoice 1, 4, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, Debug_EventScript_Script_1_text, Debug_EventScript_Script_2_text
-	closemessage
+	setflag FLAG_DAYCARE_MAN
 	release
 	end
 
