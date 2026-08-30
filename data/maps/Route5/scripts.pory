@@ -95,7 +95,7 @@ script Route5_EventScript_Battle_Musician_Received
 script Route5_EventScript_Battle_Dancer
 {
 	trainerbattle_single(TRAINER_DANCER_ROUTE_5,
-	text("Turn around, and it's my turn.\n" //there should be a music note
+	text("Turn around, and it's my turn. {EMOJI_NOTE}\n"
         "Turn around, and it's your turn."),
 	text("Turn around, turn around, turn around..."))
 	msgbox("It's difficult to have a battle while\n"
