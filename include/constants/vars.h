@@ -181,7 +181,7 @@
 #define VAR_NIMBASA_N_BATTLE_STATE                       0x409F
 #define VAR_BATTLE_SUBWAY_BOARDING                       0x40A0
 #define VAR_ROUTE_5_STATE                                0x40A1
-#define VAR_UNUSED_40A2                                  0x40A2 // Unused var
+#define VAR_DAY_OF_MONTH                                 0x40A2
 #define VAR_UNUSED_40A3                                  0x40A3
 #define VAR_UNUSED_40A4                                  0x40A4
 #define VAR_UNUSED_40A5                                  0x40A5

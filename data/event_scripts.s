@@ -1709,6 +1709,7 @@ EventScript_SetSail::
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
 	.include "data/scripts/battle_subway.inc"
+	.include "data/scripts/anville_town.inc"
 
 	.include "data/maps/NuvemaTown/scripts.inc"
 

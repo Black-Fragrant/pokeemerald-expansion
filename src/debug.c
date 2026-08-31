@@ -1976,6 +1976,29 @@ void DebugMenu_CalculateTimeOfDay(struct ScriptContext *ctx)
     }
 }
 
+void DebugMenu_CalculateDayOfMonth(struct ScriptContext *ctx)
+{
+    u8 day = GetDay();
+
+    // Store day-of-month into your var
+    VarSet(VAR_DAY_OF_MONTH, day);
+}
+
+void CheckSpecialTrainTime(struct ScriptContext *ctx)
+{
+    enum Month month = GetMonth();
+    u8 day = GetDay();
+
+    bool32 isSpecial =
+           (month == MONTH_FEB && day == 1)
+        || (month == MONTH_JUN && day == 12)
+        || (month == MONTH_OCT && day == 1)
+        || (month == MONTH_OCT && day == 14)
+        || (month == MONTH_DEC && day == 30);
+
+    VarSet(VAR_RESULT, isSpecial ? TRUE : FALSE);
+}
+
 #define tRandomizerOption data[6]
 #define tArgCounter data[7]
 #define tArg1 data[8]
