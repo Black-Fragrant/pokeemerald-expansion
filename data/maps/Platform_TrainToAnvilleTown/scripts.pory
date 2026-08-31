@@ -1,1 +1,97 @@
-mapscripts Platform_TrainToAnvilleTown_MapScripts {}
+mapscripts Platform_TrainToAnvilleTown_MapScripts 
+{
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN: Platform_TrainToAnvilleTown_EventScript_RideBackToNimbasa
+    ]
+}
+
+script Platform_TrainToAnvilleTown_EventScript_Receptionist
+{
+    msgbox("This is the platform for the train to\n"
+            "Anville Town.", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script Platform_TrainToAnvilleTown_EventScript_Trigger
+{
+    lock
+    call(BattleSubway_EventScript_Platform_StopPlayerAtConductor)
+    applymovement(LOCALID_ANVILTRAIN_AGENT, moves(face_player))
+    waitmovement(0)
+	msgbox("Would you like to board\n"
+        "the train to Anville Town?", MSGBOX_YESNO, TRUE, LOCALID_ANVILTRAIN_AGENT)
+    goto_if_eq(VAR_RESULT, YES, Platform_TrainToAnvilleTown_EventScript_BoardTheTrain)
+	msgbox(BattleSubway_Text_WeHopeToSeeYouAgain, MSGBOX_DEFAULT, FALSE, LOCALID_ANVILTRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+    goto(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+}
+
+script Platform_TrainToAnvilleTown_EventScript_BoardTheTrain
+{
+    msgbox("The train is leaving the station shortly.\n"
+        "All Aboard!", MSGBOX_DEFAULT, FALSE, LOCALID_ANVILTRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, Platform_TrainToAnvilleTown_EventScript_BTT_Pos1)
+	call_if_eq (VAR_TEMP_1, 10, Platform_TrainToAnvilleTown_EventScript_BTT_Pos2)
+	call_if_eq (VAR_TEMP_1, 11, Platform_TrainToAnvilleTown_EventScript_BTT_Pos3)
+    playse(SE_EXIT)
+    waitse
+    delay(20)
+    removeobject(LOCALID_ANVILTRAIN_0)
+    addobject(LOCALID_ANVILTRAIN_1)
+    applymovement(LOCALID_ANVILTRAIN_1, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_ANVILTRAIN_2, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_ANVILTRAIN_3, BattleSubway_Movement_TrainLeavingStation)
+    waitmovement(0)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN)
+	fadescreen(FADE_TO_BLACK)
+    warpsilent(MAP_ANVILLE_TOWN, 23, 44)
+	waitstate
+	end
+}
+
+script Platform_TrainToAnvilleTown_EventScript_BTT_Pos1
+{
+    applymovement(LOCALID_ANVILTRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos1)
+    waitmovement(0)
+    return
+}
+
+script Platform_TrainToAnvilleTown_EventScript_BTT_Pos2
+{
+    applymovement(LOCALID_ANVILTRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos2)
+    waitmovement(0)
+    return
+}
+
+script Platform_TrainToAnvilleTown_EventScript_BTT_Pos3
+{
+    applymovement(LOCALID_ANVILTRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos3)
+    waitmovement(0)
+    return
+}
+
+script Platform_TrainToAnvilleTown_EventScript_RideBackToNimbasa
+{
+	lock
+    call(Platform_TrainToAnvilleTown_EventScript_WalkFromTrainToConductor)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+    delay(10)
+    release
+    end
+}
+
+script Platform_TrainToAnvilleTown_EventScript_WalkFromTrainToConductor
+{
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkBackFromTrain)
+    applymovement(LOCALID_ANVILTRAIN_AGENT, BattleSubway_Movement_ConductorLookAtPlayerWalkingBack)
+    waitmovement(0)
+    return
+}

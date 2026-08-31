@@ -1,1 +1,72 @@
-mapscripts AnvilleTown_MapScripts {}
+mapscripts AnvilleTown_MapScripts 
+{
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN : AnvilleTown_EventScript_TurnPlayer
+    ]
+}
+
+script AnvilleTown_EventScript_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_WEST)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+	end()
+}
+
+script AnvilleTown_EventScript_Conductor
+{
+	lock
+    faceplayer
+    msgbox("A train to Nimbasa City is leaving\n"
+        "the station shortly.\p"
+        "Would you like to board?", MSGBOX_YESNO, TRUE, LOCALID_ANVILLETOWN_CONDUCTOR)
+    goto_if_eq(VAR_RESULT, YES, AnvilleTown_EventScript_BoardTheTrain)
+    msgbox("This is a quiet town!\n"
+            "Relax and stay for a while.", MSGBOX_DEFAULT, FALSE, LOCALID_ANVILLETOWN_CONDUCTOR)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_BoardTheTrain
+{
+    msgbox("Then, please get on the train and wait.", MSGBOX_DEFAULT, FALSE, LOCALID_ANVILLETOWN_CONDUCTOR)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 41, AnvilleTown_EventScript_BTT_Pos1)
+	call_if_eq (VAR_TEMP_1, 42, AnvilleTown_EventScript_BTT_Pos2)
+	call_if_eq (VAR_TEMP_1, 43, AnvilleTown_EventScript_BTT_Pos3)
+    applymovement(LOCALID_ANVILLETOWN_CONDUCTOR, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, moves(delay_16, set_invisible))
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN)
+	fadescreen(FADE_TO_BLACK)
+	warpsilent(MAP_PLATFORM_TRAIN_TO_ANVILLE_TOWN, 21, 9)
+	waitstate
+	end
+}
+
+script AnvilleTown_EventScript_BTT_Pos1
+{
+    applymovement(LOCALID_PLAYER, moves(walk_left, walk_down * 3, walk_right))
+    waitmovement(0)
+    return
+}
+
+script AnvilleTown_EventScript_BTT_Pos2
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_right))
+    waitmovement(0)
+    return
+}
+
+script AnvilleTown_EventScript_BTT_Pos3
+{
+    applymovement(LOCALID_PLAYER, moves(walk_down, walk_in_place_right))
+    waitmovement(0)
+    return
+}
