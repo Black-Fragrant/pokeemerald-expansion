@@ -1,9 +1,25 @@
 mapscripts AnvilleTown_MapScripts 
 {
+    MAP_SCRIPT_ON_TRANSITION : AnvilleTown_On_Transition
         MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
     [
         VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN : AnvilleTown_EventScript_TurnPlayer
     ]
+}
+
+script AnvilleTown_On_Transition
+{
+    setflag(FLAG_TEMP_11)
+    callnative(DebugMenu_CalculateTime)
+	call_if_eq(VAR_DAY_OF_WEEK, 0, AnvilleTown_EventScript_Weekend)
+	call_if_eq(VAR_DAY_OF_WEEK, 6, AnvilleTown_EventScript_Weekend)
+	end()
+}
+
+script AnvilleTown_EventScript_Weekend
+{
+    clearflag(FLAG_TEMP_11)
+    return
 }
 
 script AnvilleTown_EventScript_TurnPlayer
@@ -69,4 +85,114 @@ script AnvilleTown_EventScript_BTT_Pos3
     applymovement(LOCALID_PLAYER, moves(walk_down, walk_in_place_right))
     waitmovement(0)
     return
+}
+
+script AnvilleTown_EventScript_Sign
+{
+    msgbox("Anville Town\n"
+       "Rolling Out the Steel Rails", MSGBOX_SIGN)
+    end()
+}
+
+script AnvilleTown_EventScript_FlutePlayer
+{
+    lock
+    msgbox("A beautiful tune is spreading\n"
+            "throughout the town...", MSGBOX_DEFAULT, FALSE)
+    closemessage
+    release
+    end()
+}
+
+script AnvilleTown_EventScript_MineWorker
+{
+    lock
+    faceplayer
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+    msgbox("Oh, are you also curious about\n"
+            "that train?", MSGBOX_YESNO, TRUE, LOCALID_ANVILLETOWN_WORKER)
+    goto_if_eq(VAR_RESULT, YES, AnvilleTown_EventScript_ExplainTrains)
+    msgbox("Oh, that's a shame.", MSGBOX_DEFAULT, FALSE, LOCALID_ANVILLETOWN_WORKER)
+    goto(AnvilleTown_EventScript_FinishExplaining)
+}
+
+script AnvilleTown_EventScript_DepotAgent
+{
+    msgbox("A lot of train cars have a rest here.", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_Richboy
+{
+    msgbox("That girl on the bridge...\p"
+        "She's playing a lullaby for all the\n"
+        "sleeping trains of this town.", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_Grandpa
+{
+    msgbox("On weekends, a lot of people come here\n"
+        "to watch the trains.", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_CheerleaderMan
+{
+    msgbox("On weekends, a lot of people come here\n"
+        "to watch the trains.", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_Hiker
+{
+    msgbox("What delicious air!", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_Beauty
+{
+    msgbox("You can trade lots of items.\n"
+        "It was surprisingly fun when I tried!", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_SchoolBoy
+{
+    lock
+    faceplayer
+    msgbox("Trains are so cooooool!\p"
+        "My mom brought me, but now she's\n"
+        "taking pictures somewhere.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(VAR_LAST_TALKED, moves(walk_in_place_up))
+    waitmovement(0)
+    end()
+}
+
+script AnvilleTown_EventScript_Girl
+{
+    msgbox("Why do people love trains?\p"
+        "Maybe it's the design, the way they can\n"
+        "run so fast and still be so comfortable.\p"
+        "All the essential parts work together...\n"
+        "It's simple but so beautiful!", MSGBOX_NPC, TRUE)
+    end()
+}
+
+script AnvilleTown_EventScript_Housewife
+{
+    lock
+    faceplayer
+    msgbox("I wanted to get a picture from\n"
+        "this angle!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(VAR_LAST_TALKED, moves(walk_in_place_left))
+    waitmovement(0)
+    end()
 }
