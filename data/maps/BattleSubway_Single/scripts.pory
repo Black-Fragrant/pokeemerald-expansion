@@ -15,7 +15,7 @@ script BattleSubway_Single_EventScript_TurnPlayer
 	frontier_get(FRONTIER_DATA_BATTLE_NUM)
 	goto_if_eq(VAR_RESULT, 0, BattleSubway_Single_EventScript_TurnPlayer2) //this is the first person you battle
 	turnobject (LOCALID_PLAYER, DIR_EAST)
-	return()
+	end()
 }
 
 script BattleSubway_Single_EventScript_TurnPlayer2

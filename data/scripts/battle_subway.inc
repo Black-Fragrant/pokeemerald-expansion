@@ -130,3 +130,158 @@ BattleSubway_Text_ThankYouForPlaying::
 	.string "please visit us again.\p"
 	.string "We hope to see you again!$"
 
+BattleSubway_Text_WeHopeToSeeYouAgain::
+	.string "We hope to see you again!$"
+
+
+BattleSubway_EventScript_Platform_StopPlayerAtConductor::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	call_if_eq VAR_TEMP_1, 9, BattleSubway_EventScript_Platform_Pos1
+	call_if_eq VAR_TEMP_1, 11, BattleSubway_EventScript_Platform_Pos2
+	call_if_eq VAR_TEMP_1, 12, BattleSubway_EventScript_Platform_Pos3
+	call_if_eq VAR_TEMP_1, 13, BattleSubway_EventScript_Platform_Pos4
+	return
+	
+BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel::
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	call_if_eq VAR_TEMP_1, 9, BattleSubway_EventScript_Platform_Pos5
+	call_if_eq VAR_TEMP_1, 11, BattleSubway_EventScript_Platform_Pos5
+    release 
+    end 
+
+BattleSubway_EventScript_Platform_Pos1::
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_Platform_Pos1
+    waitmovement 0 
+    return
+
+BattleSubway_EventScript_Platform_Pos2::
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_Platform_Pos2
+    waitmovement 0 
+    return
+
+BattleSubway_EventScript_Platform_Pos3::
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_Platform_Pos3
+    waitmovement 0 
+    return
+	
+BattleSubway_EventScript_Platform_Pos4::
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_Platform_Pos4
+    waitmovement 0 
+    return
+	
+BattleSubway_EventScript_Platform_Pos5::
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_Platform_Pos5
+    waitmovement 0 
+    return
+
+BattleSubway_Movement_Platform_Pos1:
+	face_down
+	step_end
+
+BattleSubway_Movement_Platform_Pos2:
+	face_up
+	step_end
+
+BattleSubway_Movement_Platform_Pos3:
+	walk_up
+	step_end
+
+BattleSubway_Movement_Platform_Pos4:
+	walk_up
+	walk_up
+	step_end
+
+BattleSubway_Movement_Platform_Pos5:
+	walk_left
+	step_end
+
+BattleSubway_Movement_ConductorLeadToBoard:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
+
+BattleSubway_Movement_PlayerBoardingTheTrain_Pos1:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	delay_16
+	set_invisible
+	step_end
+
+BattleSubway_Movement_PlayerBoardingTheTrain_Pos2:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	delay_16
+	set_invisible
+	step_end
+
+BattleSubway_Movement_PlayerBoardingTheTrain_Pos3:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	delay_16
+	set_invisible
+	step_end
+
+BattleSubway_Movement_ConductorLeadToBoard2:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
+
+BattleSubway_Movement_TrainLeavingStation:
+	walk_slow_right
+	walk_right
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	step_end
+
+BattleSubway_Movement_PlayerWalkBackFromTrain:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_in_place_right
+	step_end
+
+BattleSubway_Movement_ConductorLookAtPlayerWalkingBack:
+	face_right
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_down
+	delay_16
+	delay_16
+	walk_in_place_left
+	step_end
+

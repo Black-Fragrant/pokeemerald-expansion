@@ -39,8 +39,8 @@ script Platform_SingleTrain_EventScript_QuitWithoutSaving
 
 script Platform_SingleTrain_EventScript_WalkFromTrainToConductor
 {
-    applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 5, walk_up, walk_in_place_right))
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_right, delay_16 * 5, walk_in_place_down, delay_16 * 2, walk_in_place_left))
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkBackFromTrain)
+    applymovement(LOCALID_SINGLETRAIN_AGENT, BattleSubway_Movement_ConductorLookAtPlayerWalkingBack)
     waitmovement(0)
     return
 }
@@ -107,44 +107,7 @@ script Platform_SingleTrain_EventScript_ResumeChallenge2
 script Platform_SingleTrain_EventScript_Trigger
 {
     lock
-	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
-	call_if_eq (VAR_TEMP_1, 9, Platform_SingleTrain_EventScript_Trigger_Pos1)
-	call_if_eq (VAR_TEMP_1, 11, Platform_SingleTrain_EventScript_Trigger_Pos2)
-	call_if_eq (VAR_TEMP_1, 12, Platform_SingleTrain_EventScript_Trigger_Pos3)
-	call_if_eq (VAR_TEMP_1, 13, Platform_SingleTrain_EventScript_Trigger_Pos4)
-    goto(Platform_SingleTrain_EventScript_Start)
-}
-
-script Platform_SingleTrain_EventScript_Trigger_Pos1
-{
-    applymovement(LOCALID_PLAYER, moves(face_down))
-    waitmovement(0)
-    return
-}
-
-script Platform_SingleTrain_EventScript_Trigger_Pos2
-{
-    applymovement(LOCALID_PLAYER, moves(face_up))
-    waitmovement(0)
-    return
-}
-
-script Platform_SingleTrain_EventScript_Trigger_Pos3
-{
-    applymovement(LOCALID_PLAYER, moves(walk_up))
-    waitmovement(0)
-    return
-}
-
-script Platform_SingleTrain_EventScript_Trigger_Pos4
-{
-    applymovement(LOCALID_PLAYER, moves(walk_up * 2))
-    waitmovement(0)
-    return
-}
-
-script Platform_SingleTrain_EventScript_Start
-{
+    call(BattleSubway_EventScript_Platform_StopPlayerAtConductor)
     applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
     waitmovement(0)
 	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
@@ -207,7 +170,7 @@ script Platform_SingleTrain_EventScript_LoadPartyCancelChallenge
 
 script Platform_SingleTrain_EventScript_Cancel
 {
-	msgbox("We hope to see you again!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	msgbox(BattleSubway_Text_WeHopeToSeeYouAgain, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
     goto(Platform_SingleTrain_EventScript_Cancel_Cont)
@@ -215,25 +178,8 @@ script Platform_SingleTrain_EventScript_Cancel
 
 script Platform_SingleTrain_EventScript_Cancel_Cont
 {
-	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
-	call_if_eq (VAR_TEMP_1, 9, Platform_SingleTrain_EventScript_Cancel_Pos1)
-	call_if_eq (VAR_TEMP_1, 11, Platform_SingleTrain_EventScript_Cancel_Pos2)
-    release 
-    end 
-}
+    goto(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
 
-script Platform_SingleTrain_EventScript_Cancel_Pos1
-{
-    applymovement(LOCALID_PLAYER, moves(walk_left))
-    waitmovement(0)
-    return
-}
-
-script Platform_SingleTrain_EventScript_Cancel_Pos2
-{
-    applymovement(LOCALID_PLAYER, moves(walk_left))
-    waitmovement(0)
-    return
 }
 
 script Platform_SingleTrain_EventScript_NotEnoughValidMons
@@ -306,9 +252,9 @@ script Platform_SingleTrain_EventScript_BoardTheTrain
     delay(20)
     removeobject(LOCALID_SINGLETRAIN_0)
     addobject(LOCALID_SINGLETRAIN_1)
-    applymovement(LOCALID_SINGLETRAIN_1, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
-    applymovement(LOCALID_SINGLETRAIN_2, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
-    applymovement(LOCALID_SINGLETRAIN_3, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
+    applymovement(LOCALID_SINGLETRAIN_1, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_SINGLETRAIN_2, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_SINGLETRAIN_3, BattleSubway_Movement_TrainLeavingStation)
     waitmovement(0)
 	fadescreen(FADE_TO_BLACK)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
@@ -329,24 +275,24 @@ script Platform_SingleTrain_EventScript_BoardTheTrain2
 
 script Platform_SingleTrain_EventScript_BTT_Pos1
 {
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(walk_right * 5, walk_in_place_up))
-    applymovement(LOCALID_PLAYER, moves(walk_down, walk_right * 4, walk_up * 2, delay_16, set_invisible))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos1)
     waitmovement(0)
     return
 }
 
 script Platform_SingleTrain_EventScript_BTT_Pos2
 {
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(walk_right * 5, walk_in_place_up))
-    applymovement(LOCALID_PLAYER, moves(walk_right * 5, walk_up * 2, delay_16, set_invisible))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos2)
     waitmovement(0)
     return
 }
 
 script Platform_SingleTrain_EventScript_BTT_Pos3
 {
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(walk_right * 5, walk_in_place_up))
-    applymovement(LOCALID_PLAYER, moves(walk_up, walk_right * 4, walk_up * 2, delay_16, set_invisible))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos3)
     waitmovement(0)
     return
 }
