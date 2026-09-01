@@ -13,6 +13,9 @@
 extern const u8 gText_Peekaboo[];
 extern const u8 gText_Thanks[];
 extern const u8 gText_HelloExclamation[];
+extern const u8 gText_LetsGo[];
+extern const u8 gText_Regret[];
+extern const u8 gText_NumberOne[];
 
 static void CB2_HandleGivenWaldaPhrase(void);
 
@@ -112,6 +115,50 @@ static u32 GetGreetPhraseInputCase(u8 *inputPtr)
     return PHRASE_CHANGED;
 }
 
+static u32 GetIntroductionPhraseInputCase(u8 *inputPtr)
+{
+    if (inputPtr[0] == EOS)
+        return PHRASE_EMPTY;
+
+    if (StringCompare(inputPtr, GetIntroductionPhrasePtr()) == 0)
+        return PHRASE_NO_CHANGE;
+
+    return PHRASE_CHANGED;
+}
+
+static u32 GetWinningPhraseInputCase(u8 *inputPtr)
+{
+    if (inputPtr[0] == EOS)
+        return PHRASE_EMPTY;
+
+    if (StringCompare(inputPtr, GetWinningPhrasePtr()) == 0)
+        return PHRASE_NO_CHANGE;
+
+    return PHRASE_CHANGED;
+}
+
+static u32 GetLosingPhraseInputCase(u8 *inputPtr)
+{
+    if (inputPtr[0] == EOS)
+        return PHRASE_EMPTY;
+
+    if (StringCompare(inputPtr, GetLosingPhrasePtr()) == 0)
+        return PHRASE_NO_CHANGE;
+
+    return PHRASE_CHANGED;
+}
+
+static u32 GetLeadingPhraseInputCase(u8 *inputPtr)
+{
+    if (inputPtr[0] == EOS)
+        return PHRASE_EMPTY;
+
+    if (StringCompare(inputPtr, GetLeadingPhrasePtr()) == 0)
+        return PHRASE_NO_CHANGE;
+
+    return PHRASE_CHANGED;
+}
+
 static u32 GetWaldaPhraseInputCase(u8 *inputPtr)
 {
     // No input given
@@ -191,6 +238,98 @@ static void CB2_HandleConfidePassword(void)
     SetMainCallback2(CB2_ReturnToField);
 }
 
+static void CB2_HandleGivenIntroductionPhrase(void)
+{
+    u8 *typed = gStringVar2;
+
+    switch (GetIntroductionPhraseInputCase(typed))
+    {
+    case PHRASE_EMPTY:
+        StringCopy(GetIntroductionPhrasePtr(), gText_LetsGo);
+        break;
+
+    case PHRASE_CHANGED:
+        StringCopyN(GetIntroductionPhrasePtr(), typed, 16);  // prevents overflow
+        break;
+
+    case PHRASE_NO_CHANGE:
+        break;
+    }
+
+    StringCopy(gStringVar1, GetIntroductionPhrasePtr());
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void CB2_HandleGivenWinningPhrase(void)
+{
+    u8 *typed = gStringVar2;
+
+    switch (GetWinningPhraseInputCase(typed))
+    {
+    case PHRASE_EMPTY:
+        StringCopy(GetWinningPhrasePtr(), gText_Thanks);
+        break;
+
+    case PHRASE_CHANGED:
+        StringCopyN(GetWinningPhrasePtr(), typed, 16);  // prevents overflow
+        break;
+
+    case PHRASE_NO_CHANGE:
+        break;
+    }
+
+    StringCopy(gStringVar1, GetWinningPhrasePtr());
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void CB2_HandleGivenLosingPhrase(void)
+{
+    u8 *typed = gStringVar2;
+
+    switch (GetLosingPhraseInputCase(typed))
+    {
+    case PHRASE_EMPTY:
+        StringCopy(GetLosingPhrasePtr(), gText_Regret);
+        break;
+
+    case PHRASE_CHANGED:
+        StringCopyN(GetLosingPhrasePtr(), typed, 16);  // prevents overflow
+        break;
+
+    case PHRASE_NO_CHANGE:
+        break;
+    }
+
+    StringCopy(gStringVar1, GetLosingPhrasePtr());
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void CB2_HandleGivenLeadingPhrase(void)
+{
+    u8 *typed = gStringVar2;
+
+    switch (GetLeadingPhraseInputCase(typed))
+    {
+    case PHRASE_EMPTY:
+        StringCopy(GetLeadingPhrasePtr(), gText_NumberOne);
+        break;
+
+    case PHRASE_CHANGED:
+        StringCopyN(GetLeadingPhrasePtr(), typed, 16);  // prevents overflow
+        break;
+
+    case PHRASE_NO_CHANGE:
+        break;
+    }
+
+    StringCopy(gStringVar1, GetLeadingPhrasePtr());
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
 u16 TryBufferGratitudeWord(void)
 {
     if (IsGratitudePhraseEmpty())
@@ -206,6 +345,42 @@ u16 TryBufferGreetWord(void)
         return FALSE;
 
     StringCopy(gStringVar1, GetGreetPhrasePtr());
+    return TRUE;
+}
+
+u16 TryBufferIntroductionWord(void)
+{
+    if (IsIntroductionPhraseEmpty())
+        return FALSE;
+
+    StringCopy(gStringVar1, GetIntroductionPhrasePtr());
+    return TRUE;
+}
+
+u16 TryBufferWinningWord(void)
+{
+    if (IsWinningPhraseEmpty())
+        return FALSE;
+
+    StringCopy(gStringVar1, GetWinningPhrasePtr());
+    return TRUE;
+}
+
+u16 TryBufferLosingWord(void)
+{
+    if (IsLosingPhraseEmpty())
+        return FALSE;
+
+    StringCopy(gStringVar1, GetLosingPhrasePtr());
+    return TRUE;
+}
+
+u16 TryBufferLeadingWord(void)
+{
+    if (IsLeadingPhraseEmpty())
+        return FALSE;
+
+    StringCopy(gStringVar1, GetLeadingPhrasePtr());
     return TRUE;
 }
 
@@ -231,6 +406,54 @@ void DoGreetPeople(void)
     StringCopy(gStringVar2, phrase);
 
     DoNamingScreen(NAMING_SCREEN_GREET, gStringVar2, 0, 0, 0, CB2_HandleGivenGreetPhrase);
+}
+
+void DoHowIntroduction(void)
+{
+    u8 *phrase = GetIntroductionPhrasePtr();
+
+    if (IsIntroductionPhraseEmpty())
+        StringCopy(phrase, gText_LetsGo);
+
+    StringCopy(gStringVar2, phrase);
+
+    DoNamingScreen(NAMING_SCREEN_INTRODUCTION, gStringVar2, 0, 0, 0, CB2_HandleGivenIntroductionPhrase);
+}
+
+void DoExpressWinning(void)
+{
+    u8 *phrase = GetWinningPhrasePtr();
+
+    if (IsWinningPhraseEmpty())
+        StringCopy(phrase, gText_Thanks);
+
+    StringCopy(gStringVar2, phrase);
+
+    DoNamingScreen(NAMING_SCREEN_WINNING, gStringVar2, 0, 0, 0, CB2_HandleGivenWinningPhrase);
+}
+
+void DoExpressLosing(void)
+{
+    u8 *phrase = GetLosingPhrasePtr();
+
+    if (IsLosingPhraseEmpty())
+        StringCopy(phrase, gText_Regret);
+
+    StringCopy(gStringVar2, phrase);
+
+    DoNamingScreen(NAMING_SCREEN_LOSING, gStringVar2, 0, 0, 0, CB2_HandleGivenLosingPhrase);
+}
+
+void DoExpressLeading(void)
+{
+    u8 *phrase = GetLeadingPhrasePtr();
+
+    if (IsLeadingPhraseEmpty())
+        StringCopy(phrase, gText_NumberOne);
+
+    StringCopy(gStringVar2, phrase);
+
+    DoNamingScreen(NAMING_SCREEN_LEADING, gStringVar2, 0, 0, 0, CB2_HandleGivenLeadingPhrase);
 }
 
 void PutPasswordForConfide(void)

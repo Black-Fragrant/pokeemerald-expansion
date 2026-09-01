@@ -76,6 +76,22 @@ u8 *GetGreetPhrasePtr(void);
 void SetGreetPhrase(const u8 *src);
 bool32 IsGreetPhraseEmpty(void);
 
+u8 *GetIntroductionPhrasePtr(void);
+void SetIntroductionPhrase(const u8 *src);
+bool32 IsIntroductionPhraseEmpty(void);
+
+u8 *GetWinningPhrasePtr(void);
+void SetWinningPhrase(const u8 *src);
+bool32 IsWinningPhraseEmpty(void);
+
+u8 *GetLosingPhrasePtr(void);
+void SetLosingPhrase(const u8 *src);
+bool32 IsLosingPhraseEmpty(void);
+
+u8 *GetLeadingPhrasePtr(void);
+void SetLeadingPhrase(const u8 *src);
+bool32 IsLeadingPhraseEmpty(void);
+
 void ChooseMonFromStorage();
 u32 CountPartyNonEggMons(void);
 void RemoveSelectedPcMon(struct Pokemon *mon);

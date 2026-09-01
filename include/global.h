@@ -1208,6 +1208,13 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     u8 gratitudePhrase[16];
     u8 greetPhrase[16];
+    // ============================
+    // Custom Battle Subway Phrases
+    // ============================
+    u8 introductionPhrase[16];
+    u8 winningPhrase[16];
+    u8 losingPhrase[16];
+    u8 leadingPhrase[16];
 #if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u32 towerChallengeId;
     struct TrainerTower trainerTower[NUM_TOWER_CHALLENGE_TYPES];
