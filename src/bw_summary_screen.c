@@ -784,6 +784,7 @@ static void (*const sTextPrinterTasks[])(u8 taskId) =
 
 enum BWCategoryIcon
 {
+    CATEGORY_ICON_NONE,
     CATEGORY_ICON_PHYSICAL,
     CATEGORY_ICON_SPECIAL,
     CATEGORY_ICON_STATUS,
@@ -829,6 +830,7 @@ static const union AnimCmd sSpriteAnim_CategoryStatus[] =
 
 static const union AnimCmd *const sSpriteAnimTable_CategoryIcons[] =
 {
+    [CATEGORY_ICON_NONE] = sSpriteAnim_CategoryPhysical,
     [CATEGORY_ICON_PHYSICAL] = sSpriteAnim_CategoryPhysical,
     [CATEGORY_ICON_SPECIAL] = sSpriteAnim_CategorySpecial,
     [CATEGORY_ICON_STATUS] = sSpriteAnim_CategoryStatus,
