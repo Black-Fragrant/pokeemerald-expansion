@@ -17,20 +17,20 @@ script NimbasaCity_EastGate_AceTrainer
 
 script NimbasaCity_EastGate_BaseballPlayer
 {
-    lock
-    faceplayer
-    goto_if_set(FLAG_ROUTE16_ITEM_MACHO_BRACE, NimbasaCity_EastGate_ObtainedMachoBrace)
-	msgbox("Let's train Pokémon vigorously!\p"
-        "You, who like training, and you, who\n"
-        "don't like training!\p"
-        "Let's train our Pokémon by giving\n"
-        "them these!", MSGBOX_DEFAULT, TRUE, LOCALID_NCEG_BASEBALL_PLAYER)
-	destroy_speech_bubble()
-	closemessage
-	giveitem(ITEM_MACHO_BRACE, 1)
-	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
-    setflag(FLAG_ROUTE16_ITEM_MACHO_BRACE)
-    goto(NimbasaCity_EastGate_ObtainedMachoBrace)
+        lock
+        faceplayer
+        goto_if_set(FLAG_ROUTE16_ITEM_MACHO_BRACE, NimbasaCity_EastGate_ObtainedMachoBrace)
+                msgbox("Let's train Pokémon vigorously!\p"
+                "You, who like training, and you, who\n"
+                "don't like training!\p"
+                "Let's train our Pokémon by giving\n"
+                "them these!", MSGBOX_DEFAULT, TRUE, LOCALID_NCEG_BASEBALL_PLAYER)
+        destroy_speech_bubble()
+        closemessage
+        giveitem(ITEM_MACHO_BRACE, 1)
+        goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+        setflag(FLAG_ROUTE16_ITEM_MACHO_BRACE)
+        goto(NimbasaCity_EastGate_ObtainedMachoBrace)
 	end
 }
 

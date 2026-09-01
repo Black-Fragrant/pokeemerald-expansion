@@ -217,7 +217,11 @@ Debug_EventScript_Script_2::
     end
 
 Debug_EventScript_Script_3::
-	setflag FLAG_DAYCARE_MAN
+    callnative IncreaseLostAndFoundReward 
+    callnative IncreaseLostAndFoundReward 
+    callnative IncreaseLostAndFoundReward 
+    callnative IncreaseLostAndFoundReward 
+    callnative IncreaseLostAndFoundReward 
 	release
 	end
 

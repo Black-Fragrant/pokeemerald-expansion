@@ -56,11 +56,12 @@ script BattleSubway_Single_EventScript_Loading
 script BattleSubway_Single_EventScript_DefeatedOpponent
 {
 	frontier_incrementstreak //increase win streak by 1
+    callnative(IncreaseLostAndFoundReward)
+	delay(10)
 	tower_setbattlewon //current challenge number 0-6
 	goto_if_eq(VAR_RESULT, FRONTIER_STAGES_PER_CHALLENGE, BattleSubway_Single_EventScript_RecordBeforeWarp) //warp to intermediate station after 7 battles
 //	frontier_getbrainstatus
 //	call_if_ne VAR_RESULT, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleTowerBattleRoom_EventScript_SecondAttendantEnter
-    delay(10)
     applymovement(LOCALID_SUBWAY_S_OPPONENT, moves(walk_up * 2, walk_in_place_down))
   	waitmovement(0)
     applymovement(LOCALID_PLAYER, moves(walk_right * 8, walk_up * 2))

@@ -1,1 +1,18 @@
 mapscripts AnvilleTown_BottomLeftHouse_MapScripts {}
+
+script AnvilleTown_BLH_EventScript_Grandma
+{
+    msgbox("On the weekends, many Star Piece\n"
+       "collectors gather here.\p"
+       "It must be easier for them to collect\n"
+       "their items because many people who are\l"
+       "trading different items come here.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script AnvilleTown_BLH_EventScript_BeardGuy
+{
+    msgbox("If you come out on the weekends to watch\n"
+       "the trains, there will be a lot of people.", MSGBOX_NPC, TRUE)
+    end
+}

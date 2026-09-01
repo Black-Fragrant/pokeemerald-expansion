@@ -1,1 +1,70 @@
 mapscripts AnvilleTown_BottomRightHouse_MapScripts {}
+
+script AnvilleTown_BRH_EventScript_DepotAgent
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_ANVILLE_TOWN_RARE_CANDY, AnvilleTown_BRH_EventScript_TryGivingItem)
+    msgbox("Oh ho! With a face like that,\n"
+        "I'll bet you're a Pokémon Trainer!\p"
+        "I work as a Depot Agent on the\n"
+        "Battle Subway!\p"
+        "Have you tried challenging the\n"
+        "Battle Subway yet?\p"
+        "It's a hot spot for those who want\n"
+        "some serious battling action!\p"
+        "But some people get too wrapped up\n"
+        "in their battles, and there's no end\l"
+        "to the lost-and-found items.\p"
+        "That's right. Nobody ever came to\n"
+        "pick this up, so I'll give it to you!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(ITEM_RARE_CANDY, 1)
+    goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_ANVILLE_TOWN_RARE_CANDY)
+    goto(AnvilleTown_BRH_EventScript_DepotAgent_JustGaveItem)
+}
+
+script AnvilleTown_BRH_EventScript_DepotAgent_JustGaveItem
+{
+    msgbox("No worries. No worries.\n"
+        "Just take it!\p"
+        "It's better for a Trainer to use it than\n"
+        "for me to hold on to it.\p"
+        "I'm sure the item is happier, too!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_BRH_EventScript_TryGivingItem
+{
+    setvar(VAR_TEMP_4, 0) //item type
+    setvar(VAR_TEMP_5, 0) //item count
+    callnative(TryGivingLostAndFoundReward)
+    goto_if_eq(VAR_RESULT, TRUE, AnvilleTown_BRH_EventScript_GiveItem)
+    msgbox("If I have another lost-and-found\n"
+        "item, come get it, OK?\p"
+        "Also, if you're interested, take on the\n"
+        "Battle Subway in Nimbasa City!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_BRH_EventScript_GiveItem
+{
+    msgbox("I have a lost-and-found item\n"
+        "that no one has claimed.\p"
+        "If you don't mind, could you take it\n"
+        "off my hands?", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    giveitem(VAR_TEMP_4, VAR_TEMP_5)
+    goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    callnative(ResetLostAndFound)
+    goto(AnvilleTown_BRH_EventScript_DepotAgent_JustGaveItem)
+}
