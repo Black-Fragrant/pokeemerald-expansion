@@ -133,6 +133,9 @@ BattleSubway_Text_ThankYouForPlaying::
 BattleSubway_Text_WeHopeToSeeYouAgain::
 	.string "We hope to see you again!$"
 
+BattleSubway_Text_TellMeYourOtherFeelings::
+	.string "Thanks! Will you tell me your other\n"
+	.string "feelings, too?$"
 
 BattleSubway_EventScript_Platform_StopPlayerAtConductor::
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1

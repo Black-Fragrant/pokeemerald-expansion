@@ -547,6 +547,14 @@ gSpecials::
 	def_special DoExpressGratitude
 	def_special TryBufferGreetWord
 	def_special DoGreetPeople
+	def_special TryBufferIntroductionWord
+    def_special DoHowIntroduction
+    def_special TryBufferWinningWord
+    def_special DoExpressWinning
+    def_special TryBufferLosingWord
+    def_special DoExpressLosing
+    def_special TryBufferLeadingWord
+    def_special DoExpressLeading
 	def_special PutPasswordForConfide
 	def_special PlayerNotAtTrainerHillEntrance
 	def_special GetBattlePyramidHint

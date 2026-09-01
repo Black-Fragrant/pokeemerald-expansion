@@ -33,3 +33,104 @@ script GearStation_Lobby_EventScript_Blackbelt
         "Double, or Multi Trains!", MSGBOX_NPC, TRUE)
     end
 }
+
+script GearStation_Lobby_EventScript_Boy
+{
+    lock
+    faceplayer
+    msgbox("Hi, hi!\p"
+        "Please tell me how you introduce\n"
+        "yourself before a battle and how you\l"
+        "feel when you win or lose.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    goto(GearStation_Lobby_EventScript_TellFeelings)
+}
+
+script GearStation_Lobby_EventScript_TellFeelings
+{
+	dynmultichoice(20, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE,
+        "Introduction",
+        "When You Win",
+        "When You Lose",
+        "When You Become No. 1",
+        "Not Telling")
+    goto_if_eq(VAR_RESULT, 0, GearStation_Lobby_EventScript_Input_Introduction)
+    goto_if_eq(VAR_RESULT, 1, GearStation_Lobby_EventScript_Input_Winning)
+    goto_if_eq(VAR_RESULT, 2, GearStation_Lobby_EventScript_Input_Losing)
+    goto_if_eq(VAR_RESULT, 3, GearStation_Lobby_EventScript_Input_Leading)
+    msgbox("Oh, you prefer not to say?\n"
+        "Oh, well...", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script GearStation_Lobby_EventScript_Input_Introduction
+{
+    msgbox("Please tell me how you introduce\n"
+        "yourself before a battle.", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    special(DoHowIntroduction)
+    lock
+    delay(10)
+    msgbox(BattleSubway_Text_TellMeYourOtherFeelings, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto_if_eq(VAR_RESULT, TRUE, GearStation_Lobby_EventScript_TellFeelings)
+	specialvar(VAR_RESULT, TryBufferIntroductionWord)
+    goto(GearStation_Lobby_EventScript_Output)
+}
+
+script GearStation_Lobby_EventScript_Input_Winning
+{
+    msgbox("Please tell me how you feel when you\n"
+        "win a battle!", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    special(DoExpressWinning)
+    lock
+    delay(10)
+    msgbox(BattleSubway_Text_TellMeYourOtherFeelings, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto_if_eq(VAR_RESULT, TRUE, GearStation_Lobby_EventScript_TellFeelings)
+	specialvar(VAR_RESULT, TryBufferWinningWord)
+    goto(GearStation_Lobby_EventScript_Output)
+}
+
+script GearStation_Lobby_EventScript_Input_Losing
+{
+    msgbox("Please tell me how you feel when you\n"
+        "lose a battle.", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    special(DoExpressLosing)
+    lock
+    delay(10)
+    msgbox(BattleSubway_Text_TellMeYourOtherFeelings, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto_if_eq(VAR_RESULT, TRUE, GearStation_Lobby_EventScript_TellFeelings)
+	specialvar(VAR_RESULT, TryBufferLosingWord)
+    goto(GearStation_Lobby_EventScript_Output)
+}
+
+script GearStation_Lobby_EventScript_Input_Leading
+{
+    msgbox("Please tell me how you feel when you\n"
+        "become No. 1!", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    special(DoExpressLeading)
+    lock
+    delay(10)
+    msgbox(BattleSubway_Text_TellMeYourOtherFeelings, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto_if_eq(VAR_RESULT, TRUE, GearStation_Lobby_EventScript_TellFeelings)
+	specialvar(VAR_RESULT, TryBufferLeadingWord)
+    goto(GearStation_Lobby_EventScript_Output)
+}
+
+script GearStation_Lobby_EventScript_Output
+{
+    msgbox("Got it! Thanks!\n"
+       "{STR_VAR_1}, huh...", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}

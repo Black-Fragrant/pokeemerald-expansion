@@ -9827,6 +9827,70 @@ void SetGreetPhrase(const u8 *src)
     StringCopy(gSaveBlock1Ptr->greetPhrase, src);
 }
 
+u8 *GetIntroductionPhrasePtr(void)
+{
+    return gSaveBlock1Ptr->introductionPhrase;
+}
+
+void SetIntroductionPhrase(const u8 *src)
+{
+    StringCopy(gSaveBlock1Ptr->introductionPhrase, src);
+}
+
+bool32 IsIntroductionPhraseEmpty(void)
+{
+    u8 c = gSaveBlock1Ptr->introductionPhrase[0];
+    return (c == 0x00 || c == EOS);
+}
+
+u8 *GetWinningPhrasePtr(void)
+{
+    return gSaveBlock1Ptr->winningPhrase;
+}
+
+void SetWinningPhrase(const u8 *src)
+{
+    StringCopy(gSaveBlock1Ptr->winningPhrase, src);
+}
+
+bool32 IsWinningPhraseEmpty(void)
+{
+    u8 c = gSaveBlock1Ptr->winningPhrase[0];
+    return (c == 0x00 || c == EOS);
+}
+
+u8 *GetLosingPhrasePtr(void)
+{
+    return gSaveBlock1Ptr->losingPhrase;
+}
+
+void SetLosingPhrase(const u8 *src)
+{
+    StringCopy(gSaveBlock1Ptr->losingPhrase, src);
+}
+
+bool32 IsLosingPhraseEmpty(void)
+{
+    u8 c = gSaveBlock1Ptr->losingPhrase[0];
+    return (c == 0x00 || c == EOS);
+}
+
+u8 *GetLeadingPhrasePtr(void)
+{
+    return gSaveBlock1Ptr->leadingPhrase;
+}
+
+void SetLeadingPhrase(const u8 *src)
+{
+    StringCopy(gSaveBlock1Ptr->leadingPhrase, src);
+}
+
+bool32 IsLeadingPhraseEmpty(void)
+{
+    u8 c = gSaveBlock1Ptr->leadingPhrase[0];
+    return (c == 0x00 || c == EOS);
+}
+
 
 //------------------------------------------------------------------------------
 //  SECTION: TilemapUtil

@@ -485,6 +485,10 @@ static void NamingScreen_Init(void)
     if (sNamingScreen->templateNum == NAMING_SCREEN_WALDA
      || sNamingScreen->templateNum == NAMING_SCREEN_GRATITUDE
      || sNamingScreen->templateNum == NAMING_SCREEN_GREET
+     || sNamingScreen->templateNum == NAMING_SCREEN_INTRODUCTION
+     || sNamingScreen->templateNum == NAMING_SCREEN_WINNING
+     || sNamingScreen->templateNum == NAMING_SCREEN_LOSING
+     || sNamingScreen->templateNum == NAMING_SCREEN_LEADING
      || sNamingScreen->templateNum == NAMING_SCREEN_CONFIDE_PASSWORD)
     {sNamingScreen->inputCharBaseXPos += 11;}
     sNamingScreen->keyRepeatStartDelayCopy = gKeyRepeatStartDelay;
@@ -1383,6 +1387,7 @@ static void NamingScreen_CreateRivalIcon(void);
 static void NamingScreen_CreateGratitudeIcon(void);
 static void NamingScreen_CreateGreetIcon(void);
 static void NamingScreen_CreateConfideIcon(void);
+static void NamingScreen_CreateBattleSubwayIcon(void);
 
 static void (*const sIconFunctions[])(void) =
 {
@@ -1396,6 +1401,7 @@ static void (*const sIconFunctions[])(void) =
     NamingScreen_CreateGratitudeIcon,
     NamingScreen_CreateGreetIcon,
     NamingScreen_CreateConfideIcon,
+    NamingScreen_CreateBattleSubwayIcon,
 };
 
 static void CreateInputTargetIcon(void)
@@ -1469,6 +1475,15 @@ static void NamingScreen_CreateConfideIcon(void)
     u8 spriteId;
 
     spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_SCIENTIST_MALE, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
+}
+
+static void NamingScreen_CreateBattleSubwayIcon(void)
+{
+    u8 spriteId;
+
+    spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_BOY_2, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
 }
@@ -1834,7 +1849,11 @@ static void (*const sDrawTextEntryBoxFuncs[])(void) =
     [NAMING_SCREEN_RIVAL]           = DrawNormalTextEntryBox,
     [NAMING_SCREEN_GRATITUDE]       = DrawNormalTextEntryBox,
     [NAMING_SCREEN_GREET]           = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_CONFIDE_PASSWORD]  = DrawNormalTextEntryBox
+    [NAMING_SCREEN_CONFIDE_PASSWORD]  = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_INTRODUCTION] = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_WINNING]      = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_LOSING]       = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_LEADING]      = DrawNormalTextEntryBox
 };
 
 static void DrawTextEntryBox(void)
@@ -2263,6 +2282,50 @@ static const struct NamingScreenTemplate sConfidePasswordScreenTemplate =
     .title = COMPOUND_STRING("Enter password"),
 };
 
+static const struct NamingScreenTemplate sIntroductionWordsScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = WALDA_PHRASE_LENGTH,
+    .iconFunction = 10,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("How do you introduce yourself?"),
+};
+
+static const struct NamingScreenTemplate sWinningWordsScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = WALDA_PHRASE_LENGTH,
+    .iconFunction = 10,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("What do you say when you win?"),
+};
+
+static const struct NamingScreenTemplate sLosingWordsScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = WALDA_PHRASE_LENGTH,
+    .iconFunction = 10,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("What do you say when you lose?"),
+};
+
+static const struct NamingScreenTemplate sLeadingWordsScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = WALDA_PHRASE_LENGTH,
+    .iconFunction = 10,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 11,
+    .title = COMPOUND_STRING("What do you say when you're ahead?"),
+};
+
 static const struct NamingScreenTemplate sCodeScreenTemplate =
 {
     .copyExistingString = FALSE,
@@ -2296,6 +2359,10 @@ static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
     [NAMING_SCREEN_GRATITUDE]       = &sGratitudeWordsScreenTemplate,
     [NAMING_SCREEN_GREET]           = &sGreetWordsScreenTemplate,
     [NAMING_SCREEN_CONFIDE_PASSWORD]  = &sConfidePasswordScreenTemplate,
+    [NAMING_SCREEN_INTRODUCTION] = &sIntroductionWordsScreenTemplate,
+    [NAMING_SCREEN_WINNING]      = &sWinningWordsScreenTemplate,
+    [NAMING_SCREEN_LOSING]       = &sLosingWordsScreenTemplate,
+    [NAMING_SCREEN_LEADING]      = &sLeadingWordsScreenTemplate,
 };
 
 static const struct OamData sOam_8x8 =
