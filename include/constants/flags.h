@@ -573,7 +573,7 @@
 #define FLAG_HIDDEN_ITEM_DESERT_RESORT_RARE_CANDY            (FLAG_HIDDEN_ITEMS_START + 0x14)
 #define FLAG_HIDDEN_ITEM_RELIC_CASTLE_B1F_ELIXIR             (FLAG_HIDDEN_ITEMS_START + 0x15)
 #define FLAG_HIDDEN_ITEM_LOSTLORN_FOREST_PROTEIN             (FLAG_HIDDEN_ITEMS_START + 0x16)
-#define FLAG_UNUSED_0x20B                                    (FLAG_HIDDEN_ITEMS_START + 0x17)
+#define FLAG_HIDDEN_ITEM_ANVILLE_TOWN_ULTRA_BALL             (FLAG_HIDDEN_ITEMS_START + 0x17)
 #define FLAG_UNUSED_0x20C                                    (FLAG_HIDDEN_ITEMS_START + 0x18)
 #define FLAG_UNUSED_0x20D                                    (FLAG_HIDDEN_ITEMS_START + 0x19)
 #define FLAG_UNUSED_0x20E                                    (FLAG_HIDDEN_ITEMS_START + 0x1A)
@@ -958,7 +958,7 @@
 #define FLAG_LOSTLORN_FOREST_ITEM_RARE_CANDY                        0x38E
 #define FLAG_LOSTLORN_FOREST_BACKPACKER                             0x38F
 #define FLAG_DAYCARE_MAN                                            0x390
-#define FLAG_UNUSED_0x391                                           0x391
+#define FLAG_ANVILLE_TOWN_RARE_CANDY                                0x391
 #define FLAG_UNUSED_0x392                                           0x392
 #define FLAG_UNUSED_0x393                                           0x393
 #define FLAG_UNUSED_0x394                                           0x394

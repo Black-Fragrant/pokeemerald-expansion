@@ -196,3 +196,197 @@ script AnvilleTown_EventScript_Housewife
     waitmovement(0)
     end()
 }
+
+script AnvilleTown_EventScript_Backpacker
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_TEMP_12, AnvilleTown_EventScript_Backpacker_Ask)
+    msgbox("Ah... I'm in trouble.\p"
+        "I was so engrossed in my trip that I ran\n"
+        "out of Escape Ropes.\p"
+        "Let me see...", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_TEMP_12)
+    msgbox(AnvilleTown_Text_BackpackerQuestion, MSGBOX_YESNO, FALSE, VAR_LAST_TALKED)
+    goto(AnvilleTown_EventScript_Backpacker_Cont)
+}
+
+script AnvilleTown_EventScript_Backpacker_Ask
+{
+    msgbox(AnvilleTown_Text_BackpackerQuestion, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto(AnvilleTown_EventScript_Backpacker_Cont)
+}
+
+script AnvilleTown_EventScript_Backpacker_Cont
+{
+    goto_if_eq(VAR_RESULT, YES, AnvilleTown_EventScript_Backpacker_Trade)
+    msgbox("Oh, that's a shame.", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_Backpacker_NotEnough
+{
+    msgbox("...Uh-oh. You don't have\n"
+        "enough Escape Ropes.", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_Backpacker_Trade
+{
+	checkitem(ITEM_ESCAPE_ROPE, 2)
+	goto_if_eq(VAR_RESULT, FALSE, AnvilleTown_EventScript_Backpacker_NotEnough)
+    msgbox("Great, let's trade!", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	playfanfare(MUS_OBTAIN_ITEM)
+    msgbox("Gave the Escape Ropes in exchange for\n"
+           "the Revive!", MSGBOX_TRANSPARENT)
+    waitmessage
+	waitfanfare
+    closemessage
+	removeitem(ITEM_ESCAPE_ROPE, 2)
+    additem(ITEM_REVIVE, 1)
+    msgbox("Hehe! It was a delightful trade,\n"
+        "wasn't it?", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_Clerk
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_TEMP_13, AnvilleTown_EventScript_Clerk_Ask)
+    msgbox("I am a Star Piece collector!\p"
+       "You, over there! Let's have a\n"
+       "businesslike exchange.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_TEMP_13)
+    msgbox(AnvilleTown_Text_ClerkQuestion, MSGBOX_YESNO, FALSE, VAR_LAST_TALKED)
+    goto(AnvilleTown_EventScript_Clerk_Cont)
+}
+
+script AnvilleTown_EventScript_Clerk_Ask
+{
+    msgbox(AnvilleTown_Text_ClerkQuestion, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto(AnvilleTown_EventScript_Clerk_Cont)
+}
+
+script AnvilleTown_EventScript_Clerk_Cont
+{
+    goto_if_eq(VAR_RESULT, YES, AnvilleTown_EventScript_Clerk_Trade)
+    msgbox("Why? Do you think this is a bad deal?", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_Clerk_NotEnough
+{
+    msgbox("Hah! You don't have\n"
+            "any Star Pieces.", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_Clerk_Trade
+{
+	checkitem(ITEM_STAR_PIECE, 1)
+	goto_if_eq(VAR_RESULT, FALSE, AnvilleTown_EventScript_Clerk_NotEnough)
+    msgbox("Excellent. Let's do business!", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	playfanfare(MUS_OBTAIN_ITEM)
+    msgbox("Gave the Star Piece in exchange for\n"
+           "the PP Up!", MSGBOX_TRANSPARENT)
+    waitmessage
+	waitfanfare
+    closemessage
+	removeitem(ITEM_STAR_PIECE, 1)
+    additem(ITEM_PP_UP, 1)
+    msgbox("Hah! It was a mutually beneficial trade!\n"
+        "This is a win-win relationship, right?", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_AceTrainer
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_TEMP_14, AnvilleTown_EventScript_AceTrainer_Ask)
+    msgbox("With that face, I bet you have\n"
+       "something I want.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    setflag(FLAG_TEMP_14)
+    msgbox(AnvilleTown_Text_AceTrainerQuestion, MSGBOX_YESNO, FALSE, VAR_LAST_TALKED)
+    goto(AnvilleTown_EventScript_AceTrainer_Cont)
+}
+
+script AnvilleTown_EventScript_AceTrainer_Ask
+{
+    msgbox(AnvilleTown_Text_AceTrainerQuestion, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    goto(AnvilleTown_EventScript_AceTrainer_Cont)
+}
+
+script AnvilleTown_EventScript_AceTrainer_Cont
+{
+    goto_if_eq(VAR_RESULT, YES, AnvilleTown_EventScript_AceTrainer_Trade)
+    msgbox("Oh, it seems I was mistaken...", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_AceTrainer_NotEnough
+{
+    msgbox("Ooh-la-la!\n"
+            "You don't have enough Poké Balls.", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script AnvilleTown_EventScript_AceTrainer_Trade
+{
+	checkitem(ITEM_POKE_BALL, 20)
+	goto_if_eq(VAR_RESULT, FALSE, AnvilleTown_EventScript_AceTrainer_NotEnough)
+    msgbox("Yay!\n"
+            "Then, let's trade!", MSGBOX_DEFAULT, FALSE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	playfanfare(MUS_OBTAIN_ITEM)
+    msgbox("Gave the Poké Balls in exchange for\n"
+           "the Full Restore!", MSGBOX_TRANSPARENT)
+    waitmessage
+	waitfanfare
+    closemessage
+	removeitem(ITEM_POKE_BALL, 20)
+    additem(ITEM_FULL_RESTORE, 1)
+    msgbox("Ooh-la-la! This luster!\n"
+        "I really like Poké Balls.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+

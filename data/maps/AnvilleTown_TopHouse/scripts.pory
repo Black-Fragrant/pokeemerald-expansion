@@ -1,1 +1,17 @@
 mapscripts AnvilleTown_TopHouse_MapScripts {}
+
+script AnvilleTown_TopHouse_EventScript_Teacher
+{
+    msgbox("Anville Town is famous for its turntable.\n"
+        "You saw it from the bridge, right?", MSGBOX_NPC, TRUE)
+    end
+}
+
+script AnvilleTown_TopHouse_EventScript_Lass
+{
+    msgbox("Lots of people ride on trains, right?\p"
+       "So the people who drive the trains\n"
+       "and the people who maintain them\l"
+       "have a big responsibility!", MSGBOX_NPC, TRUE)
+    end
+}

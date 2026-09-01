@@ -328,3 +328,14 @@ AnvilleTown_Text_OldTrain_2::
     .string "still used in a faraway region.\p"
     .string "Ah... I'd love to be on that train!$"
 
+AnvilleTown_Text_BackpackerQuestion::
+    .string "Will you trade your 2 Escape Ropes\n"
+    .string "for my 1 Revive?$"
+
+AnvilleTown_Text_ClerkQuestion::
+    .string "Will you trade your 1 Star Piece for\n"
+    .string "my 1 PP Up?$"
+
+AnvilleTown_Text_AceTrainerQuestion::
+    .string "Will you trade your 20 Poké Balls for\n"
+    .string "my 1 Full Restore?$"

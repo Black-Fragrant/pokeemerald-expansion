@@ -2243,3 +2243,71 @@ void AdjustPlatformNPCAmount(void)
 
     FlagClear(sTempFlags[cycle]);
 }
+
+void IncreaseLostAndFoundReward(struct ScriptContext *ctx)
+{
+    // Reward type var
+    u16 rewardType = VarGet(VAR_ANVILLE_TOWN_REWARD_TYPE);
+
+    // If reward type is 0, assign a random item from the table
+    if (rewardType == 0)
+    {
+        static const u16 sLostAndFoundRewards[] =
+        {
+            ITEM_RARE_CANDY,
+            ITEM_FULL_RESTORE,
+            ITEM_MAX_REVIVE,
+            ITEM_ELIXIR,
+            ITEM_PROTEIN,
+            ITEM_IRON,
+            ITEM_CALCIUM,
+            ITEM_ZINC,
+            ITEM_CARBOS,
+            ITEM_HP_UP,
+        };
+
+        u16 randomIndex = Random() % ARRAY_COUNT(sLostAndFoundRewards);
+        VarSet(VAR_ANVILLE_TOWN_REWARD_TYPE, sLostAndFoundRewards[randomIndex]);
+    }
+
+    // Increment count, but cap at 70
+    u16 count = VarGet(VAR_ANVILLE_TOWN_REWARD_COUNT);
+    if (count < 70)
+        count++;
+    if (count > 70)
+        count = 70;
+
+    VarSet(VAR_ANVILLE_TOWN_REWARD_COUNT, count);
+}
+
+void TryGivingLostAndFoundReward(struct ScriptContext *ctx)
+{
+    // Read reward type and store into VAR_TEMP_4
+    u16 rewardType = VarGet(VAR_ANVILLE_TOWN_REWARD_TYPE);
+    VarSet(VAR_TEMP_4, rewardType);
+
+    // Read count and compute multiples of 7
+    u16 count = VarGet(VAR_ANVILLE_TOWN_REWARD_COUNT);
+    u16 multiples = count / 7;
+
+    // Store multiples into VAR_TEMP_5
+    VarSet(VAR_TEMP_5, multiples);
+
+    // If multiples > 0, set VAR_RESULT = TRUE, else FALSE
+    if (multiples > 0)
+        VarSet(VAR_RESULT, TRUE);
+    else
+        VarSet(VAR_RESULT, FALSE);
+}
+
+void ResetLostAndFound(struct ScriptContext *ctx)
+{
+    // Reset reward type
+    VarSet(VAR_ANVILLE_TOWN_REWARD_TYPE, 0);
+
+    // Reduce count to remainder after dividing by 7
+    u16 count = VarGet(VAR_ANVILLE_TOWN_REWARD_COUNT);
+    u16 remainder = count % 7;
+
+    VarSet(VAR_ANVILLE_TOWN_REWARD_COUNT, remainder);
+}
