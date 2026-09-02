@@ -218,11 +218,7 @@ Debug_EventScript_Script_2::
     end
 
 Debug_EventScript_Script_3::
-    callnative IncreaseLostAndFoundReward 
-    callnative IncreaseLostAndFoundReward 
-    callnative IncreaseLostAndFoundReward 
-    callnative IncreaseLostAndFoundReward 
-    callnative IncreaseLostAndFoundReward 
+	playbgm MUS_MUSICAL_HALL, FALSE
 	release
 	end
 
