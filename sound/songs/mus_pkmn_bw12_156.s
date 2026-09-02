@@ -49,7 +49,6 @@ mus_pkmn_bw12_156_0:
         .byte                   Cn1
         .byte   W08
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_0_LOOP:
         .byte   W16
         .byte           N01   , Cn1 , v095
         .byte   W08
@@ -138,6 +137,8 @@ mus_pkmn_bw12_156_0_5:
         .byte                   Cn1 , v110
         .byte   W08
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_0_LOOP:
+        .byte           VOICE , 60
 mus_pkmn_bw12_156_0_10:
         .byte           N07   , Cn1 , v110
         .byte   W16
@@ -442,7 +443,6 @@ mus_pkmn_bw12_156_1:
         .byte           N68   , Gn2
         .byte   W72
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_1_LOOP:
         .byte           N13   , CnM2 , v123
         .byte   W96
 @ 003   ----------------------------------------
@@ -505,6 +505,8 @@ mus_pkmn_bw12_156_1_LOOP:
         .byte           N03   , GnM2 , v103
         .byte   W08
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_1_LOOP:
+        .byte           VOICE , 39
         .byte           N60   , An2 , v112
         .byte   W24
         .byte           N15   , DnM2 , v084
@@ -918,7 +920,6 @@ mus_pkmn_bw12_156_2:
         .byte           N07   , Gn2
         .byte   W08
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_2_LOOP:
         .byte           VOL   , 94
         .byte           PAN   , c_v-14
         .byte           N15   , Cn3 , v123
@@ -1052,6 +1053,8 @@ mus_pkmn_bw12_156_2_LOOP:
         .byte                   0
         .byte   W01
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_2_LOOP:
+        .byte           VOICE , 86
         .byte   W96
 @ 011   ----------------------------------------
         .byte   W96
@@ -1593,7 +1596,6 @@ mus_pkmn_bw12_156_3:
         .byte           VOICE , 78
         .byte   W01
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_3_LOOP:
         .byte           VOL   , 86
         .byte           N14   , Cn3 , v127
         .byte   W16
@@ -1756,6 +1758,8 @@ mus_pkmn_bw12_156_3_LOOP:
         .byte                   Cn4
         .byte   W08
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_3_LOOP:
+        .byte           VOICE , 49
 mus_pkmn_bw12_156_3_10:
         .byte           N14   , Cn3 , v127
         .byte   W16
@@ -2401,7 +2405,6 @@ mus_pkmn_bw12_156_4:
         .byte                   Gn4 , v105
         .byte   W08
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_4_LOOP:
         .byte   W96
 @ 003   ----------------------------------------
         .byte   W96
@@ -2452,6 +2455,8 @@ mus_pkmn_bw12_156_4_LOOP:
         .byte           N23   , Cn3
         .byte   W24
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_4_LOOP:
+        .byte           VOICE , 23
         .byte           VOL   , 103
         .byte           PAN   , c_v+0
         .byte           N68   , Cn4 , v117
@@ -3255,7 +3260,6 @@ mus_pkmn_bw12_156_5:
         .byte           N07   , Bn1 , v127
         .byte   W08
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_5_LOOP:
         .byte           VOL   , 78
         .byte           PAN   , c_v+49
         .byte           N92   , Cn4 , v100
@@ -3365,6 +3369,8 @@ mus_pkmn_bw12_156_5_LOOP:
         .byte           N23   , Fs2
         .byte   W24
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_5_LOOP:
+        .byte           VOICE , 105
         .byte           PAN   , c_v+30
         .byte           VOL   , 74
         .byte           N68   , Gn2 , v108
@@ -4112,7 +4118,6 @@ mus_pkmn_bw12_156_6:
 @ 001   ----------------------------------------
         .byte   W96
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_6_LOOP:
         .byte           PAN   , c_v+38
         .byte           N15   , Cn1 , v117
         .byte   W16
@@ -4262,6 +4267,8 @@ mus_pkmn_bw12_156_6_LOOP:
         .byte                   Cn1 , v117
         .byte   W48
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_6_LOOP:
+        .byte           VOICE , 17
         .byte   W96
 @ 011   ----------------------------------------
         .byte   W96
@@ -4553,7 +4560,6 @@ mus_pkmn_bw12_156_7:
         .byte           N23   , Cs5
         .byte   W24
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_7_LOOP:
         .byte           PAN   , c_v+13
         .byte           N11   , Cn6 , v105
         .byte           N11   , Cn5
@@ -4609,12 +4615,12 @@ mus_pkmn_bw12_156_7_LOOP:
 @ 008   ----------------------------------------
         .byte   W96
 @ 009   ----------------------------------------
-        .byte   W68
-        .byte           VOICE , 53
-        .byte   W04
+        .byte   W72
         .byte           PAN   , c_v-33
         .byte   W24
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_7_LOOP:
+        .byte           VOICE , 53
         .byte                   c_v-30
         .byte           VOL   , 78
         .byte           N03   , Bn2 , v112
@@ -5732,7 +5738,6 @@ mus_pkmn_bw12_156_8:
         .byte                   Gn3 , v114
         .byte   W08
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_8_LOOP:
         .byte           VOL   , 88
         .byte           PAN   , c_v-56
         .byte           N11   , Cn4 , v105
@@ -5781,10 +5786,10 @@ mus_pkmn_bw12_156_8_LOOP:
 @ 008   ----------------------------------------
         .byte   W96
 @ 009   ----------------------------------------
-        .byte   W64
-        .byte           VOICE , 50
-        .byte   W32
+        .byte   W96
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_8_LOOP:
+        .byte           VOICE , 50
         .byte           VOL   , 70
         .byte           PAN   , c_v+40
         .byte   W96
@@ -6068,7 +6073,6 @@ mus_pkmn_bw12_156_9:
         .byte           PAN   , c_v+49
         .byte   W32
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_9_LOOP:
         .byte           VOL   , 88
         .byte           PAN   , c_v+0
         .byte           N15   , Cn3 , v119
@@ -6184,6 +6188,8 @@ mus_pkmn_bw12_156_9_LOOP:
         .byte           PAN   , c_v-9
         .byte   W72
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_9_LOOP:
+        .byte           VOICE , 93
         .byte   W96
 @ 011   ----------------------------------------
         .byte   W96
@@ -6635,7 +6641,6 @@ mus_pkmn_bw12_156_10:
 @ 001   ----------------------------------------
         .byte   W96
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_10_LOOP:
         .byte           VOL   , 78
         .byte           N92   , As2 , v119
         .byte   W96
@@ -6665,6 +6670,8 @@ mus_pkmn_bw12_156_10_LOOP:
         .byte           N23   , En2
         .byte   W24
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_10_LOOP:
+        .byte           VOICE , 39
 mus_pkmn_bw12_156_10_10:
         .byte           N15   , BnM2 , v108
         .byte   W48
@@ -6905,7 +6912,6 @@ mus_pkmn_bw12_156_11:
 @ 001   ----------------------------------------
         .byte   W96
 @ 002   ----------------------------------------
-mus_pkmn_bw12_156_11_LOOP:
         .byte   W96
 @ 003   ----------------------------------------
         .byte   W96
@@ -6920,10 +6926,10 @@ mus_pkmn_bw12_156_11_LOOP:
 @ 008   ----------------------------------------
         .byte   W96
 @ 009   ----------------------------------------
-        .byte   W80
-        .byte           VOICE , 23
-        .byte   W16
+        .byte   W96
 @ 010   ----------------------------------------
+mus_pkmn_bw12_156_11_LOOP:
+        .byte           VOICE , 23
         .byte           PAN   , c_v+56
         .byte           VOL   , 55
         .byte   W08
