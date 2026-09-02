@@ -2835,21 +2835,21 @@ static void DisplayPartyPokemonHPBar(u16 hp, u16 maxhp, struct PartyMenuBox *men
 
 static void DisplayPartyPokemonDescriptionText(u8 stringID, struct PartyMenuBox *menuBox, u8 c)
 {
-    if (c)
+    // --- FIX: Clear the entire description area using blitFunc (BW-safe) ---
     {
-        int width = ((menuBox->infoRects->descTextLeft % 8) + menuBox->infoRects->descTextWidth + 7) / 8 - 1;
-        int height = ((menuBox->infoRects->descTextTop % 8) + menuBox->infoRects->descTextHeight + 7) / 8 - 1;
-        menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->descTextLeft >> 3, (menuBox->infoRects->descTextTop >> 3)+1, width, height, TRUE);
+        // Convert pixel coords → tile coords
+        int tileX = menuBox->infoRects->descTextLeft >> 3;
+        int tileY = menuBox->infoRects->descTextTop >> 3;
+        // Width in tiles (round up)
+        int width = (menuBox->infoRects->descTextWidth + 7) >> 3;
+        // Height in tiles: description text is ~7px tall → spans 2 tiles
+        int height = 2;
+        // Clear BOTH tile rows (top + bottom)
+        menuBox->infoRects->blitFunc(menuBox->windowId, tileX, tileY, width, height, TRUE);
     }
+    // --- Print new text unless c == 2 (same behavior as vanilla) ---
     if (c != 2)
     {
-        #if PARTY_MENU_STYLE == PARTY_MENU_STYLE_DEFAULT || PARTY_MENU_STYLE == PARTY_MENU_STYLE_FRLG
-        FillWindowPixelRect(menuBox->windowId, 0x05, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, menuBox->infoRects->descTextWidth, 7);
-        #elif PARTY_MENU_STYLE == PARTY_MENU_STYLE_HGSS
-        FillWindowPixelRect(menuBox->windowId, 0x04, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, menuBox->infoRects->descTextWidth, 7);
-        #else
-        FillWindowPixelRect(menuBox->windowId, 0x06, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, 32, 7);
-        #endif
         AddTextPrinterParameterized3(menuBox->windowId, FONT_NORMAL, menuBox->infoRects->descTextLeft, menuBox->infoRects->descTextTop, sFontColorTable[0], 0, sDescriptionStringTable[stringID]);
     }
 }
