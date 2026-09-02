@@ -428,7 +428,7 @@ static const struct SlidingWindow sAppealJamSlidingWindow =
     .left = 0,
     .top = 45
 };
-static const s8 sMultiBattleOrder[] = {0, 2, 3, 1, 4, 5};
+static const s8 sMultiBattleOrder[] = {0, 2, 4, 1, 3, 5};
 static const struct WindowTemplate sSummaryTemplate[] =
 {
     [PSS_LABEL_WINDOW_POKEMON_INFO_TITLE] = {

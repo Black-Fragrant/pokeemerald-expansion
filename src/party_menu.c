@@ -1405,7 +1405,7 @@ static bool8 PartyBoxPal_ParnterOrDisqualifiedInArena(u8 slot)
     if (gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL_PARTNER || gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL_SHOWCASE_PARTNER)
         return TRUE;
 
-    if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && (slot == 1 || slot == 4 || slot == 5))
+    if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && (slot == 1 || slot == 3 || slot == 5))
         return TRUE;
 
     if (slot < MULTI_PARTY_SIZE && (gBattleTypeFlags & BATTLE_TYPE_ARENA) && gMain.inBattle && (gBattleStruct->arenaLostPlayerMons >> GetPartyIdFromBattleSlot(slot) & 1))
@@ -7632,7 +7632,7 @@ static bool8 TrySwitchInPokemon(void)
     battlePartyId = GetPartyIdFromBattleSlot(slot);
 
     // In a 6v6 multi battle, slots 1, 4, and 5 are the partner's Pokémon
-    if (IsMultiBattle() == TRUE && (slot == 1 || slot == 4 || slot == 5) && !AreMultiPartiesFullTeams())
+    if (IsMultiBattle() == TRUE && (slot == 1 || slot == 3 || slot == 5) && !AreMultiPartiesFullTeams())
     {
         StringCopy(gStringVar1, GetTrainerPartnerName());
         StringExpandPlaceholders(gStringVar4, gText_CantSwitchWithAlly);
@@ -7783,15 +7783,25 @@ static void BufferBattlePartyOrderBySide(u8 *partyBattleOrder, u8 flankId, enum 
     {
         if (flankId != 0)
         {
+            // Original: (3,0)
             partyBattleOrder[0] = 0 | (3 << 4);
-            partyBattleOrder[1] = 5 | (4 << 4);
-            partyBattleOrder[2] = 2 | (1 << 4);
+
+            // Original: (4,5) → swap 4 ↔ 2 → (2,5)
+            partyBattleOrder[1] = 5 | (2 << 4);
+
+            // Original: (1,2) → swap 2 ↔ 4 → (1,4)
+            partyBattleOrder[2] = 4 | (1 << 4);
         }
         else
         {
+            // Original: (0,3)
             partyBattleOrder[0] = 3 | (0 << 4);
-            partyBattleOrder[1] = 2 | (1 << 4);
-            partyBattleOrder[2] = 5 | (4 << 4);
+
+            // Original: (1,2) → swap 2 ↔ 4 → (1,4)
+            partyBattleOrder[1] = 4 | (1 << 4);
+
+            // Original: (4,5) → swap 4 ↔ 2 → (2,5)
+            partyBattleOrder[2] = 5 | (2 << 4);
         }
         return;
     }
