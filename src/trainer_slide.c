@@ -195,7 +195,7 @@ static u32 BattlerHPPercentage(enum BattlerId battler, enum ComparisonOperators 
     }
 }
 
-static const s8 sMultiBattleOrder[] = {0, 2, 4, 1, 3, 5};
+static const s8 sMultiBattleOrder[] = {0, 2, 3, 1, 4, 5};
 
 static u32 GetPartyMonCount(u32 lastId, struct Pokemon *party, bool32 onlyAlive)
 {
