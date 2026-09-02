@@ -136,8 +136,8 @@ static const u8 sPartyMenuSpriteCoords[PARTY_LAYOUT_COUNT][PARTY_SIZE][4 * 2] =
     [PARTY_LAYOUT_MULTI_SHOWCASE] =
     {
         { 24,  14,  38,  33, 26,   33,  24,  18},
-        { 24,  94,  38, 113, 26,  113,  24,  98},
-        { 24,  54,  38,  73, 26,   73,  24,  58},
+        { 24,  54,  38,  73, 26,   73,  24,  58},   // slot 1 (middle-left) FIXED
+        { 24,  94,  38, 113, 26,  113,  24,  98},   // slot 2 (bottom-left) FIXED
         {136,  22, 150,  41, 138,  41, 136,  26},
         {136,  62, 150,  81, 138,  81, 136,  66},
         {136, 102, 150, 121, 138, 121, 136, 106},
