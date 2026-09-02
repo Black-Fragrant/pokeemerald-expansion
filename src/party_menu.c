@@ -975,6 +975,10 @@ static void LoadPartyMenuBoxes(enum PartyMenuLayout layout)
 {
     u32 i;
 
+    if (layout == PARTY_LAYOUT_DOUBLE)
+    layout = PARTY_LAYOUT_SINGLE;
+
+    
     for (i = 0; i < PARTY_SIZE; i++)
     {
         sPartyMenuBoxes[i].infoRects = &sPartyBoxInfoRects[PARTY_BOX_EQUAL_COLUMN]; //
@@ -1299,7 +1303,7 @@ static void CreateCancelConfirmPokeballSprites(void)
      || gPartyMenu.menuType == PARTY_MENU_TYPE_MULTI_FULL_SHOWCASE)
     {
         // The showcase has no Cancel/Confirm buttons
-        FillBgTilemapBufferRect(1, 14, 23, 17, 7, 2, 1);
+        FillBgTilemapBufferRect(1, 10, 23, 17, 7, 2, 0);
     }
     else
     {
@@ -2415,9 +2419,11 @@ static void InitPartyMenuWindows(enum PartyMenuLayout layout)
     // case PARTY_LAYOUT_SINGLE:
     //     InitWindows(sSinglePartyMenuWindowTemplate_Equal); //sSinglePartyMenuWindowTemplate
     //     break;
-    case PARTY_LAYOUT_DOUBLE:
-        InitWindows(sDoublePartyMenuWindowTemplate);
-        break;
+case PARTY_LAYOUT_DOUBLE:
+    // Force DOUBLE to use SINGLE window offsets
+    InitWindows(sSinglePartyMenuWindowTemplate_Equal);
+    break;
+
     case PARTY_LAYOUT_MULTI:
         InitWindows(sMultiPartyMenuWindowTemplate);
         break;
@@ -2460,7 +2466,7 @@ static void CreateCancelConfirmWindows(bool8 chooseHalf)
             AddTextPrinterParameterized4(confirmWindowId, FONT_SMALL, mainOffset, 1, 0, 0, sFontColorTable[0], TEXT_SKIP_DRAW, gMenuText_Confirm);
             PutWindowTilemap(confirmWindowId);
             CopyWindowToVram(confirmWindowId, COPYWIN_GFX);
-            cancelWindowId = AddWindow(&sMultiCancelButtonWindowTemplate);
+            cancelWindowId = AddWindow(&sMultiCancelButtonWindowTemplate_equal);
             offset = 0;
         }
         else if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE)
@@ -2470,7 +2476,7 @@ static void CreateCancelConfirmWindows(bool8 chooseHalf)
         }
         else
         {
-            cancelWindowId = AddWindow(&sCancelButtonWindowTemplate);
+            cancelWindowId = AddWindow(&sCancelButtonWindowTemplate_equal);
             offset = 3;
         }
         FillWindowPixelBuffer(cancelWindowId, PIXEL_FILL(0));
@@ -2550,7 +2556,7 @@ static void DrawEmptySlot(u8 windowId)
     if (gPartyMenu.layout == PARTY_LAYOUT_SINGLE) //Custom party menu
         BlitBitmapToPartyWindow(windowId, sEqualEmptySlotTileNums, 14, 0, 0, 14, 5);//
     else
-        BlitBitmapToPartyWindow(windowId, sSlotTilemap_WideEmpty, 18, 0, 0, 18, 3);
+        BlitBitmapToPartyWindow(windowId, sEqualEmptySlotTileNums, 14, 0, 0, 14, 5);//
 }
 
 //Custom party menu

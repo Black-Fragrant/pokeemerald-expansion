@@ -195,7 +195,8 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	warpsilent MAP_PLATFORM_TRAIN_TO_ANVILLE_TOWN, 21, 9 
+	setvar VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1
+	warpsilent MAP_WELLSPRING_CAVE_1F, 28, 7 
 	waitstate
 	release 
     end
