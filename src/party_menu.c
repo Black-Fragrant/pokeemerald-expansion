@@ -1833,6 +1833,7 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
     enum PartyMenuLayout layout = gPartyMenu.layout;
 
     if (layout == PARTY_LAYOUT_SINGLE
+     || layout == PARTY_LAYOUT_DOUBLE
      || layout == PARTY_LAYOUT_MULTI_FULL
      || layout == PARTY_LAYOUT_MULTI_FULL_PARTNER)
     {
