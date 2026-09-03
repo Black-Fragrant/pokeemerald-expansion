@@ -19,6 +19,7 @@
 #include "strings.h"
 #include "constants/party_menu.h"
 #include "constants/songs.h"
+#include "sound.h"
 
 #define VALID_MON 0
 #define INVALID_MON 1
@@ -211,6 +212,7 @@ enum LearnMoveState
 
     LEARNED_MOVE_1,
     LEARNED_MOVE_2,
+    LEARNED_MOVE_WAIT_FANFARE,
 
     FORGOT_MOVE_1,
 
@@ -329,7 +331,17 @@ s32 LearnMove(const struct MoveLearnUI *ui, u8 taskId)
         return LEARNED_MOVE_2;
     case LEARNED_MOVE_2:
         gSpecialVar_Result = TRUE;
-        ui->playFanfare(MUS_LEVEL_UP);
+        // Only wait for SE to finish before playing the fanfare
+        if (!IsSEPlaying())
+        {
+            ui->playFanfare(MUS_LEVEL_UP);
+            return LEARNED_MOVE_WAIT_FANFARE;
+        }
+        return state;
+    case LEARNED_MOVE_WAIT_FANFARE:
+        // Wait for fanfare to finish
+        if (!IsFanfareTaskInactive())
+            return state;
         return LEARN_MOVE_END;
     case FORGOT_MOVE_1:
         GetBoxMonNickname(boxmon, gStringVar1);
