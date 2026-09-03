@@ -156,6 +156,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_NIMBASA_CITY_EXTENDED_N_FERRISWHEEL
 	setflag FLAG_NIMBASA_CITY_BIANCA_AND_FATHER
 	setflag FLAG_DAYCARE_MAN
+	setflag FLAG_NIMBASA_GYM_RICHBOY
+	setflag FLAG_NIMBASA_GYM_RICHGIRL
 	call EventScript_ResetAllBerries
 	end
 

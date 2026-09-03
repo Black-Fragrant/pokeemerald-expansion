@@ -185,8 +185,8 @@
 #define VAR_ANVILLE_TOWN_REWARD_COUNT                    0x40A3
 #define VAR_ANVILLE_TOWN_REWARD_TYPE                     0x40A4
 #define VAR_UNUSED_40A5                                  0x40A5 // Unused Var
-#define VAR_UNUSED_40A6                                  0x40A6
-#define VAR_UNUSED_40A7                                  0x40A7
+#define VAR_UNUSED_40A6                                  0x40A6 // Unused Var
+#define VAR_UNUSED_40A7                                  0x40A7 // Unused Var
 #define VAR_UNUSED_0x40A8                                0x40A8 // Unused Var
 #define VAR_CYCLING_CHALLENGE_STATE                      0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE                    0x40AA

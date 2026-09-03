@@ -1,1 +1,585 @@
-mapscripts NimbasaCity_NimbasaGym_MapScripts {}
+mapscripts NimbasaCity_NimbasaGym_MapScripts 
+    {
+        MAP_SCRIPT_ON_LOAD : NimbasaCity_NimbasaGym_On_Load
+        MAP_SCRIPT_ON_TRANSITION : NimbasaCity_NimbasaGym_On_Transition
+    }
+
+script NimbasaCity_NimbasaGym_On_Load
+{
+	call_if_set(FLAG_TEMP_11, NimbasaCity_NimbasaGym_EventScript_Track1Altered)
+	call_if_set(FLAG_TEMP_12, NimbasaCity_NimbasaGym_EventScript_Track2Altered)
+	call_if_set(FLAG_TEMP_13, NimbasaCity_NimbasaGym_EventScript_Track3Altered)
+	call_if_set(FLAG_TEMP_14, NimbasaCity_NimbasaGym_EventScript_Track4Altered)
+	end()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track1Altered
+{
+	setmetatile (30, 36, 0x201, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track1Reset
+{
+	setmetatile (30, 36, 0x200, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track2Altered
+{
+	setmetatile (13, 20, 0x203, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track2Reset
+{
+	setmetatile (13, 20, 0x202, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track3Altered
+{
+	setmetatile (48, 44, 0x205, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track3Reset
+{
+	setmetatile (48, 44, 0x204, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track4Altered
+{
+	setmetatile (26, 12, 0x207, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Track4Reset
+{
+	setmetatile (26, 12, 0x206, FALSE)
+	return()
+}
+
+script NimbasaCity_NimbasaGym_On_Transition
+{
+    call_if_unset(FLAG_NIMBASA_GYM_RICHBOY, NimbasaCity_NimbasaGym_EventScript_RepositionRichBoy)
+    call_if_unset(FLAG_NIMBASA_GYM_RICHGIRL, NimbasaCity_NimbasaGym_EventScript_RepositionRichGirl)
+    end()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_RepositionRichBoy
+{
+	setobjectxyperm(LOCALID_NIMBASA_GYM_RICHBOY, 17, 20)
+    setobjectmovementtype(LOCALID_NIMBASA_GYM_RICHBOY, MOVEMENT_TYPE_FACE_LEFT)
+    return
+}
+
+script NimbasaCity_NimbasaGym_EventScript_RepositionRichGirl
+{
+	setobjectxyperm(LOCALID_NIMBASA_GYM_RICHGIRL, 52, 44)
+    setobjectmovementtype(LOCALID_NIMBASA_GYM_RICHGIRL, MOVEMENT_TYPE_FACE_LEFT)
+    return
+}
+
+script NimbasaCity_NimbasaGym_EventScript_GymSigns
+{
+    lock
+    goto_if_set(FLAG_BADGE04_GET, NimbasaCity_NimbasaGym_EventScript_GymSigns_2)
+    msgbox("Nimbasa Pokémon Gym\p"
+        "Gym Leader: Elesa\n"
+        "Certified Trainers:", MSGBOX_SIGN)
+    release
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_GymSigns_2
+{
+    msgbox("Nimbasa Pokémon Gym\p"
+       "Gym Leader: Elesa\n"
+       "Certified Trainers:\l"
+       "{PLAYER}", MSGBOX_SIGN)
+    release
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Receptionist
+{
+    lock
+    faceplayer
+    goto_if_set(FLAG_BADGE04_GET, NimbasaCity_NimbasaGym_EventScript_ObtainedBadge)
+    goto_if_set(FLAG_NIMBASA_GYM_ITEM_FRESH_WATER, NimbasaCity_NimbasaGym_EventScript_ObtainedFreshWater)
+    msgbox("How about it? I can see you're surprised!\p"
+        "Would you ever have guessed that\n"
+        "this Gym is a roller coaster?\p"
+        "OK, let me fill you in...\n"
+        "And take this, too!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_FRESH_WATER, 1)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_EndScript)
+    setflag(FLAG_NIMBASA_GYM_ITEM_FRESH_WATER)
+    goto(NimbasaCity_NimbasaGym_EventScript_ObtainedFreshWater)
+}
+
+script NimbasaCity_NimbasaGym_EventScript_ObtainedFreshWater
+{
+    msgbox("In this roller coaster Gym, the first\n"
+        "step is to get in the car.\p"
+        "Next comes the platform!\n"
+        "There, you can change\l"
+        "where the coaster is going!\p"
+        "Sometimes you continue by riding\n"
+        "the cars of opponents you defeat.\l"
+        "That's how you aim for the Gym Leader!\p"
+        "By the way, Electric-type Pokémon don't\n"
+        "do well against Ground-type moves...", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_ObtainedBadge
+{
+    msgbox("Elesa uses sparkling bright\n"
+        "Electric-type attacks!\p"
+        "But the combination of you and your\n"
+        "Pokémon was even more impressive!\p"
+        "It was... It was...\n"
+        "an emotional roller coaster!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Battle_RichGirl1
+{
+	trainerbattle_single(TRAINER_NIMBASA_GYM_LADY_1,
+	text("Your fashion sense...\n"
+       "It's kind of Nuvema Town-ish."),
+	text("Oh, no!\n"
+       "I thought I'd be the fashionista!"))
+	msgbox("Elesa controls an elegant Gym\n"
+       "in elegant Nimbasa City.\p"
+       "She has an essential elegance.\n"
+       "You should be her fan, too!", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Battle_RichBoy1
+{
+	trainerbattle_single(TRAINER_NIMBASA_GYM_RICH_BOY_1,
+	text("Welcome, challenger!\p"
+       "I will do you the greatest of honors\n"
+       "and accept your challenge!"),
+	text("Roll, roll, roll, roll, roll, roll, roll on!\n"
+       "Roller coaster!"))
+	msgbox("I was aiming for a fighting style\n"
+       "that overwhelms you with speed...\p"
+       "If I can move faster than my opponents,\n"
+       "I will get the upper hand.", MSGBOX_NPC, TRUE)
+	end()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Trigger_RichBoy
+{
+    lock
+    goto_if_unset(FLAG_NIMBASA_GYM_RICHBOY, CasteliaCity_CasteliaGym_EventScript_Warp4_Normal)
+    addobject(LOCALID_NIMBASA_GYM_RICHBOY)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, moves(jump_2_down))
+	applymovement(LOCALID_PLAYER, moves(lock_facing_direction, walk_down, walk_down, unlock_facing_direction))
+	waitmovement(0)
+    waitse
+    delay(10)
+    msgbox("Are you cool riding a roller coaster?", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHBOY)
+    destroy_speech_bubble()
+    closemessage
+    playbgm(MUS_BW_SPOTTED_YOUNGSTER, FALSE)
+	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, moves(walk_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("When you ride a roller coaster, the\n"
+        "speed can make you dizzy.\p"
+        "I'm going to make your head spin with\n"
+        "a Pokémon battle that's just as intense!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHBOY)
+    destroy_speech_bubble()
+    closemessage
+	trainerbattle_no_intro (TRAINER_NIMBASA_GYM_RICH_BOY_2, text("Even though I lost,\nI'm an ocean of calm..."))
+    msgbox("Your way of battling...\n"
+        "It's elegant! You've got style!\n"
+        "Even compared to Ms. Elesa!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHBOY)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, moves(lock_facing_direction, face_left, walk_right, unlock_facing_direction))
+	waitmovement(0)
+    call(NimbasaCity_NimbasaGym_EventScript_RepositionRichBoy)
+    clearflag(FLAG_NIMBASA_GYM_RICHBOY)
+    delay(10)
+    release
+	end()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_RichBoy2
+{
+    msgbox("If you press the switches, the\n"
+       "roller coaster's path will change.", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Trigger_RichGirl
+{
+    lock
+    goto_if_unset(FLAG_NIMBASA_GYM_RICHGIRL, CasteliaCity_CasteliaGym_EventScript_Warp6_Normal)
+    addobject(LOCALID_NIMBASA_GYM_RICHGIRL)
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, moves(jump_2_down))
+	applymovement(LOCALID_PLAYER, moves(lock_facing_direction, walk_down, walk_down, unlock_facing_direction))
+	waitmovement(0)
+    waitse
+    delay(10)
+    msgbox("Your Nimbasa Gym challenge is finally\n"
+            "nearing its finale.\p"
+            "But if you don't beat me,\n"
+            "you won't get to meet Ms. Elesa.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+    playbgm(MUS_BW_SPOTTED_LASS, FALSE)
+	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, moves(walk_down))
+	waitmovement(0)
+    delay(10)
+    msgbox("I'm also a Pokémon Trainer who was\n"
+            "toughened up by Ms. Elesa.\p"
+            "I'll show you power and style befitting\n"
+            "this Gym.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+	trainerbattle_no_intro (TRAINER_NIMBASA_GYM_LADY_2, text("I lost, but I will think a lot harder,\nand that will make me a lot stronger!"))
+    msgbox("It pleases me to be the opponent of a\n"
+       "strong and honorable Trainer like you!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHGIRL)
+    destroy_speech_bubble()
+    closemessage
+	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, moves(lock_facing_direction, face_left, walk_right, unlock_facing_direction))
+	waitmovement(0)
+    call(NimbasaCity_NimbasaGym_EventScript_RepositionRichGirl)
+    clearflag(FLAG_NIMBASA_GYM_RICHGIRL)
+    delay(10)
+    release
+	end()
+}
+
+script NimbasaCity_NimbasaGym_EventScript_RichGirl2
+{
+    msgbox("If you maintain your calm and don't get\n"
+        "flustered by this Gym's gimmicks,\n"
+        "you'll be able to defeat Ms. Elesa...\n"
+        "and any other Trainer, as well!", MSGBOX_NPC, TRUE)
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_ButtonText
+{
+    playse(SE_SUCCESS)
+    delay(10)
+    playse(SE_SUCCESS)
+    msgbox("{PLAYER} pressed the switch.\p"
+        "The roller coaster's path\n"
+        "has been changed!", MSGBOX_TRANSPARENT, FALSE)
+    waitmessage
+    waitse
+    closemessage
+    return
+}
+
+script NimbasaCity_NimbasaGym_EventScript_Elesa
+{
+    lock()
+    faceplayer()
+    goto_if_set(FLAG_BADGE04_GET, CasteliaCity_CasteliaGym_EventScript_Elesa_AcquiredBadge)
+    msgbox("Did a fantastic speed leave you dizzy?\p"
+       "My beloved Pokémon will be the next one\n"
+       "to make your head spin!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    trainerbattle_no_intro (TRAINER_ELESA_NIMBASA_GYM, text("I meant to make your head spin,\nbut you shocked me instead."))
+    msgbox("My, oh my...\n"
+       "You have a sweet fighting style.\p"
+       "I mean, you're a great Trainer!\n"
+       "Excuse me, I...uh... Oh, here!\l"
+       "I want you to have this!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	playfanfare(MUS_OBTAIN_BADGE)
+    msgbox("{PLAYER} received\n"
+        "the Bolt Badge from Elesa!", MSGBOX_TRANSPARENT)
+	waitfanfare
+	setflag(FLAG_BADGE04_GET)
+    settrainerflag(TRAINER_NIMBASA_GYM_LADY_1)
+    settrainerflag(TRAINER_NIMBASA_GYM_LADY_2)
+    settrainerflag(TRAINER_NIMBASA_GYM_RICH_BOY_1)
+    settrainerflag(TRAINER_NIMBASA_GYM_RICH_BOY_2)
+    closemessage
+    delay(10)
+    msgbox("If you have four Badges, including this\n"
+       "Bolt Badge, Pokémon up to Lv. 50,\l"
+       "including traded Pokémon, will obey you.\p"
+       "Also, here's this move I like.\n"
+       "Feel free to use it, um, if you want to.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	giveitem(ITEM_TM_VOLT_SWITCH)
+	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
+    closemessage
+    msgbox("Volt Switch lets the Pokémon switch with\n"
+       "a different Pokémon after attacking.\p"
+       "Of course, if you don't have another\n"
+       "Pokémon in your party, you can't switch.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    goto(CasteliaCity_CasteliaGym_EventScript_Elesa_AcquiredBadge)
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Elesa_AcquiredBadge
+{
+    msgbox("You're going to Driftveil City next?\p"
+       "Of course. There is a Pokémon Gym there,\n"
+       "after all. Oh...\p"
+       "I bet you won't be able to get there.\n"
+       "You know what?\p"
+       "I'll fix it so you can cross.\n"
+       "Wait for me on Route 5.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_NoWarp
+{
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp1_Normal
+{
+    lock
+    goto_if_set(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_NoWarp)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 22, 42)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp2_Normal
+{
+    lock
+    goto_if_set(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_Warp2_Alternate)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 14, 42)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp2_Alternate
+{
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 16, 30)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp3_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_NoWarp)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 22, 42)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp4_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_12, CasteliaCity_CasteliaGym_EventScript_NoWarp)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 42, 43)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp5_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_12, CasteliaCity_CasteliaGym_EventScript_Warp5_Alternate)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 16, 19)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp5_Alternate
+{
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 42, 43)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp6_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_13, CasteliaCity_CasteliaGym_EventScript_NoWarp)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 35, 11)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp7_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_13, CasteliaCity_CasteliaGym_EventScript_Warp7_Alternate)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 51, 43)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp7_Alternate
+{
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 35, 11)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp8_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_14, CasteliaCity_CasteliaGym_EventScript_NoWarp)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 5, 41)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp9_Normal
+{
+    lock
+    goto_if_unset(FLAG_TEMP_14, CasteliaCity_CasteliaGym_EventScript_Warp9_Alternate)
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 5, 41)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Warp9_Alternate
+{
+    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 23, 11)
+    waitstate
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button1
+{
+    lock
+    goto_if_set(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_Button1_Reset)
+    setflag(FLAG_TEMP_11)
+    call(NimbasaCity_NimbasaGym_EventScript_Track1Altered)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button1_Reset
+{
+    clearflag(FLAG_TEMP_11)
+    call(NimbasaCity_NimbasaGym_EventScript_Track1Reset)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button2
+{
+    lock
+    goto_if_set(FLAG_TEMP_12, CasteliaCity_CasteliaGym_EventScript_Button2_Reset)
+    setflag(FLAG_TEMP_12)
+    call(NimbasaCity_NimbasaGym_EventScript_Track2Altered)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button2_Reset
+{
+    clearflag(FLAG_TEMP_12)
+    call(NimbasaCity_NimbasaGym_EventScript_Track2Reset)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button3
+{
+    lock
+    goto_if_set(FLAG_TEMP_13, CasteliaCity_CasteliaGym_EventScript_Button3_Reset)
+    setflag(FLAG_TEMP_13)
+    call(NimbasaCity_NimbasaGym_EventScript_Track3Altered)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button3_Reset
+{
+    clearflag(FLAG_TEMP_13)
+    call(NimbasaCity_NimbasaGym_EventScript_Track3Reset)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button4
+{
+    lock
+    goto_if_set(FLAG_TEMP_14, CasteliaCity_CasteliaGym_EventScript_Button4_Reset)
+    setflag(FLAG_TEMP_14)
+    call(NimbasaCity_NimbasaGym_EventScript_Track4Altered)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+script CasteliaCity_CasteliaGym_EventScript_Button4_Reset
+{
+    clearflag(FLAG_TEMP_14)
+    call(NimbasaCity_NimbasaGym_EventScript_Track4Reset)
+	special(DrawWholeMapView)
+    call(NimbasaCity_NimbasaGym_EventScript_ButtonText)
+    release
+    end
+}
+
+
+

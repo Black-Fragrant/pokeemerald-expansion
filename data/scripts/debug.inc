@@ -195,17 +195,15 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setvar VAR_ROUTE3_NORTH_CHEREN_BATTLE, 1
-	warpsilent MAP_WELLSPRING_CAVE_1F, 28, 7 
+	setflag (FLAG_NIMBASA_GYM_RICHBOY)
+	setflag (FLAG_NIMBASA_GYM_RICHGIRL)
+	warpsilent MAP_NIMBASA_CITY_EXTENDED, 39, 9 
 	waitstate
 	release 
     end
 
 Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1}$"
-
-Debug_EventScript_Script_2_text::
-	.string "AAAAAAAAAAAAAAAAAAAAAAA$"
 
 Debug_EventScript_Script_2::
     lock

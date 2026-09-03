@@ -959,9 +959,9 @@
 #define FLAG_LOSTLORN_FOREST_BACKPACKER                             0x38F
 #define FLAG_DAYCARE_MAN                                            0x390
 #define FLAG_ANVILLE_TOWN_RARE_CANDY                                0x391
-#define FLAG_UNUSED_0x392                                           0x392
-#define FLAG_UNUSED_0x393                                           0x393
-#define FLAG_UNUSED_0x394                                           0x394
+#define FLAG_NIMBASA_GYM_ITEM_FRESH_WATER                           0x392
+#define FLAG_NIMBASA_GYM_RICHBOY                                    0x393
+#define FLAG_NIMBASA_GYM_RICHGIRL                                   0x394
 #define FLAG_UNUSED_0x395                                           0x395
 #define FLAG_UNUSED_0x396                                           0x396
 #define FLAG_UNUSED_0x397                                           0x397
