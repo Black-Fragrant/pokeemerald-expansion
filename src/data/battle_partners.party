@@ -54,7 +54,7 @@ AI: Check Bad Move
 Tepig @ Oran Berry
 Brave Nature
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Odor Sleuth
 - Tail Whip
@@ -64,7 +64,7 @@ EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Purrloin
 Impish Nature
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fury Swipes
 - Growl
@@ -80,9 +80,9 @@ Music: Male
 AI: Check Bad Move
 
 Oshawott @ Oran Berry
-Brave Nature
+Hardy Nature
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Focus Energy
 - Tail Whip
@@ -92,7 +92,7 @@ EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Purrloin
 Impish Nature
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fury Swipes
 - Growl
@@ -108,9 +108,9 @@ Music: Male
 AI: Check Bad Move
 
 Snivy @ Oran Berry
-Brave Nature
+Rash Nature
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Growth
 - Leer
@@ -120,9 +120,123 @@ EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Purrloin
 Impish Nature
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fury Swipes
 - Growl
 - Assist
 - Sand-Attack
+
+=== PARTNER_CHEREN_ROUTE5_TEPIG ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Liepard
+Impish Nature
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Pursuit
+- Torment
+- Fake Out
+
+Pansage @ Miracle Seed
+Serious Nature
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Leech Seed
+- Bite
+- Seed Bomb
+
+Pignite @ Sitrus Berry
+Brave Nature
+Level: 26
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Flame Charge
+- Arm Thrust
+- Smog
+- Rollout
+
+=== PARTNER_CHEREN_ROUTE5_OSHAWOTT ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Liepard
+Impish Nature
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Pursuit
+- Torment
+- Fake Out
+
+Pansear @ Charcoal
+Serious Nature
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Yawn
+- Bite
+- Flame Burst
+
+Dewott @ Sitrus Berry
+Hardy Nature
+Level: 26
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Focus Energy
+- Razor Shell
+- Fury Cutter
+- Water Pulse
+
+=== PARTNER_CHEREN_ROUTE5_SNIVY ===
+Name: Cheren
+Class: PKMN Trainer 1
+Pic: Cheren
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Liepard
+Impish Nature
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Pursuit
+- Torment
+- Fake Out
+
+Panpour @ Mystic Water
+Serious Nature
+Level: 24
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Swipes
+- Water Sport
+- Bite
+- Scald
+
+Servine @ Sitrus Berry
+Rash Nature
+Level: 26
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growth
+- Leaf Tornado
+- Leech Seed
+- Mega Drain

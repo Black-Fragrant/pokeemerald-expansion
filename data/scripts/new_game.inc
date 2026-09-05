@@ -158,6 +158,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_DAYCARE_MAN
 	setflag FLAG_NIMBASA_GYM_RICHBOY
 	setflag FLAG_NIMBASA_GYM_RICHGIRL
+	setflag FLAG_ROUTE_5_ALDER
+	setflag FLAG_ROUTE_5_ELESA_AT_BRIDGE
 	call EventScript_ResetAllBerries
 	end
 

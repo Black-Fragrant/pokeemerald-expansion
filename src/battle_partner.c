@@ -48,6 +48,12 @@ void FillPartnerParty(u16 trainerId)
             partnerGen.otID = OTID_STRUCT_PRESET(STEVEN_OTID);
         else if (trainerId == TRAINER_PARTNER(PARTNER_CHEREN_WELLSPRINGCAVE_SNIVY))
             partnerGen.otID = OTID_STRUCT_PRESET(STEVEN_OTID);
+        else if (trainerId == TRAINER_PARTNER(PARTNER_CHEREN_ROUTE5_TEPIG))
+            partnerGen.otID = OTID_STRUCT_PRESET(STEVEN_OTID);
+        else if (trainerId == TRAINER_PARTNER(PARTNER_CHEREN_ROUTE5_OSHAWOTT))
+            partnerGen.otID = OTID_STRUCT_PRESET(STEVEN_OTID);
+        else if (trainerId == TRAINER_PARTNER(PARTNER_CHEREN_ROUTE5_SNIVY))
+            partnerGen.otID = OTID_STRUCT_PRESET(STEVEN_OTID);
 
         for (i = 0; i < lastIndex && i < partner->partySize; i++)
         {

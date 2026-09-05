@@ -85,6 +85,7 @@ script NimbasaCity_NimbasaGym_EventScript_RepositionRichGirl
 script NimbasaCity_NimbasaGym_EventScript_GymSigns
 {
     lock
+    goto_if_ge(VAR_ROUTE_5_STATE, 2, NimbasaCity_NimbasaGym_EventScript_GymSigns_3)
     goto_if_set(FLAG_BADGE04_GET, NimbasaCity_NimbasaGym_EventScript_GymSigns_2)
     msgbox("Nimbasa Pokémon Gym\p"
         "Gym Leader: Elesa\n"
@@ -99,6 +100,18 @@ script NimbasaCity_NimbasaGym_EventScript_GymSigns_2
        "Gym Leader: Elesa\n"
        "Certified Trainers:\l"
        "{PLAYER}", MSGBOX_SIGN)
+    release
+    end
+}
+
+script NimbasaCity_NimbasaGym_EventScript_GymSigns_3
+{
+    msgbox("Nimbasa Pokémon Gym\p"
+       "Gym Leader: Elesa\n"
+       "Certified Trainers:\l"
+       "{PLAYER}\l"
+       "Cheren\l"
+       "Bianca", MSGBOX_SIGN)
     release
     end
 }
@@ -187,6 +200,8 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichBoy
 {
     lock
     goto_if_unset(FLAG_NIMBASA_GYM_RICHBOY, CasteliaCity_CasteliaGym_EventScript_Warp4_Normal)
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
     addobject(LOCALID_NIMBASA_GYM_RICHBOY)
 	playse(SE_PIN)
 	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
@@ -218,7 +233,7 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichBoy
         "Even compared to Ms. Elesa!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHBOY)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, moves(lock_facing_direction, face_left, walk_right, unlock_facing_direction))
+	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, moves(face_left, lock_facing_direction, walk_right, unlock_facing_direction))
 	waitmovement(0)
     call(NimbasaCity_NimbasaGym_EventScript_RepositionRichBoy)
     clearflag(FLAG_NIMBASA_GYM_RICHBOY)
@@ -238,6 +253,8 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichGirl
 {
     lock
     goto_if_unset(FLAG_NIMBASA_GYM_RICHGIRL, CasteliaCity_CasteliaGym_EventScript_Warp6_Normal)
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
     addobject(LOCALID_NIMBASA_GYM_RICHGIRL)
 	playse(SE_PIN)
 	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
@@ -271,7 +288,7 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichGirl
        "strong and honorable Trainer like you!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASA_GYM_RICHGIRL)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, moves(lock_facing_direction, face_left, walk_right, unlock_facing_direction))
+	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, moves(face_left, lock_facing_direction, walk_right, unlock_facing_direction))
 	waitmovement(0)
     call(NimbasaCity_NimbasaGym_EventScript_RepositionRichGirl)
     clearflag(FLAG_NIMBASA_GYM_RICHGIRL)
@@ -326,6 +343,8 @@ script NimbasaCity_NimbasaGym_EventScript_Elesa
         "the Bolt Badge from Elesa!", MSGBOX_TRANSPARENT)
 	waitfanfare
 	setflag(FLAG_BADGE04_GET)
+    setvar(VAR_ROUTE_5_STATE, 1)
+    clearflag(FLAG_ROUTE_5_ALDER)
     settrainerflag(TRAINER_NIMBASA_GYM_LADY_1)
     settrainerflag(TRAINER_NIMBASA_GYM_LADY_2)
     settrainerflag(TRAINER_NIMBASA_GYM_RICH_BOY_1)

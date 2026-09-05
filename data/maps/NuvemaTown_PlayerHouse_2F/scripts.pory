@@ -1,17 +1,17 @@
 mapscripts NuvemaTown_PlayerHouse_2F_MapScripts
-    {
-        MAP_SCRIPT_ON_LOAD : NuvemaTown_PH2F_On_Load
-        MAP_SCRIPT_ON_TRANSITION : NuvemaTown_PH2F_On_Transition
-        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
-    [
-        VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_TurnPlayer
-    ]
-        MAP_SCRIPT_ON_FRAME_TABLE
-    [
-        VAR_NUVEMA_PICK_STARTER, 0 : NuvemaTown_PH2F_EventScript_Loading
-        VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_BiancaBattle
-    ]
-    }
+{
+		MAP_SCRIPT_ON_LOAD : NuvemaTown_PH2F_On_Load
+		MAP_SCRIPT_ON_TRANSITION : NuvemaTown_PH2F_On_Transition
+		MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	[
+		VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_TurnPlayer
+	]
+		MAP_SCRIPT_ON_FRAME_TABLE
+	[
+		VAR_NUVEMA_PICK_STARTER, 0 : NuvemaTown_PH2F_EventScript_Loading
+		VAR_NUVEMA_PICK_STARTER, 2 : NuvemaTown_PH2F_EventScript_BiancaBattle
+	]
+}
 
 script NuvemaTown_PH2F_On_Load
 {

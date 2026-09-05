@@ -195,9 +195,8 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setflag (FLAG_NIMBASA_GYM_RICHBOY)
-	setflag (FLAG_NIMBASA_GYM_RICHGIRL)
-	warpsilent MAP_NIMBASA_CITY_EXTENDED, 39, 9 
+	setvar VAR_ROUTE_5_STATE, 1
+	warpsilent MAP_NIMBASA_CITY_WEST_GATE, 4, 7
 	waitstate
 	release 
     end

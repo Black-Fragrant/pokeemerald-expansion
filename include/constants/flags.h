@@ -962,8 +962,8 @@
 #define FLAG_NIMBASA_GYM_ITEM_FRESH_WATER                           0x392
 #define FLAG_NIMBASA_GYM_RICHBOY                                    0x393
 #define FLAG_NIMBASA_GYM_RICHGIRL                                   0x394
-#define FLAG_UNUSED_0x395                                           0x395
-#define FLAG_UNUSED_0x396                                           0x396
+#define FLAG_ROUTE_5_ALDER                                          0x395
+#define FLAG_ROUTE_5_ELESA_AT_BRIDGE                                0x396
 #define FLAG_UNUSED_0x397                                           0x397
 #define FLAG_UNUSED_0x398                                           0x398
 #define FLAG_UNUSED_0x399                                           0x399

@@ -1,4 +1,31 @@
-mapscripts Route5_MapScripts {}
+mapscripts Route5_MapScripts 
+{
+		MAP_SCRIPT_ON_TRANSITION : Route5_On_Transition
+}
+
+script Route5_On_Transition
+{
+	call_if_eq(VAR_ROUTE_5_STATE, 1, Route5_EventScript_HideNPCs)
+	call_if_eq(VAR_ROUTE_5_STATE, 255, Route5_EventScript_PositionAlder)
+	end
+}
+
+script Route5_EventScript_HideNPCs
+{
+	setflag(FLAG_TEMP_11)
+	return
+}
+
+script Route5_EventScript_PositionAlder
+{
+	setobjectxyperm (LOCALID_ROUTE5_ALDER, 35, 18)
+	setobjectxyperm (LOCALID_ROUTE5_PRESCHOOLERF, 36, 18)
+	setobjectxyperm (LOCALID_ROUTE5_PRESCHOOLERM, 37, 18)
+    setobjectmovementtype (LOCALID_ROUTE5_ALDER, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype (LOCALID_ROUTE5_PRESCHOOLERF, MOVEMENT_TYPE_FACE_DOWN)
+    setobjectmovementtype (LOCALID_ROUTE5_PRESCHOOLERM, MOVEMENT_TYPE_FACE_DOWN)
+	return
+}
 
 script Route5_EventScript_RouteSign
 {
@@ -167,6 +194,28 @@ script Route5_EventScript_AudienceRight
 	end
 }
 
+script Route5_EventScript_Alder
+{
+	msgbox("Alder: It's tremendous that people and\n"
+       "Pokémon, each so different, can\l"
+       "acknowledge each other and be together!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route5_EventScript_PreschoolerM
+{
+	msgbox("Alder is so strong!\n"
+       "And he's nice to Pokémon!", MSGBOX_NPC, TRUE)
+	end
+}
+
+script Route5_EventScript_PreschoolerF
+{
+	msgbox("I was scared of Pokémon, but Alder\n"
+       "taught me that they're nice and friendly.", MSGBOX_NPC, TRUE)
+	end
+}
+
 script Route5_EventScript_GateOperator
 {
 	lock
@@ -269,4 +318,421 @@ script Route5_EventScript_Trigger_Cam4
 	waitmovement(0)
 	special(RemoveCameraObject)
 	return
+}
+
+script Route5_EventScript_Trigger_CherenBattle
+{
+	lock
+	playbgm(MUS_BW_CHEREN, FALSE)
+	playse(SE_EXIT)
+	addobject(LOCALID_ROUTE5_CHEREN)
+	waitse
+	delay(20)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq(VAR_TEMP_1, 18, Route5_EventScript_TCB_Pos1)
+	call_if_eq(VAR_TEMP_1, 19, Route5_EventScript_TCB_Pos2)
+	call_if_eq(VAR_TEMP_1, 20, Route5_EventScript_TCB_Pos3)
+	call_if_eq(VAR_TEMP_1, 21, Route5_EventScript_TCB_Pos4)
+	call_if_eq(VAR_TEMP_1, 22, Route5_EventScript_TCB_Pos5)
+	call_if_eq(VAR_TEMP_1, 23, Route5_EventScript_TCB_Pos6)
+	delay(10)
+	msgbox("Cheren: {PLAYER}, stop!\p"
+		"You've got a Bolt Badge...\n"
+		"I've got a Bolt Badge...\p"
+		"Let's test who's stronger--you or me!\n"
+		"This time, I'm going to win!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+//	call_if_set(FLAG_CHOSE_SNIVY, Route5_EventScript_CB_Tepig)
+//	call_if_set(FLAG_CHOSE_TEPIG, Route5_EventScript_CB_Oshawott)
+//	call_if_set(FLAG_CHOSE_OSHAWOTT, Route5_EventScript_CB_Snivy)
+	msgbox("Cheren: Why?\n"
+		"Why can't I beat you?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	addobject(LOCALID_ROUTE5_ELESA)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq(VAR_TEMP_1, 19, Route5_EventScript_TCB_Pos7)
+	call_if_eq(VAR_TEMP_1, 20, Route5_EventScript_TCB_Pos8)
+	call_if_eq(VAR_TEMP_1, 21, Route5_EventScript_TCB_Pos9)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Elesa: Oh, you two are friends...\p"
+		"That's nice, how you're helping each\n"
+		"other get better by competing.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("OK, let's go.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
+	destroy_speech_bubble()
+	closemessage
+	call_if_eq(VAR_TEMP_1, 19, Route5_EventScript_TCB_Pos10)
+	call_if_eq(VAR_TEMP_1, 20, Route5_EventScript_TCB_Pos11)
+	call_if_eq(VAR_TEMP_1, 21, Route5_EventScript_TCB_Pos12)
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE5_ALDER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	msgbox("???: Oh!\n"
+		"Why, if it isn't Elesa!", MSGBOX_DEFAULT, FALSE)
+	closemessage
+	playbgm(MUS_BW_ALDER, TRUE)
+	delay(10)
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_up))
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_down, walk_left * 2, walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	msgbox("???: Aren't festivals grand?\n"
+		"Life should be enjoyed!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: Who is this man?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Elesa: This is Alder,\n"
+		"the Unova region's Champion.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Cheren: Champion?!\p"
+		"Why would the Champion be\n"
+		"goofing off in a place like this?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_right * 2, walk_in_place_down))
+	waitmovement(0)
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Alder: I heard that remark.\n"
+		"You're quite a judgmental young person,\l"
+		"are you not?\p"
+		"My name is Alder. I'm the Unova\n"
+		"Pokémon League's Champion.\p"
+		"Pleased to make your acquaintance.\p"
+		"For your information, I'm not\n"
+		"goofing off. I'm on a voyage.\l"
+		"I know every corner of Unova.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Cheren: Um. I'm Cheren, from\n"
+		"Nuvema Town.\p"
+		"My goal as a Trainer is to\n"
+		"become the Champion.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Alder: Hm. Traveling with a goal in mind\n"
+		"is a commendable thing.\p"
+		"And what do you plan to do\n"
+		"after becoming the Champion?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	playse(SE_M_HYPER_BEAM2)
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(emote_question_mark))
+	waitmovement(0)
+    delay(20)
+    waitse
+	msgbox("Cheren: What else is there other than\n"
+		"striving to become stronger?\p"
+		"The strongest Trainer--\n"
+		"that's the Champion.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	msgbox("Alder: Hmm. Becoming stronger...\n"
+		"Becoming stronger, you say...\l"
+		"Is that alone enough of a goal? Hmmm.\p"
+		"It's not that I'm trying to say your way\n"
+		"of thinking is wrong...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	msgbox("Alder: In my travels, I've helped many\n"
+		"people learn to love Pokémon. I think\l"
+		"that's important, too.\p"
+		"If you play with those children, you\n"
+		"might gain more of an understanding.\p"
+		"Will you two have a Pokémon battle\n"
+		"with those two?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Hey, you two. Come\n"
+		"here for a moment.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_left * 2, walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_PRESCHOOLERF, moves(walk_down * 3))
+	applymovement(LOCALID_ROUTE5_PRESCHOOLERM, moves(walk_down * 2, walk_left, walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: ...Understood.\p"
+		"But, before that...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	playse(SE_USE_ITEM)
+	special(HealPlayerParty)
+	msgbox("Cheren fully healed\n"
+		"{PLAYER}'s Pokémon!", MSGBOX_TRANSPARENT, FALSE)
+	waitmessage
+	waitse
+	closemessage
+	delay(10)
+    goto(Route5_EventScript_ChooseParty)
+}
+
+script Route5_EventScript_TCB_Pos1
+{
+	applymovement(LOCALID_PLAYER, moves(walk_down, walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_up, walk_left * 2))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos2
+{
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_up, walk_left * 2))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left * 3))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_down, walk_left * 2))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos5
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up, walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_down, walk_left * 2))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos6
+{
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_down, walk_left * 2))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos7
+{
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_up, walk_right * 6))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos8
+{
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_right * 6))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos9
+{
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_down, walk_right * 6))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos10
+{
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_left * 6, walk_down, walk_left * 7))
+	applymovement(LOCALID_PLAYER, moves(walk_left * 8, walk_down, walk_left * 6))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(delay_8, walk_left * 9, walk_down, walk_left * 5))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos11
+{
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_left * 13))
+	applymovement(LOCALID_PLAYER, moves(walk_left * 14))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(delay_8, walk_left * 14))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TCB_Pos12
+{
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_left * 6, walk_up, walk_left * 7))
+	applymovement(LOCALID_PLAYER, moves(walk_left * 8, walk_up, walk_left * 6))
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(delay_8, walk_left * 9, walk_up, walk_left * 5))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_CB_Tepig
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_1, text("Well! You are strong, as usual!"))
+	return()
+}
+
+script Route5_EventScript_CB_Oshawott
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_2, text("Well! You are strong, as usual!"))
+	return()
+}
+
+script Route5_EventScript_CB_Snivy
+{
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_3, text("Well! You are strong, as usual!"))
+	return()
+}
+
+script Route5_EventScript_ChooseParty
+{
+	special(SavePlayerParty)
+	fadescreen(FADE_TO_BLACK)
+	special(ChooseHalfPartyForBattle)
+	goto_if_ne(VAR_RESULT, 0, Route5_EventScript_DoMultibattle)
+	special(LoadPlayerParty)
+	goto(Route5_EventScript_ChooseParty)
+}
+
+script Route5_EventScript_DoMultibattle
+{
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: OK, let's battle.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	goto_if_set(FLAG_CHOSE_SNIVY, Route5_EventScript_DoMultibattle_Tepig)
+	goto_if_set(FLAG_CHOSE_TEPIG, Route5_EventScript_DoMultibattle_Oshawott)
+	goto_if_set(FLAG_CHOSE_OSHAWOTT, Route5_EventScript_DoMultibattle_Snivy)
+    end
+}
+
+script Route5_EventScript_DoMultibattle_Tepig
+{
+    multi_2_vs_2(TRAINER_PRESCHOOLER_F_ROUTE_5, text("My Pokémon was so cute!"),
+    TRAINER_PRESCHOOLER_M_ROUTE_5, text("My Pokémon listened to what I said\nand fought for me!"), PARTNER_CHEREN_ROUTE5_TEPIG)
+	goto_if_eq(VAR_RESULT, 1, Route5_EventScript_FinishedMultibattle)
+	fadescreen(FADE_TO_BLACK)
+	special(SetCB2WhiteOut)
+    end
+}
+
+script Route5_EventScript_DoMultibattle_Oshawott
+{
+    multi_2_vs_2(TRAINER_PRESCHOOLER_F_ROUTE_5, text("My Pokémon was so cute!"),
+    TRAINER_PRESCHOOLER_M_ROUTE_5, text("My Pokémon listened to what I said\nand fought for me!"), PARTNER_CHEREN_ROUTE5_OSHAWOTT)
+	goto_if_eq(VAR_RESULT, 1, Route5_EventScript_FinishedMultibattle)
+	fadescreen(FADE_TO_BLACK)
+	special(SetCB2WhiteOut)
+    end
+}
+
+script Route5_EventScript_DoMultibattle_Snivy
+{
+    multi_2_vs_2(TRAINER_PRESCHOOLER_F_ROUTE_5, text("My Pokémon was so cute!"),
+    TRAINER_PRESCHOOLER_M_ROUTE_5, text("My Pokémon listened to what I said\nand fought for me!"), PARTNER_CHEREN_ROUTE5_SNIVY)
+	goto_if_eq(VAR_RESULT, 1, Route5_EventScript_FinishedMultibattle)
+	fadescreen(FADE_TO_BLACK)
+	special(SetCB2WhiteOut)
+    end
+}
+
+script Route5_EventScript_FinishedMultibattle
+{
+	msgbox("Alder: Nicely done! You didn't win, but\n"
+		"that was a good battle. Your Pokémon\l"
+		"looked like they were having fun.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	msgbox("Alder: Young man, if there are people\n"
+		"like you who pursue strength,\l"
+		"there are also people who are\l"
+		"happy just being with Pokémon.\p"
+		"There are many different people\n"
+		"and many different answers.\p"
+		"When it comes to what a Champion\n"
+		"should be, you and I may hold differing\l"
+		"views, but so be it! Give it some thought.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Elesa: Let's roll.\n"
+		"The Driftveil Drawbridge is just ahead.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_left * 7))
+	waitmovement(0)
+	removeobject(LOCALID_ROUTE5_ELESA)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_down))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: The Champion is the strongest\n"
+		"of the strong! That's all there is to it.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_down, walk_left * 9))
+	waitmovement(0)
+	removeobject(LOCALID_ROUTE5_CHEREN)
+	setvar(VAR_ROUTE_5_STATE, 2)
+	clearflag(FLAG_TEMP_11)
+	clearflag(FLAG_ROUTE_5_ELESA_AT_BRIDGE)
+	fadedefaultbgm
+	savebgm(MUS_BW_ROUTE_4)
+	delay(20)
+	release
+	end
+}
+
+script Route5_EventScript_Trigger_LowerBridge
+{
+	lock
+	delay(10)
+	release
+	end
 }

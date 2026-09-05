@@ -191,7 +191,7 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial_Continue
 	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, moves(walk_right, walk_down * 5, walk_in_place_up))
 	waitmovement(0)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down ))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
 	waitmovement(0)
 	special(RemoveCameraObject)
 	delay(10)
