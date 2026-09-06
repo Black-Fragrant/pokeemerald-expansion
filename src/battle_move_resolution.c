@@ -2718,16 +2718,21 @@ static enum CancelerResult CancelerMoveAnimation(struct BattleCalcValues *cv)
     if (!gBattleMons[cv->battlerDef].volatiles.substitute && willDamageFaintBattler)
         multiHit = 1;
 
-    BtlController_EmitMoveAnimation(
-        cv->battlerAtk,
-        B_COMM_TO_CONTROLLER,
-        cv->move,
-        gBattleScripting.animTurn,
-        gBattleMovePower,
-        gBattleStruct->moveDamage[cv->battlerDef],
-        gBattleMons[cv->battlerAtk].friendship,
-        multiHit
-    );
+    if (!(gHitMarker & HITMARKER_NO_ANIMATIONS))
+    {
+        BtlController_EmitMoveAnimation(
+            cv->battlerAtk,
+            B_COMM_TO_CONTROLLER,
+            cv->move,
+            gBattleScripting.animTurn,
+            gBattleMovePower,
+            gBattleStruct->moveDamage[cv->battlerDef],
+            gBattleMons[cv->battlerAtk].friendship,
+            multiHit
+        );
+    
+        MarkBattlerForControllerExec(gBattlerAttacker);
+    }
 
     #if TESTING
     gCountAllocs = TRUE;
