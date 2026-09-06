@@ -16,7 +16,7 @@ script CasteliaCity_BattleCompany1F_EventScript_NewToFloor
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)
@@ -32,11 +32,11 @@ script CasteliaCity_BattleCompany1F_EventScript_Trigger
 {
 	lock
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	playse(SE_PIN)
-	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -85,7 +85,7 @@ script CasteliaCity_BattleCompany1F_EventScript_Trigger
 script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos1
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_left, walk_down * 2))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -95,8 +95,8 @@ script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos1
 script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos2
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
-	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
+	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
     return
@@ -105,7 +105,7 @@ script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos2
 script CasteliaCity_BattleCompany1F_EventScript_Trigger_Pos3
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	applymovement(LOCALID_BATTLE_COMPANY_1F_GRANDPA, moves(walk_right, walk_down * 2))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -184,9 +184,9 @@ script CasteliaCity_BattleCompany1F_EventScript_Elevator
 	playse(SE_SLIDING_DOOR)
 	setdoorclosed(7, 2)
 	waitse()
-	applymovement(LOCALID_PLAYER, moves(face_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
 	waitmovement(0)
-	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	msgbox(Elevator_Text_WhichFloorWouldLikeToGo, MSGBOX_TRANSPARENT)
 	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "47",
         "55",
@@ -205,7 +205,7 @@ script CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveRight
 
 script CasteliaCity_BattleCompany1F_EventScript_Elevator_PlayerMoveUp
 {
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
     return
 }
@@ -233,7 +233,7 @@ script CasteliaCity_BattleCompany1F_EventScript_Elevator_GetOff
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)

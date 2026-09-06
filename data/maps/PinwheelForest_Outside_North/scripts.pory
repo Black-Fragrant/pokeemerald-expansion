@@ -112,7 +112,7 @@ script PinwheelForest_ON_EventScript_Battle_Preschooler_M
 script PinwheelForest_ON_Trigger_Burgh
 {
        lock
-       applymovement(LOCALID_PFON_BURGH, moves(face_right))
+       applymovement(LOCALID_PFON_BURGH, Common_Movement_FaceRight)
        waitmovement(0)
        msgbox("Burgh: This leads to Pinwheel Forest.\p"
            "If they manage to scuttle off into the\n"

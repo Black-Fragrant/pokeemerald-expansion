@@ -133,14 +133,14 @@ script Route3_North_EventScript_Battle_Twins
 	specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
 	goto_if_lt (VAR_RESULT, 2, Route3_North_EventScript_Battle_Twins_NotEnoughPokemon)
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(emote_exclamation_mark))
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
     playbgm(MUS_BW_SPOTTED_KID, TRUE)
 	savebgm(MUS_BW_ROUTE_2)
-	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(face_right))
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(face_right))
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, Common_Movement_FaceRight)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_FaceRight)
 	waitmovement(0)
     msgbox("We're going to combine our strength\n"
        "and do our best, so please watch!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
@@ -176,7 +176,7 @@ script Route3_North_EventScript_Twin_Left
 script Route3_North_EventScript_Battle_Twins_NotEnoughPokemon
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -186,7 +186,7 @@ script Route3_North_EventScript_Battle_Twins_NotEnoughPokemon
        "you to go any further!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
 	destroy_speech_bubble()
 	closemessage
-    applymovement(LOCALID_PLAYER, moves(walk_right))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkRightOnce)
     waitmovement(0)
     release
     end
@@ -198,8 +198,8 @@ script Route3_North_EventScript_Trigger_NotEnoughPokemon
 	specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
 	goto_if_lt (VAR_RESULT, 2, Route3_North_EventScript_Trigger_OnePokemon)
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(emote_exclamation_mark))
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
     playbgm(MUS_BW_SPOTTED_KID, TRUE)
@@ -208,7 +208,7 @@ script Route3_North_EventScript_Trigger_NotEnoughPokemon
 	call_if_eq (VAR_TEMP_1, 22, Route3_North_EventScript_TwinR_FaceDown)
 	call_if_eq (VAR_TEMP_1, 23, Route3_North_EventScript_TwinR_WalkDown)
     delay(10)
-    applymovement(LOCALID_PLAYER, moves(face_up))
+    applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
     waitmovement(0)
     msgbox("We're going to combine our strength\n"
        "and do our best, so please watch!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
@@ -226,16 +226,16 @@ script Route3_North_EventScript_Trigger_NotEnoughPokemon
 
 script Route3_North_EventScript_TwinR_FaceDown
 {
-	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(face_down))
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(face_down))
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, Common_Movement_FaceDown)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_FaceDown)
 	waitmovement(0)
     return
 }
 
 script Route3_North_EventScript_TwinR_WalkDown
 {
-	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, moves(walk_down))
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(walk_down))
+	applymovement(LOCALID_ROUTE3N_TWIN_LEFT, Common_Movement_WalkDownOnce)
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_WalkDownOnce)
 	waitmovement(0)
     return
 }
@@ -243,13 +243,13 @@ script Route3_North_EventScript_TwinR_WalkDown
 script Route3_North_EventScript_Trigger_OnePokemon
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-    applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, moves(walk_in_place_down))
+    applymovement(LOCALID_ROUTE3N_TWIN_RIGHT, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves(face_up))
+    applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
     waitmovement(0)
     msgbox("You only have one Pokémon?\n"
        "And you call yourself a Trainer?\p"
@@ -257,7 +257,7 @@ script Route3_North_EventScript_Trigger_OnePokemon
        "you to go any further!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_TWIN_RIGHT)
 	destroy_speech_bubble()
 	closemessage
-    applymovement(LOCALID_PLAYER, moves(walk_right))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkRightOnce)
     waitmovement(0)
     release
     end
@@ -271,10 +271,10 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	addobject(LOCALID_ROUTE3N_CHEREN_BATTLE)
 	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_left * 6))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(face_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -286,7 +286,7 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_1, 21, Route3_North_EventScript_Trigger_CherenBattle_Pos1)
 	call_if_eq (VAR_TEMP_1, 23, Route3_North_EventScript_Trigger_CherenBattle_Pos2)
-	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_left))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
 	delay(10)
 	call_if_set(FLAG_CHOSE_SNIVY, Route3_North_EventScript_Trigger_CherenBattle_Tepig)
@@ -304,9 +304,9 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	closemessage
 	playbgm(MUS_BW_GHETSIS_AMBITIONS, TRUE)
 	delay(10)
-	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_PLAYER, moves(emote_question_mark))
-	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(emote_question_mark))
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, Common_Movement_QuestionMark)
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -326,8 +326,8 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	msgbox("Cheren: What was that about?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_right))
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, Common_Movement_WalkInPlaceRight)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox("Bianca?\n"
        "Why are you running?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
@@ -346,13 +346,13 @@ script Route3_North_EventScript_Trigger_CherenBattle
        "Where were those people headed?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	msgbox("Cheren: That way, but...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox("Why are you running now?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_CHEREN_BATTLE)
 	destroy_speech_bubble()
@@ -365,14 +365,14 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox("Little Girl: Miss... Oh...\n"
        "My Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_GIRL_WITH_BIANCA)
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox("Bianca: It'll be OK.\n"
        "It'll be OK. Don't cry.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
@@ -386,7 +386,7 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(face_left))
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_FaceLeft)
 	waitmovement(0)
 	msgbox("Bianca: You have to hear this!\p"
        "Those people stole this girl's Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3N_BIANCA)
@@ -398,8 +398,8 @@ script Route3_North_EventScript_Trigger_CherenBattle
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, moves(walk_in_place_up))
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BATTLE, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox("{PLAYER}, we're going to get\n"
        "that Pokémon back.\p"
@@ -439,29 +439,29 @@ script Route3_North_EventScript_Trigger_CherenBattle_Pos2
 
 script Route3_North_EventScript_Trigger_CherenBattle_Tepig
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_1, text("Why do you keep beating me?\pWe have the same number\n of Gym Badges.\pWe should be equals\nin strength..."))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_1, CherenBattle_Text_WhyDoYouKeepBeatingMe)
 	return()
 }
 
 script Route3_North_EventScript_Trigger_CherenBattle_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_2, text("Why do you keep beating me?\pWe have the same number\n of Gym Badges.\pWe should be equals\nin strength..."))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_2, CherenBattle_Text_WhyDoYouKeepBeatingMe)
 	return()
 }
 
 script Route3_North_EventScript_Trigger_CherenBattle_Snivy
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_3, text("Why do you keep beating me?\pWe have the same number\n of Gym Badges.\pWe should be equals\nin strength..."))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_3_3, CherenBattle_Text_WhyDoYouKeepBeatingMe)
 	return()
 }
 
 script Route3_North_EventScript_Trigger_TryLeaving
 {
 	lock
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(face_left))
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_FaceLeft)
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -470,7 +470,7 @@ script Route3_North_EventScript_Trigger_TryLeaving
 	call_if_eq (VAR_TEMP_0, 46, Route3_North_EventScript_Trigger_TryLeaving_Pos2)
 	call_if_eq (VAR_TEMP_0, 47, Route3_North_EventScript_Trigger_TryLeaving_Pos3)
 	delay(10)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox("Bianca: Please, {PLAYER}.\p"
        "Team Plasma took that Pokémon.\n"
@@ -478,8 +478,8 @@ script Route3_North_EventScript_Trigger_TryLeaving
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_PLAYER, moves(walk_up))
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpOnce)
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 45, Route3_North_EventScript_Trigger_TryLeaving_Pos4)
@@ -629,7 +629,7 @@ script Route3_North_EventScript_CherenGoInCave
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_ROUTE3N_CHEREN_BY_CAVE, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE3N_CHEREN_BY_CAVE, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	playse(SE_EXIT)
@@ -645,13 +645,13 @@ script Route3_North_EventScript_Trigger_ThankingYou
 {
 	lock
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(emote_exclamation_mark))
-	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-	applymovement(LOCALID_ROUTE3N_BIANCA, moves(walk_in_place_up))
-	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE3N_BIANCA, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_ROUTE3N_GIRL_WITH_BIANCA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 45, Route3_North_EventScript_Trigger_ThankingYou_Pos1)
@@ -715,7 +715,7 @@ script Route3_North_EventScript_Trigger_ThankingYou_Pos1
 
 script Route3_North_EventScript_Trigger_ThankingYou_Pos2
 {
-	applymovement(LOCALID_PLAYER, moves( walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	return
 }

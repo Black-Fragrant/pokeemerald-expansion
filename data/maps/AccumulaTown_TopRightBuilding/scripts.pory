@@ -5,7 +5,7 @@ script AccumulaTown_TopRightBuilding_EventScript_Guy
 	msgbox("My! Heart!\n"
 			"As long as my heart beats!\l"
 			"I will keep! On! Drumming!!", MSGBOX_NPC, TRUE)
-	applymovement(LOCALID_ACCUMULA_TRB_GUY, moves(face_down))
+	applymovement(LOCALID_ACCUMULA_TRB_GUY, Common_Movement_FaceDown)
 	waitmovement(0)
 	delay(10)
 	end
@@ -14,7 +14,7 @@ script AccumulaTown_TopRightBuilding_EventScript_Guy
 script AccumulaTown_TopRightBuilding_EventScript_Girl
 {
 	msgbox("Hee hee! Please listen to my music.", MSGBOX_NPC, TRUE)
-	applymovement(LOCALID_ACCUMULA_TRB_GIRL, moves(face_up))
+	applymovement(LOCALID_ACCUMULA_TRB_GIRL, Common_Movement_FaceUp)
 	waitmovement(0)
 	delay(10)
 	end

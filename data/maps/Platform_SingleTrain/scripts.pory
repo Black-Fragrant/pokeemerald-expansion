@@ -20,7 +20,7 @@ script Platform_SingleTrain_EventScript_GetChallengeStatus
 script Platform_SingleTrain_EventScript_QuitWithoutSaving
 {
 	lock
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FacePlayer)
     waitmovement(0)
 	msgbox("Excuse me!\p"
             "You didn't save before you quit your\n"
@@ -71,8 +71,8 @@ script Platform_SingleTrain_EventScript_RideBackToNimbasa
 script Platform_SingleTrain_EventScript_ResumeChallenge
 {
 	lock
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
-    applymovement(LOCALID_PLAYER, moves(face_right))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FacePlayer)
+    applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
     waitmovement(0)
 	msgbox("It's good to see you back.\p"
             "Would you like to resume your challenge\n"
@@ -108,7 +108,7 @@ script Platform_SingleTrain_EventScript_Trigger
 {
     lock
     call(BattleSubway_EventScript_Platform_StopPlayerAtConductor)
-    applymovement(LOCALID_SINGLETRAIN_AGENT, moves(face_player))
+    applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FacePlayer)
     waitmovement(0)
 	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
 	special(SavePlayerParty)

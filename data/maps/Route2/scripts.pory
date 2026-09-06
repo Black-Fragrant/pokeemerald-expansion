@@ -39,7 +39,7 @@ script Route2_EventScript_MotherGivesRunningShoes
 	destroy_speech_bubble()
 	closemessage()
 	delay(10)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox("I finally caught up with you...\p"
 			"And look how far you've come already!\p"
@@ -50,7 +50,7 @@ script Route2_EventScript_MotherGivesRunningShoes
 	destroy_speech_bubble()
 	closemessage()
 	delay(10)
-	applymovement(LOCALID_ROUTE2_MOTHER, moves(walk_left))
+	applymovement(LOCALID_ROUTE2_MOTHER, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
 	delay(10)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
@@ -234,7 +234,7 @@ script Route2_EventScript_BoyOverLedge_Jump
 	msgbox("OK! Wait one second!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(face_down))
+	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, Common_Movement_FaceDown)
 	waitmovement(0)
 	msgbox("Wooo!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_BOY_OVER_LEDGE)
 	destroy_speech_bubble()
@@ -242,13 +242,13 @@ script Route2_EventScript_BoyOverLedge_Jump
 	special(SpawnCameraObject)
 	playse(SE_LEDGE)
 	applymovement(LOCALID_PLAYER, moves(delay_8, face_down))
-	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(jump_2_down, walk_down))
 	waitmovement(0)
 	waitse()
 	special(RemoveCameraObject)
 	delay(30)
-	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, moves(face_up))
+	applymovement(LOCALID_ROUTE2_BOY_OVER_LEDGE, Common_Movement_FaceUp)
 	waitmovement(0)
 	goto(Route2_EventScript_BoyOverLedge_PostJump)
 	end()
@@ -264,7 +264,7 @@ script Route2_EventScript_BoyOverLedge_PostJump
 	setflag(FLAG_TEMP_12)
 	setobjectxyperm(LOCALID_ROUTE2_BOY_OVER_LEDGE, 19, 38)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	delay(20)
@@ -290,7 +290,7 @@ script Route2_EventScript_BiancaBattle
 	closemessage
 	delay(10)
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -303,10 +303,10 @@ script Route2_EventScript_BiancaBattle
 	call_if_eq (VAR_TEMP_0, 51, Route2_EventScript_BB_Pos4)
 	call_if_eq (VAR_TEMP_0, 52, Route2_EventScript_BB_Pos5)
 	call_if_eq (VAR_TEMP_0, 53, Route2_EventScript_BB_Pos6)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_right * 7))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_right, walk_up * 3))
 	waitmovement(0)
 	delay(10)
@@ -333,7 +333,7 @@ script Route2_EventScript_BiancaBattle
 	delay(10)
 	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_down * 3))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	applymovement(LOCALID_ROUTE2_BIANCA, moves(walk_left * 8))
 	waitmovement(0)
 	removeobject(LOCALID_ROUTE2_BIANCA)
@@ -382,19 +382,19 @@ script Route2_EventScript_BB_Pos6
 
 script Route2_EventScript_BiancaBattle_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_1, text("Aww...\nI couldn't win..."))
+	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_1, BiancaBattle_Text_AwwICouldntWin)
 	return()
 }
 
 script Route2_EventScript_BiancaBattle_Snivy
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_2, text("Aww...\nI couldn't win..."))
+	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_2, BiancaBattle_Text_AwwICouldntWin)
 	return()
 }
 
 script Route2_EventScript_BiancaBattle_Tepig
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_3, text("Aww...\nI couldn't win..."))
+	trainerbattle_no_intro (TRAINER_BIANCA_ROUTE_2_3, BiancaBattle_Text_AwwICouldntWin)
 	return()
 }
 

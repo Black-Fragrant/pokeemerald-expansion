@@ -264,13 +264,13 @@ script Route4_South_EventScript_Trigger_MineWorker
 	call_if_eq (VAR_TEMP_0, 50, Route4_South_EventScript_Trigger_MineWorker_Left)
 	call_if_eq (VAR_TEMP_0, 52, Route4_South_EventScript_Trigger_MineWorker_Right)
 	playse(SE_PIN)
-	applymovement(LOCALID_R4S_MINEWORKER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_R4S_MINEWORKER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
     call(Route4_South_EventScript_MineWorker_Dialogue)
-	applymovement(LOCALID_PLAYER, moves(walk_down))
-	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownOnce)
+	applymovement(LOCALID_R4S_MINEWORKER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(20)
     release
@@ -279,14 +279,14 @@ script Route4_South_EventScript_Trigger_MineWorker
 
 script Route4_South_EventScript_Trigger_MineWorker_Left
 {
-	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_left))
+	applymovement(LOCALID_R4S_MINEWORKER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     return
 }
 
 script Route4_South_EventScript_Trigger_MineWorker_Right
 {
-	applymovement(LOCALID_R4S_MINEWORKER, moves(walk_in_place_right))
+	applymovement(LOCALID_R4S_MINEWORKER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     return
 }
@@ -295,7 +295,7 @@ script Route4_South_EventScript_CherenBattle
 {
 	lock
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE4S_CHEREN, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE4S_CHEREN, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -360,21 +360,21 @@ script Route4_South_EventScript_CherenBattle
 
 script Route4_South_EventScript_CB_Tepig
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_1, text("Impressive.\nBut why can't I win?!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_1, CherenBattle_Text_ImpressiveButWhyCantIWin)
 	bufferstring(STR_VAR_1, text("Pignite"))
 	return()
 }
 
 script Route4_South_EventScript_CB_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_2, text("Impressive.\nBut why can't I win?!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_2, CherenBattle_Text_ImpressiveButWhyCantIWin)
 	bufferstring(STR_VAR_1, text("Dewott"))
 	return()
 }
 
 script Route4_South_EventScript_CB_Snivy
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_3, text("Impressive.\nBut why can't I win?!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_4_3, CherenBattle_Text_ImpressiveButWhyCantIWin)
 	bufferstring(STR_VAR_1, text("Servine"))
 	return()
 }
@@ -402,7 +402,7 @@ script Route4_South_EventScript_CB_Pos3
 
 script Route4_South_EventScript_CB_Pos4
 {
-	applymovement(LOCALID_ROUTE4S_CHEREN, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE4S_CHEREN, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     return
 }

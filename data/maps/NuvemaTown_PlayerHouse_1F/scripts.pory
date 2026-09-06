@@ -25,7 +25,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     lockall()
     setvar(VAR_NUVEMA_PICK_STARTER, 4) 
     delay(10)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3 ))
@@ -36,7 +36,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     destroy_speech_bubble()
     closemessage
     delay(10)
-	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_right))
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, Common_Movement_WalkRightOnce)
 	waitmovement(0)
     delay(10)
     msgbox("Bianca: Well, um...\n"
@@ -67,25 +67,25 @@ script NuvemaTown_PH1F_EventScript_Apologize
     closemessage
     delay(20)
 	playse(SE_PIN)
-	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     msgbox("Bianca: Oh! Wait!\n"
             "I've gotta go home first.", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_BIANCA)
     destroy_speech_bubble()
     closemessage
     delay(10)
-	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_in_place_right))
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("Thanks for having us over!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH1F_BIANCA)
     destroy_speech_bubble()
     closemessage
     delay(20)
-	applymovement(LOCALID_NUVEMA_PH1F_CHEREN, moves(walk_right))
+	applymovement(LOCALID_NUVEMA_PH1F_CHEREN, Common_Movement_WalkRightOnce)
 	waitmovement(0)
 	applymovement(LOCALID_NUVEMA_PH1F_CHEREN, moves(walk_down * 3, walk_right * 2, walk_down))
 	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_down * 4, walk_right * 2, walk_in_place_down))
@@ -94,7 +94,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
 	playse(SE_EXIT)
 	removeobject (LOCALID_NUVEMA_PH1F_CHEREN)
 	waitse()
-	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, moves(walk_down))
+	applymovement(LOCALID_NUVEMA_PH1F_BIANCA, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	delay(20)
 	playse(SE_EXIT)
@@ -111,7 +111,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     playbgm(MUS_BW_FOLLOW_ME, TRUE)
 	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, moves(walk_left * 2, walk_up * 3, walk_in_place_left))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     msgbox("Mom: My, my, {PLAYER}.\p"
             "Pokémon battles are so lively,\n"
@@ -121,7 +121,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, moves(walk_in_place_down))
+	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
     msgbox("Mom: Hm. That sure reminded me of\n"
@@ -129,7 +129,7 @@ script NuvemaTown_PH1F_EventScript_Apologize
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, moves(walk_in_place_left))
+	applymovement(LOCALID_NUVEMA_PH1F_MOTHER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
     msgbox("Mom: Oh, and you know? After a battle,\n"

@@ -17,7 +17,7 @@ script Platform_TrainToAnvilleTown_EventScript_Trigger
 {
     lock
     call(BattleSubway_EventScript_Platform_StopPlayerAtConductor)
-    applymovement(LOCALID_ANVILTRAIN_AGENT, moves(face_player))
+    applymovement(LOCALID_ANVILTRAIN_AGENT, Common_Movement_FacePlayer)
     waitmovement(0)
 	msgbox("Would you like to board\n"
         "the train to Anville Town?", MSGBOX_YESNO, TRUE, LOCALID_ANVILTRAIN_AGENT)

@@ -23,14 +23,14 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex
 {
     lockall()
     setvar(VAR_NUVEMA_PICK_STARTER, 6)
-    applymovement(LOCALID_PLAYER, moves( walk_up * 2 ))
-    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( walk_up * 2 ))
-    applymovement(LOCALID_NUVEMA_PJL_CHEREN, moves( walk_up * 2 ))
+    applymovement(LOCALID_PLAYER, moves(walk_up * 2 ))
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(walk_up * 2 ))
+    applymovement(LOCALID_NUVEMA_PJL_CHEREN, moves(walk_up * 2 ))
     waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves( walk_up ))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkUpOnce)
     waitmovement(0)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_up ))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpOnce)
     waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -45,7 +45,7 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex
     destroy_speech_bubble()
     closemessage()
     delay(10)
-    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     msgbox("Professor Juniper: Come, come, Cheren!\n"
             "This is not a time to take things lightly.\p"
@@ -58,7 +58,7 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_left, walk_in_place_down, delay_16, walk_right * 2, walk_in_place_down, delay_16, walk_left , walk_in_place_down ))
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves(walk_left, walk_in_place_down, delay_16, walk_right * 2, walk_in_place_down, delay_16, walk_left , walk_in_place_down))
     waitmovement(0)
     msgbox("Professor Juniper: Oh, that's unusual!\n"
             "You've already had a Pokémon battle!\p"
@@ -103,7 +103,7 @@ script NuvemaTown_EventScript_JPL_DeclineNicknameStarter
 script NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname
 {
     delay(10)
-    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     msgbox("Professor Juniper: As for why I gave all\n"
@@ -115,11 +115,11 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname
     closemessage()
     delay(10)
 	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(emote_question_mark))
+	applymovement(LOCALID_NUVEMA_PJL_BIANCA, Common_Movement_QuestionMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( walk_in_place_right ))
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     delay(10)
     msgbox("Bianca: Pokédex?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PJL_BIANCA)
@@ -135,7 +135,7 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_AfterNickname
     destroy_speech_bubble()
     closemessage
     delay(20)
-    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( face_up ))
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, Common_Movement_FaceUp)
     waitmovement(0)
     applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_slow_up , delay_4, face_left, delay_4, face_down ))
     waitmovement(0)
@@ -165,7 +165,7 @@ script NuvemaTown_EventScript_JPL_JuniperRefusesDex
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     if (msgbox("Professor Juniper: Here is what I need\n"
@@ -202,7 +202,7 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_in_place_down ))
+    applymovement(LOCALID_NUVEMA_PJL_JUNIPER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     msgbox("Professor Juniper: All of you, thanks!\p"
@@ -251,21 +251,21 @@ script NuvemaTown_EventScript_JPL_JuniperGivesDex_Continue_2
     destroy_speech_bubble()
     closemessage
     delay(20)
-	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_down ))
+	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, Common_Movement_WalkDownOnce)
     waitmovement(0)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves( walk_down ))
-	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_down ))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownOnce)
+	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, Common_Movement_WalkDownOnce)
     waitmovement(0)
 	special(RemoveCameraObject)
-    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( face_right, lock_facing_direction, walk_left, unlock_facing_direction ))
-    applymovement(LOCALID_PLAYER, moves( face_right, lock_facing_direction, walk_left, unlock_facing_direction ))
+    applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(face_right, lock_facing_direction, walk_left, unlock_facing_direction))
+    applymovement(LOCALID_PLAYER, moves(face_right, lock_facing_direction, walk_left, unlock_facing_direction))
     waitmovement(0)
     delay(20)
-	applymovement(LOCALID_NUVEMA_PJL_CHEREN, moves( delay_16, face_down ))
-	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves( delay_16, face_down ))
-	applymovement(LOCALID_PLAYER, moves( delay_16, face_down ))
-	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves( walk_down * 4 ))
+	applymovement(LOCALID_NUVEMA_PJL_CHEREN, moves(delay_16, face_down))
+	applymovement(LOCALID_NUVEMA_PJL_BIANCA, moves(delay_16, face_down))
+	applymovement(LOCALID_PLAYER, moves(delay_16, face_down))
+	applymovement(LOCALID_NUVEMA_PJL_JUNIPER, moves(walk_down * 4))
     waitmovement(0)
 	delay(20)
 	playse(SE_EXIT)

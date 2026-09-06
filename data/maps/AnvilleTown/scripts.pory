@@ -54,7 +54,7 @@ script AnvilleTown_EventScript_BoardTheTrain
 	call_if_eq (VAR_TEMP_1, 41, AnvilleTown_EventScript_BTT_Pos1)
 	call_if_eq (VAR_TEMP_1, 42, AnvilleTown_EventScript_BTT_Pos2)
 	call_if_eq (VAR_TEMP_1, 43, AnvilleTown_EventScript_BTT_Pos3)
-    applymovement(LOCALID_ANVILLETOWN_CONDUCTOR, moves(walk_in_place_down))
+    applymovement(LOCALID_ANVILLETOWN_CONDUCTOR, Common_Movement_WalkInPlaceDown)
     applymovement(LOCALID_PLAYER, moves(delay_16, set_invisible))
     waitmovement(0)
     playse(SE_EXIT)
@@ -109,7 +109,7 @@ script AnvilleTown_EventScript_MineWorker
     lock
     faceplayer
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     msgbox("Oh, are you also curious about\n"
@@ -169,7 +169,7 @@ script AnvilleTown_EventScript_SchoolBoy
         "taking pictures somewhere.", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
     destroy_speech_bubble()
     closemessage
-    applymovement(VAR_LAST_TALKED, moves(walk_in_place_up))
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     end()
 }
@@ -192,7 +192,7 @@ script AnvilleTown_EventScript_Housewife
         "this angle!", MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
     destroy_speech_bubble()
     closemessage
-    applymovement(VAR_LAST_TALKED, moves(walk_in_place_left))
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     end()
 }

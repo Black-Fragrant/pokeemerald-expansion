@@ -68,7 +68,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue1_Businessman
     lock
     msgbox("I finally get to eat it!\n"
     "It was worth lining up!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE1, moves(walk_in_place_left))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE1, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     release
     end
@@ -79,7 +79,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue2_Beauty
     lock
     msgbox("I came all the way from Accumula Town\n"
     "just to have a taste!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE2, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -90,7 +90,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue2_Beauty2
     lock
     msgbox("I came all the way from Accumula Town\n"
     "just to have a taste!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(walk_in_place_left))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE6, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     release
     end
@@ -100,7 +100,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue3_OfficeLady
 {
     lock
     msgbox("These sweets are mega popular!!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -111,7 +111,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue4_OfficeLady
     lock
     msgbox("That's a popular store for you!\n"
     "It's amazingly crowded!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -137,7 +137,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue5_Businessman2
         "But it looks like I got the last one.\n"
         "They're sold out for today!\p"
         "Try again on a different day!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE8, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -151,7 +151,7 @@ script CasteliaCity_ModeStreet_EventScript_Queue5_Businessman_NoPurchase
         "But it looks like I got the last one.\n"
         "They're sold out for today!\p"
         "Try again on a different day!", MSGBOX_NPC, TRUE)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -163,12 +163,12 @@ script CasteliaCity_ModeStreet_EventScript_Trigger
     callnative(DebugMenu_CalculateTime)
 	goto_if_ne(VAR_DAY_OF_WEEK, 2, CasteliaCity_ModeStreet_EventScript_TriggeredOnOtherDays)
 	playse(SE_PIN)
-	applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(emote_exclamation_mark))
+	applymovement(LOCALID_CASTELIA_MS_QUEUE5, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-	applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_down))
-	applymovement(LOCALID_PLAYER, moves(face_up))
+	applymovement(LOCALID_CASTELIA_MS_QUEUE5, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
 	waitmovement(0)
     goto(CasteliaCity_ModeStreet_EventScript_DoYouWantToLineUp)
 }
@@ -195,7 +195,7 @@ script CasteliaCity_ModeStreet_EventScript_DoYouWantToLineUp
     "Usually, it's sold out by now.", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_QUEUE5)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -225,7 +225,7 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
         "It's worth lining up!", MSGBOX_DEFAULT, TRUE, LOCALID_CASTELIA_MS_QUEUE5)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_up))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 9, CasteliaCity_ModeStreet_EventScript_LineUp_Pos1)
@@ -241,7 +241,7 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
     applymovement(LOCALID_CASTELIA_MS_QUEUE1, moves(walk_right, walk_down * 10))
     waitmovement(0)
     removeobject(LOCALID_CASTELIA_MS_QUEUE1)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(walk_in_place_left))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE2, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     delay(20)
     addobject(LOCALID_CASTELIA_MS_QUEUE7)
@@ -255,7 +255,7 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
     applymovement(LOCALID_CASTELIA_MS_QUEUE2, moves(walk_right, walk_down * 9))
     waitmovement(0)
     removeobject(LOCALID_CASTELIA_MS_QUEUE2)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(walk_in_place_left))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE3, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     delay(20)
     addobject(LOCALID_CASTELIA_MS_QUEUE8)
@@ -269,7 +269,7 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
     applymovement(LOCALID_CASTELIA_MS_QUEUE3, moves(walk_right, walk_down * 8))
     waitmovement(0)
     removeobject(LOCALID_CASTELIA_MS_QUEUE3)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(walk_in_place_left))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE4, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     delay(20)
     applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(delay_16, walk_up))
@@ -280,7 +280,7 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
     applymovement(LOCALID_CASTELIA_MS_QUEUE4, moves(walk_right, walk_down * 8))
     waitmovement(0)
     removeobject(LOCALID_CASTELIA_MS_QUEUE4)
-    applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_in_place_left))
+    applymovement(LOCALID_CASTELIA_MS_QUEUE5, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     delay(20)
     applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up))
@@ -290,7 +290,7 @@ script CasteliaCity_ModeStreet_EventScript_LineUp
     applymovement(LOCALID_CASTELIA_MS_QUEUE5, moves(walk_right, walk_down * 8))
     waitmovement(0)
     removeobject(LOCALID_CASTELIA_MS_QUEUE5)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     showmoneybox(0, 0)
 	msgbox("How about Castelia City's famous\n"
@@ -328,7 +328,7 @@ script CasteliaCity_ModeStreet_EventScript_Reconsider
 
 script CasteliaCity_ModeStreet_EventScript_FinishBuyingCones
 {
-    applymovement(LOCALID_PLAYER, moves(walk_right))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkRightOnce)
     applymovement(LOCALID_CASTELIA_MS_QUEUE7, moves(delay_16, walk_up))
     applymovement(LOCALID_CASTELIA_MS_QUEUE8, moves(delay_16, walk_up))
     applymovement(LOCALID_CASTELIA_MS_QUEUE6, moves(delay_16, walk_up, walk_in_place_left))

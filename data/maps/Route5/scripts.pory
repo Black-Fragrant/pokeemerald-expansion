@@ -309,7 +309,7 @@ script Route5_EventScript_Trigger_Cam1
 script Route5_EventScript_Trigger_Cam2
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	return
@@ -327,7 +327,7 @@ script Route5_EventScript_Trigger_Cam3
 script Route5_EventScript_Trigger_Cam4
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	return
@@ -368,7 +368,7 @@ script Route5_EventScript_Trigger_CherenBattle
 	call_if_eq(VAR_TEMP_1, 19, Route5_EventScript_TCB_Pos7)
 	call_if_eq(VAR_TEMP_1, 20, Route5_EventScript_TCB_Pos8)
 	call_if_eq(VAR_TEMP_1, 21, Route5_EventScript_TCB_Pos9)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("Elesa: Oh, you two are friends...\p"
@@ -376,7 +376,7 @@ script Route5_EventScript_Trigger_CherenBattle
 		"other get better by competing.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE5_ELESA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("OK, let's go.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA)
@@ -386,11 +386,11 @@ script Route5_EventScript_Trigger_CherenBattle
 	call_if_eq(VAR_TEMP_1, 20, Route5_EventScript_TCB_Pos11)
 	call_if_eq(VAR_TEMP_1, 21, Route5_EventScript_TCB_Pos12)
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE5_ALDER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE5_ALDER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE5_ALDER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
 	msgbox("???: Oh!\n"
@@ -398,12 +398,12 @@ script Route5_EventScript_Trigger_CherenBattle
 	closemessage
 	playbgm(MUS_BW_ALDER, TRUE)
 	delay(10)
-	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_up))
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE5_ELESA, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_down, walk_left * 2, walk_in_place_down))
@@ -413,13 +413,13 @@ script Route5_EventScript_Trigger_CherenBattle
 		"Life should be enjoyed!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("Cheren: Who is this man?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_ELESA, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
 	msgbox("Elesa: This is Alder,\n"
@@ -433,7 +433,7 @@ script Route5_EventScript_Trigger_CherenBattle
 	closemessage
 	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_right * 2, walk_in_place_down))
 	waitmovement(0)
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
 	msgbox("Alder: I heard that remark.\n"
@@ -460,7 +460,7 @@ script Route5_EventScript_Trigger_CherenBattle
 	destroy_speech_bubble()
 	closemessage
 	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(emote_question_mark))
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_QuestionMark)
 	waitmovement(0)
     delay(20)
     waitse
@@ -477,7 +477,7 @@ script Route5_EventScript_Trigger_CherenBattle
 		"of thinking is wrong...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE5_ALDER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
 	msgbox("Alder: In my travels, I've helped many\n"
@@ -489,7 +489,7 @@ script Route5_EventScript_Trigger_CherenBattle
 		"with those two?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE5_ALDER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
 	msgbox("Hey, you two. Come\n"
@@ -505,7 +505,7 @@ script Route5_EventScript_Trigger_CherenBattle
 		"But, before that...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	playse(SE_USE_ITEM)
@@ -529,7 +529,7 @@ script Route5_EventScript_TCB_Pos1
 
 script Route5_EventScript_TCB_Pos2
 {
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_up, walk_left * 2))
 	waitmovement(0)
 	return
@@ -537,7 +537,7 @@ script Route5_EventScript_TCB_Pos2
 
 script Route5_EventScript_TCB_Pos3
 {
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left * 3))
 	waitmovement(0)
 	return
@@ -545,7 +545,7 @@ script Route5_EventScript_TCB_Pos3
 
 script Route5_EventScript_TCB_Pos4
 {
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_left, walk_down, walk_left * 2))
 	waitmovement(0)
 	return
@@ -617,19 +617,19 @@ script Route5_EventScript_TCB_Pos12
 
 script Route5_EventScript_CB_Tepig
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_1, text("Well! You are strong, as usual!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_1, CherenBattle_Text_YouAreStrongAsUsual)
 	return()
 }
 
 script Route5_EventScript_CB_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_2, text("Well! You are strong, as usual!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_2, CherenBattle_Text_YouAreStrongAsUsual)
 	return()
 }
 
 script Route5_EventScript_CB_Snivy
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_3, text("Well! You are strong, as usual!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_ROUTE_5_3, CherenBattle_Text_YouAreStrongAsUsual)
 	return()
 }
 
@@ -645,7 +645,7 @@ script Route5_EventScript_ChooseParty
 
 script Route5_EventScript_DoMultibattle
 {
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
 	msgbox("Cheren: OK, let's battle.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
@@ -694,7 +694,7 @@ script Route5_EventScript_FinishedMultibattle
 		"looked like they were having fun.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_ALDER, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE5_ALDER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
 	msgbox("Alder: Young man, if there are people\n"
@@ -708,7 +708,7 @@ script Route5_EventScript_FinishedMultibattle
 		"views, but so be it! Give it some thought.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ALDER)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_ROUTE5_ELESA, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_ELESA, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
 	msgbox("Elesa: Let's roll.\n"
@@ -719,10 +719,10 @@ script Route5_EventScript_FinishedMultibattle
 	waitmovement(0)
 	removeobject(LOCALID_ROUTE5_ELESA)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
-	applymovement(LOCALID_ROUTE5_CHEREN, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE5_CHEREN, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
 	msgbox("Cheren: The Champion is the strongest\n"
@@ -748,7 +748,7 @@ script Route5_EventScript_Trigger_LowerBridge
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_TLB_Pos1)
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -767,7 +767,7 @@ script Route5_EventScript_Trigger_LowerBridge
 	call_if_eq (VAR_TEMP_1, 16, Route5_EventScript_TLB_PlayerMove3)
 	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_TLB_PlayerMove4)
 	special(RemoveCameraObject)
-	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("Elesa: Now to contact him...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA_LEFT)
@@ -800,7 +800,7 @@ script Route5_EventScript_Trigger_LowerBridge
 	fadescreenswapbuffers(FADE_TO_BLACK)
 	delay(2)
 	fadescreenswapbuffers(FADE_FROM_BLACK)
-	applymovement(LOCALID_ROUTE5_ELESA_LEFT, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_ELESA_LEFT, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
 	msgbox("Elesa: I have a TV gig, so I've got to go.\p"
@@ -817,9 +817,9 @@ script Route5_EventScript_Trigger_LowerBridge
 	waitmovement(0)
 	special(RemoveCameraObject)
 	removeobject(LOCALID_ROUTE5_ELESA_LEFT)
-	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_down))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, Common_Movement_WalkDownOnce)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
 	msgbox("Cheren: What I am is a Trainer.\p"
@@ -843,7 +843,7 @@ script Route5_EventScript_Trigger_LowerBridge
 script Route5_EventScript_TLB_Pos1
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	return
@@ -851,14 +851,14 @@ script Route5_EventScript_TLB_Pos1
 
 script Route5_EventScript_TLB_CherenFaceRight
 {
-	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	return
 }
 
 script Route5_EventScript_TLB_CherenFaceDown
 {
-	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_in_place_down))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	return
 }

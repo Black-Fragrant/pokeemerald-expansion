@@ -9,7 +9,7 @@ script CasteliaCity_SouthBank_EventScript_Trigger_BurghInPursuit
            "M'hm. There, heading toward the Gym?!", MSGBOX_DEFAULT, TRUE, LOCALID_CCSB_BURGH)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
     applymovement(LOCALID_CCSB_BURGH, moves(walk_fast_up * 6))
     waitmovement(0)
 	playse(SE_EXIT)

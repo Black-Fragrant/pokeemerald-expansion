@@ -17,7 +17,7 @@ script LostlornForest_EventScript_Backpacker
 	call_if_eq (VAR_TEMP_1, 14, LostlornForest_EventScript_Backpacker_Pos1)
 	call_if_eq (VAR_TEMP_1, 15, LostlornForest_EventScript_Backpacker_Pos1)
 	call_if_eq (VAR_TEMP_1, 16, LostlornForest_EventScript_Backpacker_Pos2)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
     msgbox("I really enjoy traveling around the world\n"

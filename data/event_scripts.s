@@ -1710,6 +1710,8 @@ EventScript_SetSail::
 	.include "data/scripts/wild_encounter.inc"
 	.include "data/scripts/battle_subway.inc"
 	.include "data/scripts/anville_town.inc"
+	.include "data/scripts/common_movements.inc"
+	.include "data/scripts/repeated_dialogues.inc"
 
 	.include "data/maps/NuvemaTown/scripts.inc"
 

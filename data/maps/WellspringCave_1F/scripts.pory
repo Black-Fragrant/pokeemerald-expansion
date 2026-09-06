@@ -48,15 +48,15 @@ script WellspringCave_1F_EventScript_CherenWrapsUp
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_down))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceDown)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     msgbox("OK, {PLAYER},\n"
        "I'll return the Pokémon.", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
     applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_right * 5))
     waitmovement(0)
     delay(10)
@@ -84,7 +84,7 @@ script WellspringCave_1F_EventScript_Trigger_Multibattle
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_left))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_1, 5, WellspringCave_1F_EventScript_Trigger_Multibattle_Pos3)
@@ -93,8 +93,8 @@ script WellspringCave_1F_EventScript_Trigger_Multibattle
     applymovement(LOCALID_PLAYER, moves(walk_left * 1))
     waitmovement(0)
     delay(10)
-    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(walk_right))
-    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_2, moves(walk_right))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, Common_Movement_WalkRightOnce)
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_2, Common_Movement_WalkRightOnce)
     waitmovement(0)
     msgbox("Team Plasma: That child cannot use\n"
        "a Pokémon to its full potential.\p"
@@ -108,7 +108,7 @@ script WellspringCave_1F_EventScript_Trigger_Multibattle
     delay(10)
     trainerbattle_no_intro(TRAINER_GRUNT_WELLSPRINGCAVE_1F_1, text("Whoa, whoa, come on now!\nI'm shocked to lose\lagainst a little kid!"))
     delay(10)
-    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(walk_in_place_right))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox("Team Plasma: Wha...? How could we lose\n"
        "when we have right on our side?!", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_PGM_1)
@@ -148,8 +148,8 @@ script WellspringCave_1F_EventScript_Trigger_Multibattle
        "acting so self-righteous?", MSGBOX_DEFAULT, TRUE, LOCALID_WELLSPRINGCAVE1F_CHEREN)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_down))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceDown)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     msgbox("{PLAYER}!\p"
        "We've been friends our whole lives.\n"
@@ -172,8 +172,8 @@ script WellspringCave_1F_EventScript_ChooseParty
 
 script WellspringCave_1F_EventScript_DoMultibattle
 {
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_left))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceLeft)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
 	goto_if_set(FLAG_CHOSE_SNIVY, WellspringCave_1F_EventScript_DoMultibattle_Tepig)
 	goto_if_set(FLAG_CHOSE_TEPIG, WellspringCave_1F_EventScript_DoMultibattle_Oshawott)
@@ -213,7 +213,7 @@ script WellspringCave_1F_EventScript_DoMultibattle_Snivy
 
 script WellspringCave_1F_EventScript_FinishedMultibattle
 {
-    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_3, moves(walk_in_place_right))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_3, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox("Team Plasma: In order to liberate\n"
        "Pokémon from foolish people,\l"
@@ -239,9 +239,9 @@ script WellspringCave_1F_EventScript_FinishedMultibattle
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, moves(walk_down))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_PGM_1, Common_Movement_WalkDownOnce)
     waitmovement(0)
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_up))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     delay(10)
     msgbox("Team Plasma: We'll give you back\n"
@@ -260,21 +260,21 @@ script WellspringCave_1F_EventScript_FinishedMultibattle
 
 script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos1
 {
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_right))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     return
 }
 
 script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos2
 {
-    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, moves(walk_in_place_down))
+    applymovement(LOCALID_WELLSPRINGCAVE1F_CHEREN, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     return
 }
 
 script WellspringCave_1F_EventScript_Trigger_Multibattle_Pos3
 {
-    applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
     waitmovement(0)
     return
 }

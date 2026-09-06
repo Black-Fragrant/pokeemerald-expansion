@@ -16,7 +16,7 @@ script Route3_South_EventScript_Trigger_Cheren
 {
     lock
 	playse(SE_PIN)
-	applymovement(LOCALID_ROUTE3S_CHEREN, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ROUTE3S_CHEREN, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
     delay(20)
@@ -30,7 +30,7 @@ script Route3_South_EventScript_Trigger_Cheren
     msgbox("{PLAYER}, stop!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE3S_CHEREN)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_in_place_right))
+	applymovement(LOCALID_ROUTE3S_CHEREN, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("That dark tall grass over there...\p"
@@ -49,7 +49,7 @@ script Route3_South_EventScript_Trigger_Cheren
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_PLAYER, moves(face_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
 	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_down * 6))
 	waitmovement(0)
     fadedefaultbgm
@@ -67,7 +67,7 @@ script Route3_South_EventScript_Trigger_Cheren_Pos1
 {
 	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_left * 2, walk_down, walk_left * 2))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     return
 }
@@ -76,7 +76,7 @@ script Route3_South_EventScript_Trigger_Cheren_Pos2
 {
 	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_left * 3))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     return
 }
@@ -85,21 +85,21 @@ script Route3_South_EventScript_Trigger_Cheren_Pos3
 {
 	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_left * 3, walk_in_place_up))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     return
 }
 
 script Route3_South_EventScript_Trigger_Cheren_Pos4
 {
-	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_in_place_left))
+	applymovement(LOCALID_ROUTE3S_CHEREN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     return
 }
 
 script Route3_South_EventScript_Trigger_Cheren_Pos5
 {
-	applymovement(LOCALID_ROUTE3S_CHEREN, moves(walk_in_place_up))
+	applymovement(LOCALID_ROUTE3S_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     return
 }

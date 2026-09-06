@@ -112,19 +112,19 @@ script PinwheelForest_Inside_Trigger_Entrance_Burgh
            "path that winds through the woods.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_in_place_up))
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     delay(10)
     msgbox("I will take the straight road after them!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(face_down))
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, Common_Movement_FaceDown)
     waitmovement(0)
     msgbox("If they're not there,\n"
            "I'll block the exit.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(walk_in_place_left))
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     delay(10)
     msgbox("Would you please take the other way\n"
@@ -135,7 +135,7 @@ script PinwheelForest_Inside_Trigger_Entrance_Burgh
            "so I'm sure you won't get lost.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_PFI_BURGH_ENTRANCE, moves(face_down))
+    applymovement(LOCALID_PFI_BURGH_ENTRANCE, Common_Movement_FaceDown)
     waitmovement(0)
     msgbox("Come on!\n"
            "Let's do this for Lenora's sake!", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_ENTRANCE)
@@ -191,7 +191,7 @@ script PinwheelForest_Inside_Trigger_Exit_Burgh
 {
     lock
 	playse(SE_PIN)
-	applymovement(LOCALID_PFI_BURGH_EXIT, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PFI_BURGH_EXIT, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -201,7 +201,7 @@ script PinwheelForest_Inside_Trigger_Exit_Burgh
 	call_if_eq (VAR_TEMP_0, 73, PinwheelForest_ITExB_Pos3)
 	call_if_eq (VAR_TEMP_0, 75, PinwheelForest_ITExB_Pos4)
 	call_if_eq (VAR_TEMP_0, 76, PinwheelForest_ITExB_Pos5)
-    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_in_place_down))
+    applymovement(LOCALID_PFI_BURGH_EXIT, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     msgbox("Burgh: Mm-hmm?\p"
@@ -210,7 +210,7 @@ script PinwheelForest_Inside_Trigger_Exit_Burgh
            "The forest's bug Pokémon are quiet, too.", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_BURGH_EXIT)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_PLAYER, moves(walk_down))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkDownOnce)
     waitmovement(0)
     delay(10)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
@@ -233,28 +233,28 @@ script PinwheelForest_ITExB_Pos1
 
 script PinwheelForest_ITExB_Pos2
 {
-    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left * 2))
+    applymovement(LOCALID_PFI_BURGH_EXIT, Common_Movement_WalkLeftTwice)
     waitmovement(0)
     return
 }
 
 script PinwheelForest_ITExB_Pos3
 {
-    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_left))
+    applymovement(LOCALID_PFI_BURGH_EXIT, Common_Movement_WalkLeftOnce)
     waitmovement(0)
     return
 }
 
 script PinwheelForest_ITExB_Pos4
 {
-    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right))
+    applymovement(LOCALID_PFI_BURGH_EXIT, Common_Movement_WalkRightOnce)
     waitmovement(0)
     return
 }
 
 script PinwheelForest_ITExB_Pos5
 {
-    applymovement(LOCALID_PFI_BURGH_EXIT, moves(walk_right * 2))
+    applymovement(LOCALID_PFI_BURGH_EXIT, Common_Movement_WalkRightTwice)
     waitmovement(0)
     return
 }
@@ -405,7 +405,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_1
 {
     lock
 	playse(SE_PIN)
-	applymovement(LOCALID_PFI_TPGM_B1, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PFI_TPGM_B1, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -476,7 +476,7 @@ script PinwheelForest_Inside_Trigger_TPGF_Battle_2
 	call_if_eq (VAR_TEMP_1, 64, PinwheelForest_ITTB2_CameraUp)
 	call_if_eq (VAR_TEMP_1, 65, PinwheelForest_ITTB2_CameraUp)
 	playse(SE_PIN)
-	applymovement(LOCALID_PFI_TPGF_B2, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PFI_TPGF_B2, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -543,7 +543,7 @@ script PinwheelForest_ITTB2_CameraUp
 script PinwheelForest_ITTB2_Pos1
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 5, face_right))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -553,7 +553,7 @@ script PinwheelForest_ITTB2_Pos1
 script PinwheelForest_ITTB2_Pos2
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_up * 4, face_right))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -605,7 +605,7 @@ script PinwheelForest_ITTB2_Pos8
 script PinwheelForest_ITTB2_Pos9
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 4, face_right))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -615,7 +615,7 @@ script PinwheelForest_ITTB2_Pos9
 script PinwheelForest_ITTB2_Pos10
 {
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	applymovement(LOCALID_PFI_TPGF_B2, moves(walk_down * 5, face_right))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -763,7 +763,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_3
 {
     lock
 	playse(SE_PIN)
-	applymovement(LOCALID_PFI_TPGM_B3, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PFI_TPGM_B3, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -859,10 +859,10 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 42, PinwheelForest_ITTB4_Pos1)
 	call_if_eq (VAR_TEMP_0, 44, PinwheelForest_ITTB4_Pos2)
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_PFI_TPGM_B4, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PFI_TPGM_B4, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -913,7 +913,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
            "fellow subject of our king?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_SAGE)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_PFI_TPGM_B4, moves(face_left))
+	applymovement(LOCALID_PFI_TPGM_B4, Common_Movement_FaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Team Plasma: Gorm of the Seven Sages!\p"
@@ -1006,7 +1006,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
     setflag(FLAG_PINWHEEL_FOREST_I_HEIST_CREW)
     delay(20)
     fadescreen(FADE_FROM_BLACK)
-	applymovement(LOCALID_PFI_LENORA_HIDDEN, moves(walk_in_place_right))
+	applymovement(LOCALID_PFI_LENORA_HIDDEN, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("Lenora: They're a speedy bunch.\p"
@@ -1014,7 +1014,7 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
            "Are you going to chase them?", MSGBOX_DEFAULT, TRUE, LOCALID_PFI_LENORA_HIDDEN)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_PFI_BURGH_HIDDEN, moves(walk_in_place_left))
+	applymovement(LOCALID_PFI_BURGH_HIDDEN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Burgh: Hmmm...\p"
@@ -1087,14 +1087,14 @@ script PinwheelForest_Inside_Trigger_TPGM_Battle_4
 
 script PinwheelForest_ITTB4_Pos1
 {
-	applymovement(LOCALID_PLAYER, moves(walk_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkRightOnce)
 	waitmovement(0)
     return
 }
 
 script PinwheelForest_ITTB4_Pos2
 {
-	applymovement(LOCALID_PLAYER, moves(walk_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
     return
 }

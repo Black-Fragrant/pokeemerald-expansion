@@ -200,11 +200,11 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichBoy
 {
     lock
     goto_if_unset(FLAG_NIMBASA_GYM_RICHBOY, CasteliaCity_CasteliaGym_EventScript_Warp4_Normal)
-	applymovement(LOCALID_PLAYER, moves(face_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
 	waitmovement(0)
     addobject(LOCALID_NIMBASA_GYM_RICHBOY)
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -218,7 +218,7 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichBoy
     destroy_speech_bubble()
     closemessage
     playbgm(MUS_BW_SPOTTED_YOUNGSTER, FALSE)
-	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, moves(walk_down))
+	applymovement(LOCALID_NIMBASA_GYM_RICHBOY, Common_Movement_WalkDownOnce)
 	waitmovement(0)
     delay(10)
     msgbox("When you ride a roller coaster, the\n"
@@ -253,11 +253,11 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichGirl
 {
     lock
     goto_if_unset(FLAG_NIMBASA_GYM_RICHGIRL, CasteliaCity_CasteliaGym_EventScript_Warp6_Normal)
-	applymovement(LOCALID_PLAYER, moves(face_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
 	waitmovement(0)
     addobject(LOCALID_NIMBASA_GYM_RICHGIRL)
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -274,7 +274,7 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichGirl
     destroy_speech_bubble()
     closemessage
     playbgm(MUS_BW_SPOTTED_LASS, FALSE)
-	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, moves(walk_down))
+	applymovement(LOCALID_NIMBASA_GYM_RICHGIRL, Common_Movement_WalkDownOnce)
 	waitmovement(0)
     delay(10)
     msgbox("I'm also a Pokémon Trainer who was\n"
