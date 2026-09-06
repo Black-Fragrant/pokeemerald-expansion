@@ -48,7 +48,7 @@ script CasteliaCity_LibertyPier_EventScript_Captain_CloseMessage
 {
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_CASTELIA_LP_CAPTAIN, moves(walk_in_place_down))
+    applymovement(LOCALID_CASTELIA_LP_CAPTAIN, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     release
     end
@@ -97,7 +97,7 @@ script CasteliaCity_LibertyPier_EventScript_Captain_Warp
 
 script CasteliaCity_LibertyPier_EventScript_Warp_Pos1
 {
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     return
 }

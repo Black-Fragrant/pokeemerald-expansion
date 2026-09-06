@@ -51,7 +51,7 @@ script LibertyGarden_EventScript_ArrestingGrunts
     removeobject(LOCALID_LIBERTY_GARDEN_POLICE5)
     delay(10)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
     msgbox("Professor Juniper: Thanks to you,\n"
@@ -60,7 +60,7 @@ script LibertyGarden_EventScript_ArrestingGrunts
     destroy_speech_bubble()
     closemessage
 	special(SpawnCameraObject)
-    applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -105,14 +105,14 @@ script LibertyGarden_EventScript_ArrestingGrunts
         "Please come on board, too!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_POLICE6)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, moves(walk_in_place_right))
+    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("Professor Juniper: Thank you!\n"
         "I'll be right there!", MSGBOX_DEFAULT, TRUE, LOCALID_LIBERTY_GARDEN_JUNIPER)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, moves(walk_in_place_up))
+    applymovement(LOCALID_LIBERTY_GARDEN_JUNIPER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
     msgbox("I can't believe it when people are led\n"

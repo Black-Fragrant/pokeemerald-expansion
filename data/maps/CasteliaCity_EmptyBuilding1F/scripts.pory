@@ -10,11 +10,11 @@ mapscripts CasteliaCity_EmptyBuilding1F_MapScripts
 script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
 {
 	lock
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	playbgm(MUS_BW_PLOT_PLASMA, TRUE)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	delay(20)
@@ -28,7 +28,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "“Take what you want from people”?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_SAGE2, moves(walk_in_place_right))
+	applymovement(LOCALID_CCEB1F_SAGE2, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("Bronius: I thought it would be amusing\n"
@@ -50,7 +50,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "dragon-type Pokémon, right?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_SAGE2, moves(walk_in_place_down))
+	applymovement(LOCALID_CCEB1F_SAGE2, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_slow_down, delay_16 * 2, walk_slow_left, delay_16, walk_in_place_slow_down))
 	waitmovement(0)
@@ -102,7 +102,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "Talk or battle or trade...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_up))
+	applymovement(LOCALID_CCEB1F_BURGH, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	delay(10)
     msgbox("Remember your speech at Accumula Town?\p"
@@ -151,16 +151,16 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
 	applymovement(LOCALID_CCEB1F_MUNNA, moves(face_right, delay_16, face_left, delay_16, face_right, delay_16, walk_down))
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_CCEB1F_MUNNA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_CCEB1F_MUNNA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
-	applymovement(LOCALID_CCEB1F_MUNNA, moves(walk_down * 2))
+	applymovement(LOCALID_CCEB1F_MUNNA, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	delay(10)
 	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
 	waitmoncry
 	delay(20)
-	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_CCEB1F_BIANCA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	removeobject(LOCALID_CCEB1F_MUNNA)
 	delay(20)
@@ -178,7 +178,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "They take people's precious Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_in_place_left))
+	applymovement(LOCALID_CCEB1F_BIANCA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
     msgbox("Bianca: It's just... I'm... I'm so happy\n"
@@ -187,8 +187,8 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
     closemessage
 	applymovement(LOCALID_CCEB1F_GHETSIS, moves(walk_in_place_slow_down))
 	waitmovement(0)
-	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_in_place_up))
-	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_up))
+	applymovement(LOCALID_CCEB1F_BIANCA, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_CCEB1F_IRIS, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
     msgbox("Ghetsis: The friendship between Pokémon\n"
@@ -228,7 +228,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "Why are you letting them get away?!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_in_place_right))
+	applymovement(LOCALID_CCEB1F_BURGH, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("Burgh: Gah!\p"
@@ -244,7 +244,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "I got my darling Pokémon back again!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BIANCA)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_right))
+	applymovement(LOCALID_CCEB1F_IRIS, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("Iris: OK, if you're happy...", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_IRIS)
@@ -255,9 +255,9 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "planning to do now?", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_left))
+	applymovement(LOCALID_CCEB1F_IRIS, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	applymovement(LOCALID_CCEB1F_BIANCA, moves(walk_left))
+	applymovement(LOCALID_CCEB1F_BIANCA, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
 	delay(10)
     msgbox("Bianca: Oh, it would be sensational to\n"
@@ -265,7 +265,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
     destroy_speech_bubble()
     closemessage
 	playse(SE_PIN)
-	applymovement(LOCALID_CCEB1F_IRIS, moves(emote_exclamation_mark))
+	applymovement(LOCALID_CCEB1F_IRIS, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	playse(SE_LEDGE)
@@ -289,7 +289,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
            "Pokémon need to help each other out!", MSGBOX_DEFAULT, TRUE, LOCALID_CCEB1F_BURGH)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCEB1F_IRIS, moves(walk_in_place_down))
+	applymovement(LOCALID_CCEB1F_IRIS, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
     msgbox("Iris: Also, thanks for looking\n"
@@ -322,7 +322,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_TeamPlasmaEvent
 	closeallminimessages
 	applymovement(LOCALID_CCEB1F_BURGH, moves(walk_down, walk_in_place_right))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
     msgbox("Burgh: Well, then, Nate.\n"
@@ -362,7 +362,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_NewToFloor
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)
@@ -390,9 +390,9 @@ script CasteliaCity_EmptyBuilding1F_EventScript_Elevator
 	playse(SE_SLIDING_DOOR)
 	setdoorclosed(7, 2)
 	waitse()
-	applymovement(LOCALID_PLAYER, moves(face_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
 	waitmovement(0)
-	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	msgbox(Elevator_Text_WhichFloorWouldLikeToGo, MSGBOX_TRANSPARENT)
 	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
         "2",
         "Cancel")
@@ -409,7 +409,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_Elevator_PlayerMoveRight
 
 script CasteliaCity_EmptyBuilding1F_EventScript_Elevator_PlayerMoveUp
 {
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
     return
 }
@@ -429,7 +429,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_Elevator_GetOff
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)

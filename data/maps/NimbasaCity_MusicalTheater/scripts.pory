@@ -9,8 +9,8 @@ mapscripts NimbasaCity_MusicalTheater_MapScripts
 script NimbasaCity_MusicalTheater_EventScript_Introduction
 {
     lock
-	applymovement(LOCALID_PLAYER, moves( walk_up * 3))
-	applymovement(LOCALID_NCMT_BIANCA, moves( walk_up * 2, delay_16, walk_in_place_right))
+	applymovement(LOCALID_PLAYER, moves(walk_up * 3))
+	applymovement(LOCALID_NCMT_BIANCA, moves(walk_up * 2, delay_16, walk_in_place_right))
 	waitmovement(0)
     delay(20)
     msgbox("Bianca: A. Mazing. Isn't it?", MSGBOX_DEFAULT, TRUE, LOCALID_NCMT_BIANCA)
@@ -21,7 +21,7 @@ script NimbasaCity_MusicalTheater_EventScript_Introduction
 	waitmovement(0)
 	waitse()
 	delay(10)
-	applymovement(LOCALID_NCMT_BIANCA, moves(walk_in_place_up))
+	applymovement(LOCALID_NCMT_BIANCA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(20)
     msgbox("Hello, you two! How do you do?\p"
@@ -115,9 +115,9 @@ script NimbasaCity_MusicalTheater_EventScript_IntroSelectedAPokemon
 	waitmovement(0)
     removeobject(LOCALID_NCMT_OWNER)
     delay(20)
-	applymovement(LOCALID_NCMT_BIANCA, moves(walk_in_place_right))
+	applymovement(LOCALID_NCMT_BIANCA, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Oh, I don't know what to do!\p"

@@ -25,7 +25,7 @@ script StriatonCity_TRB2F_EventScript_FennelGivesHM01
     closemessage
 	delay(10)
 	playse(SE_PIN)
-	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -288,7 +288,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_YesTime
     closemessage
     delay(10)
 	playse(SE_PIN)
-	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_STRIATON_TRB2F_SCHOOLGIRL, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -296,7 +296,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_YesTime
 	call_if_eq (VAR_TEMP_1, 8, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos7)
 	call_if_eq (VAR_TEMP_1, 9, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos8)
 	call_if_eq (VAR_TEMP_1, 10, StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos9)
-	applymovement(LOCALID_PLAYER, moves(face_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Oh, Trainer! Thank you very\n"
@@ -382,7 +382,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos3
 
 script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos4
 {
-	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_up))
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
 	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_left * 4, walk_up * 2, walk_in_place_up))
@@ -395,7 +395,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos4
 
 script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos5
 {
-	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_left))
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
 	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_up * 2, walk_left * 4, walk_in_place_up))
@@ -408,7 +408,7 @@ script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos5
 
 script StriatonCity_TRB2F_EventScript_Fennel_GiveCGear_Pos6
 {
-	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_in_place_down))
+	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
 	applymovement(LOCALID_STRIATON_TRB2F_FENNEL, moves(walk_up * 2, walk_left * 4, walk_in_place_up))

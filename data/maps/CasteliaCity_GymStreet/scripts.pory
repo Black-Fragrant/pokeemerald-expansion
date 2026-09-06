@@ -76,10 +76,10 @@ script CasteliaCity_GymStreet_EventScript_GymSign
 script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
 {
     lock
-	applymovement(LOCALID_PLAYER, moves(face_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -95,7 +95,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
            "I just challenged the Gym Leader Burgh.", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_CHEREN)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCGS_CHEREN, moves(walk_in_place_right))
+	applymovement(LOCALID_CCGS_CHEREN, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("He's a seasoned Gym Leader.\n"
@@ -104,7 +104,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
            "aren't that much of a challenge.", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_CHEREN)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCGS_CHEREN, moves(face_left))
+	applymovement(LOCALID_CCGS_CHEREN, Common_Movement_FaceLeft)
 	waitmovement(0)
 	delay(10)
     msgbox("I'm going to keep winning like this against\n"
@@ -116,7 +116,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
            "That will make me feel truly alive...", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_CHEREN)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	applymovement(LOCALID_CCGS_CHEREN, moves(walk_down * 6))
 	waitmovement(0)
     removeobject(LOCALID_CCGS_CHEREN)
@@ -128,11 +128,11 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
 	applymovement(LOCALID_CCGS_BURGH, moves(walk_fast_left * 3))
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_CCGS_BURGH, moves(emote_exclamation_mark))
+	applymovement(LOCALID_CCGS_BURGH, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-	applymovement(LOCALID_PLAYER, moves(face_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
     msgbox("Burgh: Ah hah!\p"
            "You're the one who fought\n"
@@ -147,7 +147,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfGym
            "I'm going to the dock at Primer Pier!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_BURGH)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	applymovement(LOCALID_CCGS_BURGH, moves(walk_fast_down * 6))
 	waitmovement(0)
     removeobject(LOCALID_CCGS_BURGH)
@@ -203,7 +203,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos5
 script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_Pos6
 {
     lock
-	applymovement(LOCALID_PLAYER, moves(walk_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
     goto(CasteliaCity_GymStreet_EventScript_Trigger_ThisIsThePlace)
 }
@@ -255,7 +255,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding
 {
 	applymovement(LOCALID_CCGS_GRUNT2, moves(walk_in_place_fast_right * 4))
 	waitmovement(0)
-	applymovement(LOCALID_CCGS_BURGH2, moves(walk_in_place_left))
+	applymovement(LOCALID_CCGS_BURGH2, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     msgbox("Team Plasma: No one's here! Not a soul!\p"
            "No other Team Plasma members, nor any\n"
@@ -269,7 +269,7 @@ script CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding
            "Come on!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_GRUNT2)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCGS_BURGH2, moves(walk_in_place_down))
+	applymovement(LOCALID_CCGS_BURGH2, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
     call(CasteliaCity_GymStreet_EventScript_Trigger_InFronOfEmptyBuilding_BurghsDialogue)
@@ -349,7 +349,7 @@ script CasteliaCity_GymStreet_EventScript_BattleWithGrunt
            "that tough-looking guy over there!", MSGBOX_DEFAULT, TRUE, LOCALID_CCGS_GRUNT2)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCGS_BURGH2, moves(walk_in_place_down))
+	applymovement(LOCALID_CCGS_BURGH2, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
     msgbox("Burgh: Oh, please!\n"
@@ -357,7 +357,7 @@ script CasteliaCity_GymStreet_EventScript_BattleWithGrunt
     destroy_speech_bubble()
     closemessage
     delay(10)
-	applymovement(LOCALID_CCGS_GRUNT2, moves(walk_right))
+	applymovement(LOCALID_CCGS_GRUNT2, Common_Movement_WalkRightOnce)
 	applymovement(LOCALID_CCGS_BURGH2, moves(face_left, lock_facing_direction, walk_right, unlock_facing_direction))
 	applymovement(LOCALID_CCGS_GRUNT1, moves(walk_fast_right * 3))
 	applymovement(LOCALID_CCGS_GRUNT3, moves(walk_fast_right * 4, walk_fast_up))
@@ -392,7 +392,7 @@ script CasteliaCity_GymStreet_EventScript_BattleWithGrunt
 	applymovement(LOCALID_CCGS_IRIS, moves(walk_fast_up * 6, walk_in_place_fast_left))
 	applymovement(LOCALID_CCGS_BIANCA, moves(walk_up * 5))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("Iris: Phew, we got lost.\p"

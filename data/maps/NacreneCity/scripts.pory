@@ -39,18 +39,18 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_left))
+	applymovement(LOCALID_NACRENE_LENORA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
     msgbox("Lenora: This is a surprise visit! Are you\n"
            "suffering from artist's block again?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_up))
+	applymovement(LOCALID_NACRENE_LENORA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(10)
     msgbox("{PLAYER}!\p"
@@ -59,9 +59,9 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
            "Castelia City's Gym Leader!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_LENORA)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_left))
+	applymovement(LOCALID_NACRENE_LENORA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
     msgbox("Burgh: ...Eh?\n"
@@ -80,7 +80,7 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
 	addobject(LOCALID_NACRENE_BIANCA_TOP)
 	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_left * 7))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("Bianca: Oh, hi, {PLAYER}!\n"
@@ -97,11 +97,11 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_up))
+	applymovement(LOCALID_NACRENE_LENORA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_in_place_down))
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, Common_Movement_WalkInPlaceDown)
 	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(delay_4, walk_in_place_down))
 	waitmovement(0)
 	delay(10)
@@ -124,7 +124,7 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_NACRENE_LENORA, moves(walk_in_place_left))
+	applymovement(LOCALID_NACRENE_LENORA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     msgbox("Burgh and {PLAYER},\n"
            "you two search Pinwheel Forest!\p"
@@ -153,11 +153,11 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
 	removeobject(LOCALID_NACRENE_BURGH)
 	delay(20)
 	playse(SE_PIN)
-	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("Bianca: Oh! Oh, {PLAYER}!\n"
@@ -191,7 +191,7 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
            "protect the museum, right?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_CHEREN_TOP)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
 	applymovement(LOCALID_NACRENE_CHEREN_TOP, moves(walk_left, walk_up * 6))
 	waitmovement(0)
 	delay(20)
@@ -199,9 +199,9 @@ script NacreneCity_EventScript_Lenora_Meets_Burgh
 	removeobject (LOCALID_NACRENE_CHEREN_TOP)
 	waitse()
 	delay(10)
-	applymovement(LOCALID_NACRENE_BIANCA_TOP, moves(walk_in_place_up))
+	applymovement(LOCALID_NACRENE_BIANCA_TOP, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(10)
     msgbox("Bianca: Hey, wait for me!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_BIANCA_TOP)
@@ -247,7 +247,7 @@ script NacreneCity_EventScript_Trigger_Cheren
 {
 	lock
 	playse(SE_PIN)
-	applymovement(LOCALID_NACRENE_CHEREN, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NACRENE_CHEREN, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -273,7 +273,7 @@ script NacreneCity_EventScript_Trigger_Cheren
     destroy_speech_bubble()
     closemessage
 	delay(10)
-	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_right))
+	applymovement(LOCALID_NACRENE_CHEREN, Common_Movement_WalkRightOnce)
 	waitmovement(0)
 	giveitem(ITEM_CHESTO_BERRY, 3)
 	goto_if_eq (VAR_RESULT, FALSE, Common_EventScript_BagIsFull_ContinueScript)
@@ -309,7 +309,7 @@ script NacreneCity_EventScript_Trigger_Cheren_Pos1
 
 script NacreneCity_EventScript_Trigger_Cheren_Pos2
 {
-	applymovement(LOCALID_NACRENE_CHEREN, moves(walk_right))
+	applymovement(LOCALID_NACRENE_CHEREN, Common_Movement_WalkRightOnce)
 	waitmovement(0)
 	return
 }
@@ -393,7 +393,7 @@ script NacreneCity_EventScript_Trigger_N
 	waitse()
 	delay(10)
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -437,7 +437,7 @@ script NacreneCity_EventScript_Trigger_N_No
 
 script NacreneCity_EventScript_Trigger_N_Battle
 {
-	applymovement(LOCALID_PLAYER, moves(face_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
 	waitmovement(0)
 	trainerbattle_no_intro (TRAINER_N_NACRENE_CITY, text("I cannot see the future yet...\n"
        "The world is still to be determined..."))
@@ -476,7 +476,7 @@ script NacreneCity_EventScript_Trigger_N_Battle
     fadedefaultbgm
 	savebgm(MUS_BW_NACRENE_CITY)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	delay(20)

@@ -145,11 +145,11 @@ script CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Trigger
 	call_if_eq (VAR_TEMP_0, 15, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos1)
 	call_if_eq (VAR_TEMP_0, 16, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos2)
 	call_if_eq (VAR_TEMP_0, 17, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos3)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     call(CasteliaCity_CasteliaGym_Eventscript_GymReceptionist_Cont)
-    applymovement(LOCALID_PLAYER, moves(walk_down))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkDownOnce)
     waitmovement(0)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_0, 15, CasteliaCity_CasteliaGym_Eventscript_Trigger_Pos4)
@@ -225,7 +225,7 @@ script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2
     waitse
     applymovement(LOCALID_CCCG_HARLEQUIN_1, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
     waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_2_AlreadyHaveBadge)
     msgbox("When you step on the switch,\n"
@@ -277,7 +277,7 @@ script CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3
     waitse
     applymovement(LOCALID_CCCG_HARLEQUIN_2, moves(face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down, face_left, face_up, face_right, face_down))
     waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     goto_if_set(FLAG_BADGE03_GET, CasteliaCity_CasteliaGym_EventScript_Battle_Harlequin_3_AlreadyHaveBadge)
     msgbox("Yeeeeeeeeah! Thank you for going\n"

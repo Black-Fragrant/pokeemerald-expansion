@@ -29,12 +29,12 @@ script NimbasaCity_SouthGate_EventScript_Trigger
 	call_if_eq (VAR_TEMP_0, 7, NimbasaCity_SouthGate_EventScript_Camera6)
 	special(RemoveCameraObject)
 	playse(SE_PIN)
-	applymovement(LOCALID_NCSG_JUNIPER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NCSG_JUNIPER, Common_Movement_ExclamationMark)
 	waitmovement(0)
     delay(10)
     waitse
     playbgm(MUS_BW_JUNIPER, TRUE)
-    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_down))
+    applymovement(LOCALID_NCSG_CHEREN, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
     msgbox("Professor Juniper: Hello, {PLAYER}!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
@@ -51,7 +51,7 @@ script NimbasaCity_SouthGate_EventScript_Trigger
 	call_if_eq (VAR_TEMP_0, 6, NimbasaCity_SouthGate_EventScript_Trigger_Pos3)
 	call_if_eq (VAR_TEMP_0, 7, NimbasaCity_SouthGate_EventScript_Trigger_Pos5)
 	special(RemoveCameraObject)
-    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_up))
+    applymovement(LOCALID_NCSG_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
     msgbox("Professor Juniper: Elesa called and was\n"
@@ -61,7 +61,7 @@ script NimbasaCity_SouthGate_EventScript_Trigger
             "Ta-da! Freebies for you!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_down))
+    applymovement(LOCALID_NCSG_JUNIPER, Common_Movement_WalkDownOnce)
 	waitmovement(0)
     delay(10)
     msgbox("Here, Cheren!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
@@ -86,7 +86,7 @@ script NimbasaCity_SouthGate_EventScript_Trigger
             "first and last time you see that Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_NCSG_JUNIPER, moves(walk_in_place_left))
+    applymovement(LOCALID_NCSG_JUNIPER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("I know it might seem strange for me\n"
@@ -95,7 +95,7 @@ script NimbasaCity_SouthGate_EventScript_Trigger
             "remember to enjoy your journey!", MSGBOX_DEFAULT, TRUE, LOCALID_NCSG_JUNIPER)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_NCSG_JUNIPER, moves(face_down))
+    applymovement(LOCALID_NCSG_JUNIPER, Common_Movement_FaceDown)
 	waitmovement(0)
     delay(10)
     msgbox("Of course, I'm not saying you can just\n"
@@ -168,7 +168,7 @@ script NimbasaCity_SouthGate_EventScript_Camera3
 
 script NimbasaCity_SouthGate_EventScript_Camera4
 {
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
     return
 }
@@ -203,7 +203,7 @@ script NimbasaCity_SouthGate_EventScript_Trigger_Pos2
 
 script NimbasaCity_SouthGate_EventScript_Trigger_Pos3
 {
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
     return
 }
@@ -256,25 +256,25 @@ script NimbasaCity_SouthGate_EventScript_Trigger_Pos9
 
 script NimbasaCity_SouthGate_EventScript_Trigger_Pos10
 {
-    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_left))
+    applymovement(LOCALID_NCSG_CHEREN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     return
 }
 
 script NimbasaCity_SouthGate_EventScript_Trigger_Pos11
 {
-    applymovement(LOCALID_NCSG_CHEREN, moves(walk_in_place_right))
+    applymovement(LOCALID_NCSG_CHEREN, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     return
 }
 
 script NimbasaCity_SouthGate_EventScript_Trigger_Pos12
 {
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkLeftOnce)
     applymovement(LOCALID_NCSG_CHEREN, moves(walk_down * 5))
 	waitmovement(0)
     return
@@ -282,7 +282,7 @@ script NimbasaCity_SouthGate_EventScript_Trigger_Pos12
 
 script NimbasaCity_SouthGate_EventScript_Trigger_Pos13
 {
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkRightOnce)
     applymovement(LOCALID_NCSG_CHEREN, moves(walk_down * 5))
 	waitmovement(0)
     return

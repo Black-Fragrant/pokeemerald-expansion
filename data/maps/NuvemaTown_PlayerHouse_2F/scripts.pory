@@ -155,7 +155,7 @@ script NuvemaTown_PH2F_EventScript_Loading
      	  "We can have a Pokémon?", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_CHEREN)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_in_place_down))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	delay(20)
 	msgbox("...\n"
@@ -175,11 +175,11 @@ script NuvemaTown_PH2F_EventScript_Loading
 	waitse()
 	clearflag (FLAG_NUVEMA_PH2F_BIANCA)
 	playbgm(MUS_BW_ADVENTURE_TOGETHER, TRUE)
-	applymovement (LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
+	applymovement (LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_FaceDown)
 	waitmovement(0)
 	delay(10)
-	applymovement (LOCALID_PLAYER, moves(face_up))
-	applymovement (LOCALID_NUVEMA_PH2F_CHEREN, moves(face_up))
+	applymovement (LOCALID_PLAYER, Common_Movement_FaceUp)
+	applymovement (LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_FaceUp)
 	waitmovement(0)
 	delay(10)
 	msgbox("Am I a little late again?\n"
@@ -203,7 +203,7 @@ script NuvemaTown_PH2F_EventScript_Loading
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_down, walk_left, walk_left, walk_left, walk_down))
 	waitmovement(0)
 	special(RemoveCameraObject)
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_left))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_FaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("I know. Sorry, {PLAYER}.\n"
@@ -213,7 +213,7 @@ script NuvemaTown_PH2F_EventScript_Loading
 	delay(10)
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_left, walk_down, walk_down, walk_in_place_right))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(face_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("So, where are the Pokémon?\p"
@@ -228,8 +228,8 @@ script NuvemaTown_PH2F_EventScript_Loading
 	delay(10)
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_down, walk_left, walk_in_place_down))
 	waitmovement(0)
-	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_down))
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox("The Pokémon are waiting for us\n"
        "inside that gift box.\p"
@@ -296,14 +296,14 @@ script NuvemaTown_PH2F_EventScript_Computer
 script NuvemaTown_PH2F_EventScript_Try_To_Leave
 {
 	lockall()
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_in_place_up))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox("Aren't you going to check\n"
        "out the gift box? Where are you going?", MSGBOX_SIGN)
 	delay(10)
-	applymovement(LOCALID_PLAYER, moves(walk_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownOnce)
 	waitmovement(0)
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_FaceDown)
 	waitmovement(0)
 	releaseall()
 	end()
@@ -313,8 +313,8 @@ script NuvemaTown_PH2F_EventScript_Gift_Box
 {
 	lockall()
 	setvar(VAR_NUVEMA_PICK_STARTER, 2)
-	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(face_down))
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_down))
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_FaceDown)
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_FaceDown)
 	waitmovement(0)
 	special(Special_ShowJuniperLetter)
 	msgbox("{PLAYER} opened the gift box!", MSGBOX_TRANSPARENT)
@@ -498,7 +498,7 @@ script NuvemaTown_PH2F_EventScript_BiancaBattle
 {
 	lockall()
 	setvar(VAR_NUVEMA_PICK_STARTER, 3)
-	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_left))
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	msgbox("Bianca: Everyone has chosen a Pokémon!\n"
        "... So that's that!\p"
@@ -532,7 +532,7 @@ script NuvemaTown_PH2F_EventScript_BiancaBattle
 
 script NuvemaTown_PH2F_EventScript_BiancaBattle_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_1, text("The Pokémon on both sides\ndid their best!"))
+	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_1, BiancaBattle_Text_PokemonOnBothSides)
 	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
 		{
 		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Won)
@@ -546,7 +546,7 @@ script NuvemaTown_PH2F_EventScript_BiancaBattle_Oshawott
 
 script NuvemaTown_PH2F_EventScript_BiancaBattle_Snivy
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_2, text("The Pokémon on both sides\ndid their best!"))
+	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_2, BiancaBattle_Text_PokemonOnBothSides)
 	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
 		{
 		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Won)
@@ -560,7 +560,7 @@ script NuvemaTown_PH2F_EventScript_BiancaBattle_Snivy
 
 script NuvemaTown_PH2F_EventScript_BiancaBattle_Tepig
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_3, text("The Pokémon on both sides\ndid their best!"))
+	trainerbattle_no_intro (TRAINER_BIANCA_NUVEMA_TOWN_3, BiancaBattle_Text_PokemonOnBothSides)
 	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
 		{
 		call(NuvemaTown_PH2F_EventScript_BiancaBattle_Won)
@@ -623,7 +623,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_left))
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	msgbox("Wow! Pokémon are amaaaaazing!!\n"
 			"So little, but so strong!\p"
@@ -647,7 +647,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle
 	waitse()
 	closemessage
 	delay(20)
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_in_place_left))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	delay(10)
 	msgbox("{PLAYER}'s Pokémon needs\n"
@@ -662,15 +662,15 @@ script NuvemaTown_PH2F_EventScript_CherenBattle
 	closemessage
 	delay(20)
 	playse(SE_PIN)
-	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
 	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_up, walk_up, walk_left, walk_in_place_down))
 	waitmovement(0)
 	delay(10)
-	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(face_up))
-	applymovement(LOCALID_PLAYER, moves(face_up))
+	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, Common_Movement_FaceUp)
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceUp)
 	waitmovement(0)
 	delay(20)
 	msgbox("Bianca: Hey, Cheren!\n"
@@ -691,7 +691,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle
 	delay(10)
 	applymovement(LOCALID_NUVEMA_PH2F_CHEREN, moves(walk_right, walk_in_place_left))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(20)
 	call_if_set(FLAG_CHOSE_SNIVY, NuvemaTown_PH2F_EventScript_CherenBattle_Tepig)
@@ -709,7 +709,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle_Tepig
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_1, text("Ah! So that's a Pokémon battle!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_1, CherenBattle_Text_SoThatsPokemonBattle)
 	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
 		{
 		call(NuvemaTown_PH2F_EventScript_CherenBattle_Won)
@@ -729,7 +729,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle_Oshawott
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_2, text("Ah! So that's a Pokémon battle!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_2, CherenBattle_Text_SoThatsPokemonBattle)
 	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
 		{
 		call(NuvemaTown_PH2F_EventScript_CherenBattle_Won)
@@ -749,7 +749,7 @@ script NuvemaTown_PH2F_EventScript_CherenBattle_Snivy
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_3, text("Ah! So that's a Pokémon battle!"))
+	trainerbattle_no_intro (TRAINER_CHEREN_NUVEMA_TOWN_3, CherenBattle_Text_SoThatsPokemonBattle)
 	if (specialvar(VAR_RESULT, GetBattleOutcome) == B_OUTCOME_WON)
 		{
 		call(NuvemaTown_PH2F_EventScript_CherenBattle_Won)
@@ -795,7 +795,7 @@ script NuvemaTown_PH2F_EventScript_Finished_Battles
 	removeobject (LOCALID_NUVEMA_PH2F_CHEREN)
 	waitse()
 	setflag(FLAG_NUVEMA_PH2F_CHEREN)
-	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, moves(walk_in_place_down))
+	applymovement(LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox("Bianca: Oh!\n"
 			"I'd better come, too!", MSGBOX_DEFAULT, TRUE, LOCALID_NUVEMA_PH2F_BIANCA)

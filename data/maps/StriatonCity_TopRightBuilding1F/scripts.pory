@@ -30,7 +30,7 @@ script StriatonCity_TRB1F_EventScript_FennelWalkUp
 	destroy_speech_bubble()
 	closemessage
 	delay(10)
-	applymovement(LOCALID_STRIATON_TRB1F_FENNEL, moves(walk_in_place_right))
+	applymovement(LOCALID_STRIATON_TRB1F_FENNEL, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	delay(20)
 	playse(SE_EXIT)
@@ -38,7 +38,7 @@ script StriatonCity_TRB1F_EventScript_FennelWalkUp
 	setflag(FLAG_STRIATON_TRB1F_FENNEL)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkRightOnce)
 	waitmovement(0)
 	delay(20)
 	warp(MAP_STRIATON_CITY_TOP_RIGHT_BUILDING2F, WARP_ID_STRIATON_CITY_TRB2F)

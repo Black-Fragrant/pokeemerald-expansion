@@ -106,7 +106,7 @@ script CasteliaCity_NarrowStreet_EventScript_Trigger
     destroy_speech_bubble()
     closemessage
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -117,7 +117,7 @@ script CasteliaCity_NarrowStreet_EventScript_Trigger
 	call_if_eq (VAR_TEMP_0, 12, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos4)
 	call_if_eq (VAR_TEMP_0, 13, CasteliaCity_NarrowStreet_EventScript_Trigger_Pos5)
 	delay(10)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left)) 
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft) 
     waitmovement(0)
 	delay(10)
     msgbox("Ah, I found them.\p"
@@ -150,21 +150,21 @@ script CasteliaCity_NarrowStreet_EventScript_Trigger
 
 script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos1
 {
-    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_in_place_right)) 
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, Common_Movement_WalkInPlaceRight) 
     waitmovement(0)
     return
 }
 
 script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos2
 {
-    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_right)) 
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, Common_Movement_WalkRightOnce)
     waitmovement(0)
     return
 }
 
 script CasteliaCity_NarrowStreet_EventScript_Trigger_Pos3
 {
-    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, moves(walk_right * 2)) 
+    applymovement(LOCALID_CASTELIA_NS_BLACKSUIT, Common_Movement_WalkRightTwice) 
     waitmovement(0)
     return
 }

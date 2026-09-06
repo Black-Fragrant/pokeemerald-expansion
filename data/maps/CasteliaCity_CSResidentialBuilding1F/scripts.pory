@@ -16,7 +16,7 @@ script CasteliaCity_CSResidentialBuilding1F_EventScript_NewToFloor
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)
@@ -179,9 +179,9 @@ script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator
 	playse(SE_SLIDING_DOOR)
 	setdoorclosed(7, 2)
 	waitse()
-	applymovement(LOCALID_PLAYER, moves(face_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
 	waitmovement(0)
-	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	msgbox(Elevator_Text_WhichFloorWouldLikeToGo, MSGBOX_TRANSPARENT)
 	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
         "11",
         "Cancel")
@@ -198,7 +198,7 @@ script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_PlayerMoveRight
 
 script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_PlayerMoveUp
 {
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
     return
 }
@@ -217,7 +217,7 @@ script CasteliaCity_CSResidentialBuilding1F_EventScript_Elevator_GetOff
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)

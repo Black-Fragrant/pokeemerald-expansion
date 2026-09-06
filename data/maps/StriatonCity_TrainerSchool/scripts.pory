@@ -336,7 +336,7 @@ script StriatonCity_TS_EventScript_Cheren_BerryReceived
 	destroy_speech_bubble()
 	closemessage()
 	delay(10)
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_up))
+	applymovement(LOCALID_STRIATON_TS_CHEREN, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
 	release()
@@ -345,39 +345,39 @@ script StriatonCity_TS_EventScript_Cheren_BerryReceived
 
 script StriatonCity_TS_CherenBattle_Tepig
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_1, text("I see!\pLosing to you means\nthat I still have a lot to learn."))
+	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_1, CherenBattle_Text_LosingMeansLotToLearn)
 	return()
 }
 
 script StriatonCity_TS_CherenBattle_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_2, text("I see!\pLosing to you means\nthat I still have a lot to learn."))
+	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_2, CherenBattle_Text_LosingMeansLotToLearn)
 	return()
 }
 
 script StriatonCity_TS_CherenBattle_Snivy
 {
-	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_3, text("I see!\pLosing to you means\nthat I still have a lot to learn."))
+	trainerbattle_no_intro (TRAINER_CHEREN_TRAINER_SCHOOL_3, CherenBattle_Text_LosingMeansLotToLearn)
 	return()
 }
 
 script StriatonCity_TS_EventScript_Cheren_Pos1
 {
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_left))
+	applymovement(LOCALID_STRIATON_TS_CHEREN, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	return()
 }
 
 script StriatonCity_TS_EventScript_Cheren_Pos2
 {
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_down))
+	applymovement(LOCALID_STRIATON_TS_CHEREN, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	return()
 }
 
 script StriatonCity_TS_EventScript_Cheren_Pos3
 {
-	applymovement(LOCALID_STRIATON_TS_CHEREN, moves(walk_in_place_right))
+	applymovement(LOCALID_STRIATON_TS_CHEREN, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	return()
 }

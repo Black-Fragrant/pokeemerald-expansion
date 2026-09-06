@@ -349,11 +349,11 @@ script Dreamyard_EventScript_Trigger_MunnaCry
 	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
 	waitmoncry
     delay(10)
-    applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_in_place_up))
+    applymovement(LOCALID_DREAMYARD_BIANCA, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     delay(10)
 	playse(SE_PIN)
-	applymovement(LOCALID_DREAMYARD_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_DREAMYARD_BIANCA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -361,7 +361,7 @@ script Dreamyard_EventScript_Trigger_MunnaCry
 	call_if_eq (VAR_TEMP_1, 20, Dreamyard_EventScript_Trigger_MunnaCry_Pos1)
 	call_if_eq (VAR_TEMP_1, 21, Dreamyard_EventScript_Trigger_MunnaCry_Pos2)
 	call_if_eq (VAR_TEMP_1, 22, Dreamyard_EventScript_Trigger_MunnaCry_Pos3)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Bianca: Hey!\p"
@@ -379,7 +379,7 @@ script Dreamyard_EventScript_Trigger_MunnaCry
 
 script Dreamyard_EventScript_Trigger_MunnaCry_Pos1
 {
-	applymovement(LOCALID_DREAMYARD_BIANCA, moves(walk_right))
+	applymovement(LOCALID_DREAMYARD_BIANCA, Common_Movement_WalkRightOnce)
 	waitmovement(0)
     return
 }
@@ -444,7 +444,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
         "Make some Dream Mist!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_PLASMA_GRUNT_M)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_right))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
 	playmoncry(SPECIES_MUNNA, CRY_MODE_NORMAL)
@@ -460,8 +460,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_down))
-    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_down))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, Common_Movement_WalkInPlaceDown)
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
     msgbox("???: Are you talking about us?\n"
@@ -504,7 +504,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_down))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     msgbox("Team Plasma: That's right.\p"
        "We're Pokémon Trainers too, but\n"
@@ -544,7 +544,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     delay(10)
 	trainerbattle_no_intro (TRAINER_GRUNT_F_DREAMYARD, text("Plasmaaaa!\nThis is a nightmare!"))
     delay(10)
-    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_in_place_down))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     msgbox("Team Plasma: ...I can't\n"
        "believe we lost!\p"
@@ -578,7 +578,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_fast_left))
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(emote_exclamation_mark))
+	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -592,7 +592,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_fast_right))
 	waitmovement(0)
 	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(emote_question_mark))
+	applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, Common_Movement_QuestionMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -614,7 +614,7 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     destroy_speech_bubble()
     closemessage
 	delay(10)
-    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, moves(walk_in_place_left))
+    applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_F, Common_Movement_WalkInPlaceLeft)
     applymovement(LOCALID_DREAMYARD_PLASMA_GRUNT_M, moves(walk_down, walk_in_place_right))
 	waitmovement(0)
 	delay(10)
@@ -658,8 +658,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     closemessage
 	waitmoncry
     delay(10)
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_right))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceRight)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Bianca: ...What was that just now?\p"
@@ -670,8 +670,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_up))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceUp)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
     msgbox("And that Pokémon...", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_BIANCA_HIDDEN)
@@ -680,8 +680,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     msgbox("Oh!", MSGBOX_DEFAULT)
     closemessage
     addobject(LOCALID_DREAMYARD_FENNEL)
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_down))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceDown)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     applymovement(LOCALID_DREAMYARD_FENNEL, moves(walk_up * 4))
 	waitmovement(0)
@@ -690,8 +690,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
        "...Is that Musharna?!", MSGBOX_DEFAULT, TRUE, LOCALID_DREAMYARD_FENNEL)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_up))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceUp)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
 	playmoncry(SPECIES_MUSHARNA, CRY_MODE_NORMAL)
@@ -706,8 +706,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     closemessage
 	waitmoncry
     delay(10)
-    applymovement(LOCALID_DREAMYARD_MUNNA, moves(walk_left))
-    applymovement(LOCALID_DREAMYARD_MUSHARNA, moves(walk_left))
+    applymovement(LOCALID_DREAMYARD_MUNNA, Common_Movement_WalkLeftOnce)
+    applymovement(LOCALID_DREAMYARD_MUSHARNA, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
     addobject(LOCALID_DREAMYARD_DREAM_MIST)
     applymovement(LOCALID_DREAMYARD_MUSHARNA, moves(walk_up * 2, walk_left * 2))
@@ -724,8 +724,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     destroy_speech_bubble()
     closemessage
     delay(10)
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_down))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceDown)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     delay(10)
     msgbox("Bianca: Oh, Fennel.\p"
@@ -749,11 +749,11 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
     applymovement(LOCALID_DREAMYARD_FENNEL, moves(walk_right, walk_up * 4, walk_in_place_left))
 	waitmovement(0)
     delay(10)
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_up))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceUp)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_DREAMYARD_FENNEL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_DREAMYARD_FENNEL, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -784,8 +784,8 @@ script Dreamyard_EventScript_Trigger_TeamPlasma
 	waitmovement(0)
     removeobject(LOCALID_DREAMYARD_FENNEL)
     delay(10)
-    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, moves(walk_in_place_right))
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_DREAMYARD_BIANCA_HIDDEN, Common_Movement_WalkInPlaceRight)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     msgbox("Bianca: Phew. How random was that?\p"
         "{PLAYER}, why don't you go\n"

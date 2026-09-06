@@ -30,7 +30,7 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_NewToFloor
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)
@@ -69,20 +69,20 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_Lady
 script CasteliaCity_NSPartyBuilding1F_EventScript_Trigger
 {
 	lock
-	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_left))
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     msgbox("Do you want to go up?", MSGBOX_YESNO, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
 	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_PatDown)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_down))
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     msgbox("...OK. That's fine, then.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_PLAYER, moves(walk_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	delay(20)
 	release
@@ -98,7 +98,7 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_Elevator
 	goto_if_eq(VAR_RESULT, TRUE, CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_PatDown)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_down))
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
     msgbox("...OK. That's fine, then.", MSGBOX_DEFAULT, TRUE, LOCALID_CCNSPB1F_BLACKSUIT)
     destroy_speech_bubble()
@@ -159,21 +159,21 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_BlackSuit_Detour
 
 script CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos1
 {
-	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_left))
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	return
 }
 
 script CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos2
 {
-	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_down))
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	return
 }
 
 script CasteliaCity_NSPartyBuilding1F_EventScript_PatDown_Pos3
 {
-	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, moves(walk_in_place_right))
+	applymovement(LOCALID_CCNSPB1F_BLACKSUIT, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	return
 }
@@ -194,9 +194,9 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator
 	playse(SE_SLIDING_DOOR)
 	setdoorclosed(7, 2)
 	waitse()
-	applymovement(LOCALID_PLAYER, moves(face_down))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceDown)
 	waitmovement(0)
-	msgbox("Which floor would you like to go to?", MSGBOX_TRANSPARENT)
+	msgbox(Elevator_Text_WhichFloorWouldLikeToGo, MSGBOX_TRANSPARENT)
 	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
         "47",
         "Cancel")
@@ -213,7 +213,7 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_PlayerMoveRight
 
 script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_PlayerMoveUp
 {
-	applymovement(LOCALID_PLAYER, moves(walk_up * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpTwice)
 	waitmovement(0)
     return
 }
@@ -233,7 +233,7 @@ script CasteliaCity_NSPartyBuilding1F_EventScript_Elevator_GetOff
 	setdooropen(7, 2)
 	waitse()
     delay (10)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
     delay (20)
 	playse(SE_SLIDING_DOOR)

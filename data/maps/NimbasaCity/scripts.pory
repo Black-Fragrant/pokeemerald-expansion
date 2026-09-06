@@ -147,7 +147,7 @@ script NimbasaCity_EventScript_Confrontation
     playbgm(MUS_BW_UNWAVERING_EMOTIONS, TRUE)
     delay(20)
 	special(SpawnCameraObject)
-	applymovement(LOCALID_PLAYER, moves(walk_down * 2))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -170,14 +170,14 @@ script NimbasaCity_EventScript_Confrontation
         "with {PLAYER} and my Pokémon!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_CONFRONT)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_right))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, Common_Movement_WalkRightOnce)
 	waitmovement(0)
     delay(10)
     msgbox("Absolutely not! Others do\n"
         "things their way, and we do things ours!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_in_place_left))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("Is that so?\p"
@@ -189,17 +189,17 @@ script NimbasaCity_EventScript_Confrontation
     destroy_speech_bubble()
     closemessage
 	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(emote_question_mark))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_QuestionMark)
 	waitmovement(0)
     delay(10)
 	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(emote_question_mark))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, Common_Movement_QuestionMark)
 	waitmovement(0)
     delay(10)
     waitse
     addobject(LOCALID_NIMBASACITY_ELESA)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(face_down))
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(face_down))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_FaceDown)
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, Common_Movement_FaceDown)
 	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_up * 5))
 	waitmovement(0)
     delay(10)
@@ -214,7 +214,7 @@ script NimbasaCity_EventScript_Confrontation
     closemessage
 	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_right, walk_in_place_up))
 	waitmovement(0)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_right))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("You know, there are many people\n"
@@ -229,7 +229,7 @@ script NimbasaCity_EventScript_Confrontation
         "It's because I'm worried about that...", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_in_place_left))
+	applymovement(LOCALID_NIMBASACITY_ELESA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     delay(10)
     msgbox("But it's important to keep trying,\n"
@@ -244,7 +244,7 @@ script NimbasaCity_EventScript_Confrontation
         "can depend on them...", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_left))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_WalkLeftOnce)
 	waitmovement(0)
     delay(10)
     msgbox("Please!\p"
@@ -272,7 +272,7 @@ script NimbasaCity_EventScript_Confrontation
         "being childish--at my age!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_right))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("This Gym Leader's comments helped me\n"
@@ -283,7 +283,7 @@ script NimbasaCity_EventScript_Confrontation
         "Bon voyage!", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_BIANCA_FATHER)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, moves(walk_in_place_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_FATHER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
     msgbox("{PLAYER}, please...\n"
@@ -297,8 +297,8 @@ script NimbasaCity_EventScript_Confrontation
     removeobject(LOCALID_NIMBASACITY_BIANCA_FATHER)
     delay(10)
 	special(SpawnCameraObject)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_down))
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_WalkDownOnce)
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -312,9 +312,9 @@ script NimbasaCity_EventScript_Confrontation
         "Being a parent must be hard.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_in_place_left))
+	applymovement(LOCALID_NIMBASACITY_ELESA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_in_place_right))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     call_if_unset(FLAG_BADGE04_GET, NimbasaCity_EventScript_Confrontation_ElesaWalkDown)
@@ -330,7 +330,7 @@ script NimbasaCity_EventScript_Confrontation
     destroy_speech_bubble()
     closemessage
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpOnce)
 	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_down * 5))
 	waitmovement(0)
 	special(RemoveCameraObject)
@@ -361,10 +361,10 @@ script NimbasaCity_EventScript_Confrontation_ElesaWalkDown
     removeobject(LOCALID_NIMBASACITY_ELESA)
     delay(20)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_WalkUpOnce)
 	waitmovement(0)
     return
 }
@@ -376,7 +376,7 @@ script NimbasaCity_EventScript_Confrontation_ElesaWalkLeft
         "I decided to chime in.", MSGBOX_DEFAULT, TRUE, LOCALID_NIMBASACITY_ELESA)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NIMBASACITY_ELESA, moves(walk_in_place_up))
+	applymovement(LOCALID_NIMBASACITY_ELESA, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     delay(10)
     msgbox("I'm sorry, {PLAYER}.\n"
@@ -391,10 +391,10 @@ script NimbasaCity_EventScript_Confrontation_ElesaWalkLeft
     removeobject(LOCALID_NIMBASACITY_ELESA)
     delay(20)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, moves(walk_in_place_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_CONFRONT, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
     return
 }
@@ -538,7 +538,7 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
 	call_if_eq (VAR_TEMP_0, 56, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos6)
 	call_if_eq (VAR_TEMP_0, 57, NimbasaCity_EventScript_TeamPlasmaGrunts_Pos7)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(20)
@@ -564,7 +564,7 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
     applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, moves(walk_in_place_left, delay_16, walk_in_place_right, delay_16, walk_in_place_down, delay_16))
     waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NIMBASACITY_DAYCAREMAN, Common_Movement_ExclamationMark)
 	waitmovement(0)
     delay(20)
     waitse
@@ -580,10 +580,10 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
     delay(10)
     applymovement(LOCALID_NIMBASACITY_GTUNT2, moves(walk_left * 2, walk_in_place_down))
     waitmovement(0)
-    applymovement(LOCALID_NIMBASACITY_GTUNT1, moves(walk_down))
+    applymovement(LOCALID_NIMBASACITY_GTUNT1, Common_Movement_WalkDownOnce)
     waitmovement(0)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -613,7 +613,7 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
 	fadedefaultbgm
 	savebgm(MUS_NIMBASA_CITY)
     delay(20)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox("Day-Care Man: Thank you so much!\p"
             "Please take this as a token\n"
@@ -657,8 +657,8 @@ script NimbasaCity_EventScript_TeamPlasmaGrunts
     addobject(LOCALID_NIMBASACITY_BIANCA_ENTRANCE)
     applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, moves(walk_up * 6))
     waitmovement(0)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
-    applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, moves(walk_in_place_left))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+    applymovement(LOCALID_NIMBASACITY_BIANCA_ENTRANCE, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
 	delay(10)
     msgbox("The professor told me Nimbasa City\n"
@@ -738,7 +738,7 @@ script NimbasaCity_EventScript_GiveVSRecorder
 {
 	lock
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
     delay(30)
     waitse
@@ -801,7 +801,7 @@ script NimbasaCity_EventScript_GiveVSRecorder
 
 script NimbasaCity_EventScript_GiveVSRecorder_Pos1
 {
-	applymovement(LOCALID_PLAYER, moves(face_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
     return
 }
@@ -815,21 +815,21 @@ script NimbasaCity_EventScript_GiveVSRecorder_Pos2
 
 script NimbasaCity_EventScript_GiveVSRecorder_Pos3
 {
-	applymovement(LOCALID_PLAYER, moves(face_left))
+	applymovement(LOCALID_PLAYER, Common_Movement_FaceLeft)
 	waitmovement(0)
     return
 }
 
 script NimbasaCity_EventScript_GiveVSRecorder_Pos4
 {
-	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_in_place_left))
+	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
     return
 }
 
 script NimbasaCity_EventScript_GiveVSRecorder_Pos5
 {
-	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, moves(walk_in_place_right))
+	applymovement(LOCALID_NIMBASACITY_ACE_TRAINER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     return
 }
@@ -843,7 +843,7 @@ script NimbasaCity_EventScript_BiancaStopsPlayer
 	playbgm(MUS_BW_BIANCA, FALSE)
     delay(20)
     addobject(LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
-	applymovement(LOCALID_PLAYER, moves(walk_in_place_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
 	call_if_eq (VAR_TEMP_1, 14, NimbasaCity_EventScript_BSP_Pos1)
@@ -871,14 +871,14 @@ script NimbasaCity_EventScript_BiancaStopsPlayer
     closemessage
 	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_in_place_up, delay_16))
 	waitmovement(0)
-	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, moves(walk_up))
-	applymovement(LOCALID_PLAYER, moves(walk_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_TOPLEFT, Common_Movement_WalkUpOnce)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpOnce)
 	waitmovement(0)
     playse(SE_EXIT)
     removeobject(LOCALID_NIMBASACITY_BIANCA_TOPLEFT)
     waitse
     delay(20)
-	applymovement(LOCALID_PLAYER, moves(walk_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpOnce)
 	waitmovement(0)
     warp(MAP_NIMBASA_CITY_MUSICAL_THEATER, 14, 23)
     waitstate
@@ -982,7 +982,7 @@ script NimbasaCity_EventScript_BiancaBlockingMusicalTheater
     removeobject(LOCALID_NIMBASACITY_BIANCA_BLOCKING)
     waitse
     delay(20)
-	applymovement(LOCALID_PLAYER, moves(walk_up))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpOnce)
 	waitmovement(0)
     warp(MAP_NIMBASA_CITY_MUSICAL_THEATER, 14, 23)
     waitstate
@@ -991,7 +991,7 @@ script NimbasaCity_EventScript_BiancaBlockingMusicalTheater
 
 script NimbasaCity_EventScript_BBMT_Pos1
 {
-	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, Common_Movement_WalkUpOnce)
 	applymovement(LOCALID_PLAYER, moves(walk_right, walk_in_place_up))
 	waitmovement(0)
     return
@@ -999,15 +999,15 @@ script NimbasaCity_EventScript_BBMT_Pos1
 
 script NimbasaCity_EventScript_BBMT_Pos2
 {
-	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_up))
-	applymovement(LOCALID_PLAYER, moves(walk_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, Common_Movement_WalkUpOnce)
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkUpOnce)
 	waitmovement(0)
     return
 }
 
 script NimbasaCity_EventScript_BBMT_Pos3
 {
-	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, moves(walk_up))
+	applymovement(LOCALID_NIMBASACITY_BIANCA_BLOCKING, Common_Movement_WalkUpOnce)
 	applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_up))
 	waitmovement(0)
     return

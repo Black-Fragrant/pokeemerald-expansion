@@ -442,6 +442,17 @@ EventScript_UseDefog::
 	releaseall
 	end
 
+EventScript_BoulderFallsIn::
+	playse SE_THUNDERSTORM_STOP
+	setvar VAR_0x8004, 0   @ vertical pan
+	setvar VAR_0x8005, 2   @ horizontal pan
+	setvar VAR_0x8006, 4   @ num shakes
+	setvar VAR_0x8007, 1   @ shake delay
+	special ShakeCamera
+	waitse
+	delay 10
+	return
+
 EventScript_UseRockClimb::
 	lockall
 	checkfieldmove FIELD_MOVE_ROCK_CLIMB

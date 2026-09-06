@@ -106,7 +106,7 @@ script NacreneCity_Gym_EventScript_ReceptionistGivesWater
     lockall
     setvar(VAR_NACRENE_STATE, 4)
 	playse(SE_PIN)
-	applymovement(LOCALID_NACRENE_GYM_GYMRECEPTIONIST, moves(emote_exclamation_mark))
+	applymovement(LOCALID_NACRENE_GYM_GYMRECEPTIONIST, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -298,12 +298,12 @@ script NacreneCity_Gym_EventScript_Book_SweetsForPokemon
 script NacreneCity_Gym_EventScript_Book_FourthMemo
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
     setflag(FLAG_NACRENE_GYM_FOUND_4TH_BOOK)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_FaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     goto(NacreneCity_Gym_EventScript_Book_FourthMemo_Cont)
@@ -363,12 +363,12 @@ script NacreneCity_Gym_EventScript_Book_NiceToMeetYouPokemon
 script NacreneCity_Gym_EventScript_Book_FirstMemo
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
     setflag(FLAG_NACRENE_GYM_FOUND_1ST_BOOK)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_down))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_FaceDown)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
     goto(NacreneCity_Gym_EventScript_Book_FirstMemo_Cont)
@@ -449,7 +449,7 @@ script NacreneCity_Gym_EventScript_Book_TheBiologyOfTepig
 script NacreneCity_Gym_EventScript_Book_LastMemo
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -495,13 +495,13 @@ script NacreneCity_Gym_EventScript_Book_TheBiologyOfPatrat
 script NacreneCity_Gym_EventScript_Book_SecondMemo
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
     setflag(FLAG_NACRENE_GYM_FOUND_2ND_BOOK)
-    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, moves(face_down))
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_down))
+    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, Common_Movement_FaceDown)
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_FaceDown)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCIENTIST, MOVEMENT_TYPE_FACE_DOWN)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
@@ -555,7 +555,7 @@ script NacreneCity_Gym_EventScript_Battle_Schoolgirl
     destroy_speech_bubble()
     closemessage()
     setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_HINT)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     release
@@ -576,7 +576,7 @@ script NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont
     destroy_speech_bubble()
     closemessage()
     setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_HINT)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     release
@@ -591,7 +591,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle
            "is on a shelf near the entrance.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage()
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -605,7 +605,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_2
            "to the left!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage()
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -636,7 +636,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_3
     destroy_speech_bubble()
     closemessage()
     setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_ANOTHER_HINT)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     release
@@ -659,7 +659,7 @@ script NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont_2
     destroy_speech_bubble()
     closemessage()
     setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_ANOTHER_HINT)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     release
@@ -676,7 +676,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_4
            "a living thing. Tee hee!", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage()
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -702,7 +702,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_5
     destroy_speech_bubble()
     closemessage()
     setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     release
@@ -720,7 +720,7 @@ script NacreneCity_Gym_EventScript_Battle_Schoolgirl_Cont_3
     destroy_speech_bubble()
     closemessage()
     setflag(FLAG_NACRENE_GYM_SCHOOLGIRL_GAVE_LAST_HINT)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_UP)
     release
@@ -734,7 +734,7 @@ script NacreneCity_Gym_EventScript_Schoolgirl_NoBattle_6
            "Now, what were they called?", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage()
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -853,7 +853,7 @@ script NacreneCity_Gym_EventScript_Scientist_NoBattle
            "please let me know.", MSGBOX_DEFAULT, TRUE, LOCALID_NACRENE_GYM_SCIENTIST)
     destroy_speech_bubble()
     closemessage()
-    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, moves(walk_in_place_up))
+    applymovement(LOCALID_NACRENE_GYM_SCIENTIST, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
     release
     end
@@ -983,12 +983,12 @@ script NacreneCity_Gym_EventScript_Book_TheStructureOfALocomotive
 script NacreneCity_Gym_EventScript_Book_ThirdMemo
 {
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
     setflag(FLAG_NACRENE_GYM_FOUND_3RD_BOOK)
-    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, moves(face_down))
+    applymovement(LOCALID_NACRENE_GYM_SCHOOLGIRL, Common_Movement_FaceDown)
     waitmovement(0)
     setobjectmovementtype (LOCALID_NACRENE_GYM_SCHOOLGIRL, MOVEMENT_TYPE_FACE_DOWN)
     goto(NacreneCity_Gym_EventScript_Book_ThirdMemo_Cont)

@@ -87,7 +87,7 @@ script NimbasaCityExtended_EventScript_N_Battle
     setvar(VAR_NIMBASA_N_BATTLE_STATE, 0)
     addobject(LOCALID_NCE_GRUNT_1)
     addobject(LOCALID_NCE_GRUNT_2)
-	applymovement(LOCALID_NCE_GRUNT_2, moves(walk_right * 2))
+	applymovement(LOCALID_NCE_GRUNT_2, Common_Movement_WalkRightTwice)
 	applymovement(LOCALID_NCE_GRUNT_1, moves(walk_right * 3))
 	waitmovement(0)
 	delay(10)
@@ -154,7 +154,7 @@ script NimbasaCityExtended_EventScript_N_StartBattle
         "And, for that future...", MSGBOX_DEFAULT, TRUE, LOCALID_NCE_N_RIGHT)
     destroy_speech_bubble()
     closemessage
-	applymovement(LOCALID_NCE_N_RIGHT, moves(walk_right))
+	applymovement(LOCALID_NCE_N_RIGHT, Common_Movement_WalkRightOnce)
 	waitmovement(0)
     fadescreenswapbuffers (FADE_TO_BLACK)
     fadescreenswapbuffers (FADE_FROM_BLACK)
@@ -209,7 +209,7 @@ script NimbasaCityExtended_EventScript_NBT_Pos5
 {
 	applymovement(LOCALID_NCE_N, moves(walk_left, walk_down * 3, walk_left * 1))
 	waitmovement(0)
-	applymovement(LOCALID_PLAYER, moves(walk_right))
+	applymovement(LOCALID_PLAYER, Common_Movement_WalkRightOnce)
 	waitmovement(0)
     return
 }

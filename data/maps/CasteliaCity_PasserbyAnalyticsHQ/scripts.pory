@@ -941,7 +941,7 @@ script CasteliaCity_PAHQ_EventScript_Trigger
     destroy_speech_bubble()
     closemessage
 	playse(SE_PIN)
-	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -951,7 +951,7 @@ script CasteliaCity_PAHQ_EventScript_Trigger
 	special(RemoveCameraObject)
 	applymovement(LOCALID_PLAYER, moves(walk_up * 3, walk_left * 1, walk_up * 3, walk_in_place_left))
 	waitmovement(0)
-	applymovement(LOCALID_CASTELIA_PAHQ_BEAUTY, moves(walk_in_place_right))
+	applymovement(LOCALID_CASTELIA_PAHQ_BEAUTY, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
     delay(10)
     msgbox("Actually, I have a favor to ask you.\p"

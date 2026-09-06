@@ -4,7 +4,7 @@ script CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit
 {
     lock
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
     applymovement(LOCALID_CCCP_BURGH, moves(walk_in_place_down, delay_16, walk_in_place_up, delay_16, walk_in_place_down, delay_16))
@@ -21,7 +21,7 @@ script CasteliaCity_CentralPlaza_EventScript_Trigger_BurghInPursuit
     setvar(VAR_CASTELIA_GYM_STATE, 3)
     clearflag(FLAG_CASTELIA_EMPTY_BUILDING_OUTSIDE_CROWD)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpTwice)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(20)

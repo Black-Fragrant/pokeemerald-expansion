@@ -1,4 +1,19 @@
-mapscripts Route16_MapScripts {}
+mapscripts Route16_MapScripts 
+{
+		MAP_SCRIPT_ON_LOAD : Route16_On_Load
+}
+
+script Route16_On_Load
+{
+	call_if_eq(VAR_ROUTE_16_PUSHING_BOULDER, 100, Route16_EventScript_BoulderInGround)
+	end()
+}
+
+script Route16_EventScript_BoulderInGround
+{
+	setmetatile(35, 24, 0x007, 0)
+	return
+}
 
 script Route16_EventScript_RouteSign
 {
@@ -103,4 +118,16 @@ script Route16_EventScript_Battle_BackpackerF
         "But the sad memory returns\n"
         "every time a season passes.", MSGBOX_NPC, TRUE)
 	end()
+}
+
+script Route16_EventScript_PushingBoulder
+{
+	lock
+	call(Route16_EventScript_BoulderInGround)
+	special(DrawWholeMapView)
+	removeobject(LOCALID_ROUTE16_BOULDER)
+	call(EventScript_BoulderFallsIn)
+	setvar(VAR_ROUTE_16_PUSHING_BOULDER, 100)
+	release
+	end
 }

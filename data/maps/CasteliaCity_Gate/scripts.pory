@@ -29,7 +29,7 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
 	call_if_eq (VAR_TEMP_0, 5, CasteliaCity_Gate_EventScript_BB_Pos4)
 	call_if_eq (VAR_TEMP_0, 6, CasteliaCity_Gate_EventScript_BB_Pos5)
 	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos6)
-    applymovement(LOCALID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     msgbox("Bianca: Heeey, {PLAYER}!\p"
@@ -48,12 +48,12 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
 	call_if_eq (VAR_TEMP_0, 7, CasteliaCity_Gate_EventScript_BB_Pos12)
 	delay(10)
 	playse(SE_M_HYPER_BEAM2)
-	applymovement(LOCALID_CC_GATE_BIANCA, moves(emote_question_mark))
+	applymovement(LOCALID_CC_GATE_BIANCA, Common_Movement_QuestionMark)
 	waitmovement(0)
 	waitse()
 	delay(60)
 	playse(SE_PIN)
-	applymovement(LOCALID_CC_GATE_BIANCA, moves(emote_exclamation_mark))
+	applymovement(LOCALID_CC_GATE_BIANCA, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -88,7 +88,7 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
             "have given me a lot of new experiences.", MSGBOX_DEFAULT, TRUE, LOCALID_CC_GATE_BIANCA)
     destroy_speech_bubble()
     closemessage
-    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_in_place_up))
+    applymovement(LOCALID_CC_GATE_BIANCA, Common_Movement_WalkInPlaceUp)
     waitmovement(0)
 	delay(10)
     msgbox("Having my Pokémon stolen was just\n"
@@ -119,19 +119,19 @@ script CasteliaCity_Gate_EventScript_BiancaBattle
 
 script CasteliaCity_Gate_BiancaBattle_Oshawott
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_1, text("I trained with Iris...\nBut I still couldn't win..."))
+	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_1, BiancaBattle_Text_TrainedWithIris)
 	return()
 }
 
 script CasteliaCity_Gate_EventScript_BiancaBattle_Snivy
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_2, text("I trained with Iris...\nBut I still couldn't win..."))
+	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_2, BiancaBattle_Text_TrainedWithIris)
 	return()
 }
 
 script CasteliaCity_Gate_EventScript_BiancaBattle_Tepig
 {
-	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_3, text("I trained with Iris...\nBut I still couldn't win..."))
+	trainerbattle_no_intro (TRAINER_BIANCA_CASTELIA_GATE_3, BiancaBattle_Text_TrainedWithIris)
 	return()
 }
 
@@ -256,7 +256,7 @@ script CasteliaCity_Gate_EventScript_BB_Pos17
 
 script CasteliaCity_Gate_EventScript_BB_Pos18
 {
-    applymovement(LOCALID_CC_GATE_BIANCA, moves(walk_up))
+    applymovement(LOCALID_CC_GATE_BIANCA, Common_Movement_WalkUpOnce)
     waitmovement(0)
     return
 }

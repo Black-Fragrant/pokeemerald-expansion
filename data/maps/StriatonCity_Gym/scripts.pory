@@ -117,10 +117,10 @@ script StriatonCity_Gym_EventScript_ReceptionistGivesWater
 {
     lockall()
     setvar(VAR_STRIATON_GYM_STATE, 1)
-	applymovement(LOCALID_STRIATON_GYM_GYMRECEPTIONIST, moves(walk_in_place_left))
+	applymovement(LOCALID_STRIATON_GYM_GYMRECEPTIONIST, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	playse(SE_PIN)
-	applymovement(LOCALID_STRIATON_GYM_GYMRECEPTIONIST, moves(emote_exclamation_mark))
+	applymovement(LOCALID_STRIATON_GYM_GYMRECEPTIONIST, Common_Movement_ExclamationMark)
 	waitmovement(0)
 	waitse()
 	delay(20)
@@ -410,7 +410,7 @@ script StriatonCity_Gym_EventScript_Trigger_GymLeader
 	call_if_eq (VAR_TEMP_0, 11, StriatonCity_Gym_EventScript_Trigger_GymLeader_Left)
 	call_if_eq (VAR_TEMP_0, 13, StriatonCity_Gym_EventScript_Trigger_GymLeader_Right)
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
 	msgbox("Welcome to the Striaton City\n"
@@ -493,7 +493,7 @@ script StriatonCity_Gym_EventScript_ChiliMoveFront
     destroy_speech_bubble()
     closemessage
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -522,7 +522,7 @@ script StriatonCity_Gym_EventScript_CressMoveFront
     destroy_speech_bubble()
     closemessage
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)
@@ -542,7 +542,7 @@ script StriatonCity_Gym_EventScript_CilanMoveFront
     delay(10)
     applymovement(LOCALID_STRIATON_GYM_CRESS,moves(lock_facing_direction, walk_up, unlock_facing_direction))
     applymovement(LOCALID_STRIATON_GYM_CHILI,moves(lock_facing_direction, walk_up, unlock_facing_direction))
-    applymovement(LOCALID_STRIATON_GYM_CILAN,moves(walk_in_place_down))
+    applymovement(LOCALID_STRIATON_GYM_CILAN,Common_Movement_WalkInPlaceDown)
     waitmovement(0)
     delay(10)
     msgbox("Nothing personal... No hard feelings...\n"
@@ -551,7 +551,7 @@ script StriatonCity_Gym_EventScript_CilanMoveFront
     destroy_speech_bubble()
     closemessage
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+	applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDownOnce)
 	waitmovement(0)
 	special(RemoveCameraObject)
     delay(10)

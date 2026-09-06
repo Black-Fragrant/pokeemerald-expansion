@@ -415,7 +415,7 @@ script CasteliaCity_PokeCenter_EventScript_Breeder_AskAboutGeonet
 	goto_if_eq(VAR_RESULT, YES, CasteliaCity_PokeCenter_EventScript_Breeder_Yes)
 	destroy_speech_bubble()
 	closemessage
-	applymovement(LOCALID_CASTELIA_POKECEN_BREEDER, moves(walk_in_place_up))
+	applymovement(LOCALID_CASTELIA_POKECEN_BREEDER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	delay(10)
 	msgbox("You see the globe on the second floor\n"
