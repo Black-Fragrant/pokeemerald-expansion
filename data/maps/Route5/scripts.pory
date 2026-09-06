@@ -220,6 +220,7 @@ script Route5_EventScript_GateOperator
 {
 	lock
 	faceplayer
+	goto_if_eq(VAR_ROUTE_5_STATE, 3, Route5_EventScript_GateOperator_2)
 	call(Route5_EventScript_GateOperator_Dialogue)
 	release
 	end
@@ -237,6 +238,18 @@ script Route5_EventScript_GateOperator_Dialogue
 	destroy_speech_bubble()
 	closemessage
 	return
+}
+
+script Route5_EventScript_GateOperator_2
+{
+	msgbox("A bridge would be meaningless\n"
+		"if no one ever crossed it.\p"
+		"Bridges connect the world...\n"
+		"That's as solid as a symbol can get.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_GATE_OPERATOR)
+	destroy_speech_bubble()
+	closemessage
+	release
+	end
 }
 
 script Route5_EventScript_Trigger
@@ -343,9 +356,9 @@ script Route5_EventScript_Trigger_CherenBattle
 		"This time, I'm going to win!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
 	destroy_speech_bubble()
 	closemessage
-//	call_if_set(FLAG_CHOSE_SNIVY, Route5_EventScript_CB_Tepig)
-//	call_if_set(FLAG_CHOSE_TEPIG, Route5_EventScript_CB_Oshawott)
-//	call_if_set(FLAG_CHOSE_OSHAWOTT, Route5_EventScript_CB_Snivy)
+	call_if_set(FLAG_CHOSE_SNIVY, Route5_EventScript_CB_Tepig)
+	call_if_set(FLAG_CHOSE_TEPIG, Route5_EventScript_CB_Oshawott)
+	call_if_set(FLAG_CHOSE_OSHAWOTT, Route5_EventScript_CB_Snivy)
 	msgbox("Cheren: Why?\n"
 		"Why can't I beat you?", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN)
 	destroy_speech_bubble()
@@ -732,7 +745,150 @@ script Route5_EventScript_FinishedMultibattle
 script Route5_EventScript_Trigger_LowerBridge
 {
 	lock
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_TLB_Pos1)
+	playse(SE_PIN)
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(emote_exclamation_mark))
+	waitmovement(0)
+	waitse()
+	delay(20)
+	call_if_eq (VAR_TEMP_1, 14, Route5_EventScript_TLB_CherenFaceRight)
+	call_if_eq (VAR_TEMP_1, 15, Route5_EventScript_TLB_CherenFaceRight)
+	call_if_eq (VAR_TEMP_1, 16, Route5_EventScript_TLB_CherenFaceRight)
+	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_TLB_CherenFaceDown)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 3))
+	waitmovement(0)
+	msgbox("Cheren: This way.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN_LEFT)
+	destroy_speech_bubble()
+	closemessage
+	call_if_eq (VAR_TEMP_1, 14, Route5_EventScript_TLB_PlayerMove1)
+	call_if_eq (VAR_TEMP_1, 15, Route5_EventScript_TLB_PlayerMove2)
+	call_if_eq (VAR_TEMP_1, 16, Route5_EventScript_TLB_PlayerMove3)
+	call_if_eq (VAR_TEMP_1, 17, Route5_EventScript_TLB_PlayerMove4)
+	special(RemoveCameraObject)
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_in_place_left))
+	waitmovement(0)
 	delay(10)
+	msgbox("Elesa: Now to contact him...", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA_LEFT)
+	destroy_speech_bubble()
+	closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest))
+	applymovement(LOCALID_ROUTE5_ELESA_LEFT, moves(walk_left * 2, walk_in_place_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	delay(10)
+	playse(SE_POKENAV_CALL)
+	waitse()
+	playse(SE_POKENAV_CALL)
+	waitse()
+	msgbox("It's me, Elesa.\n"
+		"Please lower the drawbridge.\p"
+		"I have a couple of Trainers here\n"
+		"who want to challenge you.\p"
+		"OK...\n"
+		"Thanks.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA_LEFT)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_ROUTE5_ELESA_LEFT, moves(walk_right, walk_in_place_left))
+	waitmovement(0)
+	delay(10)
+	msgbox("Now, watch this!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA_LEFT)
+	destroy_speech_bubble()
+	closemessage
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	delay(2)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+	applymovement(LOCALID_ROUTE5_ELESA_LEFT, moves(walk_in_place_right))
+	waitmovement(0)
+	delay(10)
+	msgbox("Elesa: I have a TV gig, so I've got to go.\p"
+		"The Gym Leader of the next town\n"
+		"may take some getting used to...\l"
+		"Do your best, both of you.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_ELESA_LEFT)
+	destroy_speech_bubble()
+	closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southeast))
+	applymovement(LOCALID_PLAYER, moves(delay_16 * 3, walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(delay_16 * 3, walk_in_place_right))
+	applymovement(LOCALID_ROUTE5_ELESA_LEFT, moves(walk_right * 10))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	removeobject(LOCALID_ROUTE5_ELESA_LEFT)
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_down))
+	waitmovement(0)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+	waitmovement(0)
+	delay(10)
+	msgbox("Cheren: What I am is a Trainer.\p"
+		"I prove I'm right by getting stronger\n"
+		"and winning in battle--\l"
+		"even against the Champion.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE5_CHEREN_LEFT)
+	destroy_speech_bubble()
+	closemessage
+	applymovement(LOCALID_PLAYER, moves(delay_16, walk_in_place_left))
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_left * 8))
+	waitmovement(0)
+	playse(SE_EXIT)
+	removeobject(LOCALID_ROUTE5_CHEREN_LEFT)
+	waitse
+	delay(20)
+	setvar(VAR_ROUTE_5_STATE, 3)
 	release
 	end
+}
+
+script Route5_EventScript_TLB_Pos1
+{
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+	waitmovement(0)
+	special(RemoveCameraObject)
+	return
+}
+
+script Route5_EventScript_TLB_CherenFaceRight
+{
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_in_place_right))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TLB_CherenFaceDown
+{
+	applymovement(LOCALID_ROUTE5_CHEREN_LEFT, moves(walk_in_place_down))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TLB_PlayerMove1
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 2, walk_down * 2))
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2, walk_down * 2, walk_left))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TLB_PlayerMove2
+{
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 2, walk_down))
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2, walk_down, walk_left))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TLB_PlayerMove3
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 3))
+	waitmovement(0)
+	return
+}
+
+script Route5_EventScript_TLB_PlayerMove4
+{
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2, walk_up, walk_left))
+	waitmovement(0)
+	return
 }

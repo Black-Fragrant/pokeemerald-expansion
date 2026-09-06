@@ -212,6 +212,7 @@
       "flag": "FLAG_TEMPORARY_DISAPPEARING"
     },
     {
+      "local_id": "LOCALID_ROUTE5_CHEREN_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_CHEREN",
       "x": 14,
       "y": 14,
@@ -225,6 +226,7 @@
       "flag": "FLAG_ROUTE_5_ELESA_AT_BRIDGE"
     },
     {
+      "local_id": "LOCALID_ROUTE5_ELESA_LEFT",
       "graphics_id": "OBJ_EVENT_GFX_ELESA",
       "x": 13,
       "y": 15,
