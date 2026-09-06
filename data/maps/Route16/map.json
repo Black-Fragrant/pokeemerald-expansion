@@ -28,17 +28,18 @@
       "flag": "FLAG_TEMP_11"
     },
     {
+      "local_id": "LOCALID_ROUTE16_BOULDER",
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
       "x": 35,
       "y": 25,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
-      "flag": "FLAG_TEMP_12"
+      "flag": "FLAG_ROUTE_16_PUSHING_BOULDER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POLICE",
@@ -228,7 +229,17 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 35,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE_16_PUSHING_BOULDER",
+      "var_value": "99",
+      "script": "Route16_EventScript_PushingBoulder"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

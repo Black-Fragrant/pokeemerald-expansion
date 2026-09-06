@@ -964,8 +964,8 @@
 #define FLAG_NIMBASA_GYM_RICHGIRL                                   0x394
 #define FLAG_ROUTE_5_ALDER                                          0x395
 #define FLAG_ROUTE_5_ELESA_AT_BRIDGE                                0x396
-#define FLAG_UNUSED_0x397                                           0x397
-#define FLAG_UNUSED_0x398                                           0x398
+#define FLAG_ROUTE_2_PUSHING_BOULDER                                0x397
+#define FLAG_ROUTE_16_PUSHING_BOULDER                               0x398
 #define FLAG_UNUSED_0x399                                           0x399
 #define FLAG_UNUSED_0x39A                                           0x39A
 #define FLAG_UNUSED_0x39B                                           0x39B

@@ -21,6 +21,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_ROUTE2_BOULDER",
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
       "x": 15,
       "y": 45,
@@ -31,7 +32,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
-      "flag": "FLAG_TEMP_11"
+      "flag": "FLAG_ROUTE_2_PUSHING_BOULDER"
     },
     {
       "local_id": "LOCALID_ROUTE2_MOTHER",
@@ -183,7 +184,7 @@
       "x": 37,
       "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -329,6 +330,15 @@
       "var": "VAR_ROUTE2_MOTHER_GIVES_SHOES",
       "var_value": "1",
       "script": "Route2_EventScript_BiancaBattle"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 46,
+      "elevation": 0,
+      "var": "VAR_ROUTE_2_PUSHING_BOULDER",
+      "var_value": "99",
+      "script": "Route2_EventScript_PushingBoulder"
     }
   ],
   "bg_events": [
