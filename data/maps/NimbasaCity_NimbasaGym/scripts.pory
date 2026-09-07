@@ -15,13 +15,171 @@ script NimbasaCity_NimbasaGym_On_Load
 
 script NimbasaCity_NimbasaGym_EventScript_Track1Altered
 {
-	setmetatile (30, 36, 0x201, FALSE)
+	setmetatile (30, 36, 0x201, FALSE) //button
+	setmetatile (14, 24, 0x0, TRUE) //tracks
+	setmetatile (15, 24, 0x0, TRUE) 
+	setmetatile (16, 24, 0x0, TRUE) 
+	setmetatile (17, 24, 0x0, TRUE) 
+	setmetatile (18, 24, 0x0, TRUE) 
+	setmetatile (19, 24, 0x0, TRUE) 
+	setmetatile (20, 24, 0x0, TRUE) 
+	setmetatile (21, 24, 0x0, TRUE) 
+	setmetatile (22, 24, 0x0, TRUE) 
+	setmetatile (23, 24, 0x0, TRUE) 
+	setmetatile (24, 24, 0x0, TRUE) 
+	setmetatile (25, 24, 0x0, TRUE) 
+	setmetatile (26, 24, 0x0, TRUE) 
 	return()
 }
 
 script NimbasaCity_NimbasaGym_EventScript_Track1Reset
 {
-	setmetatile (30, 36, 0x200, FALSE)
+	setmetatile (30, 36, 0x200, FALSE) //button
+	setmetatile (14, 24, 0x208, TRUE) //tracks
+	setmetatile (15, 24, 0x211, TRUE) 
+	setmetatile (16, 24, 0x211, TRUE) 
+	setmetatile (17, 24, 0x211, TRUE) 
+	setmetatile (18, 24, 0x211, TRUE) 
+	setmetatile (19, 24, 0x211, TRUE) 
+	setmetatile (20, 24, 0x211, TRUE) 
+	setmetatile (21, 24, 0x211, TRUE) 
+	setmetatile (22, 24, 0x211, TRUE) 
+	setmetatile (23, 24, 0x211, TRUE) 
+	setmetatile (24, 24, 0x211, TRUE) 
+	setmetatile (25, 24, 0x211, TRUE) 
+	setmetatile (26, 24, 0x20A, TRUE) 
+    
+	setmetatile (15, 25, 0x221, TRUE) 
+	setmetatile (16, 25, 0x221, TRUE) 
+	setmetatile (17, 25, 0x221, TRUE) 
+	setmetatile (18, 25, 0x221, TRUE) 
+	setmetatile (19, 25, 0x221, TRUE) 
+	setmetatile (20, 25, 0x221, TRUE) 
+	setmetatile (21, 25, 0x221, TRUE) 
+	setmetatile (22, 25, 0x221, TRUE) 
+	setmetatile (23, 25, 0x221, TRUE) 
+	setmetatile (24, 25, 0x221, TRUE) 
+	setmetatile (25, 25, 0x221, TRUE) 
+
+	setmetatile (14, 25, 0x213, TRUE) 
+	setmetatile (14, 26, 0x21B, TRUE) 
+	setmetatile (14, 27, 0x380, TRUE) 
+
+	setmetatile (14, 28, 0x382, TRUE) 
+	setmetatile (15, 28, 0x211, TRUE) 
+	setmetatile (16, 28, 0x211, TRUE) 
+	setmetatile (17, 28, 0x211, TRUE) 
+	setmetatile (18, 28, 0x375, TRUE) 
+	setmetatile (19, 28, 0x211, TRUE) 
+	setmetatile (20, 28, 0x20A, TRUE) 
+    
+	setmetatile (14, 29, 0x38A, TRUE) 
+	setmetatile (15, 29, 0x221, TRUE) 
+	setmetatile (16, 29, 0x221, TRUE) 
+	setmetatile (17, 29, 0x221, TRUE) 
+	setmetatile (18, 29, 0x377, TRUE) 
+	setmetatile (19, 29, 0x221, TRUE) 
+    
+	setmetatile (20, 29, 0x214, TRUE) 
+	setmetatile (20, 30, 0x291, TRUE) 
+	setmetatile (20, 31, 0x299, TRUE) 
+	setmetatile (20, 32, 0x299, TRUE) 
+	setmetatile (20, 33, 0x299, TRUE) 
+	setmetatile (20, 34, 0x2A1, TRUE) 
+	setmetatile (20, 35, 0x21B, TRUE) 
+    
+	setmetatile (26, 25, 0x214, TRUE) 
+	setmetatile (26, 26, 0x21B, TRUE) 
+	setmetatile (26, 27, 0x21B, TRUE) 
+	setmetatile (26, 28, 0x21B, TRUE) 
+	setmetatile (26, 29, 0x21B, TRUE) 
+	setmetatile (26, 30, 0x291, TRUE) 
+	setmetatile (26, 31, 0x299, TRUE) 
+	setmetatile (26, 32, 0x299, TRUE) 
+	setmetatile (26, 33, 0x299, TRUE) 
+	setmetatile (26, 34, 0x2A1, TRUE)
+	setmetatile (26, 35, 0x21B, TRUE)
+
+	setmetatile (10, 36, 0x208, TRUE)
+	setmetatile (11, 36, 0x209, TRUE)
+	setmetatile (12, 36, 0x211, TRUE)
+	setmetatile (13, 36, 0x209, TRUE)
+	setmetatile (14, 36, 0x211, TRUE)
+	setmetatile (15, 36, 0x209, TRUE)
+	setmetatile (16, 36, 0x211, TRUE)
+	setmetatile (17, 36, 0x209, TRUE)
+	setmetatile (18, 36, 0x211, TRUE)
+	setmetatile (19, 36, 0x209, TRUE)
+	setmetatile (20, 36, 0x225, TRUE)
+	setmetatile (21, 36, 0x209, TRUE)
+	setmetatile (22, 36, 0x211, TRUE)
+	setmetatile (23, 36, 0x209, TRUE)
+	setmetatile (24, 36, 0x211, TRUE)
+	setmetatile (25, 36, 0x209, TRUE)
+	setmetatile (26, 36, 0x226, TRUE)
+
+	setmetatile (11, 37, 0x221, TRUE)
+	setmetatile (12, 37, 0x221, TRUE)
+	setmetatile (13, 37, 0x221, TRUE)
+	setmetatile (14, 37, 0x221, TRUE)
+	setmetatile (15, 37, 0x221, TRUE)
+	setmetatile (16, 37, 0x221, TRUE)
+	setmetatile (17, 37, 0x221, TRUE)
+	setmetatile (18, 37, 0x221, TRUE)
+	setmetatile (19, 37, 0x221, TRUE)
+	setmetatile (21, 37, 0x221, TRUE)
+	setmetatile (22, 37, 0x221, TRUE)
+	setmetatile (23, 37, 0x221, TRUE)
+	setmetatile (24, 37, 0x221, TRUE)
+	setmetatile (25, 37, 0x221, TRUE)
+    
+	setmetatile (10, 37, 0x210, TRUE)
+	setmetatile (10, 38, 0x21B, TRUE)
+	setmetatile (10, 39, 0x20B, TRUE)
+    
+	setmetatile (20, 37, 0x224, TRUE)
+	setmetatile (20, 38, 0x21B, TRUE)
+	setmetatile (20, 39, 0x380, TRUE)
+    
+	setmetatile (26, 37, 0x212, TRUE)
+	setmetatile (26, 38, 0x21B, TRUE)
+	setmetatile (26, 39, 0x20C, TRUE)
+
+	setmetatile (10, 40, 0x218, TRUE)
+	setmetatile (11, 40, 0x219, TRUE)
+	setmetatile (12, 40, 0x374, TRUE)
+	setmetatile (13, 40, 0x219, TRUE)
+	setmetatile (14, 40, 0x211, TRUE)
+	setmetatile (15, 40, 0x219, TRUE)
+	setmetatile (16, 40, 0x375, TRUE)
+	setmetatile (17, 40, 0x219, TRUE)
+	setmetatile (18, 40, 0x211, TRUE)
+	setmetatile (19, 40, 0x219, TRUE)
+	setmetatile (20, 40, 0x388, TRUE)
+	setmetatile (21, 40, 0x219, TRUE)
+	setmetatile (22, 40, 0x211, TRUE)
+	setmetatile (23, 40, 0x219, TRUE)
+	setmetatile (24, 40, 0x375, TRUE)
+	setmetatile (25, 40, 0x219, TRUE)
+	setmetatile (26, 40, 0x21A, TRUE)
+
+	setmetatile (10, 41, 0x220, TRUE)
+	setmetatile (11, 41, 0x221, TRUE)
+	setmetatile (12, 41, 0x376, TRUE)
+	setmetatile (13, 41, 0x221, TRUE)
+	setmetatile (14, 41, 0x221, TRUE)
+	setmetatile (15, 41, 0x221, TRUE)
+	setmetatile (16, 41, 0x377, TRUE)
+	setmetatile (17, 41, 0x221, TRUE)
+	setmetatile (18, 41, 0x221, TRUE)
+	setmetatile (19, 41, 0x221, TRUE)
+	setmetatile (20, 41, 0x376, TRUE)
+	setmetatile (21, 41, 0x221, TRUE)
+	setmetatile (22, 41, 0x221, TRUE)
+	setmetatile (23, 41, 0x221, TRUE)
+	setmetatile (24, 41, 0x377, TRUE)
+	setmetatile (25, 41, 0x221, TRUE)
+	setmetatile (26, 41, 0x222, TRUE)
 	return()
 }
 
@@ -33,7 +191,233 @@ script NimbasaCity_NimbasaGym_EventScript_Track2Altered
 
 script NimbasaCity_NimbasaGym_EventScript_Track2Reset
 {
-	setmetatile (13, 20, 0x202, FALSE)
+	setmetatile (13, 20, 0x202, FALSE) //button
+	setmetatile (10, 13, 0x2B3, TRUE) //tracks
+	setmetatile (11, 13, 0x2BC, TRUE)
+	setmetatile (12, 13, 0x2BC, TRUE)
+	setmetatile (13, 13, 0x2BC, TRUE)
+	setmetatile (14, 13, 0x2BC, TRUE)
+	setmetatile (15, 13, 0x2BC, TRUE)
+	setmetatile (16, 13, 0x2BC, TRUE)
+	setmetatile (17, 13, 0x2BC, TRUE)
+	setmetatile (18, 13, 0x2BC, TRUE)
+	setmetatile (19, 13, 0x2BC, TRUE)
+	setmetatile (20, 13, 0x2B5, TRUE)
+
+	setmetatile (11, 14, 0x2CC, TRUE)
+	setmetatile (12, 14, 0x2CC, TRUE)
+	setmetatile (13, 14, 0x2CC, TRUE)
+	setmetatile (14, 14, 0x2CC, TRUE)
+	setmetatile (15, 14, 0x2CC, TRUE)
+	setmetatile (16, 14, 0x2CC, TRUE)
+	setmetatile (17, 14, 0x2CC, TRUE)
+	setmetatile (18, 14, 0x2CC, TRUE)
+	setmetatile (19, 14, 0x2CC, TRUE)
+    
+	setmetatile (10, 14, 0x2C6, TRUE)
+	setmetatile (10, 15, 0x2CE, TRUE)
+	setmetatile (10, 16, 0x2CE, TRUE)
+    
+	setmetatile (20, 14, 0x2C7, TRUE)
+	setmetatile (20, 15, 0x2CE, TRUE)
+	setmetatile (20, 16, 0x2CE, TRUE)
+    
+	setmetatile (10, 17, 0x2C3, TRUE)
+	setmetatile (11, 17, 0x2BC, TRUE)
+	setmetatile (12, 17, 0x2BC, TRUE)
+	setmetatile (13, 17, 0x2BC, TRUE)
+	setmetatile (14, 17, 0x370, TRUE)
+	setmetatile (15, 17, 0x2BC, TRUE)
+	setmetatile (16, 17, 0x2BC, TRUE)
+	setmetatile (17, 17, 0x2BC, TRUE)
+	setmetatile (18, 17, 0x371, TRUE)
+	setmetatile (19, 17, 0x2BC, TRUE)
+	setmetatile (20, 17, 0x2AF, TRUE)
+	setmetatile (21, 17, 0x2C4, TRUE)
+	setmetatile (22, 17, 0x2BC, TRUE)
+	setmetatile (23, 17, 0x2C4, TRUE)
+	setmetatile (24, 17, 0x2BC, TRUE)
+	setmetatile (25, 17, 0x2C4, TRUE)
+	setmetatile (26, 17, 0x2BC, TRUE)
+	setmetatile (27, 17, 0x2C4, TRUE)
+	setmetatile (28, 17, 0x2BC, TRUE)
+	setmetatile (29, 17, 0x2C4, TRUE)
+	setmetatile (30, 17, 0x2BC, TRUE)
+	setmetatile (31, 17, 0x2C4, TRUE)
+	setmetatile (32, 17, 0x2BC, TRUE)
+	setmetatile (33, 17, 0x2C4, TRUE)
+	setmetatile (34, 17, 0x2BC, TRUE)
+	setmetatile (35, 17, 0x2C4, TRUE)
+	setmetatile (36, 17, 0x2BC, TRUE)
+	setmetatile (37, 17, 0x2C4, TRUE)
+	setmetatile (38, 17, 0x2B5, TRUE)
+    
+	setmetatile (10, 18, 0x2CB, TRUE)
+	setmetatile (11, 18, 0x2CC, TRUE)
+	setmetatile (12, 18, 0x2CC, TRUE)
+	setmetatile (13, 18, 0x2CC, TRUE)
+	setmetatile (14, 18, 0x372, TRUE)
+	setmetatile (15, 18, 0x2CC, TRUE)
+	setmetatile (16, 18, 0x2CC, TRUE)
+	setmetatile (17, 18, 0x2CC, TRUE)
+	setmetatile (18, 18, 0x373, TRUE)
+	setmetatile (19, 18, 0x2CC, TRUE)
+	setmetatile (21, 18, 0x2CC, TRUE)
+	setmetatile (22, 18, 0x2CC, TRUE)
+	setmetatile (23, 18, 0x2CC, TRUE)
+	setmetatile (24, 18, 0x2CC, TRUE)
+	setmetatile (25, 18, 0x2CC, TRUE)
+	setmetatile (26, 18, 0x2CC, TRUE)
+	setmetatile (27, 18, 0x2CC, TRUE)
+	setmetatile (28, 18, 0x2CC, TRUE)
+	setmetatile (29, 18, 0x2CC, TRUE)
+	setmetatile (30, 18, 0x2CC, TRUE)
+	setmetatile (31, 18, 0x2CC, TRUE)
+	setmetatile (32, 18, 0x2CC, TRUE)
+	setmetatile (33, 18, 0x2CC, TRUE)
+	setmetatile (34, 18, 0x2CC, TRUE)
+	setmetatile (35, 18, 0x2CC, TRUE)
+	setmetatile (36, 18, 0x2CC, TRUE)
+	setmetatile (37, 18, 0x2CC, TRUE)
+    
+	setmetatile (20, 18, 0x2B7, TRUE)
+	setmetatile (20, 19, 0x2CE, TRUE)
+	setmetatile (20, 20, 0x2BD, TRUE)
+    
+	setmetatile (20, 21, 0x2C3, TRUE)
+	setmetatile (21, 21, 0x2B4, TRUE)
+	setmetatile (22, 21, 0x2BC, TRUE)
+	setmetatile (23, 21, 0x2B4, TRUE)
+	setmetatile (24, 21, 0x2BC, TRUE)
+	setmetatile (25, 21, 0x2B4, TRUE)
+	setmetatile (26, 21, 0x2BC, TRUE)
+	setmetatile (27, 21, 0x2B4, TRUE)
+	setmetatile (28, 21, 0x2B5, TRUE)
+    
+	setmetatile (20, 22, 0x2CB, TRUE)
+	setmetatile (21, 22, 0x2CC, TRUE)
+	setmetatile (22, 22, 0x2CC, TRUE)
+	setmetatile (23, 22, 0x2CC, TRUE)
+	setmetatile (24, 22, 0x2CC, TRUE)
+	setmetatile (25, 22, 0x2CC, TRUE)
+	setmetatile (26, 22, 0x2CC, TRUE)
+	setmetatile (27, 22, 0x2CC, TRUE)
+    
+	setmetatile (28, 22, 0x2BD, TRUE)
+	setmetatile (28, 23, 0x2CE, TRUE)
+	setmetatile (28, 24, 0x2BF, TRUE)
+	setmetatile (28, 25, 0x2CE, TRUE)
+	setmetatile (28, 26, 0x2BF, TRUE)
+	setmetatile (28, 27, 0x2CE, TRUE)
+	setmetatile (28, 28, 0x2BF, TRUE)
+    
+	setmetatile (28, 29, 0x2C3, TRUE)
+	setmetatile (29, 29, 0x2B4, TRUE)
+	setmetatile (30, 29, 0x2BC, TRUE)
+	setmetatile (31, 29, 0x2B4, TRUE)
+    
+	setmetatile (28, 30, 0x2CB, TRUE)
+	setmetatile (29, 30, 0x2CC, TRUE)
+	setmetatile (30, 30, 0x2CC, TRUE)
+	setmetatile (31, 30, 0x2CC, TRUE)
+    
+	setmetatile (32, 28, 0x2D4, TRUE) //track hill
+	setmetatile (32, 29, 0x2E4, TRUE)
+	setmetatile (32, 30, 0x2E2, TRUE)
+	setmetatile (33, 27, 0x2D2, TRUE)
+	setmetatile (33, 28, 0x2DA, TRUE)
+	setmetatile (33, 29, 0x2E2, TRUE)
+	setmetatile (34, 26, 0x2D4, TRUE)
+	setmetatile (34, 27, 0x2E4, TRUE)
+	setmetatile (34, 28, 0x2E2, TRUE)
+	setmetatile (35, 25, 0x2D2, TRUE)
+	setmetatile (35, 26, 0x2DA, TRUE)
+	setmetatile (35, 27, 0x2E2, TRUE)
+	setmetatile (36, 24, 0x2D4, TRUE)
+	setmetatile (36, 25, 0x2E4, TRUE)
+	setmetatile (36, 26, 0x2E2, TRUE)
+	setmetatile (37, 23, 0x2D2, TRUE)
+	setmetatile (37, 24, 0x2DA, TRUE)
+	setmetatile (37, 25, 0x2E2, TRUE)
+
+	setmetatile (39, 23, 0x2D3, TRUE)
+	setmetatile (39, 24, 0x2DB, TRUE)
+	setmetatile (39, 25, 0x2E3, TRUE)
+	setmetatile (40, 24, 0x2D5, TRUE)
+	setmetatile (40, 25, 0x2E5, TRUE)
+	setmetatile (40, 26, 0x2E3, TRUE)
+	setmetatile (41, 25, 0x2D3, TRUE)
+	setmetatile (41, 26, 0x2DB, TRUE)
+	setmetatile (41, 27, 0x2E3, TRUE)
+	setmetatile (42, 26, 0x2D5, TRUE)
+	setmetatile (42, 27, 0x2E5, TRUE)
+	setmetatile (42, 28, 0x2E3, TRUE)
+	setmetatile (43, 27, 0x2D3, TRUE)
+	setmetatile (43, 28, 0x2DB, TRUE)
+	setmetatile (43, 29, 0x2E3, TRUE)
+	setmetatile (44, 28, 0x2D5, TRUE)
+	setmetatile (44, 29, 0x2E5, TRUE)
+	setmetatile (44, 30, 0x2E3, TRUE)
+    
+	setmetatile (45, 29, 0x2B4, TRUE)
+	setmetatile (45, 30, 0x2CC, TRUE)
+    
+	setmetatile (46, 29, 0x2B5, TRUE)
+	setmetatile (46, 30, 0x2BF, TRUE)
+	setmetatile (46, 31, 0x2CE, TRUE)
+	setmetatile (46, 32, 0x2BF, TRUE)
+	setmetatile (46, 33, 0x2CE, TRUE)
+	setmetatile (46, 34, 0x2BF, TRUE)
+	setmetatile (46, 35, 0x2CE, TRUE)
+	setmetatile (46, 36, 0x2BF, TRUE)
+	setmetatile (46, 37, 0x2CE, TRUE)
+	setmetatile (46, 38, 0x2BF, TRUE)
+	setmetatile (46, 39, 0x2CE, TRUE)
+	setmetatile (46, 40, 0x2BF, TRUE)
+    
+	setmetatile (38, 41, 0x2C3, TRUE)
+	setmetatile (39, 41, 0x2C4, TRUE)
+	setmetatile (40, 41, 0x370, TRUE)
+	setmetatile (41, 41, 0x2C4, TRUE)
+	setmetatile (42, 41, 0x2BC, TRUE)
+	setmetatile (43, 41, 0x2C4, TRUE)
+	setmetatile (44, 41, 0x371, TRUE)
+	setmetatile (45, 41, 0x2C4, TRUE)
+	setmetatile (46, 41, 0x2C5, TRUE)
+    
+	setmetatile (38, 42, 0x2CB, TRUE)
+	setmetatile (39, 42, 0x2CC, TRUE)
+	setmetatile (40, 42, 0x372, TRUE)
+	setmetatile (41, 42, 0x2CC, TRUE)
+	setmetatile (42, 42, 0x2CC, TRUE)
+	setmetatile (43, 42, 0x2CC, TRUE)
+	setmetatile (44, 42, 0x373, TRUE)
+	setmetatile (45, 42, 0x2CC, TRUE)
+	setmetatile (46, 42, 0x2CD, TRUE)
+    
+	setmetatile (38, 18, 0x2D6, TRUE)
+	setmetatile (38, 19, 0x2CE, TRUE)
+	setmetatile (38, 20, 0x2BE, TRUE)
+	setmetatile (38, 21, 0x2CE, TRUE)
+	setmetatile (38, 22, 0x2BE, TRUE)
+	setmetatile (38, 23, 0x2BC, TRUE)
+	setmetatile (38, 24, 0x2DE, TRUE)
+	setmetatile (38, 25, 0x2CE, TRUE)
+	setmetatile (38, 26, 0x2BE, TRUE)
+	setmetatile (38, 27, 0x2CE, TRUE)
+	setmetatile (38, 28, 0x2BE, TRUE)
+	setmetatile (38, 29, 0x2CE, TRUE)
+	setmetatile (38, 30, 0x2BE, TRUE)
+	setmetatile (38, 31, 0x2CE, TRUE)
+	setmetatile (38, 32, 0x2BE, TRUE)
+	setmetatile (38, 33, 0x2CE, TRUE)
+	setmetatile (38, 34, 0x2BE, TRUE)
+	setmetatile (38, 35, 0x2CE, TRUE)
+	setmetatile (38, 36, 0x2BE, TRUE)
+	setmetatile (38, 37, 0x2CE, TRUE)
+	setmetatile (38, 38, 0x2BE, TRUE)
+	setmetatile (38, 39, 0x2CE, TRUE)
+	setmetatile (38, 40, 0x2BE, TRUE)
 	return()
 }
 
@@ -45,7 +429,204 @@ script NimbasaCity_NimbasaGym_EventScript_Track3Altered
 
 script NimbasaCity_NimbasaGym_EventScript_Track3Reset
 {
-	setmetatile (48, 44, 0x204, FALSE)
+	setmetatile (48, 44, 0x204, FALSE) //button
+	setmetatile (33, 5, 0x2E8, TRUE) //tracks
+	setmetatile (34, 5, 0x2E9, TRUE)
+	setmetatile (35, 5, 0x2F1, TRUE)
+	setmetatile (36, 5, 0x2E9, TRUE)
+	setmetatile (37, 5, 0x2F1, TRUE)
+	setmetatile (38, 5, 0x2E9, TRUE)
+	setmetatile (39, 5, 0x2F1, TRUE)
+	setmetatile (40, 5, 0x2E9, TRUE)
+	setmetatile (41, 5, 0x2F1, TRUE)
+	setmetatile (49, 5, 0x2F1, TRUE)
+	setmetatile (50, 5, 0x2E9, TRUE)
+	setmetatile (51, 5, 0x2F1, TRUE)
+	setmetatile (52, 5, 0x2E9, TRUE)
+	setmetatile (53, 5, 0x2EA, TRUE)
+    
+	setmetatile (34, 6, 0x301, TRUE)
+	setmetatile (35, 6, 0x301, TRUE)
+	setmetatile (36, 6, 0x301, TRUE)
+	setmetatile (37, 6, 0x301, TRUE)
+	setmetatile (38, 6, 0x301, TRUE)
+	setmetatile (39, 6, 0x301, TRUE)
+	setmetatile (40, 6, 0x301, TRUE)
+	setmetatile (50, 6, 0x301, TRUE)
+	setmetatile (51, 6, 0x301, TRUE)
+	setmetatile (52, 6, 0x301, TRUE)
+    
+	setmetatile (33, 6, 0x2F0, TRUE)
+	setmetatile (33, 7, 0x2FE, TRUE)
+	setmetatile (33, 8, 0x36D, TRUE)
+    
+	setmetatile (33, 9, 0x38C, TRUE)
+	setmetatile (34, 9, 0x2F9, TRUE)
+	setmetatile (35, 9, 0x2F1, TRUE)
+	setmetatile (36, 9, 0x2F9, TRUE)
+	setmetatile (37, 9, 0x390, TRUE)
+	setmetatile (38, 9, 0x2F9, TRUE)
+	setmetatile (39, 9, 0x2F1, TRUE)
+	setmetatile (40, 9, 0x2F9, TRUE)
+    
+	setmetatile (33, 10, 0x394, TRUE)
+	setmetatile (34, 10, 0x301, TRUE)
+	setmetatile (35, 10, 0x301, TRUE)
+	setmetatile (36, 10, 0x301, TRUE)
+	setmetatile (37, 10, 0x392, TRUE)
+	setmetatile (38, 10, 0x301, TRUE)
+	setmetatile (39, 10, 0x301, TRUE)
+	setmetatile (40, 10, 0x301, TRUE)
+    
+	setmetatile (44, 11, 0x2F9, TRUE)
+	setmetatile (45, 11, 0x2F1, TRUE)
+	setmetatile (46, 11, 0x2F9, TRUE)
+	setmetatile (47, 11, 0x2F1, TRUE)
+	setmetatile (48, 11, 0x2F9, TRUE)
+	setmetatile (49, 11, 0x2EA, TRUE)
+    
+	setmetatile (44, 12, 0x301, TRUE)
+	setmetatile (45, 12, 0x301, TRUE)
+	setmetatile (46, 12, 0x301, TRUE)
+	setmetatile (47, 12, 0x301, TRUE)
+	setmetatile (48, 12, 0x301, TRUE)
+    
+	setmetatile (49, 12, 0x306, TRUE)
+	setmetatile (49, 13, 0x2FE, TRUE)
+	setmetatile (49, 14, 0x2EE, TRUE)
+	setmetatile (49, 15, 0x310, TRUE)
+	setmetatile (49, 16, 0x318, TRUE)
+	setmetatile (49, 17, 0x328, TRUE)
+	setmetatile (49, 18, 0x318, TRUE)
+	setmetatile (49, 19, 0x330, TRUE)
+	setmetatile (49, 20, 0x318, TRUE)
+	setmetatile (49, 21, 0x328, TRUE)
+	setmetatile (49, 22, 0x318, TRUE)
+	setmetatile (49, 23, 0x330, TRUE)
+	setmetatile (49, 24, 0x318, TRUE)
+	setmetatile (49, 25, 0x328, TRUE)
+	setmetatile (49, 26, 0x318, TRUE)
+	setmetatile (49, 27, 0x338, TRUE)
+	setmetatile (49, 28, 0x2EE, TRUE)
+	setmetatile (49, 29, 0x2FE, TRUE)
+	setmetatile (49, 30, 0x2EE, TRUE)
+	setmetatile (49, 31, 0x2FE, TRUE)
+	setmetatile (49, 32, 0x2EE, TRUE)
+	setmetatile (49, 33, 0x2FE, TRUE)
+	setmetatile (49, 34, 0x2EE, TRUE)
+	setmetatile (49, 35, 0x2FE, TRUE)
+	setmetatile (49, 36, 0x2EE, TRUE)
+	setmetatile (49, 37, 0x308, TRUE)
+	setmetatile (49, 38, 0x3DA, TRUE)
+	setmetatile (49, 39, 0x2FE, TRUE)
+	setmetatile (49, 40, 0x384, TRUE)
+
+	setmetatile (53, 6, 0x2F2, TRUE)
+	setmetatile (53, 7, 0x2FE, TRUE)
+	setmetatile (53, 8, 0x2EF, TRUE)
+	setmetatile (53, 9, 0x2FE, TRUE)
+	setmetatile (53, 10, 0x2EF, TRUE)
+	setmetatile (53, 11, 0x2FE, TRUE)
+	setmetatile (53, 12, 0x2EF, TRUE)
+	setmetatile (53, 13, 0x2FE, TRUE)
+	setmetatile (53, 14, 0x2EF, TRUE)
+	setmetatile (53, 15, 0x310, TRUE)
+	setmetatile (53, 16, 0x320, TRUE)
+	setmetatile (53, 17, 0x328, TRUE)
+	setmetatile (53, 18, 0x320, TRUE)
+	setmetatile (53, 19, 0x330, TRUE)
+	setmetatile (53, 20, 0x320, TRUE)
+	setmetatile (53, 21, 0x328, TRUE)
+	setmetatile (53, 22, 0x320, TRUE)
+	setmetatile (53, 23, 0x330, TRUE)
+	setmetatile (53, 24, 0x320, TRUE)
+	setmetatile (53, 25, 0x328, TRUE)
+	setmetatile (53, 26, 0x320, TRUE)
+	setmetatile (53, 27, 0x338, TRUE)
+	setmetatile (53, 28, 0x2EF, TRUE)
+	setmetatile (53, 29, 0x2FE, TRUE)
+	setmetatile (53, 30, 0x2EF, TRUE)
+	setmetatile (53, 31, 0x2FE, TRUE)
+	setmetatile (53, 32, 0x2EF, TRUE)
+	setmetatile (53, 33, 0x2FE, TRUE)
+	setmetatile (53, 34, 0x2EF, TRUE)
+	setmetatile (53, 35, 0x2FE, TRUE)
+	setmetatile (53, 36, 0x2EF, TRUE)
+	setmetatile (53, 37, 0x309, TRUE)
+	setmetatile (53, 38, 0x3DB, TRUE)
+	setmetatile (53, 39, 0x2FE, TRUE)
+	setmetatile (53, 40, 0x385, TRUE)
+
+	setmetatile (50, 37, 0x2F9, TRUE)
+	setmetatile (51, 37, 0x2F1, TRUE)
+	setmetatile (52, 37, 0x2F9, TRUE)
+
+	setmetatile (50, 38, 0x301, TRUE)
+	setmetatile (51, 38, 0x301, TRUE)
+	setmetatile (52, 38, 0x301, TRUE)
+    
+	setmetatile (49, 41, 0x38C, TRUE)
+	setmetatile (50, 41, 0x2F1, TRUE)
+	setmetatile (51, 41, 0x2F1, TRUE)
+	setmetatile (52, 41, 0x2F1, TRUE)
+	setmetatile (53, 41, 0x38D, TRUE)
+    
+	setmetatile (49, 42, 0x394, TRUE)
+	setmetatile (50, 42, 0x301, TRUE)
+	setmetatile (51, 42, 0x301, TRUE)
+	setmetatile (52, 42, 0x301, TRUE)
+	setmetatile (53, 42, 0x395, TRUE)
+    
+	setmetatile (43, 4, 0x39B, TRUE) //loop
+	setmetatile (44, 4, 0x2F1, TRUE)
+	setmetatile (45, 4, 0x2F1, TRUE)
+	setmetatile (46, 4, 0x2F1, TRUE)
+	setmetatile (47, 4, 0x399, TRUE)
+
+	setmetatile (42, 5, 0x3B2, TRUE)
+	setmetatile (43, 5, 0x3BA, TRUE)
+	setmetatile (44, 5, 0x3AA, TRUE)
+	setmetatile (45, 5, 0x3AB, TRUE)
+	setmetatile (46, 5, 0x3AA, TRUE)
+	setmetatile (47, 5, 0x3BB, TRUE)
+	setmetatile (48, 5, 0x3B3, TRUE)
+    
+	setmetatile (41, 6, 0x3B0, TRUE)
+	setmetatile (42, 6, 0x3A3, TRUE)
+	setmetatile (43, 6, 0x3C2, TRUE)
+	setmetatile (47, 6, 0x3C3, TRUE)
+	setmetatile (48, 6, 0x3A1, TRUE)
+	setmetatile (49, 6, 0x3B1, TRUE)
+    
+	setmetatile (41, 7, 0x3B8, TRUE)
+	setmetatile (42, 7, 0x3A9, TRUE)
+	setmetatile (48, 7, 0x39A, TRUE)
+	setmetatile (49, 7, 0x3B9, TRUE)
+	setmetatile (41, 8, 0x3C0, TRUE)
+	setmetatile (47, 8, 0x39B, TRUE)
+	setmetatile (48, 8, 0x3A2, TRUE)
+	setmetatile (49, 8, 0x3C1, TRUE)
+
+	setmetatile (41, 9, 0x3C8, TRUE)
+	setmetatile (42, 9, 0x398, TRUE)
+	setmetatile (43, 9, 0x2F1, TRUE)
+	setmetatile (44, 9, 0x2F9, TRUE)
+	setmetatile (45, 9, 0x2F1, TRUE)
+	setmetatile (46, 9, 0x2F9, TRUE)
+	setmetatile (47, 9, 0x3A3, TRUE)
+	setmetatile (48, 9, 0x3A9, TRUE)
+
+	setmetatile (41, 10, 0x3D0, TRUE)
+	setmetatile (42, 10, 0x3A0, TRUE)
+	setmetatile (43, 10, 0x2C9, TRUE)
+	setmetatile (44, 10, 0x301, TRUE)
+	setmetatile (45, 10, 0x301, TRUE)
+	setmetatile (46, 10, 0x301, TRUE)
+	setmetatile (47, 10, 0x3A9, TRUE)
+
+	setmetatile (42, 11, 0x3A8, TRUE)
+	setmetatile (43, 11, 0x3A1, TRUE)
+	setmetatile (43, 12, 0x3A8, TRUE)
 	return()
 }
 
@@ -57,7 +638,174 @@ script NimbasaCity_NimbasaGym_EventScript_Track4Altered
 
 script NimbasaCity_NimbasaGym_EventScript_Track4Reset
 {
-	setmetatile (26, 12, 0x206, FALSE)
+	setmetatile (26, 12, 0x206, FALSE) //button
+	setmetatile (3, 5, 0x312, TRUE) //track
+	setmetatile (4, 5, 0x313, TRUE)
+	setmetatile (5, 5, 0x31B, TRUE)
+	setmetatile (6, 5, 0x313, TRUE)
+	setmetatile (7, 5, 0x31B, TRUE)
+	setmetatile (8, 5, 0x313, TRUE)
+	setmetatile (9, 5, 0x31B, TRUE)
+	setmetatile (10, 5, 0x313, TRUE)
+	setmetatile (11, 5, 0x31B, TRUE)
+	setmetatile (12, 5, 0x313, TRUE)
+	setmetatile (13, 5, 0x31B, TRUE)
+	setmetatile (14, 5, 0x313, TRUE)
+	setmetatile (15, 5, 0x31B, TRUE)
+	setmetatile (16, 5, 0x313, TRUE)
+	setmetatile (17, 5, 0x31B, TRUE)
+	setmetatile (18, 5, 0x313, TRUE)
+	setmetatile (19, 5, 0x336, TRUE)
+	setmetatile (20, 5, 0x31B, TRUE)
+	setmetatile (21, 5, 0x31B, TRUE)
+	setmetatile (22, 5, 0x31B, TRUE)
+	setmetatile (23, 5, 0x31B, TRUE)
+	setmetatile (24, 5, 0x31B, TRUE)
+	setmetatile (25, 5, 0x314, TRUE)
+
+	setmetatile (4, 6, 0x32B, TRUE)
+	setmetatile (5, 6, 0x32B, TRUE)
+	setmetatile (6, 6, 0x32B, TRUE)
+	setmetatile (7, 6, 0x32B, TRUE)
+	setmetatile (8, 6, 0x32B, TRUE)
+	setmetatile (9, 6, 0x32B, TRUE)
+	setmetatile (10, 6, 0x32B, TRUE)
+	setmetatile (11, 6, 0x32B, TRUE)
+	setmetatile (12, 6, 0x32B, TRUE)
+	setmetatile (13, 6, 0x32B, TRUE)
+	setmetatile (14, 6, 0x32B, TRUE)
+	setmetatile (15, 6, 0x32B, TRUE)
+	setmetatile (16, 6, 0x32B, TRUE)
+	setmetatile (17, 6, 0x32B, TRUE)
+	setmetatile (18, 6, 0x32B, TRUE)
+	setmetatile (20, 6, 0x32B, TRUE)
+	setmetatile (21, 6, 0x32B, TRUE)
+	setmetatile (22, 6, 0x32B, TRUE)
+	setmetatile (23, 6, 0x32B, TRUE)
+	setmetatile (24, 6, 0x32B, TRUE)
+    
+	setmetatile (19, 6, 0x33E, TRUE)
+	setmetatile (19, 7, 0x334, TRUE)
+	setmetatile (19, 8, 0x333, TRUE)
+    
+	setmetatile (25, 6, 0x344, TRUE)
+	setmetatile (26, 6, 0x334, TRUE)
+	setmetatile (27, 6, 0x357, TRUE)
+    
+	setmetatile (7, 9, 0x312, TRUE)
+	setmetatile (8, 9, 0x323, TRUE)
+	setmetatile (9, 9, 0x31B, TRUE)
+	setmetatile (10, 9, 0x323, TRUE)
+	setmetatile (11, 9, 0x31B, TRUE)
+	setmetatile (12, 9, 0x323, TRUE)
+	setmetatile (13, 9, 0x31B, TRUE)
+	setmetatile (14, 9, 0x323, TRUE)
+	setmetatile (15, 9, 0x31B, TRUE)
+	setmetatile (16, 9, 0x323, TRUE)
+	setmetatile (17, 9, 0x31B, TRUE)
+	setmetatile (18, 9, 0x323, TRUE)
+	setmetatile (19, 9, 0x33C, TRUE)
+	setmetatile (20, 9, 0x31B, TRUE)
+	setmetatile (21, 9, 0x35F, TRUE)
+	setmetatile (22, 9, 0x31B, TRUE)
+	setmetatile (23, 9, 0x31B, TRUE)
+	setmetatile (24, 9, 0x31B, TRUE)
+	setmetatile (25, 9, 0x356, TRUE)
+    
+	setmetatile (8, 10, 0x32B, TRUE)
+	setmetatile (9, 10, 0x32B, TRUE)
+	setmetatile (10, 10, 0x32B, TRUE)
+	setmetatile (11, 10, 0x32B, TRUE)
+	setmetatile (12, 10, 0x32B, TRUE)
+	setmetatile (13, 10, 0x32B, TRUE)
+	setmetatile (14, 10, 0x32B, TRUE)
+	setmetatile (15, 10, 0x32B, TRUE)
+	setmetatile (16, 10, 0x32B, TRUE)
+	setmetatile (17, 10, 0x32B, TRUE)
+	setmetatile (18, 10, 0x32B, TRUE)
+	setmetatile (19, 10, 0x32B, TRUE)
+	setmetatile (20, 10, 0x32B, TRUE)
+	setmetatile (21, 10, 0x354, TRUE)
+	setmetatile (22, 10, 0x32B, TRUE)
+	setmetatile (23, 10, 0x32B, TRUE)
+	setmetatile (24, 10, 0x32B, TRUE)
+	setmetatile (25, 10, 0x355, TRUE)
+    
+	setmetatile (3, 6, 0x31A, TRUE)
+	setmetatile (3, 7, 0x334, TRUE)
+	setmetatile (3, 8, 0x332, TRUE)
+	setmetatile (3, 9, 0x334, TRUE)
+	setmetatile (3, 10, 0x332, TRUE)
+	setmetatile (3, 11, 0x334, TRUE)
+	setmetatile (3, 12, 0x332, TRUE)
+	setmetatile (3, 13, 0x340, TRUE)
+	setmetatile (3, 14, 0x348, TRUE)
+	setmetatile (3, 15, 0x358, TRUE)
+	setmetatile (3, 16, 0x348, TRUE)
+	setmetatile (3, 17, 0x360, TRUE)
+	setmetatile (3, 18, 0x348, TRUE)
+	setmetatile (3, 19, 0x358, TRUE)
+	setmetatile (3, 20, 0x348, TRUE)
+	setmetatile (3, 21, 0x360, TRUE)
+	setmetatile (3, 22, 0x348, TRUE)
+	setmetatile (3, 23, 0x358, TRUE)
+	setmetatile (3, 24, 0x348, TRUE)
+	setmetatile (3, 25, 0x360, TRUE)
+	setmetatile (3, 26, 0x348, TRUE)
+	setmetatile (3, 27, 0x358, TRUE)
+	setmetatile (3, 28, 0x348, TRUE)
+	setmetatile (3, 29, 0x360, TRUE)
+	setmetatile (3, 30, 0x348, TRUE)
+	setmetatile (3, 31, 0x358, TRUE)
+	setmetatile (3, 32, 0x348, TRUE)
+	setmetatile (3, 33, 0x368, TRUE)
+	setmetatile (3, 34, 0x332, TRUE)
+	setmetatile (3, 35, 0x334, TRUE)
+	setmetatile (3, 36, 0x332, TRUE)
+	setmetatile (3, 37, 0x334, TRUE)
+	setmetatile (3, 38, 0x35E, TRUE)
+    
+	setmetatile (7, 10, 0x342, TRUE)
+	setmetatile (7, 11, 0x334, TRUE)
+	setmetatile (7, 12, 0x333, TRUE)
+	setmetatile (3, 13, 0x340, TRUE)
+	setmetatile (3, 14, 0x350, TRUE)
+	setmetatile (3, 15, 0x358, TRUE)
+	setmetatile (3, 16, 0x350, TRUE)
+	setmetatile (3, 17, 0x360, TRUE)
+	setmetatile (3, 18, 0x350, TRUE)
+	setmetatile (3, 19, 0x358, TRUE)
+	setmetatile (3, 20, 0x350, TRUE)
+	setmetatile (3, 21, 0x360, TRUE)
+	setmetatile (3, 22, 0x350, TRUE)
+	setmetatile (3, 23, 0x358, TRUE)
+	setmetatile (3, 24, 0x350, TRUE)
+	setmetatile (3, 25, 0x360, TRUE)
+	setmetatile (3, 26, 0x350, TRUE)
+	setmetatile (3, 27, 0x358, TRUE)
+	setmetatile (3, 28, 0x350, TRUE)
+	setmetatile (3, 29, 0x360, TRUE)
+	setmetatile (3, 30, 0x350, TRUE)
+	setmetatile (3, 31, 0x358, TRUE)
+	setmetatile (3, 32, 0x350, TRUE)
+	setmetatile (3, 33, 0x368, TRUE)
+	setmetatile (3, 34, 0x333, TRUE)
+	setmetatile (3, 35, 0x334, TRUE)
+	setmetatile (3, 36, 0x333, TRUE)
+	setmetatile (3, 37, 0x334, TRUE)
+	setmetatile (3, 38, 0x34F, TRUE)
+    
+	setmetatile (3, 39, 0x352, TRUE)
+	setmetatile (4, 39, 0x323, TRUE)
+	setmetatile (5, 39, 0x31B, TRUE)
+	setmetatile (6, 39, 0x323, TRUE)
+	setmetatile (7, 39, 0x356, TRUE)
+    
+	setmetatile (3, 40, 0x353, TRUE)
+	setmetatile (4, 40, 0x32B, TRUE)
+	setmetatile (5, 40, 0x32B, TRUE)
+	setmetatile (6, 40, 0x32B, TRUE)
+	setmetatile (7, 40, 0x355, TRUE)
 	return()
 }
 
@@ -300,8 +1048,8 @@ script NimbasaCity_NimbasaGym_EventScript_Trigger_RichGirl
 script NimbasaCity_NimbasaGym_EventScript_RichGirl2
 {
     msgbox("If you maintain your calm and don't get\n"
-        "flustered by this Gym's gimmicks,\n"
-        "you'll be able to defeat Ms. Elesa...\n"
+        "flustered by this Gym's gimmicks,\l"
+        "you'll be able to defeat Ms. Elesa...\l"
         "and any other Trainer, as well!", MSGBOX_NPC, TRUE)
     end
 }
@@ -394,8 +1142,8 @@ script CasteliaCity_CasteliaGym_EventScript_Warp1_Normal
 {
     lock
     goto_if_set(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_NoWarp)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 22, 42)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 4, slide_up * 4, slide_right * 16, slide_down * 4, slide_left * 4, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -404,16 +1152,16 @@ script CasteliaCity_CasteliaGym_EventScript_Warp2_Normal
 {
     lock
     goto_if_set(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_Warp2_Alternate)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 14, 42)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 8, jump_2_down))
+    waitmovement(0)
     release
     end
 }
 
 script CasteliaCity_CasteliaGym_EventScript_Warp2_Alternate
 {
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 16, 30)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 12, slide_left * 4, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -422,8 +1170,8 @@ script CasteliaCity_CasteliaGym_EventScript_Warp3_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_11, CasteliaCity_CasteliaGym_EventScript_NoWarp)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 22, 42)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 4, slide_right * 12, slide_down * 16, slide_left * 4, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -432,8 +1180,8 @@ script CasteliaCity_CasteliaGym_EventScript_Warp4_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_12, CasteliaCity_CasteliaGym_EventScript_NoWarp)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 42, 43)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 6, slide_up * 4, slide_right * 10, slide_down * 8, slide_right * 8, slide_down * 8, slide_right * 18, slide_down * 12, slide_left * 4, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -442,16 +1190,16 @@ script CasteliaCity_CasteliaGym_EventScript_Warp5_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_12, CasteliaCity_CasteliaGym_EventScript_Warp5_Alternate)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 16, 19)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 4, slide_up * 24, slide_left * 22, jump_2_down))
+    waitmovement(0)
     release
     end
 }
 
 script CasteliaCity_CasteliaGym_EventScript_Warp5_Alternate
 {
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 42, 43)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 4, slide_up * 24, slide_left * 18, slide_down * 4, slide_right * 8, slide_down * 8, slide_right * 18, slide_down * 12, slide_left * 4, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -460,8 +1208,8 @@ script CasteliaCity_CasteliaGym_EventScript_Warp6_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_13, CasteliaCity_CasteliaGym_EventScript_NoWarp)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 35, 11)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 30, slide_left * 4, slide_up * 2, slide_left * 10, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -470,16 +1218,16 @@ script CasteliaCity_CasteliaGym_EventScript_Warp7_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_13, CasteliaCity_CasteliaGym_EventScript_Warp7_Alternate)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 51, 43)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 4, slide_right * 20, slide_down * 36, slide_left * 2, jump_2_down))
+    waitmovement(0)
     release
     end
 }
 
 script CasteliaCity_CasteliaGym_EventScript_Warp7_Alternate
 {
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 35, 11)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 4, slide_right * 20, slide_down * 32, slide_left * 4, slide_up * 26, slide_left * 4, slide_up * 2, slide_left * 10, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -488,8 +1236,8 @@ script CasteliaCity_CasteliaGym_EventScript_Warp8_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_14, CasteliaCity_CasteliaGym_EventScript_NoWarp)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 5, 41)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 16, slide_down * 30, slide_left * 2, jump_2_down))
+    waitmovement(0)
     release
     end
 }
@@ -498,16 +1246,16 @@ script CasteliaCity_CasteliaGym_EventScript_Warp9_Normal
 {
     lock
     goto_if_unset(FLAG_TEMP_14, CasteliaCity_CasteliaGym_EventScript_Warp9_Alternate)
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 5, 41)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 34, slide_right * 16, slide_down * 4, slide_left * 12, slide_down * 30, slide_left * 2, jump_2_down))
+    waitmovement(0)
     release
     end
 }
 
 script CasteliaCity_CasteliaGym_EventScript_Warp9_Alternate
 {
-    warpteleport(MAP_NIMBASA_CITY_NIMBASA_GYM, 23, 11)
-    waitstate
+    applymovement(LOCALID_PLAYER, moves(jump_2_up, slide_left * 2, slide_up * 34, slide_right * 22, slide_down * 4, slide_left * 2, jump_2_down))
+    waitmovement(0)
     release
     end
 }

@@ -195,12 +195,7 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setflag FLAG_BADGE01_GET
-	clearflag FLAG_BADGE02_GET
-	clearflag FLAG_BADGE03_GET
-	clearflag FLAG_BADGE04_GET
-	clearflag FLAG_BADGE05_GET
-	warpsilent MAP_ROUTE16, 35, 26
+	warpsilent MAP_NIMBASA_CITY_EXTENDED, 39, 9
 	waitstate
 	release 
     end
@@ -219,7 +214,6 @@ Debug_EventScript_Script_2::
     end
 
 Debug_EventScript_Script_3::
-	playbgm MUS_MUSICAL_HALL, FALSE
 	release
 	end
 
