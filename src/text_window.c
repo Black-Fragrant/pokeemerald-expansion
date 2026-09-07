@@ -147,6 +147,12 @@ void LoadUserWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
     LoadWindowGfx(windowId, gSaveBlock2Ptr->optionsWindowFrameType, destOffset, palOffset);
 }
 
+void LoadTransparentWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gTransparentMenuWindow_Gfx, 0x120, destOffset);
+    LoadPalette(GetOverworldTransparentTextboxPalettePtr(), palOffset, PLTT_SIZE_4BPP);
+}
+
 void DrawTextBorderOuter(u8 windowId, u16 tileNum, u8 palNum)
 {
     u8 bgLayer = GetWindowAttribute(windowId, WINDOW_BG);

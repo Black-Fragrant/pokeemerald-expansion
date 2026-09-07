@@ -2121,6 +2121,7 @@ const u8 gMessageBox_Gfx[] = INCGFX_U8("graphics/text_window/message_box.png", "
 const u8 gSignpostWindow_Gfx[] = INCGFX_U8("graphics/text_window/signpost.png", ".4bpp");
 const u8 gShoutWindow_Gfx[] = INCGFX_U8("graphics/text_window/shout.png", ".4bpp");
 const u8 gTransparentWindow_Gfx[] = INCGFX_U8("graphics/text_window/transparent.png", ".4bpp");
+const u8 gTransparentMenuWindow_Gfx[] = INCGFX_U8("graphics/text_window/transparent_menu.png", ".4bpp");
 
 const u32 gWallpaperIcon_Cross[] = INCGFX_U32("graphics/pokemon_storage/wallpapers/icons/cross.png", ".4bpp.smol");
 const u32 gWallpaperIcon_Bolt[] = INCGFX_U32("graphics/pokemon_storage/wallpapers/icons/bolt.png", ".4bpp.smol");

@@ -28,6 +28,7 @@
 #include "gpu_regs.h"
 #include "script.h"
 #include "menu_helpers.h"
+#include "text_window.h"
 
 #include "data/script_menu.h"
 
@@ -440,7 +441,15 @@ void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8 ignore
     newWidth = ConvertPixelWidthToTileWidth(width);
     left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
     windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
-    SetStandardWindowBorderStyle(windowId, FALSE);
+    MgbaPrintf(MGBA_LOG_DEBUG, "%d", gMsgIsTransparent);
+    if (gMsgIsTransparent)
+    {
+        LoadTransparentWindowBorderGfx(windowId, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM);
+    }
+    else
+    {
+        SetStandardWindowBorderStyle(windowId, FALSE);
+    }
     PrintMenuTable(windowId, count, actions);
     InitMenuInUpperLeftCornerNormal(windowId, count, cursorPos);
     ScheduleBgCopyTilemapToVram(0);
@@ -740,6 +749,8 @@ static void CreatePCMultichoice(void)
     {
         numChoices = 3;
         windowId = CreateWindowFromRect(0, 0, width, 6);
+        //LoadTransparentWindowBorderGfx(windowId, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM);
+        LoadTransparentWindowBorderGfx(windowId, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM);
         SetStandardWindowBorderStyle(windowId, FALSE);
         AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_LogOff, x, 33, TEXT_SKIP_DRAW, NULL);
     }
