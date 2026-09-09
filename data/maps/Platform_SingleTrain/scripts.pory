@@ -45,6 +45,7 @@ script Platform_SingleTrain_EventScript_LostChallenge
     call(Platform_SingleTrain_EventScript_WalkFromTrainToConductor)
 	setsubwaywinstreak(FRONTIER_MODE_SINGLES, 0)
 	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, FALSE)
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, 0)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
 	goto(Platform_SingleTrain_EventScript_LoadPartyCancelChallenge)
 }
