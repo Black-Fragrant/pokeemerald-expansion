@@ -25,7 +25,11 @@ script Platform_TrainToAnvilleTown_EventScript_Trigger
 	msgbox(BattleSubway_Text_WeHopeToSeeYouAgain, MSGBOX_DEFAULT, FALSE, LOCALID_ANVILTRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
-    goto(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+    call(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+	applymovement(LOCALID_ANVILTRAIN_AGENT, Common_Movement_FaceLeft)
+	waitmovement(0)
+	release
+	end
 }
 
 script Platform_TrainToAnvilleTown_EventScript_BoardTheTrain

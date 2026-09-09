@@ -50,7 +50,7 @@ script NuvemaTown_EventScript_JuniperDerlieversParcelCutscene
 	applymovement(LOCALID_JUNIPER, Common_Movement_WalkUpOnce)
 	waitmovement(0)
 	playse(SE_EXIT)
-	applymovement(LOCALID_JUNIPER, moves( set_invisible, face_down ))
+	applymovement(LOCALID_JUNIPER, moves(set_invisible, face_down))
 	waitmovement(0)
 	waitse()
     delay (10)

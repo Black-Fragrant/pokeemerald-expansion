@@ -164,7 +164,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Youngster_7",
+      "script": "InterPlatform_EventScript_Youngster_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -177,7 +177,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Lass_7",
+      "script": "InterPlatform_EventScript_Lass_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -190,7 +190,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Backpacker_7",
+      "script": "InterPlatform_EventScript_Backpacker_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -203,7 +203,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_RichGirl_7",
+      "script": "InterPlatform_EventScript_RichGirl_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -216,7 +216,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Grandpa_7",
+      "script": "InterPlatform_EventScript_Grandpa_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -229,7 +229,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_SchoolGirl_7",
+      "script": "InterPlatform_EventScript_SchoolGirl_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -242,7 +242,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_SchoolBoy_7",
+      "script": "InterPlatform_EventScript_SchoolBoy_7",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -325,7 +325,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_BackpackerF_14",
+      "script": "InterPlatform_EventScript_BackpackerF_14",
       "flag": "FLAG_TEMP_2"
     },
     {
@@ -338,7 +338,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Roughneck_14",
+      "script": "InterPlatform_EventScript_Roughneck_14",
       "flag": "FLAG_TEMP_2"
     },
     {
@@ -351,7 +351,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Policeman_14",
+      "script": "InterPlatform_EventScript_Policeman_14",
       "flag": "FLAG_TEMP_2"
     },
     {
@@ -364,7 +364,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_BackpackerM_14",
+      "script": "InterPlatform_EventScript_BackpackerM_14",
       "flag": "FLAG_TEMP_2"
     },
     {
@@ -377,7 +377,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Grandpa_14",
+      "script": "InterPlatform_EventScript_Grandpa_14",
       "flag": "FLAG_TEMP_2"
     },
     {
@@ -390,7 +390,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_OfficeLady_21",
+      "script": "InterPlatform_EventScript_OfficeLady_21",
       "flag": "FLAG_TEMP_3"
     },
     {
@@ -403,7 +403,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Grandpa_21",
+      "script": "InterPlatform_EventScript_Grandpa_21",
       "flag": "FLAG_TEMP_3"
     },
     {
@@ -416,7 +416,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_DepotAgent_21",
+      "script": "InterPlatform_EventScript_DepotAgent_21",
       "flag": "FLAG_TEMP_3"
     },
     {
@@ -442,7 +442,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Gentleman_21",
+      "script": "InterPlatform_EventScript_Gentleman_21",
       "flag": "FLAG_TEMP_3"
     },
     {
@@ -455,7 +455,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Socialite_21",
+      "script": "InterPlatform_EventScript_Socialite_21",
       "flag": "FLAG_TEMP_3"
     },
     {
@@ -468,7 +468,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InterPlatform_Single_EventScript_Policeman_21",
+      "script": "InterPlatform_EventScript_Policeman_21",
       "flag": "FLAG_TEMP_3"
     },
     {

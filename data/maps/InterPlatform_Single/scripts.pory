@@ -72,42 +72,42 @@ script InterPlatform_Single_EventScript_WonChallenge
 	lock
 	buffersubwaywinstreak(FRONTIER_MODE_SINGLES)
     goto_if_eq(VAR_RESULT, 21, InterPlatform_Single_EventScript_WonChallengeFinalStop)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(walk_fast_right * 2))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, BattleSubway_Movement_TrainArrivalAtInterStation1)
     waitmovement(0)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(walk_right * 4))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_9, moves(walk_right * 4))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, BattleSubway_Movement_TrainArrivalAtInterStation2)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_9, BattleSubway_Movement_TrainArrivalAtInterStation2)
     waitmovement(0)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(walk_slow_right))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_9, moves(walk_slow_right))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_8, moves(walk_slow_right))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, BattleSubway_Movement_TrainArrivalAtInterStation3)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_9, BattleSubway_Movement_TrainArrivalAtInterStation3)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_8, BattleSubway_Movement_TrainArrivalAtInterStation3)
     waitmovement(0)
     addobject(LOCALID_INTERTRAIN_SINGLE_11)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(set_invisible))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, Common_Movement_SetInvisible)
     waitmovement(0)
     delay(20)
     playse(SE_EXIT)
 	setobjectxy(LOCALID_PLAYER, 72, 7)
     waitse
-    applymovement(LOCALID_PLAYER, moves(walk_down, walk_in_place_right))
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerGotOffTrain)
     waitmovement(0)
     removeobject(LOCALID_INTERTRAIN_SINGLE_11)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(set_visible))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, Common_Movement_SetVisible)
     waitmovement(0)
     delay(20)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(walk_slow_right, walk_right * 2))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_9, moves(walk_slow_right, walk_right * 2))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_8, moves(walk_slow_right, walk_right * 2))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, BattleSubway_Movement_TrainGoAway1)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_9, BattleSubway_Movement_TrainGoAway1)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_8, BattleSubway_Movement_TrainGoAway1)
     waitmovement(0)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(walk_right * 2, walk_fast_right * 2))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_9, moves(walk_right * 2, walk_fast_right * 2))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_8, moves(walk_right * 2, walk_fast_right * 2))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_7, moves(walk_right * 2, walk_fast_right * 2))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, BattleSubway_Movement_TrainGoAway2)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_9, BattleSubway_Movement_TrainGoAway2)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_8, BattleSubway_Movement_TrainGoAway2)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_7, BattleSubway_Movement_TrainGoAway2)
     waitmovement(0)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_10, moves(walk_fast_right * 4))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_9, moves(walk_fast_right * 4))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_8, moves(walk_fast_right * 4))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_7, moves(walk_fast_right * 4))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_6, moves(walk_fast_right * 4))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_10, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_9, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_8, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_7, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_6, BattleSubway_Movement_TrainGoAway3)
     waitmovement(0)
     fadescreen(FADE_TO_BLACK)
     removeobject(LOCALID_INTERTRAIN_SINGLE_55)
@@ -119,15 +119,12 @@ script InterPlatform_Single_EventScript_WonChallenge
     delay(20)
     fadescreen(FADE_FROM_BLACK)
     delay(20)
-	msgbox("Congratulations! You've successfully\n"
-            "reached a seven-win streak!\p"
-            "Since you've won seven in a row,\n"
-            "I present you with these Battle Points!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
+	msgbox(BattleSubway_Text_CongratulationYouReachedSevenStreak, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
     destroy_speech_bubble()
     closemessage()
     playbgm(MUS_BW_OBTAIN_BP, FALSE)
 	frontier_givepoints
-	msgbox("{PLAYER} received {STR_VAR_1} BP!", MSGBOX_TRANSPARENT)
+	msgbox(BattleSubway_Text_PlayerReceivedBP, MSGBOX_TRANSPARENT, FALSE)
     waitmessage
     delay(60)
     closemessage
@@ -144,10 +141,7 @@ script InterPlatform_Single_EventScript_WonChallenge
 	waitse
     closemessage
 	callnative(UpdateFollowingPokemon)
-	msgbox("Please enjoy your time here.\p"
-            "If you would like to continue your\n"
-            "challenge or go back to Nimbasa City,\l"
-            "please talk to me.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
+	msgbox(BattleSubway_Text_PleaseEnjoyYourTimeHere, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
     destroy_speech_bubble()
     closemessage()
 	release
@@ -156,27 +150,22 @@ script InterPlatform_Single_EventScript_WonChallenge
 
 script InterPlatform_Single_EventScript_WonChallengeFinalStop
 {
-    applymovement(LOCALID_PLAYER, moves(walk_down, walk_in_place_right))
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerGotOffTrain)
     waitmovement(0)
     delay(20)
-	msgbox("Congratulations!\p"
-            "You had a seven-win streak and\n"
-            "brilliantly beat the Subway Boss,\l"
-            "so I present you with these\l"
-            "Battle Points.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
+	msgbox(BattleSubway_Text_CongratulationYouDefeatedSubwayBoss, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
     destroy_speech_bubble()
     closemessage()
     playbgm(MUS_BW_OBTAIN_BP, FALSE)
 	frontier_givepoints
-	msgbox("{PLAYER} received {STR_VAR_1} BP!", MSGBOX_TRANSPARENT)
+	msgbox(BattleSubway_Text_PlayerReceivedBP, MSGBOX_TRANSPARENT, FALSE)
     waitmessage
     delay(60)
     closemessage
     fadedefaultbgm
     setflag(FLAG_BATTLE_SUBWAY_DEFEATED_SINGLE)
-	msgbox("And, {PLAYER}, now you have earned\n"
-            "the right to challenge\l"
-            "the Super Single Train!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
+	bufferstring(STR_VAR_1, text("Single"))
+	msgbox(BattleSubway_Text_NowYouCanChallengeSuperTrain, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
     destroy_speech_bubble()
     closemessage()
     delay(10)
@@ -192,10 +181,8 @@ script InterPlatform_Single_EventScript_WonChallengeFinalStop
 	waitse
     closemessage
 	callnative(UpdateFollowingPokemon)
-	msgbox("This is the end of the Single Train line.\p"
-            "When you want to return to Nimbasa City,\n"
-            "please talk to me again.\p"
-            "Please enjoy your time here.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
+	bufferstring(STR_VAR_1, text("Single"))
+	msgbox(BattleSubway_Text_ThisIsTheEndOfTrainLine, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLEINTER_AGENT_RIGHT)
     destroy_speech_bubble()
     closemessage()
 	release
@@ -205,28 +192,28 @@ script InterPlatform_Single_EventScript_WonChallengeFinalStop
 script InterPlatform_Single_EventScript_BoardTheArrivingTrain
 {
     lock
-    applymovement(LOCALID_INTERTRAIN_SINGLE_1, moves(walk_fast_right * 4, walk_right * 4, walk_slow_right))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_2, moves(walk_fast_right * 4, walk_right * 4, walk_slow_right))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_3, moves(walk_fast_right * 4, walk_right * 4, walk_slow_right))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_4, moves(walk_fast_right * 4, walk_right * 4, walk_slow_right))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_5, moves(walk_fast_right * 4, walk_right * 4, walk_slow_right))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_1, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_2, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_3, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_4, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_5, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
     waitmovement(0)
     delay(20)
     addobject(LOCALID_INTERTRAIN_SINGLE_0)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_1, moves(set_invisible))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_1, Common_Movement_SetInvisible)
     waitmovement(0)
     delay(20)
-    applymovement(LOCALID_PLAYER, moves(walk_up * 2, delay_16, set_invisible))
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardTheSecondTrain)
     waitmovement(0)
     playse(SE_EXIT)
     waitse
     delay(20)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_0, moves(set_invisible))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_1, moves(set_visible))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_0, Common_Movement_SetInvisible)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_1, Common_Movement_SetVisible)
     waitmovement(0)
-    applymovement(LOCALID_INTERTRAIN_SINGLE_1, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_2, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
-    applymovement(LOCALID_INTERTRAIN_SINGLE_3, moves(walk_slow_right, walk_right, walk_fast_right, walk_faster_right * 5))
+    applymovement(LOCALID_INTERTRAIN_SINGLE_1, BattleSubway_Movement_SecondTrainGoAway)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_2, BattleSubway_Movement_SecondTrainGoAway)
+    applymovement(LOCALID_INTERTRAIN_SINGLE_3, BattleSubway_Movement_SecondTrainGoAway)
     waitmovement(0)
 	fadescreen(FADE_TO_BLACK)
     goto_if_eq(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING, InterPlatform_Single_EventScript_BeginNewChallenge)
@@ -237,7 +224,7 @@ script InterPlatform_Single_EventScript_BoardTheArrivingTrain
 
 script InterPlatform_Single_EventScript_BoardTheFinalTrain
 {
-    applymovement(LOCALID_PLAYER, moves(walk_right * 5, walk_up * 2, delay_16, set_invisible))
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardTheFinalTrain)
     waitmovement(0)
     playse(SE_EXIT)
     waitse
@@ -289,7 +276,8 @@ script InterPlatform_Single_EventScript_Conductor_ContinueChallenge
 {
     setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES)
 	special(SavePlayerParty)
-	msgbox(BattleSubway_Text_PleaseSelectThreePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+	bufferstring(STR_VAR_1, text("three"))
+	msgbox(BattleSubway_Text_PleaseSelectSomePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
     destroy_speech_bubble()
     closemessage
 	fadescreen(FADE_TO_BLACK)
@@ -376,133 +364,6 @@ script InterPlatform_Single_EventScript_ReturnFromFinalStop
     end
 }
 
-script InterPlatform_Single_EventScript_Youngster_7
-{
-    msgbox("Constant battles make me nervous.\n"
-        "I'm taking a little rest here.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Lass_7
-{
-    msgbox("For each seven-win streak, the Trainers\n"
-        "and Pokémon who challenge you become\l"
-        "progressively tougher.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Backpacker_7
-{
-    msgbox("If you have wooon, the trip goes ooon!\n"
-        "Relying on Pokémon, this vagabooond!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_RichGirl_7
-{
-    msgbox("I had a taste of it...\n"
-        "The rush of battle...\p"
-        "I shouldn't...\n"
-        "It's too wild...\p"
-        "But at this rate, I'm going to\n"
-        "end up on the path of battlers...", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Grandpa_7
-{
-    msgbox("My journey has just started!\n"
-        "Neither of us can afford to lose!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_SchoolGirl_7
-{
-    msgbox("Have you heard of the Subway Bosses?\p"
-        "They appear only to strong Trainers,\n"
-        "and they challenge them to battles.\p"
-        "They are the Battle Subway's bosses.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_SchoolBoy_7
-{
-    msgbox("OK! I'm all prepared!\n"
-        "All aboard for a battle journey!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_BackpackerF_14
-{
-    msgbox("You've got a 14-win streak!\n"
-        "Pretty good! Not bad!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Roughneck_14
-{
-    msgbox("Hey, how are you doing?\n"
-        "I'm still going strong!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Policeman_14
-{
-    msgbox("Is this the best this officer can do...?\p"
-        "The light from the passing trains seems\n"
-        "way too bright.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_BackpackerM_14
-{
-    msgbox("About time to take it to the next level.\n"
-        "Give it your best shot, too!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Grandpa_14
-{
-    msgbox("Being alone on the station's platform\n"
-        "somehow makes me feel a little sad.\p"
-        "People leave on their journeys here, and\n"
-        "it reminds me of those memories.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_OfficeLady_21
-{
-    msgbox("For being called a Subway Boss,\n"
-        "that Trainer sure wasn't as strong\l"
-        "as “Boss” suggests.\p"
-        "It was almost as if...\p"
-        "As if they are simply gauging\n"
-        "how strong we really are.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Grandpa_21
-{
-    msgbox("The Subway Boss was a piece of cake!\p"
-        "Maybe I should cut loose on the\n"
-        "Super Train next time!", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_DepotAgent_21
-{
-    msgbox("You beat our boss, right?\n"
-        "Not half bad, hey!\p"
-        "And now, super Trainer, you've\n"
-        "earned the qualification to take on the\l"
-        "Super Train!\p"
-        "The Trainers on the Super Train are\n"
-        "really tough.\p"
-        "If you want to know the essence of the\n"
-        "Battle Subway, you should give it a try!", MSGBOX_NPC, TRUE)
-	end
-}
-
 script InterPlatform_Single_EventScript_Janitor_21
 {
     lock
@@ -529,29 +390,4 @@ script InterPlatform_Single_EventScript_JanitorAfterItem_21
     closemessage
     release
     end
-}
-
-script InterPlatform_Single_EventScript_Gentleman_21
-{
-    msgbox("It's the end of the line already...\p"
-        "I guess that means my Pokémon\n"
-        "battle journey is over for now.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Socialite_21
-{
-    msgbox("This is the end of the line...\p"
-        "The trip sure ended quickly.\n"
-        "I don't want to go home yet.", MSGBOX_NPC, TRUE)
-	end
-}
-
-script InterPlatform_Single_EventScript_Policeman_21
-{
-    msgbox("The Subway Boss was a suspicious,\n"
-        "strange fellow.\p"
-        "I still don't believe he was giving it\n"
-        "his all.", MSGBOX_NPC, TRUE)
-	end
 }

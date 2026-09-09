@@ -1,1 +1,268 @@
-mapscripts Platform_DoubleTrain_MapScripts {}
+mapscripts Platform_DoubleTrain_MapScripts 
+{
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_TEMP_CHALLENGE_STATUS, 0 : BattleSubway_EventScript_GetChallengeStatus
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING: Platform_DoubleTrain_EventScript_QuitWithoutSaving
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_PAUSED: Platform_DoubleTrain_EventScript_ResumeChallenge
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST: Platform_DoubleTrain_EventScript_LostChallenge
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN: Platform_DoubleTrain_EventScript_RideBackToNimbasa
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_FINAL_STOP: Platform_DoubleTrain_EventScript_RideBackToNimbasa
+    ]
+}
+
+script Platform_DoubleTrain_EventScript_QuitWithoutSaving
+{
+	lock
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, Common_Movement_FacePlayer)
+    waitmovement(0)
+	msgbox(BattleSubway_Text_YouDidntSaveBeforeQuiting, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+	special(LoadPlayerParty)
+	setsubwaywinstreak(FRONTIER_MODE_DOUBLES, 0)
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, FALSE)
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, 0)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+    call(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+	applymovement(LOCALID_DOUBLETRAIN_AGENT, Common_Movement_FaceLeft)
+	waitmovement(0)
+	release
+	end
+}
+
+script Platform_DoubleTrain_EventScript_WalkFromTrainToConductor
+{
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkBackFromTrain)
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, BattleSubway_Movement_ConductorLookAtPlayerWalkingBack)
+    waitmovement(0)
+    return
+}
+
+script Platform_DoubleTrain_EventScript_LostChallenge
+{
+	lock
+    call(Platform_DoubleTrain_EventScript_WalkFromTrainToConductor)
+	setsubwaywinstreak(FRONTIER_MODE_DOUBLES, 0)
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, FALSE)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+	goto(Platform_DoubleTrain_EventScript_LoadPartyCancelChallenge)
+}
+
+script Platform_DoubleTrain_EventScript_RideBackToNimbasa
+{
+	lock
+    call(Platform_DoubleTrain_EventScript_WalkFromTrainToConductor)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+    msgbox(BattleSubway_Text_ThankYouForPlaying, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+    release
+    end
+}
+
+script Platform_DoubleTrain_EventScript_ResumeChallenge
+{
+	lock
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, Common_Movement_FacePlayer)
+    applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
+    waitmovement(0)
+	msgbox(BattleSubway_Text_GoodToSeeYouBackResumeChallenge, MSGBOX_YESNO, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+    goto_if_eq(VAR_RESULT, TRUE, Platform_DoubleTrain_EventScript_ResumeChallenge2)
+	fadescreen(FADE_TO_BLACK)
+	frontier_reset //performs a soft reset
+    end
+}
+
+script Platform_DoubleTrain_EventScript_ResumeChallenge2
+{
+    delay(10)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
+	tower_save(CHALLENGE_STATUS_SAVING)
+	playse(SE_SAVE)
+	waitse
+    closemessage
+	msgbox(BattleSubway_Text_NowIWillGuideYou, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage()
+	frontier_set(FRONTIER_DATA_PAUSED, FALSE)
+    // Only writes a single boolean (challengePaused = FALSE) and does nothing else. They are not interchangeable. One is a full save operation, the other is a single flag write.
+	goto(Platform_DoubleTrain_EventScript_BoardTheTrain)
+	end
+}
+
+script Platform_DoubleTrain_EventScript_Trigger
+{
+    lock
+    call(BattleSubway_EventScript_Platform_StopPlayerAtConductor)
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, Common_Movement_FacePlayer)
+    waitmovement(0)
+	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
+	special(SavePlayerParty)
+	bufferstring(STR_VAR_1, text("Double"))
+	msgbox(BattleSubway_Text_WelcomeToTheBattleSubway, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    goto(Platform_DoubleTrain_EventScript_Selection)
+}
+
+script Platform_DoubleTrain_EventScript_Selection
+{
+	bufferstring(STR_VAR_1, text("Double"))
+	msgbox(BattleSubway_Text_WouldYouLikeToBoardTheTrain, MSGBOX_DEFAULT, FALSE)
+    waitmessage
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Board",
+        "Info",
+        "Cancel")
+    destroy_speech_bubble()
+	if (var(VAR_RESULT) == 0) {goto (Platform_DoubleTrain_EventScript_Prepare)}
+	elif (var(VAR_RESULT) == 1) {goto (Platform_DoubleTrain_EventScript_Info)}
+    goto(Platform_DoubleTrain_EventScript_Cancel)
+}
+
+script Platform_DoubleTrain_EventScript_Info
+{
+	bufferstring(STR_VAR_1, text("Double"))
+	bufferstring(STR_VAR_2, text("four"))
+	bufferstring(STR_VAR_3, text("seven"))
+    msgbox(BattleSubway_Text_Info, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    goto(Platform_DoubleTrain_EventScript_Selection)
+}
+
+script Platform_DoubleTrain_EventScript_CancelChallengeSaveFailed
+{
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS)  // No status provided, so it relies on VAR_0x8006 being 0 already
+	goto(Platform_DoubleTrain_EventScript_Cancel)
+}
+
+script Platform_DoubleTrain_EventScript_LoadPartyCancelChallenge
+{
+	special(LoadPlayerParty)
+	callnative(UpdateFollowingPokemon)
+    goto(Platform_DoubleTrain_EventScript_Cancel)
+}
+
+script Platform_DoubleTrain_EventScript_Cancel
+{
+	msgbox(BattleSubway_Text_WeHopeToSeeYouAgain, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+    call(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+	applymovement(LOCALID_DOUBLETRAIN_AGENT, Common_Movement_FaceLeft)
+	waitmovement(0)
+	release
+	end
+}
+
+script Platform_DoubleTrain_EventScript_NotEnoughValidMons
+{
+	bufferstring(STR_VAR_1, text("four"))
+    msgbox(BattleSubway_Text_NotEnoughValidMons, MSGBOX_TRANSPARENT)
+    closemessage
+    goto (Platform_DoubleTrain_EventScript_Cancel)
+}
+
+script Platform_DoubleTrain_EventScript_Prepare
+{
+	setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES)
+	frontier_checkineligible //research complete - checks for all levels but store the result of level 50 mode
+	goto_if_eq(VAR_0x8004, TRUE, Platform_DoubleTrain_EventScript_NotEnoughValidMons) 
+	bufferstring(STR_VAR_1, text("four"))
+	msgbox(BattleSubway_Text_PleaseSelectSomePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	fadescreen(FADE_TO_BLACK)
+	callnative(RemoveFollowingPokemon)
+	setvar(VAR_0x8005, FRONTIER_DOUBLES_PARTY_SIZE) //this var is defined to be 4
+	special(ChoosePartyForBattleFrontier) //
+	goto_if_eq(VAR_RESULT, 0, Platform_DoubleTrain_EventScript_LoadPartyCancelChallenge)
+	msgbox (BattleSubway_Text_WouldYouLikeToSave, MSGBOX_YESNO, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq(VAR_RESULT, YES, Platform_DoubleTrain_EventScript_SaveBeforeChallenge)
+	goto (Platform_DoubleTrain_EventScript_LoadPartyCancelChallenge)
+}
+
+script Platform_DoubleTrain_EventScript_SaveBeforeChallenge
+{
+	frontier_set(FRONTIER_DATA_SELECTED_MON_ORDER) //It copies the player’s selected party order into the Frontier saveblock
+	setvar(VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING) // VAR_TEMP_CHALLENGE_STATUS is used to react to the status in OnFrame map scripts
+	// tower_init // decides which Trainer Tower floor layout to load when entering a floor
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, TRUE) // indicate that the win streak is currently active.
+	frontier_set(FRONTIER_DATA_PAUSED, FALSE) // Marks whether the Frontier challenge is paused.
+	closemessage
+	delay(2)
+	call(Common_EventScript_SaveGame)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
+	goto_if_eq (VAR_RESULT, 0, Platform_DoubleTrain_EventScript_CancelChallengeSaveFailed)
+	incrementgamestat(GAME_STAT_ENTERED_BATTLE_TOWER) //you have entered the tower +1 times
+	goto(Platform_DoubleTrain_EventScript_BoardTheTrain)
+}
+
+script Platform_DoubleTrain_EventScript_BoardTheTrain
+{
+	setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER) // these three load the saved Frontier party selection
+	setvar(VAR_0x8005, FRONTIER_DOUBLES_PARTY_SIZE) 
+	special(CallFrontierUtilFunc)
+    callnative(SetPartyToLevel50)
+	setvar(VAR_RESULT, 0)
+	bufferstring(STR_VAR_1, text("Double"))
+	msgbox(BattleSubway_Text_NowPleaseBoardTheTrain, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, Platform_DoubleTrain_EventScript_BTT_Pos1)
+	call_if_eq (VAR_TEMP_1, 10, Platform_DoubleTrain_EventScript_BTT_Pos2)
+	call_if_eq (VAR_TEMP_1, 11, Platform_DoubleTrain_EventScript_BTT_Pos3)
+    playse(SE_EXIT)
+    waitse
+    delay(20)
+    removeobject(LOCALID_DOUBLETRAIN_0)
+    addobject(LOCALID_DOUBLETRAIN_1)
+    applymovement(LOCALID_DOUBLETRAIN_1, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_DOUBLETRAIN_2, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_DOUBLETRAIN_3, BattleSubway_Movement_TrainLeavingStation)
+    waitmovement(0)
+	fadescreen(FADE_TO_BLACK)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
+	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
+	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	goto_if_eq(VAR_RESULT, 0, Platform_DoubleTrain_EventScript_BoardTheTrain2) //this is the first person you battle
+	warpsilent(MAP_BATTLE_SUBWAY_DOUBLE, 1, 5)
+	waitstate
+	end
+}
+
+script Platform_DoubleTrain_EventScript_BoardTheTrain2
+{
+	warpsilent(MAP_BATTLE_SUBWAY_DOUBLE, 2, 7)
+	waitstate
+	end
+}
+
+script Platform_DoubleTrain_EventScript_BTT_Pos1
+{
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos1)
+    waitmovement(0)
+    return
+}
+
+script Platform_DoubleTrain_EventScript_BTT_Pos2
+{
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos2)
+    waitmovement(0)
+    return
+}
+
+script Platform_DoubleTrain_EventScript_BTT_Pos3
+{
+    applymovement(LOCALID_DOUBLETRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos3)
+    waitmovement(0)
+    return
+}

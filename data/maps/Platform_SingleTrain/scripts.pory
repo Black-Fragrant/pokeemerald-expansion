@@ -2,7 +2,7 @@ mapscripts Platform_SingleTrain_MapScripts
 {
         MAP_SCRIPT_ON_FRAME_TABLE
     [
-        VAR_TEMP_CHALLENGE_STATUS, 0 : Platform_SingleTrain_EventScript_GetChallengeStatus
+        VAR_TEMP_CHALLENGE_STATUS, 0 : BattleSubway_EventScript_GetChallengeStatus
         VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING: Platform_SingleTrain_EventScript_QuitWithoutSaving
         VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_PAUSED: Platform_SingleTrain_EventScript_ResumeChallenge
         VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST: Platform_SingleTrain_EventScript_LostChallenge
@@ -11,22 +11,12 @@ mapscripts Platform_SingleTrain_MapScripts
     ]
 }
 
-script Platform_SingleTrain_EventScript_GetChallengeStatus
-{
-	frontier_getstatus
-	end
-}
-
 script Platform_SingleTrain_EventScript_QuitWithoutSaving
 {
 	lock
     applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FacePlayer)
     waitmovement(0)
-	msgbox("Excuse me!\p"
-            "You didn't save before you quit your\n"
-            "challenge last time.\p"
-            "I am sorry, but you'll have to start\n"
-            "your challenge over again.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	msgbox(BattleSubway_Text_YouDidntSaveBeforeQuiting, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage()
 	special(LoadPlayerParty)
@@ -34,7 +24,11 @@ script Platform_SingleTrain_EventScript_QuitWithoutSaving
 	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, FALSE)
 	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, 0)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
-    goto(Platform_SingleTrain_EventScript_Cancel_Cont)
+    call(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+	applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FaceLeft)
+	waitmovement(0)
+	release
+	end
 }
 
 script Platform_SingleTrain_EventScript_WalkFromTrainToConductor
@@ -74,9 +68,7 @@ script Platform_SingleTrain_EventScript_ResumeChallenge
     applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FacePlayer)
     applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
     waitmovement(0)
-	msgbox("It's good to see you back.\p"
-            "Would you like to resume your challenge\n"
-            "at the Battle Subway?", MSGBOX_YESNO, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	msgbox(BattleSubway_Text_GoodToSeeYouBackResumeChallenge, MSGBOX_YESNO, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage()
     goto_if_eq(VAR_RESULT, TRUE, Platform_SingleTrain_EventScript_ResumeChallenge2)
@@ -94,8 +86,7 @@ script Platform_SingleTrain_EventScript_ResumeChallenge2
 	playse(SE_SAVE)
 	waitse
     closemessage
-	msgbox("Now, I will guid you to the place\n"
-            "where you interrupted your challenge.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	msgbox(BattleSubway_Text_NowIWillGuideYou, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage()
 	frontier_set(FRONTIER_DATA_PAUSED, FALSE)
@@ -112,16 +103,15 @@ script Platform_SingleTrain_EventScript_Trigger
     waitmovement(0)
 	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
 	special(SavePlayerParty)
-	msgbox("Welcome to the Battle Subway!\p"
-            "I will guide you to\n"
-            "the Single Train here.", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	bufferstring(STR_VAR_1, text("Single"))
+	msgbox(BattleSubway_Text_WelcomeToTheBattleSubway, MSGBOX_DEFAULT, TRUE, LOCALID_DOUBLETRAIN_AGENT)
     goto(Platform_SingleTrain_EventScript_Selection)
 }
 
 script Platform_SingleTrain_EventScript_Selection
 {
-	msgbox("Would you like to board\n"
-            "the Single Train?", MSGBOX_DEFAULT, FALSE)
+	bufferstring(STR_VAR_1, text("Single"))
+	msgbox(BattleSubway_Text_WouldYouLikeToBoardTheTrain, MSGBOX_DEFAULT, FALSE)
     waitmessage
 	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "Board",
@@ -135,23 +125,10 @@ script Platform_SingleTrain_EventScript_Selection
 
 script Platform_SingleTrain_EventScript_Info
 {
-    msgbox("In the Single Train, you will battle\n"
-            "using three Pokémon.\p"
-            "You may not have duplicate Pokémon\n"
-            "or duplicate held items.\p"
-            "All Pokémon will be temporarily set to\n"
-            "Lv. 50 for the battles here.\p"
-            "The Single Train has seven cars, so you\n"
-            "will fight against seven Trainers.\p"
-            "If you manage to defeat all seven,\n"
-            "you will arrive at a station and earn\l"
-            "Battle Points (BP).\l"
-            "Good luck!\p"
-            "If you need a break from your challenge,\n"
-            "remember to save the game!\p"
-            "If you don't save, you'll have to start\n"
-            "the challenge all over again.\l"
-            "Please be aware of that!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	bufferstring(STR_VAR_1, text("Single"))
+	bufferstring(STR_VAR_2, text("three"))
+	bufferstring(STR_VAR_3, text("seven"))
+    msgbox(BattleSubway_Text_Info, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     goto(Platform_SingleTrain_EventScript_Selection)
 }
 
@@ -173,25 +150,17 @@ script Platform_SingleTrain_EventScript_Cancel
 	msgbox(BattleSubway_Text_WeHopeToSeeYouAgain, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
-    goto(Platform_SingleTrain_EventScript_Cancel_Cont)
-}
-
-script Platform_SingleTrain_EventScript_Cancel_Cont
-{
-    goto(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
-
+    call(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+	applymovement(LOCALID_SINGLETRAIN_AGENT, Common_Movement_FaceLeft)
+	waitmovement(0)
+	release
+	end
 }
 
 script Platform_SingleTrain_EventScript_NotEnoughValidMons
 {
-    msgbox("You don't have three\n"
-            "eligible Pokémon!\p"
-            "Please prepare three\n"
-            "different Pokémon\l"
-            "and have each of them hold\l"
-            "a different item to enter the battle.\p"
-            "Eggs and Mythical Pokémon are\n"
-            "not allowed to enter!", MSGBOX_TRANSPARENT)
+	bufferstring(STR_VAR_1, text("three"))
+    msgbox(BattleSubway_Text_NotEnoughValidMons, MSGBOX_TRANSPARENT)
     closemessage
     goto (Platform_SingleTrain_EventScript_Cancel)
 }
@@ -201,7 +170,8 @@ script Platform_SingleTrain_EventScript_Prepare
 	setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES)
 	frontier_checkineligible //research complete - checks for all levels but store the result of level 50 mode
 	goto_if_eq(VAR_0x8004, TRUE, Platform_SingleTrain_EventScript_NotEnoughValidMons) 
-	msgbox(BattleSubway_Text_PleaseSelectThreePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	bufferstring(STR_VAR_1, text("three"))
+	msgbox(BattleSubway_Text_PleaseSelectSomePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
 	fadescreen(FADE_TO_BLACK)
@@ -239,8 +209,8 @@ script Platform_SingleTrain_EventScript_BoardTheTrain
 	special(CallFrontierUtilFunc)
     callnative(SetPartyToLevel50)
 	setvar(VAR_RESULT, 0)
-	msgbox("Now, please board\n"
-            "the Single Train!", MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
+	bufferstring(STR_VAR_1, text("Single"))
+	msgbox(BattleSubway_Text_NowPleaseBoardTheTrain, MSGBOX_DEFAULT, TRUE, LOCALID_SINGLETRAIN_AGENT)
     destroy_speech_bubble()
     closemessage
 	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
@@ -296,8 +266,3 @@ script Platform_SingleTrain_EventScript_BTT_Pos3
     waitmovement(0)
     return
 }
-
-
-
-
-

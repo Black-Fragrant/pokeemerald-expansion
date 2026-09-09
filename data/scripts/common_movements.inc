@@ -37,3 +37,11 @@ Common_Movement_WalkRightTwice:
 	walk_right
 	walk_right
 	step_end
+
+Common_Movement_SetInvisible:
+	set_invisible
+	step_end
+
+Common_Movement_SetVisible:
+	set_visible
+	step_end
