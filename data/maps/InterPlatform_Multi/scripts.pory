@@ -1,1 +1,365 @@
-mapscripts InterPlatform_Multi_MapScripts {}
+mapscripts InterPlatform_Multi_MapScripts 
+{
+        MAP_SCRIPT_ON_TRANSITION : InterPlatform_Multi_On_Transition
+        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_WON: InterPlatform_Multi_EventScript_HidePlayer
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_FINAL_STOP: InterPlatform_Multi_EventScript_TurnPlayer
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN: InterPlatform_Multi_EventScript_TurnPlayer
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING: InterPlatform_Multi_EventScript_TurnPlayer
+    ]
+        MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_TEMP_CHALLENGE_STATUS, 0 : InterPlatform_Multi_EventScript_GetChallengeStatus
+        VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_WON: InterPlatform_Multi_EventScript_WonChallenge
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_FINAL_STOP: InterPlatform_Multi_EventScript_BoardTheFinalTrain
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN: InterPlatform_Multi_EventScript_BoardTheArrivingTrain
+        VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING: InterPlatform_Multi_EventScript_BoardTheArrivingTrain
+    ]
+}
+
+script InterPlatform_Multi_On_Transition
+{
+    adjustplatformNPCamount(FRONTIER_MODE_MULTIS)
+    setflag(FLAG_TEMP_11)
+    call_if_eq(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN, InterPlatform_Multi_EventScript_HideLeavingTrain)
+    call_if_eq(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING, InterPlatform_Multi_EventScript_HideLeavingTrain)
+	buffersubwaywinstreak(FRONTIER_MODE_MULTIS)
+    call_if_eq(VAR_RESULT, 21, InterPlatform_Multi_EventScript_HideBothTrains)
+	end()
+}
+
+script InterPlatform_Multi_EventScript_HideLeavingTrain
+{
+    clearflag(FLAG_TEMP_11)
+    return
+}
+
+script InterPlatform_Multi_EventScript_HideBothTrains
+{
+    setflag(FLAG_TEMP_11)
+    setflag(FLAG_TEMP_12)
+    return
+}
+
+script InterPlatform_Multi_EventScript_HidePlayer
+{
+	buffersubwaywinstreak(FRONTIER_MODE_MULTIS)
+    goto_if_eq(VAR_RESULT, 21, InterPlatform_Multi_EventScript_UnhidePlayer)
+	setobjectxy(LOCALID_PLAYER, 80, 7)
+    end
+}
+
+script InterPlatform_Multi_EventScript_UnhidePlayer
+{
+    end
+}
+
+script InterPlatform_Multi_EventScript_TurnPlayer
+{
+	turnobject (LOCALID_PLAYER, DIR_WEST)
+    end
+}
+
+script InterPlatform_Multi_EventScript_GetChallengeStatus
+{
+	frontier_getstatus
+	end
+}
+
+script InterPlatform_Multi_EventScript_WonChallenge
+{
+	lock
+	buffersubwaywinstreak(FRONTIER_MODE_MULTIS)
+    goto_if_eq(VAR_RESULT, 21, InterPlatform_Multi_EventScript_WonChallengeFinalStop)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, BattleSubway_Movement_TrainArrivalAtInterStation1)
+    waitmovement(0)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, BattleSubway_Movement_TrainArrivalAtInterStation2)
+    applymovement(LOCALID_INTERTRAIN_MULTI_9, BattleSubway_Movement_TrainArrivalAtInterStation2)
+    waitmovement(0)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, BattleSubway_Movement_TrainArrivalAtInterStation3)
+    applymovement(LOCALID_INTERTRAIN_MULTI_9, BattleSubway_Movement_TrainArrivalAtInterStation3)
+    applymovement(LOCALID_INTERTRAIN_MULTI_8, BattleSubway_Movement_TrainArrivalAtInterStation3)
+    waitmovement(0)
+    addobject(LOCALID_INTERTRAIN_MULTI_11)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, Common_Movement_SetInvisible)
+    waitmovement(0)
+    delay(20)
+    playse(SE_EXIT)
+	setobjectxy(LOCALID_PLAYER, 72, 7)
+    waitse
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerGotOffTrain)
+    waitmovement(0)
+    removeobject(LOCALID_INTERTRAIN_MULTI_11)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, Common_Movement_SetVisible)
+    waitmovement(0)
+    delay(20)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, BattleSubway_Movement_TrainGoAway1)
+    applymovement(LOCALID_INTERTRAIN_MULTI_9, BattleSubway_Movement_TrainGoAway1)
+    applymovement(LOCALID_INTERTRAIN_MULTI_8, BattleSubway_Movement_TrainGoAway1)
+    waitmovement(0)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, BattleSubway_Movement_TrainGoAway2)
+    applymovement(LOCALID_INTERTRAIN_MULTI_9, BattleSubway_Movement_TrainGoAway2)
+    applymovement(LOCALID_INTERTRAIN_MULTI_8, BattleSubway_Movement_TrainGoAway2)
+    applymovement(LOCALID_INTERTRAIN_MULTI_7, BattleSubway_Movement_TrainGoAway2)
+    waitmovement(0)
+    applymovement(LOCALID_INTERTRAIN_MULTI_10, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_MULTI_9, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_MULTI_8, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_MULTI_7, BattleSubway_Movement_TrainGoAway3)
+    applymovement(LOCALID_INTERTRAIN_MULTI_6, BattleSubway_Movement_TrainGoAway3)
+    waitmovement(0)
+    fadescreen(FADE_TO_BLACK)
+    removeobject(LOCALID_INTERTRAIN_MULTI_55)
+    removeobject(LOCALID_INTERTRAIN_MULTI_6)
+    removeobject(LOCALID_INTERTRAIN_MULTI_7)
+    removeobject(LOCALID_INTERTRAIN_MULTI_8)
+    removeobject(LOCALID_INTERTRAIN_MULTI_9)
+    removeobject(LOCALID_INTERTRAIN_MULTI_10)
+    delay(20)
+    fadescreen(FADE_FROM_BLACK)
+    delay(20)
+	msgbox(BattleSubway_Text_CongratulationYouReachedSevenStreak, MSGBOX_DEFAULT, TRUE, LOCALID_MULTIINTER_AGENT_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+    playbgm(MUS_BW_OBTAIN_BP, FALSE)
+	frontier_givepoints
+	msgbox(BattleSubway_Text_PlayerReceivedBP, MSGBOX_TRANSPARENT, FALSE)
+    waitmessage
+    delay(60)
+    closemessage
+    fadedefaultbgm
+	special(LoadPlayerParty)
+	special(HealPlayerParty)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
+    setdynamicwarp(MAP_INTER_PLATFORM_MULTI, 72, 8)
+	tower_save(0)
+	playse(SE_SAVE)
+	waitse
+    closemessage
+	callnative(UpdateFollowingPokemon)
+	msgbox(BattleSubway_Text_PleaseEnjoyYourTimeHere, MSGBOX_DEFAULT, TRUE, LOCALID_MULTIINTER_AGENT_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+	release
+	end
+}
+
+script InterPlatform_Multi_EventScript_WonChallengeFinalStop
+{
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerGotOffTrain)
+    waitmovement(0)
+    delay(20)
+	msgbox(BattleSubway_Text_CongratulationYouDefeatedSubwayBoss, MSGBOX_DEFAULT, TRUE, LOCALID_MULTIINTER_AGENT_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+    playbgm(MUS_BW_OBTAIN_BP, FALSE)
+	frontier_givepoints
+	msgbox(BattleSubway_Text_PlayerReceivedBP, MSGBOX_TRANSPARENT, FALSE)
+    waitmessage
+    delay(60)
+    closemessage
+    fadedefaultbgm
+    setflag(FLAG_BATTLE_SUBWAY_DEFEATED_MULTI)
+	bufferstring(STR_VAR_1, text("Multi"))
+	msgbox(BattleSubway_Text_NowYouCanChallengeSuperTrain, MSGBOX_DEFAULT, TRUE, LOCALID_MULTIINTER_AGENT_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+    delay(10)
+	special(LoadPlayerParty)
+	special(HealPlayerParty)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
+    setdynamicwarp(MAP_INTER_PLATFORM_MULTI, 72, 8)
+	tower_save(0)
+	playse(SE_SAVE)
+	waitse
+    closemessage
+	callnative(UpdateFollowingPokemon)
+	bufferstring(STR_VAR_1, text("Multi"))
+	msgbox(BattleSubway_Text_ThisIsTheEndOfTrainLine, MSGBOX_DEFAULT, TRUE, LOCALID_MULTIINTER_AGENT_RIGHT)
+    destroy_speech_bubble()
+    closemessage()
+	release
+	end
+}
+
+script InterPlatform_Multi_EventScript_BoardTheArrivingTrain
+{
+    lock
+    applymovement(LOCALID_INTERTRAIN_MULTI_1, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_MULTI_2, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_MULTI_3, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_MULTI_4, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    applymovement(LOCALID_INTERTRAIN_MULTI_5, BattleSubway_Movement_SecondTrainArrivalAtInterStation)
+    waitmovement(0)
+    delay(20)
+    addobject(LOCALID_INTERTRAIN_MULTI_0)
+    applymovement(LOCALID_INTERTRAIN_MULTI_1, Common_Movement_SetInvisible)
+    waitmovement(0)
+    delay(20)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardTheSecondTrain)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+    delay(20)
+    applymovement(LOCALID_INTERTRAIN_MULTI_0, Common_Movement_SetInvisible)
+    applymovement(LOCALID_INTERTRAIN_MULTI_1, Common_Movement_SetVisible)
+    waitmovement(0)
+    applymovement(LOCALID_INTERTRAIN_MULTI_1, BattleSubway_Movement_SecondTrainGoAway)
+    applymovement(LOCALID_INTERTRAIN_MULTI_2, BattleSubway_Movement_SecondTrainGoAway)
+    applymovement(LOCALID_INTERTRAIN_MULTI_3, BattleSubway_Movement_SecondTrainGoAway)
+    waitmovement(0)
+	fadescreen(FADE_TO_BLACK)
+    goto_if_eq(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING, InterPlatform_Multi_EventScript_BeginNewChallenge)
+	warpsilent(MAP_PLATFORM_MULTI_TRAIN, 21, 9)
+	waitstate
+	end
+}
+
+script InterPlatform_Multi_EventScript_BoardTheFinalTrain
+{
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardTheFinalTrain)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+	setsubwaywinstreak(FRONTIER_MODE_MULTIS, 0)
+    delay(20)
+	fadescreen(FADE_TO_BLACK)
+	warpsilent(MAP_PLATFORM_MULTI_TRAIN, 21, 9)
+	waitstate
+	end
+}
+
+script InterPlatform_Multi_EventScript_BeginNewChallenge
+{
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, 0)
+	setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER) // these two load the saved Frontier party selection
+	setvar(VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE) 
+	special(CallFrontierUtilFunc)
+    callnative(SetPartyToLevel50)
+	setvar(VAR_RESULT, 0)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
+	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
+	warpsilent(MAP_BATTLE_SUBWAY_MULTI, 2, 7)
+	waitstate
+	end
+}
+
+script InterPlatform_Multi_EventScript_Conductor
+{
+    lock
+    faceplayer
+	buffersubwaywinstreak(FRONTIER_MODE_MULTIS)
+    goto_if_eq(VAR_RESULT, 21, InterPlatform_Multi_EventScript_Conductor_Return)
+	msgbox(BattleSubway_Text_WhatWouldYouLikeToDo, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    waitmessage
+    //can only go back after defeating 21 trainers
+	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Continue Challenge",
+        "Return to Nimbasa City",
+        "Stay Here")
+    destroy_speech_bubble()
+    closemessage()
+	if (var(VAR_RESULT) == 0) {goto (InterPlatform_Multi_EventScript_Conductor_ContinueChallenge)}
+	elif (var(VAR_RESULT) == 1) {goto (InterPlatform_Multi_EventScript_Conductor_Return)}
+    release
+    end
+}
+
+script InterPlatform_Multi_EventScript_Conductor_ContinueChallenge
+{
+    setvar(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_MULTIS)
+	special(SavePlayerParty)
+	bufferstring(STR_VAR_1, text("two"))
+	msgbox(BattleSubway_Text_PleaseSelectSomePokemonYouWishToEnter, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	fadescreen(FADE_TO_BLACK)
+	callnative(RemoveFollowingPokemon)
+	setvar(VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE) //this var is defined to be 2
+	special(ChoosePartyForBattleFrontier)
+	goto_if_eq(VAR_RESULT, 0, InterPlatform_Multi_EventScript_Conductor_LoadPartyCancelChallenge)
+	msgbox (BattleSubway_Text_WouldYouLikeToSave, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+	goto_if_eq(VAR_RESULT, YES, InterPlatform_Multi_EventScript_Conductor_SaveBeforeChallenge)
+    goto(InterPlatform_Multi_EventScript_Conductor_LoadPartyCancelChallenge)
+}
+
+script InterPlatform_Multi_EventScript_Conductor_CancelChallengeSaveFailed
+{
+	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS)  // No status provided, so it relies on VAR_0x8006 being 0 already
+    goto(InterPlatform_Multi_EventScript_Conductor_LoadPartyCancelChallenge)
+}
+
+script InterPlatform_Multi_EventScript_Conductor_LoadPartyCancelChallenge
+{
+	special(LoadPlayerParty)
+	callnative(UpdateFollowingPokemon)
+    msgbox (BattleSubway_Text_TheSelectionWasCanceled, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage
+    release
+    end
+}
+
+script InterPlatform_Multi_EventScript_Conductor_SaveBeforeChallenge
+{
+	frontier_set(FRONTIER_DATA_SELECTED_MON_ORDER) //It copies the player’s selected party order into the Frontier saveblock
+	setvar(VAR_TEMP_CHALLENGE_STATUS, CHALLENGE_STATUS_SAVING) // VAR_TEMP_CHALLENGE_STATUS is used to react to the status in OnFrame map scripts
+	tower_set(TOWER_DATA_WIN_STREAK_ACTIVE, TRUE) // indicate that the win streak is currently active.
+	frontier_set(FRONTIER_DATA_PAUSED, FALSE) // Marks whether the Frontier challenge is paused.
+    delay(10)
+	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
+	waitmessage
+    setdynamicwarp(MAP_PLATFORM_MULTI_TRAIN, 16, 10)
+	tower_save(CHALLENGE_STATUS_SAVING)
+	playse(SE_SAVE)
+    waitse
+    closemessage
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
+	goto_if_eq (VAR_RESULT, 0, InterPlatform_Multi_EventScript_Conductor_CancelChallengeSaveFailed)
+    fadescreen(FADE_TO_BLACK)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING)
+    warpsilent(MAP_INTER_PLATFORM_MULTI, 15, 8)
+    waitstate
+    end
+}
+
+script InterPlatform_Multi_EventScript_Conductor_Return
+{
+    msgbox(BattleSubway_Text_DoYouWantToReturnToNimbasaCity, MSGBOX_YESNO, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage()
+    goto_if_eq(VAR_RESULT, TRUE, InterPlatform_Multi_EventScript_Conductor_Return_Cont)
+    release
+    end
+}
+
+script InterPlatform_Multi_EventScript_Conductor_Return_Cont
+{
+    msgbox(BattleSubway_Text_ReturnToNimbasaCity, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED)
+    destroy_speech_bubble()
+    closemessage()
+    fadescreen(FADE_TO_BLACK)
+	buffersubwaywinstreak(FRONTIER_MODE_MULTIS)
+    goto_if_eq(VAR_RESULT, 21, InterPlatform_Multi_EventScript_ReturnFromFinalStop)
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN)
+    warpsilent(MAP_INTER_PLATFORM_MULTI, 15, 8)
+	waitstate
+    end
+}
+
+script InterPlatform_Multi_EventScript_ReturnFromFinalStop
+{
+    setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_FINAL_STOP)
+    warpsilent(MAP_INTER_PLATFORM_MULTI, 15, 8)
+	waitstate
+    end
+}

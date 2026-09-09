@@ -43,6 +43,8 @@
 #include "constants/event_objects.h"
 #include "party_menu.h"
 #include "list_menu.h"
+#include "text_window.h"
+#include "palette.h"
 
 struct FrontierBrainMon
 {
@@ -1136,8 +1138,17 @@ static void TowerPrintPrevOrCurrentStreak(u8 battleMode, enum FrontierLevelMode 
 
 static void ShowTowerResultsWindow(u8 battleMode)
 {
+    gMsgIsTransparent = TRUE;
     gRecordsWindowId = AddWindow(&sFrontierResultsWindowTemplate);
-    DrawStdWindowFrame(gRecordsWindowId, FALSE);
+
+    // MATCH MULTICHOICE BEHAVIOR: keep underlying textbox gfx
+    LoadMessageBoxAndBorderGfx();
+
+    // FORCE STYLE 21 (your style 3)
+    LoadWindowGfx(gRecordsWindowId, 21, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM));
+
+    // Draw frame using forced style
+    DrawStdFrameWithCustomTileAndPalette(gRecordsWindowId, FALSE, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM);
     FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
 
     // Updated mode text

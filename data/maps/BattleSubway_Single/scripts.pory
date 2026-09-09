@@ -1,14 +1,14 @@
 mapscripts BattleSubway_Single_MapScripts 
-    {
-        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
-    [
-        VAR_TEMP_0, 0 : BattleSubway_Single_EventScript_TurnPlayer
-    ]
-        MAP_SCRIPT_ON_FRAME_TABLE
-    [
-        VAR_TEMP_0, 0 : BattleSubway_Single_EventScript_Loading
-    ]
-    }
+{
+		MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	[
+		VAR_TEMP_0, 0 : BattleSubway_Single_EventScript_TurnPlayer
+	]
+		MAP_SCRIPT_ON_FRAME_TABLE
+	[
+		VAR_TEMP_0, 0 : BattleSubway_Single_EventScript_Loading
+	]
+}
 
 script BattleSubway_Single_EventScript_TurnPlayer
 {

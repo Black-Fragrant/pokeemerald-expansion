@@ -134,3 +134,84 @@ script GearStation_Lobby_EventScript_Output
     release
     end
 }
+
+script GearStation_Lobby_EventScript_TrainToAnvilTown
+{
+    lock
+    msgbox("The train to Anville Town is\n"
+       "is ready to leave the station!", MSGBOX_TRANSPARENT, FALSE)
+    waitmessage
+    closemessage
+    release
+    end
+}
+
+script GearStation_Lobby_EventScript_ShowSinglesResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SINGLES)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}
+
+script GearStation_Lobby_EventScript_ShowSuperSinglesResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SUPER_SINGLES)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}
+
+script GearStation_Lobby_EventScript_ShowDoublesResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_DOUBLES)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}
+
+script GearStation_Lobby_EventScript_ShowSuperDoublesResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SUPER_DOUBLES)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}
+
+script GearStation_Lobby_EventScript_ShowMultisResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_MULTIS)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}
+
+script GearStation_Lobby_EventScript_ShowSuperMultisResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SUPER_MULTIS)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}
+
+script GearStation_Lobby_EventScript_ShowLinkMultisResults
+{
+	lockall
+	frontier_results(FRONTIER_FACILITY_TOWER, FRONTIER_MODE_LINK_MULTIS)
+	waitbuttonpress
+	special(RemoveRecordsWindow)
+	releaseall
+	end
+}

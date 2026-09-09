@@ -1,6 +1,5 @@
 mapscripts Platform_SuperSingleTrain_MapScripts {}
 
-
 script Platform_SuperSingleTrain_EventScript_Trigger
 {
     lock
@@ -9,9 +8,8 @@ script Platform_SuperSingleTrain_EventScript_Trigger
     waitmovement(0)
 	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
 	special(SavePlayerParty)
-	msgbox("Welcome to the Battle Subway!\p"
-            "I'm sorry, but this Super Single Train\n"
-            "isn't ready yet.", MSGBOX_DEFAULT, TRUE, LOCALID_SUPERSINGLETRAIN_AGENT)
+	bufferstring(STR_VAR_1, text("Single"))
+	msgbox(BattleSubway_Text_SorrySuperTrainNotReady, MSGBOX_DEFAULT, TRUE, LOCALID_SUPERSINGLETRAIN_AGENT)
     destroy_speech_bubble()
     goto(Platform_SuperSingleTrain_EventScript_Cancel)
 }

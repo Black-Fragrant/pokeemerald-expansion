@@ -1,14 +1,14 @@
 mapscripts BattleSubway_Double_MapScripts 
-    {
-        MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
-    [
-        VAR_TEMP_0, 0 : BattleSubway_Double_EventScript_TurnPlayer
-    ]
-        MAP_SCRIPT_ON_FRAME_TABLE
-    [
-        VAR_TEMP_0, 0 : BattleSubway_Double_EventScript_Loading
-    ]
-    }
+{
+		MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+	[
+		VAR_TEMP_0, 0 : BattleSubway_Double_EventScript_TurnPlayer
+	]
+		MAP_SCRIPT_ON_FRAME_TABLE
+	[
+		VAR_TEMP_0, 0 : BattleSubway_Double_EventScript_Loading
+	]
+}
 
 script BattleSubway_Double_EventScript_TurnPlayer
 {

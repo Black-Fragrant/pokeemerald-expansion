@@ -355,6 +355,7 @@ void RemoveRecordsWindow(void)
 {
     ClearStdWindowAndFrame(gRecordsWindowId, FALSE);
     RemoveWindow(gRecordsWindowId);
+    gMsgIsTransparent = FALSE;
 }
 
 static void Task_TrainerHillWaitForPaletteFade(u8 taskId)

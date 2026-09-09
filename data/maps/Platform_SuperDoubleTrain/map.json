@@ -41,6 +41,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_SUPERDOUBLETRAIN_AGENT",
       "graphics_id": "OBJ_EVENT_GFX_PILOT_GREEN",
       "x": 17,
       "y": 10,
@@ -50,7 +51,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Platform_SuperDoubleTrain_EventScript_Trigger",
       "flag": "0"
     },
     {
@@ -99,7 +100,7 @@
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_GEAR_STATION_LOBBY",
-      "dest_warp_id": "14"
+      "dest_warp_id": "15"
     },
     {
       "x": 21,
@@ -109,7 +110,44 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_BATTLE_SUBWAY_BOARDING",
+      "var_value": "0",
+      "script": "Platform_SuperDoubleTrain_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_BATTLE_SUBWAY_BOARDING",
+      "var_value": "0",
+      "script": "Platform_SuperDoubleTrain_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_BATTLE_SUBWAY_BOARDING",
+      "var_value": "0",
+      "script": "Platform_SuperDoubleTrain_EventScript_Trigger"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_BATTLE_SUBWAY_BOARDING",
+      "var_value": "0",
+      "script": "Platform_SuperDoubleTrain_EventScript_Trigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

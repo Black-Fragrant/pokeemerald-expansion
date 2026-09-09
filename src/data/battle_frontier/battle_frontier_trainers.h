@@ -2429,7 +2429,7 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .facilityClass = FACILITY_CLASS_SUBWAY_BOSS_EMMET,
         .trainerName = _("Emmet"),
         .speechBeforeStr = COMPOUND_STRING("I am Emmet.\nI am a Subway Boss.\lI like Double Battles.\lI like combinations of two Pokémon.\pAnd I like winning more than\nanything else.\pSo let's start a great battle in which\nevery Pokémon uses various moves."),
-        .speechWinStr    = COMPOUND_STRING("I am Emmet.\nI won against you.\lBut I think I just got lucky.\pIn a Double Battle, if you misread one thing,\nthe rest will be totally different.\lYou know.\pPlease win 20 battles in a row,\nand fight with me!"),
+        .speechWinStr    = COMPOUND_STRING("I am Emmet.\nI won against you.\lBut I think I just got lucky.\pIn a Double Battle,\nif you misread one thing,\lthe rest will be totally different.\lYou know.\pPlease win 20 battles in a row,\nand fight with me!"),
         .speechLoseStr   = COMPOUND_STRING("I am Emmet.\nI lost against you.\lBecause you are the strongest\nTrainer I've fought lately.\pYou're a verrrrry strong Trainer!\nYup! It was fun!\lRide the trains some more!"),
         .monSet = (const u16[]){FRONTIER_MONS_EMMET_1}
     },

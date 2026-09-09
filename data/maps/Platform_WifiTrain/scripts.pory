@@ -1,1 +1,26 @@
 mapscripts Platform_WifiTrain_MapScripts {}
+
+script Platform_WifiTrain_EventScript_Trigger
+{
+    lock
+    call(BattleSubway_EventScript_Platform_StopPlayerAtConductor)
+    applymovement(LOCALID_WIFITRAIN_AGENT, Common_Movement_FacePlayer)
+    waitmovement(0)
+	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
+	special(SavePlayerParty)
+	msgbox(BattleSubway_Text_SorryWifiTrainNotReady, MSGBOX_DEFAULT, TRUE, LOCALID_WIFITRAIN_AGENT)
+    destroy_speech_bubble()
+    goto(Platform_SuperWifiTrain_EventScript_Cancel)
+}
+
+script Platform_SuperWifiTrain_EventScript_Cancel
+{
+	msgbox(BattleSubway_Text_WeHopeToSeeYouAgain, MSGBOX_DEFAULT, TRUE, LOCALID_WIFITRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+    call(BattleSubway_EventScript_Platform_ForcePlayerWalkLeftUponCancel)
+	applymovement(LOCALID_WIFITRAIN_AGENT, Common_Movement_FaceLeft)
+	waitmovement(0)
+	release
+	end
+}

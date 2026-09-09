@@ -247,6 +247,16 @@ BattleSubway_Text_ThisIsTheEndOfTrainLine::
 	.string "please talk to me again.\p"
 	.string "Please enjoy your time here.$"
 
+BattleSubway_Text_SorrySuperTrainNotReady::
+	.string "Welcome to the Battle Subway!\p"
+	.string "I'm sorry, but this Super {STR_VAR_1} Train\n"
+	.string "isn't ready yet.$"
+
+BattleSubway_Text_SorryWifiTrainNotReady::
+	.string "Welcome to the Battle Subway!\p"
+	.string "I'm sorry, but this Wifi Train\n"
+	.string "isn't ready yet.$"
+
 BattleSubway_EventScript_GetChallengeStatus::
 	frontier_getstatus
 	end
