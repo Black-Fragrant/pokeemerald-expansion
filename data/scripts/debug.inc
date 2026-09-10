@@ -195,8 +195,10 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	warpsilent MAP_NIMBASA_CITY_NIMBASA_GYM, 23, 12
-	waitstate
+	setvar VAR_RESULT, 1
+	special LoadSubwayMultiPartnerData
+	delay 10
+	addobject LOCALID_PLATFORM_MULTITRAIN_PARTNER
 	release 
     end
 
@@ -204,12 +206,7 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1}$"
 
 Debug_EventScript_Script_2::
-    lock
-	setsubwaywinstreak FRONTIER_MODE_SINGLES, 19
-//	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON 
-//	setvar VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_WON
-//	warp MAP_INTER_PLATFORM_DOUBLE, 72, 7
-//	waitstate
+	setsubwaywinstreak FRONTIER_MODE_MULTIS, 20
 	release 
     end
 

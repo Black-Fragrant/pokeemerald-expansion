@@ -108,6 +108,7 @@ const struct FacilityClass gTowerMaleFacilityClasses[FACILITY_CLASSES_MALE] =
     {FACILITY_CLASS_POLICEMAN,          OBJ_EVENT_GFX_POLICE},
     {FACILITY_CLASS_HARLEQUIN,          OBJ_EVENT_GFX_PEIRRO},
     {FACILITY_CLASS_ACE_TRAINER_M,      OBJ_EVENT_GFX_ACE_TRAINER_MALE},
+    {FACILITY_CLASS_PKMN_TRAINER_HILBERT,   OBJ_EVENT_GFX_BRENDAN_NORMAL},
 };
 
 const struct FacilityClass gTowerFemaleFacilityClasses[FACILITY_CLASSES_FEMALE] =
@@ -134,6 +135,7 @@ const struct FacilityClass gTowerFemaleFacilityClasses[FACILITY_CLASSES_FEMALE] 
     {FACILITY_CLASS_MAID,               OBJ_EVENT_GFX_MAID},
     {FACILITY_CLASS_SOCIALITE,          OBJ_EVENT_GFX_LADY},
     {FACILITY_CLASS_ACE_TRAINER_F,      OBJ_EVENT_GFX_ACE_TRAINER_FEMALE},
+    {FACILITY_CLASS_PKMN_TRAINER_HILDA,     OBJ_EVENT_GFX_MAY_NORMAL},
 };
 
 // Excludes the unused RS_FACILITY_CLASS_BOARDER_1 and _2
@@ -894,7 +896,7 @@ static void SetNextTowerOpponent(void)
 
     SetFacilityPtrsGetLevel();
 
-    // --- LINK MULTIS: No boss, vanilla trainer selection ---
+    // --- LINK MULTIS: vanilla behavior ---
     if (battleMode == FRONTIER_MODE_LINK_MULTIS)
     {
         s32 i;
@@ -925,11 +927,8 @@ static void SetNextTowerOpponent(void)
     // --- SUBWAY BOSS CHECK ---
     bool8 bossReady = FALSE;
 
-    // Normal modes → boss at battle 21
     if (winStreak == 20)
         bossReady = TRUE;
-
-    // Super modes → boss at battle 49
     if (winStreak == 48)
         bossReady = TRUE;
 
@@ -937,57 +936,43 @@ static void SetNextTowerOpponent(void)
     {
         switch (battleMode)
         {
-        // --- SINGLES ---
         case FRONTIER_MODE_SINGLES:
             TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_SINGLE;
             break;
-
-        // --- SUPER SINGLES ---
         case FRONTIER_MODE_SUPER_SINGLES:
             TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_SUPER_SINGLE;
             break;
-
-        // --- DOUBLES ---
         case FRONTIER_MODE_DOUBLES:
             TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_EMMET_DOUBLE;
             break;
-
-        // --- SUPER DOUBLES ---
         case FRONTIER_MODE_SUPER_DOUBLES:
             TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_EMMET_SUPER_DOUBLE;
             break;
-
-        // --- MULTIS ---
         case FRONTIER_MODE_MULTIS:
             TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_MULTI;
             TRAINER_BATTLE_PARAM.opponentB = FRONTIER_TRAINER_EMMET_MULTI;
             break;
-
-        // --- SUPER MULTIS ---
         case FRONTIER_MODE_SUPER_MULTIS:
             TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_INGO_SUPER_MULTI;
             TRAINER_BATTLE_PARAM.opponentB = FRONTIER_TRAINER_EMMET_SUPER_MULTI;
             break;
         }
 
-        // Apply overworld graphics for opponent A
         SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentA, 0);
 
-        // Apply overworld graphics for opponent B (Multis only)
         if (battleMode == FRONTIER_MODE_MULTIS
          || battleMode == FRONTIER_MODE_SUPER_MULTIS)
         {
             SetBattleFacilityTrainerGfxId(TRAINER_BATTLE_PARAM.opponentB, 1);
         }
 
-        // Store trainer ID for streak tracking (vanilla behavior)
         gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum]
             = TRAINER_BATTLE_PARAM.opponentA;
 
         return;
     }
 
-    // --- NORMAL TRAINER SELECTION (vanilla preserved) ---
+    // --- NORMAL TRAINER SELECTION ---
     {
         s32 i;
         while (1)
@@ -1005,9 +990,37 @@ static void SetNextTowerOpponent(void)
                 break;
         }
 
+        // Opponent A
         TRAINER_BATTLE_PARAM.opponentA = id;
         SetBattleFacilityTrainerGfxId(id, 0);
 
+        // ⭐ NEW: Proper MULTI opponent generation + storage
+        if (battleMode == FRONTIER_MODE_MULTIS
+         || battleMode == FRONTIER_MODE_SUPER_MULTIS)
+        {
+            u16 id2;
+
+            // Generate opponent B
+            while (1)
+            {
+                id2 = GetRandomScaledFrontierTrainerId(
+                        challengeNum,
+                        gSaveBlock2Ptr->frontier.curChallengeBattleNum);
+
+                if (id2 != id)
+                    break;
+            }
+
+            TRAINER_BATTLE_PARAM.opponentB = id2;
+            SetBattleFacilityTrainerGfxId(id2, 1);
+
+            // ⭐ Store both opponents like vanilla Emerald
+            u16 battleNum = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
+            gSaveBlock2Ptr->frontier.trainerIds[battleNum * 2]     = id;
+            gSaveBlock2Ptr->frontier.trainerIds[battleNum * 2 + 1] = id2;
+        }
+
+        // Vanilla storage for opponentA (Singles/Doubles)
         if (gSaveBlock2Ptr->frontier.curChallengeBattleNum + 1 < FRONTIER_STAGES_PER_CHALLENGE)
             gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum] = id;
     }
@@ -1275,6 +1288,100 @@ static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
     {
         gFrontierTempParty[3] = validSpecies[Random() % count];
     } while (gFrontierTempParty[2] == gFrontierTempParty[3]);
+}
+
+// ============================================================
+//  Subway-style Multi Partner Loader (Vanilla-Style Structure)
+//  This mimics the layout and flow of LoadMultiPartnerCandidatesData,
+//  but only loads ONE partner deterministically.
+// ============================================================
+
+static const u16 sSubwayPartnerTable[] =
+{
+    FRONTIER_TRAINER_HILBERT_OFFENSIVE,   // 1
+    FRONTIER_TRAINER_HILBERT_DEFENSIVE,   // 2
+    FRONTIER_TRAINER_HILBERT_BALANCED,    // 3
+    FRONTIER_TRAINER_HILDA_OFFENSIVE,     // 4
+    FRONTIER_TRAINER_HILDA_DEFENSIVE,     // 5
+    FRONTIER_TRAINER_HILDA_BALANCED,      // 6
+    FRONTIER_TRAINER_JOSHUA,              // 7
+    FRONTIER_TRAINER_JOSHUA,              // 8
+    FRONTIER_TRAINER_JOSHUA,              // 9
+    FRONTIER_TRAINER_JOSHUA               // 10
+};
+
+void LoadSubwayMultiPartnerData(void)
+{
+    u16 uiChoice;
+    u16 partnerId;
+    u8 playerGender;
+    u16 count = ARRAY_COUNT(sSubwayPartnerTable);
+
+    uiChoice = VarGet(VAR_RESULT);
+    if (uiChoice == 0)
+        uiChoice = 1;
+    if (uiChoice > count)
+        uiChoice = count;
+
+    partnerId = sSubwayPartnerTable[uiChoice - 1];
+
+    playerGender = gSaveBlock2Ptr->playerGender;
+    if (partnerId >= FRONTIER_TRAINER_HILBERT_OFFENSIVE &&
+        partnerId <= FRONTIER_TRAINER_HILBERT_BALANCED &&
+        playerGender == MALE)
+    {
+        u16 offset = partnerId - FRONTIER_TRAINER_HILBERT_OFFENSIVE;
+        partnerId = FRONTIER_TRAINER_HILDA_OFFENSIVE + offset;
+    }
+
+    // Store partner ID
+    gSaveBlock2Ptr->frontier.trainerIds[17] = partnerId;
+
+    // Invalidate stored team so it will be generated fresh
+    gSaveBlock2Ptr->frontier.trainerIds[18] = 0xFFFF;
+    gSaveBlock2Ptr->frontier.trainerIds[19] = 0xFFFF;
+
+    SetBattleFacilityTrainerGfxId(partnerId, 0xF);
+
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1);
+    FlagClear(FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2);
+}
+
+void UpdateMultiPartner(void)
+{
+    u16 partnerId = gSaveBlock2Ptr->frontier.trainerIds[17];
+    u16 personalityChoice = VarGet(VAR_RESULT);   // 0 = O, 1 = D, 2 = B
+
+    // Only Hilbert/Hilda get personality updates
+    if (partnerId >= FRONTIER_TRAINER_HILBERT_OFFENSIVE &&
+        partnerId <= FRONTIER_TRAINER_HILBERT_BALANCED)
+    {
+        // Hilbert personality update
+        partnerId = FRONTIER_TRAINER_HILBERT_OFFENSIVE + personalityChoice;
+    }
+    else if (partnerId >= FRONTIER_TRAINER_HILDA_OFFENSIVE &&
+             partnerId <= FRONTIER_TRAINER_HILDA_BALANCED)
+    {
+        // Hilda personality update
+        partnerId = FRONTIER_TRAINER_HILDA_OFFENSIVE + personalityChoice;
+    }
+    else
+    {
+        // Joshua or other partners → no change
+        return;
+    }
+
+    // Store updated partner ID
+    gSaveBlock2Ptr->frontier.trainerIds[17] = partnerId;
+
+    // Update overworld sprite in real time
+    SetBattleFacilityTrainerGfxId(partnerId, 0xF);
 }
 
 static void LoadMultiPartnerCandidatesData(void)

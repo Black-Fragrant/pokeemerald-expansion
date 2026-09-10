@@ -1,5 +1,6 @@
 mapscripts Platform_MultiTrain_MapScripts 
 {
+    	MAP_SCRIPT_ON_TRANSITION : Platform_MultiTrain_On_Transition
         MAP_SCRIPT_ON_FRAME_TABLE
     [
         VAR_TEMP_CHALLENGE_STATUS, 0 : BattleSubway_EventScript_GetChallengeStatus
@@ -9,6 +10,12 @@ mapscripts Platform_MultiTrain_MapScripts
         VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_RETURN: Platform_MultiTrain_EventScript_RideBackToNimbasa
         VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_FINAL_STOP: Platform_MultiTrain_EventScript_RideBackToNimbasa
     ]
+}
+
+script Platform_MultiTrain_On_Transition
+{
+//	setvar(OBJ_EVENT_GFX_VAR_E, OBJ_EVENT_GFX_YOUNGSTER) //this is a padding which is no longer necessary
+	end()
 }
 
 script Platform_MultiTrain_EventScript_QuitWithoutSaving
@@ -103,6 +110,7 @@ script Platform_MultiTrain_EventScript_Trigger
     applymovement(LOCALID_MULTITRAIN_AGENT, Common_Movement_FacePlayer)
     waitmovement(0)
 	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
+	clearflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER) // you have not chosen a partner
 	special(SavePlayerParty)
 	bufferstring(STR_VAR_1, text("Multi"))
 	msgbox(BattleSubway_Text_WelcomeToTheBattleSubway, MSGBOX_DEFAULT, TRUE, LOCALID_MULTITRAIN_AGENT)
@@ -200,6 +208,30 @@ script Platform_MultiTrain_EventScript_SaveBeforeChallenge
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
 	goto_if_eq (VAR_RESULT, 0, Platform_MultiTrain_EventScript_CancelChallengeSaveFailed)
 	incrementgamestat(GAME_STAT_ENTERED_BATTLE_TOWER) //you have entered the tower +1 times
+//  select a multi battle partner here
+	setvar(VAR_RESULT, 1) //this is the default partner
+	special(LoadSubwayMultiPartnerData)
+	delay(10)
+	addobject(LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+//  call(Platform_MultiTrain_EventScript_PartnerWalksToPlayer)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+    waitmovement(0)
+//	call_if_unset(FLAG_BATTLE_SUBWAY_PARTNER_HILDA, Platform_MultiTrain_EventScript_HildaIntroduce)
+//	call_if_set(FLAG_BATTLE_SUBWAY_PARTNER_HILDA, Platform_MultiTrain_EventScript_HildaMeetagain)
+	msgbox("What sort of Pokémon should I use?", MSGBOX_DEFAULT, TRUE, LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+    waitmessage
+	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Focused On Attack",
+        "Focused On Defense",
+        "Focused On Balance")
+    destroy_speech_bubble()
+//	call_if_eq(VAR_RESULT, 0, Platform_MultiTrain_EventScript_FocusOnAttack)
+//	call_if_eq(VAR_RESULT, 1, Platform_MultiTrain_EventScript_FocusOnDefense)
+//	call_if_eq(VAR_RESULT, 2, Platform_MultiTrain_EventScript_FocusOnBalance)
+	special(UpdateMultiPartner)
+	setflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+    waitmovement(0)
 	goto(Platform_MultiTrain_EventScript_BoardTheTrain)
 }
 

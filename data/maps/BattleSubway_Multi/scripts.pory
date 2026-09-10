@@ -1,5 +1,6 @@
 mapscripts BattleSubway_Multi_MapScripts 
 {
+    	MAP_SCRIPT_ON_TRANSITION : BattleSubway_Multi_On_Transition
 		MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	[
 		VAR_TEMP_0, 0 : BattleSubway_Multi_EventScript_TurnPlayer
@@ -8,6 +9,12 @@ mapscripts BattleSubway_Multi_MapScripts
 	[
 		VAR_TEMP_0, 0 : BattleSubway_Multi_EventScript_Loading
 	]
+}
+
+script BattleSubway_Multi_On_Transition
+{
+	tower_setpartnergfx
+	end
 }
 
 script BattleSubway_Multi_EventScript_TurnPlayer
@@ -32,7 +39,7 @@ script BattleSubway_Multi_EventScript_Loading
 	call_if_eq (VAR_TEMP_1, 1, BattleSubway_EventScript_PlayerWalksToEnemy1)
 	call_if_eq (VAR_TEMP_1, 2, BattleSubway_EventScript_PlayerWalksToEnemy2)
   	tower_getopponentintro(0)
-	msgbox(gStringVar4, MSGBOX_DEFAULT, TRUE, LOCALID_SUBWAY_M_OPPONENT)
+	msgbox(gStringVar4, MSGBOX_DEFAULT, TRUE, LOCALID_SUBWAY_M_OPPONENT_1)
 	waitmessage
 	call(BattleSubway_Multi_EventScript_DoBattle)
  	goto_if_eq(VAR_RESULT, B_OUTCOME_WON, BattleSubway_Multi_EventScript_DefeatedOpponent)
@@ -46,7 +53,7 @@ script BattleSubway_Multi_EventScript_DefeatedOpponent
 	delay(10)
 	tower_setbattlewon //current challenge number 0-6
 	goto_if_eq(VAR_RESULT, FRONTIER_STAGES_PER_CHALLENGE, BattleSubway_Multi_EventScript_RecordBeforeWarp) //warp to intermediate station after 7 battles
-    applymovement(LOCALID_SUBWAY_M_OPPONENT, BattleSubway_Movement_EnemyWalkUp2TimesFaceDown)
+    applymovement(LOCALID_SUBWAY_M_OPPONENT_1, BattleSubway_Movement_EnemyWalkUp2TimesFaceDown)
   	waitmovement(0)
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToComputer)
   	waitmovement(0)
@@ -243,7 +250,7 @@ script BattleSubway_Multi_EventScript_WarpToStationLost_Cont
 
 script BattleSubway_Multi_EventScript_WarpToStationWon
 {
-    applymovement(LOCALID_SUBWAY_M_OPPONENT, BattleSubway_Movement_EnemyWalkUp2TimesFaceDown)
+    applymovement(LOCALID_SUBWAY_M_OPPONENT_1, BattleSubway_Movement_EnemyWalkUp2TimesFaceDown)
   	waitmovement(0)
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToExit)
   	waitmovement(0)

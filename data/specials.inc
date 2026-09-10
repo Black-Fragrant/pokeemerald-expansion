@@ -671,3 +671,5 @@ gSpecials::
 	def_special CheckIfNameChanged
 	def_special SetSubwayWinStreak
 	def_special AdjustPlatformNPCAmount
+	def_special LoadSubwayMultiPartnerData
+	def_special UpdateMultiPartner

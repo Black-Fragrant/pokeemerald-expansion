@@ -2472,5 +2472,53 @@ const struct BattleFrontierTrainer gBattleFrontierTrainers[FRONTIER_TRAINERS_COU
         .speechWinStr    = COMPOUND_STRING("I am Emmet.\nWe won, but I am not really satisfied.\pI can tell that you won't give up.\pBecause you will be much,\nmuch stronger.\pThat's why we are waiting\nfor you to come back!"),
         .speechLoseStr   = COMPOUND_STRING("I am Emmet.\nWe lost against you again.\pBut I am satisfied.\nYou are too strong!\pThe strength you have,\nyour trust in your Pokémon,\ltheir never-ending support! Yep!\pIt was the most fun battle ever!\nPlease come back soon!"),
         .monSet = (const u16[]){FRONTIER_MONS_EMMET_4}
+    },
+    [FRONTIER_TRAINER_HILBERT_OFFENSIVE] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_HILBERT,
+        .trainerName = _("Hilbert"),
+        .speechBeforeStr = COMPOUND_STRING(""),
+        .speechWinStr    = COMPOUND_STRING(""),
+        .speechLoseStr   = COMPOUND_STRING(""),
+        .monSet = (const u16[]){FRONTIER_MONS_PARTNER_O}
+    },
+    [FRONTIER_TRAINER_HILBERT_DEFENSIVE] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_HILBERT,
+        .trainerName = _("Hilbert"),
+        .speechBeforeStr = COMPOUND_STRING(""),
+        .speechWinStr    = COMPOUND_STRING(""),
+        .speechLoseStr   = COMPOUND_STRING(""),
+        .monSet = (const u16[]){FRONTIER_MONS_PARTNER_D}
+    },
+    [FRONTIER_TRAINER_HILBERT_BALANCED] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_HILBERT,
+        .trainerName = _("Hilbert"),
+        .speechBeforeStr = COMPOUND_STRING(""),
+        .speechWinStr    = COMPOUND_STRING(""),
+        .speechLoseStr   = COMPOUND_STRING(""),
+        .monSet = (const u16[]){FRONTIER_MONS_PARTNER_B}
+    },
+    [FRONTIER_TRAINER_HILDA_OFFENSIVE] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_HILDA,
+        .trainerName = _("Hilda"),
+        .speechBeforeStr = COMPOUND_STRING(""),
+        .speechWinStr    = COMPOUND_STRING(""),
+        .speechLoseStr   = COMPOUND_STRING(""),
+        .monSet = (const u16[]){FRONTIER_MONS_PARTNER_O}
+    },
+    [FRONTIER_TRAINER_HILDA_DEFENSIVE] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_HILDA,
+        .trainerName = _("Hilda"),
+        .speechBeforeStr = COMPOUND_STRING(""),
+        .speechWinStr    = COMPOUND_STRING(""),
+        .speechLoseStr   = COMPOUND_STRING(""),
+        .monSet = (const u16[]){FRONTIER_MONS_PARTNER_D}
+    },
+    [FRONTIER_TRAINER_HILDA_BALANCED] = {
+        .facilityClass = FACILITY_CLASS_PKMN_TRAINER_HILDA,
+        .trainerName = _("Hilda"),
+        .speechBeforeStr = COMPOUND_STRING(""),
+        .speechWinStr    = COMPOUND_STRING(""),
+        .speechLoseStr   = COMPOUND_STRING(""),
+        .monSet = (const u16[]){FRONTIER_MONS_PARTNER_B}
     }
 };

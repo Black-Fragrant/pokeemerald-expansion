@@ -354,20 +354,24 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
     u32 personality = 0, friendship, j;
     enum Ability ability;
 
+    // --- SAFE GENDER ---
+    u8 forcedGender;
     if (fmon->gender == TRAINER_MON_MALE)
-    {
-        personality = GeneratePersonalityForGender(MON_MALE, fmon->species);
-    }
+        forcedGender = MON_MALE;
     else if (fmon->gender == TRAINER_MON_FEMALE)
-    {
-        personality = GeneratePersonalityForGender(MON_FEMALE, fmon->species);
-    }
+        forcedGender = MON_FEMALE;
+    else
+        forcedGender = GetGenderFromSpeciesAndPersonality(fmon->species, Random32());
 
+    // --- PERSONALITY ---
+    personality = GeneratePersonalityForGender(forcedGender, fmon->species);
     ModifyPersonalityForNature(&personality, fmon->nature);
+
+    // --- CREATE MON ---
     CreateMonWithIVs(dst, fmon->species, level, personality, OTID_STRUCT_PRESET(otID), fixedIV);
 
+    // --- MOVES ---
     friendship = MAX_FRIENDSHIP;
-    // Give the chosen Pokémon its specified moves.
     for (j = 0; j < MAX_MON_MOVES; j++)
     {
         move = fmon->moves[j];
@@ -376,28 +380,28 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
 
         SetMonMoveSlot(dst, move, j);
         if (GetMoveEffect(move) == EFFECT_FRUSTRATION)
-            friendship = 0;  // Frustration is more powerful the lower the Pokémon's friendship is.
+            friendship = 0;
     }
 
     SetMonData(dst, MON_DATA_FRIENDSHIP, &friendship);
     SetMonData(dst, MON_DATA_HELD_ITEM, &fmon->heldItem);
 
-    // try to set ability. Otherwise, random of non-hidden as per vanilla
+    // --- ABILITY ---
     if (fmon->ability != ABILITY_NONE)
     {
         const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[fmon->species];
         u32 maxAbilities = ARRAY_COUNT(speciesInfo->abilities);
         for (ability = 0; ability < maxAbilities; ++ability)
-        {
             if (speciesInfo->abilities[ability] == fmon->ability)
                 break;
-        }
+
         if (ability >= maxAbilities)
             ability = 0;
+
         SetMonData(dst, MON_DATA_ABILITY_NUM, &ability);
     }
 
-    // EVs
+    // --- EVs ---
     if (fmon->ev != NULL)
     {
         SetMonData(dst, MON_DATA_HP_EV, &(fmon->ev[0]));
@@ -408,50 +412,29 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
         SetMonData(dst, MON_DATA_SPEED_EV, &(fmon->ev[5]));
     }
 
-    // IVs
+    // --- IVs ---
     if (fmon->iv)
         SetMonData(dst, MON_DATA_IVS, &(fmon->iv));
 
-    // Shiny
+    // --- SHINY ---
     if (fmon->isShiny)
     {
         u32 data = TRUE;
         SetMonData(dst, MON_DATA_IS_SHINY, &data);
     }
-    // --- ORIGINAL GIMMICK ASSIGNMENTS (kept for compatibility, but overridden below) ---
-    if (fmon->dynamaxLevel > 0)
-    {
-        u32 data = fmon->dynamaxLevel;
-        SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &data);
-    }
-    if (fmon->gigantamaxFactor)
-    {
-        u32 data = fmon->gigantamaxFactor;
-        SetMonData(dst, MON_DATA_GIGANTAMAX_FACTOR, &data);
-    }
-    if (fmon->teraType)
-    {
-        u32 data = fmon->teraType;
-        SetMonData(dst, MON_DATA_TERA_TYPE, &data);
-    }
 
-    // --- HARD DISABLE GIMMICKS FOR FACILITY ENEMY POKÉMON ---
+    // --- DISABLE GIMMICKS ---
     {
         u32 teraMystery = TYPE_MYSTERY;
         u32 blockDynamax = BLOCK_AI_DYNAMAX;
         u32 zero = 0;
 
-        // Disable Dynamax via sentinel
         SetMonData(dst, MON_DATA_DYNAMAX_LEVEL, &blockDynamax);
-
-        // Disable Gigantamax
         SetMonData(dst, MON_DATA_GIGANTAMAX_FACTOR, &zero);
-
-        // Disable Tera (TYPE_MYSTERY)
         SetMonData(dst, MON_DATA_TERA_TYPE, &teraMystery);
     }
-    
-    // Ball + stats
+
+    // --- BALL + STATS ---
     SetMonData(dst, MON_DATA_POKEBALL, &ball);
     CalculateMonStats(dst);
 }
