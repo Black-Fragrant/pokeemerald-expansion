@@ -26,8 +26,8 @@ const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] =
 void FillPartnerParty(u16 trainerId)
 {
     s32 i, j;
-    u32 ivs, level;
-    u16 monId;
+//  u32 ivs, level;
+//  u16 monId;
 
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
     SetFacilityPtrsGetLevel();
@@ -80,7 +80,7 @@ void FillPartnerParty(u16 trainerId)
             u8 monCount = 0;
             while (monSet[monCount] != 0xFFFF)
                 monCount++;
-            u16 usedMons[FRONTIER_MULTI_PARTY_SIZE] = {0};
+            u16 usedSpecies[FRONTIER_MULTI_PARTY_SIZE] = {0};
             u16 usedItems[FRONTIER_MULTI_PARTY_SIZE] = {0};
             u8 usedCount = 0;
 
@@ -95,10 +95,10 @@ void FillPartnerParty(u16 trainerId)
 
                     bool8 duplicate = FALSE;
 
-                    // Duplicate mon
+                    // Duplicate species
                     for (u8 k = 0; k < usedCount; k++)
                     {
-                        if (usedMons[k] == monId)
+                        if (usedSpecies[k] == fmon->species)
                         {
                             duplicate = TRUE;
                             break;
@@ -106,7 +106,7 @@ void FillPartnerParty(u16 trainerId)
                     }
 
                     // Duplicate item
-                    if (!duplicate)
+                    if (fmon->heldItem != ITEM_NONE)
                     {
                         for (u8 k = 0; k < usedCount; k++)
                         {
@@ -128,8 +128,8 @@ void FillPartnerParty(u16 trainerId)
                         break;
                 }
 
-                usedMons[usedCount]  = monId;
-                usedItems[usedCount] = gFacilityTrainerMons[monId].heldItem;
+                usedSpecies[usedCount] = gFacilityTrainerMons[monId].species;
+                usedItems[usedCount]   = gFacilityTrainerMons[monId].heldItem;
                 usedCount++;
 
                 gSaveBlock2Ptr->frontier.trainerIds[18 + i] = monId;

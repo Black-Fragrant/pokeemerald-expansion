@@ -209,6 +209,26 @@ static enum TrainerPicID PlayerPartnerGetTrainerBackPicId(enum DifficultyLevel d
     return trainerPicId;
 }
 
+// Maps FRONTIER_TRAINER_* IDs to TrainerPicID back sprites
+static const enum TrainerPicID sFrontierPartnerBackPicId[] =
+{
+    [FRONTIER_TRAINER_HILBERT_OFFENSIVE] = TRAINER_PIC_HILBERT,
+    [FRONTIER_TRAINER_HILBERT_DEFENSIVE] = TRAINER_PIC_HILBERT,
+    [FRONTIER_TRAINER_HILBERT_BALANCED]  = TRAINER_PIC_HILBERT,
+    [FRONTIER_TRAINER_HILDA_OFFENSIVE]   = TRAINER_PIC_HILDA,
+    [FRONTIER_TRAINER_HILDA_DEFENSIVE]   = TRAINER_PIC_HILDA,
+    [FRONTIER_TRAINER_HILDA_BALANCED]    = TRAINER_PIC_HILDA,
+    [FRONTIER_TRAINER_JOSHUA]            = TRAINER_PIC_CHEREN,
+};
+
+enum TrainerPicID GetFrontierPartnerBackPicId(u16 trainerId)
+{
+    if (trainerId < ARRAY_COUNT(sFrontierPartnerBackPicId))
+        return sFrontierPartnerBackPicId[trainerId];
+
+    return TRAINER_PIC_NONE;
+}
+
 // some explanation here
 // in emerald it's possible to have a tag battle in the battle frontier facilities with AI
 // which use the front sprite for both the player and the partner as opposed to any other battles (including the one with Steven) that use the back pic as well as animate it
@@ -235,21 +255,19 @@ static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler)
     else if (IsAiVsAiBattle())
     {
         trainerPicId = GetTrainerPicFromId(gPartnerTrainerId);
-        xPos = 60;
+        xPos = 90;
         yPos = 80;
     }
     else
     {
-        trainerPicId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
-        xPos = 32;
-        yPos = 80;
+        // Frontier partner — replace FRONT sprite with BACK sprite
+        trainerPicId = GetFrontierPartnerBackPicId(gPartnerTrainerId);
+        xPos = 90;
+        yPos = (8 - GetTrainerBackPicCoords(trainerPicId)->size) * 4 + 80;
     }
 
-    // Use back pic only if the partner Steven or is custom.
-    if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
-        isFrontPic = FALSE;
-    else
-        isFrontPic = TRUE;
+    // Always use back sprite
+    isFrontPic = FALSE;
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
 }
@@ -330,7 +348,7 @@ static void PlayerPartnerHandleIntroTrainerBallThrow(enum BattlerId battler)
     else if (IsAiVsAiBattle())
         trainerPal = GetTrainerFrontPicPalette(GetTrainerPicFromId(gPartnerTrainerId));
     else
-        trainerPal = GetTrainerFrontPicPalette(GetFrontierTrainerFrontSpriteId(gPartnerTrainerId)); // 2 vs 2 multi battle in Battle Frontier, load front sprite and pal.
+        trainerPal = GetTrainerBackPicPalette(GetFrontierPartnerBackPicId(gPartnerTrainerId));
 
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Controller_PlayerPartnerShowIntroHealthbox);
 }

@@ -33,6 +33,7 @@
 #include "constants/songs.h"
 #include "constants/party_menu.h"
 #include "constants/trainers.h"
+#include "battle_partner.h"
 
 static void RecordedPartnerHandleDrawTrainerPic(enum BattlerId battler);
 static void RecordedPartnerHandleTrainerSlide(enum BattlerId battler);
@@ -196,14 +197,14 @@ void RecordedPartnerBufferExecCompleted(enum BattlerId battler)
 
 static enum TrainerPicID RecordedPartnerGetTrainerBackPicId(enum DifficultyLevel difficulty)
 {
-    enum TrainerPicID trainerPicId;
-
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-        trainerPicId = gBattlePartners[difficulty][gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerPic;
+    if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
+    {
+        return gBattlePartners[difficulty][gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerPic;
+    }
     else
-        trainerPicId = GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION);
-
-    return trainerPicId;
+    {
+        return GetFrontierPartnerBackPicId(gPartnerTrainerId);
+    }
 }
 
 // some explanation here
@@ -214,7 +215,6 @@ static void RecordedPartnerHandleDrawTrainerPic(enum BattlerId battler)
     bool32 isFrontPic;
     s16 xPos, yPos;
     enum TrainerPicID trainerPicId;
-
     enum DifficultyLevel difficulty = GetBattlePartnerDifficultyLevel(gPartnerTrainerId);
 
     if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
@@ -226,21 +226,17 @@ static void RecordedPartnerHandleDrawTrainerPic(enum BattlerId battler)
     else if (IsAiVsAiBattle())
     {
         trainerPicId = GetTrainerPicFromId(gPartnerTrainerId);
-        xPos = 60;
+        xPos = 90;
         yPos = 80;
     }
     else
     {
-        trainerPicId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
-        xPos = 32;
-        yPos = 80;
+        trainerPicId = GetFrontierPartnerBackPicId(gPartnerTrainerId);
+        xPos = 90;
+        yPos = (8 - GetTrainerBackPicCoords(trainerPicId)->size) * 4 + 80;
     }
 
-    // Use back pic only if the partner Steven or is custom.
-    if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
-        isFrontPic = FALSE;
-    else
-        isFrontPic = TRUE;
+    isFrontPic = FALSE;
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
 }
@@ -290,7 +286,7 @@ static void RecordedPartnerHandleIntroTrainerBallThrow(enum BattlerId battler)
     else if (IsAiVsAiBattle())
         trainerPal = GetTrainerFrontPicPalette(GetTrainerPicFromId(gPartnerTrainerId));
     else
-        trainerPal = GetTrainerFrontPicPalette(GetFrontierTrainerFrontSpriteId(gPartnerTrainerId)); // 2 vs 2 multi battle in Battle Frontier, load front sprite and pal.
+        trainerPal = GetTrainerBackPicPalette(GetFrontierPartnerBackPicId(gPartnerTrainerId));
 
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Controller_RecordedPartnerShowIntroHealthbox);
 }

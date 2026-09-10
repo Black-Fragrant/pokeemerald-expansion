@@ -2041,13 +2041,13 @@ static void PlayerHandleDrawTrainerPic(enum BattlerId battler)
         if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         {
             if ((GetBattlerPosition(battler) & BIT_FLANK) != B_FLANK_LEFT) // Second mon, on the right.
-                xPos = 90;
+                xPos = 32;
             else // First mon, on the left.
                 xPos = 32;
 
             if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
             {
-                xPos = 90;
+                xPos = 32;
                 yPos = 80;
             }
             else
@@ -2062,16 +2062,7 @@ static void PlayerHandleDrawTrainerPic(enum BattlerId battler)
         }
     }
 
-    // Use front pic table for any tag battles unless your partner is Steven or a custom partner.
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
-    {
-        trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
-        isFrontPic = TRUE;
-    }
-    else // Use back pic in all the other usual circumstances.
-    {
-        isFrontPic = FALSE;
-    }
+    isFrontPic = FALSE;
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
 }

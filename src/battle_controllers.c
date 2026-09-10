@@ -2468,18 +2468,33 @@ void BtlController_HandleDrawTrainerPic(enum BattlerId battler, enum TrainerPicI
         {
             LoadSpritePaletteWithTag(GetTrainerBackPicPalette(trainerPicId), GetTrainerPicTag(trainerPicId, FALSE));
             SetMultiuseSpriteTemplateToTrainerBack(trainerPicId, GetBattlerPosition(battler));
+
             if (subpriority == -1)
                 subpriority = GetBattlerSpriteSubpriority(battler);
-            gBattleStruct->trainerSlideSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate,
-                                                             xPos,
-                                                             yPos,
-                                                             subpriority);
-            if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT)
-                gBattlerSpriteIds[battler] = gBattleStruct->trainerSlideSpriteIds[battler];
 
-            // Sets sprite priority to 1 so mons don't remain in foreground
+            gBattleStruct->trainerSlideSpriteIds[battler] = CreateSprite(
+                &gMultiuseSpriteTemplate,
+                xPos,
+                yPos,
+                subpriority
+            );
+
+            if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+            && GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT)
+            {
+                gBattlerSpriteIds[battler] = gBattleStruct->trainerSlideSpriteIds[battler];
+            }
+
             gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.priority = 1;
-            gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.paletteNum = IndexOfSpritePaletteTag(GetTrainerPicTag(trainerPicId, FALSE));
+            gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.paletteNum =
+                IndexOfSpritePaletteTag(GetTrainerPicTag(trainerPicId, FALSE));
+
+            // Preserve the timing used by the original in-game partner front-pic intro.
+            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER
+            && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
+            {
+                gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].y2 = 48;
+            }
         }
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].x2 = DISPLAY_WIDTH;
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].sSpeedX = -2;
