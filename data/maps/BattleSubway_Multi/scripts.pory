@@ -14,7 +14,16 @@ mapscripts BattleSubway_Multi_MapScripts
 script BattleSubway_Multi_On_Transition
 {
 	tower_setpartnergfx
+	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	goto_if_eq(VAR_RESULT, 0, BattleSubway_Multi_EventScript_PositionPartner) //this is the first person you battle
 	end
+}
+
+script BattleSubway_Multi_EventScript_PositionPartner
+{
+	setobjectxyperm (LOCALID_BATTLESUBWAY_MULTI_PARTNER, 2, 7)
+    setobjectmovementtype (LOCALID_BATTLESUBWAY_MULTI_PARTNER, MOVEMENT_TYPE_FACE_UP)
+	return
 }
 
 script BattleSubway_Multi_EventScript_TurnPlayer
@@ -36,10 +45,17 @@ script BattleSubway_Multi_EventScript_Loading
     // the tower_setopponent command was ran in the previous map's scripts
 	setvar(VAR_TEMP_0, 1)
 	getplayerxy (VAR_TEMP_1, VAR_TEMP_2)
-	call_if_eq (VAR_TEMP_1, 1, BattleSubway_EventScript_PlayerWalksToEnemy1)
-	call_if_eq (VAR_TEMP_1, 2, BattleSubway_EventScript_PlayerWalksToEnemy2)
+	call_if_eq (VAR_TEMP_1, 1, BattleSubway_EventScript_PlayerWalksToEnemyMulti1)
+	call_if_eq (VAR_TEMP_1, 2, BattleSubway_EventScript_PlayerWalksToEnemyMulti2)
   	tower_getopponentintro(0)
+	delay(2)
 	msgbox(gStringVar4, MSGBOX_DEFAULT, TRUE, LOCALID_SUBWAY_M_OPPONENT_1)
+	waitmessage
+	destroy_speech_bubble()
+    closemessage()
+  	tower_getopponentintro(1)
+	delay(2)
+	msgbox(gStringVar4, MSGBOX_DEFAULT, TRUE, LOCALID_SUBWAY_M_OPPONENT_2)
 	waitmessage
 	call(BattleSubway_Multi_EventScript_DoBattle)
  	goto_if_eq(VAR_RESULT, B_OUTCOME_WON, BattleSubway_Multi_EventScript_DefeatedOpponent)
@@ -53,9 +69,11 @@ script BattleSubway_Multi_EventScript_DefeatedOpponent
 	delay(10)
 	tower_setbattlewon //current challenge number 0-6
 	goto_if_eq(VAR_RESULT, FRONTIER_STAGES_PER_CHALLENGE, BattleSubway_Multi_EventScript_RecordBeforeWarp) //warp to intermediate station after 7 battles
-    applymovement(LOCALID_SUBWAY_M_OPPONENT_1, BattleSubway_Movement_EnemyWalkUp2TimesFaceDown)
+    applymovement(LOCALID_SUBWAY_M_OPPONENT_1, BattleSubway_Movement_EnemyWalkUp1TimesFaceDown)
+    applymovement(LOCALID_SUBWAY_M_OPPONENT_2, BattleSubway_Movement_EnemyWalkUpLeftUpFaceDown)
   	waitmovement(0)
-    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToComputer)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToComputerMulti)
+    applymovement(LOCALID_BATTLESUBWAY_MULTI_PARTNER, BattleSubway_Movement_PartnerWalkToComputer)
   	waitmovement(0)
 	delay(30)
 	playfanfare(MUS_HEAL)
@@ -103,6 +121,7 @@ script BattleSubway_Multi_EventScript_Proceeding
 {
 	closemessage
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToNextCar)
+    applymovement(LOCALID_BATTLESUBWAY_MULTI_PARTNER, BattleSubway_Movement_PartnerWalkToNextCar)
   	waitmovement(0)
 	delay(20)
     playse(SE_EXIT)
@@ -250,9 +269,11 @@ script BattleSubway_Multi_EventScript_WarpToStationLost_Cont
 
 script BattleSubway_Multi_EventScript_WarpToStationWon
 {
-    applymovement(LOCALID_SUBWAY_M_OPPONENT_1, BattleSubway_Movement_EnemyWalkUp2TimesFaceDown)
+    applymovement(LOCALID_SUBWAY_M_OPPONENT_1, BattleSubway_Movement_EnemyWalkUp1TimesFaceDown)
+    applymovement(LOCALID_SUBWAY_M_OPPONENT_2, BattleSubway_Movement_EnemyWalkUpLeftUpFaceDown)
   	waitmovement(0)
-    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToExit)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkToExitMulti)
+    applymovement(LOCALID_BATTLESUBWAY_MULTI_PARTNER, BattleSubway_Movement_PartnerWalkToExit)
   	waitmovement(0)
 	frontier_set(FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON) //sets specail var 8006 to 3
 	setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_WON)

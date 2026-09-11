@@ -309,6 +309,30 @@ BattleSubway_EventScript_PlayerWalksToEnemy2::
     applymovement LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkUp2TimesRight3Times
     waitmovement 0 
     return
+	
+BattleSubway_EventScript_PlayerWalksToEnemyMulti1::
+    applymovement LOCALID_PLAYER, Common_Movement_WalkRight
+    waitmovement 0 
+	playse SE_EXIT
+	addobject LOCALID_BATTLESUBWAY_MULTI_PARTNER
+	waitse 
+	delay 20
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkRight3TimesWalkUp1TimeFaceRight
+    applymovement LOCALID_BATTLESUBWAY_MULTI_PARTNER, BattleSubway_Movement_PartnerWalkRight4TimesWalkDown1TimeFaceRight
+    waitmovement 0 
+    return
+	
+BattleSubway_EventScript_PlayerWalksToEnemyMulti2::
+    applymovement LOCALID_PLAYER, Common_Movement_WalkUp
+    waitmovement 0 
+	playse SE_EXIT
+	addobject LOCALID_BATTLESUBWAY_MULTI_PARTNER
+	waitse 
+	delay 20
+    applymovement LOCALID_BATTLESUBWAY_MULTI_PARTNER, BattleSubway_Movement_PartnerWalkUp1TimesRight3Times
+    applymovement LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkUp2TimesRight3Times
+    waitmovement 0 
+    return
 
 BattleSubway_Movement_Platform_Pos1:
 	face_down
@@ -436,8 +460,45 @@ BattleSubway_Movement_PlayerWalkUp2TimesRight3Times:
 	walk_right
 	step_end
 
+BattleSubway_Movement_PlayerWalkRight3TimesWalkUp1TimeFaceRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_in_place_right
+	step_end
+
+BattleSubway_Movement_PartnerWalkRight4TimesWalkDown1TimeFaceRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_in_place_right
+	step_end
+
+BattleSubway_Movement_PartnerWalkUp1TimesRight3Times:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
 BattleSubway_Movement_EnemyWalkUp2TimesFaceDown:
 	walk_up
+	walk_up
+	walk_in_place_down
+	step_end
+
+BattleSubway_Movement_EnemyWalkUp1TimesFaceDown:
+	walk_up
+	walk_in_place_down
+	step_end
+
+BattleSubway_Movement_EnemyWalkUpLeftUpFaceDown:
+	walk_up
+	walk_up
+	walk_left
 	walk_up
 	walk_in_place_down
 	step_end
@@ -455,7 +516,38 @@ BattleSubway_Movement_PlayerWalkToComputer:
 	walk_up
 	step_end
 
+BattleSubway_Movement_PlayerWalkToComputerMulti:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+BattleSubway_Movement_PartnerWalkToComputer:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
 BattleSubway_Movement_PlayerWalkToNextCar:
+	walk_down
+	walk_down
+	walk_in_place_right
+	step_end
+
+BattleSubway_Movement_PartnerWalkToNextCar:
 	walk_down
 	walk_down
 	walk_in_place_right
@@ -470,6 +562,31 @@ BattleSubway_Movement_PlayerWalkToExit:
 	walk_right
 	walk_down
 	walk_down
+	step_end
+
+BattleSubway_Movement_PlayerWalkToExitMulti:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+BattleSubway_Movement_PartnerWalkToExit:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_in_place_down
 	step_end
 
 BattleSubway_Movement_TrainArrivalAtInterStation1:

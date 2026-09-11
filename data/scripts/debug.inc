@@ -195,9 +195,7 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setvar VAR_ROUTE_5_STATE, 1
-	warpsilent MAP_ROUTE5, 52, 20
-	waitstate
+	setsubwaywinstreak FRONTIER_MODE_MULTIS, 6
 	release 
     end
 
@@ -205,7 +203,6 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1}$"
 
 Debug_EventScript_Script_2::
-	setsubwaywinstreak FRONTIER_MODE_MULTIS, 20
 	release 
     end
 

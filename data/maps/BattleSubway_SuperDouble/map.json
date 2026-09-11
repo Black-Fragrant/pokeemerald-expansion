@@ -2,7 +2,7 @@
   "id": "MAP_BATTLE_SUBWAY_SUPER_DOUBLE",
   "name": "BattleSubway_SuperDouble",
   "layout": "LAYOUT_BATTLE_SUBWAY_SUPER_DOUBLE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_BW_VS_BATTLE_SUBWAY_BOSS",
   "region_map_section": "MAPSEC_BATTLE_SUBWAY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
