@@ -1531,10 +1531,16 @@ static void Task_GiveExpToMon(u8 taskId)
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, RET_VALUE_LEVELED_UP, (B_LEVEL_UP_NOTIFICATION >= GEN_9) ? 0 : gainedExp);
 
             if (IsDoubleBattle() == TRUE
-             && (monId == gBattlerPartyIndexes[battler] || monId == gBattlerPartyIndexes[BATTLE_PARTNER(battler)]))
+            && (monId == gBattlerPartyIndexes[battler]
+            || (BattlersShareParty(battler, BATTLE_PARTNER(battler))
+            && monId == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])))
+            {
                 gTasks[taskId].func = Task_LaunchLvlUpAnim;
+            }
             else
+            {
                 gTasks[taskId].func = Task_SetControllerToWaitForString;
+            }
         }
         else
         {
@@ -1633,8 +1639,12 @@ static void Task_LaunchLvlUpAnim(u8 taskId)
     enum BattlerId battler = gTasks[taskId].tExpTask_battler;
     u8 monIndex = gTasks[taskId].tExpTask_monId;
 
-    if (IsDoubleBattle() == TRUE && monIndex == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])
+    if (IsDoubleBattle() == TRUE
+    && BattlersShareParty(battler, BATTLE_PARTNER(battler))
+    && monIndex == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])
+    {
         battler ^= BIT_FLANK;
+    }
 
     InitAndLaunchSpecialAnimation(battler, battler, battler, B_ANIM_LVL_UP);
     gTasks[taskId].func = Task_UpdateLvlInHealthbox;
@@ -1648,10 +1658,24 @@ static void Task_UpdateLvlInHealthbox(u8 taskId)
     {
         u8 monIndex = gTasks[taskId].tExpTask_monId;
 
-        if (IsDoubleBattle() == TRUE && monIndex == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])
-            UpdateHealthboxAttribute(gHealthboxSpriteIds[BATTLE_PARTNER(battler)], &gParties[B_TRAINER_PLAYER][monIndex], HEALTHBOX_ALL);
+        if (IsDoubleBattle() == TRUE
+        && BattlersShareParty(battler, BATTLE_PARTNER(battler))
+        && monIndex == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])
+        {
+            UpdateHealthboxAttribute(
+                gHealthboxSpriteIds[BATTLE_PARTNER(battler)],
+                &gParties[B_TRAINER_PLAYER][monIndex],
+                HEALTHBOX_ALL
+            );
+        }
         else
-            UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], &gParties[B_TRAINER_PLAYER][monIndex], HEALTHBOX_ALL);
+        {
+            UpdateHealthboxAttribute(
+                gHealthboxSpriteIds[battler],
+                &gParties[B_TRAINER_PLAYER][monIndex],
+                HEALTHBOX_ALL
+            );
+        }
 
         gTasks[taskId].func = Task_SetControllerToWaitForString;
     }
