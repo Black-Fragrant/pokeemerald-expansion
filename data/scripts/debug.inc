@@ -195,10 +195,9 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setvar VAR_RESULT, 1
-	special LoadSubwayMultiPartnerData
-	delay 10
-	addobject LOCALID_PLATFORM_MULTITRAIN_PARTNER
+	setvar VAR_ROUTE_5_STATE, 1
+	warpsilent MAP_ROUTE5, 52, 20
+	waitstate
 	release 
     end
 

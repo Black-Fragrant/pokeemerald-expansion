@@ -66,6 +66,7 @@ extern const u16 gHeldItemPalette[];
 
 extern void (*gItemUseCB)(u8, TaskFunc);
 extern const struct SpriteTemplate gSpriteTemplate_StatusIcons;
+extern u8 gMultiSummaryPlayerCount;
 
 /*
 **DS PARTY SCREEN**

@@ -126,12 +126,12 @@ static const u8 sPartyMenuSpriteCoords[PARTY_LAYOUT_COUNT][PARTY_SIZE][4 * 2] =
     },
     [PARTY_LAYOUT_MULTI] =
     {
-        { 24,  14,  38,  33, 26,   33,  24,  18},
-        {136,  22, 150,  41, 138,  41, 136,  26},
-        { 24,  54,  38,  73, 26,   73,  24,  58},
-        {136,  62, 150,  81, 138,  81, 136,  66},
-        { 24,  94,  38, 113, 26,  113,  24,  98},
-        {136, 102, 150, 121, 138, 121, 136, 106},
+        { 24,  14,  38,  33, 26,   33,  24,  18}, // P1 top-left
+        { 24,  54,  38,  73, 26,   73,  24,  58}, // P2 middle-left
+        { 24,  94,  38, 113, 26,  113,  24,  98}, // P3 bottom-left
+        {136,  22, 150,  41, 138,  41, 136,  26}, // A1 top-right
+        {136,  62, 150,  81, 138,  81, 136,  66}, // A2 middle-right
+        {136, 102, 150, 121, 138, 121, 136, 106}, // A3 bottom-right
     },
     [PARTY_LAYOUT_MULTI_SHOWCASE] =
     {
@@ -470,7 +470,7 @@ static const struct WindowTemplate sMultiPartyMenuWindowTemplate[] =
 
 static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
 {
-    {//Slot 0 left
+    {
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 0,
@@ -479,7 +479,7 @@ static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
         .paletteNum = 3,
         .baseBlock = 0x63,
     },
-    {//Slot 2 left
+    {
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 5,
@@ -488,7 +488,7 @@ static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
         .paletteNum = 5,
         .baseBlock = 0xEF, //0xDF,
     },
-    {//Slot 4 left
+    {
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 10,
@@ -497,7 +497,7 @@ static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
         .paletteNum = 7,
         .baseBlock = 0x17B, //0x14B,
     },
-    {//Slot 1 right
+    {
         .bg = 0,
         .tilemapLeft = 15,
         .tilemapTop = 1,
@@ -506,7 +506,7 @@ static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
         .paletteNum = 4,
         .baseBlock = 0xA9,
     },
-    {//Slot 3 right
+    {
         .bg = 0,
         .tilemapLeft = 15,
         .tilemapTop = 6,
@@ -515,7 +515,7 @@ static const struct WindowTemplate sShowcaseMultiPartyMenuWindowTemplate[] =
         .paletteNum = 6,
         .baseBlock = 0x135, //0x115,
     },
-    {//Slot 5 right
+    {
         .bg = 0,
         .tilemapLeft = 15,
         .tilemapTop = 11,
