@@ -2959,7 +2959,7 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
 {
     u32 i;
     u8 facilityClass;
-    u8 trainerObjectGfxId;
+    u16 trainerObjectGfxId;
 
     SetFacilityPtrsGetLevel();
 
@@ -2996,9 +2996,11 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
         if (gTowerMaleFacilityClasses[i].class == facilityClass)
             break;
     }
+
     if (i != ARRAY_COUNT(gTowerMaleFacilityClasses))
     {
         trainerObjectGfxId = gTowerMaleFacilityClasses[i].gfxId;
+
         switch (tempVarId)
         {
         case 0:
@@ -3020,9 +3022,11 @@ void SetBattleFacilityTrainerGfxId(u16 trainerId, u8 tempVarId)
         if (gTowerFemaleFacilityClasses[i].class == facilityClass)
             break;
     }
+
     if (i != ARRAY_COUNT(gTowerFemaleFacilityClasses))
     {
         trainerObjectGfxId = gTowerFemaleFacilityClasses[i].gfxId;
+
         switch (tempVarId)
         {
         case 0:

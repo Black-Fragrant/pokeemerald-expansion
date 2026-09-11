@@ -14,7 +14,7 @@ mapscripts BattleSubway_Multi_MapScripts
 script BattleSubway_Multi_On_Transition
 {
 	tower_setpartnergfx
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	special(GetSubwayCurrentBattleNum)
 	goto_if_eq(VAR_RESULT, 0, BattleSubway_Multi_EventScript_PositionPartner) //this is the first person you battle
 	end
 }
@@ -28,7 +28,7 @@ script BattleSubway_Multi_EventScript_PositionPartner
 
 script BattleSubway_Multi_EventScript_TurnPlayer
 {
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	special(GetSubwayCurrentBattleNum)
 	goto_if_eq(VAR_RESULT, 0, BattleSubway_Multi_EventScript_TurnPlayer2) //this is the first person you battle
 	turnobject (LOCALID_PLAYER, DIR_EAST)
 	end()
@@ -86,7 +86,7 @@ script BattleSubway_Multi_EventScript_AskReadyForOpponent
 {
 	buffersubwaywinstreak(FRONTIER_MODE_MULTIS)
 	delay(10)
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	special(GetSubwayCurrentBattleNum)
     addvar(VAR_RESULT, 1)
     buffernumberstring(STR_VAR_2, VAR_RESULT)
 	msgbox(BattleSubway_Text_CurrentWinStreakNextOpponent, MSGBOX_TRANSPARENT)
@@ -165,6 +165,7 @@ script BattleSubway_Multi_EventScript_PauseChallenge
 {
 	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
 	waitmessage
+	clearflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)
     setdynamicwarp(MAP_PLATFORM_MULTI_TRAIN, 16, 10)
 	tower_save(CHALLENGE_STATUS_PAUSED) 
 	// Saves the entire Frontier challenge state, sets challengeStatus, sets challengePaused = TRUE, clears enemy party, and performs a full Frontier save.

@@ -1358,6 +1358,10 @@ void UpdateMultiPartner(void)
     u16 partnerId = gSaveBlock2Ptr->frontier.trainerIds[17];
     u16 personalityChoice = VarGet(VAR_RESULT);   // 0 = O, 1 = D, 2 = B
 
+    // Only valid personality choices are 0, 1, and 2.
+    if (personalityChoice > 2)
+        return;
+
     // Only Hilbert/Hilda get personality updates
     if (partnerId >= FRONTIER_TRAINER_HILBERT_OFFENSIVE &&
         partnerId <= FRONTIER_TRAINER_HILBERT_BALANCED)
@@ -1379,6 +1383,9 @@ void UpdateMultiPartner(void)
 
     // Store updated partner ID
     gSaveBlock2Ptr->frontier.trainerIds[17] = partnerId;
+
+    gSaveBlock2Ptr->frontier.trainerIds[18] = 0xFFFF;
+    gSaveBlock2Ptr->frontier.trainerIds[19] = 0xFFFF;
 
     // Update overworld sprite in real time
     SetBattleFacilityTrainerGfxId(partnerId, 0xF);
@@ -1778,6 +1785,16 @@ static void SetMultiPartnerGfx(void)
 {
     // 0xF below means use VAR_OBJ_GFX_ID_E
     SetBattleFacilityTrainerGfxId(gSaveBlock2Ptr->frontier.trainerIds[17], 0xF);
+}
+
+void ResetSubwayCurrentBattleNum(void)
+{
+    gSaveBlock2Ptr->frontier.curChallengeBattleNum = 0;
+}
+
+void GetMultiPartnerTrainerId(void)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->frontier.trainerIds[17];
 }
 
 static void SetTowerInterviewData(void)
@@ -2294,6 +2311,11 @@ void SetSubwayWinStreak(void)
 
     if (streak > oldRecord)
         gSaveBlock2Ptr->frontier.towerRecordWinStreaks[mode][lvlMode] = streak;
+}
+
+void GetSubwayCurrentBattleNum(void)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->frontier.curChallengeBattleNum;
 }
 
 static void GetTowerRecordWinStreak(void)

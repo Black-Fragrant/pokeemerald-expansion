@@ -326,6 +326,7 @@ script InterPlatform_Single_EventScript_Conductor_SaveBeforeChallenge
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
 	goto_if_eq (VAR_RESULT, 0, InterPlatform_Single_EventScript_Conductor_CancelChallengeSaveFailed)
     fadescreen(FADE_TO_BLACK)
+	special(ResetSubwayCurrentBattleNum)
     setvar(VAR_BATTLE_SUBWAY_BOARDING, CHALLENGE_STATUS_SAVING)
     warpsilent(MAP_INTER_PLATFORM_SINGLE, 15, 8)
     waitstate

@@ -670,6 +670,9 @@ gSpecials::
 	def_special SetMsgboxTransparentFlag
 	def_special CheckIfNameChanged
 	def_special SetSubwayWinStreak
+	def_special GetSubwayCurrentBattleNum
 	def_special AdjustPlatformNPCAmount
 	def_special LoadSubwayMultiPartnerData
 	def_special UpdateMultiPartner
+	def_special GetMultiPartnerTrainerId
+	def_special ResetSubwayCurrentBattleNum

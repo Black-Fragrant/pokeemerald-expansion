@@ -14,6 +14,7 @@ mapscripts Platform_MultiTrain_MapScripts
 
 script Platform_MultiTrain_On_Transition
 {
+	tower_setpartnergfx
 //	setvar(OBJ_EVENT_GFX_VAR_E, OBJ_EVENT_GFX_YOUNGSTER) //this is a padding which is no longer necessary
 	end()
 }
@@ -40,9 +41,30 @@ script Platform_MultiTrain_EventScript_QuitWithoutSaving
 
 script Platform_MultiTrain_EventScript_WalkFromTrainToConductor
 {
+    applymovement(LOCALID_MULTITRAIN_AGENT, Common_Movement_FaceRight)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkDown)
+    waitmovement(0)
+	playse(SE_EXIT)
+	addobject(LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST)
+	waitse
+	delay(10)
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkBackFromTrain)
     applymovement(LOCALID_MULTITRAIN_AGENT, BattleSubway_Movement_ConductorLookAtPlayerWalkingBack)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST, BattleSubway_Movement_PartnerWalkBackFromTrain)
     waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
+    waitmovement(0)
+	delay(10)
+	msgbox("That was really fun!\n"
+           "Let's battle together again!", MSGBOX_DEFAULT, TRUE, LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST)
+    destroy_speech_bubble()
+    closemessage()
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST, BattleSubway_Movement_PartnerWalkAway)
+    waitmovement(0)
+	removeobject(LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST)
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
+    waitmovement(0)
+	delay(10)
     return
 }
 
@@ -90,6 +112,8 @@ script Platform_MultiTrain_EventScript_ResumeChallenge2
     delay(10)
 	msgbox(BattleSubway_Text_SavingDontTurnOff, MSGBOX_TRANSPARENT)
 	waitmessage
+	setflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)
+    setdynamicwarp(MAP_PLATFORM_MULTI_TRAIN, 16, 10)
 	tower_save(CHALLENGE_STATUS_SAVING)
 	playse(SE_SAVE)
 	waitse
@@ -99,7 +123,46 @@ script Platform_MultiTrain_EventScript_ResumeChallenge2
     closemessage()
 	frontier_set(FRONTIER_DATA_PAUSED, FALSE)
     // Only writes a single boolean (challengePaused = FALSE) and does nothing else. They are not interchangeable. One is a full save operation, the other is a single flag write.
-	goto(Platform_MultiTrain_EventScript_BoardTheTrain)
+	goto(Platform_MultiTrain_EventScript_ResumeTheTrain)
+	end
+}
+
+script Platform_MultiTrain_EventScript_ResumeTheTrain
+{
+	setvar(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_PARTY_ORDER) // these three load the saved Frontier party selection
+	setvar(VAR_0x8005, FRONTIER_MULTI_PARTY_SIZE) 
+	special(CallFrontierUtilFunc)
+    callnative(SetPartyToLevel50)
+	setvar(VAR_RESULT, 0)
+	bufferstring(STR_VAR_1, text("Multi"))
+	msgbox(BattleSubway_Text_NowPleaseBoardTheTrain, MSGBOX_DEFAULT, TRUE, LOCALID_MULTITRAIN_AGENT)
+    destroy_speech_bubble()
+    closemessage
+    applymovement(LOCALID_MULTITRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER_PAUSE, moves(walk_right * 6, walk_up))
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos2)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+	delay(10)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER_PAUSE, moves(walk_up, delay_16, set_invisible))
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+    delay(20)
+    removeobject(LOCALID_MULTITRAIN_0)
+    addobject(LOCALID_MULTITRAIN_1)
+    applymovement(LOCALID_MULTITRAIN_1, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_MULTITRAIN_2, BattleSubway_Movement_TrainLeavingStation)
+    applymovement(LOCALID_MULTITRAIN_3, BattleSubway_Movement_TrainLeavingStation)
+    waitmovement(0)
+	fadescreen(FADE_TO_BLACK)
+	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
+	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
+	special(GetSubwayCurrentBattleNum)
+	goto_if_eq(VAR_RESULT, 0, Platform_MultiTrain_EventScript_BoardTheTrain_Warp2) //this is the first person you battle
+	warpsilent(MAP_BATTLE_SUBWAY_MULTI, 1, 5)
+	waitstate
 	end
 }
 
@@ -110,7 +173,6 @@ script Platform_MultiTrain_EventScript_Trigger
     applymovement(LOCALID_MULTITRAIN_AGENT, Common_Movement_FacePlayer)
     waitmovement(0)
 	setvar(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER) 
-	clearflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER) // you have not chosen a partner
 	special(SavePlayerParty)
 	bufferstring(STR_VAR_1, text("Multi"))
 	msgbox(BattleSubway_Text_WelcomeToTheBattleSubway, MSGBOX_DEFAULT, TRUE, LOCALID_MULTITRAIN_AGENT)
@@ -207,32 +269,162 @@ script Platform_MultiTrain_EventScript_SaveBeforeChallenge
 	call(Common_EventScript_SaveGame)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
 	goto_if_eq (VAR_RESULT, 0, Platform_MultiTrain_EventScript_CancelChallengeSaveFailed)
+	closemessage
+	special(ResetSubwayCurrentBattleNum)
 	incrementgamestat(GAME_STAT_ENTERED_BATTLE_TOWER) //you have entered the tower +1 times
 //  select a multi battle partner here
 	setvar(VAR_RESULT, 1) //this is the default partner
 	special(LoadSubwayMultiPartnerData)
 	delay(10)
 	addobject(LOCALID_PLATFORM_MULTITRAIN_PARTNER)
-//  call(Platform_MultiTrain_EventScript_PartnerWalksToPlayer)
+	call(Platform_MultiTrain_EventScript_PartnerWalksToPlayer)
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
-//	call_if_unset(FLAG_BATTLE_SUBWAY_PARTNER_HILDA, Platform_MultiTrain_EventScript_HildaIntroduce)
-//	call_if_set(FLAG_BATTLE_SUBWAY_PARTNER_HILDA, Platform_MultiTrain_EventScript_HildaMeetagain)
-	msgbox("What sort of Pokémon should I use?", MSGBOX_DEFAULT, TRUE, LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+	call(Platform_MultiTrain_EventScript_PartnerDialogues)
+    destroy_speech_bubble()
+    closemessage()
+	call(Platform_MultiTrain_EventScript_UpdateCommonPartner)
+	special(UpdateMultiPartner)
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	call_if_eq (VAR_TEMP_1, 9, Platform_MultiTrain_EventScript_SBC_Pos1)
+	call_if_eq (VAR_TEMP_1, 10, Platform_MultiTrain_EventScript_SBC_Pos2)
+	call_if_eq (VAR_TEMP_1, 11, Platform_MultiTrain_EventScript_SBC_Pos3)
+	goto(Platform_MultiTrain_EventScript_BoardTheTrain)
+}
+
+script Platform_MultiTrain_EventScript_PartnerWalksToPlayer
+{
+	getplayerxy (VAR_TEMP_0, VAR_TEMP_1)
+	goto_if_eq (VAR_TEMP_1, 9, Platform_MultiTrain_EventScript_PWPT_Pos1)
+	goto_if_eq (VAR_TEMP_1, 10, Platform_MultiTrain_EventScript_PWPT_Pos2)
+	goto_if_eq (VAR_TEMP_1, 11, Platform_MultiTrain_EventScript_PWPT_Pos3)
+	return
+}
+
+script Platform_MultiTrain_EventScript_PWPT_Pos1
+{
+	applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_right * 6, walk_down * 1, walk_right * 2))
+	waitmovement(0)
+	return
+}
+
+script Platform_MultiTrain_EventScript_PWPT_Pos2
+{
+	applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_right * 6, walk_down * 2, walk_right * 1))
+	waitmovement(0)
+	return
+}
+
+script Platform_MultiTrain_EventScript_PWPT_Pos3
+{
+	applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_right * 6, walk_down * 3, walk_right * 2))
+	waitmovement(0)
+	return
+}
+
+script Platform_MultiTrain_EventScript_PartnerDialogues
+{
+    special(GetMultiPartnerTrainerId)
+    goto_if_le(VAR_RESULT, FRONTIER_TRAINER_HILDA_BALANCED, Platform_MultiTrain_EventScript_DefaultPartnerDialogues)
+//  add expanded partner dialogues here
+	return
+}
+
+script Platform_MultiTrain_EventScript_DefaultPartnerDialogues
+{
+	goto_if_set(FLAG_BATTLE_SUBWAY_PARTNER_HILDA, Platform_MultiTrain_EventScript_HildaMeetagain)
+	setflag(FLAG_BATTLE_SUBWAY_PARTNER_HILDA)
+	msgbox("Hi! I'm Hilda!\p"
+		   "You're challenging the Multi Train\n"
+		   "for the first time, right?\p"
+		   "You can't take this challenge alone.\n"
+		   "You need a partner!", MSGBOX_DEFAULT, TRUE, LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+	return
+}
+
+script Platform_MultiTrain_EventScript_HildaMeetagain
+{
+	msgbox("Hi, {PLAYER}!\n"
+		   "Nice to see you again!", MSGBOX_DEFAULT, TRUE, LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+	return
+}
+
+script Platform_MultiTrain_EventScript_UpdateCommonPartner
+{
+	msgbox("Are you here by yourself today?\p"
+		   "Why don't you team up with me, then?\n"
+		   "It'll be fun!", MSGBOX_DEFAULT, TRUE, LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+    special(GetMultiPartnerTrainerId)
+    goto_if_gt(VAR_RESULT, FRONTIER_TRAINER_HILDA_BALANCED, BattleSubway_EventScript_NoUpdatePartner)
+    setvar(VAR_LAST_TALKED, LOCALID_PLATFORM_MULTITRAIN_PARTNER)
+	msgbox("What sort of Pokémon should I use?", MSGBOX_DEFAULT, FALSE)
     waitmessage
+    goto(BattleSubway_EventScript_DefaultPartnerOptions)
+}
+
+script BattleSubway_EventScript_DefaultPartnerOptions
+{
 	dynmultichoice(20, 0, TRUE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "Focused On Attack",
         "Focused On Defense",
         "Focused On Balance")
+	call_if_eq(VAR_RESULT, 0, BattleSubway_EventScript_FocusOnAttack)
+	call_if_eq(VAR_RESULT, 1, BattleSubway_EventScript_FocusOnDefense)
+	call_if_eq(VAR_RESULT, 2, BattleSubway_EventScript_FocusOnBalance)
+    return    
+}
+
+script BattleSubway_EventScript_NoUpdatePartner
+{
+    return
+}
+
+script BattleSubway_EventScript_FocusOnAttack
+{
+	msgbox("OK. I'll Focus on Attack!\n"
+           "Then, let's begin!", MSGBOX_DEFAULT, FALSE)
     destroy_speech_bubble()
-//	call_if_eq(VAR_RESULT, 0, Platform_MultiTrain_EventScript_FocusOnAttack)
-//	call_if_eq(VAR_RESULT, 1, Platform_MultiTrain_EventScript_FocusOnDefense)
-//	call_if_eq(VAR_RESULT, 2, Platform_MultiTrain_EventScript_FocusOnBalance)
-	special(UpdateMultiPartner)
-	setflag(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER)
+    closemessage()
+    return 
+}
+
+script BattleSubway_EventScript_FocusOnDefense
+{
+	msgbox("OK. I'll Focus on Defense!\n"
+           "Then, let's begin!", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage()
+    return 
+}
+
+script BattleSubway_EventScript_FocusOnBalance
+{
+	msgbox("OK. I'll Focus on a balance between!\n"
+           "Attack and Defense! let's begin!", MSGBOX_DEFAULT, FALSE)
+    destroy_speech_bubble()
+    closemessage()
+    return 
+}
+
+script Platform_MultiTrain_EventScript_SBC_Pos1
+{
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceDown)
+    waitmovement(0)
+	return
+}
+
+script Platform_MultiTrain_EventScript_SBC_Pos2
+{
     applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
-	goto(Platform_MultiTrain_EventScript_BoardTheTrain)
+	return
+}
+
+script Platform_MultiTrain_EventScript_SBC_Pos3
+{
+    applymovement(LOCALID_PLAYER, Common_Movement_WalkInPlaceUp)
+    waitmovement(0)
+	return
 }
 
 script Platform_MultiTrain_EventScript_BoardTheTrain
@@ -262,14 +454,14 @@ script Platform_MultiTrain_EventScript_BoardTheTrain
 	fadescreen(FADE_TO_BLACK)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
 	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
-	goto_if_eq(VAR_RESULT, 0, Platform_MultiTrain_EventScript_BoardTheTrain2) //this is the first person you battle
+	special(GetSubwayCurrentBattleNum)
+	goto_if_eq(VAR_RESULT, 0, Platform_MultiTrain_EventScript_BoardTheTrain_Warp2) //this is the first person you battle
 	warpsilent(MAP_BATTLE_SUBWAY_MULTI, 1, 5)
 	waitstate
 	end
 }
 
-script Platform_MultiTrain_EventScript_BoardTheTrain2
+script Platform_MultiTrain_EventScript_BoardTheTrain_Warp2
 {
 	warpsilent(MAP_BATTLE_SUBWAY_MULTI, 2, 7)
 	waitstate
@@ -279,7 +471,13 @@ script Platform_MultiTrain_EventScript_BoardTheTrain2
 script Platform_MultiTrain_EventScript_BTT_Pos1
 {
     applymovement(LOCALID_MULTITRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_right, walk_down, walk_right * 4, walk_up))
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos1)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+	delay(10)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_up, delay_16, set_invisible))
     waitmovement(0)
     return
 }
@@ -287,7 +485,13 @@ script Platform_MultiTrain_EventScript_BTT_Pos1
 script Platform_MultiTrain_EventScript_BTT_Pos2
 {
     applymovement(LOCALID_MULTITRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_right * 6, walk_up))
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos2)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+	delay(10)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_up, delay_16, set_invisible))
     waitmovement(0)
     return
 }
@@ -295,7 +499,13 @@ script Platform_MultiTrain_EventScript_BTT_Pos2
 script Platform_MultiTrain_EventScript_BTT_Pos3
 {
     applymovement(LOCALID_MULTITRAIN_AGENT, BattleSubway_Movement_ConductorLeadToBoard)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_right, walk_up, walk_right * 4, walk_up))
     applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerBoardingTheTrain_Pos3)
+    waitmovement(0)
+    playse(SE_EXIT)
+    waitse
+	delay(10)
+    applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER, moves(walk_up, delay_16, set_invisible))
     waitmovement(0)
     return
 }

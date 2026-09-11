@@ -160,6 +160,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_NIMBASA_GYM_RICHGIRL
 	setflag FLAG_ROUTE_5_ALDER
 	setflag FLAG_ROUTE_5_ELESA_AT_BRIDGE
+	setflag FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER
 	call EventScript_ResetAllBerries
 	end
 

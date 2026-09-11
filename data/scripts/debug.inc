@@ -195,14 +195,16 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setsubwaywinstreak FRONTIER_MODE_MULTIS, 6
+	setsubwaywinstreak FRONTIER_MODE_MULTIS, 7
 	release 
     end
 
 Debug_EventScript_Script_1_text::
-	.string "{STR_VAR_1}$"
+	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
+	warpsilent MAP_CASTELIA_CITY_BATTLE_COMPANY55F, 11, 7
+	waitstate
 	release 
     end
 
@@ -212,10 +214,9 @@ Debug_EventScript_Script_3::
 
 Debug_EventScript_Script_4::
     lock
-	bufferrecordsubwaywinstreak FRONTIER_MODE_SINGLES
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-	closemessage
-	bufferrecordsubwaywinstreak FRONTIER_MODE_SUPER_SINGLES
+	special GetSubwayCurrentBattleNum
+	buffernumberstring STR_VAR_2, VAR_RESULT 
+	buffersubwaywinstreak FRONTIER_MODE_MULTIS
 	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
 	closemessage
 	release

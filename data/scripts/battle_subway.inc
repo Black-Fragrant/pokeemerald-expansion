@@ -422,7 +422,19 @@ BattleSubway_Movement_TrainLeavingStation:
 
 BattleSubway_Movement_PlayerWalkBackFromTrain:
 	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_in_place_right
+	step_end
+
+BattleSubway_Movement_PartnerWalkBackFromTrain:
 	walk_down
+	walk_down
+	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -433,8 +445,6 @@ BattleSubway_Movement_PlayerWalkBackFromTrain:
 	step_end
 
 BattleSubway_Movement_ConductorLookAtPlayerWalkingBack:
-	face_right
-	delay_16
 	delay_16
 	delay_16
 	delay_16
@@ -443,6 +453,18 @@ BattleSubway_Movement_ConductorLookAtPlayerWalkingBack:
 	delay_16
 	delay_16
 	walk_in_place_left
+	step_end
+
+BattleSubway_Movement_PartnerWalkAway:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 BattleSubway_Movement_PlayerWalkRight4Times:
@@ -610,6 +632,12 @@ BattleSubway_Movement_PlayerGotOffTrain:
 	walk_in_place_right
 	step_end
 
+BattleSubway_Movement_PartnerGotOffTrain:
+	walk_left
+	walk_down
+	walk_in_place_right
+	step_end
+
 BattleSubway_Movement_TrainGoAway1:
 	walk_slow_right
 	walk_right
@@ -649,6 +677,17 @@ BattleSubway_Movement_PlayerBoardTheSecondTrain:
 	set_invisible
 	step_end
 	
+BattleSubway_Movement_PartnerBoardTheSecondTrain:
+	walk_left
+	walk_up
+	step_end
+	
+BattleSubway_Movement_PartnerBoardTheSecondTrain2:
+	walk_up
+	delay_16
+	set_invisible
+	step_end
+	
 BattleSubway_Movement_SecondTrainGoAway:
 	walk_slow_right
 	walk_right
@@ -661,15 +700,24 @@ BattleSubway_Movement_SecondTrainGoAway:
 	step_end
 	
 BattleSubway_Movement_PlayerBoardTheFinalTrain:
+	walk_up
 	walk_right
 	walk_right
 	walk_right
 	walk_right
 	walk_right
 	walk_up
-	walk_up
+	step_end
+	
+BattleSubway_Movement_PartnerBoardTheFinalTrain:
 	delay_16
-	set_invisible
+	delay_16
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
 	step_end
 
 InterPlatform_EventScript_Youngster_7::
@@ -841,3 +889,28 @@ BattleSubway_Text_Policeman21::
 	.string "strange fellow.\p"
 	.string "I still don't believe he was giving it\n"
 	.string "his all.$"
+
+BattleSubway_EventScript_DefaultPartner::
+	buffersubwaywinstreak FRONTIER_MODE_MULTIS 
+    goto_if_eq VAR_RESULT, 21, BattleSubway_EventScript_DefaultPartner_WonBossFight 
+    msgbox BattleSubway_Text_DefaultPartner, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED
+	destroy_speech_bubble
+    closemessage
+	release 
+	end 
+
+BattleSubway_EventScript_DefaultPartner_WonBossFight::
+    msgbox BattleSubway_Text_WonBossFight, MSGBOX_DEFAULT, TRUE, VAR_LAST_TALKED
+	destroy_speech_bubble
+    closemessage
+	release 
+	end 
+
+BattleSubway_Text_DefaultPartner::
+	.string "There's still a lot more to go, but let's\n"
+	.string "do our best!$"
+
+BattleSubway_Text_WonBossFight::
+	.string "We finally made it this far!\p"
+	.string "Our opponents will get tougher, but let's\n"
+	.string "do our best and not get discouraged!$"

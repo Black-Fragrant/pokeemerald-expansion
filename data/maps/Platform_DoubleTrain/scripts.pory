@@ -199,6 +199,7 @@ script Platform_DoubleTrain_EventScript_SaveBeforeChallenge
 	call(Common_EventScript_SaveGame)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 255) // 4-255 does nothing, does not activate map scripts
 	goto_if_eq (VAR_RESULT, 0, Platform_DoubleTrain_EventScript_CancelChallengeSaveFailed)
+	special(ResetSubwayCurrentBattleNum)
 	incrementgamestat(GAME_STAT_ENTERED_BATTLE_TOWER) //you have entered the tower +1 times
 	goto(Platform_DoubleTrain_EventScript_BoardTheTrain)
 }
@@ -230,7 +231,7 @@ script Platform_DoubleTrain_EventScript_BoardTheTrain
 	fadescreen(FADE_TO_BLACK)
 	setvar(VAR_TEMP_CHALLENGE_STATUS, 0) // set to 0 so the map scripts will run a diagnosis
 	tower_setopponent // 1. check special trainers 2. find normal trainer 3. TRAINER SPRITES
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	special(GetSubwayCurrentBattleNum)
 	goto_if_eq(VAR_RESULT, 0, Platform_DoubleTrain_EventScript_BoardTheTrain2) //this is the first person you battle
 	warpsilent(MAP_BATTLE_SUBWAY_DOUBLE, 1, 5)
 	waitstate

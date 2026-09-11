@@ -12,7 +12,7 @@ mapscripts BattleSubway_Single_MapScripts
 
 script BattleSubway_Single_EventScript_TurnPlayer
 {
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	special(GetSubwayCurrentBattleNum)
 	goto_if_eq(VAR_RESULT, 0, BattleSubway_Single_EventScript_TurnPlayer2) //this is the first person you battle
 	turnobject (LOCALID_PLAYER, DIR_EAST)
 	end()
@@ -63,7 +63,7 @@ script BattleSubway_Single_EventScript_AskReadyForOpponent
 {
 	buffersubwaywinstreak(FRONTIER_MODE_SINGLES)
 	delay(10)
-	frontier_get(FRONTIER_DATA_BATTLE_NUM)
+	special(GetSubwayCurrentBattleNum)
     addvar(VAR_RESULT, 1)
     buffernumberstring(STR_VAR_2, VAR_RESULT)
 	msgbox(BattleSubway_Text_CurrentWinStreakNextOpponent, MSGBOX_TRANSPARENT)
