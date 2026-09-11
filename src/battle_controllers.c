@@ -2170,7 +2170,9 @@ void Controller_WaitForHealthBar(enum BattlerId battler)
     struct Pokemon *mon = GetBattlerMon(battler);
     s32 maxHP = GetMonData(mon, MON_DATA_MAX_HP);
 
-    SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
+    if (IsBattlerAlive(battler))
+        SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
+        
     if (hpValue != -1)
     {
         UpdateHpTextInHealthbox(gHealthboxSpriteIds[battler], HP_CURRENT, hpValue, maxHP);
