@@ -110,6 +110,7 @@ static void Task_Slice(u8);
 static void Task_WhiteBarsFade(u8);
 static void Task_GridSquares(u8);
 static void Task_AngledWipes(u8);
+static void Task_BWTrainer(u8);
 static void Task_Mugshot(u8);
 static void Task_Aqua(u8);
 static void Task_Magma(u8);
@@ -206,6 +207,12 @@ static bool8 WhiteBarsFade_End(struct Task *);
 static bool8 GridSquares_Init(struct Task *);
 static bool8 GridSquares_Main(struct Task *);
 static bool8 GridSquares_End(struct Task *);
+//bw battle transition
+static bool8 BWTrainer_Init(struct Task *);
+static bool8 BWTrainer_Main(struct Task *);
+static bool8 BWTrainer_End(struct Task *);
+static void BWTrainer_DrawBox(u16 *tilemap, u16 boxIndex, u8 frame);
+
 static bool8 AngledWipes_Init(struct Task *);
 static bool8 AngledWipes_SetWipeData(struct Task *);
 static bool8 AngledWipes_DoWipe(struct Task *);
@@ -334,6 +341,8 @@ static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCGFX_U32("graphics/battl
 static const u32 sFrontierSquares_Shrink1_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_square_3.4bpp", ".smol");
 static const u32 sFrontierSquares_Shrink2_Tileset[] = INCGFX_U32("graphics/battle_transitions/frontier_square_4.4bpp", ".smol");
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
+static const u32 sFlippingBox_Tileset[] = INCGFX_U32("graphics/battle_transitions/flipping_box.png", ".4bpp");
+static const u16 sFlippingBox_Palette[] = INCGFX_U16("graphics/battle_transitions/flipping_box.png", ".gbapal");
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -356,6 +365,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_SLICE] = Task_Slice,
     [B_TRANSITION_WHITE_BARS_FADE] = Task_WhiteBarsFade,
     [B_TRANSITION_GRID_SQUARES] = Task_GridSquares,
+    [B_TRANSITION_BW_TRAINER] = Task_BWTrainer,
     [B_TRANSITION_ANGLED_WIPES] = Task_AngledWipes,
     [B_TRANSITION_MUGSHOT] = Task_Mugshot,
     [B_TRANSITION_AQUA] = Task_Aqua,
@@ -4838,3 +4848,199 @@ static bool8 FrontierSquaresScroll_End(struct Task *task)
 #undef tScrollYDir
 #undef tScrollUpdateFlag
 #undef tSquareNum
+
+//--------------------
+// B_TRANSITION_BW_TRAINER
+//--------------------
+
+static const u8 sBWTrainer_FrameSequence[] =
+{
+    0, 1, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4
+};
+
+static const TransitionStateFunc sBWTrainer_Funcs[] =
+{
+    BWTrainer_Init,
+    BWTrainer_Main,
+    BWTrainer_End
+};
+
+// Each animated box is 24x24 pixels.
+//
+// 240 / 24 = 10 exactly.
+// 160 / 24 = 6.67, so we use 7 rows.
+// The final row extends 8 pixels below the visible screen.
+#define BW_TRAINER_BOX_WIDTH          24
+#define BW_TRAINER_BOX_HEIGHT         24
+
+#define BW_TRAINER_BOX_COLS           10
+#define BW_TRAINER_BOX_ROWS           7
+#define BW_TRAINER_BOX_COUNT          (BW_TRAINER_BOX_COLS * BW_TRAINER_BOX_ROWS)
+
+// A 24x24 frame is 3x3 BG tiles:
+//
+// 0 1 2
+// 3 4 5
+// 6 7 8
+//
+// So each graphical frame uses 9 tiles.
+#define BW_TRAINER_TILES_PER_FRAME    9
+#define BW_TRAINER_NUM_GFX_FRAMES     5
+
+// 5 frames x 9 tiles = 45 tiles.
+// Tile 45 is reserved as the blank tile.
+#define BW_TRAINER_BLANK_TILE         (BW_TRAINER_TILES_PER_FRAME * BW_TRAINER_NUM_GFX_FRAMES)
+
+#define BW_TRAINER_PALETTE_NUM        15
+
+#define tAnimStep data[1]
+#define tEndDelay data[2]
+
+static void Task_BWTrainer(u8 taskId)
+{
+    while (sBWTrainer_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 BWTrainer_Init(struct Task *task)
+{
+    u16 *tilemap;
+    u16 *tileset;
+    u16 i;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+
+    // Load all 5 graphical frames into BG0 VRAM.
+    //
+    // 5 frames x 9 tiles per frame = 45 tiles.
+    CpuSet(
+        sFlippingBox_Tileset,
+        tileset,
+        sizeof(sFlippingBox_Tileset) / sizeof(u16)
+    );
+
+    // Tile 45 is our blank / transparent tile.
+    CpuFill16(
+        0,
+        &tileset[BW_TRAINER_BLANK_TILE * 16],
+        32
+    );
+
+    LoadPalette(
+        sFlippingBox_Palette,
+        BG_PLTT_ID(BW_TRAINER_PALETTE_NUM),
+        sizeof(sFlippingBox_Palette)
+    );
+
+    // Start the entire BG0 tilemap blank.
+    for (i = 0; i < 32 * 32; i++)
+    {
+        tilemap[i] =
+            BW_TRAINER_BLANK_TILE
+            | (BW_TRAINER_PALETTE_NUM << 12);
+    }
+
+    task->tAnimStep = 0;
+
+    task->tState++;
+    return FALSE;
+}
+
+static bool8 BWTrainer_Main(struct Task *task)
+{
+    u16 *tilemap;
+    u16 *tileset;
+    s16 boxIndex;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+
+    (void)tileset;
+
+    for (boxIndex = 0; boxIndex < BW_TRAINER_BOX_COUNT; boxIndex++)
+    {
+        s16 localStep = task->tAnimStep - boxIndex;
+
+        // This box has not started yet.
+        if (localStep < 0)
+            continue;
+
+        // This box has finished its full 13-step animation.
+        // Its last displayed frame is graphical frame 4,
+        // so leave it untouched.
+        if (localStep >= ARRAY_COUNT(sBWTrainer_FrameSequence))
+            continue;
+
+        BWTrainer_DrawBox(
+            tilemap,
+            boxIndex,
+            sBWTrainer_FrameSequence[localStep]
+        );
+    }
+
+    task->tAnimStep++;
+
+    // 70 boxes plus the 13-step animation tail.
+    if (task->tAnimStep >=
+        BW_TRAINER_BOX_COUNT + ARRAY_COUNT(sBWTrainer_FrameSequence))
+    {
+        task->tState++;
+        task->tEndDelay = 16;
+    }
+
+    return FALSE;
+}
+
+static bool8 BWTrainer_End(struct Task *task)
+{
+    if (--task->tEndDelay == 0)
+    {
+        FadeScreenBlack();
+        DestroyTask(FindTaskIdByFunc(Task_BWTrainer));
+    }
+
+    return FALSE;
+}
+
+static void BWTrainer_DrawBox(u16 *tilemap, u16 boxIndex, u8 frame)
+{
+    u16 boxX;
+    u16 boxY;
+    u16 tileX;
+    u16 tileY;
+    u16 baseTile;
+    u16 palette;
+    u16 x;
+    u16 y;
+
+    boxX = boxIndex % BW_TRAINER_BOX_COLS;
+    boxY = boxIndex / BW_TRAINER_BOX_COLS;
+
+    // A 24x24 box occupies 3x3 BG tiles.
+    tileX = boxX * 3;
+    tileY = boxY * 3;
+
+    // Every graphical frame contains 9 consecutive tiles.
+    baseTile = frame * BW_TRAINER_TILES_PER_FRAME;
+
+    palette = BW_TRAINER_PALETTE_NUM << 12;
+
+    // Draw the 3x3 tile block:
+    //
+    // 0 1 2
+    // 3 4 5
+    // 6 7 8
+    for (y = 0; y < 3; y++)
+    {
+        for (x = 0; x < 3; x++)
+        {
+            tilemap[(tileY + y) * 32 + tileX + x] =
+                palette | (baseTile + y * 3 + x);
+        }
+    }
+}
+
+#undef tAnimStep
+#undef tEndDelay
+
+//--------------------
+// B_TRANSITION_BW_TRAINER
+//--------------------
