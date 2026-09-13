@@ -294,6 +294,13 @@ static bool8 MugshotTrainerPic_SlideSlow(struct Sprite *);
 static bool8 MugshotTrainerPic_SlidePartner(struct Sprite *);
 static bool8 MugshotTrainerPic_SlideOffscreen(struct Sprite *);
 
+static void Task_SandWhiteout(u8 taskId);
+static bool8 SandWhiteout_Init(struct Task *task);
+static bool8 SandWhiteout_Main(struct Task *task);
+static bool8 SandWhiteout_End(struct Task *task);
+static void SandWhiteout_UpdateWhiteTrail(struct Task *task);
+static void SpriteCB_SandWhiteout(struct Sprite *sprite);
+
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
 static u8 sTestingTransitionState;
@@ -343,6 +350,8 @@ static const u32 sFrontierSquares_Shrink2_Tileset[] = INCGFX_U32("graphics/battl
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
 static const u32 sFlippingBox_Tileset[] = INCGFX_U32("graphics/battle_transitions/flipping_box.png", ".4bpp");
 static const u16 sFlippingBox_Palette[] = INCGFX_U16("graphics/battle_transitions/flipping_box.png", ".gbapal");
+static const u32 sSandWave_Tileset[] = INCGFX_U32("graphics/battle_transitions/sand_wave.png", ".4bpp");
+static const u16 sSandWave_Palette[] = INCGFX_U16("graphics/battle_transitions/sand_wave.png", ".gbapal");
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -365,7 +374,6 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_SLICE] = Task_Slice,
     [B_TRANSITION_WHITE_BARS_FADE] = Task_WhiteBarsFade,
     [B_TRANSITION_GRID_SQUARES] = Task_GridSquares,
-    [B_TRANSITION_BW_TRAINER] = Task_BWTrainer,
     [B_TRANSITION_ANGLED_WIPES] = Task_AngledWipes,
     [B_TRANSITION_MUGSHOT] = Task_Mugshot,
     [B_TRANSITION_AQUA] = Task_Aqua,
@@ -393,6 +401,8 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_CROSS_IN_SEQ] = Task_FrontierCirclesCrossInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_ASYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesAsymmetricSpiralInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
+    [B_TRANSITION_BW_TRAINER] = Task_BWTrainer,
+    [B_TRANSITION_SAND_WHITEOUT] = Task_SandWhiteout,
 };
 
 static const TransitionStateFunc sTaskHandlers[] =
@@ -5042,5 +5052,345 @@ static void BWTrainer_DrawBox(u16 *tilemap, u16 boxIndex, u8 frame)
 #undef tEndDelay
 
 //--------------------
-// B_TRANSITION_BW_TRAINER
+// B_TRANSITION_SAND_WHITEOUT
 //--------------------
+
+#define TAG_SAND_WHITEOUT 0x1205
+
+#define SAND_WHITEOUT_SOURCE_FRAME_SIZE 128
+#define SAND_WHITEOUT_CHUNK_COUNT       5
+#define SAND_WHITEOUT_CHUNK_SIZE        1024
+#define SAND_WHITEOUT_TILES_PER_CHUNK   32
+#define SAND_WHITEOUT_ROWS              5
+#define SAND_WHITEOUT_SPEED             6
+
+#define SAND_WHITEOUT_BG_PALETTE        15
+#define SAND_WHITEOUT_OBJ_PALETTE       15
+#define SAND_WHITEOUT_BLANK_TILE        0
+#define SAND_WHITEOUT_WHITE_TILE        1
+
+#define SAND_WHITEOUT_CHAIN_WIDTH       272
+
+#define SAND_FRAME_BLANK 0xFF
+
+static const u8 sSandWhiteout_Chunks[SAND_WHITEOUT_CHUNK_COUNT][4] =
+{
+    {8, 7, 6, 5},
+    {4, 3, 2, 1},
+    {1, 1, 1, 1},
+    {1, 1, 1, 1},
+    {0, SAND_FRAME_BLANK, SAND_FRAME_BLANK, SAND_FRAME_BLANK},
+};
+
+EWRAM_DATA static u32 sSandWhiteout_ChunkGfx[
+    SAND_WHITEOUT_CHUNK_COUNT * SAND_WHITEOUT_CHUNK_SIZE / sizeof(u32)
+] = {0};
+
+static const struct OamData sOam_SandWhiteout =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x32),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x32),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_SandWhiteout =
+{
+    .tileTag = TAG_SAND_WHITEOUT,
+    .paletteTag = TAG_NONE,
+    .oam = &sOam_SandWhiteout,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_SandWhiteout,
+};
+
+static const TransitionStateFunc sSandWhiteout_Funcs[] =
+{
+    SandWhiteout_Init,
+    SandWhiteout_Main,
+    SandWhiteout_End,
+};
+
+#define tChainX          data[1]
+#define tActiveSprites   data[2]
+#define tWhitePixels     data[3]
+#define tWhiteStarted    data[4]
+#define tEndDelay        data[5]
+
+#define sParentTaskId    data[0]
+
+static void Task_SandWhiteout(u8 taskId)
+{
+    while (sSandWhiteout_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 SandWhiteout_Init(struct Task *task)
+{
+    struct SpriteSheet spriteSheet;
+    u16 *tilemap;
+    u16 *tileset;
+    u8 *dstBase;
+    const u8 *srcBase;
+    u16 i;
+    u8 chunk;
+    u8 piece;
+    u8 copyY;
+    u8 tileX;
+    u8 tileY;
+    u8 row;
+    u8 taskId;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+
+    CpuFill16(0, &tileset[SAND_WHITEOUT_BLANK_TILE * 16], 32);
+    CpuFill16(0x1111, &tileset[SAND_WHITEOUT_WHITE_TILE * 16], 32);
+
+    {
+        static const u16 sWhitePalette[16] =
+        {
+            [0] = RGB_BLACK,
+            [1] = RGB_WHITE,
+        };
+
+        LoadPalette(
+            sWhitePalette,
+            BG_PLTT_ID(SAND_WHITEOUT_BG_PALETTE),
+            sizeof(sWhitePalette)
+        );
+    }
+
+    for (i = 0; i < 32 * 32; i++)
+    {
+        tilemap[i] =
+            SAND_WHITEOUT_BLANK_TILE
+            | (SAND_WHITEOUT_BG_PALETTE << 12);
+    }
+
+    CpuFill32(
+        0,
+        sSandWhiteout_ChunkGfx,
+        sizeof(sSandWhiteout_ChunkGfx)
+    );
+
+    srcBase = (const u8 *)sSandWave_Tileset;
+    dstBase = (u8 *)sSandWhiteout_ChunkGfx;
+
+    for (chunk = 0; chunk < SAND_WHITEOUT_CHUNK_COUNT; chunk++)
+    {
+        for (piece = 0; piece < 4; piece++)
+        {
+            u8 frame = sSandWhiteout_Chunks[chunk][piece];
+
+            if (frame == SAND_FRAME_BLANK)
+                continue;
+
+            for (copyY = 0; copyY < 2; copyY++)
+            {
+                for (tileY = 0; tileY < 2; tileY++)
+                {
+                    for (tileX = 0; tileX < 2; tileX++)
+                    {
+                        u16 srcTile =
+                            frame * 4
+                            + tileY * 2
+                            + tileX;
+
+                        u16 dstTile =
+                            chunk * SAND_WHITEOUT_TILES_PER_CHUNK
+                            + (copyY * 2 + tileY) * 8
+                            + piece * 2
+                            + tileX;
+
+                        CpuCopy16(
+                            srcBase + srcTile * 32,
+                            dstBase + dstTile * 32,
+                            32
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    spriteSheet.data = sSandWhiteout_ChunkGfx;
+    spriteSheet.size = sizeof(sSandWhiteout_ChunkGfx);
+    spriteSheet.tag = TAG_SAND_WHITEOUT;
+
+    LoadSpriteSheet(&spriteSheet);
+
+    LoadPalette(
+        sSandWave_Palette,
+        OBJ_PLTT_ID(SAND_WHITEOUT_OBJ_PALETTE),
+        sizeof(sSandWave_Palette)
+    );
+
+    task->tChainX = -SAND_WHITEOUT_CHAIN_WIDTH;
+    task->tActiveSprites = 0;
+    task->tWhitePixels = 0;
+    task->tWhiteStarted = FALSE;
+
+    taskId = FindTaskIdByFunc(Task_SandWhiteout);
+
+    for (row = 0; row < SAND_WHITEOUT_ROWS; row++)
+    {
+        for (chunk = 0; chunk < SAND_WHITEOUT_CHUNK_COUNT; chunk++)
+        {
+            s16 x =
+                task->tChainX
+                + chunk * 64
+                + 32;
+
+            s16 y =
+                row * 32
+                + 16;
+
+            u8 spriteId =
+                CreateSprite(
+                    &sSpriteTemplate_SandWhiteout,
+                    x,
+                    y,
+                    0
+                );
+
+            if (spriteId != MAX_SPRITES)
+            {
+                struct Sprite *sprite = &gSprites[spriteId];
+
+                sprite->oam.paletteNum =
+                    SAND_WHITEOUT_OBJ_PALETTE;
+
+                sprite->oam.tileNum +=
+                    chunk * SAND_WHITEOUT_TILES_PER_CHUNK;
+
+                sprite->sParentTaskId = taskId;
+
+                task->tActiveSprites++;
+            }
+        }
+    }
+
+    task->tState++;
+    return FALSE;
+}
+
+static bool8 SandWhiteout_Main(struct Task *task)
+{
+    task->tChainX += SAND_WHITEOUT_SPEED;
+
+    if (!task->tWhiteStarted && task->tChainX >= 0)
+        task->tWhiteStarted = TRUE;
+
+    if (task->tWhiteStarted)
+        SandWhiteout_UpdateWhiteTrail(task);
+
+    if (task->tWhitePixels >= DISPLAY_WIDTH
+        && task->tActiveSprites == 0)
+    {
+        task->tEndDelay = 8;
+        task->tState++;
+    }
+
+    return FALSE;
+}
+
+static void SpriteCB_SandWhiteout(struct Sprite *sprite)
+{
+    sprite->x += SAND_WHITEOUT_SPEED;
+
+    if (sprite->x > DISPLAY_WIDTH + 32)
+    {
+        u8 taskId = sprite->sParentTaskId;
+
+        if (taskId < NUM_TASKS
+            && gTasks[taskId].isActive
+            && gTasks[taskId].func == Task_SandWhiteout)
+        {
+            if (gTasks[taskId].tActiveSprites != 0)
+                gTasks[taskId].tActiveSprites--;
+        }
+
+        DestroySprite(sprite);
+    }
+}
+
+static void SandWhiteout_UpdateWhiteTrail(struct Task *task)
+{
+    u16 *tilemap;
+    u16 *tileset;
+    u16 whiteTileColumns;
+    u16 x;
+    u16 y;
+
+    if (task->tWhitePixels < DISPLAY_WIDTH)
+    {
+        task->tWhitePixels += SAND_WHITEOUT_SPEED;
+
+        if (task->tWhitePixels > DISPLAY_WIDTH)
+            task->tWhitePixels = DISPLAY_WIDTH;
+    }
+
+    GetBg0TilesDst(&tilemap, &tileset);
+
+    (void)tileset;
+
+    whiteTileColumns =
+        (task->tWhitePixels + 15) / 8;
+
+    for (y = 0; y < 20; y++)
+    {
+        for (x = 0; x < whiteTileColumns; x++)
+        {
+            tilemap[y * 32 + x] =
+                SAND_WHITEOUT_WHITE_TILE
+                | (SAND_WHITEOUT_BG_PALETTE << 12);
+        }
+    }
+}
+
+static bool8 SandWhiteout_End(struct Task *task)
+{
+    if (--task->tEndDelay == 0)
+    {
+        FadeScreenBlack();
+
+        FreeSpriteTilesByTag(TAG_SAND_WHITEOUT);
+
+        DestroyTask(
+            FindTaskIdByFunc(Task_SandWhiteout)
+        );
+    }
+
+    return FALSE;
+}
+
+#undef tChainX
+#undef tActiveSprites
+#undef tWhitePixels
+#undef tWhiteStarted
+#undef tEndDelay
+
+#undef sParentTaskId
+
+#undef TAG_SAND_WHITEOUT
+#undef SAND_WHITEOUT_SOURCE_FRAME_SIZE
+#undef SAND_WHITEOUT_CHUNK_COUNT
+#undef SAND_WHITEOUT_CHUNK_SIZE
+#undef SAND_WHITEOUT_TILES_PER_CHUNK
+#undef SAND_WHITEOUT_ROWS
+#undef SAND_WHITEOUT_SPEED
+#undef SAND_WHITEOUT_BG_PALETTE
+#undef SAND_WHITEOUT_OBJ_PALETTE
+#undef SAND_WHITEOUT_BLANK_TILE
+#undef SAND_WHITEOUT_WHITE_TILE
+#undef SAND_WHITEOUT_CHAIN_WIDTH
+#undef SAND_FRAME_BLANK

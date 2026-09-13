@@ -203,7 +203,7 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
-	warpsilent MAP_CASTELIA_CITY_BATTLE_COMPANY55F, 11, 7
+	warpsilent MAP_ROUTE4_SOUTH, 47, 19
 	waitstate
 	release 
     end

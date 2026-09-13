@@ -66,6 +66,7 @@ enum TransitionType
     TRANSITION_TYPE_CAVE,
     TRANSITION_TYPE_FLASH,
     TRANSITION_TYPE_WATER,
+    TRANSITION_TYPE_SAND,
 };
 
 // this file's functions
@@ -109,6 +110,7 @@ static const u8 sBattleTransitionTable_Wild[][2] =
     [TRANSITION_TYPE_CAVE]   = {B_TRANSITION_CLOCKWISE_WIPE, B_TRANSITION_GRID_SQUARES},
     [TRANSITION_TYPE_FLASH]  = {B_TRANSITION_BLUR,           B_TRANSITION_GRID_SQUARES},
     [TRANSITION_TYPE_WATER]  = {B_TRANSITION_WAVE,           B_TRANSITION_RIPPLE},
+    [TRANSITION_TYPE_SAND]   = {B_TRANSITION_SAND_WHITEOUT,  B_TRANSITION_SAND_WHITEOUT},
 };
 
 static const u8 sBattleTransitionTable_Trainer[][2] =
@@ -117,6 +119,7 @@ static const u8 sBattleTransitionTable_Trainer[][2] =
     [TRANSITION_TYPE_CAVE]   = {B_TRANSITION_SHUFFLE,         B_TRANSITION_BIG_POKEBALL},
     [TRANSITION_TYPE_FLASH]  = {B_TRANSITION_BLUR,            B_TRANSITION_GRID_SQUARES},
     [TRANSITION_TYPE_WATER]  = {B_TRANSITION_SWIRL,           B_TRANSITION_RIPPLE},
+    [TRANSITION_TYPE_SAND]   = {B_TRANSITION_BW_TRAINER,      B_TRANSITION_ANGLED_WIPES},
 };
 
 // Battle Frontier (excluding Pyramid and Dome, which have their own tables below)
@@ -834,6 +837,9 @@ static enum TransitionType GetBattleTransitionTypeByMap(void)
 
     if (GetFlashLevel())
         return TRANSITION_TYPE_FLASH;
+
+    if (BattleSetup_GetEnvironmentId() == BATTLE_ENVIRONMENT_SAND)
+        return TRANSITION_TYPE_SAND;
 
     if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
         return TRANSITION_TYPE_WATER;
