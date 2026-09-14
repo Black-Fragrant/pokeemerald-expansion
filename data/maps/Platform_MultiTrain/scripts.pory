@@ -48,7 +48,7 @@ script Platform_MultiTrain_EventScript_WalkFromTrainToConductor
 	addobject(LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST)
 	waitse
 	delay(10)
-    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkBackFromTrain)
+    applymovement(LOCALID_PLAYER, BattleSubway_Movement_PlayerWalkBackFromTrainMulti)
     applymovement(LOCALID_MULTITRAIN_AGENT, BattleSubway_Movement_ConductorLookAtPlayerWalkingBack)
     applymovement(LOCALID_PLATFORM_MULTITRAIN_PARTNER_LOST, BattleSubway_Movement_PartnerWalkBackFromTrain)
     waitmovement(0)

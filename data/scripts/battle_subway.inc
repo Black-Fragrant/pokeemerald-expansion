@@ -422,6 +422,18 @@ BattleSubway_Movement_TrainLeavingStation:
 
 BattleSubway_Movement_PlayerWalkBackFromTrain:
 	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_in_place_right
+	step_end
+
+BattleSubway_Movement_PlayerWalkBackFromTrainMulti:
+	walk_down
 	walk_left
 	walk_left
 	walk_left
