@@ -300,6 +300,7 @@ static bool8 SandWhiteout_Main(struct Task *task);
 static bool8 SandWhiteout_End(struct Task *task);
 static void SandWhiteout_UpdateWhiteTrail(struct Task *task);
 static void SpriteCB_SandWhiteout(struct Sprite *sprite);
+static void Task_SubwayBlinds(u8 taskId);
 
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
@@ -352,6 +353,8 @@ static const u32 sFlippingBox_Tileset[] = INCGFX_U32("graphics/battle_transition
 static const u16 sFlippingBox_Palette[] = INCGFX_U16("graphics/battle_transitions/flipping_box.png", ".gbapal");
 static const u32 sSandWave_Tileset[] = INCGFX_U32("graphics/battle_transitions/sand_wave.png", ".4bpp");
 static const u16 sSandWave_Palette[] = INCGFX_U16("graphics/battle_transitions/sand_wave.png", ".gbapal");
+static const u32 sSubwayBlinds_Tileset[] = INCGFX_U32("graphics/battle_transitions/subway_blinds.png", ".4bpp");
+static const u16 sSubwayBlinds_Palette[] = INCGFX_U16("graphics/battle_transitions/subway_blinds.png", ".gbapal");
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -403,6 +406,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
     [B_TRANSITION_BW_TRAINER] = Task_BWTrainer,
     [B_TRANSITION_SAND_WHITEOUT] = Task_SandWhiteout,
+    [B_TRANSITION_SUBWAY_BLINDS] = Task_SubwayBlinds,
 };
 
 static const TransitionStateFunc sTaskHandlers[] =
@@ -4143,11 +4147,11 @@ static void VBlankCB_BattleTransition(void)
     TransferPlttBuffer();
 }
 
-static void GetBg0TilemapDst(u16 **tileset)
+static void GetBg0TilemapDst(u16 **tilemap)
 {
-    u16 charBase = REG_BG0CNT >> 2;
-    charBase <<= 14;
-    *tileset = (u16 *)(BG_VRAM + charBase);
+    u16 screenBase = REG_BG0CNT >> 8;
+    screenBase <<= 11;
+    *tilemap = (u16 *)(BG_VRAM + screenBase);
 }
 
 void GetBg0TilesDst(u16 **tilemap, u16 **tileset)
@@ -5394,3 +5398,205 @@ static bool8 SandWhiteout_End(struct Task *task)
 #undef SAND_WHITEOUT_WHITE_TILE
 #undef SAND_WHITEOUT_CHAIN_WIDTH
 #undef SAND_FRAME_BLANK
+
+//---------------------------
+// Subway Blinds transition
+//---------------------------
+
+#define SUBWAY_BLINDS_CELL_SIZE           16
+#define SUBWAY_BLINDS_COLS                (DISPLAY_WIDTH / SUBWAY_BLINDS_CELL_SIZE)
+#define SUBWAY_BLINDS_ROWS                (DISPLAY_HEIGHT / SUBWAY_BLINDS_CELL_SIZE)
+#define SUBWAY_BLINDS_TILES_PER_FRAME     4
+#define SUBWAY_BLINDS_NUM_FRAMES          8
+#define SUBWAY_BLINDS_BLANK_TILE          (SUBWAY_BLINDS_NUM_FRAMES * SUBWAY_BLINDS_TILES_PER_FRAME)
+#define SUBWAY_BLINDS_WHITE_TILE          (SUBWAY_BLINDS_BLANK_TILE + 1)
+#define SUBWAY_BLINDS_PALETTE_NUM         15
+#define SUBWAY_BLINDS_FRAME_DELAY         4
+#define SUBWAY_BLINDS_COLUMN_STAGGER      SUBWAY_BLINDS_FRAME_DELAY
+#define SUBWAY_BLINDS_END_DELAY           16
+
+#define tBlindsAnimStep data[1]
+#define tBlindsEndDelay data[2]
+
+static bool8 SubwayBlinds_Init(struct Task *task);
+static bool8 SubwayBlinds_Main(struct Task *task);
+static bool8 SubwayBlinds_End(struct Task *task);
+static void SubwayBlinds_DrawAnimatedColumn(u16 *tilemap, u8 column, u8 frame);
+static void SubwayBlinds_DrawWhiteColumn(u16 *tilemap, u8 column);
+
+static const TransitionStateFunc sSubwayBlinds_Funcs[] =
+{
+    SubwayBlinds_Init,
+    SubwayBlinds_Main,
+    SubwayBlinds_End,
+};
+
+static void Task_SubwayBlinds(u8 taskId)
+{
+    while (sSubwayBlinds_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 SubwayBlinds_Init(struct Task *task)
+{
+    u16 *tilemap;
+    u16 *tileset;
+    u32 i;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+
+    CpuCopy16(
+        sSubwayBlinds_Tileset,
+        tileset,
+        sizeof(sSubwayBlinds_Tileset)
+    );
+
+    CpuFill16(
+        0,
+        &tileset[SUBWAY_BLINDS_BLANK_TILE * 16],
+        32
+    );
+
+    CpuFill16(
+        0x1111,
+        &tileset[SUBWAY_BLINDS_WHITE_TILE * 16],
+        32
+    );
+
+    LoadPalette(
+        sSubwayBlinds_Palette,
+        BG_PLTT_ID(SUBWAY_BLINDS_PALETTE_NUM),
+        sizeof(sSubwayBlinds_Palette)
+    );
+
+    for (i = 0; i < 32 * 32; i++)
+    {
+        tilemap[i] =
+            SUBWAY_BLINDS_BLANK_TILE
+            | (SUBWAY_BLINDS_PALETTE_NUM << 12);
+    }
+
+    task->tBlindsAnimStep = 0;
+    task->tBlindsEndDelay = 0;
+
+    task->tState++;
+
+    return FALSE;
+}
+
+
+static void SubwayBlinds_DrawAnimatedColumn(u16 *tilemap, u8 column, u8 frame)
+{
+    u16 row;
+    u16 tileX;
+    u16 tileY;
+    u16 baseTile;
+    u16 palette;
+
+    tileX = column * 2;
+    baseTile = frame * SUBWAY_BLINDS_TILES_PER_FRAME;
+    palette = SUBWAY_BLINDS_PALETTE_NUM << 12;
+
+    for (row = 0; row < SUBWAY_BLINDS_ROWS; row++)
+    {
+        tileY = row * 2;
+
+        tilemap[tileY * 32 + tileX] =
+            palette | (baseTile + 0);
+
+        tilemap[tileY * 32 + tileX + 1] =
+            palette | (baseTile + 1);
+
+        tilemap[(tileY + 1) * 32 + tileX] =
+            palette | (baseTile + 2);
+
+        tilemap[(tileY + 1) * 32 + tileX + 1] =
+            palette | (baseTile + 3);
+    }
+}
+
+
+static void SubwayBlinds_DrawWhiteColumn(u16 *tilemap, u8 column)
+{
+    u16 row;
+    u16 tileX;
+    u16 tileY;
+    u16 tile;
+
+    tileX = column * 2;
+
+    tile =
+        SUBWAY_BLINDS_WHITE_TILE
+        | (SUBWAY_BLINDS_PALETTE_NUM << 12);
+
+    for (row = 0; row < SUBWAY_BLINDS_ROWS; row++)
+    {
+        tileY = row * 2;
+
+        tilemap[tileY * 32 + tileX] = tile;
+        tilemap[tileY * 32 + tileX + 1] = tile;
+
+        tilemap[(tileY + 1) * 32 + tileX] = tile;
+        tilemap[(tileY + 1) * 32 + tileX + 1] = tile;
+    }
+}
+
+
+static bool8 SubwayBlinds_Main(struct Task *task)
+{
+    u16 *tilemap;
+    s16 localStep;
+    s16 frame;
+    u8 column;
+
+    GetBg0TilemapDst(&tilemap);
+
+    for (column = 0; column < SUBWAY_BLINDS_COLS; column++)
+    {
+        localStep =
+            task->tBlindsAnimStep
+            - column * SUBWAY_BLINDS_COLUMN_STAGGER;
+
+        if (localStep < 0)
+            continue;
+
+        frame = localStep / SUBWAY_BLINDS_FRAME_DELAY;
+
+        if (frame < SUBWAY_BLINDS_NUM_FRAMES)
+        {
+            SubwayBlinds_DrawAnimatedColumn(
+                tilemap,
+                column,
+                frame
+            );
+        }
+        else
+        {
+            SubwayBlinds_DrawWhiteColumn(
+                tilemap,
+                column
+            );
+        }
+    }
+
+    task->tBlindsAnimStep++;
+
+    if (task->tBlindsAnimStep >=
+        ((SUBWAY_BLINDS_COLS - 1) * SUBWAY_BLINDS_COLUMN_STAGGER)
+        + (SUBWAY_BLINDS_NUM_FRAMES * SUBWAY_BLINDS_FRAME_DELAY)
+        + 1)
+    {
+        task->tBlindsEndDelay = SUBWAY_BLINDS_END_DELAY;
+        task->tState++;
+    }
+
+    return FALSE;
+}
+
+
+static bool8 SubwayBlinds_End(struct Task *task)
+{
+    if (--task->tBlindsEndDelay == 0)
+        DestroyTask(FindTaskIdByFunc(Task_SubwayBlinds));
+
+    return FALSE;
+}

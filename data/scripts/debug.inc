@@ -203,7 +203,7 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
-	warpsilent MAP_STRIATON_CITY, 56, 27
+	warpsilent MAP_GEAR_STATION_LOBBY, 15, 15
 	waitstate
 	release 
     end

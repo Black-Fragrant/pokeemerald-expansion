@@ -67,6 +67,7 @@ enum TransitionType
     TRANSITION_TYPE_FLASH,
     TRANSITION_TYPE_WATER,
     TRANSITION_TYPE_SAND,
+    TRANSITION_TYPE_INDOOR,
 };
 
 // this file's functions
@@ -111,15 +112,17 @@ static const u8 sBattleTransitionTable_Wild[][2] =
     [TRANSITION_TYPE_FLASH]  = {B_TRANSITION_BLUR,           B_TRANSITION_GRID_SQUARES},
     [TRANSITION_TYPE_WATER]  = {B_TRANSITION_WAVE,           B_TRANSITION_RIPPLE},
     [TRANSITION_TYPE_SAND]   = {B_TRANSITION_SAND_WHITEOUT,  B_TRANSITION_SAND_WHITEOUT},
+    [TRANSITION_TYPE_INDOOR] = {B_TRANSITION_SLICE,          B_TRANSITION_WHITE_BARS_FADE},
 };
 
 static const u8 sBattleTransitionTable_Trainer[][2] =
 {
-    [TRANSITION_TYPE_NORMAL] = {B_TRANSITION_BW_TRAINER,      B_TRANSITION_POKEBALLS_TRAIL},
+    [TRANSITION_TYPE_NORMAL] = {B_TRANSITION_POKEBALLS_TRAIL, B_TRANSITION_ANGLED_WIPES},
     [TRANSITION_TYPE_CAVE]   = {B_TRANSITION_SHUFFLE,         B_TRANSITION_BIG_POKEBALL},
     [TRANSITION_TYPE_FLASH]  = {B_TRANSITION_BLUR,            B_TRANSITION_GRID_SQUARES},
     [TRANSITION_TYPE_WATER]  = {B_TRANSITION_SWIRL,           B_TRANSITION_RIPPLE},
-    [TRANSITION_TYPE_SAND]   = {B_TRANSITION_BW_TRAINER,      B_TRANSITION_ANGLED_WIPES},
+    [TRANSITION_TYPE_SAND]   = {B_TRANSITION_POKEBALLS_TRAIL, B_TRANSITION_ANGLED_WIPES},
+    [TRANSITION_TYPE_INDOOR] = {B_TRANSITION_BW_TRAINER,      B_TRANSITION_BW_TRAINER},
 };
 
 // Battle Frontier (excluding Pyramid and Dome, which have their own tables below)
@@ -850,6 +853,8 @@ static enum TransitionType GetBattleTransitionTypeByMap(void)
         return TRANSITION_TYPE_CAVE;
     case MAP_TYPE_UNDERWATER:
         return TRANSITION_TYPE_WATER;
+    case MAP_TYPE_INDOOR:
+        return TRANSITION_TYPE_INDOOR;
     default:
         return TRANSITION_TYPE_NORMAL;
     }
@@ -960,53 +965,22 @@ enum BattleTransition GetTrainerBattleTransition(void)
 #define RANDOM_TRANSITION(table) (table[Random() % ARRAY_COUNT(table)])
 enum BattleTransition GetSpecialBattleTransition(enum BattleTransitionGroup id)
 {
-    u16 var;
     u8 enemyLevel = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_LEVEL);
     u8 playerLevel = GetSumOfPlayerPartyLevel(1);
 
-    if (enemyLevel < playerLevel)
+    switch (id)
     {
-        switch (id)
-        {
-        case B_TRANSITION_GROUP_TRAINER_HILL:
-        case B_TRANSITION_GROUP_SECRET_BASE:
-        case B_TRANSITION_GROUP_E_READER:
+    case B_TRANSITION_GROUP_TRAINER_HILL:
+    case B_TRANSITION_GROUP_SECRET_BASE:
+    case B_TRANSITION_GROUP_E_READER:
+        if (enemyLevel < playerLevel)
             return B_TRANSITION_POKEBALLS_TRAIL;
-        case B_TRANSITION_GROUP_B_PYRAMID:
-            return RANDOM_TRANSITION(sBattleTransitionTable_BattlePyramid);
-        case B_TRANSITION_GROUP_B_DOME:
-            return RANDOM_TRANSITION(sBattleTransitionTable_BattleDome);
-        default:
-            break;
-        }
-
-        if (VarGet(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_LINK_MULTIS)
-            return RANDOM_TRANSITION(sBattleTransitionTable_BattleFrontier);
-    }
-    else
-    {
-        switch (id)
-        {
-        case B_TRANSITION_GROUP_TRAINER_HILL:
-        case B_TRANSITION_GROUP_SECRET_BASE:
-        case B_TRANSITION_GROUP_E_READER:
+        else
             return B_TRANSITION_BIG_POKEBALL;
-        case B_TRANSITION_GROUP_B_PYRAMID:
-            return RANDOM_TRANSITION(sBattleTransitionTable_BattlePyramid);
-        case B_TRANSITION_GROUP_B_DOME:
-            return RANDOM_TRANSITION(sBattleTransitionTable_BattleDome);
-        default:
-            break;
-        }
 
-        if (VarGet(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_LINK_MULTIS)
-            return RANDOM_TRANSITION(sBattleTransitionTable_BattleFrontier);
+    default:
+        return B_TRANSITION_SUBWAY_BLINDS;
     }
-
-    var = gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum * 2 + 0]
-        + gSaveBlock2Ptr->frontier.trainerIds[gSaveBlock2Ptr->frontier.curChallengeBattleNum * 2 + 1];
-
-    return sBattleTransitionTable_BattleFrontier[var % ARRAY_COUNT(sBattleTransitionTable_BattleFrontier)];
 }
 
 void ChooseStarter(void)
