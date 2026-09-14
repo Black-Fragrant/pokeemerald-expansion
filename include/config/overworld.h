@@ -129,6 +129,10 @@
 #define OW_POPUP_BW_COLOR_BLACK    0   // Black pop-up from B2
 #define OW_POPUP_BW_COLOR_WHITE    1   // White pop-up from W2
 
+#define OW_POPUP_BW_STYLE_BW1      0
+#define OW_POPUP_BW_STYLE_BW2      1
+#define OW_POPUP_BW_STYLE          OW_POPUP_BW_STYLE_BW1
+
 // Configuration
 #define OW_POPUP_BW_COLOR          OW_POPUP_BW_COLOR_BLACK  // B2W2 use different colors for their map pop-ups.
 #define OW_POPUP_BW_TIME_MODE      OW_POPUP_BW_TIME_12_HR    // Determines what type of time is shown.
