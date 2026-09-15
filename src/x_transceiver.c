@@ -112,6 +112,7 @@ enum XTransceiverBackground
 {
     XTRANSCEIVER_BG_ROUTE,
     XTRANSCEIVER_BG_DESERT,
+    XTRANSCEIVER_BG_NULL,
     XTRANSCEIVER_BG_FERRIS_WHEEL,
     XTRANSCEIVER_BG_CASTLE,
     XTRANSCEIVER_BG_EXIT,
@@ -299,6 +300,10 @@ static const u32 sXTransceiverDesertSoloTilemap[] = INCGFX_U32("graphics/x_trans
 static const u32 sXTransceiverDesertDoubleTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/desert/double.bin", ".smolTM");
 static const u32 sXTransceiverDesertGroupTilemap[] =INCGFX_U32("graphics/x_transceiver/backgrounds/desert/group.bin",".smolTM");
 
+static const u32 sXTransceiverNullTiles[] = INCGFX_U32("graphics/x_transceiver/backgrounds/route/tiles.png", ".4bpp.smol");
+static const u16 sXTransceiverNullPal[] = INCGFX_U16("graphics/x_transceiver/backgrounds/route/day.pal", ".gbapal");
+static const u32 sXTransceiverNullGroupTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/route/group.bin", ".smolTM");
+
 struct XTransceiverBackgroundResources
 {
     const u32 *tiles;
@@ -341,6 +346,23 @@ static const struct XTransceiverBackgroundResources sXTransceiverBackgrounds[XTR
             [XTRANSCEIVER_MODE_SOLO]   = sXTransceiverDesertSoloTilemap,
             [XTRANSCEIVER_MODE_DOUBLE] = sXTransceiverDesertDoubleTilemap,
             [XTRANSCEIVER_MODE_GROUP]  = sXTransceiverDesertGroupTilemap,
+        },
+    },
+    [XTRANSCEIVER_BG_NULL] =
+    {
+        .tiles = sXTransceiverNullTiles,
+        .palettes =
+        {
+            [XTRANSCEIVER_TIME_MORNING] = sXTransceiverNullPal,
+            [XTRANSCEIVER_TIME_DAY]     = sXTransceiverNullPal,
+            [XTRANSCEIVER_TIME_EVENING] = sXTransceiverNullPal,
+            [XTRANSCEIVER_TIME_NIGHT]   = sXTransceiverNullPal,
+        },
+        .tilemaps =
+        {
+            [XTRANSCEIVER_MODE_SOLO]   = NULL,
+            [XTRANSCEIVER_MODE_DOUBLE] = NULL,
+            [XTRANSCEIVER_MODE_GROUP]  = sXTransceiverNullGroupTilemap,
         },
     },
     [XTRANSCEIVER_BG_FERRIS_WHEEL] =
@@ -429,14 +451,20 @@ static const struct XTransceiverBarResources sXTransceiverBars[2] =
 // X-Transceiver
 // ============================================================================
 
-#define XTRANSCEIVER_VISIBLE_SLOTS      4
-#define XTRANSCEIVER_WINDOW_ID          0
-#define XTRANSCEIVER_BAR_PAL_SLOT       1
-#define XTRANSCEIVER_BAR_TILE_OFFSET    64
-#define XTRANSCEIVER_GROUP_CROP_TOP     24
-#define XTRANSCEIVER_PAUSE_FRAMES       30
-#define XTRANSCEIVER_NAME_WIDTH         11
-#define XTRANSCEIVER_NAME_HEIGHT        2
+#define XTRANSCEIVER_VISIBLE_SLOTS          4
+#define XTRANSCEIVER_WINDOW_ID              0
+#define XTRANSCEIVER_BAR_PAL_SLOT           1
+#define XTRANSCEIVER_BAR_TILE_OFFSET        64
+#define XTRANSCEIVER_BG_ROUTE_TILE_OFFSET   0
+#define XTRANSCEIVER_BG_DESERT_TILE_OFFSET  16
+#define XTRANSCEIVER_BG_NULL_TILE_OFFSET    32
+#define XTRANSCEIVER_BG_ROUTE_PAL_SLOT      0
+#define XTRANSCEIVER_BG_DESERT_PAL_SLOT     2
+#define XTRANSCEIVER_BG_NULL_PAL_SLOT       3
+#define XTRANSCEIVER_GROUP_CROP_TOP         24
+#define XTRANSCEIVER_PAUSE_FRAMES           30
+#define XTRANSCEIVER_NAME_WIDTH             11
+#define XTRANSCEIVER_NAME_HEIGHT            2
 #define XTRANSCEIVER_NAME_BASE_BLOCK    0x130
 #define XTRANSCEIVER_NAME_BLOCK_SIZE    (XTRANSCEIVER_NAME_WIDTH * XTRANSCEIVER_NAME_HEIGHT)
 #define TAG_XTRANSCEIVER_HEAD_BASE      0x5200
@@ -506,7 +534,7 @@ struct XTransceiverLine
 struct XTransceiverScenario
 {
     u8 mode;
-    u8 background;
+    u8 backgrounds[4];
     u8 characters[4];
     const struct XTransceiverLine *lines;
     u8 lineCount;
@@ -558,7 +586,13 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
 {
     {
         .mode = XTRANSCEIVER_MODE_GROUP,
-        .background = XTRANSCEIVER_BG_ROUTE,
+        .backgrounds =
+        {
+            XTRANSCEIVER_BG_ROUTE,
+            XTRANSCEIVER_BG_ROUTE,
+            XTRANSCEIVER_BG_ROUTE,
+            XTRANSCEIVER_BG_ROUTE,
+        },
         .characters =
         {
             XTRANSCEIVER_CHAR_JUNIPER,
@@ -571,7 +605,11 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
     },
     {
         .mode = XTRANSCEIVER_MODE_DOUBLE,
-        .background = XTRANSCEIVER_BG_ROUTE,
+        .backgrounds =
+        {
+            XTRANSCEIVER_BG_ROUTE,
+            XTRANSCEIVER_BG_ROUTE,
+        },
         .characters =
         {
             XTRANSCEIVER_CHAR_MOTHER,
@@ -582,7 +620,11 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
     },
     {
         .mode = XTRANSCEIVER_MODE_DOUBLE,
-        .background = XTRANSCEIVER_BG_ROUTE,
+        .backgrounds =
+        {
+            XTRANSCEIVER_BG_ROUTE,
+            XTRANSCEIVER_BG_ROUTE,
+        },
         .characters =
         {
             XTRANSCEIVER_CHAR_BIANCA,
@@ -593,7 +635,13 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
     },
     {
         .mode = XTRANSCEIVER_MODE_GROUP,
-        .background = XTRANSCEIVER_BG_DESERT,
+        .backgrounds =
+        {
+            XTRANSCEIVER_BG_ROUTE,
+            XTRANSCEIVER_BG_DESERT,
+            XTRANSCEIVER_BG_DESERT,
+            XTRANSCEIVER_BG_NULL,
+        },
         .characters =
         {
             XTRANSCEIVER_CHAR_JUNIPER,
@@ -608,6 +656,7 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
 
 EWRAM_DATA static u16 sXTransceiverBg1TilemapBuffer[32 * 32] = {0};
 EWRAM_DATA static u16 sXTransceiverBg2TilemapBuffer[32 * 32] = {0};
+EWRAM_DATA static u16 sXTransceiverBg2TempTilemapBuffer[32 * 32] = {0};
 
 static u8 sXTransceiverHeadSpriteIds[XTRANSCEIVER_VISIBLE_SLOTS];
 static u8 sXTransceiverEyesSpriteIds[XTRANSCEIVER_VISIBLE_SLOTS];
@@ -878,6 +927,149 @@ static u8 XTransceiver_GetSlotCount(enum XTransceiverMode mode)
     return 4;
 }
 
+static u16 XTransceiver_GetMixedBackgroundTileOffset(u8 background)
+{
+    switch (background)
+    {
+    case XTRANSCEIVER_BG_DESERT:
+        return XTRANSCEIVER_BG_DESERT_TILE_OFFSET;
+    case XTRANSCEIVER_BG_NULL:
+        return XTRANSCEIVER_BG_NULL_TILE_OFFSET;
+    case XTRANSCEIVER_BG_ROUTE:
+    default:
+        return XTRANSCEIVER_BG_ROUTE_TILE_OFFSET;
+    }
+}
+
+static u8 XTransceiver_GetMixedBackgroundPaletteSlot(u8 background)
+{
+    switch (background)
+    {
+    case XTRANSCEIVER_BG_DESERT:
+        return XTRANSCEIVER_BG_DESERT_PAL_SLOT;
+    case XTRANSCEIVER_BG_NULL:
+        return XTRANSCEIVER_BG_NULL_PAL_SLOT;
+    case XTRANSCEIVER_BG_ROUTE:
+    default:
+        return XTRANSCEIVER_BG_ROUTE_PAL_SLOT;
+    }
+}
+
+static void XTransceiver_CopyMixedBackgroundRegion(const u16 *source, u8 left, u8 top, u8 width, u8 height, u16 tileOffset, u8 paletteSlot)
+{
+    u8 x;
+    u8 y;
+
+    for (y = top; y < top + height; y++)
+    {
+        for (x = left; x < left + width; x++)
+        {
+            u16 entry = source[y * 32 + x];
+
+            sXTransceiverBg2TilemapBuffer[y * 32 + x] =
+                (entry & 0x0C00)
+              | (((entry & 0x03FF) + tileOffset) & 0x03FF)
+              | (paletteSlot << 12);
+        }
+    }
+}
+
+static void XTransceiver_LoadUniformBackground(u8 backgroundId, enum XTransceiverMode mode, enum XTransceiverTime time)
+{
+    const struct XTransceiverBackgroundResources *background = &sXTransceiverBackgrounds[backgroundId];
+
+    LoadPalette(background->palettes[time], BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+    ResetTempTileDataBuffers();
+    DecompressAndCopyTileDataToVram(2, background->tiles, 0, 0, 0);
+
+    while (FreeTempTileDataBuffersIfPossible())
+        ;
+
+    DecompressDataWithHeaderWram(background->tilemaps[mode], sXTransceiverBg2TilemapBuffer);
+    CopyBgTilemapBufferToVram(2);
+}
+
+static void XTransceiver_LoadMixedGroupBackgrounds(const struct XTransceiverScenario *scenario, enum XTransceiverTime time)
+{
+    bool8 loaded[XTRANSCEIVER_BG_COUNT] = {FALSE};
+    const struct XTransceiverBackgroundResources *background;
+    u8 backgroundId;
+    u8 paletteSlot;
+    u16 tileOffset;
+    u8 slot;
+
+    for (slot = 0; slot < 4; slot++)
+    {
+        backgroundId = scenario->backgrounds[slot];
+
+        if (loaded[backgroundId])
+            continue;
+
+        background = &sXTransceiverBackgrounds[backgroundId];
+        tileOffset = XTransceiver_GetMixedBackgroundTileOffset(backgroundId);
+        paletteSlot = XTransceiver_GetMixedBackgroundPaletteSlot(backgroundId);
+
+        LoadPalette(background->palettes[time], BG_PLTT_ID(paletteSlot), PLTT_SIZE_4BPP);
+        ResetTempTileDataBuffers();
+        DecompressAndCopyTileDataToVram(2, background->tiles, 0, tileOffset, 0);
+
+        while (FreeTempTileDataBuffersIfPossible())
+            ;
+
+        loaded[backgroundId] = TRUE;
+    }
+
+    CpuFill16(0, sXTransceiverBg2TilemapBuffer, sizeof(sXTransceiverBg2TilemapBuffer));
+
+    for (slot = 0; slot < 4; slot++)
+    {
+        backgroundId = scenario->backgrounds[slot];
+        background = &sXTransceiverBackgrounds[backgroundId];
+        tileOffset = XTransceiver_GetMixedBackgroundTileOffset(backgroundId);
+        paletteSlot = XTransceiver_GetMixedBackgroundPaletteSlot(backgroundId);
+
+        DecompressDataWithHeaderWram(background->tilemaps[XTRANSCEIVER_MODE_GROUP], sXTransceiverBg2TempTilemapBuffer);
+
+        switch (slot)
+        {
+        case 0:
+            XTransceiver_CopyMixedBackgroundRegion(sXTransceiverBg2TempTilemapBuffer, 0, 0, 15, 9, tileOffset, paletteSlot);
+            break;
+        case 1:
+            XTransceiver_CopyMixedBackgroundRegion(sXTransceiverBg2TempTilemapBuffer, 15, 0, 15, 9, tileOffset, paletteSlot);
+            break;
+        case 2:
+            XTransceiver_CopyMixedBackgroundRegion(sXTransceiverBg2TempTilemapBuffer, 0, 9, 15, 11, tileOffset, paletteSlot);
+            break;
+        case 3:
+            XTransceiver_CopyMixedBackgroundRegion(sXTransceiverBg2TempTilemapBuffer, 15, 9, 15, 11, tileOffset, paletteSlot);
+            break;
+        }
+    }
+
+    CopyBgTilemapBufferToVram(2);
+}
+
+static void XTransceiver_LoadBackgrounds(const struct XTransceiverScenario *scenario, enum XTransceiverTime time)
+{
+    u8 slotCount = XTransceiver_GetSlotCount(scenario->mode);
+    u8 i;
+
+    for (i = 1; i < slotCount; i++)
+    {
+        if (scenario->backgrounds[i] != scenario->backgrounds[0])
+        {
+            if (scenario->mode == XTRANSCEIVER_MODE_GROUP)
+                XTransceiver_LoadMixedGroupBackgrounds(scenario, time);
+            else
+                XTransceiver_LoadUniformBackground(scenario->backgrounds[0], scenario->mode, time);
+            return;
+        }
+    }
+
+    XTransceiver_LoadUniformBackground(scenario->backgrounds[0], scenario->mode, time);
+}
+
 static void XTransceiver_CreateNameWindows(enum XTransceiverMode mode, const enum XTransceiverCharacter *characters)
 {
     static const u8 colors[] = {0, 2, 3};
@@ -1102,7 +1294,6 @@ static void XTransceiver_OffsetTilemap(u16 *tilemap, u32 count, u16 offset)
 static void CB2_InitXTransceiver(void)
 {
     const struct XTransceiverScenario *scenario = sXTransceiverCurrentScenario;
-    const struct XTransceiverBackgroundResources *background = &sXTransceiverBackgrounds[scenario->background];
     const struct XTransceiverBarResources *bar = &sXTransceiverBars[gSaveBlock2Ptr->playerGender];
     enum XTransceiverMode mode = scenario->mode;
     enum XTransceiverTime time = XTransceiver_GetCurrentTime();
@@ -1205,14 +1396,7 @@ static void CB2_InitXTransceiver(void)
     // Background
     // ---------------------------------------------------------------------
 
-    LoadPalette(background->palettes[time], BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-    ResetTempTileDataBuffers();
-    DecompressAndCopyTileDataToVram(2, background->tiles, 0, 0, 0);
-
-    while (FreeTempTileDataBuffersIfPossible())
-        ;
-    DecompressDataWithHeaderWram(background->tilemaps[mode], sXTransceiverBg2TilemapBuffer);
-    CopyBgTilemapBufferToVram(2);
+    XTransceiver_LoadBackgrounds(scenario, time);
 
     // ---------------------------------------------------------------------
     // Bar
