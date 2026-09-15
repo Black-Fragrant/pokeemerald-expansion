@@ -1,3 +1,7 @@
+XTransceiver_Text_XTransceiverIsRinging::
+	.string "The Xtransceiver is ringing.\p"
+	.string "{PLAYER} picked up the Xtransceiver.$"
+
 CherenBattle_Text_SoThatsPokemonBattle::
 	.string "Ah! So that's a Pokémon battle!$"
 

@@ -208,6 +208,7 @@ void AddSpriteTextPrinterParameterized6(u8 spriteId, u8 fontId, u8 left, u8 top,
 bool32 AddTextPrinter(struct TextPrinterTemplate *printerTemplate, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16));
 void RunTextPrinters(void);
 bool32 IsTextPrinterActiveOnWindow(u32 windowId);
+bool32 IsTextPrinterPrintingOnWindow(u32 windowId);
 bool32 IsTextPrinterActiveOnSprite(u32 spriteId);
 void GenerateFontHalfRowLookupTable(union TextColor color);
 union TextColor SaveTextColors(void);

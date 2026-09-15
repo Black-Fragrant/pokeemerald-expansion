@@ -16,6 +16,7 @@
 #include "decompress.h"
 #include "constants/songs.h"
 #include "constants/items.h"
+#include "script.h"
 
 #define TAG_SWAP_LINE 109
 
@@ -121,7 +122,13 @@ void SetVBlankHBlankCallbacksToNull(void)
 void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
 {
     sMessageWindowId = windowId;
-    DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
+
+    if ((gMsgIsTransparent || gMsgIsShout || gMsgIsSignPost)
+    && tileNum == DLG_WINDOW_BASE_TILE_NUM
+    && paletteNum == DLG_WINDOW_PALETTE_NUM)
+        DrawDialogueFrame(windowId, TRUE);
+    else
+        DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
 
     if (string != gStringVar4)
         StringExpandPlaceholders(gStringVar4, string);

@@ -345,10 +345,12 @@ script Route1_East_EventScript_Bianca_Top_Compare
 	closemessage()
 	delay(10)
 	playse(SE_POKENAV_CALL)
-	msgbox("The Xtransceiver is ringing.\p"
-			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
+	msgbox(XTransceiver_Text_XTransceiverIsRinging, MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage()
+	setvar(VAR_RESULT, 0)
+    special(XTransceiverDialogue)
+	waitstate
 	playse(SE_POKENAV_HANG_UP)
 	waitse()
 	msgbox("Cheren: Well, I'm going on ahead.", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE1_EAST_CHEREN_TOP)

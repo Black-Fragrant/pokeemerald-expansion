@@ -11,10 +11,12 @@ script CasteliaCity_GymStreet_EventScript_BiancaCalls
     lock
     delay(10)
 	playse(SE_POKENAV_CALL)
-	msgbox("The Xtransceiver is ringing.\p"
-			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
+	msgbox(XTransceiver_Text_XTransceiverIsRinging, MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage()
+	setvar(VAR_RESULT, 2)
+    special(XTransceiverDialogue)
+	waitstate
 	playse(SE_POKENAV_HANG_UP)
 	waitse()
     setvar(VAR_ROUTE_4_BIANCA_BATTLE, 2)

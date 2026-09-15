@@ -330,10 +330,12 @@ script Route4_South_EventScript_CherenBattle
     closemessage
     delay(10)
 	playse(SE_POKENAV_CALL)
-	msgbox("The Xtransceiver is ringing.\p"
-			"Player picked up the Xtransceiver.", MSGBOX_TRANSPARENT)
+	msgbox(XTransceiver_Text_XTransceiverIsRinging, MSGBOX_TRANSPARENT)
 	waitse()
 	closemessage()
+	setvar(VAR_RESULT, 3)
+    special(XTransceiverDialogue)
+	waitstate
 	playse(SE_POKENAV_HANG_UP)
 	waitse()
     delay(20)

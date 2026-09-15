@@ -195,7 +195,14 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setsubwaywinstreak FRONTIER_MODE_MULTIS, 7
+	lock
+	applymovement LOCALID_PLAYER, Common_Movement_WalkDown
+	waitmovement 0
+	setvar VAR_RESULT, 3
+    special XTransceiverDialogue
+	waitstate
+	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
 	release 
     end
 

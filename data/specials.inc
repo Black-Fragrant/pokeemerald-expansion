@@ -676,3 +676,4 @@ gSpecials::
 	def_special UpdateMultiPartner
 	def_special GetMultiPartnerTrainerId
 	def_special ResetSubwayCurrentBattleNum
+	def_special XTransceiverDialogue

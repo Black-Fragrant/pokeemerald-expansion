@@ -693,6 +693,24 @@ bool32 IsTextPrinterActiveOnWindow(u32 windowId)
     return FALSE;
 }
 
+bool32 IsTextPrinterPrintingOnWindow(u32 windowId)
+{
+    struct TextPrinter *currentPrinter = sFirstTextPrinter;
+
+    while (currentPrinter != NULL)
+    {
+        if (currentPrinter->printerTemplate.type == WINDOW_TEXT_PRINTER
+         && currentPrinter->printerTemplate.windowId == windowId)
+        {
+            return currentPrinter->active
+                && currentPrinter->state == RENDER_STATE_HANDLE_CHAR;
+        }
+        currentPrinter = currentPrinter->nextPrinter;
+    }
+
+    return FALSE;
+}
+
 bool32 IsTextPrinterActiveOnSprite(u32 spriteId)
 {
     struct TextPrinter *currentPrinter = sFirstTextPrinter;
