@@ -31,6 +31,7 @@ struct Weather
         struct
         {
             struct Sprite *rainSprites[MAX_RAIN_SPRITES];
+            struct Sprite *pedalSprites[MAX_PEDAL_SPRITES];
             struct Sprite *snowflakeSprites[101];
             struct Sprite *cloudSprites[NUM_CLOUD_SPRITES];
         } s1;
@@ -68,6 +69,7 @@ struct Weather
     u8 curRainSpriteIndex;
     u8 targetRainSpriteCount;
     u8 rainSpriteCount;
+    u8 pedalSpriteCount;
     u8 rainSpriteVisibleDelay;
     u8 isDownpour;
     u8 rainStrength;

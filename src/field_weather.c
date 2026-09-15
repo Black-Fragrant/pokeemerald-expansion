@@ -207,6 +207,7 @@ void StartWeather(void)
         gWeatherPtr->contrastColorMapSpritePalIndex = index;
         gWeatherPtr->weatherPicSpritePalIndex = 0xFF; // defer allocation until needed
         gWeatherPtr->rainSpriteCount = 0;
+        gWeatherPtr->pedalSpriteCount = 0;
         gWeatherPtr->curRainSpriteIndex = 0;
         gWeatherPtr->cloudSpritesCreated = 0;
         gWeatherPtr->snowflakeSpriteCount = 0;

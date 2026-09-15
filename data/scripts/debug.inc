@@ -196,13 +196,12 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	applymovement LOCALID_PLAYER, Common_Movement_WalkDown
-	waitmovement 0
+	setvar VAR_NUVEMA_PICK_STARTER, 9
+	warpsilent MAP_ROUTE1_EAST, 22, 5
+	waitstate
 	setvar VAR_RESULT, 3
     special XTransceiverDialogue
 	waitstate
-	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
-	waitmovement 0
 	release 
     end
 
@@ -210,8 +209,6 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
-	warpsilent MAP_GEAR_STATION_LOBBY, 15, 15
-	waitstate
 	release 
     end
 
@@ -220,12 +217,6 @@ Debug_EventScript_Script_3::
 	end
 
 Debug_EventScript_Script_4::
-    lock
-	special GetSubwayCurrentBattleNum
-	buffernumberstring STR_VAR_2, VAR_RESULT 
-	buffersubwaywinstreak FRONTIER_MODE_MULTIS
-	msgbox Debug_EventScript_Script_1_text, MSGBOX_DEFAULT
-	closemessage
 	release
 	end
 
