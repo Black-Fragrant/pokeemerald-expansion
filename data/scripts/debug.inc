@@ -196,10 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	setvar VAR_NUVEMA_PICK_STARTER, 9
-	warpsilent MAP_ROUTE1_EAST, 22, 5
-	waitstate
-	setvar VAR_RESULT, 3
+	setvar VAR_RESULT, 4
     special XTransceiverDialogue
 	waitstate
 	release 

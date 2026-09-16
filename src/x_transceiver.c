@@ -582,6 +582,13 @@ static const struct XTransceiverLine sXTransceiverScene4Lines[] =
     { .speaker = 1, .text = sXTransceiverScene4_Cheren2 },
 };
 
+static const u8 sXTransceiverScene5_N[] = _("I'll defeat the Champion and become\nunbeatable, unlike any other!\pI'll make all Trainers free their Pokémon!\nJust try and stop me!\pIf you want to be together with Pokémon,\nyour only hope is to collect the Badges\lfrom each area and head for the\lPokémon League!\lTry and stop me there, if you dare!{PAUSE_UNTIL_PRESS}");
+
+static const struct XTransceiverLine sXTransceiverScene5Lines[] =
+{
+    { .speaker = 0, .text = sXTransceiverScene5_N },
+};
+
 static const struct XTransceiverScenario sXTransceiverScenarios[] =
 {
     {
@@ -651,6 +658,16 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
         },
         .lines = sXTransceiverScene4Lines,
         .lineCount = ARRAY_COUNT(sXTransceiverScene4Lines),
+    },
+    {
+        .mode = XTRANSCEIVER_MODE_SOLO,
+        .backgrounds = {XTRANSCEIVER_BG_ROUTE},
+        .characters =
+        {
+            XTRANSCEIVER_CHAR_N,
+        },
+        .lines = sXTransceiverScene5Lines,
+        .lineCount = ARRAY_COUNT(sXTransceiverScene5Lines),
     },
 };
 
@@ -1370,7 +1387,7 @@ static void CB2_InitXTransceiver(void)
 
     gMsgIsSignPost = FALSE;
     gMsgIsShout = FALSE;
-    gMsgIsTransparent = TRUE;
+    gMsgIsTransparent = mode != XTRANSCEIVER_MODE_SOLO;
 
     LoadPalette(gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     FillWindowPixelBuffer(XTRANSCEIVER_WINDOW_ID, PIXEL_FILL(1));
@@ -1434,8 +1451,16 @@ static void CB2_InitXTransceiver(void)
         ShowBg(1);
     ShowBg(2);
 
-    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_OBJ);
-    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(12, 4));
+    if (mode == XTRANSCEIVER_MODE_SOLO)
+    {
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    }
+    else
+    {
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_OBJ);
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(12, 4));
+    }
     SetGpuReg(REG_OFFSET_BLDY, 0);
 
     BlendPalettes(

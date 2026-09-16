@@ -156,8 +156,10 @@ script NimbasaCityExtended_EventScript_N_StartBattle
     closemessage
 	applymovement(LOCALID_NCE_N_RIGHT, Common_Movement_WalkRightOnce)
 	waitmovement(0)
-    fadescreenswapbuffers (FADE_TO_BLACK)
-    fadescreenswapbuffers (FADE_FROM_BLACK)
+    delay(10)
+	setvar(VAR_RESULT, 4)
+    special(XTransceiverDialogue)
+	waitstate
 	applymovement(LOCALID_NCE_N_RIGHT, moves(lock_facing_direction, walk_slow_left, unlock_facing_direction))
 	waitmovement(0)
     delay(10)
