@@ -23,6 +23,7 @@
 #include "trig.h"
 #include "graphics.h"
 #include "constants/rgb.h"
+#include "constants/species.h"
 #include "constants/songs.h"
 
 enum {
@@ -48,6 +49,7 @@ static void MainCB2(void);
 static void Task_TitleScreenPhase1(u8);
 static void Task_TitleScreenPhase2(u8);
 static void Task_TitleScreenPhase3(u8);
+static void Task_TitleScreenCry(u8);
 static void CB2_GoToMainMenu(void);
 static void CB2_GoToClearSaveDataScreen(void);
 static void CB2_GoToResetRtcScreen(void);
@@ -367,6 +369,7 @@ static const struct CompressedSpriteSheet sPokemonLogoShineSpriteSheet[] =
 #define tPointless  data[2] // Incremented but never used to do anything.
 #define tBg2Y       data[3]
 #define tBg1Y       data[4]
+#define tCryTimer   data[5]
 #define tBg0Scroll  data[7]
 
 // Sprite data for sVersionBannerLeftSpriteTemplate / sVersionBannerRightSpriteTemplate
@@ -819,9 +822,9 @@ static void Task_TitleScreenPhase3(u8 taskId)
 
     if (JOY_NEW(A_BUTTON) || JOY_NEW(START_BUTTON))
     {
-        FadeOutBGM(4);
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
-        SetMainCallback2(CB2_GoToMainMenu);
+        PlayCry_Normal(SPECIES_RESHIRAM, 0);
+        gTasks[taskId].tCryTimer = 0;
+        gTasks[taskId].func = Task_TitleScreenCry;
     }
     else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
     {
@@ -862,6 +865,32 @@ static void Task_TitleScreenPhase3(u8 taskId)
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
             SetMainCallback2(CB2_GoToCopyrightScreen);
         }
+    }
+}
+
+static void Task_TitleScreenCry(u8 taskId)
+{
+    SetGpuReg(REG_OFFSET_BG2Y_L, 0);
+    SetGpuReg(REG_OFFSET_BG2Y_H, 0);
+
+    if (++gTasks[taskId].tCounter & 1)
+    {
+        gTasks[taskId].tBg1Y++;
+        gBattle_BG1_Y = gTasks[taskId].tBg1Y / 2;
+        gBattle_BG1_X = 0;
+    }
+
+    if ((gTasks[taskId].tCounter & 3) == 0)
+        gTasks[taskId].tBg0Scroll++;
+
+    UpdateBg0HorizontalScroll(gTasks[taskId].tBg0Scroll);
+    UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
+
+    if (++gTasks[taskId].tCryTimer >= 90)
+    {
+        FadeOutBGM(4);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
+        SetMainCallback2(CB2_GoToMainMenu);
     }
 }
 

@@ -114,10 +114,17 @@ static void MainCB2_EndIntro(void);
 extern const struct BattleAnimation gBattleAnimTable[ANIM_TAG_COUNT];
 extern const struct SpriteTemplate gAncientPowerRockSpriteTemplate;
 
+#define PUBLISHER_SPLASH_DURATION 90
+#define COPYRIGHT_SCREEN_DURATION 140
+
 enum {
+    PUBLISHER_INITIALIZE,
+    PUBLISHER_EMULATOR_BLEND,
+    PUBLISHER_START_FADE = PUBLISHER_SPLASH_DURATION,
+    PUBLISHER_START_COPYRIGHT,
     COPYRIGHT_INITIALIZE,
     COPYRIGHT_EMULATOR_BLEND,
-    COPYRIGHT_START_FADE = 140,
+    COPYRIGHT_START_FADE = COPYRIGHT_INITIALIZE + COPYRIGHT_SCREEN_DURATION,
     COPYRIGHT_START_INTRO,
 };
 
@@ -1037,6 +1044,13 @@ static void MainCB2_EndIntro(void)
         SetMainCallback2(CB2_InitTitleScreen);
 }
 
+static void LoadPublisherGraphics(u16 tilesetAddress, u16 tilemapAddress, u16 paletteOffset)
+{
+    DecompressDataWithHeaderVram(gIntroPublisher_Gfx, (void *)(VRAM + tilesetAddress));
+    DecompressDataWithHeaderVram(gIntroPublisher_Tilemap, (void *)(VRAM + tilemapAddress));
+    LoadPalette(gIntroPublisher_Pal, paletteOffset, PLTT_SIZE_4BPP);
+}
+
 static void LoadCopyrightGraphics(u16 tilesetAddress, u16 tilemapAddress, u16 paletteOffset)
 {
     DecompressDataWithHeaderVram(gIntroCopyright_Gfx, (void *)(VRAM + tilesetAddress));
@@ -1056,6 +1070,50 @@ static u8 SetUpCopyrightScreen(void)
 
     switch (gMain.state)
     {
+    case PUBLISHER_INITIALIZE:
+        SetVBlankCallback(NULL);
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+        *(u16 *)PLTT = RGB_WHITE;
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        CpuFill32(0, (void *)VRAM, VRAM_SIZE);
+        CpuFill32(0, (void *)OAM, OAM_SIZE);
+        CpuFill16(0, (void *)(PLTT + 2), PLTT_SIZE - 2);
+        ResetPaletteFade();
+        LoadPublisherGraphics(0, 0x3800, BG_PLTT_ID(0));
+        ScanlineEffect_Stop();
+        ResetTasks();
+        ResetSpriteData();
+        FreeAllSpritePalettes();
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_WHITEALPHA);
+        SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0)
+                                   | BGCNT_CHARBASE(0)
+                                   | BGCNT_SCREENBASE(7)
+                                   | BGCNT_16COLOR
+                                   | BGCNT_TXT256x256);
+        EnableInterrupts(INTR_FLAG_VBLANK);
+        SetVBlankCallback(VBlankCB_Intro);
+        REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON;
+    case PUBLISHER_EMULATOR_BLEND:
+        REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON;
+    default:
+        UpdatePaletteFade();
+        if (gMain.state >= COPYRIGHT_INITIALIZE)
+            GameCubeMultiBoot_Main(&gMultibootProgramStruct);
+        gMain.state++;
+        break;
+    case PUBLISHER_START_FADE:
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
+        gMain.state++;
+        break;
+    case PUBLISHER_START_COPYRIGHT:
+        if (UpdatePaletteFade())
+            break;
+        gMain.state = COPYRIGHT_INITIALIZE;
+        break;
     case COPYRIGHT_INITIALIZE:
         SetVBlankCallback(NULL);
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
@@ -1085,14 +1143,11 @@ static u8 SetUpCopyrightScreen(void)
         REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON;
         SetSerialCallback(SerialCB_CopyrightScreen);
         GameCubeMultiBoot_Init(&gMultibootProgramStruct);
-    // REG_DISPCNT needs to be overwritten the second time, because otherwise the intro won't show up on VBA 1.7.2 and John GBA Lite emulators.
-    // The REG_DISPCNT overwrite is NOT needed in m-GBA, No$GBA, VBA 1.8.0, My Boy and Pizza Boy GBA emulators.
     case COPYRIGHT_EMULATOR_BLEND:
         REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON;
-    default:
         UpdatePaletteFade();
-        gMain.state++;
         GameCubeMultiBoot_Main(&gMultibootProgramStruct);
+        gMain.state++;
         break;
     case COPYRIGHT_START_FADE:
         GameCubeMultiBoot_Main(&gMultibootProgramStruct);
@@ -1116,7 +1171,6 @@ static u8 SetUpCopyrightScreen(void)
         {
             if (gMultibootProgramStruct.gcmb_field_2 == 2)
             {
-                // check the multiboot ROM header game code to see if we already did this
                 if (*(u32 *)(EWRAM_START + 0xAC) == COLOSSEUM_GAME_CODE)
                 {
                     CpuCopy16(&gMultiBootProgram_PokemonColosseum_Start, (void *)EWRAM_START, sizeof(gMultiBootProgram_PokemonColosseum_Start));

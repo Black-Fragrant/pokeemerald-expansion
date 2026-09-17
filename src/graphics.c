@@ -1841,6 +1841,10 @@ const u16 gSummaryScreen_MoveEffect_Battle_Tilemap[] = INCBIN_U16("graphics/summ
 const u16 gSummaryScreen_MoveEffect_Contest_Tilemap[] = INCBIN_U16("graphics/summary_screen/effect_contest.bin");
 const u16 gSummaryScreen_MoveEffect_Cancel_Tilemap[] = INCBIN_U16("graphics/summary_screen/effect_cancel.bin");
 
+const u16 gIntroPublisher_Pal[] = INCGFX_U16("graphics/intro/publisher.png", ".gbapal");
+const u32 gIntroPublisher_Gfx[] = INCGFX_U32("graphics/intro/publisher.png", ".4bpp.smol");
+const u32 gIntroPublisher_Tilemap[] = INCGFX_U32("graphics/intro/publisher.bin", ".smolTM");
+
 const u16 gIntroCopyright_Pal[] = INCGFX_U16("graphics/intro/copyright.png", ".gbapal");
 const u32 gIntroCopyright_Gfx[] = INCGFX_U32("graphics/intro/copyright.png", ".4bpp.smol");
 const u32 gIntroCopyright_Tilemap[] = INCGFX_U32("graphics/intro/copyright.bin", ".smolTM");
