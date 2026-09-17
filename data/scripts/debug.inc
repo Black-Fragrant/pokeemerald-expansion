@@ -196,7 +196,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	setvar VAR_RESULT, 4
+	setvar VAR_RESULT, 1
     special XTransceiverDialogue
 	waitstate
 	release 

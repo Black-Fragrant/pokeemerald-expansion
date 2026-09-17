@@ -300,9 +300,21 @@ static const u32 sXTransceiverDesertSoloTilemap[] = INCGFX_U32("graphics/x_trans
 static const u32 sXTransceiverDesertDoubleTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/desert/double.bin", ".smolTM");
 static const u32 sXTransceiverDesertGroupTilemap[] =INCGFX_U32("graphics/x_transceiver/backgrounds/desert/group.bin",".smolTM");
 
-static const u32 sXTransceiverNullTiles[] = INCGFX_U32("graphics/x_transceiver/backgrounds/route/tiles.png", ".4bpp.smol");
-static const u16 sXTransceiverNullPal[] = INCGFX_U16("graphics/x_transceiver/backgrounds/route/day.pal", ".gbapal");
-static const u32 sXTransceiverNullGroupTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/route/group.bin", ".smolTM");
+static const u32 sXTransceiverNullTiles[] = INCGFX_U32("graphics/x_transceiver/backgrounds/null/tiles.png", ".4bpp.smol");
+static const u16 sXTransceiverNullPal[] = INCGFX_U16("graphics/x_transceiver/backgrounds/null/day.pal", ".gbapal");
+static const u32 sXTransceiverNullGroupTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/null/group.bin", ".smolTM");
+
+static const u32 sXTransceiverFerrisWheelTiles[] = INCGFX_U32("graphics/x_transceiver/backgrounds/ferris_wheel/tiles.png", ".4bpp.smol");
+static const u16 sXTransceiverFerrisWheelPal[] = INCGFX_U16("graphics/x_transceiver/backgrounds/ferris_wheel/day.pal", ".gbapal");
+static const u32 sXTransceiverFerrisWheelSoloTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/ferris_wheel/solo.bin", ".smolTM");
+
+static const u32 sXTransceiverCastleTiles[] = INCGFX_U32("graphics/x_transceiver/backgrounds/castle/tiles.png", ".4bpp.smol");
+static const u16 sXTransceiverCastlePal[] = INCGFX_U16("graphics/x_transceiver/backgrounds/castle/day.pal", ".gbapal");
+static const u32 sXTransceiverCastleSoloTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/castle/solo.bin", ".smolTM");
+
+static const u32 sXTransceiverExitTiles[] = INCGFX_U32("graphics/x_transceiver/backgrounds/exit/tiles.png", ".4bpp.smol");
+static const u16 sXTransceiverExitPal[] = INCGFX_U16("graphics/x_transceiver/backgrounds/exit/day.pal", ".gbapal");
+static const u32 sXTransceiverExitSoloTilemap[] = INCGFX_U32("graphics/x_transceiver/backgrounds/exit/solo.bin", ".smolTM");
 
 struct XTransceiverBackgroundResources
 {
@@ -367,51 +379,51 @@ static const struct XTransceiverBackgroundResources sXTransceiverBackgrounds[XTR
     },
     [XTRANSCEIVER_BG_FERRIS_WHEEL] =
     {
-        .tiles = NULL,
+        .tiles = sXTransceiverFerrisWheelTiles,
         .palettes =
         {
-            [XTRANSCEIVER_TIME_MORNING] = NULL,
-            [XTRANSCEIVER_TIME_DAY]     = NULL,
-            [XTRANSCEIVER_TIME_EVENING] = NULL,
-            [XTRANSCEIVER_TIME_NIGHT]   = NULL,
+            [XTRANSCEIVER_TIME_MORNING] = sXTransceiverFerrisWheelPal,
+            [XTRANSCEIVER_TIME_DAY]     = sXTransceiverFerrisWheelPal,
+            [XTRANSCEIVER_TIME_EVENING] = sXTransceiverFerrisWheelPal,
+            [XTRANSCEIVER_TIME_NIGHT]   = sXTransceiverFerrisWheelPal,
         },
         .tilemaps =
         {
-            [XTRANSCEIVER_MODE_SOLO]   = NULL,
+            [XTRANSCEIVER_MODE_SOLO]   = sXTransceiverFerrisWheelSoloTilemap,
             [XTRANSCEIVER_MODE_DOUBLE] = NULL,
             [XTRANSCEIVER_MODE_GROUP]  = NULL,
         },
     },
     [XTRANSCEIVER_BG_CASTLE] =
     {
-        .tiles = NULL,
+        .tiles = sXTransceiverCastleTiles,
         .palettes =
         {
-            [XTRANSCEIVER_TIME_MORNING] = NULL,
-            [XTRANSCEIVER_TIME_DAY]     = NULL,
-            [XTRANSCEIVER_TIME_EVENING] = NULL,
-            [XTRANSCEIVER_TIME_NIGHT]   = NULL,
+            [XTRANSCEIVER_TIME_MORNING] = sXTransceiverCastlePal,
+            [XTRANSCEIVER_TIME_DAY]     = sXTransceiverCastlePal,
+            [XTRANSCEIVER_TIME_EVENING] = sXTransceiverCastlePal,
+            [XTRANSCEIVER_TIME_NIGHT]   = sXTransceiverCastlePal,
         },
         .tilemaps =
         {
-            [XTRANSCEIVER_MODE_SOLO]   = NULL,
+            [XTRANSCEIVER_MODE_SOLO]   = sXTransceiverCastleSoloTilemap,
             [XTRANSCEIVER_MODE_DOUBLE] = NULL,
             [XTRANSCEIVER_MODE_GROUP]  = NULL,
         },
     },
     [XTRANSCEIVER_BG_EXIT] =
     {
-        .tiles = NULL,
+        .tiles = sXTransceiverExitTiles,
         .palettes =
         {
-            [XTRANSCEIVER_TIME_MORNING] = NULL,
-            [XTRANSCEIVER_TIME_DAY]     = NULL,
-            [XTRANSCEIVER_TIME_EVENING] = NULL,
-            [XTRANSCEIVER_TIME_NIGHT]   = NULL,
+            [XTRANSCEIVER_TIME_MORNING] = sXTransceiverExitPal,
+            [XTRANSCEIVER_TIME_DAY]     = sXTransceiverExitPal,
+            [XTRANSCEIVER_TIME_EVENING] = sXTransceiverExitPal,
+            [XTRANSCEIVER_TIME_NIGHT]   = sXTransceiverExitPal,
         },
         .tilemaps =
         {
-            [XTRANSCEIVER_MODE_SOLO]   = NULL,
+            [XTRANSCEIVER_MODE_SOLO]   = sXTransceiverExitSoloTilemap,
             [XTRANSCEIVER_MODE_DOUBLE] = NULL,
             [XTRANSCEIVER_MODE_GROUP]  = NULL,
         },
@@ -661,7 +673,7 @@ static const struct XTransceiverScenario sXTransceiverScenarios[] =
     },
     {
         .mode = XTRANSCEIVER_MODE_SOLO,
-        .backgrounds = {XTRANSCEIVER_BG_ROUTE},
+        .backgrounds = {XTRANSCEIVER_BG_FERRIS_WHEEL},
         .characters =
         {
             XTRANSCEIVER_CHAR_N,
