@@ -267,11 +267,8 @@
 #define MAIN_MENU_SAVE_BADGES_RIGHT_X 0xD0
 #endif
 
-// Static type declarations
-
 // Static RAM declarations
 
-static EWRAM_DATA bool8 sStartedPokeBallTask = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
 #if B_MAIN_MENU_BW_STYLE
 static EWRAM_DATA u8 sBwMainMenuPlayerSpriteId = 0;
@@ -336,17 +333,12 @@ static void Task_NewGameJuniperSpeech_FadeInTarget1OutTarget2(u8);
 static void NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8);
 static void NewGameJuniperSpeech_ClearWindow(u8);
-static void Task_NewGameJuniperSpeech_ThisIsAPokemon(u8);
-static void Task_NewGameJuniperSpeech_MainSpeech(u8);
-static void NewGameJuniperSpeech_WaitForThisIsPokemonText(struct TextPrinterTemplate *, u16);
-static void Task_NewGameJuniperSpeech_AndYouAre(u8);
-static void Task_NewGameJuniperSpeechSub_WaitForLotad(u8);
-static void Task_NewGameJuniperSpeech_StartJuniperLotadFadeOut(u8);
+static void Task_NewGameJuniperSpeech_PreGenderSequence(u8);
+static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8);
+static void Task_NewGameJuniperSpeechSub_WaitForMinccino(u8);
 static void NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(u8, u8);
 static void NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(u8, u8);
 static void NewGameJuniperSpeech_StartFadeInSemiTransparentObj(u8, u8);
-static void Task_NewGameJuniperSpeech_StartPlayerFadeIn(u8);
-static void Task_NewGameJuniperSpeech_WaitForPlayerFadeIn(u8);
 static void Task_NewGameJuniperSpeech_BoyOrGirl(u8);
 static void ResetNewGameJuniperSpeechBgs(void);
 static void LoadMainMenuWindowFrameTiles(u8, u16);
@@ -441,6 +433,10 @@ static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while
 static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.");
 static const u8 sText_YoureABoyRight[] = _("You're a boy, right?");
 static const u8 sText_YoureAGirlRight[] = _("You're a girl, right?");
+static const u8 sText_JuniperOpening[] = _("Hi there!\pWelcome to the world of Pokémon!\pMy name is Professor Juniper. Everyone\ncalls me the Pokémon Professor!\p");
+static const u8 sText_JuniperPokemonWorld[] = _("That's right! This world is widely\ninhabited by mysterious creatures\lcalled Pokémon!\pPokémon have mysterious powers.\nThey come in many shapes\land live in many different places.\pWe humans live happily with Pokémon!\nLiving and working together,\lwe complete each other.\pWe help each other out to\naccomplish difficult tasks.\pHaving Pokémon battle one another\nis particularly popular, and it deepens\lthe bonds between people and Pokémon.\lAnd that is why I research Pokémon.\p");
+static const u8 sText_JuniperAboutYou[] = _("Well, that's enough from me...\nCould you tell me about yourself?\p");
+static const u8 sText_JuniperBoyOrGirl[] = _("Are you a boy?\nOr a girl?\p");
 static const u8 sText_JuniperIntroduceFriends[] = _("So your name's {PLAYER}.\nWhat a wonderful name!\pWell then. I'm going to introduce you\nto your two best friends!\p");
 static const u8 sText_JuniperIntroduceCheren[] = _("This young man is Cheren.\pHe can be a little difficult, but\nhe's a very honest person.\p");
 static const u8 sText_JuniperIntroduceBianca[] = _("This young woman is Bianca.\pShe's a little flighty,\nbut she works very hard.\p");
@@ -472,6 +468,10 @@ enum NewGameSpeechPortrait
 #define NEW_GAME_PORTRAIT_MAP_Y 2
 #define NEW_GAME_PORTRAIT_CENTER_X 120
 #define NEW_GAME_PORTRAIT_CENTER_Y 64
+#define NEW_GAME_JUNIPER_INTRO_RIGHT_X 152
+#define NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES 32
+#define NEW_GAME_JUNIPER_GENDER_GAP_FRAMES 8
+#define NEW_GAME_MINCCINO_HOLD_FRAMES 40
 #define NEW_GAME_PORTRAIT_SHRINK_FRAMES 48
 #define NEW_GAME_PORTRAIT_FINAL_SCALE_X 120
 #define NEW_GAME_PORTRAIT_FINAL_SCALE_Y 80
@@ -523,6 +523,21 @@ enum NewGameSpeechPortrait
 #define NEW_GAME_RIVAL_CHEREN_PAL 6
 #define NEW_GAME_RIVAL_BIANCA_PAL 7
 #define NEW_GAME_RIVAL_PLAYER_PAL 8
+
+enum NewGameJuniperIntroState
+{
+    JUNIPER_INTRO_WAIT_OPENING,
+    JUNIPER_INTRO_MOVE_RIGHT,
+    JUNIPER_INTRO_WAIT_MINCCINO,
+    JUNIPER_INTRO_WAIT_MAIN_TEXT,
+    JUNIPER_INTRO_WAIT_MINCCINO_OUT,
+    JUNIPER_INTRO_MINCCINO_GAP,
+    JUNIPER_INTRO_RETURN_CENTER,
+    JUNIPER_INTRO_WAIT_ABOUT_YOU,
+    JUNIPER_INTRO_WAIT_JUNIPER_OUT,
+    JUNIPER_INTRO_GENDER_GAP,
+    JUNIPER_INTRO_WAIT_GENDER_IN
+};
 
 enum NewGameRivalIntroState
 {
@@ -2151,6 +2166,8 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 #endif
 }
 
+#define tIntroState data[0]
+#define tIntroFrame data[1]
 #define tPlayerSpriteId data[2]
 #define tRivalState data[4]
 #define tIsDoneFadingSprites data[5]
@@ -2858,8 +2875,8 @@ static void Task_NewGameJuniperSpeech_WaitToShowJuniper(u8 taskId)
     else
     {
         spriteId = gTasks[taskId].tJuniperSpriteId;
-        gSprites[spriteId].x = 136;
-        gSprites[spriteId].y = 60;
+        gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X;
+        gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 10);
@@ -2886,31 +2903,174 @@ static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             PutWindowTilemap(0);
             CopyWindowToVram(0, COPYWIN_GFX);
             NewGameJuniperSpeech_ClearWindow(0);
-            StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
+            StringCopy(gStringVar4, sText_JuniperOpening);
             AddTextPrinterForMessage(TRUE);
-            gTasks[taskId].func = Task_NewGameJuniperSpeech_ThisIsAPokemon;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_OPENING;
+            gTasks[taskId].tIntroFrame = 0;
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_PreGenderSequence;
         }
     }
 }
 
-static void Task_NewGameJuniperSpeech_ThisIsAPokemon(u8 taskId)
+static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
 {
-    if (!gPaletteFade.active && !RunTextPrintersAndIsPrinter0Active())
-    {
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_MainSpeech;
-        StringExpandPlaceholders(gStringVar4, gText_ThisIsAPokemon);
-        AddTextPrinterWithCallbackForMessage(TRUE, NewGameJuniperSpeech_WaitForThisIsPokemonText);
-        sJuniperSpeechMainTaskId = taskId;
-    }
-}
+    u8 spriteId;
+    u8 frame;
 
-static void Task_NewGameJuniperSpeech_MainSpeech(u8 taskId)
-{
-    if (!RunTextPrintersAndIsPrinter0Active())
+    switch (gTasks[taskId].tIntroState)
     {
-        StringExpandPlaceholders(gStringVar4, gText_Birch_MainSpeech);
+    case JUNIPER_INTRO_WAIT_OPENING:
+        if (!gPaletteFade.active && !RunTextPrintersAndIsPrinter0Active())
+        {
+            ClearDialogWindowAndFrameToTransparent(0, TRUE);
+            gTasks[taskId].tIntroFrame = 0;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_MOVE_RIGHT;
+        }
+        break;
+
+    case JUNIPER_INTRO_MOVE_RIGHT:
+        if (gTasks[taskId].tIntroFrame < NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES)
+            gTasks[taskId].tIntroFrame++;
+
+        frame = gTasks[taskId].tIntroFrame;
+        spriteId = gTasks[taskId].tJuniperSpriteId;
+        gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X
+            + ((NEW_GAME_JUNIPER_INTRO_RIGHT_X - NEW_GAME_PORTRAIT_CENTER_X) * frame
+            / NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES);
+        gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
+
+        if (frame >= NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES)
+        {
+            sJuniperSpeechMainTaskId = taskId;
+            gTasks[taskId].tTimer = 0;
+            CreateTask(Task_NewGameJuniperSpeechSub_InitPokeBall, 0);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_MINCCINO:
+        if (gTasks[taskId].tTimer >= NEW_GAME_MINCCINO_HOLD_FRAMES)
+    {
+        DrawDialogFrameWithCustomTile(0, TRUE, JUNIPER_DLG_BASE_TILE_NUM);
+        NewGameJuniperSpeech_ClearWindow(0);
+        StringCopy(gStringVar4, sText_JuniperPokemonWorld);
         AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_AndYouAre;
+        gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MAIN_TEXT;
+    }
+    break;
+
+    case JUNIPER_INTRO_WAIT_MAIN_TEXT:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+            NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(taskId, 1);
+            SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_EFFECT_BLEND);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO_OUT;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_MINCCINO_OUT:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
+            gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            gTasks[taskId].tTimer = 6;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_MINCCINO_GAP;
+        }
+        break;
+
+    case JUNIPER_INTRO_MINCCINO_GAP:
+        if (gTasks[taskId].tTimer != 0)
+        {
+            gTasks[taskId].tTimer--;
+        }
+        else
+        {
+            gTasks[taskId].tIntroFrame = 0;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_RETURN_CENTER;
+        }
+        break;
+
+    case JUNIPER_INTRO_RETURN_CENTER:
+        if (gTasks[taskId].tIntroFrame < NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES)
+            gTasks[taskId].tIntroFrame++;
+
+        frame = gTasks[taskId].tIntroFrame;
+        spriteId = gTasks[taskId].tJuniperSpriteId;
+
+        gSprites[spriteId].x = NEW_GAME_JUNIPER_INTRO_RIGHT_X
+            + ((NEW_GAME_PORTRAIT_CENTER_X - NEW_GAME_JUNIPER_INTRO_RIGHT_X) * frame
+            / NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES);
+        gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
+
+        if (frame >= NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES)
+        {
+            gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X;
+            gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
+
+            NewGameJuniperSpeech_ClearWindow(0);
+            StringCopy(gStringVar4, sText_JuniperAboutYou);
+            AddTextPrinterForMessage(TRUE);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_ABOUT_YOU;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_ABOUT_YOU:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 1);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_JUNIPER_OUT;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_JUNIPER_OUT:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            gSprites[gTasks[taskId].tJuniperSpriteId].invisible = TRUE;
+            HideBg(2);
+
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            gTasks[taskId].tTimer = NEW_GAME_JUNIPER_GENDER_GAP_FRAMES;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_GENDER_GAP;
+        }
+        break;
+
+    case JUNIPER_INTRO_GENDER_GAP:
+        if (gTasks[taskId].tTimer != 0)
+        {
+            gTasks[taskId].tTimer--;
+        }
+        else
+        {
+            NewGameSpeech_CreateGenderSelectionPortraits();
+            NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_GENDER_IN;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_GENDER_IN:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_BoyOrGirl;
+        }
+        break;
     }
 }
 
@@ -2925,12 +3085,23 @@ static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8 taskId)
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].data[0] = 0;
 
-    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, PALETTES_BG, SPECIES_LOTAD);
-    gTasks[taskId].func = Task_NewGameJuniperSpeechSub_WaitForLotad;
+    CreatePokeballSpriteToReleaseMon(
+        spriteId,
+        gSprites[spriteId].oam.paletteNum,
+        112,
+        58,
+        0,
+        0,
+        32,
+        PALETTES_BG,
+        SPECIES_MINCCINO
+    );
+
+    gTasks[taskId].func = Task_NewGameJuniperSpeechSub_WaitForMinccino;
     gTasks[sJuniperSpeechMainTaskId].tTimer = 0;
 }
 
-static void Task_NewGameJuniperSpeechSub_WaitForLotad(u8 taskId)
+static void Task_NewGameJuniperSpeechSub_WaitForMinccino(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     struct Sprite *sprite = &gSprites[gTasks[sJuniperSpeechMainTaskId].tLotadSpriteId];
@@ -2940,84 +3111,31 @@ static void Task_NewGameJuniperSpeechSub_WaitForLotad(u8 taskId)
     case 0:
         if (sprite->callback != SpriteCallbackDummy)
             return;
+
         sprite->oam.affineMode = ST_OAM_AFFINE_OFF;
+        gTasks[sJuniperSpeechMainTaskId].tTimer = 0;
+        tState++;
         break;
+
     case 1:
-        if (gTasks[sJuniperSpeechMainTaskId].tTimer >= 96)
+        if (gTasks[sJuniperSpeechMainTaskId].tTimer < NEW_GAME_MINCCINO_HOLD_FRAMES)
+        {
+            gTasks[sJuniperSpeechMainTaskId].tTimer++;
+        }
+        else
         {
             DestroyTask(taskId);
-            if (gTasks[sJuniperSpeechMainTaskId].tTimer < 0x4000)
-                gTasks[sJuniperSpeechMainTaskId].tTimer++;
         }
-        return;
+        break;
     }
-    tState++;
-    if (gTasks[sJuniperSpeechMainTaskId].tTimer < 0x4000)
-        gTasks[sJuniperSpeechMainTaskId].tTimer++;
 }
 
 #undef tState
 
-static void Task_NewGameJuniperSpeech_AndYouAre(u8 taskId)
-{
-    if (!RunTextPrintersAndIsPrinter0Active())
-    {
-        sStartedPokeBallTask = FALSE;
-        StringExpandPlaceholders(gStringVar4, gText_Birch_AndYouAre);
-        AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_StartJuniperLotadFadeOut;
-    }
-}
-
-static void Task_NewGameJuniperSpeech_StartJuniperLotadFadeOut(u8 taskId)
-{
-    if (!RunTextPrintersAndIsPrinter0Active())
-    {
-        gSprites[gTasks[taskId].tJuniperSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
-        gTasks[taskId].tTimer = 64;
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_StartPlayerFadeIn;
-    }
-}
-
-static void Task_NewGameJuniperSpeech_StartPlayerFadeIn(u8 taskId)
-{
-    if (gTasks[taskId].tIsDoneFadingSprites)
-    {
-        gSprites[gTasks[taskId].tJuniperSpriteId].invisible = TRUE;
-        gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
-
-        if (gTasks[taskId].tTimer)
-        {
-            gTasks[taskId].tTimer--;
-        }
-        else
-        {
-            NewGameSpeech_CreateGenderSelectionPortraits();
-            NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
-            gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForPlayerFadeIn;
-        }
-    }
-}
-
-static void Task_NewGameJuniperSpeech_WaitForPlayerFadeIn(u8 taskId)
-{
-    if (gTasks[taskId].tIsDoneFadingSprites)
-    {
-        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
-
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_BoyOrGirl;
-    }
-}
-
 static void Task_NewGameJuniperSpeech_BoyOrGirl(u8 taskId)
 {
     NewGameJuniperSpeech_ClearWindow(0);
-    StringExpandPlaceholders(gStringVar4, gText_Birch_BoyOrGirl);
+    StringCopy(gStringVar4, sText_JuniperBoyOrGirl);
     AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitToShowGenderMenu;
 }
@@ -4043,9 +4161,9 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
     sprite->data[0] = y;
 }
 
-static u8 NewGameJuniperSpeech_CreateLotadSprite(u8 x, u8 y)
+static u8 NewGameJuniperSpeech_CreateIntroPokemonSprite(u8 x, u8 y)
 {
-    return CreateMonPicSprite_Affine(SPECIES_LOTAD, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    return CreateMonPicSprite_Affine(SPECIES_MINCCINO, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
 
 static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
@@ -4064,7 +4182,7 @@ static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
 
     if (createLotad)
     {
-        lotadSpriteId = NewGameJuniperSpeech_CreateLotadSprite(100, 0x4B);
+        lotadSpriteId = NewGameJuniperSpeech_CreateIntroPokemonSprite(100, 0x4B);
         gSprites[lotadSpriteId].callback = SpriteCB_Null;
         gSprites[lotadSpriteId].oam.priority = 0;
         gSprites[lotadSpriteId].invisible = TRUE;
@@ -4093,6 +4211,8 @@ static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
     HideBg(2);
 }
 
+#undef tIntroState
+#undef tIntroFrame
 #undef tPlayerSpriteId
 #undef tRivalState
 #undef tPlayerGender
@@ -4436,17 +4556,6 @@ static void NewGameJuniperSpeech_ClearWindow(u8 windowId)
 
     FillWindowPixelRect(windowId, bgColor, 0, 0, maxCharWidth * winWidth, maxCharHeight * winHeight);
     CopyWindowToVram(windowId, COPYWIN_GFX);
-}
-
-static void NewGameJuniperSpeech_WaitForThisIsPokemonText(struct TextPrinterTemplate *printer, u16 renderCmd)
-{
-    // Wait for Juniper's "This is a Pokémon" text to reach the pause
-    // Then start the PokéBall release (if it hasn't been started already)
-    if (*(printer->currentChar - 2) == EXT_CTRL_CODE_PAUSE && !sStartedPokeBallTask)
-    {
-        sStartedPokeBallTask = TRUE;
-        CreateTask(Task_NewGameJuniperSpeechSub_InitPokeBall, 0);
-    }
 }
 
 void CreateYesNoMenuParameterized(u8 x, u8 y, u16 baseTileNum, u16 baseBlock, u8 yesNoPalNum, u8 winPalNum)
