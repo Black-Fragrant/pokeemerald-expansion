@@ -155,7 +155,6 @@
  * Task_NewGameJuniperSpeech_ProcessNameYesNoMenu
  *  - Otherwise, return to Task_NewGameJuniperSpeech_BoyOrGirl.
  *
- * Task_NewGameJuniperSpeech_ReshowJuniperLotad
  * Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter
  * Task_NewGameJuniperSpeech_AreYouReady
  * Task_NewGameJuniperSpeech_ShrinkPlayer
@@ -323,6 +322,8 @@ static void Task_NewGameJuniperSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddJuniperSpeechObjects(u8);
 static void NewGameSpeech_UpdatePortrait(void);
+static void NewGameSpeech_LoadGenderPortraitObjGfx(const u32 *, u16, u8);
+static void NewGameSpeech_CreateGenderSelectionPortraits(void);
 static void Task_NewGameJuniperSpeech_WaitToShowJuniper(u8);
 static void NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8);
@@ -343,7 +344,17 @@ static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
 static void Task_HighlightSelectedMainMenuItem(u8);
 static void Task_NewGameJuniperSpeech_WaitToShowGenderMenu(u8);
 static void Task_NewGameJuniperSpeech_ChooseGender(u8);
-static void NewGameJuniperSpeech_ShowGenderMenu(void);
+static void Task_NewGameJuniperSpeech_ChooseGenderInitial(u8);
+static void Task_NewGameJuniperSpeech_GenderFocusTransition(u8);
+static void Task_NewGameJuniperSpeech_GenderFocused(u8);
+static void Task_NewGameJuniperSpeech_GenderSwitchToNeutral(u8);
+static void Task_NewGameJuniperSpeech_GenderConfirmTransition(u8);
+static void Task_NewGameJuniperSpeech_WaitForGenderConfirmText(u8);
+static void Task_NewGameJuniperSpeech_ProcessGenderConfirmYesNo(u8);
+static void Task_NewGameJuniperSpeech_GenderReturnToInitial(u8);
+static void NewGameSpeech_DestroyGenderSelectionPortraits(void);
+static void NewGameSpeech_SetGenderPortraitScale(u8, u8, u8, u16);
+static void NewGameSpeech_UpdateGenderFocusVisuals(u8, u8);
 static s8 NewGameJuniperSpeech_ProcessGenderMenuInput(void);
 static void NewGameJuniperSpeech_ClearGenderWindow(u8, u8);
 static void Task_NewGameJuniperSpeech_WhatsYourName(u8);
@@ -352,11 +363,11 @@ static void Task_NewGameJuniperSpeech_SlideInNewGenderSprite(u8);
 static void Task_NewGameJuniperSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameJuniperSpeech_WaitPressBeforeNameChoice(u8);
 static void Task_NewGameJuniperSpeech_StartNamingScreen(u8);
+static void Task_NewGameJuniperSpeech_RestartNamingScreen(u8);
 static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void);
 static void Task_NewGameJuniperSpeech_CreateNameYesNo(u8);
 static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8);
 void CreateYesNoMenuParameterized(u8, u8, u16, u16, u8, u8);
-static void Task_NewGameJuniperSpeech_ReshowJuniperLotad(u8);
 static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter(u8);
 static void Task_NewGameJuniperSpeech_AreYouReady(u8);
 static void Task_NewGameJuniperSpeech_ShrinkPlayer(u8);
@@ -405,6 +416,8 @@ static const u8 gText_MainMenuMysteryEvents[] = _("MYSTERY EVENTS");
 static const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nconnected.");
 static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while\nthe Wireless Adapter is attached.");
 static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.");
+static const u8 sText_YoureABoyRight[] = _("You're a boy, right?");
+static const u8 sText_YoureAGirlRight[] = _("You're a girl, right?");
 
 #if B_MAIN_MENU_BW_STYLE
 static const u8 gText_ContinueMenuTime[] = _("TIME: ");
@@ -435,12 +448,43 @@ enum NewGameSpeechPortrait
 #define NEW_GAME_PORTRAIT_FINAL_SCALE_X 120
 #define NEW_GAME_PORTRAIT_FINAL_SCALE_Y 80
 #define GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER 0xF001
+#define GFX_TAG_NEW_GAME_GENDER_HILBERT 0xF002
+#define GFX_TAG_NEW_GAME_GENDER_HILDA 0xF003
+
+#define NEW_GAME_GENDER_LEFT_X 60
+#define NEW_GAME_GENDER_RIGHT_X 180
+#define NEW_GAME_GENDER_CENTER_Y 60
+#define NEW_GAME_GENDER_TOP_Y (NEW_GAME_GENDER_CENTER_Y - 16)
+#define NEW_GAME_GENDER_BOTTOM_Y (NEW_GAME_GENDER_CENTER_Y + 32)
+#define NEW_GAME_GENDER_BOY_FOCUS_X 88
+#define NEW_GAME_GENDER_GIRL_FOCUS_X 152
+#define NEW_GAME_GENDER_BOY_DIM_X 36
+#define NEW_GAME_GENDER_GIRL_DIM_X 204
+
+#define NEW_GAME_GENDER_FOCUS_FRAMES 16
+#define NEW_GAME_GENDER_DIM_SCALE 80
+#define NEW_GAME_GENDER_DIM_BLEND 5
+#define NEW_GAME_GENDER_CONFIRM_FRAMES 16
+#define NEW_GAME_GENDER_LEFT_OFFSCREEN_X -32
+#define NEW_GAME_GENDER_RIGHT_OFFSCREEN_X (DISPLAY_WIDTH + 32)
+
+enum NewGameGenderSelectionSprite
+{
+    GENDER_SPRITE_HILBERT_TOP,
+    GENDER_SPRITE_HILBERT_BOTTOM,
+    GENDER_SPRITE_HILDA_TOP,
+    GENDER_SPRITE_HILDA_BOTTOM,
+    GENDER_SPRITE_COUNT
+};
 
 static EWRAM_DATA u16 sNewGameSpeechPortraitTilemap[0x200];
 static EWRAM_DATA u8 sNewGameSpeechPortraitTaskId;
 static EWRAM_DATA u8 sNewGameSpeechLoadedPortrait;
 static EWRAM_DATA bool8 sNewGameSpeechPortraitsActive;
 static EWRAM_DATA bool8 sNewGameSpeechPortraitShrinking;
+static EWRAM_DATA u8 sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_COUNT];
+static EWRAM_DATA u8 sNewGameGenderHilbertMatrixNum;
+static EWRAM_DATA u8 sNewGameGenderHildaMatrixNum;
 
 // Main menu window positions and sizes are BG tile coordinates/counts.
 // One BG tile is 8x8 pixels; text X/Y constants above are window-local pixels.
@@ -476,7 +520,7 @@ static EWRAM_DATA bool8 sNewGameSpeechPortraitShrinking;
 #define BW_MAIN_MENU_TEXT_WINDOW 8
 #endif
 
-static const u32 sNewGameSpeechPortraitControllerGfx[8] = {0};
+static const u32 sNewGameSpeechPortraitControllerGfx[16] = {0};
 
 static const struct SpriteSheet sNewGameSpeechPortraitControllerSheet =
 {
@@ -498,6 +542,81 @@ static const struct SpriteTemplate sNewGameSpeechPortraitControllerTemplate =
     .paletteTag = TAG_NONE,
     .oam = &sNewGameSpeechPortraitControllerOam,
     .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null,
+};
+
+static const struct OamData sNewGameGenderPortraitTopOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_8BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .size = SPRITE_SIZE(64x64),
+    .priority = 1,
+};
+
+static const struct OamData sNewGameGenderPortraitBottomOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_8BPP,
+    .shape = SPRITE_SHAPE(64x32),
+    .size = SPRITE_SIZE(64x32),
+    .priority = 1,
+};
+
+static const union AnimCmd sAnim_NewGameGenderPortraitBottom[] =
+{
+    ANIMCMD_FRAME(128, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sAnims_NewGameGenderPortraitBottom[] =
+{
+    sAnim_NewGameGenderPortraitBottom
+};
+
+static const struct SpriteTemplate sNewGameGenderHilbertTopTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_GENDER_HILBERT,
+    .paletteTag = TAG_NONE,
+    .oam = &sNewGameGenderPortraitTopOam,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null,
+};
+
+static const struct SpriteTemplate sNewGameGenderHilbertBottomTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_GENDER_HILBERT,
+    .paletteTag = TAG_NONE,
+    .oam = &sNewGameGenderPortraitBottomOam,
+    .anims = sAnims_NewGameGenderPortraitBottom,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null,
+};
+
+static const struct SpriteTemplate sNewGameGenderHildaTopTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_GENDER_HILDA,
+    .paletteTag = TAG_NONE,
+    .oam = &sNewGameGenderPortraitTopOam,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null,
+};
+
+static const struct SpriteTemplate sNewGameGenderHildaBottomTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_GENDER_HILDA,
+    .paletteTag = TAG_NONE,
+    .oam = &sNewGameGenderPortraitBottomOam,
+    .anims = sAnims_NewGameGenderPortraitBottom,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Null,
@@ -1831,6 +1950,8 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 #define tHildaSpriteId data[11]
 #define tShrinkTimer data[12]
 #define tWhiteHoldTimer data[13]
+#define tGenderTransitionFrame data[14]
+#define tGenderSelection data[15]
 
 static void ResetNewGameJuniperSpeechBgs(void)
 {
@@ -1905,6 +2026,250 @@ static void NewGameSpeech_LoadPortrait(u8 portrait)
 
     CopyBgTilemapBufferToVram(2);
     sNewGameSpeechLoadedPortrait = portrait;
+}
+
+static void NewGameSpeech_LoadGenderPortraitObjGfx(const u32 *gfx, u16 tag, u8 paletteOffset)
+{
+    u32 i;
+    u32 size;
+    u8 *buffer;
+    struct SpriteSheet sheet;
+
+    buffer = malloc_and_decompress(gfx, &size);
+    if (buffer == NULL)
+        return;
+
+    if (paletteOffset != 0)
+    {
+        for (i = 0; i < size; i++)
+        {
+            if (buffer[i] != 0)
+                buffer[i] += paletteOffset;
+        }
+    }
+
+    sheet.data = buffer;
+    sheet.size = size;
+    sheet.tag = tag;
+
+    LoadSpriteSheet(&sheet);
+    Free(buffer);
+}
+
+static void NewGameSpeech_CreateGenderSelectionPortraits(void)
+{
+    u8 spriteId;
+
+    NewGameSpeech_LoadGenderPortraitObjGfx(
+        sNewGameSpeechHilbertGfx,
+        GFX_TAG_NEW_GAME_GENDER_HILBERT,
+        0
+    );
+
+    NewGameSpeech_LoadGenderPortraitObjGfx(
+        sNewGameSpeechHildaGfx,
+        GFX_TAG_NEW_GAME_GENDER_HILDA,
+        32
+    );
+
+    LoadPalette(
+        sNewGameSpeechHilbertPal,
+        OBJ_PLTT_ID(0),
+        PLTT_SIZEOF(32)
+    );
+
+    LoadPalette(
+        sNewGameSpeechHildaPal,
+        OBJ_PLTT_ID(2),
+        PLTT_SIZEOF(32)
+    );
+
+    spriteId = CreateSprite(
+        &sNewGameGenderHilbertTopTemplate,
+        NEW_GAME_GENDER_LEFT_X,
+        NEW_GAME_GENDER_TOP_Y,
+        0
+    );
+    sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP] = spriteId;
+
+    spriteId = CreateSprite(
+        &sNewGameGenderHilbertBottomTemplate,
+        NEW_GAME_GENDER_LEFT_X,
+        NEW_GAME_GENDER_BOTTOM_Y,
+        0
+    );
+    sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM] = spriteId;
+
+    spriteId = CreateSprite(
+        &sNewGameGenderHildaTopTemplate,
+        NEW_GAME_GENDER_RIGHT_X,
+        NEW_GAME_GENDER_TOP_Y,
+        0
+    );
+    sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP] = spriteId;
+
+    spriteId = CreateSprite(
+        &sNewGameGenderHildaBottomTemplate,
+        NEW_GAME_GENDER_RIGHT_X,
+        NEW_GAME_GENDER_BOTTOM_Y,
+        0
+    );
+    sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM] = spriteId;
+
+    sNewGameGenderHilbertMatrixNum = AllocOamMatrix();
+    sNewGameGenderHildaMatrixNum = AllocOamMatrix();
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.affineMode = ST_OAM_AFFINE_NORMAL;
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.matrixNum = sNewGameGenderHilbertMatrixNum;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.matrixNum = sNewGameGenderHilbertMatrixNum;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.matrixNum = sNewGameGenderHildaMatrixNum;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.matrixNum = sNewGameGenderHildaMatrixNum;
+
+    SetOamMatrix(sNewGameGenderHilbertMatrixNum, 0x100, 0, 0, 0x100);
+    SetOamMatrix(sNewGameGenderHildaMatrixNum, 0x100, 0, 0, 0x100);
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_BLEND;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_BLEND;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_BLEND;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_BLEND;
+}
+
+static void NewGameSpeech_DestroyGenderSelectionPortraits(void)
+{
+    DestroySprite(&gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]]);
+    DestroySprite(&gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]]);
+    DestroySprite(&gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]]);
+    DestroySprite(&gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]]);
+
+    FreeOamMatrix(sNewGameGenderHilbertMatrixNum);
+    FreeOamMatrix(sNewGameGenderHildaMatrixNum);
+
+    FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_GENDER_HILBERT);
+    FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_GENDER_HILDA);
+}
+
+static void NewGameSpeech_SetGenderPortraitScale(
+    u8 topSpriteId,
+    u8 bottomSpriteId,
+    u8 matrixNum,
+    u16 scalePercent)
+{
+    u16 matrixScale;
+    s16 topOffset;
+    s16 bottomOffset;
+
+    matrixScale = (0x100 * 100) / scalePercent;
+
+    topOffset = (16 * scalePercent) / 100;
+    bottomOffset = (32 * scalePercent) / 100;
+
+    SetOamMatrix(
+        matrixNum,
+        matrixScale,
+        0,
+        0,
+        matrixScale
+    );
+
+    gSprites[topSpriteId].y = NEW_GAME_GENDER_CENTER_Y - topOffset;
+    gSprites[bottomSpriteId].y = NEW_GAME_GENDER_CENTER_Y + bottomOffset;
+}
+
+static void NewGameSpeech_UpdateGenderFocusVisuals(u8 gender, u8 frame)
+{
+    s16 hilbertX;
+    s16 hildaX;
+    u16 hilbertScale;
+    u16 hildaScale;
+    u8 hilbertBlend;
+    u8 hildaBlend;
+
+    if (frame > NEW_GAME_GENDER_FOCUS_FRAMES)
+        frame = NEW_GAME_GENDER_FOCUS_FRAMES;
+
+    hilbertScale = 100;
+    hildaScale = 100;
+    hilbertBlend = 0;
+    hildaBlend = 0;
+
+    if (gender == MALE)
+    {
+        hilbertX =
+            NEW_GAME_GENDER_LEFT_X
+            + ((NEW_GAME_GENDER_BOY_FOCUS_X - NEW_GAME_GENDER_LEFT_X)
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES);
+
+        hildaX =
+            NEW_GAME_GENDER_RIGHT_X
+            + ((NEW_GAME_GENDER_GIRL_DIM_X - NEW_GAME_GENDER_RIGHT_X)
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES);
+
+        hildaScale =
+            100
+            - ((100 - NEW_GAME_GENDER_DIM_SCALE)
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES);
+
+        hildaBlend =
+            NEW_GAME_GENDER_DIM_BLEND
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES;
+    }
+    else
+    {
+        hilbertX =
+            NEW_GAME_GENDER_LEFT_X
+            + ((NEW_GAME_GENDER_BOY_DIM_X - NEW_GAME_GENDER_LEFT_X)
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES);
+
+        hildaX =
+            NEW_GAME_GENDER_RIGHT_X
+            + ((NEW_GAME_GENDER_GIRL_FOCUS_X - NEW_GAME_GENDER_RIGHT_X)
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES);
+
+        hilbertScale =
+            100
+            - ((100 - NEW_GAME_GENDER_DIM_SCALE)
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES);
+
+        hilbertBlend =
+            NEW_GAME_GENDER_DIM_BLEND
+            * frame / NEW_GAME_GENDER_FOCUS_FRAMES;
+    }
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].x = hilbertX;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].x = hilbertX;
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].x = hildaX;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].x = hildaX;
+
+    NewGameSpeech_SetGenderPortraitScale(
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP],
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM],
+        sNewGameGenderHilbertMatrixNum,
+        hilbertScale
+    );
+
+    NewGameSpeech_SetGenderPortraitScale(
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP],
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM],
+        sNewGameGenderHildaMatrixNum,
+        hildaScale
+    );
+
+    BlendPalettes(
+        (1 << 16) | (1 << 17),
+        hilbertBlend,
+        RGB_BLACK
+    );
+
+    BlendPalettes(
+        (1 << 18) | (1 << 19),
+        hildaBlend,
+        RGB_BLACK
+    );
 }
 
 static void NewGameSpeech_UpdatePortrait(void)
@@ -2159,20 +2524,14 @@ static void Task_NewGameJuniperSpeech_StartPlayerFadeIn(u8 taskId)
     {
         gSprites[gTasks[taskId].tJuniperSpriteId].invisible = TRUE;
         gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
+
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
         }
         else
         {
-            u8 spriteId = gTasks[taskId].tHilbertSpriteId;
-
-            gSprites[spriteId].x = 180;
-            gSprites[spriteId].y = 60;
-            gSprites[spriteId].invisible = FALSE;
-            gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-            gTasks[taskId].tPlayerSpriteId = spriteId;
-            gTasks[taskId].tPlayerGender = MALE;
+            NewGameSpeech_CreateGenderSelectionPortraits();
             NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
             gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForPlayerFadeIn;
         }
@@ -2183,7 +2542,11 @@ static void Task_NewGameJuniperSpeech_WaitForPlayerFadeIn(u8 taskId)
 {
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
-        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
+
         gTasks[taskId].func = Task_NewGameJuniperSpeech_BoyOrGirl;
     }
 }
@@ -2199,9 +2562,366 @@ static void Task_NewGameJuniperSpeech_BoyOrGirl(u8 taskId)
 static void Task_NewGameJuniperSpeech_WaitToShowGenderMenu(u8 taskId)
 {
     if (!RunTextPrintersAndIsPrinter0Active())
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_ChooseGenderInitial;
+}
+
+static void Task_NewGameJuniperSpeech_ChooseGenderInitial(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON) || JOY_NEW(DPAD_LEFT))
     {
-        NewGameJuniperSpeech_ShowGenderMenu();
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_ChooseGender;
+        PlaySE(SE_SELECT);
+
+        gTasks[taskId].tGenderSelection = MALE;
+        gTasks[taskId].tGenderTransitionFrame = 0;
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderFocusTransition;
+    }
+    else if (JOY_NEW(DPAD_RIGHT))
+    {
+        PlaySE(SE_SELECT);
+
+        gTasks[taskId].tGenderSelection = FEMALE;
+        gTasks[taskId].tGenderTransitionFrame = 0;
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderFocusTransition;
+    }
+}
+
+static void Task_NewGameJuniperSpeech_GenderFocusTransition(u8 taskId)
+{
+    if (gTasks[taskId].tGenderTransitionFrame < NEW_GAME_GENDER_FOCUS_FRAMES)
+        gTasks[taskId].tGenderTransitionFrame++;
+
+    NewGameSpeech_UpdateGenderFocusVisuals(
+        gTasks[taskId].tGenderSelection,
+        gTasks[taskId].tGenderTransitionFrame
+    );
+
+    if (gTasks[taskId].tGenderTransitionFrame >= NEW_GAME_GENDER_FOCUS_FRAMES)
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderFocused;
+}
+
+static void Task_NewGameJuniperSpeech_GenderFocused(u8 taskId)
+{
+    if (gTasks[taskId].tGenderSelection == MALE)
+    {
+        if (JOY_NEW(A_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_BLEND;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_BLEND;
+
+            gTasks[taskId].tGenderTransitionFrame = 0;
+            NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderConfirmTransition;
+        }
+        else if (JOY_NEW(DPAD_RIGHT))
+        {
+            PlaySE(SE_SELECT);
+
+            gTasks[taskId].tGenderTransitionFrame = NEW_GAME_GENDER_FOCUS_FRAMES;
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderSwitchToNeutral;
+        }
+    }
+    else
+    {
+        if (JOY_NEW(A_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_BLEND;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_BLEND;
+
+            gTasks[taskId].tGenderTransitionFrame = 0;
+            NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderConfirmTransition;
+        }
+        else if (JOY_NEW(DPAD_LEFT))
+        {
+            PlaySE(SE_SELECT);
+
+            gTasks[taskId].tGenderTransitionFrame = NEW_GAME_GENDER_FOCUS_FRAMES;
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderSwitchToNeutral;
+        }
+    }
+}
+
+static void Task_NewGameJuniperSpeech_GenderConfirmTransition(u8 taskId)
+{
+    s16 selectedX;
+    s16 otherX;
+    u8 frame;
+
+    if (gTasks[taskId].tGenderTransitionFrame < NEW_GAME_GENDER_CONFIRM_FRAMES)
+        gTasks[taskId].tGenderTransitionFrame++;
+
+    frame = gTasks[taskId].tGenderTransitionFrame;
+
+    if (gTasks[taskId].tGenderSelection == MALE)
+    {
+        selectedX =
+            NEW_GAME_GENDER_BOY_FOCUS_X
+            + ((NEW_GAME_PORTRAIT_CENTER_X - NEW_GAME_GENDER_BOY_FOCUS_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        otherX =
+            NEW_GAME_GENDER_GIRL_DIM_X
+            + ((NEW_GAME_GENDER_RIGHT_OFFSCREEN_X - NEW_GAME_GENDER_GIRL_DIM_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].x = selectedX;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].x = selectedX;
+
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].x = otherX;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].x = otherX;
+    }
+    else
+    {
+        selectedX =
+            NEW_GAME_GENDER_GIRL_FOCUS_X
+            + ((NEW_GAME_PORTRAIT_CENTER_X - NEW_GAME_GENDER_GIRL_FOCUS_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        otherX =
+            NEW_GAME_GENDER_BOY_DIM_X
+            + ((NEW_GAME_GENDER_LEFT_OFFSCREEN_X - NEW_GAME_GENDER_BOY_DIM_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].x = selectedX;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].x = selectedX;
+
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].x = otherX;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].x = otherX;
+    }
+
+    if (frame >= NEW_GAME_GENDER_CONFIRM_FRAMES
+     && gTasks[taskId].tIsDoneFadingSprites)
+    {
+        if (gTasks[taskId].tGenderSelection == MALE)
+        {
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].invisible = TRUE;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].invisible = TRUE;
+        }
+        else
+        {
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].invisible = TRUE;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].invisible = TRUE;
+        }
+
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+
+        NewGameJuniperSpeech_ClearWindow(0);
+
+        if (gTasks[taskId].tGenderSelection == MALE)
+            StringCopy(gStringVar4, sText_YoureABoyRight);
+        else
+            StringCopy(gStringVar4, sText_YoureAGirlRight);
+
+        AddTextPrinterForMessage(TRUE);
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForGenderConfirmText;
+    }
+}
+
+static void Task_NewGameJuniperSpeech_WaitForGenderConfirmText(u8 taskId)
+{
+    if (!RunTextPrintersAndIsPrinter0Active())
+    {
+        CreateYesNoMenuParameterized(2, 1, 0xF3, 0xDF, 2, 15);
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_ProcessGenderConfirmYesNo;
+    }
+}
+
+static void Task_NewGameJuniperSpeech_ProcessGenderConfirmYesNo(u8 taskId)
+{
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0:
+        PlaySE(SE_SELECT);
+
+        gSaveBlock2Ptr->playerGender = gTasks[taskId].tGenderSelection;
+        gTasks[taskId].tPlayerGender = gTasks[taskId].tGenderSelection;
+
+        if (gTasks[taskId].tGenderSelection == MALE)
+            gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHilbertSpriteId;
+        else
+            gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHildaSpriteId;
+
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_WhatsYourName;
+        break;
+
+    case MENU_B_PRESSED:
+    case 1:
+        PlaySE(SE_SELECT);
+
+        if (gTasks[taskId].tGenderSelection == MALE)
+        {
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].x = NEW_GAME_GENDER_RIGHT_OFFSCREEN_X;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].x = NEW_GAME_GENDER_RIGHT_OFFSCREEN_X;
+
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].invisible = FALSE;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].invisible = FALSE;
+
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_BLEND;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_BLEND;
+        }
+        else
+        {
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].x = NEW_GAME_GENDER_LEFT_OFFSCREEN_X;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].x = NEW_GAME_GENDER_LEFT_OFFSCREEN_X;
+
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].invisible = FALSE;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].invisible = FALSE;
+
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_BLEND;
+            gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_BLEND;
+        }
+
+        gTasks[taskId].tGenderTransitionFrame = 0;
+        NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 0);
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderReturnToInitial;
+        break;
+    }
+}
+
+static void Task_NewGameJuniperSpeech_GenderReturnToInitial(u8 taskId)
+{
+    s16 hilbertX;
+    s16 hildaX;
+    u16 hilbertScale;
+    u16 hildaScale;
+    u8 hilbertBlend;
+    u8 hildaBlend;
+    u8 frame;
+
+    if (gTasks[taskId].tGenderTransitionFrame < NEW_GAME_GENDER_CONFIRM_FRAMES)
+        gTasks[taskId].tGenderTransitionFrame++;
+
+    frame = gTasks[taskId].tGenderTransitionFrame;
+
+    hilbertScale = 100;
+    hildaScale = 100;
+    hilbertBlend = 0;
+    hildaBlend = 0;
+
+    if (gTasks[taskId].tGenderSelection == MALE)
+    {
+        hilbertX =
+            NEW_GAME_PORTRAIT_CENTER_X
+            + ((NEW_GAME_GENDER_LEFT_X - NEW_GAME_PORTRAIT_CENTER_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        hildaX =
+            NEW_GAME_GENDER_RIGHT_OFFSCREEN_X
+            + ((NEW_GAME_GENDER_RIGHT_X - NEW_GAME_GENDER_RIGHT_OFFSCREEN_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        hildaScale =
+            NEW_GAME_GENDER_DIM_SCALE
+            + ((100 - NEW_GAME_GENDER_DIM_SCALE)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        hildaBlend =
+            NEW_GAME_GENDER_DIM_BLEND
+            - (NEW_GAME_GENDER_DIM_BLEND
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+    }
+    else
+    {
+        hilbertX =
+            NEW_GAME_GENDER_LEFT_OFFSCREEN_X
+            + ((NEW_GAME_GENDER_LEFT_X - NEW_GAME_GENDER_LEFT_OFFSCREEN_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        hildaX =
+            NEW_GAME_PORTRAIT_CENTER_X
+            + ((NEW_GAME_GENDER_RIGHT_X - NEW_GAME_PORTRAIT_CENTER_X)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        hilbertScale =
+            NEW_GAME_GENDER_DIM_SCALE
+            + ((100 - NEW_GAME_GENDER_DIM_SCALE)
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+
+        hilbertBlend =
+            NEW_GAME_GENDER_DIM_BLEND
+            - (NEW_GAME_GENDER_DIM_BLEND
+            * frame / NEW_GAME_GENDER_CONFIRM_FRAMES);
+    }
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].x = hilbertX;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].x = hilbertX;
+
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].x = hildaX;
+    gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].x = hildaX;
+
+    NewGameSpeech_SetGenderPortraitScale(
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP],
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM],
+        sNewGameGenderHilbertMatrixNum,
+        hilbertScale
+    );
+
+    NewGameSpeech_SetGenderPortraitScale(
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP],
+        sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM],
+        sNewGameGenderHildaMatrixNum,
+        hildaScale
+    );
+
+    BlendPalettes(
+        (1 << 16) | (1 << 17),
+        hilbertBlend,
+        RGB_BLACK
+    );
+
+    BlendPalettes(
+        (1 << 18) | (1 << 19),
+        hildaBlend,
+        RGB_BLACK
+    );
+
+    if (frame >= NEW_GAME_GENDER_CONFIRM_FRAMES
+     && gTasks[taskId].tIsDoneFadingSprites)
+    {
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILBERT_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_TOP]].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[sNewGameGenderSelectionSpriteIds[GENDER_SPRITE_HILDA_BOTTOM]].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+
+        BlendPalettes(
+            (1 << 16) | (1 << 17) | (1 << 18) | (1 << 19),
+            0,
+            RGB_BLACK
+        );
+
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_BoyOrGirl;
+    }
+}
+
+static void Task_NewGameJuniperSpeech_GenderSwitchToNeutral(u8 taskId)
+{
+    if (gTasks[taskId].tGenderTransitionFrame > 0)
+        gTasks[taskId].tGenderTransitionFrame--;
+
+    NewGameSpeech_UpdateGenderFocusVisuals(
+        gTasks[taskId].tGenderSelection,
+        gTasks[taskId].tGenderTransitionFrame
+    );
+
+    if (gTasks[taskId].tGenderTransitionFrame == 0)
+    {
+        if (gTasks[taskId].tGenderSelection == MALE)
+            gTasks[taskId].tGenderSelection = FEMALE;
+        else
+            gTasks[taskId].tGenderSelection = MALE;
+
+        gTasks[taskId].tGenderTransitionFrame = 0;
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderFocusTransition;
     }
 }
 
@@ -2309,11 +3029,33 @@ static void Task_NewGameJuniperSpeech_StartNamingScreen(u8 taskId)
     {
         FreeAllWindowBuffers();
         FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        NewGameSpeech_DestroyGenderSelectionPortraits();
         NewGameJuniperSpeech_SetDefaultPlayerName(Random() % NUM_PRESET_NAMES);
         sNewGameSpeechPortraitsActive = FALSE;
         FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER);
         DestroyTask(taskId);
         DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_NewGameJuniperSpeech_ReturnFromNamingScreen);
+    }
+}
+
+static void Task_NewGameJuniperSpeech_RestartNamingScreen(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        FreeAllWindowBuffers();
+        FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        sNewGameSpeechPortraitsActive = FALSE;
+        FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER);
+        DestroyTask(taskId);
+
+        DoNamingScreen(
+            NAMING_SCREEN_PLAYER,
+            gSaveBlock2Ptr->playerName,
+            gSaveBlock2Ptr->playerGender,
+            0,
+            0,
+            CB2_NewGameJuniperSpeech_ReturnFromNamingScreen
+        );
     }
 }
 
@@ -2340,40 +3082,29 @@ static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8 taskId)
     {
     case 0:
         PlaySE(SE_SELECT);
-        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_ReshowJuniperLotad;
-        break;
-    case MENU_B_PRESSED:
-    case 1:
-        PlaySE(SE_SELECT);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_BoyOrGirl;
-    }
-}
 
-static void Task_NewGameJuniperSpeech_ReshowJuniperLotad(u8 taskId)
-{
-    u8 spriteId;
-
-    if (gTasks[taskId].tIsDoneFadingSprites)
-    {
-        gSprites[gTasks[taskId].tHilbertSpriteId].invisible = TRUE;
-        gSprites[gTasks[taskId].tHildaSpriteId].invisible = TRUE;
-        spriteId = gTasks[taskId].tJuniperSpriteId;
-        gSprites[spriteId].x = 136;
-        gSprites[spriteId].y = 60;
-        gSprites[spriteId].invisible = FALSE;
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        spriteId = gTasks[taskId].tLotadSpriteId;
-        gSprites[spriteId].x = 100;
-        gSprites[spriteId].y = 75;
-        gSprites[spriteId].invisible = FALSE;
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameJuniperSpeech_ClearWindow(0);
         StringExpandPlaceholders(gStringVar4, gText_Birch_YourePlayer);
         AddTextPrinterForMessage(TRUE);
+
+        gTasks[taskId].tIsDoneFadingSprites = TRUE;
         gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter;
+        break;
+
+    case MENU_B_PRESSED:
+    case 1:
+        PlaySE(SE_SELECT);
+
+        BeginNormalPaletteFade(
+            PALETTES_ALL,
+            0,
+            0,
+            16,
+            RGB_BLACK
+        );
+
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_RestartNamingScreen;
+        break;
     }
 }
 
@@ -2537,20 +3268,30 @@ static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void)
     FreeAllSpritePalettes();
     ResetAllPicSprites();
     AddJuniperSpeechObjects(taskId);
-    if (gSaveBlock2Ptr->playerGender != MALE)
-    {
-        gTasks[taskId].tPlayerGender = FEMALE;
-        spriteId = gTasks[taskId].tHildaSpriteId;
-    }
+
+    gTasks[taskId].tPlayerGender = gSaveBlock2Ptr->playerGender;
+
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHilbertSpriteId;
     else
-    {
-        gTasks[taskId].tPlayerGender = MALE;
-        spriteId = gTasks[taskId].tHilbertSpriteId;
-    }
-    gSprites[spriteId].x = 180;
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHildaSpriteId;
+
+    gSprites[gTasks[taskId].tHilbertSpriteId].invisible = TRUE;
+    gSprites[gTasks[taskId].tHildaSpriteId].invisible = TRUE;
+
+    spriteId = gTasks[taskId].tJuniperSpriteId;
+    gSprites[spriteId].x = 136;
     gSprites[spriteId].y = 60;
     gSprites[spriteId].invisible = FALSE;
-    gTasks[taskId].tPlayerSpriteId = spriteId;
+    gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+    spriteId = gTasks[taskId].tLotadSpriteId;
+    gSprites[spriteId].x = 100;
+    gSprites[spriteId].y = 75;
+    gSprites[spriteId].invisible = FALSE;
+    gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+    gTasks[taskId].tIsDoneFadingSprites = TRUE;
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
     SetGpuReg(REG_OFFSET_WIN0H, 0);
     SetGpuReg(REG_OFFSET_WIN0V, 0);
@@ -2638,6 +3379,8 @@ static void AddJuniperSpeechObjects(u8 taskId)
 #undef tHildaSpriteId
 #undef tShrinkTimer
 #undef tWhiteHoldTimer
+#undef tGenderTransitionFrame
+#undef tGenderSelection
 
 #define tMainTask data[0]
 #define tAlphaCoeff1 data[1]
@@ -2730,16 +3473,6 @@ static void NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(u8 taskId, u8 dela
 #undef tDelayTimer
 
 #undef tIsDoneFadingSprites
-
-static void NewGameJuniperSpeech_ShowGenderMenu(void)
-{
-    DrawMainMenuWindowBorder(&sNewGameJuniperSpeechTextWindows[1], 0xF3);
-    FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Gender), sMenuActions_Gender);
-    InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Gender), 0);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, COPYWIN_FULL);
-}
 
 static s8 NewGameJuniperSpeech_ProcessGenderMenuInput(void)
 {
