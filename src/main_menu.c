@@ -319,6 +319,11 @@ static void Task_NewGameJuniperSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddJuniperSpeechObjects(u8, bool8);
 static void NewGameSpeech_UpdatePortrait(void);
+static void NewGameSpeech_CreateJuniperHand(void);
+static void NewGameSpeech_UpdateJuniperHandPosition(void);
+static void NewGameSpeech_StartJuniperHandJuggle(void);
+static void NewGameSpeech_StartJuniperHandThrow(void);
+static void SpriteCB_NewGameJuniperHand(struct Sprite *);
 static void NewGameSpeech_ShowRivalBg(void);
 static void NewGameSpeech_LoadRivalBgGfx(void);
 static void NewGameSpeech_HideRivalBg(void);
@@ -401,6 +406,10 @@ static const u32 sJuniperSpeechBgMap[] = INCGFX_U32("graphics/birch_speech/map.b
 
 static const u16 sNewGameSpeechJuniperPal[] = INCGFX_U16("graphics/new_game_speech/juniper/pal.pal", ".gbapal");
 static const u32 sNewGameSpeechJuniperGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/pic.png", ".8bpp.smol");
+static const u32 sNewGameSpeechJuniperHandGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/hand.png", ".4bpp.smol");
+static const u16 sNewGameSpeechJuniperHandPal[] = INCGFX_U16("graphics/new_game_speech/juniper/hand.png", ".gbapal");
+static const u32 sNewGameSpeechThrownBallGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/thrown_ball.png", ".4bpp.smol");
+static const u16 sNewGameSpeechThrownBallPal[] = INCGFX_U16("graphics/new_game_speech/juniper/thrown_ball.png", ".gbapal");
 static const u16 sNewGameSpeechHilbertPal[] = INCGFX_U16("graphics/new_game_speech/hilbert/pal.pal", ".gbapal");
 static const u32 sNewGameSpeechHilbertGfx[] = INCGFX_U32("graphics/new_game_speech/hilbert/pic.png", ".8bpp.smol");
 static const u16 sNewGameSpeechHildaPal[] = INCGFX_U16("graphics/new_game_speech/hilda/pal.pal", ".gbapal");
@@ -508,6 +517,22 @@ enum NewGameSpeechPortrait
 #define NEW_GAME_GENDER_LEFT_OFFSCREEN_X -32
 #define NEW_GAME_GENDER_RIGHT_OFFSCREEN_X (DISPLAY_WIDTH + 32)
 #define GFX_TAG_NEW_GAME_RIVAL_BG 0xF006
+#define GFX_TAG_NEW_GAME_JUNIPER_HAND 0xF007
+#define GFX_TAG_NEW_GAME_THROWN_BALL 0xF008
+#define NEW_GAME_THROWN_BALL_X 112
+#define NEW_GAME_THROWN_BALL_START_Y -8
+#define NEW_GAME_THROWN_BALL_FLOOR_Y 112
+#define NEW_GAME_THROWN_BALL_TARGET_Y 58
+#define NEW_GAME_THROWN_BALL_FALL_SPEED 5
+#define NEW_GAME_THROWN_BALL_RISE_SPEED 3
+
+#define NEW_GAME_JUNIPER_HAND_OFFSET_X -11
+#define NEW_GAME_JUNIPER_HAND_OFFSET_Y -27
+#define NEW_GAME_JUNIPER_HAND_JUGGLE_PAUSE 24
+#define NEW_GAME_JUNIPER_HAND_THROW_GAP 4
+#define NEW_GAME_JUNIPER_HAND_THROW_END_HOLD 3
+#define NEW_GAME_JUNIPER_HAND_DESTROY_GAP 6
+#define NEW_GAME_JUNIPER_HAND_FRAME_TILES 32
 #define NEW_GAME_RIVAL_BG_SPRITE_COUNT 9
 #define NEW_GAME_RIVAL_BG_Y 64
 #define NEW_GAME_RIVAL_BG_SCROLL_DELAY 3
@@ -527,7 +552,13 @@ enum NewGameSpeechPortrait
 enum NewGameJuniperIntroState
 {
     JUNIPER_INTRO_WAIT_OPENING,
+    JUNIPER_INTRO_WAIT_HAND_IDLE,
     JUNIPER_INTRO_MOVE_RIGHT,
+    JUNIPER_INTRO_THROW_GAP,
+    JUNIPER_INTRO_WAIT_HAND_THROW,
+    JUNIPER_INTRO_HAND_DESTROY_GAP,
+    JUNIPER_INTRO_THROWN_BALL_FALL,
+    JUNIPER_INTRO_THROWN_BALL_RISE,
     JUNIPER_INTRO_WAIT_MINCCINO,
     JUNIPER_INTRO_WAIT_MAIN_TEXT,
     JUNIPER_INTRO_WAIT_MINCCINO_OUT,
@@ -608,6 +639,12 @@ static EWRAM_DATA u8 sNewGameRivalBgScrollTimer;
 static EWRAM_DATA u16 sNewGameRivalCherenSpriteId;
 static EWRAM_DATA u16 sNewGameRivalBiancaSpriteId;
 static EWRAM_DATA u16 sNewGameRivalPlayerSpriteId;
+static EWRAM_DATA u8 sNewGameJuniperHandSpriteId;
+static EWRAM_DATA bool8 sNewGameJuniperHandActive;
+static EWRAM_DATA u8 sNewGameJuniperHandMaskSpriteId;
+static EWRAM_DATA bool8 sNewGameJuniperHandMaskActive;
+static EWRAM_DATA u8 sNewGameThrownBallSpriteId;
+static EWRAM_DATA bool8 sNewGameThrownBallActive;
 
 // Main menu window positions and sizes are BG tile coordinates/counts.
 // One BG tile is 8x8 pixels; text X/Y constants above are window-local pixels.
@@ -725,6 +762,167 @@ static const struct SpriteTemplate sNewGameRivalBgTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Null,
+};
+
+enum NewGameJuniperHandAnim
+{
+    JUNIPER_HAND_ANIM_IDLE,
+    JUNIPER_HAND_ANIM_JUGGLE,
+    JUNIPER_HAND_ANIM_THROW,
+    JUNIPER_HAND_ANIM_THROW_HOLD
+};
+
+enum NewGameJuniperHandState
+{
+    JUNIPER_HAND_STATE_IDLE,
+    JUNIPER_HAND_STATE_JUGGLING,
+    JUNIPER_HAND_STATE_THROWING,
+    JUNIPER_HAND_STATE_THROW_HOLD
+};
+
+static const struct CompressedSpriteSheet sNewGameJuniperHandSheet =
+{
+    .data = sNewGameSpeechJuniperHandGfx,
+    .size = 0x2400,
+    .tag = GFX_TAG_NEW_GAME_JUNIPER_HAND
+};
+
+static const struct SpritePalette sNewGameJuniperHandPalette =
+{
+    .data = sNewGameSpeechJuniperHandPal,
+    .tag = GFX_TAG_NEW_GAME_JUNIPER_HAND
+};
+
+static const struct OamData sNewGameJuniperHandOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x64),
+    .size = SPRITE_SIZE(32x64),
+    .priority = 1,
+};
+
+static const struct OamData sNewGameJuniperHandMaskOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_WINDOW,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x64),
+    .size = SPRITE_SIZE(32x64),
+    .priority = 1,
+};
+
+static const union AnimCmd sAnim_NewGameJuniperHandIdle[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_NewGameJuniperHandJuggle[] =
+{
+    ANIMCMD_FRAME(0, 5),
+    ANIMCMD_FRAME(32, 5),
+    ANIMCMD_FRAME(64, 5),
+    ANIMCMD_FRAME(96, 5),
+    ANIMCMD_FRAME(64, 5),
+    ANIMCMD_FRAME(32, 5),
+    ANIMCMD_FRAME(0, 5),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_NewGameJuniperHandThrow[] =
+{
+    ANIMCMD_FRAME(128, 16),
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(160, 4),
+    ANIMCMD_FRAME(192, 4),
+    ANIMCMD_FRAME(224, 40),
+    ANIMCMD_FRAME(256, 4),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_NewGameJuniperHandThrowHold[] =
+{
+    ANIMCMD_FRAME(256, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sAnims_NewGameJuniperHand[] =
+{
+    [JUNIPER_HAND_ANIM_IDLE] = sAnim_NewGameJuniperHandIdle,
+    [JUNIPER_HAND_ANIM_JUGGLE] = sAnim_NewGameJuniperHandJuggle,
+    [JUNIPER_HAND_ANIM_THROW] = sAnim_NewGameJuniperHandThrow,
+    [JUNIPER_HAND_ANIM_THROW_HOLD] = sAnim_NewGameJuniperHandThrowHold
+};
+
+static const struct SpriteTemplate sNewGameJuniperHandTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_JUNIPER_HAND,
+    .paletteTag = GFX_TAG_NEW_GAME_JUNIPER_HAND,
+    .oam = &sNewGameJuniperHandOam,
+    .anims = sAnims_NewGameJuniperHand,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_NewGameJuniperHand
+};
+
+static const struct SpriteTemplate sNewGameJuniperHandMaskTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_JUNIPER_HAND,
+    .paletteTag = GFX_TAG_NEW_GAME_JUNIPER_HAND,
+    .oam = &sNewGameJuniperHandMaskOam,
+    .anims = sAnims_NewGameJuniperHand,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null
+};
+static const struct CompressedSpriteSheet sNewGameThrownBallSheet =
+{
+    .data = sNewGameSpeechThrownBallGfx,
+    .size = 0x200,
+    .tag = GFX_TAG_NEW_GAME_THROWN_BALL
+};
+
+static const struct SpritePalette sNewGameThrownBallPalette =
+{
+    .data = sNewGameSpeechThrownBallPal,
+    .tag = GFX_TAG_NEW_GAME_THROWN_BALL
+};
+
+static const struct OamData sNewGameThrownBallOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(16x16),
+    .size = SPRITE_SIZE(16x16),
+    .priority = 1,
+};
+
+static const union AnimCmd sAnim_NewGameThrownBallSpin[] =
+{
+    ANIMCMD_FRAME(0, 3),
+    ANIMCMD_FRAME(4, 3),
+    ANIMCMD_FRAME(8, 3),
+    ANIMCMD_FRAME(12, 3),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd *const sAnims_NewGameThrownBall[] =
+{
+    sAnim_NewGameThrownBallSpin
+};
+
+static const struct SpriteTemplate sNewGameThrownBallTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_THROWN_BALL,
+    .paletteTag = GFX_TAG_NEW_GAME_THROWN_BALL,
+    .oam = &sNewGameThrownBallOam,
+    .anims = sAnims_NewGameThrownBall,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null
 };
 
 static const union AnimCmd sAnim_NewGameGenderArrowBody[] =
@@ -1162,6 +1360,7 @@ static void CB2_MainMenu(void)
     RunTasks();
     AnimateSprites();
     NewGameSpeech_UpdatePortrait();
+    NewGameSpeech_UpdateJuniperHandPosition();
     NewGameSpeech_UpdateRivalBg();
     BuildOamBuffer();
     UpdatePaletteFade();
@@ -2662,6 +2861,158 @@ static void NewGameSpeech_UpdatePortrait(void)
     );
 }
 
+#define sHandState data[0]
+#define sHandTimer data[1]
+
+static void SpriteCB_NewGameJuniperHand(struct Sprite *sprite)
+{
+    switch (sprite->sHandState)
+    {
+    case JUNIPER_HAND_STATE_IDLE:
+        if (sprite->sHandTimer != 0)
+        {
+            sprite->sHandTimer--;
+        }
+        else
+        {
+            sprite->sHandState = JUNIPER_HAND_STATE_JUGGLING;
+            StartSpriteAnim(sprite, JUNIPER_HAND_ANIM_JUGGLE);
+        }
+        break;
+
+    case JUNIPER_HAND_STATE_JUGGLING:
+        if (sprite->animEnded)
+        {
+            StartSpriteAnim(sprite, JUNIPER_HAND_ANIM_IDLE);
+            sprite->sHandState = JUNIPER_HAND_STATE_IDLE;
+            sprite->sHandTimer = NEW_GAME_JUNIPER_HAND_JUGGLE_PAUSE;
+        }
+        break;
+
+    case JUNIPER_HAND_STATE_THROWING:
+        if (sprite->animEnded)
+        {
+            StartSpriteAnim(sprite, JUNIPER_HAND_ANIM_THROW_HOLD);
+            sprite->sHandState = JUNIPER_HAND_STATE_THROW_HOLD;
+            sprite->sHandTimer = NEW_GAME_JUNIPER_HAND_THROW_END_HOLD;
+        }
+        break;
+
+    case JUNIPER_HAND_STATE_THROW_HOLD:
+        if (sprite->sHandTimer != 0)
+        {
+            sprite->sHandTimer--;
+        }
+        else
+        {
+            sNewGameJuniperHandActive = FALSE;
+            sNewGameJuniperHandSpriteId = MAX_SPRITES;
+            DestroySprite(sprite);
+        }
+        break;
+    }
+}
+
+#undef sHandState
+#undef sHandTimer
+
+static void NewGameSpeech_CreateJuniperHand(void)
+{
+    u8 spriteId;
+    u8 maskSpriteId;
+
+    LoadCompressedSpriteSheet(&sNewGameJuniperHandSheet);
+    LoadSpritePalette(&sNewGameJuniperHandPalette);
+
+    spriteId = CreateSprite(
+        &sNewGameJuniperHandTemplate,
+        NEW_GAME_PORTRAIT_CENTER_X + NEW_GAME_JUNIPER_HAND_OFFSET_X,
+        NEW_GAME_PORTRAIT_CENTER_Y + NEW_GAME_JUNIPER_HAND_OFFSET_Y,
+        8
+    );
+
+    sNewGameJuniperHandSpriteId = spriteId;
+    sNewGameJuniperHandActive = (spriteId < MAX_SPRITES);
+
+    if (spriteId < MAX_SPRITES)
+    {
+        StartSpriteAnim(&gSprites[spriteId], JUNIPER_HAND_ANIM_IDLE);
+        gSprites[spriteId].callback = SpriteCB_Null;
+        gSprites[spriteId].data[0] = JUNIPER_HAND_STATE_IDLE;
+        gSprites[spriteId].data[1] = 0;
+        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+    }
+
+    maskSpriteId = CreateSprite(
+        &sNewGameJuniperHandMaskTemplate,
+        NEW_GAME_PORTRAIT_CENTER_X + NEW_GAME_JUNIPER_HAND_OFFSET_X,
+        NEW_GAME_PORTRAIT_CENTER_Y + NEW_GAME_JUNIPER_HAND_OFFSET_Y,
+        8
+    );
+
+    sNewGameJuniperHandMaskSpriteId = maskSpriteId;
+    sNewGameJuniperHandMaskActive = (maskSpriteId < MAX_SPRITES);
+
+    if (maskSpriteId < MAX_SPRITES)
+        StartSpriteAnim(&gSprites[maskSpriteId], JUNIPER_HAND_ANIM_IDLE);
+
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+
+    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG_ALL | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR | 0x3B00);
+}
+
+static void NewGameSpeech_UpdateJuniperHandPosition(void)
+{
+    struct Sprite *hand;
+    struct Sprite *mask;
+    struct Sprite *juniper;
+
+    if (!sNewGameJuniperHandActive || sNewGameJuniperHandSpriteId >= MAX_SPRITES)
+        return;
+
+    juniper = &gSprites[gTasks[sNewGameSpeechPortraitTaskId].tJuniperSpriteId];
+    hand = &gSprites[sNewGameJuniperHandSpriteId];
+
+    hand->x = juniper->x + NEW_GAME_JUNIPER_HAND_OFFSET_X;
+    hand->y = juniper->y + NEW_GAME_JUNIPER_HAND_OFFSET_Y;
+
+    if (sNewGameJuniperHandMaskActive && sNewGameJuniperHandMaskSpriteId < MAX_SPRITES)
+    {
+        mask = &gSprites[sNewGameJuniperHandMaskSpriteId];
+        mask->x = hand->x;
+        mask->y = hand->y;
+    }
+}
+
+static void NewGameSpeech_StartJuniperHandJuggle(void)
+{
+    struct Sprite *hand;
+
+    if (!sNewGameJuniperHandActive || sNewGameJuniperHandSpriteId >= MAX_SPRITES)
+        return;
+
+    hand = &gSprites[sNewGameJuniperHandSpriteId];
+    hand->callback = SpriteCB_NewGameJuniperHand;
+    hand->data[0] = JUNIPER_HAND_STATE_JUGGLING;
+    hand->data[1] = 0;
+    StartSpriteAnim(hand, JUNIPER_HAND_ANIM_JUGGLE);
+}
+
+static void NewGameSpeech_StartJuniperHandThrow(void)
+{
+    struct Sprite *hand;
+
+    if (sNewGameJuniperHandSpriteId >= MAX_SPRITES)
+        return;
+
+    hand = &gSprites[sNewGameJuniperHandSpriteId];
+    hand->callback = SpriteCB_NewGameJuniperHand;
+    hand->data[0] = JUNIPER_HAND_STATE_THROWING;
+    hand->data[1] = 0;
+    StartSpriteAnim(hand, JUNIPER_HAND_ANIM_THROW);
+    PlaySE(SE_BALL_THROW);
+}
+
 static void NewGameSpeech_LoadRivalBgGfx(void)
 {
     u8 row;
@@ -2850,6 +3201,12 @@ static void Task_NewGameJuniperSpeech_Init(u8 taskId)
     LoadPalette(sJuniperSpeechBackgroundPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
     ScanlineEffect_Stop();
     ResetSpriteData();
+    sNewGameJuniperHandActive = FALSE;
+    sNewGameJuniperHandSpriteId = MAX_SPRITES;
+    sNewGameJuniperHandMaskActive = FALSE;
+    sNewGameJuniperHandMaskSpriteId = MAX_SPRITES;
+    sNewGameThrownBallActive = FALSE;
+    sNewGameThrownBallSpriteId = MAX_SPRITES;
     FreeAllSpritePalettes();
     ResetAllPicSprites();
     AddJuniperSpeechObjects(taskId, TRUE);
@@ -2879,6 +3236,8 @@ static void Task_NewGameJuniperSpeech_WaitToShowJuniper(u8 taskId)
         gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        NewGameSpeech_CreateJuniperHand();
+        NewGameSpeech_UpdateJuniperHandPosition();
         NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 10);
         gTasks[taskId].tTimer = 80;
         gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome;
@@ -2889,7 +3248,18 @@ static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
 {
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
+        if (sNewGameJuniperHandMaskActive)
+        {
+            DestroySprite(&gSprites[sNewGameJuniperHandMaskSpriteId]);
+            sNewGameJuniperHandMaskActive = FALSE;
+            sNewGameJuniperHandMaskSpriteId = MAX_SPRITES;
+
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+            SetGpuReg(REG_OFFSET_WINOUT, 0);
+        }
         gSprites[gTasks[taskId].tJuniperSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        if (sNewGameJuniperHandSpriteId < MAX_SPRITES)
+            gSprites[sNewGameJuniperHandSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
@@ -2904,6 +3274,7 @@ static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             CopyWindowToVram(0, COPYWIN_GFX);
             NewGameJuniperSpeech_ClearWindow(0);
             StringCopy(gStringVar4, sText_JuniperOpening);
+            NewGameSpeech_StartJuniperHandJuggle();
             AddTextPrinterForMessage(TRUE);
             gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_OPENING;
             gTasks[taskId].tIntroFrame = 0;
@@ -2923,6 +3294,20 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         if (!gPaletteFade.active && !RunTextPrintersAndIsPrinter0Active())
         {
             ClearDialogWindowAndFrameToTransparent(0, TRUE);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_HAND_IDLE;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_HAND_IDLE:
+        if (sNewGameJuniperHandSpriteId >= MAX_SPRITES
+        || gSprites[sNewGameJuniperHandSpriteId].data[0] == JUNIPER_HAND_STATE_IDLE)
+        {
+            if (sNewGameJuniperHandSpriteId < MAX_SPRITES)
+            {
+                gSprites[sNewGameJuniperHandSpriteId].callback = SpriteCB_Null;
+                StartSpriteAnim(&gSprites[sNewGameJuniperHandSpriteId], JUNIPER_HAND_ANIM_IDLE);
+            }
+
             gTasks[taskId].tIntroFrame = 0;
             gTasks[taskId].tIntroState = JUNIPER_INTRO_MOVE_RIGHT;
         }
@@ -2941,13 +3326,98 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
 
         if (frame >= NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES)
         {
-            sJuniperSpeechMainTaskId = taskId;
-            gTasks[taskId].tTimer = 0;
-            CreateTask(Task_NewGameJuniperSpeechSub_InitPokeBall, 0);
-            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO;
+            gTasks[taskId].tTimer = NEW_GAME_JUNIPER_HAND_THROW_GAP;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_THROW_GAP;
         }
         break;
 
+    case JUNIPER_INTRO_THROW_GAP:
+        if (gTasks[taskId].tTimer != 0)
+        {
+            gTasks[taskId].tTimer--;
+        }
+        else
+        {
+            NewGameSpeech_StartJuniperHandThrow();
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_HAND_THROW;
+        }
+        break;
+
+    case JUNIPER_INTRO_WAIT_HAND_THROW:
+        if (!sNewGameJuniperHandActive)
+        {
+            FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_JUNIPER_HAND);
+            FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_JUNIPER_HAND);
+
+            gTasks[taskId].tTimer = NEW_GAME_JUNIPER_HAND_DESTROY_GAP;
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_HAND_DESTROY_GAP;
+        }
+        break;
+
+    case JUNIPER_INTRO_HAND_DESTROY_GAP:
+        if (gTasks[taskId].tTimer != 0)
+        {
+            gTasks[taskId].tTimer--;
+        }
+        else
+        {
+            LoadCompressedSpriteSheet(&sNewGameThrownBallSheet);
+            LoadSpritePalette(&sNewGameThrownBallPalette);
+
+            sNewGameThrownBallSpriteId = CreateSprite(
+                &sNewGameThrownBallTemplate,
+                NEW_GAME_THROWN_BALL_X,
+                NEW_GAME_THROWN_BALL_START_Y,
+                7
+            );
+
+            if (sNewGameThrownBallSpriteId < MAX_SPRITES)
+            {
+                sNewGameThrownBallActive = TRUE;
+                StartSpriteAnim(&gSprites[sNewGameThrownBallSpriteId], 0);
+                gTasks[taskId].tIntroState = JUNIPER_INTRO_THROWN_BALL_FALL;
+            }
+            else
+            {
+                FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_THROWN_BALL);
+                FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_THROWN_BALL);
+                sJuniperSpeechMainTaskId = taskId;
+                gTasks[taskId].tTimer = 0;
+                CreateTask(Task_NewGameJuniperSpeechSub_InitPokeBall, 0);
+                gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO;
+            }
+        }
+        break;
+
+    case JUNIPER_INTRO_THROWN_BALL_FALL:
+        if (gSprites[sNewGameThrownBallSpriteId].y < NEW_GAME_THROWN_BALL_FLOOR_Y)
+        {
+            gSprites[sNewGameThrownBallSpriteId].y += NEW_GAME_THROWN_BALL_FALL_SPEED;
+
+            if (gSprites[sNewGameThrownBallSpriteId].y >= NEW_GAME_THROWN_BALL_FLOOR_Y)
+            {
+                gSprites[sNewGameThrownBallSpriteId].y = NEW_GAME_THROWN_BALL_FLOOR_Y;
+                PlaySE(SE_BALL_BOUNCE_1);
+                gTasks[taskId].tIntroState = JUNIPER_INTRO_THROWN_BALL_RISE;
+            }
+        }
+        break;
+
+    case JUNIPER_INTRO_THROWN_BALL_RISE:
+        if (gSprites[sNewGameThrownBallSpriteId].y > NEW_GAME_THROWN_BALL_TARGET_Y)
+        {
+            gSprites[sNewGameThrownBallSpriteId].y -= NEW_GAME_THROWN_BALL_RISE_SPEED;
+
+            if (gSprites[sNewGameThrownBallSpriteId].y <= NEW_GAME_THROWN_BALL_TARGET_Y)
+            {
+                gSprites[sNewGameThrownBallSpriteId].y = NEW_GAME_THROWN_BALL_TARGET_Y;
+                sJuniperSpeechMainTaskId = taskId;
+                gTasks[taskId].tTimer = 0;
+                CreateTask(Task_NewGameJuniperSpeechSub_InitPokeBall, 0);
+                gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO;
+            }
+        }
+        break;
     case JUNIPER_INTRO_WAIT_MINCCINO:
         if (gTasks[taskId].tTimer >= NEW_GAME_MINCCINO_HOLD_FRAMES)
     {
@@ -2964,12 +3434,18 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         {
             gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(taskId, 1);
-            SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_EFFECT_BLEND);
+            SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL | BLDCNT_EFFECT_BLEND);
             gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO_OUT;
         }
         break;
 
     case JUNIPER_INTRO_WAIT_MINCCINO_OUT:
+        if (!gSprites[gTasks[taskId].tLotadSpriteId].invisible
+        && (GetGpuReg(REG_OFFSET_BLDALPHA) & 0x1F) <= 1)
+        {
+            gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
+        }
+
         if (gTasks[taskId].tIsDoneFadingSprites)
         {
             gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
@@ -3081,21 +3557,19 @@ static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8 taskId)
     u8 spriteId = gTasks[sJuniperSpeechMainTaskId].tLotadSpriteId;
 
     gSprites[spriteId].x = 100;
-    gSprites[spriteId].y = 75;
+    gSprites[spriteId].y = 90;
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].data[0] = 0;
 
-    CreatePokeballSpriteToReleaseMon(
-        spriteId,
-        gSprites[spriteId].oam.paletteNum,
-        112,
-        58,
-        0,
-        0,
-        32,
-        PALETTES_BG,
-        SPECIES_MINCCINO
-    );
+    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, PALETTES_BG, SPECIES_MINCCINO);
+    if (sNewGameThrownBallActive)
+    {
+        DestroySprite(&gSprites[sNewGameThrownBallSpriteId]);
+        sNewGameThrownBallActive = FALSE;
+        sNewGameThrownBallSpriteId = MAX_SPRITES;
+        FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_THROWN_BALL);
+        FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_THROWN_BALL);
+    }
 
     gTasks[taskId].func = Task_NewGameJuniperSpeechSub_WaitForMinccino;
     gTasks[sJuniperSpeechMainTaskId].tTimer = 0;
@@ -4182,7 +4656,7 @@ static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
 
     if (createLotad)
     {
-        lotadSpriteId = NewGameJuniperSpeech_CreateIntroPokemonSprite(100, 0x4B);
+        lotadSpriteId = NewGameJuniperSpeech_CreateIntroPokemonSprite(100, 90);
         gSprites[lotadSpriteId].callback = SpriteCB_Null;
         gSprites[lotadSpriteId].oam.priority = 0;
         gSprites[lotadSpriteId].invisible = TRUE;
