@@ -48,6 +48,7 @@ const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_p
 //fire black trainer sprites
 const u32 gTrainerFrontPic_Bianca[] = INCGFX_U32("graphics/trainers/front_pics/bianca.png", ".4bpp.smol");
 const u16 gTrainerPalette_Bianca[] = INCGFX_U16("graphics/trainers/front_pics/bianca.png", ".gbapal");
+const u32 gTrainerFrontPic_BiancaIntro[] = INCGFX_U32("graphics/trainers/front_pics/bianca_intro.png", ".4bpp.smol");
 
 const u32 gTrainerFrontPic_CherenFront[] = INCGFX_U32("graphics/trainers/front_pics/cheren.png", ".4bpp.smol");
 const u16 gTrainerPalette_CherenFront[] = INCGFX_U16("graphics/trainers/front_pics/cheren.png", ".gbapal");
@@ -1091,6 +1092,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_BIANCA] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Bianca, gTrainerPalette_Bianca),
+    },
+    [TRAINER_PIC_BIANCA_INTRO] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_BiancaIntro, gTrainerPalette_Bianca),
     },
     [TRAINER_PIC_N] =
     {

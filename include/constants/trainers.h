@@ -179,6 +179,7 @@ enum __attribute__((packed)) TrainerPicID
 
     // start fireBlack
     TRAINER_PIC_BIANCA,
+    TRAINER_PIC_BIANCA_INTRO,
     TRAINER_PIC_CHEREN,
     TRAINER_PIC_N,
     TRAINER_PIC_HILBERT,

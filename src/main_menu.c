@@ -155,8 +155,8 @@
  * Task_NewGameJuniperSpeech_ProcessNameYesNoMenu
  *  - Otherwise, return to Task_NewGameJuniperSpeech_BoyOrGirl.
  *
- * Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter
- * Task_NewGameJuniperSpeech_AreYouReady
+ * Task_NewGameJuniperSpeech_RivalSequence
+ * Task_NewGameJuniperSpeech_ShowFinalPlayer
  * Task_NewGameJuniperSpeech_ShrinkPlayer
  * Task_NewGameJuniperSpeech_WaitForPlayerShrink
  * Task_NewGameJuniperSpeech_FadePlayerToWhite
@@ -320,8 +320,15 @@ static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
 static void Task_NewGameJuniperSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
-static void AddJuniperSpeechObjects(u8);
+static void AddJuniperSpeechObjects(u8, bool8);
 static void NewGameSpeech_UpdatePortrait(void);
+static void NewGameSpeech_ShowRivalBg(void);
+static void NewGameSpeech_LoadRivalBgGfx(void);
+static void NewGameSpeech_HideRivalBg(void);
+static void NewGameSpeech_UpdateRivalBg(void);
+static void NewGameSpeech_SetRivalBgObjMode(u8);
+static void NewGameSpeech_CreateRivalSprites(void);
+static void NewGameSpeech_DestroyRivalSprites(void);
 static void NewGameSpeech_LoadGenderPortraitObjGfx(const u32 *, u16, u8);
 static void NewGameSpeech_CreateGenderSelectionPortraits(void);
 static void Task_NewGameJuniperSpeech_WaitToShowJuniper(u8);
@@ -375,8 +382,8 @@ static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void);
 static void Task_NewGameJuniperSpeech_CreateNameYesNo(u8);
 static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8);
 void CreateYesNoMenuParameterized(u8, u8, u16, u16, u8, u8);
-static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter(u8);
-static void Task_NewGameJuniperSpeech_AreYouReady(u8);
+static void Task_NewGameJuniperSpeech_RivalSequence(u8);
+static void Task_NewGameJuniperSpeech_ShowFinalPlayer(u8);
 static void Task_NewGameJuniperSpeech_ShrinkPlayer(u8);
 static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *);
 static void Task_NewGameJuniperSpeech_WaitForPlayerShrink(u8);
@@ -415,6 +422,8 @@ static const u16 sNewGameGenderBlueArrowDimPal[] = INCGFX_U16("graphics/new_game
 static const u16 sNewGameGenderRedArrowBrightPal[] = INCGFX_U16("graphics/new_game_speech/gender_arrow/red_bright.pal", ".gbapal");
 static const u16 sNewGameGenderRedArrowRegularPal[] = INCGFX_U16("graphics/new_game_speech/gender_arrow/red_regular.pal", ".gbapal");
 static const u16 sNewGameGenderRedArrowDimPal[] = INCGFX_U16("graphics/new_game_speech/gender_arrow/red_dim.pal", ".gbapal");
+static const u32 sNewGameRivalBgGfx[] = INCGFX_U32("graphics/new_game_speech/rivals/rival_bg.png", ".4bpp.smol");
+static const u16 sNewGameRivalBgPal[] = INCGFX_U16("graphics/new_game_speech/rivals/rival_bg.png", ".gbapal");
 
 static const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
 static const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.");
@@ -432,6 +441,11 @@ static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while
 static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.");
 static const u8 sText_YoureABoyRight[] = _("You're a boy, right?");
 static const u8 sText_YoureAGirlRight[] = _("You're a girl, right?");
+static const u8 sText_JuniperIntroduceFriends[] = _("So your name's {PLAYER}.\nWhat a wonderful name!\pWell then. I'm going to introduce you\nto your two best friends!\p");
+static const u8 sText_JuniperIntroduceCheren[] = _("This young man is Cheren.\pHe can be a little difficult, but\nhe's a very honest person.\p");
+static const u8 sText_JuniperIntroduceBianca[] = _("This young woman is Bianca.\pShe's a little flighty,\nbut she works very hard.\p");
+static const u8 sText_JuniperIntroducePlayer[] = _("I think you three have potential,\nso I'm going to give you\pa very, very important Pokémon.\p");
+static const u8 sText_JuniperFinalSpeech[] = _("{PLAYER}!\pThe moment you choose the\nPokémon that will accompany\lyou on your journey,\lyour story will truly begin.\pDuring your journey, you will met many\nPokémon and people with different\lpersonalities and points of view!\pI really hope you find what is important\nto you in all of these travels...\pThat's right! Befriend\nnew people and Pokémon and\lgrow as a person!\pThat is the most important goal\nfor your journey!\pLet's go visit the world of Pokémon!\p");
 
 #if B_MAIN_MENU_BW_STYLE
 static const u8 gText_ContinueMenuTime[] = _("TIME: ");
@@ -493,6 +507,42 @@ enum NewGameSpeechPortrait
 #define NEW_GAME_GENDER_CONFIRM_FRAMES 16
 #define NEW_GAME_GENDER_LEFT_OFFSCREEN_X -32
 #define NEW_GAME_GENDER_RIGHT_OFFSCREEN_X (DISPLAY_WIDTH + 32)
+#define GFX_TAG_NEW_GAME_RIVAL_BG 0xF006
+#define NEW_GAME_RIVAL_BG_SPRITE_COUNT 9
+#define NEW_GAME_RIVAL_BG_Y 64
+#define NEW_GAME_RIVAL_BG_SCROLL_DELAY 3
+#define NEW_GAME_RIVAL_BG_START_X -16
+#define NEW_GAME_RIVAL_BG_SPACING 32
+#define NEW_GAME_RIVAL_BG_WRAP_X (DISPLAY_WIDTH + 32)
+#define NEW_GAME_RIVAL_BG_WRAP_WIDTH (NEW_GAME_RIVAL_BG_SPRITE_COUNT * NEW_GAME_RIVAL_BG_SPACING)
+#define NEW_GAME_RIVAL_CHEREN_X 48
+#define NEW_GAME_RIVAL_PLAYER_X 120
+#define NEW_GAME_RIVAL_BIANCA_X 192
+#define NEW_GAME_RIVAL_TRAINER_Y 64
+
+#define NEW_GAME_RIVAL_CHEREN_PAL 6
+#define NEW_GAME_RIVAL_BIANCA_PAL 7
+#define NEW_GAME_RIVAL_PLAYER_PAL 8
+
+enum NewGameRivalIntroState
+{
+    RIVAL_STATE_WAIT_INTRO_TEXT,
+    RIVAL_STATE_WAIT_JUNIPER_OUT,
+    RIVAL_STATE_WAIT_JUNIPER_GAP,
+    RIVAL_STATE_WAIT_BANNER_IN,
+    RIVAL_STATE_WAIT_CHEREN_IN,
+    RIVAL_STATE_WAIT_CHEREN_TEXT,
+    RIVAL_STATE_WAIT_BIANCA_IN,
+    RIVAL_STATE_WAIT_BIANCA_TEXT,
+    RIVAL_STATE_WAIT_PLAYER_IN,
+    RIVAL_STATE_WAIT_GROUP_TEXT,
+    RIVAL_STATE_WAIT_GROUP_OUT,
+    RIVAL_STATE_WAIT_BANNER_OUT,
+    RIVAL_STATE_WAIT_JUNIPER_RETURN_GAP,
+    RIVAL_STATE_WAIT_JUNIPER_IN,
+    RIVAL_STATE_WAIT_FINAL_TEXT,
+    RIVAL_STATE_WAIT_FINAL_JUNIPER_OUT
+};
 
 enum NewGameGenderArrowSprite
 {
@@ -537,6 +587,12 @@ static EWRAM_DATA u8 sNewGameGenderHilbertMatrixNum;
 static EWRAM_DATA u8 sNewGameGenderHildaMatrixNum;
 static EWRAM_DATA u8 sNewGameGenderBlueArrowMatrixNum;
 static EWRAM_DATA u8 sNewGameGenderRedArrowMatrixNum;
+static EWRAM_DATA u8 sNewGameRivalBgSpriteIds[NEW_GAME_RIVAL_BG_SPRITE_COUNT];
+static EWRAM_DATA bool8 sNewGameRivalBgActive;
+static EWRAM_DATA u8 sNewGameRivalBgScrollTimer;
+static EWRAM_DATA u16 sNewGameRivalCherenSpriteId;
+static EWRAM_DATA u16 sNewGameRivalBiancaSpriteId;
+static EWRAM_DATA u16 sNewGameRivalPlayerSpriteId;
 
 // Main menu window positions and sizes are BG tile coordinates/counts.
 // One BG tile is 8x8 pixels; text X/Y constants above are window-local pixels.
@@ -627,6 +683,33 @@ static const struct OamData sNewGameGenderArrowOam =
     .shape = SPRITE_SHAPE(32x64),
     .size = SPRITE_SIZE(32x64),
     .priority = 2,
+};
+
+static const struct OamData sNewGameRivalBgOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x64),
+    .size = SPRITE_SIZE(32x64),
+    .priority = 2,
+};
+
+static const struct SpritePalette sNewGameRivalBgSpritePalette =
+{
+    .data = sNewGameRivalBgPal,
+    .tag = GFX_TAG_NEW_GAME_RIVAL_BG,
+};
+
+static const struct SpriteTemplate sNewGameRivalBgTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_RIVAL_BG,
+    .paletteTag = GFX_TAG_NEW_GAME_RIVAL_BG,
+    .oam = &sNewGameRivalBgOam,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null,
 };
 
 static const union AnimCmd sAnim_NewGameGenderArrowBody[] =
@@ -1064,6 +1147,7 @@ static void CB2_MainMenu(void)
     RunTasks();
     AnimateSprites();
     NewGameSpeech_UpdatePortrait();
+    NewGameSpeech_UpdateRivalBg();
     BuildOamBuffer();
     UpdatePaletteFade();
 }
@@ -2068,6 +2152,7 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 }
 
 #define tPlayerSpriteId data[2]
+#define tRivalState data[4]
 #define tIsDoneFadingSprites data[5]
 #define tPlayerGender data[6]
 #define tTimer data[7]
@@ -2560,6 +2645,175 @@ static void NewGameSpeech_UpdatePortrait(void)
     );
 }
 
+static void NewGameSpeech_LoadRivalBgGfx(void)
+{
+    u8 row;
+    u8 col;
+    u32 size;
+    u8 *src;
+    u8 *packed;
+    struct SpriteSheet sheet;
+
+    src = malloc_and_decompress(sNewGameRivalBgGfx, &size);
+    if (src == NULL)
+        return;
+
+    packed = Alloc(0x400);
+    if (packed == NULL)
+    {
+        Free(src);
+        return;
+    }
+
+    for (row = 0; row < 8; row++)
+    {
+        for (col = 0; col < 4; col++)
+            CpuCopy16(src + row * 32, packed + (row * 4 + col) * 32, 32);
+    }
+
+    sheet.data = packed;
+    sheet.size = 0x400;
+    sheet.tag = GFX_TAG_NEW_GAME_RIVAL_BG;
+    LoadSpriteSheet(&sheet);
+    Free(packed);
+    Free(src);
+}
+
+static void NewGameSpeech_ShowRivalBg(void)
+{
+    u8 i;
+    u8 spriteId;
+
+    NewGameSpeech_LoadRivalBgGfx();
+    LoadSpritePalette(&sNewGameRivalBgSpritePalette);
+
+    for (i = 0; i < NEW_GAME_RIVAL_BG_SPRITE_COUNT; i++)
+    {
+        spriteId = CreateSprite(
+            &sNewGameRivalBgTemplate,
+            NEW_GAME_RIVAL_BG_START_X + i * NEW_GAME_RIVAL_BG_SPACING,
+            NEW_GAME_RIVAL_BG_Y,
+            3
+        );
+        sNewGameRivalBgSpriteIds[i] = spriteId;
+        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+    }
+
+    sNewGameRivalBgScrollTimer = 0;
+    sNewGameRivalBgActive = TRUE;
+}
+
+static void NewGameSpeech_HideRivalBg(void)
+{
+    u8 i;
+
+    sNewGameRivalBgActive = FALSE;
+    sNewGameRivalBgScrollTimer = 0;
+
+    for (i = 0; i < NEW_GAME_RIVAL_BG_SPRITE_COUNT; i++)
+    {
+        if (sNewGameRivalBgSpriteIds[i] != MAX_SPRITES)
+            DestroySprite(&gSprites[sNewGameRivalBgSpriteIds[i]]);
+        sNewGameRivalBgSpriteIds[i] = MAX_SPRITES;
+    }
+
+    FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_RIVAL_BG);
+    FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_RIVAL_BG);
+}
+
+static void NewGameSpeech_UpdateRivalBg(void)
+{
+    u8 i;
+
+    if (!sNewGameRivalBgActive)
+        return;
+
+    if (++sNewGameRivalBgScrollTimer < NEW_GAME_RIVAL_BG_SCROLL_DELAY)
+        return;
+
+    sNewGameRivalBgScrollTimer = 0;
+
+    for (i = 0; i < NEW_GAME_RIVAL_BG_SPRITE_COUNT; i++)
+    {
+        if (sNewGameRivalBgSpriteIds[i] == MAX_SPRITES)
+            continue;
+
+        gSprites[sNewGameRivalBgSpriteIds[i]].x++;
+
+        if (gSprites[sNewGameRivalBgSpriteIds[i]].x >= NEW_GAME_RIVAL_BG_WRAP_X)
+            gSprites[sNewGameRivalBgSpriteIds[i]].x -= NEW_GAME_RIVAL_BG_WRAP_WIDTH;
+    }
+}
+
+static void NewGameSpeech_SetRivalBgObjMode(u8 objMode)
+{
+    u8 i;
+
+    for (i = 0; i < NEW_GAME_RIVAL_BG_SPRITE_COUNT; i++)
+    {
+        if (sNewGameRivalBgSpriteIds[i] != MAX_SPRITES)
+            gSprites[sNewGameRivalBgSpriteIds[i]].oam.objMode = objMode;
+    }
+}
+
+static void NewGameSpeech_CreateRivalSprites(void)
+{
+    enum TrainerPicID playerPic;
+
+    sNewGameRivalCherenSpriteId = MAX_SPRITES;
+    sNewGameRivalBiancaSpriteId = MAX_SPRITES;
+    sNewGameRivalPlayerSpriteId = MAX_SPRITES;
+
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        playerPic = TRAINER_PIC_HILBERT;
+    else
+        playerPic = TRAINER_PIC_HILDA;
+
+    sNewGameRivalCherenSpriteId = CreateTrainerPicSprite(TRAINER_PIC_CHEREN, TRUE, NEW_GAME_RIVAL_CHEREN_X, NEW_GAME_RIVAL_TRAINER_Y, NEW_GAME_RIVAL_CHEREN_PAL, TAG_NONE);
+    sNewGameRivalBiancaSpriteId = CreateTrainerPicSprite(TRAINER_PIC_BIANCA_INTRO, TRUE, NEW_GAME_RIVAL_BIANCA_X, NEW_GAME_RIVAL_TRAINER_Y, NEW_GAME_RIVAL_BIANCA_PAL, TAG_NONE);
+    sNewGameRivalPlayerSpriteId = CreateTrainerPicSprite(playerPic, TRUE, NEW_GAME_RIVAL_PLAYER_X, NEW_GAME_RIVAL_TRAINER_Y, NEW_GAME_RIVAL_PLAYER_PAL, TAG_NONE);
+
+    if (sNewGameRivalCherenSpriteId < MAX_SPRITES)
+    {
+        gSprites[sNewGameRivalCherenSpriteId].oam.priority = 1;
+        gSprites[sNewGameRivalCherenSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        gSprites[sNewGameRivalCherenSpriteId].invisible = TRUE;
+        gSprites[sNewGameRivalCherenSpriteId].callback = SpriteCB_Null;
+    }
+
+    if (sNewGameRivalBiancaSpriteId < MAX_SPRITES)
+    {
+        gSprites[sNewGameRivalBiancaSpriteId].oam.priority = 1;
+        gSprites[sNewGameRivalBiancaSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        gSprites[sNewGameRivalBiancaSpriteId].invisible = TRUE;
+        gSprites[sNewGameRivalBiancaSpriteId].callback = SpriteCB_Null;
+    }
+
+    if (sNewGameRivalPlayerSpriteId < MAX_SPRITES)
+    {
+        gSprites[sNewGameRivalPlayerSpriteId].oam.priority = 1;
+        gSprites[sNewGameRivalPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        gSprites[sNewGameRivalPlayerSpriteId].invisible = TRUE;
+        gSprites[sNewGameRivalPlayerSpriteId].callback = SpriteCB_Null;
+    }
+}
+
+static void NewGameSpeech_DestroyRivalSprites(void)
+{
+    if (sNewGameRivalCherenSpriteId < MAX_SPRITES)
+        FreeAndDestroyTrainerPicSprite(sNewGameRivalCherenSpriteId);
+
+    if (sNewGameRivalBiancaSpriteId < MAX_SPRITES)
+        FreeAndDestroyTrainerPicSprite(sNewGameRivalBiancaSpriteId);
+
+    if (sNewGameRivalPlayerSpriteId < MAX_SPRITES)
+        FreeAndDestroyTrainerPicSprite(sNewGameRivalPlayerSpriteId);
+
+    sNewGameRivalCherenSpriteId = MAX_SPRITES;
+    sNewGameRivalBiancaSpriteId = MAX_SPRITES;
+    sNewGameRivalPlayerSpriteId = MAX_SPRITES;
+}
+
 static void Task_NewGameJuniperSpeech_Init(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -2581,7 +2835,7 @@ static void Task_NewGameJuniperSpeech_Init(u8 taskId)
     ResetSpriteData();
     FreeAllSpritePalettes();
     ResetAllPicSprites();
-    AddJuniperSpeechObjects(taskId);
+    AddJuniperSpeechObjects(taskId, TRUE);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
     gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitToShowJuniper;
     gTasks[taskId].tPlayerSpriteId = SPRITE_NONE;
@@ -3295,7 +3549,8 @@ static void Task_NewGameJuniperSpeech_RestartNamingScreen(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        if (gTasks[taskId].tLotadSpriteId != SPRITE_NONE)
+            FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
         sNewGameSpeechPortraitsActive = FALSE;
         FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER);
         DestroyTask(taskId);
@@ -3334,13 +3589,11 @@ static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8 taskId)
     {
     case 0:
         PlaySE(SE_SELECT);
-
         NewGameJuniperSpeech_ClearWindow(0);
-        StringExpandPlaceholders(gStringVar4, gText_Birch_YourePlayer);
+        StringExpandPlaceholders(gStringVar4, sText_JuniperIntroduceFriends);
         AddTextPrinterForMessage(TRUE);
-
-        gTasks[taskId].tIsDoneFadingSprites = TRUE;
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter;
+        gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_INTRO_TEXT;
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_RivalSequence;
         break;
 
     case MENU_B_PRESSED:
@@ -3352,50 +3605,260 @@ static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8 taskId)
     }
 }
 
-static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInAndTextPrinter(u8 taskId)
-{
-    if (gTasks[taskId].tIsDoneFadingSprites)
-    {
-        gSprites[gTasks[taskId].tJuniperSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-        if (!RunTextPrintersAndIsPrinter0Active())
-        {
-            gSprites[gTasks[taskId].tJuniperSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-            gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-            NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
-            gTasks[taskId].tTimer = 64;
-            gTasks[taskId].func = Task_NewGameJuniperSpeech_AreYouReady;
-        }
-    }
-}
-
-static void Task_NewGameJuniperSpeech_AreYouReady(u8 taskId)
+static void Task_NewGameJuniperSpeech_RivalSequence(u8 taskId)
 {
     u8 spriteId;
 
-    if (gTasks[taskId].tIsDoneFadingSprites)
+    switch (gTasks[taskId].tRivalState)
     {
-        gSprites[gTasks[taskId].tJuniperSpriteId].invisible = TRUE;
-        gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
-        if (gTasks[taskId].tTimer)
+    case RIVAL_STATE_WAIT_INTRO_TEXT:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_JUNIPER_OUT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_JUNIPER_OUT:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            gSprites[gTasks[taskId].tJuniperSpriteId].invisible = TRUE;
+            HideBg(2);
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+            gTasks[taskId].tTimer = 8;
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_JUNIPER_GAP;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_JUNIPER_GAP:
+        if (gTasks[taskId].tTimer != 0)
         {
             gTasks[taskId].tTimer--;
-            return;
         }
-        if (gSaveBlock2Ptr->playerGender != MALE)
-            spriteId = gTasks[taskId].tHildaSpriteId;
         else
-            spriteId = gTasks[taskId].tHilbertSpriteId;
-        gSprites[spriteId].x = 120;
-        gSprites[spriteId].y = 60;
-        gSprites[spriteId].invisible = FALSE;
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        gTasks[taskId].tPlayerSpriteId = spriteId;
-        NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
-        StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
-        AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_ShrinkPlayer;
+        {
+            NewGameSpeech_ShowRivalBg();
+            NewGameJuniperSpeech_StartFadeInSemiTransparentObj(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_BANNER_IN;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_BANNER_IN:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            NewGameSpeech_SetRivalBgObjMode(ST_OAM_OBJ_NORMAL);
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            NewGameSpeech_CreateRivalSprites();
+
+            spriteId = sNewGameRivalCherenSpriteId;
+            if (spriteId < MAX_SPRITES)
+                gSprites[spriteId].invisible = FALSE;
+
+            NewGameJuniperSpeech_StartFadeInSemiTransparentObj(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_CHEREN_IN;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_CHEREN_IN:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            if (sNewGameRivalCherenSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalCherenSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            NewGameJuniperSpeech_ClearWindow(0);
+            StringExpandPlaceholders(gStringVar4, sText_JuniperIntroduceCheren);
+            AddTextPrinterForMessage(TRUE);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_CHEREN_TEXT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_CHEREN_TEXT:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            if (sNewGameRivalBiancaSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalBiancaSpriteId].invisible = FALSE;
+
+            NewGameJuniperSpeech_StartFadeInSemiTransparentObj(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_BIANCA_IN;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_BIANCA_IN:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            if (sNewGameRivalBiancaSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalBiancaSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            NewGameJuniperSpeech_ClearWindow(0);
+            StringExpandPlaceholders(gStringVar4, sText_JuniperIntroduceBianca);
+            AddTextPrinterForMessage(TRUE);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_BIANCA_TEXT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_BIANCA_TEXT:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            if (sNewGameRivalPlayerSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalPlayerSpriteId].invisible = FALSE;
+
+            NewGameJuniperSpeech_StartFadeInSemiTransparentObj(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_PLAYER_IN;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_PLAYER_IN:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            if (sNewGameRivalPlayerSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalPlayerSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            NewGameJuniperSpeech_ClearWindow(0);
+            StringExpandPlaceholders(gStringVar4, sText_JuniperIntroducePlayer);
+            AddTextPrinterForMessage(TRUE);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_GROUP_TEXT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_GROUP_TEXT:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            if (sNewGameRivalCherenSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalCherenSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+            if (sNewGameRivalBiancaSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalBiancaSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+            if (sNewGameRivalPlayerSpriteId < MAX_SPRITES)
+                gSprites[sNewGameRivalPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+
+            NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_GROUP_OUT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_GROUP_OUT:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            NewGameSpeech_DestroyRivalSprites();
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            NewGameSpeech_SetRivalBgObjMode(ST_OAM_OBJ_BLEND);
+            NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_BANNER_OUT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_BANNER_OUT:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            NewGameSpeech_HideRivalBg();
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            HideBg(2);
+            gTasks[taskId].tTimer = 10;
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_JUNIPER_RETURN_GAP;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_JUNIPER_RETURN_GAP:
+        if (gTasks[taskId].tTimer != 0)
+        {
+            gTasks[taskId].tTimer--;
+        }
+        else
+        {
+            spriteId = gTasks[taskId].tJuniperSpriteId;
+            gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X;
+            gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
+            gSprites[spriteId].invisible = FALSE;
+
+            NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_JUNIPER_IN;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_JUNIPER_IN:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+
+            NewGameJuniperSpeech_ClearWindow(0);
+            StringExpandPlaceholders(gStringVar4, sText_JuniperFinalSpeech);
+            AddTextPrinterForMessage(TRUE);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_FINAL_TEXT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_FINAL_TEXT:
+        if (!RunTextPrintersAndIsPrinter0Active())
+        {
+            ClearDialogWindowAndFrameToTransparent(0, TRUE);
+            NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 1);
+            gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_FINAL_JUNIPER_OUT;
+        }
+        break;
+
+    case RIVAL_STATE_WAIT_FINAL_JUNIPER_OUT:
+        if (gTasks[taskId].tIsDoneFadingSprites)
+        {
+            gSprites[gTasks[taskId].tJuniperSpriteId].invisible = TRUE;
+            HideBg(2);
+            SetGpuReg(REG_OFFSET_BLDCNT, 0);
+            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+            SetGpuReg(REG_OFFSET_BLDY, 0);
+            gTasks[taskId].tTimer = 4;
+            gTasks[taskId].func = Task_NewGameJuniperSpeech_ShowFinalPlayer;
+        }
+        break;
     }
+}
+
+static void Task_NewGameJuniperSpeech_ShowFinalPlayer(u8 taskId)
+{
+    u8 spriteId;
+
+    if (gTasks[taskId].tTimer != 0)
+    {
+        gTasks[taskId].tTimer--;
+        return;
+    }
+
+    if (gSaveBlock2Ptr->playerGender != MALE)
+        spriteId = gTasks[taskId].tHildaSpriteId;
+    else
+        spriteId = gTasks[taskId].tHilbertSpriteId;
+
+    gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X;
+    gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
+    gSprites[spriteId].invisible = FALSE;
+    gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+    gTasks[taskId].tPlayerSpriteId = spriteId;
+
+    NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
+    gTasks[taskId].tTimer = 60;
+    gTasks[taskId].func = Task_NewGameJuniperSpeech_ShrinkPlayer;
 }
 
 static void Task_NewGameJuniperSpeech_ShrinkPlayer(u8 taskId)
@@ -3405,6 +3868,13 @@ static void Task_NewGameJuniperSpeech_ShrinkPlayer(u8 taskId)
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
         gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+
+        if (gTasks[taskId].tTimer != 0)
+        {
+            gTasks[taskId].tTimer--;
+            return;
+        }
+
         if (!RunTextPrintersAndIsPrinter0Active())
         {
             spriteId = gTasks[taskId].tPlayerSpriteId;
@@ -3472,7 +3942,8 @@ static void Task_NewGameJuniperSpeech_Cleanup(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        if (gTasks[taskId].tLotadSpriteId != SPRITE_NONE)
+            FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
         ResetAllPicSprites();
         sNewGameSpeechPortraitsActive = FALSE;
         FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER);
@@ -3511,7 +3982,7 @@ static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void)
     ResetSpriteData();
     FreeAllSpritePalettes();
     ResetAllPicSprites();
-    AddJuniperSpeechObjects(taskId);
+    AddJuniperSpeechObjects(taskId, FALSE);
 
     gTasks[taskId].tPlayerGender = gSaveBlock2Ptr->playerGender;
 
@@ -3524,8 +3995,8 @@ static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void)
     gSprites[gTasks[taskId].tHildaSpriteId].invisible = TRUE;
 
     spriteId = gTasks[taskId].tJuniperSpriteId;
-    gSprites[spriteId].x = 136;
-    gSprites[spriteId].y = 60;
+    gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X;
+    gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
 
@@ -3577,7 +4048,7 @@ static u8 NewGameJuniperSpeech_CreateLotadSprite(u8 x, u8 y)
     return CreateMonPicSprite_Affine(SPECIES_LOTAD, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
 
-static void AddJuniperSpeechObjects(u8 taskId)
+static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
 {
     u8 juniperSpriteId;
     u8 lotadSpriteId;
@@ -3591,11 +4062,18 @@ static void AddJuniperSpeechObjects(u8 taskId)
     gSprites[juniperSpriteId].invisible = TRUE;
     gTasks[taskId].tJuniperSpriteId = juniperSpriteId;
 
-    lotadSpriteId = NewGameJuniperSpeech_CreateLotadSprite(100, 0x4B);
-    gSprites[lotadSpriteId].callback = SpriteCB_Null;
-    gSprites[lotadSpriteId].oam.priority = 0;
-    gSprites[lotadSpriteId].invisible = TRUE;
-    gTasks[taskId].tLotadSpriteId = lotadSpriteId;
+    if (createLotad)
+    {
+        lotadSpriteId = NewGameJuniperSpeech_CreateLotadSprite(100, 0x4B);
+        gSprites[lotadSpriteId].callback = SpriteCB_Null;
+        gSprites[lotadSpriteId].oam.priority = 0;
+        gSprites[lotadSpriteId].invisible = TRUE;
+        gTasks[taskId].tLotadSpriteId = lotadSpriteId;
+    }
+    else
+    {
+        gTasks[taskId].tLotadSpriteId = SPRITE_NONE;
+    }
 
     hilbertSpriteId = CreateSprite(&sNewGameSpeechPortraitControllerTemplate, 120, 60, 0);
     gSprites[hilbertSpriteId].callback = SpriteCB_Null;
@@ -3616,6 +4094,7 @@ static void AddJuniperSpeechObjects(u8 taskId)
 }
 
 #undef tPlayerSpriteId
+#undef tRivalState
 #undef tPlayerGender
 #undef tJuniperSpriteId
 #undef tLotadSpriteId
