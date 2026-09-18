@@ -1125,10 +1125,6 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
 #if B_MAIN_MENU_BW_STYLE
     ResetBwMainMenuExtraSprites();
 #endif
-    if (returningFromOptionsMenu)
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK); // fade to black
-    else
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_WHITEALPHA); // fade to white
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sMainMenuBgTemplates, ARRAY_COUNT(sMainMenuBgTemplates));
     ChangeBgX(0, 0, BG_COORD_SET);
@@ -1159,14 +1155,7 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     EnableInterrupts(1);
     SetVBlankCallback(VBlankCB_MainMenu);
     SetMainCallback2(CB2_MainMenu);
-    SetGpuReg(REG_OFFSET_DISPCNT, MAIN_MENU_DISPCNT);
-    ShowBg(0);
-#if B_MAIN_MENU_BW_STYLE
-    HideBg(1);
-    ShowBg(2);
-#else
-    HideBg(1);
-#endif
+    SetGpuReg(REG_OFFSET_DISPCNT, 0);
     CreateTask(Task_MainMenuCheckSaveFile, 0);
 
     return 0;
@@ -1384,7 +1373,7 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    if (!gPaletteFade.active)
+    if (TRUE)
     {
         SetMainMenuWindowAndBlendRegs();
 
@@ -1456,7 +1445,7 @@ static void Task_WaitForSaveFileErrorWindow(u8 taskId)
 
 static void Task_MainMenuCheckBattery(u8 taskId)
 {
-    if (!gPaletteFade.active)
+    if (TRUE)
     {
         SetMainMenuWindowAndBlendRegs();
 
@@ -1488,7 +1477,7 @@ static void Task_DisplayMainMenu(u8 taskId)
     s16 *data = gTasks[taskId].data;
     u16 palette;
 
-    if (!gPaletteFade.active)
+    if (TRUE)
     {
         SetMainMenuWindowAndBlendRegs();
 
@@ -1661,6 +1650,16 @@ static void Task_DisplayMainMenu(u8 taskId)
             }
             break;
         }
+#endif
+
+        SetGpuReg(REG_OFFSET_DISPCNT, MAIN_MENU_DISPCNT);
+        ShowBg(0);
+
+#if B_MAIN_MENU_BW_STYLE
+        ShowBg(1);
+        ShowBg(2);
+#else
+        ShowBg(1);
 #endif
         gTasks[taskId].func = Task_HighlightSelectedMainMenuItem;
     }
