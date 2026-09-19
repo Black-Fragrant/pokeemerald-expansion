@@ -324,11 +324,17 @@ static void NewGameSpeech_UpdateJuniperHandPosition(void);
 static void NewGameSpeech_StartJuniperHandJuggle(void);
 static void NewGameSpeech_StartJuniperHandThrow(void);
 static void SpriteCB_NewGameJuniperHand(struct Sprite *);
+static void NewGameSpeech_CreateJuniperFace(void);
+static void NewGameSpeech_DestroyJuniperFace(void);
+static void NewGameSpeech_UpdateJuniperMouth(void);
+static void NewGameSpeech_ResetJuniperBlinkTimer(struct Sprite *);
+static void SpriteCB_NewGameJuniperEyes(struct Sprite *);
 static void NewGameSpeech_ShowRivalBg(void);
 static void NewGameSpeech_LoadRivalBgGfx(void);
 static void NewGameSpeech_HideRivalBg(void);
 static void NewGameSpeech_UpdateRivalBg(void);
 static void NewGameSpeech_SetRivalBgObjMode(u8);
+static void NewGameSpeech_SetRivalBgInvisible(bool8);
 static void NewGameSpeech_CreateRivalSprites(void);
 static void NewGameSpeech_DestroyRivalSprites(void);
 static void NewGameSpeech_LoadGenderPortraitObjGfx(const u32 *, u16, u8);
@@ -408,6 +414,10 @@ static const u16 sNewGameSpeechJuniperPal[] = INCGFX_U16("graphics/new_game_spee
 static const u32 sNewGameSpeechJuniperGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/pic.png", ".8bpp.smol");
 static const u32 sNewGameSpeechJuniperHandGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/hand.png", ".4bpp.smol");
 static const u16 sNewGameSpeechJuniperHandPal[] = INCGFX_U16("graphics/new_game_speech/juniper/hand.png", ".gbapal");
+static const u32 sNewGameSpeechJuniperEyesGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/eyes.png", ".4bpp.smol");
+static const u16 sNewGameSpeechJuniperEyesPal[] = INCGFX_U16("graphics/new_game_speech/juniper/eyes.png", ".gbapal");
+static const u32 sNewGameSpeechJuniperMouthGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/mouth.png", ".4bpp.smol");
+static const u16 sNewGameSpeechJuniperMouthPal[] = INCGFX_U16("graphics/new_game_speech/juniper/mouth.png", ".gbapal");
 static const u32 sNewGameSpeechThrownBallGfx[] = INCGFX_U32("graphics/new_game_speech/juniper/thrown_ball.png", ".4bpp.smol");
 static const u16 sNewGameSpeechThrownBallPal[] = INCGFX_U16("graphics/new_game_speech/juniper/thrown_ball.png", ".gbapal");
 static const u16 sNewGameSpeechHilbertPal[] = INCGFX_U16("graphics/new_game_speech/hilbert/pal.pal", ".gbapal");
@@ -445,7 +455,7 @@ static const u8 sText_YoureAGirlRight[] = _("You're a girl, right?");
 static const u8 sText_JuniperOpening[] = _("Hi there!\pWelcome to the world of Pokémon!\pMy name is Professor Juniper. Everyone\ncalls me the Pokémon Professor!\p");
 static const u8 sText_JuniperPokemonWorld[] = _("That's right! This world is widely\ninhabited by mysterious creatures\lcalled Pokémon!\pPokémon have mysterious powers.\nThey come in many shapes\land live in many different places.\pWe humans live happily with Pokémon!\nLiving and working together,\lwe complete each other.\pWe help each other out to\naccomplish difficult tasks.\pHaving Pokémon battle one another\nis particularly popular, and it deepens\lthe bonds between people and Pokémon.\lAnd that is why I research Pokémon.\p");
 static const u8 sText_JuniperAboutYou[] = _("Well, that's enough from me...\nCould you tell me about yourself?\p");
-static const u8 sText_JuniperBoyOrGirl[] = _("Are you a boy?\nOr a girl?\p");
+static const u8 sText_JuniperBoyOrGirl[] = _("Are you a boy?\nOr a girl?");
 static const u8 sText_JuniperIntroduceFriends[] = _("So your name's {PLAYER}.\nWhat a wonderful name!\pWell then. I'm going to introduce you\nto your two best friends!\p");
 static const u8 sText_JuniperIntroduceCheren[] = _("This young man is Cheren.\pHe can be a little difficult, but\nhe's a very honest person.\p");
 static const u8 sText_JuniperIntroduceBianca[] = _("This young woman is Bianca.\pShe's a little flighty,\nbut she works very hard.\p");
@@ -453,9 +463,9 @@ static const u8 sText_JuniperIntroducePlayer[] = _("I think you three have poten
 static const u8 sText_JuniperFinalSpeech[] = _("{PLAYER}!\pThe moment you choose the\nPokémon that will accompany\lyou on your journey,\lyour story will truly begin.\pDuring your journey, you will met many\nPokémon and people with different\lpersonalities and points of view!\pI really hope you find what is important\nto you in all of these travels...\pThat's right! Befriend\nnew people and Pokémon and\lgrow as a person!\pThat is the most important goal\nfor your journey!\pLet's go visit the world of Pokémon!\p");
 
 #if B_MAIN_MENU_BW_STYLE
-static const u8 gText_ContinueMenuTime[] = _("TIME: ");
-static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX: ");
-static const u8 gText_ContinueMenuBadges[] = _("BADGES: ");
+static const u8 gText_ContinueMenuTime[] = _("Time: ");
+static const u8 gText_ContinueMenuPokedex[] = _("Pokédex: ");
+static const u8 gText_ContinueMenuBadges[] = _("Badges: ");
 static const u8 gText_ContinueMenuTeam[] = _("Team:");
 #else
 static const u8 gText_ContinueMenuPlayer[] = _("PLAYER");
@@ -525,6 +535,16 @@ enum NewGameSpeechPortrait
 #define NEW_GAME_THROWN_BALL_TARGET_Y 58
 #define NEW_GAME_THROWN_BALL_FALL_SPEED 5
 #define NEW_GAME_THROWN_BALL_RISE_SPEED 3
+#define GFX_TAG_NEW_GAME_JUNIPER_EYES 0xF009
+#define GFX_TAG_NEW_GAME_JUNIPER_MOUTH 0xF00A
+
+#define NEW_GAME_JUNIPER_BLINK_MIN 90
+#define NEW_GAME_JUNIPER_BLINK_RANGE 151
+
+#define NEW_GAME_JUNIPER_EYES_LEFT 27
+#define NEW_GAME_JUNIPER_EYES_TOP 17
+#define NEW_GAME_JUNIPER_MOUTH_LEFT 30
+#define NEW_GAME_JUNIPER_MOUTH_TOP 25
 
 #define NEW_GAME_JUNIPER_HAND_OFFSET_X -11
 #define NEW_GAME_JUNIPER_HAND_OFFSET_Y -27
@@ -645,6 +665,9 @@ static EWRAM_DATA u8 sNewGameJuniperHandMaskSpriteId;
 static EWRAM_DATA bool8 sNewGameJuniperHandMaskActive;
 static EWRAM_DATA u8 sNewGameThrownBallSpriteId;
 static EWRAM_DATA bool8 sNewGameThrownBallActive;
+static EWRAM_DATA u8 sNewGameJuniperEyesSpriteId;
+static EWRAM_DATA u8 sNewGameJuniperMouthSpriteId;
+static EWRAM_DATA bool8 sNewGameJuniperFaceActive;
 
 // Main menu window positions and sizes are BG tile coordinates/counts.
 // One BG tile is 8x8 pixels; text X/Y constants above are window-local pixels.
@@ -920,6 +943,114 @@ static const struct SpriteTemplate sNewGameThrownBallTemplate =
     .paletteTag = GFX_TAG_NEW_GAME_THROWN_BALL,
     .oam = &sNewGameThrownBallOam,
     .anims = sAnims_NewGameThrownBall,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Null
+};
+
+static const struct CompressedSpriteSheet sNewGameJuniperEyesSheet =
+{
+    .data = sNewGameSpeechJuniperEyesGfx,
+    .size = 0xC0,
+    .tag = GFX_TAG_NEW_GAME_JUNIPER_EYES
+};
+
+static const struct SpritePalette sNewGameJuniperEyesPalette =
+{
+    .data = sNewGameSpeechJuniperEyesPal,
+    .tag = GFX_TAG_NEW_GAME_JUNIPER_EYES
+};
+
+static const struct CompressedSpriteSheet sNewGameJuniperMouthSheet =
+{
+    .data = sNewGameSpeechJuniperMouthGfx,
+    .size = 0x40,
+    .tag = GFX_TAG_NEW_GAME_JUNIPER_MOUTH
+};
+
+static const struct SpritePalette sNewGameJuniperMouthPalette =
+{
+    .data = sNewGameSpeechJuniperMouthPal,
+    .tag = GFX_TAG_NEW_GAME_JUNIPER_MOUTH
+};
+
+static const struct OamData sNewGameJuniperEyesOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(16x8),
+    .size = SPRITE_SIZE(16x8),
+    .priority = 0,
+};
+
+static const struct OamData sNewGameJuniperMouthOam =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .size = SPRITE_SIZE(8x8),
+    .priority = 0,
+};
+
+static const union AnimCmd sAnim_NewGameJuniperEyesIdle[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_NewGameJuniperEyesBlink[] =
+{
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_FRAME(4, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sAnims_NewGameJuniperEyes[] =
+{
+    sAnim_NewGameJuniperEyesIdle,
+    sAnim_NewGameJuniperEyesBlink
+};
+
+static const union AnimCmd sAnim_NewGameJuniperMouthIdle[] =
+{
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sAnim_NewGameJuniperMouthTalk[] =
+{
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd *const sAnims_NewGameJuniperMouth[] =
+{
+    sAnim_NewGameJuniperMouthIdle,
+    sAnim_NewGameJuniperMouthTalk
+};
+
+static const struct SpriteTemplate sNewGameJuniperEyesTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_JUNIPER_EYES,
+    .paletteTag = GFX_TAG_NEW_GAME_JUNIPER_EYES,
+    .oam = &sNewGameJuniperEyesOam,
+    .anims = sAnims_NewGameJuniperEyes,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_NewGameJuniperEyes
+};
+
+static const struct SpriteTemplate sNewGameJuniperMouthTemplate =
+{
+    .tileTag = GFX_TAG_NEW_GAME_JUNIPER_MOUTH,
+    .paletteTag = GFX_TAG_NEW_GAME_JUNIPER_MOUTH,
+    .oam = &sNewGameJuniperMouthOam,
+    .anims = sAnims_NewGameJuniperMouth,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Null
@@ -1358,6 +1489,7 @@ enum
 static void CB2_MainMenu(void)
 {
     RunTasks();
+    NewGameSpeech_UpdateJuniperMouth();
     AnimateSprites();
     NewGameSpeech_UpdatePortrait();
     NewGameSpeech_UpdateJuniperHandPosition();
@@ -2984,6 +3116,144 @@ static void NewGameSpeech_UpdateJuniperHandPosition(void)
     }
 }
 
+#define sBlinkTimer data[0]
+#define sBlinking data[1]
+
+static void NewGameSpeech_ResetJuniperBlinkTimer(struct Sprite *sprite)
+{
+    sprite->sBlinkTimer = NEW_GAME_JUNIPER_BLINK_MIN + (Random() % NEW_GAME_JUNIPER_BLINK_RANGE);
+}
+
+static void SpriteCB_NewGameJuniperEyes(struct Sprite *sprite)
+{
+    if (!sprite->sBlinking)
+    {
+        if (sprite->sBlinkTimer != 0)
+            sprite->sBlinkTimer--;
+        else
+        {
+            sprite->sBlinking = TRUE;
+            StartSpriteAnim(sprite, 1);
+        }
+    }
+    else if (sprite->animEnded)
+    {
+        sprite->sBlinking = FALSE;
+        StartSpriteAnim(sprite, 0);
+        NewGameSpeech_ResetJuniperBlinkTimer(sprite);
+    }
+}
+
+#undef sBlinkTimer
+#undef sBlinking
+
+static void NewGameSpeech_CreateJuniperFace(void)
+{
+    struct Sprite *juniper;
+    u8 eyesId;
+    u8 mouthId;
+
+    if (sNewGameJuniperFaceActive)
+        return;
+
+    LoadCompressedSpriteSheet(&sNewGameJuniperEyesSheet);
+    LoadSpritePalette(&sNewGameJuniperEyesPalette);
+    LoadCompressedSpriteSheet(&sNewGameJuniperMouthSheet);
+    LoadSpritePalette(&sNewGameJuniperMouthPalette);
+
+    juniper = &gSprites[gTasks[sNewGameSpeechPortraitTaskId].tJuniperSpriteId];
+
+    eyesId = CreateSprite(
+        &sNewGameJuniperEyesTemplate,
+        juniper->x - 32 + NEW_GAME_JUNIPER_EYES_LEFT + 8,
+        juniper->y - 48 + NEW_GAME_JUNIPER_EYES_TOP + 4,
+        0
+    );
+
+    mouthId = CreateSprite(
+        &sNewGameJuniperMouthTemplate,
+        juniper->x - 32 + NEW_GAME_JUNIPER_MOUTH_LEFT + 4,
+        juniper->y - 48 + NEW_GAME_JUNIPER_MOUTH_TOP + 4,
+        0
+    );
+
+    if (eyesId >= MAX_SPRITES || mouthId >= MAX_SPRITES)
+    {
+        if (eyesId < MAX_SPRITES)
+            DestroySprite(&gSprites[eyesId]);
+        if (mouthId < MAX_SPRITES)
+            DestroySprite(&gSprites[mouthId]);
+
+        FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_JUNIPER_EYES);
+        FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_JUNIPER_EYES);
+        FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_JUNIPER_MOUTH);
+        FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_JUNIPER_MOUTH);
+
+        sNewGameJuniperEyesSpriteId = MAX_SPRITES;
+        sNewGameJuniperMouthSpriteId = MAX_SPRITES;
+        return;
+    }
+
+    sNewGameJuniperEyesSpriteId = eyesId;
+    sNewGameJuniperMouthSpriteId = mouthId;
+    sNewGameJuniperFaceActive = TRUE;
+
+    StartSpriteAnim(&gSprites[eyesId], 0);
+    gSprites[eyesId].data[0] = 0;
+    gSprites[eyesId].data[1] = FALSE;
+    NewGameSpeech_ResetJuniperBlinkTimer(&gSprites[eyesId]);
+
+    StartSpriteAnim(&gSprites[mouthId], 0);
+    gSprites[mouthId].data[0] = FALSE;
+}
+
+static void NewGameSpeech_DestroyJuniperFace(void)
+{
+    if (!sNewGameJuniperFaceActive)
+        return;
+
+    if (sNewGameJuniperEyesSpriteId < MAX_SPRITES)
+        DestroySprite(&gSprites[sNewGameJuniperEyesSpriteId]);
+
+    if (sNewGameJuniperMouthSpriteId < MAX_SPRITES)
+        DestroySprite(&gSprites[sNewGameJuniperMouthSpriteId]);
+
+    sNewGameJuniperEyesSpriteId = MAX_SPRITES;
+    sNewGameJuniperMouthSpriteId = MAX_SPRITES;
+    sNewGameJuniperFaceActive = FALSE;
+
+    FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_JUNIPER_EYES);
+    FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_JUNIPER_EYES);
+    FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_JUNIPER_MOUTH);
+    FreeSpritePaletteByTag(GFX_TAG_NEW_GAME_JUNIPER_MOUTH);
+}
+
+static void NewGameSpeech_UpdateJuniperMouth(void)
+{
+    struct Sprite *mouth;
+    bool8 printing;
+
+    if (!sNewGameJuniperFaceActive || sNewGameJuniperMouthSpriteId >= MAX_SPRITES)
+        return;
+
+    mouth = &gSprites[sNewGameJuniperMouthSpriteId];
+    printing = IsTextPrinterPrintingOnWindow(0);
+
+    if (printing)
+    {
+        if (!mouth->data[0])
+        {
+            mouth->data[0] = TRUE;
+            StartSpriteAnim(mouth, 1);
+        }
+    }
+    else if (mouth->data[0])
+    {
+        mouth->data[0] = FALSE;
+        StartSpriteAnim(mouth, 0);
+    }
+}
+
 static void NewGameSpeech_StartJuniperHandJuggle(void)
 {
     struct Sprite *hand;
@@ -3124,6 +3394,17 @@ static void NewGameSpeech_SetRivalBgObjMode(u8 objMode)
     }
 }
 
+static void NewGameSpeech_SetRivalBgInvisible(bool8 invisible)
+{
+    u8 i;
+
+    for (i = 0; i < NEW_GAME_RIVAL_BG_SPRITE_COUNT; i++)
+    {
+        if (sNewGameRivalBgSpriteIds[i] != MAX_SPRITES)
+            gSprites[sNewGameRivalBgSpriteIds[i]].invisible = invisible;
+    }
+}
+
 static void NewGameSpeech_CreateRivalSprites(void)
 {
     enum TrainerPicID playerPic;
@@ -3205,6 +3486,9 @@ static void Task_NewGameJuniperSpeech_Init(u8 taskId)
     sNewGameJuniperHandSpriteId = MAX_SPRITES;
     sNewGameJuniperHandMaskActive = FALSE;
     sNewGameJuniperHandMaskSpriteId = MAX_SPRITES;
+    sNewGameJuniperEyesSpriteId = MAX_SPRITES;
+    sNewGameJuniperMouthSpriteId = MAX_SPRITES;
+    sNewGameJuniperFaceActive = FALSE;
     sNewGameThrownBallActive = FALSE;
     sNewGameThrownBallSpriteId = MAX_SPRITES;
     FreeAllSpritePalettes();
@@ -3260,6 +3544,8 @@ static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
         gSprites[gTasks[taskId].tJuniperSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
         if (sNewGameJuniperHandSpriteId < MAX_SPRITES)
             gSprites[sNewGameJuniperHandSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        if (!sNewGameJuniperFaceActive)
+            NewGameSpeech_CreateJuniperFace();
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
@@ -3302,6 +3588,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         if (sNewGameJuniperHandSpriteId >= MAX_SPRITES
         || gSprites[sNewGameJuniperHandSpriteId].data[0] == JUNIPER_HAND_STATE_IDLE)
         {
+            NewGameSpeech_DestroyJuniperFace();
             if (sNewGameJuniperHandSpriteId < MAX_SPRITES)
             {
                 gSprites[sNewGameJuniperHandSpriteId].callback = SpriteCB_Null;
@@ -3326,6 +3613,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
 
         if (frame >= NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES)
         {
+            NewGameSpeech_CreateJuniperFace();
             gTasks[taskId].tTimer = NEW_GAME_JUNIPER_HAND_THROW_GAP;
             gTasks[taskId].tIntroState = JUNIPER_INTRO_THROW_GAP;
         }
@@ -3467,6 +3755,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         }
         else
         {
+            NewGameSpeech_DestroyJuniperFace();
             gTasks[taskId].tIntroFrame = 0;
             gTasks[taskId].tIntroState = JUNIPER_INTRO_RETURN_CENTER;
         }
@@ -3488,6 +3777,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         {
             gSprites[spriteId].x = NEW_GAME_PORTRAIT_CENTER_X;
             gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
+            NewGameSpeech_CreateJuniperFace();
 
             NewGameJuniperSpeech_ClearWindow(0);
             StringCopy(gStringVar4, sText_JuniperAboutYou);
@@ -3499,6 +3789,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
     case JUNIPER_INTRO_WAIT_ABOUT_YOU:
         if (!RunTextPrintersAndIsPrinter0Active())
         {
+            NewGameSpeech_DestroyJuniperFace();
             NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 1);
             gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_JUNIPER_OUT;
         }
@@ -3555,7 +3846,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
 static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8 taskId)
 {
     u8 spriteId = gTasks[sJuniperSpeechMainTaskId].tLotadSpriteId;
-
+    NewGameSpeech_DestroyJuniperFace();
     gSprites[spriteId].x = 100;
     gSprites[spriteId].y = 90;
     gSprites[spriteId].invisible = FALSE;
@@ -3587,6 +3878,7 @@ static void Task_NewGameJuniperSpeechSub_WaitForMinccino(u8 taskId)
             return;
 
         sprite->oam.affineMode = ST_OAM_AFFINE_OFF;
+        NewGameSpeech_CreateJuniperFace();
         gTasks[sJuniperSpeechMainTaskId].tTimer = 0;
         tState++;
         break;
@@ -4191,6 +4483,7 @@ static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8 taskId)
     case MENU_B_PRESSED:
     case 1:
         PlaySE(SE_SELECT);
+        NewGameSpeech_DestroyJuniperFace();
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_NewGameJuniperSpeech_RestartNamingScreen;
         break;
@@ -4206,6 +4499,7 @@ static void Task_NewGameJuniperSpeech_RivalSequence(u8 taskId)
     case RIVAL_STATE_WAIT_INTRO_TEXT:
         if (!RunTextPrintersAndIsPrinter0Active())
         {
+            NewGameSpeech_DestroyJuniperFace();
             NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 1);
             gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_JUNIPER_OUT;
         }
@@ -4359,6 +4653,9 @@ static void Task_NewGameJuniperSpeech_RivalSequence(u8 taskId)
         break;
 
     case RIVAL_STATE_WAIT_BANNER_OUT:
+        if ((GetGpuReg(REG_OFFSET_BLDALPHA) & 0x1F) <= 1)
+            NewGameSpeech_SetRivalBgInvisible(TRUE);
+
         if (gTasks[taskId].tIsDoneFadingSprites)
         {
             NewGameSpeech_HideRivalBg();
@@ -4395,7 +4692,7 @@ static void Task_NewGameJuniperSpeech_RivalSequence(u8 taskId)
             SetGpuReg(REG_OFFSET_BLDCNT, 0);
             SetGpuReg(REG_OFFSET_BLDALPHA, 0);
             SetGpuReg(REG_OFFSET_BLDY, 0);
-
+            NewGameSpeech_CreateJuniperFace();
             NewGameJuniperSpeech_ClearWindow(0);
             StringExpandPlaceholders(gStringVar4, sText_JuniperFinalSpeech);
             AddTextPrinterForMessage(TRUE);
@@ -4406,6 +4703,7 @@ static void Task_NewGameJuniperSpeech_RivalSequence(u8 taskId)
     case RIVAL_STATE_WAIT_FINAL_TEXT:
         if (!RunTextPrintersAndIsPrinter0Active())
         {
+            NewGameSpeech_DestroyJuniperFace();
             ClearDialogWindowAndFrameToTransparent(0, TRUE);
             NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 1);
             gTasks[taskId].tRivalState = RIVAL_STATE_WAIT_FINAL_JUNIPER_OUT;
@@ -4572,6 +4870,9 @@ static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void)
     gTasks[taskId].tTimer = 5;
     ScanlineEffect_Stop();
     ResetSpriteData();
+    sNewGameJuniperEyesSpriteId = MAX_SPRITES;
+    sNewGameJuniperMouthSpriteId = MAX_SPRITES;
+    sNewGameJuniperFaceActive = FALSE;
     FreeAllSpritePalettes();
     ResetAllPicSprites();
     AddJuniperSpeechObjects(taskId, FALSE);
@@ -4591,12 +4892,7 @@ static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void)
     gSprites[spriteId].y = NEW_GAME_PORTRAIT_CENTER_Y;
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-
-    spriteId = gTasks[taskId].tLotadSpriteId;
-    gSprites[spriteId].x = 100;
-    gSprites[spriteId].y = 75;
-    gSprites[spriteId].invisible = FALSE;
-    gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+    NewGameSpeech_CreateJuniperFace();
 
     gTasks[taskId].tIsDoneFadingSprites = TRUE;
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
