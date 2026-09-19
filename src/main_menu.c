@@ -52,121 +52,19 @@
 #include "malloc.h"
 
 /*
- * Main menu state machine
- * -----------------------
+ * Main menu and new-game flow
+ * ---------------------------
  *
- * Entry point: CB2_InitMainMenu
+ * The main-menu tasks handle save-file checks, menu display/input, and
+ * transitions to Continue, New Game, Options, Mystery Gift, or Mystery Events.
  *
- * Note: States advance sequentially unless otherwise stated.
- *
- * CB2_InitMainMenu / CB2_ReinitMainMenu
- *  - Both of these states call InitMainMenu, which does all the work.
- *  - In the Reinit case, the init code will check if the user came from
- *    the options screen. If they did, then the options menu item is
- *    pre-selected.
- *
- * Task_MainMenuCheckSaveFile
- *  - Determines how many menu options to show based on whether
- *    the save file is Ok, empty, corrupted, etc.
- *  - If there was an error loading the save file, advance to
- *    Task_WaitForSaveFileErrorWindow.
- *  - If there were no errors, advance to Task_MainMenuCheckBattery.
- *  - Note that the check to enable Mystery Events would normally happen
- *    here, but this version of Emerald has them disabled.
- *
- * Task_WaitForSaveFileErrorWindow
- *  - Wait for the text to finish printing and then for the A button
- *    to be pressed.
- *
- * Task_MainMenuCheckBattery
- *  - If the battery is OK, advance to Task_DisplayMainMenu.
- *  - If the battery is dry, advance to Task_WaitForBatteryDryErrorWindow.
- *
- * Task_WaitForBatteryDryErrorWindow
- *  - Wait for the text to finish printing and then for the A button
- *    to be pressed.
- *
- * Task_DisplayMainWindow
- *  - Display the buttons to the user. If the menu is in HAS_MYSTERY_EVENTS
- *    mode, there are too many buttons for one screen and a scrollbar is added,
- *    and the scrollbar task is spawned (Task_ScrollIndicatorArrowPairOnMainMenu).
- *
- * Task_HighlightSelectedMainMenuItem
- *  - Update the UI to match the currently selected item.
- *
- * Task_HandleMainMenuInput
- *  - If A is pressed, advance to Task_HandleMainMenuAPressed.
- *  - If B is pressed, return to the title screen via CB2_InitTitleScreen.
- *  - If Up or Down is pressed, handle scrolling if there is a scroll bar, change
- *    the selection, then go back to Task_HighlightSelectedMainMenuItem.
- *
- * Task_HandleMainMenuAPressed
- *  - If the user selected New Game, advance to Task_NewGameJuniperSpeech_Init.
- *  - If the user selected Continue, advance to CB2_ContinueSavedGame.
- *  - If the user selected the Options menu, advance to CB2_InitOptionMenu.
- *  - If the user selected Mystery Gift, advance to CB2_InitMysteryGift. However,
- *    if the wireless adapter was removed, instead advance to
- *    Task_DisplayMainMenuInvalidActionError.
- *  - Code to start a Mystery Event is present here, but is unreachable in this
- *    version.
- *
- * Task_HandleMainMenuBPressed
- *  - Clean up the main menu and go back to CB2_InitTitleScreen.
- *
- * Task_DisplayMainMenuInvalidActionError
- *  - Print one of three different error messages, wait for the text to stop
- *    printing, and then wait for A or B to be pressed.
- * - Then advance to Task_HandleMainMenuBPressed.
- *
- * Task_NewGameJuniperSpeech_Init
- *  - Load the sprites for the intro speech, start playing music
- * Task_NewGameJuniperSpeech_WaitToShowJuniper
- *  - Spawn Task_NewGameJuniperSpeech_FadeInTarget1OutTarget2
- *  - Both of these tasks destroy themselves when done.
- * Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome
- * Task_NewGameJuniperSpeech_ThisIsAPokemon
- *  - When the text is done printing, spawns Task_NewGameJuniperSpeechSub_InitPokeball
- * Task_NewGameJuniperSpeech_MainSpeech
- * Task_NewGameJuniperSpeech_AndYouAre
- * Task_NewGameJuniperSpeech_StartJuniperLotadFadeOut
- * Task_NewGameJuniperSpeech_StartPlayerFadeIn
- * Task_NewGameJuniperSpeech_WaitForPlayerFadeIn
- * Task_NewGameJuniperSpeech_BoyOrGirl
- * Task_NewGameJuniperSpeech_WaitToShowGenderMenu
- * Task_NewGameJuniperSpeech_ChooseGender
- *  - Animates by advancing to Task_NewGameJuniperSpeech_SlideOutOldGenderSprite
- *    whenever the player's selection changes.
- *  - Advances to Task_NewGameJuniperSpeech_WhatsYourName when done.
- *
- * Task_NewGameJuniperSpeech_SlideOutOldGenderSprite
- * Task_NewGameJuniperSpeech_SlideInNewGenderSprite
- *  - Returns back to Task_NewGameJuniperSpeech_ChooseGender.
- *
- * Task_NewGameJuniperSpeech_WhatsYourName
- * Task_NewGameJuniperSpeech_WaitForWhatsYourNameToPrint
- * Task_NewGameJuniperSpeech_WaitPressBeforeNameChoice
- * Task_NewGameJuniperSpeech_StartNamingScreen
- * C2_NamingScreen
- *  - Returns to CB2_NewGameJuniperSpeech_ReturnFromNamingScreen when done
- * CB2_NewGameJuniperSpeech_ReturnFromNamingScreen
- * Task_NewGameJuniperSpeech_ReturnFromNamingScreenShowTextbox
- * Task_NewGameJuniperSpeech_SoItsPlayerName
- * Task_NewGameJuniperSpeech_CreateNameYesNo
- * Task_NewGameJuniperSpeech_ProcessNameYesNoMenu
- *  - Otherwise, return to Task_NewGameJuniperSpeech_BoyOrGirl.
- *
- * Task_NewGameJuniperSpeech_RivalSequence
- * Task_NewGameJuniperSpeech_ShowFinalPlayer
- * Task_NewGameJuniperSpeech_ShrinkPlayer
- * Task_NewGameJuniperSpeech_WaitForPlayerShrink
- * Task_NewGameJuniperSpeech_FadePlayerToWhite
- * Task_NewGameJuniperSpeech_Cleanup
- *  - Advances to CB2_NewGame.
- *
- * Task_NewGameJuniperSpeechSub_InitPokeball
- *  - Advances to Task_NewGameJuniperSpeechSub_WaitForLotad
- * Task_NewGameJuniperSpeechSub_WaitForLotad
- *  - Destroys itself when done.
+ * The new-game sequence is driven by Task_NewGameJuniperSpeech_Init and then:
+ *  - fades Juniper in and runs the opening / Minccino introduction;
+ *  - transitions to the Hilbert / Hilda gender selector;
+ *  - opens the naming screen and confirms the player's name;
+ *  - introduces Cheren, Bianca, and the selected player with the rival banner;
+ *  - returns to Juniper for the final speech, then shrinks/fades the player;
+ *  - cleans up and advances to CB2_NewGame.
  */
 
 #define OPTION_MENU_FLAG (1 << 15)
@@ -281,12 +179,31 @@ static u8 sJuniperSpeechMainTaskId;
 
 // Static ROM declarations
 
+// Main menu
 static u32 InitMainMenu(bool8);
 static void Task_MainMenuCheckSaveFile(u8);
 static void Task_MainMenuCheckBattery(u8);
 static void Task_WaitForSaveFileErrorWindow(u8);
+static void Task_WaitForBatteryDryErrorWindow(u8);
+static void Task_DisplayMainMenu(u8);
+static void Task_HighlightSelectedMainMenuItem(u8);
+static void Task_HandleMainMenuInput(u8);
+static void Task_HandleMainMenuAPressed(u8);
+static void Task_HandleMainMenuBPressed(u8);
+static void Task_DisplayMainMenuInvalidActionError(u8);
+static void HighlightSelectedMainMenuItem(enum PartyMenuType, u8, s16);
+static void SetMainMenuWindowAndBlendRegs(void);
+static void FillMainMenuWindowPixelBuffer(u8);
 static void CreateMainMenuErrorWindow(const u8 *);
 static void ClearMainMenuWindowTilemap(const struct WindowTemplate *);
+static void LoadMainMenuWindowFrameTiles(u8, u16);
+static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
+static void MainMenu_FormatSavegameText(void);
+static void MainMenu_FormatSavegamePlayer(void);
+static void MainMenu_FormatSavegamePokedex(void);
+static void MainMenu_FormatSavegameTime(void);
+static void MainMenu_FormatSavegameBadges(void);
+
 #if B_MAIN_MENU_BW_STYLE
 static void LoadBwMainMenuGraphics(void);
 static void LoadBwMainMenuPalettes(void);
@@ -302,23 +219,24 @@ static void CreateBwMainMenuPlayerSprite(void);
 static void CreateBwMainMenuPartyIcons(void);
 static void DestroyBwMainMenuExtraSprites(void);
 static void FreeBwMainMenuObjectSpriteResources(u16, struct Sprite *);
-#endif
-static void SetMainMenuWindowAndBlendRegs(void);
-static void FillMainMenuWindowPixelBuffer(u8);
-#if !B_MAIN_MENU_BW_STYLE
+static void MainMenu_FormatSavegameTeam(void);
+static void MainMenu_FormatSavegameLocation(void);
+#else
 static void DrawMainMenuOptionWindowBorder(const struct WindowTemplate *);
 #endif
-static void Task_DisplayMainMenu(u8);
-static void Task_WaitForBatteryDryErrorWindow(u8);
-static void MainMenu_FormatSavegameText(void);
-static void HighlightSelectedMainMenuItem(enum PartyMenuType, u8, s16);
-static void Task_HandleMainMenuInput(u8);
-static void Task_HandleMainMenuAPressed(u8);
-static void Task_HandleMainMenuBPressed(u8);
+
+// New-game speech: common setup and portrait helpers
 static void Task_NewGameJuniperSpeech_Init(u8);
-static void Task_DisplayMainMenuInvalidActionError(u8);
+static void Task_NewGameJuniperSpeech_WaitToShowJuniper(u8);
+static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8);
+static void Task_NewGameJuniperSpeech_PreGenderSequence(u8);
+static void ResetNewGameJuniperSpeechBgs(void);
 static void AddJuniperSpeechObjects(u8, bool8);
 static void NewGameSpeech_UpdatePortrait(void);
+static void NewGameJuniperSpeech_ClearWindow(u8);
+static void SpriteCB_Null(struct Sprite *);
+
+// Juniper hand, face, Poké Ball, and Minccino
 static void NewGameSpeech_CreateJuniperHand(void);
 static void NewGameSpeech_UpdateJuniperHandPosition(void);
 static void NewGameSpeech_StartJuniperHandJuggle(void);
@@ -329,34 +247,19 @@ static void NewGameSpeech_DestroyJuniperFace(void);
 static void NewGameSpeech_UpdateJuniperMouth(void);
 static void NewGameSpeech_ResetJuniperBlinkTimer(struct Sprite *);
 static void SpriteCB_NewGameJuniperEyes(struct Sprite *);
-static void NewGameSpeech_ShowRivalBg(void);
-static void NewGameSpeech_LoadRivalBgGfx(void);
-static void NewGameSpeech_HideRivalBg(void);
-static void NewGameSpeech_UpdateRivalBg(void);
-static void NewGameSpeech_SetRivalBgObjMode(u8);
-static void NewGameSpeech_SetRivalBgInvisible(bool8);
-static void NewGameSpeech_CreateRivalSprites(void);
-static void NewGameSpeech_DestroyRivalSprites(void);
-static void NewGameSpeech_LoadGenderPortraitObjGfx(const u32 *, u16, u8);
-static void NewGameSpeech_CreateGenderSelectionPortraits(void);
-static void Task_NewGameJuniperSpeech_WaitToShowJuniper(u8);
-static void Task_NewGameJuniperSpeech_FadeInTarget1OutTarget2(u8);
-static void NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(u8, u8);
-static void Task_NewGameJuniperSpeech_WaitForSpriteFadeInWelcome(u8);
-static void NewGameJuniperSpeech_ClearWindow(u8);
-static void Task_NewGameJuniperSpeech_PreGenderSequence(u8);
 static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8);
 static void Task_NewGameJuniperSpeechSub_WaitForMinccino(u8);
+
+// New-game speech fades
+static void Task_NewGameJuniperSpeech_FadeInTarget1OutTarget2(u8);
+static void NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(u8, u8);
 static void NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(u8, u8);
 static void NewGameJuniperSpeech_StartFadeInSemiTransparentObj(u8, u8);
+
+// Gender selection
 static void Task_NewGameJuniperSpeech_BoyOrGirl(u8);
-static void ResetNewGameJuniperSpeechBgs(void);
-static void LoadMainMenuWindowFrameTiles(u8, u16);
-static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
-static void Task_HighlightSelectedMainMenuItem(u8);
 static void Task_NewGameJuniperSpeech_WaitToShowGenderMenu(u8);
-static void Task_NewGameJuniperSpeech_ChooseGender(u8);
 static void Task_NewGameJuniperSpeech_ChooseGenderInitial(u8);
 static void Task_NewGameJuniperSpeech_GenderFocusTransition(u8);
 static void Task_NewGameJuniperSpeech_GenderFocused(u8);
@@ -365,6 +268,8 @@ static void Task_NewGameJuniperSpeech_GenderConfirmTransition(u8);
 static void Task_NewGameJuniperSpeech_WaitForGenderConfirmText(u8);
 static void Task_NewGameJuniperSpeech_ProcessGenderConfirmYesNo(u8);
 static void Task_NewGameJuniperSpeech_GenderReturnToInitial(u8);
+static void NewGameSpeech_LoadGenderPortraitObjGfx(const u32 *, u16, u8);
+static void NewGameSpeech_CreateGenderSelectionPortraits(void);
 static void NewGameSpeech_DestroyGenderSelectionPortraits(void);
 static void NewGameSpeech_SetGenderPortraitScale(u8, u8, u8, u16);
 static void NewGameSpeech_UpdateGenderFocusVisuals(u8, u8);
@@ -372,19 +277,30 @@ static void NewGameSpeech_LoadGenderArrowGfx(const u32 *, u16, bool8);
 static void NewGameSpeech_CreateGenderArrows(void);
 static void NewGameSpeech_SetGenderArrowScale(u8, u16);
 static void NewGameSpeech_LerpGenderArrowPalette(const u16 *, const u16 *, u8, u8, u16);
-static s8 NewGameJuniperSpeech_ProcessGenderMenuInput(void);
-static void NewGameJuniperSpeech_ClearGenderWindow(u8, u8);
+
+// Naming
 static void Task_NewGameJuniperSpeech_WhatsYourName(u8);
-static void Task_NewGameJuniperSpeech_SlideOutOldGenderSprite(u8);
-static void Task_NewGameJuniperSpeech_SlideInNewGenderSprite(u8);
 static void Task_NewGameJuniperSpeech_WaitForWhatsYourNameToPrint(u8);
 static void Task_NewGameJuniperSpeech_WaitPressBeforeNameChoice(u8);
 static void Task_NewGameJuniperSpeech_StartNamingScreen(u8);
 static void Task_NewGameJuniperSpeech_RestartNamingScreen(u8);
 static void CB2_NewGameJuniperSpeech_ReturnFromNamingScreen(void);
+static void Task_NewGameJuniperSpeech_ReturnFromNamingScreenShowTextbox(u8);
+static void Task_NewGameJuniperSpeech_SoItsPlayerName(u8);
 static void Task_NewGameJuniperSpeech_CreateNameYesNo(u8);
 static void Task_NewGameJuniperSpeech_ProcessNameYesNoMenu(u8);
+void NewGameJuniperSpeech_SetDefaultPlayerName(u8);
 void CreateYesNoMenuParameterized(u8, u8, u16, u16, u8, u8);
+
+// Rival introduction and final transition
+static void NewGameSpeech_ShowRivalBg(void);
+static void NewGameSpeech_LoadRivalBgGfx(void);
+static void NewGameSpeech_HideRivalBg(void);
+static void NewGameSpeech_UpdateRivalBg(void);
+static void NewGameSpeech_SetRivalBgObjMode(u8);
+static void NewGameSpeech_SetRivalBgInvisible(bool8);
+static void NewGameSpeech_CreateRivalSprites(void);
+static void NewGameSpeech_DestroyRivalSprites(void);
 static void Task_NewGameJuniperSpeech_RivalSequence(u8);
 static void Task_NewGameJuniperSpeech_ShowFinalPlayer(u8);
 static void Task_NewGameJuniperSpeech_ShrinkPlayer(u8);
@@ -392,17 +308,6 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *);
 static void Task_NewGameJuniperSpeech_WaitForPlayerShrink(u8);
 static void Task_NewGameJuniperSpeech_FadePlayerToWhite(u8);
 static void Task_NewGameJuniperSpeech_Cleanup(u8);
-static void SpriteCB_Null(struct Sprite *);
-static void Task_NewGameJuniperSpeech_ReturnFromNamingScreenShowTextbox(u8);
-void NewGameJuniperSpeech_SetDefaultPlayerName(u8);
-static void MainMenu_FormatSavegamePlayer(void);
-static void MainMenu_FormatSavegamePokedex(void);
-static void MainMenu_FormatSavegameTime(void);
-static void MainMenu_FormatSavegameBadges(void);
-#if B_MAIN_MENU_BW_STYLE
-static void MainMenu_FormatSavegameTeam(void);
-static void MainMenu_FormatSavegameLocation(void);
-#endif
 
 // .rodata
 
@@ -456,10 +361,12 @@ static const u8 sText_JuniperOpening[] = _("Hi there!\pWelcome to the world of P
 static const u8 sText_JuniperPokemonWorld[] = _("That's right! This world is widely\ninhabited by mysterious creatures\lcalled Pokémon!\pPokémon have mysterious powers.\nThey come in many shapes\land live in many different places.\pWe humans live happily with Pokémon!\nLiving and working together,\lwe complete each other.\pWe help each other out to\naccomplish difficult tasks.\pHaving Pokémon battle one another\nis particularly popular, and it deepens\lthe bonds between people and Pokémon.\lAnd that is why I research Pokémon.\p");
 static const u8 sText_JuniperAboutYou[] = _("Well, that's enough from me...\nCould you tell me about yourself?\p");
 static const u8 sText_JuniperBoyOrGirl[] = _("Are you a boy?\nOr a girl?");
+static const u8 sText_JuniperTellMeYourName[] = _("I'd like to know your name.\pPlease tell me.");
+static const u8 sText_JuniperConfirmName[] = _("Your name is {PLAYER}{KUN}?");
 static const u8 sText_JuniperIntroduceFriends[] = _("So your name's {PLAYER}.\nWhat a wonderful name!\pWell then. I'm going to introduce you\nto your two best friends!\p");
 static const u8 sText_JuniperIntroduceCheren[] = _("This young man is Cheren.\pHe can be a little difficult, but\nhe's a very honest person.\p");
 static const u8 sText_JuniperIntroduceBianca[] = _("This young woman is Bianca.\pShe's a little flighty,\nbut she works very hard.\p");
-static const u8 sText_JuniperIntroducePlayer[] = _("I think you three have potential,\nso I'm going to give you\pa very, very important Pokémon.\p");
+static const u8 sText_JuniperIntroducePlayer[] = _("I think you three have potential,\nso I'm going to give you\la very, very important Pokémon.\p");
 static const u8 sText_JuniperFinalSpeech[] = _("{PLAYER}!\pThe moment you choose the\nPokémon that will accompany\lyou on your journey,\lyour story will truly begin.\pDuring your journey, you will met many\nPokémon and people with different\lpersonalities and points of view!\pI really hope you find what is important\nto you in all of these travels...\pThat's right! Befriend\nnew people and Pokémon and\lgrow as a person!\pThat is the most important goal\nfor your journey!\pLet's go visit the world of Pokémon!\p");
 
 #if B_MAIN_MENU_BW_STYLE
@@ -482,92 +389,98 @@ enum NewGameSpeechPortrait
     NEW_GAME_SPEECH_PORTRAIT_HILDA,
 };
 
-#define NEW_GAME_PORTRAIT_TILE_BASE 24
-#define NEW_GAME_PORTRAIT_MAP_X 11
-#define NEW_GAME_PORTRAIT_MAP_Y 2
-#define NEW_GAME_PORTRAIT_CENTER_X 120
-#define NEW_GAME_PORTRAIT_CENTER_Y 64
-#define NEW_GAME_JUNIPER_INTRO_RIGHT_X 152
-#define NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES 32
-#define NEW_GAME_JUNIPER_GENDER_GAP_FRAMES 8
-#define NEW_GAME_MINCCINO_HOLD_FRAMES 40
-#define NEW_GAME_PORTRAIT_SHRINK_FRAMES 48
-#define NEW_GAME_PORTRAIT_FINAL_SCALE_X 120
-#define NEW_GAME_PORTRAIT_FINAL_SCALE_Y 80
-#define GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER 0xF001
-#define GFX_TAG_NEW_GAME_GENDER_HILBERT 0xF002
-#define GFX_TAG_NEW_GAME_GENDER_HILDA 0xF003
-#define GFX_TAG_NEW_GAME_GENDER_BLUE_ARROW 0xF004
-#define GFX_TAG_NEW_GAME_GENDER_RED_ARROW  0xF005
+// New-game speech graphics tags
+#define GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER    0xF001
+#define GFX_TAG_NEW_GAME_GENDER_HILBERT         0xF002
+#define GFX_TAG_NEW_GAME_GENDER_HILDA           0xF003
+#define GFX_TAG_NEW_GAME_GENDER_BLUE_ARROW      0xF004
+#define GFX_TAG_NEW_GAME_GENDER_RED_ARROW       0xF005
+#define GFX_TAG_NEW_GAME_RIVAL_BG               0xF006
+#define GFX_TAG_NEW_GAME_JUNIPER_HAND           0xF007
+#define GFX_TAG_NEW_GAME_THROWN_BALL            0xF008
+#define GFX_TAG_NEW_GAME_JUNIPER_EYES           0xF009
+#define GFX_TAG_NEW_GAME_JUNIPER_MOUTH          0xF00A
 
-#define NEW_GAME_GENDER_BLUE_ARROW_PAL 4
-#define NEW_GAME_GENDER_RED_ARROW_PAL  5
-#define NEW_GAME_GENDER_ARROW_BODY_COUNT 8
-#define NEW_GAME_GENDER_ARROW_Y 60
-#define NEW_GAME_GENDER_ARROW_FINAL_SCALE 75
-#define NEW_GAME_GENDER_ARROW_CONFIRM_SHIFT 128
-#define NEW_GAME_GENDER_BLUE_CONFIRM_HEAD_X (DISPLAY_WIDTH + 24)
-#define NEW_GAME_GENDER_RED_CONFIRM_HEAD_X (-24)
-#define NEW_GAME_GENDER_ARROW_FOCUS_SHIFT 32
+// Affine portrait placement and timing
+#define NEW_GAME_PORTRAIT_TILE_BASE             24
+#define NEW_GAME_PORTRAIT_MAP_X                 11
+#define NEW_GAME_PORTRAIT_MAP_Y                 2
+#define NEW_GAME_PORTRAIT_CENTER_X              120
+#define NEW_GAME_PORTRAIT_CENTER_Y              64
+#define NEW_GAME_PORTRAIT_SHRINK_FRAMES         48
+#define NEW_GAME_PORTRAIT_FINAL_SCALE_X         120
+#define NEW_GAME_PORTRAIT_FINAL_SCALE_Y         80
 
-#define NEW_GAME_GENDER_LEFT_X 60
-#define NEW_GAME_GENDER_RIGHT_X 180
-#define NEW_GAME_GENDER_CENTER_Y 60
-#define NEW_GAME_GENDER_TOP_Y (NEW_GAME_GENDER_CENTER_Y - 16)
-#define NEW_GAME_GENDER_BOTTOM_Y (NEW_GAME_GENDER_CENTER_Y + 32)
-#define NEW_GAME_GENDER_BOY_FOCUS_X 88
-#define NEW_GAME_GENDER_GIRL_FOCUS_X 152
-#define NEW_GAME_GENDER_BOY_DIM_X 36
-#define NEW_GAME_GENDER_GIRL_DIM_X 204
+// Juniper opening sequence
+#define NEW_GAME_JUNIPER_INTRO_RIGHT_X          152
+#define NEW_GAME_JUNIPER_INTRO_MOVE_FRAMES      32
+#define NEW_GAME_JUNIPER_GENDER_GAP_FRAMES      8
+#define NEW_GAME_MINCCINO_HOLD_FRAMES           40
 
-#define NEW_GAME_GENDER_FOCUS_FRAMES 16
-#define NEW_GAME_GENDER_DIM_SCALE 80
-#define NEW_GAME_GENDER_DIM_BLEND 5
-#define NEW_GAME_GENDER_CONFIRM_FRAMES 16
-#define NEW_GAME_GENDER_LEFT_OFFSCREEN_X -32
-#define NEW_GAME_GENDER_RIGHT_OFFSCREEN_X (DISPLAY_WIDTH + 32)
-#define GFX_TAG_NEW_GAME_RIVAL_BG 0xF006
-#define GFX_TAG_NEW_GAME_JUNIPER_HAND 0xF007
-#define GFX_TAG_NEW_GAME_THROWN_BALL 0xF008
-#define NEW_GAME_THROWN_BALL_X 112
-#define NEW_GAME_THROWN_BALL_START_Y -8
-#define NEW_GAME_THROWN_BALL_FLOOR_Y 112
-#define NEW_GAME_THROWN_BALL_TARGET_Y 58
-#define NEW_GAME_THROWN_BALL_FALL_SPEED 5
-#define NEW_GAME_THROWN_BALL_RISE_SPEED 3
-#define GFX_TAG_NEW_GAME_JUNIPER_EYES 0xF009
-#define GFX_TAG_NEW_GAME_JUNIPER_MOUTH 0xF00A
+#define NEW_GAME_JUNIPER_HAND_OFFSET_X          -11
+#define NEW_GAME_JUNIPER_HAND_OFFSET_Y          -27
+#define NEW_GAME_JUNIPER_HAND_JUGGLE_PAUSE      24
+#define NEW_GAME_JUNIPER_HAND_THROW_GAP         4
+#define NEW_GAME_JUNIPER_HAND_THROW_END_HOLD    3
+#define NEW_GAME_JUNIPER_HAND_DESTROY_GAP       6
+#define NEW_GAME_JUNIPER_HAND_FRAME_TILES       32
 
-#define NEW_GAME_JUNIPER_BLINK_MIN 90
-#define NEW_GAME_JUNIPER_BLINK_RANGE 151
+#define NEW_GAME_JUNIPER_BLINK_MIN              90
+#define NEW_GAME_JUNIPER_BLINK_RANGE            151
+#define NEW_GAME_JUNIPER_EYES_LEFT              27
+#define NEW_GAME_JUNIPER_EYES_TOP               17
+#define NEW_GAME_JUNIPER_MOUTH_LEFT             30
+#define NEW_GAME_JUNIPER_MOUTH_TOP              25
 
-#define NEW_GAME_JUNIPER_EYES_LEFT 27
-#define NEW_GAME_JUNIPER_EYES_TOP 17
-#define NEW_GAME_JUNIPER_MOUTH_LEFT 30
-#define NEW_GAME_JUNIPER_MOUTH_TOP 25
+#define NEW_GAME_THROWN_BALL_X                  112
+#define NEW_GAME_THROWN_BALL_START_Y            -8
+#define NEW_GAME_THROWN_BALL_FLOOR_Y            112
+#define NEW_GAME_THROWN_BALL_TARGET_Y           58
+#define NEW_GAME_THROWN_BALL_FALL_SPEED         5
+#define NEW_GAME_THROWN_BALL_RISE_SPEED         3
 
-#define NEW_GAME_JUNIPER_HAND_OFFSET_X -11
-#define NEW_GAME_JUNIPER_HAND_OFFSET_Y -27
-#define NEW_GAME_JUNIPER_HAND_JUGGLE_PAUSE 24
-#define NEW_GAME_JUNIPER_HAND_THROW_GAP 4
-#define NEW_GAME_JUNIPER_HAND_THROW_END_HOLD 3
-#define NEW_GAME_JUNIPER_HAND_DESTROY_GAP 6
-#define NEW_GAME_JUNIPER_HAND_FRAME_TILES 32
-#define NEW_GAME_RIVAL_BG_SPRITE_COUNT 9
-#define NEW_GAME_RIVAL_BG_Y 64
-#define NEW_GAME_RIVAL_BG_SCROLL_DELAY 3
-#define NEW_GAME_RIVAL_BG_START_X -16
-#define NEW_GAME_RIVAL_BG_SPACING 32
-#define NEW_GAME_RIVAL_BG_WRAP_X (DISPLAY_WIDTH + 32)
-#define NEW_GAME_RIVAL_BG_WRAP_WIDTH (NEW_GAME_RIVAL_BG_SPRITE_COUNT * NEW_GAME_RIVAL_BG_SPACING)
-#define NEW_GAME_RIVAL_CHEREN_X 48
-#define NEW_GAME_RIVAL_PLAYER_X 120
-#define NEW_GAME_RIVAL_BIANCA_X 192
-#define NEW_GAME_RIVAL_TRAINER_Y 64
+// Gender selection
+#define NEW_GAME_GENDER_BLUE_ARROW_PAL          4
+#define NEW_GAME_GENDER_RED_ARROW_PAL           5
+#define NEW_GAME_GENDER_ARROW_BODY_COUNT        8
+#define NEW_GAME_GENDER_ARROW_Y                 60
+#define NEW_GAME_GENDER_ARROW_FINAL_SCALE       75
+#define NEW_GAME_GENDER_ARROW_CONFIRM_SHIFT     128
+#define NEW_GAME_GENDER_BLUE_CONFIRM_HEAD_X     (DISPLAY_WIDTH + 24)
+#define NEW_GAME_GENDER_RED_CONFIRM_HEAD_X      (-24)
+#define NEW_GAME_GENDER_ARROW_FOCUS_SHIFT       32
 
-#define NEW_GAME_RIVAL_CHEREN_PAL 6
-#define NEW_GAME_RIVAL_BIANCA_PAL 7
-#define NEW_GAME_RIVAL_PLAYER_PAL 8
+#define NEW_GAME_GENDER_LEFT_X                  60
+#define NEW_GAME_GENDER_RIGHT_X                 180
+#define NEW_GAME_GENDER_CENTER_Y                60
+#define NEW_GAME_GENDER_TOP_Y                   (NEW_GAME_GENDER_CENTER_Y - 16)
+#define NEW_GAME_GENDER_BOTTOM_Y                (NEW_GAME_GENDER_CENTER_Y + 32)
+#define NEW_GAME_GENDER_BOY_FOCUS_X             88
+#define NEW_GAME_GENDER_GIRL_FOCUS_X            152
+#define NEW_GAME_GENDER_BOY_DIM_X               36
+#define NEW_GAME_GENDER_GIRL_DIM_X              204
+#define NEW_GAME_GENDER_FOCUS_FRAMES            16
+#define NEW_GAME_GENDER_DIM_SCALE               80
+#define NEW_GAME_GENDER_DIM_BLEND               5
+#define NEW_GAME_GENDER_CONFIRM_FRAMES          16
+#define NEW_GAME_GENDER_LEFT_OFFSCREEN_X        -32
+#define NEW_GAME_GENDER_RIGHT_OFFSCREEN_X       (DISPLAY_WIDTH + 32)
+
+// Rival introduction
+#define NEW_GAME_RIVAL_BG_SPRITE_COUNT          9
+#define NEW_GAME_RIVAL_BG_Y                     64
+#define NEW_GAME_RIVAL_BG_SCROLL_DELAY          3
+#define NEW_GAME_RIVAL_BG_START_X               -16
+#define NEW_GAME_RIVAL_BG_SPACING               32
+#define NEW_GAME_RIVAL_BG_WRAP_X                (DISPLAY_WIDTH + 32)
+#define NEW_GAME_RIVAL_BG_WRAP_WIDTH            (NEW_GAME_RIVAL_BG_SPRITE_COUNT * NEW_GAME_RIVAL_BG_SPACING)
+#define NEW_GAME_RIVAL_CHEREN_X                 48
+#define NEW_GAME_RIVAL_PLAYER_X                 120
+#define NEW_GAME_RIVAL_BIANCA_X                 192
+#define NEW_GAME_RIVAL_TRAINER_Y                64
+#define NEW_GAME_RIVAL_CHEREN_PAL               6
+#define NEW_GAME_RIVAL_BIANCA_PAL               7
+#define NEW_GAME_RIVAL_PLAYER_PAL               8
 
 enum NewGameJuniperIntroState
 {
@@ -900,6 +813,7 @@ static const struct SpriteTemplate sNewGameJuniperHandMaskTemplate =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Null
 };
+
 static const struct CompressedSpriteSheet sNewGameThrownBallSheet =
 {
     .data = sNewGameSpeechThrownBallGfx,
@@ -1407,11 +1321,6 @@ static const union AffineAnimCmd sSpriteAffineAnim_PlayerShrink[] = {
 static const union AffineAnimCmd *const sSpriteAffineAnimTable_PlayerShrink[] =
 {
     sSpriteAffineAnim_PlayerShrink
-};
-
-static const struct MenuAction sMenuActions_Gender[] = {
-    {gText_Boy, {NULL}},
-    {gText_Girl, {NULL}}
 };
 
 static const u8 *const sMalePresetNames[] = {
@@ -2505,7 +2414,7 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 #define tPlayerGender data[6]
 #define tTimer data[7]
 #define tJuniperSpriteId data[8]
-#define tLotadSpriteId data[9]
+#define tMinccinoSpriteId data[9]
 #define tHilbertSpriteId data[10]
 #define tHildaSpriteId data[11]
 #define tShrinkTimer data[12]
@@ -3708,19 +3617,19 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         break;
     case JUNIPER_INTRO_WAIT_MINCCINO:
         if (gTasks[taskId].tTimer >= NEW_GAME_MINCCINO_HOLD_FRAMES)
-    {
-        DrawDialogFrameWithCustomTile(0, TRUE, JUNIPER_DLG_BASE_TILE_NUM);
-        NewGameJuniperSpeech_ClearWindow(0);
-        StringCopy(gStringVar4, sText_JuniperPokemonWorld);
-        AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MAIN_TEXT;
-    }
-    break;
+        {
+            DrawDialogFrameWithCustomTile(0, TRUE, JUNIPER_DLG_BASE_TILE_NUM);
+            NewGameJuniperSpeech_ClearWindow(0);
+            StringCopy(gStringVar4, sText_JuniperPokemonWorld);
+            AddTextPrinterForMessage(TRUE);
+            gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MAIN_TEXT;
+        }
+        break;
 
     case JUNIPER_INTRO_WAIT_MAIN_TEXT:
         if (!RunTextPrintersAndIsPrinter0Active())
         {
-            gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+            gSprites[gTasks[taskId].tMinccinoSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameJuniperSpeech_StartFadeOutSemiTransparentObj(taskId, 1);
             SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL | BLDCNT_EFFECT_BLEND);
             gTasks[taskId].tIntroState = JUNIPER_INTRO_WAIT_MINCCINO_OUT;
@@ -3728,16 +3637,16 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
         break;
 
     case JUNIPER_INTRO_WAIT_MINCCINO_OUT:
-        if (!gSprites[gTasks[taskId].tLotadSpriteId].invisible
-        && (GetGpuReg(REG_OFFSET_BLDALPHA) & 0x1F) <= 1)
+        if (!gSprites[gTasks[taskId].tMinccinoSpriteId].invisible
+         && (GetGpuReg(REG_OFFSET_BLDALPHA) & 0x1F) <= 1)
         {
-            gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
+            gSprites[gTasks[taskId].tMinccinoSpriteId].invisible = TRUE;
         }
 
         if (gTasks[taskId].tIsDoneFadingSprites)
         {
-            gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
-            gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+            gSprites[gTasks[taskId].tMinccinoSpriteId].invisible = TRUE;
+            gSprites[gTasks[taskId].tMinccinoSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
 
             SetGpuReg(REG_OFFSET_BLDCNT, 0);
             SetGpuReg(REG_OFFSET_BLDALPHA, 0);
@@ -3845,7 +3754,7 @@ static void Task_NewGameJuniperSpeech_PreGenderSequence(u8 taskId)
 
 static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8 taskId)
 {
-    u8 spriteId = gTasks[sJuniperSpeechMainTaskId].tLotadSpriteId;
+    u8 spriteId = gTasks[sJuniperSpeechMainTaskId].tMinccinoSpriteId;
     NewGameSpeech_DestroyJuniperFace();
     gSprites[spriteId].x = 100;
     gSprites[spriteId].y = 90;
@@ -3869,7 +3778,7 @@ static void Task_NewGameJuniperSpeechSub_InitPokeBall(u8 taskId)
 static void Task_NewGameJuniperSpeechSub_WaitForMinccino(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    struct Sprite *sprite = &gSprites[gTasks[sJuniperSpeechMainTaskId].tLotadSpriteId];
+    struct Sprite *sprite = &gSprites[gTasks[sJuniperSpeechMainTaskId].tMinccinoSpriteId];
 
     switch (tState)
     {
@@ -3989,6 +3898,25 @@ static void Task_NewGameJuniperSpeech_GenderFocused(u8 taskId)
             gTasks[taskId].tGenderTransitionFrame = NEW_GAME_GENDER_FOCUS_FRAMES;
             gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderSwitchToNeutral;
         }
+    }
+}
+
+static void Task_NewGameJuniperSpeech_GenderSwitchToNeutral(u8 taskId)
+{
+    if (gTasks[taskId].tGenderTransitionFrame > 0)
+        gTasks[taskId].tGenderTransitionFrame--;
+
+    NewGameSpeech_UpdateGenderFocusVisuals(gTasks[taskId].tGenderSelection, gTasks[taskId].tGenderTransitionFrame);
+
+    if (gTasks[taskId].tGenderTransitionFrame == 0)
+    {
+        if (gTasks[taskId].tGenderSelection == MALE)
+            gTasks[taskId].tGenderSelection = FEMALE;
+        else
+            gTasks[taskId].tGenderSelection = MALE;
+
+        gTasks[taskId].tGenderTransitionFrame = 0;
+        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderFocusTransition;
     }
 }
 
@@ -4296,104 +4224,10 @@ static void Task_NewGameJuniperSpeech_GenderReturnToInitial(u8 taskId)
     }
 }
 
-static void Task_NewGameJuniperSpeech_GenderSwitchToNeutral(u8 taskId)
-{
-    if (gTasks[taskId].tGenderTransitionFrame > 0)
-        gTasks[taskId].tGenderTransitionFrame--;
-
-    NewGameSpeech_UpdateGenderFocusVisuals(gTasks[taskId].tGenderSelection, gTasks[taskId].tGenderTransitionFrame);
-
-    if (gTasks[taskId].tGenderTransitionFrame == 0)
-    {
-        if (gTasks[taskId].tGenderSelection == MALE)
-            gTasks[taskId].tGenderSelection = FEMALE;
-        else
-            gTasks[taskId].tGenderSelection = MALE;
-
-        gTasks[taskId].tGenderTransitionFrame = 0;
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_GenderFocusTransition;
-    }
-}
-
-static void Task_NewGameJuniperSpeech_ChooseGender(u8 taskId)
-{
-    enum Gender gender = NewGameJuniperSpeech_ProcessGenderMenuInput();
-    enum Gender gender2;
-
-    switch (gender)
-    {
-    case MALE:
-        PlaySE(SE_SELECT);
-        gSaveBlock2Ptr->playerGender = gender;
-        NewGameJuniperSpeech_ClearGenderWindow(1, 1);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_WhatsYourName;
-        break;
-    case FEMALE:
-        PlaySE(SE_SELECT);
-        gSaveBlock2Ptr->playerGender = gender;
-        NewGameJuniperSpeech_ClearGenderWindow(1, 1);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_WhatsYourName;
-        break;
-    default: //repeat task if nothing is selected
-        break;
-    }
-    gender2 = Menu_GetCursorPos();
-    if (gender2 != gTasks[taskId].tPlayerGender)
-    {
-        gTasks[taskId].tPlayerGender = gender2;
-        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        NewGameJuniperSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_SlideOutOldGenderSprite;
-    }
-}
-
-static void Task_NewGameJuniperSpeech_SlideOutOldGenderSprite(u8 taskId)
-{
-    u8 spriteId = gTasks[taskId].tPlayerSpriteId;
-    if (gTasks[taskId].tIsDoneFadingSprites == 0)
-    {
-        gSprites[spriteId].x += 4;
-    }
-    else
-    {
-        gSprites[spriteId].invisible = TRUE;
-        if (gTasks[taskId].tPlayerGender != MALE)
-            spriteId = gTasks[taskId].tHildaSpriteId;
-        else
-            spriteId = gTasks[taskId].tHilbertSpriteId;
-        gSprites[spriteId].x = DISPLAY_WIDTH;
-        gSprites[spriteId].y = 60;
-        gSprites[spriteId].invisible = FALSE;
-        gTasks[taskId].tPlayerSpriteId = spriteId;
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(taskId, 0);
-        gTasks[taskId].func = Task_NewGameJuniperSpeech_SlideInNewGenderSprite;
-    }
-}
-
-static void Task_NewGameJuniperSpeech_SlideInNewGenderSprite(u8 taskId)
-{
-    u8 spriteId = gTasks[taskId].tPlayerSpriteId;
-
-    if (gSprites[spriteId].x > 180)
-    {
-        gSprites[spriteId].x -= 4;
-    }
-    else
-    {
-        gSprites[spriteId].x = 180;
-        if (gTasks[taskId].tIsDoneFadingSprites)
-        {
-            gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-            gTasks[taskId].func = Task_NewGameJuniperSpeech_ChooseGender;
-        }
-    }
-}
-
 static void Task_NewGameJuniperSpeech_WhatsYourName(u8 taskId)
 {
     NewGameJuniperSpeech_ClearWindow(0);
-    StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
+    StringExpandPlaceholders(gStringVar4, sText_JuniperTellMeYourName);
     AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameJuniperSpeech_WaitForWhatsYourNameToPrint;
 }
@@ -4418,7 +4252,7 @@ static void Task_NewGameJuniperSpeech_StartNamingScreen(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        FreeAndDestroyMonPicSprite(gTasks[taskId].tMinccinoSpriteId);
         NewGameSpeech_DestroyGenderSelectionPortraits();
         NewGameJuniperSpeech_SetDefaultPlayerName(Random() % NUM_PRESET_NAMES);
         sNewGameSpeechPortraitsActive = FALSE;
@@ -4433,8 +4267,8 @@ static void Task_NewGameJuniperSpeech_RestartNamingScreen(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        if (gTasks[taskId].tLotadSpriteId != SPRITE_NONE)
-            FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        if (gTasks[taskId].tMinccinoSpriteId != SPRITE_NONE)
+            FreeAndDestroyMonPicSprite(gTasks[taskId].tMinccinoSpriteId);
         sNewGameSpeechPortraitsActive = FALSE;
         FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER);
         DestroyTask(taskId);
@@ -4453,7 +4287,7 @@ static void Task_NewGameJuniperSpeech_RestartNamingScreen(u8 taskId)
 static void Task_NewGameJuniperSpeech_SoItsPlayerName(u8 taskId)
 {
     NewGameJuniperSpeech_ClearWindow(0);
-    StringExpandPlaceholders(gStringVar4, gText_Birch_SoItsPlayer);
+    StringExpandPlaceholders(gStringVar4, sText_JuniperConfirmName);
     AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameJuniperSpeech_CreateNameYesNo;
 }
@@ -4832,8 +4666,8 @@ static void Task_NewGameJuniperSpeech_Cleanup(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        if (gTasks[taskId].tLotadSpriteId != SPRITE_NONE)
-            FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        if (gTasks[taskId].tMinccinoSpriteId != SPRITE_NONE)
+            FreeAndDestroyMonPicSprite(gTasks[taskId].tMinccinoSpriteId);
         ResetAllPicSprites();
         sNewGameSpeechPortraitsActive = FALSE;
         FreeSpriteTilesByTag(GFX_TAG_NEW_GAME_PORTRAIT_CONTROLLER);
@@ -4936,10 +4770,10 @@ static u8 NewGameJuniperSpeech_CreateIntroPokemonSprite(u8 x, u8 y)
     return CreateMonPicSprite_Affine(SPECIES_MINCCINO, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
 
-static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
+static void AddJuniperSpeechObjects(u8 taskId, bool8 createMinccino)
 {
     u8 juniperSpriteId;
-    u8 lotadSpriteId;
+    u8 minccinoSpriteId;
     u8 hilbertSpriteId;
     u8 hildaSpriteId;
 
@@ -4950,17 +4784,17 @@ static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
     gSprites[juniperSpriteId].invisible = TRUE;
     gTasks[taskId].tJuniperSpriteId = juniperSpriteId;
 
-    if (createLotad)
+    if (createMinccino)
     {
-        lotadSpriteId = NewGameJuniperSpeech_CreateIntroPokemonSprite(100, 90);
-        gSprites[lotadSpriteId].callback = SpriteCB_Null;
-        gSprites[lotadSpriteId].oam.priority = 0;
-        gSprites[lotadSpriteId].invisible = TRUE;
-        gTasks[taskId].tLotadSpriteId = lotadSpriteId;
+        minccinoSpriteId = NewGameJuniperSpeech_CreateIntroPokemonSprite(100, 90);
+        gSprites[minccinoSpriteId].callback = SpriteCB_Null;
+        gSprites[minccinoSpriteId].oam.priority = 0;
+        gSprites[minccinoSpriteId].invisible = TRUE;
+        gTasks[taskId].tMinccinoSpriteId = minccinoSpriteId;
     }
     else
     {
-        gTasks[taskId].tLotadSpriteId = SPRITE_NONE;
+        gTasks[taskId].tMinccinoSpriteId = SPRITE_NONE;
     }
 
     hilbertSpriteId = CreateSprite(&sNewGameSpeechPortraitControllerTemplate, 120, 60, 0);
@@ -4987,7 +4821,7 @@ static void AddJuniperSpeechObjects(u8 taskId, bool8 createLotad)
 #undef tRivalState
 #undef tPlayerGender
 #undef tJuniperSpriteId
-#undef tLotadSpriteId
+#undef tMinccinoSpriteId
 #undef tHilbertSpriteId
 #undef tHildaSpriteId
 #undef tShrinkTimer
@@ -5119,10 +4953,6 @@ static void NewGameJuniperSpeech_StartFadeInTarget1OutTarget2(u8 taskId, u8 dela
 
 #undef tIsDoneFadingSprites
 
-static s8 NewGameJuniperSpeech_ProcessGenderMenuInput(void)
-{
-    return Menu_ProcessInputNoWrap();
-}
 
 void NewGameJuniperSpeech_SetDefaultPlayerName(u8 nameId)
 {
@@ -5300,20 +5130,6 @@ static void ClearMainMenuWindowTilemap(const struct WindowTemplate *template)
 {
     FillBgTilemapBufferRect(template->bg, 0, template->tilemapLeft - 1, template->tilemapTop - 1, template->tilemapLeft + template->width + 1, template->tilemapTop + template->height + 1, 2);
     CopyBgTilemapBufferToVram(template->bg);
-}
-
-static void NewGameJuniperSpeech_ClearGenderWindowTilemap(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 unused)
-{
-    FillBgTilemapBufferRect(bg, 0, x + 255, y + 255, width + 2, height + 2, 2);
-}
-
-static void NewGameJuniperSpeech_ClearGenderWindow(u8 windowId, bool8 copyToVram)
-{
-    CallWindowFunction(windowId, NewGameJuniperSpeech_ClearGenderWindowTilemap);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    ClearWindowTilemap(windowId);
-    if (copyToVram == TRUE)
-        CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
 static void NewGameJuniperSpeech_ClearWindow(u8 windowId)
