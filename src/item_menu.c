@@ -755,6 +755,11 @@ static EWRAM_DATA struct TempWallyBag *sTempWallyBag = 0;
 // This could be 12 bytes smaller if we used AllocZeroed,
 // but that isn't really a lot of space
 static EWRAM_DATA ALIGNED(4) u16 sKeyItemWheelExtraPalette[16] = {0};
+#define KEY_ITEM_WHEEL_BG_PAL_START 13
+#define KEY_ITEM_WHEEL_BG_PAL_COUNT 3
+
+static EWRAM_DATA ALIGNED(4) u16 sKeyItemWheelSavedPalUnfaded[KEY_ITEM_WHEEL_BG_PAL_COUNT * 16] = {0};
+static EWRAM_DATA ALIGNED(4) u16 sKeyItemWheelSavedPalFaded[KEY_ITEM_WHEEL_BG_PAL_COUNT * 16] = {0};
 
 void ResetBagScrollPositions(void)
 {
@@ -2535,6 +2540,9 @@ static void FreeKeyItemWheelGfx(s16 *data) {
     }
     SetHBlankCallback(NULL);
     DisableInterrupts(INTR_FLAG_HBLANK);
+
+    CpuCopy16(sKeyItemWheelSavedPalUnfaded, &gPlttBufferUnfaded[BG_PLTT_ID(KEY_ITEM_WHEEL_BG_PAL_START)], sizeof(sKeyItemWheelSavedPalUnfaded));
+    CpuCopy16(sKeyItemWheelSavedPalFaded, &gPlttBufferFaded[BG_PLTT_ID(KEY_ITEM_WHEEL_BG_PAL_START)], sizeof(sKeyItemWheelSavedPalFaded));
 }
 
 static void Task_KeyItemWheel(u8 taskId) {
@@ -2544,6 +2552,8 @@ static void Task_KeyItemWheel(u8 taskId) {
     {
     case 0:
     {
+        CpuCopy16(&gPlttBufferUnfaded[BG_PLTT_ID(KEY_ITEM_WHEEL_BG_PAL_START)], sKeyItemWheelSavedPalUnfaded, sizeof(sKeyItemWheelSavedPalUnfaded));
+        CpuCopy16(&gPlttBufferFaded[BG_PLTT_ID(KEY_ITEM_WHEEL_BG_PAL_START)], sKeyItemWheelSavedPalFaded, sizeof(sKeyItemWheelSavedPalFaded));
         LoadSpritePalette(&sSpritePalette_KeyItemBox);
         LoadSpriteSheetByTemplateKeyItem(&sSpriteTemplate_KeyItemBox, 0);
 

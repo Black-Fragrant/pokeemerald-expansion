@@ -2040,6 +2040,24 @@ void CB2_OpenFlyMap(void)
     }
 }
 
+void CB2_OpenTownMap(void)
+{
+    SetMainCallback2(CB2_FieldShowTownMap);
+    ResetPaletteFade();
+    ResetSpriteData();
+    FreeSpriteTileRanges();
+    FreeAllSpritePalettes();
+}
+
+void CB2_OpenTownMapFromBag(void)
+{
+    SetMainCallback2(CB2_FieldShowTownMapFromBag);
+    ResetPaletteFade();
+    ResetSpriteData();
+    FreeSpriteTileRanges();
+    FreeAllSpritePalettes();
+}
+
 static void VBlankCB_FlyMap(void)
 {
     LoadOam();

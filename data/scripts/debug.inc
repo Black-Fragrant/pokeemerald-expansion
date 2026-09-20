@@ -195,7 +195,7 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	warpsilent MAP_ROUTE3_NORTH, 79, 15
+	warpsilent MAP_NUVEMA_TOWN, 15, 15
 	waitstate
 	release 
     end

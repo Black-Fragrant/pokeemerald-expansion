@@ -40,5 +40,7 @@ bool32 CheckObjectAtXY(u32, u32);
 bool32 CheckPartyHasSpecies(enum Species);
 bool8 CutMoveRuinValleyCheck(void);
 void CutMoveOpenDottedHoleDoor(void);
+void CB2_FieldShowTownMap(void);
+void CB2_FieldShowTownMapFromBag(void);
 
 #endif // GUARD_FIELD_SPECIALS_H

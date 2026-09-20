@@ -1068,6 +1068,16 @@ void FieldShowRegionMap(void)
     SetMainCallback2(CB2_FieldShowRegionMap);
 }
 
+void CB2_FieldShowTownMap(void)
+{
+    FieldInitRegionMap(CB2_ReturnToField);
+}
+
+void CB2_FieldShowTownMapFromBag(void)
+{
+    FieldInitRegionMap(CB2_ReturnToBagMenuPocket);
+}
+
 static bool32 IsBuildingPCTile(u32 tileId)
 {
     if (IS_FRLG)

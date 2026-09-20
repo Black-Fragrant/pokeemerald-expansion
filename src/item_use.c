@@ -36,6 +36,7 @@
 #include "party_menu.h"
 #include "pokeblock.h"
 #include "pokemon.h"
+#include "region_map.h"
 #include "script.h"
 #include "sound.h"
 #include "strings.h"
@@ -60,6 +61,7 @@ static void Task_StandingOnHiddenItem(u8);
 static void PlayerFaceHiddenItem(enum Direction);
 static void CheckForHiddenItemsInMapConnection(u8);
 static void Task_OpenRegisteredPokeblockCase(u8);
+static void Task_OpenRegisteredTownMap(u8 taskId);
 static void Task_AccessPokemonBoxLink(u8);
 static void ItemUseOnFieldCB_Bike(u8);
 static void ItemUseOnFieldCB_Rod(u8);
@@ -1572,25 +1574,32 @@ void ItemUseOutOfBattle_PokeFlute(u8 taskId)
     }
 }
 
-static void ItemUseOnFieldCB_TownMap(u8 taskId)
+static void Task_OpenRegisteredTownMap(u8 taskId)
 {
-    LockPlayerFieldControls();
-    ScriptContext_SetupScript(EventScript_RegionMap);
-    DestroyTask(taskId);
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_OpenTownMap);
+        DestroyTask(taskId);
+    }
 }
 
 void ItemUseOutOfBattle_TownMap(u8 taskId)
 {
-    if (!gTasks[taskId].tUsingRegisteredKeyItem)
+    if (MenuHelpers_IsLinkActive() == TRUE)
     {
-        sItemUseOnFieldCB = ItemUseOnFieldCB_TownMap;
-        gFieldCallback = FieldCB_UseItemOnField;
-        gBagMenu->newScreenCallback = CB2_ReturnToField;
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+    else if (!gTasks[taskId].tUsingRegisteredKeyItem)
+    {
+        gBagMenu->newScreenCallback = CB2_OpenTownMapFromBag;
         Task_FadeAndCloseBagMenu(taskId);
     }
     else
     {
-        gTasks[taskId].func = ItemUseOnFieldCB_TownMap;
+        gFieldCallback = FieldCB_ReturnToFieldNoScript;
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_OpenRegisteredTownMap;
     }
 }
 
