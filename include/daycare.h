@@ -32,6 +32,7 @@ u8 GetDaycareCompatibilityScore(struct DayCare *daycare);
 void SetDaycareCompatibilityString(void);
 bool8 NameHasGenderSymbol(const u8 *name, u8 genderRatio);
 void ShowDaycareLevelMenu(void);
+void ShowSingleDaycareLevelMenu(void);
 void ChooseSendDaycareMon(void);
 void StorePokemonInDaycare(struct Pokemon *mon, struct DaycareMon *daycareMon);
 void IncrementDaycareSteps(void);

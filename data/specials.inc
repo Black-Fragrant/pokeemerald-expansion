@@ -208,6 +208,7 @@ gSpecials::
 	def_special StoreSelectedPokemonInDaycare
 	def_special ChooseSendDaycareMon, waitstate=1
 	def_special ShowDaycareLevelMenu, waitstate=1
+	def_special ShowSingleDaycareLevelMenu, waitstate=1
 	def_special GetNumLevelsGainedFromDaycare
 	def_special GetDaycareCost
 	def_special TakePokemonFromDaycare

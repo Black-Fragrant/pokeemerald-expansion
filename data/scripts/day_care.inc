@@ -355,11 +355,11 @@ Route3N_EventScript_TryRetrieveMon::
 	goto Route3N_EventScript_CostPrompt
 
 Route3N_EventScript_TryRetrieveMon_Cont::
-	setvar VAR_0x8004, 0
-	specialvar VAR_RESULT, GetNumLevelsGainedFromDaycare
-	dynmultichoice 20, 4, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, Daycare_Text_Buffer1, Daycare_Text_Cancel
-	goto_if_eq VAR_RESULT, 0, Route3N_EventScript_CostPrompt
-	goto Route3N_EventScript_ComeAgain
+	hidemoneybox
+	special ShowSingleDaycareLevelMenu
+	copyvar VAR_0x8004, VAR_RESULT
+	goto_if_eq VAR_RESULT, DAYCARE_EXITED_LEVEL_MENU, Route3N_EventScript_ComeAgain
+	goto Route3N_EventScript_CostPrompt
 
 Route3N_EventScript_NoRoom::
 	msgbox Daycare_Text_YouHaveNoRoom, MSGBOX_DEFAULT, FALSE, LOCALID_ROUTE3N_DAYCARE_WOMAN
@@ -560,9 +560,6 @@ Daycare_Text_WeCanRaiseTwoPokemon::
 Daycare_Text_YouHaveNoRoom::
 	.string "You have no room for it right now...\n"
 	.string "Come back when you've made room.$"
-
-Daycare_Text_Buffer1::
-	.string "{STR_VAR_1}$"
 
 Daycare_Text_ItWillCostX:
 	.string "If you want your {STR_VAR_1} back,\n"

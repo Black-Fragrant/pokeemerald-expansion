@@ -50,6 +50,17 @@ static const struct WindowTemplate sDaycareLevelMenuWindowTemplate =
     .baseBlock = 8
 };
 
+static const struct WindowTemplate sSingleDaycareLevelMenuWindowTemplate =
+{
+    .bg = 0,
+    .tilemapLeft = 15,
+    .tilemapTop = 1,
+    .width = 14,
+    .height = 4,
+    .paletteNum = 15,
+    .baseBlock = 8
+};
+
 // Indices here are assigned by Task_HandleDaycareLevelMenuInput to VAR_RESULT,
 // which is copied to VAR_0x8004 and used as an index for GetDaycareCost
 static const struct ListMenuItem sLevelMenuItems[] =
@@ -59,6 +70,12 @@ static const struct ListMenuItem sLevelMenuItems[] =
     {gText_Exit, DAYCARE_LEVEL_MENU_EXIT}
 };
 
+static const struct ListMenuItem sSingleLevelMenuItems[] =
+{
+    {gText_ExpandedPlaceholder_Empty, 0},
+    {gText_Exit, DAYCARE_LEVEL_MENU_EXIT},
+};
+
 static const struct ListMenuTemplate sDaycareListMenuLevelTemplate =
 {
     .items = sLevelMenuItems,
@@ -66,6 +83,28 @@ static const struct ListMenuTemplate sDaycareListMenuLevelTemplate =
     .itemPrintFunc = DaycarePrintMonInfo,
     .totalItems = 3,
     .maxShowed = 3,
+    .windowId = 0,
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 1,
+    .cursorPal = 2,
+    .fillValue = 1,
+    .cursorShadowPal = 3,
+    .lettersSpacing = 1,
+    .itemVerticalPadding = 0,
+    .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
+    .fontId = FONT_NORMAL,
+    .cursorKind = CURSOR_BLACK_ARROW
+};
+
+static const struct ListMenuTemplate sSingleDaycareListMenuLevelTemplate =
+{
+    .items = sSingleLevelMenuItems,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .itemPrintFunc = DaycarePrintMonInfo,
+    .totalItems = 2,
+    .maxShowed = 2,
     .windowId = 0,
     .header_X = 0,
     .item_X = 8,
@@ -1455,6 +1494,40 @@ static void Task_HandleDaycareLevelMenuInput(u8 taskId)
     }
 }
 
+static void Task_HandleSingleDaycareLevelMenuInput(u8 taskId)
+{
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].tMenuListTaskId);
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        switch (input)
+        {
+        case 0:
+            gSpecialVar_Result = 0;
+            break;
+        case DAYCARE_LEVEL_MENU_EXIT:
+            gSpecialVar_Result = DAYCARE_EXITED_LEVEL_MENU;
+            break;
+        }
+
+        DestroyListMenuTask(gTasks[taskId].tMenuListTaskId, NULL, NULL);
+        ClearStdWindowAndFrame(gTasks[taskId].tWindowId, TRUE);
+        RemoveWindow(gTasks[taskId].tWindowId);
+        DestroyTask(taskId);
+        ScriptContext_Enable();
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        gSpecialVar_Result = DAYCARE_EXITED_LEVEL_MENU;
+
+        DestroyListMenuTask(gTasks[taskId].tMenuListTaskId, NULL, NULL);
+        ClearStdWindowAndFrame(gTasks[taskId].tWindowId, TRUE);
+        RemoveWindow(gTasks[taskId].tWindowId);
+        DestroyTask(taskId);
+        ScriptContext_Enable();
+    }
+}
+
 void ShowDaycareLevelMenu(void)
 {
     struct ListMenuTemplate menuTemplate;
@@ -1472,6 +1545,27 @@ void ShowDaycareLevelMenu(void)
     CopyWindowToVram(windowId, COPYWIN_FULL);
 
     daycareMenuTaskId = CreateTask(Task_HandleDaycareLevelMenuInput, 3);
+    gTasks[daycareMenuTaskId].tMenuListTaskId = listMenuTaskId;
+    gTasks[daycareMenuTaskId].tWindowId = windowId;
+}
+
+void ShowSingleDaycareLevelMenu(void)
+{
+    struct ListMenuTemplate menuTemplate;
+    u8 windowId;
+    u8 listMenuTaskId;
+    u8 daycareMenuTaskId;
+
+    windowId = AddWindow(&sSingleDaycareLevelMenuWindowTemplate);
+    DrawStdWindowFrame(windowId, FALSE);
+
+    menuTemplate = sSingleDaycareListMenuLevelTemplate;
+    menuTemplate.windowId = windowId;
+    listMenuTaskId = ListMenuInit(&menuTemplate, 0, 0);
+
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+
+    daycareMenuTaskId = CreateTask(Task_HandleSingleDaycareLevelMenuInput, 3);
     gTasks[daycareMenuTaskId].tMenuListTaskId = listMenuTaskId;
     gTasks[daycareMenuTaskId].tWindowId = windowId;
 }
