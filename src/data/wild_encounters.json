@@ -34,11 +34,16 @@
         {
           "type": "rock_smash_mons",
           "encounter_rates": [
-            60,
-            30,
-            5,
-            4,
-            1
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
           ]
         },
         {
@@ -177,6 +182,31 @@
           "rock_smash_mons": {
             "encounter_rate": 100,
             "mons": [
+              {
+                "min_level": 2,
+                "max_level": 4,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 2,
+                "max_level": 4,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 2,
+                "max_level": 4,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 2,
+                "max_level": 4,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 2,
+                "max_level": 4,
+                "species": "SPECIES_AUDINO"
+              },
               {
                 "min_level": 2,
                 "max_level": 4,
@@ -385,6 +415,31 @@
                 "min_level": 32,
                 "max_level": 34,
                 "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 32,
+                "max_level": 34,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 32,
+                "max_level": 34,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 32,
+                "max_level": 34,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 32,
+                "max_level": 34,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 32,
+                "max_level": 34,
+                "species": "SPECIES_AUDINO"
               }
             ]
           },
@@ -539,6 +594,31 @@
                 "min_level": 4,
                 "max_level": 7,
                 "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_AUDINO"
               }
             ]
           }
@@ -630,9 +710,34 @@
                 "species": "SPECIES_AUDINO"
               },
               {
-                "min_level": 11,
+                "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_MUSHARNA"
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
               },
               {
                 "min_level": 11,
@@ -766,6 +871,31 @@
               {
                 "min_level": 8,
                 "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 8,
                 "species": "SPECIES_AUDINO"
               }
             ]
@@ -927,6 +1057,31 @@
           "rock_smash_mons": {
             "encounter_rate": 100,
             "mons": [
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_DRILBUR"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_DRILBUR"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_DRILBUR"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_DRILBUR"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_DRILBUR"
+              },
               {
                 "min_level": 10,
                 "max_level": 13,
@@ -1135,6 +1290,31 @@
                 "min_level": 8,
                 "max_level": 11,
                 "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 8,
+                "max_level": 11,
+                "species": "SPECIES_AUDINO"
               }
             ]
           },
@@ -1281,6 +1461,31 @@
                 "species": "SPECIES_AUDINO"
               },
               {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
                 "min_level": 15,
                 "max_level": 15,
                 "species": "SPECIES_THROH"
@@ -1364,6 +1569,31 @@
           "rock_smash_mons": {
             "encounter_rate": 20,
             "mons": [
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
               {
                 "min_level": 12,
                 "max_level": 15,
@@ -1499,6 +1729,26 @@
                 "species": "SPECIES_AUDINO"
               },
               {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
                 "min_level": 15,
                 "max_level": 15,
                 "species": "SPECIES_PANSAGE"
@@ -1517,6 +1767,11 @@
                 "min_level": 17,
                 "max_level": 17,
                 "species": "SPECIES_WHIMSICOTT"
+              },
+              {
+                "min_level": 17,
+                "max_level": 17,
+                "species": "SPECIES_LILLIGANT"
               }
             ]
           },
@@ -1683,6 +1938,26 @@
                 "species": "SPECIES_AUDINO"
               },
               {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 14,
+                "max_level": 17,
+                "species": "SPECIES_AUDINO"
+              },
+              {
                 "min_level": 15,
                 "max_level": 15,
                 "species": "SPECIES_PANSAGE"
@@ -1701,6 +1976,11 @@
                 "min_level": 17,
                 "max_level": 17,
                 "species": "SPECIES_WHIMSICOTT"
+              },
+              {
+                "min_level": 17,
+                "max_level": 17,
+                "species": "SPECIES_LILLIGANT"
               }
             ]
           },
@@ -1855,36 +2135,6 @@
                 "min_level": 5,
                 "max_level": 15,
                 "species": "SPECIES_FRILLISH"
-              }
-            ]
-          },
-          "rock_smash_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
               }
             ]
           },
@@ -3056,9 +3306,34 @@
                 "species": "SPECIES_AUDINO"
               },
               {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_EMOLGA"
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
               },
               {
                 "min_level": 19,
@@ -3068,7 +3343,7 @@
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_CINCCINO"
+                "species": "SPECIES_EMOLGA"
               },
               {
                 "min_level": 22,
@@ -3155,9 +3430,34 @@
                 "species": "SPECIES_AUDINO"
               },
               {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_EMOLGA"
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
               },
               {
                 "min_level": 19,
@@ -3167,7 +3467,7 @@
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_CINCCINO"
+                "species": "SPECIES_EMOLGA"
               },
               {
                 "min_level": 22,
@@ -3302,6 +3602,31 @@
                 "min_level": 22,
                 "max_level": 22,
                 "species": "SPECIES_UNFEZANT"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
               }
             ]
           },

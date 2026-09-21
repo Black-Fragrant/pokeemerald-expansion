@@ -59,6 +59,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "speech_bubble.h"
+#include "special_encounter.h"
 
 enum TransitionType
 {
@@ -342,6 +343,8 @@ static bool8 CheckSilphScopeInPokemonTower(u16 mapGroup, u16 mapNum)
 
 void BattleSetup_StartWildBattle(void)
 {
+    ResetSpecialEncounterSpot();
+
     if (GetSafariZoneFlag())
         DoSafariBattle();
     else if (CheckSilphScopeInPokemonTower(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum))
@@ -352,6 +355,7 @@ void BattleSetup_StartWildBattle(void)
 
 void BattleSetup_StartDoubleWildBattle(void)
 {
+    ResetSpecialEncounterSpot();
     DoStandardWildBattle(TRUE);
 }
 
@@ -492,6 +496,7 @@ static void DoBattlePikeWildBattle(void)
 
 static void DoTrainerBattle(void)
 {
+    ResetSpecialEncounterSpot();
     DestroyTail();
     CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_A][0], TRAINER_BATTLE_PARAM.opponentA);
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)

@@ -44,6 +44,8 @@ static void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sp
 static void SpriteCB_UnderwaterSurfBlob(struct Sprite *);
 static u32 ShowDisguiseFieldEffect(u8, u8, u8);
 u32 FldEff_Shadow(void);
+u32 FldEff_ShakingGrass(void);
+u32 FldEff_ShakingGrassDark(void);
 
 // Data used by all the field effects that share UpdateJumpImpactEffect
 #define sJumpElevation  data[0]
@@ -1128,14 +1130,57 @@ u32 FldEff_ShakingGrass(void)
 {
     u8 spriteId;
 
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_UNUSED_GRASS], gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
+    SetSpritePosToOffsetMapCoords(
+        (s16 *)&gFieldEffectArguments[0],
+        (s16 *)&gFieldEffectArguments[1],
+        8,
+        8
+    );
+
+    spriteId = CreateSpriteAtEnd(
+        gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SHAKING_GRASS],
+        gFieldEffectArguments[0],
+        gFieldEffectArguments[1],
+        gFieldEffectArguments[2]
+    );
+
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
+
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sWaitFldEff = FLDEFF_SHAKING_GRASS;
+    }
+
+    return spriteId;
+}
+
+u32 FldEff_ShakingGrassDark(void)
+{
+    u8 spriteId;
+
+    SetSpritePosToOffsetMapCoords(
+        (s16 *)&gFieldEffectArguments[0],
+        (s16 *)&gFieldEffectArguments[1],
+        8,
+        8
+    );
+
+    spriteId = CreateSpriteAtEnd(
+        gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SHAKING_GRASS_DARK],
+        gFieldEffectArguments[0],
+        gFieldEffectArguments[1],
+        gFieldEffectArguments[2]
+    );
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->sWaitFldEff = FLDEFF_SHAKING_GRASS_DARK;
     }
 
     return spriteId;

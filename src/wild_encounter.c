@@ -31,6 +31,7 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/weather.h"
+#include "special_encounter.h"
 
 extern const u8 EventScript_SprayWoreOff[];
 
@@ -248,20 +249,30 @@ u32 ChooseWildMonIndex_Rocks(void)
 
     if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_0)
         wildMonIndex = 0;
-    else if (rand >= ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_1)
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_1)
         wildMonIndex = 1;
-    else if (rand >= ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_2)
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_2)
         wildMonIndex = 2;
-    else if (rand >= ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_3)
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_3)
         wildMonIndex = 3;
-    else
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_4)
         wildMonIndex = 4;
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_5)
+        wildMonIndex = 5;
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_6)
+        wildMonIndex = 6;
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_7)
+        wildMonIndex = 7;
+    else if (rand < ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_8)
+        wildMonIndex = 8;
+    else
+        wildMonIndex = 9;
 
     if (LURE_STEP_COUNT != 0 && (Random() % 10 < 2))
         swap = TRUE;
 
     if (swap)
-        wildMonIndex = 4 - wildMonIndex;
+        wildMonIndex = 9 - wildMonIndex;
 
     return wildMonIndex;
 }

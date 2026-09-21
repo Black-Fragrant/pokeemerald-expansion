@@ -716,19 +716,17 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_JumpLongGrass = {
     .callback = UpdateJumpImpactEffect,
 };
 
-static const struct SpriteFrameImage sPicTable_UnusedGrass[] = {
-    overworld_frame(gFieldEffectObjectPic_JumpLongGrass, 2, 2, 6),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 0),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 1),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 2),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 3),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 4),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 5),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 6),
-    overworld_frame(gFieldEffectObjectPic_Unknown17, 2, 2, 7),
+static const struct SpriteFrameImage sPicTable_ShakingGrass[] =
+{
+    overworld_ascending_frames(gFieldEffectObjectPic_ShakingGrass, 2, 2),
 };
 
-static const union AnimCmd sAnim_UnusedGrass[] =
+static const struct SpriteFrameImage sPicTable_ShakingGrassDark[] =
+{
+    overworld_ascending_frames(gFieldEffectObjectPic_ShakingGrassDark, 2, 2),
+};
+
+static const union AnimCmd sAnim_ShakingGrass[] =
 {
     ANIMCMD_FRAME(0, 10),
     ANIMCMD_FRAME(1, 4),
@@ -742,17 +740,28 @@ static const union AnimCmd sAnim_UnusedGrass[] =
     ANIMCMD_JUMP(7),
 };
 
-static const union AnimCmd *const sAnimTable_UnusedGrass[] =
+static const union AnimCmd *const sAnimTable_ShakingGrass[] =
 {
-    sAnim_UnusedGrass,
+    sAnim_ShakingGrass,
 };
 
-const struct SpriteTemplate gFieldEffectObjectTemplate_UnusedGrass = {
+const struct SpriteTemplate gFieldEffectObjectTemplate_ShakingGrass =
+{
     .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
     .oam = &gObjectEventBaseOam_16x16,
-    .anims = sAnimTable_UnusedGrass,
-    .images = sPicTable_UnusedGrass,
+    .anims = sAnimTable_ShakingGrass,
+    .images = sPicTable_ShakingGrass,
+    .callback = WaitFieldEffectSpriteAnim,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_ShakingGrassDark =
+{
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_ShakingGrass,
+    .images = sPicTable_ShakingGrassDark,
     .callback = WaitFieldEffectSpriteAnim,
 };
 

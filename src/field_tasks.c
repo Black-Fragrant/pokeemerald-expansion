@@ -20,6 +20,7 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/metatile_labels.h"
+#include "special_encounter.h"
 
 /*  This file handles some persistent tasks that run in the overworld.
  *  - Task_RunTimeBasedEvents: Periodically updates local time and RTC events. Also triggers ambient cries.
@@ -189,6 +190,7 @@ static void Task_RunTimeBasedEvents(u8 taskId)
     {
         RunTimeBasedEvents(data);
         UpdateAmbientCry(&tAmbientCryState, (u16*) &tAmbientCryDelay);
+        UpdateSpecialEncounterSpot();
     }
 }
 
@@ -243,6 +245,8 @@ void ResetFieldTasksArgs(void)
         tAmbientCryState = 0;
         tAmbientCryDelay = 0;
     }
+
+    ResetSpecialEncounterSpot();
 }
 
 #undef tAmbientCryState

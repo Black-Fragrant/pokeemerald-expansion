@@ -255,6 +255,7 @@ script WellspringCave_1F_EventScript_FinishedMultibattle
     setvar(VAR_ROUTE3_NORTH_CHEREN_BATTLE, 2)
     setflag(FLAG_WELLSPRINGCAVE_PLASMA_GRUNTS)
     warpsilent(MAP_WELLSPRING_CAVE_1F, 25, 7)
+    waitstate
     end
 }
 
