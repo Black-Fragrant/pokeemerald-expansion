@@ -14,9 +14,12 @@
 #include "sprite.h"
 #include "task.h"
 #include "wild_encounter.h"
-
 #include "constants/field_effects.h"
 #include "constants/songs.h"
+#include "constants/items.h"
+#include "event_data.h"
+#include "script.h"
+#include "map_name_popup.h"
 
 // -----------------------------------------------------------------------------
 // Pilot settings
@@ -71,7 +74,59 @@ struct SpecialEncounterSpot
     u16 soundTimer;
 };
 
+static const u16 sBridgeStatWingItems[] =
+{
+    ITEM_HEALTH_WING,
+    ITEM_MUSCLE_WING,
+    ITEM_RESIST_WING,
+    ITEM_GENIUS_WING,
+    ITEM_CLEVER_WING,
+    ITEM_SWIFT_WING,
+};
+
+static const u16 sCaveGemItems[] =
+{
+    ITEM_FIRE_GEM,
+    ITEM_WATER_GEM,
+    ITEM_ELECTRIC_GEM,
+    ITEM_GRASS_GEM,
+    ITEM_ICE_GEM,
+    ITEM_FIGHTING_GEM,
+    ITEM_POISON_GEM,
+    ITEM_GROUND_GEM,
+    ITEM_FLYING_GEM,
+    ITEM_PSYCHIC_GEM,
+    ITEM_BUG_GEM,
+    ITEM_ROCK_GEM,
+    ITEM_GHOST_GEM,
+    ITEM_DRAGON_GEM,
+    ITEM_DARK_GEM,
+    ITEM_STEEL_GEM,
+    ITEM_NORMAL_GEM,
+};
+
+static const u16 sCaveStoneItems[] =
+{
+    ITEM_SUN_STONE,
+    ITEM_MOON_STONE,
+    ITEM_FIRE_STONE,
+    ITEM_WATER_STONE,
+    ITEM_THUNDER_STONE,
+    ITEM_LEAF_STONE,
+    ITEM_SHINY_STONE,
+    ITEM_DUSK_STONE,
+    ITEM_DAWN_STONE,
+    ITEM_OVAL_STONE,
+};
+
 static EWRAM_DATA struct SpecialEncounterSpot sSpecialEncounterSpot = {0};
+static EWRAM_DATA u16 sSpecialEncounterRewardItem = ITEM_NONE;
+
+void SpecialEncounterBufferRewardItem(void)
+{
+    gSpecialVar_0x8004 = sSpecialEncounterRewardItem;
+    sSpecialEncounterRewardItem = ITEM_NONE;
+}
 
 // -----------------------------------------------------------------------------
 // Internal declarations
@@ -81,26 +136,25 @@ static const struct WildPokemonInfo *GetCurrentSpecialEncounterMons(enum WildPok
 
 static bool32 IsTileOccupiedByObjectEvent(s16 x, s16 y);
 static bool32 IsCandidateTileForType(s16 x, s16 y, u8 type);
-
 static bool32 TrySpawnSpecialEncounterSpotOfType(u8 type);
 static bool32 TrySpawnSpecialEncounterSpot(void);
-
 static bool32 IsPlayerOnSpecialEncounterSpot(void);
 static bool32 IsSpecialEncounterSpotOnCurrentMap(void);
-
 static u8 GetSpecialEncounterFieldEffectId(u8 type);
 static bool32 CreateSpecialEncounterSpotVisual(void);
 static bool32 IsSpecialEncounterSpotSpriteValid(void);
 static void EnsureSpecialEncounterSpotVisual(void);
-
 static void UpdateSpecialEncounterSpotSound(void);
 static void StopSpecialEncounterSpotSound(void);
-
 static void TryQueueSpecialEncounterTrigger(void);
 static void Task_SpecialEncounterTrigger(u8 taskId);
-
 static void ClearSpecialEncounterSpotState(void);
-static bool32 TrySpawnGrassSpecialEncounterSpot(void);
+static bool32 TrySpawnOutdoorSpecialEncounterSpot(void);
+static u16 ChooseBridgeSpecialEncounterItem(void);
+static u16 ChooseCaveSpecialEncounterItem(void);
+static bool32 StartSpecialEncounterItemReward(u16 itemId);
+
+extern const u8 EventScript_SpecialEncounterItem[];
 
 // -----------------------------------------------------------------------------
 // Public interface
@@ -200,6 +254,55 @@ bool32 IsSpecialEncounterSpotActive(void)
     return sSpecialEncounterSpot.active;
 }
 
+static u16 ChooseBridgeSpecialEncounterItem(void)
+{
+    // Of item results:
+    // 10% Pretty Wing
+    // 90% one of the six stat Wings
+    if ((Random() % 100) < 10)
+        return ITEM_PRETTY_WING;
+
+    return sBridgeStatWingItems[
+        Random() % ARRAY_COUNT(sBridgeStatWingItems)
+    ];
+}
+
+static u16 ChooseCaveSpecialEncounterItem(void)
+{
+    u16 roll;
+
+    roll = Random() % 100;
+
+    // Of item results:
+    // 85% Gem
+    if (roll < 85)
+    {
+        return sCaveGemItems[
+            Random() % ARRAY_COUNT(sCaveGemItems)
+        ];
+    }
+
+    // 10% Evolution / Oval Stone
+    if (roll < 95)
+    {
+        return sCaveStoneItems[
+            Random() % ARRAY_COUNT(sCaveStoneItems)
+        ];
+    }
+
+    // 5% Everstone
+    return ITEM_EVERSTONE;
+}
+
+static bool32 StartSpecialEncounterItemReward(u16 itemId)
+{
+    sSpecialEncounterRewardItem = itemId;
+    HideMapNamePopUpWindow();
+    ResetSpecialEncounterSpot();
+    ScriptContext_SetupScript(EventScript_SpecialEncounterItem);
+    return TRUE;
+}
+
 bool32 TryStartSpecialEncounterAtPlayerPosition(void)
 {
     const struct WildPokemonInfo *wildMonInfo;
@@ -216,13 +319,49 @@ bool32 TryStartSpecialEncounterAtPlayerPosition(void)
 
     switch (sSpecialEncounterSpot.type)
     {
+    // ---------------------------------------------------------------------
+    // Normal / dark grass remain guaranteed Pokémon.
+    // ---------------------------------------------------------------------
     case SPECIAL_SPOT_GRASS:
     case SPECIAL_SPOT_DARK_GRASS:
-    case SPECIAL_SPOT_CAVE_DUST:
-    case SPECIAL_SPOT_BRIDGE_SHADOW:
         area = WILD_AREA_ROCKS;
         break;
 
+    // ---------------------------------------------------------------------
+    // Cave dust:
+    // 40% Pokémon
+    // 60% item
+    // ---------------------------------------------------------------------
+    case SPECIAL_SPOT_CAVE_DUST:
+        if ((Random() % 100) >= 40)
+        {
+            return StartSpecialEncounterItemReward(
+                ChooseCaveSpecialEncounterItem()
+            );
+        }
+
+        area = WILD_AREA_ROCKS;
+        break;
+
+    // ---------------------------------------------------------------------
+    // Bridge shadow:
+    // 20% Pokémon
+    // 80% item
+    // ---------------------------------------------------------------------
+    case SPECIAL_SPOT_BRIDGE_SHADOW:
+        if ((Random() % 100) >= 20)
+        {
+            return StartSpecialEncounterItemReward(
+                ChooseBridgeSpecialEncounterItem()
+            );
+        }
+
+        area = WILD_AREA_ROCKS;
+        break;
+
+    // ---------------------------------------------------------------------
+    // Ripple remains guaranteed Pokémon for now.
+    // ---------------------------------------------------------------------
     case SPECIAL_SPOT_WATER_RIPPLE:
         area = WILD_AREA_WATER;
         break;
@@ -236,9 +375,8 @@ bool32 TryStartSpecialEncounterAtPlayerPosition(void)
     if (wildMonInfo == NULL)
         return FALSE;
 
-    // Special spots guarantee an encounter.
-    //
-    // No repel, Keen Eye, or normal encounter-rate checks.
+    // Pokémon outcomes are still guaranteed encounters once that outcome
+    // has been selected.
     if (!TryGenerateWildMon(wildMonInfo, area, 0))
         return FALSE;
 
@@ -404,6 +542,12 @@ static void UpdateSpecialEncounterSpotSound(void)
             SPECIAL_SPOT_GRASS_SOUND_INTERVAL;
         break;
 
+    case SPECIAL_SPOT_BRIDGE_SHADOW:
+        PlaySE(SE_RG_CARD_FLIPPING);
+        sSpecialEncounterSpot.soundTimer =
+            SPECIAL_SPOT_GRASS_SOUND_INTERVAL;
+        break;
+
     case SPECIAL_SPOT_CAVE_DUST:
         PlaySE(SE_M_ROCK_THROW);
         sSpecialEncounterSpot.soundTimer =
@@ -428,6 +572,10 @@ static void StopSpecialEncounterSpotSound(void)
     case SPECIAL_SPOT_GRASS:
     case SPECIAL_SPOT_DARK_GRASS:
         m4aSongNumStop(SE_SUDOWOODO_SHAKE);
+        break;
+
+    case SPECIAL_SPOT_BRIDGE_SHADOW:
+        m4aSongNumStop(SE_RG_CARD_FLIPPING);
         break;
 
     case SPECIAL_SPOT_CAVE_DUST:
@@ -464,6 +612,9 @@ static u8 GetSpecialEncounterFieldEffectId(u8 type)
 
     case SPECIAL_SPOT_WATER_RIPPLE:
         return FLDEFF_WATER_SURFACING;
+
+    case SPECIAL_SPOT_BRIDGE_SHADOW:
+        return FLDEFF_BRIDGE_SHADOW;
 
     default:
         return 0;
@@ -617,6 +768,9 @@ static bool32 IsCandidateTileForType(s16 x, s16 y, u8 type)
     case SPECIAL_SPOT_DARK_GRASS:
         return MetatileBehavior_IsTallGrassDark(metatileBehavior);
 
+    case SPECIAL_SPOT_BRIDGE_SHADOW:
+        return MetatileBehavior_IsBridge(metatileBehavior);
+
     case SPECIAL_SPOT_CAVE_DUST:
         return MetatileBehavior_IsLandWildEncounter(metatileBehavior);
 
@@ -629,23 +783,30 @@ static bool32 IsCandidateTileForType(s16 x, s16 y, u8 type)
 // Spot spawning
 // -----------------------------------------------------------------------------
 
-static bool32 TrySpawnGrassSpecialEncounterSpot(void)
+static bool32 TrySpawnOutdoorSpecialEncounterSpot(void)
 {
-    if (Random() & 1)
+    static const u8 sOutdoorTypes[] =
     {
-        if (TrySpawnSpecialEncounterSpotOfType(SPECIAL_SPOT_GRASS))
-            return TRUE;
+        SPECIAL_SPOT_GRASS,
+        SPECIAL_SPOT_DARK_GRASS,
+        SPECIAL_SPOT_BRIDGE_SHADOW,
+    };
 
-        if (TrySpawnSpecialEncounterSpotOfType(SPECIAL_SPOT_DARK_GRASS))
-            return TRUE;
-    }
-    else
+    u8 first;
+    u8 i;
+    u8 index;
+
+    first = Random() % ARRAY_COUNT(sOutdoorTypes);
+
+    for (i = 0; i < ARRAY_COUNT(sOutdoorTypes); i++)
     {
-        if (TrySpawnSpecialEncounterSpotOfType(SPECIAL_SPOT_DARK_GRASS))
-            return TRUE;
+        index = (first + i) % ARRAY_COUNT(sOutdoorTypes);
 
-        if (TrySpawnSpecialEncounterSpotOfType(SPECIAL_SPOT_GRASS))
+        if (TrySpawnSpecialEncounterSpotOfType(
+                sOutdoorTypes[index]))
+        {
             return TRUE;
+        }
     }
 
     return FALSE;
@@ -749,7 +910,7 @@ static bool32 TrySpawnSpecialEncounterSpot(void)
             }
             else
             {
-                if (TrySpawnGrassSpecialEncounterSpot())
+                if (TrySpawnOutdoorSpecialEncounterSpot())
                     return TRUE;
             }
 
@@ -777,7 +938,7 @@ static bool32 TrySpawnSpecialEncounterSpot(void)
             }
             else
             {
-                if (TrySpawnGrassSpecialEncounterSpot())
+                if (TrySpawnOutdoorSpecialEncounterSpot())
                     return TRUE;
             }
         }
@@ -794,7 +955,7 @@ static bool32 TrySpawnSpecialEncounterSpot(void)
             );
         }
 
-        return TrySpawnGrassSpecialEncounterSpot();
+        return TrySpawnOutdoorSpecialEncounterSpot();
     }
 
     if (hasWaterMons)

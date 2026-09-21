@@ -250,6 +250,7 @@ enum {
     MB_TALL_GRASS_DARK,
     MB_SNOW,
     MB_SPIN_WARP,
+    MB_BRIDGE,
     NUM_METATILE_BEHAVIORS
 };
 

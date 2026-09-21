@@ -3,8 +3,8 @@
 
 void UpdateSpecialEncounterSpot(void);
 void ResetSpecialEncounterSpot(void);
-
 bool32 IsSpecialEncounterSpotActive(void);
 bool32 TryStartSpecialEncounterAtPlayerPosition(void);
+void SpecialEncounter_BufferRewardItem(void);
 
 #endif // GUARD_SPECIAL_ENCOUNTER_H

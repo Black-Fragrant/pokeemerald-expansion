@@ -90,7 +90,8 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_OWE_SpawnAnim				@ FLDEFF_OW_ENCOUNTER_SPAWN_ANIM
 	.4byte gFieldEffectScript_TallGrassDark             @ FLDEFF_TALL_GRASS_DARK
 	.4byte gFieldEffectScript_EllipsisIcon1   		    @ FLDEFF_ELLIPSIS_ICON
-	.4byte gFieldEffectScript_ShakingGrassDark       @ FLDEFF_SHAKING_GRASS_DARK
+	.4byte gFieldEffectScript_ShakingGrassDark          @ FLDEFF_SHAKING_GRASS_DARK
+	.4byte gFieldEffectScript_BridgeShadow   		    @ FLDEFF_BRIDGE_SHADOW
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -180,6 +181,10 @@ gFieldEffectScript_ShakingGrassDark::
 	field_eff_callnative FldEff_ShakingGrassDark
 	field_eff_end
 
+gFieldEffectScript_BridgeShadow::
+	field_eff_callnative FldEff_BridgeShadow
+	field_eff_end
+	
 gFieldEffectScript_UnusedSand::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_UnusedSand
 	field_eff_end

@@ -774,6 +774,14 @@ bool8 MetatileBehavior_IsFootprints(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsBridge(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_BRIDGE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 // For the sections of log bridges that span water / water's edge.
 // Note that the rest of the metatiles for these bridges use MB_NORMAL.
 // This is used to allow encounters on the water below the bridge.

@@ -46,6 +46,7 @@ static u32 ShowDisguiseFieldEffect(u8, u8, u8);
 u32 FldEff_Shadow(void);
 u32 FldEff_ShakingGrass(void);
 u32 FldEff_ShakingGrassDark(void);
+u32 FldEff_BridgeShadow(void);
 
 // Data used by all the field effects that share UpdateJumpImpactEffect
 #define sJumpElevation  data[0]
@@ -1231,6 +1232,47 @@ u32 FldEff_WaterSurfacing(void)
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sWaitFldEff = FLDEFF_WATER_SURFACING;
+    }
+
+    return spriteId;
+}
+
+u32 FldEff_BridgeShadow(void)
+{
+    s16 x;
+    s16 y;
+    u8 spriteId;
+    const struct SpriteTemplate *template;
+
+    x = gFieldEffectArguments[0];
+    y = gFieldEffectArguments[1];
+
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+
+    template =
+        gFieldEffectObjectTemplatePointers[
+            FLDEFFOBJ_BRIDGE_SHADOW
+        ];
+
+    // The medium shadow graphic uses a real sprite-sheet tag,
+    // unlike most TAG_NONE field effects.
+    LoadSpriteSheetByTemplate(template, 0, 0);
+
+    spriteId = CreateSpriteAtEnd(
+        template,
+        x,
+        y,
+        OW_OBJECT_SUBPRIORITY + 1
+    );
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
+
+        StartSpriteAffineAnim(sprite, 0);
     }
 
     return spriteId;

@@ -678,3 +678,4 @@ gSpecials::
 	def_special GetMultiPartnerTrainerId
 	def_special ResetSubwayCurrentBattleNum
 	def_special XTransceiverDialogue
+	def_special SpecialEncounterBufferRewardItem

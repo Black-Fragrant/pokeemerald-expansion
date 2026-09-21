@@ -110,6 +110,63 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowExtraLarge = {
     .callback = UpdateShadowFieldEffect,
 };
 
+static const union AffineAnimCmd sAffineAnim_BridgeShadow[] =
+{
+    // Start at normal scale.
+    AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
+
+    // Slightly widen.
+    AFFINEANIMCMD_FRAME(0x1, 0x0, 0, 4),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 8),
+
+    // Return to normal.
+    AFFINEANIMCMD_FRAME(0xFFFF, 0x0, 0, 4),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 8),
+
+    // Slightly narrow.
+    AFFINEANIMCMD_FRAME(0xFFFF, 0x0, 0, 4),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 8),
+
+    // Return to normal.
+    AFFINEANIMCMD_FRAME(0x1, 0x0, 0, 4),
+    AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 8),
+
+    AFFINEANIMCMD_JUMP(1),
+};
+
+static const union AffineAnimCmd *const sAffineAnims_BridgeShadow[] =
+{
+    sAffineAnim_BridgeShadow,
+};
+
+static const struct OamData sOam_BridgeShadow =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_NORMAL,
+    .objMode = ST_OAM_OBJ_BLEND,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(16x8),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(16x8),
+    .tileNum = 0,
+    .priority = 2,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_BridgeShadow =
+{
+    .tileTag = FLDEFF_TILE_TAG_SHADOW_MEDIUM,
+    .paletteTag = TAG_WEATHER_START,
+    .oam = &sOam_BridgeShadow,
+    .anims = sAnimTable_Shadow,
+    .images = sPicTable_ShadowMedium,
+    .affineAnims = sAffineAnims_BridgeShadow,
+    .callback = SpriteCallbackDummy,
+};
+
 static const struct SpriteFrameImage sPicTable_TallGrass[] = {
     overworld_ascending_frames(gFieldEffectObjectPic_TallGrass, 2, 2),
 };

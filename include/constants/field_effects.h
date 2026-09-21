@@ -87,6 +87,7 @@
 #define FLDEFF_TALL_GRASS_DARK           82
 #define FLDEFF_ELLIPSIS_ICON             83
 #define FLDEFF_SHAKING_GRASS_DARK        84
+#define FLDEFF_BRIDGE_SHADOW             85
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -136,6 +137,7 @@
 #define FLDEFFOBJ_SHINY_SPARKLE         45
 #define FLDEFFOBJ_TALL_GRASS_DARK       46
 #define FLDEFFOBJ_SHAKING_GRASS_DARK    47
+#define FLDEFFOBJ_BRIDGE_SHADOW         48
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
