@@ -14,6 +14,7 @@
 #include "tv.h"
 #include "wild_encounter.h"
 #include "config/fishing.h"
+#include "special_encounter.h"
 
 static void Task_Fishing(u8);
 static bool32 Fishing_Init(struct Task *);
@@ -254,11 +255,12 @@ static bool32 Fishing_ShowDots(struct Task *task)
 
 static bool32 Fishing_CheckForBite(struct Task *task)
 {
-    bool32 bite, firstMonHasSuctionOrSticky;
+    bool32 bite = FALSE;
+    bool32 firstMonHasSuctionOrSticky;
+    s16 x, y;
 
     AlignFishingAnimationFrames();
     task->tStep = FISHING_GOT_BITE;
-    bite = FALSE;
 
     if (!DoesCurrentMapHaveFishingMons())
     {
@@ -266,9 +268,14 @@ static bool32 Fishing_CheckForBite(struct Task *task)
         return TRUE;
     }
 
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+
+    if (IsSpecialEncounterWaterRippleAt(x, y))
+        bite = TRUE;
+
     firstMonHasSuctionOrSticky = Fishing_DoesFirstMonInPartyHaveSuctionCupsOrStickyHold();
 
-    if (firstMonHasSuctionOrSticky && I_FISHING_STICKY_BOOST < GEN_4)
+    if (!bite && firstMonHasSuctionOrSticky && I_FISHING_STICKY_BOOST < GEN_4)
         bite = RandomPercentage(RNG_FISHING_GEN3_STICKY, FISHING_GEN3_STICKY_CHANCE);
 
     if (!bite)
@@ -276,8 +283,7 @@ static bool32 Fishing_CheckForBite(struct Task *task)
 
     if (!bite)
         task->tStep = FISHING_NOT_EVEN_NIBBLE;
-
-    if (bite)
+    else
         StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], GetFishingBiteDirectionAnimNum(GetPlayerFacingDirection()));
 
     return TRUE;

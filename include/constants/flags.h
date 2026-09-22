@@ -523,9 +523,9 @@
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_DN_FLAG_SEARCHING               0x1DE
-#define FLAG_DN_FLAG_DEXNAV_GET              0x1DF
-#define FLAG_DN_FLAG_DETECTOR_MODE           0x1E0
+#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
+#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
+#define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
 #define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag

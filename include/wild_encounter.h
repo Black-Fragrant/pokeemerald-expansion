@@ -76,5 +76,6 @@ u32 ChooseWildMonIndex_Rocks(void);
 u32 ChooseHiddenMonIndex(void);
 bool32 MapHasNoEncounterData(void);
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area);
+bool32 TryGenerateSpecialWaterMon(const struct WildPokemonInfo *wildMonInfo);
 
 #endif // GUARD_WILD_ENCOUNTER_H

@@ -75,7 +75,7 @@ enum TransitionType
 static void DoBattlePikeWildBattle(void);
 static void DoSafariBattle(void);
 static void DoGhostBattle(void);
-static void DoStandardWildBattle(bool32 isDouble);
+static void DoStandardWildBattle(bool32 isDouble, u16 song);
 static void CB2_EndWildBattle(void);
 static void CB2_EndScriptedWildBattle(void);
 static void CB2_EndMarowakBattle(void);
@@ -350,13 +350,19 @@ void BattleSetup_StartWildBattle(void)
     else if (CheckSilphScopeInPokemonTower(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum))
         DoGhostBattle();
     else
-        DoStandardWildBattle(FALSE);
+        DoStandardWildBattle(FALSE, 0);
+}
+
+void BattleSetup_StartSpecialWildBattle(void)
+{
+    ResetSpecialEncounterSpot();
+    DoStandardWildBattle(FALSE, MUS_BW_VS_WILD_STRONG);
 }
 
 void BattleSetup_StartDoubleWildBattle(void)
 {
     ResetSpecialEncounterSpot();
-    DoStandardWildBattle(TRUE);
+    DoStandardWildBattle(TRUE, MUS_BW_VS_WILD_STRONG);
 }
 
 void BattleSetup_StartMultiBattle(void)
@@ -399,25 +405,26 @@ void BattleSetup_StartBattlePikeWildBattle(void)
     DoBattlePikeWildBattle();
 }
 
-static void DoStandardWildBattle(bool32 isDouble)
+static void DoStandardWildBattle(bool32 isDouble, u16 song)
 {
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = 0;
+
     if (IsNPCFollowerWildBattle())
-    {
         gBattleTypeFlags |= BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE;
-    }
     else if (isDouble)
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         VarSet(VAR_TEMP_E, 0);
         gBattleTypeFlags |= BATTLE_TYPE_PYRAMID;
     }
-    CreateBattleStartTask(GetWildBattleTransition(), 0);
+
+    CreateBattleStartTask(GetWildBattleTransition(), song);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
     IncrementDailyWildBattles();

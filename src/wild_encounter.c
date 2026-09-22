@@ -16,15 +16,12 @@
 #include "ow_abilities.h"
 #include "pokeblock.h"
 #include "pokemon.h"
-#include "random.h"
 #include "roamer.h"
 #include "safari_zone.h"
 #include "script.h"
 #include "tv.h"
 #include "wild_encounter.h"
 #include "battle_debug.h"
-#include "battle_pike.h"
-#include "battle_pyramid.h"
 #include "constants/abilities.h"
 #include "constants/game_stat.h"
 #include "constants/item.h"
@@ -218,15 +215,15 @@ u32 ChooseWildMonIndex_Water(void)
 {
     u32 wildMonIndex = 0;
     bool8 swap = FALSE;
-    u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
+    u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_NORMAL_TOTAL;
 
-    if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_0)
+    if (rand < ENCOUNTER_CHANCE_WATER_MONS_NORMAL_SLOT_0)
         wildMonIndex = 0;
-    else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_NORMAL_SLOT_1)
         wildMonIndex = 1;
-    else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_2)
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_NORMAL_SLOT_2)
         wildMonIndex = 2;
-    else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_3)
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_NORMAL_SLOT_3)
         wildMonIndex = 3;
     else
         wildMonIndex = 4;
@@ -238,6 +235,69 @@ u32 ChooseWildMonIndex_Water(void)
         wildMonIndex = 4 - wildMonIndex;
 
     return wildMonIndex;
+}
+
+static u32 ChooseWildMonIndex_SpecialWater(void)
+{
+    u32 wildMonIndex = 0;
+    bool8 swap = FALSE;
+    u8 rand =
+        Random() % ENCOUNTER_CHANCE_WATER_MONS_SPECIAL_TOTAL;
+
+    // Return a RELATIVE index from 0-4.
+    //
+    // The caller will point us directly at physical slots 5-9.
+    if (rand < ENCOUNTER_CHANCE_WATER_MONS_SPECIAL_SLOT_5)
+        wildMonIndex = 0;
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SPECIAL_SLOT_6)
+        wildMonIndex = 1;
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SPECIAL_SLOT_7)
+        wildMonIndex = 2;
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SPECIAL_SLOT_8)
+        wildMonIndex = 3;
+    else
+        wildMonIndex = 4;
+
+    if (LURE_STEP_COUNT != 0 && (Random() % 10 < 2))
+        swap = TRUE;
+
+    if (swap)
+        wildMonIndex = 4 - wildMonIndex;
+
+    return wildMonIndex;
+}
+
+bool32 TryGenerateSpecialWaterMon(const struct WildPokemonInfo *wildMonInfo)
+{
+    const struct WildPokemon *specialMons;
+    u32 wildMonIndex;
+    enum Species species;
+    u8 level;
+
+    if (wildMonInfo == NULL)
+        return FALSE;
+
+    // Move the beginning of the table from physical slot 0 to physical slot 5.
+    // From this point onward, specialMons[0] means actual water slot 5,
+    // specialMons[1] means slot 6, etc.
+    specialMons = &wildMonInfo->wildPokemon[WATER_SPECIAL_WILD_START];
+
+    wildMonIndex = ChooseWildMonIndex_SpecialWater();
+
+    species = specialMons[wildMonIndex].species;
+
+    if (species == SPECIES_NONE)
+        return FALSE;
+
+    level = ChooseWildMonLevel(
+        specialMons,
+        wildMonIndex,
+        WILD_AREA_WATER
+    );
+
+    CreateWildMon(species, level);
+
+    return TRUE;
 }
 
 // ROCK_WILD_COUNT
@@ -280,52 +340,55 @@ u32 ChooseWildMonIndex_Rocks(void)
 // FISH_WILD_COUNT
 static u32 ChooseWildMonIndex_Fishing(u8 rod)
 {
-    u8 wildMonIndex = 0;
+    u32 wildMonIndex = 0;
     bool8 swap = FALSE;
-    u8 rand = Random() % max(max(ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_TOTAL, ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_TOTAL),
-                             ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_TOTAL);
+    u8 rand =
+        Random() % ENCOUNTER_CHANCE_FISHING_MONS_NORMAL_TOTAL;
+
+    // All three rods use the same normal fishing pool.
+    // The rod still affects the fishing mechanics elsewhere,
+    // but no longer determines which section of this table is used.
+    (void)rod;
+
+    if (rand < ENCOUNTER_CHANCE_FISHING_MONS_NORMAL_SLOT_0)
+        wildMonIndex = 0;
+    else if (rand < ENCOUNTER_CHANCE_FISHING_MONS_NORMAL_SLOT_1)
+        wildMonIndex = 1;
+    else if (rand < ENCOUNTER_CHANCE_FISHING_MONS_NORMAL_SLOT_2)
+        wildMonIndex = 2;
+    else if (rand < ENCOUNTER_CHANCE_FISHING_MONS_NORMAL_SLOT_3)
+        wildMonIndex = 3;
+    else
+        wildMonIndex = 4;
 
     if (LURE_STEP_COUNT != 0 && (Random() % 10 < 2))
         swap = TRUE;
 
-    switch (rod)
-    {
-    case OLD_ROD:
-        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_SLOT_0)
-            wildMonIndex = 0;
-        else
-            wildMonIndex = 1;
+    if (swap)
+        wildMonIndex = 4 - wildMonIndex;
 
-        if (swap)
-            wildMonIndex = 1 - wildMonIndex;
-        break;
-    case GOOD_ROD:
-        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2)
-            wildMonIndex = 2;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3)
-            wildMonIndex = 3;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_4)
-            wildMonIndex = 4;
+    return wildMonIndex;
+}
 
-        if (swap)
-            wildMonIndex = 6 - wildMonIndex;
-        break;
-    case SUPER_ROD:
-        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5)
-            wildMonIndex = 5;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
-            wildMonIndex = 6;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
-            wildMonIndex = 7;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
-            wildMonIndex = 8;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_9)
-            wildMonIndex = 9;
+static u32 ChooseWildMonIndex_SpecialFishing(void)
+{
+    u32 wildMonIndex;
+    u8 rand = Random() % ENCOUNTER_CHANCE_FISHING_MONS_SPECIAL_TOTAL;
 
-        if (swap)
-            wildMonIndex = 14 - wildMonIndex;
-        break;
-    }
+    if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SPECIAL_SLOT_5)
+        wildMonIndex = 5;
+    else if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SPECIAL_SLOT_6)
+        wildMonIndex = 6;
+    else if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SPECIAL_SLOT_7)
+        wildMonIndex = 7;
+    else if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SPECIAL_SLOT_8)
+        wildMonIndex = 8;
+    else
+        wildMonIndex = 9;
+
+    if (LURE_STEP_COUNT != 0 && Random() % 10 < 2)
+        wildMonIndex = 14 - wildMonIndex;
+
     return wildMonIndex;
 }
 
@@ -593,6 +656,17 @@ static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 
     UpdateChainFishingStreak();
     CreateWildMon(wildMonSpecies, level);
     return wildMonSpecies;
+}
+
+static u16 GenerateSpecialFishingWildMon(const struct WildPokemonInfo *wildMonInfo)
+{
+    u8 wildMonIndex = ChooseWildMonIndex_SpecialFishing();
+    enum Species species = wildMonInfo->wildPokemon[wildMonIndex].species;
+    u8 level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, WILD_AREA_FISHING);
+
+    UpdateChainFishingStreak();
+    CreateWildMon(species, level);
+    return species;
 }
 
 static bool8 EncounterOddsCheck(u16 encounterRate)
@@ -951,13 +1025,21 @@ void FishingWildEncounter(u8 rod)
     u32 headerId;
     s16 x, y;
     enum TimeOfDay timeOfDay;
+    bool32 special = FALSE;
 
     gIsFishingEncounter = TRUE;
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
-    if (CheckFeebasAtCoords(x, y) == TRUE)
+
+    if (IsSpecialEncounterWaterRippleAt(x, y))
+    {
+        headerId = GetCurrentMapWildMonHeaderId();
+        timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_FISHING);
+        species = GenerateSpecialFishingWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].fishingMonsInfo);
+        special = TRUE;
+    }
+    else if (CheckFeebasAtCoords(x, y) == TRUE)
     {
         u8 level = ChooseWildMonLevel(&gWildFeebas, 0, WILD_AREA_FISHING);
-
         species = gWildFeebas.species;
         CreateWildMon(species, level);
     }
@@ -970,7 +1052,11 @@ void FishingWildEncounter(u8 rod)
 
     IncrementGameStat(GAME_STAT_FISHING_ENCOUNTERS);
     SetPokemonAnglerSpecies(species);
-    BattleSetup_StartWildBattle();
+
+    if (special)
+        BattleSetup_StartSpecialWildBattle();
+    else
+        BattleSetup_StartWildBattle();
 }
 
 u16 GetLocalWildMon(bool8 *isWaterMon)

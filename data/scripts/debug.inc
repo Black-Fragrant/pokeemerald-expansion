@@ -204,7 +204,7 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
-	warpsilent MAP_ROUTE3_SOUTH, 26, 20
+	warpsilent MAP_ROUTE3_SOUTH, 20, 20
 	waitstate
 	release 
     end
