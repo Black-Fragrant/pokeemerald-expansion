@@ -910,12 +910,12 @@ static const struct SpriteFrameImage sPicTable_WaterSurfacing[] = {
 
 static const union AnimCmd sAnim_WaterSurfacing[] =
 {
-    ANIMCMD_FRAME(0, 4),
-    ANIMCMD_FRAME(1, 4),
-    ANIMCMD_FRAME(2, 4),
-    ANIMCMD_FRAME(3, 4),
-    ANIMCMD_FRAME(2, 4),
-    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(2, 10),
+    ANIMCMD_FRAME(3, 10),
+    ANIMCMD_FRAME(4, 10),
+    ANIMCMD_FRAME(5, 10),
     ANIMCMD_JUMP(0),
 };
 
@@ -1324,16 +1324,43 @@ static const struct SpriteFrameImage sPicTable_CaveDust[] =
 {
     overworld_ascending_frames(gFieldEffectObjectPic_CaveDust, 2, 2),
 };
+
+static const union AnimCmd sAnim_CaveDust[] =
+{
+    ANIMCMD_FRAME(0, 3),
+    ANIMCMD_FRAME(1, 3),
+    ANIMCMD_FRAME(2, 3),
+    ANIMCMD_FRAME(3, 3),
+    ANIMCMD_FRAME(4, 3),
+    ANIMCMD_FRAME(5, 3),
+    ANIMCMD_FRAME(6, 3),
+    ANIMCMD_FRAME(7, 3),
+    ANIMCMD_FRAME(8, 3),
+    ANIMCMD_FRAME(9, 3),
+    ANIMCMD_FRAME(10, 3),
+    ANIMCMD_FRAME(11, 3),
+    ANIMCMD_FRAME(12, 3),
+    ANIMCMD_FRAME(13, 3),
+    ANIMCMD_FRAME(14, 3),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_CaveDust[] =
+{
+    sAnim_CaveDust,
+};
+
 const struct SpriteTemplate gFieldEffectObjectTemplate_CaveDust = {
-    .tileTag = 0xFFFF,
+    .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_CAVE_DUST,
     .oam = &gObjectEventBaseOam_16x16,
-    .anims = sAnimTable_WaterSurfacing,
+    .anims = sAnimTable_CaveDust,
     .images = sPicTable_CaveDust,
     .callback = WaitFieldEffectSpriteAnim,
 };
 
 const struct SpritePalette gSpritePalette_CaveDust = {gFieldEffectObjectPalette_CaveDust, FLDEFF_PAL_TAG_CAVE_DUST};
+
 static const struct SpriteFrameImage sPicTable_RockClimbBlob[] = {
     overworld_frame(gFieldEffectObjectPic_RockClimbBlob, 4, 4, 1),
     overworld_frame(gFieldEffectObjectPic_RockClimbBlob, 4, 4, 0),

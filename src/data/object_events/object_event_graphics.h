@@ -258,7 +258,7 @@ const u16 gObjectEventPal_StrangeBall[] = INCGFX_U16("graphics/object_events/pic
 #endif //OW_FOLLOWERS_POKEBALLS
 
 const u32 gFieldEffectObjectPic_CaveDust[] = INCGFX_U32("graphics/field_effects/pics/cave_dust.png", ".4bpp");
-const u16 gFieldEffectObjectPalette_CaveDust[] = INCGFX_U16("graphics/field_effects/palettes/cave_dust.pal", ".gbapal");
+const u16 gFieldEffectObjectPalette_CaveDust[] = INCGFX_U16("graphics/field_effects/pics/cave_dust.png", ".gbapal");
 
 const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pics/misc/apricorn_tree.png", ".4bpp", "-mwidth 2 -mheight 2");
 
