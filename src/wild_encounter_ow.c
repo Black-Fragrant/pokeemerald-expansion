@@ -469,6 +469,19 @@ static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y)
         timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
         wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
     }
+    else if (MetatileBehavior_IsTallGrassDark(metatileBehavior))
+    {
+        wildArea = WILD_AREA_DARK_LAND;
+        timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
+        wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].darkGrassMonsInfo;
+
+        if (wildMonInfo == NULL)
+        {
+            wildArea = WILD_AREA_LAND;
+            timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
+            wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
+        }
+    }
     else
     {
         wildArea = WILD_AREA_LAND;

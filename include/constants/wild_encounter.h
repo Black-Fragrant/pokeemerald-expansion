@@ -1,7 +1,8 @@
 #ifndef GUARD_CONSTANTS_WILD_ENCOUNTER_H
 #define GUARD_CONSTANTS_WILD_ENCOUNTER_H
 
-#define LAND_WILD_COUNT     12
+#define LAND_WILD_COUNT         12
+#define DARK_LAND_WILD_COUNT    LAND_WILD_COUNT
 
 // Ordinary Surf encounters use slots 0-4.
 #define WATER_WILD_COUNT            5
@@ -20,7 +21,7 @@
 #define FISH_NORMAL_WILD_COUNT      5
 #define FISH_SPECIAL_WILD_COUNT     5
 #define FISH_SPECIAL_WILD_START     FISH_NORMAL_WILD_COUNT
-#define HIDDEN_WILD_COUNT   3
+#define HIDDEN_WILD_COUNT           3
 
 #define NUM_ALTERING_CAVE_TABLES 9
 
