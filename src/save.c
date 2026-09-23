@@ -13,6 +13,18 @@
 #include "link.h"
 #include "constants/game_stat.h"
 
+enum FireBlackIncrementalSaveState
+{
+    FIRE_BLACK_INCREMENTAL_SAVE_ERASE_SPECIAL,
+    FIRE_BLACK_INCREMENTAL_SAVE_WRITE_SECTORS,
+    FIRE_BLACK_INCREMENTAL_SAVE_REPLACE_LAST,
+    FIRE_BLACK_INCREMENTAL_SAVE_SET_SIGNATURE,
+};
+
+static u8 sFireBlackIncrementalSaveState;
+static u8 sFireBlackIncrementalEraseSector;
+static u32 *sFireBlackTrainerHillVBlankCounterBackup;
+
 static u16 CalculateChecksum(void *, u16);
 static bool8 ReadFlashSector(u8, struct SaveSector *);
 static u8 GetSaveValidStatus(const struct SaveSectorLocation *);
@@ -802,6 +814,102 @@ u8 TrySavingData(u8 saveType)
         gSaveAttemptStatus = SAVE_STATUS_ERROR;
         return SAVE_STATUS_ERROR;
     }
+}
+
+static u8 FinishFireBlackSave(u8 status)
+{
+    gTrainerHillVBlankCounter = sFireBlackTrainerHillVBlankCounterBackup;
+    gSoftResetDisabled = FALSE;
+    gSaveAttemptStatus = status;
+
+    if (status == SAVE_STATUS_OK)
+        return FIRE_BLACK_SAVE_STEP_SUCCESS;
+
+    return FIRE_BLACK_SAVE_STEP_ERROR;
+}
+
+u8 FireBlackSave_Begin(u8 saveType)
+{
+    if (gFlashMemoryPresent != TRUE)
+    {
+        gSaveAttemptStatus = SAVE_STATUS_ERROR;
+        return FIRE_BLACK_SAVE_STEP_ERROR;
+    }
+
+    gSoftResetDisabled = TRUE;
+
+    sFireBlackTrainerHillVBlankCounterBackup = gTrainerHillVBlankCounter;
+    gTrainerHillVBlankCounter = NULL;
+
+    UpdateSaveAddresses();
+    CopyPartyAndObjectsToSave();
+
+    if (saveType == SAVE_OVERWRITE_DIFFERENT_FILE)
+    {
+        sFireBlackIncrementalEraseSector = SECTOR_ID_HOF_1;
+        sFireBlackIncrementalSaveState = FIRE_BLACK_INCREMENTAL_SAVE_ERASE_SPECIAL;
+    }
+    else
+    {
+        RestoreSaveBackupVarsAndIncrement(gRamSaveSectorLocations);
+        sFireBlackIncrementalSaveState = FIRE_BLACK_INCREMENTAL_SAVE_WRITE_SECTORS;
+    }
+
+    return FIRE_BLACK_SAVE_STEP_IN_PROGRESS;
+}
+
+u8 FireBlackSave_Step(void)
+{
+    switch (sFireBlackIncrementalSaveState)
+    {
+    case FIRE_BLACK_INCREMENTAL_SAVE_ERASE_SPECIAL:
+        EraseFlashSector(sFireBlackIncrementalEraseSector++);
+
+        if (sFireBlackIncrementalEraseSector >= SECTORS_COUNT)
+        {
+            RestoreSaveBackupVarsAndIncrement(gRamSaveSectorLocations);
+            sFireBlackIncrementalSaveState = FIRE_BLACK_INCREMENTAL_SAVE_WRITE_SECTORS;
+        }
+        break;
+
+    case FIRE_BLACK_INCREMENTAL_SAVE_WRITE_SECTORS:
+        if (gIncrementalSectorId < NUM_SECTORS_PER_SLOT - 1)
+        {
+            HandleWriteSector(gIncrementalSectorId, gRamSaveSectorLocations);
+            gIncrementalSectorId++;
+
+            if (gDamagedSaveSectors)
+            {
+                gLastWrittenSector = gLastKnownGoodSector;
+                gSaveCounter = gLastSaveCounter;
+                return FinishFireBlackSave(SAVE_STATUS_ERROR);
+            }
+        }
+        else
+        {
+            sFireBlackIncrementalSaveState = FIRE_BLACK_INCREMENTAL_SAVE_REPLACE_LAST;
+        }
+        break;
+
+    case FIRE_BLACK_INCREMENTAL_SAVE_REPLACE_LAST:
+        HandleReplaceSectorAndVerify(NUM_SECTORS_PER_SLOT, gRamSaveSectorLocations);
+
+        if (gDamagedSaveSectors)
+            return FinishFireBlackSave(SAVE_STATUS_ERROR);
+
+        sFireBlackIncrementalSaveState = FIRE_BLACK_INCREMENTAL_SAVE_SET_SIGNATURE;
+        break;
+
+    case FIRE_BLACK_INCREMENTAL_SAVE_SET_SIGNATURE:
+        CopySectorSignatureByte(NUM_SECTORS_PER_SLOT, gRamSaveSectorLocations);
+
+        if (gDamagedSaveSectors)
+            return FinishFireBlackSave(SAVE_STATUS_ERROR);
+
+        return FinishFireBlackSave(SAVE_STATUS_OK);
+    }
+
+    return FIRE_BLACK_SAVE_STEP_IN_PROGRESS;
 }
 
 bool8 LinkFullSave_Init(void)

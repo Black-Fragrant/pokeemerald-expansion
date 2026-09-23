@@ -1595,6 +1595,7 @@ enum Gender GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_MAY_ACRO_BIKE:
     case OBJ_EVENT_GFX_MAY_SURFING:
     case OBJ_EVENT_GFX_MAY_FIELD_MOVE:
+    case OBJ_EVENT_GFX_MAY_SAVING:
     case OBJ_EVENT_GFX_MAY_UNDERWATER:
     case OBJ_EVENT_GFX_MAY_FISHING:
     case OBJ_EVENT_GFX_MAY_WATERING:
@@ -1740,6 +1741,16 @@ void SetPlayerAvatarFieldMove(void)
     EndORASDowsing();
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FIELD_MOVE));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], ANIM_FIELD_MOVE);
+}
+
+void SetPlayerAvatarSaving(void)
+{
+    EndORASDowsing();
+    ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId],
+                             gPlayerAvatar.gender == MALE
+                                 ? PLAYER_AVATAR_GFX_MALE_SAVING
+                                 : PLAYER_AVATAR_GFX_FEMALE_SAVING);
+    StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], 0);
 }
 
 void SetPlayerAvatarFishing(enum Direction direction)

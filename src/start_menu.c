@@ -51,6 +51,10 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "map_name_popup.h"
+#include "malloc.h"
+
+void HideMapNamePopUpWindow(void);
 
 // Menu actions
 enum
@@ -81,6 +85,15 @@ enum
     SAVE_ERROR
 };
 
+enum FireBlackStartMenuSaveState
+{
+    FIRE_BLACK_SAVE_IDLE,
+    FIRE_BLACK_SAVE_PLAYER_ANIM,
+    FIRE_BLACK_SAVE_WRITE,
+    FIRE_BLACK_SAVE_WAIT_SE,
+    FIRE_BLACK_SAVE_WAIT_UNLOCK,
+};
+
 // IWRAM common
 COMMON_DATA bool8 (*gMenuCallback)(void) = NULL;
 
@@ -96,6 +109,24 @@ EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
+
+EWRAM_DATA static u16 sStartMenuBg0Backup[32 * 32] = {0};
+EWRAM_DATA static bool8 sStartMenuBg0BackupValid = FALSE;
+EWRAM_DATA static u8 sStartMenuBg0PaletteModeBackup = 0;
+EWRAM_DATA static u16 sStartMenuBg0CntBackup = 0;
+EWRAM_DATA static u8 *sStartMenuBg0GfxBackup = NULL;
+EWRAM_DATA static bool8 sStartMenuClosing = FALSE;
+EWRAM_DATA static bool8 sStartMenuReturningFromInterface = FALSE;
+
+EWRAM_DATA static u8 sStartMenuSaveState = FIRE_BLACK_SAVE_IDLE;
+EWRAM_DATA static u8 sStartMenuSaveThrobberFrame = 0;
+EWRAM_DATA static u8 sStartMenuSaveThrobberTimer = 0;
+EWRAM_DATA static u8 sStartMenuSaveUnlockTimer = 0;
+EWRAM_DATA static u8 sStartMenuSaveOriginalDirection = 0;
+EWRAM_DATA static u16 sStartMenuSaveOriginalGfxId = 0;
+EWRAM_DATA static u8 sStartMenuSavePlayerFrame = 0;
+EWRAM_DATA static u8 sStartMenuSavePlayerTimer = 0;
+EWRAM_DATA static u8 sStartMenuSaveWriteTimer = 0;
 
 // Menu action callbacks
 static bool8 StartMenuPokedexCallback(void);
@@ -145,6 +176,24 @@ static void SaveGameTask(u8 taskId);
 static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
+
+static bool32 BackupFireBlackStartMenuBg(void);
+static void RestoreFireBlackStartMenuBg(void);
+static void LoadFireBlackStartMenuBar(void);
+static void DrawFireBlackStartMenuBarFrame(u8 x, u8 y, u8 frame);
+static void DrawFireBlackStartMenuBars(void);
+static void LoadFireBlackStartMenuInactive(void);
+static void BuildFireBlackStartMenuVisibleOptions(void);
+static bool32 DrawFireBlackStartMenuFlyIn(void);
+static void CopyFireBlackStartMenu8bppTiles(const u8 *src, u32 size, u16 baseTile);
+static void CopyFireBlackStartMenu8bppTile(const u8 *src, u16 tile);
+static void LoadFireBlackStartMenuSaveThrobberChunk(u8 destFrame, u8 srcChunk);
+static void StartFireBlackStartMenuSaveThrobber(void);
+static void UpdateFireBlackStartMenuSaveThrobber(void);
+static void RestoreFireBlackStartMenuSaveGraphic(void);
+static void StartFireBlackStartMenuSave(void);
+static void UpdateFireBlackStartMenuSave(void);
+static bool32 CanFireBlackStartMenuSave(void);
 
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
@@ -246,6 +295,322 @@ static const struct WindowTemplate sSaveInfoWindowTemplate = {
     .baseBlock = 8
 };
 
+//------------------------------------------------------------------------------
+// Fire Black Start Menu Graphics
+//------------------------------------------------------------------------------
+
+static const u32 sStartMenuBar_Gfx[] = INCBIN_U32("graphics/start_menu/bar.8bpp");
+static const u32 sStartMenuOptionsInactive_Gfx[] = INCBIN_U32("graphics/start_menu/options_inactive.8bpp");
+static const u32 sStartMenuOptionsActive_Gfx[] = INCBIN_U32("graphics/start_menu/options_active.8bpp");
+static const u32 sStartMenuSaveThrobber_Gfx[] = INCBIN_U32("graphics/start_menu/save_throbber.8bpp");
+static const u16 sStartMenu_Pal[] = INCBIN_U16("graphics/start_menu/palette.gbapal");
+
+//------------------------------------------------------------------------------
+// Start Menu bar frames
+//------------------------------------------------------------------------------
+
+enum StartMenuBarFrame
+{
+    START_MENU_BAR_PADDING = 0,
+    START_MENU_BAR_TOP_BODY = 1,
+    START_MENU_BAR_DIGIT_1 = 2,
+    START_MENU_BAR_DIGIT_2 = 3,
+    START_MENU_BAR_DIGIT_3 = 4,
+    START_MENU_BAR_DIGIT_4 = 5,
+    START_MENU_BAR_DIGIT_5 = 6,
+    START_MENU_BAR_DIGIT_6 = 7,
+    START_MENU_BAR_DIGIT_7 = 8,
+    START_MENU_BAR_DIGIT_8 = 9,
+    START_MENU_BAR_DIGIT_9 = 10,
+    START_MENU_BAR_DIGIT_0 = 11,
+    START_MENU_BAR_COLON = 12,
+    START_MENU_BAR_SPRING_0 = 13,
+    START_MENU_BAR_SPRING_1 = 14,
+    START_MENU_BAR_SPRING_2 = 15,
+    START_MENU_BAR_SPRING_3 = 16,
+    START_MENU_BAR_SPRING_4 = 17,
+    START_MENU_BAR_SUMMER_0 = 18,
+    START_MENU_BAR_SUMMER_1 = 19,
+    START_MENU_BAR_SUMMER_2 = 20,
+    START_MENU_BAR_SUMMER_3 = 21,
+    START_MENU_BAR_SUMMER_4 = 22,
+    START_MENU_BAR_AUTUMN_0 = 23,
+    START_MENU_BAR_AUTUMN_1 = 24,
+    START_MENU_BAR_AUTUMN_2 = 25,
+    START_MENU_BAR_AUTUMN_3 = 26,
+    START_MENU_BAR_AUTUMN_4 = 27,
+    START_MENU_BAR_WINTER_0 = 28,
+    START_MENU_BAR_WINTER_1 = 29,
+    START_MENU_BAR_WINTER_2 = 30,
+    START_MENU_BAR_WINTER_3 = 31,
+    START_MENU_BAR_WINTER_4 = 32,
+    START_MENU_BAR_SUNNY_0 = 33,
+    START_MENU_BAR_SUNNY_1 = 34,
+    START_MENU_BAR_RAIN_0 = 35,
+    START_MENU_BAR_RAIN_1 = 36,
+    START_MENU_BAR_SANDSTORM_0 = 37,
+    START_MENU_BAR_SANDSTORM_1 = 38,
+    START_MENU_BAR_HAIL_0 = 39,
+    START_MENU_BAR_HAIL_1 = 40,
+    START_MENU_BAR_TOP_TAIL_0 = 41,
+    START_MENU_BAR_TOP_TAIL_1 = 42,
+    START_MENU_BAR_BOTTOM_TAIL_0 = 43,
+    START_MENU_BAR_BOTTOM_TAIL_1 = 44,
+    START_MENU_BAR_BOTTOM_BODY = 45,
+    START_MENU_BAR_SAVE_0 = 46,
+    START_MENU_BAR_SAVE_1 = 47,
+    START_MENU_BAR_SAVE_2 = 48,
+    START_MENU_BAR_SAVE_3 = 49,
+    START_MENU_BAR_SAVE_4 = 50,
+    START_MENU_BAR_FRAME_COUNT = 51,
+};
+
+enum StartMenuPaletteBank
+{
+    START_MENU_PAL_BAR,
+    START_MENU_PAL_INACTIVE_A,
+    START_MENU_PAL_INACTIVE_B,
+    START_MENU_PAL_ACTIVE_A,
+    START_MENU_PAL_ACTIVE_B,
+    START_MENU_PAL_COUNT
+};
+
+#define START_MENU_BAR_TOP_TILE(frame)    (frame)
+#define START_MENU_BAR_BOTTOM_TILE(frame) ((frame) + START_MENU_BAR_FRAME_COUNT)
+
+#define START_MENU_SCREEN_WIDTH_TILES   30
+#define START_MENU_SCREEN_HEIGHT_TILES  20
+#define START_MENU_TOP_BAR_X            0
+#define START_MENU_TOP_BAR_Y            0
+#define START_MENU_TOP_BAR_WIDTH        17
+#define START_MENU_BOTTOM_BAR_X         14
+#define START_MENU_BOTTOM_BAR_Y         18
+#define START_MENU_BOTTOM_BAR_WIDTH     16
+
+#define START_MENU_TOP_BODY_1_X         0
+#define START_MENU_HOUR_TENS_X          1
+#define START_MENU_HOUR_ONES_X          2
+#define START_MENU_COLON_X              3
+#define START_MENU_MINUTE_TENS_X        4
+#define START_MENU_MINUTE_ONES_X        5
+#define START_MENU_TOP_BODY_2_X         6
+#define START_MENU_SEASON_X             7
+#define START_MENU_SEASON_WIDTH         5
+#define START_MENU_TOP_BODY_3_X         12
+#define START_MENU_WEATHER_X            13
+#define START_MENU_WEATHER_WIDTH        2
+#define START_MENU_TOP_TAIL_X           15
+#define START_MENU_TOP_TAIL_WIDTH       2
+
+#define START_MENU_BOTTOM_TAIL_X        14
+#define START_MENU_BOTTOM_TAIL_WIDTH    2
+#define START_MENU_BOTTOM_BODY_X        16
+#define START_MENU_BOTTOM_BODY_WIDTH    8
+#define START_MENU_SAVE_X               24
+#define START_MENU_SAVE_WIDTH           5
+#define START_MENU_BOTTOM_END_BODY_X    29
+
+#define START_MENU_BG 0
+#define START_MENU_PALETTE_OFFSET BG_PLTT_ID(13)
+#define START_MENU_PALETTE_INDEX_OFFSET 208
+#define START_MENU_BAR_BASE_TILE 0x20
+#define START_MENU_BAR_TILE_COUNT (START_MENU_BAR_FRAME_COUNT * 2)
+#define START_MENU_INACTIVE_BASE_TILE (START_MENU_BAR_BASE_TILE + START_MENU_BAR_TILE_COUNT)
+#define START_MENU_INACTIVE_TILE_COUNT (START_MENU_OPTION_COUNT * START_MENU_OPTION_FRAME_TILES)
+#define START_MENU_GFX_BACKUP_TILE_COUNT (START_MENU_BAR_TILE_COUNT + START_MENU_INACTIVE_TILE_COUNT)
+#define START_MENU_GFX_BACKUP_SIZE (START_MENU_GFX_BACKUP_TILE_COUNT * 64)
+#define START_MENU_OPTIONS_X 0
+#define START_MENU_OPTIONS_Y 2
+
+#define START_MENU_FLYIN_DISTANCE START_MENU_OPTION_WIDTH_TILES
+#define START_MENU_FLYIN_SPEED 2
+#define START_MENU_FLYIN_STAGGER 2
+#define START_MENU_FLYIN_MOVE_FRAMES ((START_MENU_FLYIN_DISTANCE + START_MENU_FLYIN_SPEED - 1) / START_MENU_FLYIN_SPEED)
+
+#define START_MENU_SAVE_THROBBER_CHUNKS 12
+#define START_MENU_SAVE_THROBBER_FRAMES 8
+#define START_MENU_SAVE_THROBBER_DELAY 4
+
+static const u8 sStartMenuBottomBarFrames[START_MENU_BOTTOM_BAR_WIDTH] =
+{
+    START_MENU_BAR_BOTTOM_TAIL_0,
+    START_MENU_BAR_BOTTOM_TAIL_1,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_BOTTOM_BODY,
+    START_MENU_BAR_SAVE_0,
+    START_MENU_BAR_SAVE_1,
+    START_MENU_BAR_SAVE_2,
+    START_MENU_BAR_SAVE_3,
+    START_MENU_BAR_SAVE_4,
+    START_MENU_BAR_BOTTOM_BODY,
+};
+
+static const u8 sStartMenuDigitFrames[10] =
+{
+    [0] = START_MENU_BAR_DIGIT_0,
+    [1] = START_MENU_BAR_DIGIT_1,
+    [2] = START_MENU_BAR_DIGIT_2,
+    [3] = START_MENU_BAR_DIGIT_3,
+    [4] = START_MENU_BAR_DIGIT_4,
+    [5] = START_MENU_BAR_DIGIT_5,
+    [6] = START_MENU_BAR_DIGIT_6,
+    [7] = START_MENU_BAR_DIGIT_7,
+    [8] = START_MENU_BAR_DIGIT_8,
+    [9] = START_MENU_BAR_DIGIT_9,
+};
+
+static const u8 sStartMenuSeasonFrames[4][5] =
+{
+    {
+        START_MENU_BAR_SPRING_0,
+        START_MENU_BAR_SPRING_1,
+        START_MENU_BAR_SPRING_2,
+        START_MENU_BAR_SPRING_3,
+        START_MENU_BAR_SPRING_4,
+    },
+    {
+        START_MENU_BAR_SUMMER_0,
+        START_MENU_BAR_SUMMER_1,
+        START_MENU_BAR_SUMMER_2,
+        START_MENU_BAR_SUMMER_3,
+        START_MENU_BAR_SUMMER_4,
+    },
+    {
+        START_MENU_BAR_AUTUMN_0,
+        START_MENU_BAR_AUTUMN_1,
+        START_MENU_BAR_AUTUMN_2,
+        START_MENU_BAR_AUTUMN_3,
+        START_MENU_BAR_AUTUMN_4,
+    },
+    {
+        START_MENU_BAR_WINTER_0,
+        START_MENU_BAR_WINTER_1,
+        START_MENU_BAR_WINTER_2,
+        START_MENU_BAR_WINTER_3,
+        START_MENU_BAR_WINTER_4,
+    },
+};
+
+static const u8 sStartMenuWeatherFrames[4][2] =
+{
+    {START_MENU_BAR_SUNNY_0,     START_MENU_BAR_SUNNY_1},
+    {START_MENU_BAR_RAIN_0,      START_MENU_BAR_RAIN_1},
+    {START_MENU_BAR_SANDSTORM_0, START_MENU_BAR_SANDSTORM_1},
+    {START_MENU_BAR_HAIL_0,      START_MENU_BAR_HAIL_1},
+};
+
+//------------------------------------------------------------------------------
+// Fire Black Start Menu options
+//------------------------------------------------------------------------------
+
+#define START_MENU_FLAG_ALWAYS 0
+
+#define START_MENU_OPTION_WIDTH_TILES   13
+#define START_MENU_OPTION_HEIGHT_TILES  3
+#define START_MENU_OPTION_FRAME_TILES   \
+    (START_MENU_OPTION_WIDTH_TILES * START_MENU_OPTION_HEIGHT_TILES)
+
+enum StartMenuOptionId
+{
+    START_MENU_OPTION_POKEDEX,
+    START_MENU_OPTION_POKEMON,
+    START_MENU_OPTION_BAG,
+    START_MENU_OPTION_CARD,
+    START_MENU_OPTION_CGEAR,
+    START_MENU_OPTION_SETTINGS,
+
+    START_MENU_OPTION_COUNT,
+};
+
+EWRAM_DATA static u8 sStartMenuLastOption = START_MENU_OPTION_POKEDEX;
+EWRAM_DATA static u8 sStartMenuVisibleOptions[START_MENU_OPTION_COUNT] = {0};
+EWRAM_DATA static u8 sStartMenuVisibleOptionCount = 0;
+EWRAM_DATA static u8 sStartMenuFlyInFrame = 0;
+
+enum StartMenuOptionFrame
+{
+    START_MENU_OPTION_FRAME_POKEDEX = 0,
+    START_MENU_OPTION_FRAME_POKEMON,
+    START_MENU_OPTION_FRAME_BAG,
+    START_MENU_OPTION_FRAME_CARD,
+    START_MENU_OPTION_FRAME_CGEAR,
+    START_MENU_OPTION_FRAME_SETTINGS,
+    START_MENU_OPTION_FRAME_COUNT,
+};
+
+struct StartMenuOptionInfo
+{
+    // 0 means this option is always available.
+    u16 flag;
+
+    // Existing vanilla MENU_ACTION_* entry.
+    u8 action;
+
+    // 13x3 frame in both the inactive and active graphics sheets.
+    u8 frame;
+};
+
+static const struct StartMenuOptionInfo sStartMenuOptions[START_MENU_OPTION_COUNT] =
+{
+    [START_MENU_OPTION_POKEDEX] =
+    {
+        .flag = FLAG_SYS_POKEDEX_GET,
+        .action = MENU_ACTION_POKEDEX,
+        .frame = START_MENU_OPTION_FRAME_POKEDEX,
+    },
+
+    [START_MENU_OPTION_POKEMON] =
+    {
+        .flag = FLAG_SYS_POKEMON_GET,
+        .action = MENU_ACTION_POKEMON,
+        .frame = START_MENU_OPTION_FRAME_POKEMON,
+    },
+
+    [START_MENU_OPTION_BAG] =
+    {
+        .flag = START_MENU_FLAG_ALWAYS,
+        .action = MENU_ACTION_BAG,
+        .frame = START_MENU_OPTION_FRAME_BAG,
+    },
+
+    [START_MENU_OPTION_CARD] =
+    {
+        .flag = START_MENU_FLAG_ALWAYS,
+        .action = MENU_ACTION_PLAYER,
+        .frame = START_MENU_OPTION_FRAME_CARD,
+    },
+
+    [START_MENU_OPTION_CGEAR] =
+    {
+        .flag = FLAG_SYS_POKENAV_GET,
+        .action = MENU_ACTION_POKENAV,
+        .frame = START_MENU_OPTION_FRAME_CGEAR,
+    },
+
+    [START_MENU_OPTION_SETTINGS] =
+    {
+        .flag = START_MENU_FLAG_ALWAYS,
+        .action = MENU_ACTION_OPTION,
+        .frame = START_MENU_OPTION_FRAME_SETTINGS,
+    },
+};
+
+static bool32 IsStartMenuOptionUnlocked(enum StartMenuOptionId optionId)
+{
+    const struct StartMenuOptionInfo *option = &sStartMenuOptions[optionId];
+
+    if (option->flag == START_MENU_FLAG_ALWAYS)
+        return TRUE;
+
+    return FlagGet(option->flag);
+}
+
 // Local functions
 static void BuildStartMenuActions(void);
 static void AddStartMenuAction(u8 action);
@@ -280,6 +645,9 @@ static void ShowSaveInfoWindow(void);
 static void RemoveSaveInfoWindow(void);
 static void HideStartMenuWindow(void);
 static void HideStartMenuDebug(void);
+static void LoadFireBlackStartMenuInactiveFrame(u8 option);
+static void LoadFireBlackStartMenuActive(u8 option);
+static void RestoreFireBlackStartMenuCursor(void);
 
 static void BuildStartMenuActions(void)
 {
@@ -512,40 +880,525 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
     return FALSE;
 }
 
+static bool32 BackupFireBlackStartMenuBg(void)
+{
+    u16 *tilemap = GetBgTilemapBuffer(START_MENU_BG);
+    u8 *gfx = (u8 *)BG_CHAR_ADDR(GetBgAttribute(START_MENU_BG, BG_ATTR_CHARBASEINDEX)) + START_MENU_BAR_BASE_TILE * 64;
+
+    if (sStartMenuBg0GfxBackup == NULL)
+        sStartMenuBg0GfxBackup = Alloc(START_MENU_GFX_BACKUP_SIZE);
+    if (sStartMenuBg0GfxBackup == NULL)
+        return FALSE;
+
+    sStartMenuBg0BackupValid = FALSE;
+    if (tilemap != NULL)
+    {
+        CpuCopy16(tilemap, sStartMenuBg0Backup, sizeof(sStartMenuBg0Backup));
+        sStartMenuBg0BackupValid = TRUE;
+    }
+
+    DmaCopy16(3, gfx, sStartMenuBg0GfxBackup, START_MENU_GFX_BACKUP_SIZE);
+
+    sStartMenuBg0PaletteModeBackup = GetBgAttribute(START_MENU_BG, BG_ATTR_PALETTEMODE);
+    sStartMenuBg0CntBackup = GetGpuReg(REG_OFFSET_BG0CNT);
+    return TRUE;
+}
+
+static void RestoreFireBlackStartMenuBg(void)
+{
+    u16 *tilemap = GetBgTilemapBuffer(START_MENU_BG);
+    u8 *gfx = (u8 *)BG_CHAR_ADDR(GetBgAttribute(START_MENU_BG, BG_ATTR_CHARBASEINDEX)) + START_MENU_BAR_BASE_TILE * 64;
+    u16 mapBase = GetBgAttribute(START_MENU_BG, BG_ATTR_MAPBASEINDEX);
+
+    HideBg(START_MENU_BG);
+    ClearScheduledBgCopiesToVram();
+
+    if (sStartMenuBg0GfxBackup != NULL)
+    {
+        DmaCopy16(3, sStartMenuBg0GfxBackup, gfx, START_MENU_GFX_BACKUP_SIZE);
+        Free(sStartMenuBg0GfxBackup);
+        sStartMenuBg0GfxBackup = NULL;
+    }
+
+    if (sStartMenuBg0BackupValid && tilemap != NULL)
+    {
+        CpuCopy16(sStartMenuBg0Backup, tilemap, sizeof(sStartMenuBg0Backup));
+        DmaCopy16(3, sStartMenuBg0Backup, BG_SCREEN_ADDR(mapBase), sizeof(sStartMenuBg0Backup));
+    }
+
+    SetBgAttribute(START_MENU_BG, BG_ATTR_PALETTEMODE, sStartMenuBg0PaletteModeBackup);
+    SetGpuReg(REG_OFFSET_BG0CNT, sStartMenuBg0CntBackup);
+
+    ClearScheduledBgCopiesToVram();
+    ShowBg(START_MENU_BG);
+    sStartMenuBg0BackupValid = FALSE;
+}
+
+static void CopyFireBlackStartMenu8bppTiles(const u8 *src, u32 size, u16 baseTile)
+{
+    u16 tileData[32];
+    u8 *tileBytes = (u8 *)tileData;
+    u8 *dst = (u8 *)BG_CHAR_ADDR(GetBgAttribute(START_MENU_BG, BG_ATTR_CHARBASEINDEX)) + baseTile * 64;
+    u32 tile, pixel, tileCount = size / 64;
+
+    for (tile = 0; tile < tileCount; tile++)
+    {
+        for (pixel = 0; pixel < 64; pixel++)
+        {
+            u8 color = src[tile * 64 + pixel];
+            tileBytes[pixel] = color == 0 ? 0 : START_MENU_PALETTE_INDEX_OFFSET + color;
+        }
+        DmaCopy16(3, tileData, dst + tile * 64, 64);
+    }
+}
+
+static void CopyFireBlackStartMenu8bppTile(const u8 *src, u16 tile)
+{
+    u16 tileData[32];
+    u8 *tileBytes = (u8 *)tileData;
+    u8 *dst = (u8 *)BG_CHAR_ADDR(GetBgAttribute(START_MENU_BG, BG_ATTR_CHARBASEINDEX)) + tile * 64;
+    u32 pixel;
+
+    for (pixel = 0; pixel < 64; pixel++)
+    {
+        u8 color = src[pixel];
+        tileBytes[pixel] = color == 0 ? 0 : START_MENU_PALETTE_INDEX_OFFSET + color;
+    }
+
+    DmaCopy16(3, tileData, dst, 64);
+}
+
+static void LoadFireBlackStartMenuSaveThrobberChunk(u8 destFrame, u8 srcChunk)
+{
+    const u8 *src = (const u8 *)sStartMenuSaveThrobber_Gfx;
+    CopyFireBlackStartMenu8bppTile(src + srcChunk * 64, START_MENU_BAR_BASE_TILE + START_MENU_BAR_TOP_TILE(destFrame));
+    CopyFireBlackStartMenu8bppTile(src + (START_MENU_SAVE_THROBBER_CHUNKS + srcChunk) * 64, START_MENU_BAR_BASE_TILE + START_MENU_BAR_BOTTOM_TILE(destFrame));
+}
+
+static void StartFireBlackStartMenuSaveThrobber(void)
+{
+    u8 i;
+
+    for (i = 0; i < 4; i++)
+        LoadFireBlackStartMenuSaveThrobberChunk(START_MENU_BAR_SAVE_0 + i, i);
+
+    sStartMenuSaveThrobberFrame = 0;
+    sStartMenuSaveThrobberTimer = 0;
+    LoadFireBlackStartMenuSaveThrobberChunk(START_MENU_BAR_SAVE_4, 4);
+}
+
+static void UpdateFireBlackStartMenuSaveThrobber(void)
+{
+    if (++sStartMenuSaveThrobberTimer >= START_MENU_SAVE_THROBBER_DELAY)
+    {
+        sStartMenuSaveThrobberTimer = 0;
+        sStartMenuSaveThrobberFrame++;
+        if (sStartMenuSaveThrobberFrame >= START_MENU_SAVE_THROBBER_FRAMES)
+            sStartMenuSaveThrobberFrame = 0;
+
+        LoadFireBlackStartMenuSaveThrobberChunk(START_MENU_BAR_SAVE_4, 4 + sStartMenuSaveThrobberFrame);
+    }
+}
+
+static void RestoreFireBlackStartMenuSaveGraphic(void)
+{
+    const u8 *src = (const u8 *)sStartMenuBar_Gfx;
+    u8 i;
+
+    for (i = 0; i < START_MENU_SAVE_WIDTH; i++)
+    {
+        u8 frame = START_MENU_BAR_SAVE_0 + i;
+        CopyFireBlackStartMenu8bppTile(src + START_MENU_BAR_TOP_TILE(frame) * 64, START_MENU_BAR_BASE_TILE + START_MENU_BAR_TOP_TILE(frame));
+        CopyFireBlackStartMenu8bppTile(src + START_MENU_BAR_BOTTOM_TILE(frame) * 64, START_MENU_BAR_BASE_TILE + START_MENU_BAR_BOTTOM_TILE(frame));
+    }
+}
+
+static bool32 CanFireBlackStartMenuSave(void)
+{
+    if (IsOverworldLinkActive())
+        return FALSE;
+    if (InUnionRoom())
+        return FALSE;
+    if (GetSafariZoneFlag())
+        return FALSE;
+    if (InBattlePike())
+        return FALSE;
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
+        return FALSE;
+    if (InMultiPartnerRoom())
+        return FALSE;
+    return TRUE;
+}
+
+static void StartFireBlackStartMenuSave(void)
+{
+    struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    struct Sprite *sprite = &gSprites[gPlayerAvatar.spriteId];
+
+    sStartMenuSaveOriginalGfxId = player->graphicsId;
+    sStartMenuSaveOriginalDirection = player->facingDirection;
+    sStartMenuSaveUnlockTimer = 0;
+    sStartMenuSavePlayerFrame = 0;
+    sStartMenuSavePlayerTimer = 0;
+
+    SetPlayerAvatarSaving();
+
+    sprite->animPaused = TRUE;
+    SeekSpriteAnim(sprite, 0);
+
+    sStartMenuSaveState = FIRE_BLACK_SAVE_PLAYER_ANIM;
+}
+
+static void UpdateFireBlackStartMenuSave(void)
+{
+    struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    struct Sprite *sprite = &gSprites[gPlayerAvatar.spriteId];
+
+    switch (sStartMenuSaveState)
+    {
+    case FIRE_BLACK_SAVE_PLAYER_ANIM:
+        sprite->animPaused = TRUE;
+
+        if (++sStartMenuSavePlayerTimer >= 4)
+        {
+            sStartMenuSavePlayerTimer = 0;
+            sStartMenuSavePlayerFrame++;
+
+            if (sStartMenuSavePlayerFrame < 3)
+            {
+                SeekSpriteAnim(sprite, sStartMenuSavePlayerFrame);
+            }
+            else
+            {
+                u8 saveType;
+                u8 result;
+
+                sStartMenuSavePlayerFrame = 2;
+                SeekSpriteAnim(sprite, 2);
+
+                StartFireBlackStartMenuSaveThrobber();
+                sStartMenuSaveWriteTimer = 0;
+
+                player->graphicsId = sStartMenuSaveOriginalGfxId;
+                SaveMapView();
+
+                IncrementGameStat(GAME_STAT_SAVED_GAME);
+                PausePyramidChallenge();
+
+                if (gDifferentSaveFile)
+                {
+                    saveType = SAVE_OVERWRITE_DIFFERENT_FILE;
+                    gDifferentSaveFile = FALSE;
+                }
+                else
+                {
+                    saveType = SAVE_NORMAL;
+                }
+
+                result = FireBlackSave_Begin(saveType);
+
+                if (result == FIRE_BLACK_SAVE_STEP_ERROR)
+                {
+                    RestoreFireBlackStartMenuSaveGraphic();
+                    ObjectEventSetGraphicsId(player, sStartMenuSaveOriginalGfxId);
+                    ObjectEventTurn(player, sStartMenuSaveOriginalDirection);
+                    sprite->animPaused = FALSE;
+                    sprite->x2 = 0;
+                    sprite->y2 = 0;
+                    PlaySE(SE_BOO);
+                    sStartMenuSaveState = FIRE_BLACK_SAVE_WAIT_SE;
+                }
+                else
+                {
+                    sStartMenuSaveState = FIRE_BLACK_SAVE_WRITE;
+                }
+            }
+        }
+        break;
+
+    case FIRE_BLACK_SAVE_WRITE:
+    {
+        u8 result;
+
+        UpdateFireBlackStartMenuSaveThrobber();
+
+        if (++sStartMenuSaveWriteTimer < START_MENU_SAVE_THROBBER_DELAY)
+            break;
+
+        sStartMenuSaveWriteTimer = 0;
+        result = FireBlackSave_Step();
+
+        if (result != FIRE_BLACK_SAVE_STEP_IN_PROGRESS)
+        {
+            RestoreFireBlackStartMenuSaveGraphic();
+
+            ObjectEventSetGraphicsId(player, sStartMenuSaveOriginalGfxId);
+            ObjectEventTurn(player, sStartMenuSaveOriginalDirection);
+
+            sprite->animPaused = FALSE;
+            sprite->x2 = 0;
+            sprite->y2 = 0;
+
+            if (result == FIRE_BLACK_SAVE_STEP_SUCCESS)
+                PlaySE(SE_SAVE);
+            else
+                PlaySE(SE_BOO);
+
+            sStartMenuSaveState = FIRE_BLACK_SAVE_WAIT_SE;
+        }
+        break;
+    }
+
+    case FIRE_BLACK_SAVE_WAIT_SE:
+        if (!IsSEPlaying())
+        {
+            sStartMenuSaveUnlockTimer = 0;
+            sStartMenuSaveState = FIRE_BLACK_SAVE_WAIT_UNLOCK;
+        }
+        break;
+
+    case FIRE_BLACK_SAVE_WAIT_UNLOCK:
+        if (++sStartMenuSaveUnlockTimer >= 2)
+            sStartMenuSaveState = FIRE_BLACK_SAVE_IDLE;
+        break;
+    }
+}
+
+static void LoadFireBlackStartMenuBar(void)
+{
+    SetBgAttribute(START_MENU_BG, BG_ATTR_PALETTEMODE, 1);
+    SetGpuRegBits(REG_OFFSET_BG0CNT, BGCNT_256COLOR);
+    LoadPalette(sStartMenu_Pal, START_MENU_PALETTE_OFFSET, 3 * PLTT_SIZE_4BPP);
+    CopyFireBlackStartMenu8bppTiles((const u8 *)sStartMenuBar_Gfx, sizeof(sStartMenuBar_Gfx), START_MENU_BAR_BASE_TILE);
+}
+
+static void LoadFireBlackStartMenuInactive(void)
+{
+    CopyFireBlackStartMenu8bppTiles((const u8 *)sStartMenuOptionsInactive_Gfx, sizeof(sStartMenuOptionsInactive_Gfx), START_MENU_INACTIVE_BASE_TILE);
+}
+
+static void LoadFireBlackStartMenuInactiveFrame(u8 option)
+{
+    u16 frameBase = sStartMenuOptions[option].frame * START_MENU_OPTION_FRAME_TILES;
+    const u8 *src = (const u8 *)sStartMenuOptionsInactive_Gfx + frameBase * 64;
+    CopyFireBlackStartMenu8bppTiles(src, START_MENU_OPTION_FRAME_TILES * 64, START_MENU_INACTIVE_BASE_TILE + frameBase);
+}
+
+static void LoadFireBlackStartMenuActive(u8 option)
+{
+    u16 frameBase = sStartMenuOptions[option].frame * START_MENU_OPTION_FRAME_TILES;
+    const u8 *src = (const u8 *)sStartMenuOptionsActive_Gfx + frameBase * 64;
+    CopyFireBlackStartMenu8bppTiles(src, START_MENU_OPTION_FRAME_TILES * 64, START_MENU_INACTIVE_BASE_TILE + frameBase);
+}
+
+static void DrawFireBlackStartMenuBarFrame(u8 x, u8 y, u8 frame)
+{
+    u16 *tilemap = GetBgTilemapBuffer(START_MENU_BG);
+    if (tilemap == NULL)
+        return;
+    tilemap[y * 32 + x] = START_MENU_BAR_BASE_TILE + START_MENU_BAR_TOP_TILE(frame);
+    tilemap[(y + 1) * 32 + x] = START_MENU_BAR_BASE_TILE + START_MENU_BAR_BOTTOM_TILE(frame);
+}
+
+static void DrawFireBlackStartMenuBars(void)
+{
+    u16 blankTile;
+    u8 i;
+
+    static const u8 sTopBarTestFrames[START_MENU_TOP_BAR_WIDTH] =
+    {
+        START_MENU_BAR_TOP_BODY,
+
+        // Temporary test time: 12:34
+        START_MENU_BAR_DIGIT_1,
+        START_MENU_BAR_DIGIT_2,
+        START_MENU_BAR_COLON,
+        START_MENU_BAR_DIGIT_3,
+        START_MENU_BAR_DIGIT_4,
+
+        START_MENU_BAR_TOP_BODY,
+
+        // Temporary test season: Spring
+        START_MENU_BAR_SPRING_0,
+        START_MENU_BAR_SPRING_1,
+        START_MENU_BAR_SPRING_2,
+        START_MENU_BAR_SPRING_3,
+        START_MENU_BAR_SPRING_4,
+
+        START_MENU_BAR_TOP_BODY,
+
+        // Temporary test weather: Sunny
+        START_MENU_BAR_SUNNY_0,
+        START_MENU_BAR_SUNNY_1,
+
+        START_MENU_BAR_TOP_TAIL_0,
+        START_MENU_BAR_TOP_TAIL_1,
+    };
+
+    blankTile =
+        START_MENU_BAR_BASE_TILE
+        + START_MENU_BAR_TOP_TILE(START_MENU_BAR_PADDING);
+
+    FillBgTilemapBufferRect(START_MENU_BG, blankTile, 0, 0, 32, 32, 0);
+    for (i = 0; i < START_MENU_TOP_BAR_WIDTH; i++)
+    {
+        DrawFireBlackStartMenuBarFrame(START_MENU_TOP_BAR_X + i, START_MENU_TOP_BAR_Y, sTopBarTestFrames[i]);
+    }
+
+    // Bottom-right bar.
+    for (i = 0; i < START_MENU_BOTTOM_BAR_WIDTH; i++)
+    {
+        DrawFireBlackStartMenuBarFrame(START_MENU_BOTTOM_BAR_X + i, START_MENU_BOTTOM_BAR_Y, sStartMenuBottomBarFrames[i]);
+    }
+
+    CopyBgTilemapBufferToVram(START_MENU_BG);
+}
+
+static void BuildFireBlackStartMenuVisibleOptions(void)
+{
+    u8 option;
+    sStartMenuVisibleOptionCount = 0;
+    for (option = 0; option < START_MENU_OPTION_COUNT; option++)
+        if (IsStartMenuOptionUnlocked(option))
+            sStartMenuVisibleOptions[sStartMenuVisibleOptionCount++] = option;
+}
+
+static void RestoreFireBlackStartMenuCursor(void)
+{
+    u8 slot;
+
+    sStartMenuCursorPos = 0;
+
+    for (slot = 0; slot < sStartMenuVisibleOptionCount; slot++)
+    {
+        if (sStartMenuVisibleOptions[slot] == sStartMenuLastOption)
+        {
+            sStartMenuCursorPos = slot;
+            return;
+        }
+    }
+
+    if (sStartMenuVisibleOptionCount != 0)
+        sStartMenuLastOption = sStartMenuVisibleOptions[0];
+}
+
+static bool32 DrawFireBlackStartMenuFlyIn(void)
+{
+    u16 *tilemap = GetBgTilemapBuffer(START_MENU_BG);
+    u16 blankTile = START_MENU_BAR_BASE_TILE + START_MENU_BAR_TOP_TILE(START_MENU_BAR_PADDING);
+    u8 slot, x, y, totalFrames = START_MENU_FLYIN_MOVE_FRAMES;
+
+    if (tilemap == NULL)
+        return TRUE;
+
+    FillBgTilemapBufferRect(START_MENU_BG, blankTile, START_MENU_OPTIONS_X, START_MENU_OPTIONS_Y, START_MENU_OPTION_WIDTH_TILES, START_MENU_OPTION_HEIGHT_TILES * START_MENU_OPTION_COUNT, 0);
+
+    if (sStartMenuVisibleOptionCount != 0)
+        totalFrames += (sStartMenuVisibleOptionCount - 1) * START_MENU_FLYIN_STAGGER;
+
+    for (slot = 0; slot < sStartMenuVisibleOptionCount; slot++)
+    {
+        s16 localFrame = sStartMenuFlyInFrame - slot * START_MENU_FLYIN_STAGGER;
+        s16 offset;
+        u8 option;
+        u16 frameBase;
+
+        if (localFrame < 0)
+            continue;
+
+        offset = START_MENU_FLYIN_DISTANCE - localFrame * START_MENU_FLYIN_SPEED;
+        if (offset < 0)
+            offset = 0;
+
+        option = sStartMenuVisibleOptions[slot];
+        frameBase = sStartMenuOptions[option].frame * START_MENU_OPTION_FRAME_TILES;
+
+        for (y = 0; y < START_MENU_OPTION_HEIGHT_TILES; y++)
+        {
+            for (x = 0; x < START_MENU_OPTION_WIDTH_TILES; x++)
+            {
+                s16 screenX = START_MENU_OPTIONS_X + x - offset;
+                u16 tile;
+
+                if (screenX < START_MENU_OPTIONS_X || screenX >= START_MENU_OPTIONS_X + START_MENU_OPTION_WIDTH_TILES)
+                    continue;
+
+                tile = frameBase + y * START_MENU_OPTION_WIDTH_TILES + x;
+                tilemap[(START_MENU_OPTIONS_Y + slot * START_MENU_OPTION_HEIGHT_TILES + y) * 32 + screenX] = START_MENU_INACTIVE_BASE_TILE + tile;
+            }
+        }
+    }
+
+    CopyBgTilemapBufferToVram(START_MENU_BG);
+    sStartMenuFlyInFrame++;
+    return sStartMenuFlyInFrame > totalFrames;
+}
+
 static bool32 InitStartMenuStep(void)
 {
-    s8 state = sInitStartMenuData[0];
-
-    switch (state)
+    switch (sInitStartMenuData[0])
     {
     case 0:
+        sStartMenuClosing = FALSE;
+        sStartMenuSaveState = FIRE_BLACK_SAVE_IDLE;
+        HideMapNamePopUpWindow();
+        BuildFireBlackStartMenuVisibleOptions();
+
+        if (sStartMenuReturningFromInterface)
+            DoScheduledBgTilemapCopiesToVram();
+        else
+            ClearScheduledBgCopiesToVram();
+
+        sStartMenuReturningFromInterface = FALSE;
         sInitStartMenuData[0]++;
         break;
     case 1:
-        BuildStartMenuActions();
-        sInitStartMenuData[0]++;
+        if (!IsDma3ManagerBusyWithBgCopy())
+            sInitStartMenuData[0]++;
         break;
     case 2:
-        LoadMessageBoxAndBorderGfx();
-        DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuActions), FALSE);
-        sInitStartMenuData[1] = 0;
-        sInitStartMenuData[0]++;
+        if (BackupFireBlackStartMenuBg())
+        {
+            HideBg(START_MENU_BG);
+            sInitStartMenuData[0]++;
+        }
         break;
     case 3:
-        if (GetSafariZoneFlag())
-            ShowSafariBallsWindow();
-        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
-            ShowPyramidFloorWindow();
+        LoadFireBlackStartMenuBar();
         sInitStartMenuData[0]++;
         break;
     case 4:
-        if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
-            sInitStartMenuData[0]++;
+        LoadFireBlackStartMenuInactive();
+        sInitStartMenuData[0]++;
         break;
     case 5:
-        sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
-        CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
-        return TRUE;
+        DrawFireBlackStartMenuBars();
+        sStartMenuFlyInFrame = 0;
+        sInitStartMenuData[0]++;
+        break;
+    case 6:
+        if (!IsDma3ManagerBusyWithBgCopy())
+        {
+            ShowBg(START_MENU_BG);
+            sInitStartMenuData[0]++;
+        }
+        break;
+    case 7:
+        if (!IsDma3ManagerBusyWithBgCopy() && DrawFireBlackStartMenuFlyIn())
+            sInitStartMenuData[0]++;
+        break;
+    case 8:
+        if (!IsDma3ManagerBusyWithBgCopy())
+        {
+            RestoreFireBlackStartMenuCursor();
+            LoadFireBlackStartMenuActive(sStartMenuVisibleOptions[sStartMenuCursorPos]);
+            sInitStartMenuData[0]++;
+        }
+        break;
+    case 9:
+        if (!IsDma3ManagerBusyWithBgCopy())
+            return TRUE;
+        break;
     }
 
     return FALSE;
@@ -588,6 +1441,7 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void)
 
 void ShowReturnToFieldStartMenu(void)
 {
+    sStartMenuReturningFromInterface = TRUE;
     sInitStartMenuData[0] = 0;
     sInitStartMenuData[1] = 0;
     gFieldCallback2 = FieldCB_ReturnToFieldStartMenu;
@@ -621,55 +1475,88 @@ void ShowStartMenu(void)
         PlayerFreeze();
         StopPlayerAvatar();
     }
+    sStartMenuReturningFromInterface = FALSE;
     CreateStartMenuTask(Task_ShowStartMenu);
     LockPlayerFieldControls();
 }
 
 static bool8 HandleStartMenuInput(void)
 {
-    if (JOY_NEW(DPAD_UP))
+    if (sStartMenuSaveState != FIRE_BLACK_SAVE_IDLE)
     {
-        PlaySE(SE_SELECT);
-        sStartMenuCursorPos = Menu_MoveCursor(-1);
+        UpdateFireBlackStartMenuSave();
+        return FALSE;
     }
 
-    if (JOY_NEW(DPAD_DOWN))
+    if (sStartMenuClosing)
     {
-        PlaySE(SE_SELECT);
-        sStartMenuCursorPos = Menu_MoveCursor(1);
-    }
-
-    if (JOY_NEW(A_BUTTON))
-    {
-        PlaySE(SE_SELECT);
-        if (sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void == StartMenuPokedexCallback)
-        {
-            if (GetNationalPokedexCount(FLAG_GET_SEEN) == 0)
-                return FALSE;
-        }
-        if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
-          && MapHasNoEncounterData())
+        ClearScheduledBgCopiesToVram();
+        if (IsDma3ManagerBusyWithBgCopy())
             return FALSE;
 
-        gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
+        HideStartMenuWindow();
+        sStartMenuClosing = FALSE;
+        return TRUE;
+    }
 
-        if (gMenuCallback != StartMenuSaveCallback
-            && gMenuCallback != StartMenuExitCallback
-            && gMenuCallback != StartMenuDebugCallback
-            && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
-        {
-           FadeScreen(FADE_TO_BLACK, 0);
-        }
-
+    if (JOY_NEW(R_BUTTON) && CanFireBlackStartMenuSave())
+    {
+        StartFireBlackStartMenuSave();
         return FALSE;
     }
 
     if (JOY_NEW(START_BUTTON | B_BUTTON))
     {
-        RemoveExtraStartMenuWindows();
-        HideStartMenu();
-        return TRUE;
+        PlaySE(SE_SELECT);
+        sStartMenuClosing = TRUE;
+        HideBg(START_MENU_BG);
+        ClearScheduledBgCopiesToVram();
+        return FALSE;
+    }
+
+    if (JOY_NEW(DPAD_UP))
+    {
+        u8 oldOption = sStartMenuVisibleOptions[sStartMenuCursorPos];
+
+        PlaySE(SE_SELECT);
+        LoadFireBlackStartMenuInactiveFrame(oldOption);
+
+        if (sStartMenuCursorPos == 0)
+            sStartMenuCursorPos = sStartMenuVisibleOptionCount - 1;
+        else
+            sStartMenuCursorPos--;
+
+        sStartMenuLastOption = sStartMenuVisibleOptions[sStartMenuCursorPos];
+        LoadFireBlackStartMenuActive(sStartMenuLastOption);
+    }
+    else if (JOY_NEW(DPAD_DOWN))
+    {
+        u8 oldOption = sStartMenuVisibleOptions[sStartMenuCursorPos];
+
+        PlaySE(SE_SELECT);
+        LoadFireBlackStartMenuInactiveFrame(oldOption);
+
+        sStartMenuCursorPos++;
+        if (sStartMenuCursorPos >= sStartMenuVisibleOptionCount)
+            sStartMenuCursorPos = 0;
+
+        sStartMenuLastOption = sStartMenuVisibleOptions[sStartMenuCursorPos];
+        LoadFireBlackStartMenuActive(sStartMenuLastOption);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        u8 option = sStartMenuVisibleOptions[sStartMenuCursorPos];
+        u8 action = sStartMenuOptions[option].action;
+
+        sStartMenuLastOption = option;
+
+        if (action == MENU_ACTION_POKEDEX && GetNationalPokedexCount(FLAG_GET_SEEN) == 0)
+            return FALSE;
+
+        PlaySE(SE_SELECT);
+        gMenuCallback = sStartMenuItems[action].func.u8_void;
+        FadeScreen(FADE_TO_BLACK, 0);
     }
 
     return FALSE;
@@ -679,12 +1566,12 @@ bool8 StartMenuPokedexCallback(void)
 {
     if (!gPaletteFade.active)
     {
+        RestoreFireBlackStartMenuBg();
         IncrementGameStat(GAME_STAT_CHECKED_POKEDEX);
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
         SetMainCallback2(CB2_OpenPokedex);
-
         return TRUE;
     }
 
@@ -695,11 +1582,11 @@ static bool8 StartMenuPokemonCallback(void)
 {
     if (!gPaletteFade.active)
     {
+        RestoreFireBlackStartMenuBg();
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_PartyMenuFromStartMenu); // Display party menu
-
+        SetMainCallback2(CB2_PartyMenuFromStartMenu);
         return TRUE;
     }
 
@@ -710,11 +1597,11 @@ static bool8 StartMenuBagCallback(void)
 {
     if (!gPaletteFade.active)
     {
+        RestoreFireBlackStartMenuBg();
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_BagMenuFromStartMenu); // Display bag menu
-
+        SetMainCallback2(CB2_BagMenuFromStartMenu);
         return TRUE;
     }
 
@@ -725,11 +1612,11 @@ static bool8 StartMenuPokeNavCallback(void)
 {
     if (!gPaletteFade.active)
     {
+        RestoreFireBlackStartMenuBg();
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_InitPokeNav);  // Display PokéNav
-
+        SetMainCallback2(CB2_InitPokeNav);
         return TRUE;
     }
 
@@ -740,16 +1627,17 @@ static bool8 StartMenuPlayerNameCallback(void)
 {
     if (!gPaletteFade.active)
     {
+        RestoreFireBlackStartMenuBg();
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
 
         if (IsOverworldLinkActive() || InUnionRoom())
-            ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu); // Display trainer card
+            ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu);
         else if (FlagGet(FLAG_SYS_FRONTIER_PASS))
-            ShowFrontierPass(CB2_ReturnToFieldWithOpenMenu); // Display frontier pass
+            ShowFrontierPass(CB2_ReturnToFieldWithOpenMenu);
         else
-            ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu); // Display trainer card
+            ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu);
 
         return TRUE;
     }
@@ -771,12 +1659,12 @@ static bool8 StartMenuOptionCallback(void)
 {
     if (!gPaletteFade.active)
     {
+        RestoreFireBlackStartMenuBg();
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_InitOptionMenu); // Display option menu
+        SetMainCallback2(CB2_InitOptionMenu);
         gMain.savedCallback = CB2_ReturnToFieldWithOpenMenu;
-
         return TRUE;
     }
 
@@ -1564,8 +2452,12 @@ void SaveForBattleTowerLink(void)
 
 static void HideStartMenuWindow(void)
 {
-    ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
-    RemoveStartMenuWindow();
+    if (GetStartMenuWindowId() != WINDOW_NONE)
+    {
+        ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
+        RemoveStartMenuWindow();
+    }
+    RestoreFireBlackStartMenuBg();
     ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
 }

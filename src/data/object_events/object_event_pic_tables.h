@@ -41,6 +41,10 @@ static const struct SpriteFrameImage sPicTable_BrendanFieldMove[] = {
     overworld_ascending_frames(gObjectEventPic_BrendanFieldMove, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_BrendanSaving[] = {
+    overworld_ascending_frames(gObjectEventPic_BrendanSaving, 4, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_QuintyPlump[] = {
     overworld_ascending_frames(gObjectEventPic_QuintyPlump, 4, 4),
 };
@@ -118,6 +122,10 @@ static const struct SpriteFrameImage sPicTable_MayUnderwater[] = {
 
 static const struct SpriteFrameImage sPicTable_MayFieldMove[] = {
     overworld_ascending_frames(gObjectEventPic_MayFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_MaySaving[] = {
+    overworld_ascending_frames(gObjectEventPic_MaySaving, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_MovingBox[] = {

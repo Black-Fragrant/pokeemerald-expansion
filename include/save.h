@@ -113,4 +113,14 @@ void Task_LinkFullSave(u8 taskId);
 // save_failed_screen.c
 void DoSaveFailedScreen(u8 saveType);
 
+enum FireBlackSaveStepResult
+{
+    FIRE_BLACK_SAVE_STEP_IN_PROGRESS,
+    FIRE_BLACK_SAVE_STEP_SUCCESS,
+    FIRE_BLACK_SAVE_STEP_ERROR,
+};
+
+u8 FireBlackSave_Begin(u8 saveType);
+u8 FireBlackSave_Step(void);
+
 #endif // GUARD_SAVE_H
