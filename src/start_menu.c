@@ -53,6 +53,9 @@
 #include "constants/songs.h"
 #include "map_name_popup.h"
 #include "malloc.h"
+#include "rtc.h"
+#include "field_weather.h"
+#include "constants/weather.h"
 
 void HideMapNamePopUpWindow(void);
 
@@ -194,6 +197,11 @@ static void RestoreFireBlackStartMenuSaveGraphic(void);
 static void StartFireBlackStartMenuSave(void);
 static void UpdateFireBlackStartMenuSave(void);
 static bool32 CanFireBlackStartMenuSave(void);
+static u8 GetFireBlackStartMenuDigitFrame(u8 digit);
+static void DrawFireBlackStartMenuClock(void);
+static void DrawFireBlackStartMenuWeather(void);
+static void DrawFireBlackStartMenuDynamicBar(void);
+static void DrawFireBlackStartMenuSeason(void);
 
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
@@ -1191,6 +1199,101 @@ static void LoadFireBlackStartMenuActive(u8 option)
     CopyFireBlackStartMenu8bppTiles(src, START_MENU_OPTION_FRAME_TILES * 64, START_MENU_INACTIVE_BASE_TILE + frameBase);
 }
 
+static u8 GetFireBlackStartMenuDigitFrame(u8 digit)
+{
+    if (digit == 0)
+        return START_MENU_BAR_DIGIT_0;
+
+    return START_MENU_BAR_DIGIT_1 + digit - 1;
+}
+
+static void DrawFireBlackStartMenuClock(void)
+{
+    u8 hours;
+    u8 minutes;
+
+    RtcCalcLocalTime();
+
+    hours = gLocalTime.hours;
+    minutes = gLocalTime.minutes;
+
+    DrawFireBlackStartMenuBarFrame(START_MENU_HOUR_TENS_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(hours / 10));
+    DrawFireBlackStartMenuBarFrame(START_MENU_HOUR_ONES_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(hours % 10));
+    DrawFireBlackStartMenuBarFrame(START_MENU_COLON_X, START_MENU_TOP_BAR_Y, START_MENU_BAR_COLON);
+    DrawFireBlackStartMenuBarFrame(START_MENU_MINUTE_TENS_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(minutes / 10));
+    DrawFireBlackStartMenuBarFrame(START_MENU_MINUTE_ONES_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(minutes % 10));
+}
+
+static void DrawFireBlackStartMenuWeather(void)
+{
+    u8 frame0;
+    u8 frame1;
+
+    switch (GetCurrentWeather())
+    {
+    case WEATHER_RAIN:
+    case WEATHER_RAIN_THUNDERSTORM:
+    case WEATHER_DOWNPOUR:
+        frame0 = START_MENU_BAR_RAIN_0;
+        frame1 = START_MENU_BAR_RAIN_1;
+        break;
+
+    case WEATHER_SANDSTORM:
+        frame0 = START_MENU_BAR_SANDSTORM_0;
+        frame1 = START_MENU_BAR_SANDSTORM_1;
+        break;
+
+    case WEATHER_SNOW:
+        frame0 = START_MENU_BAR_HAIL_0;
+        frame1 = START_MENU_BAR_HAIL_1;
+        break;
+
+    default:
+        frame0 = START_MENU_BAR_SUNNY_0;
+        frame1 = START_MENU_BAR_SUNNY_1;
+        break;
+    }
+
+    DrawFireBlackStartMenuBarFrame(START_MENU_WEATHER_X, START_MENU_TOP_BAR_Y, frame0);
+    DrawFireBlackStartMenuBarFrame(START_MENU_WEATHER_X + 1, START_MENU_TOP_BAR_Y, frame1);
+}
+
+static void DrawFireBlackStartMenuSeason(void)
+{
+    u8 firstFrame;
+    u8 i;
+
+    switch (getCurrentSeason())
+    {
+    case SEASON_SUMMER:
+        firstFrame = START_MENU_BAR_SUMMER_0;
+        break;
+
+    case SEASON_AUTUMN:
+        firstFrame = START_MENU_BAR_AUTUMN_0;
+        break;
+
+    case SEASON_WINTER:
+        firstFrame = START_MENU_BAR_WINTER_0;
+        break;
+
+    case SEASON_SPRING:
+    default:
+        firstFrame = START_MENU_BAR_SPRING_0;
+        break;
+    }
+
+    for (i = 0; i < START_MENU_SEASON_WIDTH; i++)
+        DrawFireBlackStartMenuBarFrame(START_MENU_SEASON_X + i, START_MENU_TOP_BAR_Y, firstFrame + i);
+}
+
+static void DrawFireBlackStartMenuDynamicBar(void)
+{
+    DrawFireBlackStartMenuClock();
+    DrawFireBlackStartMenuSeason();
+    DrawFireBlackStartMenuWeather();
+}
+
 static void DrawFireBlackStartMenuBarFrame(u8 x, u8 y, u8 frame)
 {
     u16 *tilemap = GetBgTilemapBuffer(START_MENU_BG);
@@ -1250,7 +1353,7 @@ static void DrawFireBlackStartMenuBars(void)
     {
         DrawFireBlackStartMenuBarFrame(START_MENU_BOTTOM_BAR_X + i, START_MENU_BOTTOM_BAR_Y, sStartMenuBottomBarFrames[i]);
     }
-
+    DrawFireBlackStartMenuDynamicBar();
     CopyBgTilemapBufferToVram(START_MENU_BG);
 }
 

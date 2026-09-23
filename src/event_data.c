@@ -1,6 +1,7 @@
 #include "global.h"
 #include "event_data.h"
 #include "pokedex.h"
+#include "rtc.h"
 
 #define SPECIAL_FLAGS_SIZE  (NUM_SPECIAL_FLAGS / 8)  // 8 flags per byte
 #define TEMP_FLAGS_SIZE     (NUM_TEMP_FLAGS / 8)
@@ -255,8 +256,17 @@ bool8 FlagGet(u16 id)
     return TRUE;
 }
 
-//Define this properly in include/constants/vars.h in an unused var spot
-#define VAR_CURRENT_SEASON VAR_SEASON
-u8 getCurrentSeason(void){
-    return VarGet(VAR_CURRENT_SEASON);
+u8 getCurrentSeason(void)
+{
+    switch ((GetMonth() - 1) % 4)
+    {
+    case 0:
+        return SEASON_SPRING;
+    case 1:
+        return SEASON_SUMMER;
+    case 2:
+        return SEASON_AUTUMN;
+    default:
+        return SEASON_WINTER;
+    }
 }

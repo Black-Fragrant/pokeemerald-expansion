@@ -195,7 +195,8 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	clearflag FLAG_SYS_POKEMON_GET
+	setweather 3
+	doweather
 	release 
     end
 
@@ -203,7 +204,8 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
-	clearflag FLAG_SYS_POKEDEX_GET
+	setweather 4
+	doweather
 	release 
     end
 
@@ -215,7 +217,7 @@ Debug_EventScript_Script_3::
 	end
 
 Debug_EventScript_Script_4::
-	warpsilent MAP_ROUTE3_NORTH, 20, 20
+	warpsilent MAP_ROUTE3_SOUTH, 20, 20
 	waitstate
 	release
 	end
