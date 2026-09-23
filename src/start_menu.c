@@ -593,6 +593,18 @@ static void LoadFireBlackStartMenuInactiveFrame(u8 option);
 static void LoadFireBlackStartMenuActive(u8 option);
 static void RestoreFireBlackStartMenuCursor(void);
 
+// Temporary references for legacy special-context Start Menu code.
+// Battle Pyramid, Safari, link, and related behavior still need to be
+// reconciled with the custom Start Menu. Delete this function and any
+// obsolete legacy code once those contexts have been finalized.
+void PreserveLegacyStartMenuFunctions(void)
+{
+    (void)BuildStartMenuActions;
+    (void)ShowSafariBallsWindow;
+    (void)ShowPyramidFloorWindow;
+    (void)PrintStartMenuActions;
+}
+
 static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
