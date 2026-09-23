@@ -54,7 +54,6 @@
 #include "map_name_popup.h"
 #include "malloc.h"
 #include "rtc.h"
-#include "field_weather.h"
 #include "constants/weather.h"
 
 void HideMapNamePopUpWindow(void);
@@ -110,7 +109,6 @@ EWRAM_DATA static s8 sInitStartMenuData[2] = {0};
 
 EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
-EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
 
 EWRAM_DATA static u16 sStartMenuBg0Backup[32 * 32] = {0};
@@ -197,11 +195,10 @@ static void RestoreFireBlackStartMenuSaveGraphic(void);
 static void StartFireBlackStartMenuSave(void);
 static void UpdateFireBlackStartMenuSave(void);
 static bool32 CanFireBlackStartMenuSave(void);
-static u8 GetFireBlackStartMenuDigitFrame(u8 digit);
 static void DrawFireBlackStartMenuClock(void);
+static void DrawFireBlackStartMenuSeason(void);
 static void DrawFireBlackStartMenuWeather(void);
 static void DrawFireBlackStartMenuDynamicBar(void);
-static void DrawFireBlackStartMenuSeason(void);
 
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
@@ -373,24 +370,12 @@ enum StartMenuBarFrame
     START_MENU_BAR_FRAME_COUNT = 51,
 };
 
-enum StartMenuPaletteBank
-{
-    START_MENU_PAL_BAR,
-    START_MENU_PAL_INACTIVE_A,
-    START_MENU_PAL_INACTIVE_B,
-    START_MENU_PAL_ACTIVE_A,
-    START_MENU_PAL_ACTIVE_B,
-    START_MENU_PAL_COUNT
-};
+
 
 #define START_MENU_BAR_TOP_TILE(frame)    (frame)
 #define START_MENU_BAR_BOTTOM_TILE(frame) ((frame) + START_MENU_BAR_FRAME_COUNT)
 
-#define START_MENU_SCREEN_WIDTH_TILES   30
-#define START_MENU_SCREEN_HEIGHT_TILES  20
-#define START_MENU_TOP_BAR_X            0
 #define START_MENU_TOP_BAR_Y            0
-#define START_MENU_TOP_BAR_WIDTH        17
 #define START_MENU_BOTTOM_BAR_X         14
 #define START_MENU_BOTTOM_BAR_Y         18
 #define START_MENU_BOTTOM_BAR_WIDTH     16
@@ -406,38 +391,30 @@ enum StartMenuPaletteBank
 #define START_MENU_SEASON_WIDTH         5
 #define START_MENU_TOP_BODY_3_X         12
 #define START_MENU_WEATHER_X            13
-#define START_MENU_WEATHER_WIDTH        2
 #define START_MENU_TOP_TAIL_X           15
-#define START_MENU_TOP_TAIL_WIDTH       2
 
-#define START_MENU_BOTTOM_TAIL_X        14
-#define START_MENU_BOTTOM_TAIL_WIDTH    2
-#define START_MENU_BOTTOM_BODY_X        16
-#define START_MENU_BOTTOM_BODY_WIDTH    8
-#define START_MENU_SAVE_X               24
 #define START_MENU_SAVE_WIDTH           5
-#define START_MENU_BOTTOM_END_BODY_X    29
 
-#define START_MENU_BG 0
-#define START_MENU_PALETTE_OFFSET BG_PLTT_ID(13)
-#define START_MENU_PALETTE_INDEX_OFFSET 208
-#define START_MENU_BAR_BASE_TILE 0x20
-#define START_MENU_BAR_TILE_COUNT (START_MENU_BAR_FRAME_COUNT * 2)
-#define START_MENU_INACTIVE_BASE_TILE (START_MENU_BAR_BASE_TILE + START_MENU_BAR_TILE_COUNT)
-#define START_MENU_INACTIVE_TILE_COUNT (START_MENU_OPTION_COUNT * START_MENU_OPTION_FRAME_TILES)
-#define START_MENU_GFX_BACKUP_TILE_COUNT (START_MENU_BAR_TILE_COUNT + START_MENU_INACTIVE_TILE_COUNT)
-#define START_MENU_GFX_BACKUP_SIZE (START_MENU_GFX_BACKUP_TILE_COUNT * 64)
-#define START_MENU_OPTIONS_X 0
-#define START_MENU_OPTIONS_Y 2
+#define START_MENU_BG                       0
+#define START_MENU_PALETTE_OFFSET           BG_PLTT_ID(13)
+#define START_MENU_PALETTE_INDEX_OFFSET     208
+#define START_MENU_BAR_BASE_TILE            0x20
+#define START_MENU_BAR_TILE_COUNT           (START_MENU_BAR_FRAME_COUNT * 2)
+#define START_MENU_INACTIVE_BASE_TILE       (START_MENU_BAR_BASE_TILE + START_MENU_BAR_TILE_COUNT)
+#define START_MENU_INACTIVE_TILE_COUNT      (START_MENU_OPTION_COUNT * START_MENU_OPTION_FRAME_TILES)
+#define START_MENU_GFX_BACKUP_TILE_COUNT    (START_MENU_BAR_TILE_COUNT + START_MENU_INACTIVE_TILE_COUNT)
+#define START_MENU_GFX_BACKUP_SIZE          (START_MENU_GFX_BACKUP_TILE_COUNT * 64)
+#define START_MENU_OPTIONS_X                0
+#define START_MENU_OPTIONS_Y                2
 
-#define START_MENU_FLYIN_DISTANCE START_MENU_OPTION_WIDTH_TILES
-#define START_MENU_FLYIN_SPEED 2
-#define START_MENU_FLYIN_STAGGER 2
-#define START_MENU_FLYIN_MOVE_FRAMES ((START_MENU_FLYIN_DISTANCE + START_MENU_FLYIN_SPEED - 1) / START_MENU_FLYIN_SPEED)
+#define START_MENU_FLYIN_DISTANCE       START_MENU_OPTION_WIDTH_TILES
+#define START_MENU_FLYIN_SPEED          2
+#define START_MENU_FLYIN_STAGGER        2
+#define START_MENU_FLYIN_MOVE_FRAMES    ((START_MENU_FLYIN_DISTANCE + START_MENU_FLYIN_SPEED - 1) / START_MENU_FLYIN_SPEED)
 
 #define START_MENU_SAVE_THROBBER_CHUNKS 12
 #define START_MENU_SAVE_THROBBER_FRAMES 8
-#define START_MENU_SAVE_THROBBER_DELAY 4
+#define START_MENU_SAVE_THROBBER_DELAY  4
 
 static const u8 sStartMenuBottomBarFrames[START_MENU_BOTTOM_BAR_WIDTH] =
 {
@@ -471,46 +448,6 @@ static const u8 sStartMenuDigitFrames[10] =
     [7] = START_MENU_BAR_DIGIT_7,
     [8] = START_MENU_BAR_DIGIT_8,
     [9] = START_MENU_BAR_DIGIT_9,
-};
-
-static const u8 sStartMenuSeasonFrames[4][5] =
-{
-    {
-        START_MENU_BAR_SPRING_0,
-        START_MENU_BAR_SPRING_1,
-        START_MENU_BAR_SPRING_2,
-        START_MENU_BAR_SPRING_3,
-        START_MENU_BAR_SPRING_4,
-    },
-    {
-        START_MENU_BAR_SUMMER_0,
-        START_MENU_BAR_SUMMER_1,
-        START_MENU_BAR_SUMMER_2,
-        START_MENU_BAR_SUMMER_3,
-        START_MENU_BAR_SUMMER_4,
-    },
-    {
-        START_MENU_BAR_AUTUMN_0,
-        START_MENU_BAR_AUTUMN_1,
-        START_MENU_BAR_AUTUMN_2,
-        START_MENU_BAR_AUTUMN_3,
-        START_MENU_BAR_AUTUMN_4,
-    },
-    {
-        START_MENU_BAR_WINTER_0,
-        START_MENU_BAR_WINTER_1,
-        START_MENU_BAR_WINTER_2,
-        START_MENU_BAR_WINTER_3,
-        START_MENU_BAR_WINTER_4,
-    },
-};
-
-static const u8 sStartMenuWeatherFrames[4][2] =
-{
-    {START_MENU_BAR_SUNNY_0,     START_MENU_BAR_SUNNY_1},
-    {START_MENU_BAR_RAIN_0,      START_MENU_BAR_RAIN_1},
-    {START_MENU_BAR_SANDSTORM_0, START_MENU_BAR_SANDSTORM_1},
-    {START_MENU_BAR_HAIL_0,      START_MENU_BAR_HAIL_1},
 };
 
 //------------------------------------------------------------------------------
@@ -549,7 +486,6 @@ enum StartMenuOptionFrame
     START_MENU_OPTION_FRAME_CARD,
     START_MENU_OPTION_FRAME_CGEAR,
     START_MENU_OPTION_FRAME_SETTINGS,
-    START_MENU_OPTION_FRAME_COUNT,
 };
 
 struct StartMenuOptionInfo
@@ -1199,14 +1135,6 @@ static void LoadFireBlackStartMenuActive(u8 option)
     CopyFireBlackStartMenu8bppTiles(src, START_MENU_OPTION_FRAME_TILES * 64, START_MENU_INACTIVE_BASE_TILE + frameBase);
 }
 
-static u8 GetFireBlackStartMenuDigitFrame(u8 digit)
-{
-    if (digit == 0)
-        return START_MENU_BAR_DIGIT_0;
-
-    return START_MENU_BAR_DIGIT_1 + digit - 1;
-}
-
 static void DrawFireBlackStartMenuClock(void)
 {
     u8 hours;
@@ -1217,11 +1145,11 @@ static void DrawFireBlackStartMenuClock(void)
     hours = gLocalTime.hours;
     minutes = gLocalTime.minutes;
 
-    DrawFireBlackStartMenuBarFrame(START_MENU_HOUR_TENS_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(hours / 10));
-    DrawFireBlackStartMenuBarFrame(START_MENU_HOUR_ONES_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(hours % 10));
+    DrawFireBlackStartMenuBarFrame(START_MENU_HOUR_TENS_X, START_MENU_TOP_BAR_Y, sStartMenuDigitFrames[hours / 10]);
+    DrawFireBlackStartMenuBarFrame(START_MENU_HOUR_ONES_X, START_MENU_TOP_BAR_Y, sStartMenuDigitFrames[hours % 10]);
     DrawFireBlackStartMenuBarFrame(START_MENU_COLON_X, START_MENU_TOP_BAR_Y, START_MENU_BAR_COLON);
-    DrawFireBlackStartMenuBarFrame(START_MENU_MINUTE_TENS_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(minutes / 10));
-    DrawFireBlackStartMenuBarFrame(START_MENU_MINUTE_ONES_X, START_MENU_TOP_BAR_Y, GetFireBlackStartMenuDigitFrame(minutes % 10));
+    DrawFireBlackStartMenuBarFrame(START_MENU_MINUTE_TENS_X, START_MENU_TOP_BAR_Y, sStartMenuDigitFrames[minutes / 10]);
+    DrawFireBlackStartMenuBarFrame(START_MENU_MINUTE_ONES_X, START_MENU_TOP_BAR_Y, sStartMenuDigitFrames[minutes % 10]);
 }
 
 static void DrawFireBlackStartMenuWeather(void)
@@ -1305,54 +1233,19 @@ static void DrawFireBlackStartMenuBarFrame(u8 x, u8 y, u8 frame)
 
 static void DrawFireBlackStartMenuBars(void)
 {
-    u16 blankTile;
+    u16 blankTile = START_MENU_BAR_BASE_TILE + START_MENU_BAR_TOP_TILE(START_MENU_BAR_PADDING);
     u8 i;
 
-    static const u8 sTopBarTestFrames[START_MENU_TOP_BAR_WIDTH] =
-    {
-        START_MENU_BAR_TOP_BODY,
-
-        // Temporary test time: 12:34
-        START_MENU_BAR_DIGIT_1,
-        START_MENU_BAR_DIGIT_2,
-        START_MENU_BAR_COLON,
-        START_MENU_BAR_DIGIT_3,
-        START_MENU_BAR_DIGIT_4,
-
-        START_MENU_BAR_TOP_BODY,
-
-        // Temporary test season: Spring
-        START_MENU_BAR_SPRING_0,
-        START_MENU_BAR_SPRING_1,
-        START_MENU_BAR_SPRING_2,
-        START_MENU_BAR_SPRING_3,
-        START_MENU_BAR_SPRING_4,
-
-        START_MENU_BAR_TOP_BODY,
-
-        // Temporary test weather: Sunny
-        START_MENU_BAR_SUNNY_0,
-        START_MENU_BAR_SUNNY_1,
-
-        START_MENU_BAR_TOP_TAIL_0,
-        START_MENU_BAR_TOP_TAIL_1,
-    };
-
-    blankTile =
-        START_MENU_BAR_BASE_TILE
-        + START_MENU_BAR_TOP_TILE(START_MENU_BAR_PADDING);
-
     FillBgTilemapBufferRect(START_MENU_BG, blankTile, 0, 0, 32, 32, 0);
-    for (i = 0; i < START_MENU_TOP_BAR_WIDTH; i++)
-    {
-        DrawFireBlackStartMenuBarFrame(START_MENU_TOP_BAR_X + i, START_MENU_TOP_BAR_Y, sTopBarTestFrames[i]);
-    }
+    DrawFireBlackStartMenuBarFrame(START_MENU_TOP_BODY_1_X, START_MENU_TOP_BAR_Y, START_MENU_BAR_TOP_BODY);
+    DrawFireBlackStartMenuBarFrame(START_MENU_TOP_BODY_2_X, START_MENU_TOP_BAR_Y, START_MENU_BAR_TOP_BODY);
+    DrawFireBlackStartMenuBarFrame(START_MENU_TOP_BODY_3_X, START_MENU_TOP_BAR_Y, START_MENU_BAR_TOP_BODY);
+    DrawFireBlackStartMenuBarFrame(START_MENU_TOP_TAIL_X, START_MENU_TOP_BAR_Y, START_MENU_BAR_TOP_TAIL_0);
+    DrawFireBlackStartMenuBarFrame(START_MENU_TOP_TAIL_X + 1, START_MENU_TOP_BAR_Y, START_MENU_BAR_TOP_TAIL_1);
 
-    // Bottom-right bar.
     for (i = 0; i < START_MENU_BOTTOM_BAR_WIDTH; i++)
-    {
         DrawFireBlackStartMenuBarFrame(START_MENU_BOTTOM_BAR_X + i, START_MENU_BOTTOM_BAR_Y, sStartMenuBottomBarFrames[i]);
-    }
+
     DrawFireBlackStartMenuDynamicBar();
     CopyBgTilemapBufferToVram(START_MENU_BG);
 }
@@ -1665,7 +1558,7 @@ static bool8 HandleStartMenuInput(void)
     return FALSE;
 }
 
-bool8 StartMenuPokedexCallback(void)
+static bool8 StartMenuPokedexCallback(void)
 {
     if (!gPaletteFade.active)
     {
@@ -1753,7 +1646,7 @@ static bool8 StartMenuSaveCallback(void)
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
         RemoveExtraStartMenuWindows();
 
-    gMenuCallback = SaveStartCallback; // Display save menu
+    gMenuCallback = SaveStartCallback;
 
     return FALSE;
 }
@@ -1777,7 +1670,7 @@ static bool8 StartMenuOptionCallback(void)
 static bool8 StartMenuExitCallback(void)
 {
     RemoveExtraStartMenuWindows();
-    HideStartMenu(); // Hide start menu
+    HideStartMenu();
 
     return TRUE;
 }
@@ -1785,7 +1678,7 @@ static bool8 StartMenuExitCallback(void)
 static bool8 StartMenuDebugCallback(void)
 {
     RemoveExtraStartMenuWindows();
-    HideStartMenuDebug(); // Hide start menu without enabling movement
+    HideStartMenuDebug();
 
     if (DEBUG_OVERWORLD_MENU)
     {
@@ -1793,7 +1686,7 @@ static bool8 StartMenuDebugCallback(void)
         Debug_ShowMainMenu();
     }
 
-return TRUE;
+    return TRUE;
 }
 
 static bool8 StartMenuSafariZoneRetireCallback(void)
@@ -1828,12 +1721,11 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
 
 static bool8 StartMenuBattlePyramidRetireCallback(void)
 {
-    gMenuCallback = BattlePyramidRetireStartCallback; // Confirm retire
+    gMenuCallback = BattlePyramidRetireStartCallback;
 
     return FALSE;
 }
 
-// Functionally unused
 void ShowBattlePyramidStartMenu(void)
 {
     ClearDialogWindowAndFrameToTransparent(0, FALSE);
@@ -1929,18 +1821,15 @@ static void InitSave(void)
 {
     SaveMapView();
     sSaveDialogCallback = SaveConfirmSaveCallback;
-    sSavingComplete = FALSE;
 }
 
 static u8 RunSaveCallback(void)
 {
-    // True if text is still printing
     if (RunTextPrintersAndIsPrinter0Active() == TRUE)
     {
         return SAVE_IN_PROGRESS;
     }
 
-    sSavingComplete = FALSE;
     return sSaveDialogCallback();
 }
 
@@ -1955,7 +1844,6 @@ static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))
     StringExpandPlaceholders(gStringVar4, message);
     LoadMessageBoxAndFrameGfx(0, TRUE);
     AddTextPrinterForMessage(TRUE);
-    sSavingComplete = TRUE;
     sSaveDialogCallback = saveCallback;
 }
 
@@ -2046,7 +1934,7 @@ static u8 SaveConfirmSaveCallback(void)
 
 static u8 SaveYesNoCallback(void)
 {
-    DisplayYesNoMenuDefaultYes(); // Show Yes/No menu
+    DisplayYesNoMenuDefaultYes();
     sSaveDialogCallback = SaveConfirmInputCallback;
     return SAVE_IN_PROGRESS;
 }
@@ -2102,14 +1990,14 @@ static u8 SaveFileExistsCallback(void)
 
 static u8 SaveConfirmOverwriteDefaultNoCallback(void)
 {
-    DisplayYesNoMenuWithDefault(1); // Show Yes/No menu (No selected as default)
+    DisplayYesNoMenuWithDefault(1);
     sSaveDialogCallback = SaveOverwriteInputCallback;
     return SAVE_IN_PROGRESS;
 }
 
 static u8 SaveConfirmOverwriteCallback(void)
 {
-    DisplayYesNoMenuDefaultYes(); // Show Yes/No menu
+    DisplayYesNoMenuDefaultYes();
     sSaveDialogCallback = SaveOverwriteInputCallback;
     return SAVE_IN_PROGRESS;
 }
@@ -2203,7 +2091,6 @@ void ShowThrobber(void)
     LoadCompressedSpriteSheet(&sSpriteSheet_Throbber[0]);
     LoadSpritePalettes(sSpritePalettes_Throbber);
 
-    // 217 and 123 are the x and y coordinates (in pixels)
     spriteId = CreateSprite(&sSpriteTemplate_Throbber, 217, 123, 2);
 };
 
@@ -2297,7 +2184,6 @@ static u8 SaveReturnErrorCallback(void)
 static void InitBattlePyramidRetire(void)
 {
     sSaveDialogCallback = BattlePyramidConfirmRetireCallback;
-    sSavingComplete = FALSE;
 }
 
 static u8 BattlePyramidConfirmRetireCallback(void)
@@ -2311,7 +2197,7 @@ static u8 BattlePyramidConfirmRetireCallback(void)
 
 static u8 BattlePyramidRetireYesNoCallback(void)
 {
-    DisplayYesNoMenuWithDefault(1); // Show Yes/No menu (No selected as default)
+    DisplayYesNoMenuWithDefault(1);
     sSaveDialogCallback = BattlePyramidRetireInputCallback;
 
     return SAVE_IN_PROGRESS;
@@ -2483,7 +2369,7 @@ static void ShowSaveInfoWindow(void)
     DrawStdWindowFrame(sSaveInfoWindowId, FALSE);
 
     gender = gSaveBlock2Ptr->playerGender;
-    color = TEXT_COLOR_RED;  // Red when female, blue when male.
+    color = TEXT_COLOR_RED;
 
     if (gender == MALE)
         color = TEXT_COLOR_BLUE;
