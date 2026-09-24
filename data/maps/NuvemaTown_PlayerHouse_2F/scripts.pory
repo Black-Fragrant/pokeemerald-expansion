@@ -112,16 +112,9 @@ script NuvemaTown_PlayerHouse_GoldDiploma
 
 script NuvemaTown_PH2F_On_Transition
 {
-	call_if_eq(VAR_NUVEMA_PICK_STARTER, 0, NuvemaTown_PH2F_EventScript_HideBianca)
 	call_if_eq(VAR_NUVEMA_PICK_STARTER, 2, NuvemaTown_PH2F_EventScript_PositionPlayers)
 	call_if_eq(VAR_NUVEMA_PICK_STARTER, 2, NuvemaTown_PH2F_EventScript_PlayMusic)
 	end
-}
-
-script NuvemaTown_PH2F_EventScript_HideBianca
-{
-	setflag (FLAG_NUVEMA_PH2F_BIANCA)
-	return()
 }
 
 script NuvemaTown_PH2F_EventScript_TurnPlayer
@@ -171,9 +164,9 @@ script NuvemaTown_PH2F_EventScript_Loading
 	waitmovement(0)
 	special(RemoveCameraObject)
 	playse(SE_EXIT)
-	addobject (LOCALID_NUVEMA_PH2F_BIANCA)
+	addobject(LOCALID_NUVEMA_PH2F_BIANCA)
 	waitse()
-	clearflag (FLAG_NUVEMA_PH2F_BIANCA)
+	clearflag(FLAG_NUVEMA_PH2F_BIANCA)
 	playbgm(MUS_BW_ADVENTURE_TOGETHER, TRUE)
 	applymovement (LOCALID_NUVEMA_PH2F_BIANCA, Common_Movement_FaceDown)
 	waitmovement(0)
@@ -357,7 +350,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Snivy
 		}
 		else
 		{
-			msgbox("Your Pokémon Storage is full...", MSGBOX_TRANSPARENT)
+			msgbox(General_Text_PokemonStorageIsFull, MSGBOX_TRANSPARENT)
 			closemessage
 			setflag(FLAG_CHOSE_SNIVY)
 		}
@@ -395,7 +388,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Tepig
 		}
 		else
 		{
-			msgbox("Your Pokémon Storage is full...", MSGBOX_TRANSPARENT)
+			msgbox(General_Text_PokemonStorageIsFull, MSGBOX_TRANSPARENT)
 			closemessage
 			setflag(FLAG_CHOSE_TEPIG)
 		}
@@ -433,7 +426,7 @@ script NuvemaTown_PH2F_EventScript_Chose_Oshawott
 		}
 		else
 		{
-			msgbox("Your Pokémon Storage is full...", MSGBOX_TRANSPARENT)
+			msgbox(General_Text_PokemonStorageIsFull, MSGBOX_TRANSPARENT)
 			closemessage
 			setflag(FLAG_CHOSE_OSHAWOTT)
 		}
@@ -811,7 +804,6 @@ script NuvemaTown_PH2F_EventScript_Finished_Battles
 	setflag(FLAG_NUVEMA_PH2F_BIANCA)
 	fadedefaultbgm
 	savebgm(MUS_BW_NUVEMA_TOWN)
-	setflag(FLAG_NUVEMA_PH1F_LOOKER)
 	clearflag(FLAG_NO_WHITEOUT)
 	special(HealPlayerParty)
 	delay(20)

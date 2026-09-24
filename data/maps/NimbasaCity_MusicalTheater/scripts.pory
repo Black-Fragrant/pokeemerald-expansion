@@ -338,7 +338,7 @@ script NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Info
         "Eligible Pokémon",
         "Dress Up",
         "Shows",
-        "Cancel")
+        gText_Cancel)
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain1)}
 	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Left_Explain2)}
@@ -448,7 +448,7 @@ script NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Info
         "Eligible Pokémon",
         "Dress Up",
         "Shows",
-        "Cancel")
+        gText_Cancel)
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain1)}
 	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Middle_Explain2)}
@@ -557,7 +557,7 @@ script NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Info
         "Eligible Pokémon",
         "Dress Up",
         "Shows",
-        "Cancel")
+        gText_Cancel)
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain1)}
 	elif (var(VAR_RESULT) == 1) {goto (NimbasaCity_MusicalTheater_EventScript_Receptionist_Right_Explain2)}

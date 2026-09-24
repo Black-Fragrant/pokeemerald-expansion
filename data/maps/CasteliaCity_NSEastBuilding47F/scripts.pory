@@ -73,7 +73,7 @@ script CasteliaCity_NSEastBuilding47F_EventScript_SelectABadge
 		"Jet Badge",
 		"Freeze Badge",
 		"Legend Badge",
-		"Cancel")
+		gText_Cancel)
 	destroy_speech_bubble()
 	closemessage
 		if(var(VAR_RESULT) == 0)
@@ -149,7 +149,7 @@ script CasteliaCity_NSEastBuilding47F_EventScript_Elevator
 	msgbox(Elevator_Text_WhichFloorWouldLikeToGo, MSGBOX_TRANSPARENT)
 	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
         "1",
-        "Cancel")
+        gText_Cancel)
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_NSEastBuilding47F_EventScript_Elevator_GoTo1F)}
 	goto (CasteliaCity_NSEastBuilding47F_EventScript_Elevator_GetOff)
 }

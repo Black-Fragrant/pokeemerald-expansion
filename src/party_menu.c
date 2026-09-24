@@ -7931,9 +7931,13 @@ static bool8 TrySwitchInPokemon(void)
     {
         u8 actualPartySlot = partySlot;
 
-        if (IsMultiBattle() == TRUE
-        && !AreMultiPartiesFullTeams()
-        && (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
+        if (!IsDoubleBattle())
+        {
+            actualPartySlot = CombinedToIndividualPartyId(battlePartyId);
+        }
+        else if (IsMultiBattle() == TRUE
+            && !AreMultiPartiesFullTeams()
+            && (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
         {
             if (party == gParties[B_TRAINER_PLAYER])
                 actualPartySlot = sMultiMenuPlayerOrder[partySlot];

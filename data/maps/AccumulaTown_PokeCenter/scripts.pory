@@ -59,14 +59,14 @@ script AccumulaTown_PokeCenter_EventScript_Tutorial
 	delay(10)
 	applymovement(LOCALID_ACCUMULA_POKECEN_JUNIPER, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
-	msgbox("Professor Juniper: A Pokémon Center is a\n"
-				"truly incredible place!\p"
-				"Do you know why?\n"
-				"Because your Pokémon can be healed!\l"
-				"And, what's more, it's absolutely free!\p"
-				"A Pokémon Center is a Trainer's\n"
-				"best friend!\p"
-				"Here, {PLAYER}, give it a try.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
+	msgbox("Professor Juniper: A Pokémon Center is\n"
+			"a truly incredible place!\p"
+			"Do you know why?\n"
+			"Because your Pokémon can be healed!\l"
+			"And, what's more, it's absolutely free!\p"
+			"A Pokémon Center is a Trainer's\n"
+			"best friend!\p"
+			"Here, {PLAYER}, give it a try.", MSGBOX_DEFAULT, TRUE, LOCALID_ACCUMULA_POKECEN_JUNIPER)
 	destroy_speech_bubble()
 	closemessage()
     fadedefaultbgm

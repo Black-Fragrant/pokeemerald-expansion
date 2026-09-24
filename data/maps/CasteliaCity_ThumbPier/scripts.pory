@@ -21,7 +21,7 @@ script CasteliaCity_ThumbPier_EventScript_Scientist
         "Pansage",
         "Pansear",
         "Panpour",
-        "Cancel")
+        gText_Cancel)
     destroy_speech_bubble()
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansage)}
@@ -54,7 +54,7 @@ script CasteliaCity_ThumbPier_EventScript_Scientist_AskAgain
         "Pansage",
         "Pansear",
         "Panpour",
-        "Cancel")
+        gText_Cancel)
     destroy_speech_bubble()
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_ThumbPier_EventScript_Scientist_Pansage)}

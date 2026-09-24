@@ -313,7 +313,7 @@ script AccumulaTown_EventScript_TPP_Trigger_Continue
 	delay(20)
 	minimsg("I don't know...", 15, 12)
 	delay(40)
-	minimsg("No way", 18, 4)
+	minimsg(" No way", 18, 4) // reserved extra  space cause capital N wont show up
 	delay(60)
 	closeallminimessages
 	call(AccumulaTown_EventScript_TPP_Move_Crowd2)
@@ -333,7 +333,7 @@ script AccumulaTown_EventScript_TPP_Trigger_Continue
 	call(AccumulaTown_EventScript_TPP_Move_Crowd)
 	minimsg("What could it be?", 12, 7)
 	delay(40)
-	minimsg("Liberation?", 15, 12)
+	minimsg(" Liberation?", 15, 12) // reserved extra  space cause capital N wont show up
 	delay(60)
 	closeallminimessages
 	call(AccumulaTown_EventScript_TPP_Move_Crowd2)

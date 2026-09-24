@@ -117,7 +117,7 @@ script Platform_SingleTrain_EventScript_Selection
 	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "Board",
         "Info",
-        "Cancel")
+        gText_Cancel)
     destroy_speech_bubble()
 	if (var(VAR_RESULT) == 0) {goto (Platform_SingleTrain_EventScript_Prepare)}
 	elif (var(VAR_RESULT) == 1) {goto (Platform_SingleTrain_EventScript_Info)}

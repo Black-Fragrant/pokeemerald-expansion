@@ -837,30 +837,6 @@ static const struct MenuAction MultichoiceList_TrainerSchoolQuiz[] =
     {COMPOUND_STRING("Awakening")},
 };
 
-static const struct MenuAction MultichoiceList_FennelLaptop[] =
-{
-    {COMPOUND_STRING("Game Sync")},
-    {COMPOUND_STRING("Pokémon Dreams")},
-    {COMPOUND_STRING("Cancel")},
-};
-
-static const struct MenuAction MultichoiceList_AmanitaQuestion[] =
-{
-    {COMPOUND_STRING("Battle Box")},
-    {COMPOUND_STRING("Pal Pad")},
-    {COMPOUND_STRING("Cancel")},
-};
-
-static const struct MenuAction MultichoiceList_TrainerSchoolBlackBoard[] =
-{
-    {COMPOUND_STRING("Poison")},
-    {COMPOUND_STRING("Paralysis")},
-    {COMPOUND_STRING("Sleep")},
-    {COMPOUND_STRING("Burn")},
-    {COMPOUND_STRING("Frozen")},
-    {COMPOUND_STRING("Cancel")},
-};
-
 static const struct MenuAction MultichoiceList_NacreneCityGateQuestions1[] =
 {
     {COMPOUND_STRING("Outside")},
@@ -1320,9 +1296,6 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_POKEMON_RPS]                = MULTICHOICE(MultichoiceList_PokemonRPS),
     [MULTI_BW_STARTER]                 = MULTICHOICE(MultichoiceList_BWStarter),
     [MULTI_TRAINER_SCHOOL_QUIZ]        = MULTICHOICE(MultichoiceList_TrainerSchoolQuiz),
-    [MULTI_FENNEL_LAPTOP]              = MULTICHOICE(MultichoiceList_FennelLaptop),
-    [MULTI_AMANITA_QUESTION]           = MULTICHOICE(MultichoiceList_AmanitaQuestion),
-    [MULTI_TRAINERSCHOOL_BLACKBOARD]   = MULTICHOICE(MultichoiceList_TrainerSchoolBlackBoard),
     [MULTI_NCG_QUESTIONS_1]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions1),
     [MULTI_NCG_QUESTIONS_2]            = MULTICHOICE(MultichoiceList_NacreneCityGateQuestions2),
     [MULTI_NACRENE_STARTERS]           = MULTICHOICE(MultichoiceList_NacreneCityStarters),

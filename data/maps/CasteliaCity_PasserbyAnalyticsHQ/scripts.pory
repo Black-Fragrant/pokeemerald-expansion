@@ -784,7 +784,7 @@ script CasteliaCity_PAHQ_EventScript_Beauty_MoreQuestionnaires
         "School Life",
         "Sports and pastimes",
         "More about Pokémon",
-        "Cancel")
+        gText_Cancel)
     destroy_speech_bubble()
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_PAHQ_EventScript_Beauty_Survey1_Cont)}

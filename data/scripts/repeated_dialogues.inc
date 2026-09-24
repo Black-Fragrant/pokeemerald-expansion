@@ -39,7 +39,40 @@ BiancaBattle_Text_AwwICouldntWin::
 Elevator_Text_WhichFloorWouldLikeToGo::
 	.string "Which floor would you like to go to?$"
 
+DreamYard_Text_DoYouWantThisMonkey::
+	.string "{STR_VAR_1}! Really?\n"
+	.string "Then {STR_VAR_2} could be a big help!\p"
+	.string "Your Snivy does not do well against\n"
+	.string "{STR_VAR_3}-type Pokémon!\p"
+	.string "Say, do you want this {STR_VAR_2} of mine?$"
 
+DreamYard_Text_DoYouWantThisMonkeyAskAgain::
+	.string "Your {STR_VAR_1} does not do well against\n"
+	.string "{STR_VAR_3}-type Pokémon!\p"
+	.string "Say, do you want this {STR_VAR_2} of mine?$"
+
+DreamYard_Text_HereIsYourMonkey::
+	.string "OK. Here you go!\p"
+	.string "It can use {STR_VAR_1}-type moves, so that\n"
+	.string "makes it great against {STR_VAR_2} types!$"
+
+DreamYard_Text_PlayerObtainedMonkey::
+	.string "{PLAYER} received {STR_VAR_3}!$"
+
+DreamYard_Text_MonkeySentToPC::
+	.string "{STR_VAR_3} was sent to the PC!$"
+
+General_Text_PokemonStorageIsFull::
+	.string "Your Pokémon Storage is full...$"
+
+CasteliaCity_Text_OneCone::
+	.string "   1 Cone      ¥100$"
+
+CasteliaCity_Text_DozenCone::
+	.string " 12 CONES   ¥1,200"
+	
+	
+	
 
 
 

@@ -395,7 +395,7 @@ script CasteliaCity_EmptyBuilding1F_EventScript_Elevator
 	msgbox(Elevator_Text_WhichFloorWouldLikeToGo, MSGBOX_TRANSPARENT)
 	dynmultichoice(20, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE,
         "2",
-        "Cancel")
+        gText_Cancel)
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_EmptyBuilding1F_EventScript_Elevator_GoTo2F)}
 	goto (CasteliaCity_EmptyBuilding1F_EventScript_Elevator_GetOff)
 }

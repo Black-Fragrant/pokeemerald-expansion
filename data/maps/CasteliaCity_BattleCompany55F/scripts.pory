@@ -50,7 +50,7 @@ script CasteliaCity_BattleCompany55F_EventScript_Elevator
 	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "1",
         "47",
-        "Cancel")
+        gText_Cancel)
 	if (var(VAR_RESULT) == 0) {goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo1F)}
 	elif (var(VAR_RESULT) == 1) {goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GoTo47F)}
 	goto (CasteliaCity_BattleCompany55F_EventScript_Elevator_GetOff)

@@ -46,7 +46,8 @@ script Route2_EventScript_MotherGivesRunningShoes
 	msgbox("I finally caught up with you...\p"
 			"And look how far you've come already!\p"
 			"Professor Juniper said that you were\n"
-			"probably headed for Striaton City by now.\p"
+			"probably headed for\l"
+			"Striaton City by now.\p"
 			"I have another present for you.\n"
 			"{PLAYER}! Try these on!", MSGBOX_DEFAULT, TRUE, LOCALID_ROUTE2_MOTHER)
 	destroy_speech_bubble()
@@ -56,7 +57,7 @@ script Route2_EventScript_MotherGivesRunningShoes
 	waitmovement(0)
 	delay(10)
     playbgm (MUS_BW_OBTAIN_KEY_ITEM, TRUE)
-    msgbox("{PLAYER} received a pair of"
+    msgbox("{PLAYER} received a pair of\n"
 	"{SHADOW BLUE}{COLOR LIGHT_BLUE}Running Shoes{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}!", MSGBOX_TRANSPARENT)
 	setflag(FLAG_SYS_B_DASH)
     delay(120)

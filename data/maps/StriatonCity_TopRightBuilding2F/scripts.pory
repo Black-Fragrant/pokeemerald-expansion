@@ -116,7 +116,10 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_Multichoice
 {
 	msgbox("Amanita: Is there something you'd like\n"
             "to ask me?", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
-	multichoice(25, 5, MULTI_FENNEL_LAPTOP, 0)
+    dynmultichoice(25, 5, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Battle Box",
+        "Pal Pad",
+        gText_Cancel)
 	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox)}
 	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad)}
 	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TRB2F_EventScript_SchoolGirl_Release)}
@@ -125,15 +128,13 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_Multichoice
 
 script StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox
 {
-    destroy_speech_bubble()
-    closemessage
     msgbox("In the Battle Box, you can register up\n"
        "to six Pokémon that you often use\l"
        "in battles.\p"
        "When you battle using Infrared\n"
        "Connection, you can choose to battle\l"
        "with either your party Pokémon or with\l"
-       "the Pokémon in the Battle Box!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+       "the Pokémon in the Battle Box!", MSGBOX_DEFAULT, FALSE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage
     release
@@ -142,15 +143,13 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_BattleBox
 
 script StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad
 {
-    destroy_speech_bubble()
-    closemessage
     msgbox("In order to register your friend\n"
        "in your Pal Pad...\p"
        "You can either input your friend's code\n"
        "directly by using your Pal Pad...\p"
        "Or you can use the IR Connection\n"
        "feature of the C-Gear.\p"
-       "Then, you can register your friend!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+       "Then, you can register your friend!", MSGBOX_DEFAULT, FALSE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage
     release
@@ -159,10 +158,8 @@ script StriatonCity_TRB2F_EventScript_SchoolGirl_PalPad
 
 script StriatonCity_TRB2F_EventScript_SchoolGirl_Release
 {
-    destroy_speech_bubble()
-    closemessage
     msgbox("Catch a lot of Pokémon\n"
-            "and use the Box a lot!", MSGBOX_DEFAULT, TRUE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
+            "and use the Box a lot!", MSGBOX_DEFAULT, FALSE, LOCALID_STRIATON_TRB2F_SCHOOLGIRL)
     destroy_speech_bubble()
     closemessage
     release
@@ -480,7 +477,10 @@ script StriatonCity_TRB2F_EventScript_Laptop_2
 script StriatonCity_TRB2F_EventScript_Laptop_3
 {
 	msgbox("Read which topic?", MSGBOX_TRANSPARENT)
-	multichoice(25, 5, MULTI_FENNEL_LAPTOP, 0)
+    dynmultichoice(25, 5, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
+        "Game Sync",
+        "Pokémon Dreams",
+        gText_Cancel)
 	if (var(VAR_RESULT) == 0) {goto (StriatonCity_TRB2F_EventScript_Laptop_GameSync)}
 	elif (var(VAR_RESULT) == 1) {goto (StriatonCity_TRB2F_EventScript_Laptop_PokemonDreams)}
 	elif (var(VAR_RESULT) == 2) {goto (StriatonCity_TRB2F_EventScript_Laptop_Release)}

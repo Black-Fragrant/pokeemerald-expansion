@@ -35,7 +35,7 @@ script NimbasaCity_BattleInstitute_EventScript_Select
         "Challenge",
         "Info",
         "Download",
-        "Cancel")
+        gText_Cancel)
     destroy_speech_bubble()
     closemessage
 	if (var(VAR_RESULT) == 0) {goto (NimbasaCity_BattleInstitute_EventScript_Challenge)}

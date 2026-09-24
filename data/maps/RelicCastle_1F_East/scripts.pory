@@ -94,7 +94,7 @@ script RelicCastle_1F_East_EventScript_Backpacker
 	dynmultichoice(20, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE,
         "Cover Fossil",
         "Plume Fossil",
-        "Cancel")
+        gText_Cancel)
 	if (var(VAR_RESULT) == 0) {goto (RelicCastle_1F_East_EventScript_GivesCoverFossil)}
 	elif (var(VAR_RESULT) == 1) {goto (RelicCastle_1F_East_EventScript_GivesPlumeFossil)}
 	goto (RelicCastle_1F_East_EventScript_NoWantFossil)

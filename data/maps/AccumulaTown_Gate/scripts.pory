@@ -10,8 +10,8 @@ script AccumulaTown_Gate_EventScript_Concierge
 
 script AccumulaTown_Gate_EventScript_Girl
 {
-	msgbox("Watching the information changing on the \n"
-			"electric bulletin board…\l"
+	msgbox("Watching the information changing on\n"
+			"the electric bulletin board…\l"
 			"It makes me happy. I find it so soothing!", MSGBOX_NPC, TRUE)
 	end
 }
