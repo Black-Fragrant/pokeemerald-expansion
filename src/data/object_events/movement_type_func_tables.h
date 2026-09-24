@@ -201,6 +201,22 @@ u8 (*const gMovementTypeFuncs_WalkBackAndForth[])(struct ObjectEvent *, struct S
     MovementType_WalkBackAndForth_Step3,
 };
 
+u8 (*const gMovementTypeFuncs_BlackBeltLoop[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_WalkSequence_Step0,
+    MovementType_BlackBeltLoop_Step1,
+    MovementType_WalkSequence_Step2,
+};
+
+u8 (*const gMovementTypeFuncs_WalkBackAndForthScout[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_WalkBackAndForthScout_Step0,
+    MovementType_WalkBackAndForthScout_Step1,
+    MovementType_WalkBackAndForthScout_Step2,
+    MovementType_WalkBackAndForthScout_Step3,
+    MovementType_WalkBackAndForthScout_Step4,
+    MovementType_WalkBackAndForthScout_Step5,
+    MovementType_WalkBackAndForthScout_Step6,
+};
+
 u8 (*const gMovementTypeFuncs_WalkSequenceUpRightLeftDown[])(struct ObjectEvent *, struct Sprite *) = {
     MovementType_WalkSequence_Step0,
     MovementType_WalkSequenceUpRightLeftDown_Step1,
@@ -444,6 +460,12 @@ u8 (*const gMovementTypeFuncs_Buried[])(struct ObjectEvent *, struct Sprite *) =
 u8 (*const gMovementTypeFuncs_WalkInPlace[])(struct ObjectEvent *, struct Sprite *) = {
     MovementType_WalkInPlace_Step0,
     MovementType_MoveInPlace_Step1,
+};
+
+u8 (*const gMovementTypeFuncs_WalkInPlaceTurning[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_WalkInPlaceTurning_Step0,
+    MovementType_WalkInPlaceTurning_Step1,
+    MovementType_WalkInPlaceTurning_Step2,
 };
 
 u8 (*const gMovementTypeFuncs_WalkSlowlyInPlace[])(struct ObjectEvent *, struct Sprite *) = {

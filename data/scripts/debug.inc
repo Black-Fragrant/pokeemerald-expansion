@@ -204,17 +204,20 @@ Debug_EventScript_Script_1_text::
 	.string "{STR_VAR_1} and {STR_VAR_2}$"
 
 Debug_EventScript_Script_2::
+	warpsilent MAP_ROUTE16, 15, 21
+	waitstate
 	release 
     end
 
 Debug_EventScript_Script_3::
-	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_SYS_POKEDEX_GET
-	setflag FLAG_SYS_POKENAV_GET  
+	warpsilent MAP_ROUTE5, 31, 14
+	waitstate
 	release
 	end
 
 Debug_EventScript_Script_4::
+	warpsilent MAP_CASTELIA_CITY_UNITY_PIER, 25, 10
+	waitstate
 	release
 	end
 

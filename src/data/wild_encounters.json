@@ -1792,61 +1792,6 @@
               }
             ]
           },
-          "rock_smash_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 12,
-                "max_level": 15,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 15,
-                "max_level": 15,
-                "species": "SPECIES_THROH"
-              },
-              {
-                "min_level": 15,
-                "max_level": 15,
-                "species": "SPECIES_SAWK"
-              }
-            ]
-          },
           "dark_grass_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -1909,6 +1854,61 @@
                 "min_level": 14,
                 "max_level": 17,
                 "species": "SPECIES_THROH"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_THROH"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_SAWK"
               }
             ]
           }
@@ -1981,6 +1981,71 @@
               }
             ]
           },
+          "dark_grass_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_COTTONEE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_COTTONEE"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_TRANQUILL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_WHIRLIPEDE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_PETILIL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_TRANQUILL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_WHIRLIPEDE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_PETILIL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_WHIRLIPEDE"
+              }
+            ]
+          },
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -2143,71 +2208,6 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
-              }
-            ]
-          },
-          "dark_grass_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_COTTONEE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_COTTONEE"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_TRANQUILL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_WHIRLIPEDE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_PETILIL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_TRANQUILL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_WHIRLIPEDE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_PETILIL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_WHIRLIPEDE"
               }
             ]
           }
@@ -2280,6 +2280,71 @@
               }
             ]
           },
+          "dark_grass_mons": {
+            "encounter_rate": 1,
+            "mons": [
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_COTTONEE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_COTTONEE"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_TRANQUILL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_WHIRLIPEDE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_PETILIL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_TRANQUILL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_WHIRLIPEDE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_PETILIL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_WHIRLIPEDE"
+              }
+            ]
+          },
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -2442,71 +2507,6 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
-              }
-            ]
-          },
-          "dark_grass_mons": {
-            "encounter_rate": 1,
-            "mons": [
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_COTTONEE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_COTTONEE"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_TRANQUILL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_WHIRLIPEDE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_PETILIL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_TRANQUILL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_WHIRLIPEDE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_PETILIL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_WHIRLIPEDE"
               }
             ]
           }
@@ -3793,61 +3793,6 @@
               }
             ]
           },
-          "rock_smash_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_EMOLGA"
-              },
-              {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_EMOLGA"
-              },
-              {
-                "min_level": 22,
-                "max_level": 22,
-                "species": "SPECIES_CINCCINO"
-              }
-            ]
-          },
           "dark_grass_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -3910,6 +3855,61 @@
                 "min_level": 22,
                 "max_level": 25,
                 "species": "SPECIES_SOLOSIS"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_EMOLGA"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_EMOLGA"
+              },
+              {
+                "min_level": 22,
+                "max_level": 22,
+                "species": "SPECIES_CINCCINO"
               }
             ]
           }
@@ -3982,61 +3982,6 @@
               }
             ]
           },
-          "rock_smash_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_AUDINO"
-              },
-              {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_EMOLGA"
-              },
-              {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_EMOLGA"
-              },
-              {
-                "min_level": 22,
-                "max_level": 22,
-                "species": "SPECIES_CINCCINO"
-              }
-            ]
-          },
           "dark_grass_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -4099,6 +4044,61 @@
                 "min_level": 22,
                 "max_level": 25,
                 "species": "SPECIES_SOLOSIS"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_AUDINO"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_EMOLGA"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_EMOLGA"
+              },
+              {
+                "min_level": 22,
+                "max_level": 22,
+                "species": "SPECIES_CINCCINO"
               }
             ]
           }
@@ -4167,6 +4167,71 @@
               {
                 "min_level": 19,
                 "max_level": 22,
+                "species": "SPECIES_PETILIL"
+              }
+            ]
+          },
+          "dark_grass_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 23,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_COTTONEE"
+              },
+              {
+                "min_level": 24,
+                "max_level": 25,
+                "species": "SPECIES_TRANQUILL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_VENIPEDE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_COTTONEE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_TRANQUILL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 25,
+                "species": "SPECIES_SWADLOON"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_VENIPEDE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
+                "species": "SPECIES_PETILIL"
+              },
+              {
+                "min_level": 23,
+                "max_level": 24,
+                "species": "SPECIES_VENIPEDE"
+              },
+              {
+                "min_level": 22,
+                "max_level": 25,
                 "species": "SPECIES_PETILIL"
               }
             ]
@@ -4333,71 +4398,6 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
-              }
-            ]
-          },
-          "dark_grass_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 23,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_COTTONEE"
-              },
-              {
-                "min_level": 24,
-                "max_level": 25,
-                "species": "SPECIES_TRANQUILL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_VENIPEDE"
-              },
-              {
-                "min_level": 19,
-                "max_level": 22,
-                "species": "SPECIES_COTTONEE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_TRANQUILL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 25,
-                "species": "SPECIES_SWADLOON"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_VENIPEDE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_PETILIL"
-              },
-              {
-                "min_level": 23,
-                "max_level": 24,
-                "species": "SPECIES_VENIPEDE"
-              },
-              {
-                "min_level": 22,
-                "max_level": 25,
-                "species": "SPECIES_PETILIL"
               }
             ]
           }

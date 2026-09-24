@@ -329,6 +329,9 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WALK_IN_PLACE_UP] = MovementType_WalkInPlace,
     [MOVEMENT_TYPE_WALK_IN_PLACE_LEFT] = MovementType_WalkInPlace,
     [MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT] = MovementType_WalkInPlace,
+    [MOVEMENT_TYPE_WALK_IN_PLACE_ROTATE_CLOCKWISE] = MovementType_WalkInPlaceTurning,
+    [MOVEMENT_TYPE_WALK_IN_PLACE_ROTATE_COUNTERCLOCKWISE] = MovementType_WalkInPlaceTurning,
+    [MOVEMENT_TYPE_WALK_IN_PLACE_LOOK_AROUND] = MovementType_WalkInPlaceTurning,
     [MOVEMENT_TYPE_JOG_IN_PLACE_DOWN] = MovementType_JogInPlace,
     [MOVEMENT_TYPE_JOG_IN_PLACE_UP] = MovementType_JogInPlace,
     [MOVEMENT_TYPE_JOG_IN_PLACE_LEFT] = MovementType_JogInPlace,
@@ -349,6 +352,15 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WATCH_PLAYER_OWE] = MovementType_OverworldWildEncounter_WatchPlayer,
     [MOVEMENT_TYPE_APPROACH_PLAYER_OWE] = MovementType_OverworldWildEncounter_ApproachPlayer,
     [MOVEMENT_TYPE_DESPAWN_OWE] = MovementType_OverworldWildEncounter_Despawn,
+    [MOVEMENT_TYPE_BLACK_BELT_LOOP] = MovementType_BlackBeltLoop,
+    [MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_2_STEPS] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_2_STEPS] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_2_STEPS] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_2_STEPS] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_STEP] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_STEP] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_STEP] = MovementType_WalkBackAndForthScout,
+    [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_STEP] = MovementType_WalkBackAndForthScout,
 };
 
 static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
@@ -361,6 +373,14 @@ static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_WALK_DOWN_AND_UP] = TRUE,
     [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT] = TRUE,
     [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT] = TRUE,
+    [MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_2_STEPS] = TRUE,
+    [MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_2_STEPS] = TRUE,
+    [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_2_STEPS] = TRUE,
+    [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_2_STEPS] = TRUE,
+    [MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_STEP] = TRUE,
+    [MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_STEP] = TRUE,
+    [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_STEP] = TRUE,
+    [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_STEP] = TRUE,
     [MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_LEFT_DOWN] = TRUE,
     [MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP] = TRUE,
     [MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_UP_RIGHT_LEFT] = TRUE,
@@ -425,6 +445,14 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_WALK_DOWN_AND_UP] = DIR_SOUTH,
     [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT] = DIR_WEST,
     [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT] = DIR_EAST,
+    [MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_2_STEPS] = DIR_SOUTH,
+    [MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_2_STEPS] = DIR_NORTH,
+    [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_2_STEPS] = DIR_WEST,
+    [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_2_STEPS] = DIR_EAST,
+    [MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_STEP] = DIR_SOUTH,
+    [MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_STEP] = DIR_NORTH,
+    [MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_STEP] = DIR_WEST,
+    [MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_STEP] = DIR_EAST,
     [MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_LEFT_DOWN] = DIR_NORTH,
     [MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_LEFT_DOWN_UP] = DIR_EAST,
     [MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_UP_RIGHT_LEFT] = DIR_SOUTH,
@@ -464,6 +492,9 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_WALK_IN_PLACE_UP] = DIR_NORTH,
     [MOVEMENT_TYPE_WALK_IN_PLACE_LEFT] = DIR_WEST,
     [MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT] = DIR_EAST,
+    [MOVEMENT_TYPE_WALK_IN_PLACE_ROTATE_CLOCKWISE] = DIR_SOUTH,
+    [MOVEMENT_TYPE_WALK_IN_PLACE_ROTATE_COUNTERCLOCKWISE] = DIR_SOUTH,
+    [MOVEMENT_TYPE_WALK_IN_PLACE_LOOK_AROUND] = DIR_SOUTH,
     [MOVEMENT_TYPE_JOG_IN_PLACE_DOWN] = DIR_SOUTH,
     [MOVEMENT_TYPE_JOG_IN_PLACE_UP] = DIR_NORTH,
     [MOVEMENT_TYPE_JOG_IN_PLACE_LEFT] = DIR_WEST,
@@ -484,6 +515,7 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_WATCH_PLAYER_OWE] = DIR_SOUTH,
     [MOVEMENT_TYPE_APPROACH_PLAYER_OWE] = DIR_SOUTH,
     [MOVEMENT_TYPE_DESPAWN_OWE] = DIR_SOUTH,
+    [MOVEMENT_TYPE_BLACK_BELT_LOOP] = DIR_EAST,
 };
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -5157,6 +5189,200 @@ bool8 MovementType_WalkBackAndForth_Step3(struct ObjectEvent *objectEvent, struc
     return FALSE;
 }
 
+static const enum Direction sWalkBackAndForthScoutDirections[][4] =
+{
+    [DIR_SOUTH] = {DIR_EAST,  DIR_NORTH, DIR_WEST,  DIR_SOUTH},
+    [DIR_NORTH] = {DIR_WEST,  DIR_SOUTH, DIR_EAST,  DIR_NORTH},
+    [DIR_WEST]  = {DIR_SOUTH, DIR_EAST,  DIR_NORTH, DIR_WEST},
+    [DIR_EAST]  = {DIR_NORTH, DIR_WEST,  DIR_SOUTH, DIR_EAST},
+};
+
+static enum Direction GetWalkBackAndForthScoutTravelDirection(struct ObjectEvent *objectEvent)
+{
+    enum Direction direction = gInitialMovementTypeFacingDirections[objectEvent->movementType];
+
+    if (objectEvent->directionSequenceIndex & 1)
+        direction = GetOppositeDirection(direction);
+
+    return direction;
+}
+
+static bool8 IsWalkBackAndForthScoutEveryStep(u8 movementType)
+{
+    switch (movementType)
+    {
+    case MOVEMENT_TYPE_WALK_DOWN_AND_UP_SCOUT_EVERY_STEP:
+    case MOVEMENT_TYPE_WALK_UP_AND_DOWN_SCOUT_EVERY_STEP:
+    case MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT_SCOUT_EVERY_STEP:
+    case MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT_SCOUT_EVERY_STEP:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static bool8 ShouldWalkBackAndForthScout(struct ObjectEvent *objectEvent)
+{
+    s16 distance;
+
+    if (IsWalkBackAndForthScoutEveryStep(objectEvent->movementType))
+        return TRUE;
+
+    if (objectEvent->currentCoords.x != objectEvent->initialCoords.x)
+        distance = objectEvent->currentCoords.x - objectEvent->initialCoords.x;
+    else
+        distance = objectEvent->currentCoords.y - objectEvent->initialCoords.y;
+
+    if (distance < 0)
+        distance = -distance;
+
+    return (distance & 1) == 0;
+}
+
+movement_type_def(MovementType_WalkBackAndForthScout, gMovementTypeFuncs_WalkBackAndForthScout)
+
+u8 MovementType_WalkBackAndForthScout_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ClearObjectEventMovement(objectEvent, sprite);
+
+    // Bit 0 stores which direction along the patrol is currently active.
+    // Higher bits are temporarily used as the scouting-loop index.
+    objectEvent->directionSequenceIndex &= 1;
+
+    sprite->sTypeFuncId = 1;
+    return TRUE;
+}
+
+u8 MovementType_WalkBackAndForthScout_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    SetObjectEventDirection(objectEvent, GetWalkBackAndForthScoutTravelDirection(objectEvent));
+    sprite->sTypeFuncId = 2;
+    return TRUE;
+}
+
+u8 MovementType_WalkBackAndForthScout_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    enum Collision collision;
+    enum Direction direction;
+    u8 movementActionId;
+
+    direction = GetWalkBackAndForthScoutTravelDirection(objectEvent);
+
+    // If the NPC has returned to its original tile, reverse back to
+    // its original travel direction for the next patrol cycle.
+    if ((objectEvent->directionSequenceIndex & 1)
+     && objectEvent->initialCoords.x == objectEvent->currentCoords.x
+     && objectEvent->initialCoords.y == objectEvent->currentCoords.y)
+    {
+        objectEvent->directionSequenceIndex &= ~1;
+        direction = GetWalkBackAndForthScoutTravelDirection(objectEvent);
+        SetObjectEventDirection(objectEvent, direction);
+    }
+
+    collision = GetCollisionInDirection(objectEvent, direction);
+    movementActionId = GetWalkNormalMovementAction(direction);
+
+    // Reached the end of movementRangeX/Y.
+    if (collision == COLLISION_OUTSIDE_RANGE)
+    {
+        objectEvent->directionSequenceIndex ^= 1;
+
+        direction = GetWalkBackAndForthScoutTravelDirection(objectEvent);
+        SetObjectEventDirection(objectEvent, direction);
+
+        movementActionId = GetWalkNormalMovementAction(direction);
+        collision = GetCollisionInDirection(objectEvent, direction);
+    }
+
+    if (collision)
+        movementActionId = GetWalkInPlaceNormalMovementAction(objectEvent->facingDirection);
+
+    // Remember whether this action is a real tile step.
+    // Normal walking uses sprite data[3-5], so data[6] is safe here.
+    sprite->data[6] = (collision == COLLISION_NONE);
+
+    ObjectEventSetSingleMovement(objectEvent, sprite, movementActionId);
+    objectEvent->singleMovementActive = TRUE;
+    sprite->sTypeFuncId = 3;
+    return TRUE;
+}
+
+u8 MovementType_WalkBackAndForthScout_Step3(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    bool8 didMove = sprite->data[6];
+
+    if (!ObjectEventExecSingleMovementAction(objectEvent, sprite))
+        return FALSE;
+
+    objectEvent->singleMovementActive = FALSE;
+    sprite->data[6] = FALSE;
+
+    if (didMove && ShouldWalkBackAndForthScout(objectEvent))
+    {
+        sprite->sTypeFuncId = 4;
+        return FALSE;
+    }
+
+    sprite->sTypeFuncId = 1;
+    return FALSE;
+}
+
+u8 MovementType_WalkBackAndForthScout_Step4(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    enum Direction travelDirection;
+    enum Direction lookDirection;
+    u8 lookIndex;
+
+    travelDirection = GetWalkBackAndForthScoutTravelDirection(objectEvent);
+    lookIndex = objectEvent->directionSequenceIndex >> 1;
+
+    lookDirection = sWalkBackAndForthScoutDirections[travelDirection][lookIndex];
+
+    SetObjectEventDirection(objectEvent, lookDirection);
+    ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(lookDirection));
+
+    objectEvent->singleMovementActive = TRUE;
+    sprite->sTypeFuncId = 5;
+    return TRUE;
+}
+
+u8 MovementType_WalkBackAndForthScout_Step5(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (ObjectEventExecSingleMovementAction(objectEvent, sprite))
+    {
+        objectEvent->singleMovementActive = FALSE;
+
+        // Same duration as MOVEMENT_ACTION_DELAY_8.
+        SetMovementDelay(sprite, 16);
+
+        sprite->sTypeFuncId = 6;
+    }
+
+    return FALSE;
+}
+
+u8 MovementType_WalkBackAndForthScout_Step6(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (!WaitForMovementDelay(sprite))
+        return FALSE;
+
+    if ((objectEvent->directionSequenceIndex >> 1) >= 3)
+    {
+        // All four scouting directions are complete.
+        // Keep only the patrol-direction bit.
+        objectEvent->directionSequenceIndex &= 1;
+        sprite->sTypeFuncId = 1;
+    }
+    else
+    {
+        // Advance to the next scouting direction.
+        objectEvent->directionSequenceIndex += 2;
+        sprite->sTypeFuncId = 4;
+    }
+
+    return TRUE;
+}
+
 bool8 MovementType_WalkSequence_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     ClearObjectEventMovement(objectEvent, sprite);
@@ -5200,6 +5426,54 @@ bool8 MovementType_WalkSequence_Step2(struct ObjectEvent *objectEvent, struct Sp
         sprite->sTypeFuncId = 1;
     }
     return FALSE;
+}
+
+static const enum Direction sBlackBeltLoopDirections[] =
+{
+    DIR_EAST,
+    DIR_EAST,
+    DIR_SOUTH,
+    DIR_EAST,
+    DIR_EAST,
+    DIR_SOUTH,
+    DIR_SOUTH,
+    DIR_WEST,
+    DIR_WEST,
+    DIR_WEST,
+    DIR_NORTH,
+    DIR_WEST,
+    DIR_NORTH,
+    DIR_NORTH,
+};
+
+movement_type_def(MovementType_BlackBeltLoop, gMovementTypeFuncs_BlackBeltLoop)
+
+u8 MovementType_BlackBeltLoop_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    enum Collision collision;
+    enum Direction direction = sBlackBeltLoopDirections[objectEvent->directionSequenceIndex];
+    u8 movementActionId;
+
+    SetObjectEventDirection(objectEvent, direction);
+    collision = GetCollisionInDirection(objectEvent, direction);
+
+    if (collision)
+    {
+        movementActionId = GetWalkInPlaceNormalMovementAction(objectEvent->facingDirection);
+    }
+    else
+    {
+        movementActionId = GetWalkNormalMovementAction(direction);
+
+        objectEvent->directionSequenceIndex++;
+        if (objectEvent->directionSequenceIndex >= ARRAY_COUNT(sBlackBeltLoopDirections))
+            objectEvent->directionSequenceIndex = 0;
+    }
+
+    ObjectEventSetSingleMovement(objectEvent, sprite, movementActionId);
+    objectEvent->singleMovementActive = TRUE;
+    sprite->sTypeFuncId = 2;
+    return TRUE;
 }
 
 movement_type_def(MovementType_WalkSequenceUpRightLeftDown, gMovementTypeFuncs_WalkSequenceUpRightLeftDown)
@@ -6163,6 +6437,156 @@ bool8 MovementType_WalkInPlace_Step0(struct ObjectEvent *objectEvent, struct Spr
     sprite->sTypeFuncId = 1;
     return TRUE;
 }
+
+#define sWalkInPlaceTurningCycles data[6]
+
+static u8 GetWalkInPlaceTurningCycles(struct ObjectEvent *objectEvent)
+{
+    if (objectEvent->movementType == MOVEMENT_TYPE_WALK_IN_PLACE_LOOK_AROUND)
+    {
+        s16 delay = sMovementDelaysMedium[Random() % ARRAY_COUNT(sMovementDelaysMedium)];
+
+        // Normal walk-in-place lasts 16 frames.
+        return delay / 16;
+    }
+
+    // Vanilla Rotate Clockwise / Counterclockwise waits 48 frames.
+    // 3 walk-in-place cycles x 16 frames = 48 frames.
+    return 3;
+}
+
+static enum Direction GetWalkInPlaceTurningNextDirection(struct ObjectEvent *objectEvent)
+{
+    enum Direction direction;
+    enum Direction directions[5];
+
+    // Same trainer-direction function used by vanilla LookAround /
+    // RotateClockwise / RotateCounterclockwise.
+    direction = TryGetTrainerEncounterDirection(objectEvent, RUNFOLLOW_ANY);
+
+    if (direction != DIR_NONE)
+        return direction;
+
+    switch (objectEvent->movementType)
+    {
+    case MOVEMENT_TYPE_WALK_IN_PLACE_ROTATE_CLOCKWISE:
+        memcpy(directions, gClockwiseDirections, sizeof gClockwiseDirections);
+        return directions[objectEvent->facingDirection];
+
+    case MOVEMENT_TYPE_WALK_IN_PLACE_ROTATE_COUNTERCLOCKWISE:
+        memcpy(directions, gCounterclockwiseDirections, sizeof gCounterclockwiseDirections);
+        return directions[objectEvent->facingDirection];
+
+    case MOVEMENT_TYPE_WALK_IN_PLACE_LOOK_AROUND:
+    default:
+        return gStandardDirections[Random() & 3];
+    }
+}
+
+static void StartWalkInPlaceTurningMovement(
+    struct ObjectEvent *objectEvent,
+    struct Sprite *sprite,
+    enum Direction direction)
+{
+    SetObjectEventDirection(objectEvent, direction);
+
+    ObjectEventSetSingleMovement(
+        objectEvent,
+        sprite,
+        GetWalkInPlaceNormalMovementAction(direction)
+    );
+
+    // IMPORTANT:
+    // Do NOT set objectEvent->singleMovementActive here.
+    //
+    // Vanilla MovementType_WalkInPlace also leaves this FALSE,
+    // which allows held movements such as facing the player during
+    // interaction to override this movement normally.
+}
+
+movement_type_def(MovementType_WalkInPlaceTurning, gMovementTypeFuncs_WalkInPlaceTurning)
+
+u8 MovementType_WalkInPlaceTurning_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ClearObjectEventMovement(objectEvent, sprite);
+
+    sprite->sWalkInPlaceTurningCycles =
+        GetWalkInPlaceTurningCycles(objectEvent);
+
+    StartWalkInPlaceTurningMovement(
+        objectEvent,
+        sprite,
+        objectEvent->facingDirection
+    );
+
+    sprite->sTypeFuncId = 1;
+    return FALSE;
+}
+
+u8 MovementType_WalkInPlaceTurning_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    enum Direction trainerDirection;
+
+    // Same interruption condition used by the vanilla
+    // RotateClockwise / RotateCounterclockwise movement types.
+    if (ObjectEventIsTrainerAndCloseToPlayer(objectEvent))
+    {
+        trainerDirection =
+            TryGetTrainerEncounterDirection(objectEvent, RUNFOLLOW_ANY);
+
+        // Only interrupt the current walk-in-place animation if
+        // the trainer actually needs to turn.
+        //
+        // This prevents repeatedly restarting the animation every
+        // frame while the player remains inside trainer range.
+        if (trainerDirection != DIR_NONE
+         && trainerDirection != objectEvent->facingDirection)
+        {
+            sprite->sTypeFuncId = 2;
+            return TRUE;
+        }
+    }
+
+    if (!ObjectEventExecSingleMovementAction(objectEvent, sprite))
+        return FALSE;
+
+    // One complete 16-frame walk-in-place animation finished.
+    if (--sprite->sWalkInPlaceTurningCycles != 0)
+    {
+        StartWalkInPlaceTurningMovement(
+            objectEvent,
+            sprite,
+            objectEvent->facingDirection
+        );
+
+        return FALSE;
+    }
+
+    // The full facing period has finished.
+    sprite->sTypeFuncId = 2;
+    return TRUE;
+}
+
+u8 MovementType_WalkInPlaceTurning_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    enum Direction direction;
+
+    direction = GetWalkInPlaceTurningNextDirection(objectEvent);
+
+    sprite->sWalkInPlaceTurningCycles =
+        GetWalkInPlaceTurningCycles(objectEvent);
+
+    StartWalkInPlaceTurningMovement(
+        objectEvent,
+        sprite,
+        direction
+    );
+
+    sprite->sTypeFuncId = 1;
+    return FALSE;
+}
+
+#undef sWalkInPlaceTurningCycles
 
 movement_type_def(MovementType_WalkSlowlyInPlace, gMovementTypeFuncs_WalkSlowlyInPlace)
 
